@@ -1,0 +1,867 @@
+name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
+
+on:
+  push:
+    branches: [main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    paths:
+      - 'wq-noaudio.zip'
+      - 'v081-patch.b64'
+      - 'v081-ukfix.patch.gz.b64'
+      - 'v082-features.patch.gz.b64'
+      - 'v090-delta.b64'
+      - 'v100-source-overlay.b64'
+      - 'v101-standalone-overlay.b64'
+      - 'v102-firebase-modes-overlay-fixed.b64'
+      - 'v103-google-oauth.patch'
+      - 'v104-firebase-android-id.patch'
+      - 'v105-realtime-sync-overlay.b64'
+      - 'v106-account-quota-share-overlay.b64'
+      - 'v107-share-only-overlay.b64'
+      - 'v108-nickname-account-delete-overlay.b64'
+      - 'v108-accounts-visibility-fix.patch'
+      - 'v109-source-overlay.b64'
+      - 'v109-compile-fix.patch'
+      - 'v110-live-notifications-overlay.b64'
+      - 'v111-premium-a1-a2-overlay.b64'
+      - 'v112-premium-online-overlay.b64'
+      - 'v112-compile-fix.patch'
+      - 'v112-premium-theme-fix.patch'
+      - 'v112-team-timer-fix.patch'
+      - 'v113-premium-ux-overlay.b64'
+      - 'v114-answer-feedback-overlay.b64'
+      - 'v115-duel-reveal-fix-overlay.b64'
+      - 'v115-compile-null-fix.patch'
+      - 'v116-updater-overlay.b64'
+      - 'v116-kotlin-fix.patch'
+      - 'v117-premium-summary-overlay.b64'
+      - 'v118-learning-studio-overlay.b64'
+      - 'v118-test-db-migration.patch'
+      - 'v118-compile-button-fix.patch'
+      - 'v118-sql-column-fix.patch'
+      - 'v118-both-error-tags-fix.patch'
+      - 'v119-arena-midnight-sounds-overlay.b64'
+      - 'v120-multi-ai-arena-overlay.b64'
+      - 'v120-compile-visibility-fix.patch'
+      - 'v120-test-asset-and-levels-fix.patch'
+      - 'v120-yds-explanation-fix.patch'
+      - 'v121-live-3d-teacher-overlay.b64'
+      - 'tools/patch_teacher_render_122.py'
+      - 'tools/patch_teacher_native_123.py'
+      - 'tools/v123/**'
+      - 'tools/patch_teacher_3d_124.py'
+      - 'tools/v124/**'
+      - 'tools/patch_teacher_quality_125.py'
+      - 'tools/patch_humanoid_glb_126.py'
+      - 'tools/v126/**'
+      - 'tools/v127/**'
+      - 'tools/v1271/**'
+      - 'tools/v129/**'
+      - 'tools/v130/**'
+      - 'tools/v131/**'
+      - 'tools/v132b/**'
+      - 'tools/v133/**'
+      - 'tools/v134/**'
+      - 'tools/v135/**'
+      - 'tools/v136/**'
+      - 'tools/v137/**'
+      - 'tools/v138/**'
+      - 'tools/v139/**'
+      - 'tools/v140/**'
+      - 'tools/v141/**'
+      - 'tools/v142/**'
+      - 'tools/v143/**'
+      - 'tools/v144/**'
+      - 'tools/v145/**'
+      - 'tools/v146/**'
+      - 'tools/v147/**'
+      - 'archived/ethan_3d/**'
+      - 'tools/generate_release_manifest.py'
+      - 'tools/prune_public_releases.py'
+      - 'tools/patch_premium_avatar_127.py'
+      - 'v100-compile-fix.patch'
+      - 'v100-yds-content-fix.patch'
+      - '.github/workflows/build-apk.yml'
+  workflow_dispatch:
+  pull_request:
+    branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Locate preinstalled Android SDK
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+          test -x "$SDKM"
+          "$SDKM" --list_installed | head -60
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Android dependencies and voice generator
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y espeak libsndfile1
+          python3 -m pip install soundfile
+          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+          "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Extract complete source (except generated audio)
+        run: |
+          test -s wq-noaudio.zip
+          unzip -tq wq-noaudio.zip
+          mkdir -p source
+          unzip -q wq-noaudio.zip -d source
+          test -s source/gradlew
+      - name: Restore v0.8.1 source changes
+        run: |
+          test -s v081-patch.b64
+          base64 -d v081-patch.b64 > /tmp/wordquest-081-patch.zip
+          unzip -tq /tmp/wordquest-081-patch.zip
+          unzip -oq /tmp/wordquest-081-patch.zip -d source
+          grep -q 'versionName = "0.8.1"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline081"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/DeviceAccentPlayer.kt
+      - name: Apply UK-only locale speech compatibility fix
+        run: |
+          test -s v081-ukfix.patch.gz.b64
+          base64 -d v081-ukfix.patch.gz.b64 | gzip -dc > /tmp/wordquest-uk-fix.patch
+          echo "8e47ab59d4320d21dd197b7df8331e991c3060545617f0f8d253286cbacc35d8  /tmp/wordquest-uk-fix.patch" | sha256sum -c -
+          cd source
+          git apply --check /tmp/wordquest-uk-fix.patch
+          git apply /tmp/wordquest-uk-fix.patch
+          grep -q 'applicationIdSuffix = ".offline081uk"' app/build.gradle.kts
+          grep -q SYSTEM_BRITISH_VOICE app/src/main/java/com/kelimebulmacasi/a1/DeviceAccentPlayer.kt
+      - name: Apply v0.8.2 font scale and gentle sound update
+        run: |
+          test -s v082-features.patch.gz.b64
+          base64 -d v082-features.patch.gz.b64 | gzip -dc > /tmp/wordquest-082.patch
+          echo "5ef5fb42dbbd81e0619742c0a2afc817228a0749d4327631cb59b55fe04d7fae  /tmp/wordquest-082.patch" | sha256sum --check
+          cd source
+          git apply --check /tmp/wordquest-082.patch
+          git apply /tmp/wordquest-082.patch
+          python3 tools/make_soft_sound.py
+          test -s app/src/main/res/raw/correct_soft.wav
+          grep -q 'versionName = "0.8.2"' app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline082"' app/build.gradle.kts
+      - name: Restore all v0.9.0 features and version
+        run: |
+          test -s v090-delta.b64
+          base64 -d v090-delta.b64 > /tmp/wq090.zip
+          unzip -tq /tmp/wq090.zip
+          unzip -oq /tmp/wq090.zip -d source
+          grep -q 'versionName = "0.9.0"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline082"' source/app/build.gradle.kts
+          grep -q 'signingConfig = null' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt
+          test -s source/app/src/main/res/raw/correct_soft.wav
+      - name: Apply v1.0 learning and YDS preview
+        run: |
+          test -s v100-source-overlay.b64
+          base64 -d v100-source-overlay.b64 > /tmp/wordquest-v100-overlay.zip
+          echo "16abbee32d3e6ead16bdfe4906990954d7403204f8fd761609455052e7e9f27c  /tmp/wordquest-v100-overlay.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-v100-overlay.zip
+          unzip -oq /tmp/wordquest-v100-overlay.zip -d source
+          cd source
+          git apply --check ../v100-compile-fix.patch
+          git apply ../v100-compile-fix.patch
+          git apply --check ../v100-yds-content-fix.patch
+          git apply ../v100-yds-content-fix.patch
+          cd ..
+          grep -q 'versionName = "1.0.0-preview"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline082"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/YdsCenterScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningDashboardScreen.kt
+      - name: Apply complete Firebase arena and separate-install v1.0.1 configuration
+        run: |
+          test -s v101-standalone-overlay.b64
+          base64 -d v101-standalone-overlay.b64 > /tmp/wordquest-101.zip
+          echo "655bf8f2a7668117ec694430a6bd2b6df9470057b607b5282e12dfb86559ea1e  /tmp/wordquest-101.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-101.zip
+          unzip -oq /tmp/wordquest-101.zip -d source
+          grep -q 'versionName = "1.0.1-firebase-standalone"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          test -s source/app/src/main/res/values/cloud_config.xml
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/FirebaseLiveArenaTest.kt
+      - name: Apply v1.0.2 all competition modes and optional server
+        run: |
+          test -s v102-firebase-modes-overlay-fixed.b64
+          base64 -d v102-firebase-modes-overlay-fixed.b64 > /tmp/wordquest-102.zip
+          echo "442e196954f660099b6cc59553b7663d8e009383e8c9bd86dc81a5ab4ddda1d9  /tmp/wordquest-102.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-102.zip
+          unzip -oq /tmp/wordquest-102.zip -d source
+          grep -q 'versionName = "1.0.2-firebase-arena"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'Google OAuth' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+      - name: Configure Google OAuth and upgrade-compatible v1.0.3
+        run: |
+          cd source
+          git apply --check ../v103-google-oauth.patch
+          git apply ../v103-google-oauth.patch
+          grep -q 'versionCode = 26' app/build.gradle.kts
+          grep -q 'versionName = "1.0.3-google-oauth"' app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' app/build.gradle.kts
+          grep -q '198875801515-cn2hcpeg16vs9vsq0de38tbf0ne8t5er.apps.googleusercontent.com' app/src/main/res/values/cloud_config.xml
+      - name: Match Firebase registered Android client (offline101) for v1.0.4
+        run: |
+          cd source
+          git apply --check ../v104-firebase-android-id.patch
+          git apply ../v104-firebase-android-id.patch
+          grep -q 'versionCode = 27' app/build.gradle.kts
+          grep -q 'versionName = "1.0.4-firebase-identity"' app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' app/build.gradle.kts
+          grep -q '1:198875801515:android:73562494e08141b79954ee' app/src/main/res/values/cloud_config.xml
+      - name: Fix persistent Google-account sync using Firebase Realtime Database
+        run: |
+          test -s v105-realtime-sync-overlay.b64
+          base64 -d v105-realtime-sync-overlay.b64 > /tmp/wordquest-105.zip
+          echo "daa556d3b4c9e413014f4c0c7b01349d087bbd71ec7fb3e8d59f4f85f4c3473e  /tmp/wordquest-105.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-105.zip
+          unzip -oq /tmp/wordquest-105.zip -d source
+          grep -q 'versionCode = 28' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.5-realtime-sync"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'FirebaseDatabase' source/app/src/main/java/com/kelimebulmacasi/a1/Accounts.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/CloudSyncKeyTest.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Apply v1.0.6 shared Google-account room quota and invitations
+        run: |
+          test -s v106-account-quota-share-overlay.b64
+          base64 -d v106-account-quota-share-overlay.b64 > /tmp/wordquest-106.zip
+          echo "09eda8db82dfbea22dbba05dc11909c172010217a3226b1cb02ca65d306d60ad  /tmp/wordquest-106.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-106.zip
+          unzip -oq /tmp/wordquest-106.zip -d source
+          test -s source/database.rules.json
+          python3 -m json.tool source/database.rules.json >/dev/null
+          grep -q 'versionCode = 29' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.6-account-room-quota"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'WhatsApp' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          grep -q 'roomQuota' source/database.rules.json
+          grep -q 'roomsPerAccountPerUtcDay = 10' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+      - name: Keep only Copy and Share buttons in v1.0.7
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt")
+          old = p.read_text(encoding="utf-8")
+          button = '                OutlinedButton(onClick = { shareRoomCode(context, client.roomCode, true) }) { Text("WhatsApp") }\n'
+          assert old.count(button) == 1
+          p.write_text(old.replace(button, ""), encoding="utf-8")
+          new = p.read_text(encoding="utf-8")
+          assert 'Text("WhatsApp")' not in new
+          assert 'Text("Kopyala")' in new and 'Text("Paylaş")' in new
+          g = Path("source/app/build.gradle.kts")
+          gradle = g.read_text(encoding="utf-8")
+          assert gradle.count("versionCode = 29") == 1
+          assert gradle.count('versionName = "1.0.6-account-room-quota"') == 1
+          gradle = gradle.replace("versionCode = 29", "versionCode = 30")
+          gradle = gradle.replace('versionName = "1.0.6-account-room-quota"', 'versionName = "1.0.7-share-only"')
+          assert 'applicationIdSuffix = ".offline101"' in gradle
+          g.write_text(gradle, encoding="utf-8")
+          print("Only the duplicate WhatsApp button removed; Copy and Share retained")
+          PY
+      - name: Apply v1.0.8 account nicknames and safe account deletion
+        run: |
+          test -s v108-nickname-account-delete-overlay.b64
+          base64 -d v108-nickname-account-delete-overlay.b64 > /tmp/wordquest-108-overlay.zip
+          echo "19126a9899d7ab05309c2c62be7d381b0538b3406b7f1be1362c3185d62c777d  /tmp/wordquest-108-overlay.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-108-overlay.zip
+          unzip -oq /tmp/wordquest-108-overlay.zip -d source
+          (cd source && git apply --check ../v108-accounts-visibility-fix.patch && git apply ../v108-accounts-visibility-fix.patch)
+          grep -q 'versionCode = 31' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.8-player-nicknames"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'hostName' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          grep -q 'guestName' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaNicknameTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/AccountDeletionUiContractTest.kt
+          grep -q 'deleteWordQuestAccount' source/app/src/main/java/com/kelimebulmacasi/a1/Accounts.kt
+          grep -q 'accountDeleteBusy' source/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Apply v1.0.9 friends, names, account sign-in and deletion
+        run: |
+          test -s v109-source-overlay.b64
+          base64 -d v109-source-overlay.b64 > /tmp/wordquest-v109-overlay.zip
+          unzip -tq /tmp/wordquest-v109-overlay.zip
+          unzip -oq /tmp/wordquest-v109-overlay.zip -d source
+          (cd source && git apply --check ../v109-compile-fix.patch && git apply ../v109-compile-fix.patch)
+          grep -q 'versionCode = 32' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.9-account-friends"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/FriendsHub.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Apply v1.0.10 app-wide live friend and room request popups
+        run: |
+          test -s v110-live-notifications-overlay.b64
+          base64 -d v110-live-notifications-overlay.b64 > /tmp/wordquest-v110-overlay.zip
+          unzip -tq /tmp/wordquest-v110-overlay.zip
+          unzip -oq /tmp/wordquest-v110-overlay.zip -d source
+          grep -q 'versionCode = 33' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.10-live-invitations"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'activeAlert' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/SocialAlertTest.kt
+      - name: Apply v1.0.11 Premium Arena and A1-A2 content library
+        run: |
+          test -s v111-premium-a1-a2-overlay.b64
+          base64 -d v111-premium-a1-a2-overlay.b64 > /tmp/wq-v111.zip
+          unzip -tq /tmp/wq-v111.zip
+          unzip -oq /tmp/wq-v111.zip -d source
+          grep -q 'versionCode = 34' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.11-premium-a1-a2"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumArenaRulesTest.kt
+          python3 source/tools/verify_premium_arena_content.py
+      - name: Apply v1.0.12 realtime Premium Arena multiplayer migration
+        run: |
+          test -s v112-premium-online-overlay.b64
+          base64 -d v112-premium-online-overlay.b64 > /tmp/wordquest-v112-overlay.zip
+          unzip -tq /tmp/wordquest-v112-overlay.zip
+          unzip -oq /tmp/wordquest-v112-overlay.zip -d source
+          (cd source && git apply --check ../v112-compile-fix.patch && git apply ../v112-compile-fix.patch)
+          (cd source && git apply --check ../v112-premium-theme-fix.patch && git apply ../v112-premium-theme-fix.patch)
+          (cd source && git apply --check ../v112-team-timer-fix.patch && git apply ../v112-team-timer-fix.patch)
+          grep -q 'versionCode = 35' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.12-premium-online"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          with open('source/database.rules.json', encoding='utf8') as f:
+              rules=json.load(f)['rules']
+          assert all(k in rules for k in ('rooms','premiumRooms','roomQuota','friends','roomInvites'))
+          assert 'premiumRooms' in rules['roomInvites']['$receiver']['$sender']['.validate']
+          print('Premium room and invite rules: valid JSON')
+          PY
+      - name: Apply v1.0.13 fair turns, automatic timer and compact responsive Arena
+        run: |
+          test -s v113-premium-ux-overlay.b64
+          base64 -d v113-premium-ux-overlay.b64 > /tmp/wq-v113-overlay.zip
+          echo "7bbeaa5a85f38803bfb07cd7d13588614cfcaa41aae90e5b1e95d3375eec9f34  /tmp/wq-v113-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v113-overlay.zip
+          unzip -oq /tmp/wq-v113-overlay.zip -d source
+          grep -q 'versionCode = 36' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.13-premium-arena-ux"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json > /dev/null
+          grep -q 'fun passIfExpired()' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'Yeni oyuna başlamak ister misiniz?' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.14 live typed letters, two-player unknown and score penalties
+        run: |
+          test -s v114-answer-feedback-overlay.b64
+          base64 -d v114-answer-feedback-overlay.b64 > /tmp/wq-v114-overlay.zip
+          echo "a2704d5f8dec8c9659a8db6cc3b7170f5b199a6c0a44136676c599a32c0a9382  /tmp/wq-v114-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v114-overlay.zip
+          unzip -oq /tmp/wq-v114-overlay.zip -d source
+          grep -q 'versionCode = 37' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.14-premium-answers"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json > /dev/null
+          grep -q 'fun dontKnow(index: Int)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'fun wrong(index: Int)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'keyboardActions = KeyboardActions(onDone' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.15 both-player failed answer reveal and score preservation
+        run: |
+          test -s v115-duel-reveal-fix-overlay.b64
+          base64 -d v115-duel-reveal-fix-overlay.b64 > /tmp/wq-v115-overlay.zip
+          echo "9bd97eeb042cedadca5666ec67811caf0780a3044fd539595a68f05030e9184f  /tmp/wq-v115-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v115-overlay.zip
+          unzip -oq /tmp/wq-v115-overlay.zip -d source
+          (cd source && git apply --check ../v115-compile-null-fix.patch && git apply ../v115-compile-null-fix.patch)
+          grep -q 'versionCode = 38' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.15-duel-reveal-fix"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json >/dev/null
+          grep -q 'fun syncFailedAttemptReveals()' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'fun wrongThenUnknownAlsoRevealsWithoutPenalizingUnknownPlayer()' source/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
+      - name: Apply v1.0.16 in-app GitHub Releases automatic updater
+        run: |
+          test -s v116-updater-overlay.b64
+          base64 -d v116-updater-overlay.b64 > /tmp/wq-v116-overlay.zip
+          echo "d79ad2fdc2c96cf7fb723d912439d153b9742e5531368c438d4b01f14c75c05d  /tmp/wq-v116-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v116-overlay.zip
+          unzip -oq /tmp/wq-v116-overlay.zip -d source
+          (cd source && git apply --check ../v116-kotlin-fix.patch && git apply ../v116-kotlin-fix.patch)
+          grep -q 'versionCode = 39' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.16-github-updates"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/AppUpdater.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/UpdateUi.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/UpdateProtocolTest.kt
+          grep -q 'REQUEST_INSTALL_PACKAGES' source/app/src/main/AndroidManifest.xml
+          python3 -m xml.dom.minidom source/app/src/main/AndroidManifest.xml > /dev/null
+          python3 -m unittest discover -s tools/tests -v
+      - name: Apply v1.0.17 summary, spaced-repetition notebook, teacher and celebration
+        run: |
+          test -s v117-premium-summary-overlay.b64
+          base64 -d v117-premium-summary-overlay.b64 > /tmp/wq-v117-overlay.zip
+          echo "c17d2d620d3164036f8df3f73c6dd9c15b00ff120b5e21420556c4758310c514  /tmp/wq-v117-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v117-overlay.zip
+          unzip -oq /tmp/wq-v117-overlay.zip -d source
+          grep -q 'versionCode = 40' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.17-premium-results"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumMatchReview.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumFeedbackSounds.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumMatchReviewTest.kt
+          test -s source/app/src/main/res/raw/wrong_soft.wav
+          test -s source/app/src/main/res/raw/victory_soft.wav
+          grep -q 'fun recordPremiumMatchLearning' source/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
+          grep -q 'AI ÖĞRETMENİ İLE ÇALIŞ' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.18 dated collections, flashcards and synchronized result flow
+        run: |
+          test -s v118-learning-studio-overlay.b64
+          base64 -d v118-learning-studio-overlay.b64 > /tmp/wq-v118-overlay.zip
+          echo "8a12eeb3ec3e0a1552c7e36edaa2ee504a65a409c418bc5bc9e3f3cc1fab6c16  /tmp/wq-v118-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v118-overlay.zip
+          unzip -oq /tmp/wq-v118-overlay.zip -d source
+          (cd source && git apply --check ../v118-test-db-migration.patch && git apply ../v118-test-db-migration.patch)
+          (cd source && git apply --check ../v118-compile-button-fix.patch && git apply ../v118-compile-button-fix.patch)
+          (cd source && git apply --check ../v118-sql-column-fix.patch && git apply ../v118-sql-column-fix.patch)
+          (cd source && git apply --check ../v118-both-error-tags-fix.patch && git apply ../v118-both-error-tags-fix.patch)
+          grep -q 'versionCode = 41' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.18-learning-studio"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'null, 4,' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStore.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningCollections.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LearningCollectionsTest.kt
+          grep -q 'PremiumWinnerCelebration(match.code, winnerName)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.19 Turkey midnight, phone sounds and direct friend invitations
+        run: |
+          test -s v119-arena-midnight-sounds-overlay.b64
+          base64 -d v119-arena-midnight-sounds-overlay.b64 > /tmp/wq-v119-overlay.zip
+          echo "3a4e3fe9e16925c8a871ad5776a29d5c42f31578b5a3f38e064ce352c1e7dbba  /tmp/wq-v119-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v119-overlay.zip
+          unzip -oq /tmp/wq-v119-overlay.zip -d source
+          grep -q 'versionCode = 42' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.19-arena-midnight-sounds"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaMidnightAndSoundsTest.kt
+          grep -q 'turkeyQuotaDayIndexKey' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          grep -q 'AudioAttributes.USAGE_GAME' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumFeedbackSounds.kt
+          python3 - <<'PY'
+          import json
+          data = json.load(open('source/database.rules.json'))['rules']
+          for rule in [
+              data['rooms']['$code']['.write'],
+              data['premiumRooms']['$code']['.write'],
+              data['roomQuota']['$uid']['$day']['$slot']['.write'],
+          ]:
+              assert "10800000" in rule, 'A quota security rule still uses UTC midnight'
+          PY
+      - name: Apply v1.0.20 multi-AI, avatars, C1-C2 Arena and phrasal scan improvements
+        run: |
+          test -s v120-multi-ai-arena-overlay.b64
+          base64 -d v120-multi-ai-arena-overlay.b64 > /tmp/wq-v120-overlay.zip
+          echo "682adc622ae1ff9de697d4d7f620a39c21f5b7fd187a24a8907a2c42cdc7f1bb  /tmp/wq-v120-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v120-overlay.zip
+          unzip -oq /tmp/wq-v120-overlay.zip -d source
+          (cd source && git apply --check ../v120-compile-visibility-fix.patch && git apply ../v120-compile-visibility-fix.patch)
+          (cd source && git apply --check ../v120-test-asset-and-levels-fix.patch && git apply ../v120-test-asset-and-levels-fix.patch)
+          (cd source && git apply --check ../v120-yds-explanation-fix.patch && git apply ../v120-yds-explanation-fix.patch)
+          grep -q 'versionCode = 43' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.20-multi-ai-advanced-arena"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/AiProviders.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/AiProviderSettings.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/AiProviderAndPhraseTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/AdvancedArenaPackTest.kt
+          grep -q 'B1' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaContent.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          a=Path('source/app/src/main/assets')
+          words=json.loads((a/'arena-vocabulary-v1.json').read_text())
+          boards=json.loads((a/'arena-crosswords-v1.json').read_text())
+          assert len(words) >= 1600 and len(boards) >= 830
+          assert {'A1','A2','B1','B2','C1','C2'} <= set(w['level'] for w in words)
+          assert all(any(b['level']==lvl and len(b['words'])==20 for b in boards) for lvl in ('B1','B2','C1','C2'))
+          rules=json.loads(Path('source/database.rules.json').read_text())['rules']
+          assert all("'" + lvl + "'" in rules['premiumRooms']['$code']['level']['.validate'] for lvl in ('B1','B2','C1','C2'))
+          PY
+      - name: Apply v1.0.21 genuine offline 3D teacher and conversation controls
+        run: |
+          test -s v121-live-3d-teacher-overlay.b64
+          base64 -d v121-live-3d-teacher-overlay.b64 > /tmp/wq-v121-overlay.zip
+          echo "c671447dc30cf761a9e9804487047f0054fe07431d855987bc2a321b5f0d9b3e  /tmp/wq-v121-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v121-overlay.zip
+          unzip -oq /tmp/wq-v121-overlay.zip -d source
+          grep -q 'versionCode = 44' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.21-3d-live-teacher"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/teacher_3d_stage.html
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LiveTeacherStageTest.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          h=Path('source/app/src/main/assets/teacher_3d_stage.html').read_text()
+          assert "getContext('webgl'" in h
+          assert 'fetch(' not in h and 'https://' not in h
+          assert "connect-src 'none'" in h
+          assert all(n in h for n in ('Elif:', 'Deniz:', 'Mert:'))
+          assert "requestAnimationFrame(frame)" in h
+          PY
+          sed -n '/<script>/,/<\\/script>/p' source/app/src/main/assets/teacher_3d_stage.html | sed '1d;$d' > /tmp/wq-teacher3d.js
+          node --check /tmp/wq-teacher3d.js
+      - name: Repair Android WebGL teacher visibility for v1.0.22
+        run: |
+          python3 -m py_compile tools/patch_teacher_render_122.py
+          python3 tools/patch_teacher_render_122.py
+          grep -q 'versionCode = 45' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.22-3d-render-fix"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'alpha:false' source/app/src/main/assets/teacher_3d_stage.html
+          grep -q '__teacherRenderReady' source/app/src/main/assets/teacher_3d_stage.html
+          grep -q 'LAYER_TYPE_HARDWARE' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          sed -n '/<script>/,/<\/script>/p' source/app/src/main/assets/teacher_3d_stage.html | sed '1d;$d' > /tmp/wq-teacher3d-v122.js
+          node --check /tmp/wq-teacher3d-v122.js
+      - name: Apply native teacher that remains visible when Android WebGL silently fails
+        run: |
+          python3 -m py_compile tools/patch_teacher_native_123.py
+          python3 tools/patch_teacher_native_123.py
+          grep -q 'versionCode = 46' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.23-native-avatar-safety"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'internal fun TeacherStage3D' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'drawIntoCanvas' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          ! grep -q 'WebView(context)' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q '2D güvenli görünüm' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+      - name: Apply v1.0.24 full body OpenGL ES teacher, pinch zoom and foreign names
+        run: |
+          python3 -m py_compile tools/patch_teacher_3d_124.py
+          python3 tools/patch_teacher_3d_124.py
+          grep -q 'versionCode = 47' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.24-native-fullbody-3d"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'GLSurfaceView.Renderer' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'MotionEvent.ACTION_POINTER_DOWN' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'GL_TRIANGLES' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherFallback2D.kt
+          grep -q 'Elif("Emma"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Deniz("Sophia"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Mert("Ethan"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Teacher3DCameraTest.kt
+      - name: Refine full body 3D anatomy and natural facial features for 1.0.25
+        run: |
+          python3 -m py_compile tools/patch_teacher_quality_125.py
+          python3 tools/patch_teacher_quality_125.py
+          grep -q 'versionCode = 48' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.25-teacher-anatomy-polish"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'ProfileMesh' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'geometry.bind(posLoc,normalLoc)' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'val mouthOpen = if(state.speaking)' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'motionEvent' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt || grep -q 'MotionEvent.ACTION_POINTER_DOWN' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherFallback2D.kt
+          grep -q 'Elif("Emma"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Deniz("Sophia"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Mert("Ethan"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+      - name: Install CC0 rigged humans and native Filament renderer
+        run: |
+          python3 -m py_compile tools/patch_humanoid_glb_126.py tools/v126/install_humanoid_assets.py
+          python3 tools/patch_humanoid_glb_126.py
+          python3 tools/v126/install_humanoid_assets.py
+          grep -q 'versionCode = 49' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.26-rigged-humanoid-glb"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'implementation("io.github.sceneview:sceneview:2.3.0")' source/app/build.gradle.kts
+          grep -q 'ModelNode(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          test -s source/app/src/main/assets/avatars/AVATAR_PROVENANCE.json
+          test -s source/app/src/main/assets/avatars/emma.glb
+          test -s source/app/src/main/assets/avatars/sophia.glb
+          test -s source/app/src/main/assets/avatars/ethan.glb
+      - name: Stage actual licensed human teachers (Emma/Sophia/Ethan), never VRoid anime
+        run: |
+          set -euo pipefail
+          python3 -m pip install Pillow==11.3.0
+          python3 -m py_compile tools/patch_premium_avatar_127.py \
+            tools/v1271/audit_human_teachers_1271.py \
+            tools/v127/normalize_rocketbox_textures.py \
+            tools/v1271/bake_human_visemes_1271.py \
+            tools/v1271/stage_human_teachers_1271.py \
+            tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/patch_premium_avatar_127.py
+          python3 tools/v1271/audit_human_teachers_1271.py
+          for teacher in emma sophia ethan; do
+            python3 tools/v127/normalize_rocketbox_textures.py \
+              "candidate-human-teachers/$teacher/$teacher.glb" \
+              "candidate-human-teachers/$teacher/$teacher-mobile.glb"
+            python3 tools/v1271/bake_human_visemes_1271.py \
+              "candidate-human-teachers/$teacher/$teacher-mobile.glb" \
+              "candidate-human-teachers/$teacher/$teacher-animated.glb"
+          done
+          python3 tools/v1271/stage_human_teachers_1271.py
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          grep -q 'versionCode = 50' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.27-premium-human-avatar"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'cameraPreset' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'rememberMainLightNode' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          echo 'HUMAN GLBs ONLY. Visual/Android approval still pending.'
+      - name: Apply 1.0.27.1 real voice callbacks, animation state engine and JUnit tests
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v1271/apply_animated_1271.py tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v1271/apply_animated_1271.py
+          test -s source/app/src/main/assets/avatars/AVATAR_LIPSYNC_METADATA.json
+          grep -q 'versionCode = 51' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.27.1-animated-lipsync-avatar"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'onRangeStart' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationAudio.kt
+          grep -q 'onActualSpeechRange' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          folder=Path("source/app/src/main/assets/avatars")
+          meta=json.loads((folder/"AVATAR_LIPSYNC_METADATA.json").read_text())
+          assert meta["quality"]=="TEXT_RANGE_APPROXIMATION"
+          assert {a["actor"] for a in meta["actors"]}=={"emma","sophia","ethan"}
+          for actor in meta["actors"]:
+              assert len(actor["clips"])==7 and actor["rigs"]>0
+              assert all(name.startswith("Teacher_Viseme_") for name in actor["clips"])
+          print("Three Rocketbox human GLB rigs kept, 13 original movements + 7 mouth clips each. Phoneme sync NOT claimed.")
+          PY
+          grep -q 'AvatarStateController' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -q 'AvatarMotionCoreTest' <(ls source/app/src/test/java/com/kelimebulmacasi/a1/AvatarMotionCoreTest.kt)
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+      - name: Activate user-authorized 1.0.28 updater-compatible preview (upgrade over beta 51)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v1271/prepare_user_preview_1272.py
+          python3 tools/v1271/prepare_user_preview_1272.py
+          python3 -m py_compile tools/v129/apply_teacher_crash_safemode.py tools/generate_release_manifest.py tools/prune_public_releases.py
+          python3 tools/v129/apply_teacher_crash_safemode.py
+          grep -q 'versionCode = 54' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.29-teacher-crash-safemode"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'AVATAR_LIPSYNC_METADATA' <(ls source/app/src/main/assets/avatars/AVATAR_LIPSYNC_METADATA.json)
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v129/test_teacher_safe_mode.py
+      - name: Build QA v1.0.30 real Android GLB in isolated renderer process
+        run: |
+          python3 -m py_compile tools/v130/apply_android_real_glb_probe.py tools/v130/test_android_real_glb_probe.py
+          python3 tools/v130/apply_android_real_glb_probe.py
+          python3 tools/v130/build_android_mobile_glb.py
+          python3 tools/v130/test_android_real_glb_probe.py
+          python3 tools/v130/audit_android_glb_memory.py
+      - name: Apply 1.0.31 Android female crash containment and improved camera/Idle QA
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v131/build_female_lite_glb.py tools/v131/apply_android_131.py tools/v131/test_android_131.py
+          python3 tools/v131/build_female_lite_glb.py
+          python3 tools/v131/apply_android_131.py
+          python3 tools/v131/test_android_131.py
+          python3 tools/v131/audit_human_idle_pose.py
+      - name: Audit female GLB render risks and build native morph-isolation QA
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v132b/audit_female_gpu_risks.py tools/v132b/build_morph_isolation.py tools/v132b/densify_female_morphs.py tools/v132b/apply_qa_132.py tools/v132b/test_qa_132.py
+          python3 tools/v132b/audit_female_gpu_risks.py
+          python3 tools/v132b/build_morph_isolation.py
+          python3 tools/v132b/densify_female_morphs.py
+          python3 tools/v132b/apply_qa_132.py
+          python3 tools/v132b/test_qa_132.py
+      - name: Validate female human GLB skin/index geometry and native crash trace QA
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v133/audit_human_geometry.py tools/v133/apply_qa_133.py tools/v133/test_qa_133.py
+          python3 tools/v133/audit_human_geometry.py
+          python3 tools/v133/apply_qa_133.py
+          python3 tools/v133/test_qa_133.py
+      - name: Restore startup-stable runtime for 1.0.35 recovery APK
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v135/apply_launch_recovery_135.py tools/v135/test_launch_recovery_135.py
+          python3 tools/v135/apply_launch_recovery_135.py
+          python3 tools/v135/test_launch_recovery_135.py
+      - name: Enable Ethan-only real AI teacher without launcher regressions
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v136/apply_ethan_teacher_136.py tools/v136/test_safe_ethan_teacher_136.py
+          python3 tools/v136/apply_ethan_teacher_136.py
+      - name: Archive inactive Emma and Sophia outside Android APK
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v134/archive_inactive_teachers_134.py
+          python3 tools/v134/archive_inactive_teachers_134.py
+          python3 tools/v136/test_safe_ethan_teacher_136.py
+      - name: Build crash-isolated Ethan 3D AI voice teacher QA
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v137/apply_isolated_3d_voice_137.py tools/v137/test_isolated_3d_voice_137.py
+          python3 tools/v137/apply_isolated_3d_voice_137.py
+          python3 tools/v137/test_isolated_3d_voice_137.py
+      - name: Disable Claude provider choice while preserving saved user credentials
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v138/apply_hide_claude_138.py tools/v138/test_hide_claude_138.py
+          python3 tools/v138/apply_hide_claude_138.py
+          python3 tools/v138/test_hide_claude_138.py
+      - name: Diagnose conversation AI errors without exposing keys (1.0.39 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v139/apply_conversation_diagnostics_139.py tools/v139/test_conversation_diagnostics_139.py
+          python3 tools/v139/apply_conversation_diagnostics_139.py
+          python3 tools/v139/test_conversation_diagnostics_139.py
+      - name: Polish real Ethan voice range sync and calm rigged arms (1.0.40 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v140/tune_ethan_glb_140.py tools/v140/apply_ethan_motion_140.py tools/v140/test_ethan_motion_140.py
+          python3 tools/v140/tune_ethan_glb_140.py
+          python3 tools/v140/apply_ethan_motion_140.py
+          python3 tools/v140/test_ethan_motion_140.py
+      - name: Test user-video grounded Ethan head, arm and facial-loop improvement (1.0.41 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v141/apply_ethan_video_141.py tools/v141/test_ethan_video_141.py
+          python3 tools/v141/apply_ethan_video_141.py
+          python3 tools/v141/test_ethan_video_141.py
+      - name: Archive original Ethan and replace live 3D tutor with native human 2D (1.0.42 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v142/apply_realistic_2d_teacher_142.py tools/v142/test_realistic_2d_teacher_142.py
+          python3 tools/v142/apply_realistic_2d_teacher_142.py
+          python3 tools/v142/test_realistic_2d_teacher_142.py
+      - name: Validate actual articulated 2D eye-mouth-arm rig (1.0.43 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v143/apply_articulated_2d_143.py tools/v143/test_articulated_2d_143.py
+          python3 tools/v143/apply_articulated_2d_143.py
+          python3 tools/v143/test_articulated_2d_143.py
+      - name: Generate and verify 100 fixed-identity 2D animation images (1.0.44 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v144/generate_teacher_100.py tools/v144/apply_teacher_100_144.py tools/v144/test_teacher_100_144.py
+          python3 tools/v144/apply_teacher_100_144.py
+          python3 tools/v144/test_teacher_100_144.py
+      - name: Correct mouth alignment, natural blinking and verify 100-frame pixel stability (1.0.45 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v145/generate_teacher_100_145.py tools/v145/apply_facial_alignment_145.py tools/v145/test_facial_alignment_145.py
+          python3 tools/v145/apply_facial_alignment_145.py
+          python3 tools/v145/test_facial_alignment_145.py
+      - name: Install word-memory learning modes and keep existing folders/history
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v146/apply_vocabulary_studio_146.py
+          python3 tools/v146/apply_vocabulary_studio_146.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyStudyModel.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularySetupScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyPracticeScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/VocabularyAnswerCheckerTest.kt
+          grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
+      - name: Preserve already-installed 2.5D experimental renderer and upgrade with vocabulary modes (v1.0.47)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v147/apply_25d_147.py tools/v147/test_25d_147.py
+          python3 tools/v147/apply_25d_147.py
+          python3 tools/v147/test_25d_147.py
+          grep -q 'versionCode = 72' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.47-vocabulary-2p5d-compat"' source/app/build.gradle.kts
+          grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
+          grep -q 'Teacher25DPortrait' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+      - name: Generate US/UK audio and verify pronunciation data
+        working-directory: source
+        run: |
+          python3 tools/build_offline_voices.py
+          python3 tools/verify_audio_ipa.py
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build Android APK and run JVM tests
+        working-directory: source
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon :app:testOfflineUnitTest :app:assembleOffline --stacktrace
+      - name: Verify APK and bundle signer tool for local private-key signature
+        working-directory: source
+        run: |
+          APK="$(find app/build/outputs/apk/offline -type f -name '*.apk' | head -1)"
+          test -s "$APK"
+          unzip -tq "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
+          test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
+      # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
+      # upload is required; old archived Emma/Sophia resources remain in git sources.
+      - name: Publish signed v1.0.47 vocabulary and 2.5D compatibility update
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        env:
+          UPDATE_REPO: mihribansezik5-lgtm/WordQuestAI-Updates
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+          WQ_UPDATES_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+          GH_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test -n "$WQ_RELEASE_KEYSTORE_B64"
+          test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS"
+          test -n "$WQ_KEY_PASS"
+          test -n "$WQ_UPDATES_TOKEN"
+          test "$(gh api "repos/$UPDATE_REPO" --jq .private)" = false
+          INPUT_DIR="source/app/build/outputs/apk/offline"
+          UNSIGNED="$INPUT_DIR/app-offline-unsigned.apk"
+          METADATA="$INPUT_DIR/output-metadata.json"
+          SIGNER="$INPUT_DIR/apksigner.jar"
+          test -s "$UNSIGNED"
+          test -s "$METADATA"
+          test -s "$SIGNER"
+          python3 - "$METADATA" <<'PY'
+          import json,sys
+          doc=json.load(open(sys.argv[1]))
+          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.offline101"
+          item=doc["elements"][0]
+          assert item["versionCode"]==72, item["versionCode"]
+          assert item["versionName"]=="1.0.47-vocabulary-2p5d-compat"
+          print("Version 1.0.47 code72 > existing 2.5D test code71, vocabulary and 2.5D preserved.")
+          PY
+          mkdir -p dist "$RUNNER_TEMP/wq-signing"
+          trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq-signing/store.p12"
+          java -jar "$SIGNER" sign \
+            --ks "$RUNNER_TEMP/wq-signing/store.p12" --ks-type PKCS12 \
+            --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
+            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
+            --out dist/WordQuestAI.apk "$UNSIGNED"
+          java -jar "$SIGNER" verify --verbose --print-certs dist/WordQuestAI.apk > dist/signature-verification.txt
+          grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature-verification.txt
+          grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 0a2d62332560facfce9a00c0344a21c572e9fb4c8fcfd56a45dcd0294ef35b37' dist/signature-verification.txt
+          python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
+          TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
+          test "$TAG" = v1.0.47
+          if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
+            echo "Version tag already exists; checking immutable release assets."
+            gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
+              --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
+            exit 0
+          fi
+          gh release create "$TAG" dist/WordQuestAI.apk dist/update.json -R "$UPDATE_REPO" \
+            --title "WordQuest AI $TAG" --notes-file RELEASE_NOTES.md --target main --latest
+          gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
+            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
+          python3 tools/prune_public_releases.py
+          echo "Signed v1.0.47 (code72) vocabulary + experimental 2.5D compatibility update published."

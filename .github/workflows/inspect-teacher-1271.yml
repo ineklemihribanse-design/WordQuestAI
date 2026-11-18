@@ -1,0 +1,19 @@
+name: Inspect Live Teacher Voice Callbacks (1.0.27.1)
+on:
+  push:
+    branches: [feature/1271-reactive-lipsync-gesture-engine]
+    paths:
+      - tools/v1271/inspect_teacher_source.py
+      - .github/workflows/inspect-teacher-1271.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract and inspect archived teacher voice UI (no secrets)
+        run: |
+          python3 tools/v1271/inspect_teacher_source.py

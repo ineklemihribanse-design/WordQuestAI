@@ -1,0 +1,20 @@
+name: Diagnose installed updater Failed requirement - NO APK
+on:
+  push:
+    branches: [main]
+    paths:
+      - tools/inspect_updater_protocol_1273.py
+      - .github/workflows/diagnose-updater-1273.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect updater metadata protocol and local unit tests only
+        run: |
+          python3 tools/inspect_updater_protocol_1273.py
+          echo "This job does not build APKs or update releases."

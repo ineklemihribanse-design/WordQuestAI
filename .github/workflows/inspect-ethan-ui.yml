@@ -1,0 +1,15 @@
+name: Inspect Ethan teacher source (no model build)
+on:
+  push:
+    branches: [feature/134-ethan-live-3d-persona-and-voice]
+    paths:
+      - 'tools/v134/inspect_overlay_ui_134.py'
+      - '.github/workflows/inspect-ethan-ui.yml'
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read avatar selector and conversation wiring from archived source
+        run: python3 tools/v134/inspect_overlay_ui_134.py

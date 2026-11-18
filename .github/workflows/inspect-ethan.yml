@@ -1,0 +1,18 @@
+name: Inspect Ethan Teacher Source (QA)
+on:
+  push:
+    branches: [feature/134-ethan-live-3d-persona-and-voice]
+    paths:
+      - 'tools/v134/inspect_ethan_source.py'
+      - '.github/workflows/inspect-ethan.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect archived Android teacher conversation and Gemini prompt wiring
+        run: python3 tools/v134/inspect_ethan_source.py

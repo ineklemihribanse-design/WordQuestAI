@@ -1,0 +1,17 @@
+name: Cleanup old public APK Releases
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '35 3 * * 1'
+permissions:
+  contents: read
+jobs:
+  keep_last_three:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Delete old complete APK releases, preserve tags and Git history
+        env:
+          WQ_UPDATES_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+        run: python3 tools/prune_public_releases.py
