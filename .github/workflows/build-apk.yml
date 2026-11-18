@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade, feature/148-arena-rebuild]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -74,6 +74,7 @@ on:
       - 'tools/v145/**'
       - 'tools/v146/**'
       - 'tools/v147/**'
+      - 'tools/v122/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -781,6 +782,13 @@ jobs:
           grep -q 'versionName = "1.0.47-vocabulary-2p5d-compat"' source/app/build.gradle.kts
           grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
           grep -q 'Teacher25DPortrait' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+      - name: Apply mobile Arena crossing-aware keyboard corrections
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v122/apply_mobile_arena_keyboard.py
+          python3 tools/v122/apply_mobile_arena_keyboard.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaCrosswordInputTest.kt
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
