@@ -1,0 +1,29 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/YdsCenterScreen.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/YdsCenterScreen.kt
+@@ -87,11 +87,11 @@
+     }
+ }
+ 
+-@Composable
+ /** Deadline is wall-clock based so switching apps cannot pause a timed test. */
+ internal fun ydsRemainingSeconds(deadlineMillis: Long, nowMillis: Long): Int =
+     ((deadlineMillis - nowMillis).coerceIn(0L, 15L * 60L * 1000L) / 1000L).toInt()
+ 
++@Composable
+ internal fun YdsCenterScreen(session: AppSession, back: () -> Unit, teacher: (String) -> Unit) {
+     val context = androidx.compose.ui.platform.LocalContext.current
+     val profile = session.profileKey
+@@ -170,11 +170,11 @@
+                 BodyText(if (answerChoice == current.answer) "✓ Doğru cevap" else "Doğrusu: ${current.options[current.answer]}",
+                     if (answerChoice == current.answer) Forest else ErrorInk)
+                 BodyText(current.explanation)
+-                PrimaryAction(if (activePosition == activeIds.lastIndex) "Sonucu gör" else "Sonraki soru") {
++                PrimaryAction(if (activePosition == activeIds.lastIndex) "Sonucu gör" else "Sonraki soru", onClick = {
+                     if (activePosition == activeIds.lastIndex) finished = true
+                     else activePosition++
+                     answerChoice = -1
+-                }
++                })
+             }
+             TextButton(onClick = { finished = true }) { Text("Çalışmayı bitir", fontFamily = Sans) }
+         } else if (finished && activeIds.isNotEmpty()) {
