@@ -182,6 +182,7 @@ def main() -> None:
     test_dir = ROOT / "source/app/src/test/java/com/kelimebulmacasi/a1"
     test_dir.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(TOOLS / "ArenaDuelEngineTest.kt", test_dir / "ArenaDuelEngineTest.kt")
+    shutil.copyfile(TOOLS / "ArenaFirebaseReplayTest.kt", test_dir / "ArenaFirebaseReplayTest.kt")
     # The V2 server model is versioned and preserves legacy match behavior.
     # Production Firebase rules MUST be deployed before shipping this beta.
     shutil.copyfile(TOOLS / "PremiumOnlineRoomV2.kt", SRC / "PremiumOnlineRoom.kt")
