@@ -12,6 +12,7 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
@@ -137,9 +138,22 @@ class Accounts(private val context: Context) {
         } catch (cancelled: kotlinx.coroutines.CancellationException) {
             throw cancelled
         } catch (_: GetCredentialCancellationException) {
-            null
-        } catch (_: Exception) {
-            "Google girişi tamamlanamadı. Bağlantını kontrol edip tekrar dene."
+            "Google hesabı seçimi iptal edildi."
+        } catch (error: FirebaseAuthException) {
+            android.util.Log.w("WordQuestAuth", "Firebase sign-in: " + error.errorCode)
+            when (error.errorCode) {
+                "ERROR_INVALID_CREDENTIAL", "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL" ->
+                    "Google kimliği doğrulanamadı (" + error.errorCode + "). Firebase SHA sertifika kaydını kontrol et."
+                "ERROR_OPERATION_NOT_ALLOWED" ->
+                    "Firebase Authentication'da Google sağlayıcısı etkin değil."
+                "ERROR_NETWORK_REQUEST_FAILED" ->
+                    "Google girişi sırasında internet bağlantısı kurulamadı."
+                else -> "Google girişi başarısız: " + error.errorCode
+            }
+        } catch (error: Exception) {
+            val kind = error.javaClass.simpleName.take(60)
+            android.util.Log.w("WordQuestAuth", "Google sign-in failed: " + kind, error)
+            "Google girişi başarısız (" + kind + "). Yeni APK için Firebase uygulama kimliği ve SHA-1/SHA-256 kaydını kontrol et."
         }
     }
 
