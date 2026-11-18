@@ -40,6 +40,9 @@ internal data class PremiumOnlineMatch(
     // choices reveal the answer without awarding points.
     val unknownBy: Map<Int, Set<String>> = emptyMap(),
     val mistakesBy: Map<Int, Map<String, Int>> = emptyMap(),
+    val rulesVersion: Int = 1,
+    val replayBy: Map<Int, Map<String, String>> = emptyMap(),
+    val hintBy: Map<String, Set<Int>> = emptyMap(),
 ) {
     val complete: Boolean get() = if (mode == "quiz") {
         hostUid.isNotBlank() && guestUid.isNotBlank() &&
@@ -51,8 +54,19 @@ internal data class PremiumOnlineMatch(
         val own = answers[uid] ?: emptyMap()
         own.count { (index, choice) -> questions.getOrNull(index)?.correct == choice } * 10 -
             own.count { (index, choice) -> choice >= 0 && questions.getOrNull(index)?.correct != choice } * 3
-    } else solvedBy.count { it.value == uid } * 10 -
-        mistakesBy.values.sumOf { wordMistakes -> wordMistakes[uid] ?: 0 } * 3
+    } else if (rulesVersion < 2) {
+        solvedBy.count { it.value == uid } * 10 -
+            mistakesBy.values.sumOf { wordMistakes -> wordMistakes[uid] ?: 0 } * 3
+    } else {
+        val captured = solvedBy.count { (index,owner) ->
+            owner == uid && PremiumOnlineLimits.gaveUpOrFailed(
+                this,index,PremiumOnlineLimits.otherPlayer(this,uid))
+        }
+        (solvedBy.count {it.value == uid} * 100 + captured * 10 -
+            mistakesBy.values.sumOf {wordMistakes -> wordMistakes[uid] ?: 0} * 10 -
+            replayBy.values.count {it[uid] == "wrong"} * 10 -
+            hintBy[uid].orEmpty().count {solvedBy[it] == uid} * 20).coerceAtLeast(0)
+    }
 }
 
 internal object PremiumOnlineLimits {
@@ -76,12 +90,32 @@ internal object PremiumOnlineLimits {
         player.isNotBlank() && (player in (match.unknownBy[index] ?: emptySet()) ||
             (match.mistakesBy[index]?.get(player) ?: 0) > 0)
 
+    fun replayRound(match: PremiumOnlineMatch): Boolean =
+        match.rulesVersion >= 2 && match.mode == "duel" &&
+            (0 until match.size).filterNot {it in match.solvedBy}.all { index ->
+                gaveUpOrFailed(match,index,match.hostUid) &&
+                    gaveUpOrFailed(match,index,match.guestUid)
+            }
+
+    fun canAttempt(match: PremiumOnlineMatch, index: Int, player: String): Boolean {
+        if (player !in listOf(match.hostUid,match.guestUid) ||
+            index !in 0 until match.size || index in match.solvedBy) return false
+        if (match.rulesVersion < 2 || match.mode != "duel")
+            return player !in (match.unknownBy[index] ?: emptySet())
+        return if (replayRound(match))
+            !match.replayBy[index].orEmpty().containsKey(player)
+        else !gaveUpOrFailed(match,index,player)
+    }
+
     fun shouldReveal(match: PremiumOnlineMatch, index: Int): Boolean =
         match.isCrossword && match.phase == "playing" && index in 0 until match.size &&
             index !in match.solvedBy && match.hostUid.isNotBlank() &&
             match.guestUid.isNotBlank() && match.hostUid != match.guestUid &&
             gaveUpOrFailed(match, index, match.hostUid) &&
-            gaveUpOrFailed(match, index, match.guestUid)
+            gaveUpOrFailed(match, index, match.guestUid) &&
+            (match.rulesVersion < 2 || (replayRound(match) &&
+                match.replayBy[index].orEmpty().keys.containsAll(
+                    listOf(match.hostUid,match.guestUid))))
 }
 
 internal class PremiumOnlineRoom(private val context: Context, private val session: AppSession) {
@@ -190,6 +224,7 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                 if (slot == null) { busy = false; status = "Oda kotası ayrılamadı."; return@reserve }
                 val initial = mapOf<String, Any>(
                     "hostUid" to myUid, "hostName" to nickname, "mode" to mode,
+                    "rulesVersion" to 2,
                     "phase" to "lobby", "level" to level, "topic" to topic.take(75),
                     "size" to size, "seconds" to seconds, "boardId" to boardId,
                     "quizSeed" to rng.nextInt(Int.MAX_VALUE), "turn" to mapOf(
@@ -309,13 +344,28 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                     }.toMap()
                     index to players
                 }.toMap()
+                val replay = snapshot.child("replay").children.mapNotNull { word ->
+                    val index=word.key?.toIntOrNull() ?: return@mapNotNull null
+                    index to word.children.mapNotNull { player ->
+                        val key=player.key;val value=player.getValue(String::class.java)
+                        if(key!=null && value!=null)key to value else null
+                    }.toMap()
+                }.toMap()
+                val hintBy = snapshot.child("hintUsed").children.mapNotNull { player ->
+                    player.key?.let { it to player.children.mapNotNull { word ->
+                        word.key?.toIntOrNull()?.takeIf { id ->
+                            word.getValue(Boolean::class.java) == true
+                        }
+                    }.toSet() }
+                }.toMap()
                 match = PremiumOnlineMatch(code, childString("hostUid"), childString("guestUid"),
                     childString("hostName"), childString("guestName"), childString("phase"),
                     childString("mode"), childString("boardId"), childString("level"),
                     childString("topic"), childInt("size"), childInt("seconds"), childInt("quizSeed"),
                     snapshot.child("turn").child("uid").getValue(String::class.java).orEmpty(),
                     snapshot.child("turn").child("until").getValue(Long::class.java) ?: 0L,
-                    solved, answers, unknown, mistakes)
+                    solved, answers, unknown, mistakes,
+                    childInt("rulesVersion").takeIf {it>0} ?: 1,replay,hintBy)
             }
             override fun onCancelled(error: DatabaseError) {
                 status = "Oda bağlantısı reddedildi: ${error.message}"
@@ -354,7 +404,9 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
     fun markSolved(index: Int) {
         val m = match ?: return
         if (!m.isCrossword || m.phase != "playing" || index !in 0 until m.size ||
-            m.solvedBy.containsKey(index) || (!m.cooperative && m.turnUid != uid)) return
+            m.solvedBy.containsKey(index) || (!m.cooperative && m.turnUid != uid) ||
+            (m.rulesVersion >= 2 && !m.cooperative &&
+                !PremiumOnlineLimits.canAttempt(m,index,uid))) return
         val current = ref ?: return
         current.child("solved").child(index.toString()).runTransaction(object : Transaction.Handler {
             override fun doTransaction(data: MutableData): Transaction.Result {
@@ -381,6 +433,20 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
         val m = match ?: return
         if (!m.isCrossword || m.phase != "playing" || index !in 0 until m.size ||
             index in m.solvedBy || (!m.cooperative && m.turnUid != uid)) return
+        if (m.rulesVersion >= 2 && !m.cooperative) {
+            if (!PremiumOnlineLimits.canAttempt(m,index,uid)) return
+            if (PremiumOnlineLimits.replayRound(m)) {
+                ref?.child("replay")?.child(index.toString())?.child(uid)
+                    ?.setValue("pass")?.addOnCompleteListener {result ->
+                        if(result.isSuccessful) {
+                            status="Son şans pası kaydedildi."
+                            checkForReveal(index)
+                            passAfterAttempt(index)
+                        } else status="Son şans pası kaydedilemedi."
+                    }
+                return
+            }
+        }
         if (uid in (m.unknownBy[index] ?: emptySet())) {
             status = "Bu kelime için Bilmiyorum yanıtın zaten kaydedildi."
             if (!m.cooperative) pass()
@@ -391,9 +457,10 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                 if (!result.isSuccessful) {
                     status = "Bilmiyorum kaydedilemedi. Firebase kurallarını güncelle."
                 } else {
-                    status = "Bilmiyorum kaydedildi. Rakibin de bilemezse cevap açılacak."
+                    status = if (m.rulesVersion >= 2) "Kelime ikinci şans turuna kalabilir." else
+                        "Bilmiyorum kaydedildi. Rakibin de bilemezse cevap açılacak."
                     checkForReveal(index)
-                    if (!m.cooperative) pass()
+                    if (!m.cooperative) passAfterAttempt(index)
                 }
             }
     }
@@ -423,7 +490,10 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                     .getValue(Boolean::class.java) == true ||
                  ((room.child("mistakes").child(index.toString()).child(player).value as? Number)
                     ?.toInt() ?: 0) > 0)
-            if (m.hostUid != m.guestUid && failed(m.hostUid) && failed(m.guestUid))
+            if (m.hostUid != m.guestUid && failed(m.hostUid) && failed(m.guestUid) &&
+                (m.rulesVersion < 2 ||
+                    (room.child("replay").child(index.toString()).child(m.hostUid).exists() &&
+                     room.child("replay").child(index.toString()).child(m.guestUid).exists())))
                 revealWord(index)
         }?.addOnFailureListener {
             // The room's live listener also checks for the same two responses.
@@ -433,6 +503,7 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
     private fun revealWord(index: Int) {
         val roomRef = ref ?: return
         val m = match ?: return
+        if (m.rulesVersion >= 2 && !PremiumOnlineLimits.shouldReveal(m,index)) return
         if (!PremiumOnlineLimits.shouldReveal(m, index)) {
             // A write callback may have fresher server data than local listeners;
             // a matching server state is checked separately by checkForReveal.
@@ -466,23 +537,39 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
         val m = match ?: return
         if (!m.isCrossword || m.phase != "playing" || index !in 0 until m.size ||
             index in m.solvedBy || (!m.cooperative && m.turnUid != uid)) return
+        if (m.rulesVersion >= 2 && !m.cooperative) {
+            if (!PremiumOnlineLimits.canAttempt(m,index,uid)) return
+            if (PremiumOnlineLimits.replayRound(m)) {
+                ref?.child("replay")?.child(index.toString())?.child(uid)
+                    ?.setValue("wrong")?.addOnCompleteListener {result ->
+                        if(result.isSuccessful) {
+                            status="Son şans yanlış cevap: -10 puan."
+                            checkForReveal(index)
+                            passAfterAttempt(index)
+                        } else status="Son şans cevabı kaydedilemedi."
+                    }
+                return
+            }
+        }
         ref?.child("mistakes")?.child(index.toString())?.child(uid)
             ?.runTransaction(object : Transaction.Handler {
                 override fun doTransaction(data: MutableData): Transaction.Result {
                     val count = (data.value as? Number)?.toInt() ?: 0
-                    if (count >= 5) return Transaction.abort()
+                    if (count >= if (m.rulesVersion >= 2 && !m.cooperative) 1 else 5)
+                        return Transaction.abort()
                     data.value = count + 1
                     return Transaction.success(data)
                 }
                 override fun onComplete(error: DatabaseError?, committed: Boolean, current: DataSnapshot?) {
                     status = when {
                         error != null -> "Yanlış cevap puana işlenemedi: ${error.message}"
-                        committed -> "Yanlış cevap: -3 puan. ${if (m.cooperative) "Tekrar dene." else "Sıra rakibe geçiyor."}"
+                        committed -> if(m.rulesVersion >= 2) "Yanlış cevap: -10 puan. Sıra rakibe geçiyor."
+                            else "Yanlış cevap: -3 puan. ${if (m.cooperative) "Tekrar dene." else "Sıra rakibe geçiyor."}"
                         else -> "Bu kelimede en fazla 5 yanlış deneme yapılabilir."
                     }
                     if (error == null && committed) {
                         checkForReveal(index)
-                        if (!m.cooperative) pass()
+                        if (!m.cooperative) passAfterAttempt(index)
                     }
                 }
             }, false)
@@ -494,6 +581,26 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
             m.answers[uid]?.containsKey(index) == true) return
         ref?.child("answers")?.child(uid)?.child(index.toString())?.setValue(choice)
             ?.addOnFailureListener { status = "Cevap kaydedilemedi." }
+    }
+
+    fun useHint(index: Int) {
+        val m=match ?: return
+        if (m.rulesVersion < 2 || m.mode != "duel" || m.phase != "playing" ||
+            m.turnUid != uid || !PremiumOnlineLimits.canAttempt(m,index,uid) ||
+            index in m.hintBy[uid].orEmpty() ||
+            m.hintBy[uid].orEmpty().size >= ArenaDuelEngine.hintsFor(m.size)) return
+        ref?.child("hintUsed")?.child(uid)?.child(index.toString())?.setValue(true)
+            ?.addOnFailureListener {status="İpucu hakkı kaydedilemedi."}
+    }
+
+    private fun passAfterAttempt(index: Int) {
+        val m=match ?: return
+        if (m.rulesVersion >= 2 && m.mode == "duel" &&
+            !PremiumOnlineLimits.replayRound(m) &&
+            PremiumOnlineLimits.gaveUpOrFailed(m,index,
+                PremiumOnlineLimits.otherPlayer(m,uid))) {
+            renewOrPass(uid)
+        } else pass()
     }
 
     fun pass() {
