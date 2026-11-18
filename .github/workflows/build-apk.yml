@@ -815,6 +815,24 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
+      - name: Save fully assembled Android sources for future direct builds
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: |
+          set -euo pipefail
+          test -f source/settings.gradle.kts
+          test -f source/app/build.gradle.kts
+          mkdir -p android-current
+          rsync -a --delete --exclude='.gradle/' --exclude='build/' --exclude='.git/' --exclude='*.wav' --exclude='*.mp3' --exclude='*.ogg' --exclude='*.flac' source/ android-current/
+          test -f android-current/app/src/main/AndroidManifest.xml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f android-current
+          if git diff --cached --quiet; then
+            echo 'Android source snapshot unchanged.'
+            exit 0
+          fi
+          git commit -m 'Snapshot assembled v1.0.48 Android source for direct future builds'
+          git push origin HEAD:refs/heads/source/main
       # This is a NEW app identity with a NEW signing key; it will NOT replace the old installed APK.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
