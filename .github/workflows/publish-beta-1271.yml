@@ -1,0 +1,116 @@
+name: Opt-in Signed Beta WordQuestAI 1.0.27.1
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/publish-beta-1271.yml]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  beta_release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      WQ_UPDATES_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+      WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+      WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+      WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+      WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+      UPDATE_REPO: mihribansezik5-lgtm/WordQuestAI-Updates
+      SOURCE_RUN_ID: '43875080146'
+      SOURCE_SHA: 8c1dfa0264ba3edcebc809528e85c4a05ed01596
+      BETA_TAG: v1.0.27.1-beta.1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Require successful pinned 1.0.27.1 feature build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_UPDATES_TOKEN" && test -n "$WQ_RELEASE_KEYSTORE_B64"
+          test -n "$WQ_STORE_PASS" && test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN_ID" > /tmp/beta-source-run.json
+          test "$(jq -r .conclusion /tmp/beta-source-run.json)" = success
+          test "$(jq -r .head_sha /tmp/beta-source-run.json)" = "$SOURCE_SHA"
+          test "$(jq -r .head_branch /tmp/beta-source-run.json)" = "feature/1271-reactive-lipsync-gesture-engine"
+          test "$(jq -r .event /tmp/beta-source-run.json)" = push
+          mkdir -p beta-input dist
+          gh run download "$SOURCE_RUN_ID" --repo "$GITHUB_REPOSITORY" --name WordQuestAI-Unsigned-APK --dir beta-input
+          test -s beta-input/app-offline-unsigned.apk
+          test -s beta-input/output-metadata.json
+          test -s beta-input/apksigner.jar
+          jq -e '.applicationId == "com.kelimebulmacasi.a1.practice.offline101" and .elements[0].versionCode == 51 and .elements[0].versionName == "1.0.27.1-animated-lipsync-avatar"' beta-input/output-metadata.json
+          unzip -tq beta-input/app-offline-unsigned.apk
+          echo "Pinned successful feature APK validated."
+      - name: Sign beta APK with SAME upgrade certificate as 1.0.26
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p "$RUNNER_TEMP/wq-key"
+          trap 'rm -rf "$RUNNER_TEMP/wq-key"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq-key/store.p12"
+          java -jar beta-input/apksigner.jar sign \
+            --ks "$RUNNER_TEMP/wq-key/store.p12" --ks-type PKCS12 \
+            --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
+            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
+            --out dist/WordQuestAI-1.0.27.1-beta.apk beta-input/app-offline-unsigned.apk
+          java -jar beta-input/apksigner.jar verify --verbose --print-certs \
+            dist/WordQuestAI-1.0.27.1-beta.apk > dist/signature-verification.txt
+          grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature-verification.txt
+          grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 0a2d62332560facfce9a00c0344a21c572e9fb4c8fcfd56a45dcd0294ef35b37' dist/signature-verification.txt
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging dist/WordQuestAI-1.0.27.1-beta.apk > dist/apk-badging.txt
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.offline101'" dist/apk-badging.txt
+          grep -Fq "versionCode='51'" dist/apk-badging.txt
+          sha256sum dist/WordQuestAI-1.0.27.1-beta.apk | tee dist/SHA256.txt
+          echo "Upgrade signature, package and version verified."
+      - name: Publish opt-in prerelease WITHOUT changing latest stable
+        env:
+          GH_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$UPDATE_REPO" --jq .private)" = false
+          LATEST_BEFORE="$(gh api "repos/$UPDATE_REPO/releases/latest" --jq .tag_name)"
+          test "$LATEST_BEFORE" = 'v1.0.26'
+          if gh release view "$BETA_TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
+            echo "Existing beta tag is immutable; not overwriting."
+            exit 0
+          fi
+          cat > dist/BETA_NOTES.md <<'NOTES'
+          # WordQuest AI 1.0.27.1 — Deneme Beta 1
+
+          **İsteğe bağlı test sürümü.** Yalnızca beta sürümünü indirip kuran kullanıcılar içindir. Normal uygulama içi güncelleme kanalına gönderilmez.
+
+          - Emma/Sophia/Ethan: gerçek GLB 3D modeller; yeni yüz morph klipleri, konuşma-dinleme durumları ve jest davranışları
+          - Android TTS onStart/onRangeStart/onDone olaylarına bağlı konuşma ve ağız animasyonu ipuçları
+          - A/E/I/O/U/M-B-P/nötr 3D ağız klipleri (metin aralığı yaklaşımı; GERÇEK fonem düzeyi değil)
+          - Aynı Android paket kimliği ve aynı sertifika, versionCode 51; kurulum mevcut 1.0.26'nın üstüne yapılacak şekilde imzalanır
+          - Mevcut US/UK ses ayarları, sohbetler, Gemini API, Arena ve YDS bileşenleri değiştirilmedi
+
+          **Dikkat:** Gerçek cihazda dudak senkronizasyonu ve premium görsel kalite onayı henüz tamamlanmadı. Karakterler referans Sims/ZEPETO kalitesine ulaşmamış olabilir. Hata görürsen ekran görüntüsüyle bildir.
+
+          APK'yı indirerek mevcut 1.0.26 üzerine kur. Uygulamayı silme. Verilerini önce yedekle. İmza uyumsuzluğu uyarısı varsa kurulumu zorlamadan bildir.
+          NOTES
+          gh release create "$BETA_TAG" dist/WordQuestAI-1.0.27.1-beta.apk dist/SHA256.txt \
+            -R "$UPDATE_REPO" --target main --title "WordQuest AI 1.0.27.1 — Opt-in Beta 1" \
+            --notes-file dist/BETA_NOTES.md --prerelease
+          test "$(gh api "repos/$UPDATE_REPO/releases/latest" --jq .tag_name)" = "$LATEST_BEFORE"
+          gh release view "$BETA_TAG" -R "$UPDATE_REPO" --json isPrerelease --jq .isPrerelease | grep -qx true
+          echo "BETA_RELEASE_URL=https://github.com/$UPDATE_REPO/releases/tag/$BETA_TAG"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1271-beta-signature-audit
+          path: |
+            dist/signature-verification.txt
+            dist/apk-badging.txt
+            dist/SHA256.txt
+          if-no-files-found: warn
+          retention-days: 14

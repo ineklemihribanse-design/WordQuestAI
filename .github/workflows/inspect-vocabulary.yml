@@ -1,0 +1,17 @@
+name: Inspect word memory source
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/v146/**'
+      - '.github/workflows/inspect-vocabulary.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect packaged Kotlin source for vocabulary and flashcard screens
+        run: python3 tools/v146/inspect_vocabulary_sources.py

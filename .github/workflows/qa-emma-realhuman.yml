@@ -1,0 +1,57 @@
+name: Emma 1.0.27 Real Human Model Preview Only
+on:
+  push:
+    branches:
+      - feature/127-emma-human-quality-prototype
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  emma-art-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate MIT licensed adult Emma GLB and expressions
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v127/audit_emma_rocketbox.py tools/v127/clean_emma_glb.py tools/v127/render_emma_rocketbox.py
+          python3 tools/v127/audit_emma_rocketbox.py
+          python3 tools/v127/clean_emma_glb.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('candidate-emma-rocketbox/PROVENANCE.json').read_text())
+          assert m['label']=='Emma'
+          assert m['license']=='MIT'
+          assert m['skins']>0 and m['number_of_morph_targets']>0
+          assert len(m['animation_names'])>=8
+          print('Animations:',m['animation_names'])
+          print('NOT APPROVED OR IN PRODUCTION')
+          PY
+      - name: Prepare 8-face and hairstyle comparison
+        run: |
+          python3 -m pip install Pillow==11.3.0
+          python3 tools/v127/compare_emma_hair.py
+      - name: Produce front/rear/face/three-quarter comparison
+        timeout-minutes: 14
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          test "$(find candidate-emma-rocketbox/previews -name '*.png' | wc -l)" -eq 4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Emma-1-0-27-four-view-visual-approval
+          path: |
+            candidate-emma-rocketbox/previews/*.png
+            candidate-emma-rocketbox/PROVENANCE.json
+            candidate-emma-rocketbox/emma.glb
+            candidate-emma-rocketbox/female-hair-face-compare.jpg
+          retention-days: 14
+          if-no-files-found: warn

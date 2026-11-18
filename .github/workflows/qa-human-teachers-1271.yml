@@ -1,0 +1,138 @@
+name: Human Teachers 1.0.27.1 Visual QA - No APK
+on:
+  push:
+    branches: [feature/1271-no-anime-human-teachers-qa]
+    paths:
+      - 'tools/v1271/audit_human_teachers_1271.py'
+      - 'tools/v1271/bake_human_visemes_1271.py'
+      - 'tools/v1271/stage_human_teachers_1271.py'
+      - 'tools/v1271/verify_staged_human_teachers_1271.py'
+      - 'tools/v1271/verify_human_faces_1271.py'
+      - 'tools/v127/normalize_rocketbox_textures.py'
+      - 'tools/v127/render_emma_rocketbox.py'
+      - 'tools/v127/stylize_emma_materials.py'
+      - '.github/workflows/qa-human-teachers-1271.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genuine-human-faces:
+    runs-on: ubuntu-latest
+    timeout-minutes: 38
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify adult human source licenses and prepare actual rigged GLB previews
+        run: |
+          set -euo pipefail
+          python3 -m pip install Pillow==11.3.0
+          python3 -m py_compile tools/v1271/audit_human_teachers_1271.py tools/v127/normalize_rocketbox_textures.py tools/v127/render_emma_rocketbox.py
+          python3 tools/v1271/audit_human_teachers_1271.py
+          for teacher in emma sophia ethan; do
+            python3 tools/v127/normalize_rocketbox_textures.py               "candidate-human-teachers/$teacher/$teacher.glb"               "candidate-human-teachers/$teacher/$teacher-mobile.glb"
+          done
+          python3 -m py_compile tools/v1271/bake_human_visemes_1271.py
+          for teacher in emma sophia ethan; do
+            python3 tools/v1271/bake_human_visemes_1271.py \
+              "candidate-human-teachers/$teacher/$teacher-mobile.glb" \
+              "candidate-human-teachers/$teacher/$teacher-animated.glb"
+          done
+      - name: Test app asset replacement and fail-closed NO-ANIME quality gate (NO APK)
+        run: |
+          set -euo pipefail
+          mkdir -p source/app/src/main/java/com/kelimebulmacasi/a1
+          cp tools/v127/TeacherStage3D.kt source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          python3 -m py_compile tools/v1271/stage_human_teachers_1271.py tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v1271/stage_human_teachers_1271.py
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          test -s source/app/src/main/assets/avatars/HUMAN_3D_LICENSE_NOTICES.md
+      - name: Render exact 3D faces and full bodies without anime or VRoid model
+        timeout-minutes: 27
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          for teacher in emma sophia ethan; do
+            WQ_EMMA_MODEL="$PWD/candidate-human-teachers/$teacher/$teacher-animated.glb"             WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/$teacher/previews"             WQ_EMMA_LABEL="$teacher"             WQ_EMMA_VIEWS="full-front,face"             WQ_EMMA_SAMPLES="10"             blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          done
+          # Actual 3D face movements, not illustrated static concepts:
+          WQ_EMMA_MODEL="$PWD/candidate-human-teachers/emma/emma-animated.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/emma/motion" \
+          WQ_EMMA_LABEL="emma_talk" \
+          WQ_EMMA_ACTION="Talk" \
+          WQ_EMMA_FRAME="15" \
+          WQ_EMMA_MORPHS='{"jawOpen":0.70,"mouthFunnel":0.28}' \
+          WQ_EMMA_VIEWS="face" \
+          WQ_EMMA_SAMPLES="10" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          WQ_EMMA_MODEL="$PWD/candidate-human-teachers/emma/emma-animated.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/emma/motion" \
+          WQ_EMMA_LABEL="emma_blink" \
+          WQ_EMMA_MORPHS='{"eyeBlinkLeft":1.0,"eyeBlinkRight":1.0}' \
+          WQ_EMMA_VIEWS="face" \
+          WQ_EMMA_SAMPLES="10" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          WQ_EMMA_MODEL="$PWD/candidate-human-teachers/emma/emma-animated.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/emma/motion" \
+          WQ_EMMA_LABEL="emma_wave" \
+          WQ_EMMA_ACTION="Wave" \
+          WQ_EMMA_FRAME="45" \
+          WQ_EMMA_VIEWS="full-front" \
+          WQ_EMMA_SAMPLES="10" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          # Material-only experiment. Does NOT replace chosen app model.
+          python3 tools/v127/stylize_emma_materials.py \
+            candidate-human-teachers/emma/emma-animated.glb \
+            candidate-human-teachers/emma/emma-soft-animated.glb
+          WQ_EMMA_MODEL="$PWD/candidate-human-teachers/emma/emma-soft-animated.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/emma/material-review" \
+          WQ_EMMA_LABEL="emma_soft" \
+          WQ_EMMA_VIEWS="face" \
+          WQ_EMMA_SAMPLES="10" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          # Face style experiment: subtle soft smile and wider attentive eyes.
+          # Render only; do not adopt in runtime without visual acceptance.
+          WQ_EMMA_MODEL="$PWD/candidate-human-teachers/emma/emma-soft-animated.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/emma/material-review" \
+          WQ_EMMA_LABEL="emma_soft_friendly" \
+          WQ_EMMA_MORPHS='{"eyeWideLeft":0.18,"eyeWideRight":0.18,"mouthSmileLeft":0.17,"mouthSmileRight":0.17,"cheekSquintLeft":0.08,"cheekSquintRight":0.08}' \
+          WQ_EMMA_VIEWS="face" \
+          WQ_EMMA_SAMPLES="10" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          # Talk's meaningful forearm motion occurs around 7 sec, not at 0.6 sec.
+          WQ_EMMA_MODEL="$PWD/candidate-human-teachers/emma/emma-animated.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-human-teachers/emma/motion" \
+          WQ_EMMA_LABEL="emma_talk_gesture" \
+          WQ_EMMA_ACTION="Talk" \
+          WQ_EMMA_FRAME="168" \
+          WQ_EMMA_VIEWS="full-front" \
+          WQ_EMMA_SAMPLES="10" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          test "$(find candidate-human-teachers -name '*.png' | wc -l)" -eq 12
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          for file in Path("candidate-human-teachers").rglob("*.png"):
+              im=Image.open(file)
+              assert im.size[0]>=500 and im.size[1]>=500,(file,im.size)
+              print(file,im.size)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Genuine-Human-Emma-Sophia-Ethan-3D-Visual-Review-NOT-APK
+          path: |
+            candidate-human-teachers/*/previews/*.png
+            candidate-human-teachers/emma/motion/*.png
+            candidate-human-teachers/emma/material-review/*.png
+            candidate-human-teachers/*/*-animated.glb
+            candidate-human-teachers/*/*.visemes.json
+            candidate-human-teachers/*/AUDIT.json
+            candidate-human-teachers/AUDIT_SUMMARY.json
+            tools/v127/ROCKETBOX_MODEL_NOTICES.md
+            source/app/src/main/assets/avatars/AVATAR_PROVENANCE.json
+            source/app/src/main/assets/avatars/AVATAR_LIPSYNC_METADATA.json
+          retention-days: 14
+          if-no-files-found: warn

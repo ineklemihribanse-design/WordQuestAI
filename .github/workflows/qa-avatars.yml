@@ -1,0 +1,81 @@
+name: 1.0.27 Premium Avatar Asset and Visual QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/v127/**'
+      - 'tools/patch_avatar_quality_127.py'
+      - '.github/workflows/qa-avatars.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  avatar-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate 3 official-model candidate licenses and rigs
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v127/install_avatar_candidates.py
+          mkdir -p source/app/src/main/assets/avatars
+          python3 tools/v127/install_avatar_candidates.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          a=Path("source/app/src/main/assets/avatars")
+          data=json.loads((a/"AVATAR_PROVENANCE.json").read_text())
+          assert data["status"]=="UNAPPROVED_VISUAL_QA"
+          assert {x["label"] for x in data["models"]}=={"Emma","Sophia","Ethan"}
+          for model in data["models"]:
+              assert model["skins"]>=1
+              assert model["facialMeshes"]>=1
+              assert model["expressionGroups"]>=2
+              assert len(model["animations"])==5
+              assert model["textures"]>=1
+              assert (a/model["file"]).stat().st_size>1_000_000
+          print("Asset checks passed. NOT a device visual acceptance test.")
+          PY
+      - name: Render visual QA screenshots using open-source Blender
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 15
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          blender --background --threads 2 --python-expr 'import numpy; print("Blender numpy", numpy.__version__)'
+          blender --background --threads 2 --python tools/v127/render_candidate_previews.py
+          test "$(find candidate-previews -name '*.png' | wc -l)" -eq 6
+      - name: Compare 4 alternative CC BY human avatar models (non-release QA)
+        if: github.event_name == 'pull_request'
+        timeout-minutes: 12
+        run: |
+          python3 tools/v127/explore_alternative_models.py
+          WQ_PREVIEW_ASSETS="$PWD/alternate-avatar-review" \
+          WQ_PREVIEW_OUTPUT="$PWD/alternate-avatar-previews" \
+          WQ_PREVIEW_NAMES="nova,sky,kai,ember" \
+          blender --background --threads 2 --python tools/v127/render_candidate_previews.py
+          test "$(find alternate-avatar-previews -name '*.png' | wc -l)" -eq 8
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v127-FOUR-alternate-humanoid-model-previews
+          path: alternate-avatar-previews/*.png
+          retention-days: 14
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v127-avatar-front-and-rear-visual-previews
+          path: candidate-previews/*.png
+          retention-days: 14
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v127-UNAPPROVED-vroid-candidates
+          path: source/app/src/main/assets/avatars/
+          retention-days: 7
+          if-no-files-found: error

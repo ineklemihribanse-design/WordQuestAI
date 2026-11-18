@@ -1,0 +1,70 @@
+name: Emma 1.0.27 Face Hair Clothing Studio Quality Review
+on:
+  push:
+    branches: [feature/127-emma-human-quality-prototype]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  brunette-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 38
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate two adult MIT humanoid face/hair alternatives
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v127/audit_emma_brown_hair.py tools/v127/normalize_rocketbox_textures.py tools/v127/stylize_emma_materials.py tools/v127/render_emma_rocketbox.py tools/v127/assert_emma_frame.py
+          python3 tools/v127/audit_emma_brown_hair.py
+          python3 -m pip install Pillow==11.3.0
+          for candidate in olivia olivia_white olivia_tee olivia_formal priya; do
+            python3 tools/v127/normalize_rocketbox_textures.py \
+              "candidate-emma-brown/$candidate/$candidate.glb" \
+              "candidate-emma-brown/$candidate/$candidate-mobile.glb"
+          done
+          python3 tools/v127/stylize_emma_materials.py \
+            candidate-emma-brown/olivia_white/olivia_white-mobile.glb \
+            candidate-emma-brown/olivia_white/olivia_white-softskin.glb
+      - name: Render candidate outfits and smooth-skin variant with matching automatic camera
+        timeout-minutes: 26
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y blender python3-numpy
+          for candidate in olivia_white olivia_tee olivia_formal; do
+            WQ_EMMA_MODEL="$PWD/candidate-emma-brown/$candidate/$candidate-mobile.glb" \
+            WQ_EMMA_OUTPUT="$PWD/candidate-emma-brown/$candidate/previews" \
+            WQ_EMMA_LABEL="$candidate" \
+            WQ_EMMA_VIEWS="full-front,face" \
+            WQ_EMMA_SAMPLES="12" \
+            blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          done
+          WQ_EMMA_MODEL="$PWD/candidate-emma-brown/olivia_white/olivia_white-softskin.glb" \
+          WQ_EMMA_OUTPUT="$PWD/candidate-emma-brown/olivia_white/softskin" \
+          WQ_EMMA_LABEL="olivia_white_softskin" \
+          WQ_EMMA_VIEWS="full-front,face" \
+          WQ_EMMA_SAMPLES="12" \
+          blender --background --threads 2 --python tools/v127/render_emma_rocketbox.py
+          test "$(find candidate-emma-brown -name '*.png' | wc -l)" -eq 8
+          python3 tools/v127/assert_emma_frame.py \
+            candidate-emma-brown/olivia_white/previews/olivia_white-full-front.png \
+            candidate-emma-brown/olivia_white/previews/olivia_white-face.png \
+            candidate-emma-brown/olivia_tee/previews/olivia_tee-full-front.png \
+            candidate-emma-brown/olivia_tee/previews/olivia_tee-face.png
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Emma-v127-tighter-camera-and-floor-review
+          path: |
+            candidate-emma-brown/*/previews/*.png
+            candidate-emma-brown/olivia_white/softskin/*.png
+            candidate-emma-brown/olivia_white/olivia_white-softskin.glb
+            candidate-emma-brown/olivia_tee/olivia_tee-mobile.glb
+            tools/v127/ROCKETBOX_MODEL_NOTICES.md
+            candidate-emma-brown/EMMA_CAMERA_QA.json
+            candidate-emma-brown/*/PROVENANCE.json
+          retention-days: 14
+          if-no-files-found: warn

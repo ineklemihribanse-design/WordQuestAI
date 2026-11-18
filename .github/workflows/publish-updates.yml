@@ -1,0 +1,109 @@
+name: Publish signed APK to public Updates Releases
+
+# Legacy manual recovery. Signed main-branch QA releases are now published directly
+# by build-apk.yml to avoid exhausted Actions artifact upload quotas.
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Successful main-branch Android build run ID (leave blank for current successful workflow_run trigger)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: wordquest-public-release
+  cancel-in-progress: false
+
+jobs:
+  signed_release:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      UPDATE_REPO: mihribansezik5-lgtm/WordQuestAI-Updates
+      WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+      WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+      WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+      WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+      WQ_UPDATES_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Check secrets and repository access
+        env:
+          GH_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+        run: |
+          test -n "$WQ_RELEASE_KEYSTORE_B64" || (echo 'Missing signing keystore secret' && exit 1)
+          test -n "$WQ_STORE_PASS" && test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS" || exit 1
+          test -n "$GH_TOKEN" || (echo 'Missing public updates repository token' && exit 1)
+          test "$(gh api "repos/$UPDATE_REPO" --jq .private)" = false || (echo 'Public updates repository required' && exit 1)
+      - name: Download CI-built unsigned APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.source_run_id || github.event.workflow_run.id }}
+        run: |
+          test "$(gh run view "$BUILD_RUN_ID" -R "$GITHUB_REPOSITORY" --json headBranch --jq .headBranch)" = main
+          test "$(gh run view "$BUILD_RUN_ID" -R "$GITHUB_REPOSITORY" --json conclusion --jq .conclusion)" = success
+          test "$(gh run view "$BUILD_RUN_ID" -R "$GITHUB_REPOSITORY" --json event --jq .event)" != pull_request
+          mkdir -p build-output dist
+          gh run download "$BUILD_RUN_ID" --repo "$GITHUB_REPOSITORY" --name WordQuestAI-Unsigned-APK --dir build-output
+          test -s build-output/app-offline-unsigned.apk
+          test -s build-output/output-metadata.json
+          test -s build-output/apksigner.jar
+          # User-requested 1.0.41 (code66) QA: Ethan head posture, arm motion and face clip stability from user video.
+          # In-place same-package same-signer update from 1.0.40 (code65);
+          # 1.0.39 safe conversation error diagnostics also included.
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          doc=json.loads(Path("build-output/output-metadata.json").read_text())
+          item=doc["elements"][0]
+          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.offline101"
+          assert item["versionCode"]==66
+          assert item["versionName"]=="1.0.41-ethan-video-pose-qa"
+          print("EXPLICIT 1.0.41 ETHAN VIDEO POSE QA: same package, upgrade signer and saved user data; real Android re-test required.")
+          PY
+      - name: Sign and validate upgrade-compatible APK
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p "$RUNNER_TEMP/wq-key"
+          trap 'rm -rf "$RUNNER_TEMP/wq-key"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq-key/store.p12"
+          java -jar build-output/apksigner.jar sign \
+            --ks "$RUNNER_TEMP/wq-key/store.p12" --ks-type PKCS12 \
+            --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
+            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
+            --out dist/WordQuestAI.apk build-output/app-offline-unsigned.apk
+          java -jar build-output/apksigner.jar verify --verbose --print-certs dist/WordQuestAI.apk > dist/signature-verification.txt
+          grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature-verification.txt
+          grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 0a2d62332560facfce9a00c0344a21c572e9fb4c8fcfd56a45dcd0294ef35b37' dist/signature-verification.txt
+          python3 tools/generate_release_manifest.py build-output/output-metadata.json dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
+          cat dist/update.json
+      - name: Publish immutable version-specific release
+        env:
+          GH_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
+          if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; not overwriting published APK"
+            exit 0
+          fi
+          gh release create "$TAG" dist/WordQuestAI.apk dist/update.json -R "$UPDATE_REPO" \
+            --title "WordQuest AI $TAG" --notes-file RELEASE_NOTES.md --target main --latest
+          gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
+            --jq '[.assets[].name] | sort | join(",")' | grep -q 'WordQuestAI.apk,update.json'
+      - name: Keep only three complete APK releases
+        if: success()
+        env:
+          WQ_UPDATES_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+        run: python3 tools/prune_public_releases.py
