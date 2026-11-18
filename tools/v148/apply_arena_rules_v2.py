@@ -19,6 +19,15 @@ def main():
         ".write":False,
         ".validate":"newData.isNumber() && newData.val() === 2"
     }
+    mascot_valid="newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl'"
+    room["hostAvatar"]={".write":False,".validate":mascot_valid}
+    room["guestAvatar"]={
+        ".write":(
+            "auth != null && auth.uid === data.parent().child('guestUid').val() && "
+            "data.parent().child('phase').val() === 'lobby' && "
+            "!data.exists()"),
+        ".validate":mascot_valid
+    }
     base="data.parent().parent().parent()"
     is_member=(
         "(auth.uid === "+base+".child('hostUid').val() || "
