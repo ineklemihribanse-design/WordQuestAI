@@ -1,0 +1,34 @@
+{
+  "source_repository": "https://github.com/madjin/vrm-samples",
+  "source_commit": "e16eb187100149a315ad92c3c9968f1d5baa6c7d",
+  "purpose": "1.0.27 candidate assets for visual quality review; not cleared for production solely by automated tests",
+  "models": [
+    {
+      "actor": "Elif",
+      "label": "Emma",
+      "source": "vroid/beta/HairSample_Female.vrm",
+      "target": "emma.glb",
+      "bytes": 17518216,
+      "license": "CC0-1.0",
+      "official_license": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use-"
+    },
+    {
+      "actor": "Deniz",
+      "label": "Sophia",
+      "source": "vroid/stable/AvatarSample_B.vrm",
+      "target": "sophia.glb",
+      "bytes": 15433736,
+      "license": "VRoid sample model special conditions: redistribution and commercial use permitted with restrictions",
+      "official_license": "https://vroid.pixiv.help/hc/en-us/articles/4402394424089"
+    },
+    {
+      "actor": "Mert",
+      "label": "Ethan",
+      "source": "vroid/beta/HairSample_Male.vrm",
+      "target": "ethan.glb",
+      "bytes": 18481892,
+      "license": "CC0-1.0",
+      "official_license": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use-"
+    }
+  ]
+}
