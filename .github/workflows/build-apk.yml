@@ -790,6 +790,11 @@ jobs:
           python3 tools/v148/verify_word_memory_148.py
           grep -q 'versionCode = 73' source/app/build.gradle.kts
           grep -q 'NeonVocabularyPractice' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Configure new independent WordQuest AI installation identity
+        run: |
+          set -euo pipefail
+          python3 tools/v148/configure_new_install.py
+          grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
@@ -810,12 +815,13 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
+      # This is a NEW app identity with a NEW signing key; it will NOT replace the old installed APK.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed v1.0.48 neon vocabulary and AI illustration update
+      - name: Publish NEW separately installable signed v1.0.48 APK to new GitHub repo
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         env:
-          UPDATE_REPO: mihribansezik5-lgtm/WordQuestAI-Updates
+          UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
           WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
@@ -830,7 +836,7 @@ jobs:
           test -n "$WQ_KEY_ALIAS"
           test -n "$WQ_KEY_PASS"
           test -n "$WQ_UPDATES_TOKEN"
-          test "$(gh api "repos/$UPDATE_REPO" --jq .private)" = false
+          gh api "repos/$UPDATE_REPO" --jq .full_name | grep -Fxq "$UPDATE_REPO"
           INPUT_DIR="source/app/build/outputs/apk/offline"
           UNSIGNED="$INPUT_DIR/app-offline-unsigned.apk"
           METADATA="$INPUT_DIR/output-metadata.json"
@@ -841,7 +847,7 @@ jobs:
           python3 - "$METADATA" <<'PY'
           import json,sys
           doc=json.load(open(sys.argv[1]))
-          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.offline101"
+          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
           assert item["versionCode"]==73, item["versionCode"]
           assert item["versionName"]=="1.0.48-neon-word-memory"
@@ -858,7 +864,7 @@ jobs:
           java -jar "$SIGNER" verify --verbose --print-certs dist/WordQuestAI.apk > dist/signature-verification.txt
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature-verification.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
-          grep -qi 'Signer #1 certificate SHA-256 digest: 0a2d62332560facfce9a00c0344a21c572e9fb4c8fcfd56a45dcd0294ef35b37' dist/signature-verification.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
           test "$TAG" = v1.0.48
