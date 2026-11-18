@@ -81,13 +81,14 @@ internal fun ArenaMascotV2(kind: String, modifier: Modifier = Modifier) {
 @Composable
 internal fun ArenaLiveScoreV2(
     hostName: String, guestName: String, hostScore: Int, guestScore: Int,
-    isHostTurn: Boolean, countdown: Int?, completed: Int, total: Int, cooperative: Boolean
+    isHostTurn: Boolean, countdown: Int?, completed: Int, total: Int, cooperative: Boolean,
+    hostAvatar: String = "robot", guestAvatar: String = "fox"
 ) {
     Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(17.dp))
         .background(Color.White).padding(10.dp),verticalAlignment=Alignment.CenterVertically,
         horizontalArrangement=Arrangement.spacedBy(6.dp)) {
         Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally) {
-            ArenaMascotV2("robot",Modifier.size(40.dp))
+            ArenaMascotV2(hostAvatar,Modifier.size(40.dp))
             Text(hostName,color=ArenaV2Colors.ink,fontSize=11.sp,maxLines=1,overflow=TextOverflow.Ellipsis)
             Text(hostScore.toString(),color=ArenaV2Colors.violet,fontSize=19.sp,fontWeight=FontWeight.Bold)
             if(isHostTurn&&!cooperative) Text("● SIRA ONDA",color=ArenaV2Colors.mint,fontSize=9.sp)
@@ -99,7 +100,7 @@ internal fun ArenaLiveScoreV2(
             Text("$completed / $total",color=ArenaV2Colors.muted,fontSize=10.sp)
         }
         Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally) {
-            ArenaMascotV2("fox",Modifier.size(40.dp))
+            ArenaMascotV2(guestAvatar,Modifier.size(40.dp))
             Text(guestName,color=ArenaV2Colors.ink,fontSize=11.sp,maxLines=1,overflow=TextOverflow.Ellipsis)
             Text(guestScore.toString(),color=ArenaV2Colors.coral,fontSize=19.sp,fontWeight=FontWeight.Bold)
             if(!isHostTurn&&!cooperative) Text("● SIRA ONDA",color=ArenaV2Colors.mint,fontSize=9.sp)
@@ -108,7 +109,8 @@ internal fun ArenaLiveScoreV2(
 }
 
 @Composable
-internal fun ArenaVictoryV2(winnerName: String, winnerIsHost: Boolean, isDraw: Boolean) {
+internal fun ArenaVictoryV2(winnerName: String, winnerIsHost: Boolean, isDraw: Boolean,
+    winnerAvatar: String = if(winnerIsHost)"robot" else "fox") {
     val jump=remember {Animatable(.85f)}
     LaunchedEffect(winnerName,isDraw){
         jump.snapTo(.85f);jump.animateTo(1.05f,tween(650));jump.animateTo(1f,tween(250))
@@ -121,7 +123,7 @@ internal fun ArenaVictoryV2(winnerName: String, winnerIsHost: Boolean, isDraw: B
             fontWeight=FontWeight.Bold,fontSize=23.sp)
         Row(verticalAlignment=Alignment.CenterVertically,
             horizontalArrangement=Arrangement.spacedBy(16.dp)) {
-            ArenaMascotV2(if(winnerIsHost)"robot" else "fox",Modifier.size(86.dp).scale(jump.value))
+            ArenaMascotV2(winnerAvatar,Modifier.size(86.dp).scale(jump.value))
             Text(if(isDraw)"İyi mücadele!" else winnerName,color=ArenaV2Colors.ink,
                 fontSize=17.sp,fontWeight=FontWeight.Bold)
         }
@@ -131,7 +133,9 @@ internal fun ArenaVictoryV2(winnerName: String, winnerIsHost: Boolean, isDraw: B
 }
 
 @Composable
-internal fun ArenaRoomPlayersV2(hostName: String, guestName: String, guestPresent: Boolean) {
+internal fun ArenaRoomPlayersV2(hostName: String, guestName: String, guestPresent: Boolean,
+    hostAvatar: String = "robot", guestAvatar: String = "fox",
+    hostReady: Boolean = false, guestReady: Boolean = false) {
     Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(17.dp))
         .background(Color.White).padding(14.dp),
         verticalArrangement=Arrangement.spacedBy(10.dp)) {
@@ -139,20 +143,21 @@ internal fun ArenaRoomPlayersV2(hostName: String, guestName: String, guestPresen
         Row(horizontalArrangement=Arrangement.spacedBy(9.dp)) {
             Column(Modifier.weight(1f).background(Color(0xFFEFEBFF),RoundedCornerShape(13.dp))
                 .padding(12.dp),horizontalAlignment=Alignment.CenterHorizontally) {
-                ArenaMascotV2("robot",Modifier.size(64.dp))
+                ArenaMascotV2(hostAvatar,Modifier.size(64.dp))
                 Text(hostName,color=ArenaV2Colors.ink,fontWeight=FontWeight.SemiBold,
                     fontSize=13.sp,maxLines=1)
-                Text("Oda sahibi",color=ArenaV2Colors.muted,fontSize=11.sp)
+                Text(if(hostReady)"Hazır ✓" else "Oda sahibi",color=ArenaV2Colors.muted,fontSize=11.sp)
             }
             Column(Modifier.weight(1f).background(Color(0xFFFFF2EC),RoundedCornerShape(13.dp))
                 .padding(12.dp),horizontalAlignment=Alignment.CenterHorizontally) {
-                if(guestPresent) ArenaMascotV2("fox",Modifier.size(64.dp))
+                if(guestPresent) ArenaMascotV2(guestAvatar,Modifier.size(64.dp))
                 else Box(Modifier.size(64.dp),contentAlignment=Alignment.Center) {
                     Text("+",fontSize=34.sp,color=ArenaV2Colors.muted)
                 }
                 Text(if(guestPresent)guestName else "Arkadaş bekleniyor",
                     color=ArenaV2Colors.ink,fontWeight=FontWeight.SemiBold,fontSize=13.sp,maxLines=1)
-                Text(if(guestPresent)"Katıldı" else "Davet gönder",color=ArenaV2Colors.muted,fontSize=11.sp)
+                Text(if(guestReady)"Hazır ✓" else if(guestPresent)"Katıldı" else "Davet gönder",
+                    color=ArenaV2Colors.muted,fontSize=11.sp)
             }
         }
     }
