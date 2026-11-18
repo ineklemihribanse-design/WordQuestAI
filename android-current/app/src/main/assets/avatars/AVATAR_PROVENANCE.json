@@ -1,0 +1,56 @@
+{
+  "version": "1.0.27.1-human-model-prototype",
+  "status": "UNAPPROVED_VISUAL_QA",
+  "family": "Microsoft Rocketbox / Avatar Studio",
+  "models": [
+    {
+      "actor": "ethan",
+      "label": "Ethan",
+      "file": "ethan.glb",
+      "source_url": "https://raw.githubusercontent.com/memoriesrohit/avatar-studio/2fd9ec82fbe1613d40ae38aadcca3f410725f740/models/ethan_casual.glb",
+      "license": "MIT",
+      "original_animation_names": [
+        "Idle",
+        "Walk",
+        "Wave",
+        "Talk",
+        "Confident",
+        "Argue",
+        "Cheer",
+        "Laugh",
+        "Drink",
+        "Clap",
+        "Think",
+        "Shrug",
+        "Phone"
+      ],
+      "facial_morph_targets": 52,
+      "embedded_mouth_clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "skin_count": 1,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ],
+      "sha256": "2155c4094ce8d3ada0cd2de6c1afc6adb7f0ec259c4786e726dfddb428c44dda",
+      "visual_approved": false
+    }
+  ],
+  "no_anime_or_vroid_assets": true,
+  "user_review_required": true,
+  "inactive_teachers_archived": true,
+  "archive_restore_recipe": "tools/v134/archive_inactive_teachers_134.py"
+}

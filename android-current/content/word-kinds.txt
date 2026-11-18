@@ -1,0 +1,81 @@
+# A1|a1-nouns|İsimler
+> Sınıf ve okul
+PEN=Kalem, mürekkepli|PENCIL=Kurşun kalem|RULER=Cetvel|TEACHER=Öğretmen|STUDENT=Öğrenci|LESSON=Ders|PAGE=Sayfa|NOTEBOOK=Defter|SCHOOL=Okul|MAP=Harita|LIBRARY=Kütüphane|DESK=Sıra
+> İnsan ve ev
+MOTHER=Anne|FATHER=Baba|SISTER=Kız kardeş|BROTHER=Erkek kardeş|CHILD=Çocuk|FAMILY=Aile|ROOM=Oda|DOOR=Kapı|WINDOW=Pencere|TABLE=Masa|CHAIR=Sandalye|BED=Yatak
+> Günlük nesneler
+BAG=Çanta|BOX=Kutu|KEY=Anahtar|CLOCK=Duvar saati|PHONE=Telefon|COMPUTER=Bilgisayar|RADIO=Radyo|BOOK=Kitap|PHOTO=Fotoğraf|CUP=Fincan|BOTTLE=Şişe|COIN=Madeni para
+> Çevre ve canlılar
+TREE=Ağaç|FLOWER=Çiçek|RIVER=Nehir|LAKE=Göl|SUN=Güneş|RAIN=Yağmur|BIRD=Kuş|CAT=Kedi|DOG=Köpek|FISH=Balık|FARM=Çiftlik|PARK=Park
+# A1|a1-verbs|Fiiller
+> Hareket etmek
+RUN=Koşmak|WALK=Yürümek|JUMP=Zıplamak|SWIM=Yüzmek|SIT=Oturmak|STAND=Ayakta durmak|GO=Gitmek|COME=Gelmek|TURN=Dönmek|STOP=Durmak|RIDE=Binmek veya sürmek|CLIMB=Tırmanmak
+> İletişim ve öğrenme
+READ=Okumak|WRITE=Yazmak|LISTEN=Dinlemek|WATCH=İzlemek|SPEAK=Konuşmak|ASK=Sormak|SAY=Söylemek|TELL=Birine anlatmak|TEACH=Öğretmek|LEARN=Öğrenmek|DRAW=Resim çizmek|SING=Şarkı söylemek
+> Evde işler
+OPEN=Açmak|CLOSE=Kapatmak|CLEAN=Temizlemek|WASH=Yıkamak|COOK=Pişirmek|CUT=Kesmek|PUT=Koymak|TAKE=Almak|GIVE=Vermek|BRING=Getirmek|FIND=Bulmak|USE=Kullanmak
+> Alışkanlıklar ve seçimler
+EAT=Yemek yemek|DRINK=İçmek|SLEEP=Uyumak|WORK=Çalışmak|PLAY=Oynamak|BUY=Satın almak|SELL=Satmak|CHOOSE=Seçmek|WAIT=Beklemek|LIKE=Hoşlanmak|WANT=İstemek|HELP=Yardım etmek
+# A1|a1-adjectives|Sıfatlar
+> Boyut ve görünüş
+BIG=Büyük|SMALL=Küçük|TALL=Uzun boylu|SHORT=Kısa|LONG=Uzun|WIDE=Geniş|THIN=İnce veya zayıf|FAT=Şişman|BEAUTIFUL=Güzel|NEW=Yeni|OLD=Eski veya yaşlı|YOUNG=Genç
+> Duygular ve durum
+HAPPY=Mutlu|SAD=Üzgün|ANGRY=Kızgın|TIRED=Yorgun|HUNGRY=Aç|AFRAID=Korkmuş|BUSY=Meşgul|READY=Hazır|LUCKY=Şanslı|SORRY=Üzgün, özür dileyen|WELL=Sağlığı iyi|ILL=Hasta
+> Çevre ve nitelikler
+HOT=Sıcak|COLD=Soğuk|WARM=Ilık|COOL=Serin|CLEAN=Temiz|DIRTY=Kirli|DRY=Kuru|SUNNY=Güneşli|RAINY=Yağmurlu|DARK=Karanlık|LIGHT=Açık renkli veya hafif|QUIET=Sessiz
+> Değerlendirme ve renkler
+GOOD=İyi|BAD=Kötü|EASY=Kolay|DIFFICULT=Zor|FAST=Hızlı|SLOW=Yavaş|RIGHT=Doğru|WRONG=Yanlış|RED=Kırmızı|GREEN=Yeşil|BLACK=Siyah|WHITE=Beyaz
+# A1|a1-adverbs|Zarflar
+> Sıklık
+ALWAYS=Her zaman|USUALLY=Genellikle|OFTEN=Sık sık|NEVER=Hiçbir zaman|ONCE=Bir kez|AGAIN=Tekrar|ALREADY=Çoktan|YET=Henüz|ALSO=Ayrıca|ONLY=Yalnızca
+> Zaman
+TODAY=Bugün|TOMORROW=Yarın|YESTERDAY=Dün|NOW=Şimdi|THEN=O zaman veya sonra|SOON=Yakında|EARLY=Erken|LATE=Geç|LATER=Daha sonra|JUST=Az önce
+> Yer ve yön
+HERE=Burada|THERE=Orada|AWAY=Uzağa|OUTSIDE=Dışarıda|EVERYWHERE=Her yerde|DOWN=Aşağı|BACK=Geriye|UP=Yukarı|INSIDE=İçeride|NEARBY=Yakında
+> Biçim ve derece
+TOGETHER=Birlikte|QUICKLY=Hızlı bir şekilde|FAST=Hızla|WELL=İyi bir şekilde|CAREFULLY=Dikkatle|VERY=Çok|TOO=Gereğinden fazla|REALLY=Gerçekten|ALMOST=Neredeyse|MAYBE=Belki
+# A2|a2-verbs|Fiiller
+> Karar ve görüş
+ACCEPT=Kabul etmek|AVOID=Kaçınmak|COMPARE=Karşılaştırmak|DECIDE=Karar vermek|CONSIDER=Düşünüp değerlendirmek|EXPECT=Olmasını beklemek|SUGGEST=Öneride bulunmak|AGREE=Aynı fikirde olmak|REFUSE=Reddetmek|DEPEND=Bağlı olmak|OFFER=Teklif etmek|CHOOSE=Seçmek
+> İletişim
+EXPLAIN=Açıklamak|INVITE=Davet etmek|COMPLAIN=Şikâyet etmek|ADVISE=Tavsiye etmek|REMIND=Hatırlatmak|ENCOURAGE=Cesaretlendirmek|UNDERSTAND=Anlamak|ANSWER=Yanıtlamak|DESCRIBE=Betimlemek|DISCUSS=Üzerine konuşmak|CONTACT=İletişim kurmak|REPLY=Yanıt vermek
+> Plan ve uygulama
+CONTINUE=Devam etmek|PREPARE=Hazırlamak|RECEIVE=Teslim almak|RETURN=Geri dönmek|MANAGE=Bir işi yapmayı başarmak|SUCCEED=Başarılı olmak|FAIL=Başaramamak|ENTER=Girmek|FOLLOW=Takip etmek|ALLOW=İzin vermek|INCLUDE=İçermek|ORGANIZE=Düzenlemek
+> Sorun ve çözüm
+IMPROVE=İyileştirmek|REPLACE=Yerine yenisini koymak|REPAIR=Onarmak|CHECK=Kontrol etmek|PREVENT=Önlemek|INCREASE=Artırmak|DEVELOP=Geliştirmek|REACH=Ulaşmak|COUNT=Saymak|BORROW=Ödünç almak|LEND=Ödünç vermek|SAVE=Kurtarmak veya biriktirmek
+# A2|a2-adjectives|Sıfatlar
+> Kişilik ve duygular
+POLITE=Kibar|NERVOUS=Gergin|WORRIED=Endişeli|CONFIDENT=Kendine güvenen|HELPFUL=Yardımsever|INTELLIGENT=Zeki|BORED=Sıkılmış|SURPRISED=Şaşırmış|CREATIVE=Yaratıcı|UNHAPPY=Mutsuz|KIND=İyi kalpli|ALONE=Yanında kimse olmayan
+> Mekân ve ortam
+NOISY=Gürültülü|PEACEFUL=Huzurlu|CROWDED=Kalabalık|EMPTY=Boş|SAFE=Güvenli|DANGEROUS=Tehlikeli|COMFORTABLE=Rahat|MODERN=Çağdaş|TRADITIONAL=Geleneksel|LOCAL=Yerel|PRIVATE=Özel|PUBLIC=Herkese açık
+> Seçenekler ve değerlendirme
+USEFUL=Yararlı|CHEAP=Ucuz|POPULAR=Çok sevilen|NECESSARY=Gerekli|POSSIBLE=Mümkün|SUITABLE=Uygun|CONVENIENT=Kullanışlı, elverişli|CERTAIN=Kesin|SIMPLE=Basit|SIMILAR=Benzer|CLEAR=Açık, anlaşılır|COMPLETE=Eksiksiz
+> Duyular ve durum
+FRESH=Taze|WET=Islak|SOFT=Yumuşak|WEAK=Güçsüz|ILL=Hasta|THIRSTY=Susamış|ALIVE=Hayatta|QUICK=Çabuk|UNUSUAL=Alışılmadık|FAMILIAR=Tanıdık|PLEASANT=Hoş|AWFUL=Berbat
+# B1|b1-verbs|Fiiller
+> İş ve sorumluluk
+DELIVER=Teslim etmek|ARRANGE=Düzenlemek|HANDLE=Bir işi yürütmek|REQUIRE=Gerektirmek|SUPPORT=Desteklemek|REQUEST=Talep etmek|CONFIRM=Teyit etmek|ANNOUNCE=Duyurmak|REFUSE=Reddetmek|DEMAND=Israrla talep etmek|OBTAIN=Elde etmek|MAINTAIN=Sürdürmek
+> Araştırma ve açıklama
+EXAMINE=Ayrıntılı incelemek|NOTICE=Fark etmek|MENTION=Kısaca söz etmek|MEASURE=Ölçmek|PROVE=Kanıtlamak|EXPRESS=İfade etmek|DETERMINE=Belirlemek|ESTIMATE=Tahmin etmek|DEMONSTRATE=Göstererek açıklamak|ASSUME=Varsaymak|COMPARE=Karşılaştırmak|DESCRIBE=Betimlemek
+> Koruma ve değiştirme
+REDUCE=Azaltmak|PROTECT=Korumak|REMOVE=Ortadan kaldırmak|WARN=Uyarmak|PREVENT=Önlemek|REPLACE=Yerine yenisini koymak|IMPROVE=İyileştirmek|RECOVER=İyileşmek|ADOPT=Bir yöntemi benimsemek|ADAPT=Uyum sağlamak|REVISE=Gözden geçirmek|REPAIR=Onarmak
+> Etkileşim ve sonuç
+CONTRIBUTE=Katkıda bulunmak|ACKNOWLEDGE=Varlığını veya doğruluğunu kabul etmek|ENCOURAGE=Cesaretlendirmek|PERSUADE=İkna etmek|RESPOND=Karşılık vermek|EXPLAIN=Açıklamak|DISCUSS=Tartışmak|APOLOGISE=Özür dilemek, Britanya yazımı|AGREE=Hemfikir olmak|COMPLAIN=Şikâyet etmek|SUCCEED=Başarılı olmak|ACHIEVE=Başarmak
+# B2|b2-verbs|Fiiller
+> Bilgi ve analiz
+ANALYSE=Çözümlemek, Britanya yazımı|IDENTIFY=Kimliğini veya ne olduğunu saptamak|INTERPRET=Bir bulguyu yorumlamak|PERCEIVE=Algılamak|ASSESS=Ölçüp değerlendirmek|EVALUATE=Değerini veya etkinliğini değerlendirmek|DETECT=Gizli bir şeyi saptamak|INVESTIGATE=Bir olayı araştırmak|CONDUCT=Araştırma yürütmek|ANTICIPATE=Öngörmek|INFER=Çıkarım yapmak|ILLUSTRATE=Örnekle açıklamak
+> Uygulama ve değişiklik
+IMPLEMENT=Uygulamaya koymak|FACILITATE=Bir süreci kolaylaştırmak|REINFORCE=Pekiştirmek|ALTER=Değiştirmek|MODIFY=Kısmen değiştirmek|SUSPEND=Geçici olarak durdurmak|SUSTAIN=Sürdürmek|ELIMINATE=Ortadan kaldırmak|ENFORCE=Yasayı veya kuralı uygulatmak|EXPAND=Genişletmek|TRANSFORM=Köklü biçimde değiştirmek|INTEGRATE=Bütünleştirmek
+> İddia ve karar
+JUSTIFY=Haklı veya makul göstermek|ATTRIBUTE=Bir sonucu bir nedene bağlamak|ARTICULATE=Açıkça dile getirmek|CLARIFY=Açıklığa kavuşturmak|CONTRADICT=Bir görüşle çelişmek|OBJECT=İtiraz etmek|DECLINE=Kibarca geri çevirmek|ASSURE=Güvence vermek|CONSULT=Danışmak|GUARANTEE=Garanti etmek|SPECIFY=Açıkça belirtmek|SUBMIT=İncelenmek üzere sunmak
+> Zorluk ve yönetim
+COPE=Bir zorlukla başa çıkmak|TOLERATE=Tahammül etmek|COMPENSATE=Telafi etmek|RELIEVE=Hafifletmek|PERSIST=Israrla sürmek|THREATEN=Tehdit etmek|UNDERTAKE=Bir görevi üstlenmek|SUPERVISE=Denetlemek|RECRUIT=İşe almak|RESIGN=İstifa etmek|PROHIBIT=Yasaklamak|EXCLUDE=Dışarıda bırakmak
+# B2|b2-adjectives|Sıfatlar
+> Nitelik ve değerlendirme
+COMPREHENSIVE=Kapsamlı|CONSISTENT=Tutarlı|CRUCIAL=Belirleyici önemde|COHERENT=Bağdaşık|DETAILED=Ayrıntılı|VALID=Geçerli|RELEVANT=Konuyla ilgili|POTENTIAL=Gerçekleşmesi mümkün|OBJECTIVE=Nesnel|APPROXIMATE=Yaklaşık|AMBIGUOUS=Birden fazla anlama gelebilen|ACCURATE=Doğru ve isabetli
+> İşyeri ve kurum
+PARTICULAR=Belirli|INFORMAL=Resmî olmayan|TECHNICAL=Teknik|EXTERNAL=Kurum dışındaki|COOPERATIVE=İş birliğine açık|FLEXIBLE=Esnek|FUNDAMENTAL=Temel|INNOVATIVE=Yenilikçi|ELIGIBLE=Başvuru koşullarına uygun|FUNCTIONAL=İşlevsel|DOMESTIC=Ülke içindeki|FIXED=Sabit
+> Aşamalar ve sonuçlar
+INITIAL=Başlangıçtaki|PRELIMINARY=Hazırlık niteliğindeki|PRIMARY=Birincil|SECONDARY=İkincil|DECISIVE=Kesin sonuca götüren|PROBABLE=Olması muhtemel|PREDICTABLE=Öngörülebilir|GRADUAL=Aşamalı|SIMULTANEOUS=Aynı anda gerçekleşen|ULTIMATE=Nihai|EXCESSIVE=Aşırı|VARIED=Çeşitli
+> İletişim ve tutum
+CONTRADICTORY=Birbiriyle çelişen|GENUINE=Gerçek veya içten|SINCERE=Samimi|IMPARTIAL=Tarafsız|DELIBERATE=Kasıtlı|RELUCTANT=İsteksiz|WILLING=İstekli|THOUGHTFUL=Düşünceli|TOLERANT=Hoşgörülü|MISLEADING=Yanıltıcı|TRANSPARENT=Şeffaf|SUBTLE=İnce, kolay fark edilmeyen

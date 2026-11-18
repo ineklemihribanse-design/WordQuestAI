@@ -1,0 +1,71 @@
+{
+  "status": "INACTIVE_NOT_DELETED",
+  "active": "ethan",
+  "available_for_restore": [
+    "emma",
+    "sophia"
+  ],
+  "warning": "Keep this artifact and repository source-generation scripts; not inside Android APK",
+  "archived_files": [
+    {
+      "actor": "emma",
+      "name": "emma-dense-face.glb",
+      "sha256": "5bd7f269d6ee950120563fe05d15e17ca51601a11609b0a4acd8a06223212ee0",
+      "bytes": 14300888
+    },
+    {
+      "actor": "emma",
+      "name": "emma-mobile-lite.glb",
+      "sha256": "9f0543f2aa8facd8ee21de2ea87e8ce8c6a7a3f2812ff09ca17be7f8f5a8d708",
+      "bytes": 10208472
+    },
+    {
+      "actor": "emma",
+      "name": "emma-mobile.glb",
+      "sha256": "c9f7468774cb3319d1d3bb75544ca2c2182b7712f5447eb1c5ead70afd8924db",
+      "bytes": 10662560
+    },
+    {
+      "actor": "emma",
+      "name": "emma-no-morph-diagnostic.glb",
+      "sha256": "f384a1c4ef03f496b10800705f7c34e5eed6a32d2da3d96489e08313dd7db43f",
+      "bytes": 10197032
+    },
+    {
+      "actor": "emma",
+      "name": "emma.glb",
+      "sha256": "fd33f3ddd17b48a668c17178a8a5542999981f3218da9d7ad5b8058583730030",
+      "bytes": 16849788
+    },
+    {
+      "actor": "sophia",
+      "name": "sophia-dense-face.glb",
+      "sha256": "741b7cdb75fbc05fff650a497c7d71a3eeccad303e0842cbe54bb08e7329342e",
+      "bytes": 10700812
+    },
+    {
+      "actor": "sophia",
+      "name": "sophia-mobile-lite.glb",
+      "sha256": "69533865ebf0ddf01be869f048a85776b6680ef669442eed1e2e060c48f5c9ee",
+      "bytes": 8932084
+    },
+    {
+      "actor": "sophia",
+      "name": "sophia-mobile.glb",
+      "sha256": "5ce3ec9c43262e99b1235b3a73a8a38b9c7e077a680959c75210bd888be10481",
+      "bytes": 9114460
+    },
+    {
+      "actor": "sophia",
+      "name": "sophia-no-morph-diagnostic.glb",
+      "sha256": "e365fc2f19f687aeae0b1a930a4e04dadd39e0acc66b96aaacef4de4ffac850f",
+      "bytes": 8917492
+    },
+    {
+      "actor": "sophia",
+      "name": "sophia.glb",
+      "sha256": "2f7b9699de4e2f14ec43f370c51621a815e0976ee712c983c97d0d810fc91d95",
+      "bytes": 12503780
+    }
+  ]
+}

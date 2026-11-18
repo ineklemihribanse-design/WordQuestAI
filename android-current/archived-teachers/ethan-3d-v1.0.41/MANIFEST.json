@@ -1,0 +1,16 @@
+{
+  "reason": "3D Ethan replaced by native 2D teacher; archive not in APK",
+  "recover_from_git_branch": "archive/ethan-3d-v1.0.41",
+  "files": [
+    {
+      "name": "ethan-mobile.glb",
+      "bytes": 9991240,
+      "sha256": "c42cb1c0c61c4f90d5098f0d353c1cd45609a0087c8ff9550e4b741b5748e8cc"
+    },
+    {
+      "name": "ethan.glb",
+      "bytes": 13910108,
+      "sha256": "2155c4094ce8d3ada0cd2de6c1afc6adb7f0ec259c4786e726dfddb428c44dda"
+    }
+  ]
+}

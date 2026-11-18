@@ -1,0 +1,10 @@
+WordQuest AI 1.0.6 - Firebase hesap bazlı oda sınırı + davetler
+* 10 yeni oda / Google hesabı / UTC günü. Firebase'de sunucu kurallarıyla kilitli.
+* Aynı Google hesabıyla iki cihazdan açılan odalar ortak kota tüketir.
+* Anonim hesapla oda oluşturma kapalıdır; anonim hesapla odaya katılma korunur.
+* Kod kopyalama, WhatsApp ve Android paylaşım menüsü yeni oda / son odalar ekranlarında.
+* Kayıtların eşitlenmesi ve eski sunucu bağlantısı korunmuştur.
+* Firebase Realtime Database -> Rules bölümünde database.rules.json içeriğini yayımla.
+* Yeni kurallar yayımlanmadan yeni oda oluşturma engellenir; eski odalara katılma devam eder.
+* Oda oluşturma kota bileti ile yapılır. Başarısız ağ/oda oluşturma denemesi bir hakkı tüketebilir.
+* Kredi kartı, ücretli sunucu veya WhatsApp SDK gerektirmez.

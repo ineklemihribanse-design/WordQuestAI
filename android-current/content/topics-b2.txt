@@ -1,0 +1,26 @@
+# B2|b2-work|İş ve Kariyer
+> Kurum ve yapı
+CORPORATION=Büyük ölçekli şirket|ENTERPRISE=Ticari girişim veya işletme|HEADQUARTERS=Bir kurumun yönetim merkezi|SECTOR=Ekonominin bir faaliyet alanı|MANUFACTURING=Fabrikada üretim|COMMERCE=Ticaret|PARTNERSHIP=Ortaklık|VENTURE=Risk içeren iş girişimi|EXECUTIVE=Üst düzey yönetici|CHIEF=Birimin başındaki kişi|AUTHORITY=Yetkili makam|DIVISION=Kurum içindeki büyük birim|SUBSIDIARY=Başka şirkete bağlı şirket
+> İnsan kaynakları
+EMPLOYER=İşveren|EMPLOYEE=Ücret karşılığı çalışan kişi|PERSONNEL=Kurum çalışanlarının bütünü|APPLICANT=Bir iş için başvuru yapan kişi|CANDIDATE=Bir görev için değerlendirilen aday|QUALIFICATION=İş için gereken yeterlilik|PROFESSIONAL=Mesleğinde uzmanlaşmış kişi|RECRUIT=İşe almak veya yeni üye almak|APPOINT=Göreve atamak|TRAINING=Mesleki eğitim|EXPERTISE=Uzmanlık|SUPERVISION=Bir işin yürütülmesinin denetlenmesi|DELEGATE=Yetki veya iş devretmek
+> Finans ve ücret
+SALARY=Düzenli maaş|WAGE=Saatlik ya da haftalık çalışma ücreti|EARNINGS=İşten elde edilen kazanç|REVENUE=Kurumun satışlardan elde ettiği gelir|INVESTMENT=Yatırım|FINANCE=Finans, mali kaynak yönetimi|INCENTIVE=Teşvik|EXPENDITURE=Toplam harcama|PROFIT=Kâr|LOSS=Zarar|ASSET=Bir kuruma değer sağlayan varlık|BUDGET=Bütçe|MARGIN=Satış fiyatıyla maliyet arasındaki fark
+> İş ilişkisi ve sözleşme
+CONTRACT=Yazılı iş sözleşmesi|OBLIGATION=Yükümlülük|RESIGNATION=İstifa|RETIREMENT=Emeklilik|TRANSFER=Görev yeri değişikliği|DISPUTE=Anlaşmazlık|NEGOTIATE=Müzakere etmek|AGREEMENT=Anlaşma|TERMS=Sözleşme koşulları|CLAUSE=Sözleşme maddesi|TERMINATE=Bir sözleşmeyi sona erdirmek|RENEW=Yenilemek|COMPENSATE=Zararı tazmin etmek
+> Yönetim ve strateji
+INITIATIVE=Girişim, harekete geçme|ENTREPRENEUR=Yeni bir iş kuran girişimci|IMPLEMENT=Bir planı uygulamaya koymak|MONITOR=Bir süreci düzenli izlemek|ASSESS=Ölçüp değerlendirmek|COORDINATE=Eşgüdüm sağlamak|FACILITATE=Bir süreci kolaylaştırmak|EXPAND=Genişletmek|IMPROVE=İyileştirmek|SUSTAIN=Sürdürmek|TARGET=Hedef|ACHIEVE=Başarmak|PRIORITY=Öncelik
+> Tedarik ve ticaret
+EXPORT=İhracat|IMPORT=İthalat|SUPPLIER=Tedarikçi|DISTRIBUTION=Dağıtım|INVENTORY=Stok, envanter|SHIPMENT=Sevkiyat|WAREHOUSE=Depo|DEMAND=Talep|SUPPLY=Arz veya tedarik|CONSUMER=Tüketici|RETAIL=Perakende|WHOLESALE=Toptan satış|MARKETPLACE=Alım satım ortamı
+# B2|b2-science|Bilim ve Araştırma
+> Araştırma tasarımı
+HYPOTHESIS=Sınanabilir varsayım|VARIABLE=Değişken|SAMPLE=Örneklem|CONTROL=Karşılaştırma için kullanılan denetim|METHOD=Yöntem|PROCEDURE=İşlem basamakları|TRIAL=Deneme veya araştırma uygulaması|ETHICS=Etik ilkeler|REPLICATE=Bir deneyi tekrarlamak|SYSTEMATIC=Dizgeli, sistemli|BIAS=Sistematik yanlılık|SCOPE=Kapsam|DESIGN=Tasarım
+> Veri ve ölçüm
+MEASURE=Ölçmek|ACCURACY=Ölçümün doğru değere yakınlığı|PRECISION=Ölçümlerin kendi aralarında yakınlığı|ESTIMATE=Yaklaşık değer tahmin etmek|COLLECT=Veri toplamak|QUANTITY=Miktar|UNIT=Ölçü birimi|SCALE=Ölçek|AVERAGE=Ortalama|RANGE=Değer aralığı|DISTRIBUTION=Dağılım|OUTLIER=Aykırı değer|ERROR=Ölçüm hatası
+> Analiz ve yorumlama
+ANALYSE=Çözümlemek, Britanya yazımı|INTERPRET=Bir bulguyu yorumlamak|IDENTIFY=Ne olduğunu saptamak|CORRELATION=İki değişken arasındaki ilişki ölçüsü|TREND=Genel eğilim|PATTERN=Düzenli örüntü|ASSUME=Varsaymak|INFER=Çıkarım yapmak|ESTABLISH=Bir olguyu kanıtlarla ortaya koymak|ILLUSTRATE=Örnekle açıklamak|DISTINGUISH=Ayırt etmek|ASSESS=Değerlendirmek|CONCLUDE=Sonuca varmak
+> Sonuçların güvenilirliği
+RELIABLE=Güvenilir|VALID=Geçerli|ROBUST=Farklı koşullarda dayanıklı|CONSISTENT=Tutarlı|COHERENT=Bağdaşık, birbiriyle uyumlu|PRECISE=Kesin, ayrıntılı|APPROXIMATE=Yaklaşık|TENTATIVE=Geçici, kesinlik kazanmamış|LIMITATION=Sınırlılık|EXCEPTION=İstisna|UNCERTAINTY=Belirsizlik|RELEVANT=Konuyla ilgili|SIGNIFICANT=Önemli veya istatistiksel olarak anlamlı
+> Bulguları yayımlamak
+ABSTRACT=Makalenin özeti|JOURNAL=Akademik dergi|CITATION=Kaynak atfı|PUBLISH=Yayımlamak|REVIEW=Gözden geçirme|MANUSCRIPT=Yayıma hazırlanmış metin|FINDING=Araştırma bulgusu|EVIDENCE=Kanıt|SUMMARY=Özet|DISCUSSION=Tartışma bölümü|EDITOR=Yayın editörü|AUTHOR=Yazar|APPENDIX=Metnin sonundaki ek
+> Bilimsel düşünme
+THEORY=Kuram|MODEL=Model|CONCEPT=Kavram|PRINCIPLE=İlke|CONTEXT=Bağlam|EXPLANATION=Açıklama|OBSERVATION=Gözlem|MECHANISM=Mekanizma|PROCESS=Süreç|FUNCTION=İşlev|PHENOMENON=Olgu, görüngü|FRAMEWORK=Çerçeve|APPROACH=Yaklaşım

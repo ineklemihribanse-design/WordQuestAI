@@ -1,0 +1,65 @@
+# B1|b1-family|Aile ve İlişkiler
+> Aile bağları
+NIECE=Kız yeğen|NEPHEW=Erkek yeğen|TWIN=İkizlerden biri|RELATIVE=Akraba|SIBLING=Kız veya erkek kardeş|ANCESTOR=Uzak geçmişte yaşamış aile büyüğü|DESCENDANT=Bir kişinin sonraki kuşaktan soy üyesi|HOUSEHOLD=Aynı evde yaşayan kişiler|RELATIONSHIP=İki kişi arasındaki ilişki|BOND=İnsanlar arasındaki güçlü bağ|RESEMBLE=Benzemek|RELATED=Akrabalık bağı olan|GENERATION=Nesil
+> Düğün ve aile olayları
+GROOM=Damat|BRIDE=Gelin|MARRIAGE=Evlilik|WEDDING=Düğün|CEREMONY=Tören|INVITATION=Davet|SEPARATION=Ayrılık|ANNIVERSARY=Yıl dönümü|CELEBRATION=Kutlama|ENGAGEMENT=Nişan|GUEST=Misafir|PARTNER=Hayat arkadaşı|CONGRATULATE=Tebrik etmek
+> Arkadaşlık ve sosyal çevre
+ACQUAINTANCE=Yakından tanımadığın tanıdık|SCHOOLMATE=Aynı okuldan arkadaş|COLLEAGUE=İş arkadaşı|NEIGHBOUR=Komşu, Britanya yazımı|STRANGER=Tanımadığın kişi|COMPANION=Yoldaş, yanında bulunan kişi|FRIENDSHIP=Arkadaşlık|COMMUNITY=Ortak bağı olan topluluk|SOCIAL=Sosyal, toplumsal|INTRODUCE=Tanıştırmak|WELCOME=Karşılamak|KEEP IN TOUCH=İletişimde kalmak|GET ALONG=İyi geçinmek
+> Anlaşmak ve anlaşmazlık
+DISAGREEMENT=Fikir ayrılığı|CONFLICT=Çatışma|COMPROMISE=Ödün vererek varılan uzlaşma|MISUNDERSTANDING=Yanlış anlama|EXPLAIN=Açıklamak|APOLOGISE=Özür dilemek, Britanya yazımı|FORGIVE=Affetmek|DISCUSS=Konuşup tartışmak|ARGUE=Tartışmak, sözlü çekişmek|RESOLVE=Bir sorunu çözüme kavuşturmak|AGREE=Aynı fikirde olmak|REASON=Gerekçe|CALM=Sakin
+> Duygular ve destek
+RESPECT=Saygı|LOYALTY=Sadakat|AFFECTION=Sevgi, şefkat|SYMPATHY=Birinin üzüntüsünü paylaşma, yakınlık|SUPPORT=Destek|TRUST=Güven|ENCOURAGEMENT=Cesaretlendirme|WORRY=Endişelenmek|GRATEFUL=Minnettar|PROUD=Gururlu|HONEST=Dürüst|PATIENT=Sabırlı|RELIABLE=Güvenilir
+> Ortak yaşam ve sorumluluk
+RESPONSIBLE=Sorumlu|INDEPENDENT=Bağımsız|DUTY=Görev, sorumluluk|ARRANGEMENT=Düzenleme|COOPERATE=İş birliği yapmak|LOOK AFTER=Birine bakmak, ilgilenmek|SHARE=Paylaşmak|ASSIST=Yardım etmek|PROMISE=Söz vermek|DEPEND ON=Bağlı olmak|DECISION=Karar|BEHAVIOUR=Davranış, Britanya yazımı|ATTITUDE=Tutum
+# B1|b1-learning|Eğitim ve Öğrenme
+> Okul ve kurumlar
+CAMPUS=Üniversite yerleşkesi|COLLEGE=Kolej veya yüksekokul|UNIVERSITY=Üniversite|FACULTY=Fakülte|DEPARTMENT=Bölüm|LECTURE=Üniversitede verilen ders|LECTURER=Öğretim görevlisi|TUTOR=Özel ders veren öğretmen|LIBRARIAN=Kütüphane görevlisi|CLASSMATE=Sınıf arkadaşı|GRADUATE=Mezun olmak|PRINCIPAL=Okul müdürü|ENROL=Kaydolmak, Britanya yazımı
+> Ders ve çalışma düzeni
+SUBJECT=Okulda okutulan ders|COURSE=Kurs veya ders dizisi|LESSON=Tek ders saati|TIMETABLE=Ders çizelgesi|HOMEWORK=Ev ödevi|ASSIGNMENT=Öğrenciye verilen çalışma|DEADLINE=Son teslim tarihi|ATTEND=Bir derse katılmak|ABSENT=Derste bulunmayan|PRESENT=Derste hazır bulunan|FOCUS=Dikkatini toplamak|PRACTISE=Alıştırma yapmak, Britanya yazımı|REVISE=Sınav için gözden geçirmek
+> Sınav ve değerlendirme
+EXAM=Sınav|ASSESSMENT=Değerlendirme|GRADE=Not|SCORE=Alınan puan|PASS=Sınavı geçmek|FAIL=Sınavdan kalmak|RESULT=Sonuç|FEEDBACK=Geri bildirim|CRITERION=Ölçüt, tekil|CORRECT=Düzeltmek|MISTAKE=Hata|CERTIFICATE=Sertifika|ACHIEVE=Başarmak
+> Okuma ve araştırma
+SOURCE=Bilgi kaynağı|ARTICLE=Makale|CHAPTER=Kitap bölümü|SUMMARY=Özet|REFERENCE=Başvurulan kaynak|TOPIC=Konu|TITLE=Başlık|AUTHOR=Yazar|PUBLISH=Yayımlamak|RESEARCH=Araştırma|EVIDENCE=Kanıt|EXAMPLE=Örnek|CONCLUSION=Sonuç bölümü
+> Yazma ve anlatma
+ESSAY=Deneme veya yazılı kompozisyon|PARAGRAPH=Paragraf|SENTENCE=Cümle|OUTLINE=Ana hatlar|DRAFT=Taslak|EDIT=Metni düzenlemek|EXPLAIN=Açıklamak|DESCRIBE=Betimlemek|COMPARE=Karşılaştırmak|DISCUSS=Tartışarak ele almak|PRESENTATION=Sunum|REPORT=Rapor|COMMENT=Yorum
+> Öğrenme stratejileri
+METHOD=Yöntem|STRATEGY=Strateji|ROUTINE=Düzenli alışkanlık|GOAL=Hedef|SKILL=Beceri|MEMORY=Hafıza|REMEMBER=Hatırlamak|FORGET=Unutmak|REPEAT=Tekrarlamak|IMPROVE=Geliştirmek|PROGRESS=İlerleme|SUCCEED=Başarılı olmak|CONFIDENCE=Özgüven
+# B1|b1-work|İş ve Kariyer
+> İş arama
+VACANCY=Açık iş pozisyonu|JOB=İş|CAREER=Kariyer|APPLICATION=Başvuru|APPLY=Başvurmak|INTERVIEW=İş görüşmesi|EMPLOY=İşe almak|QUALIFIED=Gerekli niteliğe sahip|EXPERIENCE=Deneyim|SKILL=Beceri|REFERENCE=İşe başvuruda verilen referans|ADVERTISEMENT=İlan, reklam|POSITION=İş pozisyonu
+> İş yeri ve ekip
+OFFICE=Büro|COMPANY=Şirket|MANAGER=Yönetici|COLLEAGUE=İş arkadaşı|TEAM=Ekip|CLIENT=Profesyonel hizmet alan müşteri|CUSTOMER=Müşteri|STAFF=Personel, toplu ad|TRAINER=Eğitmen|LEADER=Lider|WORKPLACE=Çalışma yeri|DEPARTMENT=Bölüm|BRANCH=Kurumun bir şubesi
+> Günlük iş akışı
+TASK=Yapılacak iş|DUTY=Görev|MEETING=Toplantı|SCHEDULE=İş planı, program|SHIFT=Vardiya|PROJECT=Proje|DEADLINE=Son teslim tarihi|PLAN=Plan yapmak|ARRANGE=Organize etmek|PREPARE=Hazırlamak|DELIVER=Teslim etmek|COMPLETE=Tamamlamak|HANDLE=Bir işi yürütmek veya bir durumla baş etmek
+> İletişim ve raporlama
+REPORT=Rapor|EMAIL=E-posta|MESSAGE=Mesaj|REQUEST=Resmî talep|ANNOUNCE=Duyurmak|CONFIRM=Teyit etmek|EXPLAIN=Açıklamak|NOTICE=Duyuru yazısı|DISCUSS=Tartışmak|MENTION=Kısaca söz etmek|PRESENT=Bir konuyu sunmak|DOCUMENT=Belge|UPDATE=Güncellemek
+> Ücret ve çalışma biçimi
+PAY=Ücret|SALARY=Düzenli maaş|WAGE=Saatlik veya haftalık çalışma ücreti|BONUS=Ek ödeme, prim|INCOME=Gelir|FULL TIME=Tam zamanlı|PART TIME=Yarı zamanlı|REMOTE=Uzaktan çalışılan|LEAVE=İzin süresi|OVERTIME=Fazla mesai|CONTRACT=Sözleşme|BENEFIT=Çalışana sunulan yan hak|COST=Maliyet
+> Kariyer gelişimi
+PROMOTION=Terfi|TRAINING=Mesleki eğitim|RESPONSIBILITY=Sorumluluk|PERFORMANCE=Performans|PROGRESS=İlerleme|ACHIEVEMENT=Başarı|IMPROVE=Geliştirmek|SUCCEED=Başarılı olmak|PROMOTE=Terfi ettirmek|REQUIRE=Gerektirmek|ACCEPT=Kabul etmek|REFUSE=Reddetmek|RESIGN=İstifa etmek
+# B1|b1-environment|Çevre ve Sürdürülebilirlik
+> Çevre sorunları
+POLLUTION=Çevre kirliliği|WASTE=Atık|PLASTIC=Plastik|LITTER=Yere atılmış çöpler|SMOKE=Duman|FLOOD=Sel|DROUGHT=Kuraklık|NOISE=Gürültü|CLIMATE=İklim|THREAT=Tehdit|DAMAGE=Hasar|HARM=Zarar|RISK=Risk
+> Geri dönüşüm ve kaynaklar
+RECYCLE=Geri dönüştürmek|REUSE=Yeniden kullanmak|REDUCE=Azaltmak|REPAIR=Onarmak|SORT=Türlerine göre ayırmak|COLLECT=Toplamak|PAPER=Kâğıt|GLASS=Cam|METAL=Metal|RESOURCE=Kaynak|ENERGY=Enerji|SAVE=Tasarruf etmek|CONSUME=Tüketmek
+> İklim ve enerji
+WEATHER=Hava durumu|TEMPERATURE=Sıcaklık|FORECAST=Tahmin, hava raporu|WARMING=Isınma|GLOBAL=Küresel|SOLAR=Güneşle ilgili|WIND=Rüzgâr|POWER=Enerji, güç|FUEL=Yakıt|ELECTRICITY=Elektrik|SOURCE=Kaynak|RENEWABLE=Yenilenebilir|EMISSION=Çevreye salım
+> Doğal alanlar
+FOREST=Orman|WILDLIFE=Yaban hayatı|HABITAT=Bir canlının yaşam alanı|SPECIES=Tür|COAST=Kıyı|WETLAND=Sulak alan|OCEAN=Okyanus|LANDSCAPE=Doğal manzara|SOIL=Toprak|VALLEY=Vadi|RIVER=Nehir|ISLAND=Ada|PROTECT=Korumak
+> Şehir ve ulaşım
+CITY=Şehir|PUBLIC TRANSPORT=Toplu taşıma|TRAFFIC=Trafik|VEHICLE=Araç|CYCLE=Bisiklet sürmek|PEDESTRIAN=Yaya|PATH=Patika veya yürüyüş yolu|GARDEN=Bahçe|COMMUNITY=Topluluk|PARK=Park|LOCAL=Yerel|NEIGHBOURHOOD=Mahalle, Britanya yazımı|CLEAN=Temizlemek
+> Önlemler ve farkındalık
+PREVENT=Önlemek|PROTECTION=Koruma|RESPONSIBLE=Sorumlu|AWARE=Farkında|MEASURE=Önlem, tedbir|SUPPORT=Desteklemek|PROVIDE=Sağlamak|AFFECT=Etkilemek|IMPACT=Belirgin etki|IMPROVE=İyileştirmek|REPLACE=Yerine yenisini koymak|SOLUTION=Çözüm|BENEFIT=Yarar
+# B1|b1-technology|Teknoloji ve İletişim
+> Cihaz ve donanım
+DEVICE=Cihaz|SCREEN=Ekran|KEYBOARD=Klavye|MOUSE=Bilgisayar faresi|PRINTER=Yazıcı|CAMERA=Kamera|BATTERY=Pil veya batarya|CHARGER=Şarj aleti|CABLE=Kablo|SPEAKER=Hoparlör|LAPTOP=Dizüstü bilgisayar|TABLET=Tablet|BUTTON=Düğme, tuş
+> İnternet ve bağlantı
+INTERNET=İnternet|NETWORK=Ağ|CONNECT=Bağlanmak|ONLINE=Çevrim içi|OFFLINE=Çevrim dışı|SIGNAL=Sinyal|WIRELESS=Kablosuz|BROWSER=Tarayıcı|WEBSITE=İnternet sitesi|LINK=Bağlantı|SEARCH=Aramak|DOWNLOAD=İndirmek|UPLOAD=İnternete yüklemek
+> Hesap ve gizlilik
+ACCOUNT=Kullanıcı hesabı|PASSWORD=Parola|USERNAME=Kullanıcı adı|SIGN IN=Oturum açmak|SIGN OUT=Oturumu kapatmak|PROFILE=Profil|PRIVACY=Gizlilik|PRIVATE=Özel, herkese açık olmayan|PUBLIC=Herkese açık|PROTECT=Korumak|VERIFY=Doğrulamak|SETTINGS=Ayarlar|BLOCK=Bir hesabı engellemek
+> Dosyalar ve uygulamalar
+FILE=Dosya|FOLDER=Klasör|DOCUMENT=Belge|SOFTWARE=Yazılım|APPLICATION=Uygulama|INSTALL=Yüklemek, kurmak|UPDATE=Güncellemek|DELETE=Silmek|COPY=Kopyalamak|PASTE=Yapıştırmak|SAVE=Kaydetmek|ATTACH=Dosya eklemek|SCAN=Taramak
+> Çevrim içi iletişim
+MESSAGE=Mesaj|REPLY=Yanıt vermek|FORWARD=Mesajı iletmek|CONTACT=İletişim kurulacak kişi|NOTIFICATION=Bildirim|POST=Çevrim içi gönderi|SHARE=Paylaşmak|VIDEO=Video|VOICE=İnsan sesi|DISCUSSION=Tartışma, görüş alışverişi|COMMENT=Yorum|CHANNEL=Kanal|SUBSCRIBE=Abone olmak
+> Sorun ve çözüm
+ERROR=Hata|RESTART=Yeniden başlatmak|CRASH=Programın aniden kapanması|BROKEN=Bozuk|REPAIR=Onarmak|FIX=Bir sorunu düzeltmek|BACKUP=Yedek|RESTORE=Yedekten geri getirmek|REPORT=Sorunu bildirmek|SUPPORT=Teknik destek|CHECK=Kontrol etmek|RESET=Sıfırlamak|ACCESS=Erişim

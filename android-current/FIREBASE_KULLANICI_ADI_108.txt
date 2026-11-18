@@ -1,0 +1,5 @@
+WordQuest AI v1.0.8
+Yarisma Merkezinde hesap bazli takma ad kaydi ve oda kurucusu/misafir adlari.
+Yeni kurallar Firebase Realtime Database > Rules > Publish ile yayimlanmalidir.
+Eski odalar ve kullanici kayitlari korunur.
+Yeni surum: 31 / com.kelimebulmacasi.a1.practice.offline101

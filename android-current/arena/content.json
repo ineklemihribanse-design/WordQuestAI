@@ -1,0 +1,72 @@
+{
+  "oral": {
+    "A1": [
+      "Introduce yourself in two or three sentences.",
+      "What do you usually eat for breakfast?",
+      "Describe one room in your home.",
+      "What do you like to do on Sundays?",
+      "Tell me about an animal you like."
+    ],
+    "A2": [
+      "Tell me about your last trip. Where did you go and what did you do?",
+      "Explain how to get from your home to a nearby shop.",
+      "What are you going to do next weekend, and why?",
+      "Describe a meal you can prepare. Give two steps.",
+      "Compare the weather in two seasons you know."
+    ],
+    "B1": [
+      "Describe a skill you learned recently. What helped you improve?",
+      "A friend wants to study English every day. Give them two practical suggestions.",
+      "Would you prefer to work at home or in an office? Explain your choice.",
+      "Tell me about a book or film you would recommend and why.",
+      "Describe a problem you solved and what you would do differently next time."
+    ],
+    "B2": [
+      "Should mobile phones be allowed in lessons? Present an argument and a counterargument.",
+      "Explain a trade-off between public transport and driving.",
+      "What makes an online source reliable? Give an example.",
+      "Should employers value experience or formal qualifications more? Defend a balanced view.",
+      "Explain how a city could reduce waste without making life harder for residents."
+    ],
+    "C1": [
+      "Discuss whether efficiency is always the best criterion for evaluating public services.",
+      "Explain how one could distinguish correlation from causation in a classroom study.",
+      "Argue how an institution should balance accessibility with academic standards.",
+      "Evaluate one advantage and one limitation of remote collaboration.",
+      "Explain how language choices can influence the way a public debate is framed."
+    ],
+    "C2": [
+      "When can an apparently neutral benchmark perpetuate an existing bias? Develop an example and a counterexample.",
+      "Distinguish uncertainty from ambiguity in a policy decision and explain why it matters.",
+      "Assess whether transparency is sufficient to establish institutional trust.",
+      "Present and respond to a strong objection to the claim that automation makes education fairer.",
+      "Explain how the same evidence might legitimately support competing interpretations in a research debate."
+    ]
+  },
+  "yds": [
+    ["Kolay","Eş anlam","In the sentence ‘The sample was **tiny**’, which word is closest in meaning to tiny?","SMALL",["RECENT","SMALL","HEAVY","COMMON"],"Tiny bu bağlamda çok küçük demektir. Small en yakın seçenektir."],
+    ["Kolay","Bağlaç","The road was flooded, _____ the bus took a different route.","SO",["UNLESS","ALTHOUGH","SO","BEFORE"],"Otobüsün rotasını değiştirmesi su baskınının sonucudur. So sonuç bildirir."],
+    ["Kolay","Cümle tamamlama","The team weighed each sample twice to check the _____ of its measurements.","ACCURACY",["ACCURACY","FURNITURE","WEATHER","OWNERSHIP"],"Ölçümleri kontrol ederken ağırlığı iki kez ölçmek doğrulukla ilgilidir."],
+    ["Kolay","Cloze","The library extended its opening hours during exam week. As a result, students had more time to _____ for their exams.","PREPARE",["PREPARE","COMPLAIN","PAY","TRAVEL"],"Prepare for an exam, bir sınava hazırlanmak anlamına gelir."],
+    ["Kolay","Eş anlam","The policy will **allow** students to borrow more books. Which word can replace allow?","PERMIT",["PREVENT","PERMIT","BORROW","CANCEL"],"Allow ve permit, bu cümlede izin vermek anlamındadır."],
+    ["Kolay","Bağlaç","Take a bottle of water _____ you get thirsty on the walk.","IN CASE",["EVEN THOUGH","IN CASE","AS SOON AS","WHEREAS"],"In case, gerçekleşmesi olası bir duruma karşı önlem almayı anlatır."],
+    ["Kolay","Cümle tamamlama","To open an account, you need to _____ proof of your address.","PROVIDE",["PROVIDE","AVOID","ERASE","DOUBT"],"Provide proof, kanıt veya belge sunmak anlamına gelir."],
+    ["Kolay","Cloze","The machine shuts down automatically when it overheats. This feature helps to _____ damage to the motor.","PREVENT",["DESCRIBE","MEASURE","PREVENT","INCREASE"],"Otomatik kapanma motorun hasar görmesini önler."],
+    ["Orta","Eş anlam","The council **postponed** the vote until Tuesday. Which phrase has the same meaning?","PUT OFF",["CALLED UP","RULED OUT","PUT OFF","TOOK OVER"],"Postpone ve put off, planlanan bir eylemi ileri tarihe bırakmaktır."],
+    ["Orta","Bağlaç","_____ the first report focused on costs, the second examined environmental effects.","WHEREAS",["WHEREAS","ONCE","SO THAT","UNLESS"],"Whereas iki ayrı odak arasında karşıtlık kurar."],
+    ["Orta","Cümle tamamlama","Because the error affected every measurement in the same way, it was considered _____.","SYSTEMATIC",["SYSTEMATIC","IMAGINARY","APPROXIMATE","INTERMITTENT"],"Her ölçümde aynı yönde oluşan hata sistematik hatadır."],
+    ["Orta","Cloze","The original estimate relied on a very small sample. The researchers then doubled the sample size in order to _____ the uncertainty of the result.","REDUCE",["REDUCE","IGNORE","CONCEAL","MAXIMIZE"],"Daha büyük örneklem, aynı yöntemle ölçüldüğünde örneklem kaynaklı belirsizliği azaltabilir."],
+    ["Orta","Bağlaç","The park will remain open _____ the wind does not reach dangerous speeds.","PROVIDED THAT",["EVEN IF","NOW THAT","PROVIDED THAT","ALTHOUGH"],"Belirtilen durum parkın açık kalmasının koşuludur."],
+    ["Orta","Akademik fiil","The report fails to _____ its central claim with evidence.","SUBSTANTIATE",["SUBSTANTIATE","RELINQUISH","FABRICATE","OMIT"],"Substantiate a claim, iddiayı kanıtla temellendirmek anlamına gelir."],
+    ["Orta","Eş anlam","Adoption of the method was **gradual**. Which term has the closest meaning?","INCREMENTAL",["SUDDEN","INCREMENTAL","TEMPORARY","ACCIDENTAL"],"Gradual ve incremental, değişimin adım adım gerçekleştiğini ifade eder."],
+    ["Orta","Cloze","The author used multiple sources that were collected independently. The agreement among them made the conclusion more _____.","CREDIBLE",["CREDIBLE","ARBITRARY","REDUNDANT","ELUSIVE"],"Bağımsız kaynakların uyumu sonucu daha inandırıcı kılar."],
+    ["Zor","Eş anlam","The error **vitiated** the agreement. Which word best matches vitiated?","INVALIDATED",["ENHANCED","RENEWED","INVALIDATED","RECORDED"],"Vitiate bu kullanımda bir anlaşmanın geçerliliğini bozmak anlamına gelir."],
+    ["Zor","Bağlaç","The two methods estimate the same quantity. _____, they rely on very different assumptions.","NEVERTHELESS",["THEREBY","NEVERTHELESS","HENCE","ACCORDINGLY"],"İkinci cümle ilk cümleye rağmen geçerli olan bir farkı belirtir."],
+    ["Zor","Cümle tamamlama","The independent observations _____ the researchers' account of what occurred.","CORROBORATED",["CORROBORATED","DISGUISED","ABOLISHED","PERPETRATED"],"Corroborate, bağımsız kanıtla bir açıklamayı desteklemek demektir."],
+    ["Zor","Cloze","The historical sources disagree about the cause of the strike. Their accounts cannot be reconciled unless the different meanings of ‘strike’ in the records are _____.","DISAMBIGUATED",["DISAMBIGUATED","REDACTED","RANDOMIZED","FORESTALLED"],"Disambiguate, bir terimin hangi anlamıyla kullanıldığını açıklığa kavuşturmaktır."],
+    ["Zor","Akademik fiil","The new controls _____ the need to repeat the experiment; nothing further was required.","OBVIATED",["MAGNIFIED","DOCUMENTED","OBVIATED","ACKNOWLEDGED"],"Obviate the need, bir gerekliliği ortadan kaldırmaktır."],
+    ["Zor","Eş anlam","The inference rests on a **tenuous** link. Which word comes closest to tenuous?","WEAK",["OBVIOUS","WEAK","NECESSARY","INTENTIONAL"],"Tenuous link, zayıf ve sağlam temellendirilmemiş bir bağlantıdır."],
+    ["Zor","Phrasal verbs","The team tried to _____ an equipment fault as a possible explanation.","RULE OUT",["BRING ABOUT","LOOK UP TO","RULE OUT","COME ACROSS"],"Rule out, bir olasılığı değerlendirme dışı bırakmak anlamındadır."],
+    ["Zor","Cloze","The authors state that the findings apply only within the range of their data. They caution readers against _____ the results beyond that range.","EXTRAPOLATING",["EXTRAPOLATING","TABULATING","REPLICATING","TRANSCRIBING"],"Extrapolate, gözlenmiş veri aralığının dışına bir sonuç veya tahmin taşımaktır."]
+  ]
+}

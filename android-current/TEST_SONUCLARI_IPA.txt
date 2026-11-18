@@ -1,0 +1,29 @@
+WordQuest AI 0.8.0 — 2026-11-14
+
+KAYNAKTA TAMAMLANANLAR:
+- 2.203 ifadenin her biri için ayrı US/UK OGG (4.406 dosya).
+- 2.184 ifade için iki ayrı, ses motoruna göre üretilmiş IPA gösterimi.
+- Anlamı belirsiz 19 ifade için IPA uydurulmaz.
+- IPA gösterme ve Türkçe yaklaşık okunuş ayrı profil tercihleri olarak saklanır.
+- IPA ayarlarda, çözülmüş bulmacalarda, kelime defterinde ve AI öğretmeninin arama alanında gösterilir.
+- Önceki AI öğretmeni, profil bazlı kalıcı geçmiş, kelime tekrar sistemi ve oyun kaynakları korunur.
+
+BAŞARILI OTOMATİK DOĞRULAMALAR:
+- 4.406 OGG dosyası kayıp olmadan manifestle eşleşiyor; US/UK kayıt çiftleri aynı değil.
+- SoundFile/libsndfile: 4.406 dosyanın Vorbis başlıkları çözümleniyor (0 hata).
+- 5 örnek kelimenin US/UK IPA gösterimleri ve sesleri mevcut.
+- 0.7.5 orijinal bulmaca varlıkları kaynakta bayt düzeyinde aynı (statik audit).
+- Kaynakta keystore, Google services veya açık API özel anahtarı bulunamadı.
+
+BAŞARISIZ/TAMAMLANMAYAN:
+- Android Gradle 8.9 dağıtımı bu izole ortamda indirilemedi: DNS çözümleme hatası.
+- Bu nedenle Gradle derlemesi, Android birim testleri, emülatör, açılış,
+  cihaz ses dinleme ve gerçek veri göçü testleri YAPILMADI.
+- WordQuest AI 0.8.0 IPA içeren kurulabilir APK ÜRETİLMEDİ.
+- İmzalı 0.7.5 Test APK üstüne güncelleme orijinal debug.keystore olmadan doğrulanamaz.
+- IPA değerleri eSpeak fonem modellerinden türetilmiştir; 2.184 öğenin tamamı
+  bağımsız güvenilir sözlükten editöryel olarak doğrulanmış değildir.
+- AI öğretmeninin Gemini API üzerinden gerçek yanıt vermesi test edilmedi;
+  bağlantı ve geçerli API anahtarı gerektirir.
+
+APK derleme iş akışı: .github/workflows/android-offline-apk.yml

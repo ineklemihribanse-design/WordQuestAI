@@ -1,0 +1,78 @@
+{
+  "quality": "TEXT_RANGE_APPROXIMATION",
+  "original_audio_not_modified": true,
+  "actors": [
+    {
+      "actor": "emma",
+      "clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "rigs": 1,
+      "targetCount": 52,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ]
+    },
+    {
+      "actor": "sophia",
+      "clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "rigs": 1,
+      "targetCount": 52,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ]
+    },
+    {
+      "actor": "ethan",
+      "clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "rigs": 1,
+      "targetCount": 52,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ]
+    }
+  ]
+}

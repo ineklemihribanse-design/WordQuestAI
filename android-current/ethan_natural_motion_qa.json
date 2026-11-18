@@ -1,0 +1,241 @@
+{
+  "source": "licensed unchanged Ethan real-human GLB",
+  "method": "animation accessor values only; retain original glTF structure",
+  "input_sha256": "27a6d28347fb251bb0751af710e260a4dc517d6b1b706179991aa10f1ee44d4c",
+  "output_sha256": "c42cb1c0c61c4f90d5098f0d353c1cd45609a0087c8ff9550e4b741b5748e8cc",
+  "animated_arm_bones": [
+    {
+      "bone": "mixamorig:leftshoulder",
+      "talk_strength": 0.56,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:leftarm",
+      "talk_strength": 0.56,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:leftforearm",
+      "talk_strength": 0.66,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthand",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandindex1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandindex2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandindex3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandmiddle1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandmiddle2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandmiddle3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandpinky1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandpinky2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandpinky3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandring1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandring2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandring3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandthumb1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandthumb2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:lefthandthumb3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:rightshoulder",
+      "talk_strength": 0.56,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:rightarm",
+      "talk_strength": 0.56,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:rightforearm",
+      "talk_strength": 0.66,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthand",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandindex1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandindex2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandindex3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandmiddle1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandmiddle2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandmiddle3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandpinky1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandpinky2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandpinky3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandring1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandring2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandring3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandthumb1",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandthumb2",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:righthandthumb3",
+      "talk_strength": 0.72,
+      "keyframes": 534
+    }
+  ],
+  "controlled_head_torso_bones": [
+    {
+      "bone": "mixamorig:spine",
+      "talk_strength": 0.46,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:spine1",
+      "talk_strength": 0.46,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:spine2",
+      "talk_strength": 0.46,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:neck",
+      "talk_strength": 0.34,
+      "keyframes": 534
+    },
+    {
+      "bone": "mixamorig:head",
+      "talk_strength": 0.25,
+      "keyframes": 534
+    }
+  ],
+  "viseme_clips_softened": [
+    "Teacher_Viseme_A",
+    "Teacher_Viseme_A_Blink",
+    "Teacher_Viseme_E",
+    "Teacher_Viseme_E_Blink",
+    "Teacher_Viseme_I",
+    "Teacher_Viseme_I_Blink",
+    "Teacher_Viseme_MBP",
+    "Teacher_Viseme_MBP_Blink",
+    "Teacher_Viseme_O",
+    "Teacher_Viseme_O_Blink",
+    "Teacher_Viseme_U",
+    "Teacher_Viseme_U_Blink"
+  ],
+  "face_quality": "TTS word-range approximation, NOT phoneme alignment",
+  "device_visual_approved": false
+}

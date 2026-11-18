@@ -1,0 +1,144 @@
+{
+  "version": "1.0.27.1-human-model-prototype",
+  "status": "UNAPPROVED_VISUAL_QA",
+  "family": "Microsoft Rocketbox / Avatar Studio",
+  "models": [
+    {
+      "actor": "emma",
+      "label": "Emma",
+      "file": "emma.glb",
+      "source_url": "https://raw.githubusercontent.com/memoriesrohit/avatar-studio/2fd9ec82fbe1613d40ae38aadcca3f410725f740/models/olivia_smart.glb",
+      "license": "MIT",
+      "original_animation_names": [
+        "Idle",
+        "Walk",
+        "Wave",
+        "Talk",
+        "Confident",
+        "Argue",
+        "Cheer",
+        "Laugh",
+        "Drink",
+        "Clap",
+        "Think",
+        "Shrug",
+        "Phone"
+      ],
+      "facial_morph_targets": 52,
+      "embedded_mouth_clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "skin_count": 1,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ],
+      "sha256": "fd33f3ddd17b48a668c17178a8a5542999981f3218da9d7ad5b8058583730030",
+      "visual_approved": false
+    },
+    {
+      "actor": "sophia",
+      "label": "Sophia",
+      "file": "sophia.glb",
+      "source_url": "https://raw.githubusercontent.com/memoriesrohit/avatar-studio/2fd9ec82fbe1613d40ae38aadcca3f410725f740/models/sophia_formal.glb",
+      "license": "MIT",
+      "original_animation_names": [
+        "Idle",
+        "Walk",
+        "Wave",
+        "Talk",
+        "Confident",
+        "Argue",
+        "Cheer",
+        "Laugh",
+        "Drink",
+        "Clap",
+        "Think",
+        "Shrug",
+        "Phone"
+      ],
+      "facial_morph_targets": 52,
+      "embedded_mouth_clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "skin_count": 1,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ],
+      "sha256": "2f7b9699de4e2f14ec43f370c51621a815e0976ee712c983c97d0d810fc91d95",
+      "visual_approved": false
+    },
+    {
+      "actor": "ethan",
+      "label": "Ethan",
+      "file": "ethan.glb",
+      "source_url": "https://raw.githubusercontent.com/memoriesrohit/avatar-studio/2fd9ec82fbe1613d40ae38aadcca3f410725f740/models/ethan_casual.glb",
+      "license": "MIT",
+      "original_animation_names": [
+        "Idle",
+        "Walk",
+        "Wave",
+        "Talk",
+        "Confident",
+        "Argue",
+        "Cheer",
+        "Laugh",
+        "Drink",
+        "Clap",
+        "Think",
+        "Shrug",
+        "Phone"
+      ],
+      "facial_morph_targets": 52,
+      "embedded_mouth_clips": [
+        "Teacher_Viseme_A",
+        "Teacher_Viseme_E",
+        "Teacher_Viseme_I",
+        "Teacher_Viseme_O",
+        "Teacher_Viseme_U",
+        "Teacher_Viseme_MBP",
+        "Teacher_Viseme_NEUTRAL"
+      ],
+      "skin_count": 1,
+      "blink_clip": "Teacher_Blink",
+      "composite_blink_clips": [
+        "Teacher_Viseme_A_Blink",
+        "Teacher_Viseme_E_Blink",
+        "Teacher_Viseme_I_Blink",
+        "Teacher_Viseme_O_Blink",
+        "Teacher_Viseme_U_Blink",
+        "Teacher_Viseme_MBP_Blink",
+        "Teacher_Viseme_NEUTRAL_Blink"
+      ],
+      "sha256": "2155c4094ce8d3ada0cd2de6c1afc6adb7f0ec259c4786e726dfddb428c44dda",
+      "visual_approved": false
+    }
+  ],
+  "no_anime_or_vroid_assets": true,
+  "user_review_required": true
+}

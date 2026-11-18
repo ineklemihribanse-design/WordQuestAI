@@ -1,0 +1,54 @@
+{
+  "source": "candidate-human-teachers/emma/emma-mobile.glb",
+  "file": "candidate-human-teachers/emma/emma-animated.glb",
+  "sha256": "fd33f3ddd17b48a668c17178a8a5542999981f3218da9d7ad5b8058583730030",
+  "original_animations": [
+    "Idle",
+    "Walk",
+    "Wave",
+    "Talk",
+    "Confident",
+    "Argue",
+    "Cheer",
+    "Laugh",
+    "Drink",
+    "Clap",
+    "Think",
+    "Shrug",
+    "Phone"
+  ],
+  "viseme_clips": [
+    "A",
+    "E",
+    "I",
+    "O",
+    "U",
+    "MBP",
+    "NEUTRAL"
+  ],
+  "blink_clip": "Teacher_Blink",
+  "composite_blink_clips": [
+    "Teacher_Viseme_A_Blink",
+    "Teacher_Viseme_E_Blink",
+    "Teacher_Viseme_I_Blink",
+    "Teacher_Viseme_O_Blink",
+    "Teacher_Viseme_U_Blink",
+    "Teacher_Viseme_MBP_Blink",
+    "Teacher_Viseme_NEUTRAL_Blink"
+  ],
+  "active_face_nodes": [
+    {
+      "id": 80,
+      "name": "Body",
+      "targets": 52
+    },
+    {
+      "id": 81,
+      "name": "Hair",
+      "targets": 52
+    }
+  ],
+  "skin_count": 1,
+  "visual_approved": false,
+  "accuracy": "TTS word-range-driven approximation; NOT phoneme-level"
+}

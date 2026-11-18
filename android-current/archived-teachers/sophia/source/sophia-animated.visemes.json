@@ -1,0 +1,64 @@
+{
+  "source": "candidate-human-teachers/sophia/sophia-mobile.glb",
+  "file": "candidate-human-teachers/sophia/sophia-animated.glb",
+  "sha256": "2f7b9699de4e2f14ec43f370c51621a815e0976ee712c983c97d0d810fc91d95",
+  "original_animations": [
+    "Idle",
+    "Walk",
+    "Wave",
+    "Talk",
+    "Confident",
+    "Argue",
+    "Cheer",
+    "Laugh",
+    "Drink",
+    "Clap",
+    "Think",
+    "Shrug",
+    "Phone"
+  ],
+  "viseme_clips": [
+    "A",
+    "E",
+    "I",
+    "O",
+    "U",
+    "MBP",
+    "NEUTRAL"
+  ],
+  "blink_clip": "Teacher_Blink",
+  "composite_blink_clips": [
+    "Teacher_Viseme_A_Blink",
+    "Teacher_Viseme_E_Blink",
+    "Teacher_Viseme_I_Blink",
+    "Teacher_Viseme_O_Blink",
+    "Teacher_Viseme_U_Blink",
+    "Teacher_Viseme_MBP_Blink",
+    "Teacher_Viseme_NEUTRAL_Blink"
+  ],
+  "active_face_nodes": [
+    {
+      "id": 80,
+      "name": "Body",
+      "targets": 52
+    },
+    {
+      "id": 81,
+      "name": "Hair",
+      "targets": 52
+    },
+    {
+      "id": 82,
+      "name": "Outfit_original",
+      "targets": 52
+    },
+    {
+      "id": 84,
+      "name": "Skin_original",
+      "targets": 52
+    }
+  ],
+  "skin_count": 1,
+  "visual_approved": false,
+  "accuracy": "TTS word-range-driven approximation; NOT phoneme-level"
+}

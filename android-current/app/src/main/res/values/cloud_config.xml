@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cloud_web_client_id" translatable="false">198875801515-cn2hcpeg16vs9vsq0de38tbf0ne8t5er.apps.googleusercontent.com</string>
+    <string name="cloud_database_url" translatable="false">https://wordquest-ai-default-rtdb.firebaseio.com</string>
+    <string name="cloud_project_id" translatable="false">wordquest-ai</string>
+    <string name="cloud_application_id" translatable="false">1:198875801515:android:73562494e08141b79954ee</string>
+    <string name="cloud_api_key" translatable="false">AIzaSyBWAsN_zxa0s6RnqRZukX40QF3hmfvSUmU</string>
+</resources>

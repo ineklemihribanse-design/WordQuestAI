@@ -1,0 +1,78 @@
+# A1|a1-body|İnsan Vücudu
+> Baş ve yüz
+HEAD=Baş, kafa|FACE=Yüz, çehre|EYE=Görme organı|EAR=İşitme organı|NOSE=Koku alma organı|MOUTH=Ağız|HAIR=Saç|TOOTH=Diş, tekil|TEETH=Dişler, çoğul|SMILE=Gülümseme|GLASSES=Gözlük|VOICE=İnsan sesi|LIP=Dudak|BEARD=Sakal
+> Gövde ve hareket
+BODY=Vücut|NECK=Baş ile gövde arasındaki bölüm|SHOULDER=Omuz|BACK=Sırt|BONE=Kemik|HEART=Kanı pompalayan organ|BRAIN=Beyin|ARM=Omuzdan ele uzanan uzuv|LEG=Bacak|KNEE=Diz|STAND=Ayakta durmak|SIT=Oturmak|STRETCH=Esnemek
+> Eller ve ayaklar
+HAND=El|FOOT=Ayak, tekil|FEET=Ayaklar, çoğul|FINGER=El parmağı|TOE=Ayak parmağı|NAIL=Tırnak|STEP=Adım|WALK=Yürümek|JUMP=Zıplamak|CLAP=El çırpmak|KICK=Tekme atmak|HOLD=Elde tutmak|WAVE=El sallamak
+> Duyular ve tepkiler
+SEE=Görmek|LOOK=Bakmak|HEAR=Duymak|LISTEN=Dinlemek|SMELL=Koklamak|TASTE=Tadına bakmak|TOUCH=Dokunmak|FEEL=Hissetmek|LAUGH=Gülmek|CRY=Ağlamak|SPEAK=Konuşmak|WATCH=İzlemek|SOUND=Ses, işitilen şey
+> Temel sağlık
+HEADACHE=Baş ağrısı|FEVER=Ateş, vücut ısısının yükselmesi|DOCTOR=Doktor|NURSE=Hemşire|HOSPITAL=Hastane|MEDICINE=İlaç|HEALTH=Sağlık|HEALTHY=Sağlıklı|SICK=Hasta|PAIN=Ağrı|TIRED=Yorgun|COLD=Soğuk algınlığı|BETTER=Daha iyi
+> Kişisel bakım
+WASH=Yıkamak|BRUSH=Fırçalamak|COMB=Saç taramak|SHOWER=Duş|BATH=Küvette banyo|SOAP=Sabun|TOWEL=Havlu|CLEAN=Temiz|DIRTY=Kirli|DRY=Kuru|MIRROR=Ayna|REST=Dinlenmek|SLEEP=Uyumak|WATER=Su
+# A1|a1-family|Aile ve Akrabalık
+> Çekirdek aile
+FAMILY=Aile|MOTHER=Anne|FATHER=Baba|PARENT=Anne veya babadan biri|CHILD=Çocuk, tekil|CHILDREN=Çocuklar, çoğul|SON=Erkek evlat|DAUGHTER=Kız evlat|SISTER=Kız kardeş|BROTHER=Erkek kardeş|BABY=Bebek|PARENTS=Anne ve baba
+> Geniş aile
+AUNT=Teyze veya hala|UNCLE=Amca veya dayı|COUSIN=Kuzen|GRANDMOTHER=Anneanne veya babaanne|GRANDFATHER=Dede, büyükbaba|GRANDPARENT=Anne veya babanın ebeveynlerinden biri|GRANDMA=Ninenin samimi İngilizce karşılığı|GRANDPA=Dedenin samimi İngilizce karşılığı|WIFE=Kadın eş|HUSBAND=Erkek eş|MUM=Anne, Britanya İngilizcesinde samimi|DAD=Baba, samimi hitap
+> Yaş ve aile üyeleri
+YOUNG=Genç|OLD=Yaşlı|AGE=Yaş|BOY=Erkek çocuk|GIRL=Kız çocuk|MAN=Yetişkin erkek, tekil|WOMAN=Yetişkin kadın, tekil|MEN=Erkekler, çoğul|WOMEN=Kadınlar, çoğul|PERSON=Kişi, tekil|PEOPLE=İnsanlar, çoğul|TALL=Uzun boylu|SHORT=Kısa boylu
+> Evde aile hayatı
+HOME=İnsanın yaşadığı yer, yuva|HOUSE=Müstakil ev de olabilen yapı|ROOM=Oda|KITCHEN=Mutfak|LIVING ROOM=Oturma odası|BEDROOM=Yatak odası|MEAL=Öğün|DINNER=Akşam yemeği|TOGETHER=Birlikte|LIVE=Yaşamak, bir yerde oturmak|HELP=Yardım etmek|SHARE=Paylaşmak|PHOTO=Fotoğraf
+> Tanışma ve arkadaşlık
+NAME=İsim, ad|FRIEND=Arkadaş|NEIGHBOR=Komşu, Amerikan yazımı|GUEST=Misafir|MEET=Buluşmak veya tanışmak|HELLO=Merhaba|GOODBYE=Hoşça kal|PLEASE=Lütfen|THANKS=Teşekkürler|WELCOME=Hoş geldin|CALL=Birini telefonla aramak|VISIT=Ziyaret etmek|CHAT=Sohbet etmek
+> Kutlama ve duygular
+BIRTHDAY=Doğum günü|PARTY=Parti, kutlama|GIFT=Hediye|CAKE=Kek|CANDLE=Mum|CARD=Kutlamada verilen kart|LOVE=Sevgi|HAPPY=Mutlu|SAD=Üzgün|FUN=Eğlence|PLAY=Oyun oynamak|SONG=Şarkı|CELEBRATE=Kutlamak
+# A1|a1-food|Yiyecek ve İçecek
+> Meyve ve sebze
+APPLE=Elma|ORANGE=Portakal|BANANA=Muz|GRAPE=Üzüm tanesi|FRUIT=Meyve|POTATO=Patates|TOMATO=Domates|CORN=Mısır|BEAN=Fasulye tanesi|PEA=Bezelye tanesi|SALAD=Salata|CARROT=Havuç|LEMON=Limon|ONION=Soğan
+> Kahvaltı
+EGG=Yumurta|BREAD=Ekmek|BUTTER=Tereyağı|CHEESE=Peynir|MILK=Süt|HONEY=Bal|JAM=Reçel|TEA=Çay|COFFEE=Kahve|BREAKFAST=Kahvaltı|SUGAR=Şeker|SANDWICH=Sandviç|TOAST=Kızarmış ekmek
+> Ana öğünler
+LUNCH=Öğle yemeği|DINNER=Akşam yemeği|MEAT=Et|CHICKEN=Tavuk eti|FISH=Balık|BEEF=Dana eti|RICE=Pirinç|SOUP=Çorba|PIZZA=Pizza|BURGER=Burger|PASTA=Makarna|FOOD=Yiyecek, gıda|MEAL=Öğün
+> Tatlılar ve içecekler
+WATER=Su|JUICE=Meyve suyu|CAKE=Kek|COOKIE=Kurabiye|CHOCOLATE=Çikolata|ICE CREAM=Dondurma|BISCUIT=Bisküvi|ICE=Buz|DRINK=İçecek|SWEET=Tatlı, şekerli|CUP=Fincan|GLASS=Cam bardak|BOTTLE=Şişe
+> Sofra ve hazırlık
+PLATE=Tabak|BOWL=Kâse|FORK=Çatal|KNIFE=Bıçak|SPOON=Kaşık|TABLE=Masa|KITCHEN=Mutfak|COOK=Yemek pişirmek|CUT=Kesmek|WASH=Yıkamak|MAKE=Yapmak, hazırlamak|OPEN=Açmak|BOX=Kutu
+> Restoranda
+RESTAURANT=Restoran|MENU=Yemek listesi|ORDER=Sipariş vermek|BILL=Restoran hesabı|PAY=Ödemek|PRICE=Fiyat|WAIT=Beklemek|EAT=Yemek yemek|HUNGRY=Aç|THIRSTY=Susamış|HOT=Sıcak|COLD=Soğuk|GOOD=İyi
+# A1|a1-home|Ev ve Eşyalar
+> Odalar ve evin bölümleri
+KITCHEN=Mutfak|BATHROOM=Banyo|BEDROOM=Yatak odası|GARDEN=Bahçe|ROOM=Oda|LIVING ROOM=Oturma odası|HOUSE=Ev, yapı|HOME=Yuva|WALL=Duvar|FLOOR=Odanın zemini|DOOR=Kapı|WINDOW=Pencere|ROOF=Çatı|STAIRS=Merdiven basamakları
+> Mobilya
+CHAIR=Sandalye|TABLE=Masa|BED=Yatak|SOFA=Kanepe|SHELF=Raf|DESK=Çalışma masası|CUPBOARD=Kapaklı dolap|MIRROR=Ayna|CLOCK=Duvar veya masa saati|LAMP=Lamba|FURNITURE=Mobilya, toplu ad|SEAT=Oturulacak yer|DRAWER=Çekmece
+> Banyoda ve temizlikte
+SHOWER=Duş|BATH=Küvette banyo|TOWEL=Havlu|SOAP=Sabun|BUCKET=Kova|BRUSH=Fırça|TOOTHBRUSH=Diş fırçası|CLEAN=Temizlemek|WASH=Yıkamak|WATER=Su|TAP=Musluk, Britanya İngilizcesi|DRY=Kurulamak|FAN=Vantilatör
+> Mutfak eşyaları
+CUP=Fincan|GLASS=Cam bardak|BOWL=Kâse|PLATE=Tabak|BOTTLE=Şişe|SPOON=Kaşık|FORK=Çatal|KNIFE=Bıçak|FRIDGE=Buzdolabı|OVEN=Fırın|PAN=Tava|FOOD=Yiyecek|COOK=Yemek pişirmek
+> Evdeki günlük eşyalar
+KEY=Anahtar|BOX=Kutu|BAG=Çanta|PICTURE=Resim|RADIO=Radyo|COMPUTER=Bilgisayar|PHONE=Telefon|TELEVISION=Televizyon|CAMERA=Fotoğraf makinesi|BOOK=Kitap|MAGAZINE=Dergi|TOY=Oyuncak|DOLL=Oyuncak bebek|LIGHT=Işık
+> Konum ve evde işler
+OPEN=Kapıyı açmak|CLOSE=Kapıyı kapatmak|PUT=Koymak|FIND=Bulmak|LOOK=Bakmak|UNDER=Altında|BEHIND=Arkasında|INSIDE=İçeride|OUTSIDE=Dışarıda|UPSTAIRS=Üst katta|DOWNSTAIRS=Alt katta|NEAR=Yakınında|BETWEEN=İki şeyin arasında
+# A1|a1-school|Okul ve Sınıf
+> Sınıf eşyaları
+PEN=Mürekkepli kalem|PENCIL=Kurşun kalem|PAPER=Kâğıt|RULER=Cetvel|BOARD=Sınıf tahtası|DESK=Sıra veya çalışma masası|BAG=Çanta|BOOK=Kitap|NOTEBOOK=Not defteri|ERASER=Silgi|PAGE=Sayfa|MAP=Harita|PICTURE=Resim
+> Okuldaki kişiler ve yerler
+TEACHER=Öğretmen|STUDENT=Öğrenci|PUPIL=Okul öğrencisi, Britanya İngilizcesi|CLASSMATE=Sınıf arkadaşı|SCHOOL=Okul|CLASSROOM=Sınıf odası|LIBRARY=Kütüphane|CLASS=Sınıf, öğrenci grubu|OFFICE=Büro|GROUP=Grup|TEAM=Takım|FRIEND=Arkadaş|COACH=Spor antrenörü
+> Ders ve çalışma
+LESSON=Ders|HOMEWORK=Ev ödevi|TEST=Test, küçük sınav|QUESTION=Soru|ANSWER=Cevap|EXAMPLE=Örnek|WORD=Kelime|SENTENCE=Cümle|STORY=Hikâye|DICTIONARY=Sözlük|NUMBER=Sayı|POINT=Puan|NOTE=Kısa not
+> Sınıfta yapılanlar
+READ=Okumak|WRITE=Yazmak|LISTEN=Dinlemek|SPEAK=Konuşmak|DRAW=Çizmek|COUNT=Saymak|ASK=Sormak|SPELL=Harflerini tek tek söylemek|LEARN=Öğrenmek|TEACH=Öğretmek|REPEAT=Tekrar etmek|SHOW=Göstermek|CHECK=Kontrol etmek
+> Dersler ve okul günü
+ENGLISH=İngilizce|MATHS=Matematik, Britanya İngilizcesi|SCIENCE=Fen, bilim|HISTORY=Tarih|MUSIC=Müzik|ART=Sanat|SPORT=Spor|MONDAY=Pazartesi|MORNING=Sabah|LUNCH=Öğle yemeği|BREAK=Ara, teneffüs|TIME=Zaman|CLOCK=Saat, duvar saati
+> Yönergeler ve özellikler
+OPEN=Açmak|CLOSE=Kapatmak|START=Başlamak|FINISH=Bitirmek|STOP=Durmak|CORRECT=Doğru, hatasız|WRONG=Yanlış|EASY=Kolay|DIFFICULT=Zor|FIRST=İlk, birinci|LAST=Son|READY=Hazır|QUIET=Sessiz
+# A1|a1-nature|Hayvanlar ve Doğa
+> Evcil hayvanlar ve çiftlik
+CAT=Kedi|DOG=Köpek|RABBIT=Tavşan|HORSE=At|COW=İnek|SHEEP=Koyun|GOAT=Keçi|PIG=Domuz|CHICKEN=Tavuk|DUCK=Ördek|PET=Evcil hayvan|FARM=Çiftlik|MOUSE=Fare
+> Yaban hayatı
+LION=Aslan|TIGER=Kaplan|BEAR=Ayı|ELEPHANT=Fil|MONKEY=Maymun|ZEBRA=Zebra|GIRAFFE=Zürafa|SNAKE=Yılan|FROG=Kurbağa|FISH=Balık|BIRD=Kuş|ZOO=Hayvanat bahçesi|ANIMAL=Hayvan
+> Kuşlar ve küçük canlılar
+BEE=Arı|ANT=Karınca|FLY=Sinek|SPIDER=Örümcek|BUTTERFLY=Kelebek|PENGUIN=Penguen|SWAN=Kuğu|EGG=Yumurta|WING=Kanat|TAIL=Kuyruk|NEST=Kuş yuvası|INSECT=Böcek|HONEY=Bal
+> Hava ve mevsimler
+SUN=Güneş|RAIN=Yağmur|SNOW=Kar|WIND=Rüzgâr|CLOUD=Bulut|SKY=Gökyüzü|SPRING=İlkbahar|SUMMER=Yaz mevsimi|AUTUMN=Sonbahar, Britanya İngilizcesi|WINTER=Kış|SUNNY=Güneşli|RAINY=Yağmurlu|WARM=Ilık
+> Yer şekilleri ve bitkiler
+TREE=Ağaç|FLOWER=Çiçek|GRASS=Çimen|LEAF=Yaprak|FOREST=Orman|RIVER=Nehir|LAKE=Göl|SEA=Deniz|BEACH=Plaj|MOUNTAIN=Dağ|HILL=Tepe|ISLAND=Ada|PARK=Park
+> Renkler ve doğada hareket
+GREEN=Yeşil|BLUE=Mavi|BROWN=Kahverengi|BLACK=Siyah|WHITE=Beyaz|RED=Kırmızı|YELLOW=Sarı|GREY=Gri, Britanya yazımı|SWIM=Yüzmek|RUN=Koşmak|FLYING=Uçma|CLIMB=Tırmanmak|JUMP=Zıplamak|WALK=Yürümek

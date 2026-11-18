@@ -1,0 +1,177 @@
+# Tür, V1, V2, V3, Türkçe anlam, boşluğa gelecek hâl ve örnek cümle (sekme ile ayrılır).
+# D = düzensiz, R = düzenli. Kabul edilen yazımlar | ile ayrılır.
+D	be	was|were	been	olmak	3	I have never ___ to Ankara.
+D	beat	beat	beaten	yenmek (rakibi)	2	Our team ___ the champions last weekend.
+D	become	became	become	bir hâle gelmek	2	The streets ___ quiet after midnight.
+D	begin	began	begun	başlamak	3	The concert has already ___.
+D	bend	bent	bent	bükmek, eğmek	2	She ___ the wire to make a hook.
+D	bet	bet	bet	bahse girmek	1	I would ___ on the home team.
+D	bite	bit	bitten	ısırmak	2	The dog ___ my glove yesterday.
+D	bleed	bled	bled	kanamak	2	His knee ___ after he fell.
+D	blow	blew	blown	üflemek	2	She ___ out the candles in one breath.
+D	break	broke	broken	kırmak	3	Someone has ___ the window.
+D	bring	brought	brought	getirmek	2	He ___ his own lunch yesterday.
+D	build	built	built	inşa etmek	3	They have ___ a bridge across the river.
+D	burn	burned|burnt	burned|burnt	yakmak, yanmak	2	I ___ the toast this morning.
+D	buy	bought	bought	satın almak	2	We ___ these shoes last Saturday.
+D	catch	caught	caught	yakalamak	3	She has ___ three fish this morning.
+D	choose	chose	chosen	seçmek	3	I have ___ the blue notebook.
+D	come	came	come	gelmek	2	My friends ___ to visit yesterday.
+D	cost	cost	cost	bir fiyata mal olmak	2	The tickets ___ fifty lira last year.
+D	cut	cut	cut	kesmek	1	Can you ___ the bread for me?
+D	deal	dealt	dealt	başa çıkmak, ilgilenmek	3	We have already ___ with that problem.
+D	dig	dug	dug	kazmak	2	They ___ a hole for the tree last week.
+D	do	did	done	yapmak (iş veya görev)	3	She has ___ her homework.
+D	draw	drew	drawn	çizmek	2	He ___ a map on the back of the envelope.
+D	dream	dreamed|dreamt	dreamed|dreamt	rüya görmek	2	I ___ about a house by the sea last night.
+D	drink	drank	drunk	içmek	3	I have ___ all the water in my bottle.
+D	drive	drove	driven	araç sürmek	2	We ___ to the coast last summer.
+D	eat	ate	eaten	yemek	3	They have already ___ lunch.
+D	fall	fell	fallen	düşmek	3	A leaf has ___ into my cup.
+D	feed	fed	fed	beslemek	2	Ece ___ the cats before school.
+D	feel	felt	felt	hissetmek	2	I ___ nervous before the interview.
+D	fight	fought	fought	kavga etmek, mücadele etmek	1	We must ___ for clean water.
+D	find	found	found	bulmak	2	I ___ a coin under the sofa yesterday.
+D	fit	fit|fitted	fit|fitted	sığmak, uymak	2	These shoes ___ me well when I tried them on.
+D	fly	flew	flown	uçmak	3	She has never ___ in a helicopter.
+D	forbid	forbade	forbidden	yasaklamak	3	The school has ___ phones during exams.
+D	forget	forgot	forgotten	unutmak	3	I have ___ the password again.
+D	forgive	forgave	forgiven	affetmek	3	They have ___ me for arriving late.
+D	freeze	froze	frozen	donmak	2	The water in the bucket ___ last night.
+D	get	got	got|gotten	almak, elde etmek	3	She has ___ much better at chess.
+D	give	gave	given	vermek	3	He has ___ the keys to his neighbour.
+D	go	went	gone	gitmek	2	I ___ to the library yesterday.
+D	grow	grew	grown	büyümek, yetiştirmek	3	The tomatoes have ___ quickly this month.
+D	hang	hung	hung	asmak (bir eşya)	2	We ___ a picture above the desk yesterday.
+D	have	had	had	sahip olmak	2	I ___ a blue bike when I was ten.
+D	hear	heard	heard	duymak	3	Have you ___ the news yet?
+D	hide	hid	hidden	saklamak, saklanmak	2	He ___ the gift behind the curtain before she arrived.
+D	hit	hit	hit	vurmak, çarpmak	2	The ball ___ the wall during practice.
+D	hold	held	held	tutmak	1	Could you ___ this bag for a moment?
+D	hurt	hurt	hurt	incitmek, acıtmak	2	I ___ my wrist when I fell yesterday.
+D	keep	kept	kept	saklamak, muhafaza etmek	3	She has ___ all her old postcards.
+D	know	knew	known	bilmek, tanımak	3	We have ___ each other for years.
+D	lay	laid	laid	bir şeyi düz bir yere koymak	2	She ___ the book flat on the table before she left.
+D	lead	led	led	önderlik etmek, yol göstermek	2	Our guide ___ us through the forest last Saturday.
+D	learn	learned|learnt	learned|learnt	öğrenmek	3	He has ___ how to make bread.
+D	leave	left	left	ayrılmak, bırakmak	2	I ___ home early this morning.
+D	lend	lent	lent	ödünç vermek	2	She ___ me her umbrella yesterday.
+D	let	let	let	izin vermek	1	Will they ___ us use the hall?
+D	lie	lay	lain	yatmak, uzanmak	2	The cat ___ on the sofa for an hour yesterday.
+D	light	lit|lighted	lit|lighted	yakmak, aydınlatmak	2	They ___ a small fire when it got dark.
+D	lose	lost	lost	kaybetmek	3	We have ___ the receipt.
+D	make	made	made	yapmak, üretmek (bir şey)	3	She has ___ a model of the solar system.
+D	mean	meant	meant	kastetmek, anlamına gelmek	2	I ___ the other door when I said “left”.
+D	meet	met	met	tanışmak, buluşmak	2	I ___ her at a book fair last year.
+D	mistake	mistook	mistaken	başka biri veya bir şey sanmak	2	I ___ him for his brother at the party last week.
+D	pay	paid	paid	ödemek	3	Have you ___ for the tickets yet?
+D	put	put	put	koymak	1	Please ___ the vase on the shelf.
+D	quit	quit	quit	bırakmak, istifa etmek	2	She ___ her job two months ago.
+D	read	read	read	okumak	3	We have ___ the first two chapters.
+D	ride	rode	ridden	binmek, bisiklet sürmek	2	She ___ her bike to school yesterday.
+D	ring	rang	rung	çalmak (telefon veya zil)	2	The phone ___ while I was cooking.
+D	rise	rose	risen	yükselmek	3	The water has ___ above the mark.
+D	run	ran	run	koşmak	2	He ___ to catch the bus this morning.
+D	say	said	said	söylemek, demek	2	She ___ hello when she arrived.
+D	see	saw	seen	görmek	3	I have ___ that bird in this park before.
+D	seek	sought	sought	aramak, peşine düşmek	2	We ___ shelter when the storm started.
+D	sell	sold	sold	satmak	2	They ___ the last ticket an hour ago.
+D	send	sent	sent	göndermek	3	I have ___ you the address.
+D	set	set	set	ayarlamak	1	Could you ___ the alarm for seven?
+D	shake	shook	shaken	sallamak	2	I ___ the bottle before I opened it.
+D	shine	shone|shined	shone|shined	parlamak	2	The stars ___ brightly last night.
+D	shoot	shot	shot	şut çekmek, ateş etmek	2	The striker ___ from outside the box in yesterday’s match.
+D	show	showed	shown|showed	göstermek	3	She has ___ us how the machine works.
+D	shrink	shrank|shrunk	shrunk	çekmek, küçülmek	2	My sweater ___ in the wash yesterday.
+D	shut	shut	shut	kapatmak (kapıyı, pencereyi)	1	Please ___ the door quietly.
+D	sing	sang	sung	şarkı söylemek	2	They ___ together at the school concert last Friday.
+D	sink	sank|sunk	sunk	batmak	3	The toy boat has ___ to the bottom.
+D	sit	sat	sat	oturmak	2	We ___ by the window at dinner last night.
+D	sleep	slept	slept	uyumak	2	I ___ for eight hours last night.
+D	slide	slid	slid	kaymak, kaydırmak	2	The book ___ off the desk when I moved it.
+D	smell	smelled|smelt	smelled|smelt	koklamak, kokmak	2	The kitchen ___ of fresh bread this morning.
+D	speak	spoke	spoken	konuşmak (bir dili, biriyle)	3	Have you ___ to the new teacher yet?
+D	speed	sped|speeded	sped|speeded	hızlanmak	2	The bus ___ up once it reached the main road.
+D	spend	spent	spent	harcamak, zaman geçirmek	3	We have ___ the entire afternoon in the garden.
+D	spill	spilled|spilt	spilled|spilt	dökmek	2	I ___ coffee on my notes yesterday.
+D	spin	spun	spun	dönmek, döndürmek	2	The wheel ___ for another minute after I let it go.
+D	spread	spread	spread	yaymak, yayılmak	3	The news has ___ through the school.
+D	stand	stood	stood	ayakta durmak	2	They ___ by the entrance until the doors opened.
+D	steal	stole	stolen	çalmak (hırsızlık)	3	Someone has ___ my bike.
+D	stick	stuck	stuck	yapıştırmak, yapışmak	2	She ___ the note to the fridge before she left.
+D	sting	stung	stung	sokmak (arı vb.)	2	A bee ___ me on the hand yesterday.
+D	strike	struck	struck	vurmak, çarpmak (yıldırım vb.)	2	Lightning ___ the old tree during last night’s storm.
+D	sweep	swept	swept	süpürmek	2	I ___ the kitchen floor this morning.
+D	swim	swam	swum	yüzmek	3	He has never ___ in this lake.
+D	swing	swung	swung	sallanmak, sallamak	2	The gate ___ open when the wind picked up.
+D	take	took	taken	almak, götürmek	3	She has ___ a photo of the board.
+D	teach	taught	taught	öğretmek	2	He ___ us how to read a map last week.
+D	tear	tore	torn	yırtmak	3	I have ___ the paper by accident.
+D	tell	told	told	anlatmak, söylemek (birine)	2	My uncle ___ us a funny story last night.
+D	think	thought	thought	düşünmek	2	I ___ it was Monday when I woke up.
+D	throw	threw	thrown	atmak, fırlatmak	2	She ___ the ball to me during yesterday’s practice.
+D	understand	understood	understood	anlamak	2	I finally ___ the joke when she explained it.
+D	wake	woke|waked	woken|waked	uyanmak, uyandırmak	3	The baby has just ___ up.
+D	wear	wore	worn	giymek, üzerinde taşımak	2	I ___ my warmest coat yesterday.
+D	weep	wept	wept	ağlamak	2	He ___ with relief when he heard the news.
+D	win	won	won	kazanmak (yarış veya ödül)	3	Our team has ___ three matches this month.
+D	withdraw	withdrew	withdrawn	geri çekmek, para çekmek	3	She has ___ her application.
+D	write	wrote	written	yazmak	3	I have ___ your number in my notebook.
+R	accept	accepted	accepted	kabul etmek	2	She ___ the invitation yesterday.
+R	answer	answered	answered	cevap vermek	3	I have ___ the first five questions.
+R	arrive	arrived	arrived	varmak	2	The train ___ late this morning.
+R	ask	asked	asked	sormak, istemek	1	Can you ___ him for directions?
+R	believe	believed	believed	inanmak	2	I ___ him until I saw the letter.
+R	borrow	borrowed	borrowed	ödünç almak	2	He ___ a book from me yesterday.
+R	call	called	called	aramak, çağırmak	3	She has ___ twice this afternoon.
+R	carry	carried	carried	taşımak	2	He ___ the box up the stairs yesterday.
+R	change	changed	changed	değiştirmek, değişmek	3	We have ___ the meeting time.
+R	clean	cleaned	cleaned	temizlemek	2	I ___ the windows last Saturday.
+R	close	closed	closed	kapatmak	1	Could you ___ the window?
+R	cook	cooked	cooked	yemek pişirmek	2	They ___ soup for dinner yesterday.
+R	copy	copied	copied	kopyalamak	3	I have ___ the address into my diary.
+R	decide	decided	decided	karar vermek	3	We have ___ to take the early train.
+R	describe	described	described	betimlemek, tarif etmek	2	She ___ the garden in her last letter.
+R	discover	discovered	discovered	keşfetmek	2	We ___ a quiet café near the station yesterday.
+R	drop	dropped	dropped	düşürmek	2	I ___ my keys on the way home last night.
+R	enjoy	enjoyed	enjoyed	keyif almak	2	They ___ the concert last Friday.
+R	explain	explained	explained	açıklamak	3	The teacher has already ___ the rule.
+R	finish	finished	finished	bitirmek	3	Have you ___ your project yet?
+R	fix	fixed	fixed	tamir etmek	2	He ___ the loose handle yesterday.
+R	help	helped	helped	yardım etmek	2	My sister ___ me with the boxes last night.
+R	hope	hoped	hoped	ummak	2	I ___ to catch the train yesterday.
+R	invite	invited	invited	davet etmek	3	We have ___ our neighbours to dinner.
+R	join	joined	joined	katılmak	2	Ece ___ the chess club last month.
+R	listen	listened	listened	dinlemek	2	We ___ to music on the way home yesterday.
+R	live	lived	lived	yaşamak, ikamet etmek	3	She has ___ here since January.
+R	move	moved	moved	taşınmak, hareket ettirmek	2	We ___ to a smaller flat last year.
+R	need	needed	needed	ihtiyaç duymak	2	I ___ some rest after yesterday’s long walk.
+R	notice	noticed	noticed	fark etmek	3	Have you ___ any changes in the timetable?
+R	open	opened	opened	açmak	2	The shop ___ at nine yesterday.
+R	paint	painted	painted	boyamak, resim yapmak	3	They have ___ the door green.
+R	plan	planned	planned	planlamak	3	We have ___ the entire trip.
+R	play	played	played	oynamak	2	They ___ basketball after school yesterday.
+R	practise|practice	practised|practiced	practised|practiced	alıştırma yapmak	3	She has ___ the song every evening this week.
+R	prefer	preferred	preferred	tercih etmek	2	I ___ the blue jacket when I tried both on.
+R	prepare	prepared	prepared	hazırlamak	3	We have ___ everything for the picnic.
+R	promise	promised	promised	söz vermek	2	He ___ to call before leaving yesterday.
+R	remember	remembered	remembered	hatırlamak	1	Can you ___ where we parked?
+R	repair	repaired	repaired	onarmak	3	They have ___ the broken step.
+R	reply	replied	replied	yanıt vermek	3	She has already ___ to my message.
+R	save	saved	saved	biriktirmek, kaydetmek	3	I have ___ enough money for the trip.
+R	start	started	started	başlamak, başlatmak	2	We ___ the game after lunch yesterday.
+R	stay	stayed	stayed	kalmak	2	They ___ with friends last weekend.
+R	stop	stopped	stopped	durmak, durdurmak	2	The bus ___ at the corner a minute ago.
+R	study	studied	studied	ders çalışmak, incelemek	2	I ___ English for an hour last night.
+R	talk	talked	talked	konuşmak, sohbet etmek	1	Can we ___ about the homework?
+R	thank	thanked	thanked	teşekkür etmek	2	I ___ her for the book yesterday.
+R	travel	travelled|traveled	travelled|traveled	seyahat etmek	3	He has ___ to three countries this year.
+R	try	tried	tried	denemek, çabalamak	3	I have ___ that recipe before.
+R	use	used	used	kullanmak	1	May I ___ your dictionary?
+R	visit	visited	visited	ziyaret etmek	2	We ___ the museum last Tuesday.
+R	wait	waited	waited	beklemek	2	I ___ at the bus stop for twenty minutes yesterday.
+R	walk	walked	walked	yürümek	2	They ___ home together last night.
+R	want	wanted	wanted	istemek	2	She ___ a hot drink after yesterday’s walk.
+R	watch	watched	watched	izlemek	2	We ___ a film after dinner yesterday.
+R	work	worked	worked	çalışmak	3	He has ___ at this library since June.
+R	worry	worried	worried	endişelenmek	2	We ___ about the weather all day yesterday.

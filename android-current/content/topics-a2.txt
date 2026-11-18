@@ -1,0 +1,65 @@
+# A2|a2-travel|Seyahat ve Ulaşım
+> Havalimanı ve uçuş
+FLIGHT=Uçuş|AIRPORT=Havalimanı|GATE=Uçağa biniş kapısı|AISLE=Koltuk sıraları arasındaki geçit|PASSENGER=Yolcu|SEAT=Koltuk, oturulan yer|AIRLINE=Havayolu şirketi|BOARDING PASS=Biniş kartı|TAKE OFF=Uçağın havalanması|LAND=Uçağın yere inmesi|PILOT=Pilot|DELAY=Gecikme|CANCEL=İptal etmek
+> İstasyon ve toplu taşıma
+TRAM=Tramvay|TRAIN=Tren|BUS STOP=Otobüs durağı|STATION=İstasyon|PLATFORM=Tren bekleme peronu|TIMETABLE=Sefer çizelgesi|FARE=Bilet ücreti|TICKET=Bilet|RETURN TICKET=Gidiş dönüş bileti|SINGLE TICKET=Tek yön bileti|ENTRANCE=Giriş, giriş kapısı|STOP=Durak|LATE=Geç kalmış
+> Yollar ve araçlar
+MOTORWAY=Otoyol, Britanya İngilizcesi|ROUNDABOUT=Dönel kavşak|TRAFFIC=Trafik|TRAFFIC LIGHT=Trafik ışığı|LANE=Yol şeridi|PATH=Patika|ROAD=Yol|CROSS=Karşıya geçmek|CYCLING=Bisiklet sürme|TYRE=Araç lastiği, Britanya yazımı|PETROL=Benzin, Britanya İngilizcesi|DRIVER=Sürücü|BRIDGE=Köprü
+> Yol tarifi
+DIRECTION=Yön, istikamet|LEFT=Sol|RIGHT=Sağ, yön|STRAIGHT=Dümdüz|CORNER=Köşe|OPPOSITE=Karşısında|NEARBY=Yakında, civarda|FOLLOW=Takip etmek|TURN=Dönmek|MAP=Harita|ROUTE=İzlenen güzergâh|SIGN=Levha|DISTANCE=Mesafe
+> Konaklama ve hazırlık
+SUITCASE=Bavul|PACK=Valize yerleştirmek|BOOK=Önceden yer ayırtmak|HOTEL=Otel|GUEST=Otel konuğu|RECEPTION=Otelin karşılama bölümü|KEY CARD=Kapıyı açan otel kartı|ROOM=Oda|STAY=Konaklamak|ARRIVE=Varış noktasına ulaşmak|LEAVE=Ayrılmak|PLAN=Plan yapmak|PASSPORT=Pasaport
+> Gezilecek yerler ve deneyimler
+JOURNEY=Bir yerden bir yere yolculuk|TOURIST=Turist|TOUR=Rehberli veya planlı gezi|SIGHTSEEING=Görülecek turistik yerleri gezme|CASTLE=Kale|MUSEUM=Müze|CAPITAL=Başkent|VILLAGE=Köy|COUNTRYSIDE=Kırsal bölge|CRUISE=Turistik gemi gezisi|PHOTO=Fotoğraf|HOLIDAY=Tatil, Britanya İngilizcesi|VISIT=Ziyaret etmek
+# A2|a2-food|Yiyecek ve İçecek
+> Meyve ve sebze alışverişi
+PEAR=Armut|LEMON=Limon|MELON=Kavun|CARROT=Havuç|ONION=Soğan|GARLIC=Sarımsak|MUSHROOM=Mantar|CUCUMBER=Salatalık|LETTUCE=Marul|CABBAGE=Lahana|FRESH=Taze|RIPE=Olgun, meyve için|BASKET=Sepet
+> Malzemeler ve çeşniler
+FLOUR=Un|SALT=Tuz|PEPPER=Yemeğe serpilen biber|HONEY=Bal|JAM=Reçel|SAUCE=Yemeğe eklenen sos|SPICE=Baharat|OIL=Yemeklik yağ|VINEGAR=Sirke|DOUGH=Hamur|YEAST=Maya|MIX=Karıştırmak|ADD=Eklemek
+> Mutfak araçları
+OVEN=Fırın|PAN=Tava|COOKER=Yemek pişirme ocağı, Britanya İngilizcesi|STOVE=Ocak, Amerikan İngilizcesi|FRIDGE=Buzdolabı|CUPBOARD=Kapaklı dolap|FORK=Çatal|SPOON=Kaşık|NAPKIN=Peçete|TRAY=Tepsi|KETTLE=Su ısıtıcısı|TIMER=Süreölçer, zamanlayıcı|LID=Kapak
+> Hazırlama ve pişirme
+SLICE=Dilim|PEEL=Kabuğunu soymak|CHOP=Parçalara doğramak|BOIL=Kaynatmak|FRY=Yağda kızartmak|BAKE=Fırında pişirmek|GRILL=Izgarada pişirmek|STIR=Kaşıkla karıştırmak|POUR=Dökmek, sıvı aktarmak|SERVE=Yemeği sunmak|HEAT=Isıtmak|SPREAD=Sürmek, yaymak|PREPARE=Hazırlamak
+> Menüde neler var
+MENU=Yemek listesi|SAUSAGE=Sosis|STEAK=Biftek|SEAFOOD=Deniz ürünleri|PASTA=Makarna|TOAST=Kızarmış ekmek|CEREAL=Kahvaltılık gevrek|SNACK=Atıştırmalık|DESSERT=Yemekten sonra yenilen tatlı|LEMONADE=Limonata|YOGURT=Yoğurt|NOODLES=Erişte|BARBECUE=Mangal
+> Tatlar ve beslenme
+SWEET=Tatlı, şekerli|SOUR=Ekşi|BITTER=Acımsı, kahve gibi|SALTY=Tuzlu|SPICY=Baharatlı|DELICIOUS=Çok lezzetli|RAW=Çiğ|COOKED=Pişmiş|VEGETARIAN=Et yemeyen kişi|DIET=Beslenme düzeni|HEALTHY=Sağlıklı|SUGAR=Şeker|RECIPE=Yemek tarifi
+# A2|a2-shopping|Alışveriş ve Para
+> Mağazalar ve bölümler
+SHOP=Dükkân, mağaza|MARKET=Pazar|SUPERMARKET=Süpermarket|BAKERY=Fırın, ekmek satan dükkân|PHARMACY=Eczane|BOOKSHOP=Kitapçı, Britanya İngilizcesi|CUSTOMER=Müşteri|CASHIER=Kasiyer|COUNTER=Mağaza tezgâhı|TROLLEY=Alışveriş arabası, Britanya İngilizcesi|BASKET=Sepet|AISLE=Reyonlar arasındaki geçit|SHELF=Raf
+> Fiyat, ödeme ve hesap
+PRICE=Fiyat|CASH=Nakit para|COIN=Madeni para|NOTE=Kâğıt para, banknot|CARD=Ödeme kartı|CHANGE=Para üstü|TOTAL=Toplam tutar|COST=Maliyet, bir şeyin tutarı|RECEIPT=Ödeme fişi|PAY=Ödemek|SPEND=Para harcamak|SAVE=Para biriktirmek|WALLET=Cüzdan
+> Giyim ve beden
+SIZE=Beden, ölçü|FIT=Bedene uymak|TRY ON=Giysiyi üzerinde denemek|TROUSERS=Pantolon, Britanya İngilizcesi|JACKET=Ceket|SKIRT=Etek|SHIRT=Gömlek|SWEATER=Kazak|BELT=Kemer|SCARF=Atkı|GLOVE=Eldiven|SOCK=Çorap, tekil|HANDBAG=El çantası
+> İndirim ve seçenekler
+SALE=İndirimli satış dönemi|DISCOUNT=Fiyatta indirim|OFFER=Kampanya, özel teklif|CHEAP=Ucuz|EXPENSIVE=Pahalı|COMPARE=Karşılaştırmak|CHOOSE=Seçmek|COLOR=Renk, Amerikan yazımı|AVAILABLE=Mevcut, satın alınabilir|SOLD OUT=Tükenmiş|DEAL=Avantajlı alışveriş fırsatı|LABEL=Ürün etiketi|BRAND=Marka
+> İade ve müşteri hizmeti
+RETURN=Ürünü iade etmek|REFUND=Paranın geri ödenmesi|EXCHANGE=Bir ürünü başka ürünle değiştirmek|BROKEN=Kırık veya bozuk|DAMAGED=Zarar görmüş|MISSING=Eksik, yerinde olmayan|REPLACE=Yerine yenisini vermek|COMPLAIN=Şikâyet etmek|MANAGER=Mağaza yöneticisi|SERVICE=Hizmet|HELP=Yardım etmek|POLITE=Kibar|ACCEPT=Kabul etmek
+> İnternetten alışveriş
+ORDER=Sipariş|DELIVERY=Teslimat|ADDRESS=Adres|PACKAGE=Paket|EMAIL=E-posta|ONLINE=Çevrim içi|PASSWORD=Şifre|SEARCH=Aramak|CLICK=Tıklamak|ITEM=Tek bir ürün|CHECK=Kontrol etmek|ARRIVE=Ulaşmak, varmak|WAIT=Beklemek
+# A2|a2-health|Sağlık ve Günlük Bakım
+> Vücut ve küçük rahatsızlıklar
+ANKLE=Ayak bileği|CHEST=Göğüs|LIP=Dudak|STOMACH=Mide|TOE=Ayak parmağı|BLOOD=Kan|CHIN=Çene ucu|TOOTHACHE=Diş ağrısı|COUGH=Öksürük|COLD=Soğuk algınlığı|PAIN=Ağrı|CUT=Kesik|BRUISE=Çürük, morluk
+> Doktora gitmek
+DENTIST=Diş hekimi|PATIENT=Sağlık hizmeti alan kişi|APPOINTMENT=Randevu|CLINIC=Klinik|DOCTOR=Doktor|NURSE=Hemşire|HOSPITAL=Hastane|EMERGENCY=Acil durum|AMBULANCE=Ambulans|WAITING ROOM=Bekleme odası|CHECK=Kontrol etmek|EXPLAIN=Açıklamak|CALL=Telefon etmek
+> Belirti anlatmak
+TEMPERATURE=Vücut sıcaklığı|FEVER=Yüksek ateş|HURT=Acımak, ağrımak|SICK=Hasta|ILL=Rahatsız, hasta|TIRED=Yorgun|WEAK=Güçsüz|DIZZY=Başı dönen|WORRIED=Endişeli|SORE=Ağrıyan, hassas|BREATHE=Nefes almak|REST=Dinlenmek|FEEL=Hissetmek
+> Tedavi ve iyileşme
+PILL=Hap|MEDICINE=İlaç|BANDAGE=Sargı bezi|TAKE=İlaç almak|RECOVER=İyileşmek|BETTER=Daha iyi|WORSE=Daha kötü|FOLLOW=Tavsiyeye uymak|ADVICE=Tavsiye|IMPORTANT=Önemli|CARE=Bakım|INJURY=Yaralanma|SAFE=Güvenli
+> Sağlıklı alışkanlıklar
+EXERCISE=Egzersiz|HEALTHY=Sağlıklı|FRESH=Taze|WATER=Su|SLEEP=Uyku|WALK=Yürüyüş yapmak|CYCLE=Bisiklet sürmek|SWIM=Yüzmek|FRUIT=Meyve|VEGETABLE=Sebze|MEAL=Öğün|HABIT=Alışkanlık|REGULAR=Düzenli
+> Temizlik ve günlük bakım
+TOOTHBRUSH=Diş fırçası|TOOTHPASTE=Diş macunu|SOAP=Sabun|SHAMPOO=Şampuan|TOWEL=Havlu|SHOWER=Duş|COMB=Tarak|WASH=Yıkamak|CLEAN=Temizlemek|DRY=Kurulamak|MIRROR=Ayna|SKIN=Cilt|BRUSH=Fırçalamak
+# A2|a2-hobbies|Hobiler ve Boş Zaman
+> Spor ve antrenman
+PLAYER=Oyuncu|MATCH=Spor karşılaşması|TEAM=Takım|COACH=Antrenör|PRACTICE=Antrenman veya tekrar|TRAIN=Antrenman yapmak|GOAL=Gol|SCORE=Sayı yapmak veya gol atmak|RACE=Yarış|WIN=Kazanmak|LOSE=Kaybetmek|SWIMMING=Yüzme|CYCLING=Bisiklet sürme
+> Müzik ve sahne
+GUITAR=Gitar|PIANO=Piyano|DRUM=Davul|VIOLIN=Keman|BAND=Müzik grubu|CONCERT=Konser|STAGE=Sahne|SINGER=Şarkıcı|SONG=Şarkı|VOICE=İnsan sesi|DANCE=Dans etmek|RECORD=Ses kaydetmek|TICKET=Bilet
+> Sinema ve hikâyeler
+CINEMA=Sinema salonu|FILM=Film, Britanya İngilizcesi|MOVIE=Film, Amerikan İngilizcesi|ACTOR=Oyuncu|SCENE=Sahne, filmin bir bölümü|CHARACTER=Hikâyedeki karakter|STORY=Hikâye|PLOT=Olay örgüsü|ENDING=Hikâyenin sonu|COMEDY=Komedi|TICKET=Bilet|SCREEN=Ekran, perde|AUDIENCE=Seyirci topluluğu
+> El işleri ve görsel sanat
+PAINT=Boyamak|BRUSH=Boya fırçası|DRAW=Resim çizmek|SKETCH=Taslak çizim|PENCIL=Kurşun kalem|PAPER=Kâğıt|CUT=Kesmek|GLUE=Yapıştırıcı|CARD=Kalın kart kâğıdı|PATTERN=Desen|COLOR=Renk, Amerikan yazımı|DESIGN=Tasarım|PHOTO=Fotoğraf
+> Açık hava ve hafta sonu
+CAMP=Kamp yapmak|TENT=Çadır|BACKPACK=Sırt çantası|HIKE=Doğa yürüyüşü|PICNIC=Piknik|PARK=Park|LAKE=Göl|FOREST=Orman|PATH=Patika|BEACH=Plaj|FISHING=Balık tutma|RELAX=Rahatlamak|WEEKEND=Hafta sonu
+> Oyunlar ve okumak
+PUZZLE=Bulmaca|CHESS=Satranç|BOARD GAME=Masa oyunu|CARD GAME=Kart oyunu|ROUND=Oyun turu|RULE=Kural|TURN=Oyun sırası|POINT=Puan|BOOK=Kitap|COMIC=Çizgi roman|MAGAZINE=Dergi|LIBRARY=Kütüphane|COLLECT=Koleksiyon yapmak
