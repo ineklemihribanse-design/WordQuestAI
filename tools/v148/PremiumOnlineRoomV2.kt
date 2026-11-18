@@ -43,6 +43,7 @@ internal data class PremiumOnlineMatch(
     val rulesVersion: Int = 1,
     val replayBy: Map<Int, Map<String, String>> = emptyMap(),
     val hintBy: Map<String, Set<Int>> = emptyMap(),
+    val readyBy: Set<String> = emptySet(),
 ) {
     val complete: Boolean get() = if (mode == "quiz") {
         hostUid.isNotBlank() && guestUid.isNotBlank() &&
@@ -358,6 +359,9 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                         }
                     }.toSet() }
                 }.toMap()
+                val readyBy = snapshot.child("ready").children.filter {
+                    it.getValue(Boolean::class.java) == true
+                }.mapNotNull {it.key}.toSet()
                 match = PremiumOnlineMatch(code, childString("hostUid"), childString("guestUid"),
                     childString("hostName"), childString("guestName"), childString("phase"),
                     childString("mode"), childString("boardId"), childString("level"),
@@ -365,7 +369,7 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                     snapshot.child("turn").child("uid").getValue(String::class.java).orEmpty(),
                     snapshot.child("turn").child("until").getValue(Long::class.java) ?: 0L,
                     solved, answers, unknown, mistakes,
-                    childInt("rulesVersion").takeIf {it>0} ?: 1,replay,hintBy)
+                    childInt("rulesVersion").takeIf {it>0} ?: 1,replay,hintBy,readyBy)
             }
             override fun onCancelled(error: DatabaseError) {
                 status = "Oda bağlantısı reddedildi: ${error.message}"
@@ -374,9 +378,17 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
         }.also(next::addValueEventListener)
     }
 
+    fun toggleReady() {
+        val m=match ?: return
+        if(m.phase != "lobby" || uid !in listOf(m.hostUid,m.guestUid)) return
+        ref?.child("ready")?.child(uid)?.setValue(uid !in m.readyBy)
+            ?.addOnFailureListener {status="Hazır durumu kaydedilemedi."}
+    }
+
     fun start() {
         val m = match ?: return
-        if (!isHost || m.guestUid.isBlank() || m.phase != "lobby" || busy) return
+        if (!isHost || m.guestUid.isBlank() || m.phase != "lobby" || busy ||
+            (m.rulesVersion >= 2 && !m.readyBy.containsAll(listOf(m.hostUid,m.guestUid)))) return
         val room = ref ?: return
         busy = true
         status = "Oyuncular hazırlanıyor…"
