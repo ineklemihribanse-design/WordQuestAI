@@ -117,7 +117,7 @@ internal fun ArenaCompactCrosswordBoard(
 ) {
     val positionedDraft = fillCrosswordGaps(crosswordFixedPattern(puzzle, solved, selected), typed)
     if (!compact) {
-        ArenaPuzzleGrid(puzzle, solved, selected, positionedDraft, compact, onSelect)
+        ArenaBoardV2(puzzle, solved, selected, positionedDraft, compact, onSelect)
         return
     }
 
@@ -141,6 +141,6 @@ internal fun ArenaCompactCrosswordBoard(
             .clip(RoundedCornerShape(12.dp))
             .verticalScroll(scroll)
     ) {
-        ArenaPuzzleGrid(puzzle, solved, selected, positionedDraft, compact, onSelect)
+        ArenaBoardV2(puzzle, solved, selected, positionedDraft, compact, onSelect)
     }
 }
