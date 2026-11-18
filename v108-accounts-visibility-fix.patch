@@ -1,0 +1,11 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/Accounts.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/Accounts.kt
+@@ -116,7 +116,7 @@
+      * Re-authentication happens BEFORE any destructive database changes.
+      */
+     @SuppressLint("CredentialManagerSignInWithGoogle")
+-    suspend fun deleteWordQuestAccount(): AccountDeletionResult {
++    internal suspend fun deleteWordQuestAccount(): AccountDeletionResult {
+         val service = auth ?: return AccountDeletionResult.Failed("Firebase hesabı kullanılamıyor.")
+         val current = service.currentUser ?: return AccountDeletionResult.Failed("Önce Google hesabınla giriş yap.")
+         val userId = current.uid

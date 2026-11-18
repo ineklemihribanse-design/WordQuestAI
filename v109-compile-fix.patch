@@ -1,0 +1,30 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
+@@ -102,7 +102,7 @@
+     val oauthWebClientId get() = accounts.clientId
+     fun isValidOAuthId(id: String): Boolean = id.trim().matches(Regex("^[0-9]+-[A-Za-z0-9-]+\\.apps\\.googleusercontent\\.com$"))
+     fun configureOAuth(id: String): Boolean = accounts.configureWebId(id)
+-    val social = FriendsHub(this.context, accounts)
++    internal val social = FriendsHub(this.context, accounts)
+     val profileName get() = if (accountName != null) social.nickname.ifBlank { accountName.orEmpty() }
+         else "Misafir"
+     val learningProfileName get() = profileName
+--- a/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+@@ -571,7 +571,7 @@
+ }
+ 
+ @Composable
+-internal fun FirebaseLiveArenaScreen(session: AppSession, back: () -> Unit, legacyServer: () -> Unit) {
++internal fun FirebaseLiveArenaScreen(session: AppSession, back: () -> Unit, legacyServer: () -> Unit, onAccount: () -> Unit) {
+     val context = LocalContext.current
+     val settings = remember { context.getSharedPreferences("firebase_room_config", Context.MODE_PRIVATE) }
+     val client = remember { FirebaseLiveArena(context.applicationContext) }
+@@ -624,6 +624,7 @@
+         }
+         HorizontalDivider()
+         BodyText("Kullanıcı adı Hesap bölümünden belirlenir ve tüm yarışma odalarında aynı ad kullanılır.")
++        TextButton(onClick = onAccount) { Text("Hesap ve kullanıcı adı") }
+         if (client.nameSaved) BodyText("Oyuncu: ${client.playerName}", Forest)
+         else BodyText(if (session.accountName == null) "Arkadaşlarınla yarışmak için önce Hesap bölümünden giriş yapıp kullanıcı adını kaydet."
+             else if (client.nameLoaded) "Hesap bölümünden bir kullanıcı adı belirle." else "Kullanıcı adı okunuyor…")

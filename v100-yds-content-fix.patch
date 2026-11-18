@@ -1,0 +1,11 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/YdsContent.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/YdsContent.kt
+@@ -66,7 +66,7 @@
+ 
+         q("p01", P, E, "Please ____ your shoes before entering the house.", "take off", "turn up", "give in", "get over", "Take off = çıkarmak (ayakkabı/giysi).", "take off"),
+         q("p02", P, E, "Can you ____ this word in the dictionary?", "look up", "put away", "break down", "come across", "Look up = sözlükte arayıp bulmak.", "look up"),
+-        q("p03", P, E, "Don't ____; you can solve this problem.", "give up", "set off", "take after", "bring about", "Give up = pes etmek.", "give up"),
++        q("p03", P, E, "Don't ____; you can solve this problem.", "give up", "set off", "take after", "bring about", "Give up = pes etmek, vazgeçmek. Olumsuz emirle Don't give up şeklinde kullanılır.", "give up"),
+         q("p04", P, M, "The meeting was ____ until next Monday.", "put off", "brought up", "carried out", "looked after", "Put off = ertelemek. Meeting was put off = toplantı ertelendi.", "put off"),
+         q("p05", P, M, "Researchers will ____ a series of experiments.", "carry out", "run into", "turn down", "take over", "Carry out = yürütmek/gerçekleştirmek; deneylerle sık kullanılır.", "carry out"),
+         q("p06", P, M, "The teacher asked us to ____ an alternative explanation.", "come up with", "look down on", "get away with", "put up with", "Come up with = fikir veya çözüm üretmek.", "come up with"),

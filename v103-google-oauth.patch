@@ -1,0 +1,23 @@
+--- a/app/src/main/res/values/cloud_config.xml
++++ b/app/src/main/res/values/cloud_config.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <resources>
+-    <string name="cloud_web_client_id" translatable="false"></string>
++    <string name="cloud_web_client_id" translatable="false">198875801515-cn2hcpeg16vs9vsq0de38tbf0ne8t5er.apps.googleusercontent.com</string>
+     <string name="cloud_database_url" translatable="false">https://wordquest-ai-default-rtdb.firebaseio.com</string>
+     <string name="cloud_project_id" translatable="false">wordquest-ai</string>
+     <string name="cloud_application_id" translatable="false">1:198875801515:android:8e184a9b3d6a24c99954ee</string>
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -20,8 +20,8 @@
+         applicationId = "com.kelimebulmacasi.a1.practice"
+         minSdk = 26
+         targetSdk = 35
+-        versionCode = 25
+-        versionName = "1.0.2-firebase-arena"
++        versionCode = 26
++        versionName = "1.0.3-google-oauth"
+         manifestPlaceholders["arenaScheme"] = "wordquestai"
+         buildConfigField("String", "ARENA_SCHEME", "\"wordquestai\"")
+     }
