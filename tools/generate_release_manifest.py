@@ -8,7 +8,7 @@ import sys
 
 meta_file, apk_file, output_file, notes_file = map(Path, sys.argv[1:5])
 meta = json.loads(meta_file.read_text())
-assert meta["applicationId"] == "com.kelimebulmacasi.a1.practice.offline101"
+assert meta["applicationId"] == "com.kelimebulmacasi.a1.practice.fresh"
 item = meta["elements"][0]
 code = int(item["versionCode"])
 name = str(item["versionName"])
