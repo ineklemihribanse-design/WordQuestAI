@@ -129,3 +129,31 @@ internal fun ArenaVictoryV2(winnerName: String, winnerIsHost: Boolean, isDraw: B
             else "Yeni bir maçta yeniden buluşalım!",color=ArenaV2Colors.muted,fontSize=12.sp)
     }
 }
+
+@Composable
+internal fun ArenaRoomPlayersV2(hostName: String, guestName: String, guestPresent: Boolean) {
+    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(17.dp))
+        .background(Color.White).padding(14.dp),
+        verticalArrangement=Arrangement.spacedBy(10.dp)) {
+        Text("OYUNCULAR",color=ArenaV2Colors.violet,fontWeight=FontWeight.Bold,fontSize=12.sp)
+        Row(horizontalArrangement=Arrangement.spacedBy(9.dp)) {
+            Column(Modifier.weight(1f).background(Color(0xFFEFEBFF),RoundedCornerShape(13.dp))
+                .padding(12.dp),horizontalAlignment=Alignment.CenterHorizontally) {
+                ArenaMascotV2("robot",Modifier.size(64.dp))
+                Text(hostName,color=ArenaV2Colors.ink,fontWeight=FontWeight.SemiBold,
+                    fontSize=13.sp,maxLines=1)
+                Text("Oda sahibi",color=ArenaV2Colors.muted,fontSize=11.sp)
+            }
+            Column(Modifier.weight(1f).background(Color(0xFFFFF2EC),RoundedCornerShape(13.dp))
+                .padding(12.dp),horizontalAlignment=Alignment.CenterHorizontally) {
+                if(guestPresent) ArenaMascotV2("fox",Modifier.size(64.dp))
+                else Box(Modifier.size(64.dp),contentAlignment=Alignment.Center) {
+                    Text("+",fontSize=34.sp,color=ArenaV2Colors.muted)
+                }
+                Text(if(guestPresent)guestName else "Arkadaş bekleniyor",
+                    color=ArenaV2Colors.ink,fontWeight=FontWeight.SemiBold,fontSize=13.sp,maxLines=1)
+                Text(if(guestPresent)"Katıldı" else "Davet gönder",color=ArenaV2Colors.muted,fontSize=11.sp)
+            }
+        }
+    }
+}
