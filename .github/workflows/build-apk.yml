@@ -86,7 +86,7 @@ on:
   pull_request:
     branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
 permissions:
-  contents: read
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -826,8 +826,8 @@ jobs:
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
           WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
           WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
-          WQ_UPDATES_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
-          GH_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN }}
+          WQ_UPDATES_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           umask 077
