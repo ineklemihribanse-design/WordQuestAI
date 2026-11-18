@@ -88,6 +88,10 @@ on:
     branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
 permissions:
   contents: read
+concurrency:
+  group: arena-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -798,6 +802,13 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV2Lobby.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV2Visuals.kt
           grep -q 'ArenaHomeV2(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Prepare and audit Arena V2 Firebase rules (do not deploy)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v148/apply_arena_rules_v2.py tools/v148/test_arena_v2_staging.py
+          python3 tools/v148/apply_arena_rules_v2.py
+          python3 tools/v148/test_arena_v2_staging.py
+          python3 -m json.tool source/database.rules.json >/dev/null
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
