@@ -110,12 +110,21 @@ internal data class VocabularyStudyConfig(
 internal fun vocabularyStudyCards(
     session: AppSession, folderId: String, filter: String
 ): List<LearningCard> =
-    if (folderId != "all") session.learningFolderCards(folderId, filter)
+    if (filter == "DUE") session.dueLearningCards(System.currentTimeMillis())
+        .let { due -> if (folderId == "all") due else due.filter { word ->
+            session.learningFolderCards(folderId).any { it.key == word.key }
+        } }
+    else if (folderId != "all") session.learningFolderCards(folderId, filter)
     else session.searchLearning("", 0, 5000).filter { card ->
         when (filter) {
             "BILINMIYOR" -> card.forgotten > 0
             "YANLIS" -> card.wrong > 0
             "YENI" -> card.solved > 0 && card.forgotten == 0 && card.wrong == 0
+            "SMART_NEW" -> card.remembered == 0 && card.forgotten == 0
+            "SMART_LEARNING" -> card.remembered > 0 && card.forgotten > 0
+            "SMART_HARD" -> card.wrong > 0 || card.forgotten > 0
+            "SMART_LEARNED" -> card.remembered > 0 && card.forgotten == 0
+            "SMART_FAVORITE" -> card.pinned
             else -> true
         }
     }
