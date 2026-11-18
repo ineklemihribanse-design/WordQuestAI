@@ -403,6 +403,9 @@ private fun VocabularyConceptVisual(card: LearningCard, profile: String, ai: AiS
                     }, colors = ButtonDefaults.buttonColors(containerColor = MemoryBlue)) {
                         Text("AI Görsel Oluştur", color = Color.White, fontSize = 12.sp)
                     }
+                    Text("Gemini görselleri ücretli olabilir; yalnızca dokununca oluşturulur.",
+                        color = Color(0xFF4C6282), fontSize = 10.sp,
+                        textAlign = TextAlign.Center)
                 }
                 if (error != null) Text(error.orEmpty(), color = Color(0xFF9B3440),
                     fontSize = 10.sp, textAlign = TextAlign.Center)
