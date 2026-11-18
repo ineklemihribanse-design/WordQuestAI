@@ -75,6 +75,7 @@ on:
       - 'tools/v146/**'
       - 'tools/v147/**'
       - 'tools/v122/**'
+      - 'tools/v148/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -789,6 +790,14 @@ jobs:
           python3 tools/v122/apply_mobile_arena_keyboard.py
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaCrosswordInputTest.kt
+      - name: Integrate polished Arena V2 lobby and match UI (safe feature branch)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v148/apply_arena_v2.py
+          python3 tools/v148/apply_arena_v2.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV2Lobby.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV2Visuals.kt
+          grep -q 'ArenaHomeV2(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
