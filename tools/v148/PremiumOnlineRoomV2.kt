@@ -44,6 +44,8 @@ internal data class PremiumOnlineMatch(
     val replayBy: Map<Int, Map<String, String>> = emptyMap(),
     val hintBy: Map<String, Set<Int>> = emptyMap(),
     val readyBy: Set<String> = emptySet(),
+    val hostAvatar: String = "robot",
+    val guestAvatar: String = "fox",
 ) {
     val complete: Boolean get() = if (mode == "quiz") {
         hostUid.isNotBlank() && guestUid.isNotBlank() &&
@@ -123,6 +125,9 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
     private val database: FirebaseDatabase? get() = session.accounts.socialDatabase()
     private val uid: String get() = session.accounts.uid.orEmpty()
     private val nickname: String get() = session.social.nickname
+    private val myAvatar: String get() = context.getSharedPreferences(
+        "wordquest_arena_mascot", Context.MODE_PRIVATE
+    ).getString("kind","robot")?.takeIf {it in listOf("robot","fox","owl")} ?: "robot"
     private val root get() = database?.reference
     private val roomBase get() = root?.child("premiumRooms")
     var match by mutableStateOf<PremiumOnlineMatch?>(null)
@@ -225,7 +230,7 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                 if (slot == null) { busy = false; status = "Oda kotası ayrılamadı."; return@reserve }
                 val initial = mapOf<String, Any>(
                     "hostUid" to myUid, "hostName" to nickname, "mode" to mode,
-                    "rulesVersion" to 2,
+                    "rulesVersion" to 2, "hostAvatar" to myAvatar,
                     "phase" to "lobby", "level" to level, "topic" to topic.take(75),
                     "size" to size, "seconds" to seconds, "boardId" to boardId,
                     "quizSeed" to rng.nextInt(Int.MAX_VALUE), "turn" to mapOf(
@@ -300,6 +305,9 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                 busy = false
                 if (nameResult.isSuccessful) {
                     status = "Odaya katıldın."; observe(code); onJoined?.invoke()
+                    ref.child("guestAvatar").setValue(myAvatar).addOnFailureListener {
+                        status = "Avatarın çevrim içi odaya kaydedilemedi."
+                    }
                 } else {
                     status = "Oyuncu adı Firebase'e kaydedilemedi."; observe(code)
                 }
@@ -369,7 +377,9 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                     snapshot.child("turn").child("uid").getValue(String::class.java).orEmpty(),
                     snapshot.child("turn").child("until").getValue(Long::class.java) ?: 0L,
                     solved, answers, unknown, mistakes,
-                    childInt("rulesVersion").takeIf {it>0} ?: 1,replay,hintBy,readyBy)
+                    childInt("rulesVersion").takeIf {it>0} ?: 1,replay,hintBy,readyBy,
+                    childString("hostAvatar").ifBlank {"robot"},
+                    childString("guestAvatar").ifBlank {"fox"})
             }
             override fun onCancelled(error: DatabaseError) {
                 status = "Oda bağlantısı reddedildi: ${error.message}"
