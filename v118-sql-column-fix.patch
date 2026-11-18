@@ -1,0 +1,18 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/LearningStore.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/LearningStore.kt
+@@ -448,7 +448,7 @@
+     }
+ 
+     fun folderCards(folderId: String, status: String = "", limit: Int = 5000): List<LearningCard> =
+-        readableDatabase.rawQuery("""SELECT $CARD_COLUMNS FROM learning_cards c
++        readableDatabase.rawQuery("""SELECT $FOLDER_CARD_COLUMNS FROM learning_cards c
+             INNER JOIN learning_folder_words w ON w.word_key=c.word_key
+             WHERE w.folder_id=? AND (?='' OR instr(w.status,?)>0)
+             ORDER BY w.added_at DESC,c.word_key LIMIT ?""",
+@@ -470,5 +470,6 @@
+     private companion object {
+         const val CARD_COLUMNS = "word_key,answer,clue,context,solved,wrong,hints,remembered,forgotten," +
+             "due_at,last_at,pinned,stability,difficulty,reviewed_at"
++        val FOLDER_CARD_COLUMNS = CARD_COLUMNS.split(",").joinToString(",") { "c.$it" }
+         const val EVENT_COLUMNS = "event_id,word_key,game_id,type,occurred_at,assisted,attempt,event_order"
+     }

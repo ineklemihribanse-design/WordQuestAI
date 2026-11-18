@@ -1,0 +1,20 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/LearningStore.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/LearningStore.kt
+@@ -423,12 +423,11 @@
+                 val key = learningWordKey(word.entry)
+                 if (loadCard(db, key) == null)
+                     writeCard(db, LearningCard(key, word.entry.answer, word.entry.clue, word.entry.context))
+-                val kind = when {
+-                    word.unknown -> LearningKind.UNKNOWN
+-                    word.wrongAttempts > 0 -> LearningKind.WRONG_CHECK
+-                    else -> LearningKind.SOLVED
+-                }
+-                addFolderEvent(db, gameId, key, kind, now)
++                // Preserve both tags when a player answered incorrectly then chose Bilmiyorum.
++                if (word.wrongAttempts > 0) addFolderEvent(db, gameId, key, LearningKind.WRONG_CHECK, now)
++                if (word.unknown) addFolderEvent(db, gameId, key, LearningKind.UNKNOWN, now)
++                if (!word.unknown && word.wrongAttempts == 0)
++                    addFolderEvent(db, gameId, key, LearningKind.SOLVED, now)
+             }
+             db.setTransactionSuccessful()
+         } finally { db.endTransaction() }

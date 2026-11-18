@@ -1,0 +1,11 @@
+--- a/app/src/test/java/com/kelimebulmacasi/a1/LearningIntegrationTest.kt
++++ b/app/src/test/java/com/kelimebulmacasi/a1/LearningIntegrationTest.kt
+@@ -130,7 +130,7 @@
+             assertEquals(2.3065, card.memory!!.stability, 1e-10)
+             assertEquals(listOf("existing_review", "existing_event"), migrated.history(key, 0, 2).map { it.id })
+             assertEquals("", migrated.history(key, 0, 2).last().attempt)
+-            assertEquals(3, migrated.readableDatabase.version)
++            assertEquals(4, migrated.readableDatabase.version)
+             LearningStore(context, null, secondLocalProfile = true).use { other ->
+                 other.importArchive(migrated.exportArchive().toJson().toLearningArchive())
+                 assertEquals(card, other.card(key))

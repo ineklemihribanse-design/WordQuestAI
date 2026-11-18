@@ -1,0 +1,39 @@
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -64,6 +64,9 @@
+         }
+     }
+ 
++    // Robolectric requires packaged Android assets to validate advanced Arena boards.
++    testOptions { unitTests.isIncludeAndroidResources = true }
++
+     // MediaPlayer's AssetFileDescriptor requires raw (uncompressed) audio entries in APK.
+     androidResources {
+         noCompress += setOf("ogg")
+--- a/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
++++ b/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
+@@ -20,7 +20,7 @@
+         assertTrue(PremiumOnlineLimits.validConfig("A2", 50, 0, "team"))
+         assertTrue(PremiumOnlineLimits.validConfig("A1–A2", 12, 45, "quiz"))
+         assertFalse(PremiumOnlineLimits.validConfig("A1", 30, 30, "quiz"))
+-        assertFalse(PremiumOnlineLimits.validConfig("C2", 20, 30, "duel"))
++        assertTrue(PremiumOnlineLimits.validConfig("C2", 20, 30, "duel"))
+         assertFalse(PremiumOnlineLimits.validConfig("A1", 20, 12, "duel"))
+     }
+ 
+--- a/app/src/test/java/com/kelimebulmacasi/a1/YdsCenterTest.kt
++++ b/app/src/test/java/com/kelimebulmacasi/a1/YdsCenterTest.kt
+@@ -9,10 +9,10 @@
+ @RunWith(RobolectricTestRunner::class)
+ class YdsCenterTest {
+     @Test fun completeExamBankHasOriginalUniqueQuestionsAndTurkishSolutions() {
+-        assertEquals(63, YdsContent.questions.size)
+-        assertEquals(63, YdsContent.questions.map { it.id }.toSet().size)
++        assertEquals(105, YdsContent.questions.size)
++        assertEquals(105, YdsContent.questions.map { it.id }.toSet().size)
+         for (topic in YdsTopic.entries) for (difficulty in YdsDifficulty.entries) {
+-            assertEquals(3, YdsContent.pool(topic, difficulty).size)
++            assertEquals(5, YdsContent.pool(topic, difficulty).size)
+         }
+         for (question in YdsContent.questions) {
+             assertEquals(4, question.options.size)

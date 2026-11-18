@@ -1,0 +1,11 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+@@ -595,7 +595,7 @@
+                         color = OnlineSoft)
+                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                         ArenaOutlineButton("ÖZETTE KAL", { askNewGame = false }, Modifier.weight(1f))
+-                        ArenaGoldButton("YENİ OYUN", { client.leave() }, Modifier.weight(1f))
++                        Box(Modifier.weight(1f)) { ArenaGoldButton("YENİ OYUN", { client.leave() }) }
+                     }
+                 }
+             }

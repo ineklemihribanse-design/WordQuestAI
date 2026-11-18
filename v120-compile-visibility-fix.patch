@@ -1,0 +1,11 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/CustomEditor.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/CustomEditor.kt
+@@ -68,7 +68,7 @@
+ )
+ 
+ @Composable
+-fun CustomEditor(
++internal fun CustomEditor(
+     destination: Destination?, existing: Game?, back: () -> Unit,
+     hasAiKey: Boolean, clearAiKey: () -> Unit, ai: suspend (String, String, String, Int, Set<String>) -> List<WordPair>,
+     provider: AiProvider = AiProvider.Gemini,
