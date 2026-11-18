@@ -1,0 +1,11 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/YdsExtraContent.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/YdsExtraContent.kt
+@@ -19,7 +19,7 @@
+         q("c13",YdsTopic.Connectors,YdsDifficulty.Medium,"____ increased spending, the programme achieved little.","Despite","Although","Because","Whereas","Despite sonrasında isim öbeği kullanılır.","despite"),
+         q("c14",YdsTopic.Connectors,YdsDifficulty.Hard,"____ the evidence remains incomplete, any inference should be cautious.","Insofar as","Even so","As if","Except for","Insofar as = ... ölçüde/çünkü bağlamında koşullu gerekçe sunar.","insofar as"),
+         q("c15",YdsTopic.Connectors,YdsDifficulty.Hard,"The policy may succeed, ____ adequate resources are allocated.","provided that","irrespective of","rather than","as opposed to","Provided that = ... koşuluyla.","provided that"),
+-        q("p10",YdsTopic.Phrasals,YdsDifficulty.Easy,"Please ____ the lights before leaving.","turn off","get by","look after","turn down","Turn off = kapatmak.","turn off"),
++        q("p10",YdsTopic.Phrasals,YdsDifficulty.Easy,"Please ____ the lights before leaving.","turn off","get by","look after","turn down","Turn off = kapatmak. Cümlede ayrılmadan önce ışıkları söndürmek gerektiği anlatılır.","turn off"),
+         q("p11",YdsTopic.Phrasals,YdsDifficulty.Easy,"We need to ____ why the system stopped.","find out","put away","bring up","come along","Find out = öğrenmek, ortaya çıkarmak.","find out"),
+         q("p12",YdsTopic.Phrasals,YdsDifficulty.Medium,"The research team will ____ a new survey next month.","carry out","put off","run into","take after","Carry out = yürütmek, gerçekleştirmek.","carry out"),
+         q("p13",YdsTopic.Phrasals,YdsDifficulty.Medium,"The committee had to ____ the meeting until Friday.","put off","take off","get over","look up","Put off = ertelemek; çok sözcüklü fiilin boşluğunu koruyun.","put off"),
