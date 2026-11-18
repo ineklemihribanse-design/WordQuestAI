@@ -1,0 +1,44 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+@@ -176,9 +176,12 @@
+             }
+             if (session.social.enabled) ArenaPanelBlock {
+                 Text("ARKADAŞLAR VE DAVETLER", color = OnlineGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+-                FriendsPanel(session.social, onJoin = { sender, code ->
+-                    client.join(code) { session.social.dismissInvite(sender) }
+-                }, premium = true)
++                MaterialTheme(colorScheme = darkColorScheme(primary = OnlineGold, onSurface = OnlineCream,
++                    onSurfaceVariant = OnlineSoft, surface = OnlinePanel)) {
++                    FriendsPanel(session.social, onJoin = { sender, code ->
++                        client.join(code) { session.social.dismissInvite(sender) }
++                    }, premium = true)
++                }
+             }
+             ArenaPanelBlock {
+                 Text("ÇEVRİMDIŞI OYUN", color = OnlineGold, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+@@ -257,9 +260,12 @@
+             }
+             if (isHost && session.social.enabled) ArenaPanelBlock {
+                 Text("ARKADAŞLARINI DAVET ET", color = OnlineGold, fontWeight = FontWeight.Bold)
+-                FriendsPanel(session.social, roomCode = match.code,
+-                    onJoin = { sender, code -> client.join(code) { session.social.dismissInvite(sender) } },
+-                    premium = true)
++                MaterialTheme(colorScheme = darkColorScheme(primary = OnlineGold, onSurface = OnlineCream,
++                    onSurfaceVariant = OnlineSoft, surface = OnlinePanel)) {
++                    FriendsPanel(session.social, roomCode = match.code,
++                        onJoin = { sender, code -> client.join(code) { session.social.dismissInvite(sender) } },
++                        premium = true)
++                }
+             }
+         }
+         "playing" -> {
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt
+@@ -206,6 +206,6 @@
+         if (preparing) BodyText("Kişisel bulmaca hazırlanıyor…")
+         if (boardError.isNotBlank()) BodyText(boardError, ErrorInk)
+         MenuItem("Kişisel AI öğretmenim", "Kendi yanlışlarından Türkçe anlatımlı ders ve hata düzeltme", "✦", assistant)
+-        BodyText("İki ayrı Android cihazla çevrimiçi yarışma, ana ekrandaki AI Yarışma Merkezi'nde bulunur.")
++        BodyText("İki ayrı Android cihazla çevrimiçi yarışma, ana ekrandaki Premium Arena'da bulunur.")
+     }
+ }

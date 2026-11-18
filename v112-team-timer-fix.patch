@@ -1,0 +1,25 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+@@ -134,7 +134,11 @@
+                     }
+                 }
+             }
+-            ArenaPanelBlock {
++            if (selectedMode == "team") ArenaPanelBlock {
++                Text("ORTAK BULMACA SÜRESİ", color = OnlineGold,
++                    fontWeight = FontWeight.Bold, fontSize = 12.sp)
++                Text("Ortak çözüm süresizdir. İki arkadaş birlikte ve acele etmeden çözebilir.", color = OnlineSoft)
++            } else ArenaPanelBlock {
+                 Text(if (selectedMode == "quiz") "SORU SÜRESİ" else "KELİME SÜRESİ", color = OnlineGold,
+                     fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                 Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+@@ -159,7 +163,8 @@
+                             packs.nextPuzzle(level, size, topic, session.profileKey)?.id.orEmpty()
+                         if (selectedMode == "quiz" || boardId.isNotBlank()) {
+                             client.create(selectedMode, level, topic,
+-                                if (selectedMode == "quiz") 12 else size, seconds, boardId)
++                                if (selectedMode == "quiz") 12 else size,
++                                if (selectedMode == "team") 0 else seconds, boardId)
+                         } else message = "Bu konu ve seviyede yeterli bulmaca yok. Tüm konuları seç."
+                     }, enabled = client.canCreate)
+                 }

@@ -1,0 +1,11 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+@@ -414,7 +414,7 @@
+                     ?.toInt() ?: 0) > 0)
+             if (m.hostUid != m.guestUid && failed(m.hostUid) && failed(m.guestUid))
+                 revealWord(index)
+-        }.addOnFailureListener {
++        }?.addOnFailureListener {
+             // The room's live listener also checks for the same two responses.
+         }
+     }

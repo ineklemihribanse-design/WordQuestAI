@@ -1,0 +1,21 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+@@ -335,7 +335,7 @@
+                                 client.markSolved(selected)
+                                 setAnswerText("")
+                             } else {
+-                                if (match.cooperative) client.status = "Henüz doğru değil, yeniden deneyebilirsin."
++                                if (match.cooperative) client.note("Henüz doğru değil, yeniden deneyebilirsin.")
+                                 else client.pass()
+                                 setAnswerText("")
+                             }
+--- a/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+@@ -321,6 +321,7 @@
+         }
+     }
+ 
++    fun note(message: String) { status = message }
+     fun leave() { detach(); status = "Odadan ayrıldın." }
+     private fun detach() {
+         ref?.let { current -> listener?.let(current::removeEventListener) }

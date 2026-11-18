@@ -1,0 +1,22 @@
+--- a/app/src/main/java/com/kelimebulmacasi/a1/AppUpdater.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/AppUpdater.kt
+@@ -66,7 +66,7 @@
+     fun lastCheckLabel(): String = if (lastChecked <= 0) "Henüz yapılmadı"
+         else DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(Date(lastChecked))
+ 
+-    fun setAutomatic(enabled: Boolean) {
++    fun changeAutomatic(enabled: Boolean) {
+         automatic = enabled
+         prefs.edit().putBoolean("automatic", enabled).apply()
+     }
+--- a/app/src/main/java/com/kelimebulmacasi/a1/UpdateUi.kt
++++ b/app/src/main/java/com/kelimebulmacasi/a1/UpdateUi.kt
+@@ -34,7 +34,7 @@
+     Text("Son kontrol: ${updater.lastCheckLabel()}", color = Muted, fontSize = 13.sp)
+     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+         Text("Otomatik güncelleme kontrolü", Modifier.weight(1f), color = Ink, fontFamily = Sans)
+-        Switch(checked = updater.automatic, onCheckedChange = updater::setAutomatic)
++        Switch(checked = updater.automatic, onCheckedChange = updater::changeAutomatic)
+     }
+     OutlinedButton(modifier = Modifier.fillMaxWidth(), enabled = !updater.checking && !updater.downloading,
+         onClick = { updater.check(force = true) }) {
