@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -100,6 +101,8 @@ internal fun VocabularyNeonHome(
     session: AppSession, pronunciation: WordPronunciation, back: () -> Unit
 ) {
     val context = LocalContext.current
+    val screenWidthDp = LocalConfiguration.current.screenWidthDp
+    val isCompact = screenWidthDp < 600
     val ai: AiSession = viewModel()
     LaunchedEffect(session.profileKey) {
         if (ai.boundProfile != session.profileKey) ai.bindProfile(context, session.profileKey)
@@ -167,7 +170,7 @@ internal fun VocabularyNeonHome(
             })
     }
 
-    Column(Modifier.fillMaxSize().background(
+    Column(Modifier.fillMaxSize().widthIn(max = 840.dp).background(
         Brush.verticalGradient(listOf(MemoryNavy, Color(0xFF09264B), MemoryNavy))
     ).verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 10.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -182,21 +185,23 @@ internal fun VocabularyNeonHome(
         when (page) {
             "home" -> {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Box(Modifier.size(width = 128.dp, height = 151.dp)
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Box(Modifier.size(width = if (isCompact) 92.dp else 112.dp,
+                        height = if (isCompact) 112.dp else 132.dp)
                         .clickable { robotPicker = true }) {
                         ProfileRobotPortrait(robot, Modifier.fillMaxSize())
                         Text("Robotunu değiştir", modifier = Modifier.align(Alignment.BottomCenter),
                             fontSize = 9.sp, color = MemoryMuted)
                     }
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                        Text("Kelime\nHafızam", fontSize = 30.sp, lineHeight = 33.sp,
+                        Text("Kelime Hafızam", fontSize = if (isCompact) 25.sp else 30.sp,
+                            lineHeight = 34.sp,
                             fontWeight = FontWeight.Black, color = MemoryGold)
                         Text("Kelimelerini öğren, pekiştir ve kalıcı hâle getir.",
                             fontSize = 12.sp, color = MemoryMuted, lineHeight = 17.sp)
                     }
                 }
-                Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {
                     MemoryStat("▤", "$total", "Kelimem", MemoryCyan, Modifier.weight(1f))
                     MemoryStat("↻", "$due", "Tekrar", MemoryLilac, Modifier.weight(1f))
                     MemoryStat("✓", "$learned", "Çalışılmış", MemoryGold, Modifier.weight(1f))
@@ -226,7 +231,7 @@ internal fun VocabularyNeonHome(
                 Text("Çalışma Modları", color = MemoryWhite, fontSize = 18.sp,
                     fontWeight = FontWeight.Bold)
                 for (pair in studyTiles.chunked(2)) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         pair.forEach { tile ->
                             MemoryModeTile(tile, Modifier.weight(1f), total > 0) {
                                 start(tile.mode)
@@ -234,7 +239,7 @@ internal fun VocabularyNeonHome(
                         }
                     }
                 }
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     Text("Akıllı Koleksiyonlar", color = MemoryWhite,
                         fontWeight = FontWeight.Bold, fontSize = 17.sp)
                     Spacer(Modifier.weight(1f))
@@ -242,7 +247,7 @@ internal fun VocabularyNeonHome(
                         Text("Tümünü Gör ›", color = MemoryLilac, fontSize = 12.sp)
                     }
                 }
-                Row(Modifier.horizontalScroll(rememberScrollState()),
+                Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     listOf(Triple("Yeni", fresh, "new"),
                         Triple("Öğreniyorum", allCards.count {
