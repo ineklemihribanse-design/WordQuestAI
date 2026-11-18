@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-private val Paper = Color(0xFFFFFAF7)
+private val NeonCardPaper = Color(0xFFFFFAF7)
 private val DarkText = Color(0xFF102447)
 
 /** A separate, immersive study page. Translation remains hidden on the front. */
@@ -216,7 +216,7 @@ internal fun NeonVocabularyPractice(
                 color = MemoryMuted, fontSize = 12.sp)
         }
         Surface(modifier = Modifier.fillMaxWidth().heightIn(min = 355.dp),
-            shape = RoundedCornerShape(26.dp), color = Paper,
+            shape = RoundedCornerShape(26.dp), color = NeonCardPaper,
             shadowElevation = 14.dp) {
             Column(Modifier.fillMaxWidth().padding(19.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
