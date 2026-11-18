@@ -112,6 +112,63 @@ def patch_online() -> None:
         '                myScore == otherScore)\n'
         '            // Both players see the winner animation',
         "winner mascot")
+    source = once(source,
+        '        val canAnswer = myTurn && (countdown == null || countdown > 0) && !alreadyUnknown',
+        '        val canAnswer = myTurn && (countdown == null || countdown > 0) && ' +
+        '(if(match.rulesVersion >= 2 && !match.cooperative) ' +
+        'PremiumOnlineLimits.canAttempt(match,selected,myUid) else !alreadyUnknown)',
+        "one attempt per round")
+    source = once(source,
+        '                        fun submitAnswer() {',
+        '''                        if(match.rulesVersion >= 2 && !match.cooperative) {
+                            val left=(ArenaDuelEngine.hintsFor(match.size) -
+                                match.hintBy[myUid].orEmpty().size).coerceAtLeast(0)
+                            val used=selected in match.hintBy[myUid].orEmpty()
+                            if(used) {
+                                val pos=fixedPattern.indexOf('.')
+                                if(pos>=0) Text("İpucu: " + (pos+1) + ". harf " +
+                                    word.entry.letters[pos],color=OnlineGold,
+                                    fontWeight=FontWeight.Bold,fontSize=12.sp)
+                            } else ArenaOutlineButton("İPUCU (" + left + ")",{
+                                client.useHint(selected)
+                            },Modifier.fillMaxWidth())
+                            if(PremiumOnlineLimits.replayRound(match))
+                                Text("SON ŞANS TURU · Kelimeler yeniden deneniyor",
+                                    color=OnlineGold,fontSize=12.sp)
+                            else if(PremiumOnlineLimits.gaveUpOrFailed(match,selected,myUid))
+                                Text("Bu kelime bekleyenlerde. Son şans turunda açılacak.",
+                                    color=OnlineSoft,fontSize=12.sp)
+                        }
+                        fun submitAnswer() {''',
+        "show private clue and replay status")
+    source = once(source,
+        '                        if (match.cooperative || !alreadyUnknown) {',
+        '                        if (match.cooperative || (match.rulesVersion >= 2 && canAnswer) || ' +
+        '(match.rulesVersion < 2 && !alreadyUnknown)) {',
+        "prevent repeated passes on same word")
+    source = once(source,
+        '                            ArenaOutlineButton("BİLMİYORUM · CEZASIZ", {',
+        '                            ArenaOutlineButton(if(match.rulesVersion >= 2) "PAS GEÇ" ' +
+        'else "BİLMİYORUM · CEZASIZ", {',
+        "pass label")
+    source = once(source,
+        '                if (isHost) ArenaGoldButton("YARIŞMAYI BAŞLAT", client::start,',
+        '''                if (match.rulesVersion >= 2) {
+                    ArenaOutlineButton(if(myUid in match.readyBy) "HAZIR ✓" else "HAZIRIM",
+                        client::toggleReady,Modifier.fillMaxWidth())
+                    if(match.guestUid.isNotBlank() &&
+                        !match.readyBy.containsAll(listOf(match.hostUid,match.guestUid)))
+                        Text("İki oyuncunun da hazır olması gerekiyor.",
+                            color=OnlineSoft,fontSize=12.sp)
+                }
+                if (isHost) ArenaGoldButton("YARIŞMAYI BAŞLAT", client::start,''',
+        "live ready toggle")
+    source = once(source,
+        '                    enabled = match.guestUid.isNotBlank())',
+        '                    enabled = match.guestUid.isNotBlank() && ' +
+        '(match.rulesVersion < 2 || ' +
+        'match.readyBy.containsAll(listOf(match.hostUid,match.guestUid))))',
+        "ready-gated match start")
     file.write_text(source,encoding="utf-8")
     assert 'ArenaHomeV2(' in source and 'ArenaLiveScoreV2(' in source
     assert 'ArenaVictoryV2(' in source and 'ArenaRoomPlayersV2(' in source
@@ -125,8 +182,12 @@ def main() -> None:
     test_dir = ROOT / "source/app/src/test/java/com/kelimebulmacasi/a1"
     test_dir.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(TOOLS / "ArenaDuelEngineTest.kt", test_dir / "ArenaDuelEngineTest.kt")
+    # The V2 server model is versioned and preserves legacy match behavior.
+    # Production Firebase rules MUST be deployed before shipping this beta.
+    shutil.copyfile(TOOLS / "PremiumOnlineRoomV2.kt", SRC / "PremiumOnlineRoom.kt")
     patch_online()
     print("Arena V2 lobby, player room, live scoring and animated victory integrated.")
+    print("Cloud rule deployment still required before distributing V2 online matches.")
     print("Preserved app id, version, other modules and all legacy database rules.")
 
 
