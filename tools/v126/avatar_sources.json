@@ -1,0 +1,40 @@
+{
+  "license": "CC0-1.0",
+  "author": "Quaternius",
+  "license_sources": [
+    "https://quaternius.com/packs/ultimatemodularwomen.html",
+    "https://quaternius.com/packs/ultimatemodularcharacters.html",
+    "https://creativecommons.org/publicdomain/zero/1.0/"
+  ],
+  "source_repository": "https://github.com/trebeljahr/quaternius-showcase",
+  "source_commit": "0128ca510d653bb04d6d1e4885bd8890b5050b4f",
+  "models": [
+    {
+      "actor": "Elif",
+      "label": "Emma",
+      "source": "modular_women/Formal.glb",
+      "target": "emma.glb",
+      "size": 772040,
+      "upstream": "Ultimate Modular Women Pack",
+      "license": "CC0-1.0"
+    },
+    {
+      "actor": "Deniz",
+      "label": "Sophia",
+      "source": "modular_women/Casual.glb",
+      "target": "sophia.glb",
+      "size": 804896,
+      "upstream": "Ultimate Modular Women Pack",
+      "license": "CC0-1.0"
+    },
+    {
+      "actor": "Mert",
+      "label": "Ethan",
+      "source": "modular_men/Suit.glb",
+      "target": "ethan.glb",
+      "size": 857732,
+      "upstream": "Ultimate Modular Men Pack",
+      "license": "CC0-1.0"
+    }
+  ]
+}
