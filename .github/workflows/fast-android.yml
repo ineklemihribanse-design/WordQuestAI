@@ -1,0 +1,115 @@
+name: Fast Android Build — Current Source
+
+on:
+  push:
+    branches: [source/main]
+    paths:
+      - 'android-current/**'
+      - '.github/workflows/fast-android.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fast-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify materialized Android project
+        run: |
+          set -euo pipefail
+          test -f android-current/settings.gradle.kts
+          test -f android-current/app/build.gradle.kts
+          test -f android-current/gradlew
+          test -f android-current/app/src/main/AndroidManifest.xml
+          echo 'Direct Android source exists; no historical overlays are applied.'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+          cache-dependency-path: android-current/**/*.gradle.kts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install offline voice dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y espeak libsndfile1
+          python3 -m pip install soundfile
+          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+          "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Generate voices only if needed
+        working-directory: android-current
+        run: |
+          set -euo pipefail
+          python3 tools/build_offline_voices.py
+          python3 tools/verify_audio_ipa.py
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build current Android source and test
+        working-directory: android-current
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon :app:testOfflineUnitTest :app:assembleOffline --stacktrace
+      - name: Validate APK and version
+        run: |
+          set -euo pipefail
+          APK="android-current/app/build/outputs/apk/offline/app-offline-unsigned.apk"
+          META="android-current/app/build/outputs/apk/offline/output-metadata.json"
+          test -s "$APK"
+          test -s "$META"
+          unzip -tq "$APK"
+          python3 - "$META" <<'PY'
+          import json,sys
+          doc=json.load(open(sys.argv[1]))
+          assert doc['applicationId']=='com.kelimebulmacasi.a1.practice.fresh',doc['applicationId']
+          assert int(doc['elements'][0]['versionCode'])>=73
+          print('Direct source APK verified:',doc['elements'][0]['versionName'])
+          PY
+      - name: Sign and publish new version on source/main
+        if: ${{ github.ref == 'refs/heads/source/main' && github.event_name == 'push' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test -n "$WQ_RELEASE_KEYSTORE_B64"
+          test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS"
+          test -n "$WQ_KEY_PASS"
+          META="android-current/app/build/outputs/apk/offline/output-metadata.json"
+          INPUT="android-current/app/build/outputs/apk/offline/app-offline-unsigned.apk"
+          TAG=$(python3 - "$META" <<'PY'
+          import json,sys
+          name=json.load(open(sys.argv[1]))['elements'][0]['versionName']
+          print('v'+name.split('-',1)[0])
+          PY
+          )
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists. Skipping immutable release."
+            exit 0
+          fi
+          mkdir -p dist "$RUNNER_TEMP/wq-signing"
+          trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq-signing/store.p12"
+          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" sign \
+            --ks "$RUNNER_TEMP/wq-signing/store.p12" --ks-type PKCS12 \
+            --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
+            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
+            --out dist/WordQuestAI.apk "$INPUT"
+          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify --verbose --print-certs dist/WordQuestAI.apk > dist/signature-verification.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
+          python3 tools/generate_release_manifest.py "$META" dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
+          gh release create "$TAG" dist/WordQuestAI.apk dist/update.json \
+            --repo "$GITHUB_REPOSITORY" --title "WordQuest AI $TAG" \
+            --notes-file RELEASE_NOTES.md --target source/main --latest
