@@ -84,7 +84,9 @@ def patch_online() -> None:
     source = source.replace("ArenaPanelBlock {", "ArenaV2Panel {")
     source = once(source,
         '    if (match.phase == "lobby") ArenaV2Panel {',
-        '    if (match.phase == "lobby") ArenaRoomPlayersV2(hostName,guestName,match.guestUid.isNotBlank())\n'
+        '    if (match.phase == "lobby") ArenaRoomPlayersV2(hostName,guestName,\n'
+        '        match.guestUid.isNotBlank(), match.hostAvatar, match.guestAvatar,\n'
+        '        match.hostUid in match.readyBy, match.guestUid in match.readyBy)\n'
         '    if (match.phase == "lobby") ArenaV2Panel {',
         "room player cards")
     source = once(source,
@@ -101,7 +103,8 @@ def patch_online() -> None:
         'else ArenaScoreStrip(solved.size, match.size, myScore, countdown)',
         '                ArenaLiveScoreV2(hostName, guestName,\n'
         '                    match.score(match.hostUid,questions), match.score(match.guestUid,questions),\n'
-        '                    match.turnUid == match.hostUid, countdown,solved.size,match.size,match.cooperative)',
+        '                    match.turnUid == match.hostUid, countdown,solved.size,match.size,match.cooperative,\n'
+        '                    match.hostAvatar,match.guestAvatar)',
         "live match scoreboard")
     source = once(source,
         '        "finished" -> {\n            // Both players see the winner animation',
@@ -109,7 +112,9 @@ def patch_online() -> None:
         '            if (!match.cooperative) ArenaVictoryV2(\n'
         '                if (myScore >= otherScore) myName else rivalName,\n'
         '                if (myScore >= otherScore) isHost else !isHost,\n'
-        '                myScore == otherScore)\n'
+        '                myScore == otherScore,\n'
+        '                if (myScore >= otherScore) { if (isHost) match.hostAvatar else match.guestAvatar }\n'
+        '                else { if (isHost) match.guestAvatar else match.hostAvatar })\n'
         '            // Both players see the winner animation',
         "winner mascot")
     source = once(source,
