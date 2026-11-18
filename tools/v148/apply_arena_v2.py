@@ -120,8 +120,11 @@ def patch_online() -> None:
 def main() -> None:
     if not SRC.is_dir():
         raise RuntimeError("Assembled Android sources required; run after v147 and v122.")
-    for name in ("ArenaV2Visuals.kt", "ArenaV2Lobby.kt", "ArenaV2Panel.kt"):
+    for name in ("ArenaV2Visuals.kt", "ArenaV2Lobby.kt", "ArenaV2Panel.kt", "ArenaDuelEngine.kt"):
         shutil.copyfile(TOOLS / name, SRC / name)
+    test_dir = ROOT / "source/app/src/test/java/com/kelimebulmacasi/a1"
+    test_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(TOOLS / "ArenaDuelEngineTest.kt", test_dir / "ArenaDuelEngineTest.kt")
     patch_online()
     print("Arena V2 lobby, player room, live scoring and animated victory integrated.")
     print("Preserved app id, version, other modules and all legacy database rules.")
