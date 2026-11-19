@@ -55,7 +55,6 @@ def main():
                         str(painted),str(GLB),"--manifest",str(MAP)],check=True)
     subprocess.run([sys.executable,str(ROOT/"tools/verify_lena_glb.py"),
                     str(GLB)],check=True)
-    from add_lena_face_morphs import morph
     # The structural tests above verify 18 original+added clips; no need to
     # load a GL scene in CI (actual animated pixels need device verification).
     manifest=json.loads(MAP.read_text("utf-8"))
@@ -68,6 +67,8 @@ def main():
     TEST.mkdir(parents=True,exist_ok=True)
     shutil.copyfile(V161/"LenaFaceAnimationClipsTest.kt",
                     TEST/"LenaFaceAnimationClipsTest.kt")
+    shutil.copyfile(V161/"LenaBodyAnimationClipsTest.kt",
+                    TEST/"LenaAnimationClipsTest.kt")
 
     clips_file=PKG/"LenaAnimationClips.kt"
     clips=clips_file.read_text("utf-8")
