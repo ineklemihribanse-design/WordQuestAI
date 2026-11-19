@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -87,6 +87,7 @@ on:
       - 'tools/v165/**'
       - 'tools/v166/**'
       - 'tools/v167/**'
+      - 'tools/v168/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -1119,6 +1120,24 @@ jobs:
               assert len(root)>0
           print("UI assets verified: real Lena GLB portrait + 17 original vector icons.")
           PY
+      - name: Install approved Lena messenger styling and voice UI (v1.0.68 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v168/apply_approved_lena_ui_168.py
+          python3 tools/v168/apply_approved_lena_ui_168.py
+          grep -Fq 'versionCode = 93' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.68-lena-approved-messenger-ui"' source/app/build.gradle.kts
+          grep -Fq 'LenaVoiceWaveform(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'session.changePreferences' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'R.drawable.wq167_lena_portrait' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.newConversation()' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          echo "Approved Lena messenger code staged without replacing the actual Lena model or portrait."
+
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1165,8 +1184,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.67 authentic Lena portrait and bespoke icons
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v167-lena-real-avatar-custom-icons' }}
+      - name: Publish signed and verified v1.0.68 approved Lena chat UI
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v168-lena-approved-chat-design' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1196,9 +1215,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==92, item["versionCode"]
-          assert item["versionName"]=="1.0.67-lena-real-profile-icons"
-          print("Version 1.0.67 code92; authentic Lena model profile, original icons and personal photo upload verified.")
+          assert item["versionCode"]==93, item["versionCode"]
+          assert item["versionName"]=="1.0.68-lena-approved-messenger-ui"
+          print("Version 1.0.68 code93; approved Lena messenger buttons, bubbles, audio and original avatar.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1213,21 +1232,19 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.67 (code 92)
+          WordQuest AI 1.0.68 (code 93)
 
-          Bright cream/soft-mint Lena messaging redesign, matching the approved light concept rather than the previously disliked dark design.
-          The teacher's profile photo is rendered directly from the EXACT Lena GLB included in this signed Android APK (her real original Prisma3D head, dark brown hair, gold eyes, warm skin). Not a different AI-generated woman, stock model or unrelated image. The headshot is 448x448 and optimized to approximately 32 KB.
-          Adds 17 original, individually designed mint-green Android vector icons for messages, grammar, practice, lessons, correction, word study, camera, voice playback, 3D, history and sending. All editable icon XML assets are present in the GitHub repository under assets/ui/lena_messenger/icons.
-          A learner may choose a personal avatar photo through the Android gallery, replace it or delete it. Photos are resized to no more than 512px, stored per learner in the application's private files (without asking for media storage permissions), persist through ordinary APK upgrades, and are never sent to the AI provider just by choosing an avatar.
-          Lena and learner avatars appear on their respective message bubbles. The active learning-mode pills and vocabulary tools are genuinely selectable, and the original per-message Dinle/Durdur speech controls retain their previous working callbacks with newly illustrated icons.
-          Preserves the existing independent text messenger, 3D Görüşme transition, saved Gemini/OpenAI keys, local conversation history, training notes, pronunciation configuration, US/UK voices and all previous WordQuest systems including Arena and Word Memory.
-          Preserves original GLB mesh, original 201-bone rig, 18 animation clips, correct signed Android package identity, existing user data and previous releases. No external icon packages or unnecessary textures.
-          Android assembly, JVM unit tests, image/color provenance checks and original vector XML validation passed. Exact visual positioning on the user's physical Android device remains for on-device review.
-          Arena V2 multiplayer still requires separately deployed Firebase rules.
+          Lena · Mesajlar now follows the approved bright white / mint-green design reference with a larger profile card, rounded action tabs, cream/light background, clean green and white chat bubbles and spacious controls.
+          The teacher portrait is still generated from the exact bundled original Lena Prisma3D GLB — no replacement of Lena's face, photos, 3D mesh, 201-bone rig or animations.
+          The learner can still select, replace or remove a private profile image without uploading it to an AI service.
+          The conversation composer has rounded corners, live sending, real microphone speech input and actual last-message playback (Dinle/Durdur). Ses Ayarları now opens working persistent sliders for speech rate and volume.
+          Retains original per-message TTS playback, Gemini/OpenAI key handling, stored conversations, notes, 3D Görüşme navigation and prior signed versions. The Word Memory, Arena, pronunciation, learning records and other modules are untouched.
+          The audio waveform indicates playback activity, not fabricated audio progress.
+          Android compilation, tests, signing and APK compatibility are checked in the publishing workflow. Validate spacing and touch targets on the target Android device.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.67
+          test "$TAG" = v1.0.68
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1238,4 +1255,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.67 (code92) actual Lena profile photo and 17 original icons published; previous releases retained."
+          echo "Signed v1.0.68 (code93) Lena approved messaging UI published; original Lena avatar and older releases retained."
