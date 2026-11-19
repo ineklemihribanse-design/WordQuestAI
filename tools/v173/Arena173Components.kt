@@ -104,13 +104,14 @@ private fun Arena173Icon(kind:String) {
 @Composable
 private fun Arena173GameCard(
     title:String,subtitle:String,caption:String,kind:String,
-    selected:Boolean,enabled:Boolean,onClick:()->Unit
+    selected:Boolean,enabled:Boolean,cardWidth:androidx.compose.ui.unit.Dp=225.dp,
+    onClick:()->Unit
 ) {
     val shape=RoundedCornerShape(25.dp)
     val gradient=if(selected) Brush.verticalGradient(listOf(
         Color(0xFFA476DC),Color(0xFF7846B9),Color(0xFF512582)))
         else Brush.verticalGradient(listOf(Color.White,Color(0xFFFFF8FC)))
-    Box(Modifier.width(225.dp).height(213.dp)
+    Box(Modifier.width(cardWidth).height(213.dp)
         .shadow(if(selected)9.dp else 5.dp,shape)
         .clip(shape).background(gradient)
         .border(if(selected)2.dp else 1.dp,
@@ -148,16 +149,26 @@ internal fun Arena173AdventurePicker(mode:String,onMode:(String)->Unit,solo:Bool
         Text("Maceranı Seç!",fontSize=28.sp,fontWeight=FontWeight.ExtraBold,color=v173Ink)
         Text("Bugün nasıl bir mücadele istiyorsun?",fontSize=13.sp,
             color=Color(0xFF716B78))
-        Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())
-            .padding(vertical=8.dp),horizontalArrangement=Arrangement.spacedBy(11.dp)) {
-            Arena173GameCard("Bulmaca Düellosu","Rakibine meydan oku!",
-                "2 oyuncu","duel",mode=="duel" || (solo && mode!="quiz"),true) {
-                onMode("duel")
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            // Tablet: three equal cards across the row. Phone: swipeable,
+            // full-sized cards instead of shrinking into bad tap targets.
+            val cardWidth=if(maxWidth>=720.dp)(maxWidth-22.dp)/3 else 225.dp
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())
+                .padding(vertical=8.dp),horizontalArrangement=Arrangement.spacedBy(11.dp)) {
+                Arena173GameCard("Bulmaca Düellosu","Rakibine meydan oku!",
+                    "2 oyuncu","duel",mode=="duel" || (solo && mode!="quiz"),
+                    true,cardWidth=cardWidth) {
+                    onMode("duel")
+                }
+                Arena173GameCard("Ortak Bulmaca","Birlikte çöz, birlikte kazan!",
+                    "2+ oyuncu","team",mode=="team",!solo,cardWidth=cardWidth) {
+                    onMode("team")
+                }
+                Arena173GameCard("5 Şıklı Düello","Hızlı düşün, doğru seç!",
+                    "Hızlı oyun","quiz",mode=="quiz",true,cardWidth=cardWidth) {
+                    onMode("quiz")
+                }
             }
-            Arena173GameCard("Ortak Bulmaca","Birlikte çöz, birlikte kazan!",
-                "2+ oyuncu","team",mode=="team",!solo) {onMode("team")}
-            Arena173GameCard("5 Şıklı Düello","Hızlı düşün, doğru seç!",
-                "Hızlı oyun","quiz",mode=="quiz",true) {onMode("quiz")}
         }
     }
 }
