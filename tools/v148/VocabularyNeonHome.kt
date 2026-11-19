@@ -34,11 +34,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-internal val MemoryNavy = Color(0xFF10283B)
-internal val MemoryBlue = Color(0xFF24556B)
-internal val MemoryCyan = Color(0xFF37D8EC)
+internal val MemoryNavy = Color(0xFF173445)
+internal val MemoryBlue = Color(0xFF31576A)
+internal val MemoryCyan = Color(0xFF83E4D9)
 internal val MemoryLilac = Color(0xFFA88DEB)
-internal val MemoryGold = Color(0xFFFFD175)
+internal val MemoryGold = Color(0xFFFFDDA5)
 internal val MemoryWhite = Color(0xFFF8F8FF)
 internal val MemoryMuted = Color(0xFFD0E3E9)
 
@@ -232,10 +232,13 @@ internal fun VocabularyNeonHome(
             })
     }
 
-    Column(Modifier.fillMaxSize().widthIn(max = 840.dp).background(
-        Brush.verticalGradient(listOf(MemoryNavy, Color(0xFF1B4555), MemoryNavy))
-    ).verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 10.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Box(Modifier.fillMaxSize().background(
+        Brush.verticalGradient(listOf(Color(0xFF224E59), Color(0xFF102936), Color(0xFF173445)))
+    ), contentAlignment = Alignment.TopCenter) {
+    Column(Modifier.widthIn(max = 760.dp).fillMaxWidth()
+        .verticalScroll(rememberScrollState())
+        .padding(horizontal = if (isCompact) 16.dp else 28.dp, vertical = 14.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             TextButton(onClick = {
                 if (page == "home") back()
@@ -246,7 +249,9 @@ internal fun VocabularyNeonHome(
         }
         when (page) {
             "home" -> {
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp))
+                    .background(Color.White.copy(alpha = .075f))
+                    .padding(12.dp), verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Box(Modifier.size(width = if (isCompact) 92.dp else 112.dp,
                         height = if (isCompact) 112.dp else 132.dp)
@@ -445,6 +450,7 @@ internal fun VocabularyNeonHome(
         }
         Spacer(Modifier.height(16.dp))
     }
+    }
 }
 
 @Composable
@@ -468,8 +474,8 @@ private fun MemoryModeTile(tile: StudyTile, modifier: Modifier,
     enabled: Boolean, onClick: () -> Unit) {
     Column(modifier.clip(RoundedCornerShape(15.dp))
         .background(Brush.linearGradient(
-            listOf(tile.accent.copy(alpha = .29f), Color(0xFF0D2347))))
-        .border(1.dp, tile.accent.copy(alpha = .60f), RoundedCornerShape(15.dp))
+            listOf(tile.accent.copy(alpha = .16f), Color(0xFF24465A))))
+        .border(1.dp, tile.accent.copy(alpha = .28f), RoundedCornerShape(15.dp))
         .clickable(enabled = enabled, onClick = onClick).padding(11.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -488,8 +494,8 @@ internal fun NeonPanel(click: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit) {
     val base = Modifier.fillMaxWidth().clip(RoundedCornerShape(19.dp))
         .background(Brush.linearGradient(listOf(
-            Color(0xFF133D69), Color(0xFF102344))))
-        .border(1.dp, Color(0xFF4177A8), RoundedCornerShape(19.dp))
+            Color(0xFF315C6C), Color(0xFF244252))))
+        .border(1.dp, Color.White.copy(alpha = .13f), RoundedCornerShape(19.dp))
     Column((if (click != null) base.clickable(onClick = click) else base)
         .padding(16.dp), verticalArrangement = Arrangement.spacedBy(9.dp),
         content = content)
