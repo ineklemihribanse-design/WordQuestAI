@@ -41,14 +41,14 @@ def main():
         'Color.White.copy(alpha = .94f))\n                            .border(1.dp, Color(0xFFD9E7F5)', "collection card background")
     home.write_text(h, encoding="utf-8")
     g = gradle.read_text(encoding="utf-8")
-    g = replace_once(g, 'versionCode = 73', 'versionCode = 75', "versionCode")
+    g = replace_once(g, 'versionCode = 73', 'versionCode = 79', "versionCode")
     g = replace_once(g, 'versionName = "1.0.48-neon-word-memory"',
-        'versionName = "1.0.50-word-memory"', "versionName")
+        'versionName = "1.0.54-word-memory"', "versionName")
     # The v148 workflow intentionally uses a NEW '.fresh' app identity.
     # Do not remove it without verifying the user's installed package and signing certificate.
     assert 'applicationIdSuffix = ".fresh"' in g
     gradle.write_text(g, encoding="utf-8")
-    print("Installed v1.0.50 light Word Memory design; preserved profile data and robot.")
+    print("Installed v1.0.54 light Word Memory design; preserved profile data and robot.")
     print("IMPORTANT: .fresh identity remains; this is not an upgrade to the older APK.")
 
 if __name__ == "__main__":
