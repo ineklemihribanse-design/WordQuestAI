@@ -119,9 +119,12 @@ jobs:
           python-version: '3.11'
       - name: Install Android dependencies and voice generator
         run: |
-          sudo apt-get update
-          sudo apt-get install -y espeak libsndfile1
-          python3 -m pip install soundfile
+          set -euo pipefail
+          # GitHub runners can temporarily exhaust apt HTTPS sockets.
+          # Keep downloads serial, retry transient failures, and avoid altering app sources.
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 update
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::Queue-Mode=access -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 install -y --no-install-recommends espeak libsndfile1
+          python3 -m pip install --retries 5 --timeout 60 soundfile
           SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
           "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
       - name: Extract complete source (except generated audio)
