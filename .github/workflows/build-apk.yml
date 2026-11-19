@@ -79,6 +79,7 @@ on:
       - 'tools/v150/**'
       - 'tools/v151/**'
       - 'tools/v152/**'
+      - 'tools/v153/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -833,6 +834,15 @@ jobs:
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaFullWordInputTest.kt
           grep -q 'label = { Text("Kelimeyi yaz") }' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
           grep -q 'ArenaOutlineButton("PAS", {' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+      - name: Rig 5 Arena characters with independent bones and selected-hand trophy
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v153/apply_arena_rigs_153.py
+          python3 tools/v153/apply_arena_rigs_153.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaMascotRig.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaRiggedMascot.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaMascotRigTest.kt
+          grep -q 'ArenaApprovedHeroArt(kind=mascot' source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
       - name: Prepare Arena v2 Firebase rules and integration audits (not deployed)
         run: |
           set -euo pipefail
@@ -840,13 +850,13 @@ jobs:
           python3 tools/v148/apply_arena_rules_v2.py
           python3 tools/v148/test_arena_v2_staging.py
           python3 -m json.tool source/database.rules.json >/dev/null
-      - name: Stage v1.0.52 full-word entry code77 for review and future main snapshot
+      - name: Stage v1.0.53 five rigged characters code78 for review and main snapshot
         if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/149-arena-v2-on-current' || github.ref == 'refs/heads/main') }}
         run: |
           set -euo pipefail
           python3 tools/v150/prepare_arena_150.py
-          grep -q 'versionCode = 77' source/app/build.gradle.kts
-          grep -q 'versionName = "1.0.52-arena-full-word"' source/app/build.gradle.kts
+          grep -q 'versionCode = 78' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.53-arena-five-rigs"' source/app/build.gradle.kts
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
@@ -867,7 +877,7 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
-      - name: Sign and verify 1.0.52 full-word Arena preview with current certificate
+      - name: Sign and verify 1.0.53 five-rig Arena preview with current certificate
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/149-arena-v2-on-current' }}
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -891,9 +901,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==77
-          assert item["versionName"]=="1.0.52-arena-full-word"
-          print("Arena v1.0.52 preview code77 uses existing .fresh app identity.")
+          assert item["versionCode"]==78
+          assert item["versionName"]=="1.0.53-arena-five-rigs"
+          print("Arena v1.0.53 preview code78 uses existing .fresh app identity.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-arena-sign"
           trap 'rm -rf "$RUNNER_TEMP/wq-arena-sign"' EXIT
@@ -902,36 +912,36 @@ jobs:
             --ks "$RUNNER_TEMP/wq-arena-sign/store.p12" --ks-type PKCS12 \
             --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out dist/WordQuestAI-Arena-v1.0.52-full-word-preview.apk "$UNSIGNED"
+            --out dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk "$UNSIGNED"
           java -jar "$SIGNER" verify --verbose --print-certs \
-            dist/WordQuestAI-Arena-v1.0.52-full-word-preview.apk > dist/arena-preview-signature.txt
+            dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk > dist/arena-preview-signature.txt
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/arena-preview-signature.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/arena-preview-signature.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/arena-preview-signature.txt
-          sha256sum dist/WordQuestAI-Arena-v1.0.52-full-word-preview.apk > dist/WordQuestAI-Arena-v1.0.52-full-word-preview.sha256
-          echo "Verified upgrade-compatible v1.0.52 APK (code77), matching current .fresh certificate."
-      - name: Publish 1.0.52 full-word PREVIEW, not the normal updater channel
+          sha256sum dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk > dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.sha256
+          echo "Verified upgrade-compatible v1.0.53 APK (code78), matching current .fresh certificate."
+      - name: Publish 1.0.53 five-rig PREVIEW, not the normal updater channel
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/149-arena-v2-on-current' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          TAG="arena-v1.0.52-full-word-preview"
-          test -s dist/WordQuestAI-Arena-v1.0.52-full-word-preview.apk
+          TAG="arena-v1.0.53-five-rigs-preview"
+          test -s dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk
           if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "Existing immutable preview retained. Never overwrite signed release assets."
             gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
-              --jq '[.assets[].name] | join(",")' | grep -Fq 'WordQuestAI-Arena-v1.0.52-full-word-preview.apk'
+              --jq '[.assets[].name] | join(",")' | grep -Fq 'WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk'
             exit 0
           fi
-          gh release create "$TAG" dist/WordQuestAI-Arena-v1.0.52-full-word-preview.apk \
-            dist/WordQuestAI-Arena-v1.0.52-full-word-preview.sha256 \
+          gh release create "$TAG" dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk \
+            dist/WordQuestAI-Arena-v1.0.53-five-rigs-preview.sha256 \
             -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title "WordQuest AI Arena 1.0.52 — Tam Kelime Girişi ve PAS" \
+            --title "WordQuest AI Arena 1.0.53 — Beş Rigli Karakter" \
             --prerelease --latest=false \
             --notes "Yenilenmiş Arena giriş ve bekleme odası, hazır onayları, iki turlu düello ve avatarları cihazda test etmek içindir. Firebase V2 üretim kuralları canlı sunucuda ayrıca etkinleştirilmelidir. Normal güncelleme kanalına otomatik yayımlanmaz."
           gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
-            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI-Arena-v1.0.52-full-word-preview.apk,WordQuestAI-Arena-v1.0.52-full-word-preview.sha256'
+            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI-Arena-v1.0.53-five-rigs-preview.apk,WordQuestAI-Arena-v1.0.53-five-rigs-preview.sha256'
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
