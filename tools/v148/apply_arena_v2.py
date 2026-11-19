@@ -100,8 +100,8 @@ def patch_online() -> None:
     # Locate its exact call, rather than relying on whitespace or text copy.
     import re
     score_pattern = re.compile(
-        r'(?m)^\\s*(?:if \\(keyboardIsOpen\\).*?\\n\\s*)?'
-        r'(?:else )?ArenaScoreStrip\\(solved\\.size,\\s*match\\.size,\\s*myScore,\\s*countdown\\)'
+        r'(?m)^\s*(?:if \(keyboardIsOpen\).*?\n\s*)?'
+        r'(?:else )?ArenaScoreStrip\(solved\.size,\s*match\.size,\s*myScore,\s*countdown\)'
     )
     candidates = list(score_pattern.finditer(source))
     if len(candidates) != 1:
@@ -110,9 +110,9 @@ def patch_online() -> None:
             f"got {len(candidates)}; inspect PremiumOnlineScreen.kt before applying"
         )
     replacement = (
-        '                ArenaLiveScoreV2(hostName, guestName,\\n'
-        '                    match.score(match.hostUid,questions), match.score(match.guestUid,questions),\\n'
-        '                    match.turnUid == match.hostUid, countdown,solved.size,match.size,match.cooperative,\\n'
+        '                ArenaLiveScoreV2(hostName, guestName,\n'
+        '                    match.score(match.hostUid,questions), match.score(match.guestUid,questions),\n'
+        '                    match.turnUid == match.hostUid, countdown,solved.size,match.size,match.cooperative,\n'
         '                    match.hostAvatar,match.guestAvatar)'
     )
     source = score_pattern.sub(lambda _: replacement, source, count=1)
