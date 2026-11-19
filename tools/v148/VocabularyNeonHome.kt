@@ -92,13 +92,16 @@ internal object WordMemoryRobotRig {
     // Deterministic rig poses. Each motion is tied to a named joint rather than
     // an unrelated screen-space animation, so replacement assets can reuse it.
     internal data class Pose(val head: Float, val leftShoulder: Float,
-        val rightShoulder: Float, val book: Float, val gaze: Float)
+        val rightShoulder: Float, val leftElbow: Float, val rightElbow: Float,
+        val book: Float, val gaze: Float)
     fun idlePose(phase: Float): Pose {
         val breathing = sin(phase)
         val glance = sin(phase * .7f)
         return Pose(head = glance * 2.4f,
             leftShoulder = -glance * 7f,
             rightShoulder = glance * 7f,
+            leftElbow = breathing * 4f,
+            rightElbow = -breathing * 3f,
             book = glance * 3f,
             gaze = glance * .016f)
     }
@@ -146,17 +149,27 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
             drawCircle(Color(0xFF58738E), w * .087f,
                 Offset(w * .23f, h * .67f))
             drawRoundRect(limb, Offset(w * .14f, h * .65f),
-                Size(w * .16f, h * .23f), CornerRadius(w * .08f))
-            drawCircle(Color(0xFFE8F6FF), w * .065f,
-                Offset(w * .22f, h * .86f))
+                Size(w * .16f, h * .13f), CornerRadius(w * .07f))
+            rotate(pose.leftElbow, Offset(w * .22f, h * .78f)) {
+                drawCircle(Color(0xFF58738E), w * .063f, Offset(w * .22f, h * .78f))
+                drawRoundRect(limb, Offset(w * .155f, h * .78f),
+                    Size(w * .13f, h * .095f), CornerRadius(w * .05f))
+                drawCircle(Color(0xFFE8F6FF), w * .065f,
+                    Offset(w * .22f, h * .86f))
+            }
         }
         rotate(pose.rightShoulder, Offset(w * .77f, h * .67f)) {
             drawCircle(Color(0xFF58738E), w * .087f,
                 Offset(w * .77f, h * .67f))
             drawRoundRect(limb, Offset(w * .70f, h * .65f),
-                Size(w * .16f, h * .23f), CornerRadius(w * .08f))
-            drawCircle(Color(0xFFE8F6FF), w * .065f,
-                Offset(w * .78f, h * .86f))
+                Size(w * .16f, h * .13f), CornerRadius(w * .07f))
+            rotate(pose.rightElbow, Offset(w * .78f, h * .78f)) {
+                drawCircle(Color(0xFF58738E), w * .063f, Offset(w * .78f, h * .78f))
+                drawRoundRect(limb, Offset(w * .715f, h * .78f),
+                    Size(w * .13f, h * .095f), CornerRadius(w * .05f))
+                drawCircle(Color(0xFFE8F6FF), w * .065f,
+                    Offset(w * .78f, h * .86f))
+            }
         }
         // Curved chest with a rim, reflection and glowing heart module.
         drawRoundRect(Brush.verticalGradient(listOf(
