@@ -86,6 +86,21 @@ def main():
             "newData.val() === (data.exists() ? data.val() + 1 : 1)"
         )
     }
+    # Security gate: the room may start only if BOTH players acknowledged
+    # the current revision. Client-side disabled buttons are not sufficient.
+    phase=room["phase"]
+    old_phase_rule=phase[".write"]
+    marker="data.val() === 'lobby' && newData.val() === 'playing' && data.parent().child('guestUid').exists()"
+    if old_phase_rule.count(marker)!=1:
+        raise RuntimeError("Lobby phase validation anchor changed")
+    both_ready=(
+        "data.parent().child('rulesVersion').val() !== 2 || "
+        "(data.parent().child('ready').child(data.parent().child('hostUid').val()).val() === "
+        "data.parent().child('configRevision').val() && "
+        "data.parent().child('ready').child(data.parent().child('guestUid').val()).val() === "
+        "data.parent().child('configRevision').val())"
+    )
+    phase[".write"]=old_phase_rule.replace(marker,marker+" && ("+both_ready+")",1)
     room["ready"]={"$uid":{
         ".write":(
             "auth != null && auth.uid === $uid && "
