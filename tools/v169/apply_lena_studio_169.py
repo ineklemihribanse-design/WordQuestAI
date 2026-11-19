@@ -73,7 +73,7 @@ def main():
                         ai.draft = (ai.draft.trim() + "\\n" + String(buffer, 0, read))
                             .trim().take(maxMessageLength)
                     }
-                } ?: error("Metin dosyası açılamadı")
+                } ?: throw IllegalArgumentException("Metin dosyası açılamadı")
             }.onFailure { error = "Dosya okunamadı. Lütfen bir metin dosyası seç." }
         }
     }
