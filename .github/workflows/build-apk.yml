@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/v171-lena-chat-emoji-attachments-motion-subtitles, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/v172-arena-reference-controls, feature/v171-lena-chat-emoji-attachments-motion-subtitles, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -91,6 +91,7 @@ on:
       - 'tools/v169/**'
       - 'tools/v170/**'
       - 'tools/v171/**'
+      - 'tools/v172/**'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
@@ -1233,6 +1234,15 @@ jobs:
           test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Apply approved Arena mode icons, countdown scoreboard and match settings (v1.0.72)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v172/apply_arena_reference_172.py tools/v172/verify_arena_reference_172.py
+          python3 tools/v172/apply_arena_reference_172.py
+          python3 tools/v172/verify_arena_reference_172.py
+          grep -Fq 'versionCode = 97' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.72-arena-reference-controls"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaReferenceComponents.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1279,8 +1289,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.71 Lena emoji, attachments and 3D motion
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v171-lena-chat-emoji-attachments-motion-subtitles' }}
+      - name: Publish signed and verified v1.0.72 Arena reference controls
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v172-arena-reference-controls' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1310,9 +1320,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==96, item["versionCode"]
-          assert item["versionName"]=="1.0.71-lena-animation-chat-tools"
-          print("Version 1.0.69 code94; real 3D studio and waist-up Lena camera, premium messages.")
+          assert item["versionCode"]==97, item["versionCode"]
+          assert item["versionName"]=="1.0.72-arena-reference-controls"
+          print("Version 1.0.72 code97, Arena controls with preserved Lena and Word Memory.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1327,19 +1337,18 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.71 (code 96)
+          WordQuest AI 1.0.72 (code 97)
 
-          Fixes the missing paperclip and emoji on smaller screen sizes: both now always appear. Paperclip offers real Görsel ekle and Belge ekle pickers; the emoji menu offers 48 choices.
-          Image and first-three-page PDF text recognition is performed on device. TXT and DOCX text can also be extracted. The selected document and extracted text are shown before submission. Raw binary images are NOT transmitted to text-only Gemini/OpenAI providers, and images without legible text are explicitly rejected.
-          The same working composer is installed in Lena's messaging and live-3D lesson.
-          Moves subtitle text from the 3D background to a separate high-contrast Compose foreground panel, preventing clipping behind the 3D scene.
-          Starts original Lena GLB animations without waiting for a frame gate, loops breathing during the safe greeting fallback, and makes the default camera a tighter waist-up view. Visual rig and lip-sync perfection still need on-device QA.
-          Preserves the user's exact original CC-BY-4.0 Chair and Window Set GLB from General of Thailand, Sketchfab Melonpolygons: https://sketchfab.com/3d-models/chairs-and-window-set-game-ready-2dac4adc767c41bbacdd26bff649d739.
-          Original Lena model, portrait, 201 bones, old releases, signed package, AI keys, conversation records, Arena and Word Memory remain unchanged.
+          Arena mode selection follows the approved references: Bulmaca Düellosu, Ortak Bulmaca, 5 Şıklı Düello, with custom vector swords/puzzle/bolt icons and a pastel-violet highlighted selection.
+          Level and topic are grouped under Maç Kurulumu. The existing rules, level choices, topics, word counts, co-op networking, room-code joins, player history and score logic are unchanged.
+          Maç Ayarları has readable size and time selectors and a separate hint panel, responsive to phone and tablet widths.
+          The live player/guest score now surrounds a bright circular countdown, and puzzle controls use PAS GEÇ and CEVABI GÖNDER with separate touch targets. The full-word validation is preserved.
+          The 1.0.71 Lena 3D model, user chair, messaging, 48 emoji, file pickers, saved AI keys, conversation history and full Word Memory module remain unchanged.
+          The avatar catalog is planning-only. User-provided 3D avatars are NOT bundled or rigged by this update; license-restricted third-party models remain excluded.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.71
+          test "$TAG" = v1.0.72
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1350,4 +1359,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.71 (code96): real emoji, text-extracted photo/doc picker, animation and foreground subtitles."
+          echo "Signed v1.0.72 (code97): Arena controls added atop verified 1.0.71 sources."
