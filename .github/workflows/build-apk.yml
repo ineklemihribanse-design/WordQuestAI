@@ -76,6 +76,7 @@ on:
       - 'tools/v147/**'
       - 'tools/v122/**'
       - 'tools/v148/**'
+      - 'tools/v150/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -813,6 +814,14 @@ jobs:
           python3 tools/v148/apply_arena_v2.py
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV2Lobby.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaBoardV2.kt
+      - name: Apply approved Arena V3 layouts and room revision controls
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v150/apply_arena_v3.py
+          python3 tools/v150/apply_arena_v3.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV3Home.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV3Lobby.kt
+          grep -q 'ArenaRoomLobbyV3(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Prepare Arena v2 Firebase rules and integration audits (not deployed)
         run: |
           set -euo pipefail
