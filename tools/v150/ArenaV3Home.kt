@@ -7,6 +7,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.platform.LocalContext
+import android.content.Context
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -77,6 +79,10 @@ internal fun ArenaHomeV3(
     onOffline: () -> Unit, onFriends: @Composable () -> Unit,
     soloInitially: Boolean = false
 ) {
+    val context=LocalContext.current
+    val prefs=remember(context){context.getSharedPreferences("wordquest_arena_mascot",Context.MODE_PRIVATE)}
+    var mascot by remember {mutableStateOf(prefs.getString("kind","robot")?:"robot")}
+    var avatarPicker by rememberSaveable {mutableStateOf(false)}
     var solo by rememberSaveable { mutableStateOf(soloInitially) }
     var joinExpanded by rememberSaveable {mutableStateOf(false)}
     var allTopics by rememberSaveable {mutableStateOf(false)}
@@ -89,11 +95,11 @@ internal fun ArenaHomeV3(
                 Text("WordQuest AI",color=Color(0xFF173F38),fontWeight=FontWeight.Black,fontSize=20.sp)
                 Text("ARENA",color=purple,fontWeight=FontWeight.Bold,fontSize=12.sp)
             }
-            Surface(onClick=onAccount,color=Color.White,shape=RoundedCornerShape(22.dp),
+            Surface(onClick={avatarPicker=true},color=Color.White,shape=RoundedCornerShape(22.dp),
                 border=BorderStroke(1.dp,V3Border)) {
                 Row(Modifier.padding(horizontal=12.dp, vertical=6.dp),
                     verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-                    ArenaMascotV2("robot",Modifier.size(29.dp))
+                    ArenaMascotV2(mascot,Modifier.size(29.dp))
                     Text(playerName.ifBlank{"Profil"},color=V3Navy,fontSize=13.sp,fontWeight=FontWeight.Bold)
                     Text("⌄",color=purple)
                 }
@@ -193,4 +199,32 @@ internal fun ArenaHomeV3(
         }
         Text(quotaLabel,color=Color(0xFF878197),fontSize=11.sp)
     }
+
+    if(avatarPicker) AlertDialog(
+        onDismissRequest={avatarPicker=false},
+        title={Text("Avatarım",color=V3Navy,fontWeight=FontWeight.Bold)},
+        text={
+            Column(verticalArrangement=Arrangement.spacedBy(11.dp)) {
+                Text("Karakterini buradan değiştirebilirsin.",color=Color(0xFF72758E))
+                Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) {
+                    listOf("robot" to "Bip","fox" to "Pufi","owl" to "Mimo").forEach { (key,label) ->
+                        Column(Modifier.weight(1f).clip(RoundedCornerShape(12.dp))
+                            .background(if(mascot==key)V3Lavender else Color(0xFFFAF7FF))
+                            .clickable {
+                                mascot=key
+                                prefs.edit().putString("kind",key).apply()
+                            }.padding(9.dp),horizontalAlignment=Alignment.CenterHorizontally) {
+                            ArenaMascotV2(key,Modifier.size(55.dp))
+                            Text(label,color=V3Navy,fontSize=12.sp,fontWeight=FontWeight.Bold)
+                        }
+                    }
+                }
+                TextButton(onClick={avatarPicker=false;onAccount()}) {
+                    Text("Hesabımı yönet",color=V3Purple)
+                }
+            }
+        },
+        confirmButton={TextButton(onClick={avatarPicker=false}){Text("Tamam")}},
+        containerColor=Color.White
+    )
 }
