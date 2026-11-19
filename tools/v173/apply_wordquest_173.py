@@ -181,6 +181,18 @@ def install_previews():
     out.mkdir(parents=True,exist_ok=True)
     (out/"wq173_verified_previews.webp").write_bytes(decoded)
 
+def install_mode_icons():
+    text=(PKG/"wq173_mode_icons.webp.b64").read_text("ascii").strip()
+    decoded=base64.b64decode(text,validate=True)
+    assert len(decoded)==4230,len(decoded)
+    assert hashlib.sha256(decoded).hexdigest()==(
+        "18d2f4a2782b4f7235f7c083bd2d41e83b79b5814d22a6d1557265904dcd84fb"
+    ),"Unexpected or damaged Arena icon artwork"
+    assert decoded[:4]==b"RIFF" and decoded[8:12]==b"WEBP"
+    target=APP/"src/main/assets/arena/icons"
+    target.mkdir(parents=True,exist_ok=True)
+    (target/"wq173_mode_icons.webp").write_bytes(decoded)
+
 def main():
     gradle=APP/"build.gradle.kts"
     old=gradle.read_text("utf-8")
@@ -194,6 +206,7 @@ def main():
     for file in ("Arena173Components.kt","WordQuestSharedAvatars.kt"):
         shutil.copyfile(PKG/file,SRC/file)
     install_previews()
+    install_mode_icons()
     patch_arena_home()
     patch_arena_player_calls()
     patch_rig_and_score()
