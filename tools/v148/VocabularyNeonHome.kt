@@ -249,29 +249,33 @@ internal fun VocabularyNeonHome(
         }
         when (page) {
             "home" -> {
-                Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp))
-                    .background(Color.White.copy(alpha = .72f))
-                    .padding(12.dp), verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Box(Modifier.size(width = if (isCompact) 92.dp else 112.dp,
-                        height = if (isCompact) 112.dp else 132.dp)
+                Row(Modifier.fillMaxWidth().heightIn(min = 164.dp),
+                    verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text("Kelime\nHafızam", fontSize = if (isCompact) 31.sp else 39.sp,
+                            lineHeight = if (isCompact) 34.sp else 43.sp,
+                            fontWeight = FontWeight.Black, color = Color(0xFF102E59))
+                        Box(Modifier.width(46.dp).height(4.dp)
+                            .clip(RoundedCornerShape(4.dp)).background(Color(0xFF228BCC)))
+                        Text("Kelimelerini öğren,\ntekrar et ve kalıcı hâle getir.",
+                            fontSize = 13.sp, color = Color(0xFF4D6784), lineHeight = 19.sp)
+                    }
+                    Box(Modifier.size(width = if (isCompact) 146.dp else 205.dp,
+                        height = if (isCompact) 160.dp else 205.dp)
                         .clickable { robotPicker = true }) {
                         ProfileRobotPortrait(robot, Modifier.fillMaxSize())
-                        Text("Robotunu değiştir", modifier = Modifier.align(Alignment.BottomCenter),
-                            fontSize = 9.sp, color = Color(0xFF52708D))
-                    }
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                        Text("Kelime Hafızam", fontSize = if (isCompact) 23.sp else 29.sp,
-                            lineHeight = 34.sp,
-                            fontWeight = FontWeight.Black, color = Color(0xFF123A63))
-                        Text("Kelimelerini öğren, pekiştir ve kalıcı hâle getir.",
-                            fontSize = 12.sp, color = Color(0xFF52708D), lineHeight = 17.sp)
                     }
                 }
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {
-                    MemoryStat("▤", "$total", "Kelimem", MemoryCyan, Modifier.weight(1f))
-                    MemoryStat("↻", "$due", "Tekrar", MemoryLilac, Modifier.weight(1f))
-                    MemoryStat("✓", "$learned", "Çalışılmış", MemoryGold, Modifier.weight(1f))
+                Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp))
+                    .background(Color.White.copy(alpha = .95f))
+                    .border(1.dp, Color(0xFFD9E7F5), RoundedCornerShape(22.dp))
+                    .padding(vertical = 14.dp, horizontal = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly) {
+                    MemoryStat("▤", "$total", "Kelimem", Color(0xFF238DCD), Modifier.weight(1f))
+                    Box(Modifier.width(1.dp).height(62.dp).background(Color(0xFFDCE8F5)))
+                    MemoryStat("↻", "$due", "Tekrar", Color(0xFF8767DA), Modifier.weight(1f))
+                    Box(Modifier.width(1.dp).height(62.dp).background(Color(0xFFDCE8F5)))
+                    MemoryStat("★", "$learned", "Öğrenilen", Color(0xFFF2AE35), Modifier.weight(1f))
                 }
                 NeonPanel {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -283,8 +287,8 @@ internal fun VocabularyNeonHome(
                         Box(Modifier.size(58.dp), contentAlignment = Alignment.Center) {
                             CircularProgressIndicator(progress = { progress },
                                 modifier = Modifier.fillMaxSize(), color = MemoryCyan,
-                                trackColor = Color.White.copy(alpha = .16f), strokeWidth = 6.dp)
-                            Text("${(progress * 100).toInt()}%", color = MemoryWhite,
+                                trackColor = Color(0xFFDCE8F5), strokeWidth = 6.dp)
+                            Text("${(progress * 100).toInt()}%", color = Color(0xFF123A63),
                                 fontSize = 13.sp, fontWeight = FontWeight.Bold)
                         }
                     }
@@ -295,7 +299,7 @@ internal fun VocabularyNeonHome(
                             fontWeight = FontWeight.Bold)
                     }
                 }
-                Text("Çalışma Modları", color = MemoryWhite, fontSize = 18.sp,
+                Text("Çalışma Modları", color = Color(0xFF123A63), fontSize = 18.sp,
                     fontWeight = FontWeight.Bold)
                 for (pair in studyTiles.chunked(2)) {
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -307,11 +311,11 @@ internal fun VocabularyNeonHome(
                     }
                 }
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Text("Akıllı Koleksiyonlar", color = MemoryWhite,
+                    Text("Akıllı Koleksiyonlar", color = Color(0xFF123A63),
                         fontWeight = FontWeight.Bold, fontSize = 17.sp)
                     Spacer(Modifier.weight(1f))
                     TextButton(onClick = { collection = "all"; page = "collection" }) {
-                        Text("Tümünü Gör ›", color = MemoryLilac, fontSize = 12.sp)
+                        Text("Tümünü Gör ›", color = Color(0xFF356A9E), fontSize = 12.sp)
                     }
                 }
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
@@ -332,9 +336,9 @@ internal fun VocabularyNeonHome(
                                 "new" -> "◈"; "learning" -> "▤"; "hard" -> "⚡"
                                 "learned" -> "✓"; else -> "☆"
                             }, fontSize = 23.sp, color = MemoryCyan)
-                            Text(label, fontSize = 10.sp, color = MemoryWhite,
+                            Text(label, fontSize = 10.sp, color = Color(0xFF345474),
                                 maxLines = 1, textAlign = TextAlign.Center)
-                            Text("$amount", fontSize = 21.sp, color = MemoryWhite,
+                            Text("$amount", fontSize = 21.sp, color = Color(0xFF123A63),
                                 fontWeight = FontWeight.Bold)
                         }
                     }
@@ -344,12 +348,12 @@ internal fun VocabularyNeonHome(
                         Text("▣", fontSize = 26.sp, color = MemoryGold)
                         Spacer(Modifier.width(12.dp))
                         Column(Modifier.weight(1f)) {
-                            Text("Geçmiş Oyunlarım", color = MemoryWhite,
+                            Text("Geçmiş Oyunlarım", color = Color(0xFF123A63),
                                 fontWeight = FontWeight.Bold)
                             Text("${folders.size} arşiv · Oyun kayıtların korunur",
-                                fontSize = 11.sp, color = MemoryMuted)
+                                fontSize = 11.sp, color = Color(0xFF52708D))
                         }
-                        Text("›", fontSize = 24.sp, color = MemoryMuted)
+                        Text("›", fontSize = 24.sp, color = Color(0xFF52708D))
                     }
                 }
                 session.learningError?.let {
