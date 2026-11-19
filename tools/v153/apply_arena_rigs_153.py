@@ -102,30 +102,30 @@ internal fun ArenaApprovedHeroArt(kind:String,modifier:Modifier=Modifier) {
     # Distribute five characters across wider screens instead of clustering
     # them on the left. A narrow phone may scroll the same five choices.
     s=replace_one(s,
-        'Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),\\n'
-        '            horizontalArrangement=Arrangement.spacedBy(12.dp),\\n'
-        '            verticalAlignment=Alignment.CenterVertically) {\\n'
+        'Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),\n'
+        '            horizontalArrangement=Arrangement.spacedBy(12.dp),\n'
+        '            verticalAlignment=Alignment.CenterVertically) {\n'
         '            ArenaMascotRig.choices.forEach{(key,label)->',
-        'BoxWithConstraints(Modifier.fillMaxWidth()) {\\n'
-        '            val wideAvatars=maxWidth >= 420.dp\\n'
-        '            Row(if(wideAvatars) Modifier.fillMaxWidth()\\n'
-        '                else Modifier.horizontalScroll(rememberScrollState()),\\n'
-        '                horizontalArrangement=if(wideAvatars) Arrangement.SpaceEvenly\\n'
-        '                    else Arrangement.spacedBy(12.dp),\\n'
-        '                verticalAlignment=Alignment.CenterVertically) {\\n'
+        'BoxWithConstraints(Modifier.fillMaxWidth()) {\n'
+        '            val wideAvatars=maxWidth >= 420.dp\n'
+        '            Row(if(wideAvatars) Modifier.fillMaxWidth()\n'
+        '                else Modifier.horizontalScroll(rememberScrollState()),\n'
+        '                horizontalArrangement=if(wideAvatars) Arrangement.SpaceEvenly\n'
+        '                    else Arrangement.spacedBy(12.dp),\n'
+        '                verticalAlignment=Alignment.CenterVertically) {\n'
         '            ArenaMascotRig.choices.forEach{(key,label)->',
         "responsive avatar row")
     s=replace_one(s,
-        '        }\\n        Row(\\n            Modifier.fillMaxWidth().height(152.dp)',
-        '        }\\n        }\\n        Row(\\n            Modifier.fillMaxWidth().height(152.dp)',
+        '        }\n        Row(\n            Modifier.fillMaxWidth().height(152.dp)',
+        '        }\n        }\n        Row(\n            Modifier.fillMaxWidth().height(152.dp)',
         "close avatar bounds")
     # Each illustrated character must be selectable directly. Previously the
     # five-character row was decorative, confusing players who tapped it.
     s=replace_one(s,
         'Column(Modifier.width(66.dp),horizontalAlignment=Alignment.CenterHorizontally,',
-        'Column(Modifier.width(66.dp).clickable {\\n'
-        '                        mascot=key\\n'
-        '                        prefs.edit().putString("kind",key).apply()\\n'
+        'Column(Modifier.width(66.dp).clickable {\n'
+        '                        mascot=key\n'
+        '                        prefs.edit().putString("kind",key).apply()\n'
         '                    },horizontalAlignment=Alignment.CenterHorizontally,',
         "tap avatar to update profile, hero and new online room")
     s=replace_one(s,
