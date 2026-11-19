@@ -33,7 +33,7 @@ jobs:
             --dir dist
           test -s dist/WordQuestAI-Arena-v1.0.50-preview.apk
           test -s dist/WordQuestAI-Arena-v1.0.50-preview.sha256
-          (cd dist && sha256sum --check WordQuestAI-Arena-v1.0.50-preview.sha256)
+          sha256sum --check dist/WordQuestAI-Arena-v1.0.50-preview.sha256
           recorded="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/arena-v1.0.50-preview" \
             --jq '.assets[] | select(.name == "WordQuestAI-Arena-v1.0.50-preview.apk") | .digest')"
           test "$recorded" = "sha256:$(sha256sum dist/WordQuestAI-Arena-v1.0.50-preview.apk | cut -d' ' -f1)"
