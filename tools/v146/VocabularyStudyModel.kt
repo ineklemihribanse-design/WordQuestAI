@@ -35,6 +35,19 @@ internal object VocabularyAnswerChecker {
             .map { normalize(it, english) }.filter { it.isNotBlank() }.toSet()
     }
 
+    /** Keep phrase boundaries visible; a missing space is a spelling error, not a synonym. */
+    fun phraseWordCount(expected: String, english: Boolean = true): Int =
+        normalize(expected, english).split(Regex("\\s+")).count { it.isNotBlank() }
+
+    fun phraseSpacingHint(input: String, expected: String, english: Boolean): String? {
+        val typed = normalize(input, english)
+        val accepted = variants(expected, english)
+        if (typed in accepted || typed.isBlank()) return null
+        val joined = typed.replace(" ", "")
+        return accepted.firstOrNull { it.contains(' ') && it.replace(" ", "") == joined }
+            ?.let { "Bu ifade ${phraseWordCount(it, english)} ayrı kelimeden oluşur. Doğru yazım: $it" }
+    }
+
     fun grade(input: String, expected: String, english: Boolean): VocabularyGrade {
         val text = normalize(input, english)
         if (text.isEmpty()) return VocabularyGrade.WRONG
