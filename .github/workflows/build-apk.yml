@@ -1040,8 +1040,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.62 precise Lena lips and corrected colors
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v162-lena-face-material-calibration' }}
+      - name: Publish signed and verified v1.0.63 Lena brown hair and natural 3D eyes
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v163-lena-brown-hair-eyes-lips' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1071,9 +1071,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==87, item["versionCode"]
-          assert item["versionName"]=="1.0.62-lena-precise-face"
-          print("Version 1.0.62 code87; corrected Lena face geometry and linear colors verified.")
+          assert item["versionCode"]==88, item["versionCode"]
+          assert item["versionName"]=="1.0.63-lena-eyes-brown-hair"
+          print("Version 1.0.63 code88; skinned eye geometry, dark pupils and warm brown hair verified.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1088,19 +1088,20 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.62 (code 87)
+          WordQuest AI 1.0.63 (code 88)
 
-          Fixes v1.0.61 Lena face deformation and washed-out model colors following user-recorded device QA.
-          The 1.0.61 mouth morph incorrectly selected the nose-to-lip region and affected 2784 vertices. New face coordinates derived from the original 3D mesh limit mouth deformation to 564 lip-region vertices and blinking to 242 eyelid vertices, with independently checked Y bounds.
-          Recolors the original one-mesh Lena model using correctly linearized glTF RGBA8 vertex colors, more saturated skin/hair/clothing tones, small localized lip and eye paint masks, and less intense HDR stage light.
-          Preserves the untouched original Lena v6 GLB in GitHub, 201 skinned bones, 16 legacy body clips, 2 new facial clips, real Gemini/OpenAI conversation, saved provider credentials, Alexa 2.5D teacher, Arena and Word Memory.
-          APK signed with original compatible key; local data and historical releases retained.
-          Automated GLB structural tests and Android JVM/build tests passed. This update is not claimed pixel-verified on the user's Android device and actual mouth positioning still needs post-install visual QA.
-          Arena V2 online multiplayer still requires separately deployed Firebase rules.
+          Lena's eyes now contain real skinned 3D geometry: 2 warm-white sclera surfaces, 2 blue irises, 2 visible dark pupils, 2 small realistic light reflections and subtle eyelash contours. This replaces the empty eye shells and broad blue eyebrow paint from previous releases.
+          Corrected blinking: the original blink morph moved eyebrows, because it targeted y~1.673 rather than the actual eye lids around y~1.646. The old eyebrow and cheek morph offsets have been cleared; eye-level geometry closes when Lena blinks and reopens in idle/conversation.
+          Corrected talking: the previous wide cheek distortion has been removed; a real dark inner-mouth opening is now animated in the actual lip region during TextToSpeech playback. Lip-sync is approximate, not phoneme-perfect.
+          Lena's hair is now rich chestnut brown with subtle strand variation, not blue. Natural warm skin, muted lips, softly defined brows, clean eye color and existing blue clothing are preserved.
+          Performance: 12 skinned PBR primitives and about 53KB additional GLB data, no heavyweight texture package. The 201-bone rig, 16 original animation clips and 2 existing facial clips remain intact.
+          Preserves the original v6 source GLB, signed Android package identity, saved Gemini/OpenAI keys, conversations, Alex, Arena and Word Memory.
+          Structural GLB checks and Android JVM build/tests passed. These are NOT a substitute for human visual QA: eye opening, pupils and mouth still require confirmation on the user's actual Android device.
+          Arena V2 multiplayer still requires separately deployed Firebase rules.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.62
+          test "$TAG" = v1.0.63
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1111,4 +1112,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.62 (code87) corrected Lena lip morph and color profiles published; previous releases retained."
+          echo "Signed v1.0.63 (code88) Lena realistic eyes and chestnut hair published; previous releases retained."
