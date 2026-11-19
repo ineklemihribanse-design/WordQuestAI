@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -109,9 +109,10 @@ jobs:
           python-version: '3.11'
       - name: Install Android dependencies and voice generator
         run: |
-          sudo apt-get update
-          sudo apt-get install -y espeak libsndfile1
-          python3 -m pip install soundfile
+          set -euo pipefail
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 update
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::Queue-Mode=access -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 install -y --no-install-recommends espeak libsndfile1
+          python3 -m pip install --retries 5 --timeout 60 soundfile
           SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
           "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
       - name: Extract complete source (except generated audio)
@@ -800,6 +801,42 @@ jobs:
           grep -q 'versionCode = 79' source/app/build.gradle.kts
           grep -q 'versionName = "1.0.54-word-memory"' source/app/build.gradle.kts
           grep -q 'internal fun VocabularyNeonHome' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Integrate v1.0.53 Arena into v1.0.54 Word Memory for v1.0.57 QA
+        run: |
+          set -euo pipefail
+          # Pin the previously reviewed Arena sources; do not mix in later experiments.
+          git fetch --depth=1 origin bdef5f95369c61944cd0c31477be7bd34be04c09
+          mkdir -p /tmp/wq-arena-153
+          git archive FETCH_HEAD tools/v122 tools/v148 tools/v150 tools/v152 tools/v153 | tar -x -C /tmp/wq-arena-153
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordTyping.kt source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
+          cp /tmp/wq-arena-153/tools/v148/Arena*.kt tools/v148/
+          cp /tmp/wq-arena-153/tools/v148/PremiumOnlineRoomV2.kt tools/v148/
+          cp /tmp/wq-arena-153/tools/v148/apply_arena_v2.py tools/v148/
+          cp /tmp/wq-arena-153/tools/v150/Arena*.kt tools/v150/
+          cp /tmp/wq-arena-153/tools/v150/apply_arena_v3.py tools/v150/
+          mkdir -p tools/v152 tools/v153
+          cp /tmp/wq-arena-153/tools/v152/* tools/v152/
+          cp /tmp/wq-arena-153/tools/v153/* tools/v153/
+          python3 tools/v148/apply_arena_v2.py
+          python3 tools/v150/apply_arena_v3.py
+          python3 tools/v152/apply_arena_full_word.py
+          python3 tools/v153/apply_arena_rigs_153.py
+          python3 - <<'PY'
+          from pathlib import Path
+          pkg=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          for name in ["ArenaApprovedHome.kt","ArenaFullWordInput.kt","ArenaMascotRig.kt","ArenaRiggedMascot.kt","VocabularyNeonHome.kt","VocabularyNeonPractice.kt"]:
+              assert (pkg/name).is_file(),name
+          gradle=Path("source/app/build.gradle.kts")
+          content=gradle.read_text()
+          assert content.count("versionCode = 79")==1
+          assert content.count('versionName = "1.0.54-word-memory"')==1
+          assert 'applicationIdSuffix = ".fresh"' in content
+          content=content.replace("versionCode = 79","versionCode = 82")
+          content=content.replace('versionName = "1.0.54-word-memory"','versionName = "1.0.57-arena-memory"')
+          gradle.write_text(content)
+          print("v1.0.57 QA: v1.0.54 base, v1.0.53 Arena, unchanged .fresh identity")
+          PY
+          rm -rf /tmp/wq-arena-153
       - name: Verify independent app identity
         run: |
           set -euo pipefail
