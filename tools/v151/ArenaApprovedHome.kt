@@ -49,12 +49,12 @@ internal fun ArenaApprovedHome(
     Column(
         Modifier.fillMaxWidth()
             .background(ArenaApproved.background)
-            .padding(horizontal=12.dp,vertical=12.dp),
+            .padding(horizontal=0.dp,vertical=12.dp),
         verticalArrangement=Arrangement.spacedBy(13.dp)
     ){
         // Compact centered brand in the exact placement of the accepted screen.
         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
-            Spacer(Modifier.width(86.dp))
+            Spacer(Modifier.width(18.dp))
             Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally) {
                 Text("❧ WordQuest AI",fontSize=21.sp,color=Color(0xFF174D43),
                     fontWeight=FontWeight.ExtraBold,maxLines=1)
