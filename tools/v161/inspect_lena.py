@@ -29,6 +29,30 @@ if __name__=="__main__":
         print("SKIN",si,"joint_count",len(skin.get("joints",[])))
         print("JOINT NAMES:",[(i,d["nodes"][j].get("name"),j) for i,j in enumerate(skin.get("joints",[]))])
     print("ACCESSOR TYPES:",[(i,a.get("type"),a.get("componentType"),a.get("count")) for i,a in enumerate(d.get("accessors",[])[:12])])
+    from paint_lena_glb import accessor_values, dominant_bone
+    from collections import Counter
+    blob=Path(sys.argv[1]).read_bytes()
+    at=12
+    while at<len(blob):
+        n,t=struct.unpack_from("<I4s",blob,at)
+        if t==b"BIN\\x00".replace(b"\\\\",b"\\"):
+            bin_data=blob[at+8:at+8+n]
+            break
+        at+=8+n
+    else: raise ValueError("no BIN chunk")
+    prim=d["meshes"][0]["primitives"][0]
+    attr=prim["attributes"]
+    pts=accessor_values(d,bin_data,attr["POSITION"])
+    jj=accessor_values(d,bin_data,attr["JOINTS_0"])
+    ww=accessor_values(d,bin_data,attr["WEIGHTS_0"])
+    bones=[d["nodes"][k].get("name","") for k in d["skins"][0]["joints"]]
+    primary=Counter(dominant_bone(j,w,bones) for j,w in zip(jj,ww))
+    weighted=Counter()
+    for j,w in zip(jj,ww):
+        for idx,wt in zip(j,w):
+            if wt>0.001: weighted[bones[idx]]+=1
+    print("TOP DOMINANT BONES:",primary.most_common(25))
+    print("WEIGHTED FACE BONES:",[(name,n) for name,n in weighted.items() if any(t in name.lower() for t in ["lip","brow","lid","eye","jaw"])][:50])
     for a in d.get("animations",[]):
         chans=a.get("channels",[])
         print("ANIM",a.get("name"),"channels",len(chans),"targets",sorted(set(str((c.get("target") or {}).get("path")) for c in chans)),"node_refs",sorted(set((c.get("target") or {}).get("node") for c in chans if (c.get("target") or {}).get("node") is not None))[:14])
