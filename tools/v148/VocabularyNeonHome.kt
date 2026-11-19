@@ -89,6 +89,19 @@ internal object WordMemoryRobotRig {
         WordMemoryJoint("rightWrist", "rightElbow", .85f, .78f),
         WordMemoryJoint("book", "rightWrist", .69f, .73f)
     )
+    // Deterministic rig poses. Each motion is tied to a named joint rather than
+    // an unrelated screen-space animation, so replacement assets can reuse it.
+    internal data class Pose(val head: Float, val leftShoulder: Float,
+        val rightShoulder: Float, val book: Float, val gaze: Float)
+    fun idlePose(phase: Float): Pose {
+        val breathing = sin(phase)
+        val glance = sin(phase * .7f)
+        return Pose(head = glance * 2.4f,
+            leftShoulder = -glance * 7f,
+            rightShoulder = glance * 7f,
+            book = glance * 3f,
+            gaze = glance * .016f)
+    }
     fun validate(): Boolean = joints.map { it.name }.toSet().size == joints.size &&
         joints.all { it.parent == null || joints.any { parent -> parent.name == it.parent } } &&
         joints.all { it.pivotX in 0f..1f && it.pivotY in 0f..1f }
@@ -113,6 +126,7 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
         val w = size.width; val h = size.height
         val breath = sin(phase)
         val sway = sin(phase * .7f)
+        val pose = WordMemoryRobotRig.idlePose(phase)
         val headCenter = Offset(w * .50f, h * .40f)
         val shell = Brush.linearGradient(listOf(
             Color(0xFFFFFFFF), Color(0xFFE2EFF7), Color(0xFF8DA9BF),
@@ -128,7 +142,7 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
         // Neck and articulated shoulders sit behind the head.
         drawRoundRect(Color(0xFF59758D), Offset(w * .43f, h * .65f),
             Size(w * .14f, h * .15f), CornerRadius(w * .06f))
-        rotate(-sway * 7f, Offset(w * .23f, h * .67f)) {
+        rotate(pose.leftShoulder, Offset(w * .23f, h * .67f)) {
             drawCircle(Color(0xFF58738E), w * .087f,
                 Offset(w * .23f, h * .67f))
             drawRoundRect(limb, Offset(w * .14f, h * .65f),
@@ -136,7 +150,7 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
             drawCircle(Color(0xFFE8F6FF), w * .065f,
                 Offset(w * .22f, h * .86f))
         }
-        rotate(sway * 7f, Offset(w * .77f, h * .67f)) {
+        rotate(pose.rightShoulder, Offset(w * .77f, h * .67f)) {
             drawCircle(Color(0xFF58738E), w * .087f,
                 Offset(w * .77f, h * .67f))
             drawRoundRect(limb, Offset(w * .70f, h * .65f),
@@ -155,7 +169,7 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
         drawCircle(accent.copy(alpha = .22f), w * .07f,
             Offset(w * .5f, h * .84f))
         // Book is attached to the lower arm pivot, so it follows the robot's idle pose.
-        rotate(sway * 3f, Offset(w * .69f, h * .73f)) {
+        rotate(pose.book, Offset(w * .69f, h * .73f)) {
             drawRoundRect(Brush.linearGradient(listOf(
                 Color(0xFF184B8A), Color(0xFF277AC3), Color(0xFF0E2C60))),
                 Offset(w * .54f, h * .66f), Size(w * .34f, h * .24f),
@@ -170,7 +184,7 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
                 Offset(w * .85f, h * .78f))
         }
         // Entire face is one parent transform: no floating eyes.
-        rotate(sway * 2.4f, headCenter) {
+        rotate(pose.head, headCenter) {
             drawRoundRect(shell, Offset(w * .16f, h * .13f),
                 Size(w * .68f, h * .60f), CornerRadius(w * .25f))
             drawRoundRect(Color(0xFF405F79), Offset(w * .17f, h * .27f),
@@ -183,15 +197,17 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
                 Offset(w * .27f, h * .315f), Size(w * .42f, h * .028f),
                 CornerRadius(w * .014f))
             // Independent eye sockets, blink shutters and gaze motion.
-            val gaze = sway * w * .016f
+            val gaze = pose.gaze * w
             for (eye in listOf(.38f, .62f)) {
                 drawCircle(accent.copy(alpha = .22f), w * .085f,
                     Offset(w * eye + gaze, h * .435f))
                 drawOval(accent, Offset(w * (eye - .047f) + gaze,
                     h * (.385f + blink * .045f)),
                     Size(w * .094f, h * .10f * (1f - blink).coerceAtLeast(.06f)))
-                drawCircle(Color.White.copy(alpha = .9f), w * .013f,
-                    Offset(w * (eye - .018f) + gaze, h * .408f))
+                if (blink < .4f) {
+                    drawCircle(Color.White.copy(alpha = .9f), w * .013f,
+                        Offset(w * (eye - .018f) + gaze, h * .408f))
+                }
             }
             drawArc(accent, 18f, 144f, false,
                 Offset(w * .435f, h * .505f),
