@@ -86,7 +86,12 @@ private fun DrawScope.mascotArm(
                 Size(5*u,23*u),CornerRadius(4*u))
             drawCircle(highlight,10*u,Offset(0f,26*u))
             if(holdingCup) {
-                withTransform({ translate(0f,24*u); rotate(16f) }) {
+                withTransform({
+                    translate(0f,24*u)
+                    // Wrist counter-rotation keeps the cup upright while the
+                    // parent shoulder and elbow continue to articulate.
+                    rotate(-angle-elbow+6f)
+                }) {
                     mascotTrophy(u)
                 }
             }
