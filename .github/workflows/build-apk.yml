@@ -994,8 +994,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.60 Lena conversation persistence fix
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v160-lena-conversation-persistence' }}
+      - name: Publish signed and verified v1.0.61 Lena colors and face expressions
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v161-lena-colors-expression' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1025,9 +1025,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==85, item["versionCode"]
-          assert item["versionName"]=="1.0.60-lena-thread-persistence"
-          print("Version 1.0.60 code85; Lena chat persistence and saved provider credentials verified.")
+          assert item["versionCode"]==86, item["versionCode"]
+          assert item["versionName"]=="1.0.61-lena-expression-colors"
+          print("Version 1.0.61 code86; Lena vertex colors and actual glTF face morph clips verified.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1042,20 +1042,19 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.60 (code 85)
+          WordQuest AI 1.0.61 (code 86)
 
-          Fixes the IllegalArgumentException after Lena receives an AI response.
-          The conversation may already have been written to the local database before the legacy thread marker failed validation.
-          TeacherStore now permits the existing, profile-local ethan_thread_ids visibility marker; the data schema and historic thread namespace are unchanged.
-          A new Robolectric regression test covers saving the first Lena conversation, closing the database and reopening the saved reply; unknown setting names remain rejected.
-          Retains the 1.0.59 saved Gemini/OpenAI key bridge, Lena 3D asset, Alex, Arena and Word Memory.
-          Preserves the existing app package, signing certificate and local data. No API secrets are exposed.
-          Android compilation and automated JVM tests passed. Real-device speech/animation still require user testing.
-          Arena live multiplayer still requires separately deployed Firebase rules.
+          New Lena appearance: warm natural skin, blue hair, blue eyes and eyebrows, rose lips, blue outfit, navy trousers and light shoes. The original single-mesh white GLB had no materials; color was baked into a normalized RGBA8 vertex attribute and one PBR material without bulky textures.
+          Real face mesh morphs: mouth opening during actual audio playback and soft periodic blinking. The previous 201-bone model had facial bones with zero skinning influence, so the original bone-only facial clips could not deform her face. The update adds two genuine glTF morph targets and two facial animation clips alongside existing body gestures.
+          Total Lena animation clips: 18; original 16 clips and all 201 skin joints remain intact. Source GLB is unchanged in GitHub; the edited color/face variant is staged into the APK only.
+          Actual speech animation is an approximation tied to TextToSpeech playback start/stop; phoneme-exact lip synchronization is NOT claimed.
+          Preserves the current signed Android package, saved AI keys, conversations, Alex, Arena and Word Memory from 1.0.60.
+          Android build, JVM unit tests and GLB structural checks passed. Facial deformation and colors require visual QA on an actual device.
+          Arena V2 multiplayer still requires separately deployed Firebase rules.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.60
+          test "$TAG" = v1.0.61
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1066,4 +1065,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.60 (code85) Lena conversation persistence fix published; older releases retained as backups."
+          echo "Signed v1.0.61 (code86) Lena colors and expressions published; previous releases retained as backups."
