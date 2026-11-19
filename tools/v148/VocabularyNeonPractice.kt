@@ -107,18 +107,18 @@ internal fun NeonVocabularyPractice(
     }
     val card = deck.getOrNull(position)
     Column(Modifier.fillMaxSize().background(Brush.verticalGradient(
-        listOf(MemoryNavy, Color(0xFF08274D), Color(0xFF111B3F))))
+        listOf(Color(0xFFDFEEE9), Color(0xFFEDF5F1), Color(0xFFE3EFF3))))
         .verticalScroll(rememberScrollState())
         .padding(horizontal = 17.dp, vertical = 12.dp),
         verticalArrangement = Arrangement.spacedBy(13.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            TextButton(onClick = back) { Text("‹", fontSize = 26.sp, color = MemoryWhite) }
+            TextButton(onClick = back) { Text("‹", fontSize = 26.sp, color = DarkText) }
             Spacer(Modifier.weight(1f))
-            Text("Kartlarla Çalış", color = MemoryWhite, fontSize = 19.sp,
+            Text("Kartlarla Çalış", color = DarkText, fontSize = 19.sp,
                 fontWeight = FontWeight.Bold)
             Spacer(Modifier.weight(1f))
             TextButton(onClick = { settings = true }) {
-                Text("⚙", fontSize = 25.sp, color = MemoryLilac)
+                Text("⚙", fontSize = 25.sp, color = DarkText)
             }
         }
         if (completed) {
@@ -153,6 +153,7 @@ internal fun NeonVocabularyPractice(
         val englishAnswer = studyDirection == "tr-en"
         val prompt = if (englishAnswer) card.clue else card.answer
         val answer = if (englishAnswer) card.answer else card.clue
+        val phraseCount = VocabularyAnswerChecker.phraseWordCount(card.answer)
         var flipped by rememberSaveable(config.seed, seed, filter, position) {
             mutableStateOf(false)
         }
@@ -193,13 +194,13 @@ internal fun NeonVocabularyPractice(
             } else wrongBefore = true
         }
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text("${position + 1} / ${deck.size}", color = MemoryMuted, fontSize = 13.sp)
+            Text("${position + 1} / ${deck.size}", color = DarkText), fontSize = 13.sp)
             Spacer(Modifier.weight(1f))
             Text(when (studyMode) {
                 "write" -> "Yazarak Öğren"
                 "type" -> "Tür Eşleştir"
                 else -> "Kartlarla Çalış"
-            }, color = MemoryMuted, fontSize = 13.sp)
+            }, color = DarkText, fontSize = 13.sp)
         }
         LinearProgressIndicator(progress = { (position + 1f) / deck.size },
             modifier = Modifier.fillMaxWidth().height(6.dp)
@@ -211,13 +212,13 @@ internal fun NeonVocabularyPractice(
                 direction = if (direction == "tr-en") "en-tr" else "tr-en"
                 flipped = false
             }) { Text(if (englishAnswer) "🇹🇷 TR  →  EN 🇬🇧" else "🇬🇧 EN  →  TR 🇹🇷",
-                color = MemoryWhite, fontSize = 12.sp) }
+                color = DarkText, fontSize = 12.sp) }
             Text(if (config.folderId == "all") "Tüm Kelimeler" else "Seçili Koleksiyon",
-                color = MemoryMuted, fontSize = 12.sp)
+                color = DarkText.copy(alpha = .7f), fontSize = 12.sp)
         }
         Surface(modifier = Modifier.fillMaxWidth().heightIn(min = 355.dp),
             shape = RoundedCornerShape(26.dp), color = NeonCardPaper,
-            shadowElevation = 14.dp) {
+            shadowElevation = 22.dp) {
             Column(Modifier.fillMaxWidth().padding(19.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally) {
@@ -240,6 +241,10 @@ internal fun NeonVocabularyPractice(
                     color = DarkText, fontSize = 27.sp, lineHeight = 31.sp,
                     fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth())
+                if (phraseCount > 1) {
+                    Text("$phraseCount kelimelik ifade · Kelimeler arasındaki boşluklara dikkat et",
+                        color = Color(0xFF446D69), fontSize = 12.sp, textAlign = TextAlign.Center)
+                }
                 if (studyMode == "card") {
                     VocabularyConceptVisual(card, session.profileKey, ai)
                     Text(if (flipped) "Kart çevrildi · Cevabı kontrol et"
@@ -261,7 +266,8 @@ internal fun NeonVocabularyPractice(
                         label = { Text("Cevabın") })
                     when (feedback) {
                         VocabularyGrade.CORRECT -> Text("Doğru cevap!", color = Color(0xFF137657))
-                        VocabularyGrade.CLOSE -> Text("Çok yakın. Yazımını kontrol et.",
+                        VocabularyGrade.CLOSE -> Text(VocabularyAnswerChecker.phraseSpacingHint(response, answer, englishAnswer)
+                            ?: "Çok yakın. Yazımını kontrol et.",
                             color = Color(0xFFB87425))
                         VocabularyGrade.WRONG -> Text("Tekrar dene veya cevabı göster.",
                             color = Color(0xFFB93E50))
