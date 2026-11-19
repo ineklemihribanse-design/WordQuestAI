@@ -118,6 +118,11 @@ def patch_online() -> None:
         '            // Both players see the winner animation',
         "winner mascot")
     source = once(source,
+        '    LaunchedEffect(match?.code, match?.unknownBy, match?.mistakesBy, match?.solvedBy) {',
+        '    LaunchedEffect(match?.code, match?.unknownBy, match?.mistakesBy, ' +
+        'match?.solvedBy, match?.replayBy) {',
+        "retry reveal after last second-chance response")
+    source = once(source,
         '        val canAnswer = myTurn && (countdown == null || countdown > 0) && !alreadyUnknown',
         '        val canAnswer = myTurn && (countdown == null || countdown > 0) && ' +
         '(if(match.rulesVersion >= 2 && !match.cooperative) ' +
