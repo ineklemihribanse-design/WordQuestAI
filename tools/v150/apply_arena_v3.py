@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Apply reviewed Arena V3 layouts to assembled Android source after Arena V2."""
+from pathlib import Path
+import shutil
+
+BASE=Path(__file__).resolve().parents[2]
+SRC=BASE/"source/app/src/main/java/com/kelimebulmacasi/a1"
+TOOLS=BASE/"tools/v150"
+
+def once(text,old,new,name):
+    count=text.count(old)
+    if count!=1:raise RuntimeError(f"{name}: expected 1 anchor, got {count}")
+    return text.replace(old,new,1)
+
+def main():
+    if not (SRC/"PremiumOnlineScreen.kt").is_file():
+        raise RuntimeError("Assemble Arena V2 sources before patching V3")
+    for name in ("ArenaV3Home.kt","ArenaV3Lobby.kt"):
+        shutil.copyfile(TOOLS/name,SRC/name)
+    screen=SRC/"PremiumOnlineScreen.kt"
+    s=screen.read_text(encoding="utf-8")
+    s=once(s,"            ArenaHomeV2(","            ArenaHomeV3(","replace old home")
+    # Remove duplicated player cards and old ready panel; new room lobby
+    # owns the full layout and keeps the controls visible at 320-500dp widths.
+    start=s.index('    if (match.phase == "lobby") ArenaRoomPlayersV2(')
+    end=s.index('    if (match.phase == "lobby") ArenaV2Panel {',start)
+    s=s[:start]+s[end:]
+    first=s.index('    if (match.phase == "lobby") ArenaV2Panel {')
+    next_when=s.index('    when (match.phase) {',first)
+    s=s[:first]+s[next_when:]
+    lobby_start=s.index('        "lobby" -> {',s.index('    when (match.phase) {'))
+    playing_start=s.index('        "playing" -> {',lobby_start)
+    new_lobby='''        "lobby" -> {
+            ArenaRoomLobbyV3(
+                match = match, client = client, isHost = isHost,
+                myUid = myUid, hostName = hostName, guestName = guestName,
+                packs = packs, profileKey = session.profileKey,
+                onInvites = {
+                    if (session.social.enabled)
+                        MaterialTheme(colorScheme=lightColorScheme(
+                            primary=OnlineGold, surface=Color.White,
+                            onSurface=OnlineCream, onSurfaceVariant=OnlineSoft)) {
+                            FriendsPanel(session.social, roomCode=match.code,
+                                onJoin={sender,code ->
+                                    client.join(code){session.social.dismissInvite(sender)}
+                                },premium=true)
+                        }
+                    else Text("Arkadaş davetleri için hesabına giriş yap.",
+                        color=OnlineSoft,fontSize=12.sp)
+                }
+            )
+        }
+'''
+    s=s[:lobby_start]+new_lobby+s[playing_start:]
+    assert 'ArenaRoomLobbyV3(' in s and 'ArenaHomeV3(' in s
+    assert 'ArenaRoomPlayersV2(' not in s
+    screen.write_text(s,encoding="utf-8")
+    room=SRC/"PremiumOnlineRoom.kt"
+    current=room.read_text(encoding="utf-8")
+    assert 'fun updateLobbySettings(' in current
+    assert 'configRevision' in current and 'readyBy' in current
+    print("Arena V3 approved appearance and revision-aware lobby integrated.")
+
+if __name__=="__main__":
+    main()
