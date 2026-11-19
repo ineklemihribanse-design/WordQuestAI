@@ -1,0 +1,9 @@
+{
+  "activeTeacher": "lena",
+  "replacesVisibleTeacher": "alex",
+  "assetPath": "avatars/lena/Lena_Prism3D_AnimationPack_v6.glb",
+  "animationMapPath": "avatars/lena/animation-map.json",
+  "keepAlexFiles": true,
+  "fallbackIfLenaUnavailable": "alex",
+  "status": "requested-runtime-wiring-pending"
+}

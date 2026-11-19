@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
