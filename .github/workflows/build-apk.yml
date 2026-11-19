@@ -76,6 +76,7 @@ on:
       - 'tools/v147/**'
       - 'tools/v148/**'
       - 'tools/v150/**'
+      - 'tools/v157/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -816,9 +817,8 @@ jobs:
           cp /tmp/wq-arena-153/tools/v122/apply_mobile_arena_keyboard.py tools/v122/
           cp /tmp/wq-arena-153/tools/v148/Arena*.kt tools/v148/
           cp /tmp/wq-arena-153/tools/v148/PremiumOnlineRoomV2.kt tools/v148/
-          # Use the scoreboard compatibility fix already developed for v1.0.54.
-          git fetch --depth=1 origin c8b49219726a6eba643b7035c26450c569292dc2
-          git show FETCH_HEAD:tools/v148/apply_arena_v2.py > tools/v148/apply_arena_v2.py
+          # Use the versioned compatibility script with both bare and
+          # keyboard-visible same-line Arena score-strip variants.
           cp /tmp/wq-arena-153/tools/v150/Arena*.kt tools/v150/
           cp /tmp/wq-arena-153/tools/v150/apply_arena_v3.py tools/v150/
           mkdir -p tools/v151 tools/v152 tools/v153
@@ -833,7 +833,7 @@ jobs:
           python3 tools/v122/apply_mobile_arena_keyboard.py
           grep -q 'val missingCount = fixedPattern.count' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
           grep -q 'ArenaCrosswordTypingStrip(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
-          python3 tools/v148/apply_arena_v2.py
+          python3 tools/v157/apply_arena_v2_compat.py
           python3 tools/v150/apply_arena_v3.py
           python3 - <<'PY'
           from pathlib import Path
