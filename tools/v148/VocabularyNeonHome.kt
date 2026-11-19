@@ -233,7 +233,7 @@ internal fun VocabularyNeonHome(
     }
 
     Box(Modifier.fillMaxSize().background(
-        Brush.verticalGradient(listOf(Color(0xFF477F84), Color(0xFF315B69), Color(0xFF25465B)))
+        Brush.verticalGradient(listOf(Color(0xFFF7FAFF), Color(0xFFEAF3FC), Color(0xFFDFEDFA)))
     ), contentAlignment = Alignment.TopCenter) {
     Column(Modifier.widthIn(max = 760.dp).fillMaxWidth()
         .verticalScroll(rememberScrollState())
@@ -243,14 +243,14 @@ internal fun VocabularyNeonHome(
             TextButton(onClick = {
                 if (page == "home") back()
                 else { page = "home"; activeFolder = null }
-            }) { Text("‹  Geri", color = MemoryWhite) }
+            }) { Text("‹  Geri", color = Color(0xFF123A63)) }
             Spacer(Modifier.weight(1f))
-            Text(session.learningProfileName, color = MemoryMuted, fontSize = 12.sp)
+            Text(session.learningProfileName, color = Color(0xFF52708D), fontSize = 12.sp)
         }
         when (page) {
             "home" -> {
                 Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp))
-                    .background(Color.White.copy(alpha = .13f))
+                    .background(Color.White.copy(alpha = .72f))
                     .padding(12.dp), verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Box(Modifier.size(width = if (isCompact) 92.dp else 112.dp,
@@ -258,14 +258,14 @@ internal fun VocabularyNeonHome(
                         .clickable { robotPicker = true }) {
                         ProfileRobotPortrait(robot, Modifier.fillMaxSize())
                         Text("Robotunu değiştir", modifier = Modifier.align(Alignment.BottomCenter),
-                            fontSize = 9.sp, color = MemoryMuted)
+                            fontSize = 9.sp, color = Color(0xFF52708D))
                     }
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
                         Text("Kelime Hafızam", fontSize = if (isCompact) 23.sp else 29.sp,
                             lineHeight = 34.sp,
-                            fontWeight = FontWeight.Black, color = MemoryGold)
+                            fontWeight = FontWeight.Black, color = Color(0xFF123A63))
                         Text("Kelimelerini öğren, pekiştir ve kalıcı hâle getir.",
-                            fontSize = 12.sp, color = MemoryMuted, lineHeight = 17.sp)
+                            fontSize = 12.sp, color = Color(0xFF52708D), lineHeight = 17.sp)
                     }
                 }
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {
@@ -276,9 +276,9 @@ internal fun VocabularyNeonHome(
                 NeonPanel {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                            Text("Bugünkü Tekrarın", color = MemoryWhite,
+                            Text("Bugünkü Tekrarın", color = Color(0xFF123A63),
                                 fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                            Text("$due kelime seni bekliyor.", color = MemoryMuted, fontSize = 12.sp)
+                            Text("$due kelime seni bekliyor.", color = Color(0xFF52708D), fontSize = 12.sp)
                         }
                         Box(Modifier.size(58.dp), contentAlignment = Alignment.Center) {
                             CircularProgressIndicator(progress = { progress },
@@ -457,15 +457,15 @@ internal fun VocabularyNeonHome(
 private fun MemoryStat(symbol: String, amount: String, title: String,
     accent: Color, modifier: Modifier = Modifier) {
     Column(modifier.clip(RoundedCornerShape(15.dp))
-        .background(Color(0xFF0B2B51))
-        .border(1.dp, accent.copy(alpha = .55f), RoundedCornerShape(15.dp))
+        .background(Color.White.copy(alpha = .92f))
+        .border(1.dp, accent.copy(alpha = .32f), RoundedCornerShape(15.dp))
         .padding(vertical = 10.dp, horizontal = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(3.dp)) {
         Text(symbol, color = accent, fontSize = 22.sp)
-        Text(amount, color = MemoryWhite, fontSize = 23.sp,
+        Text(amount, color = Color(0xFF123A63), fontSize = 23.sp,
             fontWeight = FontWeight.Bold)
-        Text(title, color = MemoryMuted, fontSize = 10.sp)
+        Text(title, color = Color(0xFF52708D), fontSize = 10.sp)
     }
 }
 
@@ -474,18 +474,18 @@ private fun MemoryModeTile(tile: StudyTile, modifier: Modifier,
     enabled: Boolean, onClick: () -> Unit) {
     Column(modifier.clip(RoundedCornerShape(15.dp))
         .background(Brush.linearGradient(
-            listOf(tile.accent.copy(alpha = .16f), Color(0xFF386577))))
+            listOf(Color.White.copy(alpha = .95f), tile.accent.copy(alpha = .18f))))
         .border(1.dp, tile.accent.copy(alpha = .28f), RoundedCornerShape(15.dp))
         .clickable(enabled = enabled, onClick = onClick).padding(11.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(tile.symbol, color = tile.accent, fontSize = 24.sp)
             Spacer(Modifier.weight(1f))
-            Text("›", fontSize = 22.sp, color = MemoryWhite)
+            Text("›", fontSize = 22.sp, color = Color(0xFF123A63))
         }
-        Text(tile.title, color = MemoryWhite, fontSize = 13.sp,
+        Text(tile.title, color = Color(0xFF123A63), fontSize = 13.sp,
             fontWeight = FontWeight.Bold, maxLines = 1)
-        Text(tile.subtitle, color = MemoryMuted, fontSize = 10.sp, maxLines = 1)
+        Text(tile.subtitle, color = Color(0xFF52708D), fontSize = 10.sp, maxLines = 1)
     }
 }
 
@@ -494,8 +494,8 @@ internal fun NeonPanel(click: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit) {
     val base = Modifier.fillMaxWidth().clip(RoundedCornerShape(19.dp))
         .background(Brush.linearGradient(listOf(
-            Color(0xFF467B82), Color(0xFF315D6C))))
-        .border(1.dp, Color.White.copy(alpha = .13f), RoundedCornerShape(19.dp))
+            Color(0xFFFFFFFF), Color(0xFFF0F6FF))))
+        .border(1.dp, Color(0xFFCEDFF0), RoundedCornerShape(19.dp))
     Column((if (click != null) base.clickable(onClick = click) else base)
         .padding(16.dp), verticalArrangement = Arrangement.spacedBy(9.dp),
         content = content)
