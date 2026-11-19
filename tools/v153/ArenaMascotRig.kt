@@ -37,11 +37,11 @@ internal object ArenaMascotRig {
         ArenaRigBone("LEFT_EYE", "HEAD", 65f, 61f),
         ArenaRigBone("RIGHT_EYE", "HEAD", 95f, 61f),
         ArenaRigBone("MOUTH", "HEAD", 80f, 75f),
-        ArenaRigBone("LEFT_SHOULDER", "CHEST", 115f, 99f),
-        ArenaRigBone("LEFT_UPPER_ARM", "LEFT_SHOULDER", 115f, 113f),
-        ArenaRigBone("LEFT_ELBOW", "LEFT_UPPER_ARM", 115f, 131f),
-        ArenaRigBone("LEFT_FOREARM", "LEFT_ELBOW", 115f, 144f),
-        ArenaRigBone("LEFT_HAND", "LEFT_FOREARM", 115f, 155f),
+        ArenaRigBone("LEFT_SHOULDER", "CHEST", 111f, 103f),
+        ArenaRigBone("LEFT_UPPER_ARM", "LEFT_SHOULDER", 111f, 117f),
+        ArenaRigBone("LEFT_ELBOW", "LEFT_UPPER_ARM", 111f, 131f),
+        ArenaRigBone("LEFT_FOREARM", "LEFT_ELBOW", 111f, 144f),
+        ArenaRigBone("LEFT_HAND", "LEFT_FOREARM", 111f, 155f),
         ArenaRigBone("RIGHT_SHOULDER", "CHEST", 45f, 99f),
         ArenaRigBone("RIGHT_UPPER_ARM", "RIGHT_SHOULDER", 45f, 113f),
         ArenaRigBone("RIGHT_ELBOW", "RIGHT_UPPER_ARM", 45f, 131f),
@@ -57,7 +57,7 @@ internal object ArenaMascotRig {
         ArenaRigBone("RIGHT_KNEE", "RIGHT_THIGH", 95f, 151f),
         ArenaRigBone("RIGHT_SHIN", "RIGHT_KNEE", 95f, 159f),
         ArenaRigBone("RIGHT_FOOT", "RIGHT_SHIN", 95f, 167f),
-        ArenaRigBone("TROPHY_PIVOT", "LEFT_HAND", 115f, 155f)
+        ArenaRigBone("TROPHY_PIVOT", "LEFT_HAND", 111f, 155f)
     )
 
     fun isHierarchical(): Boolean {
@@ -96,9 +96,9 @@ internal object ArenaMascotRig {
             bodyBob = sin(p) * 1.6f,
             torsoAngle = sin(p * 0.6f) * 2.2f,
             headAngle = sin(p * 0.74f) * 3.8f,
-            armLeft = if(trophy) -139f + sin(p) * 4f else 16f + sin(p) * 5.5f,
-            elbowLeft = if(trophy) -20f + sin(p * 1.3f) * 7f else sin(p) * 8f,
-            armRight = -16f + sin(p + 1.2f) * 6f,
+            armLeft = if(trophy) -161f + sin(p) * 2f else 14f + sin(p) * 4f,
+            elbowLeft = if(trophy) -6f + sin(p * 1.3f) * 3f else sin(p) * 6f,
+            armRight = -14f + sin(p + 1.2f) * 4f,
             elbowRight = sin(p * 0.92f) * 8f,
             legLeft = sin(p * 0.82f) * 4f,
             legRight = -sin(p * 0.82f) * 4f,
