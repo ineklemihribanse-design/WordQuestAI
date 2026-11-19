@@ -3,6 +3,8 @@ package com.kelimebulmacasi.a1
 import org.junit.Assert.*
 import org.junit.Test
 import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 
 class ArenaMascotRigTest {
     @Test fun exactlyFiveDistinctSelectableCharacters() {
@@ -49,9 +51,34 @@ class ArenaMascotRigTest {
     @Test fun selectedCharacterAlwaysMovesHandWithRaisedTrophy() {
         ArenaMascotRig.characters.forEach { actor ->
             val poses=(0..24).map {ArenaMascotRig.pose(actor.id,it*.17f,true)}
-            assertTrue(poses.all { it.holdsTrophy && it.armLeft in -145f..-132f })
+            assertTrue(poses.all { it.holdsTrophy && it.armLeft in -164f..-158f })
             assertTrue(poses.any { it.elbowLeft != poses[0].elbowLeft })
             assertTrue(poses.any { it.headAngle != poses[0].headAngle })
+        }
+    }
+
+    @Test fun wristAndTrophyStayWithinCanvasThroughoutFiveAnimations() {
+        // Shoulder and wrist transformations must match ArenaRiggedMascot.
+        ArenaMascotRig.characters.forEach { actor ->
+            for (frame in 0..500) {
+                val t=frame*(2f*PI.toFloat())/500f
+                val p=ArenaMascotRig.pose(actor.id,t,true)
+                val upper=Math.toRadians(p.armLeft.toDouble())
+                val fore=Math.toRadians((p.armLeft+p.elbowLeft).toDouble())
+                val wristX=111.0-31.0*sin(upper)-24.0*sin(fore)
+                val wristY=103.0+31.0*cos(upper)+24.0*cos(fore)
+                val torso=Math.toRadians(p.torsoAngle.toDouble())
+                val dx=wristX-80.0
+                val dy=wristY-115.0
+                val cupX=80.0+dx*cos(torso)-dy*sin(torso)
+                val cupY=115.0+dx*sin(torso)+dy*cos(torso)+p.bodyBob
+                assertTrue("Right trophy edge cropped for ${actor.id}: $cupX",
+                    cupX+26.0<160.0)
+                assertTrue("Left trophy edge cropped for ${actor.id}: $cupX",
+                    cupX-26.0>0.0)
+                assertTrue("Upper trophy edge cropped for ${actor.id}: $cupY",
+                    cupY-44.0>0.0)
+            }
         }
     }
 }
