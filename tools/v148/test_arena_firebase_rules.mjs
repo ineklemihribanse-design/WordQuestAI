@@ -38,6 +38,16 @@ try {
   await assertFails(ref(B,'hostAvatar').set('fox'));
   await assertFails(ref(B,'ready/arena-a').set(1));
 
+  // All five rigged mascot IDs persist under the same protected room rules.
+  await seed({phase:'lobby',guestAvatar:null,ready:{}});
+  await assertSucceeds(ref(B,'guestAvatar').set('rabbit'));
+  await seed({phase:'lobby',guestAvatar:null,ready:{}});
+  await assertSucceeds(ref(B,'guestAvatar').set('bear'));
+  await seed({phase:'lobby',guestAvatar:null,ready:{}});
+  await assertFails(ref(B,'guestAvatar').set('unapproved'));
+  await seed({phase:'lobby',ready:{'arena-a':1,'arena-b':1}});
+
+
   // Settings are changeable by the host even after a guest joins.
   // Old ready acknowledgements no longer match the new config revision.
   await assertSucceeds(ref(A).update({
