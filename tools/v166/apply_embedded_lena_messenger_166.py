@@ -95,6 +95,13 @@ def main():
     s=f.read_text("utf-8")
     assert "TeacherAvatarPicker(ai.avatar, ai::chooseAvatar" in s
     assert 'Text("Kişisel AI Öğretmen"' in s
+    # Start on the independent messenger rather than initializing the native
+    # 3D engine. A separate 3D Görüşme action enters Lena, so text chat also
+    # remains usable after an unrecoverable native GLB failure.
+    s=once(s,
+        "    var scene3d by rememberSaveable { mutableStateOf(true) }",
+        "    var scene3d by remember { mutableStateOf(false) }",
+        "safe messenger default for independent fallback")
     s=once(s,
         "    var historyOpen by rememberSaveable { mutableStateOf(false) }",
         "    var historyOpen by rememberSaveable { mutableStateOf(false) }\n    var learningToolsOpen by rememberSaveable { mutableStateOf(false) }",
