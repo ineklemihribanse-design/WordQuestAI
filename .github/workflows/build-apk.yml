@@ -846,7 +846,7 @@ jobs:
       # This is a NEW app identity with a NEW signing key; it will NOT replace the old installed APK.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish NEW separately installable signed v1.0.48 APK to new GitHub repo
+      - name: Publish NEW separately installable signed v1.0.54 APK to new GitHub repo
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
@@ -877,9 +877,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==73, item["versionCode"]
-          assert item["versionName"]=="1.0.48-neon-word-memory"
-          print("Version 1.0.48 code73 > current 1.0.47 code72; neon vocabulary and 2.5D preserved.")
+          assert item["versionCode"]==79, item["versionCode"]
+          assert item["versionName"]=="1.0.54-word-memory"
+          print("Version 1.0.54 code79; Word Memory and 2.5D preserved.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -895,7 +895,7 @@ jobs:
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.48
+          test "$TAG" = v1.0.54
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -907,4 +907,4 @@ jobs:
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
           python3 tools/prune_public_releases.py
-          echo "Signed v1.0.48 (code73) neon vocabulary with optional AI visuals and existing 2.5D published."
+          echo "Signed v1.0.54 (code79) Word Memory with existing 2.5D published."
