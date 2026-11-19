@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -81,6 +81,7 @@ on:
       - 'tools/v159/**'
       - 'tools/v160/**'
       - 'tools/v161/**'
+      - 'tools/v162/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -948,6 +949,19 @@ jobs:
           assert all(a in [x["name"] for x in d["animations"]] for a in ("Lena_V161_Face_IdleBlink","Lena_V161_Face_TalkBlink"))
           print("GLB build gate: colored vertex material, true facial morphs, 201 bones, 18 clips.")
           PY
+      - name: Fix overbroad nose-mouth and washed-out Lena material (v1.0.62 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v162/paint_lena_162.py tools/v162/face_lena_162.py tools/v162/rebuild_lena_162.py tools/v162/apply_lena_precision_162.py
+          python3 tools/v162/apply_lena_precision_162.py
+          grep -q 'versionCode = 87' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.62-lena-precise-face"' source/app/build.gradle.kts
+          grep -q 'intensity = 50_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -q 'Lena_V162_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail
