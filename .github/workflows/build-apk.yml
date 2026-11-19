@@ -822,7 +822,7 @@ jobs:
           python3 tools/v150/apply_arena_v3.py
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV3Home.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV3Lobby.kt
-          grep -q 'ArenaRoomLobbyV3(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          grep -q 'ArenaApprovedRoomLobby(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Prepare Arena v2 Firebase rules and integration audits (not deployed)
         run: |
           set -euo pipefail
