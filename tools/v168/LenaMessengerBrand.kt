@@ -330,3 +330,22 @@ internal fun LenaMessengerModeBar(
         }
     }
 }
+
+/** Decorative speaking indicator, never a fabricated TTS progress or duration. */
+@Composable
+internal fun LenaVoiceWaveform(active: Boolean) {
+    val bars = listOf(6, 11, 9, 17, 25, 15, 24, 13, 20, 12, 8, 14, 6)
+    Row(
+        modifier = Modifier.height(28.dp),
+        horizontalArrangement = Arrangement.spacedBy(3.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        bars.forEach { height ->
+            Box(
+                Modifier.width(3.dp).height((if (active) height else (height / 2 + 3)).dp)
+                    .clip(RoundedCornerShape(50))
+                    .background(if (active) Color(0xFF2CBA68) else Color(0xFFA7DCB7))
+            )
+        }
+    }
+}
