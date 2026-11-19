@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -89,6 +89,8 @@ on:
       - 'tools/v167/**'
       - 'tools/v168/**'
       - 'tools/v169/**'
+      - 'tools/v170/**'
+      - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -1172,6 +1174,35 @@ jobs:
           print("PASS: studio is real 3D glTF geometry with valid position bounds.")
           PY
 
+      - name: Stage EXACT user-uploaded chair and window GLB and safe Lena greeting (v1.0.70)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v170/stage_user_chair_170.py tools/v170/apply_lena_chair_170.py
+          # FAIL here when the original attached 19MB GLB has not been
+          # uploaded to GitHub. Never publish a fake or substitute chair.
+          test -s assets/studio/chairs_and_window_set_-_game_ready.glb || {
+            echo "::error::Original chair/window GLB not yet uploaded to GitHub branch. No v1.0.70 APK will be published."
+            exit 1
+          }
+          python3 tools/v170/apply_lena_chair_170.py
+          grep -Fq 'versionCode = 95' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.70-user-chair-safe-greeting"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/studio/chairs_and_window_set_-_game_ready.glb
+          test -s source/app/src/main/assets/studio/chairs_and_window_set_provenance.json
+          grep -Fq 'if (userChairSet != null) add(userChairSet)' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq '01_Idle_Natural_Breathing' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          src=Path('assets/studio/chairs_and_window_set_-_game_ready.glb')
+          dst=Path('source/app/src/main/assets/studio')/src.name
+          assert src.stat().st_size==19765636
+          assert src.read_bytes()==dst.read_bytes()
+          assert hashlib.sha256(src.read_bytes()).hexdigest()=='379c0537249af58dc1115184dc9f2257f045a1ba4bb9a266b7ab67898e8e8c81'
+          print('Original user-provided GLB copied byte-for-byte.')
+          PY
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1218,8 +1249,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.69 premium studio and Lena chat
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v169-lena-premium-studio' }}
+      - name: Publish signed and verified v1.0.70 real user chair and safe greeting
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v170-lena-user-chair-asset-and-rig-qa' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1249,8 +1280,8 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==94, item["versionCode"]
-          assert item["versionName"]=="1.0.69-lena-premium-3d-studio"
+          assert item["versionCode"]==95, item["versionCode"]
+          assert item["versionName"]=="1.0.70-user-chair-safe-greeting"
           print("Version 1.0.69 code94; real 3D studio and waist-up Lena camera, premium messages.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
@@ -1266,20 +1297,19 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.69 (code 94)
-          
-          Premium Lena AI messenger: preserves the same actual Lena model portrait, elevated profile header, exclusive active mode tabs, scrolling message history, real green and white message bubbles, functional local bookmarks and interactive TTS playback strips.
-          Existing beginner/intermediate difficulty controls, IPA/UK-US and learning tools stay in a reachable modal rather than displacing real conversations.
-          Rounded chat composer with send action alongside text, real Android speech recognition, last reply playback, selectable audio rate and saved voice preferences.
-          Adds a *real 3D* glTF environment, generated deterministically offline: forest-green walls, illuminated shelves, books, plants, desk props and soft window accents.
-          Camera enters at a waist-and-face target rather than at the feet. Additional user-selectable portrait, face and full-body views remain.
-          Uses the unchanged original 201-bone Lena GLB and its animations. No recreated/fake character face or replacement model.
-          Preserves the existing signed .fresh package identity and release certificate, all user conversations, Gemini/OpenAI keys, Arena and Word Memory.
-          The exact final Android appearance, facial motion and camera positioning still require on-device inspection.
+          WordQuest AI 1.0.70 (code 95)
+
+          The EXACT 19,765,636-byte user-provided Chairs and Window Set - Game Ready GLB has been SHA-256 verified, and bundled unchanged as a separate 3D scene prop, with author/source attribution preserved. This is not a generated replacement.
+          Author: General of Thailand (Sketchfab: Melonpolygons).
+          License: Creative Commons Attribution 4.0.
+          Source: https://sketchfab.com/3d-models/chairs-and-window-set-game-ready-2dac4adc767c41bbacdd26bff649d739
+          SHA-256: 379c0537249af58dc1115184dc9f2257f045a1ba4bb9a266b7ab67898e8e8c81
+          Lena's device-reported broken greeting wave is temporarily disabled and falls back to her original breathing idle clip. Her original rig, face, talking and listening animations are unchanged. A corrected natural hand wave still requires rig retargeting and on-device QA.
+          Preserves 1.0.69 3D studio, messaging and audio controls, saved conversations, AI keys, Arena and Word Memory. Same app ID, code increase and signer verified by CI.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.69
+          test "$TAG" = v1.0.70
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1290,4 +1320,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.69 (code94) premium Lena messenger and 3D studio published; original avatar and history retained."
+          echo "Signed v1.0.70 (code95): exact original user chair/window GLB packaged, safe greeting, old data retained."
