@@ -78,6 +78,7 @@ on:
       - 'tools/v148/**'
       - 'tools/v150/**'
       - 'tools/v151/**'
+      - 'tools/v152/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -823,6 +824,15 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV3Home.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV3Lobby.kt
           grep -q 'ArenaApprovedRoomLobby(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Use full-word answers in Arena and guard PAS against accidental taps
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v152/apply_arena_full_word.py
+          python3 tools/v152/apply_arena_full_word.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaFullWordInput.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaFullWordInputTest.kt
+          grep -q 'label = { Text("Kelimeyi yaz") }' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          grep -q 'ArenaOutlineButton("PAS", {' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
       - name: Prepare Arena v2 Firebase rules and integration audits (not deployed)
         run: |
           set -euo pipefail
