@@ -31,7 +31,7 @@ def main():
         "MemoryGold":"FFD78B",
     }
     for name,hex_value in palette.items():
-        regex=rf'(internal val {name} = Color\\(0xFF)[0-9A-Fa-f]{{6}}(\\))'
+        regex=rf'(internal val {name} = Color\(0xFF)[0-9A-Fa-f]{{6}}(\))'
         new,n=re.subn(regex,lambda m:m.group(1)+hex_value+m.group(2),s)
         if n!=1: raise RuntimeError(f"Expected one color declaration for {name}, got {n}")
         s=new
@@ -39,12 +39,12 @@ def main():
     # Never blanket-replace all translucent backgrounds: only the actual
     # collection tile that was approved as a near-white card.
     for previous in (
-        'Color.White.copy(alpha = .15f))\\n                            .border(1.dp, MemoryCyan.copy(alpha = .24f)',
-        'Color.White.copy(alpha = .085f))\\n                            .border(1.dp, MemoryCyan.copy(alpha = .24f)',
+        'Color.White.copy(alpha = .15f))\n                            .border(1.dp, MemoryCyan.copy(alpha = .24f)',
+        'Color.White.copy(alpha = .085f))\n                            .border(1.dp, MemoryCyan.copy(alpha = .24f)',
     ):
         if previous in s:
             s=s.replace(previous,
-                'Color.White.copy(alpha = .94f))\\n                            .border(1.dp, Color(0xFFD9E7F5)',1)
+                'Color.White.copy(alpha = .94f))\n                            .border(1.dp, Color(0xFFD9E7F5)',1)
             break
     if 'internal val MemoryNavy = Color(0xFF173D65)' not in s:
         raise RuntimeError("1.0.54 light Word Memory palette not retained")
