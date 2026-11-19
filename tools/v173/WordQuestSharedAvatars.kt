@@ -81,10 +81,10 @@ internal fun WordQuestAvatarPortrait(id:String,modifier:Modifier=Modifier) {
     }
     val tile=remember(preview,spec.id) {
         if(preview==null || spec.previewIndex==null ||
-            preview.width<224 || preview.height<224) null
+            preview.width<128 || preview.height<128) null
         else runCatching{
             val n=spec.previewIndex
-            Bitmap.createBitmap(preview,(n%2)*112,(n/2)*112,112,112)
+            Bitmap.createBitmap(preview,(n%2)*64,(n/2)*64,64,64)
         }.getOrNull()
     }
     if(tile!=null) {
