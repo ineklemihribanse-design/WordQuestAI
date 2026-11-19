@@ -84,11 +84,7 @@ def main():
                 modifier = Modifier.align(Alignment.TopEnd).padding(6.dp),
             ) { Text("Mesajlaşma", color = LiveGold, fontSize = 13.sp) }'''
     s=once(s,old,new,"replace empty Lena launch placeholder with embedded model")
-    s=once(s,
-        '''            Text("3D · Döndür · İki parmakla yakınlaş", color = LiveWhite.copy(alpha = .73f), fontSize = 11.sp,
-                modifier = Modifier.align(Alignment.TopEnd).padding(12.dp))''',
-        '''            // Use top-right corner for the text-message fallback.''',
-        "clear obsolete overlay")
+    # v165 has already removed the obsolete camera text overlay.
     assert "openLena" not in s and "lenaLauncher" not in s
     assert "LenaLive3DStage(" in s and "TeacherStage2D(" not in s
     assert "openTextChat()" in s
