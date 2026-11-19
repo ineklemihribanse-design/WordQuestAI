@@ -829,8 +829,8 @@ jobs:
           python3 tools/v148/apply_arena_rules_v2.py
           python3 tools/v148/test_arena_v2_staging.py
           python3 -m json.tool source/database.rules.json >/dev/null
-      - name: Stage installable v1.0.50 Arena V3 PREVIEW above existing 1.0.49
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/149-arena-v2-on-current' }}
+      - name: Stage v1.0.50 version code75 for preview and eventual main-branch snapshot
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/149-arena-v2-on-current' || github.ref == 'refs/heads/main') }}
         run: |
           set -euo pipefail
           python3 tools/v150/prepare_arena_150.py
@@ -908,8 +908,10 @@ jobs:
           TAG="arena-v1.0.50-preview"
           test -s dist/WordQuestAI-Arena-v1.0.50-preview.apk
           if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Preview tag already exists. Never overwrite a previously issued signed build." >&2
-            exit 1
+            echo "Existing immutable preview retained. Never overwrite signed release assets."
+            gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
+              --jq '[.assets[].name] | join(",")' | grep -Fq 'WordQuestAI-Arena-v1.0.50-preview.apk'
+            exit 0
           fi
           gh release create "$TAG" dist/WordQuestAI-Arena-v1.0.50-preview.apk \
             dist/WordQuestAI-Arena-v1.0.50-preview.sha256 \
@@ -940,8 +942,11 @@ jobs:
       # This is a NEW app identity with a NEW signing key; it will NOT replace the old installed APK.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish NEW separately installable signed v1.0.48 APK to new GitHub repo
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      # The legacy 1.0.48 publishing step is disabled for Arena V3.
+      # After RTDB production and two-device verification, use the explicit
+      # publish-arena-150.yml workflow instead. Never auto-promote this preview.
+      - name: Legacy 1.0.48 auto-publication (disabled for Arena V3)
+        if: ${{ false }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
