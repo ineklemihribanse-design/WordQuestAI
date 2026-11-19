@@ -29,6 +29,9 @@ assert "client::toggleReady" in lobby
 assert "match.guestUid in match.readyBy" in lobby
 assert "client.updateLobbySettings(" in lobby
 assert "ArenaHomeV3(" in (SRC/"PremiumArenaScreen.kt").read_text("utf-8")
+assert "ArenaRulesCardV3(" in lobby
+assert (SRC/"ArenaV3Rules.kt").is_file()
+assert "ArenaRulesCardV3(" in (SRC/"ArenaV3Home.kt").read_text("utf-8")
 assert all(k in client for k in (
     "fun useHint(index: Int)", "fun toggleReady()", "fun replayRound(",
     "fun canAttempt(", "rulesVersion", "hintUsed", "replayBy",
