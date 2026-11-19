@@ -2,6 +2,9 @@ package com.kelimebulmacasi.a1
 
 import android.content.Context
 import androidx.compose.foundation.Canvas
+import androidx.compose.animation.core.*
+import androidx.compose.ui.graphics.drawscope.rotate
+import kotlin.math.sin
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -31,13 +34,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-internal val MemoryNavy = Color(0xFF061830)
-internal val MemoryBlue = Color(0xFF123B6B)
+internal val MemoryNavy = Color(0xFF10283B)
+internal val MemoryBlue = Color(0xFF24556B)
 internal val MemoryCyan = Color(0xFF37D8EC)
 internal val MemoryLilac = Color(0xFFA88DEB)
 internal val MemoryGold = Color(0xFFFFD175)
 internal val MemoryWhite = Color(0xFFF8F8FF)
-internal val MemoryMuted = Color(0xFFC7D3E7)
+internal val MemoryMuted = Color(0xFFD0E3E9)
 
 private data class StudyTile(val title: String, val subtitle: String, val symbol: String, val mode: String, val accent: Color)
 private val studyTiles = listOf(
@@ -64,14 +67,32 @@ internal object ProfileRobotSelection {
 @Composable
 internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
     val glow = ProfileRobotSelection.accents[robot.coerceIn(0, 3)]
+    val rig = rememberInfiniteTransition(label = "robot-rig")
+    val phase by rig.animateFloat(0f, 6.283185f,
+        infiniteRepeatable(tween(4200, easing = LinearEasing)), label = "idle")
+    val blink by rig.animateFloat(0f, 1f,
+        infiniteRepeatable(keyframes {
+            durationMillis = 4300
+            0f at 0
+            0f at 3700
+            1f at 3800
+            0f at 3940
+            0f at 4300
+        }), label = "blink")
     Canvas(modifier) {
         val w = size.width; val h = size.height
+        val armAngle = sin(phase) * 6f
         drawCircle(glow.copy(alpha = .16f), radius = w * .43f,
             center = Offset(w * .5f, h * .43f))
-        drawRoundRect(Color(0xFFB6C9E0), Offset(w * .13f, h * .31f),
-            Size(w * .16f, h * .35f), CornerRadius(w * .08f))
-        drawRoundRect(Color(0xFFB6C9E0), Offset(w * .71f, h * .31f),
-            Size(w * .16f, h * .35f), CornerRadius(w * .08f))
+        rotate(armAngle, Offset(w * .21f, h * .35f)) {
+            drawRoundRect(Color(0xFFB6C9E0), Offset(w * .13f, h * .31f),
+                Size(w * .16f, h * .35f), CornerRadius(w * .08f))
+        }
+        rotate(-armAngle, Offset(w * .79f, h * .35f)) {
+            drawRoundRect(Color(0xFFB6C9E0), Offset(w * .71f, h * .31f),
+                Size(w * .16f, h * .35f), CornerRadius(w * .08f))
+        }
+        rotate(sin(phase) * 1.8f, Offset(w * .5f, h * .44f)) {
         drawRoundRect(Brush.verticalGradient(listOf(Color.White,
             Color(0xFFAABAD4), Color(0xFF637BA0))),
             Offset(w * .20f, h * .11f), Size(w * .60f, h * .68f),
@@ -88,6 +109,11 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
             Size(w * .12f, h * .09f), style = stroke)
         drawArc(glow, 15f, 150f, false, Offset(w * .42f, h * .47f),
             Size(w * .16f, h * .09f), style = stroke)
+        if (blink > .05f) {
+            drawRoundRect(Color(0xFF091326), Offset(w * .31f, h * .35f),
+                Size(w * .38f, h * .09f * blink), CornerRadius(w * .04f))
+        }
+        }
         drawRoundRect(Brush.verticalGradient(listOf(Color(0xFF314F80),
             Color(0xFF0B2144))), Offset(w * .23f, h * .76f),
             Size(w * .54f, h * .23f), CornerRadius(w * .10f))
@@ -171,7 +197,7 @@ internal fun VocabularyNeonHome(
     }
 
     Column(Modifier.fillMaxSize().widthIn(max = 840.dp).background(
-        Brush.verticalGradient(listOf(MemoryNavy, Color(0xFF09264B), MemoryNavy))
+        Brush.verticalGradient(listOf(MemoryNavy, Color(0xFF1B4555), MemoryNavy))
     ).verticalScroll(rememberScrollState()).padding(horizontal = 18.dp, vertical = 10.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -194,7 +220,7 @@ internal fun VocabularyNeonHome(
                             fontSize = 9.sp, color = MemoryMuted)
                     }
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                        Text("Kelime Hafızam", fontSize = if (isCompact) 25.sp else 30.sp,
+                        Text("Kelime Hafızam", fontSize = if (isCompact) 23.sp else 29.sp,
                             lineHeight = 34.sp,
                             fontWeight = FontWeight.Black, color = MemoryGold)
                         Text("Kelimelerini öğren, pekiştir ve kalıcı hâle getir.",
