@@ -2,6 +2,9 @@ package com.kelimebulmacasi.a1
 
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -216,10 +219,23 @@ internal fun NeonVocabularyPractice(
             Text(if (config.folderId == "all") "Tüm Kelimeler" else "Seçili Koleksiyon",
                 color = DarkText.copy(alpha = .7f), fontSize = 12.sp)
         }
-        Surface(modifier = Modifier.fillMaxWidth().heightIn(min = 355.dp),
+        val turn by animateFloatAsState(
+            targetValue = if (studyMode == "card" && (flipped || reviewed)) 180f else 0f,
+            animationSpec = tween(durationMillis = 520), label = "card-turn"
+        )
+        val showingBack = turn > 90f
+        Surface(modifier = Modifier.fillMaxWidth().heightIn(min = 355.dp)
+            .graphicsLayer {
+                if (studyMode == "card") {
+                    rotationY = turn
+                    cameraDistance = 14f * density
+                }
+            },
             shape = RoundedCornerShape(26.dp), color = NeonCardPaper,
             shadowElevation = 22.dp) {
-            Column(Modifier.fillMaxWidth().padding(19.dp),
+            Column(Modifier.fillMaxWidth()
+                .graphicsLayer { if (studyMode == "card" && showingBack) rotationY = 180f }
+                .padding(19.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -236,8 +252,15 @@ internal fun NeonVocabularyPractice(
                             color = Color(0xFF4A6496), fontSize = 26.sp)
                     }
                 }
+                if (studyMode == "card") {
+                    Text(if (showingBack) "ARKA YÜZ · CEVAP" else "ÖN YÜZ · SORU",
+                        color = Color(0xFF4D7776), fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold, letterSpacing = 1.3.sp)
+                }
                 Text(if (studyMode == "type") card.answer
-                    else if (flipped || reviewed) answer else prompt,
+                    else if (studyMode == "card") {
+                        if (showingBack) answer else prompt
+                    } else if (flipped || reviewed) answer else prompt,
                     color = DarkText, fontSize = 27.sp, lineHeight = 31.sp,
                     fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth())
@@ -247,10 +270,10 @@ internal fun NeonVocabularyPractice(
                 }
                 if (studyMode == "card") {
                     VocabularyConceptVisual(card, session.profileKey, ai)
-                    Text(if (flipped) "Kart çevrildi · Cevabı kontrol et"
+                    Text(if (showingBack) "Kartın arka yüzü · Cevabını değerlendir"
                         else "Cevabı görmek için kartı çevir",
                         fontSize = 12.sp, color = Color(0xFF6E7391))
-                    if (flipped) {
+                    if (showingBack) {
                         WordIpa(card.answer, session.preferences)
                         ListenToWord(card.answer, session.preferences, pronunciation)
                     }
