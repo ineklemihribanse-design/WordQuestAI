@@ -1,7 +1,7 @@
 name: Verify Arena V2 Firebase Rules (Emulator)
 on:
   push:
-    branches: [feature/148-arena-rebuild]
+    branches: [feature/148-arena-rebuild, feature/149-arena-v2-on-current]
     paths:
       - 'tools/v148/apply_arena_rules_v2.py'
       - 'tools/v148/test_arena_firebase_rules.mjs'
