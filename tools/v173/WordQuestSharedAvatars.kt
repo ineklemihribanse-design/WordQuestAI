@@ -55,10 +55,23 @@ internal object WordQuestAvatarStore {
     fun model(id:String?):WordQuestSharedAvatar =
         all.firstOrNull{it.id==id}?:all[1]
 
+    fun hasSelection(context:Context,profile:String):Boolean =
+        context.getSharedPreferences("wq_shared_avatar_173",Context.MODE_PRIVATE)
+            .contains("avatar_$profile")
+
+    /** Do not overwrite the original avatar preference before a new selection. */
+    fun synchronizeOnlineForActiveProfile(context:Context,profile:String) {
+        if(!hasSelection(context,profile)) return
+        val id=read(context,profile)
+        context.getSharedPreferences("wordquest_arena_mascot",Context.MODE_PRIVATE)
+            .edit().putString("kind",id).apply()
+    }
+
     fun read(context:Context,profile:String):String {
         val pref=context.getSharedPreferences("wq_shared_avatar_173",Context.MODE_PRIVATE)
         val current=pref.getString("avatar_$profile",null)
-        return if(current!=null && model(current).licensedForBuild)current else "piko"
+        return if(current!=null && valid(current) &&
+            model(current).licensedForBuild)current else "piko"
     }
     fun save(context:Context,profile:String,id:String) {
         val choice=model(id)
