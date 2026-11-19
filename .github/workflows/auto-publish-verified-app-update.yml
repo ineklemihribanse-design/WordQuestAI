@@ -1,0 +1,171 @@
+name: Auto-publish verified WordQuest updates to installed app
+
+# On every successful Android CI build, promote its signed Arena preview to
+# the in-app update feed. This workflow lives on the default branch so a
+# workflow_run event can launch it even when the APK is built on a feature
+# branch. A one-time push trigger bootstraps the already tested v1.0.52 release.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/auto-publish-verified-app-update.yml'
+  workflow_run:
+    workflows:
+      - 'Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK'
+    types: [completed]
+    branches:
+      - main
+      - feature/149-arena-v2-on-current
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: wordquest-installed-app-update-channel
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Locate new signed preview matching the successful build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TRIGGER: ${{ github.event_name }}
+          BUILD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          if [ "$TRIGGER" = 'workflow_run' ]; then
+            test -n "$BUILD_SHA"
+            gh api "repos/$GITHUB_REPOSITORY/releases?per_page=60" \
+              --jq '.[] | select(.prerelease == true and .target_commitish == env.BUILD_SHA and (.tag_name | startswith("arena-v"))) | .tag_name' \
+              | head -1 > /tmp/wq-preview-tag
+          else
+            printf '%s\n' 'arena-v1.0.52-full-word-preview' > /tmp/wq-preview-tag
+          fi
+          TAG="$(cat /tmp/wq-preview-tag)"
+          if [ -z "$TAG" ]; then
+            echo 'No new signed Arena preview on this build. Not a new app version.'
+            echo 'NO_PREVIEW=1' >> "$GITHUB_ENV"
+            exit 0
+          fi
+          [[ "$TAG" =~ ^arena-v1[.]0[.][0-9]+(-[a-z0-9-]+)?$ ]]
+          echo "PREVIEW_TAG=$TAG" >> "$GITHUB_ENV"
+          echo "Selected immutable signed Android preview: $TAG"
+
+      - name: Download APK and verify immutable release digest
+        if: ${{ env.NO_PREVIEW != '1' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh release download "$PREVIEW_TAG" -R "$GITHUB_REPOSITORY" \
+            --pattern 'WordQuestAI-Arena-*.apk' --dir dist
+          mapfile -t apkfiles < <(find dist -maxdepth 1 -name 'WordQuestAI-Arena-*.apk' -type f)
+          test "${#apkfiles[@]}" -eq 1
+          test -s "${apkfiles[0]}"
+          original="$(basename "${apkfiles[0]}")"
+          recorded="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$PREVIEW_TAG" \
+            --jq ".assets[] | select(.name == \"$original\") | .digest")"
+          actual="sha256:$(sha256sum "${apkfiles[0]}" | cut -d' ' -f1)"
+          test "$recorded" = "$actual"
+          cp "${apkfiles[0]}" dist/WordQuestAI.apk
+
+      - name: Require higher version and the installed app's EXACT signing certificate
+        if: ${{ env.NO_PREVIEW != '1' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          apk=dist/WordQuestAI.apk
+          aapt="$ANDROID_HOME/build-tools/35.0.0/aapt"
+          signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          test -x "$aapt" && test -x "$signer"
+          "$aapt" dump badging "$apk" | head -1 > /tmp/wq-package
+          "$signer" verify --verbose --print-certs "$apk" > /tmp/wq-signature
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" /tmp/wq-package
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' /tmp/wq-signature
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' /tmp/wq-signature
+          grep -Fqi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' /tmp/wq-signature
+          unzip -tq "$apk"
+          gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name > /tmp/wq-current-tag
+          latest="$(cat /tmp/wq-current-tag)"
+          [[ "$latest" =~ ^v1[.]0[.][0-9]+$ ]]
+          mkdir -p /tmp/wq-current
+          gh release download "$latest" -R "$GITHUB_REPOSITORY" \
+            --pattern update.json --dir /tmp/wq-current
+          python3 - <<'PY'
+          import json,os,pathlib,re
+          badge=pathlib.Path('/tmp/wq-package').read_text()
+          version=int(re.search(r"versionCode='(\d+)'",badge).group(1))
+          name=re.search(r"versionName='([^']+)'",badge).group(1)
+          assert re.fullmatch(r'1\.0\.\d+(?:-[a-z0-9-]+)?', name),name
+          patch=int(name.split('-',1)[0].split('.')[-1])
+          current=json.loads(pathlib.Path('/tmp/wq-current/update.json').read_text())
+          assert current['packageName']=='com.kelimebulmacasi.a1.practice.fresh'
+          tag=f'v1.0.{patch}'
+          assert version > int(current['versionCode']),f'Not a newer Android version: {version}'
+          assert patch > int(current['tag'].rsplit('.',1)[1]),f'Not a newer public tag: {tag}'
+          assert version == patch+25,f'Unexpected version mapping: {version} != {patch}+25'
+          pathlib.Path('/tmp/wq-new-version').write_text(f'{version}\n{name}\n{tag}\n')
+          print('Validated upgrade',current['versionCode'],'->',version,tag)
+          PY
+          echo "NEW_TAG=$(sed -n '3p' /tmp/wq-new-version)" >> "$GITHUB_ENV"
+          echo "NEW_CODE=$(sed -n '1p' /tmp/wq-new-version)" >> "$GITHUB_ENV"
+          echo "NEW_NAME=$(sed -n '2p' /tmp/wq-new-version)" >> "$GITHUB_ENV"
+          echo "OLD_TAG=$latest" >> "$GITHUB_ENV"
+
+      - name: Generate SHA-256 verified update.json expected by Settings > Updates
+        if: ${{ env.NO_PREVIEW != '1' }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          apk=pathlib.Path('dist/WordQuestAI.apk')
+          doc={
+              "schemaVersion":1,
+              "tag":os.environ["NEW_TAG"],
+              "versionCode":int(os.environ["NEW_CODE"]),
+              "versionName":os.environ["NEW_NAME"],
+              "packageName":"com.kelimebulmacasi.a1.practice.fresh",
+              "apkFile":"WordQuestAI.apk",
+              "sizeBytes":apk.stat().st_size,
+              "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
+              "notes":"WordQuest AI uygulama güncellemesi: değişiklikler test edildi ve mevcut APK imzası doğrulandı. Arena çok oyunculu yarışmaları için canlı Firebase RTDB güvenlik kuralları ayrıca güncel olmalıdır.",
+          }
+          assert doc["sizeBytes"]>50_000_000
+          pathlib.Path('dist/update.json').write_text(
+              json.dumps(doc,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'
+          )
+          PY
+
+      - name: Publish verified version to normal update feed
+        if: ${{ env.NO_PREVIEW != '1' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          now="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          test "$now" = "$OLD_TAG"
+          if gh release view "$NEW_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo 'Immutable version already published; no overwrite.'
+            gh release view "$NEW_TAG" -R "$GITHUB_REPOSITORY" --json assets \
+              --jq '[.assets[].name] | sort | join(",")' \
+              | grep -Fxq 'WordQuestAI.apk,update.json'
+            exit 0
+          fi
+          gh release create "$NEW_TAG" dist/WordQuestAI.apk dist/update.json \
+            -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "WordQuest AI $NEW_TAG — Uygulama Güncellemesi" \
+            --notes "Onaylı Android paketi: $NEW_NAME (kod $NEW_CODE). Kaynak: $PREVIEW_TAG. Derleme/test ve imza doğrulaması geçti. Canlı Firebase çok oyunculu kuralları ayrı yayınlanır." \
+            --latest
+          gh release view "$NEW_TAG" -R "$GITHUB_REPOSITORY" --json assets \
+            --jq '[.assets[].name] | sort | join(",")' \
+            | grep -Fxq 'WordQuestAI.apk,update.json'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$NEW_TAG"
+          echo "Installed application's in-app updater will now discover $NEW_TAG."
