@@ -119,6 +119,7 @@ def build(source):
     skin_names=[doc["nodes"][i].get("name","") for i in doc["skins"][0]["joints"]]
     assert skin_names.count("head")==1
     head_bone=skin_names.index("head")
+    mouth_bone=skin_names.index("neck_02")  # The original lower face is weighted to neck_02
     print("Head joint index:",head_bone)
     joints=accessor_values(doc,blob,body["attributes"]["JOINTS_0"])
     weights=accessor_values(doc,blob,body["attributes"]["WEIGHTS_0"])
@@ -131,7 +132,7 @@ def build(source):
         # Preserve shirt, hands and trousers while repainting the head.
         idx=max(range(4),key=lambda k:weight[k])
         bone=skin_names[joint[idx]]
-        if bone=="head" and y>1.50:
+        if bone in ("head","neck_02") and y>1.50:
             ax=abs(x)
             # Brown side braids/cornrows as well as hairline and crown.
             hair=(y>1.714 or
@@ -266,7 +267,7 @@ def build(source):
         verts.append((x,y,mouth_depth(x,y)+.003))
         moving.append((0.,.0062*math.sin(a),.003))
     tris=[(0,k+1,(k+1)%32+1) for k in range(32)]
-    blob=procedural_mesh(doc,blob,prims,head_bone,"inner_mouth",mats["mouth"],
+    blob=procedural_mesh(doc,blob,prims,mouth_bone,"inner_mouth",mats["mouth"],
         verts,tris,speaking=moving)
     doc["buffers"][0]["byteLength"]=len(blob)
     painted=encode_glb(doc,blob)
