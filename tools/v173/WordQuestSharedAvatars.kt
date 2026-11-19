@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -41,6 +42,13 @@ internal object WordQuestAvatarStore {
         WordQuestSharedAvatar("moka","Moka","ultimate_animal_pack_100_animals__50_off.glb",null,false),
         WordQuestSharedAvatar("pera","Pera","ultimate_animal_pack_100_animals__50_off.glb",null,false),
         WordQuestSharedAvatar("gigi","Gigi","ultimate_animal_pack_100_animals__50_off.glb",null,false)
+    )
+    /** Source attribution for CC-BY preview images derived from the uploaded GLBs. */
+    val attribution:Map<String,Pair<String,String>> = mapOf(
+        "astra" to ("Jungle Jim" to "https://sketchfab.com/3d-models/astronaut-by-jungle-jim-c775a977606a4e4e990afe783c6bc845"),
+        "piko" to ("Jungle Jim" to "https://sketchfab.com/3d-models/le-pink-mech-by-jungle-jim-215dacbebf094c0292b31aeaf7b968ee"),
+        "nobi" to ("Josh_NC" to "https://sketchfab.com/3d-models/cyberpunk-robot-79369b97f0d74fd1a5c4fe824040cbce"),
+        "tera" to ("yur1_val" to "https://sketchfab.com/3d-models/sci-fi-humanoid-robot-12ad786ecde246e5854a61fd4f67ed49")
     )
     private val ids=all.map{it.id}.toSet()
     fun valid(id:String?):Boolean = id!=null && id in ids
@@ -106,6 +114,7 @@ internal fun WordQuestAvatarPortrait(id:String,modifier:Modifier=Modifier) {
 internal fun WordQuestSharedAvatarPicker(
     selected:String,onSelect:(String)->Unit,onDismiss:()->Unit
 ) {
+    val uriHandler=LocalUriHandler.current
     AlertDialog(
         onDismissRequest=onDismiss,
         title={Text("Avatarını Seç",color=Color(0xFF302056),fontWeight=FontWeight.Bold)},
@@ -140,6 +149,18 @@ internal fun WordQuestSharedAvatarPicker(
                         }
                         if(picked) Text("✓",color=Color(0xFF299447),
                             fontWeight=FontWeight.Bold)
+                    }
+                }
+                WordQuestAvatarStore.attribution[selected]?.let { (author,url) ->
+                    Text("Model: $author · CC BY 4.0 · Önizleme uyarlanmıştır.",
+                        color=Color(0xFF60537B),fontSize=11.sp)
+                    TextButton(onClick={uriHandler.openUri(url)}) {
+                        Text("Orijinal model ve üretici",fontSize=12.sp)
+                    }
+                    TextButton(onClick={
+                        uriHandler.openUri("https://creativecommons.org/licenses/by/4.0/")
+                    }) {
+                        Text("Creative Commons lisansı",fontSize=12.sp)
                     }
                 }
             }
