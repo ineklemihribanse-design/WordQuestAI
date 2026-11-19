@@ -20,8 +20,12 @@ def once(s: str, old: str, new: str, label: str)->str:
 def online():
     path=SRC/"PremiumOnlineScreen.kt"
     s=path.read_text("utf-8")
-    s=once(s,"                val missingCount = fixedPattern.count { it == '.' }\n","",
-           "remove missing-letters online variable")
+    # Older assembled sources may already omit this unused variable.
+    # Its absence is safe: subsequent full-word replacements are still verified.
+    old_missing = "                val missingCount = fixedPattern.count { it == '.' }\n"
+    if s.count(old_missing) > 1:
+        raise AssertionError("ambiguous missing-letters online variable")
+    s=s.replace(old_missing,"",1)
     s=once(s,
         '                    ArenaCrosswordTypingStrip(puzzle, solved, selected, answerText)\n',
         '',"remove misleading selected missing-letter strip")
