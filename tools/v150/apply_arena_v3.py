@@ -2,6 +2,8 @@
 """Apply reviewed Arena V3 layouts to assembled Android source after Arena V2."""
 from pathlib import Path
 import shutil
+import base64
+import hashlib
 
 BASE=Path(__file__).resolve().parents[2]
 SRC=BASE/"source/app/src/main/java/com/kelimebulmacasi/a1"
@@ -19,6 +21,15 @@ def main():
         shutil.copyfile(TOOLS/name,SRC/name)
     for name in ("ArenaApprovedTheme.kt","ArenaApprovedHome.kt","ArenaApprovedLobby.kt"):
         shutil.copyfile(BASE/"tools/v151"/name,SRC/name)
+    # Directly reuse the approved robot+trophy art, not a newly invented mascot.
+    approved=BASE/"tools/v151/approved_arena_hero.webp.b64"
+    image=base64.b64decode(approved.read_text("ascii").strip(),validate=True)
+    expected="b1e8bc2e70ec0ee867fe00ac485f1a2c33a7d2941a7792f0f485dde2aaba0364"
+    if hashlib.sha256(image).hexdigest()!=expected:
+        raise RuntimeError("Arena approved art differs from its accepted reference")
+    asset_dir=BASE/"source/app/src/main/assets"
+    asset_dir.mkdir(parents=True,exist_ok=True)
+    (asset_dir/"arena_approved_hero.webp").write_bytes(image)
     screen=SRC/"PremiumOnlineScreen.kt"
     s=screen.read_text(encoding="utf-8")
     s=once(s,"            ArenaHomeV2(","            ArenaApprovedHome(","replace old home")
