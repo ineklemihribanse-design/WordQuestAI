@@ -913,11 +913,11 @@ jobs:
           fi
           git commit -m 'Snapshot assembled v1.0.48 Android source for direct future builds'
           git push origin HEAD:refs/heads/source/main
-      # This is a NEW app identity with a NEW signing key; it will NOT replace the old installed APK.
+      # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish NEW separately installable signed v1.0.54 APK to new GitHub repo
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      - name: Publish signed and verified v1.0.57 cumulative APK to updater
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/integration/v157-memory54-plus-arena53' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -947,9 +947,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==79, item["versionCode"]
-          assert item["versionName"]=="1.0.54-word-memory"
-          print("Version 1.0.54 code79; Word Memory and 2.5D preserved.")
+          assert item["versionCode"]==82, item["versionCode"]
+          assert item["versionName"]=="1.0.57-arena-memory"
+          print("Version 1.0.57 code82; combined Arena rigs and Word Memory verified.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -963,9 +963,20 @@ jobs:
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature-verification.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
-          python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
+          cat > dist/release-notes.md <<'NOTES'
+          WordQuest AI 1.0.57 (code 82)
+          
+          Based on Word Memory 1.0.54 with the approved Arena 1.0.53 experience:
+          - Retains the approved light-blue Word Memory screens and existing word records.
+          - Restores Arena V2/V3 layout, five articulated 2.5D selectable characters and trophy animation.
+          - Uses full-word crossword answers and a separated PAS action.
+          - Preserves the .fresh Android package and validates the existing signing certificate.
+          
+          Note: Arena V2 live multiplayer requires separately deployed Firebase rules. The APK does not deploy cloud rules.
+          NOTES
+          python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.54
+          test "$TAG" = v1.0.57
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -973,8 +984,7 @@ jobs:
             exit 0
           fi
           gh release create "$TAG" dist/WordQuestAI.apk dist/update.json -R "$UPDATE_REPO" \
-            --title "WordQuest AI $TAG" --notes-file RELEASE_NOTES.md --target main --latest
+            --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          python3 tools/prune_public_releases.py
-          echo "Signed v1.0.54 (code79) Word Memory with existing 2.5D published."
+          echo "Signed v1.0.57 (code82) Arena + Word Memory published; older releases retained as backups."
