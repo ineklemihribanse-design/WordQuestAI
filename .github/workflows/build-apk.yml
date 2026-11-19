@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -75,6 +75,7 @@ on:
       - 'tools/v146/**'
       - 'tools/v147/**'
       - 'tools/v148/**'
+      - 'tools/v150/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -790,10 +791,18 @@ jobs:
           python3 tools/v148/verify_word_memory_148.py
           grep -q 'versionCode = 73' source/app/build.gradle.kts
           grep -q 'NeonVocabularyPractice' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
-      - name: Configure new independent WordQuest AI installation identity
+      - name: Apply approved light-blue Word Memory 1.0.50 screens
         run: |
           set -euo pipefail
+          python3 -m py_compile tools/v150/apply_word_memory_150.py
           python3 tools/v148/configure_new_install.py
+          python3 tools/v150/apply_word_memory_150.py
+          grep -q 'versionCode = 75' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.50-word-memory"' source/app/build.gradle.kts
+          grep -q 'internal fun VocabularyNeonHome' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Verify independent app identity
+        run: |
+          set -euo pipefail
           grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
