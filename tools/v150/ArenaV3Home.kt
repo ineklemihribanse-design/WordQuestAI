@@ -183,6 +183,7 @@ internal fun ArenaHomeV3(
             Text("İpucu hakkı kelime sayısına göre belirlenir.",color=Color(0xFF7C7796),
                 fontSize=11.sp)
         }
+        if(!solo) ArenaRulesCardV3(mode,if(mode=="quiz")12 else size,seconds)
         Button(onClick={if(solo)onOffline else if(loggedIn)onCreate else onAccount},
             modifier=Modifier.fillMaxWidth().height(54.dp),
             enabled=solo || !loggedIn || canCreate,shape=RoundedCornerShape(19.dp),
