@@ -30,6 +30,12 @@ assert "onSolo(true)" in arena and "onSolo(false)" in arena
 assert all(x in arena for x in ("Bulmaca Düellosu","Ortak Bulmaca",
     "5 Şıklı Düello","İpucu","Süre","Bulmaca"))
 assert 'WordQuestSharedAvatarPicker(' in memory
+assert 'rememberWordQuestAvatar(session.profileKey)' in memory
+assert 'rememberWordQuestAvatar(avatarProfileKey)' in home
+assert 'synchronizeOnlineForActiveProfile(context,avatarProfileKey)' in home
+assert 'fun hasSelection(context:Context,profile:String)' in shared
+assert 'DisposableEffect(context,profile)' in shared
+assert 'registerOnSharedPreferenceChangeListener(listener)' in shared
 assert 'WordQuestAvatarPortrait(selectedAvatar' in memory
 assert 'WordQuestSharedAvatarPicker(' in home
 assert 'WordQuestAvatarPortrait(' in practice
