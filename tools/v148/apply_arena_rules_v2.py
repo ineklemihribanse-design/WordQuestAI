@@ -57,10 +57,16 @@ def main():
     }}}
     # For hints, the path is hintUsed/$uid/$index rather than replay/$index/$uid.
     max_hints="("+base+".child('size').val() === 20 ? 3 : "+base+".child('size').val() === 30 ? 4 : "+base+".child('size').val() === 40 ? 5 : 6)"
+    # RTDB security rules do not provide numChildren(); count existing allowed
+    # indices explicitly. This is bounded to 50 supported crossword words.
+    count_hints="("+" + ".join(
+        "(data.parent().child('"+str(i)+"').exists() ? 1 : 0)"
+        for i in range(50)
+    )+")"
     room["hintUsed"]={"$uid":{"$index":{
         ".write":(match_conditions+" && "+index_rule+
             " && auth.uid === $uid && !data.exists() && "+
-            "data.parent().numChildren() < "+max_hints),
+            count_hints+" < "+max_hints),
         ".validate":"newData.val() === true"
     }}}
     room["ready"]={"$uid":{
