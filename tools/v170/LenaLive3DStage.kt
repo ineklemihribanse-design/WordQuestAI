@@ -74,8 +74,11 @@ internal fun LenaLive3DStage(
                     "studio/chairs_and_window_set_-_game_ready.glb"
                 ),
                 autoAnimate = false,
-                position = Position(2.45f, -0.03f, -1.40f),
-            )
+            ).apply {
+                // SceneView 2.x exposes Node.position as a mutable property,
+                // not as a ModelNode constructor parameter.
+                position = Position(2.45f, -0.03f, -1.40f)
+            }
         }.onFailure {
             Log.w("WQUserChair", "Original user chair/window GLB could not load", it)
         }.getOrNull()
