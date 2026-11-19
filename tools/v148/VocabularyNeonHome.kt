@@ -124,6 +124,21 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
             CornerRadius(w * .025f))
         drawCircle(accent.copy(alpha = .22f), w * .07f,
             Offset(w * .5f, h * .84f))
+        // Book is attached to the lower arm pivot, so it follows the robot's idle pose.
+        rotate(sway * 3f, Offset(w * .69f, h * .73f)) {
+            drawRoundRect(Brush.linearGradient(listOf(
+                Color(0xFF184B8A), Color(0xFF277AC3), Color(0xFF0E2C60))),
+                Offset(w * .54f, h * .66f), Size(w * .34f, h * .24f),
+                CornerRadius(w * .025f))
+            drawLine(Color(0xFFB7DFFF), Offset(w * .71f, h * .67f),
+                Offset(w * .71f, h * .89f), strokeWidth = w * .012f)
+            drawRoundRect(Color(0xFFEAF7FF), Offset(w * .595f, h * .73f),
+                Size(w * .065f, h * .07f), CornerRadius(w * .012f))
+            drawRoundRect(Color(0xFFEAF7FF), Offset(w * .76f, h * .73f),
+                Size(w * .065f, h * .07f), CornerRadius(w * .012f))
+            drawCircle(Color(0xFFEAF6FF), w * .045f,
+                Offset(w * .85f, h * .78f))
+        }
         // Entire face is one parent transform: no floating eyes.
         rotate(sway * 2.4f, headCenter) {
             drawRoundRect(shell, Offset(w * .16f, h * .13f),
