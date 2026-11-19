@@ -25,6 +25,10 @@ if __name__=="__main__":
             acc=d.get("accessors",[])[p["attributes"]["POSITION"]]
             print(" primitive",j,"position_bounds",acc.get("min"),acc.get("max"),"vertex_count",acc.get("count"),"channels",list(p.get("attributes",{}).keys()))
     print("NODES: ",[(i,n.get("name"),n.get("mesh"),n.get("skin")) for i,n in enumerate(d.get("nodes",[])) if n.get("mesh") is not None][:70])
+    for si,skin in enumerate(d.get("skins",[])):
+        print("SKIN",si,"joint_count",len(skin.get("joints",[])))
+        print("JOINT NAMES:",[(i,d["nodes"][j].get("name"),j) for i,j in enumerate(skin.get("joints",[]))])
+    print("ACCESSOR TYPES:",[(i,a.get("type"),a.get("componentType"),a.get("count")) for i,a in enumerate(d.get("accessors",[]))[:12]])
     for a in d.get("animations",[]):
         chans=a.get("channels",[])
         print("ANIM",a.get("name"),"channels",len(chans),"targets",sorted(set(str((c.get("target") or {}).get("path")) for c in chans)),"node_refs",sorted(set((c.get("target") or {}).get("node") for c in chans if (c.get("target") or {}).get("node") is not None))[:14])
