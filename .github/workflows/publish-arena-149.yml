@@ -1,0 +1,117 @@
+name: Publish Arena 1.0.49 verified signed app update
+
+on:
+  push:
+    branches: [feature/148-arena-rebuild]
+    paths:
+      - '.github/workflows/publish-arena-149.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: arena-149-app-updater-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify original signed preview release and download APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test -s tools/v148/release_149_notes.md
+          mkdir -p dist
+          TAG=arena-v1.0.49-preview
+          FILENAME=WordQuestAI-Arena-v1.0.49-preview.apk
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" --pattern "$FILENAME" --dir dist
+          test -s "dist/$FILENAME"
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$TAG" --jq \
+            '.assets[] | select(.name == "WordQuestAI-Arena-v1.0.49-preview.apk") | .digest' > /tmp/wq-preview-github-digest
+          grep -Eq '^sha256:[0-9a-f]{64}$' /tmp/wq-preview-github-digest
+          actual="sha256:$(sha256sum "dist/$FILENAME" | cut -d' ' -f1)"
+          test "$actual" = "$(cat /tmp/wq-preview-github-digest)"
+          cp "dist/$FILENAME" dist/WordQuestAI.apk
+
+      - name: Check same app identity, version and signed certificate
+        run: |
+          set -euo pipefail
+          APK=dist/WordQuestAI.apk
+          AAPT="$ANDROID_HOME/build-tools/35.0.0/aapt"
+          APKSIGNER="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          test -x "$AAPT"
+          test -x "$APKSIGNER"
+          "$AAPT" dump badging "$APK" | head -1 | tee /tmp/wq-arena-package
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" /tmp/wq-arena-package
+          grep -Fq "versionCode='74'" /tmp/wq-arena-package
+          grep -Fq "versionName='1.0.49-arena-preview'" /tmp/wq-arena-package
+          "$APKSIGNER" verify --verbose --print-certs "$APK" > /tmp/wq-arena-signature
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' /tmp/wq-arena-signature
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' /tmp/wq-arena-signature
+          grep -Fqi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' /tmp/wq-arena-signature
+          unzip -tq "$APK"
+          echo "APK verified: 1.0.49 (code 74) identical app ID/signing key as 1.0.48."
+
+      - name: Produce in-app-updater-compatible version metadata
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          apk=pathlib.Path("dist/WordQuestAI.apk")
+          notes=pathlib.Path("tools/v148/release_149_notes.md").read_text(encoding="utf-8")[:3500]
+          document={
+              "schemaVersion":1,
+              "tag":"v1.0.49",
+              "versionCode":74,
+              "versionName":"1.0.49-arena-preview",
+              "packageName":"com.kelimebulmacasi.a1.practice.fresh",
+              "apkFile":"WordQuestAI.apk",
+              "sizeBytes":apk.stat().st_size,
+              "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
+              "notes":notes,
+          }
+          assert apk.stat().st_size>90000000
+          pathlib.Path("dist/update.json").write_text(json.dumps(document,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+
+      - name: Publish complete 1.0.49 update to existing app's normal channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG=v1.0.49
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Version 1.0.49 already exists; refusing to overwrite signed release."
+            gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
+              --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
+            exit 0
+          fi
+          gh release create "$TAG" dist/WordQuestAI.apk dist/update.json \
+            -R "$GITHUB_REPOSITORY" \
+            --title "WordQuest AI v1.0.49 — Arena test güncellemesi" \
+            --notes-file tools/v148/release_149_notes.md \
+            --target "$GITHUB_SHA" --latest
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
+            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
+          echo "App update feed now contains v1.0.49 with APK and verified manifest."
+
+      - name: Verify public releases/latest used by installed app
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            version="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+            if [ "$version" = v1.0.49 ]; then
+              echo "Application updater will read latest tag: $version"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Latest endpoint not yet serving v1.0.49" >&2
+          exit 1
