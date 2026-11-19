@@ -17,9 +17,11 @@ def main():
         raise RuntimeError("Assemble Arena V2 sources before patching V3")
     for name in ("ArenaV3Home.kt","ArenaV3Lobby.kt","ArenaV3Rules.kt"):
         shutil.copyfile(TOOLS/name,SRC/name)
+    for name in ("ArenaApprovedTheme.kt","ArenaApprovedHome.kt","ArenaApprovedLobby.kt"):
+        shutil.copyfile(BASE/"tools/v151"/name,SRC/name)
     screen=SRC/"PremiumOnlineScreen.kt"
     s=screen.read_text(encoding="utf-8")
-    s=once(s,"            ArenaHomeV2(","            ArenaHomeV3(","replace old home")
+    s=once(s,"            ArenaHomeV2(","            ArenaApprovedHome(","replace old home")
     # Remove duplicated player cards and old ready panel; new room lobby
     # owns the full layout and keeps the controls visible at 320-500dp widths.
     start=s.index('    if (match.phase == "lobby") ArenaRoomPlayersV2(')
@@ -31,7 +33,7 @@ def main():
     lobby_start=s.index('        "lobby" -> {',s.index('    when (match.phase) {'))
     playing_start=s.index('        "playing" -> {',lobby_start)
     new_lobby='''        "lobby" -> {
-            ArenaRoomLobbyV3(
+            ArenaApprovedRoomLobby(
                 match = match, client = client, isHost = isHost,
                 myUid = myUid, hostName = hostName, guestName = guestName,
                 packs = packs, profileKey = session.profileKey,
@@ -52,7 +54,7 @@ def main():
         }
 '''
     s=s[:lobby_start]+new_lobby+s[playing_start:]
-    assert 'ArenaRoomLobbyV3(' in s and 'ArenaHomeV3(' in s
+    assert 'ArenaApprovedRoomLobby(' in s and 'ArenaApprovedHome(' in s
     assert 'ArenaRoomPlayersV2(' not in s
     screen.write_text(s,encoding="utf-8")
     # Offline play shares the approved Arena entrance and keeps local match logic.
@@ -61,7 +63,7 @@ def main():
     opening=offline.index('            PremiumStage.Lobby -> {')
     closing=offline.index('            PremiumStage.Crossword -> {',opening)
     block='''            PremiumStage.Lobby -> {
-                ArenaHomeV3(
+                ArenaApprovedHome(
                     playerName=session.profileName,loggedIn=true,canCreate=true,
                     quotaLabel="Çevrimdışı oyun · İnternet gerekmez",
                     mode=if(selectedMode=="quiz")"quiz" else "duel",
@@ -95,7 +97,7 @@ def main():
     ):
         offline=once(offline,old,new,"solo palette")
     solo.write_text(offline,encoding="utf-8")
-    assert 'ArenaHomeV3(' in offline
+    assert 'ArenaApprovedHome(' in offline
     room=SRC/"PremiumOnlineRoom.kt"
     current=room.read_text(encoding="utf-8")
     assert 'fun updateLobbySettings(' in current
