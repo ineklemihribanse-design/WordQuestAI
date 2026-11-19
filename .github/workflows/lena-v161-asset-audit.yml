@@ -17,3 +17,9 @@ jobs:
         run: |
           set -euo pipefail
           python3 tools/v161/inspect_lena.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+      - name: Paint Lena with no extra textures and validate rig clips
+        run: |
+          set -euo pipefail
+          python3 tools/v161/paint_lena_glb.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/Lena_v161_colored.glb
+          python3 tools/verify_lena_glb.py /tmp/Lena_v161_colored.glb
+          python3 tools/v161/inspect_lena.py /tmp/Lena_v161_colored.glb | head -12
