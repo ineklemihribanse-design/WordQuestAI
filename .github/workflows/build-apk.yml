@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -80,6 +80,7 @@ on:
       - 'tools/v158/**'
       - 'tools/v159/**'
       - 'tools/v160/**'
+      - 'tools/v161/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -917,6 +918,36 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Apply colored Lena 3D materials and real mouth-blink mesh morphs (v1.0.61 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v161/paint_lena_glb.py tools/v161/add_lena_face_morphs.py tools/v161/apply_lena_visuals_161.py
+          python3 tools/v161/apply_lena_visuals_161.py
+          python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -q 'versionCode = 86' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.61-lena-expression-colors"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaFaceAnimationClipsTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaAnimationClipsTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          p=Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb")
+          b=p.read_bytes()
+          size,kind=struct.unpack_from("<I4s",b,12)
+          assert kind==b"JSON"
+          d=json.loads(b[20:20+size])
+          prim=d["meshes"][0]["primitives"][0]
+          assert len(prim["targets"])==2
+          assert "COLOR_0" in prim["attributes"]
+          assert len(d["animations"])==18
+          assert len(d["skins"][0]["joints"])==201
+          assert all(a in [x["name"] for x in d["animations"]] for a in ("Lena_V161_Face_IdleBlink","Lena_V161_Face_TalkBlink"))
+          print("GLB build gate: colored vertex material, true facial morphs, 201 bones, 18 clips.")
+          PY
       - name: Verify independent app identity
         run: |
           set -euo pipefail
