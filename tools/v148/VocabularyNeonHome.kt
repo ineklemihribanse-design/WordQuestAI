@@ -228,7 +228,7 @@ internal fun VocabularyNeonHome(
     }
     if (robotPicker) {
         AlertDialog(onDismissRequest = { robotPicker = false },
-            title = { Text("Profil robotun") },
+            title = { Text("Kelime Hafızam robotu") },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
                     Text("Yalnızca aktif profilin için kaydedilir.")
@@ -376,7 +376,7 @@ internal fun VocabularyNeonHome(
                 }
             }
             "collection" -> {
-                Text("Kelime Koleksiyonum", color = MemoryWhite,
+                Text("Kelime Koleksiyonum", color = Color(0xFF123A63),
                     fontWeight = FontWeight.Bold, fontSize = 24.sp)
                 Row(Modifier.horizontalScroll(rememberScrollState()),
                     horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -402,7 +402,7 @@ internal fun VocabularyNeonHome(
                         else -> true
                     }
                 }
-                Text("${cards.size} kelime", color = MemoryMuted)
+                Text("${cards.size} kelime", color = Color(0xFF52708D))
                 val activeSmartFilter = when (collection) {
                     "new" -> "SMART_NEW"
                     "learning" -> "SMART_LEARNING"
@@ -422,31 +422,31 @@ internal fun VocabularyNeonHome(
                     NeonPanel(click = { cardDetail = card.key }) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Column(Modifier.weight(1f)) {
-                                Text(card.answer, color = MemoryWhite,
+                                Text(card.answer, color = Color(0xFF123A63),
                                     fontSize = 17.sp, fontWeight = FontWeight.Bold)
-                                Text(card.clue, color = MemoryMuted, fontSize = 12.sp)
+                                Text(card.clue, color = Color(0xFF52708D), fontSize = 12.sp)
                             }
-                            Text("›", color = MemoryCyan, fontSize = 21.sp)
+                            Text("›", color = Color(0xFF167DCC), fontSize = 21.sp)
                         }
                     }
                 }
             }
             "history" -> {
-                Text("Geçmiş Oyunlarım", color = MemoryWhite, fontSize = 24.sp,
+                Text("Geçmiş Oyunlarım", color = Color(0xFF123A63), fontSize = 24.sp,
                     fontWeight = FontWeight.Bold)
                 if (activeFolder != null) {
                     val folder = folders.firstOrNull { it.id == activeFolder }
                     if (folder == null) {
-                        Text("Bu oyun arşivi bulunamadı.", color = MemoryMuted)
+                        Text("Bu oyun arşivi bulunamadı.", color = Color(0xFF52708D))
                     } else {
-                        Text(folder.title, color = MemoryGold)
+                        Text(folder.title, color = Color(0xFFAA741C))
                         Button(onClick = { start("card", folder = folder.id) }) {
                             Text("Bu kelimelerle çalış")
                         }
                         session.learningFolderCards(folder.id).take(160).forEach { card ->
                             NeonPanel(click = { cardDetail = card.key }) {
-                                Text(card.answer, color = MemoryWhite, fontWeight = FontWeight.Bold)
-                                Text(card.clue, color = MemoryMuted, fontSize = 12.sp)
+                                Text(card.answer, color = Color(0xFF123A63), fontWeight = FontWeight.Bold)
+                                Text(card.clue, color = Color(0xFF52708D), fontSize = 12.sp)
                             }
                         }
                     }
@@ -455,12 +455,12 @@ internal fun VocabularyNeonHome(
                         NeonPanel(click = { activeFolder = folder.id }) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Column(Modifier.weight(1f)) {
-                                    Text(folder.title, color = MemoryWhite,
+                                    Text(folder.title, color = Color(0xFF123A63),
                                         fontWeight = FontWeight.Bold)
                                     Text("${folder.total} kelime · ${folder.wrong} yanlış",
-                                        color = MemoryMuted, fontSize = 12.sp)
+                                        color = Color(0xFF52708D), fontSize = 12.sp)
                                 }
-                                Text("›", color = MemoryGold, fontSize = 24.sp)
+                                Text("›", color = Color(0xFFAA741C), fontSize = 24.sp)
                             }
                         }
                     }
