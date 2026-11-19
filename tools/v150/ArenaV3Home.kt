@@ -124,6 +124,16 @@ internal fun ArenaHomeV3(
                     onMode("quiz")
                 }
             }
+            if(mode!="quiz") {
+                Row(verticalAlignment=Alignment.CenterVertically,
+                    horizontalArrangement=Arrangement.spacedBy(9.dp)) {
+                    Text("Bulmaca modu",color=V3Navy,fontSize=11.sp)
+                    FilterChip(selected=mode=="duel",onClick={onMode("duel")},
+                        label={Text("Düello",fontSize=11.sp)})
+                    FilterChip(selected=mode=="team",onClick={onMode("team")},
+                        label={Text("Ortak",fontSize=11.sp)})
+                }
+            }
         }
         ArenaV3Section("İngilizce Seviyesi","✧") {
             Row(Modifier.horizontalScroll(rememberScrollState()),
