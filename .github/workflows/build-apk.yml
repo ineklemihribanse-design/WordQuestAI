@@ -1131,8 +1131,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.65 Lena speaking and default teacher
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v165-lena-speaking-default' }}
+      - name: Publish signed and verified v1.0.66 inline Lena and messaging fallback
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v166-lena-inline-messenger' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1162,9 +1162,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==90, item["versionCode"]
-          assert item["versionName"]=="1.0.65-lena-speaking-default"
-          print("Version 1.0.65 code90; Lena speaking lips, default voice entry and no Alex UI verified.")
+          assert item["versionCode"]==91, item["versionCode"]
+          assert item["versionName"]=="1.0.66-lena-inline-messenger"
+          print("Version 1.0.66 code91; Lena embedded scene and safe standalone text messenger verified.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1179,20 +1179,21 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.65 (code 90)
+          WordQuest AI 1.0.66 (code 91)
 
-          Lena is now the default live English conversation teacher: opening the voice assistant immediately opens the existing isolated Lena 3D conversation activity. Returning to the assistant shows a simple Lena-only entry instead of the Alex 2.5D stage.
-          Removed Alex from visible conversation avatar choices, headers and Lena crash fallback. The old Alex implementation and assets remain unmodified for rollback rather than being deleted from the user's project.
-          Improved subtle talking mouth motion: the upper and lower lip vertices of the approved original Prisma3D face sculpt now separate farther during actual TextToSpeech playback. No new floating mouth, teeth, overlay eyes or altered facial proportions.
-          The existing natural warm-brown Prisma3D look, all nine original material sections, 201 skin joints, 16 original body animations and two facial animation loops (18 total) are preserved.
-          Stopped adding visible Alex branding to the legacy text/chat interface; other settings, memory, conversations and saved per-profile Gemini/OpenAI API credentials remain untouched.
-          Preserves existing application ID, update-signing certificate, Arena, Word Memory, existing US/UK speech settings, user data and historical GitHub releases.
-          Android build, JVM tests, GLB structural and mesh-lip checks passed. Exact mouth/lip deformation and speech alignment have not yet been visually certified on the user's actual Android device.
-          Arena V2 online multiplayer still requires separate Firebase rules deployment.
+          Restores the live Lena GLB teacher directly inside the large 3D lesson stage shown in the user's screenshot. No separate activity launch and no empty middle-of-screen Lena launch card. Actual speech/listening state of that same lesson drives the existing original-mesh lip and body animations.
+          The existing 'Kişisel AI Öğretmen' screen is now a Lena-branded, messaging-first, fully functional text chat. Removes Alex's portrait/avatar picker from the message view and identifies assistant messages as Lena.
+          Chat history, individual conversation threads, persistent per-profile AI credentials, microphone dictation, send, read-aloud, learner memory, learning modes, level and language preferences all remain available. Learning tools and IPA are collapsed by default so the message bubbles have room.
+          '3D Görüşme' opens the new in-page Lena scene, and 'Mesajlaşma' returns to the text messages. A recoverable GLB load/render failure automatically falls back to the messenger.
+          Text chat is the safe default screen, so users can still start a conversation without loading the native GLB renderer. Note: unrecoverable native GPU/Filament crashes cannot be caught in-app, which requires separate device-level QA after this UI integration.
+          Preserves the approved v1.0.65 Lena facial appearance, brown hair, eye surfaces, 201-bone skin, 9 original material sections, and existing 18 animation clips. No additional 3D assets or storage bloat added.
+          Preserves signed Android package identity, versioned data, US/UK audio, Arena, Word Memory, saved AI credentials and conversation history. Archived Alex code/assets remain intact but are not displayed in this workflow.
+          Android APK build, JVM tests and GLB integrity checks passed. Actual on-device native rendering and lip sync have not yet been visually certified.
+          Arena V2 online multiplayer still requires separately deployed Firebase rules.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.65
+          test "$TAG" = v1.0.66
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1203,4 +1204,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.65 (code90) Lena default and speaking-lips update published; older releases retained."
+          echo "Signed v1.0.66 (code91) embedded Lena with independent messenger fallback published; older releases retained."
