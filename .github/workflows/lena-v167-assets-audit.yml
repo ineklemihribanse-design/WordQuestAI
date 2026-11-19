@@ -1,0 +1,44 @@
+name: Lena actual-3D portrait and original icon audit v167
+on:
+  push:
+    branches: [feature/v167-lena-real-avatar-custom-icons]
+    paths:
+      - 'tools/v167/**'
+      - '.github/workflows/lena-v167-assets-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render actual signed-model Lena, generate custom vector icons
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v167/render_lena_real_portrait.py tools/v167/generate_messenger_icons.py
+          python3 tools/v165/build_lena_lip_open_165.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/lena_signed_base.glb
+          python3 tools/v167/render_lena_real_portrait.py /tmp/lena_signed_base.glb /tmp/lena_real_portrait.png
+          python3 tools/v167/generate_messenger_icons.py /tmp/wq167-icons
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+          import struct
+          p=Path("/tmp/lena_real_portrait.png")
+          b=p.read_bytes()
+          assert b[:8]==b"\x89PNG\r\n\x1a\n"
+          assert struct.unpack(">II",b[16:24])==(448,448)
+          assert 16000<len(b)<500000,(len(b))
+          icons=list(Path("/tmp/wq167-icons").glob("wq167_*.xml"))
+          assert len(icons)>=15
+          for f in icons:
+              d=ElementTree.parse(f).getroot()
+              assert "vector" in d.tag
+              assert any("path" in x.tag for x in d)
+          print("PASS: actual real Lena GLB avatar PNG and own editable WordQuest icons.")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lena-real-model-portrait-preview
+          path: /tmp/lena_real_portrait.png
+          retention-days: 5
