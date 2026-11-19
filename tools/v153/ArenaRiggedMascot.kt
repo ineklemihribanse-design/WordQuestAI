@@ -73,13 +73,13 @@ private fun DrawScope.mascotArm(
     x:Float, y:Float, u:Float, angle:Float, elbow:Float,
     brushColor:Color, highlight:Color, holdingCup:Boolean=false
 ) {
-    withTransform({ translate(x*u,y*u); rotate(angle) }) {
+    withTransform({ translate(x*u,y*u); rotate(angle,pivot=Offset.Zero) }) {
         drawRoundRect(brushColor,
             Offset(-10*u,-2*u),Size(20*u,37*u),CornerRadius(11*u))
         drawRoundRect(highlight.copy(alpha=.50f),
             Offset(-6*u,1*u),Size(7*u,30*u),CornerRadius(4*u))
         drawCircle(brushColor,10*u,Offset(0f,31*u))
-        withTransform({ translate(0f,31*u); rotate(elbow) }) {
+        withTransform({ translate(0f,31*u); rotate(elbow,pivot=Offset.Zero) }) {
             drawRoundRect(brushColor,Offset(-9*u,-1*u),Size(18*u,28*u),
                 CornerRadius(10*u))
             drawRoundRect(highlight.copy(alpha=.35f),Offset(-6*u,1*u),
@@ -90,7 +90,7 @@ private fun DrawScope.mascotArm(
                     translate(0f,24*u)
                     // Wrist counter-rotation keeps the cup upright while the
                     // parent shoulder and elbow continue to articulate.
-                    rotate(-angle-elbow+6f)
+                    rotate(-angle-elbow+6f,pivot=Offset.Zero)
                 }) {
                     mascotTrophy(u)
                 }
@@ -102,13 +102,13 @@ private fun DrawScope.mascotArm(
 private fun DrawScope.mascotLeg(
     x:Float,y:Float,u:Float,angle:Float,paint:MascotPaint
 ){
-    withTransform({translate(x*u,y*u);rotate(angle)}){
+    withTransform({translate(x*u,y*u);rotate(angle,pivot=Offset.Zero)}){
         drawRoundRect(paint.shadow,Offset(-11*u,0f),Size(22*u,25*u),
             CornerRadius(10*u))
-        withTransform({translate(0f,21*u);rotate(-angle*.65f)}){
+        withTransform({translate(0f,21*u);rotate(-angle*.65f,pivot=Offset.Zero)}){
             drawRoundRect(paint.body,Offset(-9*u,0f),Size(18*u,23*u),
                 CornerRadius(10*u))
-            drawOval(paint.highlight,Offset(-16*u,21*u),Size(32*u,12*u))
+            drawOval(paint.highlight,Offset(-16*u,17*u),Size(32*u,11*u))
         }
     }
 }
@@ -123,18 +123,18 @@ private fun DrawScope.mascotEars(kind:String,paint:MascotPaint,u:Float,wobble:Fl
         for(side in listOf(-1f,1f)) {
             withTransform({
                 translate(side*26*u,-25*u)
-                rotate(side*wobble)
+                rotate(side*wobble,pivot=Offset.Zero)
             }) {
                 val ear=Path().apply{
-                    moveTo(-13*u,7*u);lineTo(-8*u,if(kind=="rabbit")-57*u else -29*u)
-                    quadraticTo(0f,if(kind=="rabbit")-65*u else -34*u,7*u,
-                        if(kind=="rabbit")-57*u else -29*u)
+                    moveTo(-13*u,7*u);lineTo(-8*u,if(kind=="rabbit")-28*u else -29*u)
+                    quadraticTo(0f,if(kind=="rabbit")-35*u else -34*u,7*u,
+                        if(kind=="rabbit")-28*u else -29*u)
                     lineTo(14*u,7*u);close()
                 }
                 drawPath(ear,paint.body)
                 val inner=Path().apply {
-                    moveTo(-6*u,4*u);lineTo(-3*u,if(kind=="rabbit")-43*u else -19*u)
-                    lineTo(4*u,if(kind=="rabbit")-43*u else -19*u)
+                    moveTo(-6*u,4*u);lineTo(-3*u,if(kind=="rabbit")-26*u else -19*u)
+                    lineTo(4*u,if(kind=="rabbit")-26*u else -19*u)
                     lineTo(7*u,4*u);close()
                 }
                 drawPath(inner,if(kind=="rabbit")paint.accent else paint.highlight)
@@ -145,7 +145,7 @@ private fun DrawScope.mascotEars(kind:String,paint:MascotPaint,u:Float,wobble:Fl
         for(side in listOf(-1f,1f)) {
             withTransform({
                 translate(side*30*u,-24*u)
-                rotate(side*wobble)
+                rotate(side*wobble,pivot=Offset.Zero)
             }) {
                 drawCircle(paint.body,if(kind=="bear")17*u else 14*u,
                     Offset.Zero)
@@ -159,7 +159,7 @@ private fun DrawScope.mascotEars(kind:String,paint:MascotPaint,u:Float,wobble:Fl
 private fun DrawScope.mascotHead(
     kind:String,paint:MascotPaint,u:Float,pose:ArenaMascotRig.Pose
 ){
-    withTransform({translate(80*u,60*u);rotate(pose.headAngle)}){
+    withTransform({translate(80*u,60*u);rotate(pose.headAngle,pivot=Offset.Zero)}){
         mascotEars(kind,paint,u,pose.ears)
         val faceBrush=Brush.radialGradient(
             listOf(paint.highlight,paint.body,paint.shadow),
@@ -256,23 +256,30 @@ internal fun ArenaRiggedMascot(
                 Offset(35*u,166*u),Size(90*u,10*u))
             mascotLeg(65f,127f,u,pose.legLeft,paint)
             mascotLeg(95f,127f,u,pose.legRight,paint)
-            mascotArm(45f,98f,u,pose.armRight,pose.elbowRight,
-                paint.body,paint.highlight)
-            // Separate torso and chest layers create light/shadow parallax.
-            withTransform({translate(80*u,115*u);rotate(pose.torsoAngle)}){
-                val bodyGradient=Brush.radialGradient(
-                    listOf(paint.highlight,paint.body,paint.shadow),
-                    center=Offset(-22*u,-18*u),radius=90*u
-                )
-                drawOval(bodyGradient,Offset(-39*u,-41*u),
-                    Size(78*u,67*u+pose.breathing*u))
-                drawOval(paint.face.copy(alpha=.58f),
-                    Offset(-24*u,-23*u),Size(48*u,38*u))
-                drawRoundRect(paint.accent,Offset(-23*u,6*u),
-                    Size(46*u,7*u),CornerRadius(5*u))
+            // Parent both shoulders to the torso: no independent floating
+            // arms when the character breathes, sways or lifts the trophy.
+            withTransform({
+                translate(80*u,115*u)
+                rotate(pose.torsoAngle,pivot=Offset.Zero)
+                translate(-80*u,-115*u)
+            }) {
+                mascotArm(45f,98f,u,pose.armRight,pose.elbowRight,
+                    paint.body,paint.highlight)
+                withTransform({translate(80*u,115*u)}) {
+                    val bodyGradient=Brush.radialGradient(
+                        listOf(paint.highlight,paint.body,paint.shadow),
+                        center=Offset(-22*u,-18*u),radius=90*u
+                    )
+                    drawOval(bodyGradient,Offset(-39*u,-41*u),
+                        Size(78*u,67*u+pose.breathing*u))
+                    drawOval(paint.face.copy(alpha=.58f),
+                        Offset(-24*u,-23*u),Size(48*u,38*u))
+                    drawRoundRect(paint.accent,Offset(-23*u,6*u),
+                        Size(46*u,7*u),CornerRadius(5*u))
+                }
+                mascotArm(111f,103f,u,pose.armLeft,pose.elbowLeft,
+                    paint.body,paint.highlight,holdingCup=holdingTrophy)
             }
-            mascotArm(115f,98f,u,pose.armLeft,pose.elbowLeft,
-                paint.body,paint.highlight,holdingCup=holdingTrophy)
             mascotHead(id,paint,u,pose)
         }
     }
