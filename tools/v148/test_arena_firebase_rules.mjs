@@ -17,7 +17,7 @@ async function seed(update = {}) {
   await env.withSecurityRulesDisabled(async ctx => {
     await ctx.database().ref(path).set({
       hostUid:'arena-a',guestUid:'arena-b',hostName:'A',guestName:'B',
-      rulesVersion:2, hostAvatar:'robot',guestAvatar:'fox',
+      rulesVersion:2, configRevision:1, hostAvatar:'robot',guestAvatar:'fox',
       phase:'playing',mode:'duel',boardId:'p1',level:'A1',topic:'All',
       size:20,seconds:30,quizSeed:77,createdAt:Date.now(),
       quotaDay:0,quotaSlot:'0',
@@ -28,15 +28,29 @@ async function seed(update = {}) {
 }
 
 try {
-  await seed({phase:'lobby',guestAvatar:null,ready:{'arena-a':false,'arena-b':false}});
-  await assertSucceeds(ref(A, 'ready/arena-a').set(true));
-  await assertSucceeds(ref(B, 'ready/arena-b').set(true));
-  await assertFails(ref(intruder,'ready/arena-a').set(false));
-  await assertFails(ref(A,'ready/arena-b').set(false));
+  await seed({phase:'lobby',guestAvatar:null,ready:{}});
+  await assertSucceeds(ref(A, 'ready/arena-a').set(1));
+  await assertSucceeds(ref(B, 'ready/arena-b').set(1));
+  await assertFails(ref(intruder,'ready/arena-a').set(1));
+  await assertFails(ref(A,'ready/arena-b').set(1));
   await assertSucceeds(ref(B,'guestAvatar').set('owl'));
   await assertFails(ref(A,'guestAvatar').set('robot'));
   await assertFails(ref(B,'hostAvatar').set('fox'));
-  await assertFails(ref(B,'ready/arena-a').set(true));
+  await assertFails(ref(B,'ready/arena-a').set(1));
+
+  // Settings are changeable by the host even after a guest joins.
+  // Old ready acknowledgements no longer match the new config revision.
+  await assertSucceeds(ref(A).update({
+    level:'A2', seconds:45, size:30, configRevision:2
+  }));
+  assert.equal((await ref(A,'configRevision').get()).val(),2);
+  assert.equal((await ref(A,'ready/arena-a').get()).val(),1);
+  await assertFails(ref(B,'level').set('C2'));
+  await assertFails(ref(intruder,'topic').set('All'));
+  await assertFails(ref(A,'ready/arena-a').set(1));
+  await assertSucceeds(ref(A,'ready/arena-a').set(2));
+  await assertSucceeds(ref(B,'ready/arena-b').set(2));
+  await assertFails(ref(A,'configRevision').set(2));
 
   await seed();
   await assertSucceeds(ref(A, 'hintUsed/arena-a/0').set(true));
@@ -59,7 +73,7 @@ try {
 
   await seed();
   await assertFails(ref(intruder, 'solved/0').set('reveal'));
-  console.log('Arena v2 RTDB: ready, avatar, hint, replay and deferred reveal authorization passed.');
+  console.log('Arena v2 RTDB: revision-ready, host settings edit, avatar, hint, replay and deferred reveal checks passed.');
 } finally {
   await env.cleanup();
 }
