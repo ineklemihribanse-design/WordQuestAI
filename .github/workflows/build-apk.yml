@@ -111,6 +111,16 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+      - name: Require the exact user-provided chair GLB before any expensive build
+        if: ${{ github.ref == 'refs/heads/feature/v170-lena-user-chair-asset-and-rig-qa' }}
+        run: |
+          set -euo pipefail
+          file=assets/studio/chairs_and_window_set_-_game_ready.glb
+          test -s "$file" || {
+            echo "::error::Please upload the exact original 19MB chat GLB to $file; ChatGPT attachments are not automatically GitHub files."
+            exit 1
+          }
+          echo "379c0537249af58dc1115184dc9f2257f045a1ba4bb9a266b7ab67898e8e8c81  $file" | sha256sum -c -
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
