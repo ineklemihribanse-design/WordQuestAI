@@ -22,4 +22,7 @@ jobs:
           set -euo pipefail
           python3 tools/v161/paint_lena_glb.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/Lena_v161_colored.glb
           python3 tools/verify_lena_glb.py /tmp/Lena_v161_colored.glb
+          python3 tools/v161/add_lena_face_morphs.py /tmp/Lena_v161_colored.glb /tmp/Lena_v161_animated.glb
+          python3 tools/verify_lena_glb.py /tmp/Lena_v161_animated.glb
+          python3 tools/v161/inspect_lena.py /tmp/Lena_v161_animated.glb | grep -E 'LENA AUDIT|MESH 0|ANIM Lena_V161'
           python3 tools/v161/inspect_lena.py /tmp/Lena_v161_colored.glb | head -12
