@@ -87,8 +87,9 @@ internal fun rememberLenaUserPortrait(profileKey: String): MutableState<ImageBit
 private fun saveChosenPortrait(context: Context, profileKey: String, uri: Uri): ImageBitmap {
     val resolver = context.contentResolver
     val opts = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-    resolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, opts) }
+    val boundsStream = resolver.openInputStream(uri)
         ?: throw IllegalArgumentException("Fotoğraf açılamadı")
+    boundsStream.use { BitmapFactory.decodeStream(it, null, opts) }
     if (opts.outWidth <= 0 || opts.outHeight <= 0)
         throw IllegalArgumentException("Geçersiz fotoğraf")
     var sample = 1
