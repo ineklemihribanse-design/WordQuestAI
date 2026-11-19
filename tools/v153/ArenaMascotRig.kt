@@ -37,16 +37,16 @@ internal object ArenaMascotRig {
         ArenaRigBone("LEFT_EYE", "HEAD", 65f, 61f),
         ArenaRigBone("RIGHT_EYE", "HEAD", 95f, 61f),
         ArenaRigBone("MOUTH", "HEAD", 80f, 75f),
-        ArenaRigBone("LEFT_SHOULDER", "CHEST", 46f, 99f),
-        ArenaRigBone("LEFT_UPPER_ARM", "LEFT_SHOULDER", 46f, 113f),
-        ArenaRigBone("LEFT_ELBOW", "LEFT_UPPER_ARM", 46f, 131f),
-        ArenaRigBone("LEFT_FOREARM", "LEFT_ELBOW", 46f, 144f),
-        ArenaRigBone("LEFT_HAND", "LEFT_FOREARM", 46f, 155f),
-        ArenaRigBone("RIGHT_SHOULDER", "CHEST", 114f, 99f),
-        ArenaRigBone("RIGHT_UPPER_ARM", "RIGHT_SHOULDER", 114f, 113f),
-        ArenaRigBone("RIGHT_ELBOW", "RIGHT_UPPER_ARM", 114f, 131f),
-        ArenaRigBone("RIGHT_FOREARM", "RIGHT_ELBOW", 114f, 144f),
-        ArenaRigBone("RIGHT_HAND", "RIGHT_FOREARM", 114f, 155f),
+        ArenaRigBone("LEFT_SHOULDER", "CHEST", 115f, 99f),
+        ArenaRigBone("LEFT_UPPER_ARM", "LEFT_SHOULDER", 115f, 113f),
+        ArenaRigBone("LEFT_ELBOW", "LEFT_UPPER_ARM", 115f, 131f),
+        ArenaRigBone("LEFT_FOREARM", "LEFT_ELBOW", 115f, 144f),
+        ArenaRigBone("LEFT_HAND", "LEFT_FOREARM", 115f, 155f),
+        ArenaRigBone("RIGHT_SHOULDER", "CHEST", 45f, 99f),
+        ArenaRigBone("RIGHT_UPPER_ARM", "RIGHT_SHOULDER", 45f, 113f),
+        ArenaRigBone("RIGHT_ELBOW", "RIGHT_UPPER_ARM", 45f, 131f),
+        ArenaRigBone("RIGHT_FOREARM", "RIGHT_ELBOW", 45f, 144f),
+        ArenaRigBone("RIGHT_HAND", "RIGHT_FOREARM", 45f, 155f),
         ArenaRigBone("LEFT_HIP", "PELVIS", 65f, 130f),
         ArenaRigBone("LEFT_THIGH", "LEFT_HIP", 65f, 140f),
         ArenaRigBone("LEFT_KNEE", "LEFT_THIGH", 65f, 151f),
@@ -57,7 +57,7 @@ internal object ArenaMascotRig {
         ArenaRigBone("RIGHT_KNEE", "RIGHT_THIGH", 95f, 151f),
         ArenaRigBone("RIGHT_SHIN", "RIGHT_KNEE", 95f, 159f),
         ArenaRigBone("RIGHT_FOOT", "RIGHT_SHIN", 95f, 167f),
-        ArenaRigBone("TROPHY_PIVOT", "LEFT_HAND", 46f, 155f)
+        ArenaRigBone("TROPHY_PIVOT", "LEFT_HAND", 115f, 155f)
     )
 
     fun isHierarchical(): Boolean {
