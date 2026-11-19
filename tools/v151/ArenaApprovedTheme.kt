@@ -1,6 +1,8 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -9,6 +11,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -143,6 +149,21 @@ internal fun ArenaApprovedMascot(
 /** Drawn in Compose, so the approved hero mascot and trophy remain crisp on mobile. */
 @Composable
 internal fun ArenaApprovedHeroArt(modifier:Modifier=Modifier) {
+    val context=LocalContext.current
+    val acceptedArt=remember(context) {
+        runCatching {
+            context.assets.open("arena_approved_hero.webp").use { stream ->
+                BitmapFactory.decodeStream(stream)?.asImageBitmap()
+            }
+        }.getOrNull()
+    }
+    if(acceptedArt!=null) {
+        Image(
+            bitmap=acceptedArt,contentDescription="Kupasını kaldıran WordQuest robotu",
+            modifier=modifier,contentScale=ContentScale.Fit
+        )
+        return
+    }
     Box(modifier,contentAlignment=Alignment.Center) {
         Canvas(Modifier.fillMaxSize()) {
             val w=size.width
