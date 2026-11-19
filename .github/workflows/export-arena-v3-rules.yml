@@ -1,0 +1,62 @@
+name: Export validated Arena V3 Firebase RTDB rules for production admin
+
+on:
+  push:
+    branches: [feature/149-arena-v2-on-current]
+    paths:
+      - '.github/workflows/export-arena-v3-rules.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble approved Firebase rules without deployment
+        run: |
+          set -euo pipefail
+          mkdir -p source dist
+          base64 -d v120-multi-ai-arena-overlay.b64 >/tmp/wq-arena-150-base.zip
+          unzip -p /tmp/wq-arena-150-base.zip database.rules.json > source/database.rules.json
+          python3 -m py_compile tools/v148/apply_arena_rules_v2.py
+          python3 tools/v148/apply_arena_rules_v2.py
+          python3 -m json.tool source/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          src=json.load(open("source/database.rules.json"))
+          assert "rules" in src
+          room=src["rules"]["premiumRooms"]["$code"]
+          assert "configRevision" in room
+          assert "configRevision" in room["ready"]["$uid"][".validate"]
+          assert "configRevision" in room["phase"][".write"]
+          assert "replay" in room and "hintUsed" in room
+          assert src["rules"].get(".read") is not True
+          assert src["rules"].get(".write") is not True
+          print("Firebase rules preserve default security, verified Arena V3 branch.")
+          PY
+          cp source/database.rules.json dist/WordQuestAI-Arena-V3-Firebase-RTDB-Rules.json
+          sha256sum dist/WordQuestAI-Arena-V3-Firebase-RTDB-Rules.json > dist/WordQuestAI-Arena-V3-Firebase-RTDB-Rules.sha256
+      - name: Publish rules asset beside verified v1.0.50 preview APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG=arena-v1.0.50-preview
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' \
+            | grep -Fxq 'WordQuestAI-Arena-v1.0.50-preview.apk'
+          existing="$(gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')"
+          if echo "$existing" | grep -Fxq 'WordQuestAI-Arena-V3-Firebase-RTDB-Rules.json'; then
+            echo 'Validated Firebase rule asset already exists; refusing overwrite.'
+            exit 0
+          fi
+          gh release upload "$TAG" \
+            dist/WordQuestAI-Arena-V3-Firebase-RTDB-Rules.json \
+            dist/WordQuestAI-Arena-V3-Firebase-RTDB-Rules.sha256 \
+            -R "$GITHUB_REPOSITORY"
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' \
+            | grep -Fxq 'WordQuestAI-Arena-V3-Firebase-RTDB-Rules.json'
+          echo 'Firebase file published for administrator review; NOT deployed to live database.'
