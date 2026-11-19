@@ -85,7 +85,7 @@ def main():
     ]
     anchor="import androidx.compose.foundation.background\n"
     assert anchor in s
-    s=s.replace(anchor,anchor+"".join(x+"\n" for x in imports if x not in s),1)
+    s=s.replace(anchor,anchor+"".join(x+"\n" for x in imports if ("\n"+x+"\n") not in ("\n"+s)),1)
     state="    var learningToolsOpen by rememberSaveable { mutableStateOf(false) }"
     s=once(s,state,
         state+"\n    val userPortrait = rememberLenaUserPortrait(session.profileKey)",
