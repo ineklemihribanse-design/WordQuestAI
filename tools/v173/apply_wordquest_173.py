@@ -29,10 +29,10 @@ def patch_arena_home():
     s=s[:start]+'''    var mascot by remember(avatarProfileKey) {
         mutableStateOf(WordQuestAvatarStore.read(context,avatarProfileKey))
     }
-    LaunchedEffect(avatarProfileKey,mascot) {
-        // The legacy online room reads a single global preference; synchronize it
-        // when the active profile changes, without changing other users' records.
-        prefs.edit().putString("kind",mascot).apply()
+    LaunchedEffect(avatarProfileKey) {
+        // Sync only a previously SAVED shared choice; retain legacy avatar
+        // preference until user explicitly picks a new v173 model.
+        WordQuestAvatarStore.synchronizeOnlineForActiveProfile(context,avatarProfileKey)
     }
 '''+s[end:]
     s=once(s,'ArenaMascotV2(mascot,Modifier.size(26.dp))',
