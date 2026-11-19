@@ -158,7 +158,7 @@ def main():
         d=json.loads(f.read_text("utf-8"))
         d["sha256"]=hashlib.sha256(result).hexdigest()
         d["facialMorphTargets"]=["Lena_MouthOpen","Lena_EyeBlink"]
-        d["facialAnimations"]=["Lena_V161_Face_IdleBlink","Lena_V161_Face_TalkBlink"]
+        d["facialAnimations"]=["Lena_V162_Face_IdleBlink","Lena_V162_Face_TalkBlink"]
         d["note"]="Mouth/blink masks geometrically localized to real facial regions; TTS approximate."
         f.write_text(json.dumps(d,indent=2,ensure_ascii=False)+"\n","utf-8")
 
