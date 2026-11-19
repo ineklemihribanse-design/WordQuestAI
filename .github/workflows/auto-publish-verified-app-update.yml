@@ -3,7 +3,7 @@ name: Auto-publish verified WordQuest updates to installed app
 # On every successful Android CI build, promote its signed Arena preview to
 # the in-app update feed. This workflow lives on the default branch so a
 # workflow_run event can launch it even when the APK is built on a feature
-# branch. A one-time push trigger bootstraps the already tested v1.0.52 release.
+# branch. A push rerun can recover the newest verified preview if workflow_run was delayed.
 on:
   push:
     branches: [main]
@@ -45,7 +45,11 @@ jobs:
               --jq '.[] | select(.prerelease == true and .target_commitish == env.BUILD_SHA and (.tag_name | startswith("arena-v"))) | .tag_name' \
               | head -1 > /tmp/wq-preview-tag
           else
-            printf '%s\n' 'arena-v1.0.52-full-word-preview' > /tmp/wq-preview-tag
+            # For a manual/default-branch replay, pick the newest already
+            # published and signed CI preview. Never hardcode a stale version.
+            gh api "repos/$GITHUB_REPOSITORY/releases?per_page=60" \
+              --jq '.[] | select(.prerelease == true and (.tag_name | startswith("arena-v1.0."))) | .tag_name' \
+              | head -1 > /tmp/wq-preview-tag
           fi
           TAG="$(cat /tmp/wq-preview-tag)"
           if [ -z "$TAG" ]; then
