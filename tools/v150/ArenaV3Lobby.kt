@@ -149,6 +149,15 @@ internal fun ArenaRoomLobbyV3(
         } else {
             Text("Yarışmayı oda sahibi başlatacak.",fontSize=12.sp,color=LobbyMuted)
         }
+        if(client.status.isNotBlank()) {
+            Text(client.status,
+                color=if(client.status.contains("kaydedilemedi") ||
+                    client.status.contains("başlatılamadı") ||
+                    client.status.contains("izin",ignoreCase=true))
+                    Color(0xFFC14E59) else LobbyMuted,
+                fontSize=12.sp)
+        }
+        ArenaRulesCardV3(match.mode,match.size,match.seconds)
         Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp))
             .background(Color.White).border(1.dp,LobbyLine,RoundedCornerShape(20.dp))
             .padding(13.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
