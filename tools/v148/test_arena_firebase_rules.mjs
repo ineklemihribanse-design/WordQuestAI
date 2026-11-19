@@ -28,7 +28,7 @@ async function seed(update = {}) {
 }
 
 try {
-  await seed({phase:'lobby',ready:{'arena-a':false,'arena-b':false}});
+  await seed({phase:'lobby',guestAvatar:null,ready:{'arena-a':false,'arena-b':false}});
   await assertSucceeds(ref(A, 'ready/arena-a').set(true));
   await assertSucceeds(ref(B, 'ready/arena-b').set(true));
   await assertFails(ref(intruder,'ready/arena-a').set(false));
