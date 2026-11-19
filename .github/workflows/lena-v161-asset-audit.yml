@@ -1,0 +1,19 @@
+name: Inspect Lena v1.0.61 model material groups
+on:
+  push:
+    branches: [feature/v161-lena-colors-expression]
+    paths:
+      - 'tools/v161/**'
+      - '.github/workflows/lena-v161-asset-audit.yml'
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect existing GLB mesh/material groups and face animation tracks
+        run: |
+          set -euo pipefail
+          python3 tools/v161/inspect_lena.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
