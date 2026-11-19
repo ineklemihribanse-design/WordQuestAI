@@ -26,9 +26,7 @@ def patch_arena_home():
         '    avatarProfileKey:String=playerName\n',"profile-scoped avatar key")
     start=s.index('    var mascot by remember {')
     end=s.index('    var avatarPicker by rememberSaveable',start)
-    s=s[:start]+'''    var mascot by remember(avatarProfileKey) {
-        mutableStateOf(WordQuestAvatarStore.read(context,avatarProfileKey))
-    }
+    s=s[:start]+'''    var mascot by rememberWordQuestAvatar(avatarProfileKey)
     LaunchedEffect(avatarProfileKey) {
         // Sync only a previously SAVED shared choice; retain legacy avatar
         // preference until user explicitly picks a new v173 model.
@@ -129,9 +127,7 @@ def patch_memory():
     s=p.read_text("utf-8")
     a=s.index('    var robot by remember(session.profileKey) {')
     b=s.index('    var robotPicker by remember',a)
-    s=s[:a]+'''    var selectedAvatar by remember(session.profileKey) {
-        mutableStateOf(WordQuestAvatarStore.read(context,session.profileKey))
-    }
+    s=s[:a]+'''    var selectedAvatar by rememberWordQuestAvatar(session.profileKey)
 '''+s[b:]
     a=s.index('    if (robotPicker) {')
     b=s.index('    Box(Modifier.fillMaxSize().background(',a)
