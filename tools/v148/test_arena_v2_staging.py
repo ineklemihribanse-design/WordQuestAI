@@ -47,6 +47,24 @@ assert all(k in client for k in (
     "fun updateLobbySettings(", "configRevision"))
 assert (TESTS/"ArenaDuelEngineTest.kt").is_file()
 assert (TESTS/"ArenaFirebaseReplayTest.kt").is_file()
+assert (TESTS/"ArenaFullWordInputTest.kt").is_file()
+assert (SRC/"ArenaFullWordInput.kt").is_file()
+solo=(SRC/"PremiumArenaScreen.kt").read_text("utf-8")
+typing=(SRC/"ArenaCrosswordTyping.kt").read_text("utf-8")
+assert 'label = { Text("Kelimeyi yaz") }' in screen
+assert 'label = { Text("Kelimeyi yaz") }' in solo
+assert 'ArenaOutlineButton("PAS", {' in screen
+assert 'ArenaOutlineButton("PAS", {' in solo
+assert 'crosswordFullWordMatches(fixedPattern' in screen
+assert 'crosswordFullWordMatches(fixedPattern' in solo
+assert 'crosswordFullWordPreview(' in typing
+assert 'ArenaCrosswordTypingStrip(' not in screen
+assert 'ArenaCrosswordTypingStrip(' not in solo
+assert 'Eksik harfleri yaz' not in screen
+assert 'Eksik harfleri yaz' not in solo
+assert 'Spacer(Modifier.height(22.dp))' in screen
+assert 'Spacer(Modifier.height(22.dp))' in solo
+
 gradle=(ROOT/"source/app/build.gradle.kts").read_text("utf-8")
 assert 'applicationIdSuffix = ".fresh"' in gradle
 assert 'versionCode = 73' in gradle
