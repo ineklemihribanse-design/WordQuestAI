@@ -27,8 +27,8 @@ def append_bin_view(doc,blob,data,target=None):
     doc["bufferViews"].append(d)
     return blob+data,vi
 
-def append_accessor(doc,blob,raw,count,typ,component=5126,normalized=False):
-    blob,view=append_bin_view(doc,blob,raw,34962)
+def append_accessor(doc,blob,raw,count,typ,component=5126,normalized=False,target=None):
+    blob,view=append_bin_view(doc,blob,raw,target)
     i=len(doc["accessors"])
     a={"bufferView":view,"componentType":component,"count":count,"type":typ}
     if normalized:a["normalized"]=True
@@ -99,7 +99,7 @@ def morph(source):
     for deltas in (mouth,blink):
         flat=[f for row in deltas for f in row]
         raw=struct.pack("<"+"f"*len(flat),*flat)
-        blob,accessor=append_accessor(doc,blob,raw,len(positions),"VEC3")
+        blob,accessor=append_accessor(doc,blob,raw,len(positions),"VEC3",target=34962)
         prim["targets"].append({"POSITION":accessor})
     mesh["weights"]=[0.0,0.0]
     mesh.setdefault("extras",{})["targetNames"]=["Lena_MouthOpen","Lena_EyeBlink"]
