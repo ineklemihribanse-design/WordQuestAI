@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -82,6 +82,7 @@ on:
       - 'tools/v160/**'
       - 'tools/v161/**'
       - 'tools/v162/**'
+      - 'tools/v163/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -958,6 +959,37 @@ jobs:
           grep -q 'versionName = "1.0.62-lena-precise-face"' source/app/build.gradle.kts
           grep -q 'intensity = 50_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
           grep -q 'Lena_V162_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Upgrade Lena with brown hair, true iris/pupils and eye-level blink (v1.0.63 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v163/upgrade_lena_163.py tools/v163/apply_lena_visual_quality_163.py
+          python3 tools/v163/apply_lena_visual_quality_163.py
+          grep -q 'versionCode = 88' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.63-lena-eyes-brown-hair"' source/app/build.gradle.kts
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,"tools/v162")
+          from paint_lena_162 import read_chunks,accessor_values
+          glb=Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb")
+          d,b=read_chunks(glb.read_bytes())
+          body,*parts=d["meshes"][0]["primitives"]
+          names=[p.get("extras",{}).get("name","") for p in parts]
+          for name,count in (("sclera",2),("iris",2),("pupil",2),
+                             ("glint",2),("eyelash",2),("inner_mouth",1)):
+              assert names.count(name)==count,(name,names)
+          assert len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(p.get("targets",[]))==2 for p in [body]+parts)
+          assert all(not any(any(abs(v)>1e-7 for v in row)
+                    for row in accessor_values(d,b,target["POSITION"]))
+                    for target in body["targets"])
+          print("Android asset QA: real iris/pupils, mouth and blink; no brow/cheek morphs.")
+          PY
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
