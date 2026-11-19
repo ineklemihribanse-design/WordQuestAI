@@ -66,59 +66,95 @@ internal object ProfileRobotSelection {
 
 @Composable
 internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
-    val glow = ProfileRobotSelection.accents[robot.coerceIn(0, 3)]
+    val accent = ProfileRobotSelection.accents[robot.coerceIn(0, 3)]
     val rig = rememberInfiniteTransition(label = "robot-rig")
     val phase by rig.animateFloat(0f, 6.283185f,
-        infiniteRepeatable(tween(4200, easing = LinearEasing)), label = "idle")
+        infiniteRepeatable(tween(5100, easing = LinearEasing)), label = "breathing")
     val blink by rig.animateFloat(0f, 1f,
         infiniteRepeatable(keyframes {
-            durationMillis = 4300
+            durationMillis = 4900
             0f at 0
-            0f at 3700
-            1f at 3800
-            0f at 3940
-            0f at 4300
+            0f at 4190
+            1f at 4290
+            0f at 4410
+            0f at 4900
         }), label = "blink")
     Canvas(modifier) {
         val w = size.width; val h = size.height
-        val armAngle = sin(phase) * 6f
-        drawCircle(glow.copy(alpha = .16f), radius = w * .43f,
-            center = Offset(w * .5f, h * .43f))
-        rotate(armAngle, Offset(w * .21f, h * .35f)) {
-            drawRoundRect(Color(0xFFB6C9E0), Offset(w * .13f, h * .31f),
-                Size(w * .16f, h * .35f), CornerRadius(w * .08f))
+        val breath = sin(phase)
+        val sway = sin(phase * .7f)
+        val headCenter = Offset(w * .50f, h * .40f)
+        val shell = Brush.linearGradient(listOf(
+            Color(0xFFFFFFFF), Color(0xFFE2EFF7), Color(0xFF8DA9BF),
+            Color(0xFF4C6988)), start = Offset(w * .25f, 0f),
+            end = Offset(w * .82f, h * .82f))
+        val limb = Brush.linearGradient(listOf(
+            Color(0xFFE9F7FF), Color(0xFF7896AF), Color(0xFF3E5875)))
+        // Shadow anchors the character to its environment.
+        drawOval(Color(0xFF00111D).copy(alpha = .22f),
+            Offset(w * .24f, h * .94f), Size(w * .52f, h * .055f))
+        drawCircle(accent.copy(alpha = .13f), w * .43f,
+            Offset(w * .5f, h * .44f))
+        // Neck and articulated shoulders sit behind the head.
+        drawRoundRect(Color(0xFF59758D), Offset(w * .43f, h * .65f),
+            Size(w * .14f, h * .15f), CornerRadius(w * .06f))
+        rotate(-sway * 7f, Offset(w * .23f, h * .67f)) {
+            drawCircle(Color(0xFF58738E), w * .087f,
+                Offset(w * .23f, h * .67f))
+            drawRoundRect(limb, Offset(w * .14f, h * .65f),
+                Size(w * .16f, h * .23f), CornerRadius(w * .08f))
+            drawCircle(Color(0xFFE8F6FF), w * .065f,
+                Offset(w * .22f, h * .86f))
         }
-        rotate(-armAngle, Offset(w * .79f, h * .35f)) {
-            drawRoundRect(Color(0xFFB6C9E0), Offset(w * .71f, h * .31f),
-                Size(w * .16f, h * .35f), CornerRadius(w * .08f))
+        rotate(sway * 7f, Offset(w * .77f, h * .67f)) {
+            drawCircle(Color(0xFF58738E), w * .087f,
+                Offset(w * .77f, h * .67f))
+            drawRoundRect(limb, Offset(w * .70f, h * .65f),
+                Size(w * .16f, h * .23f), CornerRadius(w * .08f))
+            drawCircle(Color(0xFFE8F6FF), w * .065f,
+                Offset(w * .78f, h * .86f))
         }
-        rotate(sin(phase) * 1.8f, Offset(w * .5f, h * .44f)) {
-        drawRoundRect(Brush.verticalGradient(listOf(Color.White,
-            Color(0xFFAABAD4), Color(0xFF637BA0))),
-            Offset(w * .20f, h * .11f), Size(w * .60f, h * .68f),
-            CornerRadius(w * .18f))
-        drawRoundRect(Color(0xFF091326), Offset(w * .25f, h * .23f),
-            Size(w * .5f, h * .40f), CornerRadius(w * .14f))
-        drawRoundRect(glow.copy(alpha = .30f), Offset(w * .255f, h * .245f),
-            Size(w * .49f, h * .37f), CornerRadius(w * .14f),
-            style = Stroke(w * .012f))
-        val stroke = Stroke(width = w * .027f, cap = StrokeCap.Round)
-        drawArc(glow, 12f, 150f, false, Offset(w * .33f, h * .35f),
-            Size(w * .12f, h * .09f), style = stroke)
-        drawArc(glow, 12f, 150f, false, Offset(w * .55f, h * .35f),
-            Size(w * .12f, h * .09f), style = stroke)
-        drawArc(glow, 15f, 150f, false, Offset(w * .42f, h * .47f),
-            Size(w * .16f, h * .09f), style = stroke)
-        if (blink > .05f) {
-            drawRoundRect(Color(0xFF091326), Offset(w * .31f, h * .35f),
-                Size(w * .38f, h * .09f * blink), CornerRadius(w * .04f))
+        // Curved chest with a rim, reflection and glowing heart module.
+        drawRoundRect(Brush.verticalGradient(listOf(
+            Color(0xFFB9D4E5), Color(0xFF526D8B), Color(0xFF213B57))),
+            Offset(w * .27f, h * (.70f + breath * .006f)),
+            Size(w * .46f, h * .24f), CornerRadius(w * .15f))
+        drawRoundRect(accent.copy(alpha = .45f),
+            Offset(w * .39f, h * .78f), Size(w * .22f, h * .045f),
+            CornerRadius(w * .025f))
+        drawCircle(accent.copy(alpha = .22f), w * .07f,
+            Offset(w * .5f, h * .84f))
+        // Entire face is one parent transform: no floating eyes.
+        rotate(sway * 2.4f, headCenter) {
+            drawRoundRect(shell, Offset(w * .16f, h * .13f),
+                Size(w * .68f, h * .60f), CornerRadius(w * .25f))
+            drawRoundRect(Color(0xFF405F79), Offset(w * .17f, h * .27f),
+                Size(w * .66f, h * .36f), CornerRadius(w * .17f))
+            drawRoundRect(Brush.verticalGradient(listOf(
+                Color(0xFF07192C), Color(0xFF173B57), Color(0xFF0A1B30))),
+                Offset(w * .22f, h * .30f), Size(w * .56f, h * .30f),
+                CornerRadius(w * .14f))
+            drawRoundRect(Color.White.copy(alpha = .15f),
+                Offset(w * .27f, h * .315f), Size(w * .42f, h * .028f),
+                CornerRadius(w * .014f))
+            // Independent eye sockets, blink shutters and gaze motion.
+            val gaze = sway * w * .016f
+            for (eye in listOf(.38f, .62f)) {
+                drawCircle(accent.copy(alpha = .22f), w * .085f,
+                    Offset(w * eye + gaze, h * .435f))
+                drawOval(accent, Offset(w * (eye - .047f) + gaze,
+                    h * (.385f + blink * .045f)),
+                    Size(w * .094f, h * .10f * (1f - blink).coerceAtLeast(.06f)))
+                drawCircle(Color.White.copy(alpha = .9f), w * .013f,
+                    Offset(w * (eye - .018f) + gaze, h * .408f))
+            }
+            drawArc(accent, 18f, 144f, false,
+                Offset(w * .435f, h * .505f),
+                Size(w * .13f, h * .052f),
+                style = Stroke(w * .016f, cap = StrokeCap.Round))
+            drawOval(Color.White.copy(alpha = .22f),
+                Offset(w * .24f, h * .18f), Size(w * .23f, h * .055f))
         }
-        }
-        drawRoundRect(Brush.verticalGradient(listOf(Color(0xFF314F80),
-            Color(0xFF0B2144))), Offset(w * .23f, h * .76f),
-            Size(w * .54f, h * .23f), CornerRadius(w * .10f))
-        drawRoundRect(glow.copy(alpha = .8f), Offset(w * .4f, h * .81f),
-            Size(w * .20f, h * .045f), CornerRadius(w * .025f))
     }
 }
 
