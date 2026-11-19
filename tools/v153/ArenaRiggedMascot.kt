@@ -90,7 +90,7 @@ private fun DrawScope.mascotArm(
                     translate(0f,24*u)
                     // Wrist counter-rotation keeps the cup upright while the
                     // parent shoulder and elbow continue to articulate.
-                    rotate(-angle-elbow+6f,pivot=Offset.Zero)
+                    rotate(-angle-elbow,pivot=Offset.Zero)
                 }) {
                     mascotTrophy(u)
                 }
@@ -127,7 +127,7 @@ private fun DrawScope.mascotEars(kind:String,paint:MascotPaint,u:Float,wobble:Fl
             }) {
                 val ear=Path().apply{
                     moveTo(-13*u,7*u);lineTo(-8*u,if(kind=="rabbit")-28*u else -29*u)
-                    quadraticTo(0f,if(kind=="rabbit")-35*u else -34*u,7*u,
+                    quadraticTo(0f,if(kind=="rabbit")-30*u else -34*u,7*u,
                         if(kind=="rabbit")-28*u else -29*u)
                     lineTo(14*u,7*u);close()
                 }
