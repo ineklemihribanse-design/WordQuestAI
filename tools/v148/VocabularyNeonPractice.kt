@@ -110,7 +110,7 @@ internal fun NeonVocabularyPractice(
     }
     val card = deck.getOrNull(position)
     Column(Modifier.fillMaxSize().background(Brush.verticalGradient(
-        listOf(Color(0xFFDFEEE9), Color(0xFFEDF5F1), Color(0xFFE3EFF3))))
+        listOf(Color(0xFFF7FAFF), Color(0xFFEAF3FC), Color(0xFFDFEDFA))))
         .verticalScroll(rememberScrollState())
         .padding(horizontal = 17.dp, vertical = 12.dp),
         verticalArrangement = Arrangement.spacedBy(13.dp)) {
@@ -126,10 +126,10 @@ internal fun NeonVocabularyPractice(
         }
         if (completed) {
             NeonPanel {
-                Text("Çalışma tamamlandı", color = MemoryGold,
+                Text("Çalışma tamamlandı", color = Color(0xFF167DCC),
                     fontSize = 24.sp, fontWeight = FontWeight.Bold)
                 Text("${deck.size} kelime · $correctCount başarılı · ${reviews.size - correctCount} tekrar gerekli",
-                    color = MemoryWhite)
+                    color = DarkText)
                 Button(onClick = back, modifier = Modifier.fillMaxWidth()) {
                     Text("Kelime Hafızam'a Dön")
                 }
@@ -197,7 +197,7 @@ internal fun NeonVocabularyPractice(
             } else wrongBefore = true
         }
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text("${position + 1} / ${deck.size}", color = DarkText), fontSize = 13.sp)
+            Text("${position + 1} / ${deck.size}", color = DarkText, fontSize = 13.sp)
             Spacer(Modifier.weight(1f))
             Text(when (studyMode) {
                 "write" -> "Yazarak Öğren"
@@ -208,7 +208,7 @@ internal fun NeonVocabularyPractice(
         LinearProgressIndicator(progress = { (position + 1f) / deck.size },
             modifier = Modifier.fillMaxWidth().height(6.dp)
                 .clip(RoundedCornerShape(5.dp)), color = MemoryCyan,
-            trackColor = Color(0xFF24456A))
+            trackColor = Color(0xFFDCE8F5))
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween) {
             OutlinedButton(onClick = {
