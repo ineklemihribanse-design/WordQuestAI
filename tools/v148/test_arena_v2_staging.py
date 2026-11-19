@@ -20,18 +20,27 @@ assert "auth.uid === $uid" in room["replay"]["$index"]["$uid"][".write"]
 screen=(SRC/"PremiumOnlineScreen.kt").read_text("utf-8")
 client=(SRC/"PremiumOnlineRoom.kt").read_text("utf-8")
 assert all(k in screen for k in (
-    "ArenaHomeV3(", "ArenaRoomLobbyV3(", "ArenaLiveScoreV2(",
+    "ArenaApprovedHome(", "ArenaApprovedRoomLobby(", "ArenaLiveScoreV2(",
     "ArenaVictoryV2(", "client.useHint(selected)",
     "PremiumOnlineLimits.canAttempt(match,selected,myUid)"))
 assert "match.hostAvatar,match.guestAvatar" in screen
-lobby=(SRC/"ArenaV3Lobby.kt").read_text("utf-8")
+lobby=(SRC/"ArenaApprovedLobby.kt").read_text("utf-8")
 assert "client::toggleReady" in lobby
 assert "match.guestUid in match.readyBy" in lobby
 assert "client.updateLobbySettings(" in lobby
-assert "ArenaHomeV3(" in (SRC/"PremiumArenaScreen.kt").read_text("utf-8")
+assert "ArenaApprovedHome(" in (SRC/"PremiumArenaScreen.kt").read_text("utf-8")
 assert "ArenaRulesCardV3(" in lobby
 assert (SRC/"ArenaV3Rules.kt").is_file()
-assert "ArenaRulesCardV3(" in (SRC/"ArenaV3Home.kt").read_text("utf-8")
+assert "ArenaRulesCardV3(" in (SRC/"ArenaApprovedHome.kt").read_text("utf-8")
+theme=(SRC/"ArenaApprovedTheme.kt").read_text("utf-8")
+home=(SRC/"ArenaApprovedHome.kt").read_text("utf-8")
+assert all(k in theme for k in ("ArenaApprovedHeroArt", "ArenaApprovedPrimary",
+    "ArenaApprovedOption", "purpleGradient", "greenGradient"))
+assert all(k in home for k in ("Her maç yeni bir keşif", "İngilizce Seviyesi",
+    "Konu / Paket", "Oyun Biçimi", "Maç Ayarları", "Tek Başına Oyna"))
+assert all(k in lobby for k in ("Oda Lobisi", "Oda Kodu", "Yarışmayı Başlat",
+    "Arkadaşlarını Davet Et", "ArenaApprovedPlayerCard", "client::toggleReady"))
+
 assert all(k in client for k in (
     "fun useHint(index: Int)", "fun toggleReady()", "fun replayRound(",
     "fun canAttempt(", "rulesVersion", "hintUsed", "replayBy",
