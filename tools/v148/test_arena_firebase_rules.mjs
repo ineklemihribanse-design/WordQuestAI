@@ -51,6 +51,14 @@ try {
   await assertSucceeds(ref(A,'ready/arena-a').set(2));
   await assertSucceeds(ref(B,'ready/arena-b').set(2));
   await assertFails(ref(A,'configRevision').set(2));
+  await assertSucceeds(ref(A,'phase').set('playing'));
+  await seed({phase:'lobby',configRevision:3,
+    ready:{'arena-a':2,'arena-b':2}});
+  await assertFails(ref(A,'phase').set('playing'));
+  await assertSucceeds(ref(A,'ready/arena-a').set(3));
+  await assertFails(ref(A,'phase').set('playing'));
+  await assertSucceeds(ref(B,'ready/arena-b').set(3));
+  await assertSucceeds(ref(A,'phase').set('playing'));
 
   await seed();
   await assertSucceeds(ref(A, 'hintUsed/arena-a/0').set(true));
