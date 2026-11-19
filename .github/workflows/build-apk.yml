@@ -807,7 +807,7 @@ jobs:
           # Pin the previously reviewed Arena sources; do not mix in later experiments.
           git fetch --depth=1 origin bdef5f95369c61944cd0c31477be7bd34be04c09
           mkdir -p /tmp/wq-arena-153
-          git archive FETCH_HEAD tools/v122 tools/v148 tools/v150 tools/v152 tools/v153 | tar -x -C /tmp/wq-arena-153
+          git archive FETCH_HEAD tools/v122 tools/v148 tools/v150 tools/v151 tools/v152 tools/v153 | tar -x -C /tmp/wq-arena-153
           cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordTyping.kt source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
           cp /tmp/wq-arena-153/tools/v148/Arena*.kt tools/v148/
           cp /tmp/wq-arena-153/tools/v148/PremiumOnlineRoomV2.kt tools/v148/
@@ -816,7 +816,9 @@ jobs:
           git show FETCH_HEAD:tools/v148/apply_arena_v2.py > tools/v148/apply_arena_v2.py
           cp /tmp/wq-arena-153/tools/v150/Arena*.kt tools/v150/
           cp /tmp/wq-arena-153/tools/v150/apply_arena_v3.py tools/v150/
-          mkdir -p tools/v152 tools/v153
+          mkdir -p tools/v151 tools/v152 tools/v153
+          cp /tmp/wq-arena-153/tools/v151/ArenaApproved*.kt tools/v151/
+          cp /tmp/wq-arena-153/tools/v151/approved_arena_hero.webp.b64 tools/v151/
           cp /tmp/wq-arena-153/tools/v152/* tools/v152/
           cp /tmp/wq-arena-153/tools/v153/* tools/v153/
           python3 tools/v148/apply_arena_v2.py
