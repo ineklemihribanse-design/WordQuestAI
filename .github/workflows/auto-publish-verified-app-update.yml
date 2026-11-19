@@ -54,6 +54,18 @@ jobs:
             exit 0
           fi
           [[ "$TAG" =~ ^arena-v1[.]0[.][0-9]+(-[a-z0-9-]+)?$ ]]
+          # Workflow reruns and a rebuilt, already-published preview must be
+          # successful no-ops, never failed "not newer" updates.
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          [[ "$latest" =~ ^v1[.]0[.][0-9]+$ ]]
+          candidate_patch="${TAG#arena-v1.0.}"
+          candidate_patch="${candidate_patch%%-*}"
+          current_patch="${latest#v1.0.}"
+          if (( 10#$candidate_patch <= 10#$current_patch )); then
+            echo "Version v1.0.$candidate_patch already published or superseded by $latest; no update."
+            echo 'NO_PREVIEW=1' >> "$GITHUB_ENV"
+            exit 0
+          fi
           echo "PREVIEW_TAG=$TAG" >> "$GITHUB_ENV"
           echo "Selected immutable signed Android preview: $TAG"
 
