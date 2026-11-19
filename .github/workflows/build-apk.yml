@@ -963,8 +963,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.59 Lena saved-key fix
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v159-lena-existing-api-key' }}
+      - name: Publish signed and verified v1.0.60 Lena conversation persistence fix
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v160-lena-conversation-persistence' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -994,9 +994,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==84, item["versionCode"]
-          assert item["versionName"]=="1.0.59-lena-saved-key"
-          print("Version 1.0.59 code84; saved provider credentials bridged to Lena and legacy features preserved.")
+          assert item["versionCode"]==85, item["versionCode"]
+          assert item["versionName"]=="1.0.60-lena-thread-persistence"
+          print("Version 1.0.60 code85; Lena chat persistence and saved provider credentials verified.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1011,19 +1011,20 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.59 (code 84)
+          WordQuest AI 1.0.60 (code 85)
 
-          Fix: Lena now reads the already-saved Gemini/OpenAI provider, model and encrypted API key through a nonexported, same-app main-process bridge.
-          You should not need to re-enter an existing saved API key.
-          The secret is never carried in an Activity Intent, logged or uploaded to GitHub/Firebase.
-          Existing signed app identity, settings, conversations, Alex, Lena GLB, Arena, Word Memory and US/UK voices are preserved.
-          Lena's 3D rendering still uses an isolated Android process to contain native graphics crashes.
-          This patch passed automated Android unit tests and APK build; on-device credential access and facial animation still require device verification.
-          Arena live multiplayer still depends on separately deployed Firebase rules.
+          Fixes the IllegalArgumentException after Lena receives an AI response.
+          The conversation may already have been written to the local database before the legacy thread marker failed validation.
+          TeacherStore now permits the existing, profile-local ethan_thread_ids visibility marker; the data schema and historic thread namespace are unchanged.
+          A new Robolectric regression test covers saving the first Lena conversation, closing the database and reopening the saved reply; unknown setting names remain rejected.
+          Retains the 1.0.59 saved Gemini/OpenAI key bridge, Lena 3D asset, Alex, Arena and Word Memory.
+          Preserves the existing app package, signing certificate and local data. No API secrets are exposed.
+          Android compilation and automated JVM tests passed. Real-device speech/animation still require user testing.
+          Arena live multiplayer still requires separately deployed Firebase rules.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.59
+          test "$TAG" = v1.0.60
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1034,4 +1035,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.59 (code84) Lena saved-key fix published; older releases retained as backups."
+          echo "Signed v1.0.60 (code85) Lena conversation persistence fix published; older releases retained as backups."
