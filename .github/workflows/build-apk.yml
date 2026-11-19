@@ -1177,7 +1177,7 @@ jobs:
       - name: Stage EXACT user-uploaded chair and window GLB and safe Lena greeting (v1.0.70)
         run: |
           set -euo pipefail
-          python3 -m py_compile tools/v170/stage_user_chair_170.py tools/v170/apply_lena_chair_170.py
+          python3 -m py_compile tools/v170/stage_user_chair_170.py tools/v170/apply_lena_chair_170.py tools/v170/audit_lena_rig_170.py
           # FAIL here when the original attached 19MB GLB has not been
           # uploaded to GitHub. Never publish a fake or substitute chair.
           test -s assets/studio/chairs_and_window_set_-_game_ready.glb || {
@@ -1185,6 +1185,7 @@ jobs:
             exit 1
           }
           python3 tools/v170/apply_lena_chair_170.py
+          python3 tools/v170/audit_lena_rig_170.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
           grep -Fq 'versionCode = 95' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.70-user-chair-safe-greeting"' source/app/build.gradle.kts
           test -s source/app/src/main/assets/studio/chairs_and_window_set_-_game_ready.glb
