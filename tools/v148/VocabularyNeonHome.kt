@@ -64,6 +64,36 @@ internal object ProfileRobotSelection {
     val accents = listOf(MemoryCyan, MemoryLilac, MemoryGold, Color(0xFF56D6A2))
 }
 
+/**
+ * Joint definitions for the approved Word Memory mascot.
+ * Coordinates are normalized to the portrait viewport (0..1).
+ * This is the pivot contract for replacing Canvas geometry with layered assets.
+ */
+internal data class WordMemoryJoint(val name: String, val parent: String?,
+    val pivotX: Float, val pivotY: Float)
+
+internal object WordMemoryRobotRig {
+    val joints = listOf(
+        WordMemoryJoint("root", null, .50f, .88f),
+        WordMemoryJoint("torso", "root", .50f, .78f),
+        WordMemoryJoint("neck", "torso", .50f, .65f),
+        WordMemoryJoint("head", "neck", .50f, .40f),
+        WordMemoryJoint("face", "head", .50f, .44f),
+        WordMemoryJoint("leftEye", "face", .38f, .43f),
+        WordMemoryJoint("rightEye", "face", .62f, .43f),
+        WordMemoryJoint("leftShoulder", "torso", .23f, .67f),
+        WordMemoryJoint("leftElbow", "leftShoulder", .22f, .78f),
+        WordMemoryJoint("leftWrist", "leftElbow", .22f, .86f),
+        WordMemoryJoint("rightShoulder", "torso", .77f, .67f),
+        WordMemoryJoint("rightElbow", "rightShoulder", .78f, .78f),
+        WordMemoryJoint("rightWrist", "rightElbow", .85f, .78f),
+        WordMemoryJoint("book", "rightWrist", .69f, .73f)
+    )
+    fun validate(): Boolean = joints.map { it.name }.toSet().size == joints.size &&
+        joints.all { it.parent == null || joints.any { parent -> parent.name == it.parent } } &&
+        joints.all { it.pivotX in 0f..1f && it.pivotY in 0f..1f }
+}
+
 @Composable
 internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
     val accent = ProfileRobotSelection.accents[robot.coerceIn(0, 3)]
