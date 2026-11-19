@@ -48,6 +48,28 @@ assert all(k in client for k in (
 assert (TESTS/"ArenaDuelEngineTest.kt").is_file()
 assert (TESTS/"ArenaFirebaseReplayTest.kt").is_file()
 assert (TESTS/"ArenaFullWordInputTest.kt").is_file()
+assert (TESTS/"ArenaMascotRigTest.kt").is_file()
+rig=(SRC/"ArenaMascotRig.kt").read_text("utf-8")
+renderer=(SRC/"ArenaRiggedMascot.kt").read_text("utf-8")
+assert all(key in rig for key in (
+    '"robot", "Bip"', '"fox", "Pufi"', '"owl", "Mimo"',
+    '"rabbit", "Lila"', '"bear", "Tiko"',
+    'TROPHY_PIVOT', 'LEFT_HAND', 'LEFT_KNEE', 'RIGHT_ELBOW',
+    'fun isHierarchical()', 'fun pose('
+))
+assert all(key in renderer for key in (
+    'ArenaRiggedMascot(', 'holdingTrophy:Boolean=false',
+    'mascotArm(', 'mascotLeg(', 'mascotHead(', 'mascotTrophy(',
+    'rememberInfiniteTransition(', 'withTransform('
+))
+assert "ArenaRiggedMascot(kind,modifier)" in (SRC/"ArenaV2Visuals.kt").read_text("utf-8")
+assert "holdingTrophy=!isDraw" in (SRC/"ArenaV2Visuals.kt").read_text("utf-8")
+assert "ArenaApprovedHeroArt(kind=mascot" in home
+assert "ArenaMascotRig.choices" in home
+assert "ArenaMascotRig.isValid(it)" in client
+assert "newData.val() === 'rabbit'" in room["guestAvatar"][".validate"]
+assert "newData.val() === 'bear'" in room["guestAvatar"][".validate"]
+
 assert (SRC/"ArenaFullWordInput.kt").is_file()
 solo=(SRC/"PremiumArenaScreen.kt").read_text("utf-8")
 typing=(SRC/"ArenaCrosswordTyping.kt").read_text("utf-8")
