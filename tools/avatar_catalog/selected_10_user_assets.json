@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "project": "WordQuest AI",
+  "intent": "10 distinct Arena avatars; every source is an asset uploaded by the user. No external character models.",
+  "status": "selection-approved-assets-not-yet-uploaded-to-git-or-available-in-apk",
+  "assets": [
+    {
+      "id": "astra",
+      "name": "Astra",
+      "type": "astronaut",
+      "file": "astronaut_by_jungle_jim.glb",
+      "license": "CC-BY-4.0",
+      "source": "https://sketchfab.com/3d-models/astronaut-by-jungle-jim-c775a977606a4e4e990afe783c6bc845"
+    },
+    {
+      "id": "piko",
+      "name": "Piko",
+      "type": "pink-mech",
+      "file": "le_pink_mech_by_jungle_jim.glb",
+      "license": "CC-BY-4.0",
+      "source": "https://sketchfab.com/3d-models/le-pink-mech-by-jungle-jim-215dacbebf094c0292b31aeaf7b968ee"
+    },
+    {
+      "id": "nobi",
+      "name": "Nobi",
+      "type": "cyberpunk-robot",
+      "file": "cyberpunk_robot.glb",
+      "license": "CC-BY-4.0",
+      "source": "https://sketchfab.com/3d-models/cyberpunk-robot-79369b97f0d74fd1a5c4fe824040cbce"
+    },
+    {
+      "id": "tera",
+      "name": "Tera",
+      "type": "sci-fi-humanoid-robot",
+      "file": "sci-fi_humanoid_robot.glb",
+      "license": "CC-BY-4.0",
+      "source": "https://sketchfab.com/3d-models/sci-fi-humanoid-robot-12ad786ecde246e5854a61fd4f67ed49"
+    },
+    {
+      "id": "lopi",
+      "name": "Lopi",
+      "type": "rabbit",
+      "file": "rabbit-animal-3d-model-free.zip",
+      "entry": "source/Rabbit animal 3d model free.glb",
+      "license": "unverified"
+    },
+    {
+      "id": "tomba",
+      "name": "Tomba",
+      "type": "hippopotamus",
+      "file": "midnight-hippo.zip",
+      "entry": "source/model.glb",
+      "license": "unverified"
+    },
+    {
+      "id": "foksi",
+      "name": "Foksi",
+      "type": "fox",
+      "file": "ultimate_animal_pack_100_animals__50_off.glb",
+      "mesh": "Fox.001_applied_clean_M_Fox_0_M_Fox_0",
+      "license": "CC-BY-NC-4.0",
+      "shippingBlocked": true
+    },
+    {
+      "id": "moka",
+      "name": "Moka",
+      "type": "bear",
+      "file": "ultimate_animal_pack_100_animals__50_off.glb",
+      "mesh": "Bear.001_applied_clean_M_Bear_0_M_Bear_0",
+      "license": "CC-BY-NC-4.0",
+      "shippingBlocked": true
+    },
+    {
+      "id": "pera",
+      "name": "Pera",
+      "type": "deer",
+      "file": "ultimate_animal_pack_100_animals__50_off.glb",
+      "meshes": [
+        "Deer_M.001_M_Deer.001_0_M_Deer.001_0",
+        "Deer_M.001_M_DeerAntler.001_0_M_DeerAntler.001_0"
+      ],
+      "license": "CC-BY-NC-4.0",
+      "shippingBlocked": true
+    },
+    {
+      "id": "gigi",
+      "name": "Gigi",
+      "type": "goose",
+      "file": "ultimate_animal_pack_100_animals__50_off.glb",
+      "mesh": "Goose.001_applied_clean_M_Goose_0_M_Goose_0",
+      "license": "CC-BY-NC-4.0",
+      "shippingBlocked": true
+    }
+  ],
+  "technicalNotes": [
+    "Every inspected uploaded GLB currently contains zero glTF skins and zero animations. Create proper rig and animations separately; do not treat static meshes as animated.",
+    "Keep all original user-supplied files out of the repository until redistribution rights and mobile optimizations are verified.",
+    "The four Ultimate Animal Pack choices are CC-BY-NC-4.0; do not include in a commercial build without additional license. Attribute compatible CC-BY models.",
+    "Verify licensing of rabbit and hippo archives before publishing. Uploaded files are source references, not proof of publication rights.",
+    "No source-code, APK, release, versionCode, package ID, signing, or user data changes from this manifest.",
+    "Planned shared motions: idle, blink where anatomy allows, select, celebrate, hold-trophy, loss, wave, victory; require per-avatar rigging/animation work."
+  ],
+  "repository": "ineklemihribanse-design/WordQuestAI",
+  "baseRelease": "v1.0.71",
+  "baseReleaseSourceBranch": "feature/v171-lena-chat-emoji-attachments-motion-subtitles",
+  "integrationRules": [
+    "Use only these 10 source models uploaded by the user; never create unrelated replacements.",
+    "Leave Lena's 1.0.71 studio, chat, chair scene, APK signing, updater, AI settings and past Arena/Word Memory features unchanged.",
+    "Implement on top of v1.0.71 code 96; do not regress to v1.0.69 from main.",
+    "Do not ship commercially restricted NC meshes until licensing clarified.",
+    "Rigs, animations and mobile optimization must be completed and verified before marking these avatars available in the APK."
+  ]
+}
