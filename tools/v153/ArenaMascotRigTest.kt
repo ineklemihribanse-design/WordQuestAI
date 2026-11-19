@@ -23,7 +23,7 @@ class ArenaMascotRigTest {
 
     @Test fun everyJointHasAnExistingParentAndTrophyIsChildOfHand() {
         assertTrue(ArenaMascotRig.isHierarchical())
-        assertEquals(31,ArenaMascotRig.bones.size)
+        assertEquals(32,ArenaMascotRig.bones.size)
         assertEquals("LEFT_HAND",
             ArenaMascotRig.bones.single {it.id=="TROPHY_PIVOT"}.parent)
         assertTrue(ArenaMascotRig.bones.any {it.id=="LEFT_ELBOW"})
