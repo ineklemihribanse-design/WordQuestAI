@@ -13,19 +13,26 @@ assert "auth.uid === data.parent().child('guestUid').val()" in room["guestAvatar
 assert "replay" in room["solved"]["$index"][".write"]
 assert "rulesVersion" in room["solved"]["$index"][".write"]
 assert "auth.uid === $uid" in room["ready"]["$uid"][".write"]
+assert "configRevision" in room["ready"]["$uid"][".validate"]
+assert "configRevision" in room["phase"][".write"]
 assert "auth.uid === $uid" in room["hintUsed"]["$uid"]["$index"][".write"]
 assert "auth.uid === $uid" in room["replay"]["$index"]["$uid"][".write"]
 screen=(SRC/"PremiumOnlineScreen.kt").read_text("utf-8")
 client=(SRC/"PremiumOnlineRoom.kt").read_text("utf-8")
 assert all(k in screen for k in (
-    "ArenaHomeV2(", "ArenaRoomPlayersV2(", "ArenaLiveScoreV2(",
-    "ArenaVictoryV2(", "client.useHint(selected)", "client::toggleReady",
+    "ArenaHomeV3(", "ArenaRoomLobbyV3(", "ArenaLiveScoreV2(",
+    "ArenaVictoryV2(", "client.useHint(selected)",
     "PremiumOnlineLimits.canAttempt(match,selected,myUid)"))
 assert "match.hostAvatar,match.guestAvatar" in screen
-assert "match.guestUid in match.readyBy" in screen
+lobby=(SRC/"ArenaV3Lobby.kt").read_text("utf-8")
+assert "client::toggleReady" in lobby
+assert "match.guestUid in match.readyBy" in lobby
+assert "client.updateLobbySettings(" in lobby
+assert "ArenaHomeV3(" in (SRC/"PremiumArenaScreen.kt").read_text("utf-8")
 assert all(k in client for k in (
     "fun useHint(index: Int)", "fun toggleReady()", "fun replayRound(",
-    "fun canAttempt(", "rulesVersion", "hintUsed", "replayBy"))
+    "fun canAttempt(", "rulesVersion", "hintUsed", "replayBy",
+    "fun updateLobbySettings(", "configRevision"))
 assert (TESTS/"ArenaDuelEngineTest.kt").is_file()
 assert (TESTS/"ArenaFirebaseReplayTest.kt").is_file()
 gradle=(ROOT/"source/app/build.gradle.kts").read_text("utf-8")
