@@ -56,6 +56,12 @@ previews=ROOT/"source/app/src/main/assets/avatars/shared/wq173_verified_previews
 assert previews.is_file() and previews.stat().st_size==1748
 assert hashlib.sha256(previews.read_bytes()).hexdigest()==(
  "792da177fafecddf20200e66e5f09c3f608cd73e9a453e0ce022096f9950c075")
+icons=ROOT/"source/app/src/main/assets/arena/icons/wq173_mode_icons.webp"
+assert icons.is_file() and icons.stat().st_size==4230
+assert hashlib.sha256(icons.read_bytes()).hexdigest()==(
+ "18d2f4a2782b4f7235f7c083bd2d41e83b79b5814d22a6d1557265904dcd84fb")
+assert 'BitmapFactory.decodeStream' in arena
+assert 'Çapraz kılıçlar' in arena
 assert (PKG/"LenaLive3DStage.kt").is_file()
 assert (PKG/"ConversationScreen.kt").is_file()
 assert (PKG/"VocabularyNeonPractice.kt").is_file()
