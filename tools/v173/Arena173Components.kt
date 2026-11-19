@@ -1,5 +1,8 @@
 package com.kelimebulmacasi.a1
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -15,6 +18,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
@@ -30,6 +36,27 @@ private val v173Stroke=Color(0xFFE2D7F3)
 
 @Composable
 private fun Arena173Icon(kind:String) {
+    val context=LocalContext.current
+    val iconAtlas:Bitmap?=remember(context) {
+        runCatching {
+            context.assets.open("arena/icons/wq173_mode_icons.webp").use {
+                BitmapFactory.decodeStream(it)
+            }
+        }.getOrNull()
+    }
+    val tile=remember(iconAtlas,kind) {
+        val i=when(kind) {"duel"->0;"team"->1;else->2}
+        if(iconAtlas!=null && iconAtlas.width==144 && iconAtlas.height==48)
+            runCatching{Bitmap.createBitmap(iconAtlas,i*48,0,48,48)}.getOrNull()
+        else null
+    }
+    if(tile!=null) {
+        Image(tile.asImageBitmap(),contentDescription=when(kind){
+            "duel"->"Çapraz kılıçlar";"team"->"Mor ve altın yapboz";else->"Altın şimşek"
+        },modifier=Modifier.size(67.dp),contentScale=ContentScale.Fit)
+        return
+    }
+    // Keep the fully original vector drawing as a reliable offline fallback.
     Canvas(Modifier.size(67.dp)) {
         val u=size.minDimension/100f
         when(kind) {
