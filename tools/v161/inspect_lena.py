@@ -35,7 +35,7 @@ if __name__=="__main__":
     at=12
     while at<len(blob):
         n,t=struct.unpack_from("<I4s",blob,at)
-        if t==b"BIN\\x00".replace(b"\\\\",b"\\"):
+        if t==bytes((66,73,78,0)):
             bin_data=blob[at+8:at+8+n]
             break
         at+=8+n
