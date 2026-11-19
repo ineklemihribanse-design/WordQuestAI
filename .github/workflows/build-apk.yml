@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -83,6 +83,7 @@ on:
       - 'tools/v161/**'
       - 'tools/v162/**'
       - 'tools/v163/**'
+      - 'tools/v164/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -989,6 +990,36 @@ jobs:
                     for row in accessor_values(d,b,target["POSITION"]))
                     for target in body["targets"])
           print("Android asset QA: real iris/pupils, mouth and blink; no brow/cheek morphs.")
+          PY
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Restore original Prisma3D mesh part materials in Lena 1.0.64 (QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v164/build_lena_prisma_parts.py tools/v164/apply_lena_original_parts_164.py
+          python3 tools/v164/apply_lena_original_parts_164.py
+          grep -q 'versionCode = 89' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.64-prisma-original-look"' source/app/build.gradle.kts
+          grep -q 'Lena_V164_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          grep -q 'intensity = 38_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tools/v164")
+          from build_lena_prisma_parts import read_glb, getacc
+          d,blob=read_glb(Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb").read_bytes())
+          surfaces=[p["extras"]["originalPrisma3DObject"] for p in d["meshes"][0]["primitives"]]
+          assert surfaces==["Body","Tshirt","Sneakers","Pants","Hair","Eyes","Eyelash","Eyebrow","Belt"]
+          assert len(d["materials"])==9 and len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(p["targets"])==2 for p in d["meshes"][0]["primitives"])
+          assert sum(d["accessors"][p["indices"]]["count"] for p in d["meshes"][0]["primitives"])==47904
+          # No floating eyes or mouth, and blinking never moves eyebrows.
+          body,*other=d["meshes"][0]["primitives"]
+          assert all(not any(any(abs(x)>1e-8 for x in vec) for vec in getacc(d,blob,body["targets"][1]["POSITION"])[30502:30790]) for _ in [0])
+          print("PASS original Prisma3D 9 mesh material groups, no false added face objects")
           PY
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
