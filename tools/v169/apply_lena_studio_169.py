@@ -39,6 +39,9 @@ def main():
     assert studio.stat().st_size>10_000
     shutil.copyfile(SRC/"LenaLive3DStage.kt",PKG/"LenaLive3DStage.kt")
     shutil.copyfile(SRC/"LenaMessengerBrand.kt",PKG/"LenaMessengerBrand.kt")
+    icon_target=APP/"src/main/res/drawable/wq169_attach.xml"
+    icon_target.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(SRC/"wq169_attach.xml",icon_target)
 
     chat=PKG/"ConversationScreen.kt"
     s=chat.read_text("utf8")
@@ -50,7 +53,8 @@ def main():
         "import androidx.compose.material3.Surface\n", "Surface import")
     s=once(s,"import androidx.compose.foundation.layout.Box\n",
         "import androidx.compose.foundation.layout.Box\n"
-        "import androidx.compose.foundation.layout.BoxWithConstraints\n", "responsive composer")
+        "import androidx.compose.foundation.layout.BoxWithConstraints\n"
+        "import androidx.compose.foundation.layout.height\n", "responsive composer and height")
     s=once(s,"import androidx.compose.ui.graphics.Color\n",
         "import androidx.compose.ui.graphics.Color\n"
         "import androidx.compose.ui.graphics.ColorFilter\n", "icon tint")
@@ -114,7 +118,11 @@ def main():
                                     fontFamily=Serif,fontSize=22.sp,fontWeight=FontWeight.Bold)
                                 TextButton(onClick={ learningToolsOpen=false }) { Text("Kapat") }
                             }
-'''+tool_body+'''                        }
+'''+tool_body+'''                            Text(
+                                "Sohbet geçmişi ve öğrenme notları cihazında saklanır. " +
+                                "Yanıt oluşturulurken son konuşma turları seçtiğin AI sağlayıcısına gönderilir.",
+                                color=Color(0xFF657B6B),fontSize=11.sp,lineHeight=15.sp)
+                        }
                     }
                 }
             }
@@ -188,7 +196,9 @@ def main():
                     horizontalArrangement=Arrangement.spacedBy(3.dp)) {
                     if (wide) TextButton(onClick={ attachmentPicker.launch("text/plain") },
                         enabled=canEdit,contentPadding=PaddingValues(horizontal=4.dp)) {
-                        Text("♧",fontSize=21.sp,color=Color(0xFF266546))
+                        Image(painterResource(R.drawable.wq169_attach),
+                            contentDescription="Metin dosyası ekle",
+                            modifier=Modifier.size(21.dp))
                     }
                     OutlinedTextField(
                         ai.draft,{ ai.draft=it.take(maxMessageLength) },
