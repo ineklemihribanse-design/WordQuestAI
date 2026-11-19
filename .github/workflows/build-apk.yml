@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/v172-arena-reference-controls, feature/v171-lena-chat-emoji-attachments-motion-subtitles, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/v173-unified-arena-avatar-word-memory, feature/v172-arena-reference-controls, feature/v171-lena-chat-emoji-attachments-motion-subtitles, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -92,6 +92,7 @@ on:
       - 'tools/v170/**'
       - 'tools/v171/**'
       - 'tools/v172/**'
+      - 'tools/v173/**'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
@@ -1243,6 +1244,16 @@ jobs:
           grep -Fq 'versionCode = 97' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.72-arena-reference-controls"' source/app/build.gradle.kts
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaReferenceComponents.kt
+      - name: Install v1.0.73 candidate Arena + Word Memory shared avatar UI (no release)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v173/apply_wordquest_173.py tools/v173/verify_wordquest_173.py
+          python3 tools/v173/apply_wordquest_173.py
+          python3 tools/v173/verify_wordquest_173.py
+          grep -Fq 'versionCode = 98' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.73-arena-avatar-candidate"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/avatars/shared/wq173_verified_previews.webp
+          echo 'This is a candidate QA build; there are no release steps for the v173 branch.'
       - name: Verify independent app identity
         run: |
           set -euo pipefail
