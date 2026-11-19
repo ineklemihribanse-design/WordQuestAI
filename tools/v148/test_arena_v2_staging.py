@@ -29,8 +29,8 @@ assert all(k in client for k in (
 assert (TESTS/"ArenaDuelEngineTest.kt").is_file()
 assert (TESTS/"ArenaFirebaseReplayTest.kt").is_file()
 gradle=(ROOT/"source/app/build.gradle.kts").read_text("utf-8")
-assert 'applicationIdSuffix = ".offline101"' in gradle
-assert 'versionCode = 72' in gradle
-assert 'versionName = "1.0.47-vocabulary-2p5d-compat"' in gradle
+assert 'applicationIdSuffix = ".fresh"' in gradle
+assert 'versionCode = 73' in gradle
+assert 'versionName = "1.0.48-neon-word-memory"' in gradle
 assert (SRC/"Teacher25DPortrait.kt").is_file()
 print("Arena beta: staged UI, backend, rules and tests verified; Firebase rules NOT deployed.")
