@@ -484,6 +484,12 @@ internal fun VocabularyNeonHome(
                                 Text(card.answer, color = Color(0xFF123A63),
                                     fontSize = 17.sp, fontWeight = FontWeight.Bold)
                                 Text(card.clue, color = Color(0xFF52708D), fontSize = 12.sp)
+                                val wordCount = card.answer.trim().split(Regex("\\s+"))
+                                    .count { it.isNotEmpty() }
+                                if (wordCount > 1) {
+                                    Text("$wordCount kelimelik ifade", fontSize = 10.sp,
+                                        color = Color(0xFF167DCC), fontWeight = FontWeight.SemiBold)
+                                }
                             }
                             Text("›", color = Color(0xFF167DCC), fontSize = 21.sp)
                         }
@@ -506,6 +512,12 @@ internal fun VocabularyNeonHome(
                             NeonPanel(click = { cardDetail = card.key }) {
                                 Text(card.answer, color = Color(0xFF123A63), fontWeight = FontWeight.Bold)
                                 Text(card.clue, color = Color(0xFF52708D), fontSize = 12.sp)
+                                val wordCount = card.answer.trim().split(Regex("\\s+"))
+                                    .count { it.isNotEmpty() }
+                                if (wordCount > 1) {
+                                    Text("$wordCount kelimelik ifade", fontSize = 10.sp,
+                                        color = Color(0xFF167DCC), fontWeight = FontWeight.SemiBold)
+                                }
                             }
                         }
                     }
