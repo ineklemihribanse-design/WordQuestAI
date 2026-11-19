@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -78,6 +78,7 @@ on:
       - 'tools/v150/**'
       - 'tools/v157/**'
       - 'tools/v158/**'
+      - 'tools/v159/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -883,6 +884,20 @@ jobs:
           grep -q 'Lena ile 3D konuş' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
           grep -q 'versionCode = 83' source/app/build.gradle.kts
           grep -q 'versionName = "1.0.58-lena-voice"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Fix existing saved AI key access in Lena process (v1.0.59 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v159/apply_lena_saved_key_159.py
+          python3 tools/v159/apply_lena_saved_key_159.py
+          grep -Fq 'useMainProcessBridge = true' source/app/src/main/java/com/kelimebulmacasi/a1/LenaIsolatedVoiceTeacherActivity.kt
+          grep -Fq 'android:authorities="${applicationId}.teacher_credentials"' source/app/src/main/AndroidManifest.xml
+          grep -Fq 'android:exported="false"' source/app/src/main/AndroidManifest.xml
+          grep -Fq 'versionCode = 84' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.59-lena-saved-key"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
