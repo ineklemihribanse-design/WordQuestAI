@@ -19,7 +19,7 @@ def main():
         ".write":False,
         ".validate":"newData.isNumber() && newData.val() === 2"
     }
-    mascot_valid="newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl'"
+    mascot_valid="newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl' || newData.val() === 'rabbit' || newData.val() === 'bear'"
     room["hostAvatar"]={".write":False,".validate":mascot_valid}
     room["guestAvatar"]={
         ".write":(
