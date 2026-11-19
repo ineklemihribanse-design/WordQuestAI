@@ -77,6 +77,7 @@ on:
       - 'tools/v122/**'
       - 'tools/v148/**'
       - 'tools/v150/**'
+      - 'tools/v151/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -829,13 +830,13 @@ jobs:
           python3 tools/v148/apply_arena_rules_v2.py
           python3 tools/v148/test_arena_v2_staging.py
           python3 -m json.tool source/database.rules.json >/dev/null
-      - name: Stage v1.0.50 version code75 for preview and eventual main-branch snapshot
+      - name: Stage v1.0.51 approved-layout code76 for review and future main snapshot
         if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/149-arena-v2-on-current' || github.ref == 'refs/heads/main') }}
         run: |
           set -euo pipefail
           python3 tools/v150/prepare_arena_150.py
-          grep -q 'versionCode = 75' source/app/build.gradle.kts
-          grep -q 'versionName = "1.0.50-arena-v3-preview"' source/app/build.gradle.kts
+          grep -q 'versionCode = 76' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.51-arena-approved-ui"' source/app/build.gradle.kts
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
@@ -856,7 +857,7 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
-      - name: Sign and verify 1.0.50 Arena preview with CURRENT installed-app certificate
+      - name: Sign and verify 1.0.51 approved Arena layout preview with current certificate
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/149-arena-v2-on-current' }}
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -880,9 +881,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==75
-          assert item["versionName"]=="1.0.50-arena-v3-preview"
-          print("Arena v1.0.50 preview code75 uses existing .fresh app identity.")
+          assert item["versionCode"]==76
+          assert item["versionName"]=="1.0.51-arena-approved-ui"
+          print("Arena v1.0.51 preview code76 uses existing .fresh app identity.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-arena-sign"
           trap 'rm -rf "$RUNNER_TEMP/wq-arena-sign"' EXIT
@@ -891,36 +892,36 @@ jobs:
             --ks "$RUNNER_TEMP/wq-arena-sign/store.p12" --ks-type PKCS12 \
             --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out dist/WordQuestAI-Arena-v1.0.50-preview.apk "$UNSIGNED"
+            --out dist/WordQuestAI-Arena-v1.0.51-design-preview.apk "$UNSIGNED"
           java -jar "$SIGNER" verify --verbose --print-certs \
-            dist/WordQuestAI-Arena-v1.0.50-preview.apk > dist/arena-preview-signature.txt
+            dist/WordQuestAI-Arena-v1.0.51-design-preview.apk > dist/arena-preview-signature.txt
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/arena-preview-signature.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/arena-preview-signature.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/arena-preview-signature.txt
-          sha256sum dist/WordQuestAI-Arena-v1.0.50-preview.apk > dist/WordQuestAI-Arena-v1.0.50-preview.sha256
-          echo "Verified upgrade-compatible v1.0.50 APK (code75), matching current .fresh certificate."
-      - name: Publish 1.0.50 PREVIEW, not the normal updater channel
+          sha256sum dist/WordQuestAI-Arena-v1.0.51-design-preview.apk > dist/WordQuestAI-Arena-v1.0.51-design-preview.sha256
+          echo "Verified upgrade-compatible v1.0.51 APK (code76), matching current .fresh certificate."
+      - name: Publish 1.0.51 design PREVIEW, not the normal updater channel
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/149-arena-v2-on-current' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          TAG="arena-v1.0.50-preview"
-          test -s dist/WordQuestAI-Arena-v1.0.50-preview.apk
+          TAG="arena-v1.0.51-design-preview"
+          test -s dist/WordQuestAI-Arena-v1.0.51-design-preview.apk
           if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "Existing immutable preview retained. Never overwrite signed release assets."
             gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
-              --jq '[.assets[].name] | join(",")' | grep -Fq 'WordQuestAI-Arena-v1.0.50-preview.apk'
+              --jq '[.assets[].name] | join(",")' | grep -Fq 'WordQuestAI-Arena-v1.0.51-design-preview.apk'
             exit 0
           fi
-          gh release create "$TAG" dist/WordQuestAI-Arena-v1.0.50-preview.apk \
-            dist/WordQuestAI-Arena-v1.0.50-preview.sha256 \
+          gh release create "$TAG" dist/WordQuestAI-Arena-v1.0.51-design-preview.apk \
+            dist/WordQuestAI-Arena-v1.0.51-design-preview.sha256 \
             -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
-            --title "WordQuest AI Arena 1.0.50 — V3 Test Sürümü" \
+            --title "WordQuest AI Arena 1.0.51 — Onaylanan Tasarım Düzeltmesi" \
             --prerelease --latest=false \
             --notes "Yenilenmiş Arena giriş ve bekleme odası, hazır onayları, iki turlu düello ve avatarları cihazda test etmek içindir. Firebase V2 üretim kuralları canlı sunucuda ayrıca etkinleştirilmelidir. Normal güncelleme kanalına otomatik yayımlanmaz."
           gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets \
-            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI-Arena-v1.0.50-preview.apk,WordQuestAI-Arena-v1.0.50-preview.sha256'
+            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI-Arena-v1.0.51-design-preview.apk,WordQuestAI-Arena-v1.0.51-design-preview.sha256'
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
