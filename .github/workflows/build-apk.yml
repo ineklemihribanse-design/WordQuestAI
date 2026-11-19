@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -86,6 +86,7 @@ on:
       - 'tools/v164/**'
       - 'tools/v165/**'
       - 'tools/v166/**'
+      - 'tools/v167/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -1085,6 +1086,39 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
           python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+      - name: Generate authentic Lena GLB profile portrait, 17 original icons and photo-uploadable light chat (v1.0.67 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v167/render_lena_real_portrait.py tools/v167/generate_messenger_icons.py tools/v167/apply_lena_messenger_visuals_167.py
+          python3 tools/v167/apply_lena_messenger_visuals_167.py
+          grep -Fq 'versionCode = 92' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.67-lena-real-profile-icons"' source/app/build.gradle.kts
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test "$(find source/app/src/main/res/drawable -name 'wq167_*.xml' | wc -l)" -ge 15
+          grep -Fq 'LenaMessengerProfileHeader(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'rememberLenaUserPortrait(session.profileKey)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaActualAvatar(37.dp)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ActivityResultContracts.GetContent()' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'context.filesDir' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'scene3d by remember { mutableStateOf(false) }' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          ! grep -Fq 'TeacherAvatarPicker(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          from xml.etree import ElementTree
+          p=Path("source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png")
+          data=p.read_bytes()
+          assert data[:8]==b"\x89PNG\r\n\x1a\n"
+          assert struct.unpack(">II",data[16:24])==(448,448)
+          icons=sorted(Path("source/app/src/main/res/drawable").glob("wq167_*.xml"))
+          assert len(icons)==17,icons
+          for f in icons:
+              root=ElementTree.parse(f).getroot()
+              assert "vector" in root.tag
+              assert len(root)>0
+          print("UI assets verified: real Lena GLB portrait + 17 original vector icons.")
+          PY
       - name: Verify independent app identity
         run: |
           set -euo pipefail
