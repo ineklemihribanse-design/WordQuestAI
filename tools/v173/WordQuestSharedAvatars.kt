@@ -86,6 +86,31 @@ internal object WordQuestAvatarStore {
     }
 }
 
+/**
+ * Shared preference listener refreshes the avatar immediately when switching
+ * between Arena and Word Memory in the same running app.
+ */
+@Composable
+internal fun rememberWordQuestAvatar(profile:String):MutableState<String> {
+    val context=LocalContext.current
+    val state=remember(context,profile) {
+        mutableStateOf(WordQuestAvatarStore.read(context,profile))
+    }
+    DisposableEffect(context,profile) {
+        val prefs=context.getSharedPreferences("wq_shared_avatar_173",Context.MODE_PRIVATE)
+        val listener=android.content.SharedPreferences.OnSharedPreferenceChangeListener { _,key ->
+            if(key=="avatar_$profile") {
+                state.value=WordQuestAvatarStore.read(context,profile)
+            }
+        }
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+        // Re-read after registering to avoid a race with navigation.
+        state.value=WordQuestAvatarStore.read(context,profile)
+        onDispose{prefs.unregisterOnSharedPreferenceChangeListener(listener)}
+    }
+    return state
+}
+
 /** Preview from the user's exact GLB files, 4 CC-BY models only.
  * Not a replacement for the required bone rig and real GLB animation stage.
  */
