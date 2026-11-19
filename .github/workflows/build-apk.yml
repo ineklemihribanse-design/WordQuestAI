@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -77,6 +77,9 @@ on:
       - 'tools/v148/**'
       - 'tools/v150/**'
       - 'tools/v157/**'
+      - 'tools/v158/**'
+      - 'assets/avatars/lena/**'
+      - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -870,6 +873,19 @@ jobs:
           print("v1.0.57 QA: v1.0.54 base, v1.0.53 Arena, unchanged .fresh identity")
           PY
           rm -rf /tmp/wq-arena-153
+      - name: Stage verified Lena GLB and connect isolated live AI conversation (1.0.58 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v158/apply_lena_conversation_158.py tools/verify_lena_glb.py
+          python3 tools/v158/apply_lena_conversation_158.py
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -q 'LenaIsolatedVoiceTeacherActivity' source/app/src/main/AndroidManifest.xml
+          grep -q 'Lena ile 3D konuş' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -q 'versionCode = 83' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.58-lena-voice"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail
