@@ -8,7 +8,8 @@ SRC=ROOT/"source/app/src/main/java/com/kelimebulmacasi/a1"
 TESTS=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
 rules=json.loads((ROOT/"source/database.rules.json").read_text("utf-8"))["rules"]
 room=rules["premiumRooms"]["$code"]
-assert all(k in room for k in ("rulesVersion","replay","hintUsed","ready"))
+assert all(k in room for k in ("rulesVersion","replay","hintUsed","ready","hostAvatar","guestAvatar"))
+assert "auth.uid === data.parent().child('guestUid').val()" in room["guestAvatar"][".write"]
 assert "replay" in room["solved"]["$index"][".write"]
 assert "rulesVersion" in room["solved"]["$index"][".write"]
 assert "auth.uid === $uid" in room["ready"]["$uid"][".write"]
@@ -20,6 +21,8 @@ assert all(k in screen for k in (
     "ArenaHomeV2(", "ArenaRoomPlayersV2(", "ArenaLiveScoreV2(",
     "ArenaVictoryV2(", "client.useHint(selected)", "client::toggleReady",
     "PremiumOnlineLimits.canAttempt(match,selected,myUid)"))
+assert "match.hostAvatar,match.guestAvatar" in screen
+assert "match.guestUid in match.readyBy" in screen
 assert all(k in client for k in (
     "fun useHint(index: Int)", "fun toggleReady()", "fun replayRound(",
     "fun canAttempt(", "rulesVersion", "hintUsed", "replayBy"))
