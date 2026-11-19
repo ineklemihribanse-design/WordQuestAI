@@ -74,9 +74,10 @@ internal fun ArenaHomeV3(
     seconds: Int, allowedTimes: List<Int>, onSeconds: (Int) -> Unit,
     roomCode: String, onRoomCode: (String) -> Unit,
     onCreate: () -> Unit, onJoin: () -> Unit, onAccount: () -> Unit,
-    onOffline: () -> Unit, onFriends: @Composable () -> Unit
+    onOffline: () -> Unit, onFriends: @Composable () -> Unit,
+    soloInitially: Boolean = false
 ) {
-    var solo by rememberSaveable { mutableStateOf(false) }
+    var solo by rememberSaveable { mutableStateOf(soloInitially) }
     var joinExpanded by rememberSaveable {mutableStateOf(false)}
     var allTopics by rememberSaveable {mutableStateOf(false)}
     var friendsExpanded by rememberSaveable {mutableStateOf(false)}
