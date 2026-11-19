@@ -2,7 +2,7 @@ name: Build and Publish WordQuest AI 1.0.54 APK
 
 on:
   push:
-    branches: [main, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, restore/v153-arena-on-v154, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -800,6 +800,29 @@ jobs:
           grep -q 'versionCode = 79' source/app/build.gradle.kts
           grep -q 'versionName = "1.0.54-word-memory"' source/app/build.gradle.kts
           grep -q 'internal fun VocabularyNeonHome' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Restore 1.0.53 Arena on top of 1.0.54 Word Memory (integration QA)
+        run: |
+          set -euo pipefail
+          cp tools/v122/ArenaCrosswordTyping.kt source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
+          python3 tools/v148/apply_arena_v2.py
+          python3 tools/v150/apply_arena_v3.py
+          python3 tools/v152/apply_arena_full_word.py
+          python3 tools/v153/apply_arena_rigs_153.py
+          python3 - <<'PY'
+          from pathlib import Path
+          src=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          required=["ArenaMascotRig.kt","ArenaRiggedMascot.kt","ArenaFullWordInput.kt","ArenaApprovedHome.kt","VocabularyNeonHome.kt"]
+          for name in required:
+              assert (src/name).is_file(),name
+          g=Path("source/app/build.gradle.kts")
+          s=g.read_text()
+          assert s.count("versionCode = 79")==1
+          assert s.count('versionName = "1.0.54-word-memory"')==1
+          s=s.replace("versionCode = 79","versionCode = 81")
+          s=s.replace('versionName = "1.0.54-word-memory"','versionName = "1.0.56-cumulative-qa"')
+          g.write_text(s)
+          print("Merged Arena and Word Memory source staged for v1.0.56 QA; no release will be published from this branch")
+          PY
       - name: Verify independent app identity
         run: |
           set -euo pipefail
