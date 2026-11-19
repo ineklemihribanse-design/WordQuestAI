@@ -817,6 +817,7 @@ jobs:
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
         run: |
           set -euo pipefail
           test -f source/settings.gradle.kts
