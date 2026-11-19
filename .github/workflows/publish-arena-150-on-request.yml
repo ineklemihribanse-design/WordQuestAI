@@ -1,0 +1,115 @@
+name: Publish requested Arena V3 1.0.50 to installed app updater
+
+on:
+  push:
+    branches: [feature/149-arena-v2-on-current]
+    paths:
+      - '.github/workflows/publish-arena-150-on-request.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wordquest-arena-150-update-channel
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download immutable signed 1.0.50 preview and verify original SHA-256
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh release download arena-v1.0.50-preview \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern 'WordQuestAI-Arena-v1.0.50-preview.apk' \
+            --pattern 'WordQuestAI-Arena-v1.0.50-preview.sha256' \
+            --dir dist
+          test -s dist/WordQuestAI-Arena-v1.0.50-preview.apk
+          test -s dist/WordQuestAI-Arena-v1.0.50-preview.sha256
+          (cd dist && sha256sum --check WordQuestAI-Arena-v1.0.50-preview.sha256)
+          recorded="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/arena-v1.0.50-preview" \
+            --jq '.assets[] | select(.name == "WordQuestAI-Arena-v1.0.50-preview.apk") | .digest')"
+          test "$recorded" = "sha256:$(sha256sum dist/WordQuestAI-Arena-v1.0.50-preview.apk | cut -d' ' -f1)"
+          cp dist/WordQuestAI-Arena-v1.0.50-preview.apk dist/WordQuestAI.apk
+
+      - name: Verify app identity, upgrade version, signing certificate and APK structure
+        run: |
+          set -euo pipefail
+          apk="dist/WordQuestAI.apk"
+          aapt="$ANDROID_HOME/build-tools/35.0.0/aapt"
+          signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          test -x "$aapt" && test -x "$signer"
+          "$aapt" dump badging "$apk" | head -1 | tee dist/package-info.txt
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" dist/package-info.txt
+          grep -Fq "versionCode='75'" dist/package-info.txt
+          grep -Fq "versionName='1.0.50-arena-v3-preview'" dist/package-info.txt
+          "$signer" verify --verbose --print-certs "$apk" > dist/signing-info.txt
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signing-info.txt
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signing-info.txt
+          grep -Fqi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signing-info.txt
+          unzip -tq "$apk"
+
+      - name: Generate secure update.json for the installed Android updater
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          apk=Path("dist/WordQuestAI.apk")
+          doc={
+              "schemaVersion":1,
+              "tag":"v1.0.50",
+              "versionCode":75,
+              "versionName":"1.0.50-arena-v3-preview",
+              "packageName":"com.kelimebulmacasi.a1.practice.fresh",
+              "apkFile":"WordQuestAI.apk",
+              "sizeBytes":apk.stat().st_size,
+              "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
+              "notes":"Arena V3: yeni açık renkli giriş, iki oyunculu oda, avatarlar, hazır onayları, tek başına oynama ve yarışma kuralları. NOT: Canlı Firebase RTDB kuralları henüz yayımlanmadığından çok oyunculu yeni maçlarda izin hatası olabilir; Firebase kuralları ayrıca güncellenmelidir."
+          }
+          assert doc["sizeBytes"]>90_000_000
+          assert len(doc["sha256"])==64
+          Path("dist/update.json").write_text(json.dumps(doc,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+
+      - name: Publish as latest regular release visible in Settings > Updates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          test "$latest" = v1.0.49
+          if gh release view v1.0.50 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo 'Release v1.0.50 already exists; refusing overwrite.' >&2
+            exit 1
+          fi
+          gh release create v1.0.50 dist/WordQuestAI.apk dist/update.json \
+            -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title 'WordQuest AI v1.0.50 — Arena V3 Güncellemesi' \
+            --notes 'Arena V3: onaylanan sade krem/lila tasarım, lobi, kullanıcı avatarları, hazır durumları, yarışma kuralları, tek başına oyun. ÖNEMLİ: Canlı Firebase kuralları henüz dağıtılmadığından çevrim içi yeni maçların hazır olma ve başlatma işlemlerinde izin hatası görülebilir; Android test APK derlemesi ve sertifika doğrulaması başarılıdır.' \
+            --latest
+          gh release view v1.0.50 -R "$GITHUB_REPOSITORY" --json assets \
+            --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
+
+      - name: Confirm installed app can discover 1.0.50 via releases/latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            current="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+            if [ "$current" = 'v1.0.50' ]; then
+              echo 'Application update channel now reports v1.0.50.'
+              exit 0
+            fi
+            sleep 5
+          done
+          echo 'Latest release endpoint did not return v1.0.50' >&2
+          exit 1
