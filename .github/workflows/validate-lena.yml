@@ -1,0 +1,28 @@
+name: Validate Lena 3D asset
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'assets/avatars/lena/**'
+      - 'tools/verify_lena_glb.py'
+      - '.github/workflows/validate-lena.yml'
+  pull_request:
+    paths:
+      - 'assets/avatars/lena/**'
+      - 'tools/verify_lena_glb.py'
+      - '.github/workflows/validate-lena.yml'
+
+jobs:
+  verify-lena:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Lena asset presence
+        run: |
+          test -f assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb || {
+            echo "::notice::Lena GLB has not been uploaded yet. Upload it to assets/avatars/lena/ to enable verification."
+            exit 0
+          }
+      - name: Validate Lena asset
+        if: ${{ hashFiles('assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb') != '' }}
+        run: python3 tools/verify_lena_glb.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
