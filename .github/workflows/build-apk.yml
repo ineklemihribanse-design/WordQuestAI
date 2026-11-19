@@ -808,7 +808,12 @@ jobs:
           git fetch --depth=1 origin bdef5f95369c61944cd0c31477be7bd34be04c09
           mkdir -p /tmp/wq-arena-153
           git archive FETCH_HEAD tools/v122 tools/v148 tools/v150 tools/v151 tools/v152 tools/v153 | tar -x -C /tmp/wq-arena-153
-          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordTyping.kt source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
+          # Apply the complete 1.0.53 keyboard-safe crossword transformation
+          # BEFORE Arena V2 and full-word conversion; copying one Kotlin file was insufficient.
+          mkdir -p tools/v122 source/app/src/test/java/com/kelimebulmacasi/a1
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordTyping.kt tools/v122/
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordInputTest.kt tools/v122/
+          cp /tmp/wq-arena-153/tools/v122/apply_mobile_arena_keyboard.py tools/v122/
           cp /tmp/wq-arena-153/tools/v148/Arena*.kt tools/v148/
           cp /tmp/wq-arena-153/tools/v148/PremiumOnlineRoomV2.kt tools/v148/
           # Use the scoreboard compatibility fix already developed for v1.0.54.
@@ -825,6 +830,9 @@ jobs:
           # Reuse the guarded version from the earlier compatibility branch.
           git fetch --depth=1 origin 0280d52c6aa75bfa02782aa6073b1621016c72e3
           git show FETCH_HEAD:tools/v152/apply_arena_full_word.py > tools/v152/apply_arena_full_word.py
+          python3 tools/v122/apply_mobile_arena_keyboard.py
+          grep -q 'val missingCount = fixedPattern.count' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          grep -q 'ArenaCrosswordTypingStrip(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
           python3 tools/v148/apply_arena_v2.py
           python3 tools/v150/apply_arena_v3.py
           python3 - <<'PY'
