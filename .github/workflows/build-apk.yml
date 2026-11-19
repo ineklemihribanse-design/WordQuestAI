@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade, feature/149-arena-v2-on-current]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -74,6 +74,7 @@ on:
       - 'tools/v145/**'
       - 'tools/v146/**'
       - 'tools/v147/**'
+      - 'tools/v122/**'
       - 'tools/v148/**'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
@@ -87,6 +88,10 @@ on:
     branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
 permissions:
   contents: write
+concurrency:
+  group: arena-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -795,6 +800,26 @@ jobs:
           set -euo pipefail
           python3 tools/v148/configure_new_install.py
           grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
+      - name: Integrate keyboard-safe mobile Arena board on current v1.0.48
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v122/apply_mobile_arena_keyboard.py
+          python3 tools/v122/apply_mobile_arena_keyboard.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaCrosswordTyping.kt
+      - name: Apply modern Arena lobby, multiplayer match and vector mascots
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v148/apply_arena_v2.py
+          python3 tools/v148/apply_arena_v2.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaV2Lobby.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaBoardV2.kt
+      - name: Prepare Arena v2 Firebase rules and integration audits (not deployed)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v148/apply_arena_rules_v2.py tools/v148/test_arena_v2_staging.py
+          python3 tools/v148/apply_arena_rules_v2.py
+          python3 tools/v148/test_arena_v2_staging.py
+          python3 -m json.tool source/database.rules.json >/dev/null
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
