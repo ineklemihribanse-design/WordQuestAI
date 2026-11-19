@@ -155,7 +155,6 @@ def paint(source):
     doc["accessors"].append({
         "bufferView":buffer_view,"componentType":5121,
         "count":len(positions),"type":"VEC4","normalized":True,
-        "min":[0,0,0,255],"max":[255,255,255,255],
         "name":"Lena_Colored_Vertex_RGBA8",
     })
     primitive["attributes"]["COLOR_0"]=accessor
