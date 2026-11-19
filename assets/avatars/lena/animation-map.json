@@ -3,7 +3,7 @@
   "displayName": "Lena",
   "asset": "assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb",
   "sha256": "548d70117df4599300c77dc3fde3c72a2111f78ff582e741862c25fcdf364617",
-  "status": "asset-uploaded-runtime-integration-pending",
+  "status": "asset-upload-pending",
   "states": {
     "idle": "01_Idle_Natural_Breathing",
     "greeting": "02_Greeting_Gentle_Wave",

@@ -1,0 +1,23 @@
+name: Inspect Lena face for v1.0.62 correction
+on:
+  push:
+    branches: [fix/v162-lena-face-material-calibration]
+    paths:
+      - 'tools/v162/**'
+      - '.github/workflows/lena-v162-audit.yml'
+  workflow_dispatch:
+jobs:
+  face:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect real face geometry, then verify existing color and face fixes
+        run: |
+          set -euo pipefail
+          python3 tools/v162/audit_lena_face_geometry.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          if test -f tools/v162/rebuild_lena_162.py; then
+            python3 tools/v162/rebuild_lena_162.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/Lena162.glb
+            python3 tools/verify_lena_glb.py /tmp/Lena162.glb
+          fi

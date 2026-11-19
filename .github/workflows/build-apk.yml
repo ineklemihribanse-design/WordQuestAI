@@ -1,8 +1,8 @@
-name: Build and Publish WordQuest AI 1.0.54 APK
+name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -76,6 +76,21 @@ on:
       - 'tools/v147/**'
       - 'tools/v148/**'
       - 'tools/v150/**'
+      - 'tools/v157/**'
+      - 'tools/v158/**'
+      - 'tools/v159/**'
+      - 'tools/v160/**'
+      - 'tools/v161/**'
+      - 'tools/v162/**'
+      - 'tools/v163/**'
+      - 'tools/v164/**'
+      - 'tools/v165/**'
+      - 'tools/v166/**'
+      - 'tools/v167/**'
+      - 'tools/v168/**'
+      - 'tools/v169/**'
+      - 'assets/avatars/lena/**'
+      - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
       - 'tools/generate_release_manifest.py'
       - 'tools/prune_public_releases.py'
@@ -109,9 +124,10 @@ jobs:
           python-version: '3.11'
       - name: Install Android dependencies and voice generator
         run: |
-          sudo apt-get update
-          sudo apt-get install -y espeak libsndfile1
-          python3 -m pip install soundfile
+          set -euo pipefail
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 update
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::Queue-Mode=access -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 install -y --no-install-recommends espeak libsndfile1
+          python3 -m pip install --retries 5 --timeout 60 soundfile
           SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
           "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
       - name: Extract complete source (except generated audio)
@@ -800,6 +816,362 @@ jobs:
           grep -q 'versionCode = 79' source/app/build.gradle.kts
           grep -q 'versionName = "1.0.54-word-memory"' source/app/build.gradle.kts
           grep -q 'internal fun VocabularyNeonHome' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Integrate v1.0.53 Arena into v1.0.54 Word Memory for v1.0.57 QA
+        run: |
+          set -euo pipefail
+          # Pin the previously reviewed Arena sources; do not mix in later experiments.
+          git fetch --depth=1 origin bdef5f95369c61944cd0c31477be7bd34be04c09
+          mkdir -p /tmp/wq-arena-153
+          git archive FETCH_HEAD tools/v122 tools/v148 tools/v150 tools/v151 tools/v152 tools/v153 | tar -x -C /tmp/wq-arena-153
+          # Apply the complete 1.0.53 keyboard-safe crossword transformation
+          # BEFORE Arena V2 and full-word conversion; copying one Kotlin file was insufficient.
+          mkdir -p tools/v122 source/app/src/test/java/com/kelimebulmacasi/a1
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordTyping.kt tools/v122/
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordInputTest.kt tools/v122/
+          cp /tmp/wq-arena-153/tools/v122/apply_mobile_arena_keyboard.py tools/v122/
+          cp /tmp/wq-arena-153/tools/v148/Arena*.kt tools/v148/
+          cp /tmp/wq-arena-153/tools/v148/PremiumOnlineRoomV2.kt tools/v148/
+          # Use the versioned compatibility script with both bare and
+          # keyboard-visible same-line Arena score-strip variants.
+          cp /tmp/wq-arena-153/tools/v150/Arena*.kt tools/v150/
+          cp /tmp/wq-arena-153/tools/v150/apply_arena_v3.py tools/v150/
+          mkdir -p tools/v151 tools/v152 tools/v153
+          cp /tmp/wq-arena-153/tools/v151/ArenaApproved*.kt tools/v151/
+          cp /tmp/wq-arena-153/tools/v151/approved_arena_hero.webp.b64 tools/v151/
+          cp /tmp/wq-arena-153/tools/v152/* tools/v152/
+          cp /tmp/wq-arena-153/tools/v153/* tools/v153/
+          # The 1.0.54 source has already dropped the unused missingCount declaration.
+          # Reuse the guarded version from the earlier compatibility branch.
+          git fetch --depth=1 origin 0280d52c6aa75bfa02782aa6073b1621016c72e3
+          git show FETCH_HEAD:tools/v152/apply_arena_full_word.py > tools/v152/apply_arena_full_word.py
+          python3 tools/v122/apply_mobile_arena_keyboard.py
+          grep -q 'val missingCount = fixedPattern.count' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          grep -q 'ArenaCrosswordTypingStrip(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+          python3 tools/v157/apply_arena_v2_compat.py
+          python3 tools/v150/apply_arena_v3.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          patterns=["missingCount","ArenaCrosswordTypingStrip","answerText","wordAnswer","fillCrosswordGaps","Kelimeyi yaz","Eksik harfleri yaz","PAS GEÇ","BİLMİYORUM","crosswordFullWord"]
+          for name in ["PremiumOnlineScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt"]:
+              src=(d/name).read_text()
+              lines=src.splitlines()
+              print("=== FULL WORD INPUT COMPATIBILITY:",name,"===")
+              matched=[i for i,line in enumerate(lines) if any(p in line for p in patterns)]
+              print("Anchor matches:",len(matched))
+              for i in matched[:85]:
+                  lo=max(0,i-1);hi=min(len(lines),i+2)
+                  for k in range(lo,hi):
+                      print(f"{k+1}: {lines[k]}")
+                  print("--")
+          PY
+          python3 tools/v152/apply_arena_full_word.py
+          python3 tools/v153/apply_arena_rigs_153.py
+          python3 - <<'PY'
+          from pathlib import Path
+          pkg=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          for name in ["ArenaApprovedHome.kt","ArenaFullWordInput.kt","ArenaMascotRig.kt","ArenaRiggedMascot.kt","VocabularyNeonHome.kt","VocabularyNeonPractice.kt"]:
+              assert (pkg/name).is_file(),name
+          gradle=Path("source/app/build.gradle.kts")
+          content=gradle.read_text()
+          assert content.count("versionCode = 79")==1
+          assert content.count('versionName = "1.0.54-word-memory"')==1
+          assert 'applicationIdSuffix = ".fresh"' in content
+          content=content.replace("versionCode = 79","versionCode = 82")
+          content=content.replace('versionName = "1.0.54-word-memory"','versionName = "1.0.57-arena-memory"')
+          gradle.write_text(content)
+          print("v1.0.57 QA: v1.0.54 base, v1.0.53 Arena, unchanged .fresh identity")
+          PY
+          rm -rf /tmp/wq-arena-153
+      - name: Stage verified Lena GLB and connect isolated live AI conversation (1.0.58 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v158/apply_lena_conversation_158.py tools/verify_lena_glb.py
+          python3 tools/v158/apply_lena_conversation_158.py
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -q 'LenaIsolatedVoiceTeacherActivity' source/app/src/main/AndroidManifest.xml
+          grep -q 'Lena ile 3D konuş' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -q 'versionCode = 83' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.58-lena-voice"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Fix existing saved AI key access in Lena process (v1.0.59 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v159/apply_lena_saved_key_159.py
+          python3 tools/v159/apply_lena_saved_key_159.py
+          grep -Fq 'useMainProcessBridge = true' source/app/src/main/java/com/kelimebulmacasi/a1/LenaIsolatedVoiceTeacherActivity.kt
+          grep -Fq 'android:authorities="${applicationId}.teacher_credentials"' source/app/src/main/AndroidManifest.xml
+          grep -Fq 'android:exported="false"' source/app/src/main/AndroidManifest.xml
+          grep -Fq 'versionCode = 84' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.59-lena-saved-key"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Fix and regression-test Lena's saved conversation marker (1.0.60 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v160/apply_lena_thread_fix_160.py
+          python3 tools/v160/apply_lena_thread_fix_160.py
+          grep -Fq '"ethan_thread_ids"))' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStore.kt
+          grep -Fq 'setSetting("ethan_thread_ids"' source/app/src/main/java/com/kelimebulmacasi/a1/AiSession.kt
+          grep -Fq 'versionCode = 85' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.60-lena-thread-persistence"' source/app/build.gradle.kts
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaThreadPersistenceRegressionTest.kt
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Apply colored Lena 3D materials and real mouth-blink mesh morphs (v1.0.61 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v161/paint_lena_glb.py tools/v161/add_lena_face_morphs.py tools/v161/apply_lena_visuals_161.py
+          python3 tools/v161/apply_lena_visuals_161.py
+          python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -q 'versionCode = 86' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.61-lena-expression-colors"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaFaceAnimationClipsTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaAnimationClipsTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          p=Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb")
+          b=p.read_bytes()
+          size,kind=struct.unpack_from("<I4s",b,12)
+          assert kind==b"JSON"
+          d=json.loads(b[20:20+size])
+          prim=d["meshes"][0]["primitives"][0]
+          assert len(prim["targets"])==2
+          assert "COLOR_0" in prim["attributes"]
+          assert len(d["animations"])==18
+          assert len(d["skins"][0]["joints"])==201
+          assert all(a in [x["name"] for x in d["animations"]] for a in ("Lena_V161_Face_IdleBlink","Lena_V161_Face_TalkBlink"))
+          print("GLB build gate: colored vertex material, true facial morphs, 201 bones, 18 clips.")
+          PY
+      - name: Fix overbroad nose-mouth and washed-out Lena material (v1.0.62 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v162/paint_lena_162.py tools/v162/face_lena_162.py tools/v162/rebuild_lena_162.py tools/v162/apply_lena_precision_162.py
+          python3 tools/v162/apply_lena_precision_162.py
+          grep -q 'versionCode = 87' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.62-lena-precise-face"' source/app/build.gradle.kts
+          grep -q 'intensity = 50_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -q 'Lena_V162_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Upgrade Lena with brown hair, true iris/pupils and eye-level blink (v1.0.63 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v163/upgrade_lena_163.py tools/v163/apply_lena_visual_quality_163.py
+          python3 tools/v163/apply_lena_visual_quality_163.py
+          grep -q 'versionCode = 88' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.63-lena-eyes-brown-hair"' source/app/build.gradle.kts
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,"tools/v162")
+          from paint_lena_162 import read_chunks,accessor_values
+          glb=Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb")
+          d,b=read_chunks(glb.read_bytes())
+          body,*parts=d["meshes"][0]["primitives"]
+          names=[p.get("extras",{}).get("name","") for p in parts]
+          for name,count in (("sclera",2),("iris",2),("pupil",2),
+                             ("glint",2),("eyelash",2),("inner_mouth",1)):
+              assert names.count(name)==count,(name,names)
+          assert len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(p.get("targets",[]))==2 for p in [body]+parts)
+          assert all(not any(any(abs(v)>1e-7 for v in row)
+                    for row in accessor_values(d,b,target["POSITION"]))
+                    for target in body["targets"])
+          print("Android asset QA: real iris/pupils, mouth and blink; no brow/cheek morphs.")
+          PY
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Restore original Prisma3D mesh part materials in Lena 1.0.64 (QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v164/build_lena_prisma_parts.py tools/v164/apply_lena_original_parts_164.py
+          python3 tools/v164/apply_lena_original_parts_164.py
+          grep -q 'versionCode = 89' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.64-prisma-original-look"' source/app/build.gradle.kts
+          grep -q 'Lena_V164_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          grep -q 'intensity = 38_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tools/v164")
+          from build_lena_prisma_parts import read_glb, getacc
+          d,blob=read_glb(Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb").read_bytes())
+          surfaces=[p["extras"]["originalPrisma3DObject"] for p in d["meshes"][0]["primitives"]]
+          assert surfaces==["Body","Tshirt","Sneakers","Pants","Hair","Eyes","Eyelash","Eyebrow","Belt"]
+          assert len(d["materials"])==9 and len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(p["targets"])==2 for p in d["meshes"][0]["primitives"])
+          assert sum(d["accessors"][p["indices"]]["count"] for p in d["meshes"][0]["primitives"])==47904
+          # No floating eyes or mouth, and blinking never moves eyebrows.
+          body,*other=d["meshes"][0]["primitives"]
+          assert all(not any(any(abs(x)>1e-8 for x in vec) for vec in getacc(d,blob,body["targets"][1]["POSITION"])[30502:30790]) for _ in [0])
+          print("PASS original Prisma3D 9 mesh material groups, no false added face objects")
+          PY
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Open Lena by default, hide Alex, and enable visible lip movement (v1.0.65 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v165/build_lena_lip_open_165.py tools/v165/apply_lena_default_165.py
+          python3 tools/v165/apply_lena_default_165.py
+          grep -Fq 'versionCode = 90' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.65-lena-speaking-default"' source/app/build.gradle.kts
+          grep -Fq 'Lena_V165_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          grep -Fq 'LaunchedEffect(ai.boundProfile)' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'LenaIsolatedVoiceTeacherActivity::class.java' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Eq 'TeacherStage2D\\(|TeacherAvatar\\.Mert|Alex' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Eq 'Teacher2DPortrait\\(|Alex' source/app/src/main/java/com/kelimebulmacasi/a1/LenaIsolatedVoiceTeacherActivity.kt
+          grep -Fq 'TeacherPersonality.entries' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,"tools/v165")
+          from build_lena_lip_open_165 import read_glb,getacc
+          d,b=read_glb(Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb").read_bytes())
+          assert len(d["animations"])==18 and len(d["skins"][0]["joints"])==201
+          assert len(d["meshes"][0]["primitives"])==9
+          assert "Lena_V165_Face_TalkBlink" in {a["name"] for a in d["animations"]}
+          body=d["meshes"][0]["primitives"][0]
+          vertices=getacc(d,b,body["attributes"]["POSITION"])
+          positions=getacc(d,b,body["targets"][0]["POSITION"])
+          lower=[v[1] for p,v in zip(vertices,positions) if p[1]<1.563 and v[1]<0]
+          upper=[v[1] for p,v in zip(vertices,positions) if p[1]>=1.563 and v[1]>0]
+          assert len(lower)>=20 and len(upper)>=10, (len(lower),len(upper))
+          assert min(lower)<-.006 and max(upper)>.001, (min(lower),max(upper))
+          print("PASS: real upper and lower lips visibly separate on TTS, face preserved.")
+          PY
+      - name: Embed Lena in live lesson and enable true messaging fallback (v1.0.66 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v166/apply_embedded_lena_messenger_166.py
+          python3 tools/v166/apply_embedded_lena_messenger_166.py
+          grep -Fq 'versionCode = 91' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.66-lena-inline-messenger"' source/app/build.gradle.kts
+          grep -Fq 'LenaLive3DStage(' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'onRecoverableError = {' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'openTextChat()' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Fq 'Lena ile yüz yüze sesli konuşma' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Fq 'openLena' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Fq 'TeacherStage2D(' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'Lena · Mesajlar' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ConversationBubble(turn.answer, "Lena")' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'learningToolsOpen' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.searchThreads' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          ! grep -Fq 'TeacherAvatarPicker(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+      - name: Generate authentic Lena GLB profile portrait, 17 original icons and photo-uploadable light chat (v1.0.67 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v167/render_lena_real_portrait.py tools/v167/generate_messenger_icons.py tools/v167/apply_lena_messenger_visuals_167.py
+          python3 tools/v167/apply_lena_messenger_visuals_167.py
+          grep -Fq 'versionCode = 92' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.67-lena-real-profile-icons"' source/app/build.gradle.kts
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test "$(find source/app/src/main/res/drawable -name 'wq167_*.xml' | wc -l)" -ge 15
+          grep -Fq 'LenaMessengerProfileHeader(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'rememberLenaUserPortrait(session.profileKey)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaActualAvatar(37.dp)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ActivityResultContracts.GetContent()' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'context.filesDir' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'scene3d by remember { mutableStateOf(false) }' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          ! grep -Fq 'TeacherAvatarPicker(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          from xml.etree import ElementTree
+          p=Path("source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png")
+          data=p.read_bytes()
+          assert data[:8]==b"\x89PNG\r\n\x1a\n"
+          assert struct.unpack(">II",data[16:24])==(448,448)
+          icons=sorted(Path("source/app/src/main/res/drawable").glob("wq167_*.xml"))
+          assert len(icons)==17,icons
+          for f in icons:
+              root=ElementTree.parse(f).getroot()
+              assert "vector" in root.tag
+              assert len(root)>0
+          print("UI assets verified: real Lena GLB portrait + 17 original vector icons.")
+          PY
+      - name: Install approved Lena messenger styling and voice UI (v1.0.68 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v168/apply_approved_lena_ui_168.py
+          python3 tools/v168/apply_approved_lena_ui_168.py
+          grep -Fq 'versionCode = 93' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.68-lena-approved-messenger-ui"' source/app/build.gradle.kts
+          grep -Fq 'LenaVoiceWaveform(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'session.changePreferences' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'R.drawable.wq167_lena_portrait' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.newConversation()' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          echo "Approved Lena messenger code staged without replacing the actual Lena model or portrait."
+
+      - name: Apply Lena premium messaging, real 3D studio and waist-up camera (v1.0.69 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v169/build_lena_studio.py tools/v169/apply_lena_studio_169.py
+          python3 tools/v169/apply_lena_studio_169.py
+          grep -Fq 'versionCode = 94' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.69-lena-premium-3d-studio"' source/app/build.gradle.kts
+          grep -Fq 'studio/lena_studio.glb' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq '1.88f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq 'LenaMessageAudioBar(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaMessageBookmark(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaMessengerProfileHeader(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.newConversation()' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/assets/studio/lena_studio.glb
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          data=Path("source/app/src/main/assets/studio/lena_studio.glb").read_bytes()
+          magic,version,length=struct.unpack_from("<4sII",data)
+          assert magic==b"glTF" and version==2 and length==len(data)
+          json_len=struct.unpack_from("<I",data,12)[0]
+          d=json.loads(data[20:20+json_len])
+          assert len(d["meshes"][0]["primitives"])>=12
+          assert all("min" in d["accessors"][p["attributes"]["POSITION"]]
+              for p in d["meshes"][0]["primitives"])
+          print("PASS: studio is real 3D glTF geometry with valid position bounds.")
+          PY
+
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -825,7 +1197,7 @@ jobs:
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
       - name: Save fully assembled Android sources for future direct builds
-        if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
         run: |
           set -euo pipefail
@@ -843,11 +1215,11 @@ jobs:
           fi
           git commit -m 'Snapshot assembled v1.0.48 Android source for direct future builds'
           git push origin HEAD:refs/heads/source/main
-      # This is a NEW app identity with a NEW signing key; it will NOT replace the old installed APK.
+      # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish NEW separately installable signed v1.0.54 APK to new GitHub repo
-        if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' }}
+      - name: Publish signed and verified v1.0.69 premium studio and Lena chat
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v169-lena-premium-studio' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -877,9 +1249,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==79, item["versionCode"]
-          assert item["versionName"]=="1.0.54-word-memory"
-          print("Version 1.0.54 code79; Word Memory and 2.5D preserved.")
+          assert item["versionCode"]==94, item["versionCode"]
+          assert item["versionName"]=="1.0.69-lena-premium-3d-studio"
+          print("Version 1.0.69 code94; real 3D studio and waist-up Lena camera, premium messages.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -893,9 +1265,21 @@ jobs:
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature-verification.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
-          python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json RELEASE_NOTES.md
+          cat > dist/release-notes.md <<'NOTES'
+          WordQuest AI 1.0.69 (code 94)
+          
+          Premium Lena AI messenger: preserves the same actual Lena model portrait, elevated profile header, exclusive active mode tabs, scrolling message history, real green and white message bubbles, functional local bookmarks and interactive TTS playback strips.
+          Existing beginner/intermediate difficulty controls, IPA/UK-US and learning tools stay in a reachable modal rather than displacing real conversations.
+          Rounded chat composer with send action alongside text, real Android speech recognition, last reply playback, selectable audio rate and saved voice preferences.
+          Adds a *real 3D* glTF environment, generated deterministically offline: forest-green walls, illuminated shelves, books, plants, desk props and soft window accents.
+          Camera enters at a waist-and-face target rather than at the feet. Additional user-selectable portrait, face and full-body views remain.
+          Uses the unchanged original 201-bone Lena GLB and its animations. No recreated/fake character face or replacement model.
+          Preserves the existing signed .fresh package identity and release certificate, all user conversations, Gemini/OpenAI keys, Arena and Word Memory.
+          The exact final Android appearance, facial motion and camera positioning still require on-device inspection.
+          NOTES
+          python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.54
+          test "$TAG" = v1.0.69
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -903,8 +1287,7 @@ jobs:
             exit 0
           fi
           gh release create "$TAG" dist/WordQuestAI.apk dist/update.json -R "$UPDATE_REPO" \
-            --title "WordQuest AI $TAG" --notes-file RELEASE_NOTES.md --target main --latest
+            --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          python3 tools/prune_public_releases.py
-          echo "Signed v1.0.54 (code79) Word Memory with existing 2.5D published."
+          echo "Signed v1.0.69 (code94) premium Lena messenger and 3D studio published; original avatar and history retained."

@@ -1,0 +1,42 @@
+name: Validate Lena original Prisma3D mesh components (v1.0.64)
+on:
+  push:
+    branches: [fix/v164-lena-original-prisma-materials]
+    paths:
+      - 'tools/v164/**'
+      - '.github/workflows/lena-v164-audit.yml'
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild the original Lena components and preserve the rig
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v164/build_lena_prisma_parts.py
+          python3 tools/v164/build_lena_prisma_parts.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/Lena_v164.glb
+          python3 tools/verify_lena_glb.py /tmp/Lena_v164.glb
+          python3 - <<'PY'
+          import json,struct,sys
+          sys.path.insert(0,"tools/v164")
+          from build_lena_prisma_parts import read_glb,getacc
+          d,b=read_glb(open("/tmp/Lena_v164.glb","rb").read())
+          partnames=[p["extras"]["originalPrisma3DObject"] for p in d["meshes"][0]["primitives"]]
+          assert partnames==["Body","Tshirt","Sneakers","Pants","Hair","Eyes","Eyelash","Eyebrow","Belt"]
+          assert len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert len(d["materials"])==9
+          assert all(len(p["targets"])==2 for p in d["meshes"][0]["primitives"])
+          assert sum(d["accessors"][p["indices"]]["count"] for p in d["meshes"][0]["primitives"])==47904
+          # Lips should only shift Body; blinking only the real Eyes/Lashes.
+          eye=d["meshes"][0]["primitives"][5]
+          brow=d["meshes"][0]["primitives"][7]
+          mouth=getacc(d,b,eye["targets"][0]["POSITION"])
+          blink=getacc(d,b,brow["targets"][1]["POSITION"])
+          assert all(max(map(abs,p))==0 for p in mouth[29002:29642])
+          assert all(max(map(abs,p))==0 for p in blink[30502:30790])
+          print("PASS: 9 exact original Prisma3D named surfaces; real eyes and no eyebrow blink.")
+          PY

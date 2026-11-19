@@ -1,0 +1,43 @@
+name: Lena v1.0.65 lip and UI compatibility audit
+on:
+  push:
+    branches: [fix/v165-lena-speaking-default]
+    paths:
+      - 'tools/v165/**'
+      - '.github/workflows/lena-v165-audit.yml'
+  workflow_dispatch:
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm physical lip opening and original face preservation
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v165/build_lena_lip_open_165.py tools/v165/apply_lena_default_165.py
+          python3 tools/v165/build_lena_lip_open_165.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/lena165.glb
+          python3 tools/verify_lena_glb.py /tmp/lena165.glb
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0,"tools/v165")
+          from build_lena_lip_open_165 import read_glb,getacc
+          d,blob=read_glb(open("/tmp/lena165.glb","rb").read())
+          assert len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert len(d["meshes"][0]["primitives"])==9
+          assert d["meshes"][0]["extras"]["targetNames"]==["MouthOpen","EyelidBlink"]
+          assert {"Lena_V165_Face_TalkBlink","Lena_V165_Face_IdleBlink"}.issubset(
+              {a["name"] for a in d["animations"]})
+          mouth=getacc(d,blob,d["meshes"][0]["primitives"][0]["targets"][0]["POSITION"])
+          coords=getacc(d,blob,d["meshes"][0]["primitives"][0]["attributes"]["POSITION"])
+          moving=[(p,v) for p,v in zip(coords,mouth) if any(abs(x)>1e-7 for x in v)]
+          lower=[v[1] for p,v in moving if p[1]<1.563]
+          upper=[v[1] for p,v in moving if p[1]>=1.563]
+          assert len(lower)>=20 and len(upper)>=10, (len(lower),len(upper))
+          assert min(lower)<-.006 and max(upper)>.001, (min(lower),max(upper))
+          assert all(p[1]>1.545 and p[1]<1.580 and abs(p[0])<.041 for p,v in moving)
+          print("PASS: upper and lower real mesh lips separate within safe face limits;",
+                len(lower),"lower",len(upper),"upper")
+          PY

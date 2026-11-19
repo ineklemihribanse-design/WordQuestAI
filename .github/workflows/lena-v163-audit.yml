@@ -1,0 +1,48 @@
+name: Lena 1.0.63 geometry and colors validation
+on:
+  push:
+    branches: [fix/v163-lena-brown-hair-eyes-lips]
+    paths:
+      - 'tools/v163/**'
+      - '.github/workflows/lena-v163-audit.yml'
+  workflow_dispatch:
+jobs:
+  validate-163:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate v1.0.62 staged GLB baseline then v1.0.63 eye/mouth geometry
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v163/upgrade_lena_163.py
+          python3 tools/v162/rebuild_lena_162.py assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb /tmp/lena162.glb
+          python3 tools/v163/upgrade_lena_163.py /tmp/lena162.glb /tmp/lena163.glb
+          python3 tools/verify_lena_glb.py /tmp/lena163.glb
+          python3 - <<'PY'
+          import sys,json,struct
+          sys.path.insert(0,"tools/v162")
+          from paint_lena_162 import read_chunks,accessor_values
+          d,b=read_chunks(open("/tmp/lena163.glb","rb").read())
+          body,*extras=d["meshes"][0]["primitives"]
+          names=[x.get("extras",{}).get("name") for x in extras]
+          assert names.count("sclera")==2
+          assert names.count("iris")==2
+          assert names.count("pupil")==2
+          assert names.count("glint")==2
+          assert names.count("eyelash")==2
+          assert names.count("inner_mouth")==1
+          assert len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(x["targets"])==2 for x in d["meshes"][0]["primitives"])
+          # Old face deformations really have been cleared.
+          assert all(not any(any(abs(v)>1e-7 for v in x)
+                 for x in accessor_values(d,b,t["POSITION"]))
+                 for t in body["targets"])
+          # Real eyeball position is lower than previously animated brow.
+          eye=next(x for x in extras if x.get("extras",{}).get("name")=="sclera")
+          ys=[p[1] for p in accessor_values(d,b,eye["attributes"]["POSITION"])]
+          assert 1.63<min(ys)<1.65 and max(ys)<1.66
+          print("PASS: 2 irises, 2 pupils, 2 eye glints; actual eye-level blink, old brow morph cleared.")
+          PY
