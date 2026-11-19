@@ -96,16 +96,26 @@ def patch_online() -> None:
         '        Text("$hostName  ★ ${match.score(match.hostUid, questions)}", color = OnlineCream,',
         "quiz-only compact scores")
     # Add a true live scoreboard in crossword mode instead of duplicating strips.
-    source = once(source,
-        '                if (keyboardIsOpen) Text("Çözülen ${solved.size}/${match.size} · Puan $myScore" + '
-        '(countdown?.let { " · ${it} sn" } ?: ""), color = OnlineGold, fontSize = 12.sp, '
-        'fontWeight = FontWeight.SemiBold) '
-        'else ArenaScoreStrip(solved.size, match.size, myScore, countdown)',
-        '                ArenaLiveScoreV2(hostName, guestName,\n'
-        '                    match.score(match.hostUid,questions), match.score(match.guestUid,questions),\n'
-        '                    match.turnUid == match.hostUid, countdown,solved.size,match.size,match.cooperative,\n'
-        '                    match.hostAvatar,match.guestAvatar)',
-        "live match scoreboard")
+    # The v1.0.54 base can format the same scoreboard differently.
+    # Locate its exact call, rather than relying on whitespace or text copy.
+    import re
+    score_pattern = re.compile(
+        r'(?m)^\\s*(?:if \\(keyboardIsOpen\\).*?\\n\\s*)?'
+        r'(?:else )?ArenaScoreStrip\\(solved\\.size,\\s*match\\.size,\\s*myScore,\\s*countdown\\)'
+    )
+    candidates = list(score_pattern.finditer(source))
+    if len(candidates) != 1:
+        raise AssertionError(
+            "live match scoreboard: expected one crossword score strip, "
+            f"got {len(candidates)}; inspect PremiumOnlineScreen.kt before applying"
+        )
+    replacement = (
+        '                ArenaLiveScoreV2(hostName, guestName,\\n'
+        '                    match.score(match.hostUid,questions), match.score(match.guestUid,questions),\\n'
+        '                    match.turnUid == match.hostUid, countdown,solved.size,match.size,match.cooperative,\\n'
+        '                    match.hostAvatar,match.guestAvatar)'
+    )
+    source = score_pattern.sub(lambda _: replacement, source, count=1)
     source = once(source,
         '        "finished" -> {\n            // Both players see the winner animation',
         '        "finished" -> {\n'
