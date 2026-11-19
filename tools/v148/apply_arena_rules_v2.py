@@ -69,13 +69,33 @@ def main():
             count_hints+" < "+max_hints),
         ".validate":"newData.val() === true"
     }}}
+    # Host can adjust the room configuration while both players are in lobby.
+    # The monotonic revision invalidates old ready acknowledgements automatically.
+    host_lobby=(
+        "auth != null && auth.uid === data.parent().child('hostUid').val() "
+        "&& data.parent().child('phase').val() === 'lobby' "
+        "&& data.parent().child('rulesVersion').val() === 2"
+    )
+    for key in ("mode","level","topic","size","seconds","boardId","quizSeed"):
+        room[key][".write"]=host_lobby
+    room["configRevision"]={
+        ".write":host_lobby,
+        ".validate":(
+            "newData.isNumber() && newData.val() >= 1 "
+            "&& newData.val() <= 99999 && "
+            "newData.val() === (data.exists() ? data.val() + 1 : 1)"
+        )
+    }
     room["ready"]={"$uid":{
         ".write":(
             "auth != null && auth.uid === $uid && "
             "(auth.uid === data.parent().parent().child('hostUid').val() || "
             "auth.uid === data.parent().parent().child('guestUid').val()) && "
             "data.parent().parent().child('phase').val() === 'lobby'"),
-        ".validate":"newData.isBoolean()"
+        ".validate":(
+            "newData.isNumber() && newData.val() === "
+            "newData.parent().parent().child('configRevision').val()"
+        )
     }}
     # A legacy room can still finish with the old reveal behavior.
     # New rooms MUST have both replay outcomes before revealing a word.
@@ -94,7 +114,7 @@ def main():
         both_retries+") &&")
     solved[".write"]=solved[".write"].replace(needle,addition,1)
     RULES.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    assert room["ready"]["$uid"][".validate"]=="newData.isBoolean()"
+    assert "configRevision" in room["ready"]["$uid"][".validate"]
     assert "replay" in room and "hintUsed" in room
     print("Staged Arena v2 Firebase rules (not deployed).")
 
