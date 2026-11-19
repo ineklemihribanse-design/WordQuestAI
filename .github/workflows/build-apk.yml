@@ -821,8 +821,29 @@ jobs:
           cp /tmp/wq-arena-153/tools/v151/approved_arena_hero.webp.b64 tools/v151/
           cp /tmp/wq-arena-153/tools/v152/* tools/v152/
           cp /tmp/wq-arena-153/tools/v153/* tools/v153/
+          # The 1.0.54 source has already dropped the unused missingCount declaration.
+          # Reuse the guarded version from the earlier compatibility branch.
+          git fetch --depth=1 origin 0280d52c6aa75bfa02782aa6073b1621016c72e3
+          git show FETCH_HEAD:tools/v152/apply_arena_full_word.py > tools/v152/apply_arena_full_word.py
           python3 tools/v148/apply_arena_v2.py
           python3 tools/v150/apply_arena_v3.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          patterns=["missingCount","ArenaCrosswordTypingStrip","answerText","wordAnswer","fillCrosswordGaps","Kelimeyi yaz","Eksik harfleri yaz","PAS GEÇ","BİLMİYORUM","crosswordFullWord"]
+          for name in ["PremiumOnlineScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt"]:
+              src=(d/name).read_text()
+              lines=src.splitlines()
+              print("=== FULL WORD INPUT COMPATIBILITY:",name,"===")
+              matched=[i for i,line in enumerate(lines) if any(p in line for p in patterns)]
+              print("Anchor matches:",len(matched))
+              for i in matched[:85]:
+                  lo=max(0,i-1);hi=min(len(lines),i+2)
+                  for k in range(lo,hi):
+                      print(f"{k+1}: {lines[k]}")
+                  print("--")
+          PY
           python3 tools/v152/apply_arena_full_word.py
           python3 tools/v153/apply_arena_rigs_153.py
           python3 - <<'PY'
