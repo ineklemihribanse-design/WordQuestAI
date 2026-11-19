@@ -125,7 +125,13 @@ def write_glb(path):
         while len(binary)%4: binary.append(0)
         offset=len(binary); binary.extend(data)
         v=len(views);views.append({"buffer":0,"byteOffset":offset,"byteLength":len(data),"target":target})
-        a=len(accessors); accessors.append({"bufferView":v,"componentType":component,"count":count,"type":shape})
+        a=len(accessors)
+        acc={"bufferView":v,"componentType":component,"count":count,"type":shape}
+        if shape == "VEC3":
+            coords=struct.unpack("<"+"f"*(count*3),data)
+            acc["min"]=[min(coords[i::3]) for i in range(3)]
+            acc["max"]=[max(coords[i::3]) for i in range(3)]
+        accessors.append(acc)
         return a
     for material,(name,(rgba,emission)) in enumerate(PALETTE.items()):
         p,n,ind=MESH[name]
