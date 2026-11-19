@@ -233,7 +233,7 @@ internal fun VocabularyNeonHome(
     }
 
     Box(Modifier.fillMaxSize().background(
-        Brush.verticalGradient(listOf(Color(0xFF224E59), Color(0xFF102936), Color(0xFF173445)))
+        Brush.verticalGradient(listOf(Color(0xFF477F84), Color(0xFF315B69), Color(0xFF25465B)))
     ), contentAlignment = Alignment.TopCenter) {
     Column(Modifier.widthIn(max = 760.dp).fillMaxWidth()
         .verticalScroll(rememberScrollState())
@@ -250,7 +250,7 @@ internal fun VocabularyNeonHome(
         when (page) {
             "home" -> {
                 Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp))
-                    .background(Color.White.copy(alpha = .075f))
+                    .background(Color.White.copy(alpha = .13f))
                     .padding(12.dp), verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Box(Modifier.size(width = if (isCompact) 92.dp else 112.dp,
@@ -324,7 +324,7 @@ internal fun VocabularyNeonHome(
                         Triple("Favorilerim", favorites, "favorite")
                     ).forEach { (label, amount, code) ->
                         Column(Modifier.width(98.dp).clip(RoundedCornerShape(15.dp))
-                            .background(Color.White.copy(alpha = .085f))
+                            .background(Color.White.copy(alpha = .15f))
                             .border(1.dp, MemoryCyan.copy(alpha = .24f), RoundedCornerShape(15.dp))
                             .clickable { collection = code; page = "collection" }.padding(10.dp),
                             horizontalAlignment = Alignment.CenterHorizontally) {
@@ -474,7 +474,7 @@ private fun MemoryModeTile(tile: StudyTile, modifier: Modifier,
     enabled: Boolean, onClick: () -> Unit) {
     Column(modifier.clip(RoundedCornerShape(15.dp))
         .background(Brush.linearGradient(
-            listOf(tile.accent.copy(alpha = .16f), Color(0xFF24465A))))
+            listOf(tile.accent.copy(alpha = .16f), Color(0xFF386577))))
         .border(1.dp, tile.accent.copy(alpha = .28f), RoundedCornerShape(15.dp))
         .clickable(enabled = enabled, onClick = onClick).padding(11.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -494,7 +494,7 @@ internal fun NeonPanel(click: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit) {
     val base = Modifier.fillMaxWidth().clip(RoundedCornerShape(19.dp))
         .background(Brush.linearGradient(listOf(
-            Color(0xFF315C6C), Color(0xFF244252))))
+            Color(0xFF467B82), Color(0xFF315D6C))))
         .border(1.dp, Color.White.copy(alpha = .13f), RoundedCornerShape(19.dp))
     Column((if (click != null) base.clickable(onClick = click) else base)
         .padding(16.dp), verticalArrangement = Arrangement.spacedBy(9.dp),
