@@ -1107,8 +1107,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.64 original Prisma3D look
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v164-lena-original-prisma-materials' }}
+      - name: Publish signed and verified v1.0.65 Lena speaking and default teacher
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/fix/v165-lena-speaking-default' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1138,9 +1138,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==89, item["versionCode"]
-          assert item["versionName"]=="1.0.64-prisma-original-look"
-          print("Version 1.0.64 code89; original Prisma3D parts materials and face clips verified.")
+          assert item["versionCode"]==90, item["versionCode"]
+          assert item["versionName"]=="1.0.65-lena-speaking-default"
+          print("Version 1.0.65 code90; Lena speaking lips, default voice entry and no Alex UI verified.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1155,22 +1155,20 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.64 (code 89)
+          WordQuest AI 1.0.65 (code 90)
 
-          Corrected Lena's appearance using the user's genuine Prisma3D OBJ geometry. The upload had a .zip filename but contained an uncompressed OBJ; its 31,958 vertices and 47,904 triangle indices match the repository's original Lena v6 GLB exactly.
-          Restores the nine real OBJ material sections (Body, Tshirt, Sneakers, Pants, Hair, Eyes, Eyelash, Eyebrow, Belt) as independent glTF PBR primitives, instead of guessed facial coordinate colors.
-          Appearance: natural warm brown skin, dark espresso-brown braids, golden iris/dark pupil details on the actual original eye surface, muted brows/lips and an ivory upper garment, following the user's new front/side target images.
-          Removes the artificial overlay eyes and dark floating-mouth geometry from v1.0.63 by rebuilding directly from the untouched original Lena v6 GLB. This preserves the actual original head and face mesh.
-          Facial animation: two new subtle shape targets move actual eyelash/eye vertices during blinking and actual lip-region vertices during TTS playback. The eyebrows no longer receive the blink deformation.
-          Softens imported hard-facet shading for skin, face and clothing without blurring the original braided-hair geometry. Balances HDR lighting for darker colors.
-          Preserves all 201 original skin joints, 16 original body actions, two facial clips (18 total), the same signed Android app identity, Alex, Arena, Word Memory, saved AI credentials and local chat history.
-          Original source GLB and older GitHub releases remain available.
-          Full Android build, automated JVM tests and source GLB structural checks passed. Actual on-device facial placement and final rendered appearance are NOT yet visually certified. This material restoration will not by itself change the underlying face sculpt into a different source model.
-          Arena V2 multiplayer still requires separate Firebase rules deployment.
+          Lena is now the default live English conversation teacher: opening the voice assistant immediately opens the existing isolated Lena 3D conversation activity. Returning to the assistant shows a simple Lena-only entry instead of the Alex 2.5D stage.
+          Removed Alex from visible conversation avatar choices, headers and Lena crash fallback. The old Alex implementation and assets remain unmodified for rollback rather than being deleted from the user's project.
+          Improved subtle talking mouth motion: the upper and lower lip vertices of the approved original Prisma3D face sculpt now separate farther during actual TextToSpeech playback. No new floating mouth, teeth, overlay eyes or altered facial proportions.
+          The existing natural warm-brown Prisma3D look, all nine original material sections, 201 skin joints, 16 original body animations and two facial animation loops (18 total) are preserved.
+          Stopped adding visible Alex branding to the legacy text/chat interface; other settings, memory, conversations and saved per-profile Gemini/OpenAI API credentials remain untouched.
+          Preserves existing application ID, update-signing certificate, Arena, Word Memory, existing US/UK speech settings, user data and historical GitHub releases.
+          Android build, JVM tests, GLB structural and mesh-lip checks passed. Exact mouth/lip deformation and speech alignment have not yet been visually certified on the user's actual Android device.
+          Arena V2 online multiplayer still requires separate Firebase rules deployment.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.64
+          test "$TAG" = v1.0.65
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             echo "Version tag already exists; checking immutable release assets."
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
@@ -1181,4 +1179,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.64 (code89) original Prisma3D named-part materials published; previous releases retained."
+          echo "Signed v1.0.65 (code90) Lena default and speaking-lips update published; older releases retained."
