@@ -184,7 +184,7 @@ def main():
 
     s=s.replace('Text(ai.avatar.label, color = LiveWhite, fontSize = 23.sp', 
                 'Text("Lena", color = LiveWhite, fontSize = 23.sp')
-    s=s.replace('\${ai.avatar.label}',"Lena")
+    s=s.replace(chr(36)+"{ai.avatar.label}","Lena")
 
     s=once(s,
         'val turn = ai.reply(key, message, optionalContext, session.profileName)',
