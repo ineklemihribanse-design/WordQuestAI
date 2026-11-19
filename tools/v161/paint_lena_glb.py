@@ -79,7 +79,16 @@ def dominant_bone(joints,weights,joint_names):
 def vertex_group(xyz,bone):
     x,y,z=xyz
     b=bone.lower()
-    # Named facial joints keep eyes, brows and lips distinguishable from skin.
+    # The source model's facial joints have ZERO vertex weights. Use front
+    # geometry coordinates for gentle eye/lip/brow accents instead of claiming
+    # those bones drive facial skinning. Local height is 0..1.789m, front +Z.
+    if z>0.055 and abs(x)<0.060 and 1.576<y<1.609:
+        return "lips"
+    if z>0.055 and 0.034<abs(x)<0.105 and 1.649<y<1.684:
+        return "eyes"
+    if z>0.055 and 0.039<abs(x)<0.108 and 1.690<y<1.704:
+        return "brows"
+    # Named facial joints (if later weighted) keep eyes, brows and lips distinguishable.
     if "upper_lip" in b or "lower_lip" in b or b.startswith("jaw") or b=="tongue":
         return "lips"
     if "brow" in b: return "brows"
