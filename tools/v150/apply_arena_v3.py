@@ -55,6 +55,47 @@ def main():
     assert 'ArenaRoomLobbyV3(' in s and 'ArenaHomeV3(' in s
     assert 'ArenaRoomPlayersV2(' not in s
     screen.write_text(s,encoding="utf-8")
+    # Offline play shares the approved Arena entrance and keeps local match logic.
+    solo=SRC/"PremiumArenaScreen.kt"
+    offline=solo.read_text(encoding="utf-8")
+    opening=offline.index('            PremiumStage.Lobby -> {')
+    closing=offline.index('            PremiumStage.Crossword -> {',opening)
+    block='''            PremiumStage.Lobby -> {
+                ArenaHomeV3(
+                    playerName=session.profileName,loggedIn=true,canCreate=true,
+                    quotaLabel="Çevrimdışı oyun · İnternet gerekmez",
+                    mode=if(selectedMode=="quiz")"quiz" else "duel",
+                    onMode={selectedMode=if(it=="quiz")"quiz" else "crossword"},
+                    level=level,onLevel={
+                        level=it;topic=PremiumArenaRules.allTopics
+                        size=packs.availableSizes(it).firstOrNull()?:20
+                    },
+                    topic=topic,topics=packs.topics(level,selectedMode=="crossword"),
+                    onTopic={topic=it;size=packs.availableSizes(level,it).firstOrNull()?:20},
+                    sizes=packs.availableSizes(level,topic),size=size,onSize={size=it},
+                    seconds=timeSeconds,allowedTimes=PremiumArenaRules.allowedTimes,
+                    onSeconds={timeSeconds=it},
+                    roomCode="",onRoomCode={},onCreate=online,onJoin=online,
+                    onAccount=back,onOffline=::begin,onFriends={},
+                    soloInitially=true
+                )
+                if(feedback.isNotEmpty()) Text(feedback,color=ArenaGold)
+            }
+'''
+    offline=offline[:opening]+block+offline[closing:]
+    for old,new in (
+        ("private val ArenaNight = Color(0xFF112720)","private val ArenaNight = Color(0xFFF8F6FE)"),
+        ("private val ArenaPanel = Color(0xFF1C3A30)","private val ArenaPanel = Color(0xFFFFFFFF)"),
+        ("private val ArenaPanelLight = Color(0xFF2A4B3E)","private val ArenaPanelLight = Color(0xFFF0E8FF)"),
+        ("private val ArenaGold = Color(0xFFE7C582)","private val ArenaGold = Color(0xFF8051CC)"),
+        ("private val ArenaCream = Color(0xFFF4ECD9)","private val ArenaCream = Color(0xFF293253)"),
+        ("private val ArenaTextSoft = Color(0xFFC5D8CD)","private val ArenaTextSoft = Color(0xFF787391)"),
+        ("private val ArenaSuccess = Color(0xFF91DDB3)","private val ArenaSuccess = Color(0xFF258A53)"),
+        ("Color(0xFF385A4A), RoundedCornerShape(19.dp)","Color(0xFFE5D7FB), RoundedCornerShape(19.dp)"),
+    ):
+        offline=once(offline,old,new,"solo palette")
+    solo.write_text(offline,encoding="utf-8")
+    assert 'ArenaHomeV3(' in offline
     room=SRC/"PremiumOnlineRoom.kt"
     current=room.read_text(encoding="utf-8")
     assert 'fun updateLobbySettings(' in current
