@@ -87,7 +87,7 @@ on:
   pull_request:
     branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: arena-build-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
@@ -787,6 +787,18 @@ jobs:
           grep -q 'versionName = "1.0.47-vocabulary-2p5d-compat"' source/app/build.gradle.kts
           grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
           grep -q 'Teacher25DPortrait' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+      - name: Preserve 1.0.48 approved word-memory cards, AI images and learning modes
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v148/apply_word_memory_148.py tools/v148/verify_word_memory_148.py
+          python3 tools/v148/apply_word_memory_148.py
+          python3 tools/v148/verify_word_memory_148.py
+          grep -q 'versionCode = 73' source/app/build.gradle.kts
+      - name: Keep existing 1.0.48 installed-app identity
+        run: |
+          set -euo pipefail
+          python3 tools/v148/configure_new_install.py
+          grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
       - name: Apply mobile Arena crossing-aware keyboard corrections
         run: |
           set -euo pipefail
@@ -809,7 +821,7 @@ jobs:
           python3 tools/v148/apply_arena_rules_v2.py
           python3 tools/v148/test_arena_v2_staging.py
           python3 -m json.tool source/database.rules.json >/dev/null
-      - name: Set Arena V2 preview version 1.0.48 (upgrade-safe code 73)
+      - name: Set Arena V2 preview version 1.0.49 (upgrade-safe code 74)
         if: ${{ github.ref == 'refs/heads/feature/148-arena-rebuild' }}
         run: |
           set -euo pipefail
@@ -818,8 +830,8 @@ jobs:
           file=Path("source/app/build.gradle.kts")
           text=file.read_text(encoding="utf-8")
           for old,new in [
-              ('versionCode = 72', 'versionCode = 73'),
-              ('versionName = "1.0.47-vocabulary-2p5d-compat"', 'versionName = "1.0.48-arena-preview"'),
+              ('versionCode = 73', 'versionCode = 74'),
+              ('versionName = "1.0.48-neon-word-memory"', 'versionName = "1.0.49-arena-preview"'),
           ]:
               assert text.count(old)==1, f"Version metadata mismatch: {old}"
               text=text.replace(old,new)
@@ -867,10 +879,10 @@ jobs:
           python3 - "$INPUT_DIR/output-metadata.json" <<'PY'
           import json,sys
           doc=json.load(open(sys.argv[1]))
-          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.offline101"
+          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           el=doc["elements"][0]
-          assert el["versionCode"]==73
-          assert el["versionName"]=="1.0.48-arena-preview"
+          assert el["versionCode"]==74
+          assert el["versionName"]=="1.0.49-arena-preview"
           print("Preview app ID and upgraded versionCode validated.")
           PY
           mkdir -p "$RUNNER_TEMP/wq-arena-sign" dist
@@ -880,20 +892,32 @@ jobs:
             --ks "$RUNNER_TEMP/wq-arena-sign/upgrade.p12" --ks-type PKCS12 \
             --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out dist/WordQuestAI-Arena-v1.0.48-preview.apk "$UNSIGNED"
+            --out dist/WordQuestAI-Arena-v1.0.49-preview.apk "$UNSIGNED"
           java -jar "$SIGNER" verify --verbose --print-certs \
-            dist/WordQuestAI-Arena-v1.0.48-preview.apk > dist/preview-signature-check.txt
+            dist/WordQuestAI-Arena-v1.0.49-preview.apk > dist/preview-signature-check.txt
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/preview-signature-check.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/preview-signature-check.txt
-          grep -qi 'Signer #1 certificate SHA-256 digest: 0a2d62332560facfce9a00c0344a21c572e9fb4c8fcfd56a45dcd0294ef35b37' dist/preview-signature-check.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/preview-signature-check.txt
           echo "Signed Arena preview APK matches the previously installed app signing certificate."
-      - uses: actions/upload-artifact@v4
+      - name: Publish direct-download signed Arena 1.0.49 preview (prerelease)
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/148-arena-rebuild' }}
-        with:
-          name: WordQuestAI-Arena-v1.0.48-preview-signed
-          path: dist/WordQuestAI-Arena-v1.0.48-preview.apk
-          retention-days: 14
-          if-no-files-found: error
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG="arena-v1.0.49-preview"
+          APK="dist/WordQuestAI-Arena-v1.0.49-preview.apk"
+          test -s "$APK"
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Preview already exists; replace preview asset with verified signed build."
+            gh release upload "$TAG" "$APK" --clobber -R "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" "$APK" -R "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" --title "WordQuest AI Arena 1.0.49 Preview" \
+              --prerelease --latest=false \
+              --notes "Arena tasarım ve Android uyumluluk testi. Çevrim içi Arena V2 için Firebase kurallarının ayrıca etkinleştirilmesi gerekir. 1.0.48 fresh uygulamasının üzerine güncellenebilir."
+          fi
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fxq 'WordQuestAI-Arena-v1.0.49-preview.apk'
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
       - name: Publish signed v1.0.47 vocabulary and 2.5D compatibility update
