@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -79,6 +79,7 @@ on:
       - 'tools/v157/**'
       - 'tools/v158/**'
       - 'tools/v159/**'
+      - 'tools/v160/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
       - 'archived/ethan_3d/**'
@@ -898,6 +899,21 @@ jobs:
           grep -Fq 'versionCode = 84' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.59-lena-saved-key"' source/app/build.gradle.kts
           test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Fix and regression-test Lena's saved conversation marker (1.0.60 QA)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v160/apply_lena_thread_fix_160.py
+          python3 tools/v160/apply_lena_thread_fix_160.py
+          grep -Fq '"ethan_thread_ids"))' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStore.kt
+          grep -Fq 'setSetting("ethan_thread_ids"' source/app/src/main/java/com/kelimebulmacasi/a1/AiSession.kt
+          grep -Fq 'versionCode = 85' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.60-lena-thread-persistence"' source/app/build.gradle.kts
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaThreadPersistenceRegressionTest.kt
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
