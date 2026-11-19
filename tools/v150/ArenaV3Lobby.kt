@@ -178,7 +178,7 @@ internal fun ArenaRoomLobbyV3(
 }
 
 @Composable
-private fun ArenaLobbyEditDialogV3(
+internal fun ArenaLobbyEditDialogV3(
     match: PremiumOnlineMatch,packs: PremiumArenaContent,profileKey: String,
     onDismiss:()->Unit,
     onSave:(String,String,String,Int,Int,String)->Unit
