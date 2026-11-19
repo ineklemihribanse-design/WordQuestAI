@@ -169,20 +169,8 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
                     Size(w * .13f, h * .095f), CornerRadius(w * .05f))
                 drawCircle(Color(0xFFE8F6FF), w * .065f,
                     Offset(w * .78f, h * .86f))
-            }
-        }
-        // Curved chest with a rim, reflection and glowing heart module.
-        drawRoundRect(Brush.verticalGradient(listOf(
-            Color(0xFFB9D4E5), Color(0xFF526D8B), Color(0xFF213B57))),
-            Offset(w * .27f, h * (.70f + breath * .006f)),
-            Size(w * .46f, h * .24f), CornerRadius(w * .15f))
-        drawRoundRect(accent.copy(alpha = .45f),
-            Offset(w * .39f, h * .78f), Size(w * .22f, h * .045f),
-            CornerRadius(w * .025f))
-        drawCircle(accent.copy(alpha = .22f), w * .07f,
-            Offset(w * .5f, h * .84f))
-        // Book is attached to the lower arm pivot, so it follows the robot's idle pose.
-        rotate(pose.book, Offset(w * .69f, h * .73f)) {
+                // The book inherits shoulder and elbow transforms, not just its own sway.
+                rotate(pose.book, Offset(w * .78f, h * .80f)) {
             drawRoundRect(Brush.linearGradient(listOf(
                 Color(0xFF184B8A), Color(0xFF277AC3), Color(0xFF0E2C60))),
                 Offset(w * .54f, h * .66f), Size(w * .34f, h * .24f),
@@ -195,7 +183,19 @@ internal fun ProfileRobotPortrait(robot: Int, modifier: Modifier = Modifier) {
                 Size(w * .065f, h * .07f), CornerRadius(w * .012f))
             drawCircle(Color(0xFFEAF6FF), w * .045f,
                 Offset(w * .85f, h * .78f))
+                }
+            }
         }
+        // Curved chest with a rim, reflection and glowing heart module.
+        drawRoundRect(Brush.verticalGradient(listOf(
+            Color(0xFFB9D4E5), Color(0xFF526D8B), Color(0xFF213B57))),
+            Offset(w * .27f, h * (.70f + breath * .006f)),
+            Size(w * .46f, h * .24f), CornerRadius(w * .15f))
+        drawRoundRect(accent.copy(alpha = .45f),
+            Offset(w * .39f, h * .78f), Size(w * .22f, h * .045f),
+            CornerRadius(w * .025f))
+        drawCircle(accent.copy(alpha = .22f), w * .07f,
+            Offset(w * .5f, h * .84f))
         // Entire face is one parent transform: no floating eyes.
         rotate(pose.head, headCenter) {
             drawRoundRect(shell, Offset(w * .16f, h * .13f),
