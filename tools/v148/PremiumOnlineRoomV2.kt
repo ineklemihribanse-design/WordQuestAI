@@ -44,6 +44,7 @@ internal data class PremiumOnlineMatch(
     val replayBy: Map<Int, Map<String, String>> = emptyMap(),
     val hintBy: Map<String, Set<Int>> = emptyMap(),
     val readyBy: Set<String> = emptySet(),
+    val configRevision: Int = 1,
     val hostAvatar: String = "robot",
     val guestAvatar: String = "fox",
 ) {
@@ -230,7 +231,7 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                 if (slot == null) { busy = false; status = "Oda kotası ayrılamadı."; return@reserve }
                 val initial = mapOf<String, Any>(
                     "hostUid" to myUid, "hostName" to nickname, "mode" to mode,
-                    "rulesVersion" to 2, "hostAvatar" to myAvatar,
+                    "rulesVersion" to 2, "configRevision" to 1, "hostAvatar" to myAvatar,
                     "phase" to "lobby", "level" to level, "topic" to topic.take(75),
                     "size" to size, "seconds" to seconds, "boardId" to boardId,
                     "quizSeed" to rng.nextInt(Int.MAX_VALUE), "turn" to mapOf(
@@ -367,8 +368,15 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                         }
                     }.toSet() }
                 }.toMap()
+                val revision=childInt("configRevision").coerceAtLeast(1)
+                // A ready acknowledgement is valid only for the current settings
+                // revision. Old Boolean acknowledgements are accepted for legacy rooms.
                 val readyBy = snapshot.child("ready").children.filter {
-                    it.getValue(Boolean::class.java) == true
+                    when(val value=it.value) {
+                        is Number -> value.toInt()==revision
+                        is Boolean -> value && revision==1
+                        else -> false
+                    }
                 }.mapNotNull {it.key}.toSet()
                 match = PremiumOnlineMatch(code, childString("hostUid"), childString("guestUid"),
                     childString("hostName"), childString("guestName"), childString("phase"),
@@ -379,7 +387,7 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
                     solved, answers, unknown, mistakes,
                     childInt("rulesVersion").takeIf {it>0} ?: 1,replay,hintBy,readyBy,
                     childString("hostAvatar").ifBlank {"robot"},
-                    childString("guestAvatar").ifBlank {"fox"})
+                    childString("guestAvatar").ifBlank {"fox"}, revision)
             }
             override fun onCancelled(error: DatabaseError) {
                 status = "Oda bağlantısı reddedildi: ${error.message}"
@@ -391,8 +399,50 @@ internal class PremiumOnlineRoom(private val context: Context, private val sessi
     fun toggleReady() {
         val m=match ?: return
         if(m.phase != "lobby" || uid !in listOf(m.hostUid,m.guestUid)) return
-        ref?.child("ready")?.child(uid)?.setValue(uid !in m.readyBy)
-            ?.addOnFailureListener {status="Hazır durumu kaydedilemedi."}
+        val acknowledgement: Any?=if(uid in m.readyBy) null else m.configRevision
+        ref?.child("ready")?.child(uid)?.setValue(acknowledgement)
+            ?.addOnCompleteListener {task ->
+                status=if(task.isSuccessful) {
+                    if(acknowledgement==null) "Hazır durumun kaldırıldı."
+                    else "Hazırsın! Diğer oyuncu bekleniyor."
+                } else "Hazır durumu kaydedilemedi: " +
+                    task.exception?.localizedMessage.orEmpty()
+            }
+    }
+
+    /**
+     * Settings remain editable after a guest joins, only by the host while in
+     * the lobby. A monotonic revision invalidates BOTH ready acknowledgements
+     * atomically with the room settings; stale ready flags never start a game.
+     */
+    fun updateLobbySettings(
+        mode: String, level: String, topic: String, size: Int, seconds: Int,
+        boardId: String
+    ) {
+        val m=match ?: return
+        if(!isHost || busy || m.phase!="lobby") {
+            status="Yalnızca oda sahibi maç başlamadan ayarları değiştirebilir."
+            return
+        }
+        if(!PremiumOnlineLimits.validConfig(level,size,seconds,mode) ||
+            (mode!="quiz" && boardId.isBlank())) {
+            status="Maç ayarları geçersiz. Başka bir paket seç."
+            return
+        }
+        val room=ref ?: return
+        busy=true
+        room.updateChildren(mapOf(
+            "mode" to mode, "level" to level, "topic" to topic.take(75),
+            "size" to size, "seconds" to seconds, "boardId" to boardId,
+            "quizSeed" to rng.nextInt(Int.MAX_VALUE),
+            "configRevision" to (m.configRevision+1)
+        )).addOnCompleteListener {task->
+            busy=false
+            status=if(task.isSuccessful)
+                "Oda ayarları değişti. İki oyuncu da yeniden hazır olmalı."
+            else "Ayarlar kaydedilemedi: " + task.exception?.localizedMessage.orEmpty() +
+                " · Firebase izinlerini kontrol et."
+        }
     }
 
     fun start() {
