@@ -46,9 +46,20 @@ def main():
     assert png.startswith(b"\x89PNG\r\n\x1a\n") and struct.unpack(">II",png[16:24])==(448,448)
 
     icons=RES/"drawable"
-    subprocess.run([sys.executable,str(V167/"generate_messenger_icons.py"),
-                    str(icons)],check=True)
-    assert len(list(icons.glob("wq167_*.xml")))>=15
+    committed=ROOT/"assets/ui/lena_messenger/icons"
+    files=sorted(committed.glob("wq167_*.xml"))
+    assert len(files)==17,"All original vector icons must be checked into GitHub"
+    icons.mkdir(parents=True,exist_ok=True)
+    # The GitHub-tracked XML assets are what the APK actually packages.
+    # Verify that they still match the checked-in source generator.
+    from tempfile import TemporaryDirectory
+    with TemporaryDirectory(prefix="wordquest-icons-") as temp:
+        subprocess.run([sys.executable,str(V167/"generate_messenger_icons.py"),
+                        temp],check=True)
+        for f in files:
+            assert f.read_bytes()==(Path(temp)/f.name).read_bytes(),f.name
+            shutil.copyfile(f,icons/f.name)
+    assert len(list(icons.glob("wq167_*.xml")))>=17
     shutil.copyfile(V167/"LenaMessengerBrand.kt",SRC/"LenaMessengerBrand.kt")
 
     file=SRC/"ConversationScreen.kt"
