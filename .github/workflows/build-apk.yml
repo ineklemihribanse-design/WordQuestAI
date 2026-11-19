@@ -809,6 +809,22 @@ jobs:
           python3 tools/v148/apply_arena_rules_v2.py
           python3 tools/v148/test_arena_v2_staging.py
           python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Set Arena V2 preview version 1.0.48 (upgrade-safe code 73)
+        if: ${{ github.ref == 'refs/heads/feature/148-arena-rebuild' }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          file=Path("source/app/build.gradle.kts")
+          text=file.read_text(encoding="utf-8")
+          for old,new in [
+              ('versionCode = 72', 'versionCode = 73'),
+              ('versionName = "1.0.47-vocabulary-2p5d-compat"', 'versionName = "1.0.48-arena-preview"'),
+          ]:
+              assert text.count(old)==1, f"Version metadata mismatch: {old}"
+              text=text.replace(old,new)
+          file.write_text(text,encoding="utf-8")
+          PY
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
@@ -829,6 +845,55 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
+      - name: Sign Arena preview APK with installed-app upgrade certificate
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/148-arena-rebuild' }}
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test -n "$WQ_RELEASE_KEYSTORE_B64"
+          test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS"
+          test -n "$WQ_KEY_PASS"
+          INPUT_DIR="source/app/build/outputs/apk/offline"
+          UNSIGNED="$INPUT_DIR/app-offline-unsigned.apk"
+          SIGNER="$INPUT_DIR/apksigner.jar"
+          test -s "$UNSIGNED"
+          test -s "$SIGNER"
+          python3 - "$INPUT_DIR/output-metadata.json" <<'PY'
+          import json,sys
+          doc=json.load(open(sys.argv[1]))
+          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.offline101"
+          el=doc["elements"][0]
+          assert el["versionCode"]==73
+          assert el["versionName"]=="1.0.48-arena-preview"
+          print("Preview app ID and upgraded versionCode validated.")
+          PY
+          mkdir -p "$RUNNER_TEMP/wq-arena-sign" dist
+          trap 'rm -rf "$RUNNER_TEMP/wq-arena-sign"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq-arena-sign/upgrade.p12"
+          java -jar "$SIGNER" sign \
+            --ks "$RUNNER_TEMP/wq-arena-sign/upgrade.p12" --ks-type PKCS12 \
+            --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
+            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
+            --out dist/WordQuestAI-Arena-v1.0.48-preview.apk "$UNSIGNED"
+          java -jar "$SIGNER" verify --verbose --print-certs \
+            dist/WordQuestAI-Arena-v1.0.48-preview.apk > dist/preview-signature-check.txt
+          grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/preview-signature-check.txt
+          grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/preview-signature-check.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 0a2d62332560facfce9a00c0344a21c572e9fb4c8fcfd56a45dcd0294ef35b37' dist/preview-signature-check.txt
+          echo "Signed Arena preview APK matches the previously installed app signing certificate."
+      - uses: actions/upload-artifact@v4
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/148-arena-rebuild' }}
+        with:
+          name: WordQuestAI-Arena-v1.0.48-preview-signed
+          path: dist/WordQuestAI-Arena-v1.0.48-preview.apk
+          retention-days: 14
+          if-no-files-found: error
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
       - name: Publish signed v1.0.47 vocabulary and 2.5D compatibility update
