@@ -15,7 +15,7 @@ def once(text,old,new,name):
 def main():
     if not (SRC/"PremiumOnlineScreen.kt").is_file():
         raise RuntimeError("Assemble Arena V2 sources before patching V3")
-    for name in ("ArenaV3Home.kt","ArenaV3Lobby.kt"):
+    for name in ("ArenaV3Home.kt","ArenaV3Lobby.kt","ArenaV3Rules.kt"):
         shutil.copyfile(TOOLS/name,SRC/name)
     screen=SRC/"PremiumOnlineScreen.kt"
     s=screen.read_text(encoding="utf-8")
