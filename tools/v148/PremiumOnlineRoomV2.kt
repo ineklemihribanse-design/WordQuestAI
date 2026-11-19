@@ -44,9 +44,9 @@ internal data class PremiumOnlineMatch(
     val replayBy: Map<Int, Map<String, String>> = emptyMap(),
     val hintBy: Map<String, Set<Int>> = emptyMap(),
     val readyBy: Set<String> = emptySet(),
-    val configRevision: Int = 1,
     val hostAvatar: String = "robot",
     val guestAvatar: String = "fox",
+    val configRevision: Int = 1,
 ) {
     val complete: Boolean get() = if (mode == "quiz") {
         hostUid.isNotBlank() && guestUid.isNotBlank() &&
