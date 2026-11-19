@@ -11,11 +11,13 @@ ROOT = Path(__file__).resolve().parents[2]
 ORIGINAL = ROOT / "assets/studio/chairs_and_window_set_-_game_ready.glb"
 DEST = ROOT / "source/app/src/main/assets/studio/chairs_and_window_set_-_game_ready.glb"
 EXPECTED_SIZE = 19765636
+EXPECTED_SHA256 = "379c0537249af58dc1115184dc9f2257f045a1ba4bb9a266b7ab67898e8e8c81"
 EXPECTED_MESHES = ("Asset_Asset_0", "Plane_Plane_0")
 SOURCE = "https://sketchfab.com/3d-models/chairs-and-window-set-game-ready-2dac4adc767c41bbacdd26bff649d739"
 
 def verify(data: bytes) -> dict:
     assert len(data) == EXPECTED_SIZE, ("Not the uploaded original GLB", len(data))
+    assert hashlib.sha256(data).hexdigest() == EXPECTED_SHA256, "Uploaded GLB differs from the exact user attachment"
     magic, version, length = struct.unpack_from("<4sII", data)
     assert magic == b"glTF" and version == 2 and length == len(data)
     size, chunk = struct.unpack_from("<I4s", data, 12)
