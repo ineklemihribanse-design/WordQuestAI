@@ -73,11 +73,11 @@ class ArenaMascotRigTest {
                 val cupX=80.0+dx*cos(torso)-dy*sin(torso)
                 val cupY=115.0+dx*sin(torso)+dy*cos(torso)+p.bodyBob
                 assertTrue("Right trophy edge cropped for ${actor.id}: $cupX",
-                    cupX+26.0<160.0)
+                    cupX+28.0<160.0)
                 assertTrue("Left trophy edge cropped for ${actor.id}: $cupX",
-                    cupX-26.0>0.0)
+                    cupX-28.0>0.0)
                 assertTrue("Upper trophy edge cropped for ${actor.id}: $cupY",
-                    cupY-44.0>0.0)
+                    cupY-46.0>0.0)
             }
         }
     }
