@@ -2,8 +2,10 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade, feature/149-arena-v2-on-current]
+    branches: [integration/v156-arena53-plus-memory54, main, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade, feature/149-arena-v2-on-current]
     paths:
+      - '.github/workflows/build-apk.yml'
+      - 'tools/v156/**'
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
       - 'v081-ukfix.patch.gz.b64'
@@ -843,6 +845,20 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaRiggedMascot.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaMascotRigTest.kt
           grep -q 'ArenaApprovedHeroArt(kind=mascot' source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+      - name: Layer approved v1.0.54 Word Memory onto verified v1.0.53 Arena
+        run: |
+          set -euo pipefail
+          python3 tools/v150/prepare_arena_150.py
+          grep -q 'versionCode = 78' source/app/build.gradle.kts
+          grep -q 'ArenaApprovedHeroArt(kind=mascot' source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          python3 tools/v156/apply_memory_on_arena_156.py
+          grep -q 'versionCode = 81' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.56-arena-memory-integration"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaFullWordInput.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaMascotRig.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonPractice.kt
+          echo "Arena 1.0.53 + Word Memory 1.0.54 assembled as 1.0.56 QA candidate"
       - name: Prepare Arena v2 Firebase rules and integration audits (not deployed)
         run: |
           set -euo pipefail
