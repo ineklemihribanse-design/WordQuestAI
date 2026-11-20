@@ -1387,3 +1387,70 @@ jobs:
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
           echo "Signed v1.0.72 (code97): Arena controls added atop verified 1.0.71 sources."
+
+      - name: Sign and publish side-by-side personal 1.0.73 QA APK (no private GLBs)
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
+        env:
+          UPDATE_REPO: ineklemihribanse-design/WordQuestAI
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test -n "$WQ_RELEASE_KEYSTORE_B64"
+          test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS"
+          test -n "$WQ_KEY_PASS"
+          INPUT_DIR="source/app/build/outputs/apk/offline"
+          UNSIGNED="$INPUT_DIR/app-offline-unsigned.apk"
+          METADATA="$INPUT_DIR/output-metadata.json"
+          SIGNER="$INPUT_DIR/apksigner.jar"
+          test -s "$UNSIGNED" && test -s "$METADATA" && test -s "$SIGNER"
+          python3 - "$METADATA" <<'PY'
+          import json,sys
+          doc=json.load(open(sys.argv[1]))
+          assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh.qa"
+          item=doc["elements"][0]
+          assert item["versionCode"]==98
+          assert item["versionName"]=="1.0.73-arena-avatar-candidate"
+          print("Personal QA package identity checked; existing installation is intact.")
+          PY
+          mkdir -p dist "$RUNNER_TEMP/wq-personal-sign"
+          trap 'rm -rf "$RUNNER_TEMP/wq-personal-sign"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq-personal-sign/store.p12"
+          java -jar "$SIGNER" sign \
+            --ks "$RUNNER_TEMP/wq-personal-sign/store.p12" --ks-type PKCS12 \
+            --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
+            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
+            --out dist/WordQuestAI-Personal-QA.apk "$UNSIGNED"
+          java -jar "$SIGNER" verify --verbose --print-certs dist/WordQuestAI-Personal-QA.apk \
+            > dist/personal-qa-signature.txt
+          grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/personal-qa-signature.txt
+          grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/personal-qa-signature.txt
+          grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/personal-qa-signature.txt
+          TAG="v1.0.73-personal-qa"
+          if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
+            gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
+              --jq '[.assets[].name] | join(",")' | grep -Fxq 'WordQuestAI-Personal-QA.apk'
+            echo "Personal QA already exists; leaving its signed APK unchanged."
+            exit 0
+          fi
+          cat > dist/personal-qa-notes.md <<'NOTES'
+          WordQuest AI 1.0.73 — personal 3D avatar QA.
+
+          This prerelease installs alongside existing 1.0.72, without overwriting
+          the user's progress, Arena records, word history, or Lena installation.
+          Arena and Kelime Hafızam share a single ten-avatar selector and can load
+          the purchaser's own animated 3D GLB files. Tap "3D Avatar Paketini
+          Telefonumdan Ekle" and select the private model ZIP from ChatGPT.
+          All ten purchased user GLB binaries remain outside public GitHub and
+          outside this APK. This release does not update production's update.json.
+          Model rigging is experimental; real-device animation QA is outstanding.
+          NOTES
+          gh release create "$TAG" dist/WordQuestAI-Personal-QA.apk \
+            -R "$UPDATE_REPO" --title "WordQuest AI 1.0.73 Personal 3D QA" \
+            --notes-file dist/personal-qa-notes.md --target "$GITHUB_SHA" --prerelease
+          echo "Only personal QA APK published; no production updater changes."
