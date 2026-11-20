@@ -183,6 +183,26 @@ def icon_atlas():
     target.mkdir(parents=True,exist_ok=True)
     (target/"wq173_mode_icons.webp").write_bytes(raw)
 
+def install_original_2d_art():
+    # Exact original, user-approved images created for WordQuest with image generation.
+    # Each atlas is 1120x448 pixels (five columns, two rows, 224px per pose).
+    atlases={
+        "idle":(218222,
+            "00bc228719d1869d81ad16e1adab96991fa3e7a3c4bdcc00f2057b695e061253"),
+        "victory":(239740,
+            "f1701ece95b98fb82261e9c736bd2cc6d93b3246f07cffbc1261ed47f1217741"),
+    }
+    dest=APP/"src/main/assets/avatars/wordquest_2d"
+    dest.mkdir(parents=True,exist_ok=True)
+    for pose,(length,digest) in atlases.items():
+        path=PKG/("wordquest_"+pose+"_atlas.webp.b64")
+        raw=base64.b64decode(path.read_text("ascii").strip(),validate=True)
+        assert len(raw)==length,(pose,len(raw))
+        assert hashlib.sha256(raw).hexdigest()==digest,pose
+        assert raw[:4]==b"RIFF" and raw[8:12]==b"WEBP",pose
+        (dest/("wordquest_"+pose+"_atlas.webp")).write_bytes(raw)
+    print("Embedded original 20 AI-generated character poses: idle and victory.")
+
 def main():
     gradle=APP/"build.gradle.kts"
     s=gradle.read_text("utf-8")
@@ -196,6 +216,7 @@ def main():
                  "WordQuest2DPicker.kt"):
         shutil.copyfile(PKG/name,SRC/name)
     icon_atlas()
+    install_original_2d_art()
     arena_home()
     arena_player_calls()
     arena_score_and_victory()
@@ -207,7 +228,7 @@ def main():
     gradle.write_text(s,"utf-8")
     print("WordQuest AI 1.0.73 code 98: original 2D, no additional 3D rig.")
     print("Same applicationIdSuffix .fresh and signing credentials as 1.0.72.")
-    print("The original 2D package supports 20 images, including victory poses.")
+    print("All 20 original 2D images are INCLUDED in the signed APK; no ZIP import needed.")
 
 if __name__=="__main__":
     main()
