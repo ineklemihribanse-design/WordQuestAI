@@ -24,5 +24,5 @@ for token in ('"vocabulary-extra.tsv"', '"vocabulary-addendum-v175.tsv"',
               'store.finish(', 'finishGame(true)', 'Wq175MatchingEntry',
               'Wq175MatchingDialog'):
     assert token in matching,token
-assert (src.parents[4]/"src/test/java/com/kelimebulmacasi/a1/Wq175MatchingTest.kt").exists()
+assert (src.parents[5]/"src/test/java/com/kelimebulmacasi/a1/Wq175MatchingTest.kt").exists()
 print("PASS: matching cards, game, local profile stats and Kotlin test installed")
