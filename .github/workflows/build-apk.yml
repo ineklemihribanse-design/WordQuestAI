@@ -1404,6 +1404,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_arena_count_and_cells_175.py tools/v175/verify_arena_count_and_cells_175.py
           python3 tools/v175/apply_arena_count_and_cells_175.py
           python3 tools/v175/verify_arena_count_and_cells_175.py
+      - name: Stage and verify Firebase rules for selectable Arena 5-choice questions
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_arena_firebase_rules_175.py tools/v175/verify_arena_firebase_rules_175.py
+          python3 tools/v175/apply_arena_firebase_rules_175.py
+          python3 tools/v175/verify_arena_firebase_rules_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
