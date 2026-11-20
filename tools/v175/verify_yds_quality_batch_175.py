@@ -12,6 +12,7 @@ bank=(src/"YdsContent.kt").read_text("utf-8")
 assert "+ Wq175YdsExpansion.questions + Wq175YdsQualityBatch.questions" in bank
 for name in ("YdsCenterTest.kt","Wq175FullYdsTest.kt","Wq175YdsBankQualityTest.kt"):
     t=(tests/name).read_text("utf-8")
-    assert "198, YdsContent.questions.size" in t,name
+    expected="198, questions.size" if name=="Wq175YdsBankQualityTest.kt" else "198, YdsContent.questions.size"
+    assert expected in t,name
 assert "2000 remains an unmet target" in (tests/"Wq175YdsBankQualityTest.kt").read_text("utf-8")
 print("PASS: 48 distinct new question IDs, 8 domains, tests raised to 198 (not 2000).")
