@@ -5,6 +5,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -85,8 +91,9 @@ internal fun Wq175ThemeIllustration(slug:String,modifier:Modifier) {
         contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
 }
 
-/** Native vector gradient + original illustration in the right-hand art column.
- * Text, selection controls, scores and real avatar are composed separately.
+/** Blend real original 1.0.75 illustrations into each themed room's backdrop.
+ * The two feathered edges avoid the pasted-on rectangle seen on earlier screens.
+ * All buttons, text, scores and avatars remain native, independent Compose layers.
  */
 @Composable
 internal fun Wq175ThemeBanner(slug:String,modifier:Modifier) {
@@ -94,12 +101,30 @@ internal fun Wq175ThemeBanner(slug:String,modifier:Modifier) {
         Image(painter=painterResource(Wq175ThemeArt.banner(slug)),
             contentDescription=null,modifier=Modifier.matchParentSize(),
             contentScale=ContentScale.FillBounds)
-        val alpha=when(slug) {
-            "yeni_oyun"->.28f
-            "eslestirmelerim"->.42f
-            else->.96f
+        val artAlpha=when(slug) {
+            "yeni_oyun"->.82f
+            "eslestirmelerim"->.90f
+            else->.88f
         }
         Wq175ThemeIllustration(slug,Modifier.align(Alignment.CenterEnd)
-            .fillMaxHeight().width(155.dp).padding(4.dp).alpha(alpha))
+            .fillMaxHeight().width(178.dp)
+            .graphicsLayer {
+                compositingStrategy=CompositingStrategy.Offscreen
+            }
+            .drawWithContent {
+                drawContent()
+                drawRect(brush=Brush.horizontalGradient(
+                    0f to Color.Transparent,
+                    .34f to Color.White,
+                    1f to Color.White
+                ),blendMode=BlendMode.DstIn)
+                drawRect(brush=Brush.verticalGradient(
+                    0f to Color.Transparent,
+                    .13f to Color.White,
+                    .87f to Color.White,
+                    1f to Color.Transparent
+                ),blendMode=BlendMode.DstIn)
+            }
+            .alpha(artAlpha))
     }
 }

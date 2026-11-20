@@ -44,6 +44,14 @@ s=replace_once(s,
                         .heightIn(min = if (wide) 182.dp else 190.dp)''',
     "calmer midnight-navy home hero (no pink/green clash)")
 s=replace_once(s,
+    '''            if (title.isNotEmpty()) Text(title, fontFamily = Serif, color = Ink, fontSize = 38.sp, lineHeight = 41.sp)''',
+    '''            if (title.isNotEmpty()) Text(title,
+                fontFamily=Serif,color=Ink,
+                fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp,
+                lineHeight=if(LocalDensity.current.fontScale>1.2f)29.sp else 35.sp,
+                maxLines=2)''',
+    "compact native-mobile section headers")
+s=replace_once(s,
     '''                        OutlinedButton(onClick = account) {
                             Text(if (session.accountName == null) "Hesap" else session.profileName.take(16), fontFamily = Sans, fontWeight = FontWeight.Bold)
                         }''',
