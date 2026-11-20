@@ -1297,6 +1297,14 @@ jobs:
           python3 -m py_compile tools/v175/apply_practice_visuals_175.py tools/v175/verify_practice_visuals_175.py
           python3 tools/v175/apply_practice_visuals_175.py
           python3 tools/v175/verify_practice_visuals_175.py
+      - name: Generate and install 17 original premium app icons for all rooms
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/generate_premium_icons_175.py tools/v175/apply_icons_175.py tools/v175/verify_icons_175.py
+          python3 tools/v175/generate_premium_icons_175.py
+          python3 tools/v175/apply_icons_175.py
+          python3 tools/v175/verify_icons_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
