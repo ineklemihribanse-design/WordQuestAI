@@ -53,6 +53,11 @@ class VerifyUpgradeMetadataTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "camera grant state changed"):
             verify_upgrade(snapshot(100), snapshot(101, camera="false"), PKG)
 
+    def test_camera_permission_disappearing_fails(self):
+        with self.assertRaisesRegex(ValueError, "camera grant state changed"):
+            verify_upgrade(snapshot(100, camera="true"),
+                           snapshot(101, camera=None), PKG)
+
     def test_absent_camera_permission_is_not_faked(self):
         report = verify_upgrade(snapshot(100, camera=None),
                                 snapshot(101, camera=None), PKG)
