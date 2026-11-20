@@ -37,6 +37,26 @@ private val Border174=Color(0xFFE5D2F9)
  * the real, tappable mode cards; no flattened screenshot or fake controls.
  */
 @Composable
+private fun Wq174TitleTrophy() {
+    Canvas(Modifier.size(39.dp)) {
+        val u=size.minDimension/100f
+        drawRoundRect(Brush.verticalGradient(listOf(
+            Color(0xFFFFE981),Color(0xFFFFC53F),Color(0xFFEAA32B))),
+            Offset(25*u,13*u),Size(50*u,48*u),CornerRadius(9*u))
+        drawArc(Color(0xFFFFD55D),90f,180f,false,
+            Offset(9*u,18*u),Size(33*u,38*u),
+            style=Stroke(8*u))
+        drawArc(Color(0xFFFFD55D),-90f,180f,false,
+            Offset(58*u,18*u),Size(33*u,38*u),
+            style=Stroke(8*u))
+        drawRoundRect(Color(0xFFFFC54A),Offset(46*u,59*u),
+            Size(8*u,24*u),CornerRadius(3*u))
+        drawRoundRect(Color(0xFFFFD45C),Offset(30*u,82*u),
+            Size(40*u,11*u),CornerRadius(4*u))
+    }
+}
+
+@Composable
 private fun Wq174ArenaColosseum(modifier:Modifier=Modifier) {
     Canvas(modifier) {
         val w=size.width
@@ -199,7 +219,7 @@ internal fun Wq174ArenaHeroAndModes(
             horizontalAlignment=Alignment.CenterHorizontally) {
             Row(verticalAlignment=Alignment.CenterVertically,
                 horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                Text("🏆",fontSize=29.sp)
+                Wq174TitleTrophy()
                 Text("Arena",fontSize=33.sp,color=Color.White,
                     fontWeight=FontWeight.Black)
             }
@@ -341,7 +361,7 @@ internal fun Wq174UnifiedMatchSettings(
                     "$it "+if(mode=="quiz")"soru" else "kelime"
                 },
                 enabled=mode!="quiz",
-                onSelect={v->v.substringBefore(' ').toIntOrNull()?.let(onSize)})
+                onSelect={v -> v.substringBefore(' ').toIntOrNull()?.let { n -> onSize(n) }})
             // Existing match rules control hint budget; this is deliberately
             // informative rather than a nonfunctional dropdown.
             Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp))
