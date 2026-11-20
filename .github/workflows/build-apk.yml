@@ -1369,6 +1369,16 @@ jobs:
           python3 -m py_compile tools/v175/apply_real_coverage_175.py tools/v175/verify_real_coverage_175.py
           python3 tools/v175/apply_real_coverage_175.py
           python3 tools/v175/verify_real_coverage_175.py
+      - name: Verify 1.0.75 production release evidence gate rejects missing device QA
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 tools/v175/test_release_gate_175.py -v
+          if python3 tools/v175/release_gate_175.py tools/v175/release_evidence_175.json; then
+            echo "::error::Production gate accepted pending real-device QA"
+            exit 1
+          fi
+          echo "PASS: release remains blocked until hardware, user-data, Arena and visual evidence exists"
       - name: Regression test 1.0.75 Android install and permission continuity gate
         if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |
