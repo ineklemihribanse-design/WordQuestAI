@@ -65,6 +65,10 @@ def run():
         "if (goal !in listOf(15, 30, 60) || seconds !in 0L..86_400L || completedArray.length() > 250)",
         "if (goal !in 5..180 || seconds !in 0L..86_400L || completedArray.length() > 250)",
         "backup decoder supports personal goals")
+    payload=once(payload,
+        'Regex("[A-Z_]{1,30}:[a-f0-9]{12}")',
+        'Regex("[A-Za-z_]{1,30}:[a-f0-9]{12}")',
+        "backup decoder retains title-cased PracticeKind records")
     backup.write_text(payload, "utf-8")
 
     shutil.copyfile(PKG / "WordQuest175PracticeVisuals.kt",
