@@ -156,7 +156,9 @@ internal object WordQuestPrivateAvatarAssets {
             }?:throw IllegalArgumentException("Cannot read selected ZIP")
             require(imported.isNotEmpty()){"No WordQuest 1.0.73 models in this ZIP"}
             for((source,target) in staged) {
-                if(target.exists())require(target.delete()){"Cannot replace existing model"}
+                // Source and target share app-private filesystem: rename replaces
+                // an existing file atomically on Android/Linux. Never delete the
+                // previous valid model before a replacement has been committed.
                 require(source.renameTo(target)){"Cannot store selected model"}
             }
             Log.i("WQAvatarImport","Installed " + imported.size + " user avatars")
