@@ -23,7 +23,8 @@ private data class Wq175HomeTile(
     val subtitle:String,
     val icon:String,
     val tint:Color,
-    val onClick:()->Unit
+    val onClick:()->Unit,
+    val artSlug:String?=null
 )
 
 private val Wq175Navy = Color(0xFF1E3742)
@@ -47,7 +48,9 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
         ) {
             Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,
                 verticalAlignment=Alignment.CenterVertically) {
-                Wq175GlossIcon(tile.icon,Modifier.size(if(small)53.dp else 76.dp))
+                if(tile.artSlug!=null)
+                    Wq175ThemeIcon(tile.artSlug,Modifier.size(if(small)53.dp else 76.dp))
+                else Wq175GlossIcon(tile.icon,Modifier.size(if(small)53.dp else 76.dp))
                 Text("›",color=Wq175Navy,fontSize=23.sp,fontWeight=FontWeight.Bold)
             }
             Text(tile.title,color=Wq175Navy,
@@ -83,18 +86,18 @@ internal fun Wq175PremiumHomeGrid(
         Wq175HomeTile("Hazır Paketler","Seviyeni seç, kelime dünyasını keşfet.",
             "packages",Color(0xFFF4F4DC),packages),
         Wq175HomeTile("Arena","Düello, ortak bulmaca ve 5 şıklı yarış.",
-            "trophy",Color(0xFFF0E8FC),arena),
+            "trophy",Color(0xFFF0E8FC),arena,artSlug="arena"),
         Wq175HomeTile("YDS Akademi","Konu, paragraf, deneme ve analiz.",
-            "yds",Color(0xFFE7F3FF),ydsCenter),
+            "yds",Color(0xFFE7F3FF),ydsCenter,artSlug="yds_akademi"),
         Wq175HomeTile("Kelime Hafızam",
             "${session.learningDueCount()} kelime tekrar bekliyor.",
-            "cards",Color(0xFFE7F8F7),learning),
+            "cards",Color(0xFFE7F8F7),learning,artSlug="kelime_hafizam"),
         Wq175HomeTile("Bulmacalarım","Oluştur, eşleştir ve kaydet.",
-            "puzzle",Color(0xFFFFF1E1),custom),
+            "puzzle",Color(0xFFFFF1E1),custom,artSlug="bulmacalarim"),
         Wq175HomeTile("Günlük Planım","Hedef koy, çalış, ilerle.",
-            "plan",Color(0xFFFFF6DD),practice),
+            "plan",Color(0xFFFFF6DD),practice,artSlug="gunluk_plan"),
         Wq175HomeTile("Yeni Oyun","Kendi kelime tahtanı oluştur.",
-            "sentence",Color(0xFFE9F4EF),newGame),
+            "sentence",Color(0xFFE9F4EF),newGame,artSlug="yeni_oyun"),
         Wq175HomeTile("Konuşma Asistanı","Lena ile yazılı ve sesli sohbet.",
             "assistant",Color(0xFFF0EDFA),assistant)
     )

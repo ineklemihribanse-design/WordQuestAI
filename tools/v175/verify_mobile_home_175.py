@@ -8,6 +8,11 @@ a=(src/"WordQuest175Arena.kt").read_text("utf-8")
 assert h.count("Wq175PremiumHomeGrid(")==1
 assert "Wq2DMascots.selected(LocalContext.current,session.profileKey)" in h
 assert "Color(0xFF203A49)" in h
+assert "CompositingStrategy.Offscreen" in h
+assert "drawRect(brush=Brush.horizontalGradient(" in h
+assert "Wq175ThemeIcon(tile.artSlug" in m
+for module in ("arena","yds_akademi","kelime_hafizam","bulmacalarim","gunluk_plan","yeni_oyun"):
+    assert 'artSlug="'+module+'"' in m,module
 assert "fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp" in h
 assert 'MenuItem("Hazır Paketler"' not in h[h.index('fun HomeScreen('):h.index('private fun HeroTiles')]
 assert m.count("Wq175HomeTile(")>=12

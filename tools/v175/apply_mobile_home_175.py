@@ -80,7 +80,24 @@ s=replace_once(s,
                         ) {
                             Wq175ThemeIllustration("ana_sayfa",
                                 Modifier.matchParentSize()
-                                    .alpha(.25f))
+                                    .graphicsLayer {
+                                        compositingStrategy=CompositingStrategy.Offscreen
+                                    }
+                                    .drawWithContent {
+                                        drawContent()
+                                        drawRect(brush=Brush.horizontalGradient(
+                                            0f to Color.Transparent,
+                                            .34f to Color.White,
+                                            1f to Color.White
+                                        ),blendMode=BlendMode.DstIn)
+                                        drawRect(brush=Brush.verticalGradient(
+                                            0f to Color.Transparent,
+                                            .14f to Color.White,
+                                            .86f to Color.White,
+                                            1f to Color.Transparent
+                                        ),blendMode=BlendMode.DstIn)
+                                    }
+                                    .alpha(.32f))
                             Wq2DPortrait(
                                 Wq2DMascots.selected(LocalContext.current,session.profileKey),
                                 Modifier.align(Alignment.BottomCenter)
@@ -90,6 +107,17 @@ s=replace_once(s,
 if 'import androidx.compose.ui.draw.alpha' not in s:
     s=s.replace('import androidx.compose.ui.draw.clip',
                 'import androidx.compose.ui.draw.clip\nimport androidx.compose.ui.draw.alpha',1)
+for imported in (
+    'import androidx.compose.ui.draw.drawWithContent',
+    'import androidx.compose.ui.graphics.Brush',
+    'import androidx.compose.ui.graphics.Color',
+    'import androidx.compose.ui.graphics.BlendMode',
+    'import androidx.compose.ui.graphics.CompositingStrategy',
+    'import androidx.compose.ui.graphics.graphicsLayer'
+):
+    if imported not in s:
+        s=s.replace('import androidx.compose.ui.draw.alpha',
+                    'import androidx.compose.ui.draw.alpha\n'+imported,1)
 home.write_text(s,"utf-8")
 
 # V175 Arena hero was overriding the v174 WebP art with a crude Canvas drawing.
