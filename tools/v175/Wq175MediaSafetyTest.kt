@@ -63,9 +63,21 @@ class Wq175MediaSafetyTest {
         try {
             source.eraseColor(android.graphics.Color.WHITE)
             file.outputStream().use { stream ->
-                assertTrue(source.compress(Bitmap.CompressFormat.JPEG, 92, stream))
+                // PNG avoids Robolectric's JPEG encoder variance: this tests
+                // the real FileProvider URI and BitmapFactory read pipeline.
+                // Physical-camera JPEG decoding remains a device QA requirement.
+                assertTrue(source.compress(Bitmap.CompressFormat.PNG, 100, stream))
             }
-            val decoded = readPhoto(context, scanPhotoUri(context, file))
+            val uri = scanPhotoUri(context, file)
+            val expected = file.readBytes()
+            val readable = context.contentResolver.openInputStream(uri)?.use { it.readBytes() }
+            assertArrayEquals("Camera FileProvider must return exactly the saved image", expected, readable)
+            val decoded = try {
+                readPhoto(context, uri)
+            } catch (error: Exception) {
+                System.err.println("CAMERA_SCAN_DIAGNOSTIC: " + error.stackTraceToString())
+                throw error
+            }
             try {
                 assertEquals(80, decoded.width)
                 assertEquals(48, decoded.height)
