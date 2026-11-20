@@ -43,6 +43,18 @@ class Wq175MatchingTest {
         assertNotEquals(a.id,b.id)
     }
 
+
+    @Test fun personalNotebookAndMistakesWorkWithTwoToFivePairs() {
+        assertEquals(2, Wq175MatchingBank.requiredPairs("notebook",6))
+        assertEquals(2, Wq175MatchingBank.requiredPairs("mistakes",12))
+        assertEquals(6, Wq175MatchingBank.requiredPairs("classic",6))
+        assertEquals(10, Wq175MatchingBank.requiredPairs("timed",10))
+        val personal=(1..3).map {
+            Wq175MatchPair("Defterim","Kişisel","WORD$it","anlam$it")
+        }
+        assertEquals(3, Wq175MatchingBank.prepare(personal,6).size)
+    }
+
     @Test fun levelAndWordTypeComeFromActualRows() {
         val items=Wq175MatchingBank.parse(sequenceOf(
             row("B2","ACHIEVE","başarmak","Fiiller"),
