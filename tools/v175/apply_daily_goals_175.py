@@ -15,6 +15,12 @@ def once(source, old, new, name):
 def run():
     daily = SOURCE / "PracticeHubScreen.kt"
     text = daily.read_text("utf-8")
+    # Existing PracticeKind enum names are title-cased; the legacy uppercase-only
+    # backup validator silently dropped all completed tasks. Keep both forms.
+    text = once(text,
+        'private val DAILY_MARKER = Regex("[A-Z_]{1,30}:[a-f0-9]{12}")',
+        'private val DAILY_MARKER = Regex("[A-Za-z_]{1,30}:[a-f0-9]{12}")',
+        "preserve real PracticeKind identifiers in daily backup")
     # Keep the existing preference filename, profile key, daily data and backup schema.
     text = once(text, 'getInt(key, 15).takeIf { it in listOf(15, 30, 60) } ?: 15',
                 'getInt(key, 15).takeIf { it in 5..180 } ?: 15',
