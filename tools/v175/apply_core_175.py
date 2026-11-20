@@ -182,6 +182,11 @@ def main():
     arena()
     lesson()
     add_words()
+    # 'offline' inherits the debug build type in the legacy pipeline.
+    # A user-upgrade APK must NOT be debuggable, even though it is APK-signed.
+    s=once(s,'applicationIdSuffix = ".fresh"',
+        'applicationIdSuffix = ".fresh"\n            isDebuggable = false',
+        "production-safe offline build type")
     s=once(s,'versionCode = 100','versionCode = 101',"version code")
     s=once(s,'versionName = "1.0.74-premium-arena-memory"',
         'versionName = "1.0.75-learning-upgrade-candidate"',"version name")
