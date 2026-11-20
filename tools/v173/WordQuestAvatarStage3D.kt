@@ -96,9 +96,15 @@ internal fun WordQuestAvatarStage3D(
             Brush.verticalGradient(listOf(Color(0xFFF5EFFF),Color(0xFFFFFAFE)))
         )) {
             if(node==null) {
-                Text("3D model bu cihazda açılamadı",
-                    modifier=Modifier.align(Alignment.Center),
-                    color=Color(0xFF674585))
+                // Recoverable GLB loading failures keep the requested character
+                // visible as its own source-derived portrait, never a fake mascot.
+                Box(Modifier.fillMaxSize()) {
+                    WordQuestAvatarPortrait(avatarId,Modifier.fillMaxSize())
+                    Text("3D görünüm kullanılamadı · Avatar önizlemesi",
+                        modifier=Modifier.align(Alignment.BottomCenter)
+                            .background(Color(0xE6FFF7FF),RoundedCornerShape(9.dp)),
+                        color=Color(0xFF674585))
+                }
             } else {
                 val eye=Position(0f,0.2f,3.2f)
                 val target=Position(0f,0f,0f)
