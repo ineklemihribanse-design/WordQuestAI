@@ -1444,6 +1444,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_mobile_home_175.py tools/v175/verify_mobile_home_175.py
           python3 tools/v175/apply_mobile_home_175.py
           python3 tools/v175/verify_mobile_home_175.py
+      - name: Install responsive 2.5D Daily Plan game cards without losing progress
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_premium_practice_grid_175.py tools/v175/verify_premium_practice_grid_175.py
+          python3 tools/v175/apply_premium_practice_grid_175.py
+          python3 tools/v175/verify_premium_practice_grid_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
