@@ -4,7 +4,7 @@ Bu dal, kullanıcının gönderdiği gerçek 10 GLB modeliyle **özel, cihaz iç
 
 ## 1. Kurulum
 
-1. [WordQuest AI 1.0.73 Personal QA](https://github.com/ineklemihribanse-design/WordQuestAI/releases/tag/v1.0.73-personal-qa) sayfasındaki `WordQuestAI-Personal-QA.apk` dosyasını kur.
+1. [WordQuest AI 1.0.73 Personal QA3 (test build 100)](https://github.com/ineklemihribanse-design/WordQuestAI/releases/tag/v1.0.73-personal-qa3) sayfasındaki `WordQuestAI-Personal-QA.apk` dosyasını kur.
 2. Bu sürüm, mevcut 1.0.72'den **ayrı bir uygulama kimliğine** sahiptir. Ana uygulama ve kullanıcı verileri değişmez.
 3. Bu konuşmadan sağlanan `WordQuestAI_1.0.73_10_Avatar_Ozel_Paket_Gorselli.zip` dosyasını indir ve telefonda sakla. ZIP'i **açma**.
 4. Test uygulamasında **Arena** veya **Kelime Hafızam** → Avatar Seç → **3D Avatar Paketini Telefonumdan Ekle** düğmesine bas.
