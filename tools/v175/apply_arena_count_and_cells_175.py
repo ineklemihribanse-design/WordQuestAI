@@ -39,7 +39,7 @@ def patch(name, replacements):
                     "quiz", "quizCount", "match.size", "questionCount",
                     "SORU ", "coerceAtMost", "ready", "online"))
             )[:12000],flush=True)
-        assert n==1, f"{name} {label}: expected one match, found {n}
+        assert n==1, f"{name} {label}: expected one match, found {n}"
         s=s.replace(old,new,1)
     p.write_text(s,"utf-8")
 
