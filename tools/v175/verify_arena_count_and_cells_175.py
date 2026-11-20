@@ -11,7 +11,9 @@ for needle in ('if(mode=="quiz")"Soru Sayısı" else "Bulmaca Sayısı"',
                '(if(mode=="quiz")listOf(5,10,15,20) else sizes)',
                'enabled=if(mode=="quiz")true'):
     assert needle in a,needle
-for needle in ('quizCount else size','packs.questionsForSeed(match.level, match.topic, match.quizSeed, match.size)',
+assert 'if(selectedMode=="quiz")12 else size' not in b
+assert 'client.create(selectedMode,level,topic,' in b
+for needle in ('packs.questionsForSeed(match.level, match.topic, match.quizSeed, match.size)',
                'if (questions.size != match.size)', 'coerceAtMost(questions.lastIndex)'):
     assert needle in b,needle
 for needle in ('>= size && (answers[guestUid]?.size ?: 0) >= size',
