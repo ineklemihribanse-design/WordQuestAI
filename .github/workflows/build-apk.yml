@@ -1274,9 +1274,9 @@ jobs:
           assert 'versionCode = 98' in text
           text=text.replace('applicationIdSuffix = ".fresh"',
               'applicationIdSuffix = ".fresh.qa"',1)
-          text=text.replace('versionCode = 98','versionCode = 99',1)
+          text=text.replace('versionCode = 98','versionCode = 100',1)
           text=text.replace('versionName = "1.0.73-arena-avatar-candidate"',
-              'versionName = "1.0.73-personal-qa2"',1)
+              'versionName = "1.0.73-personal-qa3"',1)
           file.write_text(text,"utf-8")
           print("QA2 updates QA1 while leaving production 1.0.72 untouched.")
           PY
@@ -1394,7 +1394,7 @@ jobs:
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
           echo "Signed v1.0.72 (code97): Arena controls added atop verified 1.0.71 sources."
 
-      - name: Sign and publish side-by-side personal 1.0.73 QA2 APK (private ZIP import)
+      - name: Sign and publish latest personal 1.0.73 QA3 APK (all ten model previews)
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
@@ -1420,8 +1420,8 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh.qa"
           item=doc["elements"][0]
-          assert item["versionCode"]==99
-          assert item["versionName"]=="1.0.73-personal-qa2"
+          assert item["versionCode"]==100
+          assert item["versionName"]=="1.0.73-personal-qa3"
           print("Personal QA package identity checked; existing installation is intact.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-personal-sign"
@@ -1444,7 +1444,7 @@ jobs:
             echo "Superseded by $HEAD_SHA — skip old QA2 release."
             exit 0
           fi
-          TAG="v1.0.73-personal-qa2"
+          TAG="v1.0.73-personal-qa3"
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
               --jq '[.assets[].name] | join(",")' | grep -Fxq 'WordQuestAI-Personal-QA.apk'
@@ -1452,7 +1452,7 @@ jobs:
             exit 0
           fi
           cat > dist/personal-qa-notes.md <<'NOTES'
-          WordQuest AI 1.0.73 — personal 3D avatar QA2 (test build 99).
+          WordQuest AI 1.0.73 — personal 3D avatar QA3 (test build 100).
 
           This prerelease installs alongside existing 1.0.72, without overwriting
           the user's progress, Arena records, word history, or Lena installation.
@@ -1466,6 +1466,6 @@ jobs:
           Model rigging is experimental; real-device animation QA is outstanding.
           NOTES
           gh release create "$TAG" dist/WordQuestAI-Personal-QA.apk \
-            -R "$UPDATE_REPO" --title "WordQuest AI 1.0.73 Personal 3D QA2" \
+            -R "$UPDATE_REPO" --title "WordQuest AI 1.0.73 Personal 3D QA3" \
             --notes-file dist/personal-qa-notes.md --target "$GITHUB_SHA" --prerelease
           echo "Only personal QA APK published; no production updater changes."
