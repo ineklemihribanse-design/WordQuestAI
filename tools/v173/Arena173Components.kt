@@ -183,7 +183,7 @@ internal fun Arena173AdventurePicker(mode:String,onMode:(String)->Unit,solo:Bool
             Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())
                 .padding(vertical=8.dp),horizontalArrangement=Arrangement.spacedBy(11.dp)) {
                 Arena173GameCard("Bulmaca Düellosu","Rakibine meydan oku!",
-                    "2 oyuncu","duel",mode=="duel" || (solo && mode!="quiz"),
+                    "2 oyuncu","duel",mode=="duel",
                     true,cardWidth=cardWidth) {
                     onMode("duel")
                 }
@@ -252,6 +252,12 @@ internal fun Arena173UnifiedMatchSettings(
     seconds:Int,allowedTimes:List<Int>,onSeconds:(Int)->Unit,
     size:Int,sizes:List<Int>,onSize:(Int)->Unit
 ) {
+    // Match configuration must not retain a topic excluded by a new level.
+    LaunchedEffect(level,mode,topics) {
+        if(topics.isNotEmpty() && topic !in topics) {
+            onTopic(topics.first())
+        }
+    }
     Column(Modifier.fillMaxWidth().shadow(6.dp,RoundedCornerShape(25.dp))
         .clip(RoundedCornerShape(25.dp)).background(Color.White)
         .border(1.dp,v173Stroke,RoundedCornerShape(25.dp))
@@ -279,7 +285,7 @@ internal fun Arena173UnifiedMatchSettings(
                         PremiumArenaRules.allowedLevels,onLevel)
                     Arena173Dropdown("Konu / Paket",
                         if(topic.isBlank())"Konu Seçiniz" else "Konu Seçiniz · $topic",
-                        topics,onTopic)
+                        topics,onTopic,enabled=topics.isNotEmpty())
                 }
             } else {
                 Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) {
@@ -288,7 +294,7 @@ internal fun Arena173UnifiedMatchSettings(
                         PremiumArenaRules.allowedLevels,onLevel,modifier=Modifier.weight(1f))
                     Arena173Dropdown("Konu / Paket",
                         if(topic.isBlank())"Konu Seçiniz" else "Konu Seçiniz · $topic",
-                        topics,onTopic,modifier=Modifier.weight(1f))
+                        topics,onTopic,enabled=topics.isNotEmpty(),modifier=Modifier.weight(1f))
                 }
             }
         }
