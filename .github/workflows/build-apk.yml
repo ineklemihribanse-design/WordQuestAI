@@ -1458,6 +1458,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_premium_practice_grid_175.py tools/v175/verify_premium_practice_grid_175.py
           python3 tools/v175/apply_premium_practice_grid_175.py
           python3 tools/v175/verify_premium_practice_grid_175.py
+      - name: Add native Home bottom navigation and real due-word notification actions
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_home_navigation_175.py tools/v175/verify_home_navigation_175.py
+          python3 tools/v175/apply_home_navigation_175.py
+          python3 tools/v175/verify_home_navigation_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
