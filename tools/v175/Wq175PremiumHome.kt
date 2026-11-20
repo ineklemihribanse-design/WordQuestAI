@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -37,33 +38,63 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
     val shape=RoundedCornerShape(22.dp)
     Surface(
         onClick=tile.onClick,
-        modifier=Modifier.fillMaxWidth().heightIn(min=if(small)128.dp else 170.dp),
+        modifier=Modifier.fillMaxWidth().heightIn(min=if(small)112.dp else 138.dp),
         shape=shape,color=tile.tint,
-        border=BorderStroke(1.dp,Color(0xFFE2E2DD)),
-        shadowElevation=3.dp
-    ){
-        Column(
-            Modifier.fillMaxWidth().padding(
-                horizontal=if(small)10.dp else 13.dp,
-                vertical=if(small)9.dp else 12.dp),
-            verticalArrangement=Arrangement.spacedBy(5.dp)
-        ) {
-            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,
-                verticalAlignment=Alignment.CenterVertically) {
-                if(tile.artSlug!=null)
-                    Wq175ThemeIcon(tile.artSlug,Modifier.size(if(small)53.dp else 76.dp))
-                else Wq175GlossIcon(tile.icon,Modifier.size(if(small)53.dp else 76.dp))
-                Text("›",color=Wq175Navy,fontSize=23.sp,fontWeight=FontWeight.Bold)
+        border=BorderStroke(1.dp,Color(0xFFE5E0D6)),
+        shadowElevation=4.dp
+    ) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val narrow=maxWidth<194.dp || LocalDensity.current.fontScale>1.30f
+            val imageSize=if(small)59.dp else if(narrow)76.dp else 88.dp
+            @Composable
+            fun Art() {
+                if(tile.artSlug!=null) Wq175ThemeIcon(tile.artSlug,Modifier.size(imageSize))
+                else Wq175GlossIcon(tile.icon,Modifier.size(imageSize))
             }
-            Text(tile.title,color=Wq175Navy,
-                fontSize=if(small)13.sp else 15.sp,
-                lineHeight=if(small)15.sp else 18.sp,
-                fontWeight=FontWeight.ExtraBold,
-                maxLines=2,overflow=TextOverflow.Ellipsis)
-            Text(tile.subtitle,color=Wq175Muted,
-                fontSize=if(small)10.sp else 11.sp,
-                lineHeight=if(small)12.sp else 14.sp,
-                maxLines=2,overflow=TextOverflow.Ellipsis)
+            if(narrow) {
+                Column(
+                    Modifier.fillMaxWidth().padding(
+                        horizontal=if(small)10.dp else 12.dp,
+                        vertical=if(small)10.dp else 12.dp),
+                    verticalArrangement=Arrangement.spacedBy(5.dp)
+                ) {
+                    Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.SpaceBetween,
+                        verticalAlignment=Alignment.CenterVertically) {
+                        Art()
+                        Text("›",color=Wq175Navy,fontSize=24.sp,fontWeight=FontWeight.Bold)
+                    }
+                    Text(tile.title,color=Wq175Navy,
+                        fontSize=if(small)14.sp else 16.sp,
+                        lineHeight=if(small)17.sp else 19.sp,
+                        fontWeight=FontWeight.ExtraBold,
+                        maxLines=2,overflow=TextOverflow.Ellipsis)
+                    Text(tile.subtitle,color=Wq175Muted,
+                        fontSize=if(small)11.sp else 12.sp,
+                        lineHeight=if(small)14.sp else 16.sp,
+                        maxLines=3,overflow=TextOverflow.Ellipsis)
+                }
+            } else {
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal=10.dp,vertical=11.dp),
+                    horizontalArrangement=Arrangement.spacedBy(8.dp),
+                    verticalAlignment=Alignment.CenterVertically
+                ) {
+                    Art()
+                    Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                        Text(tile.title,color=Wq175Navy,
+                            fontSize=if(small)15.sp else 17.sp,
+                            lineHeight=if(small)18.sp else 20.sp,
+                            fontWeight=FontWeight.ExtraBold,
+                            maxLines=3,overflow=TextOverflow.Ellipsis)
+                        Text(tile.subtitle,color=Wq175Muted,
+                            fontSize=if(small)11.sp else 12.sp,
+                            lineHeight=if(small)14.sp else 16.sp,
+                            maxLines=4,overflow=TextOverflow.Ellipsis)
+                    }
+                    Text("›",color=Wq175Navy,fontSize=23.sp,fontWeight=FontWeight.Bold)
+                }
+            }
         }
     }
 }
@@ -76,7 +107,7 @@ internal fun Wq175HomeStartButton(onClick:()->Unit) {
         modifier=Modifier.fillMaxWidth().heightIn(min=52.dp),
         shape=RoundedCornerShape(18.dp),
         colors=ButtonDefaults.buttonColors(
-            containerColor=Color(0xFF315574),contentColor=Color.White)
+            containerColor=Color(0xFF086B4F),contentColor=Color.White)
     ) {
         Text("Yeni Oyun",fontSize=16.sp,fontWeight=FontWeight.ExtraBold)
     }
