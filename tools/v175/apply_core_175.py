@@ -74,7 +74,7 @@ def lesson():
     s=once(s,'    Box(Modifier.fillMaxWidth().height(190.dp)',
         '    Box(Modifier.fillMaxWidth().height(132.dp)',
         "AI concept illustration height")
-    s=once(s,'''                    listOf(
+    s=once(s,r'''                    listOf(
                         Triple("✕\nBilmiyorum", false, true),
                         Triple("◔\nZor", false, true),
                         Triple("◉\nOrta", true, true),
