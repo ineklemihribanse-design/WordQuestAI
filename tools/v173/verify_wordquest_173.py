@@ -26,6 +26,11 @@ assert 'ArenaApprovedPanel("Konu / Paket"' not in home
 assert 'ArenaApprovedPanel("Oyun Biçimi"' not in home
 assert "Seviye Seçiniz" in arena and "Konu Seçiniz" in arena
 assert "PremiumArenaRules.allowedLevels" in arena
+assert "if(topics.isNotEmpty() && topic !in topics)" in arena
+assert 'mode=="duel" || (solo && mode!="quiz")' not in arena
+assert 'enabled=topics.isNotEmpty()' in arena
+assert 'if (reviewed && reviews[position] == true && studyMode != "card")' in practice
+assert 'Harika, doğru cevap!' in practice
 assert "onSolo(true)" in arena and "onSolo(false)" in arena
 assert all(x in arena for x in ("Bulmaca Düellosu","Ortak Bulmaca",
     "5 Şıklı Düello","İpucu","Süre","Bulmaca"))
