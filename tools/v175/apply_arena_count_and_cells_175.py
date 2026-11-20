@@ -86,9 +86,9 @@ patch("PremiumArenaScreen.kt",[
     ('''if (questions.size < 5)''',
      '''if (questions.size != quizCount)''',
      "do not silently return fewer questions"),
-    ('''                ArenaPanelBlock {
-                    Text("KELİME / SORU SÜRESİ"''',
-     '''                if (selectedMode == "quiz") ArenaPanelBlock {
+    ('''            PremiumStage.Lobby -> {''',
+     '''            PremiumStage.Lobby -> {
+                if (selectedMode == "quiz") ArenaPanelBlock {
                     Text("SORU SAYISI", color=ArenaGold,
                         fontWeight=FontWeight.Bold,fontSize=11.sp)
                     Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
@@ -96,9 +96,7 @@ patch("PremiumArenaScreen.kt",[
                             ArenaChoice("$n",quizCount==n,Modifier.weight(1f)) { quizCount=n }
                         }
                     }
-                }
-                ArenaPanelBlock {
-                    Text("KELİME / SORU SÜRESİ"''',
+                }''',
      "offline count controls"),
     ('''"12 soruluk alıştırma · A / B / C / D / E"''',
      '''"$quizCount soruluk alıştırma · A / B / C / D / E"''',
