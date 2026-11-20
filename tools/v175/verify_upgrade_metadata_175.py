@@ -46,8 +46,9 @@ def verify_upgrade(before: str, after: str, package: str) -> dict:
         raise ValueError("firstInstallTime changed: old app installation was not preserved")
     if old["data_dir"] and new["data_dir"] and old["data_dir"] != new["data_dir"]:
         raise ValueError("Android package data directory changed")
-    if (old["camera_permission"] is not None and new["camera_permission"] is not None
-            and old["camera_permission"] != new["camera_permission"]):
+    # Losing a previously granted permission is a real regression, including
+    # the case where the new manifest silently drops CAMERA entirely.
+    if old["camera_permission"] == "true" and new["camera_permission"] != "true":
         raise ValueError("Android camera grant state changed during upgrade")
     return {
         "from": old["version"], "to": new["version"],
