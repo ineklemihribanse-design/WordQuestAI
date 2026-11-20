@@ -33,6 +33,12 @@ assert installer.count('Model("')==10
 assert "createModelInstance(modelFile)" in scene and "model.playAnimation(" in scene
 assert "WordQuestPrivateAvatarAssets.installed(context,avatar.id)" in shared
 assert "3D Avatar Paketini Telefonumdan Ekle" in shared
+assert 'wq173_source_models_preview.webp' in installer
+assert '5309a66b51463da64d852861a90c1535e57528f01b97a425bff0fd69a5b54a7f' in installer
+assert 'fun previewFile(context:Context):File?' in installer
+assert 'WordQuestPrivateAvatarAssets.previewFile(context)' in shared
+assert 'Bitmap.createBitmap(preview,(index%5)*80,(index/5)*80,80,80)' in shared
+assert 'WordQuestAvatarPortrait(avatarId,Modifier.fillMaxSize())' in scene
 assert "ActivityResultContracts.OpenDocument()" in shared
 assert "WordQuestAvatarStage3D(mascot" in home
 assert "WordQuestAvatarStage3D(selectedAvatar" in memory
