@@ -1259,6 +1259,21 @@ jobs:
         run: |
           set -euo pipefail
           grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
+      - name: Use separate application ID for the 1.0.73 personal 3D QA app
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          file=Path("source/app/build.gradle.kts")
+          text=file.read_text("utf-8")
+          assert text.count('applicationIdSuffix = ".fresh"')==1
+          assert 'versionCode = 98' in text
+          text=text.replace('applicationIdSuffix = ".fresh"',
+              'applicationIdSuffix = ".fresh.qa"',1)
+          file.write_text(text,"utf-8")
+          print("Personal QA installs alongside the existing signed 1.0.72.")
+          PY
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
         run: |
