@@ -145,3 +145,15 @@ internal fun Wq175YdsResult(score: Int, answered: Int, total: Int) {
             color = Color(0xFF647493),fontSize = 12.sp)
     }
 }
+
+
+@Composable
+internal fun Wq175YdsPrimaryAction(label: String, action: () -> Unit) {
+    Button(onClick = action,
+        modifier = Modifier.fillMaxWidth().heightIn(min = 53.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = YdsNavy, contentColor = Color.White)) {
+        Text(label, fontWeight = FontWeight.ExtraBold)
+    }
+}
