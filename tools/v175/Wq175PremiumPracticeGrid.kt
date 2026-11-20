@@ -59,50 +59,6 @@ private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
 }
 
 
-/**
- * The two real Daily Plan extras used to fall back to plain text MenuItems.
- * Keep exactly the same caller-provided callbacks and legacy symbol argument;
- * only replace their visible presentation with illustrated, tappable Android
- * cards. Neither Lena nor the existing lesson/game state is modified.
- */
-@Suppress("UNUSED_PARAMETER")
-@Composable
-internal fun Wq175PremiumPracticeSpecialTile(
-    title:String,detail:String,legacySymbol:String,onClick:()->Unit
-) {
-    val teacher=title.contains("AI",ignoreCase=true)
-    val shape=RoundedCornerShape(22.dp)
-    val tint=if(teacher)Color(0xFFE8E8FF) else Color(0xFFFFF2D8)
-    val ink=Color(0xFF213B47)
-    Surface(
-        onClick=onClick,
-        modifier=Modifier.fillMaxWidth().heightIn(min=116.dp),
-        shape=shape,color=tint,
-        border=BorderStroke(1.dp,if(teacher)Color(0xFFCBC8F3) else Color(0xFFF0D8A6)),
-        shadowElevation=4.dp
-    ) {
-        Row(Modifier.fillMaxWidth().padding(horizontal=14.dp,vertical=12.dp),
-            verticalAlignment=Alignment.CenterVertically,
-            horizontalArrangement=Arrangement.spacedBy(11.dp)) {
-            Wq175GlossIcon(
-                if(teacher)"ai_teacher" else "mistakes",
-                Modifier.size(78.dp))
-            Column(Modifier.weight(1f),
-                verticalArrangement=Arrangement.spacedBy(5.dp)) {
-                Text(title,color=ink,fontWeight=FontWeight.ExtraBold,
-                    fontSize=17.sp,lineHeight=20.sp,
-                    maxLines=2,overflow=TextOverflow.Ellipsis)
-                Text(detail,color=Color(0xFF536575),
-                    fontSize=12.sp,lineHeight=16.sp,
-                    maxLines=3,overflow=TextOverflow.Ellipsis)
-            }
-            Text("›",color=if(teacher)Color(0xFF5C3EA6)
-                else Color(0xFFAC6A27),
-                fontSize=27.sp,fontWeight=FontWeight.Bold)
-        }
-    }
-}
-
 @Composable
 internal fun Wq175PremiumPracticeGrid(onSelect:(PracticeKind)->Unit) {
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(12.dp)) {

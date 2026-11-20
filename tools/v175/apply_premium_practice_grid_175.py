@@ -17,13 +17,15 @@ new='''        Wq175PremiumPracticeGrid { kind ->
         }'''
 assert s.count(old)==1,("existing daily game callbacks",s.count(old))
 s=s.replace(old,new,1)
-# Replace only the two extra old-style menu cards. Their original arguments,
-# state updates and navigation lambdas remain byte-for-byte unchanged.
+# Keep the two existing MenuItem call sites exactly as they are. Their
+# navigation lambdas include early returns; renaming the composable call
+# changes the Kotlin implicit lambda label and previously broke compilation.
+# The menu icon resolver now supplies original themed art without rewriting
+# the actions or any data stored by the game.
 for label in ("Yanlışlarımdan bulmaca", "Kişisel AI öğretmenim"):
     needle='MenuItem("'+label+'"'
     assert s.count(needle)==1, (label,s.count(needle))
-    s=s.replace(needle,'Wq175PremiumPracticeSpecialTile("'+label+'"',1)
 file.write_text(s,"utf-8")
-print("PASS: 7 illustrated Daily Plan game entries, including mistakes and AI tutor.")
-print("PASS: original onClick callbacks preserved; no edits to AI, scoring or profile data.")
-print("PASS: accessible two-column grid with portrait-friendly extra cards.")
+print("PASS: 5 premium learning game cards and 2 preserved existing game entries.")
+print("PASS: dedicated illustrated icon mapping for mistakes and AI teacher.")
+print("PASS: original MenuItem callbacks/early-returns kept unchanged.")

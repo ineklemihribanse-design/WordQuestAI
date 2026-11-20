@@ -47,6 +47,8 @@ internal object Wq175IconNames {
     fun menu(title: String): String {
         val s = title.lowercase(java.util.Locale.ROOT)
         return when {
+            "yanlışlarımdan" in s -> "mistakes"
+            "kişisel ai öğretmen" in s -> "ai_teacher"
             "arena" in s || "yarış" in s -> "trophy"
             "yds" in s || "sınav" in s -> "yds"
             "kelime hafıza" in s || "tekrar" in s -> "cards"

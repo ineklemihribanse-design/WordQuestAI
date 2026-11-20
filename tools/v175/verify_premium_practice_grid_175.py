@@ -11,11 +11,12 @@ for name in ("Dictation","Sentence","Grammar","Story","Speak"):
 assert 'Wq175GlossIcon(Wq175IconNames.practice(kind)' in grid
 assert 'Wq175PremiumPracticeGrid { kind ->' in hub
 assert 'selected = kind' in hub and 'questionIndex = 0' in hub
-assert 'Wq175PremiumPracticeSpecialTile("Yanlışlarımdan bulmaca"' in hub
-assert 'Wq175PremiumPracticeSpecialTile("Kişisel AI öğretmenim"' in hub
-assert hub.count('Wq175PremiumPracticeSpecialTile(')==2
-assert 'if(teacher)"ai_teacher" else "mistakes"' in grid
-assert 'onClick=onClick' in grid
+assert 'MenuItem("Yanlışlarımdan bulmaca"' in hub
+assert 'MenuItem("Kişisel AI öğretmenim"' in hub
+assert 'Wq175PremiumPracticeSpecialTile(' not in hub
 assert 'PracticeKind.entries.chunked(2)' in grid
+icons=(src/"WordQuest175Icons.kt").read_text("utf-8")
+assert '"yanlışlarımdan" in s -> "mistakes"' in icons
+assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icons
 assert 'Wq175DailyPlanBanner(' in hub
-print("PASS: seven premium practice cards preserve original navigation callbacks")
+print("PASS: seven Daily Plan game entries, original inline returns and two dedicated premium icons")

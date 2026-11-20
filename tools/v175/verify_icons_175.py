@@ -20,6 +20,10 @@ assert 'Wq175GlossIcon("arena_"+kind,Modifier.size(76.dp))' in arena
 assert 'Wq175GlossIcon(Wq175IconNames.menu(title)' in home
 assert practice.count('Wq175GlossIcon(Wq175IconNames.practice(kind)')==2
 assert (SRC/"WordQuest175Icons.kt").exists()
+icon_router=(SRC/"WordQuest175Icons.kt").read_text("utf-8")
+assert '"yanlışlarımdan" in s -> "mistakes"' in icon_router
+assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icon_router
+
 assert (SRC/"WordQuest175TimedPuzzle.kt").exists()
 assert (SRC/"WordQuest175ImportWords.kt").exists()
 assert (SRC/"LenaLive3DStage.kt").exists()
