@@ -42,9 +42,9 @@ internal fun WordQuestAvatarStage3D(
     motion:String="idle",
 ) {
     val context=LocalContext.current
-    val modelFile=remember(context,avatarId) {
-        WordQuestPrivateAvatarAssets.modelFile(context,avatarId)
-    }
+    // Re-check after the user's ZIP import; do not cache the previous 'missing'
+    // result for a profile that has just installed its purchased models.
+    val modelFile=WordQuestPrivateAvatarAssets.modelFile(context,avatarId)
     if(modelFile==null) {
         WordQuestAvatarPortrait(avatarId,modifier)
         return
