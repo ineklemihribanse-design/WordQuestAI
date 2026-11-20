@@ -175,6 +175,7 @@ internal fun WordQuestSharedAvatarPicker(
     var imports by remember{mutableIntStateOf(WordQuestPrivateAvatarAssets.count(context))}
     var importing by remember{mutableStateOf(false)}
     var feedback by remember{mutableStateOf("")}
+    var demoMotion by remember(selected){mutableStateOf("idle")}
     val picker=rememberLauncherForActivityResult(
         contract=ActivityResultContracts.OpenDocument()
     ) { uri ->
@@ -244,8 +245,30 @@ internal fun WordQuestSharedAvatarPicker(
                     }
                 }
                 if(WordQuestPrivateAvatarAssets.installed(context,selected)) {
+                    Text("Gerçek 3D animasyon denemesi",
+                        color=Color(0xFF302056),fontWeight=FontWeight.Bold,
+                        fontSize=12.sp)
                     WordQuestAvatarStage3D(selected,
-                        Modifier.fillMaxWidth().height(155.dp),motion="select")
+                        Modifier.fillMaxWidth().height(170.dp),motion=demoMotion)
+                    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                        horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+                        listOf(
+                            "Bekle" to "idle",
+                            "Seç" to "select",
+                            "Selamla" to "wave",
+                            "Sevin" to "celebrate",
+                            "Kupa" to "trophy_raise",
+                            "Üzül" to "loss"
+                        ).forEach { (label,clip) ->
+                            OutlinedButton(onClick={demoMotion=clip},
+                                modifier=Modifier.heightIn(min=42.dp),
+                                contentPadding=PaddingValues(horizontal=10.dp)) {
+                                Text(label,fontSize=11.sp,
+                                    color=if(demoMotion==clip)Color(0xFF6936A1)
+                                        else Color(0xFF746985))
+                            }
+                        }
+                    }
                 }
                 WordQuestAvatarStore.attribution[selected]?.let { (author,url) ->
                     Text("Model: $author · CC BY 4.0 · Önizleme uyarlanmıştır.",
