@@ -1364,6 +1364,49 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
+      - name: Verify 1.0.75 signed candidate remains a direct 1.0.74 upgrade
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          umask 077
+          test -n "$WQ_RELEASE_KEYSTORE_B64"
+          test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS"
+          test -n "$WQ_KEY_PASS"
+          META="source/app/build/outputs/apk/offline/output-metadata.json"
+          INPUT="source/app/build/outputs/apk/offline/app-offline-unsigned.apk"
+          SIGNER="source/app/build/outputs/apk/offline/apksigner.jar"
+          test -s "$META"
+          test -s "$INPUT"
+          test -s "$SIGNER"
+          python3 - "$META" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
+          item=d["elements"][0]
+          assert item["versionCode"]==101
+          assert item["versionName"]=="1.0.75-learning-upgrade-candidate"
+          print("Upgrade candidate identity verified: original .fresh / code101")
+          PY
+          mkdir -p "$RUNNER_TEMP/wq175-signature-qa"
+          trap 'rm -rf "$RUNNER_TEMP/wq175-signature-qa"' EXIT
+          printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq175-signature-qa/store.p12"
+          java -jar "$SIGNER" sign             --ks "$RUNNER_TEMP/wq175-signature-qa/store.p12" --ks-type PKCS12             --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" "$INPUT"
+          java -jar "$SIGNER" verify --verbose --print-certs             "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk"             > "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
+          grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true'             "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
+          grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true'             "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
+          grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6'             "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
+          unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" |
+            grep -q 'assets/vocabulary-addendum-v175.tsv'
+          unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" |
+            grep -q 'WORDQUEST_CEFR_175_ATTRIBUTION.md'
+          echo 'PASS: signed v1.0.75 code101 upgrade identity, matching v1.0.74 signer, and attributed new words.'
+          echo 'QA-only candidate: deliberately NOT published or made available to the in-app updater.'
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
