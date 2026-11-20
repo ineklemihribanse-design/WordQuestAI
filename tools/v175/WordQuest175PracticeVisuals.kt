@@ -146,7 +146,7 @@ internal fun Wq175DailyPlanBanner(
                 label={Text("Kişisel hedef (5–180 dk)")},
                 singleLine=true,modifier=Modifier.weight(1f),
                 keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Number))
-            Button(onClick={customValue?.let(onMinutes)},
+            Button(onClick={if(customValue!=null && customValue in 5..180) onMinutes(customValue)},
                 enabled=customValue!=null && customValue in 5..180) {
                 Text("Uygula")
             }
