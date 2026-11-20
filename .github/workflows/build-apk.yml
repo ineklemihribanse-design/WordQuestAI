@@ -1451,6 +1451,17 @@ jobs:
           profile: pixel_4
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
           script: bash tools/v175/qa_emulator_upgrade_175.sh
+      - name: Save emulator screenshots for manual responsive visual review
+        if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: wq175-responsive-screens-${{ github.run_number }}
+          path: |
+            ${{ runner.temp }}/wq175-emulator-startup.png
+            ${{ runner.temp }}/wq175-responsive-qa/*.png
+          if-no-files-found: warn
+          retention-days: 3
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
