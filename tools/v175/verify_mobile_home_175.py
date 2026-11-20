@@ -10,7 +10,11 @@ assert "Wq2DMascots.selected(LocalContext.current,session.profileKey)" in h
 assert "Color(0xFF203A49)" in h
 assert 'Text("WordQuest AI", color = Color(0xFF203A49)' in h
 assert 'Wq175HomeStartButton(newGame)' in h
-assert 'containerColor=Color(0xFF315574)' in m
+assert 'containerColor=Color(0xFF086B4F)' in m
+assert "BoxWithConstraints(Modifier.fillMaxWidth())" in m
+assert "maxWidth<194.dp" in m
+assert "LocalDensity.current.fontScale>1.30f" in m
+assert "Surface(" in m and "onClick=tile.onClick" in m
 assert "CompositingStrategy.Offscreen" in h
 assert "drawRect(brush=Brush.horizontalGradient(" in h
 assert "Wq175ThemeIcon(tile.artSlug" in m
