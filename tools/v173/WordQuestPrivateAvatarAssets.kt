@@ -43,6 +43,9 @@ internal object WordQuestPrivateAvatarAssets {
     private val byName=expected.associateBy{it.name}
     private val byId=expected.associateBy{it.id}
     private const val ROOT="wordquest/private_avatars_v173"
+    private const val PREVIEW_NAME="wq173_source_models_preview.webp"
+    private const val PREVIEW_SIZE=6606L
+    private const val PREVIEW_SHA="5309a66b51463da64d852861a90c1535e57528f01b97a425bff0fd69a5b54a7f"
 
     private fun folder(context:Context):File =
         File(context.filesDir,ROOT).apply { if(!exists())mkdirs() }
@@ -51,6 +54,12 @@ internal object WordQuestPrivateAvatarAssets {
         val model=byId[id]?:return null
         val file=File(folder(context),model.name)
         return file.takeIf{it.isFile && it.length()==model.size}
+    }
+
+    /** Portraits created from the ten real purchased GLBs; private on device. */
+    fun previewFile(context:Context):File? {
+        val file=File(folder(context),PREVIEW_NAME)
+        return file.takeIf{it.isFile && it.length()==PREVIEW_SIZE}
     }
 
     fun installed(context:Context,id:String)=modelFile(context,id)!=null
@@ -74,6 +83,33 @@ internal object WordQuestPrivateAvatarAssets {
                     while(true) {
                         val entry:ZipEntry=zip.nextEntry?:break
                         val name=entry.name.substringAfterLast('/')
+                        if(!entry.isDirectory && name==PREVIEW_NAME) {
+                            val previewTemp=File.createTempFile("wq173_preview_","_staging",root)
+                            staged+=previewTemp to File(root,PREVIEW_NAME)
+                            val previewDigest=MessageDigest.getInstance("SHA-256")
+                            var previewLength=0L
+                            FileOutputStream(previewTemp).buffered().use{out ->
+                                val buffer=ByteArray(8192)
+                                while(true) {
+                                    val n=zip.read(buffer)
+                                    if(n<0)break
+                                    previewLength+=n
+                                    aggregate+=n
+                                    require(previewLength<=PREVIEW_SIZE &&
+                                        aggregate<=75_000_000L){"Oversized private model preview"}
+                                    out.write(buffer,0,n)
+                                    previewDigest.update(buffer,0,n)
+                                }
+                            }
+                            val checksum=previewDigest.digest().joinToString("") {
+                                "%02x".format(it.toInt() and 0xff)
+                            }
+                            require(previewLength==PREVIEW_SIZE && checksum==PREVIEW_SHA) {
+                                "Model portrait atlas does not match your private package"
+                            }
+                            zip.closeEntry()
+                            continue
+                        }
                         val model=byName[name]
                         if(entry.isDirectory || model==null) {
                             zip.closeEntry()
