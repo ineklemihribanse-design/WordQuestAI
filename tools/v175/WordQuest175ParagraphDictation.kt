@@ -4,6 +4,7 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -214,14 +215,13 @@ private fun Wq175ParagraphPracticeDialog(profileKey: String, close: () -> Unit) 
                 }
                 Text("Dinlediğin İngilizce paragrafı yaz. Noktalama ve büyük harf puanı etkilemez.",
                     fontSize = 13.sp, color = Color(0xFF7A6664))
-                Row(Modifier.fillMaxWidth(),
+                Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
                     horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     listOf("A1","A2","B1","B2","C1","C2").forEach { option ->
                         FilterChip(
                             selected = level == option,
                             onClick = { level = option; reset(0) },
-                            label = { Text(option, fontSize = 11.sp) },
-                            modifier = Modifier.weight(1f)
+                            label = { Text(option, fontSize = 11.sp) }
                         )
                     }
                 }
