@@ -13,6 +13,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
@@ -40,42 +42,67 @@ internal fun Wq175YdsAcademy(
         TextButton(onClick = back) {
             Text("‹  Geri", color = AcademyNavy, fontWeight = FontWeight.Bold)
         }
-        Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(30.dp))
-            .background(Brush.horizontalGradient(listOf(
-                AcademyNavy, Color(0xFF284D88), Color(0xFF4E6EBA))))
-            .heightIn(min = 200.dp)) {
-            Canvas(Modifier.matchParentSize()) {
-                drawCircle(Color(0x22FFE9AD), radius = size.width * 0.45f,
-                    center = androidx.compose.ui.geometry.Offset(
-                        size.width * .92f, size.height * .34f))
-                drawCircle(Color(0x1BFFFFFF), radius = size.width * 0.24f,
-                    center = androidx.compose.ui.geometry.Offset(
-                        size.width * .80f, size.height * .88f))
-            }
-            Row(Modifier.fillMaxWidth().padding(20.dp),
-                verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("YDS AKADEMİ",
-                        color = AcademyGold, fontSize = 12.sp,
-                        fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                    Text("İlerle, öğren,\nbaşarını gör.",
-                        color = Color.White, fontSize = 27.sp, lineHeight = 31.sp,
-                        fontWeight = FontWeight.ExtraBold)
-                    Text("Konu çalışmaları, soru bankası ve süreli denemeler bir arada.",
-                        color = Color(0xFFDFEBFF), fontSize = 12.sp, lineHeight = 17.sp)
+        Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(29.dp))
+            .heightIn(min=202.dp)) {
+            Wq175ThemeBanner("yds_akademi",Modifier.matchParentSize())
+            Row(Modifier.fillMaxWidth().padding(19.dp),
+                verticalAlignment=Alignment.CenterVertically) {
+                Column(Modifier.fillMaxWidth(.67f),
+                    verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                    Text("WORDQUEST AI · YDS",color=AcademyGold,
+                        fontSize=11.sp,fontWeight=FontWeight.Black)
+                    Text("YDS Akademi",color=Color.White,
+                        fontSize=27.sp,lineHeight=31.sp,
+                        fontWeight=FontWeight.ExtraBold)
+                    Text("Kelimelerden tam denemeye, bütün çalışmaların tek yerde.",
+                        color=Color(0xFFF1F4FF),fontSize=12.sp,lineHeight=17.sp)
+                    Text("Hedef: 2.000 doğrulanmış soru",
+                        color=AcademyGold,fontSize=10.sp,fontWeight=FontWeight.Bold)
                 }
-                Wq175GlossIcon("yds", Modifier.size(100.dp))
             }
         }
-        Text("Çalışma yolunu seç", color = AcademyNavy,
-            fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
-        Wq175AcademyTile("Konu & Kelime Hazırlığı",
-            "YDS kelime paketleri, zorluk seviyeleri ve bulmacalar",
-            "packages", Color(0xFFE7F3FF), Color(0xFF2D75B8), prep)
-        Wq175AcademyTile("Sınav Merkezi",
-            "Paragraf, çeviri, yakın anlam, denemeler ve yanlış analizi",
-            "yds", Color(0xFFFFF0DB), Color(0xFF98601B), exams)
+        Text("Çalışma alanları",color=AcademyNavy,
+            fontSize=20.sp,fontWeight=FontWeight.ExtraBold)
+        val modules=listOf(
+            Wq175AcademyModule("Kelime","YDS kelimeleri","cards",
+                Color(0xFFE6F7F1),prep),
+            Wq175AcademyModule("Dilbilgisi","Gramer konuları","grammar",
+                Color(0xFFF0E8FC),exams),
+            Wq175AcademyModule("Paragraf","Okuma ve anlama","story",
+                Color(0xFFFFF2D7),exams),
+            Wq175AcademyModule("Çeviri","İngilizce–Türkçe","listen",
+                Color(0xFFE3F1FF),exams),
+            Wq175AcademyModule("Yakın Anlam","Anlam ilişkileri","sentence",
+                Color(0xFFFFE4F1),exams),
+            Wq175AcademyModule("Cümle Tamamlama","Eksik ifadeler","puzzle",
+                Color(0xFFE1F5E9),exams),
+            Wq175AcademyModule("Mini Deneme","Kısa testler","plan",
+                Color(0xFFE3F1FF),exams),
+            Wq175AcademyModule("Tam Deneme","80 soru · 180 dk","yds",
+                Color(0xFFDFE5FF),exams),
+            Wq175AcademyModule("Yanlış Analizi","Hataları incele","trophy",
+                Color(0xFFFFEECF),exams)
+        )
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val cols=if(maxWidth<390.dp ||
+                LocalDensity.current.fontScale>1.25f)2 else 3
+            Column(verticalArrangement=Arrangement.spacedBy(11.dp)) {
+                modules.chunked(cols).forEach { group ->
+                    Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.spacedBy(11.dp)) {
+                        group.forEach { module ->
+                            Box(Modifier.weight(1f)) {
+                                Wq175AcademyModuleCard(module)
+                            }
+                        }
+                        repeat(cols-group.size){Spacer(Modifier.weight(1f))}
+                    }
+                }
+            }
+        }
+        Text("Kelime çalışmalarında hazırlık paketleri, diğer alanlarda sınav merkezi açılır. " +
+            "Soruları ve denemeleri oradan seçebilirsin.",
+            color=Color(0xFF586D87),fontSize=11.sp,lineHeight=16.sp)
         Surface(shape = RoundedCornerShape(20.dp),
             color = Color(0xFFF1F5FF),
             border = BorderStroke(1.dp, Color(0xFFD7E3FA))) {
@@ -87,6 +114,33 @@ internal fun Wq175YdsAcademy(
                     "Sınav geçmişin ve önceki puanların korunur.",
                     color = Color(0xFF556D90), fontSize = 13.sp, lineHeight = 18.sp)
             }
+        }
+    }
+}
+
+private data class Wq175AcademyModule(
+    val title:String,val subtitle:String,val icon:String,
+    val background:Color,val action:()->Unit
+)
+
+@Composable
+private fun Wq175AcademyModuleCard(module:Wq175AcademyModule) {
+    Surface(onClick=module.action,
+        modifier=Modifier.fillMaxWidth().heightIn(min=144.dp),
+        shape=RoundedCornerShape(23.dp),
+        color=module.background,
+        shadowElevation=4.dp,
+        border=BorderStroke(1.dp,Color(0xFFE2DFDA))) {
+        Column(Modifier.fillMaxWidth().padding(11.dp),
+            verticalArrangement=Arrangement.spacedBy(5.dp)) {
+            Wq175GlossIcon(module.icon,Modifier.size(69.dp))
+            Text(module.title,color=AcademyNavy,
+                fontSize=15.sp,lineHeight=17.sp,
+                fontWeight=FontWeight.ExtraBold,
+                maxLines=2,overflow=TextOverflow.Ellipsis)
+            Text(module.subtitle,color=Color(0xFF586A81),
+                fontSize=11.sp,lineHeight=14.sp,
+                maxLines=2,overflow=TextOverflow.Ellipsis)
         }
     }
 }
