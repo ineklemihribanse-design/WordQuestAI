@@ -7,8 +7,8 @@ ROOT=Path(__file__).resolve().parents[2]
 APP=ROOT/"source/app"
 SRC=APP/"src/main/java/com/kelimebulmacasi/a1"
 gradle=(APP/"build.gradle.kts").read_text("utf-8")
-assert 'versionCode = 98' in gradle
-assert 'versionName = "1.0.73-original-2d-mascots"' in gradle
+assert 'versionCode = 99' in gradle
+assert 'versionName = "1.0.73-original-2d-complete"' in gradle
 assert 'applicationIdSuffix = ".fresh"' in gradle
 assert 'applicationIdSuffix = ".fresh.qa"' not in gradle
 assert 'applicationId = "com.kelimebulmacasi.a1.practice"' in gradle
@@ -64,4 +64,4 @@ for name in ("PremiumOnlineScreen.kt","PremiumArenaScreen.kt"):
     assert 'crosswordFullWordMatches' in text,name
 print("PASS: original 10x2D artwork slots, shared compact selector and victory.")
 print("PASS: Arena timer, online match/word validation and merged match settings.")
-print("PASS: versionCode 98 / original .fresh package / Lena and Word Memory intact.")
+print("PASS: versionCode 99 hotfix / original .fresh package / Lena and Word Memory intact.")
