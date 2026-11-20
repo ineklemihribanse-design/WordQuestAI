@@ -7,6 +7,9 @@ for text in (
     'wq175CompletedOnly by rememberSaveable',
     'session.record(it)?.completed == true',
     'PrimaryAction("Bulmaca ekle", { edit(null) })',
+    'Wq175MatchingEntry(onClick={wq175MatchingOpen=true})',
+    'Wq175MatchingDialog(session)',
+    'wq175MatchingOpen by rememberSaveable',
     'go(Page.Backup)',
     'GameItem(game, session.record(game), ::open) { edit(it.destination, it) }'
 ):
@@ -14,3 +17,12 @@ for text in (
 art=(src/"WordQuest175MyPuzzles.kt").read_text("utf-8")
 assert 'Wq175GlossIcon("puzzle"' in art
 print("PASS: real crosswords, edit, backups and completed-filter remain connected.")
+
+matching=(src/"WordQuest175Matching.kt").read_text("utf-8")
+for token in ('"vocabulary-extra.tsv"', '"vocabulary-addendum-v175.tsv"',
+              'session.searchLearning("",0,5000)', 'store.mistake(',
+              'store.finish(', 'finishGame(true)', 'Wq175MatchingEntry',
+              'Wq175MatchingDialog'):
+    assert token in matching,token
+assert (src.parents[4]/"src/test/java/com/kelimebulmacasi/a1/Wq175MatchingTest.kt").exists()
+print("PASS: matching cards, game, local profile stats and Kotlin test installed")
