@@ -27,6 +27,10 @@ for APK in "$OLD" "$NEW"; do
 done
 grep -Fq "versionCode='100'" "$RUNNER_TEMP/wq175-$(basename "$OLD").badging"
 grep -Fq "versionCode='101'" "$RUNNER_TEMP/wq175-$(basename "$NEW").badging"
+if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq175-$(basename "$NEW").badging"; then
+    echo "::error::The user-upgrade APK is debuggable; refuse production QA."
+    exit 1
+fi
 adb wait-for-device
 adb shell input keyevent 82 || true
 echo "Install real published signed v1.0.74 from GitHub releases"
