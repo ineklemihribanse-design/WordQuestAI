@@ -31,7 +31,15 @@ def patch(name, replacements):
             assert s.count(room_marker)==1, "No safe Arena online question selector location"
             s=s.replace(room_marker,room_selector,1)
             continue
-        assert n==1, f"{name} {label}: expected one match, found {n}"
+        if name=="PremiumOnlineScreen.kt" and n==0:
+            print("ONLINE_SOURCE_DIAGNOSTIC",label,flush=True)
+            print("\n".join(
+                f"{i+1}: {line}" for i,line in enumerate(s.splitlines())
+                if any(key in line for key in ("client.create", "questionsForSeed",
+                    "quiz", "quizCount", "match.size", "questionCount",
+                    "SORU ", "coerceAtMost", "ready", "online"))
+            )[:12000],flush=True)
+        assert n==1, f"{name} {label}: expected one match, found {n}
         s=s.replace(old,new,1)
     p.write_text(s,"utf-8")
 
