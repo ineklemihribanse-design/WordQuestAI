@@ -1276,6 +1276,13 @@ jobs:
           python3 tools/v175/verify_stage_one.py
           grep -Fq 'versionCode = 101' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.75-learning-upgrade-candidate"' source/app/build.gradle.kts
+      - name: Activate and verify opt-in timed crossword mode (v1.0.75)
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_timed_175.py tools/v175/verify_timed_175.py
+          python3 tools/v175/apply_timed_175.py
+          python3 tools/v175/verify_timed_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
