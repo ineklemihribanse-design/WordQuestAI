@@ -22,6 +22,8 @@ TEST=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
 TEST.mkdir(parents=True,exist_ok=True)
 shutil.copyfile(PKG/"Wq175ImportPagingTest.kt",
     TEST/"Wq175ImportPagingTest.kt")
+shutil.copyfile(PKG/"Wq175MediaSafetyTest.kt",
+    TEST/"Wq175MediaSafetyTest.kt")
 
 once('    var addWordOpen by rememberSaveable(session.profileKey) { mutableStateOf(false) }',
      '    var addWordOpen by rememberSaveable(session.profileKey) { mutableStateOf(false) }\n'
