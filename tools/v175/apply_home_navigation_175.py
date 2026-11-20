@@ -16,10 +16,8 @@ def once(a,c,name):
     assert s.count(a)==1,(name,s.count(a))
     s=s.replace(a,c,1)
 
-once('''    val unfinished = session.continueGame
-    ScreenPage("", "", null) {''',
-     '''    val unfinished = session.continueGame
-    Box(Modifier.fillMaxSize()) {
+once('''    ScreenPage("", "", null) {''',
+     '''    Box(Modifier.fillMaxSize()) {
     ScreenPage("", "", null) {''',
      "wrap home in navigation host")
 
