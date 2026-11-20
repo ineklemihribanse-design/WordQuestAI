@@ -46,5 +46,12 @@ class Wq175ParagraphTest {
         assertTrue(added.all { it.options.distinct().size == 4 })
         assertTrue(added.all { it.explanation.isNotBlank() })
         assertTrue(added.all { it.answer in it.options.indices })
+        for (difficulty in YdsDifficulty.entries) {
+            assertEquals(10, added.count { it.difficulty == difficulty })
+        }
+        for (label in listOf("Paragraf", "Çeviri")) {
+            assertTrue("Eksik YDS kategorisi: " + label,
+                YdsTopic.entries.any { it.label.contains(label, ignoreCase = true) })
+        }
     }
 }
