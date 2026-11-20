@@ -35,6 +35,15 @@ adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
 sleep 7
 old_uid="$(adb shell dumpsys package "$PKG" | sed -n 's/^[[:space:]]*userId=\([0-9][0-9]*\).*/\1/p' | head -1 | tr -d '\r')"
 test -n "$old_uid"
+# A disposable emulator is safe for a synthetic user permission grant.
+# If the published v1.0.74 requests CAMERA, verify that a granted permission
+# remains granted after upgrading to v1.0.75.
+"$AAPT" dump permissions "$OLD" > "$RUNNER_TEMP/wq175-v174-permissions.txt"
+if grep -Fq 'android.permission.CAMERA' "$RUNNER_TEMP/wq175-v174-permissions.txt"; then
+    echo "Grant camera on the test emulator to verify Android permission continuity"
+    adb shell pm grant "$PKG" android.permission.CAMERA
+fi
+adb shell dumpsys package "$PKG" > "$RUNNER_TEMP/wq175-original-package.txt"
 adb shell am force-stop "$PKG"
 echo "Upgrade in place; never uninstall, clear app data, or change Android user"
 adb install -r "$NEW"
@@ -43,6 +52,9 @@ test -n "$new_uid"
 test "$old_uid" = "$new_uid"
 adb shell dumpsys package "$PKG" > "$RUNNER_TEMP/wq175-upgraded-package.txt"
 grep -q 'versionCode=101' "$RUNNER_TEMP/wq175-upgraded-package.txt"
+python3 tools/v175/verify_upgrade_metadata_175.py \
+    "$RUNNER_TEMP/wq175-original-package.txt" \
+    "$RUNNER_TEMP/wq175-upgraded-package.txt" "$PKG"
 adb logcat -c || true
 adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
 sleep 12
