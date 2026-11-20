@@ -208,7 +208,7 @@ internal fun WordQuestSharedAvatarPicker(
                 Text("Telefonundaki gerçek modeller: " + imports + "/10",
                     fontWeight=FontWeight.Bold,color=Color(0xFF60448F),fontSize=12.sp)
                 OutlinedButton(
-                    onClick={picker.launch(arrayOf("application/zip","application/octet-stream"))},
+                    onClick={picker.launch(arrayOf("*/*"))},
                     enabled=!importing,modifier=Modifier.fillMaxWidth()
                 ) {
                     Text(if(importing)"Paket denetleniyor..." else
