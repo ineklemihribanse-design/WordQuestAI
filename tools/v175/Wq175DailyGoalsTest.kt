@@ -32,7 +32,7 @@ class Wq175DailyGoalsTest {
     }
 
     @Test fun invalidCustomGoalsAreIgnored() {
-        val ctx = ApplicationProvider.getApplicationContext<Context>()
+        val ctx = RuntimeEnvironment.getApplication()
         val store = DailyPlanStore(ctx, UUID.randomUUID().toString())
         store.minutes = 4
         assertEquals(15, store.minutes)
