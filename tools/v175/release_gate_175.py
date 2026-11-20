@@ -17,6 +17,7 @@ REQUIRED = {
     "arena_two_accounts": "Two distinct accounts -> invite/match -> score and reconnect",
     "responsive_manual_visual": "Review actual room screens on phone, large-font and tablet",
     "cefr_content_review": "Document A1/A2/B1/B2/C1/C2 counts, quality and remaining target gaps",
+    "yds_2000_verified": "Confirm 2000 unique original questions, correct answers, Turkish explanations and full taxonomy",
 }
 
 
@@ -35,6 +36,11 @@ def evaluate(document):
         if item.get("status") != "passed":
             failures.append(f"{key}: not passed")
             continue
+        if key == "yds_2000_verified":
+            if not isinstance(item.get("unique_question_count"), int) or item["unique_question_count"] < 2000:
+                failures.append("yds_2000_verified: requires at least 2000 unique questions")
+            if item.get("answer_keys_audited") is not True:
+                failures.append("yds_2000_verified: answer keys and Turkish explanations not verified")
         if not isinstance(item.get("evidence_url"), str) or not item["evidence_url"].startswith("https://"):
             failures.append(f"{key}: missing HTTPS evidence link")
         if not isinstance(item.get("tested_at"), str) or len(item["tested_at"]) < 10:
@@ -57,7 +63,7 @@ def main():
         for issue in issues:
             print("RELEASE BLOCKED:", issue, file=sys.stderr)
         return 1
-    print("RELEASE GATE PASS: all six documented physical/online/manual checks have evidence.")
+    print("RELEASE GATE PASS: all seven documented content/physical/online/manual checks have evidence.")
     print("This report does not sign, upload or publish the APK.")
     return 0
 

@@ -5,7 +5,7 @@ from release_gate_175 import REQUIRED, evaluate
 
 
 def sample():
-    return {
+    record = {
         "versionName": "1.0.75", "versionCode": 101,
         "checks": {
             key: {"status": "passed", "evidence_url": "https://github.com/example/evidence",
@@ -13,6 +13,9 @@ def sample():
             for key in REQUIRED
         },
     }
+    record["checks"]["yds_2000_verified"].update(
+        unique_question_count=2000,answer_keys_audited=True)
+    return record
 
 
 class GateTests(unittest.TestCase):
@@ -39,6 +42,16 @@ class GateTests(unittest.TestCase):
         item["versionCode"] = 102
         with self.assertRaises(ValueError):
             evaluate(item)
+
+    def test_yds_bank_150_is_not_release_ready(self):
+        item = sample()
+        item["checks"]["yds_2000_verified"]["unique_question_count"] = 150
+        self.assertTrue(evaluate(item))
+
+    def test_yds_answer_key_audit_required(self):
+        item = sample()
+        item["checks"]["yds_2000_verified"]["answer_keys_audited"] = False
+        self.assertTrue(evaluate(item))
 
     def test_missing_tester_blocks(self):
         item = sample()

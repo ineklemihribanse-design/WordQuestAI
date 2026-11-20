@@ -12,6 +12,7 @@ Bu dosya **tamamlandı raporu değildir**. CI #358 imzalı QA APK'sı hazırdır
 6. İki ayrı test hesabı ve iki cihazla çevrimiçi Arena eşleşmesi, cevap, pas, süre, skor ve bağlantı kopup yeniden bağlanma akışını kontrol et.
 7. Telefon, %140 yazı ve yatay tablet üzerinde **her iç oda** ve sonuç ekranının ekran görüntülerini insan gözüyle incele. Lena animasyonu ve mesaj ekranı ayrıca denetlenmeli.
 8. A1–C2 kelime bankasını seviye, tekrar, çeviri doğruluğu, kaynak lisansı ve hedef adet açısından incele. Eksik seviye hedefleri tamamlanmadan içerik onayı verme.
+9. YDS soru havuzunda 2.000 **benzersiz** ve özgün soru, tek doğru cevap, Türkçe açıklama ve kategori dağılımını doğrula. Banka 150 soruda iken başarı onayı verme; doğrulanan benzersiz soru sayısını release_evidence_175.json içindeki yds_2000_verified.unique_question_count alanına kaydet.
 
 ## Yayın kararı
 

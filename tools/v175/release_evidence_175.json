@@ -37,6 +37,14 @@
       "evidence_url": "",
       "tested_at": "",
       "tester": ""
+    },
+    "yds_2000_verified": {
+      "status": "pending",
+      "unique_question_count": 150,
+      "answer_keys_audited": false,
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
     }
   }
 }
