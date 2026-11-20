@@ -12,33 +12,6 @@ def patch(name, replacements):
     s=p.read_text("utf-8")
     for old,new,label in replacements:
         n=s.count(old)
-        if label=="online quiz subtitle" and n==0:
-            continue
-        if label=="online count buttons" and n==0:
-            # Upstream Arena v153 rearranged the settings panels. Insert this
-            # selector inside the stable room-creation panel instead.
-            room_marker='        if (match == null) {'
-            room_selector='''        if (match == null) {
-            if(selectedMode=="quiz") ArenaPanelBlock {
-                    Text("SORU SAYISI",color=OnlineGold,fontWeight=FontWeight.Bold)
-                    Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) {
-                        listOf(5,10,15,20).forEach { n ->
-                            ArenaChoice("$n soru",quizCount==n,Modifier.weight(1f)) { quizCount=n }
-                        }
-                    }
-                }
-            '''
-            assert s.count(room_marker)==1, "No safe Arena online question selector location"
-            s=s.replace(room_marker,room_selector,1)
-            continue
-        if name=="PremiumOnlineScreen.kt" and n==0:
-            print("ONLINE_SOURCE_DIAGNOSTIC",label,flush=True)
-            print("\n".join(
-                f"{i+1}: {line}" for i,line in enumerate(s.splitlines())
-                if any(key in line for key in ("client.create", "questionsForSeed",
-                    "quiz", "quizCount", "match.size", "questionCount",
-                    "SORU ", "coerceAtMost", "ready", "online"))
-            )[:12000],flush=True)
         assert n==1, f"{name} {label}: expected one match, found {n}"
         s=s.replace(old,new,1)
     p.write_text(s,"utf-8")
@@ -80,42 +53,26 @@ patch("PremiumOnlineRoom.kt",[
 ])
 
 patch("PremiumOnlineScreen.kt",[
-    ('''    var size by rememberSaveable { mutableIntStateOf(30) }''',
-     '''    var size by rememberSaveable { mutableIntStateOf(30) }
-    var quizCount by rememberSaveable { mutableIntStateOf(10) }''',
-     "online quiz count state"),
-    ('''"Aynı 12 soru, beş seçenek"''',
-     '''"5–20 soru, beş seçenek"''',
-     "online quiz subtitle"),
-    ('''            if (selectedMode == "team") ArenaPanelBlock {''',
-     '''            if (selectedMode == "quiz") ArenaPanelBlock {
-                Text("SORU SAYISI", color=OnlineGold, fontWeight=FontWeight.Bold, fontSize=12.sp)
-                Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) {
-                    listOf(5,10,15,20).forEach { n ->
-                        ArenaChoice("$n soru",quizCount==n,Modifier.weight(1f)) { quizCount=n }
-                    }
-                }
-            }
-            if (selectedMode == "team") ArenaPanelBlock {''',
-     "online count buttons"),
-    ('''if (selectedMode == "quiz") 12 else size,''',
-     '''if (selectedMode == "quiz") quizCount else size,''',
-     "create online room with selected size"),
+    # Arena V2 uses ArenaHomeV2(size=size,onSize=...) to drive the existing
+    # Wq174UnifiedMatchSettings picker. Do not create a second quizCount state.
+    ('''if(selectedMode=="quiz")12 else size,''',
+     '''size,''',
+     "V2 online room creation uses selected ArenaHome size"),
     ('''remember(match.code, match.quizSeed, match.level, match.topic)''',
      '''remember(match.code, match.quizSeed, match.level, match.topic, match.size)''',
-     "question cache by size"),
+     "online quiz cache key"),
     ('''packs.questionsForSeed(match.level, match.topic, match.quizSeed)''',
      '''packs.questionsForSeed(match.level, match.topic, match.quizSeed, match.size)''',
-     "shared seeded questions by chosen count"),
+     "both clients use selected question count"),
     ('''if (questions.size != 12)''',
      '''if (questions.size != match.size)''',
-     "room question count check"),
+     "online question count validation"),
     ('''Text("SORU ${index + 1} / 12"''',
      '''Text("SORU ${index + 1} / ${match.size}"''',
-     "live count status"),
+     "live quiz progress label"),
     ('''setQuizIndex((index + 1).coerceAtMost(11))''',
      '''setQuizIndex((index + 1).coerceAtMost(questions.lastIndex))''',
-     "next-question boundary")
+     "selected quiz last question")
 ])
 
 patch("PremiumArenaScreen.kt",[
