@@ -30,6 +30,11 @@ class Wq175MatchingTest {
         assertEquals(8,selected.size)
         assertEquals(8,selected.map{it.id}.distinct().size)
         assertTrue(selected.all{it in list})
+        val ambiguous=listOf(
+            Wq175MatchPair("A1","İsimler","CAR","araba"),
+            Wq175MatchPair("A1","İsimler","AUTO","araba"),
+            Wq175MatchPair("A1","İsimler","BOOK","kitap"))
+        assertEquals(2,Wq175MatchingBank.prepare(ambiguous,8).size)
     }
 
     @Test fun wrongAnswersAreNotArtificiallyMarkedCorrect() {
