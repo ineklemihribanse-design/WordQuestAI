@@ -108,6 +108,9 @@ on:
     branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
 permissions:
   contents: write
+concurrency:
+  group: wq173-native-2d-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref == 'refs/heads/feature/v173-native-2d-original-avatars' }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -1250,8 +1253,8 @@ jobs:
           python3 -m py_compile tools/v173_2d/apply_wordquest_173_2d.py tools/v173_2d/verify_wordquest_173_2d.py
           python3 tools/v173_2d/apply_wordquest_173_2d.py
           python3 tools/v173_2d/verify_wordquest_173_2d.py
-          grep -Fq 'versionCode = 98' source/app/build.gradle.kts
-          grep -Fq 'versionName = "1.0.73-original-2d-mascots"' source/app/build.gradle.kts
+          grep -Fq 'versionCode = 99' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.73-original-2d-complete"' source/app/build.gradle.kts
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DCharacters.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DPicker.kt
       - name: Verify independent app identity
@@ -1331,9 +1334,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==98, item["versionCode"]
-          assert item["versionName"]=="1.0.73-original-2d-mascots"
-          print("Version 1.0.73 code98, identical package and signer to previous 1.0.72.")
+          assert item["versionCode"]==99, item["versionCode"]
+          assert item["versionName"]=="1.0.73-original-2d-complete"
+          print("Version 1.0.73 code99 full-art hotfix: same signer as 1.0.72.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1348,12 +1351,12 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.73 — Original 2D Characters (code 98)
+          WordQuest AI 1.0.73 — Original 2D Characters (code 99, full-art revision)
 
           Native in-place update of v1.0.72; SAME com.kelimebulmacasi.a1.practice.fresh applicationId and SAME signed certificate, preserving all user data and the update system.
           Ten completely original WordQuest 2D mascots: Astra, Piko, Nobi, Tera, Lopi, Tomba, Foksi, Moka, Pera and Gigi. Full animated GLB/Filament avatar systems are no longer required for these characters.
           One compact 'Karakter Seç' button opens a 10-character picker. The chosen character persists across Arena and Kelime Hafızam and multiplayer rooms.
-          Two illustrated poses per character: idle and victory with a light scale animation. One optional local art-pack import enables the original image-generation quality without third-party cloud access. Download the original 20-image WebP pack from the WordQuest project conversation to load it once via the character picker; the pack persists after app updates.
+          Two crisp original AI-generated poses per character: normal and gold-trophy victory with soft scale animation. ALL 20 transparent illustrations are bundled in the APK as two hash-verified 1120x448 WebP sprite atlases. NO extra ZIP or character import is necessary.
           Arena features: professional crossed sword, puzzle, lightning icons; single unified match settings with level/topic dropdowns; circular timer; two large separate PAS GEÇ and CEVABI GÖNDER controls; unchanged multiplayer and word verification.
           Word Memory: compact avatar selector, same selected character in the study header, correct-answer and completion victory displays. Learning records, card schedules, progress, audio and US/UK pronunciation remain untouched.
           Lena 3D, chair, conversations, AI credentials, emoji and attachments remain unchanged.
@@ -1361,8 +1364,18 @@ jobs:
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
           test "$TAG" = v1.0.73
+          # Only the latest source revision may replace the premature code98 asset.
+          BRANCH_SHA="$(gh api "repos/$UPDATE_REPO/git/ref/heads/feature/v173-native-2d-original-avatars" --jq '.object.sha')"
+          if [ "$BRANCH_SHA" != "$GITHUB_SHA" ]; then
+            echo "Superseded build ($GITHUB_SHA); latest is $BRANCH_SHA. Skip release."
+            exit 0
+          fi
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
-            echo "Version tag already exists; checking immutable release assets."
+            echo "Replacing early code98 assets with signed code99 full-art release."
+            gh release upload "$TAG" dist/WordQuestAI.apk dist/update.json \
+              -R "$UPDATE_REPO" --clobber
+            gh release edit "$TAG" -R "$UPDATE_REPO" \
+              --notes-file dist/release-notes.md --title "WordQuest AI v1.0.73 — Full 2D Art"
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
               --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
             exit 0
@@ -1371,4 +1384,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.73 (code98): original 2D characters with matching 1.0.72 upgrade signature."
+          echo "Signed v1.0.73 (code99): all 20 original images included; verified same 1.0.72 signature."
