@@ -19,13 +19,14 @@ test -s "$OLD"
 for APK in "$OLD" "$NEW"; do
     echo "Checking package, signer and integrity for $(basename "$APK")"
     unzip -tq "$APK" >/dev/null
-    "$AAPT" dump badging "$APK" | grep -q "package: name='$PKG'"
+    "$AAPT" dump badging "$APK" > "$RUNNER_TEMP/wq175-$(basename "$APK").badging"
+    grep -Fq "package: name='$PKG'" "$RUNNER_TEMP/wq175-$(basename "$APK").badging"
     java -jar "$SIGNER" verify --print-certs "$APK" > "$RUNNER_TEMP/wq175-apk-cert.txt"
     grep -qi "Signer #1 certificate SHA-256 digest: $EXPECTED_SHA" \
         "$RUNNER_TEMP/wq175-apk-cert.txt"
 done
-"$AAPT" dump badging "$OLD" | grep -q "versionCode='100'"
-"$AAPT" dump badging "$NEW" | grep -q "versionCode='101'"
+grep -Fq "versionCode='100'" "$RUNNER_TEMP/wq175-$(basename "$OLD").badging"
+grep -Fq "versionCode='101'" "$RUNNER_TEMP/wq175-$(basename "$NEW").badging"
 adb wait-for-device
 adb shell input keyevent 82 || true
 echo "Install real published signed v1.0.74 from GitHub releases"
@@ -40,7 +41,8 @@ adb install -r "$NEW"
 new_uid="$(adb shell dumpsys package "$PKG" | sed -n 's/^[[:space:]]*userId=\([0-9][0-9]*\).*/\1/p' | head -1 | tr -d '\r')"
 test -n "$new_uid"
 test "$old_uid" = "$new_uid"
-adb shell dumpsys package "$PKG" | grep -q 'versionCode=101'
+adb shell dumpsys package "$PKG" > "$RUNNER_TEMP/wq175-upgraded-package.txt"
+grep -q 'versionCode=101' "$RUNNER_TEMP/wq175-upgraded-package.txt"
 adb logcat -c || true
 adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
 sleep 12
