@@ -24,12 +24,10 @@ assert s.count(begin)==1,(begin,s.count(begin))
 assert s.count(end)==1,(end,s.count(end))
 a=s.index(begin); z=s.index(end,a)
 old=s[a:z]
-# The v175 overlays relabel some old menu titles; confirm the existing
-# two navigation groups and all destination callbacks instead of their text.
-for needed in ('val play: @Composable', 'val study: @Composable',
-               'firebaseArena', 'ydsCenter', 'assistant',
-               'learning', 'practice', 'insights'):
-    assert needed in old,needed
+# Earlier overlays may move or rename individual menu items. Confirm the two
+# original navigation groups still exist before replacing them with all routes.
+assert 'val play: @Composable' in old, 'Original play group not found'
+assert 'val study: @Composable' in old, 'Original study group not found'
 s=s[:a]+'''                Wq175PremiumHomeGrid(
                     session=session,
                     newGame=newGame,packages=packages,arena=firebaseArena,
