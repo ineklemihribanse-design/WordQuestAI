@@ -222,11 +222,11 @@ def main():
     arena_score_and_victory()
     memory_home()
     memory_practice()
-    s=s.replace('versionCode = 97','versionCode = 98',1)
+    s=s.replace('versionCode = 97','versionCode = 99',1)
     s=s.replace('versionName = "1.0.72-arena-reference-controls"',
-        'versionName = "1.0.73-original-2d-mascots"',1)
+        'versionName = "1.0.73-original-2d-complete"',1)
     gradle.write_text(s,"utf-8")
-    print("WordQuest AI 1.0.73 code 98: original 2D, no additional 3D rig.")
+    print("WordQuest AI 1.0.73 completed art hotfix code99: 20 bundled 2D images.")
     print("Same applicationIdSuffix .fresh and signing credentials as 1.0.72.")
     print("All 20 original 2D images are INCLUDED in the signed APK; no ZIP import needed.")
 
