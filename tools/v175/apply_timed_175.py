@@ -134,6 +134,9 @@ def main():
     setup()
     crossword()
     entry()
+    tests=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
+    tests.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(PKG/"Wq175TimerMathTest.kt",tests/"Wq175TimerMathTest.kt")
     print("PASS: time-boxed crossword mode, profile-local durable selection,")
     print("monotonic deadline, live countdown, enforced timeout, protected saves.")
 
