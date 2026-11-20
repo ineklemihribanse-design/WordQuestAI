@@ -209,7 +209,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                     }
                 }
             }catch(_:Exception){emptyList()}
-            val filtered=items.filter { kind=="Tümü" || it.kind==kind }
+            val filtered=items.filter { mode=="mistakes" || mode=="notebook" || kind=="Tümü" || it.kind==kind }
             val available=Wq175MatchingBank.prepare(filtered,number)
             busy=false
             if(available.size<number) {
@@ -346,7 +346,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                             deck.forEachIndexed { index,pair ->
                                 val chosen=leftChoice==index
                                 val active=index !in matched
-                                Surface(onClick={if(active)leftChoice=index},
+                                Surface(onClick={ if(active)leftChoice=index },
                                     enabled=active,shape=RoundedCornerShape(16.dp),
                                     color=when {
                                         !active -> Color(0xFFD2F4E3)
