@@ -70,7 +70,7 @@ internal fun Wq174MemoryHero(
         val compact=maxWidth<490.dp
         Wq174MemorySparkles(Modifier.matchParentSize())
         Column(Modifier.align(Alignment.TopStart)
-            .fillMaxWidth(if(compact).54f else .58f)
+            .fillMaxWidth(if(compact) 0.54f else 0.58f)
             .padding(start=15.dp,top=18.dp),
             verticalArrangement=Arrangement.spacedBy(11.dp)){
             Text("Kelime\nHafızam",fontSize=if(compact)32.sp else 38.sp,
