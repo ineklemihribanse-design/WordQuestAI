@@ -1250,6 +1250,7 @@ jobs:
           python3 -m py_compile tools/v173/apply_wordquest_173.py tools/v173/verify_wordquest_173.py
           python3 tools/v173/apply_wordquest_173.py
           python3 tools/v173/verify_wordquest_173.py
+          python3 tools/v173/verify_avatar_rigs_173.py --candidate
           grep -Fq 'versionCode = 98' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.73-arena-avatar-candidate"' source/app/build.gradle.kts
           test -s source/app/src/main/assets/avatars/shared/wq173_verified_previews.webp
