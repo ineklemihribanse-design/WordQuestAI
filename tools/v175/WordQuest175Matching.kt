@@ -73,7 +73,7 @@ internal object Wq175MatchingBank {
         return parse(lines,level)
     }
     fun prepare(items:List<Wq175MatchPair>,size:Int):List<Wq175MatchPair> =
-        items.distinctBy { it.id }.shuffled().take(size)
+        items.distinctBy { it.id }.distinctBy { it.turkish.lowercase(Locale.forLanguageTag("tr")).trim() }.shuffled().take(size)
 }
 
 /** Independent, profile-scoped progress; never writes into existing puzzles or FSRS records. */
@@ -375,7 +375,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                                         if(left==index) {
                                             val next=matched+index
                                             matched=next
-                                            store.learned(pair)
+                                            if(mode=="mistakes")store.learned(pair)
                                             feedback="Doğru! ${pair.english} = ${pair.turkish}"
                                             if(next.size==deck.size)finishGame(true)
                                         }else {
