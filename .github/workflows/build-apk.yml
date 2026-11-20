@@ -1395,6 +1395,7 @@ jobs:
           echo "Signed v1.0.72 (code97): Arena controls added atop verified 1.0.71 sources."
 
       - name: Sign and publish latest personal 1.0.73 QA3 APK (all ten model previews)
+        continue-on-error: true
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
@@ -1402,7 +1403,7 @@ jobs:
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
           WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
           WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.WQ_UPDATES_TOKEN || github.token }}
         run: |
           set -euo pipefail
           umask 077
@@ -1469,3 +1470,16 @@ jobs:
             -R "$UPDATE_REPO" --title "WordQuest AI 1.0.73 Personal 3D QA3" \
             --notes-file dist/personal-qa-notes.md --target "$GITHUB_SHA" --prerelease
           echo "Only personal QA APK published; no production updater changes."
+      # GitHub Release creation may be blocked for GITHUB_TOKEN (HTTP 403).
+      # Keep an authenticated short-lived signed artifact available for the owner.
+      - name: Save signed 1.0.73 personal QA3 APK as workflow artifact
+        if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-Personal-QA3-Signed
+          path: dist/WordQuestAI-Personal-QA.apk
+          if-no-files-found: warn
+          retention-days: 3
+          compression-level: 0
+
