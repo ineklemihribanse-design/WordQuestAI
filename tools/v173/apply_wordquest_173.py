@@ -52,7 +52,7 @@ def patch_arena_home():
                     WordQuestAvatarPortrait(choice.id,Modifier.size(64.dp))
                     Text(choice.name,color=ArenaApproved.ink,fontSize=11.sp,
                         fontWeight=FontWeight.Bold)
-                    if(!choice.licensedForBuild) Text("Lisans bekliyor",
+                    if(!WordQuestPrivateAvatarAssets.installed(context,choice.id)) Text("3D yükle",
                         color=ArenaApproved.sub,fontSize=8.sp,maxLines=1)
                 }
             }
