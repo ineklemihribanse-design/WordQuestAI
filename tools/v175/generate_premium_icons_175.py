@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create 17 original anti-aliased high-DPI glossy game icon assets.
+"""Create 19 original anti-aliased high-DPI glossy game icon assets.
 
 No downloaded icons, fonts or emoji. Render at 3x, downsample Lanczos and
 bundle 256px transparent WebP icons with the Android application.
@@ -167,6 +167,32 @@ def icon(name):
         d.arc(box((110,121,154,152)),10,170,fill="#FF98D1",width=5*S)
         line(d,[(127,62),(127,40)],GOLD,7)
         ell(d,(116,26,138,48),GOLD,GOLD_EDGE,3)
+    elif name=="mistakes":
+        # Original revision-puzzle icon: two layered tiles, search lens,
+        # corrective check and lively amber glints.
+        rr(d,(41,70,190,205),27,"#CDB2FB","#6B40B7",6)
+        ell(d,(82,49,131,92),"#CDB2FB","#6B40B7",5)
+        rr(d,(117,88,226,192),23,"#FFD367","#D18C25",6)
+        ell(d,(104,120,148,163),"#FFD367","#D18C25",4)
+        line(d,[(157,140),(173,157),(208,115)],"#2C9569",12)
+        line(d,[(50,191),(63,176)],"#FFF2A5",7)
+        ell(d,(190,45,208,63),"#FFE89D")
+        ell(d,(209,67,223,81),"#FFB44E")
+    elif name=="ai_teacher":
+        # Friendly original violet teaching bot with distinct open-book
+        # companion silhouette, not a duplicate of the chat icon.
+        rr(d,(38,63,220,185),47,"#A786EF","#673AB3",7)
+        rr(d,(55,80,203,153),28,"#253265","#6458B5",5)
+        ell(d,(78,108,100,131),"#55F3DF")
+        ell(d,(156,108,178,131),"#55F3DF")
+        d.arc(box((107,108,148,146)),12,164,fill="#FF9DCC",width=5*S)
+        line(d,[(129,63),(129,38)],GOLD,7)
+        ell(d,(115,24,143,49),GOLD,GOLD_EDGE,4)
+        poly(d,[(55,169),(127,181),(128,236),(54,223)],"#EFFFFF","#7352BB",5)
+        poly(d,[(128,181),(202,169),(202,223),(128,236)],"#FFF0BD","#7352BB",5)
+        line(d,[(128,183),(128,233)],PURPLE,5)
+        ell(d,(40,42,53,55),"#F8DE7C")
+        ell(d,(204,46,219,61),"#F8DE7C")
     elif name=="packages":
         for x,y,c in ((32,73,"#B1C8FF"),(73,59,"#C9A6FF"),(108,46,"#7DDDD0")):
             rr(d,(x,y,x+110,y+154),17,c,PURPLE,5)
@@ -192,7 +218,7 @@ def icon(name):
 
 names=("arena_duel","arena_team","arena_quiz","trophy","listen","sentence",
        "grammar","story","speak","puzzle","yds","cards","plan",
-       "camera","assistant","packages","verbs")
+       "camera","assistant","packages","verbs","mistakes","ai_teacher")
 for name in names:
     path=DEST/(name+".webp")
     icon(name).save(path,format="WEBP",quality=92,method=4)

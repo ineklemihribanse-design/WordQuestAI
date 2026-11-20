@@ -17,9 +17,13 @@ new='''        Wq175PremiumPracticeGrid { kind ->
         }'''
 assert s.count(old)==1,("existing daily game callbacks",s.count(old))
 s=s.replace(old,new,1)
-assert 'MenuItem("Yanlışlarımdan bulmaca"' in s
-assert 'MenuItem("Kişisel AI öğretmenim"' in s
+# Replace only the two extra old-style menu cards. Their original arguments,
+# state updates and navigation lambdas remain byte-for-byte unchanged.
+for label in ("Yanlışlarımdan bulmaca", "Kişisel AI öğretmenim"):
+    needle='MenuItem("'+label+'"'
+    assert s.count(needle)==1, (label,s.count(needle))
+    s=s.replace(needle,'Wq175PremiumPracticeSpecialTile("'+label+'"',1)
 file.write_text(s,"utf-8")
-print("PASS: 5 distinct 2.5D premium game tiles on a 2-column native Android grid")
-print("PASS: small-screen and >135% font use accessible single-column layout")
-print("PASS: real game selection, personal AI teacher and mistakes game remain")
+print("PASS: 7 illustrated Daily Plan game entries, including mistakes and AI tutor.")
+print("PASS: original onClick callbacks preserved; no edits to AI, scoring or profile data.")
+print("PASS: accessible two-column grid with portrait-friendly extra cards.")
