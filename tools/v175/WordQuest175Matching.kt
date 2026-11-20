@@ -74,6 +74,9 @@ internal object Wq175MatchingBank {
     }
     fun prepare(items:List<Wq175MatchPair>,size:Int):List<Wq175MatchPair> =
         items.distinctBy { it.id }.distinctBy { it.turkish.lowercase(Locale.forLanguageTag("tr")).trim() }.shuffled().take(size)
+    /** Personal decks can be smaller than a preset; do not lock them out. */
+    fun requiredPairs(mode:String,requested:Int):Int =
+        if(mode=="mistakes" || mode=="notebook") 2 else requested
 }
 
 /** Independent, profile-scoped progress; never writes into existing puzzles or FSRS records. */
@@ -212,8 +215,11 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
             val filtered=items.filter { mode=="mistakes" || mode=="notebook" || kind=="Tümü" || it.kind==kind }
             val available=Wq175MatchingBank.prepare(filtered,number)
             busy=false
-            if(available.size<number) {
-                issue="Bu seçenekte "+filtered.size+
+            if(available.size<Wq175MatchingBank.requiredPairs(mode,number)) {
+                issue=if(mode=="mistakes" || mode=="notebook")
+                    "Bu koleksiyonda en az 2 farklı eşleştirme çifti gerekiyor. " +
+                    "Koleksiyonuna kelime ekle veya yeni yanlışlarını çalış."
+                else "Bu seçenekte "+filtered.size+
                     " uygun çift var. Farklı seviye, tür veya daha az kart seç."
                 return@launch
             }
