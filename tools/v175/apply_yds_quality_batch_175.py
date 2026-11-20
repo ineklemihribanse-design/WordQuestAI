@@ -14,8 +14,10 @@ p.write_text(s.replace(needle,needle+" + Wq175YdsQualityBatch.questions",1),"utf
 for file in ("YdsCenterTest.kt","Wq175FullYdsTest.kt","Wq175YdsBankQualityTest.kt"):
     p=tests/file
     s=p.read_text("utf-8")
-    assert "150, YdsContent.questions.size" in s,file
-    s=s.replace("150, YdsContent.questions.size","198, YdsContent.questions.size")
+    old_count="150, questions.size" if file=="Wq175YdsBankQualityTest.kt" else "150, YdsContent.questions.size"
+    new_count="198, questions.size" if file=="Wq175YdsBankQualityTest.kt" else "198, YdsContent.questions.size"
+    assert old_count in s,file
+    s=s.replace(old_count,new_count)
     s=s.replace("150, YdsContent.questions.map { it.id }.toSet().size",
                 "198, YdsContent.questions.map { it.id }.toSet().size")
     s=s.replace("Only the existing 150 authored questions are installed; 2000 remains a target",
