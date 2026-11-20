@@ -1333,6 +1333,13 @@ jobs:
           python3 -m py_compile tools/v175/install_vocabulary_175.py tools/v175/verify_vocabulary_175.py
           python3 tools/v175/install_vocabulary_175.py
           python3 tools/v175/verify_vocabulary_175.py
+      - name: Install and test premium YDS exams with original grammar content
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_yds_exam_ui_175.py tools/v175/verify_yds_exam_175.py
+          python3 tools/v175/apply_yds_exam_ui_175.py
+          python3 tools/v175/verify_yds_exam_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
