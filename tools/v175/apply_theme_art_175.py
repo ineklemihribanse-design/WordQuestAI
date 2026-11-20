@@ -86,7 +86,7 @@ patch("WordQuest175NewGameHero.kt",
 
 
 patch("HomeScreen.kt",
-    '''                    HeroTiles(
+    r'''                    HeroTiles(
                         Modifier.align(Alignment.CenterEnd).padding(end = if (wide) 18.dp else 4.dp)
                             .size(if (wide) 188.dp else 108.dp),
                     )
