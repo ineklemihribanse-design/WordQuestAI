@@ -48,6 +48,15 @@ assert asset.is_file() and asset.stat().st_size==4230
 assert hashlib.sha256(asset.read_bytes()).hexdigest()==(
     "18d2f4a2782b4f7235f7c083bd2d41e83b79b5814d22a6d1557265904dcd84fb"
 )
+for pose,expected_size,expected_sha in (
+    ("idle",218222,"00bc228719d1869d81ad16e1adab96991fa3e7a3c4bdcc00f2057b695e061253"),
+    ("victory",239740,"f1701ece95b98fb82261e9c736bd2cc6d93b3246f07cffbc1261ed47f1217741")
+):
+    file=APP/"src/main/assets/avatars/wordquest_2d"/("wordquest_"+pose+"_atlas.webp")
+    assert file.is_file() and file.stat().st_size==expected_size,pose
+    assert hashlib.sha256(file.read_bytes()).hexdigest()==expected_sha,pose
+assert "Bitmap.createBitmap(atlas,(index%5)*224,(index/5)*224,224,224)" in avatar
+assert 'wordquest_"+pose+"_atlas.webp' in avatar
 for name in ("PremiumOnlineScreen.kt","PremiumArenaScreen.kt"):
     text=(SRC/name).read_text("utf-8")
     assert 'avatarProfileKey=session.profileKey' in text,name
