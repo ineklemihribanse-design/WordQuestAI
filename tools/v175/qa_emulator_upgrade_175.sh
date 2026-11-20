@@ -70,7 +70,11 @@ original_font="$(adb shell settings get system font_scale | tr -d '\r')"
 restore_display() {
     adb shell wm size reset >/dev/null 2>&1 || true
     adb shell wm density reset >/dev/null 2>&1 || true
-    adb shell settings put system font_scale "${original_font:-1.0}" >/dev/null 2>&1 || true
+    if [[ -z "$original_font" || "$original_font" == "null" ]]; then
+        adb shell settings delete system font_scale >/dev/null 2>&1 || true
+    else
+        adb shell settings put system font_scale "$original_font" >/dev/null 2>&1 || true
+    fi
     adb shell settings put system accelerometer_rotation 1 >/dev/null 2>&1 || true
     adb shell settings put system user_rotation 0 >/dev/null 2>&1 || true
 }
@@ -108,17 +112,25 @@ for layout in small_phone large_text tablet_landscape; do
         adb logcat -d -t 200 | grep -E 'FATAL EXCEPTION|AndroidRuntime|SIGSEGV|SIGABRT' | tail -35 || true
         exit 1
     fi
-    adb exec-out screencap -p > "$qa_dir/$layout.png"
-    python3 - "$qa_dir/$layout.png" <<'PY'
-from pathlib import Path
-import sys,struct,zlib
-p=Path(sys.argv[1])
-data=p.read_bytes()
-assert len(data)>10000 and data[:8]==b'\x89PNG\r\n\x1a\n', f"Invalid screenshot: {p}"
-width,height=struct.unpack(">II",data[16:24])
-assert width>=300 and height>=300, (width,height)
-print("PASS: captured responsive layout",p.name,width,height,len(data))
-PY
+    # Re-capture after configuration changes if Android briefly returns a
+    # truncated screenshot. A valid 1-KB PNG is not a test failure.
+    image_file="$qa_dir/$layout.png"
+    screenshot_ok=false
+    for attempt in 1 2 3 4 5; do
+        if adb exec-out screencap -p > "$image_file" &&
+           python3 tools/v175/verify_emulator_screenshot_175.py "$image_file"; then
+            screenshot_ok=true
+            break
+        fi
+        echo "::warning::$layout screenshot invalid on attempt $attempt; rechecking"
+        sleep 3
+    done
+    if [[ "$screenshot_ok" != true ]]; then
+        echo "::error::$layout screenshot could not be validated after five attempts."
+        adb logcat -d -t 150 | grep -E 'FATAL EXCEPTION|AndroidRuntime|SIGSEGV|SIGABRT|Screenshot' | tail -25 || true
+        exit 1
+    fi
+
 done
 restore_display
 trap - EXIT
