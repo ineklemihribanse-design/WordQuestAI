@@ -12,5 +12,9 @@ assert 'Wq175ParagraphPracticeEntry(' in hub
 assert 'onMinutes(customValue)' in design
 assert 'Son 7 günde ' in design
 assert 'Kişisel hedef (5–180 dk)' in design
+backup=(src/"PlayerBackup.kt").read_text("utf-8")
+assert 'goal !in 5..180' in backup
+assert '[A-Za-z_]{1,30}' in backup
+assert '[A-Za-z_]{1,30}' in hub
 assert (root/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175DailyGoalsTest.kt").exists()
 print("PASS: user-defined 5–180 min goal, weekly activity and non-destructive backup mapping")
