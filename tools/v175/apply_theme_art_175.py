@@ -89,12 +89,55 @@ patch("HomeScreen.kt",
     '''                    HeroTiles(
                         Modifier.align(Alignment.CenterEnd).padding(end = if (wide) 18.dp else 4.dp)
                             .size(if (wide) 188.dp else 108.dp),
-                    )''',
-    '''                    Wq175ThemeIllustration("ana_sayfa",
-                        Modifier.align(Alignment.CenterEnd)
-                            .height(if(wide) 178.dp else 164.dp)
-                            .width(if(wide) 155.dp else 124.dp))''',
-    "approved illustrated home hero")
+                    )
+                    Column(
+                        Modifier.align(Alignment.CenterStart).fillMaxWidth(if (wide) .67f else .77f)
+                            .padding(horizontal = if (wide) 28.dp else 19.dp, vertical = 20.dp),
+                        verticalArrangement = Arrangement.Center,
+                    ) {
+                        Text(
+                            "WordQuest AI", fontFamily = Serif, color = White,
+                            fontSize = if (wide) 54.sp else 37.sp, lineHeight = if (wide) 55.sp else 39.sp,
+                        )
+                        Text(
+                            "Türkçe ipucunu oku,\nİngilizcesini yaz.", Modifier.padding(top = 11.dp),
+                            color = Color(0xFFE0ECDA), fontFamily = Sans, fontSize = 16.sp, lineHeight = 21.sp,
+                        )
+                    }''',
+    '''                    Row(
+                        Modifier.fillMaxWidth().padding(
+                            horizontal=if(wide)28.dp else 16.dp,
+                            vertical=14.dp),
+                        verticalAlignment=Alignment.CenterVertically,
+                        horizontalArrangement=Arrangement.spacedBy(8.dp)
+                    ) {
+                        Column(Modifier.weight(1f),
+                            verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                            Text(
+                                if(wide) "WordQuest AI" else "WordQuest\\nAI",
+                                fontFamily=Serif,color=White,
+                                fontSize=if(wide)50.sp else
+                                    if(LocalDensity.current.fontScale>1.2f)25.sp else 30.sp,
+                                lineHeight=if(wide)52.sp else
+                                    if(LocalDensity.current.fontScale>1.2f)29.sp else 33.sp,
+                                maxLines=2
+                            )
+                            Text(
+                                "Türkçe ipucunu oku,\\nİngilizcesini yaz.",
+                                color=Color(0xFFE0ECDA),fontFamily=Sans,
+                                fontSize=if(LocalDensity.current.fontScale>1.2f)
+                                    13.sp else 15.sp,
+                                lineHeight=if(LocalDensity.current.fontScale>1.2f)
+                                    18.sp else 20.sp
+                            )
+                        }
+                        Wq175ThemeIllustration("ana_sayfa",
+                            Modifier.width(if(wide)178.dp else
+                                if(LocalDensity.current.fontScale>1.2f)112.dp
+                                else 124.dp)
+                                .height(if(wide)178.dp else 164.dp))
+                    }''',
+    "responsive home hero keeps text and original illustration in separate columns")
 
 patch("WordQuest175Arena.kt",
     '''import androidx.compose.ui.draw.clip''',
