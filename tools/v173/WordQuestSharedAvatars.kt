@@ -123,20 +123,32 @@ internal fun rememberWordQuestAvatar(profile:String):MutableState<String> {
 internal fun WordQuestAvatarPortrait(id:String,modifier:Modifier=Modifier) {
     val context=LocalContext.current
     val spec=WordQuestAvatarStore.model(id)
-    val preview:Bitmap?=remember(context) {
-        runCatching{
-            context.assets.open("avatars/shared/wq173_verified_previews.webp").use{
+    val privateAtlas=WordQuestPrivateAvatarAssets.previewFile(context)
+    // Refresh when the user imports a new ZIP without forcing navigation.
+    val preview:Bitmap?=remember(context,privateAtlas?.lastModified()) {
+        if(privateAtlas!=null) runCatching{
+            BitmapFactory.decodeFile(privateAtlas.absolutePath)
+        }.getOrNull() else runCatching{
+            context.assets.open("avatars/shared/wq173_verified_previews.webp").use {
                 BitmapFactory.decodeStream(it)
             }
         }.getOrNull()
     }
     val tile=remember(preview,spec.id) {
-        if(preview==null || spec.previewIndex==null ||
-            preview.width<128 || preview.height<128) null
-        else runCatching{
+        if(preview==null) null
+        else if(privateAtlas!=null && preview.width>=400 && preview.height>=160) {
+            // Two rows of five, exactly the user's ten model sources.
+            val index=WordQuestAvatarStore.all.indexOfFirst{it.id==spec.id}
+            if(index<0) null else runCatching{
+                Bitmap.createBitmap(preview,(index%5)*80,(index/5)*80,80,80)
+            }.getOrNull()
+        } else if(spec.previewIndex!=null &&
+            preview.width>=128 && preview.height>=128) {
             val n=spec.previewIndex
-            Bitmap.createBitmap(preview,(n%2)*64,(n/2)*64,64,64)
-        }.getOrNull()
+            runCatching{
+                Bitmap.createBitmap(preview,(n%2)*64,(n/2)*64,64,64)
+            }.getOrNull()
+        } else null
     }
     if(tile!=null) {
         Image(tile.asImageBitmap(),contentDescription=spec.name+" model önizlemesi",
