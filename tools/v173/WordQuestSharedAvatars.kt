@@ -1,6 +1,11 @@
 package com.kelimebulmacasi.a1
 
 import android.content.Context
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.*
@@ -71,12 +76,12 @@ internal object WordQuestAvatarStore {
         val pref=context.getSharedPreferences("wq_shared_avatar_173",Context.MODE_PRIVATE)
         val current=pref.getString("avatar_$profile",null)
         return if(current!=null && valid(current) &&
-            model(current).licensedForBuild)current else "piko"
+            WordQuestPrivateAvatarAssets.installed(context,current))current else "piko"
     }
     fun save(context:Context,profile:String,id:String) {
         val choice=model(id)
-        require(choice.id==id && choice.licensedForBuild) {
-            "Avatar license or source preview is not verified for publication."
+        require(choice.id==id && WordQuestPrivateAvatarAssets.installed(context,id)) {
+            "First import your purchased avatar ZIP on this device."
         }
         context.getSharedPreferences("wq_shared_avatar_173",Context.MODE_PRIVATE)
             .edit().putString("avatar_$profile",id).apply()
@@ -153,6 +158,32 @@ internal fun WordQuestSharedAvatarPicker(
     selected:String,onSelect:(String)->Unit,onDismiss:()->Unit
 ) {
     val uriHandler=LocalUriHandler.current
+    val context=LocalContext.current
+    val scope=rememberCoroutineScope()
+    var imports by remember{mutableIntStateOf(WordQuestPrivateAvatarAssets.count(context))}
+    var importing by remember{mutableStateOf(false)}
+    var feedback by remember{mutableStateOf("")}
+    val picker=rememberLauncherForActivityResult(
+        contract=ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if(uri!=null && !importing) {
+            importing=true
+            feedback=""
+            scope.launch {
+                runCatching {
+                    withContext(Dispatchers.IO) {
+                        WordQuestPrivateAvatarAssets.importZip(context,uri)
+                    }
+                }.onSuccess { result ->
+                    imports=result.total
+                    feedback=result.newCount.toString() + " model yüklendi. Toplam: " + imports + "/10"
+                }.onFailure { e ->
+                    feedback="Model içe aktarılamadı: " + (e.message?:"Dosya okunamadı")
+                }
+                importing=false
+            }
+        }
+    }
     AlertDialog(
         onDismissRequest=onDismiss,
         title={Text("Avatarını Seç",color=Color(0xFF302056),fontWeight=FontWeight.Bold)},
@@ -162,9 +193,20 @@ internal fun WordQuestSharedAvatarPicker(
                 verticalArrangement=Arrangement.spacedBy(8.dp)) {
                 Text("Seçimin Arena ve Kelime Hafızam'da aynı olacaktır.",
                     fontSize=12.sp,color=Color(0xFF746889))
+                Text("Telefonundaki gerçek modeller: " + imports + "/10",
+                    fontWeight=FontWeight.Bold,color=Color(0xFF60448F),fontSize=12.sp)
+                OutlinedButton(
+                    onClick={picker.launch(arrayOf("application/zip","application/octet-stream"))},
+                    enabled=!importing,modifier=Modifier.fillMaxWidth()
+                ) {
+                    Text(if(importing)"Paket denetleniyor..." else
+                        "3D Avatar Paketini Telefonumdan Ekle")
+                }
+                if(feedback.isNotBlank()) Text(feedback,
+                    color=Color(0xFF76587E),fontSize=11.sp)
                 WordQuestAvatarStore.all.forEach { avatar ->
                     val picked=avatar.id==selected
-                    val active=avatar.licensedForBuild
+                    val active=WordQuestPrivateAvatarAssets.installed(context,avatar.id)
                     Row(Modifier.fillMaxWidth()
                         .clip(RoundedCornerShape(16.dp))
                         .background(if(picked)Color(0xFFE6F8DE) else Color(0xFFF7F2FC))
@@ -180,14 +222,18 @@ internal fun WordQuestSharedAvatarPicker(
                         Column(Modifier.weight(1f)) {
                             Text(avatar.name,fontSize=15.sp,
                                 fontWeight=FontWeight.Bold,color=Color(0xFF302056))
-                            Text(if(active)"Gerçek model önizlemesi · Animasyon hazırlanıyor"
-                                else "Lisans doğrulaması bekleniyor",
+                            Text(if(active)"3D model yüklü · Özel kullanım"
+                                else "3D paketi bu telefona henüz yüklenmedi",
                                 fontSize=10.sp,color=Color(0xFF786D87),
                                 maxLines=2)
                         }
                         if(picked) Text("✓",color=Color(0xFF299447),
                             fontWeight=FontWeight.Bold)
                     }
+                }
+                if(WordQuestPrivateAvatarAssets.installed(context,selected)) {
+                    WordQuestAvatarStage3D(selected,
+                        Modifier.fillMaxWidth().height(155.dp),motion="select")
                 }
                 WordQuestAvatarStore.attribution[selected]?.let { (author,url) ->
                     Text("Model: $author · CC BY 4.0 · Önizleme uyarlanmıştır.",
