@@ -23,6 +23,11 @@ for name in (
 assert importer.index("fun stage(found:List<WordPair>") < importer.index("Seçilen Kelimeleri Kaydet")
 assert "if(!ai.hasKey)" in importer
 assert "if(excluded[index]==true)continue" in importer
+assert "wq175ImportPreviewPage(pairs,page).forEach" in importer
+assert "pairs.forEachIndexed" not in importer
+assert "previewPage=0" in importer
+assert 'TEST' not in importer
+assert (root/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175ImportPagingTest.kt").exists()
 assert (src/"DocumentScan.kt").is_file()
 assert (src/"ScanPhotoProvider.kt").is_file()
 assert (src/"WordPairs.kt").is_file()

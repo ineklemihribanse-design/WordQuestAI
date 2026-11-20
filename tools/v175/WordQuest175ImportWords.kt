@@ -22,6 +22,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 
+/** A bounded, index-preserving preview keeps imported lists responsive on small phones. */
+internal fun <T> wq175ImportPreviewPage(
+    items: List<T>, page: Int, pageSize: Int = 8
+): List<IndexedValue<T>> {
+    require(pageSize in 1..30)
+    val offset = page.coerceAtLeast(0).toLong() * pageSize
+    if (offset >= items.size) return emptyList()
+    return items.withIndex().drop(offset.toInt()).take(pageSize)
+}
+
 @Composable
 internal fun Wq175WordAddBar(onManual:()->Unit,onImport:()->Unit) {
     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
@@ -54,12 +64,14 @@ internal fun Wq175ImportWordsDialog(
     var topic by remember{mutableStateOf("Günlük yaşam")}
     var level by remember{mutableStateOf("A1")}
     var pairs by remember{mutableStateOf<List<WordPair>>(emptyList())}
+    var previewPage by remember{mutableIntStateOf(0)}
     val excluded=remember{mutableStateMapOf<Int,Boolean>()}
     var pendingCamera by remember{mutableStateOf<File?>(null)}
 
     fun stage(found:List<WordPair>,label:String) {
         val valid=found.filter { it.valid }.distinctBy { englishLetters(it.answer) }.take(150)
         pairs=valid
+        previewPage=0
         excluded.clear()
         status=if(valid.isEmpty()) "Geçerli İngilizce–Türkçe çiftleri bulunamadı."
             else label+": "+valid.size+" kelime. Kaydetmeden önce gözden geçir."
@@ -192,9 +204,33 @@ internal fun Wq175ImportWordsDialog(
                 if(status.isNotBlank()) Text(status,fontSize=12.sp,
                     color=Color(0xFF4D6A86))
                 if(pairs.isNotEmpty()) {
-                    Text("Önizleme · "+pairs.size+" kayıt",
+                    val lastPage=(pairs.size-1).coerceAtLeast(0)/8
+                    val page=previewPage.coerceIn(0,lastPage)
+                    Text("Önizleme · "+pairs.size+" kayıt · Sayfa "+
+                        (page+1)+"/"+(lastPage+1),
                         fontWeight=FontWeight.ExtraBold,color=Color(0xFF263D65))
-                    pairs.forEachIndexed{index,pair->
+                    if(lastPage>0) {
+                        Row(Modifier.fillMaxWidth(),
+                            verticalAlignment=Alignment.CenterVertically,
+                            horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+                            OutlinedButton(
+                                onClick={previewPage=(page-1).coerceAtLeast(0)},
+                                enabled=page>0,
+                                contentPadding=PaddingValues(horizontal=12.dp)) {
+                                Text("‹ Önceki",fontSize=12.sp)
+                            }
+                            Text((page+1).toString()+"/"+(lastPage+1),
+                                modifier=Modifier.weight(1f),
+                                color=Color(0xFF5A6379),fontSize=12.sp)
+                            OutlinedButton(
+                                onClick={previewPage=(page+1).coerceAtMost(lastPage)},
+                                enabled=page<lastPage,
+                                contentPadding=PaddingValues(horizontal=12.dp)) {
+                                Text("Sonraki ›",fontSize=12.sp)
+                            }
+                        }
+                    }
+                    wq175ImportPreviewPage(pairs,page).forEach{(index,pair)->
                         Column(Modifier.fillMaxWidth()
                             .background(Color(0xFFF7F4FF),RoundedCornerShape(14.dp))
                             .padding(8.dp),
@@ -210,13 +246,13 @@ internal fun Wq175ImportWordsDialog(
                                     it[index]=pair.copy(answer=value.take(75))
                                 }},
                                 label={Text("English")},singleLine=true,
-                                modifier=Modifier.fillMaxWidth())
+                                modifier=Modifier.fillMaxWidth(),enabled=!busy)
                             OutlinedTextField(pair.clue,
                                 {value->pairs=pairs.toMutableList().also {
                                     it[index]=pair.copy(clue=value.take(140))
                                 }},
                                 label={Text("Türkçe")},singleLine=true,
-                                modifier=Modifier.fillMaxWidth())
+                                modifier=Modifier.fillMaxWidth(),enabled=!busy)
                         }
                     }
                     Button(onClick={
@@ -229,6 +265,7 @@ internal fun Wq175ImportWordsDialog(
                             else skipped++
                         }
                         pairs=emptyList()
+                        previewPage=0
                         excluded.clear()
                         status="Deftere "+saved+" kelime eklendi. "+skipped+
                             " geçersiz veya tekrarlanan kayıt atlandı."
