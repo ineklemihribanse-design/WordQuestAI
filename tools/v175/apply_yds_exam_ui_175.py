@@ -13,8 +13,11 @@ def once(s,a,b,label):
     return s.replace(a,b,1)
 
 def span(s,start,end,replacement,label):
-    assert s.count(start)==1,(label,"start",s.count(start))
-    a=s.index(start)
+    if start == '        BodyText("':
+        a=s.index(start,s.index('    ScreenPage("YDS ve İleri İngilizce"'))
+    else:
+        assert s.count(start)==1,(label,"start",s.count(start))
+        a=s.index(start)
     b=s.find(end,a+len(start))
     assert b!=-1,(label,"end")
     return s[:a]+replacement+s[b:]
