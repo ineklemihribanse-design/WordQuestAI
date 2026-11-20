@@ -5,9 +5,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,6 +29,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.input.KeyboardType
 
 internal data class Wq175RoomTint(val pale:Color,val accent:Color,val ink:Color)
 
@@ -107,9 +115,11 @@ internal fun Wq175PracticeIcon(kind:PracticeKind,modifier:Modifier=Modifier){
 @Composable
 internal fun Wq175DailyPlanBanner(
     minutes:Int,done:Int,activeMinutes:Int,remaining:Long,due:Int,
-    fraction:Float,onMinutes:(Int)->Unit
+    fraction:Float,activeDays:Int,onMinutes:(Int)->Unit
 ){
     val shape=RoundedCornerShape(24.dp)
+    var customGoal by rememberSaveable { mutableStateOf("") }
+    val customValue = customGoal.toIntOrNull()
     Column(Modifier.fillMaxWidth().shadow(5.dp,shape)
         .clip(shape).background(Brush.linearGradient(listOf(
             Color(0xFFF1F9E7),Color(0xFFFFF4E9),Color(0xFFF5F0FF))))
@@ -117,13 +127,32 @@ internal fun Wq175DailyPlanBanner(
         .padding(15.dp),verticalArrangement=Arrangement.spacedBy(10.dp)){
         Text("Günlük çalışma hedefim",fontSize=22.sp,
             fontWeight=FontWeight.ExtraBold,color=Color(0xFF205242))
-        Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
+        Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+            horizontalArrangement=Arrangement.spacedBy(8.dp)){
             listOf(15,30,60).forEach{m->
                 FilterChip(selected=minutes==m,onClick={onMinutes(m)},
                     label={Text(m.toString()+" dk",fontWeight=FontWeight.Bold)})
             }
+            if(minutes !in listOf(15,30,60)){
+                FilterChip(selected=true,onClick={customGoal=minutes.toString()},
+                    label={Text(minutes.toString()+" dk kişisel",fontWeight=FontWeight.Bold)})
+            }
         }
-        Text(done.toString()+" etkinlik · "+activeMinutes+" dk aktif çalışma",
+        Row(Modifier.fillMaxWidth(),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(8.dp)){
+            OutlinedTextField(value=customGoal,
+                onValueChange={customGoal=it.filter(Char::isDigit).take(3)},
+                label={Text("Kişisel hedef (5–180 dk)")},
+                singleLine=true,modifier=Modifier.weight(1f),
+                keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Number))
+            Button(onClick={customValue?.let(onMinutes)},
+                enabled=customValue!=null && customValue in 5..180) {
+                Text("Uygula")
+            }
+        }
+        Text("Son 7 günde "+activeDays+"/7 aktif gün · "+
+             done.toString()+" etkinlik · "+activeMinutes+" dk çalışma",
             color=Color(0xFF376457),fontSize=12.sp)
         LinearProgressIndicator(progress={fraction.coerceIn(0f,1f)},
             modifier=Modifier.fillMaxWidth().height(8.dp)
