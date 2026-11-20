@@ -58,6 +58,69 @@ assert p.stat().st_size>10000, "Emulator screenshot not captured"
 assert p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
 print("PASS: emulator produced a valid startup screenshot",p.stat().st_size,"bytes")
 PY
+# Exercise screen-size, font-scale and rotation compatibility without modifying app data.
+# Capture screenshots for human review; a screenshot is not a visual-design pass.
+qa_dir="$RUNNER_TEMP/wq175-responsive-qa"
+mkdir -p "$qa_dir"
+original_size="$(adb shell wm size | sed -n 's/^Physical size: //p' | tr -d '\r')"
+original_density="$(adb shell wm density | sed -n 's/^Physical density: //p' | tr -d '\r')"
+original_font="$(adb shell settings get system font_scale | tr -d '\r')"
+restore_display() {
+    adb shell wm size reset >/dev/null 2>&1 || true
+    adb shell wm density reset >/dev/null 2>&1 || true
+    adb shell settings put system font_scale "${original_font:-1.0}" >/dev/null 2>&1 || true
+    adb shell settings put system accelerometer_rotation 1 >/dev/null 2>&1 || true
+    adb shell settings put system user_rotation 0 >/dev/null 2>&1 || true
+}
+trap restore_display EXIT
+echo "Original emulator display: $original_size, density: $original_density, font: $original_font"
+for layout in small_phone large_text tablet_landscape; do
+    case "$layout" in
+        small_phone)
+            adb shell wm size 360x640
+            adb shell wm density 320
+            adb shell settings put system font_scale 1.0
+            adb shell settings put system accelerometer_rotation 0
+            adb shell settings put system user_rotation 0
+            ;;
+        large_text)
+            adb shell wm size 360x640
+            adb shell wm density 320
+            adb shell settings put system font_scale 1.4
+            adb shell settings put system accelerometer_rotation 0
+            adb shell settings put system user_rotation 0
+            ;;
+        tablet_landscape)
+            adb shell wm size 1280x800
+            adb shell wm density 240
+            adb shell settings put system font_scale 1.0
+            adb shell settings put system accelerometer_rotation 0
+            adb shell settings put system user_rotation 1
+            ;;
+    esac
+    adb shell am force-stop "$PKG"
+    adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
+    sleep 8
+    if ! adb shell pidof -s "$PKG" >/dev/null; then
+        echo "::error::App stopped during $layout responsive QA"
+        adb logcat -d -t 200 | grep -E 'FATAL EXCEPTION|AndroidRuntime|SIGSEGV|SIGABRT' | tail -35 || true
+        exit 1
+    fi
+    adb exec-out screencap -p > "$qa_dir/$layout.png"
+    python3 - "$qa_dir/$layout.png" <<'PY'
+from pathlib import Path
+import sys,struct,zlib
+p=Path(sys.argv[1])
+data=p.read_bytes()
+assert len(data)>10000 and data[:8]==b'\x89PNG\r\n\x1a\n', f"Invalid screenshot: {p}"
+width,height=struct.unpack(">II",data[16:24])
+assert width>=300 and height>=300, (width,height)
+print("PASS: captured responsive layout",p.name,width,height,len(data))
+PY
+done
+restore_display
+trap - EXIT
+echo "PASS: three emulator viewport/font smoke tests; manual visual review still required."
 echo "PASS: old v1.0.74 -> v1.0.75 in-place upgrade on a clean Android emulator."
 echo "PASS: original Android UID unchanged, signatures match and app process stays alive."
 echo "LIMITATION: emulator package checks do not replace real user-data, camera, tablet and online multiplayer QA."
