@@ -18,6 +18,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import io.github.sceneview.Scene
 import io.github.sceneview.math.Position
+import io.github.sceneview.math.Rotation
 import io.github.sceneview.node.ModelNode
 import io.github.sceneview.rememberCameraManipulator
 import io.github.sceneview.rememberCameraNode
@@ -60,7 +61,14 @@ internal fun WordQuestAvatarStage3D(
                     autoAnimate=false,
                     scaleToUnits=1.8f,
                     centerOrigin=Position(0f,0f,0f),
-                )
+                ).apply {
+                    // Original purchased animal-pack meshes are exported Y-inverted;
+                    // upright the source model at its parent node, without editing skin weights.
+                    if(avatarId=="foksi" || avatarId=="moka" ||
+                        avatarId=="pera" || avatarId=="gigi") {
+                        rotation=Rotation(0f,0f,180f)
+                    }
+                }
             }.onFailure{Log.e("WQ173Avatar3D","GLB load failed for " + avatarId,it)}
                 .getOrNull()
         }
