@@ -14,6 +14,22 @@ def patch(name, replacements):
         n=s.count(old)
         if label=="online quiz subtitle" and n==0:
             continue
+        if label=="online count buttons" and n==0:
+            # Upstream Arena v153 rearranged the settings panels. Insert this
+            # selector inside the stable room-creation panel instead.
+            room_marker='                if (!client.ready) {'
+            room_selector='''                if(selectedMode=="quiz") {
+                    Text("SORU SAYISI",color=OnlineGold,fontWeight=FontWeight.Bold)
+                    Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) {
+                        listOf(5,10,15,20).forEach { n ->
+                            ArenaChoice("$n soru",quizCount==n,Modifier.weight(1f)) { quizCount=n }
+                        }
+                    }
+                }
+                if (!client.ready) {'''
+            assert s.count(room_marker)==1, "No safe Arena online question selector location"
+            s=s.replace(room_marker,room_selector,1)
+            continue
         assert n==1, f"{name} {label}: expected one match, found {n}"
         s=s.replace(old,new,1)
     p.write_text(s,"utf-8")
