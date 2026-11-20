@@ -167,6 +167,30 @@ def patch_memory():
                     Modifier.size(72.dp))
                 Text("Çalışma tamamlandı", color = Color(0xFF167DCC),''',
         "study-complete preview")
+    # Show a supportive reaction from the SAME avatar after a successful
+    # written-answer or word-type review, without modifying spaced repetition.
+    reaction_anchor='        if (studyMode == "card") {\n            if (!flipped && !reviewed) {'
+    assert s.count(reaction_anchor)==1, "Practice review insertion changed"
+    reaction='''        if (reviewed && reviews[position] == true && studyMode != "card") {
+            Row(Modifier.fillMaxWidth()
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color(0xFFE9F9EF))
+                .padding(horizontal = 11.dp, vertical = 7.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(9.dp)) {
+                WordQuestAvatarPortrait(
+                    WordQuestAvatarStore.read(LocalContext.current,session.profileKey),
+                    Modifier.size(49.dp))
+                Column {
+                    Text("Harika, doğru cevap!",
+                        color = Color(0xFF197347),fontWeight = FontWeight.Bold)
+                    Text("Yeni kelimeye geçebilirsin.",
+                        color = Color(0xFF526E60),fontSize = 12.sp)
+                }
+            }
+        }
+'''
+    s=s.replace(reaction_anchor,reaction+reaction_anchor,1)
     p.write_text(s,"utf-8")
 
 def install_previews():
