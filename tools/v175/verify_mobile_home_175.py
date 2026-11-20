@@ -23,7 +23,7 @@ for module in ("arena","yds_akademi","kelime_hafizam","bulmacalarim","gunluk_pla
 assert "fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp" in h
 assert 'MenuItem("Hazır Paketler"' not in h[h.index('fun HomeScreen('):h.index('private fun HeroTiles')]
 assert m.count("Wq175HomeTile(")>=12
-for word in ("packages=packages","arena=firebaseArena","ydsCenter=ydsCenter",
+for word in ("packages=packages","arena=firebaseArena","ydsCenter={ wq175AcademyOpen = true }",
              "learning=learning","custom=custom","practice=practice",
              "assistant=assistant","verbs=verbs","progress=progress","insights=insights"):
     assert word in h,word
