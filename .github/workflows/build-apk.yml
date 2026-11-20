@@ -108,6 +108,9 @@ on:
     branches: [main, fix/139-conversation-diagnostics-and-provider-errors]
 permissions:
   contents: write
+concurrency:
+  group: wordquest-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -1434,6 +1437,13 @@ jobs:
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/personal-qa-signature.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/personal-qa-signature.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/personal-qa-signature.txt
+          # Ignore superseded branch revisions; only latest verified source can
+          # publish the personal QA2 artifact, even if older jobs finish later.
+          HEAD_SHA="$(gh api "repos/$UPDATE_REPO/git/ref/heads/feature/v173-unified-arena-avatar-word-memory" --jq '.object.sha')"
+          if [ "$GITHUB_SHA" != "$HEAD_SHA" ]; then
+            echo "Superseded by $HEAD_SHA — skip old QA2 release."
+            exit 0
+          fi
           TAG="v1.0.73-personal-qa2"
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
