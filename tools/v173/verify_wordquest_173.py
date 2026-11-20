@@ -26,6 +26,18 @@ assert 'ArenaApprovedPanel("Konu / Paket"' not in home
 assert 'ArenaApprovedPanel("Oyun Biçimi"' not in home
 assert "Seviye Seçiniz" in arena and "Konu Seçiniz" in arena
 assert "PremiumArenaRules.allowedLevels" in arena
+installer=(PKG/"WordQuestPrivateAvatarAssets.kt").read_text("utf-8")
+scene=(PKG/"WordQuestAvatarStage3D.kt").read_text("utf-8")
+assert "ZipInputStream" in installer and "MessageDigest.getInstance(\"SHA-256\")" in installer
+assert installer.count('Model("')==10
+assert "createModelInstance(modelFile)" in scene and "model.playAnimation(" in scene
+assert "WordQuestPrivateAvatarAssets.installed(context,avatar.id)" in shared
+assert "3D Avatar Paketini Telefonumdan Ekle" in shared
+assert "ActivityResultContracts.OpenDocument()" in shared
+assert "WordQuestAvatarStage3D(mascot" in home
+assert "WordQuestAvatarStage3D(selectedAvatar" in memory
+assert "WordQuestAvatarStage3D(winnerAvatar" in visuals
+assert "WordQuestAvatarStage3D(" in practice
 assert "if(topics.isNotEmpty() && topic !in topics)" in arena
 assert 'mode=="duel" || (solo && mode!="quiz")' not in arena
 assert 'enabled=topics.isNotEmpty()' in arena
