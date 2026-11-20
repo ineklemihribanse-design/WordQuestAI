@@ -28,6 +28,7 @@ assert "pairs.forEachIndexed" not in importer
 assert "previewPage=0" in importer
 assert 'TEST' not in importer
 assert (root/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175ImportPagingTest.kt").exists()
+assert (root/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175MediaSafetyTest.kt").exists()
 assert (src/"DocumentScan.kt").is_file()
 assert (src/"ScanPhotoProvider.kt").is_file()
 assert (src/"WordPairs.kt").is_file()
