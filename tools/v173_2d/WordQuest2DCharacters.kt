@@ -60,9 +60,30 @@ internal object Wq2DMascots {
         File(context.filesDir,"wordquest_2d_v173").apply{mkdirs()}
     private fun file(context:Context,id:String,pose:String):File =
         File(directory(context),id+"_"+pose+".webp")
-    fun available(context:Context):Boolean=ids.all { id ->
-        file(context,id,"idle").isFile && file(context,id,"victory").isFile
+    // Two complete original-art WebP atlases are part of the signed APK.
+    // The original 20-image ZIP is optional (for local customization only).
+    private val atlasCache=mutableMapOf<String,Bitmap>()
+    private fun bundledAtlas(context:Context,pose:String):Bitmap? {
+        synchronized(atlasCache) {
+            atlasCache[pose]?.let{return it}
+            val bitmap=runCatching {
+                context.assets.open("avatars/wordquest_2d/wordquest_"+pose+"_atlas.webp").use {
+                    BitmapFactory.decodeStream(it)
+                }
+            }.getOrNull()
+            if(bitmap!=null && bitmap.width>=1120 && bitmap.height>=448) {
+                atlasCache[pose]=bitmap
+                return bitmap
+            }
+            return null
+        }
     }
+    fun available(context:Context):Boolean=
+        bundledAtlas(context,"idle")!=null &&
+        bundledAtlas(context,"victory")!=null ||
+        ids.all{id->file(context,id,"idle").isFile &&
+            file(context,id,"victory").isFile}
+
     fun picture(context:Context,id:String,victory:Boolean):Bitmap? {
         val safe=if(valid(id))id else "piko"
         val pose=if(victory)"victory" else "idle"
@@ -71,10 +92,11 @@ internal object Wq2DMascots {
             BitmapFactory.decodeFile(local.absolutePath)
         }.getOrNull() else null
         if(imported!=null)return imported
+        val atlas=bundledAtlas(context,pose)?:return null
+        val index=ids.indexOf(safe)
+        if(index<0)return null
         return runCatching {
-            context.assets.open("avatars/wordquest_2d/"+safe+"_"+pose+".webp").use {
-                BitmapFactory.decodeStream(it)
-            }
+            Bitmap.createBitmap(atlas,(index%5)*224,(index/5)*224,224,224)
         }.getOrNull()
     }
     /** Validate and privately install twenty 2D art files. No external CDN. */
