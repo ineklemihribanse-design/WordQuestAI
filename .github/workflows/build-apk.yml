@@ -1319,6 +1319,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_crossword_visuals_175.py tools/v175/verify_crossword_175.py
           python3 tools/v175/apply_crossword_visuals_175.py
           python3 tools/v175/verify_crossword_175.py
+      - name: Upgrade My Puzzles with true profile counts and completion filters
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_mypuzzles_175.py tools/v175/verify_mypuzzles_175.py
+          python3 tools/v175/apply_mypuzzles_175.py
+          python3 tools/v175/verify_mypuzzles_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
