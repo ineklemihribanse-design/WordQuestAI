@@ -1,7 +1,6 @@
 package com.kelimebulmacasi.a1
 
-import androidx.test.core.app.ApplicationProvider
-import android.content.Context
+import org.robolectric.RuntimeEnvironment
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -11,7 +10,7 @@ import java.util.UUID
 @RunWith(RobolectricTestRunner::class)
 class Wq175DailyGoalsTest {
     @Test fun customGoalPersistsPerProfileAndBackupRoundTrips() {
-        val ctx = ApplicationProvider.getApplicationContext<Context>()
+        val ctx = RuntimeEnvironment.getApplication()
         val id = UUID.randomUUID().toString()
         val first = DailyPlanStore(ctx, id + "A")
         val other = DailyPlanStore(ctx, id + "B")
