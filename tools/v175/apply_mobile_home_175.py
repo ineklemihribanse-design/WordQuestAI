@@ -18,6 +18,15 @@ def replace_once(s,old,new,label):
 
 home=src/"HomeScreen.kt"
 s=home.read_text("utf-8")
+s=replace_once(s,
+    'Text("Kelime Bulmacası", color = Forest',
+    'Text("WordQuest AI", color = Color(0xFF203A49)',
+    "correct product branding in mobile header")
+s=replace_once(s,
+    '                PrimaryAction("Yeni Oyun", newGame)',
+    '                Wq175HomeStartButton(newGame)',
+    "midnight-blue home CTA")
+
 begin='                val score = session.totalPoints.toString() + " puan · " + session.finishedCount + " tamamlanan bulmaca"'
 end='\n            }\n        }\n    }\n}\n\n@Composable\nprivate fun HeroTiles'
 assert s.count(begin)==1,(begin,s.count(begin))

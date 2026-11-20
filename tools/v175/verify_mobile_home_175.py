@@ -8,6 +8,9 @@ a=(src/"WordQuest175Arena.kt").read_text("utf-8")
 assert h.count("Wq175PremiumHomeGrid(")==1
 assert "Wq2DMascots.selected(LocalContext.current,session.profileKey)" in h
 assert "Color(0xFF203A49)" in h
+assert 'Text("WordQuest AI", color = Color(0xFF203A49)' in h
+assert 'Wq175HomeStartButton(newGame)' in h
+assert 'containerColor=Color(0xFF315574)' in m
 assert "CompositingStrategy.Offscreen" in h
 assert "drawRect(brush=Brush.horizontalGradient(" in h
 assert "Wq175ThemeIcon(tile.artSlug" in m

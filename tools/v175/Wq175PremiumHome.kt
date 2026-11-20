@@ -4,6 +4,8 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -63,6 +65,20 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
                 lineHeight=if(small)12.sp else 14.sp,
                 maxLines=2,overflow=TextOverflow.Ellipsis)
         }
+    }
+}
+
+/** Primary CTA styled for the midnight-slate premium home rather than old green. */
+@Composable
+internal fun Wq175HomeStartButton(onClick:()->Unit) {
+    Button(
+        onClick=onClick,
+        modifier=Modifier.fillMaxWidth().heightIn(min=52.dp),
+        shape=RoundedCornerShape(18.dp),
+        colors=ButtonDefaults.buttonColors(
+            containerColor=Color(0xFF315574),contentColor=Color.White)
+    ) {
+        Text("Yeni Oyun",fontSize=16.sp,fontWeight=FontWeight.ExtraBold)
     }
 }
 
