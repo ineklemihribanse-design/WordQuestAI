@@ -1347,6 +1347,14 @@ jobs:
           python3 -m py_compile tools/v175/apply_paragraph_and_yds_175.py tools/v175/verify_paragraph_and_yds_175.py
           python3 tools/v175/apply_paragraph_and_yds_175.py
           python3 tools/v175/verify_paragraph_and_yds_175.py
+      - name: Complete daily plan custom goals and weekly activity
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_daily_goals_175.py tools/v175/install_daily_tests_175.py tools/v175/verify_daily_goals_175.py
+          python3 tools/v175/apply_daily_goals_175.py
+          python3 tools/v175/install_daily_tests_175.py
+          python3 tools/v175/verify_daily_goals_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1414,6 +1422,21 @@ jobs:
             grep -q 'WORDQUEST_CEFR_175_ATTRIBUTION.md'
           echo 'PASS: signed v1.0.75 code101 upgrade identity, matching v1.0.74 signer, and attributed new words.'
           echo 'QA-only candidate: deliberately NOT published or made available to the in-app updater.'
+          cp "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk
+      - name: Enable KVM for emulator-only upgrade QA
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::Host /dev/kvm unavailable"; fi
+      - name: Test genuine 1.0.74 to 1.0.75 in-place emulator installation
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: pixel_4
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          script: bash tools/v175/qa_emulator_upgrade_175.sh
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
