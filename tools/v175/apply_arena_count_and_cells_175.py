@@ -17,8 +17,9 @@ def patch(name, replacements):
         if label=="online count buttons" and n==0:
             # Upstream Arena v153 rearranged the settings panels. Insert this
             # selector inside the stable room-creation panel instead.
-            room_marker='                if (!client.ready) {'
-            room_selector='''                if(selectedMode=="quiz") {
+            room_marker='        if (match == null) {'
+            room_selector='''        if (match == null) {
+            if(selectedMode=="quiz") ArenaPanelBlock {
                     Text("SORU SAYISI",color=OnlineGold,fontWeight=FontWeight.Bold)
                     Row(horizontalArrangement=Arrangement.spacedBy(7.dp)) {
                         listOf(5,10,15,20).forEach { n ->
@@ -26,7 +27,7 @@ def patch(name, replacements):
                         }
                     }
                 }
-                if (!client.ready) {'''
+            '''
             assert s.count(room_marker)==1, "No safe Arena online question selector location"
             s=s.replace(room_marker,room_selector,1)
             continue
