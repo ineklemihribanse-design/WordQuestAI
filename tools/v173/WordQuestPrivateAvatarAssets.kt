@@ -86,6 +86,7 @@ internal object WordQuestPrivateAvatarAssets {
                         }
                         val file=File(root,model.name)
                         val temp=File.createTempFile("wq173_","_staging",root)
+                        staged+=temp to file
                         val digest=MessageDigest.getInstance("SHA-256")
                         var length=0L
                         FileOutputStream(temp).buffered().use{out ->
@@ -102,7 +103,7 @@ internal object WordQuestPrivateAvatarAssets {
                                 digest.update(buffer,0,n)
                             }
                         }
-                        val actual=digest.digest().joinToString(""){"%02x".format(it)}
+                        val actual=digest.digest().joinToString(""){"%02x".format(it.toInt() and 0xff)}
                         require(length==model.size && actual==model.digest) {
                             "Model " + model.id + " differs from uploaded file"
                         }
@@ -112,7 +113,6 @@ internal object WordQuestPrivateAvatarAssets {
                             require(String(header.copyOfRange(0,4),Charsets.US_ASCII)=="glTF"
                                 && header[4].toInt()==2){"Unsupported GLB"}
                         }
-                        staged+=temp to file
                         imported+=model.id
                         zip.closeEntry()
                     }
