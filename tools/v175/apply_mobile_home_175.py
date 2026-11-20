@@ -40,7 +40,7 @@ assert 'val study: @Composable' in old, 'Original study group not found'
 s=s[:a]+'''                Wq175PremiumHomeGrid(
                     session=session,
                     newGame=newGame,packages=packages,arena=firebaseArena,
-                    yds=yds,ydsCenter=ydsCenter,custom=custom,
+                    yds=yds,ydsCenter={ wq175AcademyOpen = true },custom=custom,
                     learning=learning,practice=practice,
                     assistant=assistant,verbs=verbs,
                     progress=progress,insights=insights
