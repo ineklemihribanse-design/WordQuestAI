@@ -76,8 +76,8 @@ def crossword():
             }
         }
     }''',"real monotonic timer")
-    s=once(s,'        if (shuffling) return',
-        '        if (shuffling || timedOut) return',"disable edits at zero")
+    s=once(s,'    fun edit(typedWord: Boolean = false, action: (Crossword) -> Unit) {\n        if (shuffling) return',
+        '    fun edit(typedWord: Boolean = false, action: (Crossword) -> Unit) {\n        if (shuffling || timedOut) return',"disable edits at zero")
     s=once(s,'''    fun checkAndLearn() {
         val active''',
         '''    fun checkAndLearn() {
