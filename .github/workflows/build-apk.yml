@@ -1283,6 +1283,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_timed_175.py tools/v175/verify_timed_175.py
           python3 tools/v175/apply_timed_175.py
           python3 tools/v175/verify_timed_175.py
+      - name: Upgrade New Game with visual mascot builder and verified selection summary
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_premium_new_game_175.py tools/v175/verify_premium_new_game_175.py
+          python3 tools/v175/apply_premium_new_game_175.py
+          python3 tools/v175/verify_premium_new_game_175.py
       - name: Connect and verify Word Memory PDF, image, camera and personal AI imports
         if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |
