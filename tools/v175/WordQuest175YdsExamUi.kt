@@ -68,7 +68,10 @@ internal fun Wq175YdsQuestionPanel(
                 Text(if(remainingSeconds <= 30) "Son saniyeler" else "Kalan süre",
                     fontSize = 12.sp, fontWeight = FontWeight.Bold,
                     color = if(remainingSeconds <= 30) Color(0xFFB0334B) else YdsNavy)
-                Text("%02d:%02d".format(remainingSeconds / 60,remainingSeconds % 60),
+                Text(if (remainingSeconds >= 3600)
+                    "%02d:%02d:%02d".format(remainingSeconds / 3600,
+                        (remainingSeconds % 3600) / 60, remainingSeconds % 60)
+                    else "%02d:%02d".format(remainingSeconds / 60,remainingSeconds % 60),
                     color = if(remainingSeconds <= 30) Color(0xFFB0334B) else YdsNavy,
                     fontWeight = FontWeight.Black, fontSize = 19.sp)
             }
