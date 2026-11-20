@@ -1275,7 +1275,7 @@ jobs:
           python3 tools/v175/apply_core_175.py
           python3 tools/v175/verify_stage_one.py
           grep -Fq 'versionCode = 101' source/app/build.gradle.kts
-          grep -Fq 'versionName = "1.0.75-learning-upgrade-candidate"' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.75"' source/app/build.gradle.kts
       - name: Activate and verify opt-in timed crossword mode (v1.0.75)
         if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |
@@ -1515,7 +1515,7 @@ jobs:
           assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=d["elements"][0]
           assert item["versionCode"]==101
-          assert item["versionName"]=="1.0.75-learning-upgrade-candidate"
+          assert item["versionName"]=="1.0.75"
           print("Upgrade candidate identity verified: original .fresh / code101")
           PY
           mkdir -p "$RUNNER_TEMP/wq175-signature-qa"
