@@ -2,7 +2,7 @@ name: Build WordQuest AI v1.0.27 Premium Human Avatar Candidate APK
 
 on:
   push:
-    branches: [main, feature/v173-native-2d-original-avatars, feature/v172-arena-reference-controls, feature/v171-lena-chat-emoji-attachments-motion-subtitles, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
+    branches: [main, feature/v174-premium-arena-memory-design, feature/v173-native-2d-original-avatars, feature/v172-arena-reference-controls, feature/v171-lena-chat-emoji-attachments-motion-subtitles, feature/v170-lena-user-chair-asset-and-rig-qa, feature/v169-lena-premium-studio, feature/v168-lena-approved-chat-design, feature/v167-lena-real-avatar-custom-icons, fix/v166-lena-inline-messenger, fix/v165-lena-speaking-default, fix/v164-lena-original-prisma-materials, fix/v163-lena-brown-hair-eyes-lips, fix/v162-lena-face-material-calibration, feature/v161-lena-colors-expression, fix/v160-lena-conversation-persistence, fix/v159-lena-existing-api-key, integration/v158-lena-voice-assistant, integration/v157-memory54-plus-arena53, release/v1.0.54-candidate, feature/kelime-hafizam-1.0.50, feature/1271-reactive-lipsync-gesture-engine, fix/129-teacher-entry-crash-safemode, feature/137-ethan-isolated-live-voice, fix/147-2p5d-vocabulary-upgrade]
     paths:
       - 'wq-noaudio.zip'
       - 'v081-patch.b64'
@@ -93,6 +93,7 @@ on:
       - 'tools/v171/**'
       - 'tools/v172/**'
       - 'tools/v173_2d/**'
+      - 'tools/v174/**'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
@@ -109,8 +110,8 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: wq173-native-2d-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref == 'refs/heads/feature/v173-native-2d-original-avatars' }}
+  group: wq174-premium-design-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref == 'refs/heads/feature/v174-premium-arena-memory-design' }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -1257,6 +1258,14 @@ jobs:
           grep -Fq 'versionName = "1.0.73-original-2d-complete"' source/app/build.gradle.kts
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DCharacters.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DPicker.kt
+      - name: Install premium v1.0.74 Arena and Word Memory designs
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v174/apply_wordquest_174.py tools/v174/verify_wordquest_174.py
+          python3 tools/v174/apply_wordquest_174.py
+          python3 tools/v174/verify_wordquest_174.py
+          grep -Fq 'versionCode = 100' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.74-premium-arena-memory"' source/app/build.gradle.kts
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1303,8 +1312,8 @@ jobs:
       # Signed upgrade: preserve the .fresh package identity and existing signer certificate.
       # Direct signed release avoids GitHub Actions artifact storage quota. No CI archive
       # upload is required; old archived Emma/Sophia resources remain in git sources.
-      - name: Publish signed and verified v1.0.73 original 2D avatars as an upgrade to 1.0.72
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-native-2d-original-avatars' }}
+      - name: Publish signed and verified v1.0.74 premium Arena and Word Memory as an upgrade
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v174-premium-arena-memory-design' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1334,9 +1343,9 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=doc["elements"][0]
-          assert item["versionCode"]==99, item["versionCode"]
-          assert item["versionName"]=="1.0.73-original-2d-complete"
-          print("Version 1.0.73 code99 full-art hotfix: same signer as 1.0.72.")
+          assert item["versionCode"]==100, item["versionCode"]
+          assert item["versionName"]=="1.0.74-premium-arena-memory"
+          print("Version 1.0.74 code100 premium UI: same signer as 1.0.73.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-signing"
           trap 'rm -rf "$RUNNER_TEMP/wq-signing"' EXIT
@@ -1351,31 +1360,30 @@ jobs:
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature-verification.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature-verification.txt
           cat > dist/release-notes.md <<'NOTES'
-          WordQuest AI 1.0.73 — Original 2D Characters (code 99, full-art revision)
+          WordQuest AI 1.0.74 — Premium Arena + Kelime Hafızam (code 100)
 
-          Native in-place update of v1.0.72; SAME com.kelimebulmacasi.a1.practice.fresh applicationId and SAME signed certificate, preserving all user data and the update system.
-          Ten completely original WordQuest 2D mascots: Astra, Piko, Nobi, Tera, Lopi, Tomba, Foksi, Moka, Pera and Gigi. Full animated GLB/Filament avatar systems are no longer required for these characters.
-          One compact 'Karakter Seç' button opens a 10-character picker. The chosen character persists across Arena and Kelime Hafızam and multiplayer rooms.
-          Two crisp original AI-generated poses per character: normal and gold-trophy victory with soft scale animation. ALL 20 transparent illustrations are bundled in the APK as two hash-verified 1120x448 WebP sprite atlases. NO extra ZIP or character import is necessary.
-          Arena features: professional crossed sword, puzzle, lightning icons; single unified match settings with level/topic dropdowns; circular timer; two large separate PAS GEÇ and CEVABI GÖNDER controls; unchanged multiplayer and word verification.
-          Word Memory: compact avatar selector, same selected character in the study header, correct-answer and completion victory displays. Learning records, card schedules, progress, audio and US/UK pronunciation remain untouched.
-          Lena 3D, chair, conversations, AI credentials, emoji and attachments remain unchanged.
+          Native in-place update of v1.0.73 with the same com.kelimebulmacasi.a1.practice.fresh app identity, certificate and local data. No reinstallation is needed.
+          Arena: new resolution-independent purple colosseum scene, three prominent vertical mode cards with custom vector swords, puzzle and lightning icons, gold selected border, interactive unified match-settings panel and existing real offline/online buttons.
+          Match controls: one screen-level character selector; existing level, topic, timer, crossword length, hints and rules preserved. Match scores, pass and send-answer remain bound to the current game engine.
+          Kelime Hafızam: richer pastel illustration-led header showing the actual selected 2D mascot, one compact character selector, enhanced stat cards, golden review action, and four independent study-mode cards with vector icons.
+          The same 10 original WordQuest 2D characters, normal and trophy poses, and cross-page saved avatar preference remain intact.
+          Word memory and profile data, Lena 3D, chat, US/UK pronunciations, AI keys and the signed in-app update path remain unchanged.
           NOTES
           python3 tools/generate_release_manifest.py "$METADATA" dist/WordQuestAI.apk dist/update.json dist/release-notes.md
           TAG="$(python3 -c 'import json;print(json.load(open("dist/update.json"))["tag"])')"
-          test "$TAG" = v1.0.73
+          test "$TAG" = v1.0.74
           # Only the latest source revision may replace the premature code98 asset.
-          BRANCH_SHA="$(gh api "repos/$UPDATE_REPO/git/ref/heads/feature/v173-native-2d-original-avatars" --jq '.object.sha')"
+          BRANCH_SHA="$(gh api "repos/$UPDATE_REPO/git/ref/heads/feature/v174-premium-arena-memory-design" --jq '.object.sha')"
           if [ "$BRANCH_SHA" != "$GITHUB_SHA" ]; then
             echo "Superseded build ($GITHUB_SHA); latest is $BRANCH_SHA. Skip release."
             exit 0
           fi
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
-            echo "Replacing early code98 assets with signed code99 full-art release."
+            echo "Replacing a previous 1.0.74 asset with latest signed code100 build."
             gh release upload "$TAG" dist/WordQuestAI.apk dist/update.json \
               -R "$UPDATE_REPO" --clobber
             gh release edit "$TAG" -R "$UPDATE_REPO" \
-              --notes-file dist/release-notes.md --title "WordQuest AI v1.0.73 — Full 2D Art"
+              --notes-file dist/release-notes.md --title "WordQuest AI v1.0.74 — Premium Arena and Memory"
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
               --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
             exit 0
@@ -1384,4 +1392,4 @@ jobs:
             --title "WordQuest AI $TAG" --notes-file dist/release-notes.md --target "$GITHUB_SHA" --latest
           gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
-          echo "Signed v1.0.73 (code99): all 20 original images included; verified same 1.0.72 signature."
+          echo "Signed v1.0.74 (code100): premium visuals and same installed app certificate."
