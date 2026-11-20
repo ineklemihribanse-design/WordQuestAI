@@ -8,6 +8,8 @@ gradle=(root/"source/app/build.gradle.kts").read_text("utf-8")
 assert 'versionCode = 101' in gradle
 assert 'versionName = "1.0.75-learning-upgrade-candidate"' in gradle
 assert 'applicationIdSuffix = ".fresh"' in gradle
+assert gradle.count('isDebuggable = false') >= 1, "Offline upgrade must not expose app data via run-as/debugger"
+assert 'applicationIdSuffix = ".fresh"\n            isDebuggable = false' in gradle
 
 arena=(src/"ArenaApprovedHome.kt").read_text("utf-8")
 assert 'matchSettingsPage by rememberSaveable' in arena
