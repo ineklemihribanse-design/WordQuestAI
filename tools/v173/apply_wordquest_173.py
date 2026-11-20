@@ -60,8 +60,8 @@ def patch_arena_home():
 '''
     s=s[:start]+gallery+s[end:]
     s=once(s,'ArenaApprovedHeroArt(kind=mascot,modifier=Modifier.weight(.98f).fillMaxHeight())',
-        'WordQuestAvatarPortrait(mascot,Modifier.weight(.98f).fillMaxHeight())',
-        "real-model hero preview")
+        'WordQuestAvatarStage3D(mascot,Modifier.weight(.98f).fillMaxHeight())',
+        "real-model 3D animated hero")
     s=once(s,'        Arena172AdventurePicker(mode, onMode, allowTeam = !solo)',
         '        Arena173AdventurePicker(mode,onMode,solo)',
         "replace simple mode icons with shaded 3D-style art")
@@ -116,7 +116,7 @@ def patch_rig_and_score():
     needle='ArenaRiggedMascot(winnerAvatar,Modifier.size(86.dp).scale(jump.value),holdingTrophy=!isDraw)'
     s=once(s,needle,
         '''if(WordQuestAvatarStore.valid(winnerAvatar))
-                WordQuestAvatarPortrait(winnerAvatar,Modifier.size(86.dp).scale(jump.value))
+                WordQuestAvatarStage3D(winnerAvatar,Modifier.size(108.dp).scale(jump.value),motion="trophy_raise")
             else ArenaRiggedMascot(winnerAvatar,Modifier.size(86.dp).scale(jump.value),
                 holdingTrophy=!isDraw)''',
         "avoid falsely displaying robot as a selected user model")
@@ -144,7 +144,7 @@ def patch_memory():
     s=once(s,'ProfileRobotPortrait(robot, Modifier.fillMaxSize())',
         '''Column(Modifier.fillMaxSize(),
                             horizontalAlignment=Alignment.CenterHorizontally) {
-                            WordQuestAvatarPortrait(selectedAvatar,
+                            WordQuestAvatarStage3D(selectedAvatar,
                                 Modifier.weight(1f).fillMaxWidth())
                             Text(WordQuestAvatarStore.model(selectedAvatar).name,
                                 color=MemoryNavy,fontSize=12.sp,fontWeight=FontWeight.Bold)
@@ -162,9 +162,9 @@ def patch_memory():
             Text("Kartlarla Çalış", color = DarkText, fontSize = 19.sp,''',
         "study card avatar")
     s=once(s,'                Text("Çalışma tamamlandı", color = Color(0xFF167DCC),',
-        '''                WordQuestAvatarPortrait(
+        '''                WordQuestAvatarStage3D(
                     WordQuestAvatarStore.read(LocalContext.current,session.profileKey),
-                    Modifier.size(72.dp))
+                    Modifier.size(120.dp),motion="celebrate")
                 Text("Çalışma tamamlandı", color = Color(0xFF167DCC),''',
         "study-complete preview")
     # Show a supportive reaction from the SAME avatar after a successful
@@ -227,7 +227,8 @@ def main():
                    "VocabularyNeonHome.kt","VocabularyNeonPractice.kt",
                    "ConversationScreen.kt","LenaLive3DStage.kt"):
         assert (SRC/needed).is_file(),needed
-    for file in ("Arena173Components.kt","WordQuestSharedAvatars.kt"):
+    for file in ("Arena173Components.kt","WordQuestSharedAvatars.kt",
+                 "WordQuestPrivateAvatarAssets.kt","WordQuestAvatarStage3D.kt"):
         shutil.copyfile(PKG/file,SRC/file)
     install_previews()
     install_mode_icons()
@@ -241,8 +242,9 @@ def main():
     gradle.write_text(old,"utf-8")
     print("Candidate v1.0.73: genuine-model previews + one shared selection,")
     print("three redesigned modes, one match panel with level/topic dropdowns.")
-    print("NOT READY FOR RELEASE: four CC-BY model preview images only;")
-    print("actual GLB rigging and commercial animal-pack rights remain open.")
+    print("User-purchased models are installed privately on-device from two ZIPs,")
+    print("not redistributed in the public repository or update APK.")
+    print("Full Android GLB animation device QA is still required.")
 
 if __name__=="__main__":
     main()
