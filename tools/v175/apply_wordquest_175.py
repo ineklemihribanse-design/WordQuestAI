@@ -104,11 +104,11 @@ def memory_cards(s):
     s=once(s,'if (correct && !difficult) ReviewRating.Good else ReviewRating.Again',
         'if (correct && !difficult) ReviewRating.Good else if (correct) ReviewRating.Hard else ReviewRating.Again',
         "hard card rating")
-    s=once(s,'Triple("◉\\\\nOrta", true, true)',
-        'Triple("◉\\\\nTekrar", false, true)',
+    s=once(s,'Triple("◉\\nOrta", true, true)',
+        'Triple("◉\\nTekrar", false, true)',
         "repeat choice")
-    s=once(s,'Triple("✓\\\\nBiliyorum", true, false)',
-        'Triple("✓\\\\nÖğrendim", true, false)',
+    s=once(s,'Triple("✓\\nBiliyorum", true, false)',
+        'Triple("✓\\nÖğrendim", true, false)',
         "learned choice")
     s=once(s,'Button(onClick = { next() }, modifier = Modifier.weight(1f),',
         '''Button(onClick = {
