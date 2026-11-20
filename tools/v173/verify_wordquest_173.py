@@ -53,9 +53,9 @@ assert 'synchronizeOnlineForActiveProfile(context,avatarProfileKey)' in home
 assert 'fun hasSelection(context:Context,profile:String)' in shared
 assert 'DisposableEffect(context,profile)' in shared
 assert 'registerOnSharedPreferenceChangeListener(listener)' in shared
-assert 'WordQuestAvatarPortrait(selectedAvatar' in memory
+assert 'WordQuestAvatarStage3D(selectedAvatar' in memory
 assert 'WordQuestSharedAvatarPicker(' in home
-assert 'WordQuestAvatarPortrait(' in practice
+assert 'WordQuestAvatarStage3D(' in practice
 assert 'WordQuestAvatarPortrait(' in visuals
 assert 'WordQuestAvatarStore.save(context,avatarProfileKey,chosen)' in home
 assert 'WordQuestAvatarStore.save(context,session.profileKey,chosen)' in memory
