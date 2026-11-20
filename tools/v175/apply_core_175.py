@@ -190,7 +190,7 @@ def main():
         "production-safe offline build type")
     s=once(s,'versionCode = 100','versionCode = 101',"version code")
     s=once(s,'versionName = "1.0.74-premium-arena-memory"',
-        'versionName = "1.0.75-learning-upgrade-candidate"',"version name")
+        'versionName = "1.0.75"',"version name")
     gradle.write_text(s,"utf-8")
     print("WordQuest 1.0.75 code 101: separate Arena settings and 2D study improvements.")
     print("Manual Word Memory entries in existing FSRS database; 1.0.74 user data intact.")
