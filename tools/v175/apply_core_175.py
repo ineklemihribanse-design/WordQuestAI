@@ -20,6 +20,7 @@ def once(s,needle,replacement,label):
     return s.replace(needle,replacement,1)
 
 def arena():
+    shutil.copyfile(PKG/"WordQuest175Arena.kt",SRC/"WordQuest175Arena.kt")
     file=SRC/"ArenaApprovedHome.kt"
     s=file.read_text("utf-8")
     s=once(s,'    var joinOpen by rememberSaveable { mutableStateOf(false) }',
@@ -31,7 +32,7 @@ def arena():
         )
         Wq174UnifiedMatchSettings(''',
         '''        if (!matchSettingsPage) {
-            Wq174ArenaHeroAndModes(
+            Wq175ArenaHeroAndModes(
                 selectedAvatar=mascot,mode=mode,solo=solo,
                 onMode={ nextMode ->
                     onMode(nextMode)
@@ -56,7 +57,7 @@ def arena():
         '        Text(quotaLabel,color=ArenaApproved.sub,fontSize=11.sp)\n'
         '        }\n    }',"close Arena settings page")
     assert s.count('Wq174UnifiedMatchSettings(')==1
-    assert s.count('Wq174ArenaHeroAndModes(')==1
+    assert s.count('Wq175ArenaHeroAndModes(')==1
     assert s.count('Wq2DCharacterPicker(')==1
     file.write_text(s,"utf-8")
 
