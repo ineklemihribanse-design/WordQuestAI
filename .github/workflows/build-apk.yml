@@ -1368,6 +1368,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_yds_exam_integrity_175.py tools/v175/verify_yds_exam_integrity_175.py
           python3 tools/v175/apply_yds_exam_integrity_175.py
           python3 tools/v175/verify_yds_exam_integrity_175.py
+      - name: Install post-exam review of incorrect and unanswered YDS questions
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_yds_exam_review_175.py tools/v175/verify_yds_exam_review_175.py
+          python3 tools/v175/apply_yds_exam_review_175.py
+          python3 tools/v175/verify_yds_exam_review_175.py
       - name: Complete daily plan custom goals and weekly activity
         if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |

@@ -20,7 +20,7 @@ screen=SRC/"YdsCenterScreen.kt"
 s=screen.read_text("utf-8")
 s=replace_once(s,
     'answered=answerChoice!=-1,',
-    'answered=answerChoice!=-1 && Wq175YdsVisibility.reveal(exam),',
+    'answered=answerChoice!=-1 && Wq175YdsVisibility.reveal(exam),\n                    locked=answerChoice!=-1,',
     "prevent color-disclosed correct answers during timed exams")
 s=replace_once(s,
     '''                Wq175YdsAnswerFeedback(

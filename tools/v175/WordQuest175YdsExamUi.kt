@@ -84,7 +84,7 @@ internal fun Wq175YdsQuestionPanel(
 @Composable
 internal fun Wq175YdsOption(
     number: Int, label: String, selected: Boolean,
-    answered: Boolean, correct: Boolean, onClick: () -> Unit
+    answered: Boolean, correct: Boolean, locked: Boolean = answered, onClick: () -> Unit
 ) {
     val selectedBg = when {
         answered && correct -> Color(0xFFE4F7ED)
@@ -96,7 +96,7 @@ internal fun Wq175YdsOption(
         answered && selected -> Color(0xFFD97B7B)
         else -> Color(0xFFD5E0F3)
     }
-    Surface(onClick = onClick, enabled = !answered,
+    Surface(onClick = onClick, enabled = !locked,
         modifier = Modifier.fillMaxWidth().heightIn(min = 62.dp),
         color = selectedBg, shape = RoundedCornerShape(17.dp),
         border = BorderStroke(if(answered && (correct || selected)) 2.dp else 1.dp,rim)) {
