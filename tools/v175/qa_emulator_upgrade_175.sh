@@ -99,20 +99,24 @@ echo "Original emulator display: $original_size, density: $original_density, fon
 for layout in small_phone large_text tablet_landscape; do
     case "$layout" in
         small_phone)
-            adb shell wm size 360x640
+            # 720 physical pixels at 320 DPI = 360 dp logical width.
+            expected_pixels="720x1280"
+            adb shell wm size 720x1280
             adb shell wm density 320
             adb shell settings put system font_scale 1.0
             adb shell settings put system accelerometer_rotation 0
             adb shell settings put system user_rotation 0
             ;;
         large_text)
-            adb shell wm size 360x640
+            expected_pixels="720x1280"
+            adb shell wm size 720x1280
             adb shell wm density 320
             adb shell settings put system font_scale 1.4
             adb shell settings put system accelerometer_rotation 0
             adb shell settings put system user_rotation 0
             ;;
         tablet_landscape)
+            expected_pixels="1280x800"
             adb shell wm size 1280x800
             adb shell wm density 240
             adb shell settings put system font_scale 1.0
@@ -122,7 +126,7 @@ for layout in small_phone large_text tablet_landscape; do
     esac
     adb shell am force-stop "$PKG"
     adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
-    sleep 8
+    sleep 10
     if ! adb shell pidof -s "$PKG" >/dev/null; then
         echo "::error::App stopped during $layout responsive QA"
         adb logcat -d -t 200 | grep -E 'FATAL EXCEPTION|AndroidRuntime|SIGSEGV|SIGABRT' | tail -35 || true
@@ -134,7 +138,8 @@ for layout in small_phone large_text tablet_landscape; do
     screenshot_ok=false
     for attempt in 1 2 3 4 5; do
         if adb exec-out screencap -p > "$image_file" &&
-           python3 tools/v175/verify_emulator_screenshot_175.py "$image_file"; then
+           python3 tools/v175/verify_emulator_screenshot_175.py "$image_file" \
+               --require-ui "--expect=$expected_pixels"; then
             screenshot_ok=true
             break
         fi
@@ -142,8 +147,8 @@ for layout in small_phone large_text tablet_landscape; do
         sleep 3
     done
     if [[ "$screenshot_ok" != true ]]; then
-        echo "::error::$layout screenshot could not be validated after five attempts."
-        adb logcat -d -t 150 | grep -E 'FATAL EXCEPTION|AndroidRuntime|SIGSEGV|SIGABRT|Screenshot' | tail -25 || true
+        echo "::error::$layout screenshot had no real app content after five attempts."
+        adb logcat -d -t 300 | grep -E 'FATAL EXCEPTION|AndroidRuntime|SIGSEGV|SIGABRT|Screenshot|Compose|Exception' | tail -45 || true
         exit 1
     fi
 
