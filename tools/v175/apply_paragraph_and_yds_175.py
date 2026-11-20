@@ -58,6 +58,11 @@ def main():
         "assertEquals(150, YdsContent.questions.map { it.id }.toSet().size)",
         "unique YDS ids")
     tests.write_text(content, "utf-8")
+    print("YDS_CENTER_TEST_DIAGNOSTIC_BEGIN")
+    for line_number, line in enumerate(content.splitlines(), 1):
+        if line_number <= 45:
+            print(f"{line_number:03d}: {line}")
+    print("YDS_CENTER_TEST_DIAGNOSTIC_END")
     print("PASS: 12 A1-C2 paragraphs, US/UK playback, ordered word-error analysis, profile records.")
     print("PASS: YDS question bank grows from 120 to 150, with original Turkish explanations.")
 
