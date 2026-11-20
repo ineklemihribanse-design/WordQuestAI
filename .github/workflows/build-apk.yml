@@ -1443,6 +1443,14 @@ jobs:
           echo 'PASS: signed v1.0.75 code101 upgrade identity, matching v1.0.74 signer, and attributed new words.'
           echo 'QA-only candidate: deliberately NOT published or made available to the in-app updater.'
           cp "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging \
+            source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk \
+            > "$RUNNER_TEMP/wq175-production-badging.txt"
+          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq175-production-badging.txt"; then
+            echo '::error::A debuggable APK must never be offered as an update.'
+            exit 1
+          fi
+          echo 'PASS: signed 1.0.75 candidate is non-debuggable.'
       - name: Enable KVM for emulator-only upgrade QA
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |
