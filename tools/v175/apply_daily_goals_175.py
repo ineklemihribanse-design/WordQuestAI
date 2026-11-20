@@ -57,6 +57,16 @@ def run():
                 "weekly total on existing banner")
     daily.write_text(text, "utf-8")
 
+    # Backup JSON decoding had its own hard-coded 15/30/60 whitelist.
+    # Accept personal goals without weakening its date, count or marker guards.
+    backup=SOURCE/"PlayerBackup.kt"
+    payload=backup.read_text("utf-8")
+    payload=once(payload,
+        "if (goal !in listOf(15, 30, 60) || seconds !in 0L..86_400L || completedArray.length() > 250)",
+        "if (goal !in 5..180 || seconds !in 0L..86_400L || completedArray.length() > 250)",
+        "backup decoder supports personal goals")
+    backup.write_text(payload, "utf-8")
+
     shutil.copyfile(PKG / "WordQuest175PracticeVisuals.kt",
                     SOURCE / "WordQuest175PracticeVisuals.kt")
     print("PASS: custom 5..180-minute plan goals with backup and seven-day activity are installed.")
