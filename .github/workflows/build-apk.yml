@@ -1259,7 +1259,7 @@ jobs:
         run: |
           set -euo pipefail
           grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
-      - name: Use separate application ID for the 1.0.73 personal 3D QA app
+      - name: Build isolated personal 1.0.73 QA2 with incremented test-only version code
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
         run: |
           set -euo pipefail
@@ -1271,8 +1271,11 @@ jobs:
           assert 'versionCode = 98' in text
           text=text.replace('applicationIdSuffix = ".fresh"',
               'applicationIdSuffix = ".fresh.qa"',1)
+          text=text.replace('versionCode = 98','versionCode = 99',1)
+          text=text.replace('versionName = "1.0.73-arena-avatar-candidate"',
+              'versionName = "1.0.73-personal-qa2"',1)
           file.write_text(text,"utf-8")
-          print("Personal QA installs alongside the existing signed 1.0.72.")
+          print("QA2 updates QA1 while leaving production 1.0.72 untouched.")
           PY
       - name: Generate US/UK audio and verify pronunciation data
         working-directory: source
@@ -1388,7 +1391,7 @@ jobs:
             --jq '[.assets[].name] | sort | join(",")' | grep -Fxq 'WordQuestAI.apk,update.json'
           echo "Signed v1.0.72 (code97): Arena controls added atop verified 1.0.71 sources."
 
-      - name: Sign and publish side-by-side personal 1.0.73 QA APK (no private GLBs)
+      - name: Sign and publish side-by-side personal 1.0.73 QA2 APK (private ZIP import)
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v173-unified-arena-avatar-word-memory' }}
         env:
           UPDATE_REPO: ineklemihribanse-design/WordQuestAI
@@ -1414,8 +1417,8 @@ jobs:
           doc=json.load(open(sys.argv[1]))
           assert doc["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh.qa"
           item=doc["elements"][0]
-          assert item["versionCode"]==98
-          assert item["versionName"]=="1.0.73-arena-avatar-candidate"
+          assert item["versionCode"]==99
+          assert item["versionName"]=="1.0.73-personal-qa2"
           print("Personal QA package identity checked; existing installation is intact.")
           PY
           mkdir -p dist "$RUNNER_TEMP/wq-personal-sign"
@@ -1431,7 +1434,7 @@ jobs:
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/personal-qa-signature.txt
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/personal-qa-signature.txt
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/personal-qa-signature.txt
-          TAG="v1.0.73-personal-qa"
+          TAG="v1.0.73-personal-qa2"
           if gh release view "$TAG" -R "$UPDATE_REPO" >/dev/null 2>&1; then
             gh release view "$TAG" -R "$UPDATE_REPO" --json assets \
               --jq '[.assets[].name] | join(",")' | grep -Fxq 'WordQuestAI-Personal-QA.apk'
@@ -1439,18 +1442,20 @@ jobs:
             exit 0
           fi
           cat > dist/personal-qa-notes.md <<'NOTES'
-          WordQuest AI 1.0.73 — personal 3D avatar QA.
+          WordQuest AI 1.0.73 — personal 3D avatar QA2 (test build 99).
 
           This prerelease installs alongside existing 1.0.72, without overwriting
           the user's progress, Arena records, word history, or Lena installation.
           Arena and Kelime Hafızam share a single ten-avatar selector and can load
           the purchaser's own animated 3D GLB files. Tap "3D Avatar Paketini
-          Telefonumdan Ekle" and select the private model ZIP from ChatGPT.
+          Telefonumdan Ekle" and select the one combined private ZIP from ChatGPT:
+          WordQuestAI_1.0.73_10_Avatar_Ozel_Paket_Gorselli.zip.
+          ZIP also includes ten user-GLB portrait thumbnails. Install stays private.
           All ten purchased user GLB binaries remain outside public GitHub and
           outside this APK. This release does not update production's update.json.
           Model rigging is experimental; real-device animation QA is outstanding.
           NOTES
           gh release create "$TAG" dist/WordQuestAI-Personal-QA.apk \
-            -R "$UPDATE_REPO" --title "WordQuest AI 1.0.73 Personal 3D QA" \
+            -R "$UPDATE_REPO" --title "WordQuest AI 1.0.73 Personal 3D QA2" \
             --notes-file dist/personal-qa-notes.md --target "$GITHUB_SHA" --prerelease
           echo "Only personal QA APK published; no production updater changes."
