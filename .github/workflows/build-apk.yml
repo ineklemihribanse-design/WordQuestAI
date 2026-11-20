@@ -1397,6 +1397,13 @@ jobs:
         run: |
           set -euo pipefail
           python3 tools/v175/test_emulator_screen_content_175.py -v
+      - name: Apply real selectable Arena quiz count and darker crossword blanks
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_arena_count_and_cells_175.py tools/v175/verify_arena_count_and_cells_175.py
+          python3 tools/v175/apply_arena_count_and_cells_175.py
+          python3 tools/v175/verify_arena_count_and_cells_175.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
