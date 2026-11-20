@@ -28,25 +28,32 @@ private fun Wq175PracticeCardTint(kind:PracticeKind):Color = when(kind) {
 private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
     val pale=Wq175PracticeCardTint(kind)
     Surface(onClick=onClick,
-        modifier=Modifier.fillMaxWidth().heightIn(min=166.dp),
+        modifier=Modifier.fillMaxWidth().heightIn(min=145.dp),
         shape=RoundedCornerShape(22.dp),
-        color=pale,border=BorderStroke(1.dp,Color(0xFFD9DEE2)),
-        shadowElevation=3.dp) {
-        Column(Modifier.padding(13.dp),
-            verticalArrangement=Arrangement.spacedBy(6.dp)) {
-            Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.Top,
-                horizontalArrangement=Arrangement.SpaceBetween) {
-                Wq175GlossIcon(Wq175IconNames.practice(kind),Modifier.size(70.dp))
-                Text("›",color=Color(0xFF355674),fontSize=25.sp,
-                    fontWeight=FontWeight.Bold)
+        color=pale,border=BorderStroke(1.dp,Color(0xFFE2DDE1)),
+        shadowElevation=4.dp) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=10.dp,vertical=12.dp),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(7.dp)) {
+            if(kind==PracticeKind.Dictation) {
+                Wq175ThemeIcon("dinle_ve_yaz",Modifier.size(72.dp))
+            } else if(kind==PracticeKind.Grammar) {
+                Wq175ThemeIcon("dilbilgisi",Modifier.size(72.dp))
+            } else {
+                Wq175GlossIcon(Wq175IconNames.practice(kind),Modifier.size(72.dp))
             }
-            Text(kind.title,color=Color(0xFF1E384D),
-                fontSize=15.sp,lineHeight=18.sp,
-                fontWeight=FontWeight.ExtraBold,
-                maxLines=2,overflow=TextOverflow.Ellipsis)
-            Text(kind.detail,color=Color(0xFF5E7181),
-                fontSize=11.sp,lineHeight=14.sp,
-                maxLines=2,overflow=TextOverflow.Ellipsis)
+            Column(Modifier.weight(1f),
+                verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                Text(kind.title,color=Color(0xFF1E384D),
+                    fontSize=15.sp,lineHeight=18.sp,
+                    fontWeight=FontWeight.ExtraBold,
+                    maxLines=3,overflow=TextOverflow.Ellipsis)
+                Text(kind.detail,color=Color(0xFF5E7181),
+                    fontSize=11.sp,lineHeight=14.sp,
+                    maxLines=4,overflow=TextOverflow.Ellipsis)
+            }
+            Text("›",color=Color(0xFF355674),fontSize=23.sp,
+                fontWeight=FontWeight.Bold)
         }
     }
 }
