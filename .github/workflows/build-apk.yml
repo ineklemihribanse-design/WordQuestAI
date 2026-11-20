@@ -1476,6 +1476,15 @@ jobs:
             ${{ runner.temp }}/wq175-responsive-qa/*.png
           if-no-files-found: warn
           retention-days: 3
+      - name: Archive signed 1.0.75 QA APK only after successful in-place upgrade test
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.75-code101-signed-QA-${{ github.run_number }}
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
       - name: Save fully assembled Android sources for future direct builds
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
