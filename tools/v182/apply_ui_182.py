@@ -244,6 +244,16 @@ def account(s):
     return s
 edit('HomeScreen.kt',account)
 
+# Every visible account-facing identity must use the name the player chose.
+# Firebase/Google displayName remains for authentication only.
+def name_everywhere(s):
+    return once(s,
+        'social.nickname.ifBlank { accountName.orEmpty() }',
+        'social.nickname.ifBlank { "Oyuncu" }',
+        'never fall back to Google display name/e-mail as an Arena username')
+edit('AppSession.kt',name_everywhere)
+
+
 # The original 5-option lobby dialog (v150/v151) hides question counts and
 # forces every edited room to 12. The Firebase host-only revision rule is only
 # useful after the UI actually sends the selected number.
