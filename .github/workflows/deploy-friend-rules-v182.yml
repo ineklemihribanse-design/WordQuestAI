@@ -1,0 +1,62 @@
+name: Deploy verified friend profile Firebase rules safely
+on:
+  push:
+    branches: [feature/v175-comprehensive-learning-update]
+    paths:
+      - '.github/workflows/deploy-friend-rules-v182.yml'
+      - 'tools/v182/deploy_friend_rules_guard_182.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wordquest-firebase-rules
+  cancel-in-progress: false
+
+jobs:
+  safe-friend-rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify complete staged JSON and the new friend-only rules
+        run: |
+          set -euo pipefail
+          python3 -m json.tool firebase/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          obj=json.load(open('firebase/database.rules.json'))
+          root=obj['rules']
+          assert all(k in root for k in ('users','friends','roomInvites','premiumRooms','friendProfiles'))
+          f=root['friendProfiles']['$uid']
+          assert "root.child('friends').child(auth.uid).child($uid)" in f['.read']
+          assert "root.child('friends').child($uid).child(auth.uid)" in f['.read']
+          assert f['.write']=="auth != null && auth.uid === $uid"
+          print("PASS: additive mutual-friend rules syntax and privacy constraints")
+          PY
+      - name: Ensure user-provided Firebase deployment identity is configured
+        env:
+          FIREBASE_ACCOUNT: \${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$FIREBASE_ACCOUNT" ]; then
+            echo "::error::No live deployment. Add WQ_FIREBASE_SERVICE_ACCOUNT_JSON GitHub secret; never paste it into chat."
+            exit 1
+          fi
+          echo "Deployment identity available."
+      - name: Sign in to expected Firebase project
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: \${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+          project_id: wordquest-ai
+      - name: Preserve live Arena/account rules, add friends-only summary, deploy and verify
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check google-auth requests
+          python3 tools/v182/deploy_friend_rules_guard_182.py
