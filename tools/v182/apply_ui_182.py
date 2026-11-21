@@ -105,6 +105,65 @@ def quiz(s):
     return s
 edit('PremiumOnlineScreen.kt',quiz)
 
+# Reuse the same readable five-choice cards in offline practice as well.
+# Preserve existing answer, point and sound callbacks exactly.
+def solo_quiz(s):
+    before='''                        current.options.forEachIndexed { index, option ->
+                            val resolved = quizChoice != -1
+                            val correct = index == current.correct
+                            val container = when {
+                                resolved && correct -> Color(0xFF3C7055)
+                                resolved && quizChoice == index -> Color(0xFF80423D)
+                                else -> ArenaPanelLight
+                            }
+                            Box(
+                                Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(container)
+                                    .border(1.dp, if (resolved && correct) ArenaSuccess else Color(0xFF496C5A), RoundedCornerShape(12.dp))
+                                    .clickable(enabled = !resolved) {
+                                        quizChoice = index
+                                        quizAnswers[quizIndex] = index
+                                        quizAnswered++
+                                        if (correct) {
+                                            quizCorrect++; score += 10
+                                            sounds.correct(session.preferences)
+                                        } else {
+                                            score = (score - 2).coerceAtLeast(0)
+                                            sounds.wrong(session.preferences)
+                                        }
+                                    }.padding(14.dp),
+                            ) {
+                                Text("${"ABCDE"[index]}.  $option", color = ArenaCream, fontWeight = FontWeight.SemiBold)
+                            }
+                        }'''
+    after='''                        current.options.forEachIndexed { index, option ->
+                            val resolved=quizChoice != -1
+                            val correct=index==current.correct
+                            Wq182QuizAnswer(
+                                letter="ABCDE"[index],answer=option,
+                                chosen=quizChoice==index,
+                                correct=correct,
+                                hasAnswered=resolved,
+                                onPick={
+                                    if(quizChoice == -1){
+                                        quizChoice=index
+                                        quizAnswers[quizIndex]=index
+                                        quizAnswered++
+                                        if(correct){
+                                            quizCorrect++
+                                            score+=10
+                                            sounds.correct(session.preferences)
+                                        }else{
+                                            score=(score-2).coerceAtLeast(0)
+                                            sounds.wrong(session.preferences)
+                                        }
+                                    }
+                                }
+                            )
+                        }'''
+    return once(s,before,after,"offline 5-option accessibility and score parity")
+edit('PremiumArenaScreen.kt',solo_quiz)
+
+
 def account(s):
     s=once(s,
         '''                Text(session.accountName?.takeIf { it.isNotBlank() } ?: "Oyuncu",
