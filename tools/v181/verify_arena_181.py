@@ -29,7 +29,7 @@ assert 'ArenaBoardV2(puzzle,solved,selected,placed,compact,zoomed,hintIndex,hint
 assert 'ButtonDefaults.outlinedButtonColors' in typing
 assert 'val gap=if(maxWidth<500.dp)1.dp else 1.5.dp' in board
 assert '.coerceIn(360.dp,1000.dp)' in board
-assert 'if(tablet)85.dp else 73.dp' in score
+assert 'if(active)85.dp else 73.dp' in score
 assert 'Color(0xFFA9FFE0)' in online
 assert 'versionCode = 107' in (ROOT/"source/app/build.gradle.kts").read_text("utf-8")
 assert 'versionName = "1.0.81"' in (ROOT/"source/app/build.gradle.kts").read_text("utf-8")
