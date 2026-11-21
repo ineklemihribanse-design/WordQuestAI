@@ -19,7 +19,17 @@ r["ready"]={"$uid":{
 r["hostAvatar"]={".write":"auth != null && auth.uid === data.parent().child('hostUid').val() && data.parent().child('phase').val() === 'lobby' && newData.exists()",".validate":allowed}
 r["guestAvatar"]={".write":"auth != null && auth.uid === data.parent().child('guestUid').val() && data.parent().child('phase').val() === 'lobby' && newData.exists()",".validate":allowed}
 r["phase"][".write"]=r["phase"][".write"].replace(old,old+" && (data.parent().child('rulesVersion').val() !== 2 || (data.parent().child('ready').child(data.parent().child('hostUid').val()).val() === data.parent().child('configRevision').val() && data.parent().child('ready').child(data.parent().child('guestUid').val()).val() === data.parent().child('configRevision').val()))",1)
-p.write_text(json.dumps(s,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 official=json.loads((ROOT/"firebase/database.rules.json").read_text("utf-8"))
-assert official==s,"Repo Firebase rules and Android build rules diverged."
-print("PASS: verified additive RTDB ready, 10 avatars and both-ready start authorization.")
+# The social v180 profile summary is additive and does not alter Arena policies.
+# Compare every pre-existing security path EXACTLY before importing the new
+# mutual-friends-only subtree into the assembled Android source.
+friend_profiles=official.get("rules",{}).get("friendProfiles")
+verified=json.loads(json.dumps(official))
+verified["rules"].pop("friendProfiles",None)
+assert verified==s,"Repo Firebase Arena rules and Android build rules diverged."
+if friend_profiles is not None:
+    assert friend_profiles["$uid"][".write"]=="auth != null && auth.uid === $uid"
+    assert "root.child('friends')" in friend_profiles["$uid"][".read"]
+    s["rules"]["friendProfiles"]=friend_profiles
+p.write_text(json.dumps(s,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+print("PASS: exact pre-existing RTDB rules, additive friend privacy, 10 avatars and both-ready start.")
