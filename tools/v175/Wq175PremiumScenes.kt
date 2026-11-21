@@ -5,7 +5,13 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -53,16 +59,35 @@ internal fun Wq175SceneBackdrop(
             }
         }.getOrNull()
     }
-    Box(modifier) {
+    BoxWithConstraints(modifier) {
+        val wide = maxWidth >= 620.dp
         if(bitmap != null) {
-            // Two composited passes: softly filled ambient edges and the
-            // COMPLETE artwork. Fit keeps both portrait phones and wide
-            // tablets from cutting away books, stages or prize details.
-            Image(bitmap=bitmap,contentDescription=null,
-                modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Crop,
-                alpha=.26f)
-            Image(bitmap=bitmap,contentDescription=null,
-                modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Fit)
+            if(!wide) {
+                // Phone hero: a single immersive frame, no sharp side panels.
+                Image(bitmap=bitmap,contentDescription=null,
+                    modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Crop)
+            } else {
+                // Tablet: wide ambient layer + a feathered, uncropped centre.
+                // The original art stays in proportion and has no vertical seam.
+                Image(bitmap=bitmap,contentDescription=null,
+                    modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Crop,
+                    alpha=.38f)
+                Image(bitmap=bitmap,contentDescription=null,
+                    modifier=Modifier.fillMaxSize()
+                        .graphicsLayer {
+                            compositingStrategy=CompositingStrategy.Offscreen
+                            scaleX=1.32f
+                        }.drawWithContent {
+                            drawContent()
+                            drawRect(
+                                Brush.horizontalGradient(0f to Color.Transparent,
+                                    .35f to Color.White,
+                                    .65f to Color.White,
+                                    1f to Color.Transparent),
+                                blendMode=BlendMode.DstIn)
+                        },
+                    contentScale=ContentScale.Fit)
+            }
         } else {
             Box(Modifier.fillMaxSize().background(
                 Brush.horizontalGradient(listOf(
