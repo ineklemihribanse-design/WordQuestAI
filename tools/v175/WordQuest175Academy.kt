@@ -84,8 +84,11 @@ internal fun Wq175YdsAcademy(
                 Color(0xFFFFEECF),exams)
         )
         BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val cols=if(maxWidth<390.dp ||
-                LocalDensity.current.fontScale>1.25f)2 else 3
+            val cols=when {
+                maxWidth<320.dp || LocalDensity.current.fontScale>1.45f -> 1
+                maxWidth<600.dp || LocalDensity.current.fontScale>1.25f -> 2
+                else -> 3
+            }
             Column(verticalArrangement=Arrangement.spacedBy(11.dp)) {
                 modules.chunked(cols).forEach { group ->
                     Row(Modifier.fillMaxWidth(),
@@ -127,20 +130,39 @@ private data class Wq175AcademyModule(
 private fun Wq175AcademyModuleCard(module:Wq175AcademyModule) {
     Surface(onClick=module.action,
         modifier=Modifier.fillMaxWidth().heightIn(min=144.dp),
-        shape=RoundedCornerShape(23.dp),
-        color=module.background,
+        shape=RoundedCornerShape(23.dp),color=module.background,
         shadowElevation=4.dp,
         border=BorderStroke(1.dp,Color(0xFFE2DFDA))) {
-        Column(Modifier.fillMaxWidth().padding(11.dp),
-            verticalArrangement=Arrangement.spacedBy(5.dp)) {
-            Wq175GlossIcon(module.icon,Modifier.size(69.dp))
-            Text(module.title,color=AcademyNavy,
-                fontSize=15.sp,lineHeight=17.sp,
-                fontWeight=FontWeight.ExtraBold,
-                maxLines=2,overflow=TextOverflow.Ellipsis)
-            Text(module.subtitle,color=Color(0xFF586A81),
-                fontSize=11.sp,lineHeight=14.sp,
-                maxLines=2,overflow=TextOverflow.Ellipsis)
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val horizontal=maxWidth>=250.dp &&
+                LocalDensity.current.fontScale<=1.45f
+            if(horizontal) {
+                Row(Modifier.fillMaxWidth().padding(13.dp),
+                    verticalAlignment=Alignment.CenterVertically,
+                    horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                    Wq175GlossIcon(module.icon,Modifier.size(74.dp))
+                    Column(Modifier.weight(1f),
+                        verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                        Text(module.title,color=AcademyNavy,fontSize=17.sp,
+                            lineHeight=21.sp,fontWeight=FontWeight.ExtraBold,
+                            maxLines=3,overflow=TextOverflow.Ellipsis)
+                        Text(module.subtitle,color=Color(0xFF586A81),
+                            fontSize=12.sp,lineHeight=16.sp,
+                            maxLines=3,overflow=TextOverflow.Ellipsis)
+                    }
+                }
+            } else {
+                Column(Modifier.fillMaxWidth().padding(11.dp),
+                    verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                    Wq175GlossIcon(module.icon,Modifier.size(69.dp))
+                    Text(module.title,color=AcademyNavy,fontSize=15.sp,
+                        lineHeight=18.sp,fontWeight=FontWeight.ExtraBold,
+                        maxLines=3,overflow=TextOverflow.Ellipsis)
+                    Text(module.subtitle,color=Color(0xFF586A81),
+                        fontSize=11.sp,lineHeight=15.sp,
+                        maxLines=3,overflow=TextOverflow.Ellipsis)
+                }
+            }
         }
     }
 }
