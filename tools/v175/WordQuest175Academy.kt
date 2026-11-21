@@ -236,7 +236,7 @@ internal fun Wq175PackageIntro(mode: GameMode, level: String) {
  */
 @Composable
 internal fun Wq175CefrLevelCard(
-    tier:String,available:Int?,onSelect:()->Unit
+    tier:String,available:Int?,selected:Boolean=false,onSelect:()->Unit
 ) {
     val colors=when(tier) {
         "A1" -> Color(0xFFEAF8E8) to Color(0xFF317D55)
@@ -256,14 +256,15 @@ internal fun Wq175CefrLevelCard(
     }
     Surface(onClick=onSelect,modifier=Modifier.fillMaxWidth().heightIn(min=160.dp),
         shape=RoundedCornerShape(23.dp),color=colors.first,
-        border=BorderStroke(1.dp,colors.second.copy(alpha=.23f)),
-        shadowElevation=4.dp) {
+        border=BorderStroke(if(selected)2.dp else 1.dp,
+            if(selected)Color(0xFFFFD16C) else colors.second.copy(alpha=.23f)),
+        shadowElevation=if(selected)7.dp else 4.dp) {
         Column(Modifier.fillMaxWidth().padding(12.dp),
             verticalArrangement=Arrangement.spacedBy(8.dp)) {
             Row(verticalAlignment=Alignment.CenterVertically,
                 horizontalArrangement=Arrangement.spacedBy(7.dp)) {
                 Wq175GlossIcon("level_"+tier.lowercase(java.util.Locale.ROOT),
-                    Modifier.size(86.dp))
+                    Modifier.size(69.dp))
                 Column(Modifier.weight(1f),
                     verticalArrangement=Arrangement.spacedBy(4.dp)) {
                     Text(tier,fontSize=27.sp,fontWeight=FontWeight.Black,

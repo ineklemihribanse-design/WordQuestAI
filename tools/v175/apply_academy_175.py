@@ -32,14 +32,6 @@ s=one(s,'''                    MenuItem("YDS Hazırlık", "Kolay, orta ve zor bu
                         "Kelime · Gramer · Paragraf · Deneme · Gelişim",
                         "YDS") { wq175AcademyOpen = true }''',
     "unify YDS under one entry")
-# Read source layout only. Existing selector actions remain untouched until
-# premium cards can be wired to the exact original callbacks.
-anchor='''    ScreenPage(mode.title, if (mode == GameMode.Yds) "Zorluk seviyesini seç" else "İngilizce seviyesini seç", back) {'''
-at=s.find(anchor)
-if at>=0:
-    print("WQ175_CEFR_SELECTOR_START",flush=True)
-    print(s[at:at+3400],flush=True)
-    print("WQ175_CEFR_SELECTOR_END",flush=True)
 s=one(s,
     '''    ScreenPage(mode.title, if (mode == GameMode.Yds) "Zorluk seviyesini seç" else "İngilizce seviyesini seç", back) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {''',
@@ -47,5 +39,66 @@ s=one(s,
         Wq175PackageIntro(mode, level)
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {''',
     "category landing intro")
+# A1–C2 get full native 2.5D tier cards with REAL chooseLevel callbacks.
+# Keep YDS's old difficulty row, topic list and newGame actions untouched.
+s=one(s,'''        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+            for (value in levels) {
+                val active = value == level
+                val shape = RoundedCornerShape(12.dp)
+                Box(
+                    Modifier.weight(1f).clip(shape).background(if (active) Forest else White)
+                        .border(1.dp, if (active) Forest else Line, shape)
+                        .clickable(role = Role.Button) { chooseLevel(value) }.padding(vertical = 12.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(value, color = if (active) White else Forest, fontFamily = Sans, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+        for ((group, entries) in games) {''',
+    '''        if(mode == GameMode.Yds) {
+            // Keep the proven YDS-specific level picker exactly as before.
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                for (value in levels) {
+                    val active = value == level
+                    val shape = RoundedCornerShape(12.dp)
+                    Box(
+                        Modifier.weight(1f).clip(shape).background(if (active) Forest else White)
+                            .border(1.dp, if (active) Forest else Line, shape)
+                            .clickable(role = Role.Button) { chooseLevel(value) }.padding(vertical = 12.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(value, color = if (active) White else Forest,
+                            fontFamily = Sans, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
+        } else {
+            BoxWithConstraints(Modifier.fillMaxWidth()) {
+                val columns=if(maxWidth<650.dp ||
+                    LocalDensity.current.fontScale>1.25f)2 else 3
+                Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
+                    levels.chunked(columns).forEach { group ->
+                        Row(Modifier.fillMaxWidth(),
+                            horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                            group.forEach { value ->
+                                Box(Modifier.weight(1f)) {
+                                    Wq175CefrLevelCard(
+                                        tier=value,available=null,
+                                        selected=value==level,
+                                        onSelect={chooseLevel(value)})
+                                }
+                            }
+                            repeat(columns-group.size) {
+                                Spacer(Modifier.weight(1f))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for ((group, entries) in games) {''',
+    "native premium CEFR level cards with original selectors")
+
 p.write_text(s,"utf-8")
 print("PASS: single YDS Academy with both existing working routes and airy package header.")

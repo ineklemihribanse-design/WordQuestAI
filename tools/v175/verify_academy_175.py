@@ -10,7 +10,8 @@ assert "prep = yds" in home and "exams = ydsCenter" in home
 assert 'Wq175PackageIntro(mode, level)' in home
 assert 'Wq175GlossIcon(Wq175IconNames.menu(title)' in home
 assert 'BackHandler(onBack = back)' in academy
-assert 'İçerik hedefi: Her seviyede 2.000 kelime / ifade' in academy
+assert 'A1–C2 · Altı seviyede kelime koleksiyonları' in academy
+assert 'selected:Boolean=false,onSelect:()->Unit' in academy
 assert 'YDS Kelime Paketleri' in academy
 assert 'Wq175ThemeBanner("yds_akademi"' in academy
 for name in ("Kelime","Dilbilgisi","Paragraf","Çeviri","Yakın Anlam",
@@ -19,6 +20,12 @@ for name in ("Kelime","Dilbilgisi","Paragraf","Çeviri","Yakın Anlam",
 for icon in ("paragraph","translate","synonym","completion","timer","exam","review"):
     assert '"'+icon+'"' in academy
 assert "modules.chunked(cols)" in academy
+selector=(root/"tools/v175/apply_academy_175.py").read_text("utf-8")
+assert 'Wq175CefrLevelCard(' in selector
+assert 'onSelect={chooseLevel(value)}' in selector
+assert 'levels.chunked(columns)' in selector
+assert 'if(mode == GameMode.Yds)' in selector
+assert 'for ((group, entries) in games)' in selector
 assert 'internal fun Wq175CefrLevelCard(' in academy
 assert '"level_"+tier.lowercase(java.util.Locale.ROOT)' in academy
 assert 'Surface(onClick=onSelect' in academy

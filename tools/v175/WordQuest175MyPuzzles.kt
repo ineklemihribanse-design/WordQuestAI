@@ -37,7 +37,7 @@ internal fun Wq175MyPuzzlesHero(total: Int, completed: Int) {
                 Text("KENDİ BULMACA ATÖLYEN",
                     color=Color(0xFFEAF79B),fontSize=10.sp,
                     fontWeight=FontWeight.Black)
-                Text("Tasarla, çöz,\\nyeniden keşfet.",
+                Text("Tasarla, çöz,\nyeniden keşfet.",
                     color=Color.White,fontSize=if(compact)21.sp else 25.sp,
                     lineHeight=if(compact)25.sp else 29.sp,
                     fontWeight=FontWeight.ExtraBold)
