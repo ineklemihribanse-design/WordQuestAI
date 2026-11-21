@@ -248,6 +248,14 @@
         "guestAvatar": {
           ".write": "auth != null && auth.uid === data.parent().child('guestUid').val() && data.parent().child('phase').val() === 'lobby' && newData.exists()",
           ".validate": "newData.isString() && (newData.val() === 'astra' || newData.val() === 'piko' || newData.val() === 'nobi' || newData.val() === 'tera' || newData.val() === 'lopi' || newData.val() === 'tomba' || newData.val() === 'foksi' || newData.val() === 'moka' || newData.val() === 'pera' || newData.val() === 'gigi' || newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl')"
+        },
+        "hintUsed": {
+          "$uid": {
+            "$index": {
+              ".write": "auth != null && auth.uid === $uid && !data.exists() && newData.val() === true && data.parent().parent().parent().child('phase').val() === 'playing' && data.parent().parent().parent().child('mode').val() === 'duel' && (data.parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().child('turn').child('uid').val() === auth.uid && (data.parent().parent().parent().child('turn').child('until').val() === 0 || now <= data.parent().parent().parent().child('turn').child('until').val()) && !data.parent().parent().parent().child('solved').child($index).exists() && data.parent().childrenCount < (data.parent().parent().parent().child('size').val() === 20 ? 3 : (data.parent().parent().parent().child('size').val() === 30 ? 4 : (data.parent().parent().parent().child('size').val() === 40 ? 5 : (data.parent().parent().parent().child('size').val() === 50 ? 6 : 0)))) && ((data.parent().parent().parent().child('size').val() === 20 && $index.matches(/^([0-9]|1[0-9])$/)) || (data.parent().parent().parent().child('size').val() === 30 && $index.matches(/^([0-9]|[12][0-9])$/)) || (data.parent().parent().parent().child('size').val() === 40 && $index.matches(/^([0-9]|[1-3][0-9])$/)) || (data.parent().parent().parent().child('size').val() === 50 && $index.matches(/^([0-9]|[1-4][0-9])$/)))",
+              ".validate": "newData.val() === true"
+            }
+          }
         }
       }
     },
