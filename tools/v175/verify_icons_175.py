@@ -22,6 +22,11 @@ assert 'Wq175GlossIcon("arena_"+kind,Modifier.size(76.dp))' in arena
 assert 'Wq175GlossIcon(Wq175IconNames.menu(title)' in home
 assert practice.count('Wq175GlossIcon(Wq175IconNames.practice(kind)')==2
 assert (SRC/"WordQuest175Icons.kt").exists()
+assert (ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175PremiumIconRoutingTest.kt").is_file()
+for token in ('"pdf"','"camera"','"scan"','"paragraph"','"translate"',
+              '"synonym"','"completion"','"exam"','"review"',
+              '"notebook"','"timer"','"success"'):
+    assert "-> "+token in (SRC/"WordQuest175Icons.kt").read_text("utf-8")
 icon_router=(SRC/"WordQuest175Icons.kt").read_text("utf-8")
 assert '"yanlışlarımdan" in s -> "mistakes"' in icon_router
 assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icon_router

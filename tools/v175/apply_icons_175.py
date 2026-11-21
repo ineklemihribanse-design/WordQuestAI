@@ -20,6 +20,10 @@ def main():
     for name in names:
         assert (icons/(name+".webp")).stat().st_size>800,name
     shutil.copyfile(PKG/"WordQuest175Icons.kt",SRC/"WordQuest175Icons.kt")
+    test_dir=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
+    test_dir.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(PKG/"Wq175PremiumIconRoutingTest.kt",
+        test_dir/"Wq175PremiumIconRoutingTest.kt")
     p=SRC/"WordQuest174Arena.kt"
     s=p.read_text("utf-8")
     s=one(s,"            Wq174ModeSymbol(kind,Modifier.size(76.dp))",
