@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 /** Assets generated at build time, not screenshots/emoji. Bitmap decode cached
@@ -32,7 +33,14 @@ internal fun Wq175GlossIcon(
             }
         }.getOrNull()
     }
-    if (image != null) {
+    // Prefer the already approved standalone 1.0.75 room artwork when present.
+    // Drawable resources are installed by apply_theme_art_175.py; every other
+    // icon retains the previous bitmap path as a safe fallback.
+    val approved = Wq175IconNames.approvedResource(name)
+    if (approved != null) {
+        Image(painter = painterResource(approved), contentDescription = null,
+            modifier = modifier, contentScale = ContentScale.Fit)
+    } else if (image != null) {
         Image(bitmap = image, contentDescription = null,
             modifier = modifier, contentScale = ContentScale.Fit)
     } else {
@@ -44,6 +52,18 @@ internal fun Wq175GlossIcon(
 }
 
 internal object Wq175IconNames {
+    /** Dedicated approved illustrations win over generic generated glossy symbols. */
+    fun approvedResource(name: String): Int? = when (name) {
+        "trophy" -> R.drawable.wq175_arena_icon
+        "yds" -> R.drawable.wq175_yds_akademi_icon
+        "cards" -> R.drawable.wq175_kelime_hafizam_icon
+        "synonym" -> R.drawable.wq175_eslestirmelerim_icon
+        "plan" -> R.drawable.wq175_gunluk_plan_icon
+        "grammar" -> R.drawable.wq175_dilbilgisi_icon
+        "puzzle" -> R.drawable.wq175_bulmacalarim_icon
+        "listen" -> R.drawable.wq175_dinle_ve_yaz_icon
+        else -> null
+    }
     fun menu(title: String): String {
         val s = title.lowercase(java.util.Locale.ROOT).replace("\u0307", "")
         return when {
@@ -73,7 +93,7 @@ internal object Wq175IconNames {
             "başarı" in s || "sonuç" in s -> "success"
             "arena" in s || "yarış" in s -> "trophy"
             "yds" in s || "sınav" in s -> "yds"
-            "kelime hafıza" in s || "tekrar" in s -> "cards"
+            "kelime hafıza" in s || "kelime çalış" in s || "tekrar" in s -> "cards"
             "konuşma" in s || "asistan" in s -> "assistant"
             "günlük" in s || "plan" in s -> "plan"
             "paket" in s -> "packages"
