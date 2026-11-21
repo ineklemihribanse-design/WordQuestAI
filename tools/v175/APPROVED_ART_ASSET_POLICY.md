@@ -33,3 +33,11 @@ Bu dosya, uygulama kodunun hangi görsel kaynaklara öncelik verdiğini sabitler
 ## Yayınlama kuralı
 
 Bu dal üstündeki commit, APK yayınlandığı anlamına gelmez. `v1.0.75` için Android CI testlerinin geçmesi, sürümün `versionCode=101` olması, imza sertifikasının mevcut yükseltme imzasıyla eşleşmesi ve gerçek cihaz QA kanıtı gerekir. Bunlar doğrulanmadan üretim güncellemesi olarak sunulmamalıdır.
+
+## Yüksek çözünürlüklü paket için tek dosyalık geçiş
+
+`WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` dosyası aynı geliştirme dalında tam olarak `tools/v175/WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` konumuna eklendiğinde `apply_theme_art_175.py`, `apply_uploaded_art_pack_175.py` yükleyicisini otomatik çağırır.
+
+Yükleyici paketteki en az 102 bağımsız ikon dosyasını ve kullanılabilir premium arka planları `source/app/src/main/assets/wq175_user_art` altına kopyalar. `extra/` altındaki 108 düşük kaliteli kesilmiş ikon özellikle **dışarıda bırakılır**. Kullanıcının bağımsız ikonları varsa varsayılan yerleşik ikonlardan önceliklidir; eksik dosyada çalışan önceki görsel korunur. `WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` dosyası depoya henüz eklenmemişse, yükleyici bilerek değişiklik yapmaz.
+
+Eklenecek ZIP dosyası boyut ve bütünlük açısından doğrulanmalı; çalıştırılabilir APK henüz bu görsel paketiyle test edilmiş kabul edilmemelidir.
