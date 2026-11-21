@@ -185,6 +185,56 @@ def account(s):
     return s
 edit('HomeScreen.kt',account)
 
+# The original 5-option lobby dialog (v150/v151) hides question counts and
+# forces every edited room to 12. The Firebase host-only revision rule is only
+# useful after the UI actually sends the selected number.
+def lobby_count(s):
+    s=once(s,
+        'if(match.mode=="quiz")"12 soru" else match.size.toString()+" kelime',
+        'if(match.mode=="quiz")"${match.size} soru" else match.size.toString()+" kelime',
+        'show actual saved 5-option question count in the room lobby')
+    return s
+edit('ArenaApprovedLobby.kt',lobby_count)
+
+def lobby_editor_count(s):
+    s=once(s,
+        'FilterChip(selected=mode==value,onClick={mode=value},label={Text(label)})',
+        '''FilterChip(selected=mode==value,onClick={
+                            mode=value
+                            if(value=="quiz" && size !in listOf(5,10,12,15,20)) size=10
+                            else if(value!="quiz" &&
+                                size !in packs.availableSizes(level,topic))
+                                size=packs.availableSizes(level,topic).firstOrNull()?:20
+                        },label={Text(label)})''',
+        'normalize number when changing from crossword to quiz mode')
+    s=once(s,
+        '''                if(mode!="quiz"){
+                    Text("Kelime sayısı",fontWeight=FontWeight.Bold,color=LobbyInk)
+                    Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){
+                        available.forEach{count->
+                            FilterChip(selected=size==count,onClick={size=count},
+                                label={Text(count.toString())})
+                        }
+                    }
+                }''',
+        '''                Text(if(mode=="quiz")"Soru sayısı" else "Kelime sayısı",
+                    fontWeight=FontWeight.Bold,color=LobbyInk)
+                Row(Modifier.horizontalScroll(rememberScrollState()),
+                    horizontalArrangement=Arrangement.spacedBy(6.dp)){
+                    (if(mode=="quiz")listOf(5,10,12,15,20) else available)
+                        .forEach{count->
+                            FilterChip(selected=size==count,onClick={size=count},
+                                label={Text(if(mode=="quiz")"$count soru" else "$count")})
+                        }
+                }''',
+        'make quiz count selectable on phone and tablet')
+    s=once(s,
+        'val targetSize=if(mode=="quiz")12 else size',
+        'val targetSize=size',
+        'save actual selected quiz count, not hard-coded 12')
+    return s
+edit('ArenaV3Lobby.kt',lobby_editor_count)
+
 f=ROOT/'source/app/build.gradle.kts'
 s=f.read_text('utf-8')
 assert s.count('versionCode = 107')==1 and s.count('versionName = "1.0.81"')==1
