@@ -1,0 +1,46 @@
+topic	difficulty	prompt	answer	other1	other2	other3	explanation
+Determiners & Quantifiers	Easy	____ information provided in the report was confidential.	The	A	An	Many	Information sayılamayan bir isimdir; belirli bilgi kümesi the information ile gösterilir.
+Determiners & Quantifiers	Easy	The station has ____ platforms than the central terminal.	fewer	less	much	little	Platforms sayılabilen çoğul isimdir; karşılaştırmada fewer kullanılır.
+Determiners & Quantifiers	Easy	There is ____ evidence that this approach is effective.	little	many	few	several	Evidence sayılamayan bir isim olduğundan az miktarı little ile belirtilir.
+Determiners & Quantifiers	Easy	Only ____ of the applicants met all three requirements.	a few	much	a little	every	Applicants sayılabilen çoğul isim olduğu için a few of the applicants uygundur.
+Determiners & Quantifiers	Medium	____ participant must sign the consent form before beginning.	Each	Few	Many	Much	Each tekil sayılabilir isimle kullanılıp her birey için ayrı yükümlülük bildirir.
+Determiners & Quantifiers	Easy	The organisation has offices in ____ European city listed in the survey.	every	many	much	few	Every tekil sayılabilir city ismiyle kullanılır; diğer seçenekler uygun sayı uyumu vermez.
+Determiners & Quantifiers	Easy	She has made ____ progress since joining the training course.	considerable	many	several	a few	Progress sayılamayan isimdir; considerable progress doğal miktar ifadesidir.
+Determiners & Quantifiers	Medium	____ furniture in the meeting room was replaced after the renovation.	All the	Every	Many	Few	Furniture sayılamayan isim olduğu için all the furniture uygundur.
+Determiners & Quantifiers	Easy	The survey includes ____ responses from 200 participants.	several	much	a little	each	Responses çoğul sayılabilir isim olduğundan several uygun belirleyicidir.
+Determiners & Quantifiers	Easy	We need ____ more time to check the translations.	a little	a few	many	several	Time sayılamayan isimdir; az ek zaman a little more time biçimindedir.
+Determiners & Quantifiers	Medium	____ university in the region must submit an annual report.	Every	Much	Some	Few	Every tekil sayılabilir university kelimesini niteleyerek genel zorunluluk anlatır.
+Determiners & Quantifiers	Easy	The researchers found ____ interesting result in the final trial.	an	a	many	each	Interesting ünlü sesle başladığından tekil sayılabilir result önünde an kullanılır.
+Determiners & Quantifiers	Easy	He bought ____ umbrella because the forecast predicted rain.	an	a	some	many	Umbrella kelimesi ünlü sesle başladığı için belirsiz tanımlık an kullanılır.
+Determiners & Quantifiers	Easy	The council received ____ complaints than last year.	fewer	less	little	much	Complaints sayılabilir çoğul olduğu için than ile fewer kullanılır.
+Determiners & Quantifiers	Medium	No ____ evidence was found to support the allegation.	further	farther	many	several	Further evidence daha fazla delil anlamındadır; farther fiziksel uzaklık anlatır.
+Prepositions & Phrasal Verbs	Easy	The committee is responsible ____ reviewing the submissions.	for	of	with	at	Responsible for + isim veya -ing, görev ve sorumluluk belirtir.
+Prepositions & Phrasal Verbs	Easy	The researchers succeeded ____ isolating the compound.	in	at	on	to	Succeed in kalıbındaki in edatından sonra gerund kullanılır.
+Prepositions & Phrasal Verbs	Medium	The new regulation came ____ effect at midnight.	into	over	about	along	Come into effect yürürlüğe girmek anlamındaki yerleşik kalıptır.
+Prepositions & Phrasal Verbs	Easy	The event was called ____ because of severe weather.	off	up	through	in	Call off bir etkinliği iptal etmek anlamında kullanılan phrasal verb yapısıdır.
+Prepositions & Phrasal Verbs	Easy	The findings are consistent ____ previous studies.	with	to	at	for	Be consistent with daha önceki verilerle uyumlu olmayı anlatır.
+Prepositions & Phrasal Verbs	Easy	The manager insisted ____ receiving a written response.	on	for	at	to	Insist on + -ing belirli bir eylemde ısrar etmeyi ifade eder.
+Prepositions & Phrasal Verbs	Medium	The training programme aims ____ improving access to education.	at	to	for	with	Aim at + gerund belirli bir amaca yönelmeyi anlatır; to + -ing bu yapı için uygun değildir.
+Prepositions & Phrasal Verbs	Medium	The editor pointed ____ that the date was incorrect.	out	at	to	off	Point out + that-clause bir yanlışlığa dikkat çekmek anlamındaki kalıptır.
+Prepositions & Phrasal Verbs	Easy	The researchers carried ____ several additional trials.	out	off	over	in	Carry out bir araştırma veya deneyi gerçekleştirmek anlamındaki phrasal verb yapısıdır.
+Prepositions & Phrasal Verbs	Medium	Visitor numbers fell ____ during the renovation.	off	out	on	up	Fall off bir miktarın veya sayının azalması anlamında kullanılır.
+Prepositions & Phrasal Verbs	Easy	She looks ____ the welfare of the new trainees.	after	into	up	around	Look after bir kişi ya da grubun bakım ve refahıyla ilgilenmek anlamındadır.
+Prepositions & Phrasal Verbs	Easy	The panel agreed ____ the revised timetable.	on	at	for	by	Agree on bir düzenleme hakkında ortak görüşe varmayı ifade eder.
+Prepositions & Phrasal Verbs	Medium	They ruled ____ a software fault after checking the logs.	out	over	down	through	Rule out olası bir nedeni inceleyip ihtimal dışı bırakmak anlamındadır.
+Prepositions & Phrasal Verbs	Easy	The safety measures are aimed ____ reducing accidents.	at	to	of	by	Be aimed at + -ing bir girişimin hedeflediği eylemi belirtir.
+Prepositions & Phrasal Verbs	Easy	The lecture focused ____ the causes of migration.	on	in	by	off	Focus on belirli bir konuyu merkeze almak anlamında kullanılır.
+Inversion & Discourse	Hard	Never before ____ the commission faced such scrutiny in its entire history.	has	does	is	will	Never before cümle başına gelince present perfect yardımcı fiili özneden önce kullanılır.
+Inversion & Discourse	Hard	Only after the approval letter arrived ____ the project begin.	did	had	was	has	Only after başta olduğunda ana cümlede past simple için did + özne + yalın fiil devrilir.
+Inversion & Discourse	Hard	Rarely ____ researchers observe this behaviour in the wild.	do	have	are	were	Rarely başta olduğunda simple present için do + özne + fiil sırası gerekir.
+Inversion & Discourse	Medium	Hardly had the guests taken their seats ____ the alarm sounded.	when	than	while	since	Hardly had ... when, art arda gelen iki geçmiş olayı anlatan kalıptır.
+Inversion & Discourse	Hard	No sooner had she opened the folder ____ she noticed the missing file.	than	when	then	and	No sooner had ... than yapısı iki olayın hızlı ardışıklığını anlatır.
+Inversion & Discourse	Hard	So difficult ____ the puzzle that only two teams solved it.	was	did	had	were	So + adjective cümle başına gelince be fiili ile özne arasında devrilme olur.
+Inversion & Discourse	Hard	At no time ____ visitors permitted to enter the storage area.	were	did	had	have	At no time cümle başında olumsuz anlam taşıdığı için yardımcı fiil önden gelir.
+Inversion & Discourse	Medium	Under no circumstances ____ the data be shared without consent.	may	to	was	has	Under no circumstances başta olduğunda modal fiil öznenin önünde yer alır.
+Inversion & Discourse	Hard	Not until midnight ____ the rescue team receive the message.	did	was	had	is	Not until ile başlayan geçmiş anlatımında did + özne + yalın fiil kullanılır.
+Inversion & Discourse	Hard	When construction began, little ____ the residents know about the project.	did	had	were	has	Little başa gelerek olumsuz vurgulama yaptığında past simple için did kullanılır.
+Inversion & Discourse	Medium	The director spoke briefly, ____ the audience to ask questions.	inviting	invited	invite	invites	Ana cümleye aynı öznenin eşzamanlı eylemini ekleyen -ing participle clause kullanılır.
+Inversion & Discourse	Medium	Having checked the results, the panel ____ its decision.	announced	announcing	to announce	having announced	Öndeki perfect participle sonrasında bağımsız ana cümlede çekimli fiil gerekir.
+Inversion & Discourse	Medium	The proposal was rejected, ____ several members had supported it.	even though	despite	because of	in order to	Even though ardından çekimli cümle gelerek beklenmedik karşıtlığı gösterir.
+Inversion & Discourse	Hard	Had the instructions been clearer, fewer errors ____.	would have occurred	will occur	have occurred	occurred	Devrik geçmiş koşulun sonucu would have + V3 ile ifade edilir.
+Inversion & Discourse	Medium	It was the first time ____ the team had tested the prototype abroad.	that	whose	why	what	It was the first time that + past perfect, geçmişteki ilk deneyimi anlatan kalıptır.

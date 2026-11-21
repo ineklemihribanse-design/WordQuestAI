@@ -1,0 +1,34 @@
+name: Verify 5-choice Arena question count and Firebase lobby edits
+on:
+  push:
+    branches: [feature/v175-comprehensive-learning-update]
+    paths:
+      - 'firebase/database.rules.json'
+      - 'scripts/test-arena-quizcount-183.mjs'
+      - '.github/workflows/test-arena-quizcount-183.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quizcount-permissions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Verify JSON without modifying existing data
+        run: |
+          python3 -m json.tool firebase/database.rules.json >/dev/null
+          printf '{"database":{"rules":"firebase/database.rules.json"},"emulators":{"database":{"host":"127.0.0.1","port":9004},"ui":{"enabled":false}}}\n' > firebase.json
+      - name: Install sandboxed Firebase RTDB emulator and rules tester
+        run: npm install --no-save firebase-tools@latest @firebase/rules-unit-testing@latest
+      - name: Test all five question counts, host ownership and re-ready sequence
+        run: npx firebase emulators:exec --project demo-wordquest-quizcount-183 --only database "node scripts/test-arena-quizcount-183.mjs"

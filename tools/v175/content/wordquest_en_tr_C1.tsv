@@ -1,0 +1,907 @@
+C1	Genel İngilizce	İsimler	EXTERIOR	dış, dış görünüş, dış cephe
+C1	Genel İngilizce	İsimler	CLOAK	pelerin, örtü
+C1	Genel İngilizce	Sıfatlar	TIMID	çekingen, ürkek, utangaç
+C1	Genel İngilizce	Zarflar	RELUCTANTLY	isteksizce, gönülsüzce
+C1	Genel İngilizce	Fiiller	CONCUR	aynı fikirde olmak, katılmak
+C1	Genel İngilizce	Sıfatlar	AVID	hevesli, istekli, tutkulu
+C1	Genel İngilizce	Fiiller	MARVEL	hayran kalmak, hayret etmek
+C1	Genel İngilizce	Sıfatlar	ENVIABLE	imrenilecek, gıpta edilecek
+C1	Genel İngilizce	Sıfatlar	ORGANIZATIONAL	örgütsel, kurumsal
+C1	Genel İngilizce	İsimler	PSYCHIATRIST	psikiyatrist
+C1	Genel İngilizce	Sıfatlar	PSYCHIATRIC	psikiyatrik
+C1	Genel İngilizce	Sıfatlar	CLINICAL	klinik, tarafsız, soğuk
+C1	Genel İngilizce	İsimler	CORPS	kolordu, birlik, heyet
+C1	Genel İngilizce	Sıfatlar	FORENSIC	adli
+C1	Genel İngilizce	İsimler	JUVENILE	isim: reşit olmayan, genç; sıfat: çocukça, gençlere ait
+C1	Genel İngilizce	İsimler	JURISDICTION	yargı yetkisi, yetki alanı
+C1	Genel İngilizce	Sıfatlar	ACCUSTOMED	alışkın, alışılmış
+C1	Genel İngilizce	İsimler	TRAUMA	travma, sarsıntı
+C1	Genel İngilizce	Sıfatlar	TRAUMATIC	travmatik, sarsıcı
+C1	Genel İngilizce	Sıfatlar	REVEALING	çok şey anlatan, açığa vuran, dekolte
+C1	Genel İngilizce	İsimler	ECCENTRIC	sıfat: tuhaf, eksantrik; isim: eksantrik kişi, tuhaf kimse
+C1	Genel İngilizce	İsimler	SANCTITY	kutsallık, dokunulmazlık
+C1	Genel İngilizce	Fiiller	CONFORM	uymak, uyum sağlamak
+C1	Genel İngilizce	İsimler	NORMS	normlar, kurallar
+C1	Genel İngilizce	İsimler	QUIRK	tuhaflık, garip alışkanlık
+C1	Genel İngilizce	İsimler	ODDITY	tuhaflık, acayiplik
+C1	Genel İngilizce	Fiiller	COMPEL	zorlamak, mecbur etmek
+C1	Genel İngilizce	İsimler	COMPULSION	zorlama, dürtü, takıntı
+C1	Genel İngilizce	İsimler	ASSERTION	iddia, ileri sürme
+C1	Genel İngilizce	İsimler	INDIVIDUALITY	bireysellik, kişilik
+C1	Genel İngilizce	İsimler	PSYCHE	ruh, ruhsal yapı
+C1	Genel İngilizce	İsimler	CONFORMITY	uyma, uygunluk, uyum
+C1	Genel İngilizce	Sıfatlar	UNCONVENTIONAL	alışılmadık, sıra dışı
+C1	Genel İngilizce	Fiiller	CONGREGATE	toplanmak, bir araya gelmek
+C1	Genel İngilizce	Fiiller	RESENT	içerlemek, gücenmek, kızmak
+C1	Genel İngilizce	Sıfatlar	SELF-CONSCIOUS	çekingen, mahcup, utangaç
+C1	Genel İngilizce	Sıfatlar	WARY	temkinli, ihtiyatlı, dikkatli
+C1	Genel İngilizce	Fiiller	STOKE	körüklemek, alevlendirmek, (ateşe) yakıt atmak
+C1	Genel İngilizce	Zarflar	DYNAMICALLY	dinamik bir şekilde, canlı bir şekilde
+C1	Genel İngilizce	İsimler	HOSTESS	ev sahibesi, hostes
+C1	Genel İngilizce	Fiiller	PERPETUATE	sürdürmek, kalıcılaştırmak
+C1	Genel İngilizce	İsimler	NATURALNESS	doğallık
+C1	Genel İngilizce	İsimler	EXHIBITIONIST	teşhirci, gösteriş meraklısı
+C1	Genel İngilizce	Fiiller	ISOLATE	izole etmek, yalıtmak, ayırmak
+C1	Genel İngilizce	Sıfatlar	ISOLATED	yalıtılmış, ıssız, münferit
+C1	Genel İngilizce	Zarflar	REFRESHINGLY	hoş bir şekilde, ferahlatıcı biçimde
+C1	Genel İngilizce	Sıfatlar	EFFORTLESS	zahmetsiz, kolay
+C1	Genel İngilizce	İsimler	VEGETATION	bitki örtüsü, bitkiler
+C1	Genel İngilizce	İsimler	RESPITE	ara, mola, soluklanma
+C1	Genel İngilizce	Fiiller	SUFFICE	yetmek, yeterli olmak
+C1	Genel İngilizce	İsimler	PURITY	saflık, arılık
+C1	Genel İngilizce	Sıfatlar	GRUELLING	yorucu, zorlu, çetin
+C1	Genel İngilizce	Fiiller	COMPRISE	oluşmak, kapsamak, içermek
+C1	Genel İngilizce	İsimler	PLASTER	isim: sıva, alçı, yara bandı; fiil: sıvamak, sıva yapmak
+C1	Genel İngilizce	İsimler	DARKROOM	karanlık oda
+C1	Genel İngilizce	Fiiller	INDUCT	göreve getirmek, üyeliğe kabul etmek
+C1	Genel İngilizce	İsimler	INDUCTION	oryantasyon, göreve getirme, tümevarım
+C1	Genel İngilizce	İsimler	FOSSIL	fosil, taşıl
+C1	Genel İngilizce	Sıfatlar	GEOLOGICAL	jeolojik
+C1	Genel İngilizce	Zarflar	GEOLOGICALLY	jeolojik olarak
+C1	Genel İngilizce	İsimler	SPECIMEN	örnek, numune
+C1	Genel İngilizce	Zarflar	ENORMOUSLY	son derece, muazzam ölçüde
+C1	Genel İngilizce	İsimler	GEM	değerli taş, mücevher, cevher
+C1	Genel İngilizce	Sıfatlar	EXPLANATORY	açıklayıcı
+C1	Genel İngilizce	Sıfatlar	VERTICAL	dikey, düşey
+C1	Genel İngilizce	Sıfatlar	KNOWLEDGEABLE	bilgili
+C1	Genel İngilizce	Zarflar	ORDINARILY	normalde, genellikle
+C1	Genel İngilizce	Fiiller	FORMULATE	formüle etmek, oluşturmak, ifade etmek
+C1	Genel İngilizce	İsimler	RESIN	reçine
+C1	Genel İngilizce	İsimler	SACRIFICE	isim: fedakârlık, kurban; fiil: feda etmek, kurban etmek
+C1	Genel İngilizce	Zarflar	CLEANLY	temiz bir şekilde, düzgünce
+C1	Genel İngilizce	İsimler	ENDORSEMENT	onay, destek, ciro
+C1	Genel İngilizce	İsimler	STRETCHING	germe, esneme (egzersizi)
+C1	Genel İngilizce	İsimler	CONTINUITY	süreklilik, devamlılık
+C1	Genel İngilizce	İsimler	SHAMBLES	karmaşa, kaos, dağınıklık
+C1	Genel İngilizce	Sıfatlar	CLAUSTROPHOBIC	klostrofobik, boğucu
+C1	Genel İngilizce	İsimler	CLAUSTROPHOBIA	klostrofobi, kapalı yer korkusu
+C1	Genel İngilizce	Sıfatlar	HEADSTRONG	dik başlı, inatçı
+C1	Genel İngilizce	İsimler	TACT	incelik, nezaket
+C1	Genel İngilizce	Sıfatlar	TACTFUL	düşünceli, nazik, incelikli
+C1	Genel İngilizce	Zarflar	TACTFULLY	nazikçe, incelikle
+C1	Genel İngilizce	İsimler	BLISTER	isim: su toplaması, kabarcık; fiil: su toplamak, kabarmak
+C1	Genel İngilizce	İsimler	SPONSORSHIP	sponsorluk
+C1	Genel İngilizce	İsimler	EGO	ego, benlik
+C1	Genel İngilizce	İsimler	SALOON	salon, bar, sedan araba
+C1	Genel İngilizce	Zarflar	BEFOREHAND	önceden, öncesinde
+C1	Genel İngilizce	İsimler	SLOB	pasaklı kimse, tembel
+C1	Genel İngilizce	İsimler	COVERAGE	kapsam, (medyada) haber yayını, kapsama alanı
+C1	Genel İngilizce	Fiiller	UNPLUG	fişten çekmek, fişini çekmek
+C1	Genel İngilizce	İsimler	GADGET	alet, cihaz, aygıt
+C1	Genel İngilizce	Fiiller	REDISCOVER	yeniden keşfetmek
+C1	Genel İngilizce	Zarflar	SUBTLY	belli belirsiz, ustaca, incelikle
+C1	Genel İngilizce	Fiiller	BRAINWASH	beyin yıkamak
+C1	Genel İngilizce	İsimler	BRAINWASHING	beyin yıkama
+C1	Genel İngilizce	Fiiller	IMPLICATE	suça karıştırmak, sorumlu tutmak
+C1	Genel İngilizce	Fiiller	MALFUNCTION	arızalanmak, bozulmak
+C1	Genel İngilizce	İsimler	WAYSIDE	yol kenarı
+C1	Genel İngilizce	Fiiller	EXPIRE	süresi dolmak, sona ermek
+C1	Genel İngilizce	İsimler	CON	fiil: dolandırmak, kandırmak; isim: dolandırıcılık, üçkâğıt, olumsuz yön
+C1	Genel İngilizce	Zarflar	DAMPLY	nemli bir şekilde
+C1	Genel İngilizce	Sıfatlar	GHOSTLY	hayaletimsi, ürkütücü
+C1	Genel İngilizce	İsimler	CARRIER	taşıyıcı, nakliyeci, taşıma şirketi
+C1	Genel İngilizce	İsimler	WASHTUB	çamaşır leğeni
+C1	Genel İngilizce	Sıfatlar	APT	uygun, yerinde, eğilimli
+C1	Genel İngilizce	Fiiller	APT TO	-meye eğilimli olmak, -mesi muhtemel olmak
+C1	Genel İngilizce	İsimler	PORTABLE	sıfat: taşınabilir, portatif; isim: taşınabilir cihaz
+C1	Genel İngilizce	Sıfatlar	ORNAMENTAL	dekoratif, süs amaçlı
+C1	Genel İngilizce	Sıfatlar	PLACID	sakin, uysal, durgun
+C1	Genel İngilizce	Zarflar	PLACIDLY	sakince, uysalca
+C1	Genel İngilizce	Sıfatlar	UNMANAGEABLE	idare edilemez, kontrol edilemez
+C1	Genel İngilizce	İsimler	APPLIANCE	cihaz, ev aleti
+C1	Genel İngilizce	Fiiller	RELINQUISH	bırakmak, vazgeçmek, feragat etmek
+C1	Genel İngilizce	Sıfatlar	TEDIOUS	sıkıcı, usandırıcı
+C1	Genel İngilizce	İsimler	TEDIUM	sıkıcılık, bıkkınlık, usanç
+C1	Genel İngilizce	Fiiller	EXERT	uygulamak, kullanmak, çabalamak
+C1	Genel İngilizce	İsimler	EXTORTION	haraç, şantaj, gasp
+C1	Genel İngilizce	Fiiller	ALLEVIATE	hafifletmek, azaltmak, dindirmek
+C1	Genel İngilizce	Fiiller	ELABORATE	sıfat: ayrıntılı, detaylı, özenli; fiil: ayrıntılandırmak, ayrıntıya girmek
+C1	Genel İngilizce	İsimler	ELABORATION	ayrıntılandırma, detaylı açıklama
+C1	Genel İngilizce	Fiiller	DETEST	nefret etmek, tiksinmek
+C1	Genel İngilizce	Sıfatlar	DETESTABLE	iğrenç, nefret uyandıran
+C1	Genel İngilizce	İsimler	SUDS	sabun köpüğü
+C1	Genel İngilizce	Sıfatlar	AGREEABLE	hoş, cana yakın, razı
+C1	Genel İngilizce	Fiiller	PROWL	sinsice dolaşmak, kolaçan etmek
+C1	Genel İngilizce	Fiiller	SPECULATE	tahminde bulunmak, spekülasyon yapmak
+C1	Genel İngilizce	İsimler	SPECULATION	spekülasyon, tahmin, varsayım
+C1	Genel İngilizce	Sıfatlar	SPECULATIVE	spekülatif, tahmine dayalı, riskli
+C1	Genel İngilizce	İsimler	PEACOCK	tavus kuşu
+C1	Genel İngilizce	İsimler	DISDAIN	küçümseme, hor görme
+C1	Genel İngilizce	Fiiller	REENACT	yeniden canlandırmak, yeniden sahnelemek
+C1	Genel İngilizce	İsimler	TORMENT	fiil: eziyet etmek, acı çektirmek; isim: eziyet, azap, ıstırap
+C1	Genel İngilizce	İsimler	EXTRAVAGANCE	savurganlık, israf, aşırılık
+C1	Genel İngilizce	İsimler	EXPLOITATION	sömürü, istismar
+C1	Genel İngilizce	İsimler	MECHANISM	mekanizma, düzenek
+C1	Genel İngilizce	Zarflar	HENCE	bu yüzden, dolayısıyla, bu nedenle
+C1	Genel İngilizce	İsimler	OFFSPRING	çocuk, evlat, yavru
+C1	Genel İngilizce	Fiiller	OBLIGE	mecbur etmek, zorunda bırakmak, ricasını yerine getirmek
+C1	Genel İngilizce	Fiiller	COLLABORATE	iş birliği yapmak, birlikte çalışmak
+C1	Genel İngilizce	İsimler	COLLABORATOR	çalışma ortağı, iş birlikçi
+C1	Genel İngilizce	İsimler	COLLABORATION	iş birliği, ortak çalışma
+C1	Genel İngilizce	Sıfatlar	COLLABORATIVE	iş birliğine dayalı, ortak
+C1	Genel İngilizce	Sıfatlar	SHOWY	gösterişli, şatafatlı
+C1	Genel İngilizce	Fiiller	WRANGLE	tartışmak, çekişmek, kavga etmek
+C1	Genel İngilizce	İsimler	PREMISE	öncül, varsayım, dayanak
+C1	Genel İngilizce	Sıfatlar	ADVANTAGEOUS	avantajlı, faydalı, kârlı
+C1	Genel İngilizce	İsimler	PARASITE	parazit, asalak
+C1	Genel İngilizce	Sıfatlar	FANCIFUL	hayalî, gerçek dışı, fantastik
+C1	Genel İngilizce	İsimler	POISE	soğukkanlılık, özgüven, duruş
+C1	Genel İngilizce	Sıfatlar	CUSTOMARY	alışılagelmiş, geleneksel, âdet olan
+C1	Genel İngilizce	Sıfatlar	INSIGHTFUL	derin görüşlü, isabetli, aydınlatıcı
+C1	Genel İngilizce	Sıfatlar	NOTABLE	dikkate değer, önemli, kayda değer
+C1	Genel İngilizce	Sıfatlar	VICIOUS	acımasız, kötü niyetli, vahşi
+C1	Genel İngilizce	Zarflar	VICIOUSLY	acımasızca, vahşice
+C1	Genel İngilizce	Sıfatlar	WITHDRAWN	içine kapanık, çekingen
+C1	Genel İngilizce	Sıfatlar	TORTUROUS	işkence gibi, eziyetli
+C1	Genel İngilizce	Fiiller	DEPICT	tasvir etmek, betimlemek, resmetmek
+C1	Genel İngilizce	İsimler	DEPICTION	tasvir, betimleme
+C1	Genel İngilizce	İsimler	UPHEAVAL	çalkantı, köklü değişiklik, kargaşa
+C1	Genel İngilizce	İsimler	SHORTLIST	fiil: kısa listeye almak, ön elemeden geçirmek; isim: kısa liste, ön eleme listesi
+C1	Genel İngilizce	Sıfatlar	UNEVENTFUL	olaysız, sakin
+C1	Genel İngilizce	Sıfatlar	PERTINENT	ilgili, yerinde, konuyla ilgili
+C1	Genel İngilizce	Fiiller	PERTAIN TO	ilgili olmak, ait olmak
+C1	Genel İngilizce	İsimler	DAYDREAM	isim: hayal, düş; fiil: hayal kurmak, dalıp gitmek
+C1	Genel İngilizce	İsimler	PROTAGONIST	baş kahraman, ana karakter, öncü
+C1	Genel İngilizce	İsimler	SIMPLICITY	sadelik, basitlik
+C1	Genel İngilizce	İsimler	BLOCKBUSTER	gişe rekortmeni, çok satan eser
+C1	Genel İngilizce	Fiiller	RESONATE	yankılanmak, karşılık bulmak, etkilemek
+C1	Genel İngilizce	İsimler	SEQUEL	devam filmi, devam kitabı, sonuç
+C1	Genel İngilizce	İsimler	IRONY	ironi, kaderin cilvesi
+C1	Genel İngilizce	Sıfatlar	ACIDIC	asidik, asitli
+C1	Genel İngilizce	Fiiller	ALIGN	hizalamak, uyumlu hale getirmek, aynı safta yer almak
+C1	Genel İngilizce	İsimler	ALIGNMENT	hizalama, hiza, uyum
+C1	Genel İngilizce	İsimler	MANIPULATION	manipülasyon, yönlendirme, işleme
+C1	Genel İngilizce	İsimler	SUITOR	talip
+C1	Genel İngilizce	İsimler	DECEIT	aldatma, hile, sahtekârlık
+C1	Genel İngilizce	Fiiller	ALIENATE	soğutmak, uzaklaştırmak, yabancılaştırmak
+C1	Genel İngilizce	Zarflar	PERSUASIVELY	ikna edici bir şekilde
+C1	Genel İngilizce	İsimler	CONFINEMENT	hapis, kapatılma, sınırlandırma
+C1	Genel İngilizce	İsimler	MINUTIAE	ayrıntılar, ufak detaylar
+C1	Genel İngilizce	İsimler	PEASANT	köylü, çiftçi
+C1	Genel İngilizce	Sıfatlar	INEXPLICABLE	açıklanamaz, anlaşılmaz
+C1	Genel İngilizce	Zarflar	INEXPLICABLY	açıklanamaz bir şekilde, nedense
+C1	Genel İngilizce	İsimler	PIGEON	güvercin
+C1	Genel İngilizce	Fiiller	HARASS	taciz etmek, rahatsız etmek
+C1	Genel İngilizce	İsimler	HARASSMENT	taciz, rahatsız etme
+C1	Genel İngilizce	Zarflar	BELIEVABLY	inandırıcı bir şekilde
+C1	Genel İngilizce	Sıfatlar	READABLE	okunabilir, okunaklı, okunması kolay
+C1	Genel İngilizce	İsimler	CLEVERNESS	zekâ, akıllılık, ustalık
+C1	Genel İngilizce	Fiiller	PERSECUTE	zulmetmek, eziyet etmek
+C1	Genel İngilizce	İsimler	PERSECUTION	zulüm, eziyet
+C1	Genel İngilizce	Sıfatlar	SMUG	kendini beğenmiş, kendinden memnun
+C1	Genel İngilizce	Zarflar	SMUGLY	kendini beğenmiş bir şekilde, kibirle
+C1	Genel İngilizce	Sıfatlar	FEROCIOUS	vahşi, yırtıcı, şiddetli
+C1	Genel İngilizce	Zarflar	FEROCIOUSLY	vahşice, şiddetle
+C1	Genel İngilizce	Sıfatlar	HOSTILE	düşmanca, saldırgan, olumsuz
+C1	Genel İngilizce	İsimler	HOSTILITY	düşmanlık, husumet
+C1	Genel İngilizce	İsimler	DISMAY	fiil: dehşete düşürmek, hayal kırıklığına uğratmak; isim: dehşet, üzüntü, hayal kırıklığı
+C1	Genel İngilizce	Sıfatlar	METHODICAL	metodik, sistemli, düzenli
+C1	Genel İngilizce	Sıfatlar	RUTHLESS	acımasız, merhametsiz
+C1	Genel İngilizce	İsimler	RUTHLESSNESS	acımasızlık, merhametsizlik
+C1	Genel İngilizce	İsimler	CLAN	klan, kabile, boy
+C1	Genel İngilizce	Sıfatlar	PRIVILEGED	ayrıcalıklı, imtiyazlı
+C1	Genel İngilizce	Fiiller	CRUMBLE	ufalanmak, parçalanmak, çökmek
+C1	Genel İngilizce	İsimler	CRUMB	kırıntı
+C1	Genel İngilizce	İsimler	CLOSENESS	yakınlık
+C1	Genel İngilizce	İsimler	RARITY	nadirlik, ender bulunan şey
+C1	Genel İngilizce	Fiiller	EVOKE	çağrıştırmak, uyandırmak, akla getirmek
+C1	Genel İngilizce	Fiiller	REPEL	püskürtmek, uzak tutmak, tiksindirmek
+C1	Genel İngilizce	İsimler	REPELLANT	isim: kovucu madde; sıfat: itici, tiksindirici
+C1	Genel İngilizce	Sıfatlar	AQUA	camgöbeği, su yeşili
+C1	Genel İngilizce	İsimler	AQUARIUM	akvaryum
+C1	Genel İngilizce	Zarflar	INSIGHTFULLY	derin bir kavrayışla, isabetli bir şekilde
+C1	Genel İngilizce	İsimler	FLASHBACK	geçmişe dönüş sahnesi, ani anı canlanması
+C1	Genel İngilizce	İsimler	SELF-WORTH	öz değer, kendine saygı
+C1	Genel İngilizce	Fiiller	CITE	alıntılamak, örnek göstermek, öne sürmek
+C1	Genel İngilizce	İsimler	CITATION	alıntı, atıf, takdirname
+C1	Genel İngilizce	Zarflar	ECSTATICALLY	kendinden geçercesine, çok mutlu bir şekilde
+C1	Genel İngilizce	Sıfatlar	PLEASURABLE	zevkli, keyifli, hoş
+C1	Genel İngilizce	Zarflar	SUBSTANTIALLY	büyük ölçüde, önemli ölçüde, esasen
+C1	Genel İngilizce	Zarflar	FAVORABLY	olumlu bir şekilde, lehte
+C1	Genel İngilizce	İsimler	DIVERSITY	çeşitlilik
+C1	Genel İngilizce	İsimler	ELITIST	seçkinci, elitist
+C1	Genel İngilizce	Fiiller	GRUMBLE	homurdanmak, söylenmek, şikâyet etmek
+C1	Genel İngilizce	İsimler	RUMBLE	fiil: gümbürdemek, gürlemek, guruldamak; isim: gümbürtü, gürleme
+C1	Genel İngilizce	Sıfatlar	NEGLECTFUL	ihmalkâr, özensiz
+C1	Genel İngilizce	İsimler	ROUNDUP	haber özeti, toparlama, toplu yakalama
+C1	Genel İngilizce	Sıfatlar	CONSCIENTIOUS	titiz, özenli, vicdanlı
+C1	Genel İngilizce	Zarflar	CONSCIENTIOUSLY	titizlikle, özenle
+C1	Genel İngilizce	Sıfatlar	INDEFINITE	belirsiz, süresiz
+C1	Genel İngilizce	Zarflar	INDEFINITELY	süresiz olarak, belirsiz bir süre
+C1	Genel İngilizce	Sıfatlar	ATMOSPHERIC	atmosferik, etkileyici havası olan
+C1	Genel İngilizce	Fiiller	FUSE	birleştirmek, kaynaştırmak, sigortası atmak
+C1	Genel İngilizce	İsimler	FUSION	füzyon, kaynaşma, birleşme
+C1	Genel İngilizce	Zarflar	ROBUSTLY	sağlam bir şekilde, güçlü bir şekilde, kararlılıkla
+C1	Genel İngilizce	Sıfatlar	DISMAL	kasvetli, iç karartıcı, berbat
+C1	Genel İngilizce	Zarflar	DISMALLY	kasvetli bir şekilde, berbat bir şekilde
+C1	Genel İngilizce	Fiiller	CRAVE	çok istemek, can atmak, canı çekmek
+C1	Genel İngilizce	İsimler	CRAVING	aşırı istek, şiddetli arzu, aşerme
+C1	Genel İngilizce	Sıfatlar	PROSPECTIVE	muhtemel, olası, gelecekteki
+C1	Genel İngilizce	İsimler	SWAP	fiil: takas etmek, değiştirmek; isim: takas, değiş tokuş
+C1	Genel İngilizce	Zarflar	REMOTELY	uzaktan, azıcık (bile)
+C1	Genel İngilizce	Sıfatlar	VIOLET	mor, menekşe rengi
+C1	Genel İngilizce	Sıfatlar	BUBBLY	neşeli, canlı, köpüklü
+C1	Genel İngilizce	Zarflar	CHAOTICALLY	kaotik bir şekilde, karmakarışık bir şekilde
+C1	Genel İngilizce	Sıfatlar	APPREHENSIVE	endişeli, tedirgin, kaygılı
+C1	Genel İngilizce	İsimler	SETTEE	kanepe, sedir
+C1	Genel İngilizce	İsimler	TRAMPOLINE	trambolin
+C1	Genel İngilizce	İsimler	STAMINA	dayanıklılık, dayanma gücü, kondisyon
+C1	Genel İngilizce	İsimler	PLOY	taktik, hile, kurnazlık
+C1	Genel İngilizce	Fiiller	DITHER	kararsız kalmak, tereddüt etmek, bocalamak
+C1	Genel İngilizce	İsimler	OVERALLS	tulum, iş tulumu
+C1	Genel İngilizce	İsimler	UNISON	birlik, ahenk, uyum
+C1	Genel İngilizce	İsimler	SNAIL	salyangoz
+C1	Genel İngilizce	İsimler	BLISS	mutluluk, saadet, huzur
+C1	Genel İngilizce	Sıfatlar	INEXHAUSTIBLE	tükenmez, bitmez
+C1	Genel İngilizce	İsimler	ACRE	akre (yaklaşık 4 dönümlük alan ölçüsü)
+C1	Genel İngilizce	İsimler	HEIFER	düve
+C1	Genel İngilizce	İsimler	EWE	dişi koyun
+C1	Genel İngilizce	İsimler	ADVERSARY	rakip, hasım, düşman
+C1	Genel İngilizce	Sıfatlar	VICTORIOUS	galip, muzaffer, zafer kazanmış
+C1	Genel İngilizce	Zarflar	VICTORIOUSLY	muzaffer bir şekilde, zaferle
+C1	Genel İngilizce	Sıfatlar	PROFOUND	derin, köklü, büyük
+C1	Genel İngilizce	Zarflar	PROFOUNDLY	derinden, son derece, büyük ölçüde
+C1	Genel İngilizce	Zarflar	BALDLY	açıkça, dolaysızca, lafı dolandırmadan
+C1	Genel İngilizce	Sıfatlar	BEARDED	sakallı
+C1	Genel İngilizce	İsimler	PROFESSIONALISM	profesyonellik
+C1	Genel İngilizce	Zarflar	ARTISTICALLY	sanatsal açıdan, sanatsal biçimde
+C1	Genel İngilizce	İsimler	POPULARIZATION	yaygınlaştırma, popülerleştirme
+C1	Genel İngilizce	İsimler	PENDULUM	sarkaç, rakkas
+C1	Genel İngilizce	İsimler	PREDECESSOR	selef, önceki kişi, öncel
+C1	Genel İngilizce	İsimler	LAPSE	isim: kısa süreli hata, aksama, aralık; fiil: süresi dolmak, geçersiz olmak, düşmek
+C1	Genel İngilizce	Sıfatlar	CEASELESS	aralıksız, bitmek bilmeyen, sürekli
+C1	Genel İngilizce	Zarflar	CEASELESSLY	durmaksızın, aralıksız
+C1	Genel İngilizce	İsimler	CLIMAX	doruk noktası, zirve, en heyecanlı an
+C1	Genel İngilizce	Sıfatlar	CLIMACTIC	doruk noktasını oluşturan, en heyecanlı
+C1	Genel İngilizce	Sıfatlar	ANTICLIMACTIC	hayal kırıklığı yaratan, beklenenin altında kalan
+C1	Genel İngilizce	Fiiller	FORFEIT	kaybetmek, hakkını yitirmek, feda etmek
+C1	Genel İngilizce	İsimler	TWITCH	fiil: seğirmek, kıpırdamak; isim: seğirme, tik
+C1	Genel İngilizce	İsimler	INTELLECT	akıl, zekâ, entelektüel kişi
+C1	Genel İngilizce	İsimler	DESCENT	iniş, soy, köken
+C1	Genel İngilizce	İsimler	EXODUS	toplu göç, kitlesel ayrılış
+C1	Genel İngilizce	Fiiller	IMMORTALIZE	ölümsüzleştirmek
+C1	Genel İngilizce	İsimler	GENOME	genom
+C1	Genel İngilizce	İsimler	FRACTION	küçük kısım, kesir, parça
+C1	Genel İngilizce	İsimler	FACTION	hizip, grup, fraksiyon
+C1	Genel İngilizce	İsimler	PHYSIQUE	fizik, vücut yapısı, bünye
+C1	Genel İngilizce	İsimler	UTENSIL	mutfak aleti, gereç
+C1	Genel İngilizce	İsimler	OTTER	su samuru
+C1	Genel İngilizce	Sıfatlar	CLAMMY	nemli, yapış yapış
+C1	Genel İngilizce	Fiiller	DISPENSE	dağıtmak, vermek, (ilaç) hazırlamak
+C1	Genel İngilizce	İsimler	DISPENSARY	dispanser, revir, eczane
+C1	Genel İngilizce	Fiiller	DIVERGE	ayrılmak, farklılaşmak, sapmak
+C1	Genel İngilizce	İsimler	DIVERGENCE	ayrışma, farklılık, sapma
+C1	Genel İngilizce	Sıfatlar	DIVERGENT	farklı, ayrışan, birbirinden ayrılan
+C1	Genel İngilizce	Sıfatlar	SUPERFICIAL	yüzeysel, üstünkörü
+C1	Genel İngilizce	Zarflar	SUPERFICIALLY	yüzeysel olarak, görünüşte
+C1	Genel İngilizce	Sıfatlar	AESTHETIC	estetik
+C1	Genel İngilizce	Zarflar	AESTHETICALLY	estetik açıdan
+C1	Genel İngilizce	Fiiller	SCRUTINIZE	dikkatle incelemek, irdelemek
+C1	Genel İngilizce	İsimler	SCRUTINY	dikkatli inceleme, denetim
+C1	Genel İngilizce	İsimler	QUIP	isim: espri, nükte; fiil: espri yapmak, nükteli söz söylemek
+C1	Genel İngilizce	Fiiller	WOO	kur yapmak, gönlünü kazanmaya çalışmak, ikna etmeye çalışmak
+C1	Genel İngilizce	İsimler	CRITERIA	ölçütler, kriterler
+C1	Genel İngilizce	Sıfatlar	PLAUSIBLE	makul, akla yatkın, inandırıcı
+C1	Genel İngilizce	İsimler	PLAUSIBILITY	akla yatkınlık, inandırıcılık
+C1	Genel İngilizce	Sıfatlar	INSTINCTIVE	içgüdüsel
+C1	Genel İngilizce	Zarflar	INSTINCTIVELY	içgüdüsel olarak
+C1	Genel İngilizce	Sıfatlar	STYLISTIC	üslupsal, biçemsel
+C1	Genel İngilizce	Zarflar	STYLISTICALLY	üslup açısından
+C1	Genel İngilizce	İsimler	INHERITANCE	miras, kalıtım
+C1	Genel İngilizce	Sıfatlar	INHERENT	doğasında olan, içkin, doğal
+C1	Genel İngilizce	Zarflar	INHERENTLY	doğası gereği, özünde
+C1	Genel İngilizce	Sıfatlar	SPONTANEOUS	kendiliğinden, spontane, içten gelen
+C1	Genel İngilizce	Zarflar	SPONTANEOUSLY	kendiliğinden, plansızca, içten gelerek
+C1	Genel İngilizce	İsimler	HONK	fiil: korna çalmak, (kaz) bağırmak; isim: korna sesi, kaz sesi
+C1	Genel İngilizce	İsimler	GOOSE	kaz
+C1	Genel İngilizce	Fiiller	INNOVATE	yenilik yapmak, yenilik getirmek
+C1	Genel İngilizce	İsimler	CONNOISSEUR	uzman, erbap, ehil kimse
+C1	Genel İngilizce	İsimler	ABSTRACTION	soyutlama, soyut kavram, dalgınlık
+C1	Genel İngilizce	İsimler	TANTRUM	öfke nöbeti, huysuzluk krizi
+C1	Genel İngilizce	Fiiller	DISCARD	atmak, bir kenara atmak, elden çıkarmak
+C1	Genel İngilizce	İsimler	FATALITY	ölüm, can kaybı, ölü
+C1	Genel İngilizce	Fiiller	STIFFEN	sertleşmek, katılaşmak, gerilmek
+C1	Genel İngilizce	Sıfatlar	WOODED	ağaçlık, ormanlık
+C1	Genel İngilizce	Fiiller	FLATTER	pohpohlamak, övmek, iltifat etmek
+C1	Genel İngilizce	İsimler	FLATTERY	dalkavukluk, yağcılık, pohpohlama
+C1	Genel İngilizce	Sıfatlar	AIMLESS	amaçsız, gayesiz
+C1	Genel İngilizce	Zarflar	AIMLESSLY	amaçsızca, gayesizce
+C1	Genel İngilizce	Sıfatlar	MEANINGLESS	anlamsız, boş
+C1	Genel İngilizce	Zarflar	MEANINGLESSLY	anlamsızca
+C1	Genel İngilizce	Sıfatlar	CANDID	açık sözlü, samimi, içten
+C1	Genel İngilizce	Zarflar	CANDIDLY	açıkça, açık sözlülükle
+C1	Genel İngilizce	İsimler	VITALITY	canlılık, dinçlik, yaşam gücü
+C1	Genel İngilizce	Fiiller	PROVOKE	kışkırtmak, tahrik etmek, neden olmak
+C1	Genel İngilizce	Sıfatlar	PROVOCATIVE	kışkırtıcı, tahrik edici
+C1	Genel İngilizce	Zarflar	PROVOCATIVELY	kışkırtıcı bir şekilde
+C1	Genel İngilizce	Fiiller	CLENCH	sıkmak (diş, yumruk), kenetlemek
+C1	Genel İngilizce	Fiiller	HAGGLE	pazarlık etmek
+C1	Genel İngilizce	İsimler	SCORN	küçümseme, hor görme
+C1	Genel İngilizce	Sıfatlar	SCORNFUL	küçümseyici, aşağılayıcı
+C1	Genel İngilizce	Zarflar	SCORNFULLY	küçümseyerek, aşağılarcasına
+C1	Genel İngilizce	Zarflar	ANIMATEDLY	hararetle, canlı bir şekilde
+C1	Genel İngilizce	Fiiller	OBSCURE	fiil: gizlemek, örtmek, belirsizleştirmek; sıfat: belirsiz, anlaşılması güç, az bilinen
+C1	Genel İngilizce	Zarflar	OBSCURELY	belirsiz bir şekilde, anlaşılmaz biçimde
+C1	Genel İngilizce	Fiiller	ELEVATE	yükseltmek, terfi ettirmek, yüceltmek
+C1	Genel İngilizce	İsimler	ELEVATION	yükseklik, rakım, terfi
+C1	Genel İngilizce	Zarflar	TEDIOUSLY	sıkıcı bir şekilde
+C1	Genel İngilizce	İsimler	SUCCESSION	art arda gelme, dizi, (makama) halef olma
+C1	Genel İngilizce	İsimler	FORMALITY	formalite, resmiyet
+C1	Genel İngilizce	İsimler	MOUNTAINEER	dağcı, alpinist
+C1	Genel İngilizce	İsimler	PIONEER	fiil: öncülük etmek, ilk kez geliştirmek; isim: öncü
+C1	Genel İngilizce	İsimler	QUEST	arayış, peşinde koşma
+C1	Genel İngilizce	Sıfatlar	TRANSATLANTIC	Atlantik ötesi, transatlantik
+C1	Genel İngilizce	İsimler	RUDIMENTS	temel bilgiler, esaslar
+C1	Genel İngilizce	Sıfatlar	RUDIMENTARY	temel, basit, ilkel
+C1	Genel İngilizce	Sıfatlar	IMMENSE	çok büyük, muazzam, engin
+C1	Genel İngilizce	Zarflar	IMMENSELY	son derece, muazzam ölçüde
+C1	Genel İngilizce	Sıfatlar	ADVISORY	danışma amaçlı, tavsiye niteliğinde
+C1	Genel İngilizce	Sıfatlar	TRYING	zor, yorucu, sinir bozucu
+C1	Genel İngilizce	İsimler	ADRENALINE	adrenalin
+C1	Genel İngilizce	İsimler	TINKER	fiil: kurcalamak, üzerinde oynamak; isim: seyyar tamirci, kalaycı
+C1	Genel İngilizce	İsimler	LAVATORY	tuvalet, lavabo
+C1	Genel İngilizce	İsimler	PINNACLE	doruk, zirve
+C1	Genel İngilizce	Sıfatlar	INSECURE	kendine güvenmeyen, güvensiz, emniyetsiz
+C1	Genel İngilizce	Zarflar	INSECURELY	güvensizce, sağlam olmayan bir şekilde
+C1	Genel İngilizce	Fiiller	REASSURE	güven vermek, içini rahatlatmak
+C1	Genel İngilizce	İsimler	REASSURANCE	güvence, içini rahatlatma, teskin
+C1	Genel İngilizce	Sıfatlar	INSENSITIVE	duyarsız, anlayışsız, hissiz
+C1	Genel İngilizce	Zarflar	INSENSITIVELY	duyarsızca, düşüncesizce
+C1	Genel İngilizce	Fiiller	PROFESS	iddia etmek, beyan etmek, açıkça söylemek
+C1	Genel İngilizce	İsimler	DRAWBACK	dezavantaj, sakınca
+C1	Genel İngilizce	Fiiller	OVERSEE	denetlemek, gözetmek, yönetmek
+C1	Genel İngilizce	İsimler	OVERSEER	gözetmen, denetçi, ustabaşı
+C1	Genel İngilizce	İsimler	ESTIMATION	tahmin, değerlendirme, görüş
+C1	Genel İngilizce	İsimler	LIAISON	irtibat, koordinasyon, irtibat görevlisi
+C1	Genel İngilizce	Zarflar	STRESSFULLY	stresli bir şekilde
+C1	Genel İngilizce	Fiiller	LOOM	(korkutucu şekilde) belirmek, yaklaşmakta olmak
+C1	Genel İngilizce	Edatlar	NOTWITHSTANDING	-e rağmen, -e karşın
+C1	Genel İngilizce	Zarflar	STRUCTURALLY	yapısal olarak
+C1	Genel İngilizce	Sıfatlar	STRUCTURAL	yapısal
+C1	Genel İngilizce	İsimler	CHAUFFEUR	isim: şoför, özel şoför; fiil: şoförlük yapmak, arabayla götürmek
+C1	Genel İngilizce	Sıfatlar	SEDENTARY	hareketsiz, oturarak yapılan, yerleşik
+C1	Genel İngilizce	İsimler	RAPPORT	yakınlık, iyi ilişki, uyum
+C1	Genel İngilizce	İsimler	CONSULTATION	danışma, istişare, konsültasyon
+C1	Genel İngilizce	İsimler	CONSULTANCY	danışmanlık, danışmanlık firması
+C1	Genel İngilizce	İsimler	RETENTION	elde tutma, koruma, akılda tutma
+C1	Genel İngilizce	İsimler	QUARRY	taş ocağı, av
+C1	Genel İngilizce	İsimler	SPECIFICATION	şartname, teknik özellik, spesifikasyon
+C1	Genel İngilizce	İsimler	CONTRACTOR	yüklenici, müteahhit
+C1	Genel İngilizce	İsimler	POSSESSOR	sahip, malik
+C1	Genel İngilizce	İsimler	CHILL	fiil: soğutmak, ürpertmek, kafa dinlemek; isim: serinlik, ürperti, soğuk algınlığı
+C1	Genel İngilizce	Sıfatlar	CHILLY	serin, soğuk, mesafeli
+C1	Genel İngilizce	Sıfatlar	FROSTY	ayazlı, kırağılı, soğuk (tavır)
+C1	Genel İngilizce	Zarflar	FROSTILY	soğuk bir tavırla
+C1	Genel İngilizce	Sıfatlar	UNMANNED	insansız
+C1	Genel İngilizce	Sıfatlar	IMPERSONAL	kişisel olmayan, mesafeli, soğuk
+C1	Genel İngilizce	Zarflar	IMPERSONALLY	kişisel olmayan bir şekilde, mesafeli bir şekilde
+C1	Genel İngilizce	Fiiller	IMPERSONATE	taklit etmek, kılığına girmek
+C1	Genel İngilizce	İsimler	IMPERSONATOR	taklitçi
+C1	Genel İngilizce	İsimler	IMPERSONATION	taklit, kılığına girme
+C1	Genel İngilizce	İsimler	BUZZER	zil, sesli uyarıcı
+C1	Genel İngilizce	İsimler	DESERTION	terk etme, firar
+C1	Genel İngilizce	Sıfatlar	UNOCCUPIED	boş, kimsenin oturmadığı
+C1	Genel İngilizce	Sıfatlar	STUFFY	havasız, basık, tutucu
+C1	Genel İngilizce	Zarflar	STUFFILY	resmî ve soğuk bir tavırla, tutucu bir şekilde
+C1	Genel İngilizce	İsimler	STUFFINESS	havasızlık, basıklık, tutuculuk
+C1	Genel İngilizce	Fiiller	GAPE	ağzı açık bakakalmak, açılmak
+C1	Genel İngilizce	Fiiller	REPUTE	olduğu söylenmek, ... olarak tanınmak
+C1	Genel İngilizce	İsimler	TOUGHNESS	dayanıklılık, sertlik, zorluk
+C1	Genel İngilizce	İsimler	PLUMBING	tesisat, sıhhi tesisat
+C1	Genel İngilizce	Sıfatlar	GLUM	asık suratlı, keyifsiz, suratsız
+C1	Genel İngilizce	Zarflar	GLUMLY	asık suratla, keyifsizce
+C1	Genel İngilizce	Zarflar	GAMELY	cesurca, yılmadan
+C1	Genel İngilizce	Fiiller	DISSECT	teşrih etmek, didik didik incelemek
+C1	Genel İngilizce	İsimler	DISSECTION	diseksiyon, teşrih, ayrıntılı inceleme
+C1	Genel İngilizce	Fiiller	COMMEND	övmek, takdir etmek, tavsiye etmek
+C1	Genel İngilizce	İsimler	COMMENDATION	övgü, takdir, takdirname
+C1	Genel İngilizce	Zarflar	THEREBY	böylece, bu suretle
+C1	Genel İngilizce	Fiiller	FLICK	fiske vurmak, hızla çevirmek, (düğmeye) basmak
+C1	Genel İngilizce	İsimler	FLICKER	titreşim, titrek ışık, kıvılcım
+C1	Genel İngilizce	Sıfatlar	UNENVIABLE	kimsenin istemeyeceği, tatsız
+C1	Genel İngilizce	Zarflar	UNENVIABLY	kimsenin istemeyeceği şekilde, tatsız bir şekilde
+C1	Genel İngilizce	Fiiller	ALLEGE	iddia etmek, ileri sürmek
+C1	Genel İngilizce	İsimler	BRIBE	fiil: rüşvet vermek; isim: rüşvet
+C1	Genel İngilizce	İsimler	BRIBERY	rüşvetçilik, rüşvet
+C1	Genel İngilizce	İsimler	INCLUSION	dâhil etme, katma, kapsayıcılık
+C1	Genel İngilizce	Sıfatlar	INCLUSIVE	kapsayıcı, dâhil, kapsamlı
+C1	Genel İngilizce	Zarflar	INCLUSIVELY	kapsayıcı bir şekilde, dâhil olarak
+C1	Genel İngilizce	Sıfatlar	UNCONVINCING	inandırıcı olmayan, ikna edici olmayan
+C1	Genel İngilizce	Zarflar	UNCONVINCINGLY	inandırıcı olmayan bir şekilde
+C1	Genel İngilizce	Fiiller	RECHARGE	şarj etmek, yeniden doldurmak, enerji toplamak
+C1	Genel İngilizce	İsimler	FACILITATION	kolaylaştırma, yürütme
+C1	Genel İngilizce	Sıfatlar	CONDITIONAL	koşullu, şartlı
+C1	Genel İngilizce	Zarflar	CONDITIONALLY	şartlı olarak, koşullu olarak
+C1	Genel İngilizce	Sıfatlar	SUPPLE	esnek, kıvrak, yumuşak
+C1	Genel İngilizce	İsimler	MANICURE	isim: manikür; fiil: manikür yapmak
+C1	Genel İngilizce	İsimler	PEDICURE	pedikür
+C1	Genel İngilizce	İsimler	FACIAL	sıfat: yüzle ilgili, yüz; isim: yüz bakımı, cilt bakımı
+C1	Genel İngilizce	İsimler	BOUQUET	buket, demet, (şarap) koku
+C1	Genel İngilizce	Fiiller	REFURBISH	yenilemek, tadilat yapmak
+C1	Genel İngilizce	İsimler	REFURBISHMENT	yenileme, tadilat
+C1	Genel İngilizce	İsimler	GROUNDS	gerekçe, arazi, (kahve) telvesi
+C1	Genel İngilizce	İsimler	LETHARGY	uyuşukluk, halsizlik, letarji
+C1	Genel İngilizce	Sıfatlar	LETHARGIC	uyuşuk, halsiz, cansız
+C1	Genel İngilizce	Zarflar	LETHARGICALLY	uyuşuk bir şekilde, halsizce
+C1	Genel İngilizce	Sıfatlar	STATELY	görkemli, heybetli, ağırbaşlı
+C1	Genel İngilizce	Fiiller	CONSERVE	korumak, tasarruf etmek, muhafaza etmek
+C1	Genel İngilizce	İsimler	CONSERVATORY	kış bahçesi, limonluk, konservatuvar
+C1	Genel İngilizce	Sıfatlar	DISQUIETING	huzursuz edici, endişe verici, rahatsız edici
+C1	Genel İngilizce	Zarflar	FIERCELY	şiddetle, sert bir şekilde, hararetle
+C1	Genel İngilizce	İsimler	GRAPEFRUIT	greyfurt
+C1	Genel İngilizce	Zarflar	EXOTICALLY	egzotik bir şekilde
+C1	Genel İngilizce	İsimler	FLASK	matara, termos, şişe
+C1	Genel İngilizce	Sıfatlar	SPACIOUS	geniş, ferah
+C1	Genel İngilizce	İsimler	GOURMET	sıfat: gurme, kaliteli (yemek); isim: gurme
+C1	Genel İngilizce	Fiiller	CONJURE	sihirle ortaya çıkarmak, akla getirmek, ruh çağırmak
+C1	Genel İngilizce	Sıfatlar	CREAMY	kremalı, kremsi, krem rengi
+C1	Genel İngilizce	İsimler	SAUNA	sauna
+C1	Genel İngilizce	Sıfatlar	REMEDIAL	iyileştirici, düzeltici, telafi edici
+C1	Genel İngilizce	İsimler	POSTURE	duruş, vücut duruşu, tavır
+C1	Genel İngilizce	Fiiller	SEDATE	fiil: sakinleştirici vermek, yatıştırmak; sıfat: sakin, ağırbaşlı, yavaş
+C1	Genel İngilizce	Zarflar	SEDATELY	ağır ağır, sakince
+C1	Genel İngilizce	İsimler	CLUTCH	fiil: sıkıca tutmak, kavramak, yapışmak; isim: kavrama, debriyaj, el çantası
+C1	Genel İngilizce	Sıfatlar	STAGGERING	şaşırtıcı, inanılmaz, sarsıcı
+C1	Genel İngilizce	Sıfatlar	DUTIFUL	görevine bağlı, sorumlu, itaatkâr
+C1	Genel İngilizce	Zarflar	DUTIFULLY	görev bilinciyle, itaatkâr bir şekilde
+C1	Genel İngilizce	İsimler	CALORIE	kalori
+C1	Genel İngilizce	Zarflar	FABULOUSLY	inanılmaz derecede, muhteşem bir şekilde
+C1	Genel İngilizce	İsimler	PREMISES	işyeri, bina, tesis
+C1	Genel İngilizce	İsimler	ECLECTIC	sıfat: eklektik, çeşitli kaynaklardan derlenmiş; isim: seçmeci kimse
+C1	Genel İngilizce	Zarflar	ECLECTICALLY	eklektik bir şekilde, çeşitli kaynaklardan yararlanarak
+C1	Genel İngilizce	Fiiller	REVERE	büyük saygı duymak, hürmet etmek
+C1	Genel İngilizce	Sıfatlar	RECOGNIZABLE	tanınabilir, fark edilebilir
+C1	Genel İngilizce	Zarflar	RECOGNIZABLY	tanınır şekilde, belirgin bir şekilde
+C1	Genel İngilizce	İsimler	BATTER	fiil: hırpalamak, dövmek, yumruklamak; isim: sulu hamur, (beyzbol) vurucu
+C1	Genel İngilizce	Zarflar	UNRELIABLY	güvenilmez bir şekilde
+C1	Genel İngilizce	İsimler	WATERFRONT	sahil, kıyı şeridi, rıhtım bölgesi
+C1	Genel İngilizce	Zarflar	AMPLY	bol bol, fazlasıyla, yeterince
+C1	Genel İngilizce	İsimler	AMPLIFICATION	(ses) yükseltme, güçlendirme, ayrıntılandırma
+C1	Genel İngilizce	Sıfatlar	BATTERED	hırpalanmış, yıpranmış, şiddet görmüş
+C1	Genel İngilizce	Fiiller	COMPLY	uymak, riayet etmek, uyum sağlamak
+C1	Genel İngilizce	İsimler	COMPLIANCE	uyum, uyma, uygunluk
+C1	Genel İngilizce	Sıfatlar	COMPLIANT	uyumlu, uygun, uysal
+C1	Genel İngilizce	Zarflar	COMPLIANTLY	uyumlu bir şekilde, uysalca
+C1	Genel İngilizce	İsimler	BLANKNESS	boşluk, ifadesizlik
+C1	Genel İngilizce	Sıfatlar	EXUBERANT	coşkulu, neşeli, hayat dolu
+C1	Genel İngilizce	İsimler	EXUBERANCE	coşku, taşkınlık, canlılık
+C1	Genel İngilizce	Zarflar	EXUBERANTLY	coşkuyla, neşeyle
+C1	Genel İngilizce	Sıfatlar	LINEAR	doğrusal, lineer
+C1	Genel İngilizce	Zarflar	LINEARLY	doğrusal olarak
+C1	Genel İngilizce	İsimler	FLOURISH	isim: gösterişli hareket, süslü kıvrım; fiil: gelişmek, serpilmek, başarılı olmak
+C1	Genel İngilizce	Sıfatlar	ANCHORED	demirli, sabitlenmiş, dayanan
+C1	Genel İngilizce	İsimler	DOMINATION	hâkimiyet, egemenlik, baskı
+C1	Genel İngilizce	Sıfatlar	DOMINANT	baskın, egemen, hâkim
+C1	Genel İngilizce	Zarflar	DOMINANTLY	baskın şekilde, ağırlıklı olarak
+C1	Genel İngilizce	Fiiller	INTERJECT	söze karışmak, araya girmek
+C1	Genel İngilizce	İsimler	INTERJECTION	ünlem, araya girme, söze karışma
+C1	Genel İngilizce	İsimler	GUSH	fiil: fışkırmak, coşkuyla konuşmak; isim: fışkırma, (duygu) taşkınlığı
+C1	Genel İngilizce	Sıfatlar	GUSHING	aşırı övgü dolu, coşkulu, fışkıran
+C1	Genel İngilizce	Zarflar	GUSHINGLY	aşırı coşkuyla, abartılı övgüyle
+C1	Genel İngilizce	Sıfatlar	VORACIOUS	doymak bilmez, obur, çok hevesli
+C1	Genel İngilizce	Zarflar	VORACIOUSLY	doymak bilmeden, oburca, hırsla
+C1	Genel İngilizce	İsimler	SKETCHBOOK	eskiz defteri, çizim defteri
+C1	Genel İngilizce	İsimler	PROP	fiil: dayamak, desteklemek; isim: destek, payanda, (sahne) aksesuar
+C1	Genel İngilizce	İsimler	IMP	küçük şeytan, yaramaz çocuk
+C1	Genel İngilizce	Sıfatlar	IMPISH	muzip, yaramaz, haylaz
+C1	Genel İngilizce	Zarflar	IMPISHLY	muzipçe, yaramazca
+C1	Genel İngilizce	Sıfatlar	WICKED	kötü, şeytani, muzip
+C1	Genel İngilizce	Zarflar	WICKEDLY	kötü niyetle, muzipçe, son derece
+C1	Genel İngilizce	Sıfatlar	MACABRE	ürkütücü, korkunç, ölümü çağrıştıran
+C1	Genel İngilizce	İsimler	GUSTO	şevk, coşku, zevk
+C1	Genel İngilizce	Sıfatlar	TANTAMOUNT	eşdeğer, aynı anlama gelen
+C1	Genel İngilizce	İsimler	ANTICS	maskaralık, soytarılık, tuhaf davranışlar
+C1	Genel İngilizce	İsimler	RELAPSE	fiil: nüksetmek, eski haline dönmek; isim: nüks, tekrarlama
+C1	Genel İngilizce	Fiiller	IMPEDE	engellemek, geciktirmek, ket vurmak
+C1	Genel İngilizce	İsimler	IMPEDIMENT	engel, mâni, konuşma bozukluğu
+C1	Genel İngilizce	Sıfatlar	TAUT	gergin, gerilmiş, sıkı
+C1	Genel İngilizce	Zarflar	TAUTLY	gergin bir şekilde, sıkıca
+C1	Genel İngilizce	İsimler	JERSEY	isim: forma, kazak, jarse kumaş; sıfat: jarse
+C1	Genel İngilizce	Sıfatlar	STARTLING	şaşırtıcı, ürkütücü
+C1	Genel İngilizce	Zarflar	STARTLINGLY	şaşırtıcı derecede
+C1	Genel İngilizce	İsimler	SLACK	fiil: gevşemek, tembellik etmek; isim: gevşeklik, boşluk; sıfat: gevşek, durgun, ihmalkâr
+C1	Genel İngilizce	Zarflar	SLACKLY	gevşek bir şekilde, gevşekçe
+C1	Genel İngilizce	Sıfatlar	UNWAVERING	sarsılmaz, kararlı, değişmez
+C1	Genel İngilizce	Zarflar	UNWAVERINGLY	sarsılmadan, kararlılıkla
+C1	Genel İngilizce	Sıfatlar	REMOVED	uzak, bağlantısız, farklı
+C1	Genel İngilizce	İsimler	BUFFOON	soytarı, palyaço, şaklaban
+C1	Genel İngilizce	Sıfatlar	BEGUILING	büyüleyici, çekici, cezbedici
+C1	Genel İngilizce	Zarflar	BEGUILINGLY	büyüleyici bir şekilde, çekici biçimde
+C1	Genel İngilizce	Zarflar	BLITHELY	umursamazca, kaygısızca, neşeyle
+C1	Genel İngilizce	İsimler	STRAY	fiil: yoldan sapmak, başıboş dolaşmak; sıfat: başıboş, sokak (hayvanı), dağınık; isim: sokak hayvanı, başıboş hayvan
+C1	Genel İngilizce	Sıfatlar	MYTHOLOGICAL	mitolojik
+C1	Genel İngilizce	İsimler	MYTHOLOGY	mitoloji
+C1	Genel İngilizce	Fiiller	VENERATE	saygı göstermek, hürmet etmek, kutsal saymak
+C1	Genel İngilizce	İsimler	VENERATION	hürmet, derin saygı
+C1	Genel İngilizce	Sıfatlar	ETHICAL	etik, ahlaki
+C1	Genel İngilizce	Zarflar	ETHICALLY	etik olarak, ahlaki açıdan
+C1	Genel İngilizce	İsimler	HEROINE	kadın kahraman
+C1	Genel İngilizce	Sıfatlar	REFRESHING	ferahlatıcı, canlandırıcı, hoş
+C1	Genel İngilizce	Sıfatlar	ZANY	çılgın, kaçık, şakacı
+C1	Genel İngilizce	İsimler	DEVOTEE	hayran, tutkun, bağlı kimse
+C1	Genel İngilizce	İsimler	SALVE	merhem
+C1	Genel İngilizce	İsimler	SALVATION	kurtuluş, selamet
+C1	Genel İngilizce	Fiiller	SALVAGE	kurtarmak, (durumu) toparlamak
+C1	Genel İngilizce	Sıfatlar	STACCATO	kesik kesik, stakato
+C1	Genel İngilizce	İsimler	VERVE	şevk, coşku, canlılık
+C1	Genel İngilizce	Sıfatlar	MOTLEY	karmakarışık, çeşit çeşit, alacalı
+C1	Genel İngilizce	Fiiller	PREACH	vaaz vermek, nutuk çekmek, öğüt vermek
+C1	Genel İngilizce	İsimler	PREACHER	vaiz
+C1	Genel İngilizce	Zarflar	JUSTLY	haklı olarak, adil bir şekilde
+C1	Genel İngilizce	Sıfatlar	WRY	alaycı, ironik, buruk
+C1	Genel İngilizce	Zarflar	WRYLY	alaycı bir şekilde, buruk bir şekilde
+C1	Genel İngilizce	İsimler	POETESS	kadın şair
+C1	Genel İngilizce	Fiiller	CONFIDE	sır vermek, açılmak, güvenmek
+C1	Genel İngilizce	Sıfatlar	SENTIENT	hisseden, bilinçli, duyumsayan
+C1	Genel İngilizce	İsimler	SENTIMENT	duygu, görüş, düşünce
+C1	Genel İngilizce	Sıfatlar	SENTIMENTAL	duygusal, romantik, manevi
+C1	Genel İngilizce	Zarflar	SENTIMENTALLY	duygusal olarak, manevi olarak
+C1	Genel İngilizce	İsimler	TANGLE	fiil: dolaşmak, dolaştırmak, karışmak; isim: karışıklık, düğüm, arapsaçı
+C1	Genel İngilizce	Sıfatlar	TANGLED	karmakarışık, dolaşık, girift
+C1	Genel İngilizce	Fiiller	UNTANGLE	çözmek, dolaşıklığı gidermek, açmak
+C1	Genel İngilizce	Sıfatlar	UNTANGLED	çözülmüş, açılmış
+C1	Genel İngilizce	Sıfatlar	PERCEPTIVE	anlayışlı, sezgili, kavrayışlı
+C1	Genel İngilizce	Zarflar	PERCEPTIVELY	sezgiyle, kavrayışlı bir şekilde
+C1	Genel İngilizce	İsimler	OUTSET	başlangıç, baş
+C1	Genel İngilizce	İsimler	TYCOON	iş dünyası devi, kodaman, zengin iş insanı
+C1	Genel İngilizce	Fiiller	ENGROSS	bütün dikkatini çekmek, kendine bağlamak
+C1	Genel İngilizce	Sıfatlar	ENGROSSING	sürükleyici, ilgi çekici
+C1	Genel İngilizce	İsimler	DETRITUS	döküntü, enkaz, artık
+C1	Genel İngilizce	İsimler	DETRIMENT	zarar, ziyan
+C1	Genel İngilizce	Sıfatlar	DETRIMENTAL	zararlı, olumsuz etkili
+C1	Genel İngilizce	Zarflar	DETRIMENTALLY	zararlı bir şekilde, olumsuz yönde
+C1	Genel İngilizce	Zarflar	DOMESTICALLY	yurt içinde, ülke içinde, evle ilgili olarak
+C1	Genel İngilizce	Fiiller	DOMESTICATE	evcilleştirmek, ehlileştirmek
+C1	Genel İngilizce	İsimler	DOMESTICATION	evcilleştirme
+C1	Genel İngilizce	Zarflar	ECCENTRICALLY	tuhaf bir şekilde, eksantrik bir şekilde
+C1	Genel İngilizce	Fiiller	RENDER	hale getirmek, sağlamak, sunmak
+C1	Genel İngilizce	İsimler	RENDERING	yorum, icra, görselleştirme
+C1	Genel İngilizce	İsimler	PATHOS	dokunaklılık, acıma duygusu uyandırma
+C1	Genel İngilizce	İsimler	TAILOR	isim: terzi; fiil: uyarlamak, ihtiyaca göre hazırlamak
+C1	Genel İngilizce	Fiiller	PERSONALIZE	kişiselleştirmek, kişiye özel yapmak
+C1	Genel İngilizce	İsimler	PERSONALIZATION	kişiselleştirme
+C1	Genel İngilizce	Sıfatlar	LIMITLESS	sınırsız, sonsuz
+C1	Genel İngilizce	İsimler	APPRENTICE	isim: çırak, stajyer; fiil: çıraklığa vermek, çırak olarak çalışmak
+C1	Genel İngilizce	İsimler	APPRENTICESHIP	çıraklık, staj
+C1	Genel İngilizce	İsimler	PRECISION	kesinlik, hassasiyet, doğruluk
+C1	Genel İngilizce	İsimler	SILHOUETTE	siluet
+C1	Genel İngilizce	Sıfatlar	NONDESCRIPT	sıradan, özelliksiz, sönük
+C1	Genel İngilizce	Sıfatlar	NEGLIGIBLE	önemsiz, ihmal edilebilir
+C1	Genel İngilizce	Sıfatlar	NEGLIGENT	ihmalkâr, dikkatsiz
+C1	Genel İngilizce	Zarflar	NEGLIGENTLY	ihmalkârca, dikkatsizce
+C1	Genel İngilizce	Zarflar	PRINCIPALLY	başlıca, esas olarak
+C1	Genel İngilizce	İsimler	ALTRUISM	özgecilik, fedakârlık, diğerkâmlık
+C1	Genel İngilizce	Sıfatlar	ALTRUISTIC	özgeci, fedakâr, diğerkâm
+C1	Genel İngilizce	İsimler	SCENARIO	senaryo, olası durum
+C1	Genel İngilizce	Sıfatlar	VOLUNTARY	gönüllü, isteğe bağlı, istemli
+C1	Genel İngilizce	Zarflar	VOLUNTARILY	gönüllü olarak, isteyerek
+C1	Genel İngilizce	Fiiller	REAP	hasat etmek, (faydasını) görmek, biçmek
+C1	Genel İngilizce	Sıfatlar	PATERNAL	baba tarafından, babacan, babaya ait
+C1	Genel İngilizce	Sıfatlar	MATERNAL	anne tarafından, annelik, anaç
+C1	Genel İngilizce	Sıfatlar	MATERNALISTIC	anaç, aşırı korumacı
+C1	Genel İngilizce	Sıfatlar	PATERNALISTIC	babacan, korumacı, vesayetçi
+C1	Genel İngilizce	İsimler	PROVISIONS	erzak, (yasal) hükümler, tedarik
+C1	Genel İngilizce	İsimler	INJUSTICE	adaletsizlik, haksızlık
+C1	Genel İngilizce	Sıfatlar	IMPOVERISHED	yoksul, fakirleşmiş
+C1	Genel İngilizce	Sıfatlar	UNSUSTAINABLE	sürdürülemez
+C1	Genel İngilizce	Zarflar	UNSUSTAINABLY	sürdürülemez bir şekilde
+C1	Genel İngilizce	Sıfatlar	SUSTAINABLE	sürdürülebilir
+C1	Genel İngilizce	Zarflar	SUSTAINABLY	sürdürülebilir bir şekilde
+C1	Genel İngilizce	Fiiller	BYPASS	atlamak, es geçmek, çevresinden dolaşmak
+C1	Genel İngilizce	İsimler	CYNIC	sinik, kuşkucu kimse
+C1	Genel İngilizce	Sıfatlar	CYNICAL	sinik, alaycı, kuşkucu
+C1	Genel İngilizce	Zarflar	CYNICALLY	sinik bir şekilde, kuşkuyla, alaycı bir şekilde
+C1	Genel İngilizce	İsimler	CYNICISM	sinizm, kuşkuculuk, alaycılık
+C1	Genel İngilizce	İsimler	SARCASM	alaycılık, iğneleme, istihza
+C1	Genel İngilizce	Sıfatlar	SARCASTIC	alaycı, iğneleyici
+C1	Genel İngilizce	Zarflar	SARCASTICALLY	alaycı bir şekilde, iğneleyerek
+C1	Genel İngilizce	Fiiller	MISPLACE	yanlış yere koymak, kaybetmek
+C1	Genel İngilizce	Sıfatlar	SYMPTOMATIC	belirtisi olan, göstergesi olan, semptomatik
+C1	Genel İngilizce	Fiiller	DEGRADE	küçük düşürmek, bozmak, kalitesini düşürmek
+C1	Genel İngilizce	Sıfatlar	DEGRADING	aşağılayıcı, küçük düşürücü, onur kırıcı
+C1	Genel İngilizce	İsimler	DEGRADATION	bozulma, aşağılanma, alçalma
+C1	Genel İngilizce	İsimler	DISCOURSE	söylem, konuşma, tartışma
+C1	Genel İngilizce	Edatlar	AMID	arasında, ortasında
+C1	Genel İngilizce	İsimler	HEDGEHOG	kirpi
+C1	Genel İngilizce	Sıfatlar	NOCTURNAL	gece etkin, gececil, gece olan
+C1	Genel İngilizce	Fiiller	HIBERNATE	kış uykusuna yatmak
+C1	Genel İngilizce	İsimler	HIBERNATION	kış uykusu
+C1	Genel İngilizce	İsimler	CONVICT	fiil: mahkûm etmek, suçlu bulmak; isim: mahkûm, hükümlü
+C1	Genel İngilizce	İsimler	CONVICTION	inanç, kanaat, mahkûmiyet
+C1	Genel İngilizce	Fiiller	SNOOZE	kestirmek, şekerleme yapmak, (alarmı) ertelemek
+C1	Genel İngilizce	Sıfatlar	CLASSY	şık, klas, kaliteli
+C1	Genel İngilizce	Fiiller	WRENCH	zorla çekmek, burkmak, koparmak
+C1	Genel İngilizce	Fiiller	REMINISCE	eski günleri anmak, anılardan söz etmek
+C1	Genel İngilizce	Sıfatlar	REMINISCENT	anımsatan, hatırlatan, andıran
+C1	Genel İngilizce	Fiiller	INTUIT	sezmek, sezgiyle anlamak
+C1	Genel İngilizce	İsimler	INTUITION	sezgi, önsezi
+C1	Genel İngilizce	Sıfatlar	INTUITIVE	sezgisel, sezgili, kolay anlaşılır
+C1	Genel İngilizce	Zarflar	INTUITIVELY	sezgisel olarak, sezgiyle
+C1	Genel İngilizce	Sıfatlar	MARGINAL	çok az, önemsiz, marjinal
+C1	Genel İngilizce	Zarflar	MARGINALLY	çok az, biraz, hafifçe
+C1	Genel İngilizce	Sıfatlar	CRUDE	kaba, ham, işlenmemiş
+C1	Genel İngilizce	Zarflar	CRUDELY	kabaca, ham bir şekilde
+C1	Genel İngilizce	İsimler	STRAP	isim: kayış, askı, bant; fiil: kayışla bağlamak, bağlamak
+C1	Genel İngilizce	Sıfatlar	STRAPPING	iriyarı, güçlü kuvvetli, yapılı
+C1	Genel İngilizce	Fiiller	SCOFF	alay etmek, küçümsemek
+C1	Genel İngilizce	Sıfatlar	FIDDLY	uğraştırıcı, zahmetli, ince iş gerektiren
+C1	Genel İngilizce	İsimler	FIDDLER	kemancı, hileci
+C1	Genel İngilizce	İsimler	FIDDLE	fiil: kurcalamak, oynamak, (hesapta) hile yapmak; isim: keman, hile
+C1	Genel İngilizce	Sıfatlar	UNMUSICAL	müziğe yeteneksiz, ahenksiz
+C1	Genel İngilizce	Zarflar	UNMUSICALLY	ahenksizce, kulağa hoş gelmeyecek şekilde
+C1	Genel İngilizce	İsimler	REPERTORY	repertuvar, repertuvar tiyatrosu
+C1	Genel İngilizce	İsimler	CONCERTO	konçerto
+C1	Genel İngilizce	İsimler	PREMIER	sıfat: en önemli, önde gelen, birinci; isim: başbakan
+C1	Genel İngilizce	İsimler	FANATIC	isim: fanatik, bağnaz kimse, tutkun; sıfat: fanatik, bağnaz
+C1	Genel İngilizce	Zarflar	FANATICALLY	fanatikçe, bağnazca, tutkuyla
+C1	Genel İngilizce	Zarflar	ACOUSTICALLY	akustik olarak, akustik açıdan
+C1	Genel İngilizce	Sıfatlar	ACOUSTIC	akustik, işitsel
+C1	Genel İngilizce	İsimler	ACOUSTICS	akustik
+C1	Genel İngilizce	Sıfatlar	COMPROMISED	tehlikeye girmiş, zayıflamış, ele geçirilmiş
+C1	Genel İngilizce	Fiiller	DAUNT	gözünü korkutmak, yıldırmak, cesaretini kırmak
+C1	Genel İngilizce	Sıfatlar	DAUNTING	göz korkutucu, yıldırıcı, cesaret kırıcı
+C1	Genel İngilizce	İsimler	REALIST	gerçekçi, realist
+C1	Genel İngilizce	İsimler	REALISM	gerçekçilik, realizm
+C1	Genel İngilizce	İsimler	RECESS	tatil, ara, girinti
+C1	Genel İngilizce	Sıfatlar	RECESSIVE	çekinik, resesif
+C1	Genel İngilizce	Sıfatlar	PROLIFIC	üretken, verimli, bereketli
+C1	Genel İngilizce	Zarflar	PROLIFICALLY	üretken bir şekilde, bol bol
+C1	Genel İngilizce	Fiiller	PROLIFERATE	çoğalmak, hızla artmak, yayılmak
+C1	Genel İngilizce	İsimler	FRAGMENTATION	parçalanma, bölünme
+C1	Genel İngilizce	Zarflar	ASTRAY	yanlış yola, yoldan sapmış halde
+C1	Genel İngilizce	İsimler	DURATION	süre
+C1	Genel İngilizce	İsimler	DURABLE	sıfat: dayanıklı, sağlam, uzun ömürlü; isim: dayanıklı tüketim malı
+C1	Genel İngilizce	İsimler	LIKELIHOOD	olasılık, ihtimal
+C1	Genel İngilizce	Sıfatlar	NAIVE	saf, toy, naif
+C1	Genel İngilizce	Zarflar	NAIVELY	saflıkla, toyca
+C1	Genel İngilizce	İsimler	NAIVETY	saflık, toyluk
+C1	Genel İngilizce	Sıfatlar	IMPERVIOUS	geçirmez, etkilenmez, aldırmaz
+C1	Genel İngilizce	Sıfatlar	LUDICROUS	gülünç, saçma, absürt
+C1	Genel İngilizce	Zarflar	LUDICROUSLY	gülünç derecede, saçma bir şekilde
+C1	Genel İngilizce	Sıfatlar	COST-EFFECTIVE	uygun maliyetli, ekonomik
+C1	Genel İngilizce	Sıfatlar	GRUESOME	korkunç, tüyler ürpertici, dehşet verici
+C1	Genel İngilizce	Zarflar	GRUESOMELY	korkunç bir şekilde, tüyler ürpertici biçimde
+C1	Genel İngilizce	Fiiller	ENVISAGE	öngörmek, tasavvur etmek, hayal etmek
+C1	Genel İngilizce	İsimler	SCREENWRITER	senarist
+C1	Genel İngilizce	Fiiller	MINGLE	karışmak, kaynaşmak, karıştırmak
+C1	Genel İngilizce	Fiiller	CHURN	çalkalamak, köpürtmek, çalkalanmak
+C1	Genel İngilizce	İsimler	BUFFER	fiil: korumak, etkisini azaltmak, arabelleğe almak; isim: tampon, arabellek, koruyucu
+C1	Genel İngilizce	Sıfatlar	IRATE	öfkeli, çok kızgın
+C1	Genel İngilizce	Zarflar	IRATELY	öfkeyle, kızgınlıkla
+C1	Genel İngilizce	Sıfatlar	DOCILE	uysal, yumuşak başlı
+C1	Genel İngilizce	Zarflar	DOCILELY	uysalca
+C1	Genel İngilizce	İsimler	FIEND	şeytan, zalim kimse, tutkun
+C1	Genel İngilizce	Sıfatlar	FIENDISH	şeytani, acımasız, çok karmaşık
+C1	Genel İngilizce	Zarflar	FIENDISHLY	son derece, şeytanca
+C1	Genel İngilizce	Fiiller	TRANSFIX	donup kalmasına neden olmak, büyülemek, saplamak
+C1	Genel İngilizce	İsimler	GYPSY	çingene, göçebe
+C1	Genel İngilizce	İsimler	TEMPERAMENT	mizaç, huy, yaradılış
+C1	Genel İngilizce	Sıfatlar	TEMPERAMENTAL	değişken huylu, huysuz, mizaçla ilgili
+C1	Genel İngilizce	Zarflar	TEMPERAMENTALLY	mizaç olarak, yaradılış gereği
+C1	Genel İngilizce	İsimler	SCREENPLAY	senaryo
+C1	Genel İngilizce	İsimler	DISILLUSIONMENT	hayal kırıklığı, düş kırıklığı
+C1	Genel İngilizce	İsimler	DEMISE	ölüm, son, çöküş
+C1	Genel İngilizce	Sıfatlar	RAUNCHY	müstehcen, açık saçık
+C1	Genel İngilizce	Zarflar	RAUNCHILY	müstehcen bir şekilde, açık saçık bir biçimde
+C1	Genel İngilizce	İsimler	OVERDRAFT	fiil: hesaptan fazla para çekmek; isim: ek hesap, kredili mevduat, eksi bakiye
+C1	Genel İngilizce	İsimler	SYNOPSIS	özet
+C1	Genel İngilizce	İsimler	RENOWN	ün, şöhret, şan
+C1	Genel İngilizce	Sıfatlar	CONTESTED	tartışmalı, çekişmeli
+C1	Genel İngilizce	İsimler	VERANDAH	veranda, sundurma
+C1	Genel İngilizce	Sıfatlar	OCCUPATIONAL	meslekî, işle ilgili
+C1	Genel İngilizce	İsimler	VERDICT	karar, hüküm
+C1	Genel İngilizce	Fiiller	VENTILATE	havalandırmak, (fikir) dile getirmek
+C1	Genel İngilizce	İsimler	VENTILATION	havalandırma
+C1	Genel İngilizce	İsimler	OCCUPANT	oturan kişi, sakin, (araçta) yolcu
+C1	Genel İngilizce	İsimler	RADIATOR	radyatör, kalorifer peteği
+C1	Genel İngilizce	Sıfatlar	HOMELY	ev gibi, rahat, (ABD) alımsız
+C1	Genel İngilizce	Sıfatlar	BUREAUCRATIC	bürokratik
+C1	Genel İngilizce	Zarflar	BUREAUCRATICALLY	bürokratik olarak, bürokratik açıdan
+C1	Genel İngilizce	Sıfatlar	ADJUSTABLE	ayarlanabilir
+C1	Genel İngilizce	İsimler	FATIGUE	yorgunluk, bitkinlik
+C1	Genel İngilizce	Sıfatlar	MUSCULAR	kaslı, kassal
+C1	Genel İngilizce	Sıfatlar	VERSATILE	çok yönlü, çok amaçlı, becerikli
+C1	Genel İngilizce	İsimler	VERSATILITY	çok yönlülük, çok amaçlılık
+C1	Genel İngilizce	İsimler	STIMULI	uyaranlar
+C1	Genel İngilizce	Sıfatlar	UNINSPIRING	sıkıcı, heyecansız, ilham vermeyen
+C1	Genel İngilizce	Zarflar	MUTUALLY	karşılıklı olarak
+C1	Genel İngilizce	Sıfatlar	SOMBER	kasvetli, hüzünlü, koyu (renk)
+C1	Genel İngilizce	Zarflar	SOMBERLY	hüzünle, ciddiyetle, kasvetli bir şekilde
+C1	Genel İngilizce	İsimler	CLUTTER	isim: dağınıklık, karmaşa, ıvır zıvır; fiil: darmadağın etmek, tıkabasa doldurmak
+C1	Genel İngilizce	Fiiller	DISLODGE	yerinden çıkarmak, yerinden oynatmak, koparmak
+C1	Genel İngilizce	İsimler	CARPENTER	marangoz, dülger
+C1	Genel İngilizce	İsimler	CARPENTRY	marangozluk, dülgerlik
+C1	Genel İngilizce	İsimler	TRANSIT	geçiş, taşıma, transit
+C1	Genel İngilizce	Fiiller	PLUMMET	hızla düşmek, çakılmak
+C1	Genel İngilizce	Fiiller	CIRCULATE	dolaşmak, dağıtmak, yaymak
+C1	Genel İngilizce	İsimler	CIRCULATION	dolaşım, tiraj, tedavül
+C1	Genel İngilizce	İsimler	DEMOGRAPHY	demografi, nüfus bilimi
+C1	Genel İngilizce	İsimler	DEMOGRAPHIC	sıfat: demografik, nüfusla ilgili; isim: hedef kitle, nüfus grubu
+C1	Genel İngilizce	Zarflar	DEMOGRAPHICALLY	demografik olarak, nüfus açısından
+C1	Genel İngilizce	Sıfatlar	PHENOMENAL	olağanüstü, fevkalade, fenomenal
+C1	Genel İngilizce	Zarflar	PHENOMENALLY	olağanüstü derecede, inanılmaz şekilde
+C1	Genel İngilizce	İsimler	PROPHET	peygamber, kâhin
+C1	Genel İngilizce	Sıfatlar	PROPHETIC	kehanet niteliğinde, geleceği önceden gören
+C1	Genel İngilizce	İsimler	PAYWALL	ödeme duvarı, ücretli içerik engeli
+C1	Genel İngilizce	İsimler	FIREWALL	güvenlik duvarı
+C1	Genel İngilizce	İsimler	INVOICE	fatura
+C1	Genel İngilizce	İsimler	DEMOLITION	yıkım, yıkma
+C1	Genel İngilizce	İsimler	DEMO	tanıtım, demo, gösteri
+C1	Genel İngilizce	İsimler	GIG	konser, sahne performansı, geçici iş
+C1	Genel İngilizce	İsimler	SOCIALIZATION	sosyalleşme, toplumsallaşma
+C1	Genel İngilizce	İsimler	ANTIQUITY	antik çağ, eskilik, antik eser
+C1	Genel İngilizce	Sıfatlar	ANTIQUATED	modası geçmiş, eski, demode
+C1	Genel İngilizce	İsimler	RESTORATION	restorasyon, onarım, yeniden kurma
+C1	Genel İngilizce	Sıfatlar	RESTORATIVE	güçlendirici, onarıcı, dinlendirici
+C1	Genel İngilizce	Fiiller	ROTATE	dönmek, döndürmek, sırayla değiştirmek
+C1	Genel İngilizce	Sıfatlar	COUPLED	birleşik, eşleştirilmiş, (coupled with) ile birlikte
+C1	Genel İngilizce	İsimler	ITINERARY	seyahat programı, güzergâh, yol planı
+C1	Genel İngilizce	İsimler	CHARTER	fiil: (uçak, gemi) kiralamak; isim: tüzük, berat, kiralık sefer
+C1	Genel İngilizce	İsimler	TERRAIN	arazi, yeryüzü şekli
+C1	Genel İngilizce	Sıfatlar	RESILIENT	dayanıklı, dirençli, esnek
+C1	Genel İngilizce	İsimler	RESILIENCE	dayanıklılık, direnç, toparlanma gücü
+C1	Genel İngilizce	Sıfatlar	ENTERPRISING	girişimci, girişken, iş bilir
+C1	Genel İngilizce	Sıfatlar	INTEGRAL	ayrılmaz, temel, bütünün parçası olan
+C1	Genel İngilizce	İsimler	CANOE	kano
+C1	Genel İngilizce	Sıfatlar	MAGNETIC	manyetik, mıknatıslı, çekici
+C1	Genel İngilizce	İsimler	MAGNETISM	manyetizma, çekicilik
+C1	Genel İngilizce	Zarflar	MAGNETICALLY	manyetik olarak
+C1	Genel İngilizce	Sıfatlar	CREDIBLE	inandırıcı, güvenilir
+C1	Genel İngilizce	Zarflar	CREDIBLY	inandırıcı bir şekilde, güvenilir biçimde
+C1	Genel İngilizce	İsimler	CREDIBILITY	güvenilirlik, inandırıcılık
+C1	Genel İngilizce	İsimler	CREDENTIAL	yeterlilik belgesi, kimlik bilgisi, referans
+C1	Genel İngilizce	Zarflar	ACUTELY	son derece, derinden, keskin bir şekilde
+C1	Genel İngilizce	Zarflar	PROHIBITIVELY	fahiş derecede, aşırı
+C1	Genel İngilizce	İsimler	FISSURE	yarık, çatlak
+C1	Genel İngilizce	Sıfatlar	PENDULOUS	sarkık, sallanan
+C1	Genel İngilizce	İsimler	SUSPENSION	askıya alma, uzaklaştırma, süspansiyon
+C1	Genel İngilizce	İsimler	ANTHROPOLOGY	antropoloji, insan bilimi
+C1	Genel İngilizce	İsimler	ANTHROPOLOGIST	antropolog, insan bilimci
+C1	Genel İngilizce	Fiiller	SQUANDER	çarçur etmek, israf etmek, heba etmek
+C1	Genel İngilizce	Fiiller	MUNCH	çatır çutur yemek, çiğnemek, atıştırmak
+C1	Genel İngilizce	Fiiller	ADJOIN	bitişik olmak, yanında olmak
+C1	Genel İngilizce	Sıfatlar	ADJOINING	bitişik, yandaki
+C1	Genel İngilizce	Sıfatlar	WIZENED	buruşuk, pörsümüş, kırış kırış
+C1	Genel İngilizce	Fiiller	GRAFT	aşılamak, (doku) nakletmek, eklemek
+C1	Genel İngilizce	İsimler	ORCHARD	meyve bahçesi
+C1	Genel İngilizce	İsimler	SEEDLING	fide, fidan
+C1	Genel İngilizce	İsimler	TRACT	geniş arazi, (vücutta) yol, risale
+C1	Genel İngilizce	İsimler	FOLKTALE	halk masalı, halk hikâyesi
+C1	Genel İngilizce	İsimler	SPROUT	fiil: filizlenmek, çimlenmek, birden çıkmak; isim: filiz, sürgün, Brüksel lahanası
+C1	Genel İngilizce	İsimler	HYPOCRISY	ikiyüzlülük, riyakârlık
+C1	Genel İngilizce	İsimler	HYPOCRITE	ikiyüzlü, riyakâr
+C1	Genel İngilizce	Sıfatlar	HYPOCRITICAL	ikiyüzlü, riyakâr
+C1	Genel İngilizce	Zarflar	HYPOCRITICALLY	ikiyüzlülükle, riyakârca
+C1	Genel İngilizce	İsimler	MIDWIFE	ebe
+C1	Genel İngilizce	Zarflar	COMMERCIALLY	ticari olarak, ticari açıdan
+C1	Genel İngilizce	İsimler	UNIFORMITY	tek biçimlilik, tekdüzelik, aynılık
+C1	Genel İngilizce	Fiiller	NUMB	sıfat: uyuşmuş, hissiz, donakalmış; fiil: uyuşturmak, hissizleştirmek
+C1	Genel İngilizce	İsimler	TASTEBUD	tat tomurcuğu
+C1	Genel İngilizce	İsimler	AMATEUR	isim: amatör, acemi; sıfat: amatör, amatörce
+C1	Genel İngilizce	Fiiller	RETRACE	izini sürmek, aynı yoldan geri gitmek
+C1	Genel İngilizce	Sıfatlar	INSUBORDINATE	itaatsiz, asi
+C1	Genel İngilizce	İsimler	INSUBORDINATION	itaatsizlik, emre karşı gelme
+C1	Genel İngilizce	Zarflar	INSUBORDINATELY	itaatsizce
+C1	Genel İngilizce	İsimler	SUBORDINATE	ast, emrindeki kişi
+C1	Genel İngilizce	Zarflar	PRIMITIVELY	ilkel bir şekilde, basitçe
+C1	Genel İngilizce	Fiiller	EMBARK	(gemi, uçağa) binmek, başlamak, girişmek
+C1	Genel İngilizce	Fiiller	EXPEDITE	hızlandırmak, çabuklaştırmak
+C1	Genel İngilizce	Sıfatlar	CONTEXTUAL	bağlamsal, bağlama ilişkin
+C1	Genel İngilizce	Zarflar	CONTEXTUALLY	bağlamsal olarak, bağlama göre
+C1	Genel İngilizce	Bağlaçlar	WHILST	iken, -erken, oysa
+C1	Genel İngilizce	İsimler	MANEUVER	fiil: manevra yapmak, ustaca yönlendirmek; isim: manevra, taktik
+C1	Genel İngilizce	Sıfatlar	RIVETING	sürükleyici, büyüleyici
+C1	Genel İngilizce	İsimler	PLUNGE	fiil: dalmak, hızla düşmek, daldırmak; isim: dalış, ani düşüş
+C1	Genel İngilizce	İsimler	DEBUT	isim: ilk çıkış, ilk performans; fiil: ilk kez sahneye çıkmak, ilk kez piyasaya çıkmak
+C1	Genel İngilizce	İsimler	TURMOIL	kargaşa, karışıklık, çalkantı
+C1	Genel İngilizce	Sıfatlar	SCATHING	çok sert, yerden yere vuran, kırıcı
+C1	Genel İngilizce	Sıfatlar	CONVOLUTED	karmaşık, girift, anlaşılması güç
+C1	Genel İngilizce	Sıfatlar	UNDAUNTED	yılmaz, gözü pek, korkusuz
+C1	Genel İngilizce	Sıfatlar	GUTSY	cesur, yürekli, gözü pek
+C1	Genel İngilizce	İsimler	DEPRIVATION	yoksunluk, mahrumiyet
+C1	Genel İngilizce	İsimler	FARCE	maskaralık, saçmalık, fars (güldürü)
+C1	Genel İngilizce	Fiiller	PORTRAY	canlandırmak, tasvir etmek, betimlemek
+C1	Genel İngilizce	İsimler	PORTRAYAL	canlandırma, tasvir, betimleme
+C1	Genel İngilizce	Sıfatlar	ELUSIVE	ele geçmez, bulunması zor, anlaşılması zor
+C1	Genel İngilizce	Fiiller	ELUDE	atlatmak, elinden kaçmak, hatırlanamamak
+C1	Genel İngilizce	İsimler	INCISOR	kesici diş
+C1	Genel İngilizce	İsimler	INCISION	kesi, kesik, yarık
+C1	Genel İngilizce	Fiiller	CHISEL	yontmak, keskiyle oymak
+C1	Genel İngilizce	Sıfatlar	CHISELLED	keskin hatlı, yontulmuş
+C1	Genel İngilizce	Fiiller	GNAW	kemirmek, için için rahatsız etmek
+C1	Genel İngilizce	Fiiller	ELONGATE	uzatmak, uzamak
+C1	Genel İngilizce	Sıfatlar	TELLTALE	ele veren, belli eden, açığa vuran
+C1	Genel İngilizce	İsimler	CAVITY	boşluk, oyuk, (diş) çürüğü
+C1	Genel İngilizce	İsimler	RUSTLE	fiil: hışırdamak, hışırdatmak; isim: hışırtı
+C1	Genel İngilizce	Fiiller	GLEAN	(azar azar bilgi) toplamak, edinmek
+C1	Genel İngilizce	İsimler	NICHE	niş, girinti, uzmanlık alanı
+C1	Genel İngilizce	İsimler	SOMERSAULT	isim: takla, perende; fiil: takla atmak
+C1	Genel İngilizce	Fiiller	EXHILARATE	heyecanlandırmak, coşturmak, canlandırmak
+C1	Genel İngilizce	Sıfatlar	EXHILARATING	heyecan verici, canlandırıcı, coşturucu
+C1	Genel İngilizce	İsimler	EXHILARATION	coşku, heyecan, keyif
+C1	Genel İngilizce	İsimler	PHYSICALITY	fiziksellik, bedensel özellikler
+C1	Genel İngilizce	İsimler	HACK	fiil: kesmek, doğramak, (sisteme) sızmak; isim: pratik çözüm, sızma, vasat yazar
+C1	Genel İngilizce	İsimler	LUST	şehvet, tutku, ihtiras
+C1	Genel İngilizce	Sıfatlar	UNSETTLING	tedirgin edici, rahatsız edici
+C1	Genel İngilizce	Fiiller	UNSETTLE	tedirgin etmek, huzurunu kaçırmak, sarsmak
+C1	Genel İngilizce	Sıfatlar	SUBURBAN	banliyöye ait, banliyö
+C1	Genel İngilizce	İsimler	SUBURBIA	banliyöler, banliyö yaşamı
+C1	Genel İngilizce	İsimler	DRAMATIST	oyun yazarı, dram yazarı
+C1	Genel İngilizce	İsimler	CHARACTERIZATION	karakterizasyon, karakter yaratma, nitelendirme
+C1	Genel İngilizce	İsimler	QUIRKY	tuhaf, ilginç, sıra dışı
+C1	Genel İngilizce	İsimler	SPRAWL	isim: düzensiz yayılma, kentsel yayılma; fiil: yayılıp uzanmak, gelişigüzel yayılmak
+C1	Genel İngilizce	İsimler	INGENUITY	yaratıcılık, hüner, ustalık
+C1	Genel İngilizce	İsimler	PANORAMA	panorama, genel görünüm
+C1	Genel İngilizce	Sıfatlar	PANORAMIC	panoramik, geniş açılı
+C1	Genel İngilizce	Sıfatlar	BENIGN	iyi huylu, zararsız, yumuşak
+C1	Genel İngilizce	Zarflar	BENIGNLY	iyi niyetle, şefkatle, zararsızca
+C1	Genel İngilizce	Zarflar	EXPLOSIVELY	patlarcasına, şiddetle, patlayıcı biçimde
+C1	Genel İngilizce	Fiiller	BEQUEATH	vasiyetle bırakmak, miras bırakmak
+C1	Genel İngilizce	İsimler	LEGACY	miras, kalıt, bıraktığı iz
+C1	Genel İngilizce	Sıfatlar	SYNTHETIC	sentetik, yapay
+C1	Genel İngilizce	Zarflar	SYNTHETICALLY	sentetik olarak, yapay olarak
+C1	Genel İngilizce	Sıfatlar	LACKLUSTER	sönük, cansız, vasat
+C1	Genel İngilizce	İsimler	ELASTIC	isim: lastik, lastik bant; sıfat: esnek, elastik
+C1	Genel İngilizce	Fiiller	APPALL	dehşete düşürmek, şoke etmek
+C1	Genel İngilizce	Sıfatlar	APPALLING	korkunç, berbat, dehşet verici
+C1	Genel İngilizce	Zarflar	APPALLINGLY	korkunç derecede, berbat bir şekilde
+C1	Genel İngilizce	Fiiller	POUNCE	üzerine atılmak, saldırmak, fırsatı kapmak
+C1	Genel İngilizce	Fiiller	ABOUND	bol olmak, çok sayıda bulunmak
+C1	Genel İngilizce	İsimler	SAP	öz su, (argo) saf kimse
+C1	Genel İngilizce	Sıfatlar	MONOTONOUS	tekdüze, monoton
+C1	Genel İngilizce	Zarflar	MONOTONOUSLY	tekdüze bir şekilde, monoton biçimde
+C1	Genel İngilizce	İsimler	MONOTONY	tekdüzelik, monotonluk
+C1	Genel İngilizce	Fiiller	TURN TO	başvurmak, -e yönelmek, (sayfayı) açmak
+C1	Genel İngilizce	Sıfatlar	INGENIOUS	dâhiyane, yaratıcı, zekice
+C1	Genel İngilizce	İsimler	PLAQUE	plaket, levha, (diş) plak
+C1	Genel İngilizce	Fiiller	NEUTRALIZE	etkisiz hale getirmek, nötralize etmek
+C1	Genel İngilizce	İsimler	NEUTRALIZATION	etkisiz hale getirme, nötrleştirme
+C1	Genel İngilizce	Fiiller	SALIVATE	ağzı sulanmak, salya salgılamak
+C1	Genel İngilizce	İsimler	CESSATION	durma, kesilme, sona erme
+C1	Genel İngilizce	İsimler	REMORSE	pişmanlık, vicdan azabı
+C1	Genel İngilizce	Sıfatlar	REMORSELESS	acımasız, vicdansız, amansız
+C1	Genel İngilizce	Zarflar	REMORSEFULLY	pişmanlıkla, vicdan azabıyla
+C1	Genel İngilizce	Zarflar	REMORSELESSLY	acımasızca, amansızca
+C1	Genel İngilizce	Sıfatlar	INEXCUSABLE	affedilemez, bağışlanamaz
+C1	Genel İngilizce	Zarflar	INEXCUSABLY	affedilemez bir şekilde
+C1	Genel İngilizce	Sıfatlar	UNASSISTED	yardımsız, kendi başına, yardım almadan
+C1	Genel İngilizce	Fiiller	HEIGHTEN	artırmak, yoğunlaştırmak, yükseltmek
+C1	Genel İngilizce	İsimler	FIXTURE	sabit tesisat, demirbaş, (spor) maç
+C1	Genel İngilizce	İsimler	BULK	büyük kısım, hacim, kütle
+C1	Genel İngilizce	Sıfatlar	BULKY	hantal, iri, yer kaplayan
+C1	Genel İngilizce	Fiiller	BULK UP	kas kütlesini artırmak, iriyileşmek, hacmini artırmak
+C1	Genel İngilizce	Fiiller	DIGITALIZE	dijitalleştirmek, sayısallaştırmak
+C1	Genel İngilizce	İsimler	DIGITALIZATION	dijitalleşme, sayısallaştırma
+C1	Genel İngilizce	İsimler	MARK-UP	kâr payı, fiyat artışı, (metin) işaretleme
+C1	Genel İngilizce	Sıfatlar	COMPLEMENTARY	tamamlayıcı, bütünleyici
+C1	Genel İngilizce	Sıfatlar	COMPLIMENTARY	ücretsiz, ikram, iltifat eden
+C1	Genel İngilizce	İsimler	STAPLE	temel gıda, ana ürün, zımba teli
+C1	Genel İngilizce	İsimler	WARES	mallar, satılık eşyalar
+C1	Genel İngilizce	İsimler	TESTAMENT	kanıt, vasiyetname, ahit
+C1	Genel İngilizce	İsimler	SUCCULENT	isim: etli yapraklı bitki, sukulent; sıfat: sulu, lezzetli
+C1	Genel İngilizce	Zarflar	SUCCULENTLY	sulu ve lezzetli bir şekilde
+C1	Genel İngilizce	Sıfatlar	TRANQUIL	sakin, huzurlu, durgun
+C1	Genel İngilizce	İsimler	TRANQUILITY	huzur, sükûnet, dinginlik
+C1	Genel İngilizce	Sıfatlar	SPARTAN	sade, gösterişsiz, (yaşam tarzı) sert
+C1	Genel İngilizce	İsimler	PENINSULA	yarımada
+C1	Genel İngilizce	İsimler	BILLIARDS	bilardo

@@ -1,0 +1,137 @@
+name: Publish verified WordQuest AI 1.0.78 update
+
+on:
+  push:
+    branches:
+      - feature/v175-comprehensive-learning-update
+    paths:
+      - .github/workflows/publish-verified-v178.yml
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: wordquest-v178-signed-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Require the exact successful signed build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          RUN_ID=44942021877
+          VERIFIED_SHA=19db28cd66d64a96c6ba821a0362316e18451365
+          run_conclusion="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" --jq '.conclusion')"
+          run_sha="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" --jq '.head_sha')"
+          test "$run_conclusion" = success
+          test "$run_sha" = "$VERIFIED_SHA"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs" \
+            --jq '[.jobs[].steps[] | select((.name == "Build Android APK and run JVM tests" or .name == "Verify 1.0.78 signed candidate remains a direct 1.0.77 upgrade" or .name == "Test genuine 1.0.77 to 1.0.78 in-place emulator installation") and .conclusion == "success")] | length' \
+            | grep -Fxq 3
+          echo "VERIFIED_SHA=$VERIFIED_SHA" >> "$GITHUB_ENV"
+          echo "PASS: immutable successful Kotlin, certificate, and Android upgrade build"
+
+      - name: Download precisely the verified signed release candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh run download 44942021877 -R "$GITHUB_REPOSITORY" \
+            --name WordQuestAI-v1.0.78-code104-signed-QA-588 --dir dist
+          test -s dist/WordQuestAI-v1.0.78-signed-qa.apk
+          mv dist/WordQuestAI-v1.0.78-signed-qa.apk dist/WordQuestAI.apk
+          test "$(stat -c %s dist/WordQuestAI.apk)" -gt 100000000
+          unzip -tq dist/WordQuestAI.apk
+          echo 'PASS: original already-signed artifact from successful build'
+
+      - name: Verify release signer, identity, version, and latest published app
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          SDKM="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)"
+          test -x "$SDKM"
+          "$SDKM" --install 'build-tools;35.0.0' >/dev/null
+          AAPT="$ANDROID_HOME/build-tools/35.0.0/aapt"
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          test -x "$AAPT" && test -x "$SIGNER"
+          "$AAPT" dump badging dist/WordQuestAI.apk > dist/badging.txt
+          "$SIGNER" verify --verbose --print-certs dist/WordQuestAI.apk > dist/signature.txt
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" dist/badging.txt
+          grep -Fq "versionCode='104'" dist/badging.txt
+          grep -Fq "versionName='1.0.78'" dist/badging.txt
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' dist/signature.txt
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' dist/signature.txt
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' dist/signature.txt
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.tag_name')"
+          if [ "$latest" = v1.0.78 ]; then
+            echo 'Already published: verify artifact and remain idempotent.'
+            test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.78" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
+            echo "ALREADY_PUBLISHED=1" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          test "$latest" = v1.0.77
+          mkdir -p previous
+          gh release download v1.0.77 -R "$GITHUB_REPOSITORY" --pattern update.json --dir previous
+          python3 - <<'PY'
+          import json
+          obj=json.load(open('previous/update.json'))
+          assert obj['tag']=='v1.0.77'
+          assert obj['versionCode']==103
+          assert obj['packageName']=='com.kelimebulmacasi.a1.practice.fresh'
+          print('PASS: current versionCode 103 < new 104; same package and signer')
+          PY
+
+      - name: Generate in-app update.json with verified signed APK checksum
+        if: ${{ env.ALREADY_PUBLISHED != '1' }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          apk=pathlib.Path('dist/WordQuestAI.apk')
+          with apk.open('rb') as handle:
+              checksum=hashlib.file_digest(handle,'sha256').hexdigest()
+          notes=('WordQuest AI 1.0.78: Arena bekleme odasında her oyuncunun hesapta seçtiği özgün '
+                 'maskotun doğru görünmesi ve Hazırım düğmelerinin Firebase hazır durumunu '
+                 'kaydetmesi için Android istemcisi güncellendi. Oda sahibi iki oyuncu '
+                 'hazır olmadan yarışı başlatamaz. Mevcut 1.0.77 işlevleri ve '
+                 'profil/kelime hafızası kayıtları korunmuştur. Android/JVM, imza ve '
+                 '1.0.77 üzerine emülatör yükseltmesi başarılı. Yeni Realtime Database '
+                 'kuralları Firebase konsolunda ayrıca yayımlanmalıdır; bunlar olmadan '
+                 'hazır olma düğmeleri sunucu tarafından reddedilir.')
+          manifest={
+              'schemaVersion':1,'tag':'v1.0.78','versionCode':104,
+              'versionName':'1.0.78','packageName':'com.kelimebulmacasi.a1.practice.fresh',
+              'apkFile':'WordQuestAI.apk','sizeBytes':apk.stat().st_size,
+              'sha256':checksum,'notes':notes
+          }
+          pathlib.Path('dist/update.json').write_text(
+              json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('PASS: signed APK digest and in-app update metadata written')
+          PY
+
+      - name: Publish new version into existing in-app GitHub Releases update channel
+        if: ${{ env.ALREADY_PUBLISHED != '1' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.tag_name')" = v1.0.77
+          if gh release view v1.0.78 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "::error::Version 1.0.78 tag already exists and requires manual reconciliation."
+            exit 1
+          fi
+          gh release create v1.0.78 dist/WordQuestAI.apk dist/update.json \
+            -R "$GITHUB_REPOSITORY" --target "$VERIFIED_SHA" --latest \
+            --title 'WordQuest AI 1.0.78 — Arena maskotları ve Hazırım düzeltmesi' \
+            --notes 'Android 1.0.78 (104): Arena odasında her katılımcının profil maskotu doğru eşitlenir; Hazırım için gerçek Firebase yetkileri ve iki-oyuncu hazır kontrolü düzeltildi. Kotlin/JVM, APK imza ve 1.0.77 üzerine emülatör yükseltmesi başarılıdır. Firebase Realtime Database kuralları ayrıca canlı konsolda yayımlanmalıdır; yeni kurallar olmadan Hazırım hâlâ reddedilir.'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.tag_name')" = v1.0.78
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.78" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
+          echo 'PASS: 1.0.78 is now discoverable through the installed app update feed.'
