@@ -135,6 +135,23 @@ def responsive_matching_hero(s):
     return s[:start]+replacement+s[end:]
 
 
+def enlarge_phone_puzzle_board(s):
+    # Reuse the game's existing zoom+pan logic instead of stretching letter
+    # tiles, changing the underlying words or breaking touch hitboxes.
+    s=once(s,
+        '    var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }',
+        '''    val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
+    var expanded by remember(game.id, compactBoard) {
+        mutableStateOf(board.words.size > 20 || compactBoard)
+    }''',
+        "default enlarged crossword on phones")
+    s=once(s,
+        'if (board.words.size <= 20) expanded = false',
+        'if (board.words.size <= 20 && !compactBoard) expanded = false',
+        "respect compact screen board zoom while selecting")
+    return s
+
+
 def report_existing_board_geometry():
     import re
     p=SRC/"PuzzleScreen.kt"
@@ -144,6 +161,9 @@ def report_existing_board_geometry():
     for i,line in candidates[:80]:
         print(f"BOARD-GEOMETRY {i}: {line[:190]}")
     print("BOARD-GEOMETRY matches:",len(candidates))
+    for a,b in ((232,310),(411,477)):
+        for i in range(a-1,min(b,len(lines))):
+            print(f"BOARD-SOURCE {i+1}: {lines[i][:210]}")
 
 
 def packages_only(s):
@@ -285,6 +305,7 @@ def main():
     patch("HomeScreen.kt",clean_home)
     patch("WordQuest175Arena.kt",center_arena)
     patch("WordQuest175Matching.kt",responsive_matching_hero)
+    patch("PuzzleScreen.kt",enlarge_phone_puzzle_board)
     report_existing_board_geometry()
     patch("HomeScreen.kt",packages_only)
     patch("WordQuestSettings.kt",hide_voice_picker_lists)
