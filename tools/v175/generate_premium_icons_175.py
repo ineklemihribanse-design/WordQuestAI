@@ -5,7 +5,23 @@ No downloaded icons, fonts or emoji. Render at 3x, downsample Lanczos and
 bundle 256px transparent WebP icons with the Android application.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter
+# The legacy source build installs Pillow while assembling v1.0.27.
+# Incremental 1.0.75 restores the already assembled Android tree and skips
+# that historical install, so explicitly ensure the exact same build-only
+# dependency when it is missing. Do not require Pillow on Android devices.
+try:
+    from PIL import Image, ImageDraw, ImageFilter
+except ModuleNotFoundError as exc:
+    if exc.name != "PIL":
+        raise
+    import subprocess
+    import sys
+    print("Installing missing cached-build renderer: Pillow==11.3.0",flush=True)
+    subprocess.check_call([
+        sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
+        "--retries", "3", "--timeout", "60", "Pillow==11.3.0"
+    ])
+    from PIL import Image, ImageDraw, ImageFilter
 import math
 
 ROOT=Path(__file__).resolve().parents[2]
