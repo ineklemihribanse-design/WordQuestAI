@@ -255,7 +255,7 @@
       "$uid": {
         ".read": "auth != null && (auth.uid === $uid || (root.child('friends').child(auth.uid).child($uid).val() === true && root.child('friends').child($uid).child(auth.uid).val() === true))",
         ".write": "auth != null && auth.uid === $uid",
-        ".validate": "newData.hasChildren(['avatar','points','completed','lastActiveAt']) && newData.childrenCount <= 4",
+        ".validate": "newData.hasChildren(['avatar','points','completed','lastActiveAt'])",
         "avatar": {
           ".validate": "newData.isString() && (newData.val() === 'astra' || newData.val() === 'piko' || newData.val() === 'nobi' || newData.val() === 'tera' || newData.val() === 'lopi' || newData.val() === 'tomba' || newData.val() === 'foksi' || newData.val() === 'moka' || newData.val() === 'pera' || newData.val() === 'gigi')"
         },
