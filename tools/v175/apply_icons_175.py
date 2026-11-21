@@ -16,7 +16,9 @@ def main():
            "sentence","grammar","story","speak","puzzle","yds","cards",
            "plan","camera","assistant","packages","verbs","mistakes","ai_teacher",
            "pdf","scan","translate","paragraph","synonym","completion",
-           "exam","review","timer","success","notebook")
+           "exam","review","timer","success","notebook",
+           "analytics","insights","friends","account","settings","backup",
+           "history","library","streak","messages")
     for name in names:
         assert (icons/(name+".webp")).stat().st_size>800,name
     shutil.copyfile(PKG/"WordQuest175Icons.kt",SRC/"WordQuest175Icons.kt")

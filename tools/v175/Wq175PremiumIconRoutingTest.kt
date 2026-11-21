@@ -20,7 +20,17 @@ class Wq175PremiumIconRoutingTest {
             "Süreli Oyun" to "timer",
             "Başarı Sonuçları" to "success",
             "Kişisel AI öğretmenim" to "ai_teacher",
-            "Yanlışlarımdan bulmaca" to "mistakes"
+            "Yanlışlarımdan bulmaca" to "mistakes",
+            "İlerlemem" to "analytics",
+            "Öğrenme Merkezim" to "insights",
+            "Arkadaşlarım" to "friends",
+            "Hesabım" to "account",
+            "Ayarlar" to "settings",
+            "Yedekleme" to "backup",
+            "Oyun Geçmişim" to "history",
+            "Sözlük" to "library",
+            "Aktif Gün Serisi" to "streak",
+            "Mesajlarım" to "messages"
         )
         expected.forEach { (title,icon) ->
             assertEquals(title, icon, Wq175IconNames.menu(title))

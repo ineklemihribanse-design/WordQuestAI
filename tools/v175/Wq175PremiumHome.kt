@@ -1,6 +1,10 @@
 package com.kelimebulmacasi.a1
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
@@ -49,7 +53,14 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
             @Composable
             fun Art() {
                 if(tile.artSlug!=null) Wq175ThemeIcon(tile.artSlug,Modifier.size(imageSize))
-                else Wq175GlossIcon(tile.icon,Modifier.size(imageSize))
+                else if(tile.icon=="assistant") {
+                    Image(
+                        painter=painterResource(R.drawable.wq167_lena_portrait),
+                        contentDescription=null,
+                        modifier=Modifier.size(imageSize)
+                            .clip(RoundedCornerShape(20.dp)),
+                        contentScale=ContentScale.Crop)
+                } else Wq175GlossIcon(tile.icon,Modifier.size(imageSize))
             }
             if(narrow) {
                 Column(
@@ -155,9 +166,9 @@ internal fun Wq175PremiumHomeGrid(
             "verbs",Color(0xFFE7F4EE),verbs),
         Wq175HomeTile("İlerlemem",
             "${session.totalPoints} puan · ${session.finishedCount} bulmaca.",
-            "trophy",Color(0xFFFFF1DC),progress),
+            "analytics",Color(0xFFFFF1DC),progress),
         Wq175HomeTile("Öğrenme Merkezim","Tekrar, istatistik ve öneriler.",
-            "cards",Color(0xFFECEFFD),insights)
+            "insights",Color(0xFFECEFFD),insights)
     )
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(11.dp)) {
         Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,

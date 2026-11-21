@@ -8,7 +8,9 @@ names=("arena_duel","arena_team","arena_quiz","trophy","listen",
     "sentence","grammar","story","speak","puzzle","yds",
     "cards","plan","camera","assistant","packages","verbs","mistakes","ai_teacher",
     "pdf","scan","translate","paragraph","synonym","completion",
-    "exam","review","timer","success","notebook")
+    "exam","review","timer","success","notebook",
+       "analytics","insights","friends","account","settings","backup",
+       "history","library","streak","messages")
 for name in names:
     path=ICON/(name+".webp")
     assert path.stat().st_size>800,name
@@ -23,7 +25,9 @@ assert 'Wq175GlossIcon(Wq175IconNames.menu(title)' in home
 assert practice.count('Wq175GlossIcon(Wq175IconNames.practice(kind)')==2
 assert (SRC/"WordQuest175Icons.kt").exists()
 assert (ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175PremiumIconRoutingTest.kt").is_file()
-for token in ('"pdf"','"camera"','"scan"','"paragraph"','"translate"',
+for token in ('"analytics"','"insights"','"friends"','"account"',
+              '"settings"','"backup"','"history"','"library"','"streak"','"messages"',
+              '"pdf"','"camera"','"scan"','"paragraph"','"translate"',
               '"synonym"','"completion"','"exam"','"review"',
               '"notebook"','"timer"','"success"'):
     assert "-> "+token in (SRC/"WordQuest175Icons.kt").read_text("utf-8")
@@ -34,4 +38,4 @@ assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icon_router
 assert (SRC/"WordQuest175TimedPuzzle.kt").exists()
 assert (SRC/"WordQuest175ImportWords.kt").exists()
 assert (SRC/"LenaLive3DStage.kt").exists()
-print("PASS: 30 distinct original high-DPI 2.5D icons for premium room and result screens.")
+print("PASS: 40 original 256px WebP icons, including ten distinct secondary room assets.")

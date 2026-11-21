@@ -18,6 +18,10 @@ assert "Surface(" in m and "onClick=tile.onClick" in m
 assert "CompositingStrategy.Offscreen" in h
 assert "drawRect(brush=Brush.horizontalGradient(" in h
 assert "Wq175ThemeIcon(tile.artSlug" in m
+assert "R.drawable.wq167_lena_portrait" in m
+assert 'else if(tile.icon=="assistant")' in m
+assert '"analytics",Color(0xFFFFF1DC),progress)' in m
+assert '"insights",Color(0xFFECEFFD),insights)' in m
 for module in ("arena","yds_akademi","kelime_hafizam","bulmacalarim","gunluk_plan","yeni_oyun"):
     assert 'artSlug="'+module+'"' in m,module
 assert "fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp" in h

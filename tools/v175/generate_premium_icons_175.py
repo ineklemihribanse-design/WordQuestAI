@@ -299,6 +299,76 @@ def icon(name):
             ell(d,(36,y-8,61,y+9),GOLD,GOLD_EDGE,3)
         poly(d,[(175,142),(193,127),(218,156),(200,172)],"#C7A0F4",PURPLE,4)
         poly(d,[(197,168),(212,187),(199,195),(189,181)],"#E6B66B",GOLD_EDGE,3)
+    elif name=="analytics":
+        for x,y,h,c in ((48,145,62,"#44CABD"),(93,110,97,"#5995E9"),(139,78,129,"#A47BEF"),(184,46,161,"#FFCA59")):
+            rr(d,(x,y,x+30,y+h),8,c,"#466BA4",4)
+        line(d,[(37,210),(224,210)],"#415E88",6)
+        line(d,[(55,93),(95,68),(144,90),(199,39)],"#FFD868",8)
+        poly(d,[(194,31),(223,33),(208,61)],GOLD,GOLD_EDGE,3)
+    elif name=="insights":
+        ell(d,(57,45,201,190),"#C7B5FF",PURPLE,7)
+        for x,y in ((76,85),(131,70),(167,101),(103,128),(150,149)):
+            ell(d,(x,y,x+27,y+27),"#F5EFFF",PURPLE,3)
+        line(d,[(99,101),(144,83),(180,115),(116,141),(161,161)],"#855BCC",6)
+        rr(d,(92,183,164,218),10,GOLD,GOLD_EDGE,4)
+        ell(d,(109,207,148,232),GOLD,GOLD_EDGE,4)
+        ell(d,(31,46,48,63),"#FFE78C")
+        ell(d,(207,52,222,67),"#FFE78C")
+    elif name=="friends":
+        for x,y,c in ((34,81,"#A67EEA"),(100,45,"#FFC55A"),(167,81,"#71D5CA")):
+            ell(d,(x+9,y,x+49,y+40),c,PURPLE,4)
+            rr(d,(x,y+47,x+58,y+125),22,c,PURPLE,5)
+        poly(d,[(112,43),(131,22),(147,43)],GOLD,GOLD_EDGE,4)
+        ell(d,(109,144,148,181),"#FFF8DF",GOLD_EDGE,3)
+    elif name=="account":
+        ell(d,(45,33,210,203),"#E8D9FF",PURPLE,7)
+        ell(d,(91,69,166,140),"#FDD7B8","#AC74A3",5)
+        rr(d,(70,145,187,205),37,"#6ABEC3",PURPLE,5)
+        d.arc(box((91,66,166,134)),185,350,fill="#734DAD",width=9*S)
+        ell(d,(113,103,120,111),"#654A75")
+        ell(d,(144,103,151,111),"#654A75")
+    elif name=="settings":
+        ell(d,(44,42,215,211),"#DAC4FF",PURPLE,8)
+        for a in range(0,360,45):
+            rad=math.radians(a)
+            cx=129+90*math.cos(rad);cy=127+90*math.sin(rad)
+            ell(d,(cx-13,cy-13,cx+13,cy+13),GOLD,GOLD_EDGE,4)
+        ell(d,(69,67,189,186),GOLD,GOLD_EDGE,8)
+        ell(d,(100,99,159,158),"#F5F4FF",PURPLE,7)
+        ell(d,(119,118,140,139),"#8E71D8")
+    elif name=="backup":
+        ell(d,(35,100,106,173),"#B9E5FF",BLUE,5)
+        ell(d,(78,69,161,167),"#B9E5FF",BLUE,5)
+        ell(d,(145,106,218,179),"#B9E5FF",BLUE,5)
+        rr(d,(52,139,204,192),16,"#B9E5FF",BLUE,5)
+        poly(d,[(130,82),(92,125),(115,125),(115,175),(146,175),(146,125),(169,125)],GOLD,GOLD_EDGE,5)
+        line(d,[(80,215),(179,215)],PURPLE,7)
+    elif name=="history":
+        ell(d,(48,41,215,213),"#F0E5FF",PURPLE,8)
+        ell(d,(74,68,191,189),"#FFFFFF","#9B85CA",5)
+        line(d,[(132,82),(132,130),(169,146)],"#5368A3",10)
+        ell(d,(121,121,142,143),GOLD,GOLD_EDGE,4)
+        poly(d,[(44,82),(29,51),(68,63)],GOLD,GOLD_EDGE,3)
+        line(d,[(40,74),(73,74)],PURPLE,6)
+    elif name=="library":
+        poly(d,[(28,64),(123,75),(128,219),(33,208)],"#F8FBFF","#5687C2",6)
+        poly(d,[(132,75),(226,61),(218,208),(128,219)],"#F0E2FF",PURPLE,6)
+        line(d,[(128,83),(128,220)],GOLD,5)
+        for y in (100,127,154,182):
+            line(d,[(48,y),(107,y+4)],"#94BBD6",4)
+            line(d,[(148,y+4),(206,y)],"#B4A2D9",4)
+        poly(d,[(174,43),(188,18),(201,44)],GOLD,GOLD_EDGE,3)
+    elif name=="streak":
+        poly(d,[(124,19),(157,85),(185,55),(199,107),(213,147),(190,192),(151,219),(97,217),(60,193),(45,153),(69,89),(89,120)],"#FFB74E","#C65D42",7)
+        poly(d,[(126,98),(155,144),(170,128),(179,171),(156,194),(107,195),(87,164)],"#FFF0A5",GOLD_EDGE,5)
+        ell(d,(118,154,150,188),"#FFD276")
+    elif name=="messages":
+        rr(d,(29,51,185,166),30,"#B7ECF3","#2E91AB",6)
+        poly(d,[(65,157),(54,203),(106,163)],"#B7ECF3","#2E91AB",4)
+        rr(d,(100,99,229,207),28,"#D8C5FF",PURPLE,6)
+        poly(d,[(184,198),(211,225),(209,195)],"#D8C5FF",PURPLE,4)
+        for x in (128,160,191):
+            ell(d,(x,137,x+15,152),"#7050B5")
     elif name=="packages":
         for x,y,c in ((32,73,"#B1C8FF"),(73,59,"#C9A6FF"),(108,46,"#7DDDD0")):
             rr(d,(x,y,x+110,y+154),17,c,PURPLE,5)
@@ -326,7 +396,9 @@ names=("arena_duel","arena_team","arena_quiz","trophy","listen","sentence",
        "grammar","story","speak","puzzle","yds","cards","plan",
        "camera","assistant","packages","verbs","mistakes","ai_teacher",
        "pdf","scan","translate","paragraph","synonym","completion",
-       "exam","review","timer","success","notebook")
+       "exam","review","timer","success","notebook",
+       "analytics","insights","friends","account","settings","backup",
+       "history","library","streak","messages")
 for name in names:
     path=DEST/(name+".webp")
     icon(name).save(path,format="WEBP",quality=92,method=4)

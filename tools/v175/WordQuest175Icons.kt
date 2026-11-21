@@ -47,6 +47,16 @@ internal object Wq175IconNames {
     fun menu(title: String): String {
         val s = title.lowercase(java.util.Locale.ROOT)
         return when {
+            "öğrenme merkez" in s || "öneri" in s -> "insights"
+            "ilerleme" in s || "istatistik" in s || "puanlarım" in s -> "analytics"
+            "arkadaş" in s -> "friends"
+            "profil" in s || "hesap" in s -> "account"
+            "ayar" in s -> "settings"
+            "yedek" in s || "dışa aktar" in s -> "backup"
+            "geçmiş" in s -> "history"
+            "sözlük" in s || "kelimelerim" in s -> "library"
+            "aktif gün" in s || "seri" in s -> "streak"
+            "mesaj" in s || "sohbet" in s -> "messages"
             "yanlışlarımdan" in s -> "mistakes"
             "kişisel ai öğretmen" in s -> "ai_teacher"
             "pdf" in s || "belge" in s || "dosya" in s -> "pdf"
@@ -73,7 +83,7 @@ internal object Wq175IconNames {
             "hikâye" in s -> "story"
             "dinle" in s -> "listen"
             "cümle" in s -> "sentence"
-            "ilerleme" in s || "başarı" in s -> "trophy"
+            "başarı" in s -> "trophy"
             else -> "cards"
         }
     }
