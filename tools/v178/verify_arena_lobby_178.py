@@ -17,7 +17,10 @@ assert 'client.syncSelectedAvatar()' in screen
 assert "if(Wq2DMascots.valid(kind))" in visuals
 assert "Wq2DPortrait(kind,modifier)" in visuals
 assert 'fun toggleReady()' in room and '"ready"' in room
-assert 'readyBy.containsAll(listOf(match.hostUid,match.guestUid))' in screen
+assert 'ArenaApprovedRoomLobby(' in screen
+lobby=(PKG/"ArenaApprovedLobby.kt").read_text("utf-8")
+assert 'val allReady=guestPresent && hostReady && guestReady' in lobby
+assert 'onReady=client::toggleReady' in lobby
 assert "premiumRooms" in rules["rules"] and "roomQuota" in rules["rules"]
 assert "ready" in premium and "$uid" in premium["ready"]
 assert "guestAvatar" in premium and "hostAvatar" in premium
