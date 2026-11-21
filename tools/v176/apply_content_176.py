@@ -19,7 +19,8 @@ TEST = ROOT / "source/app/src/test/java/com/kelimebulmacasi/a1"
 ASSETS = ROOT / "source/app/src/main/assets"
 TARGET = 1600
 GRAMMAR = 240
-FINAL_TOTAL = 198 + TARGET + GRAMMAR
+GRAMMAR_EXTENDED = 600
+FINAL_TOTAL = 198 + TARGET + GRAMMAR + GRAMMAR_EXTENDED
 
 def digest(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -192,6 +193,50 @@ def grammar_questions():
     assert len(bank)==GRAMMAR
     return bank
 
+
+def attack_grammar_questions():
+    """Create original Test Attack-style YDS Grammar variants; no textbook questions copied."""
+    filename=HERE/"content/yds_original_grammar_patterns.tsv"
+    raw=filename.read_text("utf-8").splitlines()
+    expected="\t".join(("topic","difficulty","prompt","answer","other1","other2","other3","explanation"))
+    assert raw[0]==expected,("Grammar dataset format",raw[0])
+    contexts=[
+        dict(actor="researcher", thing="report", event="seminar", place="laboratory"),
+        dict(actor="analyst", thing="proposal", event="conference", place="archive"),
+        dict(actor="editor", thing="manuscript", event="meeting", place="office"),
+        dict(actor="instructor", thing="assignment", event="workshop", place="classroom"),
+        dict(actor="scientist", thing="document", event="symposium", place="institute"),
+        dict(actor="supervisor", thing="contract", event="lecture", place="facility"),
+        dict(actor="consultant", thing="assessment", event="briefing", place="conference hall"),
+        dict(actor="director", thing="budget", event="panel", place="museum"),
+        dict(actor="scholar", thing="schedule", event="training session", place="library"),
+        dict(actor="investigator", thing="plan", event="review session", place="station"),
+        dict(actor="technician", thing="statement", event="presentation", place="workshop"),
+        dict(actor="engineer", thing="submission", event="forum", place="observatory"),
+    ]
+    bank=[]
+    patterns=[row.split("\t") for row in raw[1:] if row.strip()]
+    assert len(patterns)==50,("Original grammar patterns",len(patterns))
+    topics=set()
+    for index,fields in enumerate(patterns):
+        assert len(fields)==8,("Grammar pattern columns",index,len(fields))
+        topic,difficulty,stem,right,a,b,c,explanation=fields
+        assert difficulty in ("Easy","Medium","Hard")
+        assert len({x.casefold() for x in (right,a,b,c)})==4
+        assert len(explanation)>=45
+        topics.add(topic)
+        for context_index,context in enumerate(contexts):
+            prompt=stem.format(**context)
+            why="Konu: "+topic+". "+explanation
+            bank.append((
+                f"wq176_attack_{index:02d}_{context_index:02d}",
+                "Grammar",difficulty,prompt,right,a,b,c,why
+            ))
+    assert len(topics)>=12,("Grammar topic variety",len(topics))
+    assert len(bank)==GRAMMAR_EXTENDED
+    assert len({row[3].casefold() for row in bank})==GRAMMAR_EXTENDED
+    return bank
+
 def kotlin_source(items):
     # Each raw string stays <64k UTF-8 JVM constant-pool limit; rows are
     # parsed lazily and 4 choices are independently shuffled by the screen.
@@ -232,8 +277,8 @@ internal object Wq176YdsGenerated {
 
 def main():
     all_entries=words()
-    bank=lexical_questions(all_entries)+grammar_questions()
-    assert len(bank)==TARGET+GRAMMAR
+    bank=lexical_questions(all_entries)+grammar_questions()+attack_grammar_questions()
+    assert len(bank)==TARGET+GRAMMAR+GRAMMAR_EXTENDED
     assert len({q[0] for q in bank})==len(bank)
     assert len({q[3].casefold() for q in bank})==len(bank),"Repeated prompt"
     for q in bank:
@@ -286,7 +331,7 @@ def main():
         "Additional lexical questions derive single-word English/Turkish mappings "
         "from EnglishPractice (CC BY-SA 4.0); see "
         "WORDQUEST_CEFR_175_ATTRIBUTION.md for attribution and ShareAlike terms.\n"
-        "240 additional grammar questions are original generated study items.\n"
+        "840 additional grammar questions in total cover original YDS Grammar practice; 600 new variants follow Test Attack-style formats without reproducing book questions.\n"
         "Reference syllabi: user-provided More to Read I/II and Test Attack books; "
         "no publisher book question/paragraph/image is copied into this app.\n"
         "Automated checks validate structure and deduplication, not human pedagogy.\n",
@@ -299,7 +344,7 @@ def main():
     text=text.replace('versionName = "1.0.75"','versionName = "1.0.76"',1)
     gradle.write_text(text,"utf-8")
     print("PASS: YDS offline bank",FINAL_TOTAL,"total =",198,"existing +",TARGET,
-          "lexical/translation +",GRAMMAR,"grammar.")
+          "lexical/translation +",GRAMMAR+GRAMMAR_EXTENDED,"grammar.")
     print("PASS: daily source-bank drill, per-profile session rotation and Android versionCode 102.")
 
 if __name__=="__main__":
