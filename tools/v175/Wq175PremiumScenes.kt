@@ -55,8 +55,14 @@ internal fun Wq175SceneBackdrop(
     }
     Box(modifier) {
         if(bitmap != null) {
+            // Two composited passes: softly filled ambient edges and the
+            // COMPLETE artwork. Fit keeps both portrait phones and wide
+            // tablets from cutting away books, stages or prize details.
             Image(bitmap=bitmap,contentDescription=null,
-                modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Crop)
+                modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Crop,
+                alpha=.26f)
+            Image(bitmap=bitmap,contentDescription=null,
+                modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Fit)
         } else {
             Box(Modifier.fillMaxSize().background(
                 Brush.horizontalGradient(listOf(
