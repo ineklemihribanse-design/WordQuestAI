@@ -11,6 +11,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -140,6 +144,8 @@ internal fun Wq175PremiumHomeGrid(
     progress:()->Unit,
     insights:()->Unit
 ) {
+    var matchingOpen by remember { mutableStateOf(false) }
+    if (matchingOpen) Wq175MatchingDialog(session,onDismiss={matchingOpen=false})
     val main = listOf(
         Wq175HomeTile("Hazır Paketler","Seviyeni seç, kelime dünyasını keşfet.",
             "packages",Color(0xFFF4F4DC),packages),
@@ -167,8 +173,8 @@ internal fun Wq175PremiumHomeGrid(
         Wq175HomeTile("İlerlemem",
             "${session.totalPoints} puan · ${session.finishedCount} bulmaca.",
             "analytics",Color(0xFFFFF1DC),progress),
-        Wq175HomeTile("Öğrenme Merkezim","Tekrar, istatistik ve öneriler.",
-            "insights",Color(0xFFECEFFD),insights)
+        Wq175HomeTile("Eşleştirmelerim","Türkçe ↔ İngilizce kart eşleştirme.",
+            "synonym",Color(0xFFE5F8F9),{matchingOpen=true},artSlug="eslestirmelerim")
     )
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(11.dp)) {
         Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,
