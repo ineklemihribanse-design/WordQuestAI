@@ -73,6 +73,13 @@ internal object Wq176QuestionRotation {
         return selected
     }
 
+    /** The same grammar rule with a different noun is not a new learning idea. */
+    internal fun family(id:String):String=when {
+        id.startsWith("wq176_attack_") -> id.substringBeforeLast('_')
+        id.startsWith("wq176_gr_") -> id.substringBeforeLast('_')
+        else -> id
+    }
+
     fun pick(
         context: Context, profileKey: String, pool: List<YdsQuestion>, count: Int
     ): List<YdsQuestion> {
@@ -80,12 +87,17 @@ internal object Wq176QuestionRotation {
         val prefs=context.getSharedPreferences("wq176_question_rotation",Context.MODE_PRIVATE)
         val key="recent."+profileKey.hashCode()
         val recent=prefs.getString(key,"").orEmpty().split(",").filter(String::isNotBlank)
-        val recentSet=recent.toHashSet()
+        val recentFamilies=recent.asSequence().map(::family).toHashSet()
         val unique=pool.distinctBy { it.id }
-        val first=unique.filter { it.id !in recentSet }.shuffled()
-        val second=unique.filter { it.id in recentSet }.shuffled()
-        val result=(first+second).take(count)
-        // Do not retain more history than is useful for small topic pools.
+        val first=unique.filter { family(it.id) !in recentFamilies }.shuffled()
+        val second=unique.filter { family(it.id) in recentFamilies }.shuffled()
+        val candidates=first+second
+        // First present one question per grammatical structure. The remaining
+        // contextual variants only appear when the unique-rule pool is exhausted.
+        val diverse=candidates.distinctBy { family(it.id) }
+        val chosenIds=diverse.mapTo(HashSet()) { it.id }
+        val result=(diverse+candidates.filter { it.id !in chosenIds }).take(count)
+        // Keep a bounded per-profile history, including the chosen variant IDs.
         val keep=(recent+result.map { it.id }).distinct().takeLast(650)
         prefs.edit().putString(key,keep.joinToString(",")).apply()
         return result
