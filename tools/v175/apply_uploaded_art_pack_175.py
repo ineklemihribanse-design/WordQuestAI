@@ -49,7 +49,7 @@ def main() -> int:
             if extension == '.webp':
                 assert data[:4] == b'RIFF' and data[8:12] == b'WEBP', name
             else:
-                assert data[:8] == b'\\x89PNG\\r\\n\\x1a\\n', name
+                assert data[:8] == bytes.fromhex('89504e470d0a1a0a'), name
             items.append((relative, data))
         icons = sum(p.parts[0] == 'icons' for p, _ in items)
         assert icons == 108, f'Expected 108 standalone icon files (102+6), got {icons}'
