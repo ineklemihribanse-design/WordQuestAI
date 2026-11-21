@@ -93,16 +93,19 @@ s=replace_once(s,
                                 else 124.dp)
                                 .height(if(wide)178.dp else 164.dp))''',
     '''                        Box(
-                            Modifier.size(if(wide)160.dp else
-                                if(LocalDensity.current.fontScale>1.2f)96.dp else 126.dp)
-                                .clip(CircleShape)
-                                .background(Color(0xFF38576A))
-                                .border(2.dp,Color(0x77FFE6B6),CircleShape),
-                            contentAlignment=Alignment.Center
+                            Modifier.width(if(wide)182.dp else
+                                if(LocalDensity.current.fontScale>1.2f)100.dp else 136.dp)
+                                .height(if(wide)184.dp else 164.dp),
+                            contentAlignment=Alignment.BottomCenter
                         ) {
+                            Box(Modifier.align(Alignment.Center)
+                                .size(if(wide)157.dp else 113.dp)
+                                .background(Brush.radialGradient(listOf(
+                                    Color(0xA9FFE7A7),Color(0x3588D0A6),
+                                    Color.Transparent)),CircleShape))
                             Wq2DPortrait(
                                 Wq2DMascots.selected(LocalContext.current,session.profileKey),
-                                Modifier.fillMaxSize().clip(CircleShape))
+                                Modifier.fillMaxWidth().fillMaxHeight(.96f))
                         }''',
     "actual selected mascot in rounded integrated header")
 if 'import androidx.compose.ui.draw.alpha' not in s:

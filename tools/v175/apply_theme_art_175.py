@@ -80,35 +80,12 @@ patch("HomeScreen.kt",
                             fontSize = if (wide) 54.sp else 37.sp, lineHeight = if (wide) 55.sp else 39.sp,
                         )
                         Text(
-                            "Türkçe ipucunu oku,\nİngilizcesini yaz.", Modifier.padding(top = 11.dp),
-                            color = Color(0xFFE0ECDA), fontFamily = Sans, fontSize = 16.sp, lineHeight = 21.sp,
-                        )
-                    }''',
-    '''                    Row(
-                        Modifier.fillMaxWidth().padding(
-                            horizontal=if(wide)28.dp else 16.dp,
-                            vertical=14.dp),
-                        verticalAlignment=Alignment.CenterVertically,
-                        horizontalArrangement=Arrangement.spacedBy(8.dp)
-                    ) {
-                        Column(Modifier.weight(1f),
-                            verticalArrangement=Arrangement.spacedBy(10.dp)) {
-                            Text(
-                                if(wide) "WordQuest AI" else "WordQuest\\nAI",
-                                fontFamily=Serif,color=White,
-                                fontSize=if(wide)50.sp else
-                                    if(LocalDensity.current.fontScale>1.2f)25.sp else 30.sp,
-                                lineHeight=if(wide)52.sp else
-                                    if(LocalDensity.current.fontScale>1.2f)29.sp else 33.sp,
-                                maxLines=2
-                            )
-                            Text(
-                                "Türkçe ipucunu oku,\\nİngilizcesini yaz.",
-                                color=Color(0xFFE0ECDA),fontFamily=Sans,
+                            "Öğren, bulmaca çöz, yarış ve ilerle.",
+                                color=Color(0xFFF2FFEB),fontFamily=Sans,
                                 fontSize=if(LocalDensity.current.fontScale>1.2f)
-                                    13.sp else 15.sp,
+                                    12.sp else 14.sp,
                                 lineHeight=if(LocalDensity.current.fontScale>1.2f)
-                                    18.sp else 20.sp
+                                    17.sp else 19.sp
                             )
                         }
                         Wq175ThemeIllustration("ana_sayfa",

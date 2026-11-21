@@ -15,7 +15,8 @@ assert "BoxWithConstraints(Modifier.fillMaxWidth())" in m
 assert "maxWidth<194.dp" in m
 assert "LocalDensity.current.fontScale>1.30f" in m
 assert "Surface(" in m and "onClick=tile.onClick" in m
-assert "Modifier.fillMaxSize().clip(CircleShape)" in h
+assert "Modifier.fillMaxWidth().fillMaxHeight(.96f)" in h
+assert "Wq175HomeStoryAtmosphere(Modifier.matchParentSize())" in h
 assert 'Wq175ThemeIllustration("ana_sayfa"' not in h
 assert "if(tile.artSlug!=null) Wq175ThemeArt.glossName(tile.artSlug)" in m
 assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in h

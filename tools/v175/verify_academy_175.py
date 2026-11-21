@@ -20,7 +20,7 @@ for name in ("Kelime","Dilbilgisi","Paragraf","Çeviri","Yakın Anlam",
 for icon in ("paragraph","translate","synonym","completion","timer","exam","review"):
     assert '"'+icon+'"' in academy
 assert "modules.chunked(cols)" in academy
-selector=(root/"tools/v175/apply_academy_175.py").read_text("utf-8")
+selector=(Path(__file__).resolve().parents[2]/"tools/v175/apply_academy_175.py").read_text("utf-8")
 assert 'Wq175CefrLevelCard(' in selector
 assert 'onSelect={chooseLevel(value)}' in selector
 assert 'levels.chunked(columns)' in selector

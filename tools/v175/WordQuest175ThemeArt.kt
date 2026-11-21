@@ -1,6 +1,10 @@
 package com.kelimebulmacasi.a1
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.foundation.background
 import androidx.compose.material3.Text
 import androidx.compose.ui.platform.LocalDensity
@@ -167,6 +171,41 @@ internal fun Wq175ThemeIllustration(slug:String,modifier:Modifier) {
  * The two feathered edges avoid the pasted-on rectangle seen on earlier screens.
  * All buttons, text, scores and avatars remain native, independent Compose layers.
  */
+
+/** Seam-free illustration of a warm learning room behind the chosen avatar. */
+@Composable
+internal fun Wq175HomeStoryAtmosphere(modifier:Modifier) {
+    Canvas(modifier) {
+        val w=size.width
+        val h=size.height
+        drawRect(Brush.horizontalGradient(listOf(
+            Color(0xFF0A422F),Color(0xFF155F45),Color(0xFF3E8263))))
+        drawCircle(Brush.radialGradient(listOf(
+            Color(0x66FFE6AB),Color(0x22A8DDB5),Color.Transparent),
+            center=Offset(w*.82f,h*.43f),radius=w*.42f),
+            radius=w*.42f,center=Offset(w*.82f,h*.43f))
+        val shelfY=h*.87f
+        drawRoundRect(Color(0x99FCCC73),
+            topLeft=Offset(w*.52f,shelfY),size=Size(w*.46f,h*.06f),
+            cornerRadius=CornerRadius(10.dp.toPx()))
+        for(i in 0..3) {
+            val x=w*(.65f+i*.064f)
+            val top=h*(.55f-(i%2)*.065f)
+            drawRoundRect(
+                Brush.verticalGradient(listOf(
+                    if(i%2==0)Color(0xFF97DEAF) else Color(0xFFFAD27A),
+                    if(i%2==0)Color(0xFF2C7B5F) else Color(0xFFB87C49))),
+                topLeft=Offset(x,top),size=Size(w*.053f,shelfY-top),
+                cornerRadius=CornerRadius(5.dp.toPx()))
+        }
+        for(i in 0..13) {
+            drawCircle(if(i%3==0)Color(0x99FFE0A0) else Color(0x42DDFCE6),
+                radius=(if(i%3==0)2.7f else 1.5f).dp.toPx(),
+                center=Offset(w*(.53f+i*.033f),h*(.15f+(i%4)*.11f)))
+        }
+    }
+}
+
 @Composable
 internal fun Wq175ThemeBanner(slug:String,modifier:Modifier) {
     val colors=when(slug) {
