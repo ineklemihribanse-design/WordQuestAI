@@ -1587,6 +1587,10 @@ jobs:
           python3 -m py_compile tools/v176/audit_levels_176.py
           python3 tools/v176/audit_levels_176.py
           test -s source/app/src/main/assets/vocabulary-v176-coverage.json
+      - name: Probe original editor and card-rotation source before 1.0.77 changes
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          python3 tools/v177/probe_ui_177.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
