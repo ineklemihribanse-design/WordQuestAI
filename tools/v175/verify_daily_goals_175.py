@@ -10,6 +10,8 @@ assert 'activeDays=store.activeDaysLast7()' in hub
 assert 'wq_daily_' in hub and 'stableHash(profileKey)' in hub
 assert 'Wq175ParagraphPracticeEntry(' in hub
 assert 'onMinutes(customValue)' in design
+assert 'Wq175GlossIcon(Wq175IconNames.practice(kind)' in design, (
+    "A daily-goals overlay must not overwrite original game icons")
 assert 'Son 7 günde ' in design
 assert 'Kişisel hedef (5–180 dk)' in design
 backup=(src/"PlayerBackup.kt").read_text("utf-8")

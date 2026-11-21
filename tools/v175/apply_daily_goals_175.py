@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """Complete Daily Plan personal targets and weekly activity without replacing the profile store."""
 from pathlib import Path
-import shutil
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "source/app/src/main/java/com/kelimebulmacasi/a1"
-PKG = ROOT / "tools/v175"
-
+ 
 def once(source, old, new, name):
     count = source.count(old)
     assert count == 1, f"{name}: expected 1 anchor, got {count}"
@@ -71,9 +69,14 @@ def run():
         "backup decoder retains title-cased PracticeKind records")
     backup.write_text(payload, "utf-8")
 
-    shutil.copyfile(PKG / "WordQuest175PracticeVisuals.kt",
-                    SOURCE / "WordQuest175PracticeVisuals.kt")
-    print("PASS: custom 5..180-minute plan goals with backup and seven-day activity are installed.")
+    # Do NOT overwrite the already themed/illustrated Compose source here.
+    # apply_icons_175.py has replaced old Canvas placeholders with the user's
+    # original 2.5D icons; copying a raw .kt file would silently undo them.
+    visuals=(SOURCE/"WordQuest175PracticeVisuals.kt").read_text("utf-8")
+    assert "Wq175GlossIcon(Wq175IconNames.practice(kind)" in visuals, (
+        "Premium exercise icons were overwritten by a later overlay")
+    assert "Wq175DailyPlanBanner(" in visuals
+    print("PASS: custom 5..180-minute goals, backup and existing 2.5D UI retained.")
 
 if __name__ == "__main__":
     run()
