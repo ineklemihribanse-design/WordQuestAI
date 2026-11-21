@@ -1,0 +1,46 @@
+topic	difficulty	prompt	answer	other1	other2	other3	explanation
+Tenses	Medium	By the time the museum opened, the guides ____ all the exhibits.	had checked	have checked	check	will check	By the time ile verilen geçmiş andan önce tamamlanan işlem past perfect ile anlatılır.
+Tenses	Medium	The coastal town ____ considerable changes since the bridge was completed.	has undergone	underwent	will undergo	had undergo	Since ile geçmişte başlayıp bugüne ulaşan değişim present perfect gerektirir.
+Tenses	Easy	While the archaeologists ____ the site, a storm interrupted their work.	were surveying	have surveyed	will survey	survey	While ile geçmişte devam eden bir etkinlik ve onu bölen olay past continuous ile kurulur.
+Tenses	Medium	This time next week, the delegates ____ at the regional summit.	will be speaking	have spoken	spoke	speak	This time next week gelecekte belirli bir anda sürüyor olacak eylemi belirtir.
+Tenses	Medium	The report indicates that global temperatures ____ steadily for decades.	have been rising	had rose	are risen	will risen	For decades ve günümüze uzanan süreç present perfect continuous yapısını gerektirir.
+Tenses	Medium	She ____ three articles before she submitted her doctoral thesis.	had published	publishes	will publish	has published	Geçmişteki tez tesliminden daha önce tamamlanan yayınlar past perfect ile anlatılır.
+Tenses	Easy	Unless the network fails, the engineers ____ the updates tonight.	will install	installed	had installed	are installed	Geleceğe dönük gerçek koşulda unless yan cümlesi present simple, ana cümle will kullanır.
+Tenses	Medium	The train ____ before we reached the platform, so we had to wait.	had left	has left	leaves	will leave	Perona ulaşmadan önce gerçekleşmiş ayrılış geçmişten daha önceki olayı gösterir.
+Tenses	Easy	The director ____ the budget figures at present and cannot take your call.	is reviewing	has reviewed	reviews	reviewed	At present ve cannot take your call şu anda devam eden eyleme işaret eder.
+Tenses	Easy	Every semester, the department ____ a survey of its graduates.	conducts	is conducting	has conducted	conducted	Every semester düzenli alışkanlık bildirdiği için simple present kullanılır.
+Tenses	Hard	For two hours before the outage, the technicians ____ the system.	had been testing	are testing	will test	have tested	Geçmişteki kesintiden önce bir süre sürmüş çalışma past perfect continuous ile kurulur.
+Tenses	Easy	The contract ____ when both parties sign the final document tomorrow.	will take effect	took effect	had taken effect	has taking effect	Tomorrow ve gelecek zaman yan cümlesi ana cümlede will take effect gerektirir.
+Tenses	Hard	No sooner had the conference begun than the lights ____.	went out	go out	had gone out	will go out	No sooner had ... than yapısında hemen ardından gelen olay past simple ile ifade edilir.
+Tenses	Medium	Until recently, few researchers ____ this particular phenomenon.	had investigated	will investigate	are investigating	will be investigating	Until recently ile geçmişteki sınırdan önce gerçekleşmiş az sayıdaki çalışma anlatılır.
+Tenses	Easy	At the moment the alarm sounded, the patients ____ in the waiting room.	were sitting	have sat	are sat	will sit	Alarmın duyulduğu geçmiş anda sürmekte olan eylem past continuous ile gösterilir.
+Modals	Easy	You ____ enter the clean room without protective equipment; it is prohibited.	must not	need not	may	should	It is prohibited kesin yasak bildirir, bu yüzden must not kullanılır.
+Modals	Medium	Given the signed approval, the committee ____ have examined the proposal.	must	need	will	is	İmzalı onay geçmişte inceleme yapıldığına ilişkin güçlü bir çıkarım sağlar.
+Modals	Easy	Applicants ____ submit identification before their applications can be processed.	must	might	could	would	Başvurunun işleme alınması için zorunlu koşul bildirildiğinden must uygundur.
+Modals	Medium	The package hasn't arrived; it ____ have been sent to the wrong address.	may	must to	should to	can be	Geçmişte gerçekleşmiş olması mümkün edilgen durum may have been + V3 ile ifade edilir.
+Modals	Medium	You ____ have waited for me; I had already booked another taxi.	needn't	mustn't	won't	cannot	Needn't have + V3 yapılmış fakat gerekli olmayan geçmiş eylemi anlatır.
+Modals	Medium	The street is wet; it ____ have rained overnight.	must	can to	will be	ought	Geçmişe ilişkin güçlü çıkarım must have + V3 kalıbıyla kurulur.
+Modals	Medium	The auditor ____ be inside; the room is empty and its door is locked.	can't	must	should	may	Boş ve kilitli oda içeride olma ihtimalini dışladığı için can't be uygundur.
+Modals	Hard	We ____ have finished sooner if the database had been accessible.	could	can	shall	must to	Geçmişte gerçekleşmemiş koşulun olası sonucu could have + V3 biçimindedir.
+Modals	Easy	Participants ____ turn off their phones during the exam according to the rules.	have to	might	could	would	Kuralların getirdiği dışsal zorunluluk have to ile belirtilir.
+Modals	Medium	She ____ be exhausted after a twelve-hour shift; she is barely able to stand.	must	might not	cannot	need not	Belirtilen gözleme dayanarak yapılan güçlü şimdiki zaman çıkarımı must be kullanır.
+Modals	Easy	The students ____ use dictionaries in this examination; the rules explicitly permit them.	may	must not	cannot	should not	Kuralların izin verdiği bir davranış may ile ifade edilir; diğerleri yasak veya öğüt bildirir.
+Modals	Medium	You ____ have informed me that the flight was cancelled; I drove there unnecessarily.	should	can to	will	need to	Geçmişte yapılması gereken fakat yapılmamış bildirim should have + V3 ile eleştirilir.
+Modals	Medium	No one is answering; they ____ have left for lunch.	might	are to	shall	will to	Kesin olmayan geçmiş olasılık might have + V3 ile anlatılır.
+Modals	Easy	Passengers ____ smoke on the aircraft; it is against the law.	must not	don't have to	may	might	Kanuni yasak ifade edildiği için must not kullanılır; don't have to yasak değildir.
+Modals	Medium	If the repairs are completed, we ____ be able to reopen the gallery on Monday.	may	must have	could have	should have	Gerçekleşmesi mümkün gelecekteki yeterlik may be able to ile anlatılabilir.
+Passive & Causatives	Easy	The new safety regulations ____ across all branches next month.	will be introduced	will introduce	introduced	are introducing	Regulations eylemin öznesi değil alıcısıdır; gelecek zaman edilgen yapı gerekir.
+Passive & Causatives	Easy	The historic bridge ____ in 1890 and remains in use today.	was built	has built	is building	was building	1890 tarihindeki tamamlanmış inşa edilgen geçmiş zaman was built gerektirir.
+Passive & Causatives	Easy	All documents must ____ before the deadline.	be submitted	submit	submitting	have submit	Modal fiilden sonra edilgen gereklilik must be + V3 biçimindedir.
+Passive & Causatives	Medium	The damaged equipment ____ by a specialist when we arrived.	was being repaired	has repaired	repairs	will be repairing	Geçmişte varış anında sürmekte olan edilgen işlem was being + V3 ile kurulur.
+Passive & Causatives	Hard	The suspect is believed ____ the country last week.	to have left	leaving	to leave	have left	Geçmişte gerçekleştiği düşünülen eylem is believed to have + V3 yapısıdır.
+Passive & Causatives	Medium	The museum had its security cameras ____ before the exhibition.	upgraded	upgrading	to upgrade	upgrade	Have something done ettirgen yapısında nesneden sonra V3 kullanılır.
+Passive & Causatives	Medium	The organisers got the invitations ____ by a local printing company.	printed	printing	print	to printing	Get something done kalıbında başkalarına yaptırılan işlem V3 ile belirtilir.
+Passive & Causatives	Easy	The manager made the intern ____ the figures again.	check	to check	checking	checked	Etken make + kişi + fiilin yalın biçimi ettirgen anlam kurar.
+Passive & Causatives	Medium	The intern was made ____ the figures again.	to check	check	checking	checked	Make fiilinin edilgen kullanımında was made to + fiil kalıbı gerekir.
+Passive & Causatives	Easy	The final report should ____ by Friday.	be delivered	delivered	delivering	be deliver	Should modalından sonra edilgen yapı be + past participle ile kurulur.
+Passive & Causatives	Medium	When the inspector arrived, the laboratory ____.	was being cleaned	cleaned	has cleaned	had cleaning	Geçmişteki varış sırasında süren edilgen temizlik was being cleaned biçimindedir.
+Passive & Causatives	Hard	The documents appear ____ without authorisation.	to have been altered	alter	altering	to alter	Tamamlanmış edilgen değişiklik appear to have been + V3 yapısıyla anlatılır.
+Passive & Causatives	Medium	The agency will have the website ____ next week.	redesigned	redesign	to redesign	redesigning	Have something done ettirgeninde başkasına yaptırılan iş past participle alır.
+Passive & Causatives	Medium	The painting ____ in a climate-controlled room since 2012.	has been kept	is keeping	had kept	has kept	Since 2012 ile bugüne kadar süren edilgen durum present perfect passive gerektirir.
+Passive & Causatives	Easy	The director had the photographs ____ professionally.	restored	restore	to restore	restoring	Have + nesne + past participle profesyonel bir işlem yaptırıldığını bildirir.
