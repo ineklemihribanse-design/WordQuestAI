@@ -25,14 +25,19 @@ raw=(ASSETS/'wq182_approved_33_icons_atlas.webp').read_bytes()
 assert raw[:4]==b'RIFF' and raw[8:12]==b'WEBP' and len(raw)>150000
 
 def icons(s):
-    return once(s,
-        '    if (approved != null) {\n        Image(painter = painterResource(approved)',
-        '''    val selectedReplacement=Wq182Icons.preferred(name)
+    # v175 approved 176-file art ZIP is present in production: keep its
+    # existing userIcon fallback, but selectively prefer this new 33-icon pack.
+    intro='''    val selectedReplacement=Wq182Icons.preferred(name)
     if(selectedReplacement!=null && Wq182Artwork(selectedReplacement,modifier)) {
-        // User-approved standalone-style icon from the original 33-icon pack.
-    } else if (approved != null) {
-        Image(painter = painterResource(approved)''',
-        'replace generic icons but preserve existing premium approved fallback')
+        // New approved icon drawn; no duplicate.
+    } else '''
+    if '    if (userIcon != null) {' in s:
+        return once(s,'    if (userIcon != null) {',
+            intro+'if (userIcon != null) {',
+            'new replacement before existing 176-file approved user art')
+    return once(s,'    if (approved != null) {',
+        intro+'if (approved != null) {',
+        'new replacement before existing dedicated approved drawables')
 edit('WordQuest175Icons.kt',icons)
 
 def home(s):
