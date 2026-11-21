@@ -123,8 +123,9 @@ for layout in small_phone large_text tablet_landscape; do
             adb shell wm density 240
             adb shell settings put system font_scale 1.0
             adb shell settings put system accelerometer_rotation 0
+            # Android 11 (API 30) emulator has no 'wm user-rotation' subcommand.
+            # Rotation 0 maintains the requested 1280x800 landscape base display.
             adb shell settings put system user_rotation 0
-            adb shell wm user-rotation lock 0
             ;;
     esac
     adb shell am force-stop "$PKG"
