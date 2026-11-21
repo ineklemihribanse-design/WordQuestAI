@@ -50,11 +50,19 @@ FILES={
         "PracticeContent.story + Wq177DailyOriginals.story",
         "PracticeContent.sentences + Wq177DailyOriginals.sentences",
     ),
+    "PuzzleScreen.kt":(
+        "val phoneBoardOverview =",
+        "mutableStateOf(board.words.size > 20 && !phoneBoardOverview)",
+        "val tile = if (enlarged) maxOf(regularTile, 30.dp) else regularTile",
+        "val windowHeight = minOf(height, actualHeight)",
+    ),
     "Wq177DailyOriginals.kt":(
         "PracticeQuestion(",
         "val sentences:",
         "val grammar:",
         "val story:",
+        "item.copy(options=(listOf(item.answer)+wrong).shuffled()",
+        "options=listOf(item.answer,item.instruction,other).distinct().shuffled()",
     ),
 }
 for path,needs in FILES.items():
@@ -65,6 +73,7 @@ for path,needs in FILES.items():
 homeTiles=(SRC/"Wq175PremiumHome.kt").read_text("utf-8")
 assert homeTiles.index('Wq175HomeTile("Eşleştirmelerim"') < homeTiles.index('Wq175HomeTile("İlerlemem"'), "matching and progress must trade places"
 assert 'onImport=learning' not in homeTiles, "matching must not route word source to Learning"
+assert "maxOf(regularTile, 28.dp)" not in (SRC/"PuzzleScreen.kt").read_text("utf-8"), "regression: phone crossword clips rows"
 assert 'onImport={onDismiss();onImport()}' not in (SRC/"WordQuest175Matching.kt").read_text("utf-8")
 assert 'onImport={go(Page.Learning)})' not in (SRC/"HomeScreen.kt").read_text("utf-8")
 for name in ("Wq177PuzzleImportCards.kt","Wq177DailyOriginals.kt","Wq177DailyRotation.kt"):
