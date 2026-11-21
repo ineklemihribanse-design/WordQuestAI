@@ -20,7 +20,8 @@ ASSETS = ROOT / "source/app/src/main/assets"
 TARGET = 1600
 GRAMMAR = 240
 GRAMMAR_EXTENDED = 600
-FINAL_TOTAL = 198 + TARGET + GRAMMAR + GRAMMAR_EXTENDED
+GRAMMAR_NEW_AUTHORED = 180
+FINAL_TOTAL = 198 + TARGET + GRAMMAR + GRAMMAR_EXTENDED + GRAMMAR_NEW_AUTHORED
 
 def digest(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -237,6 +238,44 @@ def attack_grammar_questions():
     assert len({row[3].casefold() for row in bank})==GRAMMAR_EXTENDED
     return bank
 
+def original_syllabus_grammar_questions():
+    """180 newly authored, non-templated grammar stems across 12 textbook topics.
+
+    The user-provided Test Attack scan informs *chapter coverage only*. No
+    author/publisher question text, answers, illustrations or explanations are
+    transcribed into the app.
+    """
+    bank=[]
+    topic_counts=defaultdict(int)
+    index=0
+    expected="\t".join(
+        ("topic","difficulty","prompt","answer","other1","other2","other3","explanation")
+    )
+    for filename in sorted((HERE/"content").glob("test_attack_original_set_*.tsv")):
+        lines=filename.read_text("utf-8").splitlines()
+        assert lines[0]==expected,(filename,"header")
+        assert len(lines)==46,(filename,"expected 45 original non-template questions",len(lines))
+        for row in lines[1:]:
+            fields=row.split("\t")
+            assert len(fields)==8,(filename,index,"field count")
+            topic,difficulty,prompt,right,a,b,c,explanation=fields
+            assert difficulty in ("Easy","Medium","Hard")
+            assert len(prompt)>=25 and "____" in prompt,(filename,index,"prompt")
+            assert len(explanation)>=45 and len({x.casefold() for x in (right,a,b,c)})==4,(
+                filename,index,"explanation/choices")
+            assert "{" not in prompt and "}" not in prompt,(filename,index,"no template placeholders")
+            topic_counts[topic]+=1
+            bank.append((f"wq176_syllabus_{index:03d}","Grammar",difficulty,
+                         prompt,right,a,b,c,"Konu: "+topic+". "+explanation))
+            index+=1
+    assert len(bank)==GRAMMAR_NEW_AUTHORED,(len(bank),GRAMMAR_NEW_AUTHORED)
+    assert len(topic_counts)>=12 and all(n==15 for n in topic_counts.values()),topic_counts
+    assert len({item[3].casefold() for item in bank})==len(bank)
+    print("PASS: 180 original, standalone grammar prompts across",len(topic_counts),
+          "Test Attack syllabus topics; no publisher text copied.")
+    return bank
+
+
 def kotlin_source(items):
     # Each raw string stays <64k UTF-8 JVM constant-pool limit; rows are
     # parsed lazily and 4 choices are independently shuffled by the screen.
@@ -277,8 +316,9 @@ internal object Wq176YdsGenerated {
 
 def main():
     all_entries=words()
-    bank=lexical_questions(all_entries)+grammar_questions()+attack_grammar_questions()
-    assert len(bank)==TARGET+GRAMMAR+GRAMMAR_EXTENDED
+    bank=(lexical_questions(all_entries)+grammar_questions()+
+          attack_grammar_questions()+original_syllabus_grammar_questions())
+    assert len(bank)==TARGET+GRAMMAR+GRAMMAR_EXTENDED+GRAMMAR_NEW_AUTHORED
     assert len({q[0] for q in bank})==len(bank)
     assert len({q[3].casefold() for q in bank})==len(bank),"Repeated prompt"
     for q in bank:
@@ -331,8 +371,9 @@ def main():
         "Additional lexical questions derive single-word English/Turkish mappings "
         "from EnglishPractice (CC BY-SA 4.0); see "
         "WORDQUEST_CEFR_175_ATTRIBUTION.md for attribution and ShareAlike terms.\n"
-        "840 additional grammar questions in total cover original YDS Grammar practice; 600 new variants follow Test Attack-style formats without reproducing book questions.\n"
-        "Reference syllabi: user-provided More to Read I/II and Test Attack books; "
+        "1,020 additional grammar questions: 240 earlier original patterns, 600 original contextual variants, "
+        "and 180 entirely new standalone authored prompts covering 12 Test Attack syllabus chapters.\n"
+        "Reference syllabi: user-provided More to Read I/II and scanned Test Attack book; "
         "no publisher book question/paragraph/image is copied into this app.\n"
         "Automated checks validate structure and deduplication, not human pedagogy.\n",
         "utf-8")
