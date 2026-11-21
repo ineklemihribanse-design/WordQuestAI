@@ -16,13 +16,28 @@ assert 'Surface(onClick=onClick' in grid
 assert 'onSelect(kind)' in grid
 assert 'Wq175PremiumPracticeGrid { kind ->' in hub
 assert 'selected = kind' in hub and 'questionIndex = 0' in hub
-assert 'MenuItem("Yanlışlarımdan bulmaca"' in hub
-assert 'MenuItem("Kişisel AI öğretmenim"' in hub
-assert 'Wq175PremiumPracticeSpecialTile(' not in hub
+assert 'Wq175PremiumPracticeSpecialTile("Yanlışlarımdan bulmaca"' in hub
+assert 'Wq175PremiumPracticeSpecialTile("Kişisel AI öğretmenim"' in hub
+assert hub.count("Wq175PremiumPracticeSpecialTile(")==2
+assert hub.count("MenuItem@ {")>=2
+assert 'internal fun Wq175PremiumPracticeSpecialTile(' in grid
+assert 'Wq175GlossIcon(imageName,Modifier.size(76.dp))' in grid
 assert 'PracticeKind.entries.chunked(2)' in grid
 icons=(src/"WordQuest175Icons.kt").read_text("utf-8")
 assert '"yanlışlarımdan" in s -> "mistakes"' in icons
 assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icons
 assert 'Wq175DailyPlanBanner(' in hub
 print("PASS: phone cards stack artwork above text; tablet cards remain horizontal")
-print("PASS: seven Daily Plan routes, original callbacks and two dedicated icons")
+from patch_practice_extra_calls_175 import replace_special_card_call
+sample='''MenuItem("Yanlışlarımdan bulmaca", "a", "✦") {
+    if (true) return@MenuItem
+}
+MenuItem("Kişisel AI öğretmenim", "b", "✦") {
+    if (true) return@MenuItem
+}'''
+for title in ("Yanlışlarımdan bulmaca","Kişisel AI öğretmenim"):
+    sample=replace_special_card_call(sample,title)
+assert sample.count("MenuItem@ {")==2
+assert sample.count("return@MenuItem")==2
+assert 'return@Wq175PremiumPracticeSpecialTile' not in sample
+print("PASS: seven illustrated Daily Plan entries and preserved Kotlin lambda labels")

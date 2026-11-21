@@ -87,6 +87,82 @@ private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
     }
 }
 
+
+/**
+ * Premium native Android cards for the two Daily Plan entry points which
+ * previously rendered as plain MenuItems. All game actions and storage stay
+ * in PracticeHubScreen; the original callback is invoked unchanged.
+ */
+@Suppress("UNUSED_PARAMETER")
+@Composable
+internal fun Wq175PremiumPracticeSpecialTile(
+    title: String,
+    detail: String,
+    legacySymbol: String,
+    onClick: () -> Unit
+) {
+    val teacher = title.contains("AI", ignoreCase=true)
+    val background = if (teacher) Color(0xFFECE8FF) else Color(0xFFFFF1D9)
+    val accent = if (teacher) Color(0xFF6744B5) else Color(0xFFB66D31)
+    val border = if (teacher) Color(0xFFD2C5F4) else Color(0xFFEED5AC)
+    val imageName = if (teacher) "ai_teacher" else "mistakes"
+
+    Surface(
+        onClick=onClick,
+        modifier=Modifier.fillMaxWidth().heightIn(min=112.dp),
+        shape=RoundedCornerShape(22.dp),
+        color=background,
+        border=BorderStroke(1.dp,border),
+        shadowElevation=4.dp
+    ) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val stacked = maxWidth<285.dp || LocalDensity.current.fontScale>1.35f
+            if (stacked) {
+                Column(
+                    Modifier.fillMaxWidth().padding(13.dp),
+                    verticalArrangement=Arrangement.spacedBy(7.dp)
+                ) {
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.SpaceBetween,
+                        verticalAlignment=Alignment.CenterVertically
+                    ) {
+                        Wq175GlossIcon(imageName,Modifier.size(70.dp))
+                        Text("›",color=accent,fontSize=26.sp,fontWeight=FontWeight.Bold)
+                    }
+                    Text(title,color=Color(0xFF24344B),fontSize=17.sp,
+                        lineHeight=21.sp,fontWeight=FontWeight.ExtraBold,
+                        maxLines=3,overflow=TextOverflow.Ellipsis)
+                    Text(detail,color=Color(0xFF566274),fontSize=12.sp,
+                        lineHeight=17.sp,maxLines=4,
+                        overflow=TextOverflow.Ellipsis)
+                }
+            } else {
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal=13.dp,vertical=12.dp),
+                    verticalAlignment=Alignment.CenterVertically,
+                    horizontalArrangement=Arrangement.spacedBy(10.dp)
+                ) {
+                    Wq175GlossIcon(imageName,Modifier.size(76.dp))
+                    Column(
+                        Modifier.weight(1f),
+                        verticalArrangement=Arrangement.spacedBy(5.dp)
+                    ) {
+                        Text(title,color=Color(0xFF24344B),fontSize=18.sp,
+                            lineHeight=22.sp,fontWeight=FontWeight.ExtraBold,
+                            maxLines=3,overflow=TextOverflow.Ellipsis)
+                        Text(detail,color=Color(0xFF566274),fontSize=12.sp,
+                            lineHeight=17.sp,maxLines=4,
+                            overflow=TextOverflow.Ellipsis)
+                    }
+                    Text("›",color=accent,fontSize=25.sp,
+                        fontWeight=FontWeight.Bold)
+                }
+            }
+        }
+    }
+}
+
 @Composable
 internal fun Wq175PremiumPracticeGrid(onSelect:(PracticeKind)->Unit) {
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(12.dp)) {
