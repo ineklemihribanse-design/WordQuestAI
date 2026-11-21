@@ -22,12 +22,12 @@ s=replace_once(s,
     'Text("Kelime Bulmacası", color = Forest',
     'Text("WordQuest AI", color = Color(0xFF203A49)',
     "correct product branding in mobile header")
-# New Game already has an explicit secondary tile and bottom-nav action.
-# Do not show an additional oversized green CTA above the six flagship rooms.
+# The existing New Game action follows the Continue/Resume row. Keep its
+# location but make it a single premium card; no duplicate in the lower grid.
 s=replace_once(s,
     '                PrimaryAction("Yeni Oyun", newGame)',
-    '                Spacer(Modifier.height(8.dp))',
-    "remove duplicated New Game CTA without removing its navigation")
+    '                Wq175HomeStartButton(newGame)',
+    "single premium New Game entry immediately under Continue")
 
 begin='                val score = session.totalPoints.toString() + " puan · " + session.finishedCount + " tamamlanan bulmaca"'
 end='\n            }\n        }\n    }\n}\n\n@Composable\nprivate fun HeroTiles'
