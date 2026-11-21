@@ -96,7 +96,17 @@ internal object Wq176QuestionRotation {
 internal fun Wq176DailyPracticeEntry(profileKey: String) {
     val context=LocalContext.current
     val bank=YdsContent.questions
-    var selectedLevel by remember(profileKey) { mutableStateOf("A1") }
+    val tierPrefs=remember(profileKey) {
+        context.getSharedPreferences("wq176_daily_tier",Context.MODE_PRIVATE)
+    }
+    val tierKey="level."+profileKey.hashCode()
+    var selectedLevel by remember(profileKey) {
+        mutableStateOf(
+            tierPrefs.getString(tierKey,"A1").orEmpty().takeIf {
+                it in listOf("A1","A2","B1","B2","C1","C2")
+            } ?: "A1"
+        )
+    }
     val wordDecks=remember(profileKey) { mutableMapOf<String,List<YdsQuestion>>() }
     fun next(level:String=selectedLevel): YdsQuestion? {
         val categories=listOf(
@@ -141,7 +151,12 @@ internal fun Wq176DailyPracticeEntry(profileKey: String) {
             ) {
                 listOf("A1","A2","B1","B2","C1","C2").forEach { level ->
                     OutlinedButton(
-                        onClick={ selectedLevel=level; question=next(level); answer=null },
+                        onClick={
+                            selectedLevel=level
+                            tierPrefs.edit().putString(tierKey,level).apply()
+                            question=next(level)
+                            answer=null
+                        },
                         shape=RoundedCornerShape(12.dp),
                         contentPadding=androidx.compose.foundation.layout.PaddingValues(horizontal=10.dp,vertical=4.dp),
                         border=BorderStroke(
