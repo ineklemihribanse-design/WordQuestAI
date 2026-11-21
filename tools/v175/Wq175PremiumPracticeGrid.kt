@@ -24,40 +24,68 @@ private fun Wq175PracticeCardTint(kind:PracticeKind):Color = when(kind) {
     PracticeKind.Speak -> Color(0xFFE0F5F1)
 }
 
+/** Reuse the same original 2.5D artwork on phones and tablets. */
 @Composable
-private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
-    val pale=Wq175PracticeCardTint(kind)
-    Surface(onClick=onClick,
-        modifier=Modifier.fillMaxWidth().heightIn(min=145.dp),
-        shape=RoundedCornerShape(22.dp),
-        color=pale,border=BorderStroke(1.dp,Color(0xFFE2DDE1)),
-        shadowElevation=4.dp) {
-        Row(Modifier.fillMaxWidth().padding(horizontal=10.dp,vertical=12.dp),
-            verticalAlignment=Alignment.CenterVertically,
-            horizontalArrangement=Arrangement.spacedBy(7.dp)) {
-            if(kind==PracticeKind.Dictation) {
-                Wq175ThemeIcon("dinle_ve_yaz",Modifier.size(72.dp))
-            } else if(kind==PracticeKind.Grammar) {
-                Wq175ThemeIcon("dilbilgisi",Modifier.size(72.dp))
-            } else {
-                Wq175GlossIcon(Wq175IconNames.practice(kind),Modifier.size(72.dp))
-            }
-            Column(Modifier.weight(1f),
-                verticalArrangement=Arrangement.spacedBy(6.dp)) {
-                Text(kind.title,color=Color(0xFF1E384D),
-                    fontSize=15.sp,lineHeight=18.sp,
-                    fontWeight=FontWeight.ExtraBold,
-                    maxLines=3,overflow=TextOverflow.Ellipsis)
-                Text(kind.detail,color=Color(0xFF5E7181),
-                    fontSize=11.sp,lineHeight=14.sp,
-                    maxLines=4,overflow=TextOverflow.Ellipsis)
-            }
-            Text("›",color=Color(0xFF355674),fontSize=23.sp,
-                fontWeight=FontWeight.Bold)
-        }
+private fun Wq175PremiumPracticeArt(kind:PracticeKind,modifier:Modifier) {
+    when(kind) {
+        PracticeKind.Dictation -> Wq175ThemeIcon("dinle_ve_yaz",modifier)
+        PracticeKind.Grammar -> Wq175ThemeIcon("dilbilgisi",modifier)
+        else -> Wq175GlossIcon(Wq175IconNames.practice(kind),modifier)
     }
 }
 
+/** A 360dp phone gives each card about 165dp: horizontal art, title and arrow
+ * would squeeze the Turkish text. Stack image above labels in narrow cards.
+ */
+@Composable
+private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
+    val pale=Wq175PracticeCardTint(kind)
+    val ink=Color(0xFF1E384D)
+    val secondary=Color(0xFF5E7181)
+    Surface(onClick=onClick,
+        modifier=Modifier.fillMaxWidth().heightIn(min=145.dp),
+        shape=RoundedCornerShape(22.dp),color=pale,
+        border=BorderStroke(1.dp,Color(0xFFE2DDE1)),
+        shadowElevation=4.dp) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val stacked=maxWidth < 225.dp || LocalDensity.current.fontScale>1.20f
+            if(stacked) {
+                Column(Modifier.fillMaxWidth().padding(12.dp),
+                    verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                    Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.SpaceBetween,
+                        verticalAlignment=Alignment.CenterVertically) {
+                        Wq175PremiumPracticeArt(kind,Modifier.size(70.dp))
+                        Text("›",color=Color(0xFF355674),fontSize=25.sp,
+                            fontWeight=FontWeight.Bold)
+                    }
+                    Text(kind.title,color=ink,fontSize=15.sp,lineHeight=19.sp,
+                        fontWeight=FontWeight.ExtraBold,maxLines=3,
+                        overflow=TextOverflow.Ellipsis)
+                    Text(kind.detail,color=secondary,fontSize=11.sp,lineHeight=15.sp,
+                        maxLines=4,overflow=TextOverflow.Ellipsis)
+                }
+            } else {
+                Row(Modifier.fillMaxWidth()
+                    .padding(horizontal=12.dp,vertical=13.dp),
+                    verticalAlignment=Alignment.CenterVertically,
+                    horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                    Wq175PremiumPracticeArt(kind,Modifier.size(75.dp))
+                    Column(Modifier.weight(1f),
+                        verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                        Text(kind.title,color=ink,fontSize=16.sp,lineHeight=20.sp,
+                            fontWeight=FontWeight.ExtraBold,maxLines=3,
+                            overflow=TextOverflow.Ellipsis)
+                        Text(kind.detail,color=secondary,fontSize=12.sp,lineHeight=16.sp,
+                            maxLines=4,overflow=TextOverflow.Ellipsis)
+                    }
+                    Text("›",color=Color(0xFF355674),fontSize=23.sp,
+                        fontWeight=FontWeight.Bold)
+                }
+            }
+        }
+    }
+}
 
 @Composable
 internal fun Wq175PremiumPracticeGrid(onSelect:(PracticeKind)->Unit) {

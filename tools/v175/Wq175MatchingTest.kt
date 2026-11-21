@@ -22,6 +22,19 @@ class Wq175MatchingTest {
         assertTrue(found.all{it.level=="A1"})
     }
 
+    @Test fun duplicateTranslationDoesNotBlockLaterValidPair() {
+        val rows=sequenceOf(
+            row("A1","APPLE","elma"),
+            row("A1","ORANGE","elma"),
+            row("A1","ORANGE","portakal"),
+            row("A1","PEAR","armut")
+        )
+        val parsed=Wq175MatchingBank.parse(rows,"A1")
+        assertEquals(3,parsed.size)
+        assertEquals("portakal",parsed.single { it.english=="ORANGE" }.turkish)
+        assertEquals(3,parsed.map { it.turkish }.distinct().size)
+    }
+
     @Test fun selectionRemainsDistinctAndBounded() {
         val list=(0 until 20).map {
             Wq175MatchPair("A1","İsimler","WORD$it","Anlam$it")

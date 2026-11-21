@@ -54,12 +54,17 @@ internal object Wq175MatchingBank {
             // of displaying a false one-to-one translation in the matching game.
             val turkish=raw.substringBefore(';').substringBefore(',')
                 .substringAfter(':').trim()
+            val englishKey=english.uppercase(Locale.ROOT)
+            val turkishKey=turkish.lowercase(Locale.forLanguageTag("tr"))
+            // Reject duplicate pairs without reserving keys until accepted.
             if(english.length !in 2..32 || turkish.length !in 2..42 ||
                 !english.all { it.isLetter() || it==' ' || it=='\'' || it=='-' } ||
                 turkish.any { it=='(' || it==')' || it=='/' } ||
-                !seenEnglish.add(english.uppercase(Locale.ROOT)) ||
-                !seenTurkish.add(turkish.lowercase(Locale.forLanguageTag("tr"))))
+                englishKey in seenEnglish ||
+                turkishKey in seenTurkish)
                 return@mapNotNull null
+            seenEnglish.add(englishKey)
+            seenTurkish.add(turkishKey)
             Wq175MatchPair(cols[0],cols[2],english,turkish)
         }.toList()
     }
