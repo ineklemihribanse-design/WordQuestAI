@@ -35,6 +35,42 @@ import androidx.compose.ui.unit.sp
  * No user answers, account identity or actual question text are persisted.
  */
 internal object Wq176QuestionRotation {
+    /**
+     * Draw an unpredictable topic order without repeatedly cycling through
+     * the same six categories. Each category occurs once per bag. Persist the
+     * remaining bag per profile so leaving and reopening Daily Plan does not
+     * reset its sequence; never repeat the previous category at a bag boundary.
+     */
+    fun nextTopic(context: Context, profileKey: String, categories: List<YdsTopic>): YdsTopic {
+        val unique = categories.distinct()
+        require(unique.isNotEmpty()) { "At least one practice topic required" }
+        val prefs=context.getSharedPreferences("wq176_daily_topics",Context.MODE_PRIVATE)
+        val suffix=profileKey.hashCode().toString()
+        val bagKey="bag.$suffix"
+        val lastKey="last.$suffix"
+        val stored=prefs.getString(bagKey,"").orEmpty()
+        val current=stored.split(",").mapNotNull { item ->
+            unique.firstOrNull { it.name==item }
+        }.distinct()
+        val pending=if(current.isNotEmpty())current else {
+            val shuffled=unique.shuffled().toMutableList()
+            val previous=prefs.getString(lastKey,null)
+            if(shuffled.size>1 && shuffled.first().name==previous) {
+                val swapIndex=shuffled.indexOfFirst { it.name!=previous }
+                val tmp=shuffled[0]
+                shuffled[0]=shuffled[swapIndex]
+                shuffled[swapIndex]=tmp
+            }
+            shuffled
+        }
+        val selected=pending.first()
+        prefs.edit()
+            .putString(bagKey,pending.drop(1).joinToString(",") { it.name })
+            .putString(lastKey,selected.name)
+            .apply()
+        return selected
+    }
+
     fun pick(
         context: Context, profileKey: String, pool: List<YdsQuestion>, count: Int
     ): List<YdsQuestion> {
@@ -58,21 +94,15 @@ internal object Wq176QuestionRotation {
 internal fun Wq176DailyPracticeEntry(profileKey: String) {
     val context=LocalContext.current
     val bank=YdsContent.questions
-    val prefs=remember(profileKey) {
-        context.getSharedPreferences("wq176_daily_choice",Context.MODE_PRIVATE)
-    }
     fun next(): YdsQuestion? {
-        val key="turn."+profileKey.hashCode()
-        val step=prefs.getInt(key,0)
         val categories=listOf(
             YdsTopic.Vocabulary, YdsTopic.Grammar, YdsTopic.Translation,
             YdsTopic.Completion, YdsTopic.Paragraph, YdsTopic.Connectors
         )
-        val topic=categories[step%categories.size]
+        val topic=Wq176QuestionRotation.nextTopic(context,profileKey,categories)
         val matching=bank.filter { it.topic==topic }
         val selected=Wq176QuestionRotation.pick(
             context,profileKey,matching.ifEmpty { bank },1).firstOrNull()
-        prefs.edit().putInt(key,step+1).apply()
         return selected
     }
     var question by remember(profileKey) { mutableStateOf(next()) }
