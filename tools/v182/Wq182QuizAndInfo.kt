@@ -62,7 +62,10 @@ internal fun Wq182QuizAnswer(
 internal fun Wq182Info(title:String,detail:String) {
     var open by remember { mutableStateOf(false) }
     TextButton(onClick={open=true},
-        contentPadding=PaddingValues(horizontal=7.dp,vertical=1.dp)) {
+        colors=ButtonDefaults.textButtonColors(
+            containerColor=Color(0xFFF1E8FF),
+            contentColor=Color(0xFF493375)),
+        contentPadding=PaddingValues(horizontal=11.dp,vertical=5.dp)) {
         Text("ⓘ",fontSize=19.sp,color=Color(0xFF6645A0),
             fontWeight=FontWeight.Bold)
         Spacer(Modifier.width(4.dp))
