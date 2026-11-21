@@ -269,6 +269,9 @@ def local_matching(s):
     )
     Dialog(onDismissRequest=onDismiss,''',
         "local import dialog above matching game")
+    s=once(s,'    Dialog(onDismissRequest=onDismiss,',
+        '    if(!importOpen) Dialog(onDismissRequest=onDismiss,',
+        "hide matching window while its own import preview is open")
     s=once(s,
         '''                        onImport={onDismiss();onImport()},
                         heading="Eşleştirme için kelime kaynağın",
