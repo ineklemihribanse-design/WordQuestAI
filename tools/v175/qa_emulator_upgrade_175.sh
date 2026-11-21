@@ -117,11 +117,14 @@ for layout in small_phone large_text tablet_landscape; do
             ;;
         tablet_landscape)
             expected_pixels="1280x800"
+            # wm size already sets a landscape base surface; rotating by 90
+            # degrees here made screenshots 800x1280 and falsely failed QA.
             adb shell wm size 1280x800
             adb shell wm density 240
             adb shell settings put system font_scale 1.0
             adb shell settings put system accelerometer_rotation 0
-            adb shell settings put system user_rotation 1
+            adb shell settings put system user_rotation 0
+            adb shell wm user-rotation lock 0
             ;;
     esac
     adb shell am force-stop "$PKG"
