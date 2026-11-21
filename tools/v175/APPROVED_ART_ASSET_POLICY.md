@@ -5,7 +5,7 @@ Bu dosya, uygulama kodunun hangi görsel kaynaklara öncelik verdiğini sabitler
 ## Kaynakların mevcut durumu
 
 - **GitHub'da mevcut:** `tools/v175/premium_webp/` altında 10 oda için 10 adet ikon ve 10 adet hero WebP; `tools/v175/generate_premium_icons_175.py` tarafından üretilen 46 iç ekran ikonu; önceki tasarımların Android/Compose bağlama betikleri.
-- **Kullanıcının ayrıca sağladığı fakat GitHub'a henüz ikili olarak aktarılmamış paketler:** `WordQuestAI_Tum_Ikonlar_Bagimsiz_Yuksek_Cozunurluk_175.zip` (102 bağımsız ikon), `WordQuestAI_Tek_Tek_Yuksek_Kalite_Gorseller.zip`, `WordQuestAI_Premium_Gorsel_Paketi_175.zip`. Dosya adları burada görsel varlıkların kendisinin GitHub'a yüklendiği anlamına **gelmez**.
+- **GitHub'a yüklenen kullanıcı paketi:** `tools/v175/WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` (9.060.166 bayt, SHA Git blob `bdfc2340cc9725c47d64343871df3fd753ae334b`). İçinde 108 bağımsız WebP ikon (102 ana + 6 özel) ve ilgili premium arka plan/banner/kart/sahne kaynakları var. `extra/` kesilmiş ikonları derlemeye alınmaz. Ayrı kaynak ZIP'leri tek tek depoya yüklemek gerekmiyor; bunlardan oluşturulan entegrasyon paketi kullanılıyor.
 - Sonraki mesajda düşük kaliteli bulunduğu belirtilen ayrı ekran görselleri kullanıma alınmayacak. Mevcut onaylı özgün görseller korunacak.
 
 ## Derlemede kullanılan öncelik
@@ -38,6 +38,6 @@ Bu dal üstündeki commit, APK yayınlandığı anlamına gelmez. `v1.0.75` içi
 
 `WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` dosyası aynı geliştirme dalında tam olarak `tools/v175/WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` konumuna eklendiğinde `apply_theme_art_175.py`, `apply_uploaded_art_pack_175.py` yükleyicisini otomatik çağırır.
 
-Yükleyici paketteki en az 102 bağımsız ikon dosyasını ve kullanılabilir premium arka planları `source/app/src/main/assets/wq175_user_art` altına kopyalar. `extra/` altındaki 108 düşük kaliteli kesilmiş ikon özellikle **dışarıda bırakılır**. Kullanıcının bağımsız ikonları varsa varsayılan yerleşik ikonlardan önceliklidir; eksik dosyada çalışan önceki görsel korunur. `WordQuestAI_175_Gorsel_Entegrasyon_Hazirlik.zip` dosyası depoya henüz eklenmemişse, yükleyici bilerek değişiklik yapmaz.
+Yükleyici paketteki en az 102 bağımsız ikon dosyasını ve kullanılabilir premium arka planları `source/app/src/main/assets/wq175_user_art` altına kopyalar. `extra/` altındaki 108 düşük kaliteli kesilmiş ikon özellikle **dışarıda bırakılır**. Kullanıcının bağımsız ikonları varsa varsayılan yerleşik ikonlardan önceliklidir; eksik dosyada çalışan önceki görsel korunur. Paketi oluşturan dosya yüklenmiş ve doğru isimle depoda bulunmaktadır; derleme başarıyla tamamlanırsa yeni görseller APK'ya alınır.
 
-Eklenecek ZIP dosyası boyut ve bütünlük açısından doğrulanmalı; çalıştırılabilir APK henüz bu görsel paketiyle test edilmiş kabul edilmemelidir.
+Yüklenen ZIP yerel olarak açılabildi; dosya yapısı ve ikon isimleri incelendi. Çalıştırılabilir APK için GitHub Actions testleri ve gerçek cihaz doğrulaması ayrıca gereklidir.
