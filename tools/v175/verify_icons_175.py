@@ -22,7 +22,8 @@ home=(SRC/"HomeScreen.kt").read_text("utf-8")
 practice=(SRC/"WordQuest175PracticeVisuals.kt").read_text("utf-8")
 assert 'Wq175GlossIcon("arena_"+kind,Modifier.size(76.dp))' in arena
 assert 'Wq175GlossIcon(Wq175IconNames.menu(title)' in home
-assert practice.count('Wq175GlossIcon(Wq175IconNames.practice(kind)')==2
+assert practice.count('Wq175GlossIcon(Wq175IconNames.practice(kind)')==3
+# Daily Plan tile, exercise header icon and interior background must all exist.
 assert (SRC/"WordQuest175Icons.kt").exists()
 assert (ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175PremiumIconRoutingTest.kt").is_file()
 for token in ('"analytics"','"insights"','"friends"','"account"',

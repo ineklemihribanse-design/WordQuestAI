@@ -49,7 +49,7 @@ def main():
         '''        Wq175GlossIcon(Wq175IconNames.menu(title), Modifier.size(45.dp))''',
         "home and menu original scalable icons")
     p.write_text(s,"utf-8")
-    print("PASS: 30 original 256px transparent icons for home, Arena, YDS, matching and scan/learning rooms.")
+    print("PASS: 40 original 256px transparent icons for home, Arena, YDS, matching and scan/learning rooms.")
 
 if __name__=="__main__":
     main()
