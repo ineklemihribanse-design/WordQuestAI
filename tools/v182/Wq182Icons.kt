@@ -1,6 +1,7 @@
 package com.kelimebulmacasi.a1
 
 import android.graphics.Bitmap
+import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -51,6 +52,20 @@ internal object Wq182Icons {
         "level_c1" to "wq_seviye_c1",
         "level_c2" to "wq_seviye_c2"
     )
+    @Volatile private var sharedAtlas:Bitmap?=null
+    @Volatile private var atlasLoaded=false
+    @Synchronized
+    fun imageAtlas(context:Context):Bitmap? {
+        if(!atlasLoaded) {
+            sharedAtlas=runCatching {
+                context.applicationContext.assets.open("wq182_approved_33_icons_atlas.webp").use {
+                    BitmapFactory.decodeStream(it)
+                }
+            }.getOrNull()
+            atlasLoaded=true
+        }
+        return sharedAtlas
+    }
     fun preferred(name:String):String?=replacements[name]
     fun catalogSize():Int=names.size
     fun index(name:String):Int=names.indexOf(name)
@@ -59,11 +74,8 @@ internal object Wq182Icons {
 @Composable
 internal fun Wq182Artwork(name:String, modifier:Modifier=Modifier):Boolean {
     val context=LocalContext.current
-    val atlas=remember(context){
-        runCatching { context.assets.open("wq182_approved_33_icons_atlas.webp").use {
-            BitmapFactory.decodeStream(it)
-        }}.getOrNull()
-    }
+    // A single 5-MB decoded atlas is shared instead of decoding it for each card.
+    val atlas=remember(context.applicationContext){Wq182Icons.imageAtlas(context)}
     val index=Wq182Icons.index(name)
     val cropped=remember(atlas,index){
         if(atlas==null || index<0 || atlas.width!=1152 || atlas.height!=1152) null
