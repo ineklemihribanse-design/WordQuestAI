@@ -195,6 +195,9 @@ def compact_live_header(s):
     return s[:start]+header+s[end:]
 
 def live_3d_recovery(s):
+    s=once(s, 'import androidx.compose.ui.unit.dp',
+           'import androidx.compose.ui.unit.dp\nimport androidx.compose.ui.unit.sp',
+           "3d fallback font import")
     # A GLB can return a non-null node and still be invisible on some GPUs.
     # Reframe closer to the real model's waist, and provide a visible native
     # portrait with a switch to the supported text chat when setup fails.
