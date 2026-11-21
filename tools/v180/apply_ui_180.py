@@ -19,6 +19,11 @@ def once(s,old,new,label):
 print("Applying 1.0.80 Arena + Account UI without changing saved player state")
 shutil.copyfile(TOOLS/"Wq180ArenaBoard.kt",SRC/"ArenaBoardV2.kt")
 shutil.copyfile(TOOLS/"Wq180ArenaStage.kt",SRC/"Wq180ArenaStage.kt")
+# Keep the original premium tournament illustration intact, not a screenshot with UI labels.
+assets=ROOT/"source/app/src/main/assets"
+assets.mkdir(parents=True,exist_ok=True)
+shutil.copyfile(ROOT/"tools/v175/premium_webp/wq175_arena_hero.webp",
+    assets/"wq180_arena_background.webp")
 
 typing=SRC/"ArenaCrosswordTyping.kt"
 s=typing.read_text("utf-8")
