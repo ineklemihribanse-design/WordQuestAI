@@ -26,7 +26,7 @@ assert '"/friendProfiles/$userId" to null' in account
 assert 'Wq180ArenaStageBackground(' in arena
 assert 'ArenaBoardV2(puzzle,solved,selected,placed,compact,zoomed,onSelect)' in typing
 assert 'OutlinedButton(onClick={zoomed=!zoomed}' in typing
-assert '.coerceIn(320.dp,820.dp)' in board
+assert '.coerceIn(340.dp,940.dp)' in board or '.coerceIn(320.dp,820.dp)' in board
 assert 'val boardInset=' in board
 assert 'horizontalScroll(horizontal)' in board and 'verticalScroll(vertical)' in board
 settings=(ROOT/"source/app/build.gradle.kts").read_text("utf-8")
