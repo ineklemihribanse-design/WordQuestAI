@@ -137,6 +137,177 @@ def local_source_editor(s):
         "My Puzzles import stays inside its own editor")
 
 
+def matching_shortcuts(s):
+    # Each import mode receives its own callback; no more Learning-only routing.
+    s=once(s,
+        '    selected:String?=null\n) {',
+        '    selected:String?=null,\n'
+        '    onPdf:()->Unit=onImport,\n'
+        '    onCamera:()->Unit=onImport,\n'
+        '    onAi:()->Unit=onImport\n) {',
+        "optional per-import-mode callbacks")
+    s=once(s,
+        'Wq175PuzzleSource("PDF’den İçe Aktar","pdf",Color(0xFFE7F3FF),onImport)',
+        'Wq175PuzzleSource("PDF’den İçe Aktar","pdf",Color(0xFFE7F3FF),onPdf)',
+        "PDF local callback")
+    s=once(s,
+        'Wq175PuzzleSource("Görsel / Kamera","camera",Color(0xFFFFF1E4),onImport)',
+        'Wq175PuzzleSource("Görsel / Kamera","camera",Color(0xFFFFF1E4),onCamera)',
+        "camera local callback")
+    s=once(s,
+        'Wq175PuzzleSource("Yapay Zekâ","ai_teacher",Color(0xFFF4E8FF),onImport)',
+        'Wq175PuzzleSource("Yapay Zekâ","ai_teacher",Color(0xFFF4E8FF),onAi)',
+        "AI local callback")
+    return s
+
+
+def import_dialog(s):
+    # Old Word Memory behavior remains when onAccepted is null. A matching
+    # import returns only selected reviewed pairs to the matching session.
+    s=once(s,
+        '    session:AppSession,ai:AiSession,onDismiss:()->Unit\n) {',
+        '    session:AppSession,ai:AiSession,onDismiss:()->Unit,\n'
+        '    onAccepted:((List<WordPair>)->Unit)?=null,\n'
+        '    initialSource:String="all"\n) {',
+        "separate local import consumer")
+    s=once(s,
+        '    AlertDialog(onDismissRequest={if(!busy)onDismiss()},',
+        '''    LaunchedEffect(initialSource) {
+        when(initialSource) {
+            "pdf" -> openDocument.launch(arrayOf("application/pdf"))
+            "camera" -> camera()
+            "gallery" -> openDocument.launch(arrayOf("image/*"))
+        }
+    }
+    AlertDialog(onDismissRequest={if(!busy)onDismiss()},''',
+        "launch requested file picker within current import window")
+    old='''                        var saved=0
+                        var skipped=0
+                        for((index,pair) in pairs.withIndex()){
+                            if(excluded[index]==true)continue
+                            if(!pair.valid){skipped++;continue}
+                            if(session.addManualLearning(pair.answer,pair.clue,""))saved++
+                            else skipped++
+                        }
+                        pairs=emptyList()
+                        previewPage=0
+                        excluded.clear()
+                        status="Deftere "+saved+" kelime eklendi. "+skipped+
+                            " geçersiz veya tekrarlanan kayıt atlandı."'''
+    new='''                        val chosen=pairs.withIndex()
+                            .filter{(index,pair)->excluded[index]!=true && pair.valid}
+                            .map{it.value}.distinctBy{englishLetters(it.answer)}
+                        if(onAccepted!=null) {
+                            if(chosen.size>=2) onAccepted(chosen)
+                            else status="Eşleştirme için en az iki farklı kelime seç."
+                        } else {
+                            var saved=0
+                            var skipped=0
+                            for(pair in chosen) {
+                                if(session.addManualLearning(pair.answer,pair.clue,""))saved++
+                                else skipped++
+                            }
+                            pairs=emptyList()
+                            previewPage=0
+                            excluded.clear()
+                            status="Deftere "+saved+" kelime eklendi. "+skipped+
+                                " geçersiz veya tekrarlanan kayıt atlandı."
+                        }'''
+    s=once(s,old,new,"matching import does not modify LearningStore")
+    s=once(s,
+        'Text("Seçilen Kelimeleri Kaydet")',
+        'Text(if(onAccepted!=null)"Eşleştirme Kartlarını Kullan" else "Seçilen Kelimeleri Kaydet")',
+        "source-specific confirmation label")
+    s=once(s,
+        'title={Text("Kelimeleri İçe Aktar",fontWeight=FontWeight.ExtraBold,',
+        'title={Text(if(onAccepted!=null)"Eşleştirmeye Kelime Aktar" else "Kelimeleri İçe Aktar",fontWeight=FontWeight.ExtraBold,',
+        "import context title")
+    s=once(s,
+        'Text("PDF, fotoğraf veya AI önerileri önce burada düzenlenir. "+\n                    "Onay olmadan deftere kaydedilmez.",',
+        'Text(if(onAccepted!=null)"PDF, fotoğraf veya AI önerilerini gözden geçir; seçtiklerin yalnızca bu eşleştirme turunda kullanılacak."\n                    else "PDF, fotoğraf veya AI önerileri önce burada düzenlenir. Onay olmadan deftere kaydedilmez.",',
+        "import explanation matches destination")
+    return s
+
+
+def local_matching(s):
+    s=once(s,
+        'internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:()->Unit) {',
+        'internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->Unit,onImport:()->Unit) {',
+        "provide existing AI session for matching import")
+    s=once(s,
+        '    var wordSource by rememberSaveable { mutableStateOf("Hazır Paketten Seç") }',
+        '''    var wordSource by rememberSaveable { mutableStateOf("Hazır Paketten Seç") }
+    var importOpen by remember { mutableStateOf(false) }
+    var importSource by remember { mutableStateOf("all") }
+    var importedPairs by remember { mutableStateOf<List<Wq175MatchPair>>(emptyList()) }''',
+        "matching session owns temporary reviewed imported words")
+    s=once(s,
+        '''                    mode=="notebook" || wordSource=="Kendi Kelimelerinle" ->''',
+        '''                    wordSource=="İçe Aktarılan Kelimeler" && importedPairs.isNotEmpty() ->
+                        importedPairs
+                    mode=="notebook" || wordSource=="Kendi Kelimelerinle" ->''',
+        "imported pairs feed matching game directly")
+    s=once(s,
+        '            val personalDeck = mode=="notebook" || (mode!="mistakes" && wordSource=="Kendi Kelimelerinle")',
+        '            val personalDeck = mode=="notebook" || wordSource=="İçe Aktarılan Kelimeler" || (mode!="mistakes" && wordSource=="Kendi Kelimelerinle")',
+        "imported pairs minimum count")
+    s=once(s,
+        '    Dialog(onDismissRequest=onDismiss,',
+        '''    if(importOpen) Wq175ImportWordsDialog(
+        session=session, ai=ai,
+        onDismiss={importOpen=false},
+        onAccepted={ pairs ->
+            importedPairs=pairs.map{
+                Wq175MatchPair("İçe Aktarılan","Kişisel",it.answer,it.clue)
+            }
+            wordSource="İçe Aktarılan Kelimeler"
+            mode="classic"
+            issue=""
+            importOpen=false
+        },
+        initialSource=importSource
+    )
+    Dialog(onDismissRequest=onDismiss,''',
+        "local import dialog above matching game")
+    s=once(s,
+        '''                        onImport={onDismiss();onImport()},
+                        heading="Eşleştirme için kelime kaynağın",
+                        guidance="PDF, görsel ve yapay zekâ önce Kelime Hafızam’daki içe aktarma bölümüne gider. "+
+                            "Kelimeleri onayladıktan sonra geri dönüp Kendi Kelimelerinle seç.",
+                        selected=wordSource)''',
+        '''                        onImport={importSource="all";importOpen=true},
+                        onPdf={importSource="pdf";importOpen=true},
+                        onCamera={importSource="camera";importOpen=true},
+                        onAi={importSource="ai";importOpen=true},
+                        heading="Eşleştirme için kelime kaynağın",
+                        guidance="PDF, kamera ve yapay zekâdan gelen kelimeleri burada inceleyip doğrudan eşleştirmeye aktar. Kelime Hafızam'a yönlendirme yapılmaz.",
+                        selected=wordSource)
+                    if(wordSource=="İçe Aktarılan Kelimeler")
+                        Text("Hazır: "+importedPairs.size+" eşleştirme kartı",
+                            color=MatchTeal,fontWeight=FontWeight.ExtraBold)''',
+        "matching import action source stays local")
+    return s
+
+
+def home_matching_ai(s):
+    return once(s,
+        '                Wq175PremiumHomeGrid(\n                    session=session,',
+        '                Wq175PremiumHomeGrid(\n                    session=session,ai=ai,',
+        "pass existing AI provider to local matching import")
+
+
+def premium_grid_ai(s):
+    s=once(s,
+        'internal fun Wq175PremiumHomeGrid(\n    session:AppSession,',
+        'internal fun Wq175PremiumHomeGrid(\n    session:AppSession,ai:AiSession,',
+        "matching premium menu accepts same AI provider")
+    s=once(s,
+        'if (matchingOpen) Wq175MatchingDialog(session,\n        onDismiss={matchingOpen=false},onImport=learning)',
+        'if (matchingOpen) Wq175MatchingDialog(session,ai,\n        onDismiss={matchingOpen=false},onImport=learning)',
+        "no route to Kelime Hafızam from matching import")
+    return s
+
+
 def version():
     file=APP/"build.gradle.kts"
     s=file.read_text("utf-8")
@@ -157,6 +328,11 @@ def main():
     patch("CustomEditor.kt",puzzle_editor_cards)
     patch("HomeScreen.kt",account_header)
     patch("HomeScreen.kt",local_source_editor)
+    patch("WordQuest175MyPuzzles.kt",matching_shortcuts)
+    patch("WordQuest175ImportWords.kt",import_dialog)
+    patch("WordQuest175Matching.kt",local_matching)
+    patch("Wq175PremiumHome.kt",premium_grid_ai)
+    patch("HomeScreen.kt",home_matching_ai)
     version()
     print("PASS: v1.0.77 code103, approved premium Arena sword icon and responsive reversible study card")
 
