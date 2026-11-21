@@ -10,7 +10,7 @@ src=root/"source/app/src/main/java/com/kelimebulmacasi/a1"
 tests=root/"source/app/src/test/java/com/kelimebulmacasi/a1"
 assets=root/"source/app/src/main/assets"
 yds=(src/"Wq176YdsGenerated.kt").read_text("utf-8")
-records=[line.strip().strip('"') for line in yds.splitlines() if line.strip().lstrip('"').startswith(("wq176_lex_","wq176_gr_"))]
+records=[line.strip().strip('"') for line in yds.splitlines() if line.strip().lstrip('"').startswith(("wq176_lex_","wq176_gr_","wq176_attack_"))]
 assert len(records)==2440,("Expected 1600 lexicon +840 grammar",len(records))
 ids=set()
 questions=set()
