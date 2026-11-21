@@ -243,6 +243,7 @@ def main():
     generated=SRC/"Wq176YdsGenerated.kt"
     generated.write_text(kotlin_source(bank),"utf-8")
     shutil.copyfile(HERE/"Wq176DailyChallenge.kt",SRC/"Wq176DailyChallenge.kt")
+    shutil.copyfile(HERE/"Wq176VocabularyPractice.kt",SRC/"Wq176VocabularyPractice.kt")
     shutil.copyfile(HERE/"Wq176ContentRotationTest.kt",TEST/"Wq176ContentRotationTest.kt")
 
     yds=SRC/"YdsContent.kt"
