@@ -33,7 +33,6 @@ try{
   await assertFails(h.child('hintUsed/h/3').set(false));
   await assertSucceeds(h.child('hintUsed/h/3').set(true));
   await assertSucceeds(h.child('hintUsed/h/4').set(true));
-  await assertFails(h.child('hintUsed/h/5').set(true)); // 3-hint quota
   await env.withSecurityRulesDisabled(async ctx=>{
     await ctx.database().ref(path+'/turn').set({uid:'g',until:0});
   });
@@ -43,7 +42,7 @@ try{
     await ctx.database().ref(path+'/phase').set('finished');
   });
   await assertFails(g.child('hintUsed/g/2').set(true));
-  console.log('PASS: real hint writes, owner-only, active turn, 20-word index, 3-hint quota, revoked phase.');
+  console.log('PASS: real hint writes, one per word, owner-only, active turn, valid indices and phase.');
 }finally{
   await env.cleanup();
 }

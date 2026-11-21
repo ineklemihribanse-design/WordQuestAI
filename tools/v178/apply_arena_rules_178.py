@@ -38,7 +38,7 @@ if hint_policy is not None:
     expression=exact[".write"]
     assert "auth.uid === $uid" in expression
     assert "!data.exists()" in expression
-    assert "data.parent().childrenCount" in expression
+    assert "child('size').val() === 20" in expression and "child('size').val() === 50" in expression
     assert "child('phase').val() === 'playing'" in expression
     assert "child('turn').child('uid').val() === auth.uid" in expression
     assert exact[".validate"]=="newData.val() === true"
