@@ -31,12 +31,63 @@ def arena(s):
         "actual approved Arena sword icon inside native mode card")
 
 def vocabulary(s):
-    # Better card flip: tap the card itself and center at a responsive width.
-    # Don't force the reverse side solely because the response was graded.
+    # A flashcard can always rotate in either direction, without implicitly
+    # grading the learner. Primary navigation must be in the first viewport:
+    # light-on-light "Önceki" at the bottom was effectively invisible.
+    s=once(s,
+        '        fun next() {\n'
+        '            if (!reviews.containsKey(position)) record(false)\n'
+        '            focus.clearFocus()',
+        '        fun next() {\n'
+        '            // Navigating is not an incorrect answer: skip does not grade.\n'
+        '            focus.clearFocus()',
+        "Next immediately advances without marking an unseen word incorrect")
+    s=once(s,
+        '        LinearProgressIndicator(progress = { (position + 1f) / deck.size },\n'
+        '            modifier = Modifier.fillMaxWidth().height(6.dp)\n'
+        '                .clip(RoundedCornerShape(5.dp)), color = MemoryCyan,\n'
+        '            trackColor = Color(0xFFDCE8F5))',
+        '''        LinearProgressIndicator(progress = { (position + 1f) / deck.size },
+            modifier = Modifier.fillMaxWidth().height(6.dp)
+                .clip(RoundedCornerShape(5.dp)), color = MemoryCyan,
+            trackColor = Color(0xFFDCE8F5))
+        // Always above the card, visible without scrolling on narrow phones.
+        Row(Modifier.fillMaxWidth(),
+            horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+            OutlinedButton(
+                onClick={focus.clearFocus(); position--},
+                enabled=position>0,
+                modifier=Modifier.weight(1f).heightIn(min=50.dp),
+                shape=RoundedCornerShape(16.dp),
+                colors=ButtonDefaults.outlinedButtonColors(
+                    contentColor=DarkText,
+                    disabledContentColor=DarkText.copy(alpha=.35f)
+                ),
+                border=androidx.compose.foundation.BorderStroke(
+                    1.dp, if(position>0)Color(0xFF7B92AC) else Color(0xFFCDD7E2))
+            ) {
+                Text("‹ Önceki",fontSize=15.sp,fontWeight=FontWeight.Bold)
+            }
+            Button(
+                onClick={next()},
+                modifier=Modifier.weight(1f).heightIn(min=50.dp),
+                shape=RoundedCornerShape(16.dp),
+                colors=ButtonDefaults.buttonColors(
+                    containerColor=MemoryNavy,contentColor=Color.White)
+            ) {
+                Text(if(position==deck.lastIndex)"Bitir ›" else "Sonraki ›",
+                    fontSize=15.sp,fontWeight=FontWeight.Bold)
+            }
+        }''',
+        "high-contrast Previous/Next visible immediately under progress")
     s=once(s,
         'targetValue = if (studyMode == "card" && (flipped || reviewed)) 180f else 0f,',
         'targetValue = if (studyMode == "card" && flipped) 180f else 0f,',
-        "reversible card orientation")
+        "no forced flip after user grades")
+    s=once(s,
+        'animationSpec = tween(durationMillis = 390, easing = FastOutSlowInEasing), label = "card-turn"',
+        'animationSpec = tween(durationMillis = 560, easing = FastOutSlowInEasing), label = "card-turn"',
+        "smooth half-second easing for both directions")
     s=once(s,
         '        val showingBack = turn > 90f\n'
         '        Surface(modifier = Modifier.fillMaxWidth().heightIn(min = 245.dp)',
@@ -45,21 +96,55 @@ def vocabulary(s):
         '        val wideCard = maxWidth >= 600.dp\n'
         '        Surface(modifier = Modifier.widthIn(max=if(wideCard)620.dp else 460.dp)\n'
         '            .fillMaxWidth()\n'
-        '            .heightIn(min=if(wideCard)360.dp else 285.dp)\n'
-        '            .clickable(enabled=studyMode=="card"){ flipped=!flipped }',
-        "phone/tablet card dimensions and touch-to-flip")
-    s=once(s,
-        '        if (studyMode == "card") {\n'
-        '            if (!flipped && !reviewed) {',
-        '        } // end responsive card container\n'
-        '        if (studyMode == "card") {\n'
-        '            if(flipped) {\n'
-        '                TextButton(onClick={flipped=false},modifier=Modifier.fillMaxWidth()) {\n'
-        '                    Text("↶  Ön yüzü tekrar gör",color=MemoryNavy)\n'
-        '                }\n'
-        '            }\n'
-        '            if (!flipped && !reviewed) {',
-        "allow flipping back without losing progress")
+        '            .heightIn(min=if(wideCard)340.dp else 295.dp)\n'
+        '            .clickable(enabled=studyMode=="card"){flipped=!flipped}',
+        "phone/tablet responsive tap-to-flip card")
+    start=s.index('        if (studyMode == "card") {\n            if (!flipped && !reviewed) {')
+    end=s.index('        if (reviewed) Text("Tamamlanan:',start)
+    replacement='''        } // end responsive card container
+        if (studyMode == "card") {
+            Button(
+                onClick={flipped=!flipped},
+                modifier=Modifier.fillMaxWidth().heightIn(min=50.dp),
+                colors=ButtonDefaults.buttonColors(
+                    containerColor=MemoryLilac,contentColor=MemoryNavy),
+                shape=RoundedCornerShape(16.dp)
+            ) {
+                Text(if(flipped)"↶  Soruyu Göster" else "↻  Cevabı Göster",
+                    fontSize=16.sp,fontWeight=FontWeight.Bold)
+            }
+            if (flipped && !reviewed) {
+                Text("Bu kelimeyi ne kadar iyi biliyorsun?",
+                    color=DarkText,fontSize=13.sp,fontWeight=FontWeight.SemiBold)
+                Row(Modifier.fillMaxWidth(),
+                    horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                    OutlinedButton(
+                        onClick={record(false)},
+                        modifier=Modifier.weight(1f).heightIn(min=50.dp),
+                        colors=ButtonDefaults.outlinedButtonColors(contentColor=DarkText),
+                        shape=RoundedCornerShape(16.dp)
+                    ) {
+                        Text("Tekrar çalış",fontSize=14.sp,fontWeight=FontWeight.Bold)
+                    }
+                    Button(
+                        onClick={record(true)},
+                        modifier=Modifier.weight(1f).heightIn(min=50.dp),
+                        shape=RoundedCornerShape(16.dp),
+                        colors=ButtonDefaults.buttonColors(
+                            containerColor=Color(0xFF1E705E),
+                            contentColor=Color.White)
+                    ) {
+                        Text("Öğrendim",fontSize=14.sp,fontWeight=FontWeight.Bold)
+                    }
+                }
+            }
+            if (reviewed) {
+                Text("Değerlendirme kaydedildi. Sonraki kartla devam edebilir ya da bu kartı tekrar çevirebilirsin.",
+                    color=DarkText.copy(alpha=.8f),fontSize=12.sp)
+            }
+        }
+'''
+    s=s[:start]+replacement+s[end:]
     return s
 
 def puzzle_editor_cards(s):
