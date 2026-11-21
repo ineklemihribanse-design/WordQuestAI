@@ -29,7 +29,10 @@ builder=(src/"WordQuest175NewGameHero.kt").read_text("utf-8")
 assert "Wq175ThemeBanner(theme," not in home
 assert "Wq175SecondaryRoomBanner(title,secondary)" not in home
 assert "Wq175GlossIcon(Wq175ThemeArt.glossName(slug)" in (src/"WordQuest175ThemeArt.kt").read_text("utf-8")
-assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in home
+mobile_patch=(root/"tools/v175/apply_mobile_home_175.py").read_text("utf-8")
+assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in mobile_patch
+# This stage runs before apply_mobile_home_175; check its future transformation
+# in the patch source, then validate the final compiled Home at mobile QA.
 assert "Wq175ThemeIcon(Wq175ThemeArt.fromTitle(title)!!" in home
 assert "Wq175ThemeBanner(\"eslestirmelerim\"" in match
 assert "Wq175ThemeIcon(\"eslestirmelerim\"" in match
@@ -45,8 +48,8 @@ for icon in ("settings","account","friends","backup","analytics","insights","his
 for name in names:
     assert "R.drawable.wq175_"+name+"_hero" in theme
     assert "R.drawable.wq175_"+name+"_icon" in theme
-assert 'Wq2DPortrait(' in home
-assert 'Wq175ThemeIllustration("ana_sayfa"' not in home
+assert 'Wq2DPortrait(' in mobile_patch
+assert 'Wq175ThemeIllustration("ana_sayfa"' in home
 assert 'Wq175GlossIcon("trophy"' in (src/"WordQuest175Arena.kt").read_text("utf-8")
 print("PASS: 20 exact original WebP heroes/icons copied without alteration and used by Compose.")
 practice=(src/"WordQuest175PracticeVisuals.kt").read_text("utf-8")
