@@ -139,17 +139,11 @@ def enlarge_phone_puzzle_board(s):
     # Do NOT turn on the board's manual zoom mode. The user wants a physically
     # larger BOARD AREA and readable default cells on phone, not a zoom toggle.
     # Keep the tablet split layout, controls, input and puzzle model unchanged.
-    s=once(s,
-        '''    val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
-    var expanded by remember(game.id, compactBoard) {
-        mutableStateOf(board.words.size > 20 || compactBoard)
-    }''',
-        '    var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }',
-        "restore manual zoom behaviour")
-    s=once(s,
-        'if (board.words.size <= 20 && !compactBoard) expanded = false',
-        'if (board.words.size <= 20) expanded = false',
-        "normal word selection is not a zoom action")
+    # The CI build reconstructs PuzzleScreen.kt fresh from 1.0.74. Its
+    # original manual zoom behaviour is already present; do not "revert"
+    # a previous run's overlay that does not exist in this clean workspace.
+    assert '    var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }' in s
+    assert 'if (board.words.size <= 20) expanded = false' in s
 
     s=once(s,
         '            val wide = maxWidth >= 760.dp && !keyboardVisible',
