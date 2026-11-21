@@ -312,17 +312,24 @@ def premium_grid_ai(s):
 
 
 def daily_content_and_rotation(s):
-    s=once(s,
-        '''            Wq175PremiumPracticeGrid { kind ->
-            selected = kind
-            questionIndex = 0
-        }''',
-        '''            Wq175PremiumPracticeGrid { kind ->
-            selected = kind
-            questionIndex = Wq177DailyRotation.next(
-                context,profileKey,kind,Wq177DailyOriginals.total(kind))
-        }''',
-        "daily game re-entry shuffles instead of fixed first question")
+    # Exact indentation differs between earlier overlays; find the native
+    # Daily Plan mode-launch callback and replace only its index reset.
+    import re
+    entry=re.compile(
+        r'(Wq175PremiumPracticeGrid\s*\{\s*kind\s*->)(.*?)(\n\s*\})',
+        re.DOTALL)
+    match=entry.search(s)
+    if not match: raise AssertionError("Native Daily Plan grid callback missing")
+    body=match.group(2)
+    if 'selected = kind' not in body:
+        raise AssertionError("Daily Plan lost its original selected kind callback")
+    nextIndex='questionIndex = Wq177DailyRotation.next(context,profileKey,kind,Wq177DailyOriginals.total(kind))'
+    updated,count=re.subn(r'questionIndex\s*=\s*0',nextIndex,body,count=1)
+    if count!=1:
+        # Some previous overlays changed the reset location. Keep the
+        # selected-kind callback and set the session's shuffled question.
+        updated=body+'\n            '+nextIndex
+    s=s[:match.start(2)]+updated+s[match.end(2):]
     s=once(s,
         'PracticeKind.Sentence -> PracticeContent.sentences[number % PracticeContent.sentences.size]',
         'PracticeKind.Sentence -> (PracticeContent.sentences + Wq177DailyOriginals.sentences).let { it[number % it.size] }',
