@@ -19,6 +19,9 @@ for name in ("Kelime","Dilbilgisi","Paragraf","Çeviri","Yakın Anlam",
 for icon in ("paragraph","translate","synonym","completion","timer","exam","review"):
     assert '"'+icon+'"' in academy
 assert "modules.chunked(cols)" in academy
+assert 'internal fun Wq175CefrLevelCard(' in academy
+assert '"level_"+tier.lowercase(java.util.Locale.ROOT)' in academy
+assert 'Surface(onClick=onSelect' in academy
 assert 'maxWidth<320.dp || LocalDensity.current.fontScale>1.45f -> 1' in academy
 assert 'maxWidth<600.dp || LocalDensity.current.fontScale>1.25f -> 2' in academy
 assert 'val horizontal=maxWidth>=250.dp' in academy

@@ -10,7 +10,8 @@ names=("arena_duel","arena_team","arena_quiz","trophy","listen",
     "pdf","scan","translate","paragraph","synonym","completion",
     "exam","review","timer","success","notebook",
        "analytics","insights","friends","account","settings","backup",
-       "history","library","streak","messages")
+       "history","library","streak","messages",
+       "level_a1","level_a2","level_b1","level_b2","level_c1","level_c2")
 for name in names:
     path=ICON/(name+".webp")
     assert path.stat().st_size>800,name
@@ -39,4 +40,4 @@ assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icon_router
 assert (SRC/"WordQuest175TimedPuzzle.kt").exists()
 assert (SRC/"WordQuest175ImportWords.kt").exists()
 assert (SRC/"LenaLive3DStage.kt").exists()
-print("PASS: 40 original 256px WebP icons, including ten distinct secondary room assets.")
+print("PASS: 46 original 256px WebP icons with six A1–C2 illustrations.")

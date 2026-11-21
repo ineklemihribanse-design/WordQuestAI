@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create 30 original anti-aliased high-DPI glossy game icon assets.
+"""Create 46 original anti-aliased high-DPI glossy game icon assets.
 
 No downloaded icons, fonts or emoji. Render at 3x, downsample Lanczos and
 bundle 256px transparent WebP icons with the Android application.
@@ -369,6 +369,57 @@ def icon(name):
         poly(d,[(184,198),(211,225),(209,195)],"#D8C5FF",PURPLE,4)
         for x in (128,160,191):
             ell(d,(x,137,x+15,152),"#7050B5")
+    elif name.startswith("level_"):
+        # Six separately drawn CEFR level artworks (A1–C2).
+        # Transparent supersampled shapes keep premium cards seam-free.
+        tier=name.rsplit("_",1)[-1]
+        if tier=="a1":
+            for x,y,c in ((37,157,"#BCE9C4"),(48,124,"#FBF5D8"),(61,92,"#25866F")):
+                rr(d,(x,y,x+158,y+41),11,c,"#4A8567",5)
+            poly(d,[(28,89),(122,43),(224,89),(122,133)],"#2B846B","#165943",6)
+            poly(d,[(86,108),(86,145),(162,145),(162,108)],"#25735C","#18593F",3)
+            line(d,[(216,91),(216,173)],GOLD_EDGE,6)
+            ell(d,(206,165,227,189),GOLD,GOLD_EDGE,4)
+        elif tier=="a2":
+            rr(d,(38,39,190,220),19,"#FFFCF0","#6FAE9A",6)
+            rr(d,(75,27,157,59),9,GOLD,GOLD_EDGE,4)
+            for y in (84,123,161):
+                rr(d,(58,y,85,y+27),5,"#E5FAEC","#6DA891",3)
+                line(d,[(63,y+13),(71,y+22),(83,y+5)],GREEN,5)
+                line(d,[(99,y+14),(164,y+14)],"#9EB7B9",4)
+            poly(d,[(170,176),(207,69),(226,79),(193,188)],"#F3B54B","#AD6B2E",5)
+        elif tier=="b1":
+            rr(d,(32,172,217,210),12,"#E8F7F7","#3682A1",5)
+            ell(d,(52,27,196,173),"#75CBF0","#2F90BF",7)
+            poly(d,[(77,61),(112,47),(128,80),(111,105),(87,98)],"#5DBB90","#33866C",3)
+            poly(d,[(133,91),(174,85),(189,114),(160,149),(135,125)],"#61BB90","#318469",3)
+            d.arc(box((50,27,199,177)),50,150,fill=GOLD_EDGE,width=7*S)
+            rr(d,(116,171,142,197),6,GOLD,GOLD_EDGE,3)
+        elif tier=="b2":
+            rr(d,(31,54,210,174),14,"#DFEBFF","#4B6FA6",7)
+            rr(d,(49,68,191,159),11,"#F5FBFF","#A2B4D1",4)
+            for x,h,c in ((70,39,"#7FD2C6"),(110,56,"#A48BEC"),(150,75,"#F8CA68")):
+                rr(d,(x,148-h,x+24,148),6,c,"#7B85AA",3)
+            poly(d,[(23,176),(217,176),(237,202),(14,202)],"#B5C6E8","#647CAD",6)
+            line(d,[(76,189),(179,189)],"#FAFFFF",5)
+        elif tier=="c1":
+            rr(d,(78,43,181,147),29,GOLD,GOLD_EDGE,7)
+            d.arc(box((37,52,111,144)),78,288,fill=GOLD_EDGE,width=10*S)
+            d.arc(box((150,52,223,144)),252,462,fill=GOLD_EDGE,width=10*S)
+            rr(d,(119,146,142,198),7,GOLD,GOLD_EDGE,4)
+            rr(d,(83,196,180,225),10,"#E0A345",GOLD_EDGE,5)
+            for x in (43,216):
+                for y in (99,135,168):
+                    ell(d,(x-15,y-8,x+8,y+13),"#A4DD87","#3D9C72",3)
+            ell(d,(112,80,147,115),"#FFF0B0",GOLD_EDGE,3)
+        else:
+            poly(d,[(26,198),(130,48),(233,198)],"#89ACDF","#5479AA",7)
+            poly(d,[(79,147),(130,48),(162,141),(140,121),(122,104),(109,136)],"#F9FBFF","#93AAC8",4)
+            poly(d,[(138,190),(186,125),(233,197)],"#C5D9F5","#7792B9",5)
+            line(d,[(133,52),(133,25)],GOLD_EDGE,6)
+            poly(d,[(135,27),(194,43),(135,60)],CORAL,"#B85D62",3)
+            ell(d,(31,191,126,222),"#F9F9FF","#C8D7ED",2)
+            ell(d,(108,202,229,237),"#F9F9FF","#C8D7ED",2)
     elif name=="packages":
         for x,y,c in ((32,73,"#B1C8FF"),(73,59,"#C9A6FF"),(108,46,"#7DDDD0")):
             rr(d,(x,y,x+110,y+154),17,c,PURPLE,5)
@@ -398,7 +449,8 @@ names=("arena_duel","arena_team","arena_quiz","trophy","listen","sentence",
        "pdf","scan","translate","paragraph","synonym","completion",
        "exam","review","timer","success","notebook",
        "analytics","insights","friends","account","settings","backup",
-       "history","library","streak","messages")
+       "history","library","streak","messages",
+       "level_a1","level_a2","level_b1","level_b2","level_c1","level_c2")
 for name in names:
     path=DEST/(name+".webp")
     icon(name).save(path,format="WEBP",quality=92,method=4)

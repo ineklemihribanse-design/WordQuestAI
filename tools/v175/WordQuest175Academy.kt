@@ -198,23 +198,89 @@ internal fun Wq175PackageIntro(mode: GameMode, level: String) {
     val title = if (yds) "YDS Kelime Paketleri" else "Hazır Paketler"
     val subtitle = if (yds) "Seviyene göre özgün bulmaca ve kelime çalışmaları"
         else "A1–C2 seviyeleri için zenginleşen kelime kütüphanesi"
-    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(23.dp))
-        .background(Brush.horizontalGradient(bg))
-        .padding(horizontal = 17.dp, vertical = 18.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Column(Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(5.dp)) {
-            Text(title, color = Color.White,
-                fontWeight = FontWeight.ExtraBold, fontSize = 21.sp)
-            Text(subtitle, color = Color(0xFFE8FAFF),
-                fontSize = 12.sp, lineHeight = 17.sp)
-            if (!yds) {
-                Text("İçerik hedefi: Her seviyede 2.000 kelime / ifade",
-                    color = Color(0xFFDEFDE9), fontSize = 10.sp,
-                    fontWeight = FontWeight.SemiBold)
+    Box(Modifier.fillMaxWidth().heightIn(min=195.dp)
+        .clip(RoundedCornerShape(24.dp))
+        .background(Brush.horizontalGradient(
+            if(yds) listOf(Color(0xFF13294F),Color(0xFF4F75B2),Color(0xFF9FC2E4))
+            else listOf(Color(0xFF145E44),Color(0xFF4A9475),Color(0xFFA5D4AF))))) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=16.dp,vertical=18.dp),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            Column(Modifier.weight(1f),
+                verticalArrangement=Arrangement.spacedBy(9.dp)) {
+                Text("WORDQUEST AI · "+(if(yds)"SINAV" else "KELİME KÜTÜPHANESİ"),
+                    color=Color(0xFFFFE29C),fontSize=10.sp,
+                    fontWeight=FontWeight.ExtraBold)
+                Text(title,color=Color.White,fontSize=24.sp,lineHeight=28.sp,
+                    fontWeight=FontWeight.ExtraBold)
+                Text(subtitle,color=Color(0xFFF2FFF7),
+                    fontSize=12.sp,lineHeight=17.sp)
+                if(!yds)Text("A1–C2 · Altı seviyede kelime koleksiyonları",
+                    color=Color(0xFFE5F4BD),fontSize=11.sp,
+                    fontWeight=FontWeight.Bold)
+            }
+            Box(Modifier.size(114.dp),contentAlignment=Alignment.Center) {
+                Wq175GlossIcon("packages",Modifier.size(112.dp))
+                Wq175GlossIcon(if(yds)"yds" else
+                    if(level in listOf("A1","A2","B1","B2","C1","C2"))
+                        "level_"+level.lowercase(java.util.Locale.ROOT)
+                    else "level_a1",
+                    Modifier.align(Alignment.BottomStart).size(51.dp))
             }
         }
-        Wq175GlossIcon(if (yds) "yds" else "packages", Modifier.size(88.dp))
+    }
+}
+
+/** Actual CEFR card with original level art. Caller supplies existing route
+ * and the verified available content count; never assume 2000 words exist.
+ */
+@Composable
+internal fun Wq175CefrLevelCard(
+    tier:String,available:Int?,onSelect:()->Unit
+) {
+    val colors=when(tier) {
+        "A1" -> Color(0xFFEAF8E8) to Color(0xFF317D55)
+        "A2" -> Color(0xFFE6F8F4) to Color(0xFF218D8B)
+        "B1" -> Color(0xFFE6F2FF) to Color(0xFF286EAC)
+        "B2" -> Color(0xFFF2E8FF) to Color(0xFF754BAD)
+        "C1" -> Color(0xFFFFF0D5) to Color(0xFFA66A0B)
+        else -> Color(0xFFFFE9F0) to Color(0xFFB34868)
+    }
+    val description=when(tier) {
+        "A1"->"Başlangıç"
+        "A2"->"Temel"
+        "B1"->"Orta"
+        "B2"->"Üst Orta"
+        "C1"->"İleri"
+        else->"Uzman"
+    }
+    Surface(onClick=onSelect,modifier=Modifier.fillMaxWidth().heightIn(min=160.dp),
+        shape=RoundedCornerShape(23.dp),color=colors.first,
+        border=BorderStroke(1.dp,colors.second.copy(alpha=.23f)),
+        shadowElevation=4.dp) {
+        Column(Modifier.fillMaxWidth().padding(12.dp),
+            verticalArrangement=Arrangement.spacedBy(8.dp)) {
+            Row(verticalAlignment=Alignment.CenterVertically,
+                horizontalArrangement=Arrangement.spacedBy(7.dp)) {
+                Wq175GlossIcon("level_"+tier.lowercase(java.util.Locale.ROOT),
+                    Modifier.size(86.dp))
+                Column(Modifier.weight(1f),
+                    verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                    Text(tier,fontSize=27.sp,fontWeight=FontWeight.Black,
+                        color=colors.second)
+                    Text(description,fontSize=12.sp,
+                        fontWeight=FontWeight.Bold,color=colors.second)
+                    Text(if(available==null)"Kelime koleksiyonu" else
+                        available.toString()+" kelime",
+                        fontSize=11.sp,color=Color(0xFF536766))
+                }
+            }
+            Box(Modifier.fillMaxWidth().heightIn(min=34.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(colors.second),contentAlignment=Alignment.Center) {
+                Text("Paketi Gör  ›",color=Color.White,fontSize=12.sp,
+                    fontWeight=FontWeight.ExtraBold)
+            }
+        }
     }
 }

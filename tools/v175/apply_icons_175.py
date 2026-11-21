@@ -18,7 +18,8 @@ def main():
            "pdf","scan","translate","paragraph","synonym","completion",
            "exam","review","timer","success","notebook",
            "analytics","insights","friends","account","settings","backup",
-           "history","library","streak","messages")
+           "history","library","streak","messages",
+           "level_a1","level_a2","level_b1","level_b2","level_c1","level_c2")
     for name in names:
         assert (icons/(name+".webp")).stat().st_size>800,name
     shutil.copyfile(PKG/"WordQuest175Icons.kt",SRC/"WordQuest175Icons.kt")
@@ -49,7 +50,7 @@ def main():
         '''        Wq175GlossIcon(Wq175IconNames.menu(title), Modifier.size(45.dp))''',
         "home and menu original scalable icons")
     p.write_text(s,"utf-8")
-    print("PASS: 40 original 256px transparent icons for home, Arena, YDS, matching and scan/learning rooms.")
+    print("PASS: 46 original 256px transparent icons including the six original CEFR level illustrations.")
 
 if __name__=="__main__":
     main()

@@ -32,6 +32,14 @@ s=one(s,'''                    MenuItem("YDS Hazırlık", "Kolay, orta ve zor bu
                         "Kelime · Gramer · Paragraf · Deneme · Gelişim",
                         "YDS") { wq175AcademyOpen = true }''',
     "unify YDS under one entry")
+# Read source layout only. Existing selector actions remain untouched until
+# premium cards can be wired to the exact original callbacks.
+anchor='''    ScreenPage(mode.title, if (mode == GameMode.Yds) "Zorluk seviyesini seç" else "İngilizce seviyesini seç", back) {'''
+at=s.find(anchor)
+if at>=0:
+    print("WQ175_CEFR_SELECTOR_START",flush=True)
+    print(s[at:at+3400],flush=True)
+    print("WQ175_CEFR_SELECTOR_END",flush=True)
 s=one(s,
     '''    ScreenPage(mode.title, if (mode == GameMode.Yds) "Zorluk seviyesini seç" else "İngilizce seviyesini seç", back) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(7.dp)) {''',

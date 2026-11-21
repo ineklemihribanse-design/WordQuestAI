@@ -17,7 +17,7 @@ assert "LocalDensity.current.fontScale>1.30f" in m
 assert "Surface(" in m and "onClick=tile.onClick" in m
 assert "Modifier.fillMaxSize().clip(CircleShape)" in h
 assert 'Wq175ThemeIllustration("ana_sayfa"' not in h
-assert "Wq175GlossIcon(Wq175ThemeArt.glossName(tile.artSlug)" in m
+assert "if(tile.artSlug!=null) Wq175ThemeArt.glossName(tile.artSlug)" in m
 assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in h
 assert "R.drawable.wq167_lena_portrait" not in m
 assert 'else if(tile.icon=="assistant")' not in m
