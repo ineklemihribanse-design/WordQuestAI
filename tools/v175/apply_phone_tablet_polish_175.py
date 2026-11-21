@@ -140,7 +140,10 @@ def enlarge_phone_puzzle_board(s):
     # larger BOARD AREA and readable default cells on phone, not a zoom toggle.
     # Keep the tablet split layout, controls, input and puzzle model unchanged.
     s=once(s,
-        '    val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600\\n    var expanded by remember(game.id, compactBoard) {\\n        mutableStateOf(board.words.size > 20 || compactBoard)\\n    }'.replace('\\n','\\n'),
+        '''    val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
+    var expanded by remember(game.id, compactBoard) {
+        mutableStateOf(board.words.size > 20 || compactBoard)
+    }''',
         '    var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }',
         "restore manual zoom behaviour")
     s=once(s,
@@ -183,8 +186,10 @@ def enlarge_phone_puzzle_board(s):
         '    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)',
         "phone uses board viewport height instead of shrinking to grid row count")
     s=once(s,
-        '    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {\\n        if (enlarged) {'.replace('\\n','\\n'),
-        '    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {\\n        if (enlarged || phoneGrid) {'.replace('\\n','\\n'),
+        '''    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {
+        if (enlarged) {''',
+        '''    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {
+        if (enlarged || phoneGrid) {''',
         "keep selected letter visible when large phone grid can scroll")
     return s
 
