@@ -186,3 +186,22 @@ internal fun Wq179ArenaAudioSettings(){
     Text("Doğru / yanlış seslerini üstteki oyun efektleri anahtarından kapatabilirsin.",
         fontSize=11.sp,color=Color(0xFF77708B))
 }
+
+
+/** Stadium lights under the live game, without moving the layout. */
+@Composable
+internal fun Wq179ArenaStageBackground(modifier:Modifier=Modifier){
+    androidx.compose.foundation.Canvas(modifier){
+        drawRect(Brush.verticalGradient(listOf(
+            Color(0xFFF6F1FF),Color(0xFFF8F6FF),Color(0xFFFFFCFF))))
+        val top=androidx.compose.ui.geometry.Offset(size.width*.5f,size.height*.02f)
+        drawCircle(Color(0x148D54C8),radius=size.width*.90f,center=top)
+        drawCircle(Color(0x0DFFBD75),radius=size.width*.52f,center=top)
+        drawLine(Color(0x1F8550B7),
+            androidx.compose.ui.geometry.Offset(size.width*.09f,0f),
+            androidx.compose.ui.geometry.Offset(size.width*.27f,size.height*.23f),5f)
+        drawLine(Color(0x1F8550B7),
+            androidx.compose.ui.geometry.Offset(size.width*.91f,0f),
+            androidx.compose.ui.geometry.Offset(size.width*.73f,size.height*.23f),5f)
+    }
+}
