@@ -54,11 +54,21 @@ s=replace_once(s,
     "calmer midnight-navy home hero (no pink/green clash)")
 s=replace_once(s,
     '''            if (title.isNotEmpty()) Text(title, fontFamily = Serif, color = Ink, fontSize = 38.sp, lineHeight = 41.sp)''',
-    '''            if (title.isNotEmpty()) Text(title,
-                fontFamily=Serif,color=Ink,
-                fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp,
-                lineHeight=if(LocalDensity.current.fontScale>1.2f)29.sp else 35.sp,
-                maxLines=2)''',
+    '''            if (title.isNotEmpty()) {
+                val mainArt=Wq175ThemeArt.fromTitle(title)
+                val roomIcon=if(mainArt!=null) Wq175ThemeArt.glossName(mainArt)
+                    else Wq175ThemeArt.secondaryIcon(title)
+                Row(Modifier.fillMaxWidth(),
+                    horizontalArrangement=Arrangement.spacedBy(10.dp),
+                    verticalAlignment=Alignment.CenterVertically) {
+                    if(roomIcon!=null) Wq175GlossIcon(roomIcon,Modifier.size(38.dp))
+                    Text(title,modifier=Modifier.weight(1f),
+                        fontFamily=Serif,color=Ink,
+                        fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp,
+                        lineHeight=if(LocalDensity.current.fontScale>1.2f)29.sp else 35.sp,
+                        maxLines=2)
+                }
+            }''',
     "compact native-mobile section headers")
 s=replace_once(s,
     '''                        OutlinedButton(onClick = account) {

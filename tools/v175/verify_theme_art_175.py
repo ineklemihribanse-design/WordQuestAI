@@ -27,9 +27,9 @@ home=(src/"HomeScreen.kt").read_text("utf-8")
 match=(src/"WordQuest175Matching.kt").read_text("utf-8")
 builder=(src/"WordQuest175NewGameHero.kt").read_text("utf-8")
 assert "Wq175ThemeBanner(theme," not in home
-assert "if(theme==null)" in home
+assert "Wq175SecondaryRoomBanner(title,secondary)" not in home
 assert "Wq175GlossIcon(Wq175ThemeArt.glossName(slug)" in (src/"WordQuest175ThemeArt.kt").read_text("utf-8")
-assert "Wq175SecondaryRoomBanner(title,secondary)" in home
+assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in home
 assert "Wq175ThemeIcon(Wq175ThemeArt.fromTitle(title)!!" in home
 assert "Wq175ThemeBanner(\"eslestirmelerim\"" in match
 assert "Wq175ThemeIcon(\"eslestirmelerim\"" in match

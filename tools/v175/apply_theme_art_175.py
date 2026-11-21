@@ -40,19 +40,9 @@ patch("HomeScreen.kt",
         } else Wq175GlossIcon(Wq175IconNames.menu(title),Modifier.size(45.dp))''',
     "home menu premium icons")
 
-patch("HomeScreen.kt",
-    '''            if (subtitle.isNotEmpty()) BodyText(subtitle)
-            body()''',
-    '''            if (subtitle.isNotEmpty()) BodyText(subtitle)
-            // Every primary room supplies its own hero inside body(). A second
-            // global banner duplicates it and repeats the same art in a box.
-            val theme=Wq175ThemeArt.fromTitle(title)
-            if(theme==null) {
-                val secondary=Wq175ThemeArt.secondaryIcon(title)
-                if(secondary!=null) Wq175SecondaryRoomBanner(title,secondary)
-            }
-            body()''',
-    "specific room hero artworks")
+# Page already owns title/subtitle. Do not add a second photo banner:
+# each room has its own scene and the Page title gains a unique 2.5D icon.
+
 
 patch("WordQuest175Matching.kt",
     '''Text("A ⇄ B",fontSize=16.sp,fontWeight=FontWeight.Black,
