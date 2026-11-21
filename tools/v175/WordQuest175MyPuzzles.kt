@@ -103,7 +103,11 @@ private data class Wq175PuzzleSource(
  */
 @Composable
 internal fun Wq175PuzzleSourceShortcuts(
-    onManual:()->Unit,onPackage:()->Unit,onImport:()->Unit
+    onManual:()->Unit,onPackage:()->Unit,onImport:()->Unit,
+    heading:String="Bulmaca için kelime kaynağın",
+    guidance:String="PDF, kamera ve AI önce Kelime Hafızam’daki içe aktarma ekranını açar; "+
+        "kelimeleri onayladıktan sonra bulmaca oluşturabilirsin.",
+    selected:String?=null
 ) {
     val sources=listOf(
         Wq175PuzzleSource("Kendi Kelimelerinle","notebook",Color(0xFFE9F7E5),onManual),
@@ -114,7 +118,7 @@ internal fun Wq175PuzzleSourceShortcuts(
     )
     Column(Modifier.fillMaxWidth(),
         verticalArrangement=Arrangement.spacedBy(9.dp)) {
-        Text("Bulmaca için kelime kaynağın",fontSize=17.sp,
+        Text(heading,fontSize=17.sp,
             color=Color(0xFF224C42),fontWeight=FontWeight.ExtraBold)
         Row(Modifier.horizontalScroll(rememberScrollState()),
             horizontalArrangement=Arrangement.spacedBy(9.dp)) {
@@ -123,7 +127,8 @@ internal fun Wq175PuzzleSourceShortcuts(
                     modifier=Modifier.width(137.dp).heightIn(min=126.dp),
                     shape=RoundedCornerShape(19.dp),color=source.tint,
                     shadowElevation=3.dp,
-                    border=BorderStroke(1.dp,Color(0x22A2A2A2))) {
+                    border=BorderStroke(if(source.title==selected) 2.dp else 1.dp,
+                        if(source.title==selected)Color(0xFF159C8F) else Color(0x22A2A2A2)))) {
                     Column(Modifier.fillMaxWidth().padding(10.dp),
                         verticalArrangement=Arrangement.spacedBy(5.dp),
                         horizontalAlignment=Alignment.CenterHorizontally) {
@@ -135,8 +140,7 @@ internal fun Wq175PuzzleSourceShortcuts(
                 }
             }
         }
-        Text("PDF, kamera ve AI önce Kelime Hafızam’daki içe aktarma ekranını açar; "+
-             "kelimeleri onayladıktan sonra bulmaca oluşturabilirsin.",
+        Text(guidance,
             fontSize=11.sp,lineHeight=15.sp,color=Color(0xFF68716E))
     }
 }
