@@ -63,8 +63,8 @@ internal fun ArenaBoardV2(
         val selectedCols=chosen?.cells.orEmpty().map{it.column}
         LaunchedEffect(selected,zoomed,compact,horizontal.maxValue,vertical.maxValue){
             if(zoomed){
-                val x=with(density){((selectedCols.firstOrNull()?:0)*(cell+gap)).roundToPx()}
-                val y=with(density){((selectedRows.firstOrNull()?:0)*(cell+gap)).roundToPx()}
+                val x=with(density){((cell+gap)*(selectedCols.firstOrNull()?:0)).roundToPx()}
+                val y=with(density){((cell+gap)*(selectedRows.firstOrNull()?:0)).roundToPx()}
                 horizontal.scrollTo((x-60).coerceIn(0,horizontal.maxValue))
                 vertical.scrollTo((y-45).coerceIn(0,vertical.maxValue))
             }else {
