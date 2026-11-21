@@ -138,6 +138,11 @@ internal fun wq175MatchResultTitle(reason:Wq175MatchEnd):String = when(reason) {
     Wq175MatchEnd.Stopped -> "Oyun sonlandırıldı"
 }
 
+/** Keep a word in revision if the learner missed it earlier this same round. */
+internal fun wq175MayClearReviewedMistake(
+    mode:String,pair:Wq175MatchPair,wrongPairs:List<Wq175MatchPair>
+):Boolean = mode=="mistakes" && wrongPairs.none { it.id==pair.id }
+
 private val MatchInk=Color(0xFF173F50)
 private val MatchTeal=Color(0xFF1F9C94)
 private val MatchPink=Color(0xFFDF739D)
@@ -415,7 +420,9 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                                         if(left==index) {
                                             val next=matched+index
                                             matched=next
-                                            if(mode=="mistakes")store.learned(pair)
+                                            if(wq175MayClearReviewedMistake(mode,pair,wrongPairs)) {
+                                                store.learned(pair)
+                                            }
                                             feedback="Doğru! ${pair.english} = ${pair.turkish}"
                                             if(next.size==deck.size)finishGame(Wq175MatchEnd.Completed)
                                         }else {

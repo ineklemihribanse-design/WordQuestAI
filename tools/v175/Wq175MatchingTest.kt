@@ -77,6 +77,15 @@ class Wq175MatchingTest {
             wq175MatchResultTitle(Wq175MatchEnd.Stopped))
     }
 
+    @Test fun wrongOnceInReviewRemainsDueEvenAfterCorrectRetry() {
+        val pair=Wq175MatchPair("A1","İsimler","APPLE","elma")
+        val different=Wq175MatchPair("A1","İsimler","PEAR","armut")
+        assertFalse(wq175MayClearReviewedMistake("mistakes",pair,listOf(pair)))
+        assertTrue(wq175MayClearReviewedMistake("mistakes",pair,listOf(different)))
+        assertTrue(wq175MayClearReviewedMistake("mistakes",pair,emptyList()))
+        assertFalse(wq175MayClearReviewedMistake("classic",pair,emptyList()))
+    }
+
     @Test fun levelAndWordTypeComeFromActualRows() {
         val items=Wq175MatchingBank.parse(sequenceOf(
             row("B2","ACHIEVE","başarmak","Fiiller"),
