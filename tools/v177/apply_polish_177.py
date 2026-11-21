@@ -62,12 +62,79 @@ def vocabulary(s):
         "allow flipping back without losing progress")
     return s
 
-def home_import_routes(s):
-    # Source buttons in My Puzzles used to send PDFs/camera/AI to Word
-    # Memory instead of the actual personal crossword editor.
+def puzzle_editor_cards(s):
+    old='''                    Column(
+                        Modifier.fillMaxWidth().background(LightLime, RoundedCornerShape(16.dp)).padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(7.dp),
+                    ) {
+                        PrimaryAction("Kamerayla çek", ::takePhoto, busy.isEmpty() && cameraFileName == null)
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            OutlinedButton(
+                                onClick = { picker.launch(arrayOf("image/*")) }, modifier = Modifier.weight(1f), enabled = busy.isEmpty(),
+                            ) { Text("Galeriden seç", fontFamily = Sans, fontWeight = FontWeight.SemiBold) }
+                            OutlinedButton(
+                                onClick = { picker.launch(arrayOf("application/pdf")) }, modifier = Modifier.weight(1f), enabled = busy.isEmpty(),
+                            ) { Text("PDF seç", fontFamily = Sans, fontWeight = FontWeight.SemiBold) }
+                        }
+                        OutlinedButton(onClick = { pasteOpen = true }, modifier = Modifier.fillMaxWidth(), enabled = busy.isEmpty()) {
+                            Text("Kelime listesi yapıştır", fontFamily = Sans, fontWeight = FontWeight.SemiBold)
+                        }
+                        OutlinedButton(onClick = { aiOpen = true }, modifier = Modifier.fillMaxWidth(), enabled = busy.isEmpty()) {
+                            Text("Yapay zekâyla kelime üret", fontFamily = Sans, fontWeight = FontWeight.Bold)
+                        }
+                        BodyText("İngilizce kelime ve Türkçe anlamı aynı satırda olan tabloları seç.")
+                    }'''
+    # The actual unchanged callbacks run in this CustomEditor, whose addImported
+    # function stores rows in the current puzzle draft (not Word Memory).
+    new='''                    Wq177PuzzleImportCards(
+                        onCamera={if(busy.isEmpty() && cameraFileName==null)takePhoto()},
+                        onGallery={if(busy.isEmpty())picker.launch(arrayOf("image/*"))},
+                        onPdf={if(busy.isEmpty())picker.launch(arrayOf("application/pdf"))},
+                        onPaste={if(busy.isEmpty())pasteOpen=true},
+                        onAi={if(busy.isEmpty())aiOpen=true}
+                    )'''
+    return once(s,old,new,"5 real local import actions become premium editor cards")
+
+
+def account_header(s):
+    old='''    ScreenPage("Hesap", "", back) {
+        Text("Oyun karakterim",color=Ink,fontFamily=Serif,
+            fontSize=20.sp,fontWeight=FontWeight.Bold)
+        Wq2DCompactSelector(chosenMaskot.value,
+            onClick={choosingMaskot=true})
+        BodyText("Seçtiğin karakter Arena, Kelime Hafızam ve profilinde kullanılır.")
+        val account = session.accountName'''
+    new='''    ScreenPage("Hesap", "", back) {
+        Row(
+            Modifier.fillMaxWidth()
+                .background(Color(0xFFF3ECFF),RoundedCornerShape(23.dp))
+                .padding(15.dp),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(14.dp)
+        ) {
+            Wq2DPortrait(chosenMaskot.value,Modifier.size(82.dp))
+            Column(Modifier.weight(1f),
+                verticalArrangement=Arrangement.spacedBy(5.dp)) {
+                Text(session.accountName?.takeIf { it.isNotBlank() } ?: "Oyuncu",
+                    fontFamily=Serif,color=Ink,fontSize=25.sp,
+                    fontWeight=FontWeight.ExtraBold)
+                Text("Oyun maskotum · "+Wq2DMascots.label(chosenMaskot.value),
+                    color=Color(0xFF655183),fontSize=12.sp)
+                TextButton(onClick={choosingMaskot=true}) {
+                    Text("Karakteri değiştir",fontSize=13.sp)
+                }
+            }
+        }
+        BodyText("Seçtiğin karakter Arena, Kelime Hafızam ve profilinde kullanılır.")
+        val account = session.accountName'''
+    return once(s,old,new,"account name beside currently chosen mascot")
+
+
+def local_source_editor(s):
+    # The existing MyPuzzles shortcuts no longer jump to Word Memory.
     return once(s,'onImport={go(Page.Learning)})',
         'onImport={edit(null)})',
-        "My Puzzles imported words stay in its own editor")
+        "My Puzzles import stays inside its own editor")
 
 
 def version():
@@ -84,7 +151,12 @@ def main():
         assert (SRC/name).is_file(),name
     patch("WordQuest175Arena.kt",arena)
     patch("VocabularyNeonPractice.kt",vocabulary)
-    patch("HomeScreen.kt",home_import_routes)
+    import shutil
+    shutil.copyfile(ROOT/"tools/v177/Wq177PuzzleImportCards.kt",
+                    SRC/"Wq177PuzzleImportCards.kt")
+    patch("CustomEditor.kt",puzzle_editor_cards)
+    patch("HomeScreen.kt",account_header)
+    patch("HomeScreen.kt",local_source_editor)
     version()
     print("PASS: v1.0.77 code103, approved premium Arena sword icon and responsive reversible study card")
 
