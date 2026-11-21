@@ -8,4 +8,5 @@ assert s.count("Wq175RealVocabularyCoverage(session, level)")==1
 for label in ("session.vocabulary().pool(level)",".distinct()","Hedef için","resmi CEFR onayı değildir"):
     assert label in u,label
 assert "LaunchedEffect(level, session.profileKey)" in u
+assert 'Wq175GlossIcon("packages",Modifier.size(56.dp))' in u
 print("PASS: actual package word availability is calculated, not hardcoded or mislabeled as certified")

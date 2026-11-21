@@ -24,4 +24,5 @@ assert 'stableHash(profile+' in timer
 assert 'minutes in setOf(0,3,5,10)' in timer
 assert 'nowWall-wallStart' in timer
 assert (root/"source/app/src/test/java/com/kelimebulmacasi/a1/Wq175TimerMathTest.kt").exists()
+assert 'Wq175GlossIcon("timer",Modifier.size(43.dp))' in timer
 print("PASS 1.0.75 timed crossword static gates and JVM timing tests staged")

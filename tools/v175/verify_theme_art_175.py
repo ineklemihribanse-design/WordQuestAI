@@ -41,4 +41,7 @@ for name in names:
 assert 'Wq175ThemeIllustration("ana_sayfa"' in home
 assert 'Wq175ThemeIllustration("arena"' in (src/"WordQuest175Arena.kt").read_text("utf-8")
 print("PASS: 20 exact original WebP heroes/icons copied without alteration and used by Compose.")
+practice=(src/"WordQuest175PracticeVisuals.kt").read_text("utf-8")
+assert 'Wq175ThemeIllustration(suppliedHero,' in practice
+assert 'Wq175GlossIcon(Wq175IconNames.practice(kind)' in practice
 print("PASS: ten premium rooms and live chosen Arena mascot remain connected.")
