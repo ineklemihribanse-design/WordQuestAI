@@ -378,6 +378,23 @@ def local_matching(s):
 
 
 def home_matching_ai(s):
+    # The Home dashboard is a separate composable from the parent navigator.
+    # The parent already owns "ai", but HomeScreen didn't receive it.
+    # Pass the same existing provider through the signature and call site;
+    # never construct a second session (which would lose API/provider state).
+    import re
+    signature = re.compile(
+        r'(\\bfun\\s+HomeScreen\\s*\\(\\s*session\\s*:\\s*AppSession\\s*,)',
+        re.MULTILINE
+    )
+    # Raw regex tokens above are Python escapes (not JS string escapes).
+    s, matched = signature.subn(r'\\1 ai: AiSession,', s, count=1)
+    if matched != 1:
+        raise AssertionError("HomeScreen signature must receive existing AiSession")
+    s = once(s,
+        '        Page.Home -> HomeScreen(\n            session,',
+        '        Page.Home -> HomeScreen(\n            session, ai,',
+        "pass AI session into HomeScreen from parent router")
     return once(s,
         '                Wq175PremiumHomeGrid(\n                    session=session,',
         '                Wq175PremiumHomeGrid(\n                    session=session,ai=ai,',
