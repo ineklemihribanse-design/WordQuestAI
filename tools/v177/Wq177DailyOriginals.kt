@@ -47,7 +47,24 @@ internal object Wq177DailyOriginals {
         PracticeQuestion("Neither the teacher or the students were ready.","Neither the teacher nor the students were ready."),
         PracticeQuestion("She made me to rewrite the paragraph.","She made me rewrite the paragraph."),
         PracticeQuestion("Hardly had we entered than the alarm rang.","Hardly had we entered when the alarm rang.")
-    )
+    ).map { item ->
+        val errors = listOf(
+            " has " to " have ", " have " to " has ",
+            " is " to " are ", " are " to " is ",
+            " was " to " were ", " were " to " was ",
+            " had " to " have ", " will " to " would ",
+            " for " to " since ", " to " to " for ",
+            " the " to " a ", " in " to " on "
+        )
+        val other=errors.asSequence().map { (old,new)->
+            item.answer.replace(old,new)
+        }.firstOrNull { it!=item.answer && it!=item.instruction }
+            ?: "She have completed the assignment."
+        item.copy(
+            options=listOf(item.answer,item.instruction,other).distinct().shuffled(),
+            explanation="Dilbilgisi hatasını düzeltirken özne, zaman, edat ve sözcük dizilişini kontrol et."
+        )
+    }
     val story:List<PracticeQuestion> = listOf(
         PracticeQuestion("The explorer lost his compass and had to ____ the stars.","follow"),
         PracticeQuestion("The student forgot her notebook and asked to ____ one.","borrow"),
@@ -73,7 +90,23 @@ internal object Wq177DailyOriginals {
         PracticeQuestion("The student reread the text to ____ the meaning.","understand"),
         PracticeQuestion("The family brought umbrellas because it might ____.","rain"),
         PracticeQuestion("The travellers spoke slowly to ____ directions.","ask")
-    )
+    ).map { item ->
+        val distractors=listOf(
+            "sleep","cook","paint","laugh","dance","shout",
+            "hide","jump","forget","break","wash","drive","play",
+            "swim","listen","wait","count","watch","carry","drop",
+            "sing","draw","close","open","smile","read","sleep"
+        ).filter { it!=item.answer }
+        // Per-item deterministic decoys; actual choice order shuffled on load.
+        val index=(item.instruction.hashCode() and 0x7fffffff) % distractors.size
+        val wrong=listOf(
+            distractors[index],
+            distractors[(index+7)%distractors.size],
+            distractors[(index+15)%distractors.size]
+        ).distinct()
+        item.copy(options=(listOf(item.answer)+wrong).shuffled(),
+            explanation="Bu bağlamda doğru sözcük: ${item.answer}")
+    }
     fun total(kind:PracticeKind):Int = when(kind) {
         PracticeKind.Sentence -> PracticeContent.sentences.size + sentences.size
         PracticeKind.Grammar -> PracticeContent.grammar.size + grammar.size
