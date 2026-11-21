@@ -56,7 +56,7 @@ def home_matching():
     home = SRC/"Wq175PremiumHome.kt"
     raw=home.read_text("utf-8")
     assert 'Wq175HomeTile("Eşleştirmelerim"' in raw
-    assert 'Wq175MatchingDialog(session,onDismiss={matchingOpen=false})' in raw
+    assert 'onDismiss={matchingOpen=false},onImport=learning' in raw
     assert 'Wq175HomeTile("Öğrenme Merkezim"' not in raw
     assert 'Wq175HomeTile("İlerlemem"' in raw
     print("PASS: İlerlemem retained, redundant tile replaced with functioning Eşleştirmelerim")
