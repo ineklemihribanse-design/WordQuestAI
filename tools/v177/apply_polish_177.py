@@ -311,6 +311,37 @@ def premium_grid_ai(s):
     return s
 
 
+def daily_content_and_rotation(s):
+    s=once(s,
+        '''            Wq175PremiumPracticeGrid { kind ->
+            selected = kind
+            questionIndex = 0
+        }''',
+        '''            Wq175PremiumPracticeGrid { kind ->
+            selected = kind
+            questionIndex = Wq177DailyRotation.next(
+                context,profileKey,kind,Wq177DailyOriginals.total(kind))
+        }''',
+        "daily game re-entry shuffles instead of fixed first question")
+    s=once(s,
+        'PracticeKind.Sentence -> PracticeContent.sentences[number % PracticeContent.sentences.size]',
+        'PracticeKind.Sentence -> (PracticeContent.sentences + Wq177DailyOriginals.sentences).let { it[number % it.size] }',
+        "More to Read sentence practice additive source")
+    s=once(s,
+        'PracticeKind.Grammar -> PracticeContent.grammar[number % PracticeContent.grammar.size]',
+        'PracticeKind.Grammar -> (PracticeContent.grammar + Wq177DailyOriginals.grammar).let { it[number % it.size] }',
+        "Test Attack grammar error practice additive source")
+    s=once(s,
+        'PracticeKind.Story -> PracticeContent.story[number % PracticeContent.story.size]',
+        'PracticeKind.Story -> (PracticeContent.story + Wq177DailyOriginals.story).let { it[number % it.size] }',
+        "More to Read story completion additive source")
+    if s.count('questionIndex++')==1:
+        s=once(s,'questionIndex++',
+            'questionIndex=Wq177DailyRotation.next(context,profileKey,selected ?: PracticeKind.Story,Wq177DailyOriginals.total(selected ?: PracticeKind.Story))',
+            "non-sequential next practice question")
+    return s
+
+
 def version():
     file=APP/"build.gradle.kts"
     s=file.read_text("utf-8")
@@ -336,6 +367,9 @@ def main():
     patch("WordQuest175Matching.kt",local_matching)
     patch("Wq175PremiumHome.kt",premium_grid_ai)
     patch("HomeScreen.kt",home_matching_ai)
+    shutil.copyfile(ROOT/"tools/v177/Wq177DailyOriginals.kt",SRC/"Wq177DailyOriginals.kt")
+    shutil.copyfile(ROOT/"tools/v177/Wq177DailyRotation.kt",SRC/"Wq177DailyRotation.kt")
+    patch("PracticeHubScreen.kt",daily_content_and_rotation)
     version()
     print("PASS: v1.0.77 code103, approved premium Arena sword icon and responsive reversible study card")
 
