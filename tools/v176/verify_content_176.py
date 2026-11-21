@@ -38,6 +38,10 @@ assert "context.getSharedPreferences" in rotation
 assert "profileKey.hashCode()" in rotation
 assert ".shuffled()" in rotation
 assert "recentSet" in rotation
+assert "fun nextTopic(" in rotation
+assert 'putString(bagKey,pending.drop(1)' in rotation
+assert "val topic=Wq176QuestionRotation.nextTopic(" in rotation
+assert "categories[step%categories.size]" not in rotation
 assert "DailyPlanStore(context,profileKey)" in rotation
 assert (tests/"Wq176ContentRotationTest.kt").exists()
 assert (assets/"licenses/WQ176_CONTENT_SOURCES.md").exists()
