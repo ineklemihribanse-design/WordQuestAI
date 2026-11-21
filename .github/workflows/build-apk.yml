@@ -1587,9 +1587,26 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Build Android APK and run JVM tests
         working-directory: source
+        env:
+          WQ175_CACHE_HIT: ${{ steps.v175_baseline_restore.outputs.cache-hit }}
         run: |
+          set -euo pipefail
+          started="$(date +%s)"
           chmod +x gradlew
+          # Keep full JVM and APK verification; measure it rather than skipping it.
           ./gradlew --no-daemon :app:testOfflineUnitTest :app:assembleOffline --stacktrace
+          elapsed="$(( $(date +%s) - started ))"
+          {
+            echo '### WordQuest 1.0.75 — build performance'
+            echo
+            if [ "$WQ175_CACHE_HIT" = 'true' ]; then
+              echo '- Historical Android source: **restored from verified cache**'
+            else
+              echo '- Historical Android source: **fully reconstructed** (first run or changed baseline)'
+            fi
+            printf -- '- Gradle JVM tests + APK assembly: **%dm %02ds**\n' "$((elapsed/60))" "$((elapsed%60))"
+            echo '- Signed upgrade and emulator verification: **still required; not bypassed**'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Verify APK and bundle signer tool for local private-key signature
         working-directory: source
         run: |
