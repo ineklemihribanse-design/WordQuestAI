@@ -10,13 +10,12 @@ for text in (
     'Wq175PuzzleSourceShortcuts(',
     'onPackage={packages(GameMode.Topics)}',
     'onImport={go(Page.Learning)}',
-    'Wq175MatchingEntry(onClick={wq175MatchingOpen=true})',
-    'Wq175MatchingDialog(session)',
-    'wq175MatchingOpen by rememberSaveable',
     'go(Page.Backup)',
     'GameItem(game, session.record(game), ::open) { edit(it.destination, it) }'
 ):
     assert text in s,text
+assert 'Wq175MatchingEntry(onClick={wq175MatchingOpen=true})' not in s
+assert 'wq175MatchingOpen by rememberSaveable' not in s
 art=(src/"WordQuest175MyPuzzles.kt").read_text("utf-8")
 assert 'Wq175GlossIcon("arena_team",' in art
 assert 'Color(0xFFFFF3E5)' in art
