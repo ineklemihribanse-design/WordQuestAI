@@ -188,20 +188,56 @@ internal fun Wq179ArenaAudioSettings(){
 }
 
 
-/** Stadium lights under the live game, without moving the layout. */
+/** Stage backdrop: light in lobby, deep navy/purple when actively competing.
+ * Only the canvas changes; white letter cells and light clue cards remain legible.
+ */
 @Composable
-internal fun Wq179ArenaStageBackground(modifier:Modifier=Modifier){
+internal fun Wq179ArenaStageBackground(
+    modifier:Modifier=Modifier, dark:Boolean=false
+){
     androidx.compose.foundation.Canvas(modifier){
-        drawRect(Brush.verticalGradient(listOf(
-            Color(0xFFF6F1FF),Color(0xFFF8F6FF),Color(0xFFFFFCFF))))
-        val top=androidx.compose.ui.geometry.Offset(size.width*.5f,size.height*.02f)
-        drawCircle(Color(0x148D54C8),radius=size.width*.90f,center=top)
-        drawCircle(Color(0x0DFFBD75),radius=size.width*.52f,center=top)
-        drawLine(Color(0x1F8550B7),
-            androidx.compose.ui.geometry.Offset(size.width*.09f,0f),
-            androidx.compose.ui.geometry.Offset(size.width*.27f,size.height*.23f),5f)
-        drawLine(Color(0x1F8550B7),
-            androidx.compose.ui.geometry.Offset(size.width*.91f,0f),
-            androidx.compose.ui.geometry.Offset(size.width*.73f,size.height*.23f),5f)
+        if(!dark){
+            drawRect(Brush.verticalGradient(listOf(
+                Color(0xFFF5EEFF),Color(0xFFF9F6FF),Color(0xFFFFFCFF))))
+            drawCircle(Color(0x148D54C8),radius=size.width*.85f,
+                center=androidx.compose.ui.geometry.Offset(size.width*.5f,0f))
+        }else{
+            // Premium tournament hall: darker velvet backdrop with subtle spotlights.
+            drawRect(Brush.verticalGradient(listOf(
+                Color(0xFF10142E),Color(0xFF211342),
+                Color(0xFF2B1850),Color(0xFF11182F))))
+            val left=androidx.compose.ui.geometry.Offset(size.width*.12f,size.height*.08f)
+            val right=androidx.compose.ui.geometry.Offset(size.width*.88f,size.height*.08f)
+            val center=androidx.compose.ui.geometry.Offset(size.width*.50f,size.height*.32f)
+            val glowRadius=size.width*.85f
+            drawCircle(Brush.radialGradient(
+                listOf(Color(0x384E83F3),Color(0x105DB8F9),Color.Transparent),
+                center=left,radius=glowRadius),
+                radius=glowRadius,center=left)
+            drawCircle(Brush.radialGradient(
+                listOf(Color(0x3D9552D5),Color(0x129B61CE),Color.Transparent),
+                center=right,radius=glowRadius),
+                radius=glowRadius,center=right)
+            drawCircle(Brush.radialGradient(
+                listOf(Color(0x1948D7EA),Color.Transparent),
+                center=center,radius=size.width*.58f),
+                radius=size.width*.58f,center=center)
+            // Slim stage light beams and restrained golden railings.
+            drawLine(Color(0x2EA9B6FF),
+                androidx.compose.ui.geometry.Offset(size.width*.08f,0f),
+                androidx.compose.ui.geometry.Offset(size.width*.34f,size.height*.38f),3f)
+            drawLine(Color(0x2EBF87FF),
+                androidx.compose.ui.geometry.Offset(size.width*.92f,0f),
+                androidx.compose.ui.geometry.Offset(size.width*.66f,size.height*.38f),3f)
+            repeat(7){i->
+                val y=size.height*(.66f+i*.045f)
+                drawLine(if(i%2==0)Color(0x197CC2E8) else Color(0x147E67D9),
+                    androidx.compose.ui.geometry.Offset(0f,y),
+                    androidx.compose.ui.geometry.Offset(size.width,y),1.5f)
+            }
+            drawLine(Color(0x53D9AC70),
+                androidx.compose.ui.geometry.Offset(0f,size.height*.055f),
+                androidx.compose.ui.geometry.Offset(size.width,size.height*.055f),2f)
+        }
     }
 }

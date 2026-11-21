@@ -103,7 +103,8 @@ def online(s):
     s=once(s,
       '    Box(Modifier.fillMaxSize().background(OnlineNight)) {',
       '''    Box(Modifier.fillMaxSize().background(OnlineNight)) {
-        Wq179ArenaStageBackground(Modifier.matchParentSize())''',
+        Wq179ArenaStageBackground(
+            Modifier.matchParentSize(), dark = match?.phase == "playing")''',
       "arena lights and stadium backdrop")
     return s
 
