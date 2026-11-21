@@ -41,44 +41,55 @@ def center_arena(s):
     section=s[start:end]
     assert 'Wq175SceneBackdrop("arena"' in section
     assert 'Wq2DPortrait(selectedAvatar' in section
-    hero=r'''        // The podium belongs at the visual centre, independent of screen width.
-        // Portrait is a separate live layer, not baked into the backdrop.
-        BoxWithConstraints(Modifier.fillMaxWidth().height(274.dp)
-            .clip(RoundedCornerShape(29.dp))) {
-            Wq175SceneBackdrop("arena",Modifier.matchParentSize())
-            val compact = maxWidth < 510.dp
-            Column(
-                Modifier.align(Alignment.TopStart)
-                    .fillMaxWidth(if(compact) .48f else .43f)
-                    .padding(start=18.dp,top=19.dp),
-                verticalArrangement=Arrangement.spacedBy(10.dp)) {
-                Text("WORDQUEST · TURNOVA",
-                    color=ArenaGold175,fontSize=10.sp,
-                    fontWeight=FontWeight.Black,letterSpacing=.6.sp)
-                Text("ARENA",color=Color.White,
-                    fontSize=if(compact)27.sp else 35.sp,
-                    fontWeight=FontWeight.Black)
-                Text("Sahne senin!\nRakibini seç,\nzaferi kazan.",
-                    color=Color(0xFFFFEEFF),fontSize=if(compact)13.sp else 16.sp,
-                    lineHeight=if(compact)18.sp else 22.sp,
-                    fontWeight=FontWeight.SemiBold)
-                Surface(color=Color(0xC34B217F),
-                    shape=RoundedCornerShape(15.dp),
-                    border=BorderStroke(1.dp,ArenaGold175)) {
-                    Text("★ "+Wq2DMascots.label(selectedAvatar),
-                        color=Color.White,fontSize=12.sp,
-                        fontWeight=FontWeight.ExtraBold,
-                        modifier=Modifier.padding(horizontal=10.dp,vertical=6.dp))
+    hero=r'''        // Each device gets its own stage ratio. The selected native mascot
+        // stands with its feet on the actual podium instead of below it.
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val compact = maxWidth < 560.dp
+            val wideTablet = maxWidth >= 840.dp
+            val heroHeight = if(compact)310.dp else if(wideTablet)378.dp else 342.dp
+            Box(Modifier.fillMaxWidth().height(heroHeight)
+                .clip(RoundedCornerShape(29.dp))) {
+                Wq175SceneBackdrop("arena",Modifier.matchParentSize())
+                Column(
+                    Modifier.align(Alignment.TopStart)
+                        .fillMaxWidth(if(compact).53f else .43f)
+                        .padding(start=if(compact)16.dp else 24.dp,top=23.dp),
+                    verticalArrangement=Arrangement.spacedBy(if(compact)7.dp else 12.dp)) {
+                    Text("WORDQUEST · TURNOVA",
+                        color=ArenaGold175,fontSize=if(compact)9.sp else 12.sp,
+                        fontWeight=FontWeight.Black,letterSpacing=.6.sp)
+                    Text("ARENA",color=Color.White,
+                        fontSize=if(compact)28.sp else 39.sp,
+                        fontWeight=FontWeight.Black)
+                    Text("Sahne senin!\nRakibini seç,\nzaferi kazan.",
+                        color=Color(0xFFFFEEFF),fontSize=if(compact)13.sp else 18.sp,
+                        lineHeight=if(compact)19.sp else 25.sp,
+                        fontWeight=FontWeight.SemiBold)
+                    Surface(color=Color(0xC34B217F),
+                        shape=RoundedCornerShape(15.dp),
+                        border=BorderStroke(1.dp,ArenaGold175)) {
+                        Text("★ "+Wq2DMascots.label(selectedAvatar),
+                            color=Color.White,fontSize=if(compact)11.sp else 14.sp,
+                            fontWeight=FontWeight.ExtraBold,
+                            modifier=Modifier.padding(horizontal=10.dp,vertical=7.dp))
+                    }
                 }
+                // Separate elliptical podium surface: masked by mascot's feet.
+                Box(Modifier.align(Alignment.BottomCenter)
+                    .offset(y=(-27).dp)
+                    .width(if(compact)204.dp else 270.dp).height(40.dp)
+                    .clip(CircleShape)
+                    .background(Brush.verticalGradient(listOf(
+                        Color(0xFFFFDC8A),Color(0xFF773EB2),Color(0xFF3F1767))))
+                    .border(2.dp,ArenaGold175,CircleShape))
+                Wq2DPortrait(
+                    selectedAvatar,
+                    Modifier.align(Alignment.BottomCenter)
+                        .offset(y=(-43).dp)
+                        .size(if(compact)170.dp else if(wideTablet)218.dp else 196.dp),
+                    victory=false
+                )
             }
-            // Centre of podium: no side-column anchoring and no floating trophy.
-            Wq2DPortrait(
-                selectedAvatar,
-                Modifier.align(Alignment.BottomCenter)
-                    .offset(x=if(compact)17.dp else 4.dp,y=(-9).dp)
-                    .size(if(compact)166.dp else 207.dp),
-                victory=false
-            )
         }
 '''
     return s[:start]+hero+s[end:]
