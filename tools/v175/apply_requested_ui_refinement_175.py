@@ -235,6 +235,9 @@ def main():
     packages_and_profile()
     settings_cards()
     lena_mobile()
+    import subprocess,sys
+    subprocess.run([sys.executable,
+        str(PKG/"apply_phone_tablet_polish_175.py")],check=True)
     assert (SRC/"LenaLive3DStage.kt").is_file()
     print("PASS: new cards are native and accessible; legacy user data and voice/GLB preserved.")
 
