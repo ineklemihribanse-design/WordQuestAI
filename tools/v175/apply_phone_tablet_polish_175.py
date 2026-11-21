@@ -307,6 +307,9 @@ def main():
     patch("WordQuest175Matching.kt",responsive_matching_hero)
     patch("PuzzleScreen.kt",enlarge_phone_puzzle_board)
     report_existing_board_geometry()
+    actual=(SRC/"PuzzleScreen.kt").read_text("utf-8")
+    assert 'mutableStateOf(board.words.size > 20 || compactBoard)' in actual
+    assert 'if (board.words.size <= 20 && !compactBoard) expanded = false' in actual
     patch("HomeScreen.kt",packages_only)
     patch("WordQuestSettings.kt",hide_voice_picker_lists)
     patch("ConversationScreen.kt",compact_messenger)
