@@ -41,8 +41,7 @@ def online(s):
                 val revealedChar=word.entry.letters.getOrNull(revealedIndex)''',
         "derive revealed letter once from the same selected crossword")
     s=once(s,
-        '''                    Wq179ArenaClueHeader(puzzle,selected)
-                    Wq179ArenaWordChooser(puzzle,solved,selected){ newIndex ->''',
+        '                    Wq179ArenaClueHeader(puzzle,selected)\n',
         '''                    Wq179ArenaClueHeader(puzzle,selected)
                     if(match.rulesVersion>=2 && match.mode=="duel" && !match.cooperative) {
                         val hintsLeft=(ArenaDuelEngine.hintsFor(match.size) -
@@ -58,8 +57,8 @@ def online(s):
                             onHint={client.useHint(selected)}
                         )
                     }
-                    Wq179ArenaWordChooser(puzzle,solved,selected){ newIndex ->''',
-        "place a tappable real hint above the grid and all-clues list")
+''',
+        "insert visible hint after existing clue header without depending on replay panel")
     s=once(s,
         '''ArenaCompactCrosswordBoard(puzzle, solved, selected, keyboardIsOpen, answerText) {''',
         '''ArenaCompactCrosswordBoard(puzzle, solved, selected, keyboardIsOpen,
