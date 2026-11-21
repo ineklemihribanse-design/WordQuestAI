@@ -42,7 +42,8 @@ rotation=(src/"Wq176DailyChallenge.kt").read_text("utf-8")
 assert "context.getSharedPreferences" in rotation
 assert "profileKey.hashCode()" in rotation
 assert ".shuffled()" in rotation
-assert "recentSet" in rotation
+assert "recentFamilies" in rotation
+assert "val diverse=candidates.distinctBy { family(it.id) }" in rotation
 assert "fun nextTopic(" in rotation
 assert 'putString(bagKey,pending.drop(1)' in rotation
 assert "val topic=Wq176QuestionRotation.nextTopic(" in rotation
