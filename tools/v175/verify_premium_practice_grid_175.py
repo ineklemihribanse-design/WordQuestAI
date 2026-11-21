@@ -19,7 +19,7 @@ assert 'selected = kind' in hub and 'questionIndex = 0' in hub
 assert 'Wq175PremiumPracticeSpecialTile("Yanlışlarımdan bulmaca"' in hub
 assert 'Wq175PremiumPracticeSpecialTile("Kişisel AI öğretmenim"' in hub
 assert hub.count("Wq175PremiumPracticeSpecialTile(")==2
-assert hub.count("MenuItem@ {")>=2
+assert hub.count("MenuItem@ {")>=1
 assert 'internal fun Wq175PremiumPracticeSpecialTile(' in grid
 assert 'Wq175GlossIcon(imageName,Modifier.size(76.dp))' in grid
 assert 'PracticeKind.entries.chunked(2)' in grid
@@ -39,5 +39,10 @@ for title in ("Yanlışlarımdan bulmaca","Kişisel AI öğretmenim"):
     sample=replace_special_card_call(sample,title)
 assert sample.count("MenuItem@ {")==2
 assert sample.count("return@MenuItem")==2
-assert 'return@Wq175PremiumPracticeSpecialTile' not in sample
-print("PASS: seven illustrated Daily Plan entries and preserved Kotlin lambda labels")
+direct='MenuItem("Kişisel AI öğretmenim", "Kişisel asistan", "✦", assistant)'
+direct=replace_special_card_call(direct,"Kişisel AI öğretmenim")
+assert direct == 'Wq175PremiumPracticeSpecialTile("Kişisel AI öğretmenim", "Kişisel asistan", "✦", assistant)'
+inline='MenuItem("Kişisel AI öğretmenim", "AI", "✦", onClick={ return@MenuItem })'
+inline=replace_special_card_call(inline,"Kişisel AI öğretmenim")
+assert 'return@Wq175PremiumPracticeSpecialTile' in inline
+print("PASS: premium Daily Plan labels work for trailing lambdas, direct callbacks and inline lambdas")

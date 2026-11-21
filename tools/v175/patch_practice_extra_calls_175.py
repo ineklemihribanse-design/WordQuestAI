@@ -42,10 +42,18 @@ def replace_special_card_call(source: str, title: str) -> str:
     block = closing + 1
     while block < len(source) and source[block].isspace():
         block += 1
-    if block >= len(source) or source[block] != "{":
-        raise AssertionError(f"{title}: expected trailing lambda (not an unsupported call shape)")
-    return (
-        source[:start] + "Wq175PremiumPracticeSpecialTile"
-        + source[open_paren:block].rstrip()
-        + " MenuItem@ " + source[block:]
+    if block < len(source) and source[block] == "{":
+        # An existing trailing-lambda game action can contain return@MenuItem.
+        # Preserve that label explicitly; do not rewrite the callback body.
+        return (
+            source[:start] + "Wq175PremiumPracticeSpecialTile"
+            + source[open_paren:block].rstrip()
+            + " MenuItem@ " + source[block:]
+        )
+    # The AI teacher entry uses an already-bound callback argument instead of
+    # a trailing lambda. Keep that callback reference untouched. Inline lambdas
+    # in parentheses can use the new function's implicit return label.
+    args=source[open_paren:closing+1].replace(
+        "return@MenuItem", "return@Wq175PremiumPracticeSpecialTile"
     )
+    return source[:start] + "Wq175PremiumPracticeSpecialTile" + args + source[closing+1:]
