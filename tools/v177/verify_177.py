@@ -35,7 +35,7 @@ FILES={
         'initialSource',
     ),
     "WordQuest175Arena.kt":(
-        'Wq175GlossIcon("arena_"+kind,Modifier.size(64.dp))',
+        'Wq175GlossIcon("arena_"+kind,Modifier.size(69.dp))',
     ),
     "VocabularyNeonPractice.kt":(
         'val wideCard = maxWidth >= 600.dp',
