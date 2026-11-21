@@ -43,8 +43,8 @@ def vocabulary(s):
         '        val showingBack = turn > 90f\n'
         '        BoxWithConstraints(Modifier.fillMaxWidth(),contentAlignment=Alignment.Center) {\n'
         '        val wideCard = maxWidth >= 600.dp\n'
-        '        Surface(modifier = Modifier.fillMaxWidth()\n'
-        '            .widthIn(max=if(wideCard)620.dp else 460.dp)\n'
+        '        Surface(modifier = Modifier.widthIn(max=if(wideCard)620.dp else 460.dp)\n'
+        '            .fillMaxWidth()\n'
         '            .heightIn(min=if(wideCard)360.dp else 285.dp)\n'
         '            .clickable(enabled=studyMode=="card"){ flipped=!flipped }',
         "phone/tablet card dimensions and touch-to-flip")
@@ -232,7 +232,7 @@ def import_dialog(s):
 def local_matching(s):
     s=once(s,
         'internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:()->Unit) {',
-        'internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->Unit,onImport:()->Unit) {',
+        'internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->Unit) {',
         "provide existing AI session for matching import")
     s=once(s,
         '    var wordSource by rememberSaveable { mutableStateOf("Hazır Paketten Seç") }',
@@ -306,7 +306,7 @@ def premium_grid_ai(s):
         "matching premium menu accepts same AI provider")
     s=once(s,
         'if (matchingOpen) Wq175MatchingDialog(session,\n        onDismiss={matchingOpen=false},onImport=learning)',
-        'if (matchingOpen) Wq175MatchingDialog(session,ai,\n        onDismiss={matchingOpen=false},onImport=learning)',
+        'if (matchingOpen) Wq175MatchingDialog(session,ai,\n        onDismiss={matchingOpen=false})',
         "no route to Kelime Hafızam from matching import")
     return s
 
