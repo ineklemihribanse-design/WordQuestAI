@@ -198,7 +198,7 @@
           ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 24"
         },
         "phase": {
-          ".write": "auth != null && data.parent().child('hostUid').val() === auth.uid && ((data.val() === 'lobby' && newData.val() === 'playing' && data.parent().child('guestUid').exists()) || (data.val() === 'playing' && newData.val() === 'finished'))",
+          ".write": "auth != null && data.parent().child('hostUid').val() === auth.uid && ((data.val() === 'lobby' && newData.val() === 'playing' && data.parent().child('guestUid').exists() && (data.parent().child('rulesVersion').val() !== 2 || (data.parent().child('ready').child(data.parent().child('hostUid').val()).val() === data.parent().child('configRevision').val() && data.parent().child('ready').child(data.parent().child('guestUid').val()).val() === data.parent().child('configRevision').val()))) || (data.val() === 'playing' && newData.val() === 'finished'))",
           ".validate": "newData.val() === 'lobby' || newData.val() === 'playing' || newData.val() === 'finished'"
         },
         "turn": {
@@ -234,6 +234,20 @@
               ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5"
             }
           }
+        },
+        "ready": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && (data.parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().child('phase').val() === 'lobby' && ((!newData.exists()) || (newData.isNumber() && newData.val() === (data.parent().parent().child('configRevision').exists() ? data.parent().parent().child('configRevision').val() : 1)))",
+            ".validate": "newData.isNumber() && newData.val() === (newData.parent().parent().child('configRevision').exists() ? newData.parent().parent().child('configRevision').val() : 1)"
+          }
+        },
+        "hostAvatar": {
+          ".write": "auth != null && auth.uid === data.parent().child('hostUid').val() && data.parent().child('phase').val() === 'lobby' && newData.exists()",
+          ".validate": "newData.isString() && (newData.val() === 'astra' || newData.val() === 'piko' || newData.val() === 'nobi' || newData.val() === 'tera' || newData.val() === 'lopi' || newData.val() === 'tomba' || newData.val() === 'foksi' || newData.val() === 'moka' || newData.val() === 'pera' || newData.val() === 'gigi' || newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl')"
+        },
+        "guestAvatar": {
+          ".write": "auth != null && auth.uid === data.parent().child('guestUid').val() && data.parent().child('phase').val() === 'lobby' && newData.exists()",
+          ".validate": "newData.isString() && (newData.val() === 'astra' || newData.val() === 'piko' || newData.val() === 'nobi' || newData.val() === 'tera' || newData.val() === 'lopi' || newData.val() === 'tomba' || newData.val() === 'foksi' || newData.val() === 'moka' || newData.val() === 'pera' || newData.val() === 'gigi' || newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl')"
         }
       }
     }
