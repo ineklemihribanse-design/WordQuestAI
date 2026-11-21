@@ -27,4 +27,7 @@ for token in ('"vocabulary-extra.tsv"', '"vocabulary-addendum-v175.tsv"',
               'Wq175MatchingDialog'):
     assert token in matching,token
 assert (src.parents[5]/"src/test/java/com/kelimebulmacasi/a1/Wq175MatchingTest.kt").exists()
+for name in ('"timer"','"review"','"notebook"','"success"'):
+    assert name in matching, name
+assert 'Wq175GlossIcon(modeArt,Modifier.size(57.dp))' in matching
 print("PASS: matching cards, game, local profile stats and Kotlin test installed")

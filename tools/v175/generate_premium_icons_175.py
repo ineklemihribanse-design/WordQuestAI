@@ -262,7 +262,7 @@ def icon(name):
         ell(d,(168,107,181,120),"#FFF8D7")
         line(d,[(75,160),(180,160)],"#74AE98",5)
     elif name=="exam":
-        rr(d,(47,30,213,215),22,"#E7F0FF",YELLOW if False else "#355EAC",6)
+        rr(d,(47,30,213,215),22,"#E7F0FF","#355EAC",6)
         rr(d,(80,21,180,58),12,GOLD,GOLD_EDGE,4)
         for y in (91,132,173):
             rr(d,(72,y-6,91,y+13),4,"#FFFFFF",BLUE,3)

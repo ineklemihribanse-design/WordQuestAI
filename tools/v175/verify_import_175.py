@@ -33,4 +33,9 @@ assert (src/"DocumentScan.kt").is_file()
 assert (src/"ScanPhotoProvider.kt").is_file()
 assert (src/"WordPairs.kt").is_file()
 assert (src/"AiSession.kt").is_file()
+for name in ('"notebook"','"scan"','"pdf"','"camera"'):
+    assert 'Wq175GlossIcon('+name in importer, name
+assert 'onClick=onManual' in importer and 'onClick=onImport' in importer
+assert 'onClick={camera()}' in importer
+assert 'enabled=!busy' in importer
 print("PASS: existing OCR + photo + PDF + camera + AI suggestions use preview approval")

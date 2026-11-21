@@ -25,4 +25,6 @@ assert 'ydsRemainingSeconds(deadlineMillis, System.currentTimeMillis())' in ui
 assert 'store.wrongQuestions()' in ui
 assert 'teacher(store.teacherPrompt())' in ui
 assert 'Wq175GlossIcon("yds"' in art
+assert 'Wq175GlossIcon("success",Modifier.size(94.dp))' in art
+assert 'Wq175GlossIcon(if(correct)"success" else "review"' in art
 print("PASS: 120 YDS questions, new grammar, action-tied premium pages, preserved timer/progress/AI.")

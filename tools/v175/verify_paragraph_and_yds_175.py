@@ -26,4 +26,6 @@ assert (test / "Wq175ParagraphTest.kt").exists()
 # Both existing dictation and generic speech providers must remain wired up.
 assert "pronunciation.pronounce(" in hub
 assert "RecognizerIntent.ACTION_RECOGNIZE_SPEECH" in hub
+assert 'Wq175GlossIcon("paragraph"' in para
+assert 'if(grade.accuracy==100)"success" else "review"' in para
 print("PASS: additive paragraph, 150 YDS questions and old pronunciation/recording preserved")
