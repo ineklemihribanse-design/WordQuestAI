@@ -1,6 +1,7 @@
 package com.kelimebulmacasi.a1
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
 
 /** Visual icon contract: real room names route to the original art assets. */
@@ -35,5 +36,24 @@ class Wq175PremiumIconRoutingTest {
         expected.forEach { (title,icon) ->
             assertEquals(title, icon, Wq175IconNames.menu(title))
         }
+    }
+    @Test fun approvedVisualAssetsTakePriorityInPrimaryRooms() {
+        val approved = mapOf(
+            "trophy" to R.drawable.wq175_arena_icon,
+            "yds" to R.drawable.wq175_yds_akademi_icon,
+            "cards" to R.drawable.wq175_kelime_hafizam_icon,
+            "synonym" to R.drawable.wq175_eslestirmelerim_icon,
+            "plan" to R.drawable.wq175_gunluk_plan_icon,
+            "grammar" to R.drawable.wq175_dilbilgisi_icon,
+            "puzzle" to R.drawable.wq175_bulmacalarim_icon,
+            "listen" to R.drawable.wq175_dinle_ve_yaz_icon
+        )
+        approved.forEach { (name, resource) ->
+            assertEquals(name, resource, Wq175IconNames.approvedResource(name))
+        }
+        // Duels retain their special sword/arena design, not a generic trophy.
+        assertNull(Wq175IconNames.approvedResource("arena_duel"))
+        assertNull(Wq175IconNames.approvedResource("arena_team"))
+        assertNull(Wq175IconNames.approvedResource("arena_quiz"))
     }
 }
