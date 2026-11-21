@@ -15,7 +15,7 @@ for text in (
 ):
     assert text in s,text
 art=(src/"WordQuest175MyPuzzles.kt").read_text("utf-8")
-assert 'Wq175GlossIcon("puzzle"' in art
+assert 'Wq175ThemeIllustration("bulmacalarim"' in art
 print("PASS: real crosswords, edit, backups and completed-filter remain connected.")
 
 matching=(src/"WordQuest175Matching.kt").read_text("utf-8")
