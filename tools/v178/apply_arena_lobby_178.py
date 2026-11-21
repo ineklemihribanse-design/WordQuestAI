@@ -18,7 +18,7 @@ def patch(name,old,new,label):
 patch("PremiumOnlineRoom.kt",
     '    private val myAvatar: String get() = context.getSharedPreferences(\n'
     '        "wordquest_arena_mascot", Context.MODE_PRIVATE\n'
-    '    ).getString("kind","robot")?.takeIf {it in listOf("robot","fox","owl")} ?: "robot",
+    '    ).getString("kind","robot")?.takeIf {it in listOf("robot","fox","owl")} ?: "robot"',
     '    private val myAvatar: String get() =\n'
     '        Wq2DMascots.selected(context, session.profileKey)',
     "use the actual logged-in profile mascot, never a three-character fallback")
