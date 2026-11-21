@@ -128,7 +128,7 @@ internal fun Wq175PuzzleSourceShortcuts(
                     shape=RoundedCornerShape(19.dp),color=source.tint,
                     shadowElevation=3.dp,
                     border=BorderStroke(if(source.title==selected) 2.dp else 1.dp,
-                        if(source.title==selected)Color(0xFF159C8F) else Color(0x22A2A2A2)))) {
+                        if(source.title==selected)Color(0xFF159C8F) else Color(0x22A2A2A2))) {
                     Column(Modifier.fillMaxWidth().padding(10.dp),
                         verticalArrangement=Arrangement.spacedBy(5.dp),
                         horizontalAlignment=Alignment.CenterHorizontally) {
