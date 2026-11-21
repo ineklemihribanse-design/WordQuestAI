@@ -1639,6 +1639,7 @@ jobs:
           python3 tools/v181/apply_arena_181.py
           python3 tools/v181/verify_arena_181.py
           cp tools/v181/Wq181ArenaHintTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintTest.kt
+          cp tools/v181/Wq181ArenaHintSlotTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintSlotTest.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail

@@ -23,6 +23,7 @@ def edit(name,transform):
 
 shutil.copyfile(PKG/"Wq181ArenaHeroStage.kt",SRC/"Wq181ArenaHeroStage.kt")
 shutil.copyfile(PKG/"Wq181ArenaHintBar.kt",SRC/"Wq181ArenaHintBar.kt")
+shutil.copyfile(PKG/"Wq181ArenaHintSlot.kt",SRC/"Wq181ArenaHintSlot.kt")
 
 def online(s):
     s=once(s,
@@ -36,7 +37,8 @@ def online(s):
         '''                val fixedPattern = crosswordFixedPattern(puzzle, solved, selected)
                 val hintIsUsed=selected in match.hintBy[myUid].orEmpty()
                 val revealedIndex=if(hintIsUsed)
-                    Wq179ArenaOrder.hintPosition(match.code,selected,fixedPattern)
+                    Wq181ArenaHintSlot.reserve(context,match.code,myUid,
+                        selected,fixedPattern)
                     else -1
                 val revealedChar=word.entry.letters.getOrNull(revealedIndex)''',
         "derive revealed letter once from the same selected crossword")
@@ -50,11 +52,16 @@ def online(s):
                             left=hintsLeft,
                             alreadyUsed=hintIsUsed,
                             canUse=(myTurn && (countdown==null || countdown>0)
-                                && selected !in solved && !hintIsUsed),
+                                && selected !in solved && !hintIsUsed
+                                && fixedPattern.contains('.')),
                             revealed=if(revealedIndex>=0 && revealedChar!=null)
                                 "${revealedIndex+1}. harf: $revealedChar"
                                 else null,
-                            onHint={client.useHint(selected)}
+                            onHint={
+                                if(Wq181ArenaHintSlot.reserve(context,match.code,
+                                    myUid,selected,fixedPattern)>=0)
+                                    client.useHint(selected)
+                            }
                         )
                     }
 ''',

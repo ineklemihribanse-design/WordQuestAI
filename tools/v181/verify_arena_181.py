@@ -19,7 +19,10 @@ assert 'client.useHint(selected)' in online
 assert 'val hintIsUsed=selected in match.hintBy[myUid].orEmpty()' in online
 assert 'val revealedIndex=if(hintIsUsed)' in online
 assert 'hintIndex=revealedIndex,hintChar=revealedChar' in online
-assert 'Wq179ArenaOrder.hintPosition' in online
+assert 'Wq181ArenaHintSlot.reserve' in online
+assert 'fixedPattern.contains(' in online
+assert 'lockedPosition' in f("Wq181ArenaHintSlot.kt")
+assert 'Wq179ArenaOrder.hintPosition' in f("Wq181ArenaHintSlot.kt")
 assert 'Text("İPUCU ($left)"' in hint
 assert 'onClick=onHint,enabled=canUse&&left>0' in hint
 assert 'hintIndex:Int=-1,hintChar:Char?=null,onSelect:(Int)->Unit' in board
