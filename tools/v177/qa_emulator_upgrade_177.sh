@@ -56,7 +56,7 @@ test -n "$new_uid"
 test "$old_uid" = "$new_uid"
 adb shell dumpsys package "$PKG" > "$RUNNER_TEMP/wq175-upgraded-package.txt"
 grep -q 'versionCode=103' "$RUNNER_TEMP/wq175-upgraded-package.txt"
-python3 tools/v176/verify_upgrade_metadata_177.py \
+python3 tools/v177/verify_upgrade_metadata_177.py \
     "$RUNNER_TEMP/wq175-original-package.txt" \
     "$RUNNER_TEMP/wq175-upgraded-package.txt" "$PKG"
 adb logcat -c || true
