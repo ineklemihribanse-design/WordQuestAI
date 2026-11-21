@@ -128,6 +128,16 @@ internal class Wq175MatchingProgress(context:Context,profile:String) {
     }
 }
 
+/** These are different completion events; never tell a player that time
+ * expired when they chose to end a round early. */
+internal enum class Wq175MatchEnd { Completed, Timeout, Stopped }
+
+internal fun wq175MatchResultTitle(reason:Wq175MatchEnd):String = when(reason) {
+    Wq175MatchEnd.Completed -> "Harika! Bütün kartlar eşleşti!"
+    Wq175MatchEnd.Timeout -> "Süre doldu!"
+    Wq175MatchEnd.Stopped -> "Oyun sonlandırıldı"
+}
+
 private val MatchInk=Color(0xFF173F50)
 private val MatchTeal=Color(0xFF1F9C94)
 private val MatchPink=Color(0xFFDF739D)
@@ -177,17 +187,20 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
     var leftChoice by remember { mutableIntStateOf(-1) }
     var matched by remember { mutableStateOf<Set<Int>>(emptySet()) }
     var wrong by remember { mutableIntStateOf(0) }
+    var wrongPairs by remember { mutableStateOf<List<Wq175MatchPair>>(emptyList()) }
     var feedback by remember { mutableStateOf("") }
     var remaining by remember { mutableIntStateOf(90) }
     var finished by remember { mutableStateOf(false) }
+    var endReason by remember { mutableStateOf(Wq175MatchEnd.Stopped) }
     var played by remember { mutableStateOf(false) }
     var revision by remember { mutableIntStateOf(0) }
 
-    fun finishGame(completed:Boolean) {
+    fun finishGame(reason:Wq175MatchEnd) {
         if(finished)return
         finished=true
+        endReason=reason
         val score=matched.size*10-(wrong*2)
-        store.finish(score.coerceAtLeast(0),completed)
+        store.finish(score.coerceAtLeast(0),reason==Wq175MatchEnd.Completed)
         revision++
     }
 
@@ -197,7 +210,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                 delay(1000)
                 if(remaining>0)remaining--
             }
-            if(!finished && remaining<=0)finishGame(false)
+            if(!finished && remaining<=0)finishGame(Wq175MatchEnd.Timeout)
         }
     }
 
@@ -233,6 +246,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
             leftChoice=-1
             matched=emptySet()
             wrong=0
+            wrongPairs=emptyList()
             feedback=""
             remaining=90
             finished=false
@@ -326,14 +340,29 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                             fontWeight=FontWeight.ExtraBold)
                     }
                 } else if(finished) {
-                    Text(if(matched.size==deck.size)"Tebrikler, hepsi eşleşti!"
-                        else "Süre tamamlandı!",
+                    Text(wq175MatchResultTitle(endReason),
                         fontSize=23.sp,color=MatchInk,fontWeight=FontWeight.Black)
                     Text("Doğru: ${matched.size}/${deck.size} · Yanlış: $wrong · Puan: "+
                         (matched.size*10-wrong*2).coerceAtLeast(0),
                         color=MatchInk)
-                    Text("Yanlış yaptığın kelimeler tekrar modunda saklandı.",
-                        color=Color(0xFF65787D),fontSize=12.sp)
+                    if(wrongPairs.isEmpty()) {
+                        Text("Bu turda yanlış eşleştirme yapmadın.",
+                            color=Color(0xFF65787D),fontSize=12.sp)
+                    } else {
+                        Text("Tekrar çalışacağın kelimeler:",
+                            color=MatchInk,fontWeight=FontWeight.Bold,fontSize=14.sp)
+                        wrongPairs.forEach { word ->
+                            Surface(shape=RoundedCornerShape(12.dp),
+                                color=Color(0xFFFFF1E6),
+                                modifier=Modifier.fillMaxWidth()) {
+                                Text(word.english+"  —  "+word.turkish,
+                                    Modifier.padding(11.dp),color=MatchInk,
+                                    fontSize=13.sp,fontWeight=FontWeight.Medium)
+                            }
+                        }
+                        Text("Bu kelimeler Yanlışlarımdan Eşleştirme'ye kaydedildi.",
+                            color=Color(0xFF65787D),fontSize=12.sp)
+                    }
                     Button(onClick={played=false;finished=false},
                         modifier=Modifier.fillMaxWidth(),
                         colors=ButtonDefaults.buttonColors(containerColor=MatchTeal)){
@@ -388,10 +417,12 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                                             matched=next
                                             if(mode=="mistakes")store.learned(pair)
                                             feedback="Doğru! ${pair.english} = ${pair.turkish}"
-                                            if(next.size==deck.size)finishGame(true)
+                                            if(next.size==deck.size)finishGame(Wq175MatchEnd.Completed)
                                         }else {
                                             wrong++
-                                            store.mistake(deck[left])
+                                            val mistaken=deck[left]
+                                            wrongPairs=(wrongPairs+mistaken).distinctBy { it.id }
+                                            store.mistake(mistaken)
                                             feedback="Tekrar dene. Bu çift eşleşmiyor."
                                         }
                                         leftChoice=-1
@@ -412,7 +443,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                     }
                     if(feedback.isNotBlank())Text(feedback,fontSize=12.sp,
                         color=if(feedback.startsWith("Doğru"))MatchTeal else MatchPink)
-                    OutlinedButton(onClick={finishGame(false)},
+                    OutlinedButton(onClick={finishGame(Wq175MatchEnd.Stopped)},
                         modifier=Modifier.fillMaxWidth()){
                         Text("Oyunu bitir",color=MatchInk)
                     }

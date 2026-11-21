@@ -68,6 +68,15 @@ class Wq175MatchingTest {
         assertEquals(3, Wq175MatchingBank.prepare(personal,6).size)
     }
 
+    @Test fun outcomeLabelsDistinguishRealFinishingReasons() {
+        assertEquals("Harika! Bütün kartlar eşleşti!",
+            wq175MatchResultTitle(Wq175MatchEnd.Completed))
+        assertEquals("Süre doldu!",
+            wq175MatchResultTitle(Wq175MatchEnd.Timeout))
+        assertEquals("Oyun sonlandırıldı",
+            wq175MatchResultTitle(Wq175MatchEnd.Stopped))
+    }
+
     @Test fun levelAndWordTypeComeFromActualRows() {
         val items=Wq175MatchingBank.parse(sequenceOf(
             row("B2","ACHIEVE","başarmak","Fiiller"),
