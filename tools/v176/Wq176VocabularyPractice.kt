@@ -55,12 +55,26 @@ internal object Wq176VocabularyPractice {
         require(level in LEVELS)
         val words=parse(context).filter { it.level==level }
         val unique=words.distinctBy { it.english }
+        val byKind=unique.groupBy { it.kind }
         return unique.mapNotNull { item ->
-            val wrong=unique.asSequence()
-                .filter { it.english!=item.english && !it.turkish.equals(item.turkish,true) }
-                .sortedWith(compareBy<Word> { it.kind!=item.kind }.thenBy { it.english })
-                .distinctBy { it.turkish.lowercase(Locale.ROOT) }
-                .take(3).map { it.turkish }.toList()
+            // O(n) total construction, not an O(n² log n) per-word sort on UI.
+            val wrong=LinkedHashSet<String>()
+            fun appendFrom(deck:List<Word>) {
+                if(deck.isEmpty() || wrong.size>=3) return
+                val start=(item.english.hashCode().toLong() and 0x7FFFFFFF)
+                    .rem(deck.size.toLong()).toInt()
+                for(offset in deck.indices) {
+                    val candidate=deck[(start+offset)%deck.size]
+                    if(candidate.english!=item.english &&
+                       !candidate.turkish.equals(item.turkish,true) &&
+                       wrong.none { it.equals(candidate.turkish,true) }) {
+                        wrong.add(candidate.turkish)
+                        if(wrong.size==3) break
+                    }
+                }
+            }
+            appendFrom(byKind[item.kind].orEmpty())
+            appendFrom(unique)
             if(wrong.size!=3) null else {
                 val difficulty=when(level) {
                     "A1","A2" -> YdsDifficulty.Easy
