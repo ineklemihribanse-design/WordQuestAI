@@ -25,6 +25,31 @@ class Wq176ContentRotationTest {
         }
     }
 
+    @Test fun dailyTopicsUseBalancedShuffledBagsAcrossRestarts() {
+        val context=RuntimeEnvironment.getApplication()
+        val profile="daily_"+UUID.randomUUID().toString()
+        val topics=listOf(
+            YdsTopic.Vocabulary,YdsTopic.Grammar,YdsTopic.Translation,
+            YdsTopic.Completion,YdsTopic.Paragraph,YdsTopic.Connectors
+        )
+        val first=(1..6).map {
+            Wq176QuestionRotation.nextTopic(context,profile,topics)
+        }
+        val next=(1..6).map {
+            Wq176QuestionRotation.nextTopic(context,profile,topics)
+        }
+        assertEquals(topics.toSet(),first.toSet())
+        assertEquals(topics.toSet(),next.toSet())
+        assertNotEquals(first.last(),next.first())
+        assertTrue((first+next).zipWithNext().all { (a,b)->a!=b })
+        // Profile separation: a second learner also gets all six topics,
+        // regardless of the first learner's already-consumed bag.
+        val other=(1..6).map {
+            Wq176QuestionRotation.nextTopic(context,profile+"-other",topics)
+        }
+        assertEquals(topics.toSet(),other.toSet())
+    }
+
     @Test fun twoConsecutiveDailySessionsDoNotReuseQuestionsAndProfileIsIsolated() {
         val context=RuntimeEnvironment.getApplication()
         val pool=YdsContent.questions.filter { it.topic==YdsTopic.Vocabulary }
