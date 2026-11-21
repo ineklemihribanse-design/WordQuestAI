@@ -48,11 +48,11 @@ internal fun ArenaBoardV2(
         val cols=puzzle.columns.coerceAtLeast(1)
         val rows=puzzle.rows.coerceAtLeast(1)
         val gap=2.dp
-        val visibleHeight=(LocalConfiguration.current.screenHeightDp.dp*.72f)
-            .coerceIn(320.dp,820.dp)
-        val maxHeight=if(compact)180.dp else visibleHeight
-        val fitWidth=(maxWidth-12.dp-gap*cols)/cols
-        val fitHeight=(maxHeight-12.dp-gap*rows)/rows
+        val visibleHeight=(LocalConfiguration.current.screenHeightDp.dp*.83f)
+            .coerceIn(340.dp,940.dp)
+        val maxHeight=if(compact)220.dp else visibleHeight
+        val fitWidth=(maxWidth-8.dp-gap*cols)/cols
+        val fitHeight=(maxHeight-8.dp-gap*rows)/rows
         val fitted=minOf(fitWidth,fitHeight).coerceIn(7.dp,54.dp)
         val cell=if(zoomed)38.dp else fitted
         val boardWidth=(cell+gap)*cols+8.dp
