@@ -1575,6 +1575,13 @@ jobs:
           python3 -m py_compile tools/v175/apply_home_navigation_175.py tools/v175/verify_home_navigation_175.py
           python3 tools/v175/apply_home_navigation_175.py
           python3 tools/v175/verify_home_navigation_175.py
+      - name: Add 1.0.76 original content bank and daily-question anti-repeat engine
+        if: ${{ github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v176/apply_content_176.py tools/v176/verify_content_176.py tools/v176/verify_upgrade_metadata_176.py
+          python3 tools/v176/apply_content_176.py
+          python3 tools/v176/verify_content_176.py
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1616,7 +1623,7 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
-      - name: Verify 1.0.75 signed candidate remains a direct 1.0.74 upgrade
+      - name: Verify 1.0.76 signed candidate remains a direct 1.0.74 upgrade
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1641,38 +1648,38 @@ jobs:
           d=json.load(open(sys.argv[1]))
           assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=d["elements"][0]
-          assert item["versionCode"]==101
-          assert item["versionName"]=="1.0.75"
-          print("Upgrade candidate identity verified: original .fresh / code101")
+          assert item["versionCode"]==102
+          assert item["versionName"]=="1.0.76"
+          print("Upgrade candidate identity verified: original .fresh / code102")
           PY
           mkdir -p "$RUNNER_TEMP/wq175-signature-qa"
           trap 'rm -rf "$RUNNER_TEMP/wq175-signature-qa"' EXIT
           printf '%s' "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/wq175-signature-qa/store.p12"
-          java -jar "$SIGNER" sign             --ks "$RUNNER_TEMP/wq175-signature-qa/store.p12" --ks-type PKCS12             --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" "$INPUT"
-          java -jar "$SIGNER" verify --verbose --print-certs             "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk"             > "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
+          java -jar "$SIGNER" sign             --ks "$RUNNER_TEMP/wq175-signature-qa/store.p12" --ks-type PKCS12             --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.76-candidate.apk" "$INPUT"
+          java -jar "$SIGNER" verify --verbose --print-certs             "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.76-candidate.apk"             > "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
           grep -q 'Verified using v2 scheme (APK Signature Scheme v2): true'             "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
           grep -q 'Verified using v3 scheme (APK Signature Scheme v3): true'             "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
           grep -qi 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6'             "$RUNNER_TEMP/wq175-signature-qa/verification.txt"
-          unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" |
+          unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.76-candidate.apk" |
             grep -q 'assets/vocabulary-addendum-v175.tsv'
-          unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" |
+          unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.76-candidate.apk" |
             grep -q 'WORDQUEST_CEFR_175_ATTRIBUTION.md'
-          echo 'PASS: signed v1.0.75 code101 upgrade identity, matching v1.0.74 signer, and attributed new words.'
+          echo 'PASS: signed v1.0.76 code102 upgrade identity, matching v1.0.74 signer, and attributed new words.'
           echo 'QA-only candidate: deliberately NOT published or made available to the in-app updater.'
-          cp "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.75-candidate.apk" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk
+          cp "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.76-candidate.apk" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.76-signed-qa.apk
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging \
-            source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk \
+            source/app/build/outputs/apk/offline/WordQuestAI-v1.0.76-signed-qa.apk \
             > "$RUNNER_TEMP/wq175-production-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq175-production-badging.txt"; then
             echo '::error::A debuggable APK must never be offered as an update.'
             exit 1
           fi
-          echo 'PASS: signed 1.0.75 candidate is non-debuggable.'
+          echo 'PASS: signed 1.0.76 candidate is non-debuggable.'
       - name: Enable KVM for emulator-only upgrade QA
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::Host /dev/kvm unavailable"; fi
-      - name: Test genuine 1.0.74 to 1.0.75 in-place emulator installation
+      - name: Test genuine 1.0.74 to 1.0.76 in-place emulator installation
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -1681,7 +1688,7 @@ jobs:
           arch: x86_64
           profile: pixel_4
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
-          script: bash tools/v175/qa_emulator_upgrade_175.sh
+          script: bash tools/v176/qa_emulator_upgrade_176.sh
       - name: Save emulator screenshots for manual responsive visual review
         if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         continue-on-error: true
@@ -1693,12 +1700,12 @@ jobs:
             ${{ runner.temp }}/wq175-responsive-qa/*.png
           if-no-files-found: warn
           retention-days: 3
-      - name: Archive signed 1.0.75 QA APK only after successful in-place upgrade test
+      - name: Archive signed 1.0.76 QA APK only after successful in-place upgrade test
         if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.75-code101-signed-QA-${{ github.run_number }}
-          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.75-signed-qa.apk
+          name: WordQuestAI-v1.0.76-code102-signed-QA-${{ github.run_number }}
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.76-signed-qa.apk
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
