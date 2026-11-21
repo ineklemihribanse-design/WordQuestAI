@@ -1,5 +1,7 @@
 package com.kelimebulmacasi.a1
 
+import android.graphics.BitmapFactory
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -46,7 +48,13 @@ internal fun Wq175SceneBackdrop(
     val context = LocalContext.current
     val file = Wq175PremiumScenes.file(slug)
     val bitmap = remember(context, file) {
-        file?.let { wq175LoadUserArt(context, "scenes", it) }
+        runCatching {
+            file?.let { name ->
+                context.assets.open("wq175_user_art/scenes/$name.webp").use { stream ->
+                    BitmapFactory.decodeStream(stream)?.asImageBitmap()
+                }
+            }
+        }.getOrNull()
     }
     Box(modifier) {
         if(bitmap != null) {
