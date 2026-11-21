@@ -1583,6 +1583,9 @@ jobs:
           python3 -m py_compile tools/v176/apply_content_176.py tools/v176/verify_content_176.py tools/v176/verify_upgrade_metadata_176.py
           python3 tools/v176/apply_content_176.py
           python3 tools/v176/verify_content_176.py
+          python3 -m py_compile tools/v176/audit_levels_176.py
+          python3 tools/v176/audit_levels_176.py
+          test -s source/app/src/main/assets/vocabulary-v176-coverage.json
       - name: Verify independent app identity
         run: |
           set -euo pipefail
