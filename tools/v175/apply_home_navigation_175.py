@@ -63,3 +63,9 @@ private fun HeroTiles''',
 p.write_text(s,"utf-8")
 print("PASS: Android bottom nav with four real destination callbacks and selected Home state.")
 print("PASS: live selected-profile due-word notifications and learning plan actions.")
+# Last guarded visual pass; preserve all earlier working navigation and routes.
+import subprocess
+import sys
+subprocess.run([sys.executable,
+    str(root/"tools/v175/apply_requested_ui_refinement_175.py")],check=True)
+
