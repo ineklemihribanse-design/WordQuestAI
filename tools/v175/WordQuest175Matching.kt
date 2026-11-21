@@ -299,13 +299,39 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                         "notebook" to "Kendi Defterimden"
                     )
                     modes.forEach { (value,label) ->
+                        val modeArt = when(value) {
+                            "classic" -> "cards"
+                            "timed" -> "timer"
+                            "mistakes" -> "review"
+                            else -> "notebook"
+                        }
+                        val detail = when(value) {
+                            "classic" -> "Dilediğin hızda eşleştir"
+                            "timed" -> "90 saniyelik hızlı oyun"
+                            "mistakes" -> "Önceki yanlışlarını tekrar et"
+                            else -> "Kendi kaydettiğin kelimeler"
+                        }
                         Surface(onClick={mode=value;issue=""},
-                            shape=RoundedCornerShape(15.dp),
-                            color=if(mode==value)Color(0xFFDBFAF1) else Color.White,
+                            shape=RoundedCornerShape(20.dp),
+                            shadowElevation=if(mode==value)5.dp else 2.dp,
+                            color=if(mode==value)Color(0xFFDBFAF1)
+                                else Color(0xFFF7FBFF),
                             border=BorderStroke(if(mode==value)2.dp else 1.dp,
                                 if(mode==value)MatchTeal else Color(0xFFDCE5E8))) {
-                            Text(label,Modifier.fillMaxWidth().padding(13.dp),
-                                color=MatchInk,fontWeight=FontWeight.SemiBold)
+                            Row(Modifier.fillMaxWidth().padding(12.dp),
+                                horizontalArrangement=Arrangement.spacedBy(12.dp),
+                                verticalAlignment=Alignment.CenterVertically) {
+                                Wq175GlossIcon(modeArt,Modifier.size(57.dp))
+                                Column(Modifier.weight(1f),
+                                    verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                                    Text(label,color=MatchInk,fontSize=15.sp,
+                                        fontWeight=FontWeight.ExtraBold)
+                                    Text(detail,color=Color(0xFF58747A),
+                                        fontSize=11.sp,lineHeight=15.sp)
+                                }
+                                if(mode==value) Text("✓",color=MatchTeal,
+                                    fontWeight=FontWeight.Black,fontSize=21.sp)
+                            }
                         }
                     }
                     if(mode=="classic" || mode=="timed") {
@@ -345,11 +371,30 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                             fontWeight=FontWeight.ExtraBold)
                     }
                 } else if(finished) {
-                    Text(wq175MatchResultTitle(endReason),
-                        fontSize=23.sp,color=MatchInk,fontWeight=FontWeight.Black)
-                    Text("Doğru: ${matched.size}/${deck.size} · Yanlış: $wrong · Puan: "+
-                        (matched.size*10-wrong*2).coerceAtLeast(0),
-                        color=MatchInk)
+                    Surface(
+                        modifier=Modifier.fillMaxWidth(),
+                        shape=RoundedCornerShape(24.dp),
+                        color=Color(0xFFE8F6F5),
+                        border=BorderStroke(1.dp,Color(0xFFB6DBDC))
+                    ) {
+                        Row(Modifier.padding(16.dp),
+                            verticalAlignment=Alignment.CenterVertically,
+                            horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                            Wq175GlossIcon(
+                                if(endReason==Wq175MatchEnd.Completed)
+                                    "success" else "review",
+                                Modifier.size(79.dp))
+                            Column(Modifier.weight(1f),
+                                verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                                Text(wq175MatchResultTitle(endReason),
+                                    fontSize=21.sp,color=MatchInk,
+                                    fontWeight=FontWeight.Black)
+                                Text("Doğru: ${matched.size}/${deck.size} · Yanlış: $wrong · Puan: "+
+                                    (matched.size*10-wrong*2).coerceAtLeast(0),
+                                    color=MatchInk,fontSize=13.sp)
+                            }
+                        }
+                    }
                     if(wrongPairs.isEmpty()) {
                         Text("Bu turda yanlış eşleştirme yapmadın.",
                             color=Color(0xFF65787D),fontSize=12.sp)

@@ -124,7 +124,7 @@ internal fun Wq175ParagraphPracticeEntry(profileKey: String) {
         Row(Modifier.padding(14.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(13.dp)) {
-            Wq175PracticeIcon(PracticeKind.Dictation, Modifier.size(42.dp))
+            Wq175GlossIcon("paragraph", Modifier.size(57.dp))
             Column(Modifier.weight(1f)) {
                 Text("Paragraf Dinle ve Yaz", fontSize = 17.sp,
                     fontWeight = FontWeight.ExtraBold, color = Color(0xFF813E40))
@@ -213,8 +213,15 @@ private fun Wq175ParagraphPracticeDialog(profileKey: String, close: () -> Unit) 
                         color = Color(0xFF803B42))
                     TextButton(onClick = close) { Text("Kapat") }
                 }
-                Text("Dinlediğin İngilizce paragrafı yaz. Noktalama ve büyük harf puanı etkilemez.",
-                    fontSize = 13.sp, color = Color(0xFF7A6664))
+                Row(Modifier.fillMaxWidth()
+                    .background(Color(0xFFFFF0E4),RoundedCornerShape(18.dp))
+                    .padding(11.dp),verticalAlignment=Alignment.CenterVertically,
+                    horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                    Wq175GlossIcon("paragraph",Modifier.size(58.dp))
+                    Text("Dinlediğin İngilizce paragrafı yaz. Noktalama ve büyük harf puanı etkilemez.",
+                        modifier=Modifier.weight(1f),
+                        fontSize=13.sp,lineHeight=18.sp,color=Color(0xFF7A5050))
+                }
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
                     horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     listOf("A1","A2","B1","B2","C1","C2").forEach { option ->
@@ -280,9 +287,16 @@ private fun Wq175ParagraphPracticeDialog(profileKey: String, close: () -> Unit) 
                                 RoundedCornerShape(18.dp))
                             .padding(14.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text("Kelime doğruluğu: %" + grade.accuracy,
-                            fontWeight = FontWeight.Black, fontSize = 19.sp,
-                            color = Color(0xFF245B49))
+                        Row(verticalAlignment=Alignment.CenterVertically,
+                            horizontalArrangement=Arrangement.spacedBy(11.dp)) {
+                            Wq175GlossIcon(
+                                if(grade.accuracy==100)"success" else "review",
+                                Modifier.size(57.dp))
+                            Text("Kelime doğruluğu: %" + grade.accuracy,
+                                modifier=Modifier.weight(1f),
+                                fontWeight = FontWeight.Black, fontSize = 19.sp,
+                                color = Color(0xFF245B49))
+                        }
                         if (grade.missing.isNotEmpty()) Text(
                             "Eksik kelimeler: " + grade.missing.joinToString(", "))
                         if (grade.different.isNotEmpty()) Text(

@@ -123,9 +123,15 @@ internal fun Wq175YdsAnswerFeedback(correct: Boolean, right: String, explanation
         .background(if(correct) Color(0xFFE3F7ED) else Color(0xFFFFF2E9))
         .border(1.dp,if(correct)Color(0xFF9BD5B5) else Color(0xFFE8C0A5),shape)
         .padding(15.dp),verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(if(correct) "Doğru cevap!" else "Doğru cevap: " + right,
-            color = if(correct)Color(0xFF266B4C) else Color(0xFF9C5339),
-            fontWeight = FontWeight.ExtraBold,fontSize = 15.sp)
+        Row(verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+            Wq175GlossIcon(if(correct)"success" else "review",
+                Modifier.size(43.dp))
+            Text(if(correct) "Doğru cevap!" else "Doğru cevap: " + right,
+                modifier=Modifier.weight(1f),
+                color = if(correct)Color(0xFF266B4C) else Color(0xFF9C5339),
+                fontWeight = FontWeight.ExtraBold,fontSize = 15.sp)
+        }
         Text(explanation,color = YdsNavy,fontSize = 13.sp,lineHeight = 19.sp)
     }
 }
@@ -137,7 +143,7 @@ internal fun Wq175YdsResult(score: Int, answered: Int, total: Int) {
             Color(0xFFE8F0FF),Color(0xFFFFF4DB))))
         .padding(18.dp),horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Wq175GlossIcon("trophy",Modifier.size(94.dp))
+        Wq175GlossIcon("success",Modifier.size(94.dp))
         Text("Çalışma Özeti",color = YdsNavy,fontSize = 22.sp,
             fontWeight = FontWeight.Black)
         Text(score.toString()+"/"+answered.toString()+" doğru",

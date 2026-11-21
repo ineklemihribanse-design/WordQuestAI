@@ -34,16 +34,30 @@ internal fun <T> wq175ImportPreviewPage(
 
 @Composable
 internal fun Wq175WordAddBar(onManual:()->Unit,onImport:()->Unit) {
-    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-        Button(onClick=onManual,modifier=Modifier.weight(1f).heightIn(min=54.dp),
-            shape=RoundedCornerShape(16.dp),
-            colors=ButtonDefaults.buttonColors(containerColor=Color(0xFF5AA5DD))) {
-            Text("+  Elle Ekle",fontSize=12.sp,fontWeight=FontWeight.ExtraBold)
+    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+        Surface(onClick=onManual,modifier=Modifier.weight(1f).heightIn(min=105.dp),
+            shape=RoundedCornerShape(21.dp),color=Color(0xFFE6F5FF),
+            border=BorderStroke(1.dp,Color(0xFFBDDDF8)),
+            shadowElevation=3.dp) {
+            Column(Modifier.fillMaxWidth().padding(vertical=9.dp,horizontal=7.dp),
+                verticalArrangement=Arrangement.spacedBy(3.dp),
+                horizontalAlignment=Alignment.CenterHorizontally) {
+                Wq175GlossIcon("notebook",Modifier.size(58.dp))
+                Text("Elle Ekle",fontSize=12.sp,
+                    color=Color(0xFF194B73),fontWeight=FontWeight.ExtraBold)
+            }
         }
-        OutlinedButton(onClick=onImport,modifier=Modifier.weight(1f).heightIn(min=54.dp),
-            shape=RoundedCornerShape(16.dp)) {
-            Text("PDF · Kamera · AI",fontSize=12.sp,
-                color=Color(0xFF60389A),fontWeight=FontWeight.Bold)
+        Surface(onClick=onImport,modifier=Modifier.weight(1f).heightIn(min=105.dp),
+            shape=RoundedCornerShape(21.dp),color=Color(0xFFF2E9FF),
+            border=BorderStroke(1.dp,Color(0xFFD6C3F1)),
+            shadowElevation=3.dp) {
+            Column(Modifier.fillMaxWidth().padding(vertical=9.dp,horizontal=7.dp),
+                verticalArrangement=Arrangement.spacedBy(3.dp),
+                horizontalAlignment=Alignment.CenterHorizontally) {
+                Wq175GlossIcon("scan",Modifier.size(58.dp))
+                Text("PDF · Kamera · AI",fontSize=11.sp,
+                    color=Color(0xFF57388A),fontWeight=FontWeight.ExtraBold)
+            }
         }
     }
 }
@@ -168,17 +182,23 @@ internal fun Wq175ImportWordsDialog(
                         openDocument.launch(arrayOf("application/pdf"))},
                         enabled=!busy,modifier=Modifier.weight(1f),
                         contentPadding=PaddingValues(horizontal=3.dp)) {
+                        Wq175GlossIcon("pdf",Modifier.size(20.dp))
+                        Spacer(Modifier.width(3.dp))
                         Text("PDF",fontSize=12.sp)
                     }
                     OutlinedButton(onClick={
                         openDocument.launch(arrayOf("image/*"))},
                         enabled=!busy,modifier=Modifier.weight(1f),
                         contentPadding=PaddingValues(horizontal=3.dp)) {
+                        Wq175GlossIcon("scan",Modifier.size(20.dp))
+                        Spacer(Modifier.width(3.dp))
                         Text("Görsel",fontSize=12.sp)
                     }
                     OutlinedButton(onClick={camera()},enabled=!busy,
                         modifier=Modifier.weight(1f),
                         contentPadding=PaddingValues(horizontal=3.dp)) {
+                        Wq175GlossIcon("camera",Modifier.size(20.dp))
+                        Spacer(Modifier.width(3.dp))
                         Text("Kamera",fontSize=12.sp)
                     }
                 }
