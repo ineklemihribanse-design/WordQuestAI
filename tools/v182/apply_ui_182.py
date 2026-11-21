@@ -95,13 +95,11 @@ def quiz(s):
                             lineHeight=28.sp, fontWeight = FontWeight.Bold)''',
         'prompt readability')
     s=once(s,
-        '''                    ArenaScoreStrip(own.size, questions.size, myScore, null)
-                    ArenaPanelBlock {''',
-        '''                    ArenaScoreStrip(own.size, questions.size, myScore, null)
-                    Wq182Info("Düello kuralları",
-                        "Beş seçenekten birini seç. Doğru cevap puan kazandırır; yanlış cevap puan azaltabilir. Süre dolduğunda soru cevaplanmamış sayılır.")
-                    ArenaPanelBlock {''',
-        'small info button for quiz rules')
+        '''                        question.options.forEachIndexed { n, option ->''',
+        '''                        Wq182Info("Düello kuralları",
+                            "Beş seçenekten birini seç. Doğru cevap puan kazandırır; yanlış cevap puan azaltabilir. Süre dolduğunda soru cevaplanmamış sayılır.")
+                        question.options.forEachIndexed { n, option ->''',
+        'small info button directly above quiz choices')
     return s
 edit('PremiumOnlineScreen.kt',quiz)
 
