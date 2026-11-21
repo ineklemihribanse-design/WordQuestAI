@@ -1,0 +1,196 @@
+name: Publish verified WordQuest AI 1.0.76 to installed app
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-v176-verified-channel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: wordquest-public-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      SOURCE_RUN: '44931549245'
+      SOURCE_SHA: 'a7328d829128edad9fdaf30826b404b09600a305'
+      SOURCE_BRANCH: 'feature/v175-comprehensive-learning-update'
+      SOURCE_ARTIFACT: 'WordQuestAI-v1.0.76-code102-signed-QA-565'
+      TAG: 'v1.0.76'
+      EXPECTED_CERT: '29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6'
+      APP_PACKAGE: 'com.kelimebulmacasi.a1.practice.fresh'
+    steps:
+      - name: Verify immutable source run, completed tests and successful in-place update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN" > /tmp/wq176-source-run.json
+          jq -e --arg sha "$SOURCE_SHA" --arg branch "$SOURCE_BRANCH"             '.conclusion=="success" and .status=="completed" and .head_sha==$sha and .head_branch==$branch and .event=="push"'             /tmp/wq176-source-run.json
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN/jobs?per_page=100" > /tmp/wq176-source-jobs.json
+          python3 - <<'PY'
+          import json
+          doc=json.load(open('/tmp/wq176-source-jobs.json'))
+          good={step['name'] for job in doc['jobs'] for step in job['steps'] if step.get('conclusion')=='success'}
+          required={
+              "Add 1.0.76 original content bank and daily-question anti-repeat engine",
+              "Build Android APK and run JVM tests",
+              "Verify 1.0.76 signed candidate remains a direct 1.0.74 upgrade",
+              "Test genuine 1.0.74 to 1.0.76 in-place emulator installation",
+              "Archive signed 1.0.76 QA APK only after successful in-place upgrade test",
+          }
+          assert required <= good, "QA stages not all successful: "+str(required-good)
+          print("Verified signed QA source, tests, responsive geometry and emulator in-place upgrade.")
+          PY
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN/artifacts?per_page=100"             --jq '.artifacts[].name' | grep -Fxq "$SOURCE_ARTIFACT"
+          echo "Pinned source run $SOURCE_RUN at $SOURCE_SHA; artifact $SOURCE_ARTIFACT"
+
+      - name: Read current public update feed and ensure monotonic upgrade
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          if [ "$current" = "$TAG" ]; then
+            echo "Already published $TAG. Refusing to overwrite an immutable update."
+            exit 1
+          fi
+          mkdir -p old-release
+          gh release download "$current" -R "$GITHUB_REPOSITORY" --pattern update.json --dir old-release
+          python3 - "$current" <<'PY'
+          import json,sys
+          old=json.load(open('old-release/update.json',encoding='utf-8'))
+          assert old['tag']==sys.argv[1], (old['tag'],sys.argv[1])
+          assert old['packageName']=='com.kelimebulmacasi.a1.practice.fresh'
+          assert int(old['versionCode'])<102, "Update channel already has an equal or newer version"
+          assert tuple(map(int,old['tag'].removeprefix('v').split('.')))<(1,0,76)
+          print('Safe update path:',old['tag'],'-> v1.0.76')
+          PY
+          echo "OLD_TAG=$current" >> "$GITHUB_ENV"
+
+      - name: Download exact signed QA artifact, without rebuilding or resigning
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY"             --name "$SOURCE_ARTIFACT" --dir dist
+          test -s dist/WordQuestAI-v1.0.76-signed-qa.apk
+          mv dist/WordQuestAI-v1.0.76-signed-qa.apk dist/WordQuestAI.apk
+          test "$(stat -c%s dist/WordQuestAI.apk)" -gt 50000000
+          unzip -tq dist/WordQuestAI.apk
+          sha256sum dist/WordQuestAI.apk
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Install APK inspection tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          sdkmanager --install 'build-tools;35.0.0' >/dev/null
+          test -x "$ANDROID_HOME/build-tools/35.0.0/aapt"
+          test -x "$ANDROID_HOME/build-tools/35.0.0/apksigner"
+
+      - name: Independently verify upgrade package, signer, version and non-debuggable build
+        shell: bash
+        run: |
+          set -euo pipefail
+          aapt="$ANDROID_HOME/build-tools/35.0.0/aapt"
+          signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          "$aapt" dump badging dist/WordQuestAI.apk > /tmp/wq176-badging.txt
+          "$signer" verify --verbose --print-certs dist/WordQuestAI.apk > /tmp/wq176-signature.txt
+          grep -Fq "name='$APP_PACKAGE'" /tmp/wq176-badging.txt
+          grep -Fq "versionCode='102'" /tmp/wq176-badging.txt
+          grep -Fq "versionName='1.0.76'" /tmp/wq176-badging.txt
+          if grep -Fq 'application-debuggable' /tmp/wq176-badging.txt; then
+            echo 'Refusing debuggable user update'
+            exit 1
+          fi
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' /tmp/wq176-signature.txt
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' /tmp/wq176-signature.txt
+          grep -Fqi "Signer #1 certificate SHA-256 digest: $EXPECTED_CERT" /tmp/wq176-signature.txt
+          echo 'PASS: verified package identity, v1.0.76 code102, release signature, non-debuggable APK'
+
+      - name: Build SHA-256 update.json manifest for existing Settings update channel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          apk=pathlib.Path('dist/WordQuestAI.apk')
+          notes=(
+            "WordQuest AI 1.0.76 — son onaylanan telefon/tablet tasarımları, "
+            "Arena ve platform üzerindeki maskot, daha geniş telefon bulmaca tahtası, "
+            "Eşleştirmelerim, kelime kaynakları, günlük hedefler ve YDS içerik güncellemesi. "
+            "2818 YDS tarzı soru kaydı; bunların 1020 tanesi yeni Grammar havuzundadır. "
+            "Test Attack kitabının konu dağılımını örnek alan 180 özgün soru eklendi; "
+            "kitaptan telifli sorular kopyalanmadı. "
+            "Sorular ve seçenekler karıştırılır, yakın zamanda sorulanlar mümkün olduğunca "
+            "tekrar edilmez. 12000 kelime hedefi hâlâ tamamlanmamıştır. "
+            "v1.0.74 -> v1.0.76 emülatör yükseltmesi test edildi; gerçek cihazda görsel "
+            "inceleme ve bireysel kullanıcı verisi yedeklemesi önerilir."
+          )
+          manifest={
+            'schemaVersion':1,'tag':'v1.0.76','versionCode':102,
+            'versionName':'1.0.76',
+            'packageName':'com.kelimebulmacasi.a1.practice.fresh',
+            'apkFile':'WordQuestAI.apk','sizeBytes':apk.stat().st_size,
+            'sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),
+            'notes':notes
+          }
+          assert manifest['sizeBytes']>50000000
+          pathlib.Path('dist/update.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('Public update metadata:',json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+
+      - name: Publish immutable signed 1.0.76 release to the actual installed-app feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          current="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          test "$current" = "$OLD_TAG" || (echo "Update feed advanced during publication" && exit 1)
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG already exists. Never overwrite published APK."
+            exit 1
+          fi
+          cat > dist/RELEASE_NOTES.md <<'NOTES'
+          # WordQuest AI 1.0.76 — Premium tasarım ve eğitim içeriği
+
+          - 1.0.75 için en son onaylanan Arena, ana ekran, maskot, eşleştirme,
+            bulmaca ve tüm ilgili telefon/tablet oranları korunmuştur.
+          - Telefonda büyük bulmaca alanı; tabletlerde ayrı responsive düzen.
+          - Günlük Hedefim ve YDS karıştırma sistemleri, kelime kaynaklarından
+            sorular ve tekrar azaltan seans seçimi.
+          - Çevrimdışı YDS tarzı içerik: 2818 soru kaydı; 1020 ek Grammar sorusu.
+          - Test Attack'ın konu kapsamına göre 12 başlıkta 180 özgün yeni soru;
+            kitaptan telifli soru metni çoğaltılmadı.
+          - A1–C2 her seviye için 2000 kelime hedefi henüz tamamlanmadı.
+
+          Paket: com.kelimebulmacasi.a1.practice.fresh, Android sürüm kodu 102.
+          İmza, APK/JVM testleri ve 1.0.74 üzerine kurulum emülatörde doğrulandı.
+          Bu yayın mevcut uygulamanın verilerini temizleyerek yeniden kurulum istemez;
+          gerçek cihaz ve kişisel kayıtların korunduğu ayrıca kontrol edilmelidir.
+          NOTES
+          gh release create "$TAG" dist/WordQuestAI.apk dist/update.json             -R "$GITHUB_REPOSITORY" --target "$SOURCE_SHA"             --title "WordQuest AI v1.0.76 — Premium Tasarım ve İçerik"             --notes-file dist/RELEASE_NOTES.md --latest
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets             --jq '[.assets[].name] | sort | join(",")'             | grep -Fxq 'WordQuestAI.apk,update.json'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$TAG"
+          echo "PUBLIC UPDATE READY: https://github.com/$GITHUB_REPOSITORY/releases/tag/$TAG"
+          echo '### WordQuest 1.0.76 installed-app update published' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Version: v1.0.76 (code102); signed, tested and immutable.' >> "$GITHUB_STEP_SUMMARY"
