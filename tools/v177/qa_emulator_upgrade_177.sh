@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# GitHub-hosted emulator QA for an already installed WordQuest AI 1.0.74.
+# GitHub-hosted emulator QA for an already installed WordQuest AI 1.0.76.
 # This script NEVER publishes an APK or touches a user's physical device.
 set -euo pipefail
 
 PKG="com.kelimebulmacasi.a1.practice.fresh"
-OLD_URL="https://github.com/ineklemihribanse-design/WordQuestAI/releases/download/v1.0.74/WordQuestAI.apk"
-OLD="$RUNNER_TEMP/wq175-original-v174.apk"
+OLD_URL="https://github.com/ineklemihribanse-design/WordQuestAI/releases/download/v1.0.76/WordQuestAI.apk"
+OLD="$RUNNER_TEMP/wq175-original-v176.apk"
 NEW="source/app/build/outputs/apk/offline/WordQuestAI-v1.0.77-signed-qa.apk"
 AAPT="$ANDROID_HOME/build-tools/35.0.0/aapt"
 SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
@@ -25,7 +25,7 @@ for APK in "$OLD" "$NEW"; do
     grep -qi "Signer #1 certificate SHA-256 digest: $EXPECTED_SHA" \
         "$RUNNER_TEMP/wq175-apk-cert.txt"
 done
-grep -Fq "versionCode='100'" "$RUNNER_TEMP/wq175-$(basename "$OLD").badging"
+grep -Fq "versionCode='102'" "$RUNNER_TEMP/wq175-$(basename "$OLD").badging"
 grep -Fq "versionCode='103'" "$RUNNER_TEMP/wq175-$(basename "$NEW").badging"
 if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq175-$(basename "$NEW").badging"; then
     echo "::error::The user-upgrade APK is debuggable; refuse production QA."
@@ -33,14 +33,14 @@ if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq175-$(basename "$NEW").badg
 fi
 adb wait-for-device
 adb shell input keyevent 82 || true
-echo "Install real published signed v1.0.74 from GitHub releases"
+echo "Install real published signed v1.0.76 from GitHub releases"
 adb install -r "$OLD"
 adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
 sleep 7
 old_uid="$(adb shell dumpsys package "$PKG" | sed -n 's/^[[:space:]]*userId=\([0-9][0-9]*\).*/\1/p' | head -1 | tr -d '\r')"
 test -n "$old_uid"
 # A disposable emulator is safe for a synthetic user permission grant.
-# If the published v1.0.74 requests CAMERA, verify that a granted permission
+# If the published v1.0.76 requests CAMERA, verify that a granted permission
 # remains granted after upgrading to v1.0.77.
 "$AAPT" dump permissions "$OLD" > "$RUNNER_TEMP/wq175-v174-permissions.txt"
 if grep -Fq 'android.permission.CAMERA' "$RUNNER_TEMP/wq175-v174-permissions.txt"; then
@@ -160,6 +160,6 @@ done
 restore_display
 trap - EXIT
 echo "PASS: three emulator viewport/font smoke tests; manual visual review still required."
-echo "PASS: old v1.0.74 -> v1.0.77 in-place upgrade on a clean Android emulator."
+echo "PASS: old v1.0.76 -> v1.0.77 in-place upgrade on a clean Android emulator."
 echo "PASS: original Android UID unchanged, signatures match and app process stays alive."
 echo "LIMITATION: emulator package checks do not replace real user-data, camera, tablet and online multiplayer QA."

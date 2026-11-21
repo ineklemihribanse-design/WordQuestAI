@@ -1640,7 +1640,7 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | head -12
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
-      - name: Verify 1.0.77 signed candidate remains a direct 1.0.74 upgrade
+      - name: Verify 1.0.77 signed candidate remains a direct 1.0.76 upgrade
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -1681,7 +1681,7 @@ jobs:
             grep -q 'assets/vocabulary-addendum-v175.tsv'
           unzip -l "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.77-candidate.apk" |
             grep -q 'WORDQUEST_CEFR_175_ATTRIBUTION.md'
-          echo 'PASS: signed v1.0.77 code103 upgrade identity, matching v1.0.74 signer, and attributed new words.'
+          echo 'PASS: signed v1.0.77 code103 upgrade identity, matching v1.0.76 signer, and attributed new words.'
           echo 'QA-only candidate: deliberately NOT published or made available to the in-app updater.'
           cp "$RUNNER_TEMP/wq175-signature-qa/WordQuestAI-v1.0.77-candidate.apk" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.77-signed-qa.apk
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging \
@@ -1696,7 +1696,7 @@ jobs:
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::Host /dev/kvm unavailable"; fi
-      - name: Test genuine 1.0.74 to 1.0.77 in-place emulator installation
+      - name: Test genuine 1.0.76 to 1.0.77 in-place emulator installation
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' }}
         uses: reactivecircus/android-emulator-runner@v2
         with:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check an in-place 1.0.74 -> 1.0.77 package upgrade from Android dumpsys output.
+"""Check an in-place 1.0.76 -> 1.0.77 package upgrade from Android dumpsys output.
 
 This verifies installation continuity and relevant runtime permission state,
 NOT the content of private app databases. A clean emulator cannot certify
@@ -36,9 +36,9 @@ def package_snapshot(dumpsys: str, expected_package: str) -> dict:
 def verify_upgrade(before: str, after: str, package: str) -> dict:
     old = package_snapshot(before, package)
     new = package_snapshot(after, package)
-    if old["version"] != 100 or new["version"] != 103:
+    if old["version"] != 102 or new["version"] != 103:
         raise ValueError(
-            f"Expected in-place code 100 -> 103; got {old['version']} -> {new['version']}"
+            f"Expected in-place code 102 -> 103; got {old['version']} -> {new['version']}"
         )
     if old["uid"] != new["uid"]:
         raise ValueError("Android app UID changed after upgrade (possible uninstall/reinstall)")
@@ -70,5 +70,5 @@ if __name__ == "__main__":
     except (ValueError, OSError) as exc:
         print(f"FAIL: Android in-place continuity: {exc}", file=sys.stderr)
         raise SystemExit(1)
-    print("PASS: v1.0.74 to v1.0.77 Android install continuity", result)
+    print("PASS: v1.0.76 to v1.0.77 Android install continuity", result)
     print("LIMITATION: private app database contents still need real user-data QA.")
