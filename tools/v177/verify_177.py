@@ -62,6 +62,9 @@ for path,needs in FILES.items():
     for needle in needs:
         assert needle in text,(path,needle)
     print("PASS v1.0.77:",path,len(needs),"source assertions")
+homeTiles=(SRC/"Wq175PremiumHome.kt").read_text("utf-8")
+assert homeTiles.index('Wq175HomeTile("Eşleştirmelerim"') < homeTiles.index('Wq175HomeTile("İlerlemem"'), "matching and progress must trade places"
+assert 'onImport=learning' not in homeTiles, "matching must not route word source to Learning"
 assert 'onImport={onDismiss();onImport()}' not in (SRC/"WordQuest175Matching.kt").read_text("utf-8")
 assert 'onImport={go(Page.Learning)})' not in (SRC/"HomeScreen.kt").read_text("utf-8")
 for name in ("Wq177PuzzleImportCards.kt","Wq177DailyOriginals.kt","Wq177DailyRotation.kt"):
