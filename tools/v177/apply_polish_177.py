@@ -354,7 +354,7 @@ def main():
     for name in ("HomeScreen.kt","CustomEditor.kt","PracticeHubScreen.kt",
                  "VocabularyNeonPractice.kt","WordQuest175Arena.kt"):
         assert (SRC/name).is_file(),name
-    patch("WordQuest175Arena.kt",arena)
+    assert 'Wq175GlossIcon("arena_"+kind,Modifier.size(69.dp))' in (SRC/"WordQuest175Arena.kt").read_text("utf-8"), "Approved sword icon missing"
     patch("VocabularyNeonPractice.kt",vocabulary)
     import shutil
     shutil.copyfile(ROOT/"tools/v177/Wq177PuzzleImportCards.kt",
