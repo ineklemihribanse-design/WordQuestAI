@@ -342,6 +342,38 @@ def daily_content_and_rotation(s):
     return s
 
 
+def crossword_fit(s):
+    # The 1.0.75 mobile enlargement enforced a 28dp minimum EVEN IN NORMAL
+    # MODE, so a 22-row by 18-column board was much larger than its viewport.
+    # Keep the 30dp touch-friendly cells only for the user's explicit zoom mode.
+    s=once(s,
+        '    var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }',
+        '''    val phoneBoardOverview =
+        androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
+    var expanded by remember(game.id,phoneBoardOverview) {
+        mutableStateOf(board.words.size > 20 && !phoneBoardOverview)
+    }''',
+        "all phone crosswords open with a fitted overview instead of forced zoom")
+    s=once(s,
+        '''    val tile = if (enlarged) maxOf(regularTile, 30.dp)
+        else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile''',
+        '''    // Overview uses BOTH puzzle axes (width / columns, height / rows).
+    // Only the user's Büyüt action switches to 30dp scrollable cells.
+    val tile = if (enlarged) maxOf(regularTile, 30.dp) else regularTile''',
+        "remove forced 28dp phone cells that cut off entire boards")
+    s=once(s,
+        '    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)',
+        '    val windowHeight = minOf(height, actualHeight)',
+        "overview viewport follows actual fitted row count")
+    # Auto-scroll only when zooming. In overview the entire board is visible;
+    # no initial camera jump to a small subsection of the puzzle.
+    s=once(s,
+        '        if (enlarged || phoneGrid) {',
+        '        if (enlarged) {',
+        "selected-cell centering only when explicit zoom is on")
+    return s
+
+
 def version():
     file=APP/"build.gradle.kts"
     s=file.read_text("utf-8")
@@ -370,6 +402,7 @@ def main():
     shutil.copyfile(ROOT/"tools/v177/Wq177DailyOriginals.kt",SRC/"Wq177DailyOriginals.kt")
     shutil.copyfile(ROOT/"tools/v177/Wq177DailyRotation.kt",SRC/"Wq177DailyRotation.kt")
     patch("PracticeHubScreen.kt",daily_content_and_rotation)
+    patch("PuzzleScreen.kt",crossword_fit)
     version()
     print("PASS: v1.0.77 code103, approved premium Arena sword icon and responsive reversible study card")
 
