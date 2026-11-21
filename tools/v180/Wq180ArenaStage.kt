@@ -1,43 +1,42 @@
 package com.kelimebulmacasi.a1
 
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 
-/** Warmer plum-lavender Arena palette; better than hard navy with readable cards. */
+/** Reuses the premium Arena hero art, with a velvet scrim to keep live controls readable. */
 @Composable
 internal fun Wq180ArenaStageBackground(modifier:Modifier=Modifier,dark:Boolean=false){
-    Canvas(modifier){
-        if(!dark){
-            drawRect(Brush.verticalGradient(listOf(
-                Color(0xFFF8F4FC),Color(0xFFF2EDFA),Color(0xFFFFFCFD))))
-        } else {
-            drawRect(Brush.verticalGradient(listOf(
-                Color(0xFF352452),Color(0xFF604682),
-                Color(0xFF5A497C),Color(0xFF3C315F))))
-            val spotA=Offset(size.width*.13f,size.height*.03f)
-            val spotB=Offset(size.width*.87f,size.height*.03f)
-            val bottom=Offset(size.width*.50f,size.height*.78f)
-            val radius=size.width*.68f
-            drawCircle(Brush.radialGradient(
-                listOf(Color(0x40E7BDFF),Color(0x14C19BFA),Color.Transparent),
-                center=spotA,radius=radius),radius=radius,center=spotA)
-            drawCircle(Brush.radialGradient(
-                listOf(Color(0x38F9CBAA),Color(0x10F6B2C8),Color.Transparent),
-                center=spotB,radius=radius),radius=radius,center=spotB)
-            drawCircle(Brush.radialGradient(
-                listOf(Color(0x1FD0C5FC),Color.Transparent),
-                center=bottom,radius=size.width*.84f),
-                radius=size.width*.84f,center=bottom)
-            // Soft gold stage rim; no geometric web/diagonal lines over text.
-            drawLine(Color(0x4BF3D3A5),Offset(0f,size.height*.05f),
-                Offset(size.width,size.height*.05f),2f)
-            repeat(5){i->
-                val y=size.height*(.75f+i*.05f)
-                drawLine(Color(0x0DF4D7EF),Offset(0f,y),Offset(size.width,y),1f)
+    val context=LocalContext.current
+    val bitmap=remember(context){
+        runCatching {
+            context.assets.open("wq180_arena_background.webp").use { stream ->
+                BitmapFactory.decodeStream(stream)?.asImageBitmap()
+            }
+        }.getOrNull()
+    }
+    Box(modifier) {
+        if(bitmap!=null) {
+            Image(bitmap=bitmap,contentDescription=null,modifier=Modifier.fillMaxSize(),
+                contentScale=ContentScale.Crop)
+        }
+        Canvas(Modifier.fillMaxSize()) {
+            if(dark){
+                drawRect(Brush.verticalGradient(listOf(
+                    Color(0xC8190D34),Color(0xB01D0B3B),Color(0xD91A0D32))))
+            } else {
+                drawRect(Brush.verticalGradient(listOf(
+                    Color(0xC5F9F2FF),Color(0xD6F5EDFF),Color(0xEFFDF8FF))))
             }
         }
     }
