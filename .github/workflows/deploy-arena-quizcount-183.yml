@@ -1,0 +1,56 @@
+name: Deploy verified Arena 5-choice question-count settings
+on:
+  push:
+    branches: [feature/v175-comprehensive-learning-update]
+    paths:
+      - '.github/workflows/deploy-arena-quizcount-183.yml'
+      - 'tools/v183/deploy_arena_quizcount_183.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+concurrency:
+  group: wordquest-firebase-rules
+  cancel-in-progress: false
+
+jobs:
+  deploy-quizcount:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify staged JSON and valid quiz counts
+        run: |
+          python3 -m json.tool firebase/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          r=json.load(open('firebase/database.rules.json'))['rules']['premiumRooms']['$code']
+          for n in [5,10,12,15,20]:
+              assert 'newData.val() === '+str(n) in r['size']['.validate']
+          assert all(r[k]['.write'] for k in ('size','mode','level','topic','seconds','boardId','quizSeed'))
+          assert 'configRevision' in r
+          print('PASS: 5-option room count and atomic host-only revision rules')
+          PY
+      - name: Require Firebase deployment identity
+        env:
+          SERVICE_JSON: ${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$SERVICE_JSON" ]; then
+            echo "::error::Cannot deploy without WQ_FIREBASE_SERVICE_ACCOUNT_JSON GitHub secret; add the credential privately or publish using Firebase Console. No live rules were changed."
+            exit 1
+          fi
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+          project_id: wordquest-ai
+      - name: Merge only seven Arena setting writes and revision; deploy and verify
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check google-auth requests
+          python3 tools/v183/deploy_arena_quizcount_183.py
