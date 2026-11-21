@@ -94,6 +94,58 @@ def center_arena(s):
 '''
     return s[:start]+hero+s[end:]
 
+def responsive_matching_hero(s):
+    start=s.index('                Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(27.dp))')
+    end=s.index('                if(!played) {',start)
+    old=s[start:end]
+    assert 'Wq175ThemeBanner("eslestirmelerim"' in old
+    assert 'Oynanan: ${store.played}' in old
+    replacement=r'''                BoxWithConstraints(Modifier.fillMaxWidth()) {
+                    val wide= maxWidth >= 620.dp
+                    Box(Modifier.fillMaxWidth()
+                        .height(if(wide)255.dp else 224.dp)
+                        .clip(RoundedCornerShape(26.dp))
+                        .background(Brush.horizontalGradient(listOf(
+                            Color(0xFF146E79),Color(0xFF21A8A2),Color(0xFFEC91B8))))) {
+                        Wq175ThemeBanner("eslestirmelerim",Modifier.matchParentSize())
+                        Column(Modifier.align(Alignment.CenterStart)
+                            .fillMaxWidth(if(wide).57f else .78f)
+                            .padding(start=if(wide)27.dp else 17.dp),
+                            verticalArrangement=Arrangement.spacedBy(if(wide)10.dp else 6.dp)) {
+                            Text("KELİME KARTLARI",
+                                fontSize=if(wide)13.sp else 11.sp,
+                                color=Color(0xFFDBFFF4),
+                                fontWeight=FontWeight.Black)
+                            Text("Bul, eşleştir, öğren!",
+                                fontSize=if(wide)36.sp else 26.sp,
+                                lineHeight=if(wide)40.sp else 30.sp,
+                                color=Color.White,
+                                fontWeight=FontWeight.ExtraBold)
+                            Text("Türkçe ve İngilizce kartlarını eşleştir; kelime hafızanı güçlendir.",
+                                fontSize=if(wide)15.sp else 12.sp,
+                                lineHeight=if(wide)21.sp else 16.sp,
+                                color=Color.White,maxLines=3)
+                            Text("Oynanan: ${store.played} · Kazanılan: ${store.wins} · En iyi: ${store.best}",
+                                fontSize=if(wide)13.sp else 10.sp,
+                                color=Color(0xFFFFF4FB),maxLines=2)
+                        }
+                    }
+                }
+'''
+    return s[:start]+replacement+s[end:]
+
+
+def report_existing_board_geometry():
+    import re
+    p=SRC/"PuzzleScreen.kt"
+    lines=p.read_text("utf-8").splitlines()
+    candidates=[(i+1,line.strip()) for i,line in enumerate(lines)
+        if re.search(r'Board|Grid|Crossword|Canvas|cellSize|cellWidth|zoom|scale|aspectRatio|BoxWithConstraints|Interactive',line,re.I)]
+    for i,line in candidates[:80]:
+        print(f"BOARD-GEOMETRY {i}: {line[:190]}")
+    print("BOARD-GEOMETRY matches:",len(candidates))
+
+
 def packages_only(s):
     start=s.index('private fun PackageScreen(')
     end=s.index('private fun TopicScreen(',start)
@@ -232,6 +284,8 @@ def live_3d_recovery(s):
 def main():
     patch("HomeScreen.kt",clean_home)
     patch("WordQuest175Arena.kt",center_arena)
+    patch("WordQuest175Matching.kt",responsive_matching_hero)
+    report_existing_board_geometry()
     patch("HomeScreen.kt",packages_only)
     patch("WordQuestSettings.kt",hide_voice_picker_lists)
     patch("ConversationScreen.kt",compact_messenger)
