@@ -157,6 +157,21 @@ def account(s):
                 "Kullanıcı adını maskotunun yanında belirleyip kaydedebilirsin. E-posta adresin yalnızca giriş içindir. Seçtiğin ad sohbet, arkadaşlık ve Arena odalarında kullanılır; ilerlemen eşitlenmeye devam eder.")''',
         'remove duplicate editor and long account instructions')
     s=once(s,
+        '        BodyText("Seçtiğin karakter Arena, Kelime Hafızam ve profilinde kullanılır.")',
+        '''        Wq182Info("Maskot nerede görünür?",
+            "Seçtiğin maskot profilinde, Arena'da ve Kelime Hafızam'da kullanılır.")''',
+        'short mascot explanation through in-page info button')
+    s=once(s,
+        '            BodyText("E-posta ve şifreyle hesap oluşturabilir veya giriş yapabilirsin. Kullanıcı adın tüm oyun ve sohbet bölümlerinde gösterilir.")',
+        '''            Wq182Info("Hesap oluşturma bilgisi",
+                "E-posta ve şifreyle hesap oluşturabilir veya giriş yapabilirsin. Kullanıcı adını sen seçersin; sohbet ve oyun odalarında e-postan değil bu ad görünür.")''',
+        'registration instructions behind info')
+    s=once(s,
+        '            BodyText("Misafir kayıtların cihazında saklanır. Hesap şifreleri Firebase Authentication tarafından yönetilir; uygulama içinde saklanmaz.")',
+        '''            Wq182Info("Misafir ve şifre güvenliği",
+                "Misafir kayıtların cihazında tutulur. Hesap şifreleri Firebase Authentication tarafından yönetilir; uygulama içinde saklanmaz.")''',
+        'guest password explanation behind info')
+    s=once(s,
         '            BodyText("Hesabını silmeden önce ilerlemeni yedekleyebilirsin.")',
         '''            Wq182Info("Hesabı silmeden önce",
                 "Hesap silmeden önce ilerlemeyi yedekle. Hesabı silmek geri alınamaz.")''',
