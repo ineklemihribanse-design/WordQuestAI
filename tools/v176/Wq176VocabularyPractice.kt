@@ -1,6 +1,7 @@
 package com.kelimebulmacasi.a1
 
 import android.content.Context
+import org.json.JSONArray
 import java.util.Locale
 
 /**
@@ -30,6 +31,32 @@ internal object Wq176VocabularyPractice {
     private fun parse(context:Context):List<Word> {
         val all=ArrayList<Word>()
         val seen=HashSet<String>()
+        // The legacy catalog also includes vocabulary on original crossword
+        // cards. Include those Turkish clues rather than silently omitting them
+        // from Daily Goals while counting them in Vocabulary Targets.
+        listOf("puzzles.json","expanded-puzzles.json").forEach { filename ->
+            val games=JSONArray(
+                context.assets.open(filename).bufferedReader(Charsets.UTF_8)
+                    .use { it.readText() }
+            )
+            for(i in 0 until games.length()) {
+                val game=games.optJSONObject(i) ?: continue
+                val level=game.optString("level")
+                if(level !in LEVELS || game.optString("mode") !in listOf("topic","kind"))
+                    continue
+                val kind=game.optString("mode").ifBlank { "Bulmaca" }
+                val words=game.optJSONArray("words") ?: continue
+                for(j in 0 until words.length()) {
+                    val pair=words.optJSONArray(j) ?: continue
+                    val en=pair.optString(0).trim().uppercase(Locale.ROOT)
+                    val tr=pair.optString(1).substringBefore(";").substringBefore(",")
+                        .trim().take(68)
+                    if(en.matches(Regex("[A-Z][A-Z '-]{1,30}")) &&
+                       tr.length>=2 && seen.add(level+":"+en))
+                        all.add(Word(level,kind,en,tr))
+                }
+            }
+        }
         FILES.forEachIndexed { index,filename ->
             // Only the reviewed 1.0.76 extension file is optional.
             if(index==2 && !context.assets.list("")!!.contains(filename)) return@forEachIndexed
