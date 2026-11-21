@@ -49,6 +49,7 @@ assert "PracticeKind.Sentence else PracticeKind.Grammar" in rotation
 word_drill=(src/"Wq176VocabularyPractice.kt").read_text("utf-8")
 assert 'vocabulary-addendum-v175.tsv' in word_drill
 assert 'vocabulary-extra.tsv' in word_drill
+assert '"puzzles.json","expanded-puzzles.json"' in word_drill
 assert 'candidate' not in word_drill.lower(), "Do not use untranslated C2 candidates"
 
 assert (tests/"Wq176ContentRotationTest.kt").exists()
