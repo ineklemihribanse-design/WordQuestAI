@@ -174,13 +174,14 @@ internal fun Wq175MatchingEntry(onClick:()->Unit) {
 }
 
 @Composable
-internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
+internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:()->Unit) {
     val context=LocalContext.current
     val scope=rememberCoroutineScope()
     val store=remember(context,session.profileKey){
         Wq175MatchingProgress(context,session.profileKey)
     }
     var mode by rememberSaveable { mutableStateOf("classic") }
+    var wordSource by rememberSaveable { mutableStateOf("Hazır Paketten Seç") }
     var level by rememberSaveable { mutableStateOf("A1") }
     var number by rememberSaveable { mutableIntStateOf(6) }
     var englishFirst by rememberSaveable { mutableStateOf(false) }
@@ -225,21 +226,24 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
         issue=""
         scope.launch {
             val items=try {
-                when(mode) {
-                    "mistakes" -> store.missed()
-                    "notebook" -> session.searchLearning("",0,5000).map {
-                        Wq175MatchPair("Defterim","Kişisel",it.answer,it.clue)
-                    }
+                when {
+                    mode=="mistakes" -> store.missed()
+                    mode=="notebook" || wordSource=="Kendi Kelimelerinle" ->
+                        session.searchLearning("",0,5000).map {
+                            Wq175MatchPair("Defterim","Kişisel",it.answer,it.clue)
+                        }
                     else -> withContext(Dispatchers.IO) {
                         Wq175MatchingBank.load(context,level)
                     }
                 }
             }catch(_:Exception){emptyList()}
-            val filtered=items.filter { mode=="mistakes" || mode=="notebook" || kind=="Tümü" || it.kind==kind }
+            val personalDeck = mode=="notebook" || (mode!="mistakes" && wordSource=="Kendi Kelimelerinle")
+            val filtered=items.filter { mode=="mistakes" || personalDeck || kind=="Tümü" || it.kind==kind }
             val available=Wq175MatchingBank.prepare(filtered,number)
             busy=false
-            if(available.size<Wq175MatchingBank.requiredPairs(mode,number)) {
-                issue=if(mode=="mistakes" || mode=="notebook")
+            val minimum = if(personalDeck) 2 else Wq175MatchingBank.requiredPairs(mode,number)
+            if(available.size<minimum) {
+                issue=if(mode=="mistakes" || personalDeck)
                     "Bu koleksiyonda en az 2 farklı eşleştirme çifti gerekiyor. " +
                     "Koleksiyonuna kelime ekle veya yeni yanlışlarını çalış."
                 else "Bu seçenekte "+filtered.size+
@@ -290,6 +294,14 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                     }
                 }
                 if(!played) {
+                    Wq175PuzzleSourceShortcuts(
+                        onManual={wordSource="Kendi Kelimelerinle";mode="notebook";issue=""},
+                        onPackage={wordSource="Hazır Paketten Seç";mode="classic";issue=""},
+                        onImport={onDismiss();onImport()},
+                        heading="Eşleştirme için kelime kaynağın",
+                        guidance="PDF, görsel ve yapay zekâ önce Kelime Hafızam’daki içe aktarma bölümüne gider. "+
+                            "Kelimeleri onayladıktan sonra geri dönüp Kendi Kelimelerinle seç.",
+                        selected=wordSource)
                     Text("Oyununu seç",fontWeight=FontWeight.ExtraBold,
                         color=MatchInk,fontSize=19.sp)
                     val modes=listOf(
@@ -334,7 +346,7 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit) {
                             }
                         }
                     }
-                    if(mode=="classic" || mode=="timed") {
+                    if((mode=="classic" || mode=="timed") && wordSource=="Hazır Paketten Seç") {
                         Text("Seviye",color=MatchInk,fontWeight=FontWeight.Bold)
                         Row(Modifier.horizontalScroll(rememberScrollState()),
                             horizontalArrangement=Arrangement.spacedBy(7.dp)){
