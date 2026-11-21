@@ -25,6 +25,26 @@ class Wq176ContentRotationTest {
         }
     }
 
+    @Test fun bilingualDailyExercisesAreRealAndSeparatedByCefrTier() {
+        val context=RuntimeEnvironment.getApplication()
+        val levels=listOf("A1","A2","B1","B2","C1","C2")
+        val pools=levels.associateWith { level ->
+            Wq176VocabularyPractice.questions(context,level)
+        }
+        assertTrue(pools.getValue("A1").size>=500)
+        assertTrue(pools.getValue("A2").size>=500)
+        assertTrue(pools.getValue("C2").isNotEmpty())
+        pools.forEach { (level,pool) ->
+            assertEquals(pool.size,pool.map { it.id }.toSet().size)
+            pool.take(80).forEach { question ->
+                assertTrue(question.id.startsWith("wq176_word_${level}_"))
+                assertEquals(4,question.options.size)
+                assertEquals(4,question.options.map { it.lowercase() }.toSet().size)
+                assertEquals(0,question.answer)
+            }
+        }
+    }
+
     @Test fun dailyTopicsUseBalancedShuffledBagsAcrossRestarts() {
         val context=RuntimeEnvironment.getApplication()
         val profile="daily_"+UUID.randomUUID().toString()
