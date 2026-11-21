@@ -95,6 +95,7 @@ on:
       - 'tools/v173_2d/**'
       - 'tools/v174/**'
       - 'tools/v175/**'
+      - 'tools/v176/**'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
