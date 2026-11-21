@@ -19,7 +19,7 @@ class Wq176ContentRotationTest {
         assertTrue(all.count { it.topic==YdsTopic.Grammar } >= 240)
         all.forEach { q ->
             assertEquals(4,q.options.size)
-            assertEquals(4,q.options.map(String::lowercase).toSet().size)
+            assertEquals(4,q.options.map { it.lowercase() }.toSet().size)
             assertTrue(q.answer in 0..3)
             assertTrue(q.explanation.length>=20)
         }
