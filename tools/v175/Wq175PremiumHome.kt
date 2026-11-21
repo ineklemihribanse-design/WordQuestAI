@@ -162,20 +162,44 @@ internal fun Wq175PremiumHomeGrid(
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(11.dp)) {
         Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,
             color=Wq175Navy,fontSize=20.sp)
-        for(pair in main.chunked(2)){
-            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                pair.forEach{tile ->
-                    Box(Modifier.weight(1f)) { Wq175HomeTileView(tile) }
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val singleColumn=maxWidth<345.dp ||
+                LocalDensity.current.fontScale>1.45f
+            Column(verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                if(singleColumn) {
+                    main.forEach { tile -> Wq175HomeTileView(tile) }
+                } else {
+                    main.chunked(2).forEach { pair ->
+                        Row(Modifier.fillMaxWidth(),
+                            horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                            pair.forEach { tile ->
+                                Box(Modifier.weight(1f)) { Wq175HomeTileView(tile) }
+                            }
+                        }
+                    }
                 }
             }
         }
         Text("Diğer çalışmalar",fontWeight=FontWeight.Bold,
             color=Wq175Navy,fontSize=17.sp,
             modifier=Modifier.padding(top=8.dp))
-        for(pair in more.chunked(2)){
-            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
-                pair.forEach{tile ->
-                    Box(Modifier.weight(1f)){ Wq175HomeTileView(tile,small=true) }
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val singleColumn=maxWidth<345.dp ||
+                LocalDensity.current.fontScale>1.45f
+            Column(verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                if(singleColumn) {
+                    more.forEach { tile -> Wq175HomeTileView(tile,small=true) }
+                } else {
+                    more.chunked(2).forEach { pair ->
+                        Row(Modifier.fillMaxWidth(),
+                            horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                            pair.forEach { tile ->
+                                Box(Modifier.weight(1f)) {
+                                    Wq175HomeTileView(tile,small=true)
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
