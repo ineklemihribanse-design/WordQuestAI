@@ -1,0 +1,111 @@
+name: Verify and deploy Arena Realtime Database rules
+on:
+  push:
+    branches: [feature/v175-comprehensive-learning-update]
+    paths:
+      - '.github/workflows/deploy-arena-rules.yml'
+      - 'tools/v175/deploy_arena_rules_guard.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wordquest-arena-firebase-rules
+  cancel-in-progress: false
+
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Recover reviewed complete v1.0.76 Arena rules baseline
+        run: |
+          set -euo pipefail
+          base64 -d v120-multi-ai-arena-overlay.b64 > "$RUNNER_TEMP/arena-v120.zip"
+          unzip -tq "$RUNNER_TEMP/arena-v120.zip"
+          unzip -Z1 "$RUNNER_TEMP/arena-v120.zip" | grep -Fxq 'database.rules.json'
+          mkdir -p source firebase
+          unzip -p "$RUNNER_TEMP/arena-v120.zip" database.rules.json > source/database.rules.json
+          cp source/database.rules.json source/database.rules.prearena.json
+          python3 -m json.tool source/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          room=json.load(open('source/database.rules.json'))['rules']['premiumRooms']['$code']
+          assert "newData.val() === 12" in room['size']['.validate']
+          assert "$index.matches(/^([0-9]|1[0-1])$/)" in room['answers']['$uid']['$index']['.write']
+          print("PASS: complete historical baseline recovered, not a replacement/blank policy")
+          PY
+
+      - name: Apply only pre-reviewed Arena 5, 10, 12, 15, 20 quiz changes
+        run: |
+          set -euo pipefail
+          python3 tools/v175/apply_arena_firebase_rules_175.py
+          python3 tools/v175/verify_arena_firebase_rules_175.py
+          cp source/database.rules.json firebase/database.rules.json
+          python3 - <<'PY'
+          import json
+          base=json.load(open('source/database.rules.prearena.json'))
+          new=json.load(open('firebase/database.rules.json'))
+          b=base['rules']['premiumRooms']['$code']
+          n=new['rules']['premiumRooms']['$code']
+          b['size']['.validate']=n['size']['.validate']
+          b['answers']['$uid']['$index']['.write']=n['answers']['$uid']['$index']['.write']
+          assert base==new, "Security policy changed outside the 2 authorized Arena expressions"
+          print("PASS: all account, friend, room-invite, quota and profile rule paths preserved")
+          PY
+
+      - name: Save complete validated Arena rules in GitHub for audit/manual deployment
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add firebase/database.rules.json
+          if ! git diff --cached --quiet; then
+            git commit -m "security(arena): stage validated v1.0.77 RTDB room rules"
+            git push origin HEAD:refs/heads/feature/v175-comprehensive-learning-update
+          fi
+
+      - name: Inspect availability of secure Firebase deployment identity
+        id: credentials
+        env:
+          FIREBASE_ACCOUNT: ${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -n "$FIREBASE_ACCOUNT" ]; then
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+            echo 'Firebase deploy identity configured (credential value not printed).'
+          else
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            echo 'Firebase deployment credential is not configured.'
+          fi
+
+      - name: Authenticate to the known Firebase project without exposing credentials
+        if: ${{ steps.credentials.outputs.available == 'true' }}
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+          project_id: wordquest-ai
+
+      - name: Fetch LIVE rules, preserve unrelated paths, deploy and verify
+        if: ${{ steps.credentials.outputs.available == 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check google-auth requests
+          python3 tools/v175/deploy_arena_rules_guard.py
+
+      - name: Reject false claims of publication when Firebase credentials are missing
+        if: ${{ steps.credentials.outputs.available != 'true' }}
+        run: |
+          echo "::error::Arena rules staged, but Firebase live deployment was NOT performed. Configure WQ_FIREBASE_SERVICE_ACCOUNT_JSON as a GitHub Actions secret with only Realtime Database rules permissions, then rerun this workflow."
+          exit 1
