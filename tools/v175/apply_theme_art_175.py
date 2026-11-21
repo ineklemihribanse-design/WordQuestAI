@@ -135,3 +135,11 @@ patch("WordQuest175Arena.kt",
 
 print("PASS: all 20 original full-quality WebP files copied to Android drawable-nodpi.")
 print("PASS: home, Arena, match, builder and learning rooms show original art, with mascot layered live.")
+
+# If the separately supplied, vetted icon ZIP is committed to this feature
+# branch, automatically install its real WebP assets on the assembled source.
+# Without the ZIP this is a deliberate no-op and retains existing approved art.
+import subprocess
+import sys
+subprocess.run([sys.executable, str(PKG/"apply_uploaded_art_pack_175.py")], check=True)
+
