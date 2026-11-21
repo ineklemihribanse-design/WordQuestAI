@@ -43,6 +43,14 @@ assert 'putString(bagKey,pending.drop(1)' in rotation
 assert "val topic=Wq176QuestionRotation.nextTopic(" in rotation
 assert "categories[step%categories.size]" not in rotation
 assert "DailyPlanStore(context,profileKey)" in rotation
+assert "Wq176VocabularyPractice.questions(context,level)" in rotation
+assert 'listOf("A1","A2","B1","B2","C1","C2")' in rotation
+assert "PracticeKind.Sentence else PracticeKind.Grammar" in rotation
+word_drill=(src/"Wq176VocabularyPractice.kt").read_text("utf-8")
+assert 'vocabulary-addendum-v175.tsv' in word_drill
+assert 'vocabulary-extra.tsv' in word_drill
+assert 'candidate' not in word_drill.lower(), "Do not use untranslated C2 candidates"
+
 assert (tests/"Wq176ContentRotationTest.kt").exists()
 assert (assets/"licenses/WQ176_CONTENT_SOURCES.md").exists()
 gradle=(root/"source/app/build.gradle.kts").read_text("utf-8")
