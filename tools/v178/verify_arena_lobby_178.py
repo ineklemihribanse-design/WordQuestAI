@@ -14,8 +14,8 @@ assert "Wq2DMascots.selected(context, session.profileKey)" in room
 assert 'getString("kind","robot")' not in room
 assert 'val key = if (isHost) "hostAvatar" else "guestAvatar"' in room
 assert 'client.syncSelectedAvatar()' in screen
-assert "if (Wq2DMascots.valid(kind))" in visuals
-assert "Wq2DPortrait(kind, modifier)" in visuals
+assert "if(Wq2DMascots.valid(kind))" in visuals
+assert "Wq2DPortrait(kind,modifier)" in visuals
 assert 'fun toggleReady()' in room and '"ready"' in room
 assert 'readyBy.containsAll(listOf(match.hostUid,match.guestUid))' in screen
 assert "premiumRooms" in rules["rules"] and "roomQuota" in rules["rules"]

@@ -42,18 +42,8 @@ patch("PremiumOnlineRoom.kt",
     fun toggleReady() {''',
     "synchronize only own selected mascot in open lobby")
 
-# Existing vector robots/foxes remain supported in historical matches.
-patch("ArenaV2Visuals.kt",
-    '''internal fun ArenaMascotV2(kind: String, modifier: Modifier = Modifier) {
-    val robot = kind == "robot"''',
-    '''internal fun ArenaMascotV2(kind: String, modifier: Modifier = Modifier) {
-    if (Wq2DMascots.valid(kind)) {
-        Wq2DPortrait(kind, modifier)
-        return
-    }
-    val robot = kind == "robot"''',
-    "display real selected original 2D artwork for both network players")
-
+# The earlier 1.0.73 integration already renders Wq2DPortrait for
+# valid IDs in ArenaV2Visuals; preserve it without duplicating the branch.
 # Re-sync on room join, participant avatar updates and profile changes.
 patch("PremiumOnlineScreen.kt",
     '''    val match = client.match
