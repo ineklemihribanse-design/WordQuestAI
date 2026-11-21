@@ -154,31 +154,31 @@
           ".validate": "newData.isNumber() && newData.val() > 0"
         },
         "mode": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "newData.val() === 'duel' || newData.val() === 'team' || newData.val() === 'quiz'"
         },
         "level": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "newData.val() === 'A1' || newData.val() === 'A2' || newData.val() === 'A1–A2' || newData.val() === 'B1' || newData.val() === 'B2' || newData.val() === 'C1' || newData.val() === 'C2'"
         },
         "topic": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 75"
         },
         "size": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "(newData.parent().child('mode').val() !== 'quiz' && (newData.val() === 20 || newData.val() === 30 || newData.val() === 40 || newData.val() === 50)) || (newData.parent().child('mode').val() === 'quiz' && (newData.val() === 5 || newData.val() === 10 || newData.val() === 12 || newData.val() === 15 || newData.val() === 20))"
         },
         "seconds": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "newData.val() === 0 || newData.val() === 20 || newData.val() === 30 || newData.val() === 45"
         },
         "boardId": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "newData.isString() && newData.val().length <= 100"
         },
         "quizSeed": {
-          ".write": false,
+          ".write": "auth != null && data.exists() && newData.exists() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && data.parent().child('configRevision').isNumber() && newData.parent().child('configRevision').val() === data.parent().child('configRevision').val() + 1 && ((newData.parent().child('mode').val() === 'quiz' && (newData.parent().child('size').val() === 5 || newData.parent().child('size').val() === 10 || newData.parent().child('size').val() === 12 || newData.parent().child('size').val() === 15 || newData.parent().child('size').val() === 20)) || ((newData.parent().child('mode').val() === 'duel' || newData.parent().child('mode').val() === 'team') && (newData.parent().child('size').val() === 20 || newData.parent().child('size').val() === 30 || newData.parent().child('size').val() === 40 || newData.parent().child('size').val() === 50)))",
           ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 2147483647"
         },
         "quotaDay": {
@@ -256,6 +256,10 @@
               ".validate": "newData.val() === true"
             }
           }
+        },
+        "configRevision": {
+          ".write": "auth != null && data.isNumber() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && newData.isNumber() && newData.val() === data.val() + 1",
+          ".validate": "newData.isNumber() && ((data.exists() && newData.val() === data.val() + 1) || (!data.exists() && newData.val() === 1))"
         }
       }
     },
