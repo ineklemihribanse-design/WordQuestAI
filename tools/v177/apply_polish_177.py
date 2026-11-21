@@ -62,6 +62,14 @@ def vocabulary(s):
         "allow flipping back without losing progress")
     return s
 
+def home_import_routes(s):
+    # Source buttons in My Puzzles used to send PDFs/camera/AI to Word
+    # Memory instead of the actual personal crossword editor.
+    return once(s,'onImport={go(Page.Learning)})',
+        'onImport={edit(null)})',
+        "My Puzzles imported words stay in its own editor")
+
+
 def version():
     file=APP/"build.gradle.kts"
     s=file.read_text("utf-8")
@@ -76,6 +84,7 @@ def main():
         assert (SRC/name).is_file(),name
     patch("WordQuest175Arena.kt",arena)
     patch("VocabularyNeonPractice.kt",vocabulary)
+    patch("HomeScreen.kt",home_import_routes)
     version()
     print("PASS: v1.0.77 code103, approved premium Arena sword icon and responsive reversible study card")
 
