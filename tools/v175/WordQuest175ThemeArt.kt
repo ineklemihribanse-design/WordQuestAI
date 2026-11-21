@@ -61,6 +61,19 @@ internal object Wq175ThemeArt {
             "sözlük" in s || "defter" in s -> "library"
             "mesaj" in s || "sohbet" in s -> "messages"
             "bildirim" in s || "seri" in s -> "streak"
+            "hazır paket" in s || "paketler" in s -> "packages"
+            "paragraf" in s || "okuma" in s -> "paragraph"
+            "çeviri" in s -> "translate"
+            "yakın anlam" in s || "eş anlam" in s -> "synonym"
+            "cümle tamamlama" in s -> "completion"
+            "mini deneme" in s || "tam deneme" in s -> "exam"
+            "hata analiz" in s || "yanlış analiz" in s -> "review"
+            "hedef" in s -> "insights"
+            "başarı" in s || "ödül" in s -> "success"
+            "sıralama" in s || "liderlik" in s -> "trophy"
+            "konuşma" in s || "asistan" in s -> "assistant"
+            "telaffuz" in s || "dinleme" in s -> "listen"
+            "ipucu" in s -> "insights"
             else -> null
         }
     }
