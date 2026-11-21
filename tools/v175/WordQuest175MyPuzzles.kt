@@ -25,7 +25,7 @@ internal fun Wq175MyPuzzlesHero(total: Int, completed: Int) {
     BoxWithConstraints(Modifier.fillMaxWidth().heightIn(min=215.dp)
         .clip(RoundedCornerShape(27.dp))
         .background(Brush.horizontalGradient(listOf(
-            Color(0xFF146348),Color(0xFF33896B),Color(0xFF91CE9A))))) {
+            Color(0xFFFFF3E5),Color(0xFFFFE2D6),Color(0xFFF2D8F7))))) {
         Box(Modifier.align(Alignment.TopEnd).offset(x=40.dp,y=(-74).dp)
             .size(220.dp).background(Color.White.copy(alpha=.08f),CircleShape))
         val compact=maxWidth<330.dp
@@ -35,23 +35,23 @@ internal fun Wq175MyPuzzlesHero(total: Int, completed: Int) {
             Column(Modifier.weight(1f),
                 verticalArrangement=Arrangement.spacedBy(8.dp)) {
                 Text("KENDİ BULMACA ATÖLYEN",
-                    color=Color(0xFFEAF79B),fontSize=10.sp,
+                    color=Color(0xFF9F6346),fontSize=10.sp,
                     fontWeight=FontWeight.Black)
                 Text("Tasarla, çöz,\nyeniden keşfet.",
-                    color=Color.White,fontSize=if(compact)21.sp else 25.sp,
+                    color=Color(0xFF194B3B),fontSize=if(compact)21.sp else 25.sp,
                     lineHeight=if(compact)25.sp else 29.sp,
                     fontWeight=FontWeight.ExtraBold)
                 Text("Kelimelerinden özgün bulmacalar oluştur.",
-                    color=Color(0xFFE5FFF0),fontSize=12.sp,lineHeight=16.sp)
+                    color=Color(0xFF536D61),fontSize=12.sp,lineHeight=16.sp)
                 Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                     listOf(total to "Kaydedilen",completed to "Tamamlanan")
                         .forEach { (value,label) ->
                             Column(Modifier.clip(RoundedCornerShape(11.dp))
-                                .background(Color.White.copy(alpha=.22f))
+                                .background(Color.White.copy(alpha=.80f))
                                 .padding(horizontal=10.dp,vertical=8.dp)) {
-                                Text(value.toString(),color=Color.White,
+                                Text(value.toString(),color=Color(0xFF205845),
                                     fontWeight=FontWeight.Black,fontSize=17.sp)
-                                Text(label,color=Color(0xFFF3FFFA),fontSize=10.sp)
+                                Text(label,color=Color(0xFF587265),fontSize=10.sp)
                             }
                         }
                 }
@@ -60,7 +60,7 @@ internal fun Wq175MyPuzzlesHero(total: Int, completed: Int) {
                 .height(164.dp),contentAlignment=Alignment.Center) {
                 Box(Modifier.size(116.dp)
                     .background(Color.White.copy(alpha=.11f),CircleShape))
-                Wq175GlossIcon("mistakes",
+                Wq175GlossIcon("arena_team",
                     Modifier.align(Alignment.Center).size(if(compact)85.dp else 110.dp))
                 Wq175GlossIcon("notebook",
                     Modifier.align(Alignment.BottomEnd).size(47.dp))
@@ -79,7 +79,7 @@ internal fun Wq175PuzzleCreateCta(onClick:()->Unit) {
         Row(Modifier.fillMaxWidth().padding(15.dp),
             verticalAlignment=Alignment.CenterVertically,
             horizontalArrangement=Arrangement.spacedBy(12.dp)) {
-            Wq175GlossIcon("mistakes",Modifier.size(69.dp))
+            Wq175GlossIcon("arena_team",Modifier.size(69.dp))
             Column(Modifier.weight(1f),
                 verticalArrangement=Arrangement.spacedBy(4.dp)) {
                 Text("Yeni Bulmaca Oluştur",color=Color.White,

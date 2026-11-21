@@ -18,7 +18,8 @@ for text in (
 ):
     assert text in s,text
 art=(src/"WordQuest175MyPuzzles.kt").read_text("utf-8")
-assert 'Wq175GlossIcon("mistakes",' in art
+assert 'Wq175GlossIcon("arena_team",' in art
+assert 'Color(0xFFFFF3E5)' in art
 assert 'internal fun Wq175PuzzleCreateCta(' in art
 assert 'internal fun Wq175PuzzleSourceShortcuts(' in art
 for icon in ('"notebook"','"packages"','"pdf"','"camera"','"ai_teacher"'):

@@ -67,7 +67,7 @@ internal object Wq175ThemeArt {
     /** Transparent 2.5D art for cards; never paste a portrait WebP rectangle. */
     fun glossName(slug:String):String = when(slug) {
         "ana_sayfa" -> "puzzle"
-        "yeni_oyun" -> "puzzle"
+        "yeni_oyun" -> "completion"
         "arena" -> "trophy"
         "yds_akademi" -> "exam"
         "dinle_ve_yaz" -> "listen"
@@ -75,7 +75,7 @@ internal object Wq175ThemeArt {
         "kelime_hafizam" -> "cards"
         "eslestirmelerim" -> "synonym"
         "gunluk_plan" -> "plan"
-        "bulmacalarim" -> "mistakes"
+        "bulmacalarim" -> "arena_team"
         else -> "cards"
     }
     fun icon(slug:String):Int=when(slug){
