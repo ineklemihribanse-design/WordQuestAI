@@ -14,5 +14,8 @@ for anchor in (
     'save(after)'
 ):
     assert anchor in s,anchor
+assert 'val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600' in s
+assert 'mutableStateOf(board.words.size > 20 || compactBoard)' in s
+assert 'if (board.words.size <= 20 && !compactBoard) expanded = false' in s
 assert (src/"WordQuest175TimedPuzzle.kt").exists()
 print("PASS: visual crossword improvements keep solving, timing, hints and persistence.")
