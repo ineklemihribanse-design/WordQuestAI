@@ -80,8 +80,32 @@ patch("HomeScreen.kt",
                             fontSize = if (wide) 54.sp else 37.sp, lineHeight = if (wide) 55.sp else 39.sp,
                         )
                         Text(
-                            "Öğren, bulmaca çöz, yarış ve ilerle.",
-                                color=Color(0xFFF2FFEB),fontFamily=Sans,
+                            "Türkçe ipucunu oku,\nİngilizcesini yaz.", Modifier.padding(top = 11.dp),
+                            color = Color(0xFFE0ECDA), fontFamily = Sans, fontSize = 16.sp, lineHeight = 21.sp,
+                        )
+                    }''',
+    '''                    Wq175HomeStoryAtmosphere(Modifier.matchParentSize())
+                    Row(
+                        Modifier.fillMaxWidth().padding(
+                            horizontal=if(wide)28.dp else 16.dp,
+                            vertical=14.dp),
+                        verticalAlignment=Alignment.CenterVertically,
+                        horizontalArrangement=Arrangement.spacedBy(8.dp)
+                    ) {
+                        Column(Modifier.weight(1f),
+                            verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                            Text(
+                                "İngilizce yolculuğun\\nburada başlıyor.",
+                                fontFamily=Serif,color=White,
+                                fontSize=if(wide)38.sp else
+                                    if(LocalDensity.current.fontScale>1.2f)21.sp else 25.sp,
+                                lineHeight=if(wide)42.sp else
+                                    if(LocalDensity.current.fontScale>1.2f)25.sp else 29.sp,
+                                maxLines=3
+                            )
+                            Text(
+                                "Öğren, bulmaca çöz, yarış ve ilerle.",
+                                color=Color(0xFFF4FFEA),fontFamily=Sans,
                                 fontSize=if(LocalDensity.current.fontScale>1.2f)
                                     12.sp else 14.sp,
                                 lineHeight=if(LocalDensity.current.fontScale>1.2f)
