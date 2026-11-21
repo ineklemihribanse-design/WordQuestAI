@@ -14,7 +14,9 @@ def main():
     icons=ROOT/"source/app/src/main/assets/wq175_icons"
     names=("arena_duel","arena_team","arena_quiz","trophy","listen",
            "sentence","grammar","story","speak","puzzle","yds","cards",
-           "plan","camera","assistant","packages","verbs")
+           "plan","camera","assistant","packages","verbs","mistakes","ai_teacher",
+           "pdf","scan","translate","paragraph","synonym","completion",
+           "exam","review","timer","success","notebook")
     for name in names:
         assert (icons/(name+".webp")).stat().st_size>800,name
     shutil.copyfile(PKG/"WordQuest175Icons.kt",SRC/"WordQuest175Icons.kt")
@@ -41,7 +43,7 @@ def main():
         '''        Wq175GlossIcon(Wq175IconNames.menu(title), Modifier.size(45.dp))''',
         "home and menu original scalable icons")
     p.write_text(s,"utf-8")
-    print("PASS: 17 bundled 256px transparent icon art, real home/Arena/daily usage.")
+    print("PASS: 30 original 256px transparent icons for home, Arena, YDS, matching and scan/learning rooms.")
 
 if __name__=="__main__":
     main()

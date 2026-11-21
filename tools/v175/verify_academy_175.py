@@ -16,6 +16,8 @@ assert 'Wq175ThemeBanner("yds_akademi"' in academy
 for name in ("Kelime","Dilbilgisi","Paragraf","Çeviri","Yakın Anlam",
              "Cümle Tamamlama","Mini Deneme","Tam Deneme","Yanlış Analizi"):
     assert 'Wq175AcademyModule("'+name+'"' in academy,name
+for icon in ("paragraph","translate","synonym","completion","timer","exam","review"):
+    assert '"'+icon+'"' in academy
 assert "modules.chunked(cols)" in academy
 assert "module.action" in academy
 assert 'Wq175AcademyModule("Kelime","YDS kelimeleri","cards"' in academy

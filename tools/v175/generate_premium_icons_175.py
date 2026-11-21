@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create 19 original anti-aliased high-DPI glossy game icon assets.
+"""Create 30 original anti-aliased high-DPI glossy game icon assets.
 
 No downloaded icons, fonts or emoji. Render at 3x, downsample Lanczos and
 bundle 256px transparent WebP icons with the Android application.
@@ -209,6 +209,96 @@ def icon(name):
         line(d,[(128,183),(128,233)],PURPLE,5)
         ell(d,(40,42,53,55),"#F8DE7C")
         ell(d,(204,46,219,61),"#F8DE7C")
+    elif name=="pdf":
+        rr(d,(60,24,189,225),18,"#FFFCF4","#4F81B5",7)
+        poly(d,[(155,24),(189,59),(156,61)],"#DDEEFF","#4F81B5",3)
+        for y in (86,112,139,165):
+            line(d,[(79,y),(167,y)],"#9AAFC8",5)
+        rr(d,(85,184,163,208),8,"#E67E69","#B54B49",3)
+        line(d,[(100,197),(145,197)],"#FFFFFF",4)
+    elif name=="scan":
+        rr(d,(53,54,201,209),18,"#EAF6FF","#418DDD",5)
+        rr(d,(72,72,185,193),10,"#FFFFFF","#95B8DF",4)
+        for y in (105,126,147):
+            line(d,[(90,y),(166,y)],"#77A3CF",4)
+        line(d,[(31,51),(67,51)],TEAL,9)
+        line(d,[(31,51),(31,86)],TEAL,9)
+        line(d,[(222,51),(187,51)],TEAL,9)
+        line(d,[(222,51),(222,86)],TEAL,9)
+        line(d,[(30,214),(30,180)],TEAL,9)
+        line(d,[(30,214),(65,214)],TEAL,9)
+        line(d,[(222,214),(187,214)],TEAL,9)
+        line(d,[(222,214),(222,180)],TEAL,9)
+        line(d,[(73,151),(185,151)],CORAL,4)
+    elif name=="translate":
+        rr(d,(27,53,153,180),19,"#BDDFFB",BLUE,5)
+        rr(d,(104,87,229,211),19,"#E8D7FF",PURPLE,5)
+        line(d,[(54,90),(119,90)],"#255B8D",6)
+        line(d,[(87,75),(87,130)],"#255B8D",5)
+        line(d,[(62,130),(112,108)],"#255B8D",5)
+        line(d,[(148,155),(193,155)],PURPLE,6)
+        line(d,[(171,127),(150,178)],PURPLE,5)
+        line(d,[(171,127),(193,178)],PURPLE,5)
+        poly(d,[(177,30),(203,43),(190,70),(164,57)],GOLD,GOLD_EDGE,3)
+    elif name=="paragraph":
+        poly(d,[(31,74),(120,49),(133,206),(43,225)],"#FFF8E4",GOLD_EDGE,6)
+        poly(d,[(131,48),(218,73),(207,224),(132,205)],"#E9F1FF",BLUE,6)
+        for y in (100,123,146,169):
+            line(d,[(56,y),(106,y-6)],"#C6AE83",4)
+            line(d,[(152,y-6),(194,y)],"#8CACD9",4)
+        poly(d,[(148,83),(161,67),(174,83)],GOLD,GOLD_EDGE,2)
+    elif name=="synonym":
+        rr(d,(37,63,143,184),23,"#D9F7F2","#278B9F",5)
+        rr(d,(121,78,226,198),23,"#ECE1FF",PURPLE,5)
+        ell(d,(64,102,106,144),"#75D4CA","#278B9F",4)
+        ell(d,(155,116,196,157),"#B795EC",PURPLE,4)
+        line(d,[(94,75),(164,50)],GOLD,9)
+        poly(d,[(157,37),(183,46),(166,67)],GOLD,GOLD_EDGE,3)
+    elif name=="completion":
+        rr(d,(36,58,220,194),27,"#EAFBF3","#2D9C78",6)
+        for x in (55,105,154):
+            rr(d,(x,94,x+41,137),8,"#FFFFFF","#7FC4A1",4)
+        rr(d,(154,94,195,137),8,GOLD,GOLD_EDGE,5)
+        ell(d,(168,107,181,120),"#FFF8D7")
+        line(d,[(75,160),(180,160)],"#74AE98",5)
+    elif name=="exam":
+        rr(d,(47,30,213,215),22,"#E7F0FF",YELLOW if False else "#355EAC",6)
+        rr(d,(80,21,180,58),12,GOLD,GOLD_EDGE,4)
+        for y in (91,132,173):
+            rr(d,(72,y-6,91,y+13),4,"#FFFFFF",BLUE,3)
+            line(d,[(107,y+4),(183,y+4)],"#7D95BF",5)
+        line(d,[(72,134),(79,141),(96,121)],"#2D9C78",5)
+    elif name=="review":
+        rr(d,(38,46,208,208),29,"#FFF0D8","#C68C4C",6)
+        rr(d,(60,65,179,188),17,"#FFFDF5","#DDAD73",4)
+        for y in (104,125,147):
+            line(d,[(80,y),(157,y)],"#BDA789",5)
+        ell(d,(138,140,216,218),None,PURPLE,9)
+        line(d,[(198,199),(232,232)],PURPLE,12)
+    elif name=="timer":
+        ell(d,(45,50,213,219),"#E5F7FC","#348BA8",8)
+        rr(d,(106,22,152,55),11,GOLD,GOLD_EDGE,5)
+        line(d,[(130,78),(130,134)],"#1B6584",11)
+        line(d,[(130,134),(170,161)],CORAL,10)
+        ell(d,(118,121,142,145),GOLD,GOLD_EDGE,3)
+        for x,y in ((129,65),(195,134),(129,201),(62,134)):
+            ell(d,(x-4,y-4,x+4,y+4),"#4BA0BC")
+    elif name=="success":
+        ell(d,(43,35,214,208),GOLD,GOLD_EDGE,8)
+        ell(d,(62,54,194,188),"#FFF1B7","#E5AF38",5)
+        poly(d,[(87,131),(113,155),(170,90),(188,108),(117,180),(71,145)],
+             "#2B9F80","#16765C",5)
+        poly(d,[(71,186),(91,209),(100,240),(129,224),(154,239),(169,204),(194,184)],
+             "#A78BE2","#6652AB",4)
+    elif name=="notebook":
+        rr(d,(47,30,211,221),22,"#E2EEFF","#4D83B5",6)
+        rr(d,(71,42,200,209),15,"#FFFFFF","#A6C7E5",4)
+        for y in (86,110,135,160,184):
+            line(d,[(94,y),(182,y)],"#A3BBDF",4)
+        for y in (65,105,146,184):
+            ell(d,(36,y-8,61,y+9),GOLD,GOLD_EDGE,3)
+        poly(d,[(175,142),(193,127),(218,156),(200,172)],"#C7A0F4",PURPLE,4)
+        poly(d,[(197,168),(212,187),(199,195),(189,181)],"#E6B66B",GOLD_EDGE,3)
     elif name=="packages":
         for x,y,c in ((32,73,"#B1C8FF"),(73,59,"#C9A6FF"),(108,46,"#7DDDD0")):
             rr(d,(x,y,x+110,y+154),17,c,PURPLE,5)
@@ -234,7 +324,9 @@ def icon(name):
 
 names=("arena_duel","arena_team","arena_quiz","trophy","listen","sentence",
        "grammar","story","speak","puzzle","yds","cards","plan",
-       "camera","assistant","packages","verbs","mistakes","ai_teacher")
+       "camera","assistant","packages","verbs","mistakes","ai_teacher",
+       "pdf","scan","translate","paragraph","synonym","completion",
+       "exam","review","timer","success","notebook")
 for name in names:
     path=DEST/(name+".webp")
     icon(name).save(path,format="WEBP",quality=92,method=4)

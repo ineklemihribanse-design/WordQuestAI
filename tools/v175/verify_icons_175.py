@@ -6,7 +6,9 @@ SRC=ROOT/"source/app/src/main/java/com/kelimebulmacasi/a1"
 ICON=ROOT/"source/app/src/main/assets/wq175_icons"
 names=("arena_duel","arena_team","arena_quiz","trophy","listen",
     "sentence","grammar","story","speak","puzzle","yds",
-    "cards","plan","camera","assistant","packages","verbs","mistakes","ai_teacher")
+    "cards","plan","camera","assistant","packages","verbs","mistakes","ai_teacher",
+    "pdf","scan","translate","paragraph","synonym","completion",
+    "exam","review","timer","success","notebook")
 for name in names:
     path=ICON/(name+".webp")
     assert path.stat().st_size>800,name
@@ -27,4 +29,4 @@ assert '"kişisel ai öğretmen" in s -> "ai_teacher"' in icon_router
 assert (SRC/"WordQuest175TimedPuzzle.kt").exists()
 assert (SRC/"WordQuest175ImportWords.kt").exists()
 assert (SRC/"LenaLive3DStage.kt").exists()
-print("PASS: 19 distinct original high DPI art assets integrated in Arena, Home and Daily rooms.")
+print("PASS: 30 distinct original high-DPI 2.5D icons for premium room and result screens.")
