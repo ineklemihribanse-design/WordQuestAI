@@ -11,12 +11,12 @@ import java.util.UUID
 class Wq176ContentRotationTest {
     @Test fun containsAtLeastTwoThousandDistinctQuestionsWithExplanations() {
         val all=YdsContent.questions
-        assertEquals(2038,all.size)
+        assertEquals(2638,all.size)
         assertEquals(all.size,all.map { it.id }.toSet().size)
         assertEquals(all.size,all.map { it.question.lowercase().trim() }.toSet().size)
         assertTrue(all.count { it.topic==YdsTopic.Vocabulary } >= 800)
         assertTrue(all.count { it.topic==YdsTopic.Translation } >= 800)
-        assertTrue(all.count { it.topic==YdsTopic.Grammar } >= 240)
+        assertTrue(all.count { it.topic==YdsTopic.Grammar } >= 840)
         all.forEach { q ->
             assertEquals(4,q.options.size)
             assertEquals(4,q.options.map { it.lowercase() }.toSet().size)
