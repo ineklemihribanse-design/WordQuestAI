@@ -21,7 +21,9 @@ print("PASS: real crosswords, edit, backups and completed-filter remain connecte
 matching=(src/"WordQuest175Matching.kt").read_text("utf-8")
 for token in ('"vocabulary-extra.tsv"', '"vocabulary-addendum-v175.tsv"',
               'session.searchLearning("",0,5000)', 'store.mistake(',
-              'store.finish(', 'finishGame(true)', 'Wq175MatchingEntry',
+              'store.finish(', 'finishGame(Wq175MatchEnd.Completed)',
+              'wq175MatchResultTitle(endReason)', 'wrongPairs=(wrongPairs+mistaken).distinctBy',
+              'Wq175MatchingEntry',
               'Wq175MatchingDialog'):
     assert token in matching,token
 assert (src.parents[5]/"src/test/java/com/kelimebulmacasi/a1/Wq175MatchingTest.kt").exists()
