@@ -24,7 +24,11 @@ assert 'Text(social.nickname.ifBlank { "Kullanıcı adını belirle" }' in home
 assert 'social.saveName(username)' in home
 assert 'Text("Kullanıcı adını yaz")' in home
 assert 'Wq182Info("Kullanıcı adı ve eşitleme"' in home
-assert 'session.social.nickname.ifBlank {"Oyuncu"}.take(16)' in home
+session=get("AppSession.kt")
+assert 'social.nickname.ifBlank { "Oyuncu" }' in session
+assert 'social.nickname.ifBlank { accountName.orEmpty() }' not in session
+assert ('session.profileName' in home or 'session.social.nickname' in home)
+
 assert 'session.accountName?.takeIf { it.isNotBlank() } ?: "Oyuncu"' not in home
 assert 'versionCode = 108' in (ROOT/"source/app/build.gradle.kts").read_text()
 assert 'versionName = "1.0.82"' in (ROOT/"source/app/build.gradle.kts").read_text()
