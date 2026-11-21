@@ -96,23 +96,25 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
-      - name: Install APK inspection tools
+      - name: Verify pre-installed Android SDK inspection tools
         shell: bash
         run: |
           set -euo pipefail
-          sdkmanager --install 'build-tools;35.0.0' >/dev/null
+          test -d "$ANDROID_HOME"
+          if [ ! -x "$ANDROID_HOME/build-tools/35.0.0/aapt" ]; then
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install 'build-tools;35.0.0'
+          fi
           test -x "$ANDROID_HOME/build-tools/35.0.0/aapt"
-          test -x "$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
 
       - name: Independently verify upgrade package, signer, version and non-debuggable build
         shell: bash
         run: |
           set -euo pipefail
           aapt="$ANDROID_HOME/build-tools/35.0.0/aapt"
-          signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+          signer="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           "$aapt" dump badging dist/WordQuestAI.apk > /tmp/wq176-badging.txt
-          "$signer" verify --verbose --print-certs dist/WordQuestAI.apk > /tmp/wq176-signature.txt
+          java -jar "$signer" verify --verbose --print-certs dist/WordQuestAI.apk > /tmp/wq176-signature.txt
           grep -Fq "name='$APP_PACKAGE'" /tmp/wq176-badging.txt
           grep -Fq "versionCode='102'" /tmp/wq176-badging.txt
           grep -Fq "versionName='1.0.76'" /tmp/wq176-badging.txt
