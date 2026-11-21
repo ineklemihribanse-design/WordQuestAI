@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -197,18 +198,37 @@ internal fun Wq175PracticeTile(
 @Composable
 internal fun Wq175PracticeQuestionHeader(kind:PracticeKind,number:Int){
     val c=wq175RoomTint(kind)
-    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(22.dp))
+    val suppliedHero=when(kind){
+        PracticeKind.Dictation -> "dinle_ve_yaz"
+        PracticeKind.Grammar -> "dilbilgisi"
+        else -> null
+    }
+    val shape=RoundedCornerShape(22.dp)
+    Box(Modifier.fillMaxWidth().heightIn(min=102.dp).clip(shape)
         .background(Brush.horizontalGradient(listOf(c.pale,Color.White)))
-        .padding(12.dp),verticalAlignment=Alignment.CenterVertically,
-        horizontalArrangement=Arrangement.spacedBy(12.dp)){
-        Box(Modifier.size(56.dp).background(c.pale,RoundedCornerShape(16.dp)),
-            contentAlignment=Alignment.Center){
-            Wq175PracticeIcon(kind,Modifier.size(43.dp))
+        .border(1.dp,c.accent.copy(alpha=.23f),shape)) {
+        if(suppliedHero!=null) {
+            Wq175ThemeIllustration(suppliedHero,
+                Modifier.align(Alignment.CenterEnd).width(117.dp)
+                    .height(102.dp).alpha(.23f))
         }
-        Column(Modifier.weight(1f)) {
-            Text(kind.title,color=c.ink,fontSize=20.sp,
-                fontWeight=FontWeight.ExtraBold)
-            Text("Alıştırma "+(number+1),color=c.accent,fontSize=12.sp)
+        Row(Modifier.fillMaxWidth().padding(13.dp),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(12.dp)){
+            Box(Modifier.size(57.dp)
+                .background(c.pale,RoundedCornerShape(16.dp)),
+                contentAlignment=Alignment.Center){
+                Wq175PracticeIcon(kind,Modifier.size(43.dp))
+            }
+            Column(Modifier.weight(1f),
+                verticalArrangement=Arrangement.spacedBy(5.dp)) {
+                Text(kind.title,color=c.ink,fontSize=19.sp,
+                    lineHeight=23.sp,fontWeight=FontWeight.ExtraBold)
+                Text("Alıştırma "+(number+1),color=c.accent,fontSize=12.sp,
+                    fontWeight=FontWeight.Bold)
+                Text(kind.detail,color=Color(0xFF68727C),fontSize=11.sp,
+                    lineHeight=15.sp,maxLines=2)
+            }
         }
     }
 }

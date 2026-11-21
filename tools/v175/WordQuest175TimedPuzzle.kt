@@ -85,8 +85,13 @@ internal fun Wq175TimeRemainingBadge(remainingMillis:Long) {
         .padding(horizontal=15.dp,vertical=10.dp),
         verticalAlignment=Alignment.CenterVertically,
         horizontalArrangement=Arrangement.SpaceBetween){
-        Text("SÜREYE KARŞI",fontSize=12.sp,fontWeight=FontWeight.ExtraBold,
-            color=if(critical)Color(0xFFA33E52) else Color(0xFF2E6B58))
+        Row(verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            Wq175GlossIcon("timer",Modifier.size(43.dp))
+            Text("SÜREYE KARŞI",fontSize=12.sp,
+                fontWeight=FontWeight.ExtraBold,
+                color=if(critical)Color(0xFFA33E52) else Color(0xFF2E6B58))
+        }
         Text("%02d:%02d".format(minutes,s),fontSize=21.sp,
             fontWeight=FontWeight.Black,
             color=if(critical)Color(0xFFB52E4B) else Color(0xFF20493A))

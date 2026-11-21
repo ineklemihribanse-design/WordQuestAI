@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -44,8 +45,18 @@ internal fun Wq175RealVocabularyCoverage(session: AppSession, level: String) {
     ) {
         Column(Modifier.padding(15.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("$level kelime kütüphanesi", color = Color(0xFF145D5A),
-                fontWeight = FontWeight.ExtraBold, fontSize = 16.sp)
+            Row(verticalAlignment=Alignment.CenterVertically,
+                horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+                Wq175GlossIcon("packages",Modifier.size(56.dp))
+                Column(Modifier.weight(1f),
+                    verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                    Text("$level kelime kütüphanesi",
+                        color=Color(0xFF145D5A),
+                        fontWeight=FontWeight.ExtraBold,fontSize=16.sp)
+                    Text("Güncel kelime havuzun",fontSize=11.sp,
+                        color=Color(0xFF5A827D))
+                }
+            }
             when {
                 loadError -> Text("Kelime havuzu okunamadı. Paketleri yeniden aç.",
                     color = Color(0xFFAB4A4A), fontSize = 12.sp)
