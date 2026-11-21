@@ -113,17 +113,17 @@ def board(s):
         '        val gap=if(maxWidth<500.dp)1.dp else 1.5.dp',
         "phone cells expand with tighter gaps")
     s=once(s,
-        '''        val visibleHeight=(LocalConfiguration.current.screenHeightDp.dp*.72f)
-            .coerceIn(320.dp,820.dp)''',
+        '''        val visibleHeight=(LocalConfiguration.current.screenHeightDp.dp*.83f)
+            .coerceIn(340.dp,940.dp)''',
         '''        val visibleHeight=(LocalConfiguration.current.screenHeightDp.dp*.82f)
             .coerceIn(360.dp,1000.dp)''',
         "use more of phone/tablet height")
     s=once(s,
-        '        val maxHeight=if(compact)180.dp else visibleHeight',
-        '        val maxHeight=if(compact)210.dp else visibleHeight',
+        '        val maxHeight=if(compact)220.dp else visibleHeight',
+        '        val maxHeight=if(compact)250.dp else visibleHeight',
         "more visible board with keyboard open")
     s=once(s,
-        '        val fitWidth=(maxWidth-12.dp-gap*cols)/cols',
+        '        val fitWidth=(maxWidth-8.dp-gap*cols)/cols',
         '        val fitWidth=(maxWidth-3.dp-gap*cols)/cols',
         "stretch grid to nearly full available width")
     s=once(s,
