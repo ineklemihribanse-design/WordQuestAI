@@ -19,6 +19,9 @@ for room in ("Dictation","Sentence","Grammar","Story","Speak"):
     assert "PracticeKind."+room in design
 assert "Canvas(modifier)" in design
 assert 'Wq175ThemeIllustration(suppliedHero,' in design
+assert 'Wq175GlossIcon(Wq175IconNames.practice(kind),' in design
+assert 'Modifier.align(Alignment.CenterEnd)' in design
+assert '.size(100.dp).alpha(.19f)' in design
 assert 'PracticeKind.Dictation -> "dinle_ve_yaz"' in design
 assert 'PracticeKind.Grammar -> "dilbilgisi"' in design
 assert 'Text(kind.detail,color=Color(0xFF68727C)' in design

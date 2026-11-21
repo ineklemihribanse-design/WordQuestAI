@@ -21,7 +21,10 @@ assert 'Wq175PremiumPracticeSpecialTile("Kişisel AI öğretmenim"' in hub
 assert hub.count("Wq175PremiumPracticeSpecialTile(")==2
 assert hub.count("MenuItem@ {")>=1
 assert 'internal fun Wq175PremiumPracticeSpecialTile(' in grid
-assert 'Wq175GlossIcon(imageName,Modifier.size(76.dp))' in grid
+assert 'Wq175SpecialTileArt(teacher,Modifier.size(76.dp))' in grid
+assert 'Wq175SpecialTileArt(teacher,Modifier.size(70.dp))' in grid
+assert 'R.drawable.wq167_lena_portrait' in grid
+assert 'Wq175GlossIcon("mistakes",modifier)' in grid
 assert 'PracticeKind.entries.chunked(2)' in grid
 icons=(src/"WordQuest175Icons.kt").read_text("utf-8")
 assert '"yanlışlarımdan" in s -> "mistakes"' in icons

@@ -211,6 +211,12 @@ internal fun Wq175PracticeQuestionHeader(kind:PracticeKind,number:Int){
             Wq175ThemeIllustration(suppliedHero,
                 Modifier.align(Alignment.CenterEnd).width(117.dp)
                     .height(102.dp).alpha(.23f))
+        } else {
+            // Three additional rooms have their own original generated art.
+            // Keep it subtle so question labels remain clearly readable.
+            Wq175GlossIcon(Wq175IconNames.practice(kind),
+                Modifier.align(Alignment.CenterEnd)
+                    .size(100.dp).alpha(.19f))
         }
         Row(Modifier.fillMaxWidth().padding(13.dp),
             verticalAlignment=Alignment.CenterVertically,

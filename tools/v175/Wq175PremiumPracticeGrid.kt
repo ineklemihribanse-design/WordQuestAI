@@ -1,6 +1,7 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
@@ -10,6 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -93,6 +97,21 @@ private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
  * previously rendered as plain MenuItems. All game actions and storage stay
  * in PracticeHubScreen; the original callback is invoked unchanged.
  */
+
+/** Lena is the actual learning companion; use the approved in-app portrait,
+ * rather than a generic robot on the Personal AI Teacher entry point.
+ */
+@Composable
+private fun Wq175SpecialTileArt(teacher:Boolean,modifier:Modifier) {
+    if(teacher) {
+        Image(
+            painter=painterResource(R.drawable.wq167_lena_portrait),
+            contentDescription=null,
+            modifier=modifier.clip(RoundedCornerShape(17.dp)),
+            contentScale=ContentScale.Crop)
+    } else Wq175GlossIcon("mistakes",modifier)
+}
+
 @Suppress("UNUSED_PARAMETER")
 @Composable
 internal fun Wq175PremiumPracticeSpecialTile(
@@ -105,7 +124,6 @@ internal fun Wq175PremiumPracticeSpecialTile(
     val background = if (teacher) Color(0xFFECE8FF) else Color(0xFFFFF1D9)
     val accent = if (teacher) Color(0xFF6744B5) else Color(0xFFB66D31)
     val border = if (teacher) Color(0xFFD2C5F4) else Color(0xFFEED5AC)
-    val imageName = if (teacher) "ai_teacher" else "mistakes"
 
     Surface(
         onClick=onClick,
@@ -127,7 +145,7 @@ internal fun Wq175PremiumPracticeSpecialTile(
                         horizontalArrangement=Arrangement.SpaceBetween,
                         verticalAlignment=Alignment.CenterVertically
                     ) {
-                        Wq175GlossIcon(imageName,Modifier.size(70.dp))
+                        Wq175SpecialTileArt(teacher,Modifier.size(70.dp))
                         Text("›",color=accent,fontSize=26.sp,fontWeight=FontWeight.Bold)
                     }
                     Text(title,color=Color(0xFF24344B),fontSize=17.sp,
@@ -143,7 +161,7 @@ internal fun Wq175PremiumPracticeSpecialTile(
                     verticalAlignment=Alignment.CenterVertically,
                     horizontalArrangement=Arrangement.spacedBy(10.dp)
                 ) {
-                    Wq175GlossIcon(imageName,Modifier.size(76.dp))
+                    Wq175SpecialTileArt(teacher,Modifier.size(76.dp))
                     Column(
                         Modifier.weight(1f),
                         verticalArrangement=Arrangement.spacedBy(5.dp)
