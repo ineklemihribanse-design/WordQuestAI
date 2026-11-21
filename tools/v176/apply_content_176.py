@@ -385,7 +385,7 @@ def main():
     text=text.replace('versionName = "1.0.75"','versionName = "1.0.76"',1)
     gradle.write_text(text,"utf-8")
     print("PASS: YDS offline bank",FINAL_TOTAL,"total =",198,"existing +",TARGET,
-          "lexical/translation +",GRAMMAR+GRAMMAR_EXTENDED,"grammar.")
+          "lexical/translation +",GRAMMAR+GRAMMAR_EXTENDED+GRAMMAR_NEW_AUTHORED,"grammar.")
     print("PASS: daily source-bank drill, per-profile session rotation and Android versionCode 102.")
 
 if __name__=="__main__":
