@@ -49,6 +49,26 @@ s=once(s,
     "large centered crossword and zoom outside grid")
 typing.write_text(s,"utf-8")
 
+# The all-clues action was dark green on a transparent stadium surface.
+# Give it a crisp light button with dark text on every game background.
+extras=SRC/"Wq179ArenaExtras.kt"
+s=extras.read_text("utf-8")
+s=once(s,
+    '''    OutlinedButton(onClick={open=true},modifier=Modifier.fillMaxWidth(),
+        shape=RoundedCornerShape(16.dp)) {
+        Text("☷  TÜM KELİMELER  ·  $unsolved kaldı",fontWeight=FontWeight.Bold)
+    }''',
+    '''    Button(onClick={open=true},modifier=Modifier.fillMaxWidth(),
+        colors=ButtonDefaults.buttonColors(
+            containerColor=Color(0xFFF3E8FF),
+            contentColor=Color(0xFF402759)),
+        shape=RoundedCornerShape(16.dp)) {
+        Text("☷  TÜM KELİMELER  ·  $unsolved kaldı",
+            color=Color(0xFF402759),fontWeight=FontWeight.Bold)
+    }''',
+    "visible high-contrast all-clues button")
+extras.write_text(s,"utf-8")
+
 online=SRC/"PremiumOnlineScreen.kt"
 s=online.read_text("utf-8")
 s=once(s,"Wq179ArenaStageBackground(\n            Modifier.matchParentSize(), dark = match?.phase == \"playing\")",
