@@ -83,40 +83,24 @@ s=replace_once(s,
                                 else 124.dp)
                                 .height(if(wide)178.dp else 164.dp))''',
     '''                        Box(
-                            Modifier.width(if(wide)178.dp else
-                                if(LocalDensity.current.fontScale>1.2f)112.dp
-                                else 124.dp).height(if(wide)178.dp else 164.dp)
+                            Modifier.size(if(wide)160.dp else
+                                if(LocalDensity.current.fontScale>1.2f)96.dp else 126.dp)
+                                .clip(CircleShape)
+                                .background(Color(0xFF38576A))
+                                .border(2.dp,Color(0x77FFE6B6),CircleShape),
+                            contentAlignment=Alignment.Center
                         ) {
-                            Wq175ThemeIllustration("ana_sayfa",
-                                Modifier.matchParentSize()
-                                    .graphicsLayer {
-                                        compositingStrategy=CompositingStrategy.Offscreen
-                                    }
-                                    .drawWithContent {
-                                        drawContent()
-                                        drawRect(brush=Brush.horizontalGradient(
-                                            0f to Color.Transparent,
-                                            .34f to Color.White,
-                                            1f to Color.White
-                                        ),blendMode=BlendMode.DstIn)
-                                        drawRect(brush=Brush.verticalGradient(
-                                            0f to Color.Transparent,
-                                            .14f to Color.White,
-                                            .86f to Color.White,
-                                            1f to Color.Transparent
-                                        ),blendMode=BlendMode.DstIn)
-                                    }
-                                    .alpha(.32f))
                             Wq2DPortrait(
                                 Wq2DMascots.selected(LocalContext.current,session.profileKey),
-                                Modifier.align(Alignment.BottomCenter)
-                                    .fillMaxHeight(.93f))
+                                Modifier.fillMaxSize().clip(CircleShape))
                         }''',
-    "actual chosen mascot in greeting artwork")
+    "actual selected mascot in rounded integrated header")
 if 'import androidx.compose.ui.draw.alpha' not in s:
     s=s.replace('import androidx.compose.ui.draw.clip',
                 'import androidx.compose.ui.draw.clip\nimport androidx.compose.ui.draw.alpha',1)
 for imported in (
+    'import androidx.compose.foundation.border',
+    'import androidx.compose.foundation.shape.CircleShape',
     'import androidx.compose.ui.draw.drawWithContent',
     'import androidx.compose.ui.graphics.Brush',
     'import androidx.compose.ui.graphics.Color',

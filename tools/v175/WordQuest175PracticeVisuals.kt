@@ -198,26 +198,15 @@ internal fun Wq175PracticeTile(
 @Composable
 internal fun Wq175PracticeQuestionHeader(kind:PracticeKind,number:Int){
     val c=wq175RoomTint(kind)
-    val suppliedHero=when(kind){
-        PracticeKind.Dictation -> "dinle_ve_yaz"
-        PracticeKind.Grammar -> "dilbilgisi"
-        else -> null
-    }
     val shape=RoundedCornerShape(22.dp)
     Box(Modifier.fillMaxWidth().heightIn(min=102.dp).clip(shape)
         .background(Brush.horizontalGradient(listOf(c.pale,Color.White)))
         .border(1.dp,c.accent.copy(alpha=.23f),shape)) {
-        if(suppliedHero!=null) {
-            Wq175ThemeIllustration(suppliedHero,
-                Modifier.align(Alignment.CenterEnd).width(117.dp)
-                    .height(102.dp).alpha(.23f))
-        } else {
-            // Three additional rooms have their own original generated art.
-            // Keep it subtle so question labels remain clearly readable.
-            Wq175GlossIcon(Wq175IconNames.practice(kind),
-                Modifier.align(Alignment.CenterEnd)
-                    .size(100.dp).alpha(.19f))
-        }
+        // Transparent illustrated assets blend into the panel. Never paste
+        // the source photograph's rectangular background over text.
+        Wq175GlossIcon(Wq175IconNames.practice(kind),
+            Modifier.align(Alignment.CenterEnd)
+                .size(100.dp).alpha(.19f))
         Row(Modifier.fillMaxWidth().padding(13.dp),
             verticalAlignment=Alignment.CenterVertically,
             horizontalArrangement=Arrangement.spacedBy(12.dp)){

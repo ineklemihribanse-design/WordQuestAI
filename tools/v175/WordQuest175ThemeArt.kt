@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -58,6 +59,20 @@ internal object Wq175ThemeArt {
             "bildirim" in s || "seri" in s -> "streak"
             else -> null
         }
+    }
+    /** Transparent 2.5D art for cards; never paste a portrait WebP rectangle. */
+    fun glossName(slug:String):String = when(slug) {
+        "ana_sayfa" -> "puzzle"
+        "yeni_oyun" -> "puzzle"
+        "arena" -> "trophy"
+        "yds_akademi" -> "exam"
+        "dinle_ve_yaz" -> "listen"
+        "dilbilgisi" -> "grammar"
+        "kelime_hafizam" -> "cards"
+        "eslestirmelerim" -> "synonym"
+        "gunluk_plan" -> "plan"
+        "bulmacalarim" -> "puzzle"
+        else -> "cards"
     }
     fun icon(slug:String):Int=when(slug){
         "ana_sayfa"->R.drawable.wq175_ana_sayfa_icon
@@ -154,34 +169,21 @@ internal fun Wq175ThemeIllustration(slug:String,modifier:Modifier) {
  */
 @Composable
 internal fun Wq175ThemeBanner(slug:String,modifier:Modifier) {
-    Box(modifier.clip(RoundedCornerShape(22.dp))) {
-        Image(painter=painterResource(Wq175ThemeArt.banner(slug)),
-            contentDescription=null,modifier=Modifier.matchParentSize(),
-            contentScale=ContentScale.FillBounds)
-        val artAlpha=when(slug) {
-            "yeni_oyun"->.82f
-            "eslestirmelerim"->.90f
-            else->.88f
-        }
-        Wq175ThemeIllustration(slug,Modifier.align(Alignment.CenterEnd)
-            .fillMaxHeight().width(178.dp)
-            .graphicsLayer {
-                compositingStrategy=CompositingStrategy.Offscreen
-            }
-            .drawWithContent {
-                drawContent()
-                drawRect(brush=Brush.horizontalGradient(
-                    0f to Color.Transparent,
-                    .34f to Color.White,
-                    1f to Color.White
-                ),blendMode=BlendMode.DstIn)
-                drawRect(brush=Brush.verticalGradient(
-                    0f to Color.Transparent,
-                    .13f to Color.White,
-                    .87f to Color.White,
-                    1f to Color.Transparent
-                ),blendMode=BlendMode.DstIn)
-            }
-            .alpha(artAlpha))
+    val colors=when(slug) {
+        "eslestirmelerim" -> listOf(Color(0xFF146D79),Color(0xFF2A9CA2),Color(0xFF83CED1))
+        "yeni_oyun" -> listOf(Color(0xFF16554B),Color(0xFF308979),Color(0xFF88C7A0))
+        "arena" -> listOf(Color(0xFF381466),Color(0xFF6E359D),Color(0xFFB17ADD))
+        "yds_akademi" -> listOf(Color(0xFF243F7A),Color(0xFF517EC5),Color(0xFF99B8E4))
+        "bulmacalarim" -> listOf(Color(0xFF246B59),Color(0xFF56A184),Color(0xFFA4DAB7))
+        else -> listOf(Color(0xFF26445C),Color(0xFF476E94),Color(0xFF9BB3D5))
+    }
+    Box(modifier.clip(RoundedCornerShape(22.dp))
+        .background(Brush.horizontalGradient(colors))) {
+        Box(Modifier.align(Alignment.CenterEnd).offset(x=42.dp).size(220.dp)
+            .background(Color.White.copy(alpha=.08f),CircleShape))
+        Box(Modifier.align(Alignment.TopEnd).offset(x=(-80).dp,y=(-68).dp)
+            .size(150.dp).background(Color.White.copy(alpha=.07f),CircleShape))
+        Wq175GlossIcon(Wq175ThemeArt.glossName(slug),
+            Modifier.align(Alignment.CenterEnd).padding(end=19.dp).size(105.dp))
     }
 }

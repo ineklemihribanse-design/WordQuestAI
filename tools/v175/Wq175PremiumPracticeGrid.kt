@@ -31,11 +31,7 @@ private fun Wq175PracticeCardTint(kind:PracticeKind):Color = when(kind) {
 /** Reuse the same original 2.5D artwork on phones and tablets. */
 @Composable
 private fun Wq175PremiumPracticeArt(kind:PracticeKind,modifier:Modifier) {
-    when(kind) {
-        PracticeKind.Dictation -> Wq175ThemeIcon("dinle_ve_yaz",modifier)
-        PracticeKind.Grammar -> Wq175ThemeIcon("dilbilgisi",modifier)
-        else -> Wq175GlossIcon(Wq175IconNames.practice(kind),modifier)
-    }
+    Wq175GlossIcon(Wq175IconNames.practice(kind),modifier)
 }
 
 /** A 360dp phone gives each card about 165dp: horizontal art, title and arrow

@@ -52,7 +52,7 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
             val imageSize=if(small)59.dp else if(narrow)76.dp else 88.dp
             @Composable
             fun Art() {
-                if(tile.artSlug!=null) Wq175ThemeIcon(tile.artSlug,Modifier.size(imageSize))
+                if(tile.artSlug!=null) Wq175GlossIcon(Wq175ThemeArt.glossName(tile.artSlug),Modifier.size(imageSize))
                 else if(tile.icon=="assistant") {
                     Image(
                         painter=painterResource(R.drawable.wq167_lena_portrait),

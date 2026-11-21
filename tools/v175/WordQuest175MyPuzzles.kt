@@ -47,8 +47,7 @@ internal fun Wq175MyPuzzlesHero(total: Int, completed: Int) {
                     }
                 }
             }
-            Wq175ThemeIllustration("bulmacalarim",
-                Modifier.width(112.dp).height(150.dp))
+            Wq175GlossIcon("puzzle",Modifier.size(112.dp))
         }
     }
 }

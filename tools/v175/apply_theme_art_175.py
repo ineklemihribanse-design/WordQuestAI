@@ -44,27 +44,12 @@ patch("HomeScreen.kt",
     '''            if (subtitle.isNotEmpty()) BodyText(subtitle)
             body()''',
     '''            if (subtitle.isNotEmpty()) BodyText(subtitle)
+            // Every primary room supplies its own hero inside body(). A second
+            // global banner duplicates it and repeats the same art in a box.
             val theme=Wq175ThemeArt.fromTitle(title)
-            if(theme!=null && theme!="yeni_oyun") {
-                Box(Modifier.fillMaxWidth().height(144.dp)
-                    .clip(RoundedCornerShape(22.dp))) {
-                    Wq175ThemeBanner(theme,Modifier.matchParentSize())
-                    Column(Modifier.align(Alignment.CenterStart)
-                        .fillMaxWidth(.63f).padding(17.dp),
-                        verticalArrangement=Arrangement.spacedBy(6.dp)) {
-                        Text("WORDQUEST AI · ÖĞRENME",
-                            color=Color(0xFFFFE6A1),fontSize=10.sp,
-                            fontWeight=FontWeight.Black)
-                        Text(title,color=Color.White,fontSize=20.sp,
-                            lineHeight=23.sp,fontWeight=FontWeight.ExtraBold,
-                            maxLines=3)
-                    }
-                }
-            } else {
+            if(theme==null) {
                 val secondary=Wq175ThemeArt.secondaryIcon(title)
-                if(secondary!=null) {
-                    Wq175SecondaryRoomBanner(title,secondary)
-                }
+                if(secondary!=null) Wq175SecondaryRoomBanner(title,secondary)
             }
             body()''',
     "specific room hero artworks")
@@ -152,9 +137,9 @@ import androidx.compose.ui.draw.alpha''',
 patch("WordQuest175Arena.kt",
     '''            Wq175StadiumBackdrop(Modifier.matchParentSize())''',
     '''            Wq175StadiumBackdrop(Modifier.matchParentSize())
-            Wq175ThemeIllustration("arena",
-                Modifier.align(Alignment.CenterEnd).height(226.dp)
-                    .width(160.dp).alpha(.28f))''',
+            Wq175GlossIcon("trophy",
+                Modifier.align(Alignment.TopEnd)
+                    .padding(top=16.dp,end=18.dp).size(83.dp).alpha(.19f))''',
     "original stadium art below live selected mascot")
 
 print("PASS: all 20 original full-quality WebP files copied to Android drawable-nodpi.")

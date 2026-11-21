@@ -50,7 +50,7 @@ internal object Wq175IconNames {
             "öğrenme merkez" in s || "öneri" in s -> "insights"
             "ilerleme" in s || "istatistik" in s || "puanlarım" in s -> "analytics"
             "arkadaş" in s -> "friends"
-            "profil" in s || "hesap" in s -> "account"
+            "profil" in s || "hesap" in s || "hesab" in s -> "account"
             "ayar" in s -> "settings"
             "yedek" in s || "dışa aktar" in s -> "backup"
             "geçmiş" in s -> "history"

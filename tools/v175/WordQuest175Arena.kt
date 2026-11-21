@@ -7,6 +7,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -191,10 +192,12 @@ internal fun Wq175ArenaHeroAndModes(
                             modifier=Modifier.padding(horizontal=11.dp,vertical=7.dp))
                     }
                 }
-                Box(Modifier.width(168.dp).height(207.dp),
-                    contentAlignment=Alignment.BottomCenter) {
+                Box(Modifier.size(160.dp).clip(CircleShape)
+                    .background(Color(0x553F236E))
+                    .border(2.dp,ArenaGold175,CircleShape),
+                    contentAlignment=Alignment.Center) {
                     Wq2DPortrait(selectedAvatar,
-                        Modifier.fillMaxWidth().height(192.dp),
+                        Modifier.fillMaxSize().clip(CircleShape),
                         victory=(mode=="duel"))
                 }
             }
