@@ -51,16 +51,16 @@ internal fun Wq175HomeBottomNav(
     NavigationBar(modifier=modifier.fillMaxWidth(),
         containerColor=Color(0xFFFFFBF3),tonalElevation=6.dp) {
         NavigationBarItem(selected=true,enabled=false,onClick={},
-            icon={Wq175GlossIcon("puzzle",Modifier.size(29.dp))},
+            icon={Wq175ThemeIcon("ana_sayfa",Modifier.size(29.dp))},
             label={Text("Ana",fontSize=10.sp,fontWeight=FontWeight.Bold,color=labelColor)})
         NavigationBarItem(selected=false,onClick=onNewGame,
-            icon={Wq175GlossIcon("sentence",Modifier.size(29.dp))},
+            icon={Wq175ThemeIcon("yeni_oyun",Modifier.size(29.dp))},
             label={Text("Yeni Oyun",fontSize=10.sp,color=labelColor)})
         NavigationBarItem(selected=false,onClick=onArena,
-            icon={Wq175GlossIcon("trophy",Modifier.size(29.dp))},
+            icon={Wq175ThemeIcon("arena",Modifier.size(29.dp))},
             label={Text("Arena",fontSize=10.sp,color=labelColor)})
         NavigationBarItem(selected=false,onClick=onDaily,
-            icon={Wq175GlossIcon("plan",Modifier.size(29.dp))},
+            icon={Wq175ThemeIcon("gunluk_plan",Modifier.size(29.dp))},
             label={Text("Günlük",fontSize=10.sp,color=labelColor)})
         NavigationBarItem(selected=false,onClick=onAccount,
             icon={Wq2DPortrait(chosen,Modifier.size(29.dp))},
