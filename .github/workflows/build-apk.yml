@@ -99,6 +99,8 @@ on:
       - 'tools/v177/**'
       - 'tools/v178/**'
       - 'tools/v179/**'
+      - 'tools/v180/**'
+      - 'firebase/database.rules.json'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
