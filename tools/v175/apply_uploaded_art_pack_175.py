@@ -38,14 +38,22 @@ def main() -> int:
                 continue
             relative = PurePosixPath(name[len(PREFIX):])
             if (len(relative.parts) != 2 or relative.parts[0] not in ALLOWED
-                    or relative.suffix != '.webp'
                     or any(part in ('', '..') for part in relative.parts)):
                 continue  # intentionally ignore low-quality 'extra' atlas crops
+            folder = relative.parts[0]
+            extension = relative.suffix
+            if extension != '.webp' and not (extension == '.png' and folder in ('cards', 'buttons')):
+                continue
             data = z.read(name)
-            assert len(data) > 200 and data[:4] == b'RIFF' and data[8:12] == b'WEBP', name
+            assert len(data) > 200, name
+            if extension == '.webp':
+                assert data[:4] == b'RIFF' and data[8:12] == b'WEBP', name
+            else:
+                assert data[:8] == b'\\x89PNG\\r\\n\\x1a\\n', name
             items.append((relative, data))
         icons = sum(p.parts[0] == 'icons' for p, _ in items)
-        assert icons >= 102, f'Expected 102 independent icons, got {icons}'
+        assert icons == 108, f'Expected 108 standalone icon files (102+6), got {icons}'
+        assert len(items) == 176, f'Expected 176 approved media assets, got {len(items)}'
 
         # Validate patch signatures before writing anything.
         icons_file = JAVA / 'WordQuest175Icons.kt'
@@ -92,7 +100,7 @@ def main() -> int:
         icons_file.write_text(patched_icons, 'utf-8')
         theme_file.write_text(patched_theme, 'utf-8')
         (JAVA / 'Wq175UserArt.kt').write_text(art_source, 'utf-8')
-        print(f'PASS: installed {len(items)} user-approved WebP files, including {icons} independent icons')
+        print(f'PASS: installed {len(items)} user-approved media files (WebP+PNG), including {icons} independent icons')
         print('PASS: cropped fallback atlas excluded; navigation/Memory/Lena/versions/signing unchanged')
     return 0
 
