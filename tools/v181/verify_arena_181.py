@@ -12,7 +12,7 @@ score=f("ArenaReferenceComponents.kt")
 hint=f("Wq181ArenaHintBar.kt")
 assert (ROOT/"source/app/src/main/res/drawable-nodpi/wq175_arena_hero.webp").stat().st_size>5000
 assert 'painterResource(R.drawable.wq175_arena_hero)' in stage
-assert 'ContentScale.Crop' in stage and 'Color(0xB7271649)' in stage
+assert 'ContentScale.Crop' in stage and 'Color(0x8C271649)' in stage
 assert 'Wq181ArenaHeroStage(' in online
 assert 'Wq181ArenaHintBar(' in online
 assert 'client.useHint(selected)' in online

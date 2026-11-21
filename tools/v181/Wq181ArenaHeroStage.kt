@@ -29,8 +29,8 @@ internal fun Wq181ArenaHeroStage(modifier:Modifier=Modifier,active:Boolean=false
             Canvas(Modifier.matchParentSize()){
                 drawRect(brush=Brush.verticalGradient(
                     colors=listOf(
-                        Color(0xB7271649),Color(0xB62B154B),
-                        Color(0xC92D184D),Color(0xE31A1337)),
+                        Color(0x8C271649),Color(0x942B154B),
+                        Color(0xA52D184D),Color(0xBC1A1337)),
                     startY=0f,endY=size.height
                 ))
             }
