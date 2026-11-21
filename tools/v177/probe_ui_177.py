@@ -8,6 +8,8 @@ tasks={
     "VocabularyNeonPractice.kt":["val turn","val showingBack","Kartı Çevir","graphicsLayer","fun next()","val card","VocabularyConceptVisual","if (studyMode == \"card\")"],
     "PracticeHubScreen.kt":["PracticeKind.Story","PracticeKind.Sentence","fun","questions","selection","LaunchedEffect","story"],
     "WordQuest175Arena.kt":["Wq175ArenaModeSymbol","Wq175ModeCard","Wq175GlossIcon","arena_duel"],
+    "PuzzleScreen.kt":["BoardFrame(","private fun BoardFrame","val tile =","regularTile","windowHeight","windowWidth","val expanded","val boardHeight","val viewWidth","val available","fun Board","select(","LaunchedEffect(selected","pointerInput","horizontalScroll","verticalScroll"],
+    "PracticeContent.kt":["object PracticeContent","data class PracticeQuestion","val sentences","val grammar","val story","enum class PracticeKind"],
 }
 for name,needles in tasks.items():
     path=root/name
@@ -24,7 +26,8 @@ for name,needles in tasks.items():
             chunks[-1]=(chunks[-1][0],max(b,chunks[-1][1]))
         else: chunks.append((a,b))
     cap={"CustomEditor.kt":290,"HomeScreen.kt":260,"PracticeHubScreen.kt":160,
-         "VocabularyNeonPractice.kt":185,"WordQuest175Arena.kt":65}[name]
+         "VocabularyNeonPractice.kt":185,"WordQuest175Arena.kt":65,
+         "PuzzleScreen.kt":390,"PracticeContent.kt":150}[name]
     count=0
     for a,b in chunks:
         for i in range(a,b):
