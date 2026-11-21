@@ -384,11 +384,11 @@ def home_matching_ai(s):
     # never construct a second session (which would lose API/provider state).
     import re
     signature = re.compile(
-        r'(\\bfun\\s+HomeScreen\\s*\\(\\s*session\\s*:\\s*AppSession\\s*,)',
+        r'(\bfun\s+HomeScreen\s*\(\s*session\s*:\s*AppSession\s*,)',
         re.MULTILINE
     )
     # Raw regex tokens above are Python escapes (not JS string escapes).
-    s, matched = signature.subn(r'\\1 ai: AiSession,', s, count=1)
+    s, matched = signature.subn(r'\1 ai: AiSession,', s, count=1)
     if matched != 1:
         raise AssertionError("HomeScreen signature must receive existing AiSession")
     s = once(s,
