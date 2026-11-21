@@ -45,6 +45,18 @@ class Wq176ContentRotationTest {
         }
     }
 
+    @Test fun grammarSessionUsesDifferentRulesNotOnlyDifferentNouns() {
+        val context=RuntimeEnvironment.getApplication()
+        val grammar=YdsContent.questions.filter { it.topic==YdsTopic.Grammar }
+        val selected=Wq176QuestionRotation.pick(
+            context,"grammar_"+UUID.randomUUID().toString(),grammar,35
+        )
+        assertEquals(35,selected.size)
+        assertEquals(
+            35,selected.map { Wq176QuestionRotation.family(it.id) }.toSet().size
+        )
+    }
+
     @Test fun dailyTopicsUseBalancedShuffledBagsAcrossRestarts() {
         val context=RuntimeEnvironment.getApplication()
         val profile="daily_"+UUID.randomUUID().toString()
