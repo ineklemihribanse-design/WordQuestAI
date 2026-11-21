@@ -29,9 +29,10 @@ assert m.index('    val more = listOf(')<m.index('Wq175HomeTile("Yeni Oyun"')
 assert m.index('    val more = listOf(')<m.index('Wq175HomeTile("Konuşma Asistanı"')
 assert m.index('Wq175HomeTile("Hazır Paketler"')<m.index('Wq175HomeTile("Bulmacalarım"')
 assert m.index('Wq175HomeTile("Bulmacalarım"')<m.index('    val more = listOf(')
-assert 'Wq175HomeTile("Eşleştirmelerim"' not in m
+assert 'Wq175HomeTile("Eşleştirmelerim"' in m
+assert 'Wq175MatchingDialog(session,onDismiss={matchingOpen=false})' in m
 assert '"analytics",Color(0xFFFFF1DC),progress)' in m
-assert '"insights",Color(0xFFECEFFD),insights)' in m
+assert 'Wq175HomeTile("Öğrenme Merkezim"' not in m
 for module in ("arena","yds_akademi","kelime_hafizam","bulmacalarim","gunluk_plan","yeni_oyun"):
     assert 'artSlug="'+module+'"' in m,module
 assert "fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp" in h
