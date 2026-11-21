@@ -114,17 +114,26 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
     }
 }
 
-/** Primary CTA styled for the midnight-slate premium home rather than old green. */
+/** Only New Game entry on the dashboard; directly below the resume tile. */
 @Composable
 internal fun Wq175HomeStartButton(onClick:()->Unit) {
-    Button(
-        onClick=onClick,
-        modifier=Modifier.fillMaxWidth().heightIn(min=52.dp),
-        shape=RoundedCornerShape(18.dp),
-        colors=ButtonDefaults.buttonColors(
-            containerColor=Color(0xFF086B4F),contentColor=Color.White)
-    ) {
-        Text("Yeni Oyun",fontSize=16.sp,fontWeight=FontWeight.ExtraBold)
+    Surface(onClick=onClick,modifier=Modifier.fillMaxWidth().heightIn(min=84.dp),
+        shape=RoundedCornerShape(23.dp),color=Color(0xFF213C5A),
+        shadowElevation=5.dp,
+        border=BorderStroke(1.dp,Color(0xFFDCBE81))) {
+        Row(Modifier.fillMaxWidth().padding(horizontal=14.dp,vertical=10.dp),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+            Wq175GlossIcon("puzzle",Modifier.size(59.dp))
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                Text("Yeni Oyun",color=Color.White,
+                    fontSize=18.sp,fontWeight=FontWeight.ExtraBold)
+                Text("Seviyeni seç, yeni bir bulmaca oluştur.",
+                    color=Color(0xFFE4E8F5),fontSize=12.sp,lineHeight=16.sp)
+            }
+            Text("›",color=Color(0xFFFFD788),fontSize=27.sp,
+                fontWeight=FontWeight.Black)
+        }
     }
 }
 
@@ -145,7 +154,8 @@ internal fun Wq175PremiumHomeGrid(
     insights:()->Unit
 ) {
     var matchingOpen by remember { mutableStateOf(false) }
-    if (matchingOpen) Wq175MatchingDialog(session,onDismiss={matchingOpen=false})
+    if (matchingOpen) Wq175MatchingDialog(session,
+        onDismiss={matchingOpen=false},onImport=learning)
     val main = listOf(
         Wq175HomeTile("Hazır Paketler","Seviyeni seç, kelime dünyasını keşfet.",
             "packages",Color(0xFFF4F4DC),packages),
@@ -162,8 +172,6 @@ internal fun Wq175PremiumHomeGrid(
             "plan",Color(0xFFFFF6DD),practice,artSlug="gunluk_plan"),
     )
     val more = listOf(
-        Wq175HomeTile("Yeni Oyun","Kendi kelime tahtanı oluştur.",
-            "puzzle",Color(0xFFE9F4EF),newGame,artSlug="yeni_oyun"),
         Wq175HomeTile("Konuşma Asistanı","Lena ile yazılı ve sesli sohbet.",
             "assistant",Color(0xFFF0EDFA),assistant),
         Wq175HomeTile("YDS Hazırlık","Kolay, orta ve zor bulmacalar.",
