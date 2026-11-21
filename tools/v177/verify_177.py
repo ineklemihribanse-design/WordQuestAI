@@ -40,9 +40,13 @@ FILES={
     "VocabularyNeonPractice.kt":(
         'val wideCard = maxWidth >= 600.dp',
         '.widthIn(max=if(wideCard)620.dp else 460.dp)',
-        '.clickable(enabled=studyMode=="card"){ flipped=!flipped }',
+        '.clickable(enabled=studyMode=="card"){flipped=!flipped}',
         'targetValue = if (studyMode == "card" && flipped)',
-        'Text("↶  Ön yüzü tekrar gör"',
+        'Text(if(flipped)"↶  Soruyu Göster" else "↻  Cevabı Göster"',
+        'onClick={focus.clearFocus(); position--}',
+        'Text(if(position==deck.lastIndex)"Bitir ›" else "Sonraki ›"',
+        'Değerlendirme kaydedildi. Sonraki kartla devam',
+        'durationMillis = 560, easing = FastOutSlowInEasing',
     ),
     "PracticeHubScreen.kt":(
         "Wq177DailyRotation.next(",
@@ -74,6 +78,8 @@ homeTiles=(SRC/"Wq175PremiumHome.kt").read_text("utf-8")
 assert homeTiles.index('Wq175HomeTile("Eşleştirmelerim"') < homeTiles.index('Wq175HomeTile("İlerlemem"'), "matching and progress must trade places"
 assert 'onImport=learning' not in homeTiles, "matching must not route word source to Learning"
 assert "maxOf(regularTile, 28.dp)" not in (SRC/"PuzzleScreen.kt").read_text("utf-8"), "regression: phone crossword clips rows"
+assert "if (!reviews.containsKey(position)) record(false)" not in (SRC/"VocabularyNeonPractice.kt").read_text("utf-8"), "Next must not auto-grade unseen flashcards"
+
 assert 'onImport={onDismiss();onImport()}' not in (SRC/"WordQuest175Matching.kt").read_text("utf-8")
 assert 'onImport={go(Page.Learning)})' not in (SRC/"HomeScreen.kt").read_text("utf-8")
 for name in ("Wq177PuzzleImportCards.kt","Wq177DailyOriginals.kt","Wq177DailyRotation.kt"):
