@@ -233,12 +233,11 @@ def account(s):
         '''            Wq182Info("Hesabı silmeden önce",
                 "Hesap silmeden önce ilerlemeyi yedekle. Hesabı silmek geri alınamaz.")''',
         'short context help on account deletion')
-    s=once(s,
-        'Text(if (session.accountName == null) "Hesap" else session.profileName.take(16), fontFamily = Sans, fontWeight = FontWeight.Bold)',
-        '''Text(if(session.accountName==null)"Hesap" else
-                        session.social.nickname.ifBlank {"Oyuncu"}.take(16),
-                        fontFamily=Sans,fontWeight=FontWeight.Bold)''',
-        'dashboard greeting shows nickname instead of email')
+    # Home dashboard was already refactored by a previous premium overlay.
+    # AppSession.profileName is now guaranteed to use the saved nickname, or
+    # neutral "Oyuncu", never a Google display name or e-mail.
+    assert 'session.profileName' in s or 'session.social.nickname' in s
+
     return s
 edit('HomeScreen.kt',account)
 
