@@ -27,7 +27,9 @@ b='''        Page.Custom -> ScreenPage("Bulmacalarım", "Kendi kelimelerinle oyn
             Wq175MyPuzzlesHero(session.customGames.size, wq175CompletedCount)
             Wq175PuzzleCreateCta(onClick={edit(null)})
             Wq175PuzzleSourceShortcuts(
-                onManual={edit(null)},onPackage=packages,onImport=learning)
+                onManual={edit(null)},
+                onPackage={packages(GameMode.Topics)},
+                onImport={go(Page.Learning)})
             Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(9.dp)) {
                 FilterChip(selected=!wq175CompletedOnly,
                     onClick={wq175CompletedOnly=false},label={Text("Tüm Bulmacalar")})

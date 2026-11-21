@@ -9,7 +9,8 @@ assert h.count("Wq175PremiumHomeGrid(")==1
 assert "Wq2DMascots.selected(LocalContext.current,session.profileKey)" in h
 assert "Color(0xFF203A49)" in h
 assert 'Text("WordQuest AI", color = Color(0xFF203A49)' in h
-assert 'Wq175HomeStartButton(newGame)' in h
+assert 'Wq175HomeStartButton(newGame)' not in h
+assert 'Spacer(Modifier.height(8.dp))' in h
 assert 'containerColor=Color(0xFF086B4F)' in m
 assert "BoxWithConstraints(Modifier.fillMaxWidth())" in m
 assert "maxWidth<194.dp" in m
