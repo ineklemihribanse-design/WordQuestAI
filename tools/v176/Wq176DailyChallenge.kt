@@ -3,6 +3,8 @@ package com.kelimebulmacasi.a1
 import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -94,15 +96,21 @@ internal object Wq176QuestionRotation {
 internal fun Wq176DailyPracticeEntry(profileKey: String) {
     val context=LocalContext.current
     val bank=YdsContent.questions
-    fun next(): YdsQuestion? {
+    var selectedLevel by remember(profileKey) { mutableStateOf("A1") }
+    val wordDecks=remember(profileKey) { mutableMapOf<String,List<YdsQuestion>>() }
+    fun next(level:String=selectedLevel): YdsQuestion? {
         val categories=listOf(
             YdsTopic.Vocabulary, YdsTopic.Grammar, YdsTopic.Translation,
             YdsTopic.Completion, YdsTopic.Paragraph, YdsTopic.Connectors
         )
         val topic=Wq176QuestionRotation.nextTopic(context,profileKey,categories)
-        val matching=bank.filter { it.topic==topic }
+        val matched=if(topic==YdsTopic.Vocabulary) {
+            wordDecks.getOrPut(level) { Wq176VocabularyPractice.questions(context,level) }
+        } else {
+            bank.filter { it.topic==topic }
+        }
         val selected=Wq176QuestionRotation.pick(
-            context,profileKey,matching.ifEmpty { bank },1).firstOrNull()
+            context,profileKey,matched.ifEmpty { bank },1).firstOrNull()
         return selected
     }
     var question by remember(profileKey) { mutableStateOf(next()) }
@@ -124,9 +132,31 @@ internal fun Wq176DailyPracticeEntry(profileKey: String) {
                 color=Color(0xFF194E66),fontWeight=FontWeight.ExtraBold,fontSize=17.sp
             )
             Text(
-                "Seviyelendirilmiş soru havuzundan seçilir. Yakın zamanda çözdüklerin tekrar önceliği almaz.",
+                "Kelimeler gerçek seviye kütüphanenden, diğer sorular YDS havuzundan seçilir. Yakın zamanda çözdüklerin öncelik almaz.",
                 color=Color(0xFF596F78),fontSize=12.sp
             )
+            Row(
+                modifier=Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                horizontalArrangement=Arrangement.spacedBy(6.dp)
+            ) {
+                listOf("A1","A2","B1","B2","C1","C2").forEach { level ->
+                    OutlinedButton(
+                        onClick={ selectedLevel=level; question=next(level); answer=null },
+                        shape=RoundedCornerShape(12.dp),
+                        contentPadding=androidx.compose.foundation.layout.PaddingValues(horizontal=10.dp,vertical=4.dp),
+                        border=BorderStroke(
+                            if(level==selectedLevel)2.dp else 1.dp,
+                            if(level==selectedLevel)Color(0xFF169F89) else Color(0xFFC8D5DE)
+                        ),
+                        colors=ButtonDefaults.outlinedButtonColors(
+                            containerColor=if(level==selectedLevel)Color(0xFFDEF7EA) else Color.White
+                        )
+                    ) {
+                        Text(level,fontSize=12.sp,fontWeight=FontWeight.Bold,
+                            color=Color(0xFF28555A))
+                    }
+                }
+            }
             if(q!=null) {
                 Text(q.topic.label+" · "+q.difficulty.label,
                     color=Color(0xFF297D83),fontSize=12.sp)
@@ -145,7 +175,11 @@ internal fun Wq176DailyPracticeEntry(profileKey: String) {
                             if(answer==null) {
                                 answer=index
                                 DailyPlanStore(context,profileKey)
-                                    .mark(PracticeKind.Grammar,q.id)
+                                    .mark(
+                                        if(q.id.startsWith("wq176_word_"))
+                                            PracticeKind.Sentence else PracticeKind.Grammar,
+                                        q.id
+                                    )
                             }
                         },
                         enabled=answer==null,shape=RoundedCornerShape(13.dp),
