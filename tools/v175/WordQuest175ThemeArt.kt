@@ -1,6 +1,12 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.material3.Text
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
@@ -33,6 +39,23 @@ internal object Wq175ThemeArt {
             "günlük" in v || "plan" in v -> "gunluk_plan"
             "bulmacalarım" in v -> "bulmacalarim"
             "yeni oyun" in v -> "yeni_oyun"
+            else -> null
+        }
+    }
+    /** Distinct native banners for secondary rooms that have no large hero asset. */
+    fun secondaryIcon(title:String):String? {
+        val s=title.lowercase(java.util.Locale.forLanguageTag("tr"))
+        return when {
+            "ayar" in s -> "settings"
+            "profil" in s || "hesap" in s -> "account"
+            "arkadaş" in s -> "friends"
+            "yedek" in s -> "backup"
+            "istatistik" in s || "ilerleme" in s -> "analytics"
+            "öğrenme merkez" in s -> "insights"
+            "geçmiş" in s -> "history"
+            "sözlük" in s || "defter" in s -> "library"
+            "mesaj" in s || "sohbet" in s -> "messages"
+            "bildirim" in s || "seri" in s -> "streak"
             else -> null
         }
     }
@@ -76,6 +99,40 @@ internal object Wq175ThemeArt {
         else->R.drawable.wq175_ana_sayfa_hero
     }
 
+}
+
+
+/**
+ * Build-native, illustrated headers for utility/secondary screens. These reuse
+ * original generated icons without attaching unrelated room hero backgrounds.
+ */
+@Composable
+internal fun Wq175SecondaryRoomBanner(title:String,iconName:String) {
+    BoxWithConstraints(
+        Modifier.fillMaxWidth().heightIn(min=108.dp)
+            .clip(RoundedCornerShape(22.dp))
+            .background(Brush.horizontalGradient(listOf(
+                Color(0xFF203A56),Color(0xFF476898),Color(0xFF9278B7))))
+    ) {
+        val compact=maxWidth<300.dp || LocalDensity.current.fontScale>1.4f
+        Row(Modifier.fillMaxWidth().padding(horizontal=16.dp,vertical=13.dp),
+            verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.spacedBy(12.dp)) {
+            Column(Modifier.weight(1f),
+                verticalArrangement=Arrangement.spacedBy(6.dp)) {
+                Text("WORDQUEST AI · KEŞFET",
+                    fontSize=10.sp,fontWeight=FontWeight.Black,
+                    color=Color(0xFFFFE3A5))
+                Text(title,color=Color.White,
+                    fontSize=if(compact)18.sp else 22.sp,
+                    lineHeight=if(compact)22.sp else 26.sp,
+                    fontWeight=FontWeight.ExtraBold,maxLines=3,
+                    overflow=TextOverflow.Ellipsis)
+            }
+            Wq175GlossIcon(iconName,
+                Modifier.size(if(compact)60.dp else 82.dp))
+        }
+    }
 }
 
 @Composable

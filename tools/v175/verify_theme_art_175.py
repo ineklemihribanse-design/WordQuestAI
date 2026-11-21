@@ -27,6 +27,7 @@ home=(src/"HomeScreen.kt").read_text("utf-8")
 match=(src/"WordQuest175Matching.kt").read_text("utf-8")
 builder=(src/"WordQuest175NewGameHero.kt").read_text("utf-8")
 assert "Wq175ThemeBanner(theme," in home
+assert "Wq175SecondaryRoomBanner(title,secondary)" in home
 assert "Wq175ThemeIcon(Wq175ThemeArt.fromTitle(title)!!" in home
 assert "Wq175ThemeBanner(\"eslestirmelerim\"" in match
 assert "Wq175ThemeIcon(\"eslestirmelerim\"" in match
@@ -35,6 +36,10 @@ assert "Wq2DPortrait(" in builder
 assert "Wq2DPortrait(selectedAvatar" in (src/"WordQuest175Arena.kt").read_text("utf-8")
 theme=(src/"WordQuest175ThemeArt.kt").read_text("utf-8")
 assert "ContentScale.Fit" in theme and "fun originalHero(slug:String)" in theme
+assert "fun secondaryIcon(title:String):String?" in theme
+assert "internal fun Wq175SecondaryRoomBanner(title:String,iconName:String)" in theme
+for icon in ("settings","account","friends","backup","analytics","insights","history","library","messages","streak"):
+    assert '"'+icon+'"' in theme,icon
 for name in names:
     assert "R.drawable.wq175_"+name+"_hero" in theme
     assert "R.drawable.wq175_"+name+"_icon" in theme

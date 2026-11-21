@@ -60,6 +60,11 @@ patch("HomeScreen.kt",
                             maxLines=3)
                     }
                 }
+            } else {
+                val secondary=Wq175ThemeArt.secondaryIcon(title)
+                if(secondary!=null) {
+                    Wq175SecondaryRoomBanner(title,secondary)
+                }
             }
             body()''',
     "specific room hero artworks")

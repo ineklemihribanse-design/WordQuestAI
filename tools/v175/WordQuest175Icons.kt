@@ -45,7 +45,7 @@ internal fun Wq175GlossIcon(
 
 internal object Wq175IconNames {
     fun menu(title: String): String {
-        val s = title.lowercase(java.util.Locale.ROOT)
+        val s = title.lowercase(java.util.Locale.ROOT).replace("\u0307", "")
         return when {
             "öğrenme merkez" in s || "öneri" in s -> "insights"
             "ilerleme" in s || "istatistik" in s || "puanlarım" in s -> "analytics"
