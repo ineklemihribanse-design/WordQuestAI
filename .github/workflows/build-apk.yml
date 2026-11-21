@@ -98,6 +98,7 @@ on:
       - 'tools/v176/**'
       - 'tools/v177/**'
       - 'tools/v178/**'
+      - 'tools/v179/**'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'
