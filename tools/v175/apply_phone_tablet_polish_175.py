@@ -136,34 +136,75 @@ def responsive_matching_hero(s):
 
 
 def enlarge_phone_puzzle_board(s):
-    # Reuse the game's existing zoom+pan logic instead of stretching letter
-    # tiles, changing the underlying words or breaking touch hitboxes.
+    # Do NOT turn on the board's manual zoom mode. The user wants a physically
+    # larger BOARD AREA and readable default cells on phone, not a zoom toggle.
+    # Keep the tablet split layout, controls, input and puzzle model unchanged.
     s=once(s,
+        '    val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600\\n    var expanded by remember(game.id, compactBoard) {\\n        mutableStateOf(board.words.size > 20 || compactBoard)\\n    }'.replace('\\n','\\n'),
         '    var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }',
-        '''    val compactBoard = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
-    var expanded by remember(game.id, compactBoard) {
-        mutableStateOf(board.words.size > 20 || compactBoard)
-    }''',
-        "default enlarged crossword on phones")
+        "restore manual zoom behaviour")
     s=once(s,
-        'if (board.words.size <= 20) expanded = false',
         'if (board.words.size <= 20 && !compactBoard) expanded = false',
-        "respect compact screen board zoom while selecting")
+        'if (board.words.size <= 20) expanded = false',
+        "normal word selection is not a zoom action")
+
+    s=once(s,
+        '            val wide = maxWidth >= 760.dp && !keyboardVisible',
+        '''            val wide = maxWidth >= 760.dp && !keyboardVisible
+            val phoneLayout = maxWidth < 600.dp''',
+        "separate phone geometry from tablet")
+    s=once(s,
+        '            val available = (maxWidth - 36.dp).coerceAtLeast(220.dp)',
+        '            val available = (maxWidth - if(phoneLayout)16.dp else 36.dp).coerceAtLeast(220.dp)',
+        "use more physical width of phone display")
+    s=once(s,
+        '            val boardHeight = if (keyboardVisible) keyboardBoard else minOf(viewWidth, 505.dp)',
+        '''            // Phone grid dominates the screen; buttons remain below it.
+            // Height adapts to actual device height, not fixed action controls.
+            val boardHeight = if (keyboardVisible) keyboardBoard
+                else if(phoneLayout) (maxHeight * .47f).coerceIn(330.dp, 440.dp)
+                else minOf(viewWidth, 505.dp)''',
+        "larger board area rather than zoom button")
+    s=once(s,
+        '.padding(horizontal = if (wide) 23.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)',
+        '.padding(horizontal = if (wide) 23.dp else if(phoneLayout)8.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)',
+        "phone board gets maximum available screen width")
+
+    s=once(s,
+        '    val tile = if (enlarged) maxOf(regularTile, 30.dp) else regularTile',
+        '''    val phoneGrid = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
+    // Default phone cells stay tappable, including wide 20-word boards.
+    // They can scroll horizontally inside the larger normal-size viewport.
+    val tile = if (enlarged) maxOf(regularTile, 30.dp)
+        else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile''',
+        "legible normal phone cell size")
+    s=once(s,
+        '    val windowHeight = minOf(height, actualHeight)',
+        '    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)',
+        "phone uses board viewport height instead of shrinking to grid row count")
+    s=once(s,
+        '    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {\\n        if (enlarged) {'.replace('\\n','\\n'),
+        '    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {\\n        if (enlarged || phoneGrid) {'.replace('\\n','\\n'),
+        "keep selected letter visible when large phone grid can scroll")
     return s
 
 
 def report_existing_board_geometry():
-    import re
-    p=SRC/"PuzzleScreen.kt"
-    lines=p.read_text("utf-8").splitlines()
-    candidates=[(i+1,line.strip()) for i,line in enumerate(lines)
-        if re.search(r'Board|Grid|Crossword|Canvas|cellSize|cellWidth|zoom|scale|aspectRatio|BoxWithConstraints|Interactive',line,re.I)]
-    for i,line in candidates[:80]:
-        print(f"BOARD-GEOMETRY {i}: {line[:190]}")
-    print("BOARD-GEOMETRY matches:",len(candidates))
-    for a,b in ((232,310),(411,477)):
-        for i in range(a-1,min(b,len(lines))):
-            print(f"BOARD-SOURCE {i+1}: {lines[i][:210]}")
+    # Assert the actual generated screen was resized structurally.
+    t=(SRC/"PuzzleScreen.kt").read_text("utf-8")
+    for needle in (
+        'val phoneLayout = maxWidth < 600.dp',
+        '(maxHeight * .47f).coerceIn(330.dp, 440.dp)',
+        'else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile',
+        'val windowHeight = if(phoneGrid && !enlarged) height',
+        'if (enlarged || phoneGrid)',
+        'BoardFrame(board, view, viewWidth, boardHeight',
+        'Actions(view, ::checkAndLearn, ::revealAndLearn',
+    ):
+        assert needle in t,needle
+    assert 'mutableStateOf(board.words.size > 20 || compactBoard)' not in t
+    print("PASS: the normal phone crossword board occupies more space; no forced zoom.")
+
 
 
 def packages_only(s):
@@ -308,8 +349,8 @@ def main():
     patch("PuzzleScreen.kt",enlarge_phone_puzzle_board)
     report_existing_board_geometry()
     actual=(SRC/"PuzzleScreen.kt").read_text("utf-8")
-    assert 'mutableStateOf(board.words.size > 20 || compactBoard)' in actual
-    assert 'if (board.words.size <= 20 && !compactBoard) expanded = false' in actual
+    assert 'var expanded by remember(game.id) { mutableStateOf(board.words.size > 20) }' in actual
+    assert 'if (board.words.size <= 20) expanded = false' in actual
     patch("HomeScreen.kt",packages_only)
     patch("WordQuestSettings.kt",hide_voice_picker_lists)
     patch("ConversationScreen.kt",compact_messenger)
