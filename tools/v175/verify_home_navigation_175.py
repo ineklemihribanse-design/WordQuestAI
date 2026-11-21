@@ -14,7 +14,7 @@ assert 'due=session.learningDueCount()' in s
 assert 'NavigationBarItem(selected=true,enabled=false' in nav
 assert nav.count('NavigationBarItem(')==5
 for slug in ("ana_sayfa","yeni_oyun","arena","gunluk_plan"):
-    assert 'Wq175ThemeIcon("'+slug+'",Modifier.size(29.dp))' in nav
+    assert 'Wq175GlossIcon("'+{"ana_sayfa":"puzzle","yeni_oyun":"puzzle","arena":"trophy","gunluk_plan":"plan"}[slug]+'",Modifier.size(29.dp))' in nav
 for label in ('"Yeni Oyun"','"Arena"','"Günlük"','"Profil"'):
     assert label in nav,label
 assert 'onClick={expanded=false;onMemory()}' in nav

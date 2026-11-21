@@ -15,9 +15,9 @@ assert "BoxWithConstraints(Modifier.fillMaxWidth())" in m
 assert "maxWidth<194.dp" in m
 assert "LocalDensity.current.fontScale>1.30f" in m
 assert "Surface(" in m and "onClick=tile.onClick" in m
-assert "CompositingStrategy.Offscreen" in h
-assert "drawRect(brush=Brush.horizontalGradient(" in h
-assert "Wq175ThemeIcon(tile.artSlug" in m
+assert "Modifier.fillMaxSize().clip(CircleShape)" in h
+assert 'Wq175ThemeIllustration("ana_sayfa"' not in h
+assert "Wq175GlossIcon(Wq175ThemeArt.glossName(tile.artSlug)" in m
 assert "R.drawable.wq167_lena_portrait" in m
 assert 'else if(tile.icon=="assistant")' in m
 assert '"analytics",Color(0xFFFFF1DC),progress)' in m

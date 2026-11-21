@@ -26,7 +26,9 @@ for name in names:
 home=(src/"HomeScreen.kt").read_text("utf-8")
 match=(src/"WordQuest175Matching.kt").read_text("utf-8")
 builder=(src/"WordQuest175NewGameHero.kt").read_text("utf-8")
-assert "Wq175ThemeBanner(theme," in home
+assert "Wq175ThemeBanner(theme," not in home
+assert "if(theme==null)" in home
+assert "Wq175GlossIcon(Wq175ThemeArt.glossName(slug)" in (src/"WordQuest175ThemeArt.kt").read_text("utf-8")
 assert "Wq175SecondaryRoomBanner(title,secondary)" in home
 assert "Wq175ThemeIcon(Wq175ThemeArt.fromTitle(title)!!" in home
 assert "Wq175ThemeBanner(\"eslestirmelerim\"" in match
@@ -43,10 +45,17 @@ for icon in ("settings","account","friends","backup","analytics","insights","his
 for name in names:
     assert "R.drawable.wq175_"+name+"_hero" in theme
     assert "R.drawable.wq175_"+name+"_icon" in theme
-assert 'Wq175ThemeIllustration("ana_sayfa"' in home
-assert 'Wq175ThemeIllustration("arena"' in (src/"WordQuest175Arena.kt").read_text("utf-8")
+assert 'Wq2DPortrait(' in home
+assert 'Wq175ThemeIllustration("ana_sayfa"' not in home
+assert 'Wq175GlossIcon("trophy"' in (src/"WordQuest175Arena.kt").read_text("utf-8")
 print("PASS: 20 exact original WebP heroes/icons copied without alteration and used by Compose.")
 practice=(src/"WordQuest175PracticeVisuals.kt").read_text("utf-8")
-assert 'Wq175ThemeIllustration(suppliedHero,' in practice
+assert 'Wq175ThemeIllustration(suppliedHero,' not in practice
 assert 'Wq175GlossIcon(Wq175IconNames.practice(kind)' in practice
-print("PASS: ten premium rooms and live chosen Arena mascot remain connected.")
+print("PASS: original art archived; page duplicates and photo cutout overlays removed.")
+
+assert 'Wq175ThemeIllustration(slug,Modifier.align(Alignment.CenterEnd)' not in theme
+assert "Brush.horizontalGradient(colors)" in theme
+assert 'Wq175GlossIcon(Wq175ThemeArt.glossName(slug)' in theme
+assert 'Wq175ThemeBanner("eslestirmelerim"' in match
+assert 'Wq175ThemeBanner("yeni_oyun"' in builder
