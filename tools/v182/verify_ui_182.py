@@ -31,4 +31,13 @@ assert 'versionName = "1.0.82"' in (ROOT/"source/app/build.gradle.kts").read_tex
 assert 'applicationIdSuffix = ".fresh"' in (ROOT/"source/app/build.gradle.kts").read_text()
 print("PASS: 33 verified imported art assets, approved originals preserved")
 print("PASS: quiz state/score/sounds, edited nickname and context info button")
+# Protect the original room editor against the 12-question hardcode.
+lobby=get("ArenaApprovedLobby.kt")
+edit_lobby=get("ArenaV3Lobby.kt")
+assert 'if(match.mode=="quiz")"${match.size} soru"' in lobby
+assert '"Soru sayısı" else "Kelime sayısı"' in edit_lobby
+assert 'listOf(5,10,12,15,20)' in edit_lobby
+assert 'val targetSize=size' in edit_lobby
+assert 'val targetSize=if(mode=="quiz")12 else size' not in edit_lobby
+print("PASS: lobby actually selects and saves chosen quiz question count")
 print("PASS: versionCode 108; same installed app ID and current Firebase schema")
