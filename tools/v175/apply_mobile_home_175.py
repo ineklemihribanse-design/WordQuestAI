@@ -137,5 +137,40 @@ s=replace_once(s,"            Wq175ArenaModeSymbol(kind)",
     '            Wq175GlossIcon("arena_"+kind,Modifier.size(69.dp))',
     "Arena duel/team/quiz distinct 256px original premium icons")
 arena.write_text(s,"utf-8")
+
+# The v1.0.74 match settings still displayed flat text/emoji-like glyphs.
+# Replace only visual content; Wq174SettingRow and its onSelect remain untouched.
+settings=src/"WordQuest174Arena.kt"
+raw=settings.read_text("utf-8")
+old='''@Composable
+private fun Wq174SettingIcon(kind:String) {
+    Box(Modifier.size(39.dp).clip(RoundedCornerShape(12.dp))
+        .background(Color(0xFFEEDCFF)),contentAlignment=Alignment.Center) {
+        when(kind){
+            "level"->Text("ABC",fontSize=13.sp,color=Royal174,fontWeight=FontWeight.Black)
+            "topic"->Text("▱",fontSize=23.sp,color=Royal174,fontWeight=FontWeight.Bold)
+            "time"->Text("◴",fontSize=27.sp,color=Royal174,fontWeight=FontWeight.Bold)
+            "count"->Text("☷",fontSize=25.sp,color=Royal174,fontWeight=FontWeight.Bold)
+            else->Text("✦",fontSize=22.sp,color=Color(0xFFB68704))
+        }
+    }
+}'''
+new='''@Composable
+private fun Wq174SettingIcon(kind:String) {
+    val asset=when(kind) {
+        "level" -> "packages"
+        "topic" -> "library"
+        "time" -> "timer"
+        "count" -> "puzzle"
+        "hint" -> "insights"
+        else -> "settings"
+    }
+    Wq175GlossIcon(asset,Modifier.size(39.dp))
+}'''
+raw=replace_once(raw,old,new,"original glossy art in Arena match settings")
+raw=replace_once(raw,'Text("⚙",color=Color.White,fontSize=24.sp)',
+    'Wq175GlossIcon("settings",Modifier.size(34.dp))',
+    "Arena match-settings header icon")
+settings.write_text(raw,"utf-8")
 print("PASS: 2-column mobile home navigation; all 12 original destinations preserved")
 print("PASS: selected maskot in profile and greeting; dark slate palette; 3 glossy Arena mode icons")

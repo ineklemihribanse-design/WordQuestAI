@@ -39,5 +39,11 @@ assert 'Wq175GlossIcon("arena_"+kind,Modifier.size(69.dp))' in a
 assert 'Wq175ArenaModeSymbol(kind)' not in a[a.index('private fun Wq175ModeCard'): ]
 for name in ("arena_duel","arena_team","arena_quiz","packages","assistant","plan"):
     assert (root/"source/app/src/main/assets/wq175_icons"/(name+".webp")).stat().st_size>800
+settings=(src/"WordQuest174Arena.kt").read_text("utf-8")
+assert 'Wq175GlossIcon(asset,Modifier.size(39.dp))' in settings
+assert 'Wq175GlossIcon("settings",Modifier.size(34.dp))' in settings
+for name in ("packages","library","timer","puzzle","insights"):
+    assert '"'+name+'"' in settings
+assert '"level"->Text("ABC"' not in settings
 print("PASS: mobile-first dashboard; every previously linked screen reachable")
 print("PASS: selected mascot is dynamic and all three true Arena WebP icons wired")
