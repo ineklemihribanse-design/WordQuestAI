@@ -253,7 +253,7 @@ def main():
 
     daily=SRC/"PracticeHubScreen.kt"
     original=daily.read_text("utf-8")
-    anchor="        for (kind in PracticeKind.entries) {"
+    anchor="        Wq175PremiumPracticeGrid { kind ->"
     assert original.count(anchor)==1,("Daily goal source bank card",original.count(anchor))
     daily.write_text(original.replace(anchor,
         "        Wq176DailyPracticeEntry(session.profileKey)\n"+anchor,1),"utf-8")
