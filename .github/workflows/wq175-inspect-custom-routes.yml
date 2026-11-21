@@ -1,0 +1,33 @@
+name: WordQuest 1.0.75 - Inspect legacy navigation signatures
+on:
+  push:
+    branches: [feature/v175-comprehensive-learning-update]
+    paths:
+      - .github/workflows/wq175-inspect-custom-routes.yml
+  workflow_dispatch:
+jobs:
+  inspect-routes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read signatures from committed source ZIP (no build)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import zipfile,re
+          archive="wq-noaudio.zip"
+          with zipfile.ZipFile(archive) as z:
+              paths=[p for p in z.namelist() if p.endswith("HomeScreen.kt")]
+              print("SOURCE_HOME_FILES",paths)
+              assert paths
+              s=z.read(paths[0]).decode("utf-8")
+              for term in ("private fun CustomScreen(", "fun CustomScreen(", "Page.Custom ->",
+                           "enum class Page", "sealed class Page", "fun packages(", "fun HomeScreen("):
+                  at=s.find(term)
+                  print("\n=== SOURCE ANCHOR",term,"offset",at,"===")
+                  if at>=0: print(s[max(0,at-160):at+3000])
+              for m in list(re.finditer(r'\\b(?:fun|val)\\s+(?:packages|learning|go|edit)\\b',s))[:20]:
+                  print("ROUTE DECL",s[max(0,m.start()-75):m.start()+190])
+          PY

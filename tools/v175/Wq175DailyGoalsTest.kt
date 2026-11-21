@@ -1,0 +1,44 @@
+package com.kelimebulmacasi.a1
+
+import org.robolectric.RuntimeEnvironment
+import org.junit.Assert.*
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import java.util.UUID
+
+@RunWith(RobolectricTestRunner::class)
+class Wq175DailyGoalsTest {
+    @Test fun customGoalPersistsPerProfileAndBackupRoundTrips() {
+        val ctx = RuntimeEnvironment.getApplication()
+        val id = UUID.randomUUID().toString()
+        val first = DailyPlanStore(ctx, id + "A")
+        val other = DailyPlanStore(ctx, id + "B")
+        first.minutes = 47
+        assertEquals(47, DailyPlanStore(ctx, id + "A").minutes)
+        assertEquals(15, other.minutes)
+        first.mark(PracticeKind.Dictation, "a1-routine")
+        assertEquals(1, first.activeDaysLast7())
+        val backup = PlayerBackup(emptyList(), emptyMap(), null, 0L, daily = first.exportDays())
+        val restored = decodeBackup(backup.encode())
+        val restoredDay = restored.daily.values.single()
+        assertEquals(47, restoredDay.goalMinutes)
+        assertEquals(1, restoredDay.completed.size)
+        other.importDays(restored.daily)
+        assertEquals(47, other.minutes)
+        assertEquals(1, other.activeDaysLast7())
+        other.importDays(first.exportDays())
+        assertEquals(1, other.activeDaysLast7())
+    }
+
+    @Test fun invalidCustomGoalsAreIgnored() {
+        val ctx = RuntimeEnvironment.getApplication()
+        val store = DailyPlanStore(ctx, UUID.randomUUID().toString())
+        store.minutes = 4
+        assertEquals(15, store.minutes)
+        store.minutes = 181
+        assertEquals(15, store.minutes)
+        store.minutes = 180
+        assertEquals(180, store.minutes)
+    }
+}

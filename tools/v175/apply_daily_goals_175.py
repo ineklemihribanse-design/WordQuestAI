@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+"""Complete Daily Plan personal targets and weekly activity without replacing the profile store."""
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+SOURCE = ROOT / "source/app/src/main/java/com/kelimebulmacasi/a1"
+ 
+def once(source, old, new, name):
+    count = source.count(old)
+    assert count == 1, f"{name}: expected 1 anchor, got {count}"
+    return source.replace(old, new, 1)
+
+def run():
+    daily = SOURCE / "PracticeHubScreen.kt"
+    text = daily.read_text("utf-8")
+    # Existing PracticeKind enum names are title-cased; the legacy uppercase-only
+    # backup validator silently dropped all completed tasks. Keep both forms.
+    text = once(text,
+        'private val DAILY_MARKER = Regex("[A-Z_]{1,30}:[a-f0-9]{12}")',
+        'private val DAILY_MARKER = Regex("[A-Za-z_]{1,30}:[a-f0-9]{12}")',
+        "preserve real PracticeKind identifiers in daily backup")
+    # Keep the existing preference filename, profile key, daily data and backup schema.
+    text = once(text, 'getInt(key, 15).takeIf { it in listOf(15, 30, 60) } ?: 15',
+                'getInt(key, 15).takeIf { it in 5..180 } ?: 15',
+                "custom target retrieval")
+    text = once(text, 'set(value) { if (value in listOf(15, 30, 60)) prefs.edit().putInt(key, value).apply() }',
+                'set(value) { if (value in 5..180) prefs.edit().putInt(key, value).apply() }',
+                "custom target persistence")
+    text = once(text,
+                'prefs.getInt("plan.$date", 15).takeIf { it in listOf(15, 30, 60) } ?: 15',
+                'prefs.getInt("plan.$date", 15).takeIf { it in 5..180 } ?: 15',
+                "export custom goals")
+    text = once(text,
+                'if (day.goalMinutes !in listOf(15, 30, 60) || day.activeSeconds !in 0L..86_400L ||',
+                'if (day.goalMinutes !in 5..180 || day.activeSeconds !in 0L..86_400L ||',
+                "import custom goals")
+    text = once(text,
+                '''    fun mark(kind: PracticeKind, id: String): Boolean {''',
+                '''    /** Number of genuinely active days in the most recent seven-day window. */
+    fun activeDaysLast7(now: LocalDate = LocalDate.now()): Int =
+        (0L..6L).count { offset ->
+            val date = now.minusDays(offset).toString()
+            prefs.getLong("active.$date", 0L) >= 60L ||
+                !prefs.getStringSet("done.$date", emptySet()).isNullOrEmpty()
+        }
+
+    fun mark(kind: PracticeKind, id: String): Boolean {''',
+                "profile-scoped weekly activity")
+    text = once(text,
+                '''            minutes=mins,done=done,activeMinutes=doneMinutes,
+            remaining=remaining,due=due,fraction=fraction,''',
+                '''            minutes=mins,done=done,activeMinutes=doneMinutes,
+            remaining=remaining,due=due,fraction=fraction,
+            activeDays=store.activeDaysLast7(),''',
+                "weekly total on existing banner")
+    daily.write_text(text, "utf-8")
+
+    # Backup JSON decoding had its own hard-coded 15/30/60 whitelist.
+    # Accept personal goals without weakening its date, count or marker guards.
+    backup=SOURCE/"PlayerBackup.kt"
+    payload=backup.read_text("utf-8")
+    payload=once(payload,
+        "if (goal !in listOf(15, 30, 60) || seconds !in 0L..86_400L || completedArray.length() > 250)",
+        "if (goal !in 5..180 || seconds !in 0L..86_400L || completedArray.length() > 250)",
+        "backup decoder supports personal goals")
+    payload=once(payload,
+        'Regex("[A-Z_]{1,30}:[a-f0-9]{12}")',
+        'Regex("[A-Za-z_]{1,30}:[a-f0-9]{12}")',
+        "backup decoder retains title-cased PracticeKind records")
+    backup.write_text(payload, "utf-8")
+
+    # Do NOT overwrite the already themed/illustrated Compose source here.
+    # apply_icons_175.py has replaced old Canvas placeholders with the user's
+    # original 2.5D icons; copying a raw .kt file would silently undo them.
+    visuals=(SOURCE/"WordQuest175PracticeVisuals.kt").read_text("utf-8")
+    assert "Wq175GlossIcon(Wq175IconNames.practice(kind)" in visuals, (
+        "Premium exercise icons were overwritten by a later overlay")
+    assert "Wq175DailyPlanBanner(" in visuals
+    print("PASS: custom 5..180-minute goals, backup and existing 2.5D UI retained.")
+
+if __name__ == "__main__":
+    run()

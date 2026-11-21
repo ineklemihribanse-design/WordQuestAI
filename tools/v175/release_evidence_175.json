@@ -1,0 +1,50 @@
+{
+  "versionName": "1.0.75",
+  "versionCode": 101,
+  "checks": {
+    "physical_phone_camera_ocr": {
+      "status": "pending",
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    },
+    "physical_phone_pdf_ocr": {
+      "status": "pending",
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    },
+    "existing_174_user_data": {
+      "status": "pending",
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    },
+    "arena_two_accounts": {
+      "status": "pending",
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    },
+    "responsive_manual_visual": {
+      "status": "pending",
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    },
+    "cefr_content_review": {
+      "status": "pending",
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    },
+    "yds_2000_verified": {
+      "status": "pending",
+      "unique_question_count": 198,
+      "answer_keys_audited": false,
+      "evidence_url": "",
+      "tested_at": "",
+      "tester": ""
+    }
+  }
+}

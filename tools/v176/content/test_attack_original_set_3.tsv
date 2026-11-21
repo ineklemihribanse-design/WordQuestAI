@@ -1,0 +1,46 @@
+topic	difficulty	prompt	answer	other1	other2	other3	explanation
+Noun Clauses & Auxiliaries	Easy	The committee has not decided ____ the new policy will take effect.	when	which	whose	whom	Zamanı belirten bir yan cümleyi dolaylı soru olarak bağlamak için when kullanılır.
+Noun Clauses & Auxiliaries	Medium	We cannot predict ____ the experiment will succeed.	whether	whose	where	whom	Sonucun gerçekleşip gerçekleşmeyeceğini belirten dolaylı evet-hayır sorusunda whether kullanılır.
+Noun Clauses & Auxiliaries	Hard	____ the data were incomplete became clear during the audit.	That	If	When	What	Özne görevinde bütün bir yargıyı aktaran noun clause, that ile başlayabilir.
+Noun Clauses & Auxiliaries	Easy	The investigator asked ____ had authorised the payment.	who	whom	whose	which	Yan cümlede kişi özne görevindeyse soru kelimesi who olmalıdır.
+Noun Clauses & Auxiliaries	Medium	It remains unclear ____ the samples were contaminated.	how	that	which	whom	Örneklerin hangi yolla kirlendiğini soran dolaylı soru how ile kurulur.
+Noun Clauses & Auxiliaries	Easy	The report explains ____ the equipment failed.	why	whose	whom	which	Başarısızlığın nedenini bildiren dolaylı soruda why bağlacı kullanılır.
+Noun Clauses & Auxiliaries	Easy	I would like to know ____ documents were removed from the archive.	which	who	where	when	Ardından gelen documents ismini belirleyen seçme sorusu which documents biçimindedir.
+Noun Clauses & Auxiliaries	Medium	The director confirmed ____ all staff had received the notice.	that	than	whose	where	Confirm fiilinden sonra bildirilen tam cümle, that ile bağlanabilir.
+Noun Clauses & Auxiliaries	Easy	It does not matter ____ arrives first; both teams can begin.	who	whom	whose	which	Dolaylı yan cümlede ilk gelen kişi özne olduğu için who gerekir.
+Noun Clauses & Auxiliaries	Medium	Nobody knows ____ the oldest manuscript was written.	when	what	whom	whose	Yazılma zamanını öğrenmeyi ifade eden dolaylı soruda when kullanılır.
+Noun Clauses & Auxiliaries	Easy	The auditors have finished their review, ____?	haven't they	didn't they	do they	have they	Olumlu present perfect cümlenin olumsuz question tag biçimi haven't they olur.
+Noun Clauses & Auxiliaries	Medium	Nobody recognised the visitor, ____?	did they	didn't they	was it	doesn't he	Nobody olumsuz anlam taşıdığı için question tag olumlu did they biçiminde kurulur.
+Noun Clauses & Auxiliaries	Medium	Let's review the evidence again, ____?	shall we	will we	do we	aren't we	Let's ile öneri veya ortak eylem anlatılan cümlenin question tag biçimi shall we olur.
+Noun Clauses & Auxiliaries	Medium	She rarely calls after work, ____?	does she	doesn't she	did she	has she	Rarely olumsuz anlamlı sıklık zarfı olduğundan question tag olumlu does she olur.
+Noun Clauses & Auxiliaries	Easy	You have never visited the archive, ____?	have you	haven't you	did you	don't you	Never olumsuzluk verdiği için present perfect cümlede olumlu have you tagi kullanılır.
+Conditionals & Wish	Medium	If the laboratory had received the funding, it ____ the project last year.	would have completed	will complete	completed	had completed	Geçmişte gerçekleşmemiş if koşulunun sonucu would have + V3 ile kurulur.
+Conditionals & Wish	Easy	If I were the director, I ____ the review process.	would simplify	will simplify	had simplified	simplify	Şimdiki gerçek dışı koşulda if + past simple ve ana cümlede would + fiil kullanılır.
+Conditionals & Wish	Hard	Had the bridge been maintained, it ____ during the storm.	might not have collapsed	may not collapse	wouldn't collapse	is not collapsing	Had ile başlayan devrik geçmiş koşulun olası sonucu might not have + V3 biçimindedir.
+Conditionals & Wish	Easy	Unless you register today, you ____ the workshop.	will miss	would miss	had missed	missed	Geleceğe yönelik gerçek unless şartında ana cümle will + fiil kullanır.
+Conditionals & Wish	Hard	If the team ____ earlier, it would be ready now.	had started	starts	will start	was starting	Geçmiş koşulun şimdiki sonucunu anlatan mixed conditional, if + past perfect gerektirir.
+Conditionals & Wish	Medium	I wish I ____ more carefully before signing that agreement.	had read	will read	have read	am reading	Geçmişteki karardan duyulan pişmanlık wish + past perfect ile ifade edilir.
+Conditionals & Wish	Medium	The children wish the museum ____ open on Mondays.	were	is	will be	has been	Şimdiki gerçeğin tersi wish + past simple biçimindedir; resmî dilde were kullanılır.
+Conditionals & Wish	Hard	If only the researchers ____ the error before publication!	had noticed	notice	will notice	have notice	Geçmişte gerçekleşmemiş bir durumla ilgili pişmanlık if only + past perfect kurar.
+Conditionals & Wish	Hard	Were the documents available, the judge ____ them immediately.	would examine	will examine	had examined	examines	Were ile devrik şimdiki koşulun sonucunda would + yalın fiil kullanılır.
+Conditionals & Wish	Easy	Provided the weather ____ clear, the survey will begin at dawn.	remains	will remain	remained	remaining	Gelecekteki gerçek provided koşulunda yan cümle present simple kullanır.
+Conditionals & Wish	Medium	If we ____ the system now, it might stop working.	reset	had reset	will reset	resetted	Gerçekleşebilir şimdiki if koşulunda fiilin present simple biçimi kullanılır.
+Conditionals & Wish	Hard	I would rather you ____ the findings until the review is complete.	withheld	withhold	will withhold	have withheld	Would rather + başka özne kalıbından sonra istek için past simple kullanılır.
+Conditionals & Wish	Hard	Had I known about the closure, I ____ another route.	would have taken	will take	had taken	take	Devrik third conditional için had + özne + V3 ve would have + V3 gerekir.
+Conditionals & Wish	Medium	If the witness were here, she ____ the sequence of events.	could explain	has explained	will have explained	had explained	Şimdiki gerçek dışı durumda olası yeterlik could + yalın fiille anlatılır.
+Conditionals & Wish	Easy	I wish the conference ____ so far from the station.	weren't	isn't	won't be	hasn't been	Şimdiki durumla ilgili gerçek dışı dilekte wish + past simple kullanılır.
+Conjunctions & Adverbials	Easy	____ the data were incomplete, the committee postponed its decision.	Because	Despite	In spite of	Unless	Because ardından tam cümle gelerek neden-sonuç ilişkisi kurar; diğerleri uygun değildir.
+Conjunctions & Adverbials	Medium	____ the small sample, the conclusions were carefully qualified.	Given	Although	Because	So	Given + isim öbeği mevcut koşulun göz önünde bulundurulduğunu ifade eder.
+Conjunctions & Adverbials	Easy	She checked the figures twice ____ avoid an error.	in order to	so that	despite	whereas	Amaç bildiren in order to kalıbından sonra yalın fiil gelir.
+Conjunctions & Adverbials	Easy	The report will be released ____ the legal review has been completed.	once	despite	in spite of	due to	Once ardından tam cümle getirerek bir olay tamamlanınca diğerinin olacağını belirtir.
+Conjunctions & Adverbials	Medium	The camera was installed ____ unusual activity could be recorded.	so that	due to	despite	whereas	Amaç bildiren so that ardından özne ve modal içeren bir cümle gelebilir.
+Conjunctions & Adverbials	Easy	____ the proposal was unpopular, the council voted to discuss it.	Although	Because of	In spite of	Despite	Although tam bir çekimli yan cümleden önce gelerek karşıtlık anlatır.
+Conjunctions & Adverbials	Easy	The machine shut down ____ its temperature exceeded the safe limit.	because	despite	in spite	therefore	Because neden bildiren tam bir yan cümleyi ana cümleye bağlar.
+Conjunctions & Adverbials	Medium	The researchers remained on site ____ the storm had passed.	until	during	despite	due to	Until bir olayın gerçekleşmesine kadar süren durumu yan cümleyle bağlar.
+Conjunctions & Adverbials	Hard	____ expensive the equipment may be, it has to meet safety standards.	However	Despite	Although	Because of	However + sıfat + özne + fiil yapısı koşulsuz ödünleme anlamı verir.
+Conjunctions & Adverbials	Medium	The lab expanded its facilities ____ demand for testing had risen.	as	despite	whereas	unless	As bağlacı gerekçe bildirdiğinde ardından çekimli cümle alabilir.
+Conjunctions & Adverbials	Easy	The team improved the prototype ____ feedback from early users.	thanks to	although	so that	whereas	Thanks to ifadesi ardından isim öbeği alarak neden veya katkı belirtir.
+Conjunctions & Adverbials	Medium	The tablets were labelled clearly ____ no participant would confuse them.	so that	even though	despite	because of	Amaç bildiren so that ardından özne ve would içeren yan cümle gelebilir.
+Conjunctions & Adverbials	Hard	Not only did she identify the fault, ____ she also suggested a remedy.	but	so	if	than	Not only ... but also paralel vurgulama bağlacı olup olumlu ikinci eylemi ekler.
+Conjunctions & Adverbials	Medium	The readings remained stable ____ the voltage fluctuated.	even though	because of	due to	in spite of	Even though ardından tam cümle gelerek beklenmeyen karşıtlığı ifade eder.
+Conjunctions & Adverbials	Easy	____ the samples reach the laboratory, they must be refrigerated.	As soon as	Despite	Due to	In order to	As soon as çekimli bir zaman yan cümlesi kurarak hemen sonrasındaki gerekliliği belirtir.

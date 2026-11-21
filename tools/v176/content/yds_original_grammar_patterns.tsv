@@ -1,0 +1,51 @@
+topic	difficulty	prompt	answer	other1	other2	other3	explanation
+Tenses	Medium	When the {actor} arrived at the {place}, the {event} ____ for more than an hour.	had been running	has been running	will be running	is running	Geçmişteki başka bir andan önce başlayıp sürmüş eylem için past perfect continuous kullanılır.
+Tenses	Medium	By next Friday, the {actor} ____ the {thing}.	will have completed	had completed	completes	will completing	By next Friday ile gelecek bir tarihten önce tamamlanmış olacak eylem için future perfect kullanılır.
+Tenses	Easy	The {actor} ____ the {thing} since January.	has been revising	had revised	will revise	revised	Since ile geçmişte başlayan ve hâlen süren çalışma present perfect continuous ile anlatılır.
+Tenses	Easy	While the {actor} ____ the {thing}, the lights went out.	was examining	examined	has examined	will examine	Geçmişte sürmekte olan eylemin ortasında başka olay gerçekleşirse past continuous kullanılır.
+Tenses	Easy	As soon as the {event} ____, the team will publish the findings.	ends	will end	ending	had ended	Geleceği anlatan as soon as yan cümlesinde will değil present simple kullanılır.
+Tenses	Medium	The {thing} ____ before the {event} began.	had been checked	will be checked	has checking	is check	Geçmişte daha önce tamamlanmış edilgen eylem past perfect passive ile kurulur.
+Tenses	Medium	At this time tomorrow, the {actor} ____ the {thing}.	will be reviewing	reviews	has reviewed	reviewed	Yarın aynı saatte devam edecek bir eylem future continuous ile ifade edilir.
+Tenses	Medium	The {thing} ____ since the beginning of the {event}.	has been monitored	was monitoring	will monitoring	had monitor	Since ile bugüne uzanan edilgen süreç present perfect passive ile kurulur.
+Tenses	Hard	Until last week, the {actor} ____ about the problem.	had not known	has not known	will not know	is not known	Geçmişte belirli bir zamana kadar geçerli olan önceki durum past perfect ile ifade edilir.
+Tenses	Medium	The {actor} had scarcely entered the {place} when the {event} ____.	began	has begun	will begin	beginning	Had scarcely ... when yapısında ardından gelen geçmiş olay past simple ile ifade edilir.
+Conditionals	Medium	If the {actor} ____ enough evidence, the findings would be stronger.	had	has	will have	having	Şimdiki gerçek dışı koşulda if cümlesi past simple, ana cümle would ile kurulur.
+Conditionals	Hard	If the {thing} had been checked, the mistake ____ prevented.	could have been	could be	will be	has been	Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir.
+Conditionals	Easy	If the {actor} does not submit the {thing}, the committee ____ it.	will reject	would reject	had rejected	rejecting	Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır.
+Conditionals	Hard	Had the {actor} known about the issue, they ____ differently.	would have acted	will act	act	have acted	Had + özne + V3, if ile kurulan geçmiş gerçek dışı koşulun devrik biçimidir.
+Conditionals	Medium	Provided that the {thing} ____ on time, the review can proceed.	is delivered	will deliver	delivering	has delivering	Provided that yan cümlesinde gelecek anlamı için present simple passive kullanılır.
+Conditionals	Medium	Unless the {actor} ____ the {thing}, the project cannot continue.	approves	will approve	approved	approving	Unless ile kurulan gerçek koşul yan cümlesinde present simple kullanılır.
+Conditionals	Hard	If only the {actor} ____ more time to inspect the {thing}.	had	has	will have	having	If only ile şimdiki gerçek dışı dilek kurulurken have fiilinin past simple biçimi had kullanılır.
+Conditionals	Hard	I wish the {thing} ____ so expensive to revise.	were not	is not	will not be	has not	Wish ile şimdiki durumun tersi dile getirilirken were not yapısı uygundur.
+Conditionals	Hard	Had it not been for the {actor}'s help, the {event} ____ delayed.	would have been	will be	has been	is being	Had it not been for geçmişte gerçekleşmemiş koşulu, would have been sonucunu gerektirir.
+Modals	Medium	The {thing} might ____ during transportation.	have been damaged	have damage	be damaging	damaged	Geçmişteki ihtimalin edilgen ifadesi might have been + V3 biçimindedir.
+Modals	Medium	The {actor} ____ submitted the {thing} yesterday, but no file was received.	should have	must	can	may	Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır.
+Modals	Medium	The {actor} ____ at the {place} now; the lights are on.	must be working	must have worked	should have worked	has to worked	Şimdiki zamana ilişkin güçlü çıkarım için must be + V-ing kullanılır.
+Modals	Easy	You ____ disclose the contents of the {thing} without permission.	must not	need not	may	could	Must not yasak bildirir; need not yalnızca zorunluluğun bulunmadığını ifade eder.
+Modals	Hard	The {actor} ____ complete the {thing} by Friday if the equipment arrives.	may be able to	must have	should have been	had been able to	Gelecekte olası yeterlik may be able to + fiil yapısıyla ifade edilir.
+Passive	Easy	The {thing} ____ by an independent team next month.	will be examined	will examine	has examining	is examine	Gelecek zamandaki edilgen eylem will be + past participle ile kurulur.
+Passive	Hard	The {thing} appears ____ incorrectly last year.	to have been filed	to have file	filing	to be filing	Appear fiilinden sonra geçmişte tamamlanmış edilgen olay to have been + V3 ile ifade edilir.
+Causatives	Medium	The {actor} had the {thing} ____ by a specialist.	reviewed	reviewing	review	to review	Have something done ettirgen yapısında nesneden sonra past participle kullanılır.
+Causatives	Medium	The {actor} got the {thing} ____ before publication.	checked	checking	check	to checking	Get something done yapısında nesnenin ardından fiilin üçüncü biçimi gelir.
+Verb patterns	Medium	The {thing} needs ____ before it is sent to the committee.	revising	revise	to revising	revised	Need + V-ing yapısı burada edilgen gereklilik anlamı taşır: needs revising.
+Subjunctive	Hard	It is high time the {actor} ____ the {thing}.	finalized	finalizes	will finalize	has finalized	It is high time kalıbından sonra zamanı şimdiki olsa da past simple kullanılır.
+Relative clauses	Medium	The {actor}, ____ the committee had invited, presented the {thing}.	whom	whose	which	where	İnsana atıf yapan nesne konumundaki relative pronoun whom olabilir.
+Relative clauses	Medium	The {thing}, ____ contents were confidential, was stored in the {place}.	whose	which	what	where	Whose cansız nesnelerin parçaları arasında sahiplik ilişkisi kurmak için de kullanılabilir.
+Relative clauses	Easy	The {place} ____ the {event} took place has been renovated.	where	which	whose	whom	Yer bildiren ve ardından tam cümle gelen ilgi yan cümlesinde where kullanılır.
+Relative clauses	Easy	The {event}, ____ lasted three days, attracted wide interest.	which	who	where	whose	Virgüllü açıklayıcı relative clause içindeki cansız özne için which uygundur.
+Relative clauses	Medium	The only {thing} ____ we could recover was the archived copy.	that	who	where	whose	The only ile belirtilen cansız nesne için nesne konumunda that kullanılır.
+Relative clauses	Medium	The {actor} is one of the experts who ____ invited to the {event}.	were	was	is	has	Who zamirinin öncülü çoğul experts olduğu için were ile uyum sağlar.
+Infinitives	Medium	The {thing} is too detailed ____ in one session.	to be reviewed	review	reviewing	be reviewed	Too + adjective + to be + V3 edilgen sonuç yapısını kurar.
+Gerunds	Easy	The {actor} is accustomed to ____ under pressure.	working	work	worked	be worked	Be accustomed to kalıbındaki to edattır ve ardından gerund (-ing) gerekir.
+Gerunds	Medium	The {actor} denied ____ the {thing} before the deadline.	altering	to alter	alter	altered	Deny fiili ardından eylem geldiğinde gerund biçimini alır: denied altering.
+Infinitives	Medium	The {actor} was made ____ the {thing} again.	to examine	examine	examining	examined	Make ettirgen fiili edilgen yapıya dönüşünce was made to + fiil kullanılır.
+Inversion	Hard	Not only ____ the {actor} complete the {thing}, but they also explained the results.	did	had	has	was	Not only cümle başında olduğunda past simple için did + özne + fiil devrilişi gerekir.
+Inversion	Hard	Seldom ____ such a detailed {thing} been submitted in the last decade.	has	is	does	had	Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir.
+Inversion	Hard	Only after the {thing} was approved ____ the {actor} proceed.	did	had	has	was	Only after öbeği başa alındığında ana cümlede did + özne + yalın fiil kullanılır.
+Connectors	Medium	No matter how carefully the {actor} works, mistakes ____ occur.	can still	must have	are still	still to	No matter how bir ödünleme ifadesidir; can still + fiil olasılığın sürdüğünü bildirir.
+Connectors	Easy	Although the {thing} ____ expensive, the committee approved it.	was	despite	because	unless	Although ardından özne ve çekimli fiil içeren tam bir yan cümle gelir.
+Gerunds	Easy	The {actor} succeeded in ____ the {thing} on schedule.	completing	complete	to complete	completed	Succeed in kalıbındaki in edatından sonra fiilin -ing biçimi gelir.
+Comparison	Hard	The more closely the {thing} is examined, ____ its shortcomings become.	the more apparent	more apparent	most apparent	the apparent	The more ..., the more ... paralel karşılaştırma yapısı zorunludur.
+Concord	Medium	Neither the {actor} nor the assistants ____ responsible for the delay.	are	is	was	be	Neither ... nor yapısında fiil en yakın çoğul özne assistants ile uyum sağlar.
+Conditionals	Medium	The {actor} would have attended the {event} ____ the train had not been cancelled.	if	unless	although	because	Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir.
+Prepositions	Medium	The {actor} is responsible ____ preparing the {thing} for publication.	for	of	at	by	Responsible sıfatı bir yükümlülük bildirirken for edatıyla kullanılır.

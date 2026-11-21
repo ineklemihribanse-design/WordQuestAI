@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+from pathlib import Path
+root=Path(__file__).resolve().parents[2]
+src=root/"source/app/src/main/java/com/kelimebulmacasi/a1"
+h=(src/"HomeScreen.kt").read_text("utf-8")
+m=(src/"Wq175PremiumHome.kt").read_text("utf-8")
+a=(src/"WordQuest175Arena.kt").read_text("utf-8")
+assert h.count("Wq175PremiumHomeGrid(")==1
+assert "Wq2DMascots.selected(LocalContext.current,session.profileKey)" in h
+assert "Color(0xFF203A49)" in h
+assert 'Text("WordQuest AI", color = Color(0xFF203A49)' in h
+assert 'Wq175HomeStartButton(newGame)' in h
+assert 'PrimaryAction("Yeni Oyun", newGame)' not in h
+assert 'Wq175GlossIcon("puzzle",Modifier.size(59.dp))' in m
+assert "BoxWithConstraints(Modifier.fillMaxWidth())" in m
+assert "maxWidth<194.dp" in m
+assert "LocalDensity.current.fontScale>1.30f" in m
+assert "Surface(" in m and "onClick=tile.onClick" in m
+assert "Modifier.fillMaxWidth().fillMaxHeight(.96f)" in h
+assert "Wq175HomeStoryAtmosphere(Modifier.matchParentSize())" in h
+assert 'Wq175ThemeIllustration("ana_sayfa"' not in h
+assert "if(tile.artSlug!=null) Wq175ThemeArt.glossName(tile.artSlug)" in m
+assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in h
+assert "R.drawable.wq167_lena_portrait" not in m
+assert 'else if(tile.icon=="assistant")' not in m
+assert '"assistant",Color(0xFFF0EDFA),assistant' in m
+assert 'val more = listOf(' in m
+assert 'Wq175HomeTile("Yeni Oyun"' not in m
+assert m.index('    val more = listOf(')<m.index('Wq175HomeTile("Konuşma Asistanı"')
+assert m.index('Wq175HomeTile("Hazır Paketler"')<m.index('Wq175HomeTile("Bulmacalarım"')
+assert m.index('Wq175HomeTile("Bulmacalarım"')<m.index('    val more = listOf(')
+assert 'Wq175HomeTile("Eşleştirmelerim"' in m
+assert 'onDismiss={matchingOpen=false},onImport=learning' in m
+assert '"analytics",Color(0xFFFFF1DC),progress)' in m
+assert 'Wq175HomeTile("Öğrenme Merkezim"' not in m
+for module in ("arena","yds_akademi","kelime_hafizam","bulmacalarim","gunluk_plan"):
+    assert 'artSlug="'+module+'"' in m,module
+assert "fontSize=if(LocalDensity.current.fontScale>1.2f)24.sp else 29.sp" in h
+assert 'MenuItem("Hazır Paketler"' not in h[h.index('fun HomeScreen('):h.index('private fun HeroTiles')]
+assert m.count("Wq175HomeTile(")>=11
+assert 'val singleColumn=maxWidth<345.dp' in m
+assert m.count('LocalDensity.current.fontScale>1.45f')>=2
+assert 'main.chunked(2).forEach' in m
+assert 'more.chunked(2).forEach' in m
+for word in ("packages=packages","arena=firebaseArena","ydsCenter={ wq175AcademyOpen = true }",
+             "learning=learning","custom=custom","practice=practice",
+             "assistant=assistant","verbs=verbs","progress=progress","insights=insights"):
+    assert word in h,word
+assert 'Wq175GlossIcon("arena_"+kind,Modifier.size(69.dp))' in a
+assert 'Wq175ArenaModeSymbol(kind)' not in a[a.index('private fun Wq175ModeCard'): ]
+for name in ("arena_duel","arena_team","arena_quiz","packages","assistant","plan"):
+    assert (root/"source/app/src/main/assets/wq175_icons"/(name+".webp")).stat().st_size>800
+settings=(src/"WordQuest174Arena.kt").read_text("utf-8")
+assert 'Wq175GlossIcon(asset,Modifier.size(39.dp))' in settings
+assert 'Wq175GlossIcon("settings",Modifier.size(34.dp))' in settings
+for name in ("packages","library","timer","puzzle","insights"):
+    assert '"'+name+'"' in settings
+assert '"level"->Text("ABC"' not in settings
+print("PASS: mobile-first dashboard; every previously linked screen reachable")
+print("PASS: selected mascot is dynamic and all three true Arena WebP icons wired")
