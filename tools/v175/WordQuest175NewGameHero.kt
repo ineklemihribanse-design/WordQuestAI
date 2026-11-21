@@ -62,33 +62,77 @@ internal fun Wq175NewGameHero(level:String,profile:String,available:Int) {
     }
 }
 
+/** Dynamic review panel above the existing real Start callback.
+ * Every number comes from current game settings; no sample/fake progress.
+ */
 @Composable
 internal fun Wq175NewGameSummary(
     level:String,topic:String?,kind:String?,count:Int?,
     available:Int,timedMinutes:Int
 ) {
-    val shape=RoundedCornerShape(19.dp)
-    Surface(Modifier.fillMaxWidth(),shape=shape,
-        color=Color(0xFFF0FCF8),
-        border=BorderStroke(1.dp,Color(0xFFBCE8D8))) {
-        Column(Modifier.padding(14.dp),
-            verticalArrangement=Arrangement.spacedBy(6.dp)) {
-            Text("OYUN ÖZETİ",fontSize=11.sp,
-                fontWeight=FontWeight.Black,color=MakerInk)
-            Text(level+" · "+(topic?:"Tüm konular")+" · "+
-                (kind?:"Tüm kelime türleri"),
-                fontSize=12.sp,color=Color(0xFF356E63))
-            Text("Tahta: "+(count?.toString()?:"Seçilmedi")+" kelime"+
-                "    Oyun: "+if(timedMinutes==0)"Klasik" else "$timedMinutes dk",
-                color=MakerInk,fontSize=13.sp,fontWeight=FontWeight.Bold)
+    val ink=Color(0xFF193B42)
+    val chosen=count?:0
+    val gameType=if(timedMinutes==0) "Klasik" else "$timedMinutes dk"
+    val ratio=if(available<=0)0f else (chosen.toFloat()/available).coerceIn(0f,1f)
+    Surface(modifier=Modifier.fillMaxWidth(),
+        shape=RoundedCornerShape(25.dp),
+        color=Color(0xFFF3FCF7),
+        shadowElevation=4.dp,
+        border=BorderStroke(1.dp,Color(0xFFA3D4C1))) {
+        Column(Modifier.fillMaxWidth().padding(16.dp),
+            verticalArrangement=Arrangement.spacedBy(13.dp)) {
+            Row(Modifier.fillMaxWidth(),
+                horizontalArrangement=Arrangement.spacedBy(12.dp),
+                verticalAlignment=Alignment.CenterVertically) {
+                Box(Modifier.size(50.dp)
+                    .background(Color(0xFFE7DBFF),RoundedCornerShape(15.dp)),
+                    contentAlignment=Alignment.Center) {
+                    Wq175GlossIcon("puzzle",Modifier.size(43.dp))
+                }
+                Column(Modifier.weight(1f),
+                    verticalArrangement=Arrangement.spacedBy(3.dp)) {
+                    Text("OYUN ÖZETİ",fontSize=11.sp,
+                        fontWeight=FontWeight.Black,color=Color(0xFF26826C))
+                    Text("Bulmacan hazır",fontSize=19.sp,
+                        fontWeight=FontWeight.ExtraBold,color=ink)
+                    Text((topic?:"Tüm konular")+" · "+(kind?:"Tüm kelime türleri"),
+                        fontSize=12.sp,color=Color(0xFF5E7773),maxLines=2)
+                }
+            }
+            Row(Modifier.fillMaxWidth(),
+                horizontalArrangement=Arrangement.spacedBy(9.dp)) {
+                listOf(
+                    Triple("SEVİYE",level,Color(0xFFF2EAFE)),
+                    Triple("KELİME",if(chosen>0)"$chosen adet" else "Seçilmedi",Color(0xFFE3F8FA)),
+                    Triple("SÜRE",gameType,Color(0xFFFFF1D8))
+                ).forEach { (label,value,tint) ->
+                    Surface(modifier=Modifier.weight(1f),
+                        shape=RoundedCornerShape(14.dp),color=tint) {
+                        Column(Modifier.padding(horizontal=9.dp,vertical=11.dp),
+                            verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                            Text(label,fontSize=9.sp,fontWeight=FontWeight.Bold,
+                                color=Color(0xFF667077),maxLines=1)
+                            Text(value,fontSize=13.sp,
+                                fontWeight=FontWeight.ExtraBold,color=ink,
+                                maxLines=2,lineHeight=16.sp)
+                        }
+                    }
+                }
+            }
+            Row(Modifier.fillMaxWidth(),
+                horizontalArrangement=Arrangement.SpaceBetween) {
+                Text("Seçilebilir kelime havuzu",
+                    fontSize=12.sp,color=Color(0xFF43685E))
+                Text("$available kelime",fontSize=12.sp,
+                    fontWeight=FontWeight.Bold,color=Color(0xFF207D62))
+            }
             LinearProgressIndicator(
-                progress={if(available<=0)0f
-                    else((count?:0).toFloat()/available).coerceIn(0f,1f)},
-                modifier=Modifier.fillMaxWidth().height(5.dp)
+                progress={ratio},
+                modifier=Modifier.fillMaxWidth().height(7.dp)
                     .clip(RoundedCornerShape(8.dp)),
-                color=Color(0xFF3A9B7D),trackColor=Color(0xFFD5EDE5))
-            Text("$available gerçek kelimeden seçim yapılır.",
-                color=Color(0xFF5D8278),fontSize=11.sp)
+                color=Color(0xFF32A58A),trackColor=Color(0xFFD8ECE4))
+            Text("Seçimlerin hazır. Başlatınca kelimeler bu havuzdan alınır.",
+                fontSize=11.sp,lineHeight=15.sp,color=Color(0xFF6A8179))
         }
     }
 }
