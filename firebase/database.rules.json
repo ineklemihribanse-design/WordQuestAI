@@ -250,6 +250,28 @@
           ".validate": "newData.isString() && (newData.val() === 'astra' || newData.val() === 'piko' || newData.val() === 'nobi' || newData.val() === 'tera' || newData.val() === 'lopi' || newData.val() === 'tomba' || newData.val() === 'foksi' || newData.val() === 'moka' || newData.val() === 'pera' || newData.val() === 'gigi' || newData.val() === 'robot' || newData.val() === 'fox' || newData.val() === 'owl')"
         }
       }
+    },
+    "friendProfiles": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || (root.child('friends').child(auth.uid).child($uid).val() === true && root.child('friends').child($uid).child(auth.uid).val() === true))",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['avatar','points','completed','lastActiveAt']) && newData.childrenCount <= 4",
+        "avatar": {
+          ".validate": "newData.isString() && (newData.val() === 'astra' || newData.val() === 'piko' || newData.val() === 'nobi' || newData.val() === 'tera' || newData.val() === 'lopi' || newData.val() === 'tomba' || newData.val() === 'foksi' || newData.val() === 'moka' || newData.val() === 'pera' || newData.val() === 'gigi')"
+        },
+        "points": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000000"
+        },
+        "completed": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000"
+        },
+        "lastActiveAt": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 60000"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
     }
   }
 }
