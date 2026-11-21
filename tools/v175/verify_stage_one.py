@@ -58,8 +58,8 @@ print("DO NOT RELEASE until all planned features and real-device QA pass.")
 
 new_arena=(src/"WordQuest175Arena.kt").read_text("utf-8")
 assert 'Wq2DPortrait(selectedAvatar' in new_arena, "real selected mascot must appear large"
-assert 'Modifier.fillMaxSize().clip(CircleShape)' in new_arena
-assert 'Modifier.size(160.dp).clip(CircleShape)' in new_arena
+assert 'Modifier.fillMaxWidth().height(194.dp)' in new_arena
+assert 'Wq175GlossIcon("trophy"' in new_arena
 assert 'victory=(mode=="duel")' in new_arena
 assert 'Wq175StadiumBackdrop' in new_arena
 assert 'onMode("duel")' in new_arena

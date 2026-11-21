@@ -25,14 +25,16 @@ b='''        Page.Custom -> ScreenPage("Bulmacalarım", "Kendi kelimelerinle oyn
                 session.record(it)?.completed == true
             }
             Wq175MyPuzzlesHero(session.customGames.size, wq175CompletedCount)
+            Wq175PuzzleCreateCta(onClick={edit(null)})
+            Wq175PuzzleSourceShortcuts(
+                onManual={edit(null)},onPackage=packages,onImport=learning)
             Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(9.dp)) {
                 FilterChip(selected=!wq175CompletedOnly,
                     onClick={wq175CompletedOnly=false},label={Text("Tüm Bulmacalar")})
                 FilterChip(selected=wq175CompletedOnly,
                     onClick={wq175CompletedOnly=true},label={Text("Tamamlanan")})
             }
-            Wq175MatchingEntry(onClick={wq175MatchingOpen=true})
-            PrimaryAction("Bulmaca ekle", { edit(null) })'''
+            Wq175MatchingEntry(onClick={wq175MatchingOpen=true})'''
 if s.count(a)!=1:raise AssertionError("My Puzzles intro anchor: "+str(s.count(a)))
 s=s.replace(a,b,1)
 a='''            for (game in session.customGames) GameItem(game, session.record(game), ::open) { edit(it.destination, it) }'''

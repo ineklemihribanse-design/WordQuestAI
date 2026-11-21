@@ -6,7 +6,9 @@ for text in (
     'Wq175MyPuzzlesHero(session.customGames.size, wq175CompletedCount)',
     'wq175CompletedOnly by rememberSaveable',
     'session.record(it)?.completed == true',
-    'PrimaryAction("Bulmaca ekle", { edit(null) })',
+    'Wq175PuzzleCreateCta(onClick={edit(null)})',
+    'Wq175PuzzleSourceShortcuts(',
+    'onManual={edit(null)},onPackage=packages,onImport=learning)',
     'Wq175MatchingEntry(onClick={wq175MatchingOpen=true})',
     'Wq175MatchingDialog(session)',
     'wq175MatchingOpen by rememberSaveable',
@@ -15,7 +17,11 @@ for text in (
 ):
     assert text in s,text
 art=(src/"WordQuest175MyPuzzles.kt").read_text("utf-8")
-assert 'Wq175GlossIcon("puzzle",Modifier.size(112.dp))' in art
+assert 'Wq175GlossIcon("mistakes",' in art
+assert 'internal fun Wq175PuzzleCreateCta(' in art
+assert 'internal fun Wq175PuzzleSourceShortcuts(' in art
+for icon in ('"notebook"','"packages"','"pdf"','"camera"','"ai_teacher"'):
+    assert icon in art
 assert 'Wq175ThemeIllustration("bulmacalarim"' not in art
 print("PASS: real crosswords, edit, backups and completed-filter remain connected.")
 

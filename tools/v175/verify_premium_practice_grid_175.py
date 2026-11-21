@@ -23,8 +23,8 @@ assert hub.count("MenuItem@ {")>=1
 assert 'internal fun Wq175PremiumPracticeSpecialTile(' in grid
 assert 'Wq175SpecialTileArt(teacher,Modifier.size(76.dp))' in grid
 assert 'Wq175SpecialTileArt(teacher,Modifier.size(70.dp))' in grid
-assert 'R.drawable.wq167_lena_portrait' in grid
-assert 'Wq175GlossIcon("mistakes",modifier)' in grid
+assert 'R.drawable.wq167_lena_portrait' not in grid
+assert 'Wq175GlossIcon(if(teacher)"ai_teacher" else "mistakes",modifier)' in grid
 assert 'PracticeKind.entries.chunked(2)' in grid
 icons=(src/"WordQuest175Icons.kt").read_text("utf-8")
 assert '"yanlışlarımdan" in s -> "mistakes"' in icons

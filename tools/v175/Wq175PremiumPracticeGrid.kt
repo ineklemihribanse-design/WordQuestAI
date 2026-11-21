@@ -1,8 +1,7 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -11,10 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -99,13 +95,7 @@ private fun Wq175PremiumPracticeCard(kind:PracticeKind,onClick:()->Unit) {
  */
 @Composable
 private fun Wq175SpecialTileArt(teacher:Boolean,modifier:Modifier) {
-    if(teacher) {
-        Image(
-            painter=painterResource(R.drawable.wq167_lena_portrait),
-            contentDescription=null,
-            modifier=modifier.clip(RoundedCornerShape(17.dp)),
-            contentScale=ContentScale.Crop)
-    } else Wq175GlossIcon("mistakes",modifier)
+    Wq175GlossIcon(if(teacher)"ai_teacher" else "mistakes",modifier)
 }
 
 @Suppress("UNUSED_PARAMETER")

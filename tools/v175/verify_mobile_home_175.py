@@ -19,8 +19,15 @@ assert "Modifier.fillMaxSize().clip(CircleShape)" in h
 assert 'Wq175ThemeIllustration("ana_sayfa"' not in h
 assert "Wq175GlossIcon(Wq175ThemeArt.glossName(tile.artSlug)" in m
 assert "Wq175GlossIcon(roomIcon,Modifier.size(38.dp))" in h
-assert "R.drawable.wq167_lena_portrait" in m
-assert 'else if(tile.icon=="assistant")' in m
+assert "R.drawable.wq167_lena_portrait" not in m
+assert 'else if(tile.icon=="assistant")' not in m
+assert '"assistant",Color(0xFFF0EDFA),assistant' in m
+assert 'val more = listOf(' in m
+assert m.index('    val more = listOf(')<m.index('Wq175HomeTile("Yeni Oyun"')
+assert m.index('    val more = listOf(')<m.index('Wq175HomeTile("Konuşma Asistanı"')
+assert m.index('Wq175HomeTile("Hazır Paketler"')<m.index('Wq175HomeTile("Bulmacalarım"')
+assert m.index('Wq175HomeTile("Bulmacalarım"')<m.index('    val more = listOf(')
+assert 'Wq175HomeTile("Eşleştirmelerim"' not in m
 assert '"analytics",Color(0xFFFFF1DC),progress)' in m
 assert '"insights",Color(0xFFECEFFD),insights)' in m
 for module in ("arena","yds_akademi","kelime_hafizam","bulmacalarim","gunluk_plan","yeni_oyun"):

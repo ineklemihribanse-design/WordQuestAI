@@ -1,10 +1,9 @@
 package com.kelimebulmacasi.a1
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
@@ -42,25 +41,26 @@ private fun Wq175HomeTileView(tile:Wq175HomeTile,small:Boolean=false) {
     val shape=RoundedCornerShape(22.dp)
     Surface(
         onClick=tile.onClick,
-        modifier=Modifier.fillMaxWidth().heightIn(min=if(small)112.dp else 138.dp),
+        modifier=Modifier.fillMaxWidth().heightIn(min=if(small)114.dp else 146.dp),
         shape=shape,color=tile.tint,
         border=BorderStroke(1.dp,Color(0xFFE5E0D6)),
         shadowElevation=4.dp
     ) {
         BoxWithConstraints(Modifier.fillMaxWidth()) {
+            // Ambient shapes add visual depth without copying a rectangular
+            // WebP photograph or obscuring the card's accessible text.
+            Box(Modifier.align(Alignment.TopEnd).offset(x=24.dp,y=(-34).dp)
+                .size(if(small)102.dp else 126.dp)
+                .background(Color.White.copy(alpha=.30f),CircleShape))
+            Box(Modifier.align(Alignment.BottomStart).offset(x=(-19).dp,y=32.dp)
+                .size(82.dp).background(Color.White.copy(alpha=.15f),CircleShape))
             val narrow=maxWidth<194.dp || LocalDensity.current.fontScale>1.30f
             val imageSize=if(small)59.dp else if(narrow)76.dp else 88.dp
             @Composable
             fun Art() {
-                if(tile.artSlug!=null) Wq175GlossIcon(Wq175ThemeArt.glossName(tile.artSlug),Modifier.size(imageSize))
-                else if(tile.icon=="assistant") {
-                    Image(
-                        painter=painterResource(R.drawable.wq167_lena_portrait),
-                        contentDescription=null,
-                        modifier=Modifier.size(imageSize)
-                            .clip(RoundedCornerShape(20.dp)),
-                        contentScale=ContentScale.Crop)
-                } else Wq175GlossIcon(tile.icon,Modifier.size(imageSize))
+                Wq175GlossIcon(
+                    if(tile.artSlug!=null) Wq175ThemeArt.glossName(tile.artSlug)
+                    else tile.icon,Modifier.size(imageSize))
             }
             if(narrow) {
                 Column(
@@ -151,15 +151,15 @@ internal fun Wq175PremiumHomeGrid(
             "${session.learningDueCount()} kelime tekrar bekliyor.",
             "cards",Color(0xFFE7F8F7),learning,artSlug="kelime_hafizam"),
         Wq175HomeTile("Bulmacalarım","Oluştur, eşleştir ve kaydet.",
-            "puzzle",Color(0xFFFFF1E1),custom,artSlug="bulmacalarim"),
+            "mistakes",Color(0xFFFFEBDD),custom,artSlug="bulmacalarim"),
         Wq175HomeTile("Günlük Planım","Hedef koy, çalış, ilerle.",
             "plan",Color(0xFFFFF6DD),practice,artSlug="gunluk_plan"),
-        Wq175HomeTile("Yeni Oyun","Kendi kelime tahtanı oluştur.",
-            "sentence",Color(0xFFE9F4EF),newGame,artSlug="yeni_oyun"),
-        Wq175HomeTile("Konuşma Asistanı","Lena ile yazılı ve sesli sohbet.",
-            "assistant",Color(0xFFF0EDFA),assistant)
     )
     val more = listOf(
+        Wq175HomeTile("Yeni Oyun","Kendi kelime tahtanı oluştur.",
+            "puzzle",Color(0xFFE9F4EF),newGame,artSlug="yeni_oyun"),
+        Wq175HomeTile("Konuşma Asistanı","Lena ile yazılı ve sesli sohbet.",
+            "assistant",Color(0xFFF0EDFA),assistant),
         Wq175HomeTile("YDS Hazırlık","Kolay, orta ve zor bulmacalar.",
             "yds",Color(0xFFE9F1FD),yds),
         Wq175HomeTile("Fiiller","V1, V2, V3 ile pratik yap.",

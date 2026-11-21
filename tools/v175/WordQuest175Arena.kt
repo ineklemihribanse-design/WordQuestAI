@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -167,7 +168,7 @@ internal fun Wq175ArenaHeroAndModes(
     selectedAvatar:String,mode:String,solo:Boolean,onMode:(String)->Unit
 ) {
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(14.dp)) {
-        Box(Modifier.fillMaxWidth().heightIn(min=243.dp)
+        Box(Modifier.fillMaxWidth().heightIn(min=258.dp)
             .clip(RoundedCornerShape(29.dp))) {
             Wq175StadiumBackdrop(Modifier.matchParentSize())
             Row(Modifier.fillMaxWidth().padding(start=18.dp,end=9.dp,
@@ -192,12 +193,17 @@ internal fun Wq175ArenaHeroAndModes(
                             modifier=Modifier.padding(horizontal=11.dp,vertical=7.dp))
                     }
                 }
-                Box(Modifier.size(160.dp).clip(CircleShape)
-                    .background(Color(0x553F236E))
-                    .border(2.dp,ArenaGold175,CircleShape),
-                    contentAlignment=Alignment.Center) {
+                Box(Modifier.width(163.dp).height(208.dp),
+                    contentAlignment=Alignment.BottomCenter) {
+                    Box(Modifier.align(Alignment.BottomCenter).size(153.dp)
+                        .background(Brush.radialGradient(listOf(
+                            Color(0x88FFDF94),Color(0x338B43C1),Color.Transparent)),
+                            CircleShape))
+                    Wq175GlossIcon("trophy",
+                        Modifier.align(Alignment.TopEnd)
+                            .size(55.dp).alpha(.85f))
                     Wq2DPortrait(selectedAvatar,
-                        Modifier.fillMaxSize().clip(CircleShape),
+                        Modifier.fillMaxWidth().height(194.dp),
                         victory=(mode=="duel"))
                 }
             }

@@ -71,7 +71,7 @@ internal object Wq175ThemeArt {
         "kelime_hafizam" -> "cards"
         "eslestirmelerim" -> "synonym"
         "gunluk_plan" -> "plan"
-        "bulmacalarim" -> "puzzle"
+        "bulmacalarim" -> "mistakes"
         else -> "cards"
     }
     fun icon(slug:String):Int=when(slug){
