@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import kotlinx.coroutines.delay
-import java.util.Random
+import kotlin.random.Random
 
 /** Shuffled, stable per participant and room. Never leaks crossword answers. */
 internal object Wq179ArenaOrder {

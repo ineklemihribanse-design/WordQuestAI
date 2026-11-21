@@ -1615,8 +1615,10 @@ jobs:
           set -euo pipefail
           python3 -m py_compile tools/v179/apply_arena_179.py tools/v179/verify_arena_179.py tools/v179/verify_upgrade_metadata_179.py
           python3 tools/v179/apply_arena_179.py
+          python3 tools/v179/apply_arena_finale_179.py
           python3 tools/v179/verify_arena_179.py
           cp tools/v179/Wq179ArenaOrderTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaOrderTest.kt
+          cp tools/v179/Wq179ArenaFinaleTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaFinaleTest.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail
