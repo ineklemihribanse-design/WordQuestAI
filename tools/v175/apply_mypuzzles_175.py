@@ -17,10 +17,6 @@ a='''        Page.Custom -> ScreenPage("Bulmacalarım", "Kendi kelimelerinle oyn
             PrimaryAction("Bulmaca ekle", { edit(null) })'''
 b='''        Page.Custom -> ScreenPage("Bulmacalarım", "Kendi kelimelerinle oyna", ::back) {
             var wq175CompletedOnly by rememberSaveable { mutableStateOf(false) }
-            var wq175MatchingOpen by rememberSaveable { mutableStateOf(false) }
-            if(wq175MatchingOpen) Wq175MatchingDialog(session) {
-                wq175MatchingOpen=false
-            }
             val wq175CompletedCount = session.customGames.count {
                 session.record(it)?.completed == true
             }
@@ -36,7 +32,7 @@ b='''        Page.Custom -> ScreenPage("Bulmacalarım", "Kendi kelimelerinle oyn
                 FilterChip(selected=wq175CompletedOnly,
                     onClick={wq175CompletedOnly=true},label={Text("Tamamlanan")})
             }
-            Wq175MatchingEntry(onClick={wq175MatchingOpen=true})'''
+'''
 if s.count(a)!=1:raise AssertionError("My Puzzles intro anchor: "+str(s.count(a)))
 s=s.replace(a,b,1)
 a='''            for (game in session.customGames) GameItem(game, session.record(game), ::open) { edit(it.destination, it) }'''
