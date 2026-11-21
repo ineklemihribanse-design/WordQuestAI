@@ -178,11 +178,11 @@ internal fun Wq175PremiumHomeGrid(
             "yds",Color(0xFFE9F1FD),yds),
         Wq175HomeTile("Fiiller","V1, V2, V3 ile pratik yap.",
             "verbs",Color(0xFFE7F4EE),verbs),
+        Wq175HomeTile("Eşleştirmelerim","Türkçe ↔ İngilizce kart eşleştirme.",
+            "synonym",Color(0xFFE5F8F9),{matchingOpen=true},artSlug="eslestirmelerim"),
         Wq175HomeTile("İlerlemem",
             "${session.totalPoints} puan · ${session.finishedCount} bulmaca.",
-            "analytics",Color(0xFFFFF1DC),progress),
-        Wq175HomeTile("Eşleştirmelerim","Türkçe ↔ İngilizce kart eşleştirme.",
-            "synonym",Color(0xFFE5F8F9),{matchingOpen=true},artSlug="eslestirmelerim")
+            "analytics",Color(0xFFFFF1DC),progress)
     )
     Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(11.dp)) {
         Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,
