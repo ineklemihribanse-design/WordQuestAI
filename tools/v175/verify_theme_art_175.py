@@ -40,6 +40,22 @@ assert "Wq175ThemeBanner(\"yeni_oyun\"" in builder
 assert "Wq2DPortrait(" in builder
 assert "Wq2DPortrait(selectedAvatar" in (src/"WordQuest175Arena.kt").read_text("utf-8")
 theme=(src/"WordQuest175ThemeArt.kt").read_text("utf-8")
+# Last approved premium illustrations must beat the generic 3D fallback.
+icon_router=(src/"WordQuest175Icons.kt").read_text("utf-8")
+assert "painterResource(approved)" in icon_router
+assert "if (approved != null)" in icon_router
+assert 'context.assets.open("wq175_icons/" + name + ".webp")' in icon_router
+for key,res in {
+    "trophy":"arena", "yds":"yds_akademi", "cards":"kelime_hafizam",
+    "synonym":"eslestirmelerim", "plan":"gunluk_plan",
+    "grammar":"dilbilgisi", "puzzle":"bulmacalarim",
+    "listen":"dinle_ve_yaz"
+}.items():
+    assert f'"{key}" -> R.drawable.wq175_{res}_icon' in icon_router,key
+# Duels intentionally keep distinct mode-specific artwork.
+assert '"arena_duel" -> R.drawable' not in icon_router
+assert '"arena_team" -> R.drawable' not in icon_router
+assert '"arena_quiz" -> R.drawable' not in icon_router
 assert "ContentScale.Fit" in theme and "fun originalHero(slug:String)" in theme
 assert "fun secondaryIcon(title:String):String?" in theme
 assert "internal fun Wq175SecondaryRoomBanner(title:String,iconName:String)" in theme
