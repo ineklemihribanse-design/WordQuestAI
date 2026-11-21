@@ -25,14 +25,42 @@ official=json.loads((ROOT/"firebase/database.rules.json").read_text("utf-8"))
 # mutual-friends-only subtree into the assembled Android source.
 friend_profiles=official.get("rules",{}).get("friendProfiles")
 hint_policy=official["rules"]["premiumRooms"]["$code"].get("hintUsed")
+# Independently emulated question-count policy only permits host changes while
+# still in lobby with an atomic configRevision increment.
+changes=("mode","level","topic","size","seconds","boardId","quizSeed")
+live_approved=official["rules"]["premiumRooms"]["$code"]
+for key in changes:
+    original=s["rules"]["premiumRooms"]["$code"][key]
+    current=live_approved[key]
+    assert original[".write"] is False, key
+    assert current[".validate"] == original[".validate"], "Unexpected validation: "+key
+    assert set(current)==set(original), "Unexpected policy keys: "+key
+    rule=current[".write"]
+    assert isinstance(rule,str) and "auth.uid" in rule
+    assert "child('hostUid').val() === auth.uid" in rule
+    assert "child('phase').val() === 'lobby'" in rule
+    assert "child('configRevision').val() === data.parent().child('configRevision').val() + 1" in rule
+assert "configRevision" not in s["rules"]["premiumRooms"]["$code"]
+revision=live_approved["configRevision"]
+assert revision[".write"]=="auth != null && data.isNumber() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && newData.isNumber() && newData.val() === data.val() + 1"
+assert revision[".validate"].startswith("newData.isNumber()")
 verified=json.loads(json.dumps(official))
 verified["rules"].pop("friendProfiles",None)
-verified["rules"]["premiumRooms"]["$code"].pop("hintUsed",None)
+premium_verified=verified["rules"]["premiumRooms"]["$code"]
+premium_verified.pop("hintUsed",None)
+premium_verified.pop("configRevision",None)
+for key in changes:
+    premium_verified[key][".write"]=False
 assert verified==s,"Existing RTDB Arena rules differ from reviewed source; refuse to overwrite."
 if friend_profiles is not None:
     assert friend_profiles["$uid"][".write"]=="auth != null && auth.uid === $uid"
     assert "root.child('friends')" in friend_profiles["$uid"][".read"]
     s["rules"]["friendProfiles"]=friend_profiles
+# Carry forward only the exact revision-gated host settings authorized by
+# the Firebase emulator test, preserving all other validation rules.
+for key in changes:
+    s["rules"]["premiumRooms"]["$code"][key][".write"]=live_approved[key][".write"]
+s["rules"]["premiumRooms"]["$code"]["configRevision"]=revision
 if hint_policy is not None:
     exact=hint_policy["$uid"]["$index"]
     expression=exact[".write"]
