@@ -11,9 +11,12 @@ try {
   const code='TESTROOM9', path='premiumRooms/'+code;
   await env.withSecurityRulesDisabled(async ctx => {
     await ctx.database().ref(path).set({
-      hostUid:'owner', guestUid:'friend',
+      hostUid:'owner', hostName:'Owner', guestUid:'friend', guestName:'Friend',
       phase:'lobby', mode:'quiz', rulesVersion:2, configRevision:3,
-      hostAvatar:'robot', guestAvatar:'fox', size:10
+      hostAvatar:'robot', guestAvatar:'fox', level:'A1', topic:'General',
+      size:10, seconds:30, boardId:'', quizSeed:317,
+      turn:{uid:'owner',until:0}, createdAt:1700000000000,
+      quotaDay:20000, quotaSlot:'0'
     });
   });
   const owner=env.authenticatedContext('owner').database();
