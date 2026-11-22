@@ -166,6 +166,11 @@ def main() -> None:
 """
     ai_source=change_once(ai_source,marker,addition,"Lena authenticated translation")
 
+    # Offsets must be recomputed after inserting translation state and handler.
+    start=chat_original.find("        if (voiceSettingsOpen) {")
+    end=chat_original.find("        deleteCandidate?.let { thread ->",start)
+    if start<0 or end<start:
+        raise ValueError("SAFE STOP: altered Lena voice modal after adding translation")
     updated_chat=(chat_original[:start]+
         '        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\n'+
         chat_original[end:])
