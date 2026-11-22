@@ -210,6 +210,34 @@ class AppSession(context: Context, internal val accounts: Accounts, private val 
         return game.takeIf { playerAtStart === player && saveCustom(listOf(it), null) }
     }
 
+    /** Generate one single board from the UNION of selected CEFR/YDS levels, topics
+     * and word types. Existing generated-game saves and profile data remain intact.
+     */
+    internal suspend fun newGameFiltered(
+        levels: List<String>, topics: Set<String>, kinds: Set<String>, size: Int,
+    ): Game? {
+        if (levels.isEmpty() || size !in MIN_NEW_GAME_WORDS..MAX_BOARD_WORDS) return null
+        val playerAtStart = player
+        val previous = savedGames.lastOrNull { it.mode == GameMode.Generated && it.id == player.lastGame }
+            ?.puzzle?.words?.map { it.entry.letters }?.toSet().orEmpty()
+        val levelChoices = levels.distinct().filter { it in englishLevels || it in ydsLevels }
+        if (levelChoices.isEmpty()) return null
+        val topicChoices: List<String?> = if (topics.isEmpty()) listOf(null) else topics.map { it }
+        val kindChoices: List<String?> = if (kinds.isEmpty()) listOf(null) else kinds.map { it }
+        val available = levelChoices.flatMap { lv ->
+            topicChoices.flatMap { tp ->
+                kindChoices.flatMap { kd -> catalog.vocabulary.pool(lv, tp, kd) }
+            }
+        }.distinctBy(Entry::letters)
+        if (available.size < size) return null
+        val label = levelChoices.joinToString("+")
+        val game = withContext(Dispatchers.Default) {
+            generateGame(available, size, label, topics.singleOrNull(), kinds.singleOrNull(), previous)
+        } ?: return null
+        if (game.puzzle.words.size != size) return null
+        return game.takeIf { playerAtStart === player && saveCustom(listOf(it), null) }
+    }
+
     /** Generates a real game from all selected levels, topics and word types. */
     internal suspend fun newGame(
         levels: List<String>, topics: List<String>, kinds: List<String>, size: Int,
