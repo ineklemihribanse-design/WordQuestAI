@@ -1614,6 +1614,8 @@ jobs:
           python3 tools/v186/apply_package6_remaining.py
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ArenaPresetControls.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ArenaHintNetwork.kt
+          python3 -m py_compile tools/v186/verify_package6_contracts.py
+          python3 tools/v186/verify_package6_contracts.py
           python3 -m json.tool source/database.rules.json > /dev/null
           python3 - <<'PY'
           from pathlib import Path
