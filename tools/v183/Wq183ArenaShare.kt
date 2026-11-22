@@ -16,6 +16,8 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.resume
 import java.io.ByteArrayOutputStream
 import java.security.MessageDigest
@@ -213,6 +215,26 @@ internal fun Wq183ArenaShareBridge(
         }
     }
 
+    // A player's maskot can change while a match is active. Only this
+    // participant's avatar field is ever written; the server enforces ownership.
+    // First retract the previous preview, then update the room's avatar ID.
+    LaunchedEffect(room, myField, myId, selected, connected.value) {
+        if (room == null || myField == null || !connected.value ||
+            myId == selected || !Wq2DMascots.valid(selected)) return@LaunchedEffect
+        if (Wq183MascotStore.isCustomId(selected) &&
+            !Wq183MascotStore.exists(context, profileKey, selected))
+            return@LaunchedEffect
+        val retracted = suspendCancellableCoroutine<Boolean> { continuation ->
+            room.child(myField).removeValue().addOnCompleteListener { task ->
+                if (continuation.isActive) continuation.resume(task.isSuccessful)
+            }
+        }
+        if (!retracted) return@LaunchedEffect
+        currentCoroutineContext().ensureActive()
+        val avatarField = if (side == "host") "hostAvatar" else "guestAvatar"
+        room.child(avatarField).setValue(selected)
+    }
+
     // A denied write is NON-FATAL: both players still use the built-in piko image.
     LaunchedEffect(room, myField, myId, selected, allowed, connected.value) {
         if (room == null || myField == null) return@LaunchedEffect
@@ -234,7 +256,10 @@ internal fun Wq183ArenaShareBridge(
                 if (continuation.isActive) continuation.resume(task.isSuccessful)
             }
         }
-        if (cleanupRegistered && connected.value) node.setValue(value)
+        if (cleanupRegistered && connected.value) {
+            currentCoroutineContext().ensureActive()
+            node.setValue(value)
+        }
     }
 
     // Clear owned preview if the player explicitly leaves a room or closes screen.
