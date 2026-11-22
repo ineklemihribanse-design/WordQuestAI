@@ -263,11 +263,11 @@
         },
         "hostMascotPreview": {
           ".write": "auth != null && auth.uid === data.parent().child('hostUid').val() && (!newData.exists() || ((data.parent().child('phase').val() === 'lobby' || data.parent().child('phase').val() === 'playing') && data.parent().child('hostAvatar').isString() && data.parent().child('hostAvatar').val().matches(/^custom_[a-f0-9]{32}$/)))",
-          ".validate": "newData.isString() && newData.val().length >= 145 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+/=]{100,17500}$/)"
+          ".validate": "newData.isString() && newData.val().length >= 145 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+/=]+$/)"
         },
         "guestMascotPreview": {
           ".write": "auth != null && auth.uid === data.parent().child('guestUid').val() && (!newData.exists() || ((data.parent().child('phase').val() === 'lobby' || data.parent().child('phase').val() === 'playing') && data.parent().child('guestAvatar').isString() && data.parent().child('guestAvatar').val().matches(/^custom_[a-f0-9]{32}$/)))",
-          ".validate": "newData.isString() && newData.val().length >= 145 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+/=]{100,17500}$/)"
+          ".validate": "newData.isString() && newData.val().length >= 145 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+/=]+$/)"
         }
       }
     },
