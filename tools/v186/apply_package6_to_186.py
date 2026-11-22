@@ -105,6 +105,48 @@ def navigation():
     assert "confirmLeaveWork" in s and "navigationTrail" in s
     save("HomeScreen.kt",s)
 
+def direct_arena():
+    home=load("Wq175PremiumHome.kt")
+    home=once(home,
+        '{ activeSection="ARENA" }',
+        'arena',
+        "single-tap Arena category, no intermediate home page")
+    save("Wq175PremiumHome.kt",home)
+
+    arena=load("ArenaApprovedHome.kt")
+    old='''        if (!matchSettingsPage) {
+            Wq175ArenaHeroAndModes(
+                selectedAvatar=mascot,mode=mode,solo=solo,
+                onMode={ nextMode ->
+                    onMode(nextMode)
+                    matchSettingsPage=true
+                }
+            )
+        } else {
+            TextButton(onClick={matchSettingsPage=false},
+                modifier=Modifier.align(Alignment.Start)) {
+                Text("‹  Maceranı Seç ekranına dön",
+                    color=Color(0xFF6534A9),
+                    fontWeight=FontWeight.ExtraBold)
+            }
+            Text("Seçilen mod: " + when(mode) {
+                "team" -> "Ortak Bulmaca"
+                "quiz" -> "5 Şıklı Düello"
+                else -> "Bulmaca Düellosu"
+            },color=ArenaApproved.ink,fontWeight=FontWeight.SemiBold)
+            Wq174UnifiedMatchSettings('''
+    new='''        // Mode choice and match settings belong to a single Arena destination.
+        Wq175ArenaHeroAndModes(
+            selectedAvatar=mascot,mode=mode,solo=solo,onMode=onMode
+        )
+        Wq174UnifiedMatchSettings('''
+    arena=once(arena,old,new,"Arena no intermediate mode/settings page")
+    arena=once(arena,
+        '        Text(quotaLabel,color=ArenaApproved.sub,fontSize=11.sp)\\n        }\\n    }'.replace('\\n','\n'),
+        '        Text(quotaLabel,color=ArenaApproved.sub,fontSize=11.sp)\\n    }'.replace('\\n','\n'),
+        "remove old two-page UI closing brace")
+    save("ArenaApprovedHome.kt",arena)
+
 def compact_lobby():
     s = load("WordQuest175Arena.kt")
     s = once(s, ".heightIn(min=98.dp)", ".heightIn(min=76.dp)", "native mode-card height")
@@ -416,6 +458,7 @@ def main():
         "Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt",
         "Wq186ArenaSkipNetwork.kt","Wq186ArenaFairPlayTest.kt"))
     navigation()
+    direct_arena()
     compact_lobby()
     fair_online()
     skip_storage()
