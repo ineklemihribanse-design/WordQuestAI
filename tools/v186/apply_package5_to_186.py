@@ -20,6 +20,7 @@ FILES=[
     "Wq186MatchingImporter.kt",
     "Wq186LenaVoiceSettings.kt",
     "Wq186LenaTranslation.kt",
+    "Wq186EnglishDefinitionsOnline.kt",
 ]
 
 def change_once(contents: str, old: str, new: str, label: str) -> str:
@@ -165,6 +166,17 @@ def main() -> None:
     }
 """
     ai_source=change_once(ai_source,marker,addition,"Lena authenticated translation")
+    ai_source=change_once(ai_source,
+        "    internal suspend fun reply(key: String, message: String,",
+        """    /** English-only matching definitions use the same active private provider key. */
+    internal suspend fun defineMatchingWords(
+        key:String, words:List<String>, level:String
+    ):Map<String,String> = withProviderKey(key) {
+        requestWq186EnglishDefinitions(provider,providerModel,it,level,words)
+    }
+
+    internal suspend fun reply(key: String, message: String,""",
+        "authenticated English matching meanings")
 
     # Offsets must be recomputed after inserting translation state and handler.
     start=chat_original.find("        if (voiceSettingsOpen) {")
