@@ -21,9 +21,11 @@ internal fun Wq183MascotManager(
     profileKey: String,
     selected: String,
     onSelected: (String) -> Unit,
+    onlineEligible: Boolean
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val shared by rememberWq183ShareConsent(profileKey)
     var shown by remember { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
     var info by remember { mutableStateOf("") }
@@ -61,7 +63,32 @@ internal fun Wq183MascotManager(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                Text("Yalnızca WordQuest Mascot Pack v1 ZIP yüklenir. Dosyalar cihazında kalır.")
+                Text("Yalnızca WordQuest Mascot Pack v1 ZIP yüklenir. Asıl ZIP dosyası cihazında kalır.")
+                Row(
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text("Maskotumu Arena rakibime göster")
+                        Text(
+                            "İzin verirsen yalnızca Arena odasında küçük bir görsel " +
+                                "rakibinle paylaşılır. İstediğin zaman kapatabilirsin.",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                    Switch(
+                        checked = shared && onlineEligible,
+                        enabled = onlineEligible,
+                        onCheckedChange = { allowed ->
+                            Wq183ArenaShare.setConsent(context, profileKey, allowed)
+                        }
+                    )
+                }
+                if (!onlineEligible) Text(
+                    "Çevrimiçi paylaşım için hesapla giriş yap.",
+                    style = MaterialTheme.typography.bodySmall
+                )
                 Button(
                     onClick = { chooser.launch(arrayOf("application/zip", "application/octet-stream")) },
                     enabled = !busy,
