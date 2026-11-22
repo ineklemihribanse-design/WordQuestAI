@@ -32,7 +32,10 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
-private val gameSizes = listOf(10, 20, 30, 50)
+// A single crossword board is most reliable with 8–20 entries; larger selections
+// must be implemented as separate rounds instead of forcing an oversized board.
+private const val SAFE_BOARD_MAX_WORDS = 20
+private val gameSizes = listOf(8, 10, 15, 20)
 
 @Composable
 internal fun NewGameScreen(
@@ -54,7 +57,7 @@ internal fun NewGameScreen(
     val topics = bank?.categories(level, if (yds) GameMode.Yds else GameMode.Topics).orEmpty()
     val kinds = bank?.categories(level, GameMode.Kinds).orEmpty()
     val available = remember(bank, level, topic, kind) { bank?.pool(level, topic, kind)?.size ?: 0 }
-    val permitted = MIN_NEW_GAME_WORDS..minOf(available, MAX_BOARD_WORDS)
+    val permitted = MIN_NEW_GAME_WORDS..minOf(available, MAX_BOARD_WORDS, SAFE_BOARD_MAX_WORDS)
 
     LaunchedEffect(session) {
         try { bank = session.vocabulary() } catch (cancelled: CancellationException) { throw cancelled }
@@ -99,7 +102,7 @@ internal fun NewGameScreen(
                 label = { Text("Özel", fontFamily = Sans) }, colors = FilterChipDefaults.filterChipColors(selectedContainerColor = LightLime))
         }
         if (custom) OutlinedTextField(
-            customValue, { customValue = it.filter { c -> c in '0'..'9' }.take(2); error = "" },
+            customValue, { customValue = it.filter { c -> c in '0'..'9' }.take(3); error = "" },
             modifier = Modifier.fillMaxWidth(), label = { Text("Özel kelime sayısı") }, singleLine = true,
             enabled = !loading, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             isError = count != null && count !in permitted,
@@ -107,7 +110,7 @@ internal fun NewGameScreen(
         when {
             bank == null && error.isEmpty() -> BodyText("Kelime havuzu yükleniyor…")
             bank != null && permitted.isEmpty() -> BodyText("Bu filtrede $available kelime var. Tahta için en az $MIN_NEW_GAME_WORDS kelime gerekir.", ErrorInk)
-            bank != null -> BodyText("$available farklı kelime · ${permitted.first}–${permitted.last} kelime seçilebilir", Forest)
+            bank != null -> BodyText("$available farklı kelime · tek tahtada güvenilir sınır: ${permitted.first}–${permitted.last} kelime", Forest)
         }
         if (error.isNotBlank()) BodyText(error, ErrorInk)
         PrimaryAction(if (loading) "Bulmaca hazırlanıyor…" else "Bulmacayı başlat", {
