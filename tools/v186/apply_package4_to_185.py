@@ -39,7 +39,7 @@ def main() -> None:
     def resolve_conflicts(name: str, text: str) -> str:
         # Select exact, audited combinations; never silently take an unknown side.
         pattern = re.compile(
-            r"(?ms)^<<<<<<<[^\n]*\n(.*?)^\\|\\|\\|\\|\\|\\|\\|[^\n]*\n"
+            r"(?ms)^<<<<<<<[^\n]*\n(.*?)^\|\|\|\|\|\|\|[^\n]*\n"
             r"(.*?)^=======\n(.*?)^>>>>>>>[^\n]*\n"
         )
         choices = []
