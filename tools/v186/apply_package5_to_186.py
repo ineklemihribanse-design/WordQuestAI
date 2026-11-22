@@ -15,6 +15,7 @@ P5=ROOT/"tools/v186/package5"
 V175=ROOT/"tools/v175"
 FILES=[
     "Wq186MeaningBank.kt",
+    "Wq186OptionTiles.kt",
     "Wq186EnglishMeaningIcon.kt",
     "Wq186MatchingFolders.kt",
     "Wq186MatchingImporter.kt",
