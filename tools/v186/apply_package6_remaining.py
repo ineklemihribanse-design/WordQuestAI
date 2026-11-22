@@ -51,9 +51,11 @@ def packs():
     s=once(s,'val eligible = vocabulary.filter { PremiumArenaRules.matchesLevel(it.level, level) }',
         'val eligible = vocabulary.filter { lex -> levelPool.any { PremiumArenaRules.matchesLevel(lex.level, it) } }',
         "multiple CEFR vocabulary")
-    s=once(s,'PremiumQuestion("${target.meaning} — İngilizcesi hangisidir?", choices, choices.indexOf(target.answer), target.answer)',
-        'PremiumQuestion("${target.meaning} — İngilizcesi hangisidir?", choices, choices.indexOf(target.answer), target.answer, target.level)',
-        "individual answer level")
+    question='PremiumQuestion("${target.meaning} — İngilizcesi hangisidir?", choices, choices.indexOf(target.answer), target.answer)'
+    assert s.count(question)==2,"P6 expected one seeded and one offline quiz question constructor"
+    s=s.replace(question,
+        'PremiumQuestion("${target.meaning} — İngilizcesi hangisidir?", choices, choices.indexOf(target.answer), target.answer, target.level)')
+
     store("PremiumArenaContent.kt",s)
 
 def screen():
