@@ -336,9 +336,26 @@ def main() -> None:
             ".padding(horizontal = if (wide) 23.dp else if(phoneLayout)8.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)",
             ".padding(horizontal = if (wide) 23.dp else if(phoneLayout)8.dp else 16.dp, vertical = if (keyboardVisible) 6.dp else 9.dp)",
             "keep v175 physical phone board and tighten vertical gap")
-        for sign in ("val phoneLayout = maxWidth < 600.dp",
-            "else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile"):
-            if sign not in board: raise ValueError("SAFE STOP: missing approved phone viewport "+sign)
+        if "val phoneLayout = maxWidth < 600.dp" not in board:
+            raise ValueError("SAFE STOP: missing approved phone layout")
+        # The approved v175 phone viewport can be replaced by Package 4's
+        # merged puzzle geometry. Restore only the missing, audited cell
+        # readability behavior, never override another active implementation.
+        if "else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile" not in board:
+            board=change_once(board,
+                "    val tile = if (enlarged) maxOf(regularTile, 30.dp) else regularTile",
+                """    val phoneGrid = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
+    val tile = if (enlarged) maxOf(regularTile, 30.dp)
+        else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile""",
+                "restore 28dp phone cells following Package 4 board merge")
+            board=change_once(board,
+                "    val windowHeight = minOf(height, actualHeight)",
+                "    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)",
+                "phone board viewport height")
+            board=change_once(board,
+                "    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {\\n        if (enlarged) {",
+                "    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {\\n        if (enlarged || phoneGrid) {",
+                "keep selected word visible when phone grid scrolls")
     else:
         board=change_once(board,
             "val available = (maxWidth - 36.dp).coerceAtLeast(220.dp)",
