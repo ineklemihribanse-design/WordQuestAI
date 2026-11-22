@@ -58,24 +58,6 @@ def main() -> None:
                     "if (shuffling || timedOut) return",
                     "if (shuffling || timedOut || outOfTime) return",
                 )
-            # Retain v175 progress/streak tracking, but display its large
-            # original banner only when the compact daily-goal card is edited.
-            if name == "PracticeHubScreen.kt" and "Wq175DailyPlanBanner(" in ours and 'Text("Günlük çalışma hedefi"' in new:
-                start = "        Wq175DailyPlanBanner("
-                end = "            onMinutes={value->store.minutes=value;refresh++}\n        )"
-                if ours.count(start) != 1 or ours.count(end) != 1:
-                    raise ValueError("Unexpected daily-plan banner layout; safe stop")
-                choices.append((name, "retain premium daily banner inside compact editable card"))
-                return ours.replace(
-                    start,
-                    "        Wq186CollapsibleDailyPlan(mins, doneMinutes, remaining, store.isGoalConfigured) {\n"
-                    "            Wq175DailyPlanBanner(",
-                    1,
-                ).replace(
-                    end,
-                    "            onMinutes={value->store.minutes=value;refresh++}\n            )\n        }",
-                    1,
-                )
             if name == "HomeScreen.kt" and "session.profileKey" in ours and "clock = clock" in new:
                 if "pronunciation, session.profileKey)" not in ours:
                     raise ValueError("HomeScreen signature unexpectedly changed")
