@@ -271,6 +271,11 @@ private fun PracticeGameScreen(
 ) {
     val context = LocalContext.current
     val preferences = session.preferences
+    var practiceAccentName by rememberSaveable(session.profileKey, kind.name) {
+        mutableStateOf(preferences.voice.name)
+    }
+    val practiceAccent = EnglishVoice.entries.firstOrNull { it.name == practiceAccentName }
+        ?: preferences.voice
     val cards = remember(session.profileKey, number) {
         session.searchLearning("", 0, 400).filter { isEnglishAnswer(it.answer) }
             .sortedByDescending { it.wrong * 3 + it.forgotten * 2 + it.hints }
@@ -323,6 +328,23 @@ private fun PracticeGameScreen(
 
     ScreenPage(kind.title, "${session.learningProfileName} · Alıştırma ${number + 1}", back) {
         if (kind in listOf(PracticeKind.Dictation, PracticeKind.Speak)) {
+            Row(
+                Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                FilterChip(
+                    selected = practiceAccent == EnglishVoice.American,
+                    enabled = !checked,
+                    onClick = { practiceAccentName = EnglishVoice.American.name; problem = ""; recognized = "" },
+                    label = { Text("🇺🇸 American · US", fontFamily = Sans) },
+                )
+                FilterChip(
+                    selected = practiceAccent == EnglishVoice.British,
+                    enabled = !checked,
+                    onClick = { practiceAccentName = EnglishVoice.British.name; problem = ""; recognized = "" },
+                    label = { Text("🇬🇧 British · UK", fontFamily = Sans) },
+                )
+            }
             if (kind == PracticeKind.Speak) {
                 BodyText("Konuşma biçimini seç: yalnızca konuşma düğmesine basınca mikrofon açılır.")
                 Row(
@@ -349,15 +371,15 @@ private fun PracticeGameScreen(
                 BodyText("Önce sesini dinle. Başlat düğmesini kullanmadıkça mikrofon açılmaz.")
             }
             if (kind != PracticeKind.Speak || speakMode == "LISTEN") {
-                OutlinedButton(onClick = { pronunciation.pronounce(listOf(word), preferences.voice, replay = true) },
-                    enabled = preferences.pronunciation) { Text("${preferences.voice.label} aksanında dinle") }
+                OutlinedButton(onClick = { pronunciation.pronounce(listOf(word), practiceAccent, replay = true) },
+                    enabled = preferences.pronunciation) { Text("${practiceAccent.label} aksanında dinle") }
             }
             if (kind == PracticeKind.Speak) {
                 PrimaryAction("Konuşmayı dene", {
                     try {
                         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
                             putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-                            putExtra(RecognizerIntent.EXTRA_LANGUAGE, preferences.voice.locale.toLanguageTag())
+                            putExtra(RecognizerIntent.EXTRA_LANGUAGE, practiceAccent.locale.toLanguageTag())
                             putExtra(RecognizerIntent.EXTRA_PROMPT, if (speakMode == "READ") "Ekrandaki İngilizce kelimeyi söyle" else "Duyduğun İngilizce ifadeyi söyle")
                         }
                         speechLauncher.launch(intent)
