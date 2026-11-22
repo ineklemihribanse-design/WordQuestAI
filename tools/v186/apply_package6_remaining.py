@@ -60,6 +60,21 @@ def packs():
 
 def screen():
     s=load("PremiumOnlineScreen.kt")
+    s=once(s,
+        'Wq183ArenaBackdrop(\n            Modifier.matchParentSize(), active = match?.phase == "playing")',
+        '''if(match==null) {
+            Box(Modifier.matchParentSize().background(Color.White))
+        } else Wq183ArenaBackdrop(
+            Modifier.matchParentSize(), active = match.phase == "playing")''',
+        "pure white selector background without changing tournament art in matches")
+    s=once(s,
+        'Text("‹ Geri", color = OnlineGold, fontWeight = FontWeight.SemiBold)',
+        'Text("‹ Geri", color = if(match==null) Color(0xFF312158) else OnlineGold, fontWeight = FontWeight.SemiBold)',
+        "readable back action on white lobby")
+    s=once(s,
+        'color = OnlineGold, fontSize = 10.sp, fontWeight = FontWeight.Bold)',
+        'color = if(match==null) Color(0xFF312158) else OnlineGold, fontSize = 10.sp, fontWeight = FontWeight.Bold)',
+        "readable white-background Arena title")
     s=once(s,'remember(match.code, match.quizSeed, match.level, match.topic, match.size)',
         'remember(match.code, match.quizSeed, match.level, match.topic, match.size, client.package6Rules.levels)',
         "mixed quiz cache")
