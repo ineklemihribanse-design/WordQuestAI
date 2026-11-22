@@ -1694,6 +1694,7 @@ jobs:
           python3 tools/build_offline_voices.py
           python3 tools/verify_audio_ipa.py
       - uses: gradle/actions/setup-gradle@v4
+      # Check 1.0.85 overlap diagnostics before touching original source files.
       - name: Apply Package 4 to assembled 1.0.85 source without release
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v186-package4-integration-qa' }}
         run: |
