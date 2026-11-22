@@ -6,12 +6,14 @@ internal object Wq187LenaSpeech {
     private val turkishLetters = Regex("""[çğıöşüÇĞİÖŞÜ]""")
     private val turkishWords = Regex("""(?i)\b(şu|an|müsün|misin|için|bunu|anlamı|anlamına|demek|merhaba|sözcük|örnek|çevirisi|türkçesi|evet|hayır|burada|ben|sen|bir|nedir)\b""")
 
+    private val unmistakableTurkish = Regex("""(?i)\b(merhaba|hadi|gidelim|selam|nasilsin|tamam|teşekkürler|lütfen)\b""")
+
     fun hasTurkishAside(value: String): Boolean =
-        turkishLetters.containsMatchIn(value) ||
+        turkishLetters.containsMatchIn(value) || unmistakableTurkish.containsMatchIn(value) ||
             (turkishWords.findAll(value).count() >= 2)
 
     fun forSpeech(displayed: String, language: ConversationLanguage): String {
-        val plain = displayed.replace(Regex("[*_#\x60]"), "").trim()
+        val plain = displayed.replace(Regex("[*_#]"), "").trim()
         if (language != ConversationLanguage.English) return plain
         var omitted = false
         val cleaned = parenthesis.replace(plain) { match ->
