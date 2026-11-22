@@ -210,6 +210,33 @@ class AppSession(context: Context, internal val accounts: Accounts, private val 
         return game.takeIf { playerAtStart === player && saveCustom(listOf(it), null) }
     }
 
+    /** Generates a real game from all selected levels, topics and word types. */
+    internal suspend fun newGame(
+        levels: List<String>, topics: List<String>, kinds: List<String>, size: Int,
+    ): Game? {
+        if (levels.isEmpty()) return null
+        val playerAtStart = player
+        val previous = savedGames.lastOrNull {
+            it.mode == GameMode.Generated && it.id == player.lastGame
+        }?.puzzle?.words?.map { it.entry.letters }?.toSet().orEmpty()
+        val levelLabel = levels.distinct().joinToString(" + ")
+        val topicLabel = topics.singleOrNull()
+        val kindLabel = kinds.singleOrNull()
+        val source = catalog.vocabulary.pool(levels, topics, kinds)
+        if (size !in MIN_NEW_GAME_WORDS..MAX_BOARD_WORDS || source.size < size) return null
+        val generated = withContext(Dispatchers.Default) {
+            generateGame(source, size, levelLabel, topicLabel, kindLabel, previous)
+        } ?: return null
+        val combined = if (levels.size == 1 && topics.size <= 1 && kinds.size <= 1) generated
+            else Game(
+                generated.id, GameMode.Generated, levelLabel,
+                (topics + kinds).distinct().joinToString(" · ").ifBlank { "Karışık" },
+                (listOf(levelLabel) + (topics + kinds).distinct()).joinToString(" · "),
+                generated.puzzle, null,
+            )
+        return combined.takeIf { playerAtStart === player && saveCustom(listOf(it), null) }
+    }
+
     fun record(game: Game): Progress? = revision.let { player.find(game.progressId) }
 
     internal fun round(game: Game, progress: Progress): BoardRound = BoardRound.open(game.puzzle, progress.layout)
