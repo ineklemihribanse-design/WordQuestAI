@@ -352,10 +352,22 @@ def main() -> None:
                 "    val windowHeight = minOf(height, actualHeight)",
                 "    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)",
                 "phone board viewport height")
-            board=change_once(board,
-                "    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {\n        if (enlarged) {",
-                "    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {\n        if (enlarged || phoneGrid) {",
-                "keep selected word visible when phone grid scrolls")
+            import re
+            pattern=r"LaunchedEffect\(selected,\s*enlarged,\s*[^)]*\)\s*\{\s*if\s*\(enlarged\)\s*\{"
+            located=list(re.finditer(pattern,board))
+            if len(located)==1:
+                matched=located[0].group(0)
+                updated=matched.replace("selected, enlarged,",
+                    "selected, enlarged, phoneGrid,",1)
+                updated=updated.replace("if (enlarged) {",
+                    "if (enlarged || phoneGrid) {",1)
+                board=change_once(board,matched,updated,
+                    "auto-scroll enlarged phone crossword grid")
+            elif "if (enlarged || phoneGrid)" not in board:
+                raise ValueError(
+                    "SAFE STOP: existing selection scroll logic changed; " +
+                    repr(board[board.find("LaunchedEffect(selected"):][:300]))
+
     else:
         board=change_once(board,
             "val available = (maxWidth - 36.dp).coerceAtLeast(220.dp)",
