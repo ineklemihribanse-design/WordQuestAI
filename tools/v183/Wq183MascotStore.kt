@@ -74,7 +74,7 @@ internal object Wq183MascotStore {
 
     private fun checkImage(file: File, relative: String) {
         val bytes = ByteArray(12)
-        FileInputStream(file).use { require(it.read(bytes) >= 12) { "Bozuk görsel" } }
+        FileInputStream(file).use { DataInputStream(it).readFully(bytes) }
         val png = bytes.take(8) == listOf(137,80,78,71,13,10,26,10)
             .map { it.toByte() }
         val webp = String(bytes, 0, 4, Charsets.US_ASCII) == "RIFF" &&
@@ -126,7 +126,7 @@ internal object Wq183MascotStore {
                     files++
                     require(files <= FILE_MAX) { "ZIP en fazla 40 dosya içerebilir" }
                     val name = entry.name
-                    require(name == "manifest.json" || pathPattern.matches(name)) {
+                    require(name == "manifest.json" || name == "README_TR.txt" || pathPattern.matches(name)) {
                         "Beklenmeyen dosya veya güvenli olmayan yol: $name"
                     }
                     require(seen.add(name)) { "Tekrarlanan ZIP girdisi: $name" }
@@ -143,7 +143,7 @@ internal object Wq183MascotStore {
                             require(perEntry <= ENTRY_MAX && total <= UNPACKED_MAX) {
                                 "ZIP açılmış veri sınırını aşıyor"
                             }
-                            if (name == "manifest.json")
+                            if (name == "manifest.json" || name == "README_TR.txt")
                                 require(perEntry <= 65536L) { "Manifest çok büyük" }
                             destination.write(buffer, 0, n)
                         }
@@ -177,7 +177,7 @@ internal object Wq183MascotStore {
                     require(path in seen) { "Görsel ZIP'te yok: $path" }
                 }
             }
-            for (nameInZip in seen.filter { it != "manifest.json" }) {
+            for (nameInZip in seen.filter { it != "manifest.json" && it != "README_TR.txt" }) {
                 checkImage(File(stage, nameInZip), nameInZip)
             }
             val id = "custom_" + UUID.randomUUID().toString().replace("-", "")
