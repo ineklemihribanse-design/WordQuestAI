@@ -91,8 +91,9 @@ def screen():
 
 def room():
     s=load("PremiumOnlineRoom.kt")
-    s=once(s,'    var status by mutableStateOf("")',
+    s=once(s,'    var status by mutableStateOf("")\n        private set',
         '''    var status by mutableStateOf("")
+        private set
     var package6Rules by mutableStateOf(Wq186MatchPreset(listOf("A1")))
         private set''',"room preset state")
     s=once(s,'        refreshQuotaForToday()\n        if (!canCreate)',
