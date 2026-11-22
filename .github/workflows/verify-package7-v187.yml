@@ -3,13 +3,14 @@ on:
   push:
     branches: [feature/v187-package7-staging]
     paths:
+      - 'tools/v187/**'
       - 'tools/v186/**'
-      - '.github/workflows/verify-package5-v186.yml'
+      - '.github/workflows/verify-package7-v187.yml'
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: wq-p6-${{ github.ref }}
+  group: wq-p7-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
