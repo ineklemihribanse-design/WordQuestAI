@@ -64,6 +64,17 @@ yerel kimlikle saklanır.
 
 ## Çevrimiçi görünürlük
 
-Özel maskotun görseli karşı cihazda yoksa hazır 'piko' maskotuna dönülür.
-ZIP otomatik olarak sunucuya gönderilmez. İnternet üstünden görsel paylaşımı
-bu formatın ilk sürümünde etkin değildir.
+**1.0.83 ek isteği:** Kullanıcı profilindeki "Maskotumu Arena rakibime göster"
+seçeneğini açarsa, yalnızca oynadığı Arena odasının karşı oyuncusuna
+en fazla 160px ve ~13 KiB sınırında bir WebP önizleme gönderilebilir.
+Asıl ZIP, orijinal tam çözünürlüklü görseller ve diğer ifadeler gönderilmez.
+Açık izin yoksa hiçbir görsel paylaşılmaz; karşı oyuncu hazır 'piko'
+maskotunu görür. Önizleme maç odasında host ve guest ile sınırlandırılmıştır.
+Maç kapanınca veya izin geri alınınca oyuncu kendi önizlemesini sildirir.
+
+**Önemli kurulum:** Kodun rakip cihazda çalışması için
+`firebase/database.rules.v183.json` dosyasındaki yeni host/guest özel
+maskot kuralları Firebase konsolunda kontrollü olarak **manuel yayımlanmalı**.
+Yalnızca `firebase/database.rules.json` üzerine daha önce yapılan
+dağıtım bu özelliği açmaz. 2 gerçek hesapla çevrimiçi paylaşım, izin
+iptali, erişim ve kota testleri bitmeden "tamamlandı" denemez.
