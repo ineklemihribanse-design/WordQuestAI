@@ -342,7 +342,6 @@ private fun HomeScreen(
                     MenuItem("Devam Et", unfinished.path + " · " + unfinished.title, "↗") { open(unfinished) }
                 }
                 PrimaryAction("Yeni Oyun", newGame)
-                val score = session.totalPoints.toString() + " puan · " + session.finishedCount + " tamamlanan bulmaca"
                 val play: @Composable () -> Unit = {
                     MenuItem("Hazır Paketler", "Konuya ve kelime türüne göre bulmacalar", "◇", packages)
                     MenuItem("YDS Hazırlık", "Kolay, orta ve zor bulmacalar", "YDS", yds)
@@ -353,10 +352,9 @@ private fun HomeScreen(
                     MenuItem("Arena", "A1–A2 · Bulmaca ve 5 şıklı İngilizce yarışmaları", "★", firebaseArena)
                     // The older server connection remains in source for compatibility but is hidden from Home.
                     MenuItem("Konuşma Asistanı", "Yazarak veya sesli sohbet et", "✦", assistant)
-                    MenuItem("Günlük Planım & Yeni Oyunlar", "Dinle-yaz, cümle, gramer, hikâye ve konuşma", "✦", practice)
+                    MenuItem("Günlük Planım", "Günlük hedefler ve mini oyunlara doğrudan geç", "✦", practice)
                     MenuItem("Kelime Hafızam", "${session.learningDueCount()} kelime tekrar bekliyor · Kişisel defter", "↻", learning)
                     MenuItem("Fiillerin 1., 2. ve 3. Hâli", "Eşleştirme, boşluk doldurma ve yazma", "V1", verbs)
-                    MenuItem("İlerlemem", score, "★", progress)
                     MenuItem("Öğrenme Merkezim", "Akıllı tekrar, YDS istatistikleri, kişisel ders ve yedekleme", "◎", insights)
                 }
                 if (wide) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
