@@ -381,10 +381,15 @@ def main() -> None:
         "Arrangement.spacedBy(if (keyboardVisible) 8.dp else 14.dp)",
         "Arrangement.spacedBy(if (keyboardVisible) 6.dp else 9.dp)",
         "mobile board vertical whitespace")
-    board=change_once(board,
-        "fontSize = 33.sp, lineHeight = 36.sp",
-        "fontSize = 26.sp, lineHeight = 30.sp",
-        "crossword compact heading")
+    if "fontSize = 33.sp, lineHeight = 36.sp" in board:
+        board=change_once(board,
+            "fontSize = 33.sp, lineHeight = 36.sp",
+            "fontSize = if(phoneLayout)26.sp else 33.sp, lineHeight = if(phoneLayout)30.sp else 36.sp",
+            "crossword compact heading")
+    elif "game.title" in board and "phoneLayout" in board:
+        print("KEEP pre-existing approved responsive crossword heading")
+    else:
+        raise ValueError("SAFE STOP: missing crossword title or mobile viewport")
 
     # All merge operations validated; now write only the prepared sources.
     current.write_text(merged_text,"utf-8")
