@@ -294,6 +294,57 @@ def hint_area():
             "compact hint button")
     save("Wq181ArenaHintBar.kt",s)
 
+def crossword_typing():
+    s=load("PuzzleScreen.kt")
+    needle='    val word = board.words[view.wordIndex]'
+    s=once(s,needle,
+        needle+'''\n    var typedDialog by remember { mutableStateOf(false) }
+    var wordDraft by remember(view.wordIndex) { mutableStateOf("") }''',
+        "Arena-style full-word typing state")
+    if s.count("keyboard.openKeyboard()") < 3:
+        raise AssertionError("P6 missing legacy letter-by-letter keyboard calls")
+    s=s.replace("keyboard.openKeyboard()","typedDialog = true")
+    marker='    Box(\n        Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding(),'
+    dialog='''    if(typedDialog && !outOfTime && view.wordIndex !in view.solvedIndices) {
+        AlertDialog(
+            onDismissRequest={typedDialog=false},
+            title={Text("Kelimeyi yaz")},
+            text={
+                Column(verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                    Text("${word.number} ${word.direction.label} · ${word.cells.size} harf",
+                        fontWeight=FontWeight.Bold,color=Forest)
+                    Text(word.entry.clue,color=Ink,fontSize=19.sp)
+                    OutlinedTextField(
+                        value=wordDraft,
+                        onValueChange={ wordDraft=englishLetters(it).take(word.cells.size) },
+                        modifier=Modifier.fillMaxWidth(),
+                        label={Text("İngilizce kelime")},
+                        placeholder={Text("Cevabı yaz")},
+                        singleLine=true
+                    )
+                    Text("Kelimenin tamamını yaz. Açık harfler tahtada korunur.",
+                        fontSize=12.sp,color=Forest)
+                }
+            },
+            confirmButton={
+                TextButton(
+                    enabled=englishLetters(wordDraft).length==word.cells.size,
+                    onClick={
+                        edit(typedWord=true) { crossword -> crossword.enter(wordDraft) }
+                        checkAndLearn()
+                        typedDialog=false
+                        wordDraft=""
+                    }
+                ) { Text("Cevabı gönder") }
+            },
+            dismissButton={TextButton(onClick={typedDialog=false}){Text("Vazgeç")}}
+        )
+    }
+
+'''
+    s=once(s,marker,dialog+marker,"native Arena typing modal")
+    save("PuzzleScreen.kt",s)
+
 def reconnect():
     s=load("PremiumOnlineRoom.kt")
     s=once(s,
@@ -325,6 +376,7 @@ def main():
     fair_online()
     skip_storage()
     hint_area()
+    crossword_typing()
     reconnect()
     firebase_rules()
     home=load("HomeScreen.kt")
