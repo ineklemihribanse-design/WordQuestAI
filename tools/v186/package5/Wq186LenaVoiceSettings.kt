@@ -126,8 +126,12 @@ internal fun Wq186LenaVoiceSettings(session:AppSession,onDismiss:()->Unit) {
                     if(voice!=null) {
                         tts.voice=voice
                         tts.setSpeechRate(session.preferences.speechRate)
+                        val audioParams=android.os.Bundle().apply {
+                            putFloat(TextToSpeech.Engine.KEY_PARAM_VOLUME,
+                                session.preferences.speechVolume.coerceIn(0f,1f))
+                        }
                         tts.speak("Hello! Let's practise English together.",
-                            TextToSpeech.QUEUE_FLUSH,null,"wq186_voice_preview")
+                            TextToSpeech.QUEUE_FLUSH,audioParams,"wq186_voice_preview")
                     }
                 },enabled=ready && available.isNotEmpty(),
                     modifier=Modifier.fillMaxWidth()) {
