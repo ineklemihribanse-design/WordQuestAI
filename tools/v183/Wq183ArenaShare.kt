@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
 import java.io.ByteArrayOutputStream
 import java.security.MessageDigest
 
@@ -171,6 +173,25 @@ internal fun Wq183ArenaShareBridge(
     val myField = if (side != null) Wq183ArenaShare.previewField(side) else null
     val otherField = Wq183ArenaShare.previewField(otherSide)
 
+    // onDisconnect runs once on the server; restore preview on reconnect.
+    val connected = remember(room) { mutableStateOf(false) }
+    DisposableEffect(room) {
+        val ref = room?.root?.child(".info")?.child("connected")
+        val listener = if (ref != null) object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                connected.value = snapshot.getValue(Boolean::class.java) == true
+            }
+            override fun onCancelled(error: DatabaseError) {
+                connected.value = false
+            }
+        } else null
+        if (ref != null && listener != null) ref.addValueEventListener(listener)
+        onDispose {
+            if (ref != null && listener != null) ref.removeEventListener(listener)
+            connected.value = false
+        }
+    }
+
     DisposableEffect(room, otherField, rivalId) {
         val source: DatabaseReference? =
             if (room != null && Wq183MascotStore.isCustomId(rivalId))
@@ -193,7 +214,7 @@ internal fun Wq183ArenaShareBridge(
     }
 
     // A denied write is NON-FATAL: both players still use the built-in piko image.
-    LaunchedEffect(room, myField, myId, selected, allowed) {
+    LaunchedEffect(room, myField, myId, selected, allowed, connected.value) {
         if (room == null || myField == null) return@LaunchedEffect
         val node = room.child(myField)
         if (!allowed || !Wq183MascotStore.isCustomId(selected) || myId != selected) {
@@ -202,12 +223,18 @@ internal fun Wq183ArenaShareBridge(
             node.onDisconnect().cancel()
             return@LaunchedEffect
         }
+        if (!connected.value) return@LaunchedEffect
         val value = withContext(Dispatchers.Default) {
             val image = Wq183MascotStore.picture(context, selected, false)
             image?.let { Wq183ArenaShare.encodePreview(selected, it) }
         } ?: return@LaunchedEffect
-        node.onDisconnect().removeValue()
-        node.setValue(value)
+        // Register server-side deletion first, then publish only if still allowed.
+        val cleanupRegistered = suspendCancellableCoroutine<Boolean> { continuation ->
+            node.onDisconnect().removeValue().addOnCompleteListener { task ->
+                if (continuation.isActive) continuation.resume(task.isSuccessful)
+            }
+        }
+        if (cleanupRegistered && connected.value) node.setValue(value)
     }
 
     // Clear owned preview if the player explicitly leaves a room or closes screen.
