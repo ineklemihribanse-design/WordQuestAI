@@ -115,7 +115,7 @@ private fun Wq186ParagraphWorkspace(profileKey: String, ai: AiSession, close: ()
         checked = false
     }
 
-    fun import(uri: android.net.Uri, camera: Boolean = false) {
+    fun importDraft(uri: android.net.Uri, camera: Boolean = false) {
         if (busy) return
         busy = true
         status = "Belge taranıyor…"
@@ -140,11 +140,11 @@ private fun Wq186ParagraphWorkspace(profileKey: String, ai: AiSession, close: ()
         }
     }
     val open = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) import(uri)
+        if (uri != null) importDraft(uri)
     }
     val photo = rememberLauncherForActivityResult(remember { TakeScanPhoto() }) { ok ->
         val file = cameraFile
-        if (ok && file != null && file.length() > 0) import(scanPhotoUri(context, file), true)
+        if (ok && file != null && file.length() > 0) importDraft(scanPhotoUri(context, file), true)
         else { cameraFile?.delete(); cameraFile = null; status = "Kamera iptal edildi." }
     }
     fun capture() {
