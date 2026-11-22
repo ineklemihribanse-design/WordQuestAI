@@ -292,7 +292,7 @@
           ".validate": false
         },
         "avatarPreview": {
-          ".validate": "newData.isString() && newData.val().length >= 100 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+\\/=]{100,17500}$/)"
+          ".validate": "newData.isString() && newData.val().length >= 140 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+\\/=]+$/)"
         }
       }
     }
