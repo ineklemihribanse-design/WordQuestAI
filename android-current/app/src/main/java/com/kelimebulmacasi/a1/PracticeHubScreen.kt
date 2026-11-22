@@ -10,6 +10,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.horizontalScroll
@@ -41,6 +44,7 @@ import java.util.UUID
 /** Daily progress belongs to the selected player. A different profile cannot see another's sessions. */
 internal data class DailyDay(val goalMinutes: Int, val activeSeconds: Long, val completed: Set<String>)
 private val DAILY_MARKER = Regex("[A-Z_]{1,30}:[a-f0-9]{12}")
+private val DAILY_GOAL_OPTIONS = listOf(15, 20, 25, 30, 40, 60)
 
 internal class DailyPlanStore(context: Context, profileKey: String) {
     private val prefs = context.applicationContext.getSharedPreferences(
@@ -51,9 +55,10 @@ internal class DailyPlanStore(context: Context, profileKey: String) {
     private val secondsKey = "active.$today"
 
     var minutes: Int
-        get() = prefs.getInt(key, 15).takeIf { it in listOf(15, 30, 60) } ?: 15
-        set(value) { if (value in listOf(15, 30, 60)) prefs.edit().putInt(key, value).apply() }
+        get() = prefs.getInt(key, 15).takeIf { it in DAILY_GOAL_OPTIONS } ?: 15
+        set(value) { if (value in DAILY_GOAL_OPTIONS) prefs.edit().putInt(key, value).apply() }
 
+    val isGoalConfigured: Boolean get() = prefs.contains(key)
     val seconds: Long get() = prefs.getLong(secondsKey, 0).coerceAtLeast(0)
     fun addTime(seconds: Long = 1) {
         prefs.edit().putLong(secondsKey, (this.seconds + seconds).coerceAtMost(24 * 3600)).apply()
@@ -68,7 +73,7 @@ internal class DailyPlanStore(context: Context, profileKey: String) {
         .distinct().sortedDescending().take(366)
         .mapNotNull { date ->
             if (runCatching { LocalDate.parse(date) }.isFailure) return@mapNotNull null
-            val goal = prefs.getInt("plan.$date", 15).takeIf { it in listOf(15, 30, 60) } ?: 15
+            val goal = prefs.getInt("plan.$date", 15).takeIf { it in DAILY_GOAL_OPTIONS } ?: 15
             val active = prefs.getLong("active.$date", 0).coerceIn(0L, 86_400L)
             val done = prefs.getStringSet("done.$date", emptySet()).orEmpty()
                 .filter { DAILY_MARKER.matches(it) }.take(250).toSet()
@@ -80,7 +85,7 @@ internal class DailyPlanStore(context: Context, profileKey: String) {
         val editor = prefs.edit()
         for ((date, day) in days.entries.take(366)) {
             if (runCatching { LocalDate.parse(date) }.isFailure) continue
-            if (day.goalMinutes !in listOf(15, 30, 60) || day.activeSeconds !in 0L..86_400L ||
+            if (day.goalMinutes !in DAILY_GOAL_OPTIONS || day.activeSeconds !in 0L..86_400L ||
                 day.completed.size > 250 || day.completed.any { !DAILY_MARKER.matches(it) }) continue
             editor.putInt("plan.$date", day.goalMinutes)
             editor.putLong("active.$date", maxOf(day.activeSeconds, prefs.getLong("active.$date", 0L)))
@@ -108,6 +113,8 @@ internal fun PracticeHubScreen(
     val context = LocalContext.current
     val profileKey = session.profileKey
     val store = remember(profileKey) { DailyPlanStore(context, profileKey) }
+    var goalEditorOpen by rememberSaveable(profileKey) { mutableStateOf(!store.isGoalConfigured) }
+    var goalDraft by rememberSaveable(profileKey) { mutableIntStateOf(store.minutes) }
     var selected by rememberSaveable(profileKey) { mutableStateOf<PracticeKind?>(null) }
     var questionIndex by rememberSaveable(profileKey) { mutableIntStateOf(0) }
     var refresh by remember { mutableIntStateOf(0) }
@@ -138,21 +145,67 @@ internal fun PracticeHubScreen(
 
     ScreenPage("Günlük Planım & Yeni Oyunlar", session.learningProfileName, back) {
         if (session.accountName == null) LocalProfilePicker(session)
-        Text("Günlük çalışma hedefi", fontFamily = Serif, color = Ink)
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            for (option in listOf(15, 30, 60)) FilterChip(
-                selected = mins == option,
-                onClick = { store.minutes = option; refresh++ },
-                label = { Text("$option dk", fontFamily = Sans) },
-            )
-        }
-        BodyText("Bugün $done etkinlik tamamlandı · ${doneMinutes} dakika aktif çalışma", Forest)
-        BodyText("Hedefe kalan ${remaining / 60} dk ${remaining % 60} sn · $due kelime tekrar bekliyor")
         val fraction = (store.seconds.toFloat() / (mins * 60f)).coerceIn(0f, 1f)
-        androidx.compose.material3.LinearProgressIndicator(
-            progress = { fraction }, modifier = Modifier.fillMaxWidth(), color = Forest,
-        )
-        BodyText("Çalışma süresi ve tamamlanan etkinlikler yalnızca bu oyuncunun cihazında saklanır. Süre, sayfa açıkken sayılır.")
+        androidx.compose.material3.ElevatedCard(Modifier.fillMaxWidth()) {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                        Text("Günlük çalışma hedefi", fontFamily = Serif, color = Ink, fontWeight = FontWeight.Bold)
+                        Text("$mins dk hedef · $doneMinutes dk tamamlandı", fontFamily = Sans, color = Ink)
+                        if (remaining == 0L) {
+                            Text("Hedef tamamlandı!", fontFamily = Sans, fontWeight = FontWeight.SemiBold, color = Forest)
+                        } else {
+                            Text("Kalan ${remaining / 60} dk ${remaining % 60} sn", fontFamily = Sans, color = Forest)
+                        }
+                    }
+                    if (remaining == 0L) {
+                        Text("✓", color = Forest, fontSize = 42.sp, fontWeight = FontWeight.Bold)
+                    }
+                    if (!goalEditorOpen) {
+                        androidx.compose.material3.IconButton(
+                            onClick = { goalDraft = store.minutes; goalEditorOpen = true },
+                        ) {
+                            Text("✎", color = Forest, fontSize = 23.sp)
+                        }
+                    }
+                }
+                androidx.compose.material3.LinearProgressIndicator(
+                    progress = { fraction }, modifier = Modifier.fillMaxWidth(), color = Forest,
+                )
+                if (goalEditorOpen) {
+                    BodyText("Günlük hedef süreni seç")
+                    Row(
+                        Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        for (option in DAILY_GOAL_OPTIONS) FilterChip(
+                            selected = goalDraft == option,
+                            onClick = { goalDraft = option },
+                            label = { Text("$option dk", fontFamily = Sans) },
+                        )
+                    }
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedButton(onClick = {
+                            store.minutes = goalDraft
+                            goalEditorOpen = false
+                            refresh++
+                        }) { Text("Ayarları kaydet", fontFamily = Sans) }
+                        if (store.isGoalConfigured) {
+                            TextButton(onClick = { goalDraft = store.minutes; goalEditorOpen = false }) {
+                                Text("Vazgeç", fontFamily = Sans)
+                            }
+                        }
+                    }
+                    BodyText("Çalışma süresi yalnızca bu sayfa açıkken sayılır.")
+                } else {
+                    BodyText("Bugün $done etkinlik tamamlandı · $due kelime tekrar bekliyor", Forest)
+                }
+            }
+        }
         for (kind in PracticeKind.entries) {
             MenuItem(kind.title, kind.detail, "✦") { selected = kind; questionIndex = 0 }
         }
