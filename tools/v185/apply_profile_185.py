@@ -42,11 +42,18 @@ def apply():
         ("edit icon import",
          "import androidx.compose.material.icons.filled.Settings",
          "import androidx.compose.material.icons.filled.Settings\nimport androidx.compose.material.icons.filled.Edit"),
-        ("larger own maskot card",
-         '''        Wq2DCompactSelector(chosenMaskot.value,
-            onClick={choosingMaskot=true})''',
-         '''        Wq185ProfileSelector(chosenMaskot.value,
-            onClick={choosingMaskot=true})'''),
+        ("larger mascot inside EXISTING lavender account header",
+         '''            Wq2DPortrait(chosenMaskot.value,Modifier.size(82.dp))''',
+         '''            Wq2DPortrait(chosenMaskot.value,
+                Modifier.width(
+                    if(Wq183MascotStore.isCustomId(chosenMaskot.value)) {
+                        if(androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600)
+                            205.dp else 150.dp
+                    } else 112.dp)
+                    .height(if(Wq183MascotStore.isCustomId(chosenMaskot.value)) {
+                        if(androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600)
+                            314.dp else 236.dp
+                    } else 154.dp))'''),
         ("profile name shows only a pencil control once saved",
          '''                Text(social.nickname.ifBlank { "Kullanıcı adını belirle" },
                     fontFamily=Serif,color=Ink,fontSize=22.sp,
