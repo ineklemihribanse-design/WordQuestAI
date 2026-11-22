@@ -58,3 +58,18 @@ internal object Wq186ArenaFairPlay {
     fun validEmoji(value: String) = value in allowedEmojis
     const val DISCONNECT_GRACE_MS = 90_000L
 }
+
+/** Deferred failures are attempted only after all ordinary clues are exhausted. */
+internal object Wq186ArenaNext {
+    fun choose(match: PremiumOnlineMatch, uid: String, current: Int): Int {
+        val failed = match.unknownBy.filterValues { uid in it }.keys +
+            match.mistakesBy.filterValues { (it[uid] ?: 0) > 0 }.keys
+        val finalRound = Wq186ArenaFairPlay.finalRoundNeeded(
+            match.size, match.solvedBy.keys, failed
+        )
+        return Wq186ArenaFairPlay.nextWord(
+            match.code + "|" + uid, match.size, match.solvedBy.keys,
+            failed, current, finalRound
+        ) ?: current.coerceAtLeast(0)
+    }
+}
