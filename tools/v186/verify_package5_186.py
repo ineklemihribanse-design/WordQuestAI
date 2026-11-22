@@ -27,6 +27,13 @@ for name in ('OpenDocument','TakeScanPhoto','scanPairs','suggestWords',
     assert name in importer, f"Missing independent source: {name}"
 assert "session.addManualLearning" not in importer
 assert "session.searchLearning" not in importer
+assert 'defineMatchingWords' in importer
+assert (p5/"Wq186EnglishDefinitionsOnline.kt").is_file()
+assert 'LenaRichComposer.kt' in overlay
+assert 'translateDraftForLena' in overlay
+assert (p5/"Wq186LenaTranslation.kt").is_file()
+assert 'store.rename(' in importer
+assert 'store.remove(' in importer
 assert 'getSharedPreferences(' in folder
 assert "wq186_match_folders_" in folder
 assert 'commit()' in folder
