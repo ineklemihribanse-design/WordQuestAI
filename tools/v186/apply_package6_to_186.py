@@ -256,7 +256,7 @@ def fair_online():
                 }""",
              "disable selecting an arbitrary puzzle cell")
     import re
-    grid_skip=r"Wq179ArenaOrder\\.next\\(\\s*match\\.code,myUid,puzzle\\.words\\.size,solved,selected\\)"
+    grid_skip=r"Wq179ArenaOrder\.next\(\s*match\.code,myUid,puzzle\.words\.size,solved,selected\)"
     s,n=re.subn(grid_skip,"Wq186ArenaNext.choose(match,myUid,selected)",s)
     if n!=1:
         raise AssertionError(f"P6 automatic skip word selector: {n} matches")
