@@ -41,6 +41,7 @@ internal fun Wq186MatchingImporter(
     }}
     var folderId by rememberSaveable { mutableStateOf("") }
     var folderName by rememberSaveable { mutableStateOf("Yeni eşleştirme klasörüm") }
+    var deleteCandidate by remember { mutableStateOf<Wq186MatchFolder?>(null) }
     var level by rememberSaveable { mutableStateOf("A1") }
     var topic by rememberSaveable { mutableStateOf("Günlük yaşam") }
     var aiCount by rememberSaveable { mutableIntStateOf(30) }
@@ -158,6 +159,26 @@ internal fun Wq186MatchingImporter(
             pair.turkish.trim().length in (if(englishDefinitions) 8 else 2)..200 &&
             (!englishDefinitions || pair.turkish.trim().contains(' '))
     }.map{it.value}
+    deleteCandidate?.let { folder ->
+        AlertDialog(onDismissRequest={deleteCandidate=null},
+            title={Text("Klasörü sil?")},
+            text={Text("${folder.name} klasörü ve bu klasördeki eşleştirme kelimeleri " +
+                "silinecek. Diğer klasörlerin ve Kelime Hafızam'ın verileri korunur.")},
+            confirmButton={
+                TextButton(onClick={
+                    try {
+                        if(store.remove(folder.id)){
+                            foldersRevision++
+                            if(folderId==folder.id){folderId="";folderName=""}
+                            status="Klasör silindi."
+                        }
+                    }catch(_:Exception){status="Klasör silinemedi."}
+                    deleteCandidate=null
+                }){Text("Sil")}
+            },
+            dismissButton={TextButton(onClick={deleteCandidate=null}){Text("Vazgeç")}}
+        )
+    }
     AlertDialog(onDismissRequest={if(!busy)onDismiss()},
         title={Text(if(englishDefinitions)"İngilizce Tanım Klasörü"
             else "Eşleştirmeye Kelime Aktar")},
@@ -171,20 +192,39 @@ internal fun Wq186MatchingImporter(
                     "Sağdaki anlamlar İngilizce olmalı. PDF, görsel ve AI önerilerini " +
                     "İngilizce tanım olarak kontrol etmeden kaydetme.",
                     fontSize=12.sp)
-                Text("Klasör",fontSize=13.sp)
-                Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)) {
-                    OutlinedButton(onClick={folderId=""},modifier=Modifier.weight(1f)) {
-                        Text("Yeni klasör",fontSize=11.sp)
-                    }
-                    folders.take(3).forEach { folder ->
-                        OutlinedButton(onClick={folderId=folder.id;folderName=folder.name},
-                            modifier=Modifier.weight(1f)) {
-                            Text(folder.name.take(10),fontSize=10.sp)
+                Text("Eşleştirme klasörlerim",fontSize=13.sp)
+                OutlinedButton(onClick={folderId="";folderName="Yeni eşleştirme klasörüm"},
+                    modifier=Modifier.fillMaxWidth()) {Text("＋ Yeni klasör")}
+                folders.forEach { folder ->
+                    Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.spacedBy(4.dp)) {
+                        OutlinedButton(onClick={
+                            folderId=folder.id
+                            folderName=folder.name
+                        },modifier=Modifier.weight(1f)) {
+                            Text(folder.name.take(28)+" · ${folder.words.size}",
+                                fontSize=11.sp)
+                        }
+                        TextButton(onClick={
+                            folderId=folder.id
+                            folderName=folder.name
+                            status="Klasör adını düzenleyip kaydet."
+                        }){Text("Düzenle",fontSize=11.sp)}
+                        TextButton(onClick={deleteCandidate=folder}) {
+                            Text("Sil",fontSize=11.sp)
                         }
                     }
                 }
                 OutlinedTextField(folderName,{folderName=it.take(60)},
                     label={Text("Klasör adı")},modifier=Modifier.fillMaxWidth())
+                if(folderId.isNotBlank()) TextButton(onClick={
+                    try {
+                        if(store.rename(folderId,folderName)){
+                            foldersRevision++
+                            status="Klasör adı değiştirildi."
+                        }else status="Klasör adı değiştirilemedi."
+                    }catch(_:Exception){status="Klasör adı kaydedilemedi."}
+                }) {Text("Klasör adını kaydet")}
                 Text("Seviye",fontSize=13.sp)
                 Wq186OptionTiles(listOf("A1","A2","B1","B2","C1","C2"),
                     setOf(level),!busy) { level=it }
