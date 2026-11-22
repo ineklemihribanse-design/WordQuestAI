@@ -180,8 +180,11 @@ internal suspend fun flexibleLargePuzzle(
                     item.letters, board, minRow, maxRow, minColumn, maxColumn, MAX_BOARD_SIDE,
                 )
                 for (fit in arrangements) {
-                    val score = fit.area - fit.crossings * 24 -
-                        item.letters.length * 2 + random.nextInt(23)
+                    val end = fit.placement.cell(item.letters.lastIndex)
+                    val height = maxOf(maxRow, end.row) - minOf(minRow, fit.placement.start.row) + 1
+                    val width = maxOf(maxColumn, end.column) - minOf(minColumn, fit.placement.start.column) + 1
+                    val score = fit.area + 2 * (height - width) * (height - width) -
+                        fit.crossings * 24 - item.letters.length * 2 + random.nextInt(23)
                     if (score < bestScore) {
                         bestScore = score
                         bestIndex = index
@@ -198,7 +201,11 @@ internal suspend fun flexibleLargePuzzle(
                     for (fit in matches(
                         item.letters, board, minRow, maxRow, minColumn, maxColumn, MAX_BOARD_SIDE,
                     )) {
-                        val score = fit.area - fit.crossings * 24 - item.letters.length * 2
+                        val end = fit.placement.cell(item.letters.lastIndex)
+                        val height = maxOf(maxRow, end.row) - minOf(minRow, fit.placement.start.row) + 1
+                        val width = maxOf(maxColumn, end.column) - minOf(minColumn, fit.placement.start.column) + 1
+                        val score = fit.area + 2 * (height - width) * (height - width) -
+                            fit.crossings * 24 - item.letters.length * 2
                         if (score < bestScore) {
                             bestScore = score
                             bestIndex = index
