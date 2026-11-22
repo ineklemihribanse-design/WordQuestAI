@@ -140,7 +140,9 @@ private fun Wq174SettingIcon(kind:String) {
     if help_start>=0:
         # P6 already introduced the info toggle. Consolidate it with P7's
         # shared accessible dialog rather than stacking two info buttons.
-        help_end=s.find('\n            }\n',help_start)
+        body_start=s.find('            if(detailsOpen) Column',help_start)
+        if body_start<0:raise AssertionError("P7 P6 info content missing")
+        help_end=s.find('\n            }\n',body_start)
         if help_end<0:raise AssertionError("P7 Arena P6 help end unavailable")
         help_end+=len('\n            }')
         previous=s[help_start:help_end]
