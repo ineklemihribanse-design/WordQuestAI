@@ -45,6 +45,8 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
     val appContext = LocalContext.current
     LaunchedEffect(session.profileKey) { ai.bindProfile(appContext, session.profileKey) }
     var page by rememberSaveable { mutableStateOf(Page.Home.name) }
+    var navigationTrail by rememberSaveable { mutableStateOf(listOf<String>()) }
+    var confirmLeaveWork by rememberSaveable { mutableStateOf(false) }
     var origin by rememberSaveable { mutableStateOf(Page.Home.name) }
     var modeName by rememberSaveable { mutableStateOf(GameMode.Topics.name) }
     var level by rememberSaveable { mutableStateOf("A1") }
@@ -76,7 +78,12 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
         onDispose { pronunciation.stop() }
     }
 
-    fun go(target: Page) { page = target.name }
+    fun go(target: Page) {
+        if (target.name != page) {
+            navigationTrail = (navigationTrail + page).takeLast(32)
+            page = target.name
+        }
+    }
 
     fun open(game: Game) {
         origin = page
@@ -94,21 +101,35 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
     }
 
     fun back() {
-        when (Page.valueOf(page)) {
-            Page.Game -> {
-                session.closeGame()
-                page = origin
-                gameId = null
-            }
-            Page.Packages -> { page = packageOrigin }
-            Page.Topic -> go(Page.Packages)
-            Page.NewGame -> { page = newGameOrigin }
-            Page.Editor -> { page = editorOrigin }
-            Page.VerbGame -> go(Page.Verbs)
-            Page.Backup -> go(Page.Custom)
-            Page.Home -> Unit
-            else -> go(Page.Home)
+        val current = Page.valueOf(page)
+        val previous = navigationTrail.lastOrNull() ?: Page.Home.name
+        if (current == Page.Game) {
+            session.closeGame()
+            gameId = null
         }
+        val destination = when(current) {
+            Page.Game -> origin
+            Page.Packages -> packageOrigin
+            Page.Topic -> Page.Packages.name
+            Page.NewGame -> newGameOrigin
+            Page.Editor -> editorOrigin
+            Page.VerbGame -> Page.Verbs.name
+            Page.Backup -> Page.Custom.name
+            Page.Home -> Page.Home.name
+            else -> previous
+        }
+        if (current != Page.Home) {
+            navigationTrail = navigationTrail.dropLast(1)
+            page = destination.takeIf { candidate ->
+                Page.entries.any { it.name == candidate }
+            } ?: Page.Home.name
+        }
+    }
+
+    fun requestBack() {
+        if (page in setOf(Page.Game.name, Page.Editor.name, Page.VerbGame.name)) {
+            confirmLeaveWork = true
+        } else back()
     }
 
     fun packages(mode: GameMode) {
@@ -132,7 +153,22 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
     LaunchedEffect(arena.pendingInvite) {
         if (arena.pendingInvite.isNotBlank()) go(Page.Arena)
     }
-    BackHandler(page != Page.Home.name) { back() }
+    BackHandler(page != Page.Home.name) { requestBack() }
+    if (confirmLeaveWork) AlertDialog(
+        onDismissRequest = { confirmLeaveWork = false },
+        title = { Text("Çalışmadan çıkılsın mı?") },
+        text = { Text("Çalışmayı bırakıp önceki ekrana dönmek istiyor musun?") },
+        confirmButton = {
+            TextButton(onClick = { confirmLeaveWork = false; back() }) {
+                Text("Çık")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = { confirmLeaveWork = false }) {
+                Text("Devam et")
+            }
+        }
+    )
     when (Page.valueOf(page)) {
         Page.Home -> HomeScreen(
             session, { setup() }, { go(Page.Modes) }, { packages(GameMode.Yds) }, ::open, { go(Page.Progress) },
@@ -203,7 +239,7 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
             } else {
                 CustomEditor(
                     destinationMode?.let { Destination(GameMode.valueOf(it), destinationLevel, destinationCategory) },
-                    existing, ::back, ai.hasKey, ai::forgetKey, ai::suggestWords, ai.provider,
+                    existing, ::requestBack, ai.hasKey, ai::forgetKey, ai::suggestWords, ai.provider,
                 ) { games, expectedModifiedAt ->
                     val saved = session.saveCustom(games, expectedModifiedAt)
                     if (saved) {
@@ -227,7 +263,7 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
                     val clock = remember(game.id, session.profileKey) {
                         PuzzleClockStore(appContext, session.profileKey).load(game.id)
                     }
-                    PuzzleScreen(game, crossword, round.onBoard(saved), ::back, { session.shuffle(game) },
+                    PuzzleScreen(game, crossword, round.onBoard(saved), ::requestBack, { session.shuffle(game) },
                         { signal -> session.recordLearning(game, signal) }, session.preferences, pronunciation,
                         clock = clock,
                     ) { progress ->
@@ -242,7 +278,7 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
             go(Page.VerbGame)
         }
         Page.VerbGame -> VerbPracticeScreen(
-            session.verbs, VerbPool.valueOf(verbPool), VerbExercise.valueOf(verbMode), verbSeed, ::back,
+            session.verbs, VerbPool.valueOf(verbPool), VerbExercise.valueOf(verbMode), verbSeed, ::requestBack,
             { verbSeed = Random.nextInt() }, session.preferences,
         )
     }
