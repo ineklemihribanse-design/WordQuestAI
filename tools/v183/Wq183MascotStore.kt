@@ -34,7 +34,7 @@ internal object Wq183MascotStore {
     }
 
     private fun root(context: Context, profile: String): File =
-        File(context.filesDir, "wq183_mascots/" + owner(profile)).apply { mkdirs() }
+        File(context.noBackupFilesDir, "wq183_mascots/" + owner(profile)).apply { mkdirs() }
 
     fun exists(context: Context, profile: String, id: String): Boolean =
         isCustomId(id) && File(root(context, profile), "$id/manifest.json").isFile
@@ -57,7 +57,7 @@ internal object Wq183MascotStore {
         val token = context.getSharedPreferences(ownerPrefs, Context.MODE_PRIVATE)
             .getString("owner", null) ?: return null
         if (!Regex("[a-f0-9]{24}").matches(token)) return null
-        val folder = File(context.filesDir, "wq183_mascots/$token/$id")
+        val folder = File(context.noBackupFilesDir, "wq183_mascots/$token/$id")
         if (!File(folder, "manifest.json").isFile) return null
         return runCatching {
             val manifest = JSONObject(File(folder, "manifest.json").readText())
@@ -68,7 +68,9 @@ internal object Wq183MascotStore {
             require(pathPattern.matches(path))
             val target = File(folder, path)
             if (!target.isFile) return@runCatching null
-            BitmapFactory.decodeFile(target.absolutePath)
+            BitmapFactory.decodeFile(target.absolutePath, BitmapFactory.Options().apply {
+                inSampleSize = 2
+            })
         }.getOrNull()
     }
 
@@ -96,6 +98,7 @@ internal object Wq183MascotStore {
         val stage = File(ownedRoot, ".staging_" + UUID.randomUUID())
         val input = File.createTempFile("wq183_zip_", ".tmp", context.cacheDir)
         stage.mkdirs()
+        require(list(context, profile).size < 20) { "En fazla 20 kişisel maskot saklanabilir" }
         try {
             val stream = context.contentResolver.openInputStream(uri)
                 ?: error("ZIP dosyası açılamadı")
@@ -114,10 +117,13 @@ internal object Wq183MascotStore {
             }
             val seen = mutableSetOf<String>()
             var total = 0L
+            var entriesSeen = 0
             ZipInputStream(BufferedInputStream(FileInputStream(input))).use { zip ->
                 var files = 0
                 while (true) {
                     val entry = zip.nextEntry ?: break
+                    entriesSeen++
+                    require(entriesSeen <= FILE_MAX + 1) { "ZIP çok fazla giriş içeriyor" }
                     if (entry.isDirectory) {
                         require(entry.name == "images/") { "Geçersiz ZIP klasörü" }
                         zip.closeEntry()
@@ -189,6 +195,24 @@ internal object Wq183MascotStore {
             input.delete()
             if (stage.exists()) stage.deleteRecursively()
         }
+    }
+
+    fun rename(context: Context, profile: String, id: String, newName: String): Boolean {
+        val name = newName.trim()
+        if (!isCustomId(id) || name.isBlank() || name.length > 40) return false
+        val dir = File(root(context, profile), id)
+        val source = File(dir, "manifest.json")
+        if (!source.isFile) return false
+        return runCatching {
+            val json = JSONObject(source.readText(Charsets.UTF_8))
+            json.put("name", name)
+            val tmp = File(dir, "manifest.pending")
+            tmp.writeText(json.toString(2), Charsets.UTF_8)
+            if (!tmp.renameTo(source)) {
+                require(source.delete() && tmp.renameTo(source)) { "Ad kaydedilemedi" }
+            }
+            true
+        }.getOrDefault(false)
     }
 
     fun delete(context: Context, profile: String, id: String): Boolean {
