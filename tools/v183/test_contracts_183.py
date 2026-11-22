@@ -29,6 +29,20 @@ class SourceContracts(unittest.TestCase):
         self.assertIn("readFully(bytes)",text)
         self.assertIn("Wq183MascotStore.rename(", (V/"Wq183MascotManager.kt").read_text("utf-8"))
 
+    def test_opponent_custom_mascot_transport_is_opt_in_and_wired(self):
+        share=(V/"Wq183ArenaShare.kt").read_text("utf-8")
+        manager=(V/"Wq183MascotManager.kt").read_text("utf-8")
+        overlay=(V/"apply_quality_183.py").read_text("utf-8")
+        self.assertIn("hostMascotPreview",share)
+        self.assertIn("guestMascotPreview",share)
+        self.assertIn("if (!allowed ||",share)
+        self.assertIn("MAX_RAW = 13_000",share)
+        self.assertIn("FirebaseAuth.getInstance()",share)
+        self.assertIn("Wq183ArenaShare.setConsent",manager)
+        self.assertIn("Wq183ArenaShareBridge(",overlay)
+        self.assertIn("Wq183ArenaShare.remoteImage(id)",overlay)
+        self.assertTrue((ROOT/"firebase/database.rules.v183.json").is_file())
+
     def test_5_answers_and_contrast(self):
         text=(V/"Wq183QuizQuality.kt").read_text("utf-8")
         self.assertIn("answers.size == 5",text)
