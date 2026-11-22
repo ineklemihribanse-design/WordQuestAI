@@ -187,8 +187,13 @@ def main() -> None:
     text = hub.read_text("utf-8")
     if text.count("Wq175ParagraphPracticeEntry(session.profileKey)") != 2:
         raise SystemExit("SAFE STOP: paragraph hooks differ; manual review required.")
+    # Upgrade only the main Daily Plan entry where AiSession exists; the
+    # second entry belongs to PracticeGameScreen, which has no ai parameter.
+    # Preserve that independently functional legacy dictation entry.
     text = text.replace("Wq175ParagraphPracticeEntry(session.profileKey)",
-                        "Wq186ParagraphPracticeEntry(session.profileKey, ai)")
+                        "Wq186ParagraphPracticeEntry(session.profileKey, ai)", 1)
+    if text.count("Wq175ParagraphPracticeEntry(session.profileKey)") != 1:
+        raise SystemExit("SAFE STOP: expected one legacy practice-game paragraph entry")
     old_header = "    session: AppSession,\n    pronunciation: WordPronunciation,"
     new_header = "    session: AppSession,\n    ai: AiSession,\n    pronunciation: WordPronunciation,"
     if text.count(old_header) != 1:
