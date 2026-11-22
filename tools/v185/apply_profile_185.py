@@ -47,6 +47,28 @@ def apply():
             onClick={choosingMaskot=true})''',
          '''        Wq185ProfileSelector(chosenMaskot.value,
             onClick={choosingMaskot=true})'''),
+        ("profile name shows only a pencil control once saved",
+         '''                Text(social.nickname.ifBlank { "Kullanıcı adını belirle" },
+                    fontFamily=Serif,color=Ink,fontSize=22.sp,
+                    fontWeight=FontWeight.ExtraBold,maxLines=2)''',
+         '''                Row(Modifier.fillMaxWidth(),
+                    verticalAlignment=Alignment.CenterVertically,
+                    horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                    Text(social.nickname.ifBlank { "Kullanıcı adını belirle" },
+                        modifier=Modifier.weight(1f),
+                        fontFamily=Serif,color=Ink,fontSize=22.sp,
+                        fontWeight=FontWeight.ExtraBold,maxLines=2)
+                    if(session.accountName!=null && !nameEditing &&
+                        social.nickname.isNotBlank()) {
+                        IconButton(onClick={
+                            username=social.nickname
+                            nameEditing=true
+                        },enabled=social.enabled && social.nameLoaded && !social.nameSaving) {
+                            Icon(Icons.Default.Edit,
+                                contentDescription="Kullanıcı adını düzenle")
+                        }
+                    }
+                }'''),
         ("name editor closes only after persisted nickname matches",
          '''    LaunchedEffect(social.nickname) {
         if (!nameEditing) username = social.nickname
@@ -75,44 +97,35 @@ def apply():
     ])
 
     edit_region("HomeScreen.kt",
-        '''            OutlinedTextField(username, { username = it.take(ArenaNickname.maximumLength); nameEditing = true },''',
-        '''            if (social.nickname.isBlank()) BodyText("Arkadaşlık ve yarışma için önce kullanıcı adını belirle.")''',
-        '''            if (!nameEditing && social.nickname.isNotBlank()) {
-                Row(Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(7.dp)) {
-                    Text(social.nickname, modifier=Modifier.weight(1f),
-                        fontSize=19.sp, fontWeight=FontWeight.Bold,
-                        color=Color(0xFF203F34))
-                    IconButton(onClick={
-                        username = social.nickname
-                        nameEditing = true
-                    }, enabled=social.enabled && social.nameLoaded && !social.nameSaving) {
-                        Icon(Icons.Default.Edit,contentDescription="Kullanıcı adını düzenle")
+        '''                if(session.accountName!=null) {
+                    OutlinedTextField(username,''',
+        '''                TextButton(onClick={choosingMaskot=true}) {''',
+        '''                if(session.accountName!=null &&
+                    (nameEditing || social.nickname.isBlank())) {
+                    OutlinedTextField(username,
+                        onValueChange={username=it.take(ArenaNickname.maximumLength);
+                            nameEditing=true},
+                        modifier=Modifier.fillMaxWidth(),
+                        label={Text("Kullanıcı adı")},
+                        singleLine=true,
+                        enabled=social.enabled && social.nameLoaded && !social.nameSaving)
+                    Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                        Button(onClick={social.saveName(username)},
+                            enabled=social.enabled && social.nameLoaded &&
+                                !social.nameSaving && ArenaNickname.isValid(username) &&
+                                ArenaNickname.normalize(username)!=social.nickname) {
+                            Text(if(social.nameSaving)"Kaydediliyor…" else "İsmi kaydet",
+                                fontSize=13.sp)
+                        }
+                        if(social.nickname.isNotBlank()) TextButton(onClick={
+                            nameEditing=false
+                            username=social.nickname
+                        }) { Text("Vazgeç") }
                     }
                 }
-            } else {
-                OutlinedTextField(username,
-                    { username = it.take(ArenaNickname.maximumLength); nameEditing = true },
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Kullanıcı adı") }, singleLine = true,
-                    enabled = social.enabled && social.nameLoaded && !social.nameSaving)
-                Row(Modifier.fillMaxWidth(),
-                    horizontalArrangement=Arrangement.spacedBy(7.dp)) {
-                    Button(onClick={social.saveName(username)},
-                        enabled=social.enabled && social.nameLoaded &&
-                            !social.nameSaving && ArenaNickname.isValid(username) &&
-                            ArenaNickname.normalize(username) != social.nickname) {
-                        Text(if(social.nameSaving)"Kaydediliyor…" else "İsmi kaydet")
-                    }
-                    if(social.nickname.isNotBlank()) TextButton(onClick={
-                        nameEditing=false
-                        username=social.nickname
-                    }) { Text("Vazgeç") }
-                }
-            }
 ''',
-        "compact saved nickname / edit button")
+        "inline profile username editor shown only on tap")
 
     # The existing profile owner is still rendered by HomeScreen.
     # Add an explicit friend-only setting after the custom ZIP importer.
