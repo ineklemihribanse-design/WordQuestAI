@@ -236,10 +236,17 @@ def main() -> None:
     # voices and American/British switch. Replace just that existing modal.
     chat=APP/"ConversationScreen.kt"
     chat_original=chat.read_text("utf-8")
+    if "voiceSettingsOpen" not in chat_original:
+        raise ValueError("SAFE STOP: Lena voice settings control not found")
+    # 1.0.69+ can have either a modal already or only a voice button;
+    # both routes now use the same real profile-scoped device voice picker.
     start=chat_original.find("        if (voiceSettingsOpen) {")
-    end=chat_original.find("        deleteCandidate?.let { thread ->",start)
-    if start<0 or end<start or chat_original.count("if (voiceSettingsOpen)")!=1:
-        raise ValueError("SAFE STOP: Lena voice-settings modal differs")
+    end=chat_original.find("        deleteCandidate?.let { thread ->",
+        start if start>=0 else 0)
+    if end<0:
+        raise ValueError("SAFE STOP: Lena dialog boundary missing")
+    if start>=0 and end<start:
+        raise ValueError("SAFE STOP: Lena voice modal location changed")
     chat_original=change_once(chat_original,
         "    var speaking by remember { mutableStateOf<Long?>(null) }",
         "    var speaking by remember { mutableStateOf<Long?>(null) }\n"
@@ -299,14 +306,18 @@ def main() -> None:
     internal suspend fun reply(key: String, message: String,""",
         "authenticated English matching meanings")
 
-    # Offsets must be recomputed after inserting translation state and handler.
+    # Recompute offsets after adding translation state. Some approved later
+    # layouts retain the old settings dialog, others only its live button.
     start=chat_original.find("        if (voiceSettingsOpen) {")
-    end=chat_original.find("        deleteCandidate?.let { thread ->",start)
-    if start<0 or end<start:
-        raise ValueError("SAFE STOP: altered Lena voice modal after adding translation")
-    updated_chat=(chat_original[:start]+
-        '        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\n'+
-        chat_original[end:])
+    end=chat_original.find("        deleteCandidate?.let { thread ->",
+        start if start>=0 else 0)
+    if end<0 or (start>=0 and end<start):
+        raise ValueError("SAFE STOP: altered Lena voice modal position")
+    new_voice='        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\n'
+    if start>=0:
+        updated_chat=chat_original[:start]+new_voice+chat_original[end:]
+    else:
+        updated_chat=chat_original[:end]+new_voice+chat_original[end:]
 
     # Crop oversize mascot slots while retaining each user's exact own ZIP.
     h=change_once(h,"205.dp else 150.dp","170.dp else 118.dp",
