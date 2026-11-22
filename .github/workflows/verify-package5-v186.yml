@@ -1607,6 +1607,13 @@ jobs:
           grep -Fq 'versionCode = 112' source/app/build.gradle.kts
           python3 -m json.tool source/database.rules.json > /dev/null
           python3 -m json.tool firebase/database.rules.json > /dev/null
+      - name: Integrate Package 6 multi-level rules and verify Firebase JSON
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v186/apply_package6_remaining.py
+          python3 tools/v186/apply_package6_remaining.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ArenaPresetControls.kt
+          python3 -m json.tool source/database.rules.json > /dev/null
       - name: Compile fully assembled Kotlin and Compose without APK or release
         working-directory: source
         run: |
@@ -1615,4 +1622,4 @@ jobs:
           ./gradlew --no-daemon :app:compileOfflineKotlin --stacktrace
       - name: QA-only notice
         run: |
-          echo 'Source-only package5 build. No signing, update-feed modification, or Firebase deployment.'
+          echo 'Source-only Package 6 integrated build. No signing, update-feed modification, or Firebase deployment.'
