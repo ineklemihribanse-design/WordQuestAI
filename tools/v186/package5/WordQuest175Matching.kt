@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -291,7 +292,7 @@ internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->U
             importOpen=false
         },onDismiss={importOpen=false}
     )
-    Dialog(onDismissRequest=onDismiss,
+    if(!importOpen) Dialog(onDismissRequest=onDismiss,
         properties=DialogProperties(usePlatformDefaultWidth=false)) {
         Surface(modifier=Modifier.fillMaxSize(),color=Color(0xFFF7FBFD)) {
             Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
@@ -508,7 +509,14 @@ internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->U
                         else if(englishFirst)"Önce İngilizce, sonra Türkçe kartını seç."
                         else "Önce Türkçe, sonra İngilizce kartını seç.",
                         color=MatchInk,fontSize=12.sp)
-                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(9.dp)) {
+                    // Fixed viewport keeps status and feedback visible with 30 pairs.
+                    Row(
+                        Modifier.fillMaxWidth()
+                            .height(if(LocalConfiguration.current.screenWidthDp>=600)
+                                510.dp else 380.dp)
+                            .verticalScroll(rememberScrollState()),
+                        horizontalArrangement=Arrangement.spacedBy(9.dp)
+                    ) {
                         Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(8.dp)){
                             deck.forEachIndexed { index,pair ->
                                 val chosen=leftChoice==index
