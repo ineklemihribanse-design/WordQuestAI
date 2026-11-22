@@ -6,8 +6,8 @@ import kotlinx.coroutines.ensureActive
 
 private data class FilledCell(val letter: Char, val directions: Set<Direction>)
 private data class Match(val placement: Placement, val area: Int, val crossings: Int)
-internal const val MAX_BOARD_WORDS = 50
-internal const val MAX_BOARD_SIDE = 60
+internal const val MAX_BOARD_WORDS = 70
+internal const val MAX_BOARD_SIDE = 78
 
 internal suspend fun customPuzzle(
     entries: List<Entry>,
@@ -128,4 +128,102 @@ private fun addWord(board: MutableMap<Cell, FilledCell>, word: String, place: Pl
         val previous = board[cell]?.directions.orEmpty()
         board[cell] = FilledCell(letter, previous + place.direction)
     }
+}
+
+/**
+ * Packs 51–70 words into ONE real crossword, using a larger candidate pool.
+ *
+ * With a fixed random set of 70 words, many letter intersections are impossible.
+ * This builder chooses exactly [requested] distinct entries as it places them;
+ * entries that do not fit are skipped rather than silently dropping words.
+ * Each placement uses the same crossing and adjacency validation as customPuzzle.
+ * If all [requested] words cannot be placed, return null (never a partial board).
+ */
+internal suspend fun flexibleLargePuzzle(
+    candidates: List<Entry>,
+    requested: Int,
+    seed: Int,
+): Puzzle? {
+    require(requested in 51..MAX_BOARD_WORDS)
+    val unique = candidates.filter { it.letters.length in 2..22 && it.clue.isNotBlank() }
+        .distinctBy(Entry::letters)
+    if (unique.size < requested) return null
+
+    repeat(3) { trial ->
+        currentCoroutineContext().ensureActive()
+        val random = Random(seed xor (trial * 104729 + 0x1942))
+        val poolSize = minOf(unique.size, maxOf(requested * 3, 200))
+        val sample = unique.shuffled(random).take(poolSize)
+        val start = sample.filter { it.letters.length in 5..13 }
+            .maxByOrNull { it.letters.toSet().size + random.nextInt(6) }
+            ?: sample.first()
+        val placed = mutableListOf(start to Placement(Cell(0, 0), Direction.Across))
+        val board = mutableMapOf<Cell, FilledCell>()
+        addWord(board, start.letters, placed.first().second)
+        val remaining = sample.filterNot { it.letters == start.letters }.toMutableList()
+
+        while (placed.size < requested && remaining.isNotEmpty()) {
+            currentCoroutineContext().ensureActive()
+            val minRow = board.keys.minOf { it.row }
+            val maxRow = board.keys.maxOf { it.row }
+            val minColumn = board.keys.minOf { it.column }
+            val maxColumn = board.keys.maxOf { it.column }
+            var bestIndex = -1
+            var bestPlacement: Placement? = null
+            var bestScore = Int.MAX_VALUE
+
+            // Sample different words each turn to keep complexity bounded on phones.
+            val options = remaining.indices.shuffled(random).take(minOf(90, remaining.size))
+            for (index in options) {
+                val item = remaining[index]
+                val arrangements = matches(
+                    item.letters, board, minRow, maxRow, minColumn, maxColumn, MAX_BOARD_SIDE,
+                )
+                for (fit in arrangements) {
+                    val score = fit.area - fit.crossings * 24 -
+                        item.letters.length * 2 + random.nextInt(23)
+                    if (score < bestScore) {
+                        bestScore = score
+                        bestIndex = index
+                        bestPlacement = fit.placement
+                    }
+                }
+            }
+
+            // If the 90-word sample did not intersect, search all remaining words.
+            if (bestIndex < 0) {
+                for (index in remaining.indices) {
+                    currentCoroutineContext().ensureActive()
+                    val item = remaining[index]
+                    for (fit in matches(
+                        item.letters, board, minRow, maxRow, minColumn, maxColumn, MAX_BOARD_SIDE,
+                    )) {
+                        val score = fit.area - fit.crossings * 24 - item.letters.length * 2
+                        if (score < bestScore) {
+                            bestScore = score
+                            bestIndex = index
+                            bestPlacement = fit.placement
+                        }
+                    }
+                }
+            }
+            if (bestIndex < 0 || bestPlacement == null) break
+            val chosen = remaining.removeAt(bestIndex)
+            val placement = bestPlacement
+            addWord(board, chosen.letters, placement)
+            placed += chosen to placement
+        }
+
+        if (placed.size == requested) {
+            val puzzle = Puzzle.create(
+                placed.map { it.first },
+                placed.map { it.second },
+            )
+            if (puzzle.words.size == requested &&
+                puzzle.words.map { it.entry.letters }.toSet().size == requested &&
+                puzzle.rows <= MAX_BOARD_SIDE && puzzle.columns <= MAX_BOARD_SIDE
+            ) return puzzle
+        }
+    }
+    return null
 }
