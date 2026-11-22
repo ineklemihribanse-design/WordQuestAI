@@ -226,8 +226,9 @@ def main():
     audio_diagnostics()
     privacy()
     g=GRADLE.read_text("utf-8")
-    g=once(g,"versionCode = 112","versionCode = 113","versionCode")
-    g=once(g,'versionName = "1.0.86"','versionName = "1.0.87"',"versionName")
+    # All seven packages form ONE v1.0.86/code112 update. P7 is not v1.0.87.
+    assert g.count("versionCode = 112")==1, "P7 requires v1.0.86/code112"
+    assert g.count('versionName = "1.0.86"')==1, "P7 must retain v1.0.86"
     planned[GRADLE]=g
     # Every source anchor verified before any writes to assembled source.
     for p,s in planned.items():
