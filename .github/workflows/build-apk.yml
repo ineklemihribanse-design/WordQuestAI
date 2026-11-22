@@ -1656,6 +1656,7 @@ jobs:
           set -euo pipefail
           python3 -m py_compile tools/v183/apply_quality_183.py tools/v183/verify_quality_183.py tools/v183/stage_arena_assets_183.py tools/v183/build_mascot_template_183.py
           python3 tools/v183/apply_quality_183.py
+          python3 tools/v183/apply_home_183.py
           python3 tools/v183/verify_quality_183.py
           mkdir -p source/app/src/test/java/com/kelimebulmacasi/a1
           cp tools/v183/Wq183QuizQualityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq183QuizQualityTest.kt
