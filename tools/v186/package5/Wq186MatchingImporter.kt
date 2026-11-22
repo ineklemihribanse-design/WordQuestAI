@@ -269,6 +269,8 @@ internal fun Wq186MatchingImporter(
                     label={Text("AI konusu")},modifier=Modifier.fillMaxWidth())
                 Wq186OptionTiles(listOf("10","20","30","50"),
                     setOf(aiCount.toString()),!busy) { aiCount=it.toInt() }
+                Text("AI istekleri seçtiğin sağlayıcının ücretsiz kotasına veya ücretlendirmesine tabidir.",
+                    fontSize=11.sp)
                 OutlinedButton(onClick={suggest()},enabled=!busy,
                     modifier=Modifier.fillMaxWidth()) {
                     Text("Yapay zekâdan $aiCount kelime öner")
