@@ -197,7 +197,7 @@ def main() -> None:
         raise ValueError("SAFE STOP: Lena voice-settings modal differs")
     chat_original=change_once(chat_original,
         "    var speaking by remember { mutableStateOf<Long?>(null) }",
-        "    var speaking by remember { mutableStateOf<Long?>(null) }\\n"
+        "    var speaking by remember { mutableStateOf<Long?>(null) }\n"
         "    var translatingDraft by remember { mutableStateOf(false) }",
         "Lena draft translation state")
     chat_original=change_once(chat_original,
