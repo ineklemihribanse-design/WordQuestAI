@@ -13,6 +13,11 @@ for key in ("hostAvatar","guestAvatar"):
     allow=" || (newData.isString() && newData.val().matches(/^custom_[a-f0-9]{32}$/))"
     assert b[key][".validate"]==a[key][".validate"]+allow, key
     b[key][".validate"]=a[key][".validate"]
+    lobby=" && data.parent().child('phase').val() === 'lobby' && newData.exists()"
+    during_game=" && (data.parent().child('phase').val() === 'lobby' || data.parent().child('phase').val() === 'playing') && newData.exists()"
+    assert a[key][".write"].count(lobby)==1, key
+    assert b[key][".write"]==a[key][".write"].replace(lobby,during_game), key
+    b[key][".write"]=a[key][".write"]
 for side in ("host","guest"):
     k=side+"MascotPreview"
     assert k not in a and k in b
@@ -23,6 +28,7 @@ for side in ("host","guest"):
     assert "!newData.exists()" in node[".write"]
     assert "newData.val().length <= 18050" in node[".validate"]
     assert "custom_[a-f0-9]{32}" in node[".validate"]
+    assert "newData.val().beginsWith(data.parent().child('"+side+"Avatar').val() + ':')" in node[".validate"]
 assert new==old, "Unexpected existing Firebase policy change"
-print("PASS: only 2 custom-avatar validations and 2 participant-only preview nodes added")
+print("PASS: only 2 custom-avatar validations, owner-only in-game avatar edits and 2 participant preview nodes added")
 print("NOT DEPLOYED: owner must separately test/publish firebase/database.rules.v183.json")
