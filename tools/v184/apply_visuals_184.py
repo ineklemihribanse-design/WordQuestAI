@@ -34,22 +34,43 @@ def edit(name, updates):
     print(f"PASS 1.0.84 {name}: patch anchors verified")
 
 
+# Exact SHA-256 of the user's approved, unmodified WebP bytes.
+APPROVED_WEBP = {
+    "arena_telefon_9x19_5.webp": "cb9cfce13f461d57d459acc7ea5b025ef338b89c4d89a986dafea9adc46ad486",
+    "arena_telefon_9x19_5_koyu.webp": "42749638c831d9aa917e4e985b7859b00331113163ac4eebd88301ac9baf943c",
+    "arena_tablet_13_16x10.webp": "fe3022d97bcedcc1eb9694cbf4e03eba662304b686faf9fe0eccf25d5bb58218",
+    "arena_tablet_13_16x10_koyu.webp": "306c21ecc362d356ffb3493cd730ffe2341f3e82a0c6b25ff6fb805974d8efb7",
+}
+
 def stage_approved_arena():
-    if not ARENA.is_file():
-        raise RuntimeError("Original Arena ZIP missing; refusing flat/purple fallback release")
-    digest = hashlib.sha256(ARENA.read_bytes()).hexdigest()
-    if digest != EXPECTED_ARENA:
-        raise RuntimeError("Arena ZIP hash differs from the approved original")
-    # Reuse strict v1.0.83 staging checks (paths, file count, WebP dimensions).
-    sys.path.insert(0, str(ROOT / "tools/v183"))
-    from stage_arena_assets_183 import stage
-    if not stage():
-        raise RuntimeError("Arena original asset staging failed")
     dest = ROOT / "source/app/src/main/assets/arena_v183"
-    assert all((dest / n).is_file() for n in (
-        "arena_telefon_9x19_5.webp", "arena_telefon_9x19_5_koyu.webp",
-        "arena_tablet_13_16x10.webp", "arena_tablet_13_16x10_koyu.webp",
-    )), "Arena files missing after staging"
+    if ARENA.is_file():
+        digest = hashlib.sha256(ARENA.read_bytes()).hexdigest()
+        if digest != EXPECTED_ARENA:
+            raise RuntimeError("Arena ZIP differs from approved original")
+        # Backwards-compatible with original user ZIP, full v183 security checks.
+        sys.path.insert(0, str(ROOT / "tools/v183"))
+        from stage_arena_assets_183 import stage
+        if not stage():
+            raise RuntimeError("Arena original asset staging failed")
+    else:
+        # Four exact original WebPs are also committed in the v184 branch.
+        # No need to store/upload the source ZIP to build the app.
+        source = ROOT / "assets/user_uploads/arena_v184"
+        for name, sha in APPROVED_WEBP.items():
+            file = source / name
+            if not file.is_file():
+                raise RuntimeError(f"Approved Arena art missing: {name}")
+            data = file.read_bytes()
+            if hashlib.sha256(data).hexdigest() != sha:
+                raise RuntimeError(f"Arena WebP bytes changed: {name}")
+            if data[:4] != b"RIFF" or data[8:12] != b"WEBP":
+                raise RuntimeError(f"Invalid original Arena WebP: {name}")
+            dest.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(file, dest / name)
+    assert all((dest / name).is_file() and
+        hashlib.sha256((dest / name).read_bytes()).hexdigest() == sha
+        for name, sha in APPROVED_WEBP.items()), "Arena files changed after staging"
     print("PASS 1.0.84 original Arena tablet/phone scenes installed")
 
 
