@@ -15,7 +15,6 @@ P5=ROOT/"tools/v186/package5"
 V175=ROOT/"tools/v175"
 FILES=[
     "Wq186MeaningBank.kt",
-    "Wq186OptionTiles.kt",
     "Wq186EnglishMeaningIcon.kt",
     "Wq186MatchingFolders.kt",
     "Wq186MatchingImporter.kt",
@@ -135,31 +134,18 @@ def main() -> None:
     premium=APP/"Wq175PremiumHome.kt"
     h=home.read_text("utf-8")
     p=premium.read_text("utf-8")
-    def ensure_once(contents:str,old:str,new:str,label:str)->str:
-        if contents.count(new)==1:
-            print("KEEP existing approved route:",label)
-            return contents
-        return change_once(contents,old,new,label)
-    h=ensure_once(h,
-        "Page.Home -> HomeScreen(\n            session,",
-        "Page.Home -> HomeScreen(\n            session, ai,",
-        "existing Home navigation")
-    h=ensure_once(h,
-        "private fun HomeScreen(\n    session: AppSession,",
-        "private fun HomeScreen(\n    session: AppSession,\n    ai: AiSession,",
-        "HomeScreen signature")
-    h=ensure_once(h,
-        "Wq175PremiumHomeGrid(\n                    session=session,",
-        "Wq175PremiumHomeGrid(\n                    session=session, ai=ai,",
-        "premium home argument")
-    p=ensure_once(p,
-        "internal fun Wq175PremiumHomeGrid(\n    session:AppSession,",
-        "internal fun Wq175PremiumHomeGrid(\n    session:AppSession,\n    ai:AiSession,",
-        "premium home signature")
-    p=ensure_once(p,
-        "if (matchingOpen) Wq175MatchingDialog(session,",
-        "if (matchingOpen) Wq175MatchingDialog(session,ai,",
-        "matching opens with bound AI provider")
+    # The assembled v1.0.85 already routes AiSession through the home
+    # header and premium menu. Never inject a second AI parameter here.
+    if "Page.Home -> HomeScreen(" not in h or "ai: AiSession" not in h:
+        raise ValueError("SAFE STOP: prior home AI routing is absent")
+    if "internal fun Wq175PremiumHomeGrid(" not in p or "ai:AiSession" not in p:
+        raise ValueError("SAFE STOP: prior premium home AI routing is absent")
+    if "if (matchingOpen) Wq175MatchingDialog(session,ai," not in p:
+        p=change_once(p,
+            "if (matchingOpen) Wq175MatchingDialog(session,",
+            "if (matchingOpen) Wq175MatchingDialog(session,ai,",
+            "matching uses existing authenticated AI")
+    print("KEEP existing v185 HomeScreen and premium AI routes")
 
     # v185 mascot privacy: keep the switch in its existing place but avoid
     # tall wrapping prose in a narrow phone column.
@@ -343,12 +329,16 @@ def main() -> None:
         # merged puzzle geometry. Restore only the missing, audited cell
         # readability behavior, never override another active implementation.
         if "else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile" not in board:
+            phone_var = "    val phoneGrid = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600\\n"
+            # 1.0.85 can already declare phoneGrid above the viewport.
+            # Only insert a new declaration when none is present.
+            if "val phoneGrid" in board:
+                phone_var = ""
             board=change_once(board,
                 "    val tile = if (enlarged) maxOf(regularTile, 30.dp) else regularTile",
-                """    val phoneGrid = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600
-    val tile = if (enlarged) maxOf(regularTile, 30.dp)
+                phone_var + """    val tile = if (enlarged) maxOf(regularTile, 30.dp)
         else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile""",
-                "restore 28dp phone cells following Package 4 board merge")
+                "retain the single existing phoneGrid and minimum cell size")
             board=change_once(board,
                 "    val windowHeight = minOf(height, actualHeight)",
                 "    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)",
