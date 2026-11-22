@@ -18,6 +18,7 @@ FILES=[
     "Wq186EnglishMeaningIcon.kt",
     "Wq186MatchingFolders.kt",
     "Wq186MatchingImporter.kt",
+    "Wq186LenaVoiceSettings.kt",
 ]
 
 def change_once(contents: str, old: str, new: str, label: str) -> str:
@@ -81,10 +82,77 @@ def main() -> None:
         "if (matchingOpen) Wq175MatchingDialog(session,ai,",
         "matching opens with existing AI provider")
 
+    # v185 mascot privacy: keep the switch in its existing place but avoid
+    # tall wrapping prose in a narrow phone column.
+    def safe_three_way(baseline:Path,revised:Path,live:Path)->str:
+        if not all(x.is_file() for x in (baseline,revised,live)):
+            raise ValueError("SAFE STOP: missing "+str(live))
+        with tempfile.TemporaryDirectory() as folder:
+            d=Path(folder)
+            a,b,c=(d/"current",d/"base",d/"new")
+            a.write_bytes(live.read_bytes())
+            b.write_bytes(baseline.read_bytes())
+            c.write_bytes(revised.read_bytes())
+            result=subprocess.run(["git","merge-file","-p","--diff3",
+                str(a),str(b),str(c)],text=True,capture_output=True)
+            if result.returncode!=0 or any(x in result.stdout for x in
+                ("<<<<<<<","=======",">>>>>>>")):
+                raise ValueError("SAFE STOP: unexpected merge conflict "+live.name)
+            return result.stdout
+    updated_mascot=safe_three_way(
+        ROOT/"tools/v185/Wq185FriendMascot.kt",
+        P5/"Wq185FriendMascot.kt",APP/"Wq185FriendMascot.kt")
+    updated_lena=safe_three_way(
+        ROOT/"tools/v169/LenaMessengerBrand.kt",
+        P5/"LenaMessengerBrand.kt",APP/"LenaMessengerBrand.kt")
+
+    # The v168 modal offered speed and volume but omitted the installed
+    # voices and American/British switch. Replace just that existing modal.
+    chat=APP/"ConversationScreen.kt"
+    chat_original=chat.read_text("utf-8")
+    start=chat_original.find("        if (voiceSettingsOpen) {")
+    end=chat_original.find("        deleteCandidate?.let { thread ->",start)
+    if start<0 or end<start or chat_original.count("if (voiceSettingsOpen)")!=1:
+        raise ValueError("SAFE STOP: Lena voice-settings modal differs")
+    updated_chat=(chat_original[:start]+
+        '        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\\n'+
+        chat_original[end:])
+
+    # Crop oversize mascot slots while retaining each user's exact own ZIP.
+    h=change_once(h,"205.dp else 150.dp","170.dp else 118.dp",
+        "custom mascot width phone/tablet")
+    h=change_once(h,"314.dp else 236.dp","250.dp else 190.dp",
+        "custom mascot height phone/tablet")
+
+    # Give phones a larger share of the crossword screen. Tablet dimensions
+    # and the stored puzzle/clock data are unchanged.
+    puzzle=APP/"PuzzleScreen.kt"
+    board=puzzle.read_text("utf-8")
+    board=change_once(board,
+        "val available = (maxWidth - 36.dp).coerceAtLeast(220.dp)",
+        "val available = (maxWidth - if (wide) 36.dp else 20.dp).coerceAtLeast(220.dp)",
+        "mobile board viewport width")
+    board=change_once(board,
+        ".padding(horizontal = if (wide) 23.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)",
+        ".padding(horizontal = if (wide) 23.dp else 8.dp, vertical = if (keyboardVisible) 6.dp else 9.dp)",
+        "mobile board horizontal whitespace")
+    board=change_once(board,
+        "Arrangement.spacedBy(if (keyboardVisible) 8.dp else 14.dp)",
+        "Arrangement.spacedBy(if (keyboardVisible) 6.dp else 9.dp)",
+        "mobile board vertical whitespace")
+    board=change_once(board,
+        "fontSize = 33.sp, lineHeight = 36.sp",
+        "fontSize = 26.sp, lineHeight = 30.sp",
+        "crossword compact heading")
+
     # All merge operations validated; now write only the prepared sources.
     current.write_text(merged.stdout,"utf-8")
     home.write_text(h,"utf-8")
     premium.write_text(p,"utf-8")
+    (APP/"Wq185FriendMascot.kt").write_text(updated_mascot,"utf-8")
+    (APP/"LenaMessengerBrand.kt").write_text(updated_lena,"utf-8")
+    chat.write_text(updated_chat,"utf-8")
+    puzzle.write_text(board,"utf-8")
     for file in FILES:
         shutil.copyfile(P5/file,APP/file)
     print("PASS: Package 5 source overlay installed; 20/30 pairs and folders ready")
