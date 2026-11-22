@@ -85,7 +85,7 @@ private fun Wq186ParagraphWorkspace(profileKey: String, ai: AiSession, close: ()
     var index by rememberSaveable(profileKey) { mutableIntStateOf(0) }
     var input by rememberSaveable(profileKey) { mutableStateOf("") }
     var checked by rememberSaveable(profileKey) { mutableStateOf(false) }
-    var accent by rememberSaveable(profileKey) { mutableStateOf("US") }
+    var accent by rememberSaveable(profileKey) { mutableStateOf("UK") }
     var add by rememberSaveable(profileKey) { mutableStateOf(false) }
     var tr by rememberSaveable(profileKey) { mutableStateOf("") }
     var en by rememberSaveable(profileKey) { mutableStateOf("") }
