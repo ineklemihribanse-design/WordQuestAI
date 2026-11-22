@@ -171,19 +171,24 @@ def fair_online():
              "top bar uses same leave confirmation")
     s = once(s,
              "optionsOpen = false; client.leave()",
-             "optionsOpen = false; requestLeave()",
-             "room menu leave confirmation")
+             "optionsOpen = false; confirmMatchLeave = true",
+             "room menu uses local leave confirmation")
     s = once(s,
-             "    openLearning: () -> Unit, openTeacher: (String) -> Unit,\n) {\n"
-             "    val context = LocalContext.current",
-             "    openLearning: () -> Unit, openTeacher: (String) -> Unit,\n"
-             "    requestLeave: () -> Unit,\n) {\n"
-             "    val context = LocalContext.current",
-             "match-screen callback")
-    s = once(s,
-             "wallTime, openLearning, openTeacher)",
-             "wallTime, openLearning, openTeacher, {confirmRoomExit=true})",
-             "pass leave callback into match screen")
+             '    var optionsOpen by remember(match.code) { mutableStateOf(false) }',
+             '''    var optionsOpen by remember(match.code) { mutableStateOf(false) }
+    var confirmMatchLeave by remember(match.code) { mutableStateOf(false) }
+    if (confirmMatchLeave) AlertDialog(
+        onDismissRequest={confirmMatchLeave=false},
+        title={Text("Odadan çıkmak istiyor musun?")},
+        text={Text("Yarışman odada devam eder. İnternetin geldiğinde kodla tekrar katılabilirsin.")},
+        confirmButton={TextButton(onClick={confirmMatchLeave=false;client.leave()}) {
+            Text("Odadan çık")
+        }},
+        dismissButton={TextButton(onClick={confirmMatchLeave=false}) {
+            Text("Oyuna dön")
+        }}
+    )''',
+             "match menu leave confirmation is self-contained")
 
     # UI scores are recomputed on identical deterministic board/quiz content
     # on BOTH devices; RTDB owns solvedBy/answers and mistake penalties.
