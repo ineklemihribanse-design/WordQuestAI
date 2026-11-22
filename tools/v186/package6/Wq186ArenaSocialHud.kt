@@ -155,7 +155,7 @@ internal fun Wq186ArenaSocialHud(
                     color=Color(0xFFFFDF9B),fontSize=11.sp)
             }
         }
-        if (disconnected) Text("$opponent bağlantıdan ayrıldı. Oda korunuyor; 90 saniye yeniden bağlanma süresi.",
+        if (disconnected) Text("$opponent bağlantıdan ayrıldı. Oda korunuyor; bağlantının geri gelmesi bekleniyor.",
             color=Color(0xFFFFDF9B),fontSize=12.sp)
         if (myUid in votes && opponentUid !in votes && match.phase=="playing")
             Text("Maçı bitirme teklifin karşı oyuncunun onayını bekliyor.",
@@ -188,7 +188,7 @@ internal fun Wq186ArenaSocialHud(
             text={
                 Column(horizontalAlignment=Alignment.CenterHorizontally,
                     modifier=Modifier.fillMaxWidth()) {
-                    Wq2DPortrait(avatar?.takeIf(Wq2DMascots::valid) ?: "piko",
+                    Wq2DPortrait(avatar.ifBlank { "piko" },
                         Modifier.width(105.dp).height(160.dp))
                     Spacer(Modifier.height(6.dp))
                     Text(name,fontWeight=FontWeight.Bold)
