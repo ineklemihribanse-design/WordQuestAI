@@ -188,7 +188,7 @@ internal fun Wq186ArenaSocialHud(
             text={
                 Column(horizontalAlignment=Alignment.CenterHorizontally,
                     modifier=Modifier.fillMaxWidth()) {
-                    Wq2DPortrait(avatar.ifBlank { "piko" },
+                    Wq2DPortrait(avatar.orEmpty().ifBlank { "piko" },
                         Modifier.width(105.dp).height(160.dp))
                     Spacer(Modifier.height(6.dp))
                     Text(name,fontWeight=FontWeight.Bold)
