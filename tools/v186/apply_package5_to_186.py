@@ -180,9 +180,54 @@ def main() -> None:
     updated_mascot=safe_three_way(
         ROOT/"tools/v185/Wq185FriendMascot.kt",
         P5/"Wq185FriendMascot.kt",APP/"Wq185FriendMascot.kt")
-    updated_lena=safe_three_way(
-        ROOT/"tools/v169/LenaMessengerBrand.kt",
-        P5/"LenaMessengerBrand.kt",APP/"LenaMessengerBrand.kt")
+    # The 1.0.75 approved compact portrait intentionally modifies the same
+    # header as Package 5. Preserve its dynamic phone/tablet BoxWithConstraints
+    # and replace only known dimensions; mode bar replacement is exact against
+    # its untouched pre-P5 baseline.
+    lena_live=(APP/"LenaMessengerBrand.kt").read_text("utf-8")
+    lena_base=(ROOT/"tools/v169/LenaMessengerBrand.kt").read_text("utf-8")
+    lena_new=(P5/"LenaMessengerBrand.kt").read_text("utf-8")
+    def mode_block(contents:str)->str:
+        beginning=contents.index("internal fun LenaMessengerModeBar(")
+        end=contents.index("\n}\n\n/** Decorative speaking indicator",beginning)
+        return contents[beginning:end+2]
+    old_mode=mode_block(lena_base)
+    live_mode=mode_block(lena_live)
+    revised_mode=mode_block(lena_new)
+    if live_mode!=old_mode:
+        raise ValueError("SAFE STOP: secondary Lena modes differ from audited baseline")
+    lena_live=change_once(lena_live,live_mode,revised_mode,
+        "working overflow menu preserving existing mode callbacks")
+    lena_live=change_once(lena_live,
+        "import androidx.compose.material3.OutlinedButton",
+        "import androidx.compose.material3.OutlinedButton\n"
+        "import androidx.compose.material3.DropdownMenu\n"
+        "import androidx.compose.material3.DropdownMenuItem",
+        "Lena overflow controls imports")
+    brand_adjustments=[
+        ("LenaActualAvatar(if(compact)54.dp else 92.dp)",
+         "LenaActualAvatar(if(compact)54.dp else 68.dp)"),
+        ("Spacer(Modifier.width(if(compact)8.dp else 16.dp))",
+         "Spacer(Modifier.width(if(compact)8.dp else 10.dp))"),
+        ("fontSize = if(compact)22.sp else 29.sp",
+         "fontSize = if(compact)22.sp else 25.sp"),
+        ("if(!compact) Box(Modifier.width(1.dp).height(66.dp)",
+         "if(!compact) Box(Modifier.width(1.dp).height(50.dp)"),
+        ("Spacer(Modifier.width(if(compact)5.dp else 12.dp))",
+         "Spacer(Modifier.width(if(compact)5.dp else 7.dp))"),
+        ("avatar = userAvatar.value, size = if(compact)43.dp else 64.dp",
+         "avatar = userAvatar.value, size = if(compact)43.dp else 46.dp"),
+        (".padding(vertical = 6.dp)\n            .shadow(8.dp",
+         ".padding(vertical = 3.dp)\n            .shadow(4.dp"),
+        (".padding(horizontal = 18.dp, vertical = 17.dp)",
+         ".padding(horizontal = 12.dp, vertical = 9.dp)"),
+    ]
+    for i,(old_dim,new_dim) in enumerate(brand_adjustments):
+        lena_live=change_once(lena_live,old_dim,new_dim,
+            "Lena responsive header "+str(i))
+    if "val compact = maxWidth < 450.dp" not in lena_live:
+        raise ValueError("SAFE STOP: previously approved small-screen portrait missing")
+    updated_lena=lena_live
     updated_composer=safe_three_way(
         ROOT/"tools/v171/LenaRichComposer.kt",
         P5/"LenaRichComposer.kt",APP/"LenaRichComposer.kt")
