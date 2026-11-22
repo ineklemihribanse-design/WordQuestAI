@@ -61,15 +61,23 @@ internal object Wq186ArenaFairPlay {
 
 /** Deferred failures are attempted only after all ordinary clues are exhausted. */
 internal object Wq186ArenaNext {
-    fun choose(match: PremiumOnlineMatch, uid: String, current: Int): Int {
-        val failed = match.unknownBy.filterValues { uid in it }.keys +
+    fun choose(
+        match: PremiumOnlineMatch, uid: String, current: Int,
+        replayLimit: Int = 1, replayUsed: Map<Int,Int> = emptyMap()
+    ): Int {
+        val deferred = match.unknownBy.filterValues { uid in it }.keys +
             match.mistakesBy.filterValues { (it[uid] ?: 0) > 0 }.keys
-        val finalRound = Wq186ArenaFairPlay.finalRoundNeeded(
-            match.size, match.solvedBy.keys, failed
-        )
-        return Wq186ArenaFairPlay.nextWord(
-            match.code + "|" + uid, match.size, match.solvedBy.keys,
-            failed, current, finalRound
-        ) ?: current.coerceAtLeast(0)
+        val remaining = Wq186ArenaFairPlay.order(match.code + "|" + uid,match.size)
+            .filter { it !in match.solvedBy }
+        val newWords = remaining.filter { it !in deferred }
+        val retryWords = remaining.filter {
+            it in deferred && (replayUsed[it] ?: 0) < replayLimit
+        }
+        // No free choice: all fresh clues precede failed clues; at most the
+        // negotiated number of retries may revisit each failed word.
+        val candidates = if (newWords.isNotEmpty()) newWords else retryWords
+        if (candidates.isEmpty()) return current.coerceAtLeast(0)
+        val at = candidates.indexOf(current)
+        return candidates[if (at < 0) 0 else (at+1) % candidates.size]
     }
 }
