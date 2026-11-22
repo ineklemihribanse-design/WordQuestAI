@@ -251,10 +251,16 @@ def hint_network():
     store("ArenaCrosswordTyping.kt",s)
 
     s=load("ArenaBoardV2.kt")
-    s=once(s,
-        'hintIndex:Int=-1,hintChar:Char?=null,onSelect:(Int)->Unit',
-        'hintIndex:Int=-1,hintChar:Char?=null,hintLetters:Map<Int,Char> = emptyMap(),onSelect:(Int)->Unit',
-        "board accepts multiple hint positions")
+    if 'hintIndex:Int=-1, hintChar:Char?=null, onSelect:(Int)->Unit' in s:
+        s=once(s,
+            'hintIndex:Int=-1, hintChar:Char?=null, onSelect:(Int)->Unit',
+            'hintIndex:Int=-1, hintChar:Char?=null, hintLetters:Map<Int,Char> = emptyMap(), onSelect:(Int)->Unit',
+            "P1 responsive board accepts multiple hint positions")
+    else:
+        s=once(s,
+            'hintIndex:Int=-1,hintChar:Char?=null,onSelect:(Int)->Unit',
+            'hintIndex:Int=-1,hintChar:Char?=null,hintLetters:Map<Int,Char> = emptyMap(),onSelect:(Int)->Unit',
+            "legacy board accepts multiple hint positions")
     if 'val hinted=active && address==hintCell && hintChar!=null' in s:
         # Package 1 replaced the old board with a responsive, zoomable
         # viewport and renamed 'place' to 'address'. Keep that geometry
