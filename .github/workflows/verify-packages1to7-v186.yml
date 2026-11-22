@@ -1606,10 +1606,6 @@ jobs:
             python3 -m unittest discover -s "$PKG3/tests" -p test_package3.py -v
           WQ_ROOT="$GITHUB_WORKSPACE" \
             python3 "$PKG3/tools/v186/apply_memory_package3_186.py"
-          # P3's temporary feedback effect must see the card's reviewed state
-          # in lexical scope; verify that before any downstream overlays.
-          python3 -m py_compile tools/v186/repair_memory_feedback_186.py
-          python3 tools/v186/repair_memory_feedback_186.py
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
@@ -1728,258 +1724,25 @@ jobs:
         working-directory: source
         run: |
           set -euo pipefail
-          # P3/P5 integration retains the pre-1.0.75 neonatal flashcard
-          # renderer, but its reviewed alias may end up scoped inside a
-          # child block. Declare the state once at the enclosing composable
-          # scope, derived from the original persistent reviews map.
+          # Keep reviewed state at the parent composable scope after P1-P7 source merging.
           python3 - <<'PY'
-          import re
           from pathlib import Path
-          path=Path("app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonPractice.kt")
-          source=path.read_text(encoding="utf-8")
-          aliases=re.findall(r'(?m)^[ \t]*val reviewed[ \t]*=[^\n]*
-      - name: Run deterministic Package 6 Arena rules unit tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaFairPlayTest' --stacktrace
-      - name: Run Lena speech and hidden-parenthesis unit tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq187LenaSpeechTest' --stacktrace
-      - name: Run Package 1 Arena state tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaGridPolicyTest' --stacktrace
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaNextWordTest' --stacktrace
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaHintPolicyTest' --stacktrace
-      - name: Fully test and assemble signed-candidate production variant
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest :app:assembleOffline --stacktrace
-          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
-          test -s app/build/outputs/apk/offline/output-metadata.json
-          python3 - <<'PY'
-          import json
-          m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
-          assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(112,"1.0.86")
-          print("PASS: v1.0.86/112 package preserved")
-          PY
-      - name: Sign v1.0.86 APK with verified existing installed certificate
-        env:
-          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
-          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
-          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
-          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
-        run: |
-          set -euo pipefail
-          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
-          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
-          umask 077
-          key="$RUNNER_TEMP/wq-v186-release.p12"
-          trap 'rm -f "$RUNNER_TEMP/wq-v186-release.p12"' EXIT
-          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$key"
-          out=source/app/build/outputs/apk/offline
-          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" sign \
-            --ks "$key" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" \
-            --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
-            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out "$out/WordQuestAI-v1.0.86-signed-qa.apk" \
-            "$out/app-offline-unsigned.apk"
-          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" \
-            verify --verbose --print-certs "$out/WordQuestAI-v1.0.86-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-certs.txt"
-          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v186-certs.txt"
-          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v186-certs.txt"
-          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v186-certs.txt"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.86-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionCode='112'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionName='1.0.86'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v186-badging.txt"; then exit 1; fi
-          unzip -tq "$out/WordQuestAI-v1.0.86-signed-qa.apk"
-          echo 'PASS: original app identity and production signing certificate'
-      - name: Enable KVM for real in-place emulator upgrade test
-        run: |
-          if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
-      - name: Test existing v1.0.85 app upgrades in-place to v1.0.86
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          profile: pixel_4
-          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
-          script: bash tools/v186/qa_emulator_upgrade_186.sh
-      - name: Publish v1.0.86 to installed app update channel only after all gates pass
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.85
-          if gh release view v1.0.86 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo 'Immutable v1.0.86 release already exists. Refusing overwrite.' >&2
-            exit 1
-          fi
-          mkdir -p dist
-          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.86-signed-qa.apk dist/WordQuestAI.apk
-          python3 - <<'PY'
-          import hashlib,json,pathlib
-          apk=pathlib.Path('dist/WordQuestAI.apk')
-          assert apk.stat().st_size>100_000_000
-          payload={
-           "schemaVersion":1,
-           "tag":"v1.0.86",
-           "versionCode":112,
-           "versionName":"1.0.86",
-           "packageName":"com.kelimebulmacasi.a1.practice.fresh",
-           "apkFile":"WordQuestAI.apk",
-           "sizeBytes":apk.stat().st_size,
-           "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
-           "notes":"Paket 1-7 birlestirildi: Arena tahta/ipuclari/arkadas profili, kategori/fiil ikonlari, Kelime Hafizam, yeni oyun ve paragraf modlari, eslestirme, Lena ses/animasyon ve uygulama geneli bilgi ikonlari. Eski kayitlar ve imza korunur. Canli Firebase guvenlik kurallari ayri yonetici islemi gerektirir."
-          }
-          pathlib.Path('dist/update.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          PY
-          gh release create v1.0.86 dist/WordQuestAI.apk dist/update.json \
-            -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
-            --title 'WordQuest AI 1.0.86 — Paket 1–7 Birleşik Güncelleme' \
-            --notes 'Paket 1-7 birleşik sürüm, Android code112. Tam kaynak derlemesi/JVM testleri, aynı paket/sertifika ve mevcut v1.0.85 üzerine veri koruyan emülatör kurulum kontrolü başarıyla tamamlandı. Firebase canlı kurallarının yönetici tarafından ayrıca yayımlanması gerekebilir.'
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.86
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.86" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
-          echo 'PASS: v1.0.86 is now visible in Settings > Updates.'
-
-, source)
-          if any(a.strip() != 'val reviewed = reviews.containsKey(position)' for a in aliases) or len(aliases)>1:
-              raise SystemExit("SAFE STOP: unexpected reviewed alias; inspect source before rewriting")
-          source=re.sub(r'(?m)^[ \t]*val reviewed[ \t]*=[ \t]*reviews\.containsKey\(position\)[ \t]*\n', '', source)
-          anchors=list(re.finditer(r'(?m)^([ \t]*)val reviews[ \t]*=[ \t]*remember[^\n]*
-      - name: Run deterministic Package 6 Arena rules unit tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaFairPlayTest' --stacktrace
-      - name: Run Lena speech and hidden-parenthesis unit tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq187LenaSpeechTest' --stacktrace
-      - name: Run Package 1 Arena state tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaGridPolicyTest' --stacktrace
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaNextWordTest' --stacktrace
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaHintPolicyTest' --stacktrace
-      - name: Fully test and assemble signed-candidate production variant
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest :app:assembleOffline --stacktrace
-          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
-          test -s app/build/outputs/apk/offline/output-metadata.json
-          python3 - <<'PY'
-          import json
-          m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
-          assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(112,"1.0.86")
-          print("PASS: v1.0.86/112 package preserved")
-          PY
-      - name: Sign v1.0.86 APK with verified existing installed certificate
-        env:
-          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
-          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
-          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
-          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
-        run: |
-          set -euo pipefail
-          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
-          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
-          umask 077
-          key="$RUNNER_TEMP/wq-v186-release.p12"
-          trap 'rm -f "$RUNNER_TEMP/wq-v186-release.p12"' EXIT
-          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$key"
-          out=source/app/build/outputs/apk/offline
-          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" sign \
-            --ks "$key" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" \
-            --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
-            --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out "$out/WordQuestAI-v1.0.86-signed-qa.apk" \
-            "$out/app-offline-unsigned.apk"
-          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" \
-            verify --verbose --print-certs "$out/WordQuestAI-v1.0.86-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-certs.txt"
-          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v186-certs.txt"
-          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v186-certs.txt"
-          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v186-certs.txt"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.86-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionCode='112'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionName='1.0.86'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v186-badging.txt"; then exit 1; fi
-          unzip -tq "$out/WordQuestAI-v1.0.86-signed-qa.apk"
-          echo 'PASS: original app identity and production signing certificate'
-      - name: Enable KVM for real in-place emulator upgrade test
-        run: |
-          if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
-      - name: Test existing v1.0.85 app upgrades in-place to v1.0.86
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          profile: pixel_4
-          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
-          script: bash tools/v186/qa_emulator_upgrade_186.sh
-      - name: Publish v1.0.86 to installed app update channel only after all gates pass
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.85
-          if gh release view v1.0.86 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo 'Immutable v1.0.86 release already exists. Refusing overwrite.' >&2
-            exit 1
-          fi
-          mkdir -p dist
-          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.86-signed-qa.apk dist/WordQuestAI.apk
-          python3 - <<'PY'
-          import hashlib,json,pathlib
-          apk=pathlib.Path('dist/WordQuestAI.apk')
-          assert apk.stat().st_size>100_000_000
-          payload={
-           "schemaVersion":1,
-           "tag":"v1.0.86",
-           "versionCode":112,
-           "versionName":"1.0.86",
-           "packageName":"com.kelimebulmacasi.a1.practice.fresh",
-           "apkFile":"WordQuestAI.apk",
-           "sizeBytes":apk.stat().st_size,
-           "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
-           "notes":"Paket 1-7 birlestirildi: Arena tahta/ipuclari/arkadas profili, kategori/fiil ikonlari, Kelime Hafizam, yeni oyun ve paragraf modlari, eslestirme, Lena ses/animasyon ve uygulama geneli bilgi ikonlari. Eski kayitlar ve imza korunur. Canli Firebase guvenlik kurallari ayri yonetici islemi gerektirir."
-          }
-          pathlib.Path('dist/update.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-          PY
-          gh release create v1.0.86 dist/WordQuestAI.apk dist/update.json \
-            -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
-            --title 'WordQuest AI 1.0.86 — Paket 1–7 Birleşik Güncelleme' \
-            --notes 'Paket 1-7 birleşik sürüm, Android code112. Tam kaynak derlemesi/JVM testleri, aynı paket/sertifika ve mevcut v1.0.85 üzerine veri koruyan emülatör kurulum kontrolü başarıyla tamamlandı. Firebase canlı kurallarının yönetici tarafından ayrıca yayımlanması gerekebilir.'
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.86
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.86" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
-          echo 'PASS: v1.0.86 is now visible in Settings > Updates.'
-
-,source))
-          if len(anchors)!=1 or len(re.findall(r'\breviewed\b',source))<2:
-              raise SystemExit("SAFE STOP: expected single reviews map and existing reviewed references")
-          a=anchors[0]
-          source=source[:a.end()]+'\n'+a.group(1)+'val reviewed = reviews.containsKey(position)'+source[a.end():]
-          if source.count('val reviewed = reviews.containsKey(position)')!=1:
-              raise SystemExit("SAFE STOP: reviewed state must have exactly one declaration")
-          path.write_text(source,encoding="utf-8")
-          print("PASS: v1.0.86 NeonVocabularyPractice reviewed alias is in parent composable scope")
+          import re
+          path = Path('app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonPractice.kt')
+          source = path.read_text(encoding='utf-8')
+          declarations = re.findall(r'(?m)^[ \t]*val reviewed[ \t]*=[^\n]*$', source)
+          if len(declarations) > 1 or any(v.strip() != 'val reviewed = reviews.containsKey(position)' for v in declarations):
+              raise SystemExit('SAFE STOP: unexpected reviewed alias in vocabulary practice')
+          source = re.sub(r'(?m)^[ \t]*val reviewed[ \t]*=[ \t]*reviews\.containsKey\(position\)[ \t]*\n', '', source)
+          anchors = list(re.finditer(r'(?m)^([ \t]*)val reviews[ \t]*=[ \t]*remember[^\n]*$', source))
+          if len(anchors) != 1 or len(re.findall(r'\breviewed\b', source)) < 2:
+              raise SystemExit('SAFE STOP: expected one reviews map and reviewed usages')
+          anchor = anchors[0]
+          source = source[:anchor.end()] + '\n' + anchor.group(1) + 'val reviewed = reviews.containsKey(position)' + source[anchor.end():]
+          if source.count('val reviewed = reviews.containsKey(position)') != 1:
+              raise SystemExit('SAFE STOP: reviewed alias must have exactly one declaration')
+          path.write_text(source, encoding='utf-8')
+          print('PASS: neon practice reviewed alias available to all card states')
           PY
           chmod +x ./gradlew
           ./gradlew --no-daemon :app:compileOfflineKotlin --stacktrace
