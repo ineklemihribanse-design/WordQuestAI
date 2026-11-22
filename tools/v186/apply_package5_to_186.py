@@ -134,26 +134,31 @@ def main() -> None:
     premium=APP/"Wq175PremiumHome.kt"
     h=home.read_text("utf-8")
     p=premium.read_text("utf-8")
-    h=change_once(h,
+    def ensure_once(contents:str,old:str,new:str,label:str)->str:
+        if contents.count(new)==1:
+            print("KEEP existing approved route:",label)
+            return contents
+        return change_once(contents,old,new,label)
+    h=ensure_once(h,
         "Page.Home -> HomeScreen(\n            session,",
         "Page.Home -> HomeScreen(\n            session, ai,",
         "existing Home navigation")
-    h=change_once(h,
+    h=ensure_once(h,
         "private fun HomeScreen(\n    session: AppSession,",
         "private fun HomeScreen(\n    session: AppSession,\n    ai: AiSession,",
         "HomeScreen signature")
-    h=change_once(h,
+    h=ensure_once(h,
         "Wq175PremiumHomeGrid(\n                    session=session,",
         "Wq175PremiumHomeGrid(\n                    session=session, ai=ai,",
         "premium home argument")
-    p=change_once(p,
+    p=ensure_once(p,
         "internal fun Wq175PremiumHomeGrid(\n    session:AppSession,",
         "internal fun Wq175PremiumHomeGrid(\n    session:AppSession,\n    ai:AiSession,",
         "premium home signature")
-    p=change_once(p,
+    p=ensure_once(p,
         "if (matchingOpen) Wq175MatchingDialog(session,",
         "if (matchingOpen) Wq175MatchingDialog(session,ai,",
-        "matching opens with existing AI provider")
+        "matching opens with bound AI provider")
 
     # v185 mascot privacy: keep the switch in its existing place but avoid
     # tall wrapping prose in a narrow phone column.
@@ -268,14 +273,25 @@ def main() -> None:
     # and the stored puzzle/clock data are unchanged.
     puzzle=APP/"PuzzleScreen.kt"
     board=puzzle.read_text("utf-8")
-    board=change_once(board,
-        "val available = (maxWidth - 36.dp).coerceAtLeast(220.dp)",
-        "val available = (maxWidth - if (wide) 36.dp else 20.dp).coerceAtLeast(220.dp)",
-        "mobile board viewport width")
-    board=change_once(board,
-        ".padding(horizontal = if (wide) 23.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)",
-        ".padding(horizontal = if (wide) 23.dp else 8.dp, vertical = if (keyboardVisible) 6.dp else 9.dp)",
-        "mobile board horizontal whitespace")
+    # Earlier phone polish uses 16dp margins, 28dp minimum cells, and a
+    # 47%-height board. Those already exceed the new proposed 20dp fallback.
+    if "val available = (maxWidth - if(phoneLayout)16.dp else 36.dp)" in board:
+        board=change_once(board,
+            ".padding(horizontal = if (wide) 23.dp else if(phoneLayout)8.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)",
+            ".padding(horizontal = if (wide) 23.dp else if(phoneLayout)8.dp else 16.dp, vertical = if (keyboardVisible) 6.dp else 9.dp)",
+            "keep v175 physical phone board and tighten vertical gap")
+        for sign in ("val phoneLayout = maxWidth < 600.dp",
+            "else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile"):
+            if sign not in board: raise ValueError("SAFE STOP: missing approved phone viewport "+sign)
+    else:
+        board=change_once(board,
+            "val available = (maxWidth - 36.dp).coerceAtLeast(220.dp)",
+            "val available = (maxWidth - if (wide) 36.dp else 20.dp).coerceAtLeast(220.dp)",
+            "mobile board viewport width")
+        board=change_once(board,
+            ".padding(horizontal = if (wide) 23.dp else 16.dp, vertical = if (keyboardVisible) 7.dp else 13.dp)",
+            ".padding(horizontal = if (wide) 23.dp else 8.dp, vertical = if (keyboardVisible) 6.dp else 9.dp)",
+            "mobile board spacing")
     board=change_once(board,
         "Arrangement.spacedBy(if (keyboardVisible) 8.dp else 14.dp)",
         "Arrangement.spacedBy(if (keyboardVisible) 6.dp else 9.dp)",
