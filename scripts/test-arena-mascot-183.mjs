@@ -32,6 +32,9 @@ try{
  await assertFails(host.child('hostMascotPreview').set(good(mine)));
  await assertSucceeds(host.child('hostAvatar').set(mine));
  await assertSucceeds(guest.child('guestAvatar').set(theirs));
+ // A participant must not submit a thumbnail for a different avatar ID.
+ await assertFails(host.child('hostMascotPreview').set(good(theirs)));
+ await assertFails(guest.child('guestMascotPreview').set(good(mine)));
  await assertFails(host.child('guestMascotPreview').set(good(theirs)));
  await assertFails(guest.child('hostMascotPreview').set(good(mine)));
  await assertFails(stranger.child('hostAvatar').set(theirs));
