@@ -1690,7 +1690,7 @@ jobs:
           set -euo pipefail
           test -s tools/v186/arena_overlay_186.b64
           base64 -d tools/v186/arena_overlay_186.b64 > "$RUNNER_TEMP/wq186-arena-overlay.zip"
-          echo 'a871bc684df47535adbdd0d8c07555a9d0af58ecb81e8ce12347790dbd609d44  '"$RUNNER_TEMP"'/wq186-arena-overlay.zip' | sha256sum -c -
+          echo 'a5376b56447cd4cbb2a23a745fbe22a85b50c1412e4a0712acc1ec8b7896c28e  '"$RUNNER_TEMP"'/wq186-arena-overlay.zip' | sha256sum -c -
           unzip -tq "$RUNNER_TEMP/wq186-arena-overlay.zip"
           unzip -oq "$RUNNER_TEMP/wq186-arena-overlay.zip" -d .
           python3 -m py_compile tools/v186/apply_arena_186.py tools/v186/verify_upgrade_metadata_186.py
