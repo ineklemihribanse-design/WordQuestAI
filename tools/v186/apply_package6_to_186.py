@@ -29,6 +29,82 @@ def once(contents, old, new, label):
         raise AssertionError(f"P6 {label}: expected exactly one anchor, got {found}")
     return contents.replace(old, new, 1)
 
+def navigation():
+    s=load("HomeScreen.kt")
+    if "navigationTrail" not in s:
+        s=once(s,
+            '    var page by rememberSaveable { mutableStateOf(Page.Home.name) }',
+            '    var page by rememberSaveable { mutableStateOf(Page.Home.name) }\n'
+            '    var navigationTrail by rememberSaveable { mutableStateOf(listOf<String>()) }\n'
+            '    var confirmLeaveWork by rememberSaveable { mutableStateOf(false) }',
+            "save parent navigation trail")
+        s=once(s, '    fun go(target: Page) { page = target.name }',
+            '''    fun go(target: Page) {
+        if (target.name != page) {
+            navigationTrail = (navigationTrail + page).takeLast(32)
+            page = target.name
+        }
+    }''',
+            "navigate to actual previous route")
+        start=s.index("    fun back() {")
+        finish=s.index("    fun packages(",start)
+        s=s[:start]+'''    fun back() {
+        val current = Page.valueOf(page)
+        val previous = navigationTrail.lastOrNull() ?: Page.Home.name
+        if (current == Page.Game) {
+            session.closeGame()
+            gameId = null
+        }
+        val destination = when(current) {
+            Page.Game -> origin
+            Page.Packages -> packageOrigin
+            Page.Topic -> Page.Packages.name
+            Page.NewGame -> newGameOrigin
+            Page.Editor -> editorOrigin
+            Page.VerbGame -> Page.Verbs.name
+            Page.Backup -> Page.Custom.name
+            Page.Home -> Page.Home.name
+            else -> previous
+        }
+        if (current != Page.Home) {
+            navigationTrail = navigationTrail.dropLast(1)
+            page = destination.takeIf { candidate ->
+                Page.entries.any { it.name == candidate }
+            } ?: Page.Home.name
+        }
+    }
+
+    fun requestBack() {
+        if (page in setOf(Page.Game.name, Page.Editor.name, Page.VerbGame.name)) {
+            confirmLeaveWork = true
+        } else back()
+    }
+
+'''+s[finish:]
+        s=once(s,
+            '    BackHandler(page != Page.Home.name) { back() }',
+            '''    BackHandler(page != Page.Home.name) { requestBack() }
+    if(confirmLeaveWork) AlertDialog(
+        onDismissRequest={confirmLeaveWork=false},
+        title={Text("Çalışmadan çıkılsın mı?")},
+        text={Text("Çalışmayı bırakıp önceki ekrana dönmek istiyor musun?")},
+        confirmButton={TextButton(onClick={confirmLeaveWork=false;back()}){Text("Çık")}},
+        dismissButton={TextButton(onClick={confirmLeaveWork=false}){Text("Devam et")}}
+    )''',
+            "system Android back confirmation")
+        s=once(s,"existing, ::back, ai.hasKey",
+            "existing, ::requestBack, ai.hasKey","editor back")
+        s=once(s,
+            "PuzzleScreen(game, crossword, round.onBoard(saved), ::back,",
+            "PuzzleScreen(game, crossword, round.onBoard(saved), ::requestBack,",
+            "crossword back")
+        s=once(s,
+            "session.verbs, VerbPool.valueOf(verbPool), VerbExercise.valueOf(verbMode), verbSeed, ::back,",
+            "session.verbs, VerbPool.valueOf(verbPool), VerbExercise.valueOf(verbMode), verbSeed, ::requestBack,",
+            "verbs back")
+    assert "confirmLeaveWork" in s and "navigationTrail" in s
+    save("HomeScreen.kt",s)
+
 def compact_lobby():
     s = load("WordQuest175Arena.kt")
     s = once(s, ".heightIn(min=98.dp)", ".heightIn(min=76.dp)", "native mode-card height")
@@ -244,6 +320,7 @@ def main():
     assert all((P6 / x).exists() for x in (
         "Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt",
         "Wq186ArenaFairPlayTest.kt"))
+    navigation()
     compact_lobby()
     fair_online()
     skip_storage()
@@ -255,12 +332,13 @@ def main():
         "Package 6 Android back staging did not merge into the full Android source")
     gradle=ROOT/"source/app/build.gradle.kts"
     build=gradle.read_text("utf-8")
-    if 'versionName = "1.0.86"' not in build:
-        raise AssertionError("P6 must follow verified 1.0.86 Package 5")
+    if 'versionName = "1.0.85"' not in build or "versionCode = 111" not in build:
+        raise AssertionError("P6 must follow 1.0.85 + assembled Package 4 and Package 5")
     assert 'applicationIdSuffix = ".fresh"' in build
-    PENDING[gradle]=once(build,'versionName = "1.0.86"',
-                      'versionName = "1.0.86-paket6-qa"',
-                      "version metadata, same signed app identity")
+    build=once(build,'versionName = "1.0.85"',
+               'versionName = "1.0.86"',"P6 working version name")
+    PENDING[gradle]=once(build,'versionCode = 111',
+                      'versionCode = 112',"P6 versionCode and installed app identity")
 
     # All anchors and additive Firebase rules verified before mutating sources.
     for path,value in PENDING.items():
