@@ -53,18 +53,80 @@ def main() -> None:
             ["git","merge-file","-p","--diff3",str(f_ours),str(f_base),str(f_new)],
             text=True,capture_output=True,
         )
-    if merged.returncode != 0 or any(tag in merged.stdout for tag in
-        ("<<<<<<<","=======",">>>>>>>")):
-        # CI diagnostic: report only the conflicting fragments from our own
-        # source, never publish Android source or override existing work.
-        marker=merged.stdout.find("<<<<<<<")
-        print("MERGE RETURN:",merged.returncode,"MARKER:",marker,flush=True)
-        if marker>=0:
-            print("MATCHING CONFLICT EXCERPT",flush=True)
-            print(merged.stdout[marker:marker+14000],flush=True)
-        else:
-            print("MERGE ERROR:",merged.stderr[:1800],flush=True)
-        raise SystemExit("SAFE STOP: approved matching UI changed; manual merge required")
+    # Only resolve known v1.0.85 local-import and responsive-art overlaps.
+    if merged.returncode < 0:
+        raise SystemExit("SAFE STOP: git merge-file failed: "+merged.stderr[:500])
+    if merged.returncode:
+        import re
+        matcher=re.compile(
+            r"^<<<<<<<[^\n]*\n(.*?)^\|\|\|\|\|\|\|[^\n]*\n(.*?)^=======\n(.*?)^>>>>>>>[^\n]*\n",
+            re.MULTILINE|re.DOTALL)
+        decisions=[]
+        def choose(match):
+            ours,old,new=match.groups()
+            if ("internal fun Wq175MatchingDialog" in ours and
+                "onDismiss:()->Unit)" in ours and
+                "onImport:()->Unit" in new):
+                decisions.append("retain approved AI-enabled dialog signature")
+                return ours
+            if ("var importSource" in ours and "var importedPairs" in ours
+                and "var levels" in new and "quickSeconds" in new):
+                decisions.append("replace transient imports with persistent folders")
+                return new
+            if ("İçe Aktarılan Kelimeler" in ours and
+                "selectedFolder" in new and "mode==\"definitions\"" in new):
+                decisions.append("add stored folder and English definition bank source")
+                return new
+            if ("val personalDeck" in ours and
+                "val personalDeck" in new and "Klasörlerim" in new):
+                decisions.append("retain notebook and add local folder source")
+                return new
+            if ("Wq175ImportWordsDialog" in ours and
+                "Wq186MatchingImporter" in new):
+                decisions.append("upgrade transient imported-list modal to folders")
+                return new
+            if ("BoxWithConstraints" in ours and
+                'Wq175ThemeBanner("eslestirmelerim"' in ours and
+                "if(!played) Box" in new):
+                decisions.append("retain approved responsive illustrated heading")
+                art=ours.replace("                BoxWithConstraints(",
+                    "                if(!played) BoxWithConstraints(",1)
+                art=art.replace("Oynanan: ${store.played}",
+                    "Oynanan: ${progressStore.played}")
+                art=art.replace("Kazanılan: ${store.wins}",
+                    "Kazanılan: ${progressStore.wins}")
+                art=art.replace("En iyi: ${store.best}",
+                    "En iyi: ${progressStore.best}")
+                return art
+            if (("İçe Aktarılan Kelimeler" in ours or
+                "Wq175PuzzleSourceShortcuts" in ours) and
+                ("Wq186OptionTiles" in new or
+                 "Wq186MatchingImporter" in new or
+                 "Klasörlerim" in new)):
+                decisions.append("choose reviewed persistent folder source controls")
+                return new
+            print("UNRECOGNIZED MATCHING CONFLICT",flush=True)
+            print("OURS:",ours[:1600],flush=True)
+            print("NEW:",new[:1600],flush=True)
+            raise ValueError("unapproved matching conflict")
+        try:
+            merged_text=matcher.sub(choose,merged.stdout)
+        except ValueError as error:
+            raise SystemExit("SAFE STOP: "+str(error))
+        if len(decisions)!=merged.returncode:
+            raise SystemExit(f"SAFE STOP: expected {merged.returncode} conflicts, audited {len(decisions)}")
+        print("Audited matching resolutions:",decisions,flush=True)
+    else:
+        merged_text=merged.stdout
+    if any(marker in merged_text for marker in
+        ("<<<<<<<","|||||||","=======",">>>>>>>")):
+        raise SystemExit("SAFE STOP: unresolved matching conflict")
+    if any(token in merged_text for token in
+        ("importSource","importedPairs","onImport:()->Unit")):
+        raise SystemExit("SAFE STOP: matching legacy import symbols not migrated")
+    if (merged_text.count('Wq186MatchingImporter(')!=1 or
+        merged_text.count('Wq175ThemeBanner("eslestirmelerim"')!=1):
+        raise SystemExit("SAFE STOP: reviewed importer or responsive art missing")
 
     # Pass the existing bound AI session down to the matching screen; do not
     # create an anonymous session or store provider credentials in the game.
@@ -224,7 +286,7 @@ def main() -> None:
         "crossword compact heading")
 
     # All merge operations validated; now write only the prepared sources.
-    current.write_text(merged.stdout,"utf-8")
+    current.write_text(merged_text,"utf-8")
     home.write_text(h,"utf-8")
     premium.write_text(p,"utf-8")
     (APP/"Wq185FriendMascot.kt").write_text(updated_mascot,"utf-8")
