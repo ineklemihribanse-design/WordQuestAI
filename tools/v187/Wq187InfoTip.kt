@@ -1,6 +1,8 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -10,6 +12,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
 
 /**
  * Shared, compact explanations for Arena, settings, sound, update and
@@ -21,7 +25,8 @@ internal fun Wq187InfoTip(title: String, detail: String, modifier: Modifier = Mo
     Row(modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
         Text(title,modifier=Modifier.weight(1f),fontSize=13.sp,
             color=Color(0xFF315648),fontWeight=FontWeight.Medium)
-        IconButton(onClick={open=true},modifier=Modifier.size(40.dp)) {
+        IconButton(onClick={open=true},modifier=Modifier.size(40.dp)
+            .semantics { contentDescription = "Bilgi: $title" }) {
             Surface(shape=CircleShape,color=Color(0xFFECE4F9)) {
                 Text("ⓘ",modifier=Modifier.padding(horizontal=9.dp,vertical=5.dp),
                     fontSize=19.sp,color=Color(0xFF6841A4))
@@ -31,7 +36,7 @@ internal fun Wq187InfoTip(title: String, detail: String, modifier: Modifier = Mo
     if(open) AlertDialog(
         onDismissRequest={open=false},
         title={Text(title)},
-        text={Text(detail)},
+        text={Column(Modifier.verticalScroll(rememberScrollState())) {Text(detail)}},
         confirmButton={TextButton(onClick={open=false}) {Text("Anladım")}}
     )
 }
