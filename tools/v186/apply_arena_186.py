@@ -128,6 +128,38 @@ def apply():
                     answerText,hintIndex=revealedIndex,hintChar=revealedChar) {''',
         "IME-visible authorized hint action for active crossword clue")
 
+
+    # Match snapshots can change only their attempt/pass status without
+    # adding a solved word. Keep the currently highlighted clue actionable.
+    # This does not grant a turn or advance the server's replay phase.
+    onlineText=exact_replace(onlineText,
+        '''wordIndex = Wq179ArenaOrder.next(match.code,myUid,match.size,match.solvedBy.keys,wordIndex)''',
+        '''wordIndex = Wq186ArenaNextWord.next(
+                    match.code,myUid,match.size,match.solvedBy.keys,wordIndex) {
+                    index->PremiumOnlineLimits.canAttempt(match,index,myUid)
+                } ?: wordIndex''',
+        "auto-selected word must be replay/attempt eligible")
+    onlineText=exact_replace(onlineText,
+        '''    LaunchedEffect(match?.code, match?.solvedBy?.size, match?.phase) {''',
+        '''    // Attempt/pass snapshots may change even when solved count stays fixed.
+    // Re-select only if this exact clue is no longer answerable.
+    LaunchedEffect(match) {
+        val latest=match
+        if(latest!=null && latest.phase=="playing" && latest.isCrossword &&
+            !PremiumOnlineLimits.canAttempt(latest,wordIndex,myUid)) {
+            val next=Wq186ArenaNextWord.next(
+                latest.code,myUid,latest.size,latest.solvedBy.keys,wordIndex) {
+                index->PremiumOnlineLimits.canAttempt(latest,index,myUid)
+            }
+            if(next!=null) {
+                wordIndex=next
+                answerText=""
+            }
+        }
+    }
+    LaunchedEffect(match?.code, match?.solvedBy?.size, match?.phase) {''',
+        "react to failed/passed word attempts without resetting a valid draft")
+
     online.write_text(onlineText,encoding="utf-8")
 
     for source,destination in (
