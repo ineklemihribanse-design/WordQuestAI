@@ -33,6 +33,19 @@ jobs:
           rsync -a android-current/ source/
           chmod +x source/gradlew
           test -f source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          # The source/main snapshot intentionally omits generated WAV resources.
+          # Small silent, temporary files only allow AAPT to emit R.raw identifiers.
+          # They are NEVER committed, signed, or published.
+          python3 - <<'PY'
+          import pathlib, wave
+          target=pathlib.Path("source/app/src/main/res/raw")
+          target.mkdir(parents=True, exist_ok=True)
+          for name in ("correct_soft", "wrong_soft", "victory_soft"):
+              with wave.open(str(target/(name+".wav")), "wb") as w:
+                  w.setnchannels(1);w.setsampwidth(2);w.setframerate(8000)
+                  w.writeframes(b"\\0\\0"*800)
+          print("Temporary silent compile-only resource names restored")
+          PY
       - name: Compile Kotlin + Compose only; never publish a build
         working-directory: source
         run: ./gradlew :app:compileOfflineKotlin --stacktrace --no-daemon
