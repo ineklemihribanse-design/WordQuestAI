@@ -51,18 +51,24 @@ def conversation():
     s=load("ConversationScreen.kt")
     # Earlier Lena attachment composer revisions change the number and names
     # of ai.reply parameters. Preserve each original argument exactly.
-    matches=list(re.finditer(r'\\bai\\.reply\\(',s))
+    matches=list(re.finditer(r'\bai\.reply\(',s))
     if len(matches)!=1:
         raise AssertionError("P7 Lena messenger expected one AI reply, found "+str(len(matches)))
     a=matches[0].start()
-    b=s.index(")",matches[0].end())
-    prior=s[a:b+1]
+    j=matches[0].end()
+    depth=1
+    while j<len(s) and depth:
+        if s[j]=="(":depth+=1
+        elif s[j]==")":depth-=1
+        j+=1
+    if depth!=0:raise AssertionError("P7 unbalanced ai.reply call")
+    b=j-1
+    prior=s[a:j]
     if "personaOverride" not in prior:
         revised=prior[:-1]+(
             ', personaOverride="You are Lena, the warm and friendly '
             'English conversation tutor.")')
         s=s[:a]+revised+s[b+1:]
-    store("ConversationScreen.kt",s)
     store("ConversationScreen.kt",s)
     s=load("LenaIsolatedVoiceTeacherActivity.kt")
     s=once(s,
