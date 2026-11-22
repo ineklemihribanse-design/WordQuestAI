@@ -22,9 +22,8 @@ assert 'onDismiss();onImport()' not in matching
 assert 'Wq186MeaningBank.load(levels)' in matching
 assert 'if(!played) Box(' in matching
 assert 'Wq186EnglishMeaningIcon(' in matching
-assert 'stored' not in matching or True
 for name in ('OpenDocument','TakeScanPhoto','scanPairs','suggestWords',
-    'aiCount','Elle ekle','onDone(selected.id)'):
+    'aiCount','Elle kelime ekle','onDone(selected.id)'):
     assert name in importer, f"Missing independent source: {name}"
 assert "session.addManualLearning" not in importer
 assert "session.searchLearning" not in importer
