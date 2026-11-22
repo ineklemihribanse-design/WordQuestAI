@@ -60,10 +60,15 @@ internal suspend fun generateGame(
 ): Game? {
     val candidates = pool.distinctBy(Entry::letters)
     require(size in MIN_NEW_GAME_WORDS..MAX_BOARD_WORDS && candidates.size >= size)
-    repeat(8) { attempt ->
+    repeat(if (size > 50) 2 else 8) { attempt ->
         val shuffled = candidates.shuffled(random)
         val entries = (if (attempt == 0) shuffled.sortedBy { it.letters in previous } else shuffled).take(size)
-        val puzzle = customPuzzle(entries, random.nextInt()) ?: return@repeat
+        // 51–70 answers: choose compatible entries from the wider filtered pool,
+        // rather than forcing 70 randomly chosen words that cannot all cross.
+        val puzzle = if (size > 50)
+            flexibleLargePuzzle(candidates, size, random.nextInt())
+        else customPuzzle(entries, random.nextInt())
+        if (puzzle == null || puzzle.words.size != size) return@repeat
         val label = listOfNotNull(topic, kind).joinToString(" · ").ifBlank { "Karışık" }
         val destination = when {
             level in ydsLevels -> Destination(GameMode.Yds, level, label)
