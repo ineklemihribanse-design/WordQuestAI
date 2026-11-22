@@ -120,6 +120,74 @@ def room():
         "read same settings for both players")
     store("PremiumOnlineRoom.kt",s)
 
+def hint_network():
+    s=load("PremiumOnlineScreen.kt")
+    s=once(s,
+        "                val revealedChar=word.entry.letters.getOrNull(revealedIndex)",
+        """                val revealedChar=word.entry.letters.getOrNull(revealedIndex)
+                val claimedHints=Wq186ArenaHintNetwork.claims(
+                    session,match.code,myUid
+                )
+                val hintLetters=claimedHints.filter{it.word==selected}
+                    .mapNotNull { claim ->
+                        word.entry.letters.getOrNull(claim.position)?.let {
+                            claim.position to it
+                        }
+                    }.toMap()""",
+        "read all claimed hint letters")
+    a=s.index('                    if(match.rulesVersion>=2 && match.mode=="duel" && !match.cooperative) {')
+    b=s.index('\n                    }\n',a)+len('\n                    }')
+    old=s[a:b]
+    if old.count("Wq181ArenaHintBar(")!=1 or "ArenaDuelEngine.hintsFor(" not in old:
+        raise AssertionError("P6 prior hint card differs")
+    new='''                    if(match.rulesVersion>=2 && match.isCrossword) {
+                        Wq186ArenaHintAction(
+                            left=Wq186ArenaFairPlay.hintsLeft(
+                                claimedHints.size,client.package6Rules.hints
+                            ),
+                            revealed=hintLetters,
+                            canUse=(myTurn && (countdown==null || countdown>0)
+                                && selected !in solved && fixedPattern.contains('.')),
+                            onHint={
+                                Wq186ArenaHintNetwork.reveal(
+                                    session,match.code,myUid,selected,fixedPattern,
+                                    client.package6Rules.hints
+                                ) { issue -> if(issue != null)client.note(issue) }
+                            }
+                        )
+                    }'''
+    s=s[:a]+new+s[b:]
+    s=once(s,'answerText,hintIndex=revealedIndex,hintChar=revealedChar) {',
+        'answerText,hintIndex=revealedIndex,hintChar=revealedChar,hintLetters=hintLetters) {',
+        "pass all revealed letters to real crossword board")
+    store("PremiumOnlineScreen.kt",s)
+
+    s=load("ArenaCrosswordTyping.kt")
+    s=once(s,
+        'hintChar:Char?=null, onSelect: (Int)->Unit',
+        'hintChar:Char?=null,hintLetters:Map<Int,Char> = emptyMap(), onSelect: (Int)->Unit',
+        "typing forwards multi-letter hint state")
+    s=once(s,
+        'ArenaBoardV2(puzzle,solved,selected,placed,compact,zoomed,hintIndex,hintChar,onSelect)',
+        'ArenaBoardV2(puzzle,solved,selected,placed,compact,zoomed,hintIndex,hintChar,hintLetters,onSelect)',
+        "actual grid receives all hint letters")
+    store("ArenaCrosswordTyping.kt",s)
+
+    s=load("ArenaBoardV2.kt")
+    s=once(s,
+        'hintIndex:Int=-1,hintChar:Char?=null,onSelect:(Int)->Unit',
+        'hintIndex:Int=-1,hintChar:Char?=null,hintLetters:Map<Int,Char> = emptyMap(),onSelect:(Int)->Unit',
+        "board accepts multiple hint positions")
+    s=once(s,
+        'val hinted=active && place==hintCell && hintChar!=null',
+        'val hinted=active && ((place==hintCell && hintChar!=null) || hintLetters.containsKey(chosen?.cells?.indexOf(place) ?: -1))',
+        "each hint cell uses gold highlight")
+    s=once(s,
+        'Text((fixed[place]?:if(hinted)hintChar else if(active)draft[place] else null)',
+        'Text((fixed[place]?:if(active) (hintLetters[chosen?.cells?.indexOf(place) ?: -1] ?: if(hinted)hintChar else draft[place]) else null)',
+        "multiple revealed letters printed inside grid")
+    store("ArenaBoardV2.kt",s)
+
 def rules():
     source=ROOT/"source/database.rules.json"
     official=ROOT/"firebase/database.rules.json"
@@ -128,19 +196,23 @@ def rules():
     sub=obj["rules"]["premiumRooms"]["$code"]["package6"]
     if "settings" in sub: raise AssertionError("P6 duplicate RTDB rules")
     sub["settings"]=want
+    sub["hintClaims"]=json.loads(official.read_text("utf-8"))["rules"]["premiumRooms"]["$code"]["package6"]["hintClaims"]
     CHANGES[source]=json.dumps(obj,indent=2,ensure_ascii=False)+"\n"
 
 def main():
     assert (APP/"Wq186ArenaFairPlay.kt").is_file()
     assert not (APP/"Wq186ArenaPresetControls.kt").exists()
+    assert not (APP/"Wq186ArenaHintNetwork.kt").exists()
     ui()
     packs()
     screen()
     room()
+    hint_network()
     rules()
     for p,s in CHANGES.items():
         p.write_text(s,"utf-8")
         print("PASS P6",p.relative_to(ROOT))
     shutil.copyfile(P6/"Wq186ArenaPresetControls.kt",APP/"Wq186ArenaPresetControls.kt")
+    shutil.copyfile(P6/"Wq186ArenaHintNetwork.kt",APP/"Wq186ArenaHintNetwork.kt")
     print("P6 follow-up source staged without deployment/release.")
 if __name__=="__main__": main()
