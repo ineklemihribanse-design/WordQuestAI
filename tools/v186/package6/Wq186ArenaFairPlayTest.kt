@@ -33,6 +33,33 @@ class Wq186ArenaFairPlayTest {
         assertTrue(Wq186ArenaFairPlay.nextWord(room,count,solved,deferred,-1,true) in deferred)
     }
 
+    @Test fun roomPresetRejectsDuplicatesAndClampsLimits() {
+        val preset=Wq186MatchPreset(
+            listOf("A1","A1","B2","C2","invalid","B2"),99,9).sanitized("A2")
+        assertEquals(listOf("A1","B2","C2"),preset.levels)
+        assertEquals(20,preset.hints)
+        assertEquals(3,preset.retries)
+        val fallback=Wq186MatchPreset(emptyList(),-4,-9).sanitized("B1")
+        assertEquals(listOf("B1"),fallback.levels)
+        assertEquals(0,fallback.hints)
+        assertEquals(0,fallback.retries)
+    }
+
+    @Test fun finalRoundAndHintsHaveStrictBoundaries() {
+        assertTrue(Wq186ArenaFairPlay.canRetry(0,3))
+        assertTrue(Wq186ArenaFairPlay.canRetry(2,3))
+        assertFalse(Wq186ArenaFairPlay.canRetry(3,3))
+        assertFalse(Wq186ArenaFairPlay.canRetry(0,0))
+        assertFalse(Wq186ArenaFairPlay.canSkip(2,2))
+        assertEquals(0,Wq186ArenaFairPlay.hintsLeft(21,20))
+        val used=mutableSetOf<Int>()
+        repeat(5) {
+            val position=Wq186ArenaFairPlay.hintPosition("room",5,used,".....")!!
+            assertTrue(used.add(position))
+        }
+        assertNull(Wq186ArenaFairPlay.hintPosition("room",5,used,"....."))
+    }
+
     @Test fun hintsAreDifferentAndSkipBounded() {
         val first=Wq186ArenaFairPlay.hintPosition("abc",3,emptySet(),".AB..")!!
         assertEquals(first,Wq186ArenaFairPlay.hintPosition("abc",3,emptySet(),".AB.."))
