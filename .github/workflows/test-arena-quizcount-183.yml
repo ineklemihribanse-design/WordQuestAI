@@ -1,7 +1,7 @@
 name: Verify 5-choice Arena question count and Firebase lobby edits
 on:
   push:
-    branches: [feature/v175-comprehensive-learning-update]
+    branches: [feature/v175-comprehensive-learning-update, feature/v183-quality-stability]
     paths:
       - 'firebase/database.rules.json'
       - 'scripts/test-arena-quizcount-183.mjs'
