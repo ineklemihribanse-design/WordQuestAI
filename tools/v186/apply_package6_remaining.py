@@ -255,14 +255,40 @@ def hint_network():
         'hintIndex:Int=-1,hintChar:Char?=null,onSelect:(Int)->Unit',
         'hintIndex:Int=-1,hintChar:Char?=null,hintLetters:Map<Int,Char> = emptyMap(),onSelect:(Int)->Unit',
         "board accepts multiple hint positions")
-    s=once(s,
-        'val hinted=active && place==hintCell && hintChar!=null',
-        'val hinted=active && ((place==hintCell && hintChar!=null) || hintLetters.containsKey(chosen?.cells?.indexOf(place) ?: -1))',
-        "each hint cell uses gold highlight")
-    s=once(s,
-        'Text((fixed[place]?:if(hinted)hintChar else if(active)draft[place] else null)',
-        'Text((fixed[place]?:if(active) (hintLetters[chosen?.cells?.indexOf(place) ?: -1] ?: if(hinted)hintChar else draft[place]) else null)',
-        "multiple revealed letters printed inside grid")
+    if 'val hinted=active && address==hintCell && hintChar!=null' in s:
+        # Package 1 replaced the old board with a responsive, zoomable
+        # viewport and renamed 'place' to 'address'. Keep that geometry
+        # unchanged and layer P6's multiple server-authorized hint cells.
+        s=once(s,
+            'val hinted=active && address==hintCell && hintChar!=null',
+            '''val hintPosition=chosen?.cells?.indexOf(address) ?: -1
+                            val hinted=active && (
+                                (address==hintCell && hintChar!=null) ||
+                                (hintPosition>=0 && hintLetters.containsKey(hintPosition))
+                            )''',
+            "retain Package 1 cell coordinates with multi-position P6 hints")
+        s=once(s,
+            '''val visibleLetter = fixed[address] ?:
+                                        (if(hinted)hintChar else if(active)draft[address] else null)''',
+            '''val visibleLetter = fixed[address] ?:
+                                        if(active) (
+                                            hintLetters[hintPosition]
+                                                ?: if(address==hintCell && hintChar!=null) hintChar
+                                                   else draft[address]
+                                        ) else null''',
+            "solved > claimed hint > single hint > draft on P1 responsive board")
+        assert "val cell=Wq186ArenaGridPolicy.cellDp" in s
+        assert "val visibleLetter = fixed[address]" in s
+    else:
+        # Original pre-P1 board variant, kept for independent P6 QA.
+        s=once(s,
+            'val hinted=active && place==hintCell && hintChar!=null',
+            'val hinted=active && ((place==hintCell && hintChar!=null) || hintLetters.containsKey(chosen?.cells?.indexOf(place) ?: -1))',
+            "each hint cell uses gold highlight")
+        s=once(s,
+            'Text((fixed[place]?:if(hinted)hintChar else if(active)draft[place] else null)',
+            'Text((fixed[place]?:if(active) (hintLetters[chosen?.cells?.indexOf(place) ?: -1] ?: if(hinted)hintChar else draft[place]) else null)',
+            "multiple revealed letters printed inside grid")
     store("ArenaBoardV2.kt",s)
 
 def replays():
