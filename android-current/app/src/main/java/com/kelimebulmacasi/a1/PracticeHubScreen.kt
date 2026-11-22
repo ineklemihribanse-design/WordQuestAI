@@ -291,6 +291,7 @@ private fun PracticeGameScreen(
     var success by rememberSaveable(session.profileKey, kind.name, number) { mutableStateOf(false) }
     var recognized by rememberSaveable(session.profileKey, kind.name, number) { mutableStateOf("") }
     var problem by rememberSaveable(session.profileKey, kind.name, number) { mutableStateOf("") }
+    var speakMode by rememberSaveable(session.profileKey, kind.name, number) { mutableStateOf("LISTEN") }
     var chosen by remember(session.profileKey, kind, number) { mutableStateOf(emptyList<Int>()) }
     val shuffled = remember(number, kind) { PracticeContent.mixedTokens(item, number * 43 + 19) }
     val speechLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { outcome ->
@@ -300,7 +301,7 @@ private fun PracticeGameScreen(
             checked = text.isNotBlank()
             success = PracticeContent.correct(text, word)
             if (success) {
-                store.mark(kind, "${number}:$word")
+                store.mark(kind, "${number}:$word:$speakMode")
                 onComplete()
             }
         } else problem = "Ses tanıma iptal edildi veya sonuç alınamadı."
@@ -322,16 +323,42 @@ private fun PracticeGameScreen(
 
     ScreenPage(kind.title, "${session.learningProfileName} · Alıştırma ${number + 1}", back) {
         if (kind in listOf(PracticeKind.Dictation, PracticeKind.Speak)) {
-            BodyText("Önce sesini dinle. Başlat düğmesini kullanmadıkça mikrofon açılmaz.")
-            OutlinedButton(onClick = { pronunciation.pronounce(listOf(word), preferences.voice, replay = true) },
-                enabled = preferences.pronunciation) { Text("${preferences.voice.label} aksanında dinle") }
+            if (kind == PracticeKind.Speak) {
+                BodyText("Konuşma biçimini seç: yalnızca konuşma düğmesine basınca mikrofon açılır.")
+                Row(
+                    Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    FilterChip(
+                        selected = speakMode == "LISTEN", enabled = !checked,
+                        onClick = { speakMode = "LISTEN"; recognized = ""; problem = "" },
+                        label = { Text("Dinle ve konuş", fontFamily = Sans) },
+                    )
+                    FilterChip(
+                        selected = speakMode == "READ", enabled = !checked,
+                        onClick = { speakMode = "READ"; recognized = ""; problem = "" },
+                        label = { Text("Oku ve konuş", fontFamily = Sans) },
+                    )
+                }
+                if (speakMode == "READ") {
+                    Text("Oku ve söyle: $word", color = Ink, fontFamily = Sans, fontWeight = FontWeight.SemiBold)
+                } else {
+                    BodyText("Kelimeyi dinle, sonra duyduğun sözcüğü söyle.")
+                }
+            } else {
+                BodyText("Önce sesini dinle. Başlat düğmesini kullanmadıkça mikrofon açılmaz.")
+            }
+            if (kind != PracticeKind.Speak || speakMode == "LISTEN") {
+                OutlinedButton(onClick = { pronunciation.pronounce(listOf(word), preferences.voice, replay = true) },
+                    enabled = preferences.pronunciation) { Text("${preferences.voice.label} aksanında dinle") }
+            }
             if (kind == PracticeKind.Speak) {
                 PrimaryAction("Konuşmayı dene", {
                     try {
                         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
                             putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
                             putExtra(RecognizerIntent.EXTRA_LANGUAGE, preferences.voice.locale.toLanguageTag())
-                            putExtra(RecognizerIntent.EXTRA_PROMPT, "Duyduğun İngilizce ifadeyi söyle")
+                            putExtra(RecognizerIntent.EXTRA_PROMPT, if (speakMode == "READ") "Ekrandaki İngilizce kelimeyi söyle" else "Duyduğun İngilizce ifadeyi söyle")
                         }
                         speechLauncher.launch(intent)
                     } catch (_: ActivityNotFoundException) {
