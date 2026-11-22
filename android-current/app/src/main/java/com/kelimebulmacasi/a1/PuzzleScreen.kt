@@ -42,7 +42,6 @@ internal fun PuzzleScreen(
     onLearning: (LearningSignal) -> Unit,
     preferences: WordQuestPreferences,
     pronunciation: WordPronunciation,
-    nextRound: (() -> Unit)? = null,
     save: (Progress) -> Progress,
 ) {
     val context = LocalContext.current
@@ -314,17 +313,7 @@ internal fun PuzzleScreen(
             onDismissRequest = { finished = false },
             title = { Text("Bulmacayı tamamladın!", fontFamily = Serif, color = Ink) },
             text = { BodyText("Bu bulmacadaki puanın: " + view.points + "/" + board.words.size * 10) },
-            confirmButton = {
-                TextButton(onClick = {
-                    finished = false
-                    nextRound?.invoke()
-                }) {
-                    Text(
-                        if (nextRound != null) "Sonraki bulmacaya geç" else "Tamam",
-                        fontFamily = Sans,
-                    )
-                }
-            },
+            confirmButton = { TextButton(onClick = { finished = false }) { Text("Tamam", fontFamily = Sans) } },
             dismissButton = listen?.let { { TextButton(onClick = it) { Text("Tekrar dinle", fontFamily = Sans) } } },
             containerColor = White,
         )
