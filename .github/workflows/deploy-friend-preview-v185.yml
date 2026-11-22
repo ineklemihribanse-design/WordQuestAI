@@ -1,0 +1,65 @@
+name: Safely deploy only mutual-friend mascot preview rules (v1.0.85)
+
+on:
+  push:
+    branches: [feature/v185-profile-friend-personal-mascots]
+    paths:
+      - '.github/workflows/deploy-friend-preview-v185.yml'
+      - 'tools/v185/deploy_friend_preview_rules_185.py'
+      - 'firebase/database.rules.v185.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wordquest-firebase-rules
+  cancel-in-progress: false
+
+jobs:
+  friend-mascot-rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate additive friend preview policy and forbid broad read/write
+        run: |
+          set -euo pipefail
+          python3 -m json.tool firebase/database.rules.v183.json >/dev/null
+          python3 -m json.tool firebase/database.rules.v185.json >/dev/null
+          python3 - <<'PY'
+          import json
+          old=json.load(open('firebase/database.rules.v183.json'))
+          new=json.load(open('firebase/database.rules.v185.json'))
+          a=old['rules']['friendProfiles']['$uid']
+          b=new['rules']['friendProfiles']['$uid']
+          assert set(b)==set(a)|{'avatarPreview'}
+          assert {k:v for k,v in b.items() if k!='avatarPreview'}==a
+          j=json.loads(json.dumps(new))
+          j['rules']['friendProfiles']['$uid'].pop('avatarPreview')
+          assert j==old, 'Unrelated policy changed'
+          assert b['.write']=="auth != null && auth.uid === $uid"
+          assert "root.child('friends').child($uid).child(auth.uid)" in b['.read']
+          assert '18050' in b['avatarPreview']['.validate']
+          print('PASS: no other Arena/account/security rules changed')
+          PY
+      - name: Require private Firebase deployment credentials
+        env:
+          SERVICE_JSON: ${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          test -n "$SERVICE_JSON" || { echo 'No Firebase credentials, no live change' >&2; exit 1; }
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.WQ_FIREBASE_SERVICE_ACCOUNT_JSON }}
+          project_id: wordquest-ai
+      - name: Compare live policy and merge ONLY mutual-friend previews
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check google-auth requests
+          python3 tools/v185/deploy_friend_preview_rules_185.py
