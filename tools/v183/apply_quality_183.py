@@ -56,6 +56,11 @@ def update(path: str, action):
 
 
 shutil.copyfile(TOOLS / "Wq183QuizQuality.kt", SRC / "Wq183QuizQuality.kt")
+shutil.copyfile(TOOLS / "Wq183ArenaBackdrop.kt", SRC / "Wq183ArenaBackdrop.kt")
+import sys
+sys.path.insert(0, str(TOOLS))
+from stage_arena_assets_183 import stage as stage_arena
+stage_arena()
 
 def online(source):
     source = replace_one(
@@ -65,6 +70,12 @@ def online(source):
         "Wq183QuizPrompt(question.prompt)",
         "visible high-contrast online question card",
     )
+    source = replace_one(source,
+        '''Wq181ArenaHeroStage(
+            Modifier.matchParentSize(), active = match?.phase == "playing")''',
+        '''Wq183ArenaBackdrop(
+            Modifier.matchParentSize(), active = match?.phase == "playing")''',
+        "responsive original user Arena image with safe v181 fallback")
     source = protect_answers(
         source,
         "question.options.forEachIndexed { n, option ->",
@@ -74,6 +85,11 @@ def online(source):
     return source
 
 update("PremiumOnlineScreen.kt", online)
+update("WordQuest175Arena.kt", lambda source: replace_one(
+    source, 'Wq175SceneBackdrop("arena",Modifier.matchParentSize())',
+    'Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)',
+    "use consistent Arena art on premium Arena home"))
+
 update(
     "PremiumArenaScreen.kt",
     lambda source: protect_answers(
