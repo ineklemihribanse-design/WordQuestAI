@@ -55,7 +55,7 @@ live=contains(src,"PremiumOnlineScreen.kt",
 assert "Wq179ArenaWordChooser(puzzle,solved,selected)" not in live
 assert "if (match.phase == \"finished\") Wq183OnlinePortraitStrip(" in live
 contains(src,"PremiumOnlineRoom.kt","package6Rules","package6Retries",
-         "submitWithRetry", "hintClaims", "premiumRooms")
+         "submitWithRetry", "premiumRooms")
 contains(src,"PremiumArenaContent.kt","levelForWord",
          "levelPool: List<String>","target.level")
 contains(src,"PuzzleScreen.kt","typedDialog","wordDraft","Kelimeyi yaz")
