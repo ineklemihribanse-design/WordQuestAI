@@ -13,14 +13,26 @@ EXPECTED = {
     "arena_tablet_13_16x10.webp": (2560,1600),
     "arena_tablet_13_16x10_koyu.webp": (2560,1600),
 }
-assert hashlib.sha256(ARENA.read_bytes()).hexdigest() == ARENA_SHA
-with zipfile.ZipFile(ARENA) as z:
-    assert z.testzip() is None
-    for name, size in EXPECTED.items():
-        data = z.read(name)
-        assert data[:4] == b"RIFF" and data[8:12] == b"WEBP"
-        assert Image.open(io.BytesIO(data)).size == size
-        print("PASS Arena",name,size)
+if ARENA.is_file():
+    assert hashlib.sha256(ARENA.read_bytes()).hexdigest() == ARENA_SHA
+    with zipfile.ZipFile(ARENA) as z:
+        assert z.testzip() is None
+        originals = {name: z.read(name) for name in EXPECTED}
+else:
+    base = ROOT / "assets/user_uploads/arena_v184"
+    originals = {name:(base/name).read_bytes() for name in EXPECTED}
+sha = {
+    "arena_telefon_9x19_5.webp": "cb9cfce13f461d57d459acc7ea5b025ef338b89c4d89a986dafea9adc46ad486",
+    "arena_telefon_9x19_5_koyu.webp": "42749638c831d9aa917e4e985b7859b00331113163ac4eebd88301ac9baf943c",
+    "arena_tablet_13_16x10.webp": "fe3022d97bcedcc1eb9694cbf4e03eba662304b686faf9fe0eccf25d5bb58218",
+    "arena_tablet_13_16x10_koyu.webp": "306c21ecc362d356ffb3493cd730ffe2341f3e82a0c6b25ff6fb805974d8efb7",
+}
+for name, size in EXPECTED.items():
+    data = originals[name]
+    assert hashlib.sha256(data).hexdigest() == sha[name]
+    assert data[:4] == b"RIFF" and data[8:12] == b"WEBP"
+    assert Image.open(io.BytesIO(data)).size == size
+    print("PASS Arena",name,size)
 
 for gender in ("Kiz","Erkek"):
     file = ROOT / f"mascot_packs/WordQuestAI_{gender}_Idle_Kupa_v184.zip"
