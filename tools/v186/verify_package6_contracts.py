@@ -46,8 +46,14 @@ assert "newData" in extra["finishVotes"]["$uid"][".write"]
 home=contains(src,"HomeScreen.kt","confirmLeaveWork","navigationTrail",
               "Çalışmadan çıkılsın mı?")
 arena=contains(src,"ArenaApprovedHome.kt","Wq175ArenaHeroAndModes(",
-               "Wq186ArenaPresetControls(", "Wq174UnifiedMatchSettings(")
+               "Wq174UnifiedMatchSettings(","profile=avatarProfileKey")
 assert "if (!matchSettingsPage)" not in arena
+settings=contains(src,"WordQuest174Arena.kt",
+    "Wq186ArenaPresetControls(profile,level,onLevel)",
+    "if(solo) {", "if(detailsOpen) Column(")
+assert settings.count('Wq174SettingRow("level"') == 1
+assert settings.count('Wq174SettingRow("topic"') == 1
+assert "ⓘ Maç kuralları" in settings
 landing=contains(src,"Wq175PremiumHome.kt",
                  'Wq175HomeTile("ARENA"')
 assert '{ activeSection="ARENA" }' not in landing
