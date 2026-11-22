@@ -297,6 +297,14 @@
                 ".validate": "newData.hasChildren(['word','position']) && newData.child('word').isNumber() && newData.child('word').val() >= 0 && newData.child('word').val() < data.parent().parent().parent().parent().child('size').val() && newData.child('position').isNumber() && newData.child('position').val() >= 0 && newData.child('position').val() < 50"
               }
             }
+          },
+          "retrySpent": {
+            "$uid": {
+              "$index": {
+                ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().parent().child('phase').val() === 'playing' && data.parent().parent().parent().parent().child('mode').val() !== 'quiz' && (data.parent().parent().parent().parent().child('mode').val() === 'team' || data.parent().parent().parent().parent().child('turn').child('uid').val() === auth.uid) && $index.matches(/^([0-9]|[1-4][0-9])$/) && ((!data.exists() && newData.val() === 1) || (data.isNumber() && newData.val() === data.val()+1)) && newData.val() <= data.parent().parent().parent().parent().child('package6').child('settings').child('retries').val()",
+                ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 3"
+              }
+            }
           }
         }
       }
