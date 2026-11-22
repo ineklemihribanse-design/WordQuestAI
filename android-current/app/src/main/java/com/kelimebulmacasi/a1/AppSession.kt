@@ -191,7 +191,6 @@ class AppSession(context: Context, internal val accounts: Accounts, private val 
         if (last != null) {
             val record = progress[last.id]
             if (record == null || record.lockedWords.size != last.wordCount) return last
-            nextGeneratedPart(last)?.let { return it }
         }
         return allGames.filter { game ->
             val record = progress[game.id]
@@ -209,67 +208,6 @@ class AppSession(context: Context, internal val accounts: Accounts, private val 
             generateGame(catalog.vocabulary.pool(level, topic, kind), size, level, topic, kind, previous)
         } ?: return null
         return game.takeIf { playerAtStart === player && saveCustom(listOf(it), null) }
-    }
-
-    /** A 21–70 word session is several ordinary 8–20 word crossword boards.
-     * All boards are generated and validated BEFORE saving any of them. This
-     * avoids a half-created session if a group of words cannot form a board.
-     */
-    internal suspend fun newGameSeries(
-        level: String, topic: String?, kind: String?, count: Int,
-    ): Game? {
-        require(count in 21..70)
-        val playerAtStart = player
-        val source = catalog.vocabulary.pool(level, topic, kind).distinctBy(Entry::letters)
-        if (source.size < count) return null
-        val split = automaticSplit(count, 20)
-        require(split.sum() == count && split.all { it in answerCounts })
-        val sessionId = java.util.UUID.randomUUID().toString()
-        val parts = withContext(Dispatchers.Default) {
-            var output: List<Game>? = null
-            repeat(3) { attempt ->
-                if (output != null) return@repeat
-                val pool = source.shuffled(kotlin.random.Random(System.nanoTime() + attempt))
-                val taken = mutableSetOf<String>()
-                val built = mutableListOf<Game>()
-                for ((position, target) in split.withIndex()) {
-                    val choices = pool.filterNot { it.letters in taken }
-                    val candidate = generateGame(
-                        choices, target, level, topic, kind,
-                        random = kotlin.random.Random(System.nanoTime() + position),
-                    ) ?: break
-                    if (candidate.wordCount != target) break
-                    taken += candidate.puzzle.words.map { it.entry.letters }
-                    built += Game(
-                        id = "round_${sessionId}_part${position + 1}of${split.size}",
-                        mode = GameMode.Generated,
-                        level = candidate.level,
-                        category = candidate.category,
-                        title = "${candidate.title} · ${position + 1}/${split.size}",
-                        puzzle = candidate.puzzle,
-                        destination = candidate.destination,
-                    )
-                }
-                if (built.size == split.size && taken.size == count) output = built
-            }
-            output
-        } ?: return null
-        return parts.first().takeIf {
-            playerAtStart === player && saveCustom(parts, null)
-        }
-    }
-
-    /** Only locate the next part within the same exact generated session. */
-    internal fun nextGeneratedPart(game: Game): Game? {
-        if (game.mode != GameMode.Generated) return null
-        val match = Regex("^round_([0-9a-f-]{36})_part([1-9][0-9]*)of([1-9][0-9]*)$")
-            .matchEntire(game.id) ?: return null
-        val (groupId, numberText, totalText) = match.destructured
-        val number = numberText.toIntOrNull() ?: return null
-        val total = totalText.toIntOrNull() ?: return null
-        if (number >= total || total !in 2..9) return null
-        val nextId = "round_${groupId}_part${number + 1}of${total}"
-        return savedGames.firstOrNull { it.id == nextId && it.mode == GameMode.Generated }
     }
 
     fun record(game: Game): Progress? = revision.let { player.find(game.progressId) }
