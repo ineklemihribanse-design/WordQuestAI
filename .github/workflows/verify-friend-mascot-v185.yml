@@ -6,6 +6,8 @@ on:
       - '.github/workflows/verify-friend-mascot-v185.yml'
       - 'scripts/test-friend-mascot-v185.mjs'
       - 'firebase/database.rules.v185.json'
+      - 'tools/v185/prepare_live_friend_rules_185.py'
+      - 'tools/v185/test_prepare_live_friend_rules_185.py'
   workflow_dispatch:
 
 permissions:
@@ -29,6 +31,8 @@ jobs:
           set -euo pipefail
           python3 -m json.tool firebase/database.rules.v185.json >/dev/null
           printf '{"database":{"rules":"firebase/database.rules.v185.json"},"emulators":{"database":{"host":"127.0.0.1","port":9001},"ui":{"enabled":false}}}\n' > firebase.json
+      - name: Prove offline live-rules patch preserves all unrelated Firebase policies
+        run: python3 -m unittest tools/v185/test_prepare_live_friend_rules_185.py -v
       - name: Install local no-billing Firebase test SDK
         run: npm install --no-save firebase-tools@latest @firebase/rules-unit-testing@latest
       - name: Verify opt-in preview authorization and revocation
