@@ -124,23 +124,53 @@ private fun Wq174SettingIcon(kind:String) {
     Wq187ArenaSettingIcon(kind,Modifier.size(39.dp))
 }
 '''+s[end:]
-    s=once(s,'Text("⚙",color=Color.White,fontSize=24.sp)',
-        'Wq187ArenaSettingIcon("settings",Modifier.size(32.dp))',
-        "Arena header original settings art")
-    begin=s.find('            Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp))\n                .background(Brush.verticalGradient(listOf(')
-    if begin<0:raise AssertionError("P7 expected old long Arena rule box")
-    end=s.index('\n            }\n',begin)+len('\n            }')
-    area=s[begin:end]
-    if 'Text("Maç Kuralları"' not in area or "puanlama" not in area:
-        raise AssertionError("P7 unsafe Arena rule replacement")
-    replacement='''            Wq187InfoTip(
+    # Later approved icon overlays may have replaced the literal gear.
+    # Do not add a second decorative icon to an already adorned header.
+    old_gear='Text("⚙",color=Color.White,fontSize=24.sp)'
+    if old_gear in s:
+        s=once(s,old_gear,
+            'Wq187ArenaSettingIcon("settings",Modifier.size(32.dp))',
+            "Arena settings icon")
+    elif 'Text("Maç Ayarları"' not in s:
+        raise AssertionError("P7 Arena header unexpected")
+    else:
+        print("KEEP approved Arena header artwork; replace row icons only.")
+
+    help_start=s.find('            var detailsOpen by remember { mutableStateOf(false) }')
+    if help_start>=0:
+        # P6 already introduced the info toggle. Consolidate it with P7's
+        # shared accessible dialog rather than stacking two info buttons.
+        help_end=s.find('\n            }\n',help_start)
+        if help_end<0:raise AssertionError("P7 Arena P6 help end unavailable")
+        help_end+=len('\n            }')
+        previous=s[help_start:help_end]
+        if 'if(detailsOpen) Column' not in previous or 'Text("Maç Kuralları"' not in previous:
+            raise AssertionError("P7 cannot identify P6 rule description")
+        replacement='''            Wq187InfoTip(
                 "Maç kuralları",
                 "Seçtiğin seviyeye ve konuya uygun sorular gelir. " +
                 "Süre dolduğunda yanıtlar doğrulanır. İpucu ve tekrar " +
                 "haklarını maç öncesinde seçebilirsin; çözülemeyen " +
                 "kelimeler son tura ertelenir."
             )'''
-    s=s[:begin]+replacement+s[end:]
+        s=s[:help_start]+replacement+s[help_end:]
+    else:
+        # Support unmodified early Arena variant as well.
+        help_start=s.find('            Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp))\n                .background(Brush.verticalGradient(listOf(')
+        if help_start<0:raise AssertionError("P7 Arena rules card absent")
+        help_end=s.find('\n            }\n',help_start)
+        if help_end<0:raise AssertionError("P7 Arena rules end absent")
+        help_end+=len('\n            }')
+        old=s[help_start:help_end]
+        if 'Text("Maç Kuralları"' not in old:raise AssertionError("P7 wrong Arena information box")
+        replacement='''            Wq187InfoTip(
+                "Maç kuralları",
+                "Seçtiğin seviyeye ve konuya uygun sorular gelir. " +
+                "Süre dolduğunda yanıtlar doğrulanır. İpucu ve tekrar " +
+                "haklarını maç öncesinde seçebilirsin; çözülemeyen " +
+                "kelimeler son tura ertelenir."
+            )'''
+        s=s[:help_start]+replacement+s[help_end:]
     store("WordQuest174Arena.kt",s)
 
 def audio_diagnostics():
