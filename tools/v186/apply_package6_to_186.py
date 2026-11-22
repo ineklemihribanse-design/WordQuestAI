@@ -448,8 +448,10 @@ def firebase_rules():
     incoming=approved["rules"]["premiumRooms"]["$code"]["package6"]
     if "package6" in base:
         raise AssertionError("P6 already installed or unexpected Firebase rule drift")
-    assert set(incoming)=={"emoji","finishVotes","presence","skips"}
-    base["package6"]=incoming
+    core={"emoji","finishVotes","presence","skips"}
+    assert core.issubset(incoming) and "settings" in incoming
+    # The rest of the P6 rules are installed after the source overlay.
+    base["package6"]={key:incoming[key] for key in sorted(core)}
     PENDING[DB]=json.dumps(current,ensure_ascii=False,indent=2)+"\n"
 
 def main():
