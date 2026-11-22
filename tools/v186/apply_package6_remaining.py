@@ -205,11 +205,35 @@ def replays():
     s=once(s,
         'val canAnswer = myTurn && (countdown == null || countdown > 0) && !alreadyUnknown',
         '''val previouslyFailed=PremiumOnlineLimits.gaveUpOrFailed(match,selected,myUid)
+                        val pendingFresh=(0 until match.size).any { index ->
+                            index !in solved &&
+                                !PremiumOnlineLimits.gaveUpOrFailed(match,index,myUid)
+                        }
                         val replayAllowed=(!previouslyFailed ||
-                            (client.package6Retries[selected] ?: 0) < client.package6Rules.retries)
+                            (!pendingFresh && (client.package6Retries[selected] ?: 0) <
+                                client.package6Rules.retries))
                         val canAnswer=myTurn && (countdown==null || countdown>0) &&
                             replayAllowed''',
         "allow last-round retry only within budget")
+    s=once(s,
+        '        client.syncFailedAttemptReveals()\\n    }'.replace('\\n','\n'),
+        '''        client.syncFailedAttemptReveals()
+    }
+    LaunchedEffect(match?.code,match?.unknownBy,match?.mistakesBy,
+        match?.solvedBy,client.package6Retries,myUid) {
+        val current=match
+        if(current!=null && current.phase=="playing" && current.isCrossword &&
+            PremiumOnlineLimits.gaveUpOrFailed(current,wordIndex,myUid) &&
+            (0 until current.size).any { index ->
+                index !in current.solvedBy &&
+                    !PremiumOnlineLimits.gaveUpOrFailed(current,index,myUid)
+            }) {
+            wordIndex=Wq186ArenaNext.choose(current,myUid,wordIndex,
+                client.package6Rules.retries,client.package6Retries)
+            answerText=""
+        }
+    }''',
+        "automatically defer failed clues rather than trapping the same word")
     s=once(s,"client.markSolved(selected)","client.submitWithRetry(selected,true)",
         "correct answer consumes replay")
     s=once(s,"client.wrong(selected)","client.submitWithRetry(selected,false)",
