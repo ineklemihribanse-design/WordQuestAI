@@ -1,0 +1,42 @@
+name: Verify WordQuest 1.0.86 Package 4 source and Kotlin (no release)
+on:
+  push:
+    branches: [feature/v186-package4-gameplay-learning]
+    paths:
+      - 'android-current/**'
+      - 'tools/v186/**'
+      - '.github/workflows/verify-package4-full-source-v186.yml'
+permissions:
+  contents: read
+jobs:
+  verify-p4-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate single-board 70, button cards, game clock and source protections
+        run: |
+          set -euo pipefail
+          python3 tools/v186/verify_package4_single70.py
+          python3 -m py_compile tools/v186/verify_package4_single70.py
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Assemble complete frozen Android source for compile (no APK, no signing)
+        run: |
+          set -euo pipefail
+          unzip -tq wq-noaudio.zip
+          mkdir -p source
+          unzip -oq wq-noaudio.zip -d source
+          test -s source/gradlew
+          rsync -a android-current/ source/
+          chmod +x source/gradlew
+          test -f source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Compile Kotlin + Compose only; never publish a build
+        working-directory: source
+        run: ./gradlew :app:compileOfflineKotlin --stacktrace --no-daemon
+      - name: Confirm no publishing or Firebase deployment
+        run: |
+          echo 'Package 4 is source-only, independent of live release.'
+          echo 'No deployment, signature operations, account migration, or APK publication.'
