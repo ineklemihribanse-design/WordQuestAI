@@ -46,6 +46,22 @@ class SourceContracts(unittest.TestCase):
         self.assertIn("Wq183ArenaShare.remoteImage(id)",overlay)
         self.assertTrue((ROOT/"firebase/database.rules.v183.json").is_file())
 
+    def test_both_players_are_drawn_in_live_and_finished_arena(self):
+        hud=(V/"Wq183OnlinePortraitStrip.kt").read_text("utf-8")
+        overlay=(V/"apply_quality_183.py").read_text("utf-8")
+        self.assertIn("Wq2DPortrait(safeId", hud)
+        self.assertIn("hostAvatar: String?", hud)
+        self.assertIn("guestAvatar: String?", hud)
+        self.assertIn("hostScore: Int", hud)
+        self.assertIn("guestScore: Int", hud)
+        self.assertIn("maxLines = 1", hud)
+        self.assertIn('mode == "team"', hud)
+        self.assertIn('shutil.copyfile(TOOLS / "Wq183OnlinePortraitStrip.kt"', overlay)
+        self.assertIn('update("PremiumOnlineScreen.kt", online_two_player_portraits)', overlay)
+        self.assertIn('Wq183OnlinePortraitStrip(', overlay)
+        self.assertIn('hostAvatar=match.hostAvatar, guestAvatar=match.guestAvatar', overlay)
+        self.assertIn("render both participant maskots in online match + finished HUD", overlay)
+
     def test_5_answers_and_contrast(self):
         text=(V/"Wq183QuizQuality.kt").read_text("utf-8")
         self.assertIn("answers.size == 5",text)
