@@ -115,9 +115,11 @@ def room():
     s=once(s,'"phase" to "lobby", "level" to level, "topic" to topic.take(75),',
         '"phase" to "lobby", "level" to actualLevel, "topic" to topic.take(75),',
         "save board level")
-    s=once(s,'"size" to size, "seconds" to seconds, "boardId" to boardId,',
-        '"size" to size, "seconds" to seconds, "boardId" to actualBoardId,',
-        "save board id")
+    marker='"size" to size, "seconds" to seconds, "boardId" to boardId,'
+    assert s.count(marker)==2 and s.index(marker)>s.index('val initial = mapOf<String, Any>('),"P6 source needs the original room create map"
+    s=s.replace(marker,
+        '"size" to size, "seconds" to seconds, "boardId" to actualBoardId,',1)
+
     s=once(s,'''"quotaSlot" to slot,
                 )''',
         '''"quotaSlot" to slot,
