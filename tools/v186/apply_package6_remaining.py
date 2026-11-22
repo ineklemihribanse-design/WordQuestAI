@@ -303,14 +303,50 @@ def replays():
         "wordIndex=Wq186ArenaNext.choose(m,myUid,-1)",
         "wordIndex=Wq186ArenaNext.choose(m,myUid,-1,client.package6Rules.retries,client.package6Retries)",
         "opening clue respects retry budget")
-    s=once(s,
-        "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex)",
-        "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex,client.package6Rules.retries,client.package6Retries)",
-        "next clue respects retry budget")
-    s=once(s,
-        "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))",
-        "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected,client.package6Rules.retries,client.package6Retries))",
-        "skip does not revisit exhausted clue")
+    # Two approved source shapes: P6-only uses Wq186ArenaNext.choose,
+    # while the cumulative P1+P6 build uses a server-authorized selector.
+    # Never silently drop P1's server snapshot / playable-clue predicate.
+    legacy_auto="wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex)"
+    p1_auto='''wordIndex = Wq186ArenaNextWord.next(
+                    match.code,myUid,match.size,match.solvedBy.keys,wordIndex) {
+                    index->PremiumOnlineLimits.canAttempt(match,index,myUid)
+                } ?: wordIndex'''
+    if legacy_auto in s:
+        s=once(s,legacy_auto,
+            "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex,client.package6Rules.retries,client.package6Retries)",
+            "legacy next clue respects retry budget")
+    elif p1_auto in s:
+        s=once(s,p1_auto,'''wordIndex = Wq186ArenaNextWord.next(
+                    match.code,myUid,match.size,match.solvedBy.keys,wordIndex) {
+                    index->PremiumOnlineLimits.canAttempt(match,index,myUid)
+                } ?: Wq186ArenaNext.choose(
+                    match,myUid,wordIndex,client.package6Rules.retries,client.package6Retries)''',
+            "P1 server-authorized next word with P6 bounded final-round fallback")
+        # P1's snapshot listener must not erase a legitimate final-round
+        # retry answer when its legacy canAttempt guard still says 'failed'.
+        p1_guard='''            !PremiumOnlineLimits.canAttempt(latest,wordIndex,myUid)) {'''
+        p1_retry_guard='''            !PremiumOnlineLimits.canAttempt(latest,wordIndex,myUid) &&
+            !(PremiumOnlineLimits.gaveUpOrFailed(latest,wordIndex,myUid) &&
+                wordIndex !in latest.solvedBy.keys &&
+                (client.package6Retries[wordIndex] ?: 0) < client.package6Rules.retries &&
+                (0 until latest.size).none { index ->
+                    index !in latest.solvedBy.keys &&
+                        !PremiumOnlineLimits.gaveUpOrFailed(latest,index,myUid)
+                })) {'''
+        s=once(s,p1_guard,p1_retry_guard,
+            "P1 snapshot listener retains P6 authorized replay draft")
+    else:
+        raise AssertionError("P6 automatic next clue differs from both approved P1 and P6 shapes")
+    legacy_skip="setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))"
+    if legacy_skip in s:
+        s=once(s,legacy_skip,
+            "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected,client.package6Rules.retries,client.package6Retries))",
+            "legacy skip respects retries")
+    else:
+        # P1 skip stays snapshot-authorized and is advanced only after
+        # the network transaction commits in apply_package6_to_186.py.
+        assert s.count("setWordIndex(nextPlayable)")==1, (
+            "P1 network-committed skip callback must keep nextPlayable")
     # Keep any later turn/deadline validations while changing the unknown rule.
     import re
     matches=list(re.finditer(r'(?m)^([ \t]*)val canAnswer\s*=\s*([^\n]+)$',s))

@@ -343,6 +343,14 @@ def fair_online():
                                     }""",
              "consume a skip atomically")
     # The actual word change happens only after Firebase transaction commits.
+    # Package 1 computed nextPlayable from the authoritative match snapshot.
+    # Preserve that server-authorized selection after the skip transaction:
+    # the Package 6 generic chooser alone can return a deferred clue.
+    if "setWordIndex(nextPlayable)" in s:
+        s=once(s,
+            "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))",
+            "setWordIndex(nextPlayable)",
+            "P1 validated skip target survives P6 transaction")
     stale='''                                    setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))
                                     setAnswerText("")
                                 },Modifier.fillMaxWidth())'''
