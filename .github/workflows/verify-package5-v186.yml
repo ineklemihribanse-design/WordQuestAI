@@ -1,0 +1,1608 @@
+name: Verify WordQuest 1.0.86 Package 5 integrated Kotlin (no release)
+on:
+  push:
+    branches: [feature/v186-package5-responsive-matching-lena]
+    paths:
+      - 'tools/v186/**'
+      - '.github/workflows/verify-package5-v186.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: wq-p5-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require the exact user-provided chair GLB before any expensive build
+        if: ${{ github.ref == 'refs/heads/feature/v171-lena-chat-emoji-attachments-motion-subtitles' }}
+        run: |
+          set -euo pipefail
+          file=assets/studio/chairs_and_window_set_-_game_ready.glb
+          test -s "$file" || {
+            echo "::error::Please upload the exact original 19MB chat GLB to $file; ChatGPT attachments are not automatically GitHub files."
+            exit 1
+          }
+          echo "379c0537249af58dc1115184dc9f2257f045a1ba4bb9a266b7ab67898e8e8c81  $file" | sha256sum -c -
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Locate preinstalled Android SDK
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+          test -x "$SDKM"
+          "$SDKM" --list_installed | head -60
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Android dependencies and voice generator
+        run: |
+          set -euo pipefail
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 update
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::Queue-Mode=access -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 install -y --no-install-recommends espeak libsndfile1
+          python3 -m pip install --retries 5 --timeout 60 soundfile
+          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+          "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+      # Build the historical source once, then reuse its exact source tree on
+      # later v1.0.75-only edits. The cache key includes EVERY tracked input
+      # except tools/v175/**; those are applied fresh below on every run.
+      # Keying from git tree object IDs avoids hashing multi-megabyte GLBs.
+      - name: Compute validated pre-1.0.75 baseline cache identity
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          BASE_HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v175\//' | sha256sum | cut -d' ' -f1)"
+          test -n "$BASE_HASH"
+          echo "WQ175_BASELINE_CACHE_KEY=wq175-pre175-v1-$BASE_HASH" >> "$GITHUB_ENV"
+      - name: Restore unchanged pre-1.0.75 Android baseline
+        id: v175_baseline_restore
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        uses: actions/cache/restore@v4
+        with:
+          path: source
+          key: ${{ env.WQ175_BASELINE_CACHE_KEY }}
+      - name: Validate restored Android source before applying fresh v1.0.75 code
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit == 'true' }}
+        run: |
+          set -euo pipefail
+          test -s source/gradlew
+          test -s source/app/build.gradle.kts
+          test -s source/app/src/main/AndroidManifest.xml
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq 'versionCode = 100' source/app/build.gradle.kts
+          echo 'CACHE HIT: unchanged full 1.0.74 source restored; 1.0.75 overlays still run.'
+
+      - name: Extract complete source (except generated audio)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s wq-noaudio.zip
+          unzip -tq wq-noaudio.zip
+          mkdir -p source
+          unzip -q wq-noaudio.zip -d source
+          test -s source/gradlew
+      - name: Restore v0.8.1 source changes
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v081-patch.b64
+          base64 -d v081-patch.b64 > /tmp/wordquest-081-patch.zip
+          unzip -tq /tmp/wordquest-081-patch.zip
+          unzip -oq /tmp/wordquest-081-patch.zip -d source
+          grep -q 'versionName = "0.8.1"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline081"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/DeviceAccentPlayer.kt
+      - name: Apply UK-only locale speech compatibility fix
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v081-ukfix.patch.gz.b64
+          base64 -d v081-ukfix.patch.gz.b64 | gzip -dc > /tmp/wordquest-uk-fix.patch
+          echo "8e47ab59d4320d21dd197b7df8331e991c3060545617f0f8d253286cbacc35d8  /tmp/wordquest-uk-fix.patch" | sha256sum -c -
+          cd source
+          git apply --check /tmp/wordquest-uk-fix.patch
+          git apply /tmp/wordquest-uk-fix.patch
+          grep -q 'applicationIdSuffix = ".offline081uk"' app/build.gradle.kts
+          grep -q SYSTEM_BRITISH_VOICE app/src/main/java/com/kelimebulmacasi/a1/DeviceAccentPlayer.kt
+      - name: Apply v0.8.2 font scale and gentle sound update
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v082-features.patch.gz.b64
+          base64 -d v082-features.patch.gz.b64 | gzip -dc > /tmp/wordquest-082.patch
+          echo "5ef5fb42dbbd81e0619742c0a2afc817228a0749d4327631cb59b55fe04d7fae  /tmp/wordquest-082.patch" | sha256sum --check
+          cd source
+          git apply --check /tmp/wordquest-082.patch
+          git apply /tmp/wordquest-082.patch
+          python3 tools/make_soft_sound.py
+          test -s app/src/main/res/raw/correct_soft.wav
+          grep -q 'versionName = "0.8.2"' app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline082"' app/build.gradle.kts
+      - name: Restore all v0.9.0 features and version
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v090-delta.b64
+          base64 -d v090-delta.b64 > /tmp/wq090.zip
+          unzip -tq /tmp/wq090.zip
+          unzip -oq /tmp/wq090.zip -d source
+          grep -q 'versionName = "0.9.0"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline082"' source/app/build.gradle.kts
+          grep -q 'signingConfig = null' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt
+          test -s source/app/src/main/res/raw/correct_soft.wav
+      - name: Apply v1.0 learning and YDS preview
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v100-source-overlay.b64
+          base64 -d v100-source-overlay.b64 > /tmp/wordquest-v100-overlay.zip
+          echo "16abbee32d3e6ead16bdfe4906990954d7403204f8fd761609455052e7e9f27c  /tmp/wordquest-v100-overlay.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-v100-overlay.zip
+          unzip -oq /tmp/wordquest-v100-overlay.zip -d source
+          cd source
+          git apply --check ../v100-compile-fix.patch
+          git apply ../v100-compile-fix.patch
+          git apply --check ../v100-yds-content-fix.patch
+          git apply ../v100-yds-content-fix.patch
+          cd ..
+          grep -q 'versionName = "1.0.0-preview"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline082"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/YdsCenterScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningDashboardScreen.kt
+      - name: Apply complete Firebase arena and separate-install v1.0.1 configuration
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v101-standalone-overlay.b64
+          base64 -d v101-standalone-overlay.b64 > /tmp/wordquest-101.zip
+          echo "655bf8f2a7668117ec694430a6bd2b6df9470057b607b5282e12dfb86559ea1e  /tmp/wordquest-101.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-101.zip
+          unzip -oq /tmp/wordquest-101.zip -d source
+          grep -q 'versionName = "1.0.1-firebase-standalone"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          test -s source/app/src/main/res/values/cloud_config.xml
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/FirebaseLiveArenaTest.kt
+      - name: Apply v1.0.2 all competition modes and optional server
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v102-firebase-modes-overlay-fixed.b64
+          base64 -d v102-firebase-modes-overlay-fixed.b64 > /tmp/wordquest-102.zip
+          echo "442e196954f660099b6cc59553b7663d8e009383e8c9bd86dc81a5ab4ddda1d9  /tmp/wordquest-102.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-102.zip
+          unzip -oq /tmp/wordquest-102.zip -d source
+          grep -q 'versionName = "1.0.2-firebase-arena"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'Google OAuth' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+      - name: Configure Google OAuth and upgrade-compatible v1.0.3
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          cd source
+          git apply --check ../v103-google-oauth.patch
+          git apply ../v103-google-oauth.patch
+          grep -q 'versionCode = 26' app/build.gradle.kts
+          grep -q 'versionName = "1.0.3-google-oauth"' app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' app/build.gradle.kts
+          grep -q '198875801515-cn2hcpeg16vs9vsq0de38tbf0ne8t5er.apps.googleusercontent.com' app/src/main/res/values/cloud_config.xml
+      - name: Match Firebase registered Android client (offline101) for v1.0.4
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          cd source
+          git apply --check ../v104-firebase-android-id.patch
+          git apply ../v104-firebase-android-id.patch
+          grep -q 'versionCode = 27' app/build.gradle.kts
+          grep -q 'versionName = "1.0.4-firebase-identity"' app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' app/build.gradle.kts
+          grep -q '1:198875801515:android:73562494e08141b79954ee' app/src/main/res/values/cloud_config.xml
+      - name: Fix persistent Google-account sync using Firebase Realtime Database
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v105-realtime-sync-overlay.b64
+          base64 -d v105-realtime-sync-overlay.b64 > /tmp/wordquest-105.zip
+          echo "daa556d3b4c9e413014f4c0c7b01349d087bbd71ec7fb3e8d59f4f85f4c3473e  /tmp/wordquest-105.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-105.zip
+          unzip -oq /tmp/wordquest-105.zip -d source
+          grep -q 'versionCode = 28' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.5-realtime-sync"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'FirebaseDatabase' source/app/src/main/java/com/kelimebulmacasi/a1/Accounts.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/CloudSyncKeyTest.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Apply v1.0.6 shared Google-account room quota and invitations
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v106-account-quota-share-overlay.b64
+          base64 -d v106-account-quota-share-overlay.b64 > /tmp/wordquest-106.zip
+          echo "09eda8db82dfbea22dbba05dc11909c172010217a3226b1cb02ca65d306d60ad  /tmp/wordquest-106.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-106.zip
+          unzip -oq /tmp/wordquest-106.zip -d source
+          test -s source/database.rules.json
+          python3 -m json.tool source/database.rules.json >/dev/null
+          grep -q 'versionCode = 29' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.6-account-room-quota"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'WhatsApp' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          grep -q 'roomQuota' source/database.rules.json
+          grep -q 'roomsPerAccountPerUtcDay = 10' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+      - name: Keep only Copy and Share buttons in v1.0.7
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt")
+          old = p.read_text(encoding="utf-8")
+          button = '                OutlinedButton(onClick = { shareRoomCode(context, client.roomCode, true) }) { Text("WhatsApp") }\n'
+          assert old.count(button) == 1
+          p.write_text(old.replace(button, ""), encoding="utf-8")
+          new = p.read_text(encoding="utf-8")
+          assert 'Text("WhatsApp")' not in new
+          assert 'Text("Kopyala")' in new and 'Text("Paylaş")' in new
+          g = Path("source/app/build.gradle.kts")
+          gradle = g.read_text(encoding="utf-8")
+          assert gradle.count("versionCode = 29") == 1
+          assert gradle.count('versionName = "1.0.6-account-room-quota"') == 1
+          gradle = gradle.replace("versionCode = 29", "versionCode = 30")
+          gradle = gradle.replace('versionName = "1.0.6-account-room-quota"', 'versionName = "1.0.7-share-only"')
+          assert 'applicationIdSuffix = ".offline101"' in gradle
+          g.write_text(gradle, encoding="utf-8")
+          print("Only the duplicate WhatsApp button removed; Copy and Share retained")
+          PY
+      - name: Apply v1.0.8 account nicknames and safe account deletion
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v108-nickname-account-delete-overlay.b64
+          base64 -d v108-nickname-account-delete-overlay.b64 > /tmp/wordquest-108-overlay.zip
+          echo "19126a9899d7ab05309c2c62be7d381b0538b3406b7f1be1362c3185d62c777d  /tmp/wordquest-108-overlay.zip" | sha256sum --check
+          unzip -tq /tmp/wordquest-108-overlay.zip
+          unzip -oq /tmp/wordquest-108-overlay.zip -d source
+          (cd source && git apply --check ../v108-accounts-visibility-fix.patch && git apply ../v108-accounts-visibility-fix.patch)
+          grep -q 'versionCode = 31' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.8-player-nicknames"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'hostName' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          grep -q 'guestName' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaNicknameTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/AccountDeletionUiContractTest.kt
+          grep -q 'deleteWordQuestAccount' source/app/src/main/java/com/kelimebulmacasi/a1/Accounts.kt
+          grep -q 'accountDeleteBusy' source/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Apply v1.0.9 friends, names, account sign-in and deletion
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v109-source-overlay.b64
+          base64 -d v109-source-overlay.b64 > /tmp/wordquest-v109-overlay.zip
+          unzip -tq /tmp/wordquest-v109-overlay.zip
+          unzip -oq /tmp/wordquest-v109-overlay.zip -d source
+          (cd source && git apply --check ../v109-compile-fix.patch && git apply ../v109-compile-fix.patch)
+          grep -q 'versionCode = 32' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.9-account-friends"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/FriendsHub.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+      - name: Apply v1.0.10 app-wide live friend and room request popups
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v110-live-notifications-overlay.b64
+          base64 -d v110-live-notifications-overlay.b64 > /tmp/wordquest-v110-overlay.zip
+          unzip -tq /tmp/wordquest-v110-overlay.zip
+          unzip -oq /tmp/wordquest-v110-overlay.zip -d source
+          grep -q 'versionCode = 33' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.10-live-invitations"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'activeAlert' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/SocialAlertTest.kt
+      - name: Apply v1.0.11 Premium Arena and A1-A2 content library
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v111-premium-a1-a2-overlay.b64
+          base64 -d v111-premium-a1-a2-overlay.b64 > /tmp/wq-v111.zip
+          unzip -tq /tmp/wq-v111.zip
+          unzip -oq /tmp/wq-v111.zip -d source
+          grep -q 'versionCode = 34' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.11-premium-a1-a2"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumArenaRulesTest.kt
+          python3 source/tools/verify_premium_arena_content.py
+      - name: Apply v1.0.12 realtime Premium Arena multiplayer migration
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v112-premium-online-overlay.b64
+          base64 -d v112-premium-online-overlay.b64 > /tmp/wordquest-v112-overlay.zip
+          unzip -tq /tmp/wordquest-v112-overlay.zip
+          unzip -oq /tmp/wordquest-v112-overlay.zip -d source
+          (cd source && git apply --check ../v112-compile-fix.patch && git apply ../v112-compile-fix.patch)
+          (cd source && git apply --check ../v112-premium-theme-fix.patch && git apply ../v112-premium-theme-fix.patch)
+          (cd source && git apply --check ../v112-team-timer-fix.patch && git apply ../v112-team-timer-fix.patch)
+          grep -q 'versionCode = 35' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.12-premium-online"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          with open('source/database.rules.json', encoding='utf8') as f:
+              rules=json.load(f)['rules']
+          assert all(k in rules for k in ('rooms','premiumRooms','roomQuota','friends','roomInvites'))
+          assert 'premiumRooms' in rules['roomInvites']['$receiver']['$sender']['.validate']
+          print('Premium room and invite rules: valid JSON')
+          PY
+      - name: Apply v1.0.13 fair turns, automatic timer and compact responsive Arena
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v113-premium-ux-overlay.b64
+          base64 -d v113-premium-ux-overlay.b64 > /tmp/wq-v113-overlay.zip
+          echo "7bbeaa5a85f38803bfb07cd7d13588614cfcaa41aae90e5b1e95d3375eec9f34  /tmp/wq-v113-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v113-overlay.zip
+          unzip -oq /tmp/wq-v113-overlay.zip -d source
+          grep -q 'versionCode = 36' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.13-premium-arena-ux"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json > /dev/null
+          grep -q 'fun passIfExpired()' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'Yeni oyuna başlamak ister misiniz?' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.14 live typed letters, two-player unknown and score penalties
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v114-answer-feedback-overlay.b64
+          base64 -d v114-answer-feedback-overlay.b64 > /tmp/wq-v114-overlay.zip
+          echo "a2704d5f8dec8c9659a8db6cc3b7170f5b199a6c0a44136676c599a32c0a9382  /tmp/wq-v114-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v114-overlay.zip
+          unzip -oq /tmp/wq-v114-overlay.zip -d source
+          grep -q 'versionCode = 37' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.14-premium-answers"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json > /dev/null
+          grep -q 'fun dontKnow(index: Int)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'fun wrong(index: Int)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'keyboardActions = KeyboardActions(onDone' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.15 both-player failed answer reveal and score preservation
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v115-duel-reveal-fix-overlay.b64
+          base64 -d v115-duel-reveal-fix-overlay.b64 > /tmp/wq-v115-overlay.zip
+          echo "9bd97eeb042cedadca5666ec67811caf0780a3044fd539595a68f05030e9184f  /tmp/wq-v115-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v115-overlay.zip
+          unzip -oq /tmp/wq-v115-overlay.zip -d source
+          (cd source && git apply --check ../v115-compile-null-fix.patch && git apply ../v115-compile-null-fix.patch)
+          grep -q 'versionCode = 38' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.15-duel-reveal-fix"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json >/dev/null
+          grep -q 'fun syncFailedAttemptReveals()' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
+          grep -q 'fun wrongThenUnknownAlsoRevealsWithoutPenalizingUnknownPlayer()' source/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
+      - name: Apply v1.0.16 in-app GitHub Releases automatic updater
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v116-updater-overlay.b64
+          base64 -d v116-updater-overlay.b64 > /tmp/wq-v116-overlay.zip
+          echo "d79ad2fdc2c96cf7fb723d912439d153b9742e5531368c438d4b01f14c75c05d  /tmp/wq-v116-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v116-overlay.zip
+          unzip -oq /tmp/wq-v116-overlay.zip -d source
+          (cd source && git apply --check ../v116-kotlin-fix.patch && git apply ../v116-kotlin-fix.patch)
+          grep -q 'versionCode = 39' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.16-github-updates"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/AppUpdater.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/UpdateUi.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/UpdateProtocolTest.kt
+          grep -q 'REQUEST_INSTALL_PACKAGES' source/app/src/main/AndroidManifest.xml
+          python3 -m xml.dom.minidom source/app/src/main/AndroidManifest.xml > /dev/null
+          python3 -m unittest discover -s tools/tests -v
+      - name: Apply v1.0.17 summary, spaced-repetition notebook, teacher and celebration
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v117-premium-summary-overlay.b64
+          base64 -d v117-premium-summary-overlay.b64 > /tmp/wq-v117-overlay.zip
+          echo "c17d2d620d3164036f8df3f73c6dd9c15b00ff120b5e21420556c4758310c514  /tmp/wq-v117-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v117-overlay.zip
+          unzip -oq /tmp/wq-v117-overlay.zip -d source
+          grep -q 'versionCode = 40' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.17-premium-results"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumMatchReview.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PremiumFeedbackSounds.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumMatchReviewTest.kt
+          test -s source/app/src/main/res/raw/wrong_soft.wav
+          test -s source/app/src/main/res/raw/victory_soft.wav
+          grep -q 'fun recordPremiumMatchLearning' source/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
+          grep -q 'AI ÖĞRETMENİ İLE ÇALIŞ' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.18 dated collections, flashcards and synchronized result flow
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v118-learning-studio-overlay.b64
+          base64 -d v118-learning-studio-overlay.b64 > /tmp/wq-v118-overlay.zip
+          echo "8a12eeb3ec3e0a1552c7e36edaa2ee504a65a409c418bc5bc9e3f3cc1fab6c16  /tmp/wq-v118-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v118-overlay.zip
+          unzip -oq /tmp/wq-v118-overlay.zip -d source
+          (cd source && git apply --check ../v118-test-db-migration.patch && git apply ../v118-test-db-migration.patch)
+          (cd source && git apply --check ../v118-compile-button-fix.patch && git apply ../v118-compile-button-fix.patch)
+          (cd source && git apply --check ../v118-sql-column-fix.patch && git apply ../v118-sql-column-fix.patch)
+          (cd source && git apply --check ../v118-both-error-tags-fix.patch && git apply ../v118-both-error-tags-fix.patch)
+          grep -q 'versionCode = 41' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.18-learning-studio"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'null, 4,' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStore.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningCollections.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LearningCollectionsTest.kt
+          grep -q 'PremiumWinnerCelebration(match.code, winnerName)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+      - name: Apply v1.0.19 Turkey midnight, phone sounds and direct friend invitations
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v119-arena-midnight-sounds-overlay.b64
+          base64 -d v119-arena-midnight-sounds-overlay.b64 > /tmp/wq-v119-overlay.zip
+          echo "3a4e3fe9e16925c8a871ad5776a29d5c42f31578b5a3f38e064ce352c1e7dbba  /tmp/wq-v119-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v119-overlay.zip
+          unzip -oq /tmp/wq-v119-overlay.zip -d source
+          grep -q 'versionCode = 42' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.19-arena-midnight-sounds"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          python3 -m json.tool source/database.rules.json >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/ArenaMidnightAndSoundsTest.kt
+          grep -q 'turkeyQuotaDayIndexKey' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
+          grep -q 'AudioAttributes.USAGE_GAME' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumFeedbackSounds.kt
+          python3 - <<'PY'
+          import json
+          data = json.load(open('source/database.rules.json'))['rules']
+          for rule in [
+              data['rooms']['$code']['.write'],
+              data['premiumRooms']['$code']['.write'],
+              data['roomQuota']['$uid']['$day']['$slot']['.write'],
+          ]:
+              assert "10800000" in rule, 'A quota security rule still uses UTC midnight'
+          PY
+      - name: Apply v1.0.20 multi-AI, avatars, C1-C2 Arena and phrasal scan improvements
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v120-multi-ai-arena-overlay.b64
+          base64 -d v120-multi-ai-arena-overlay.b64 > /tmp/wq-v120-overlay.zip
+          echo "682adc622ae1ff9de697d4d7f620a39c21f5b7fd187a24a8907a2c42cdc7f1bb  /tmp/wq-v120-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v120-overlay.zip
+          unzip -oq /tmp/wq-v120-overlay.zip -d source
+          (cd source && git apply --check ../v120-compile-visibility-fix.patch && git apply ../v120-compile-visibility-fix.patch)
+          (cd source && git apply --check ../v120-test-asset-and-levels-fix.patch && git apply ../v120-test-asset-and-levels-fix.patch)
+          (cd source && git apply --check ../v120-yds-explanation-fix.patch && git apply ../v120-yds-explanation-fix.patch)
+          grep -q 'versionCode = 43' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.20-multi-ai-advanced-arena"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/AiProviders.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/AiProviderSettings.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/AiProviderAndPhraseTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/AdvancedArenaPackTest.kt
+          grep -q 'B1' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaContent.kt
+          python3 -m json.tool source/database.rules.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          a=Path('source/app/src/main/assets')
+          words=json.loads((a/'arena-vocabulary-v1.json').read_text())
+          boards=json.loads((a/'arena-crosswords-v1.json').read_text())
+          assert len(words) >= 1600 and len(boards) >= 830
+          assert {'A1','A2','B1','B2','C1','C2'} <= set(w['level'] for w in words)
+          assert all(any(b['level']==lvl and len(b['words'])==20 for b in boards) for lvl in ('B1','B2','C1','C2'))
+          rules=json.loads(Path('source/database.rules.json').read_text())['rules']
+          assert all("'" + lvl + "'" in rules['premiumRooms']['$code']['level']['.validate'] for lvl in ('B1','B2','C1','C2'))
+          PY
+      - name: Apply v1.0.21 genuine offline 3D teacher and conversation controls
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          test -s v121-live-3d-teacher-overlay.b64
+          base64 -d v121-live-3d-teacher-overlay.b64 > /tmp/wq-v121-overlay.zip
+          echo "c671447dc30cf761a9e9804487047f0054fe07431d855987bc2a321b5f0d9b3e  /tmp/wq-v121-overlay.zip" | sha256sum -c -
+          unzip -tq /tmp/wq-v121-overlay.zip
+          unzip -oq /tmp/wq-v121-overlay.zip -d source
+          grep -q 'versionCode = 44' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.21-3d-live-teacher"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/teacher_3d_stage.html
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LiveTeacherStageTest.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          h=Path('source/app/src/main/assets/teacher_3d_stage.html').read_text()
+          assert "getContext('webgl'" in h
+          assert 'fetch(' not in h and 'https://' not in h
+          assert "connect-src 'none'" in h
+          assert all(n in h for n in ('Elif:', 'Deniz:', 'Mert:'))
+          assert "requestAnimationFrame(frame)" in h
+          PY
+          sed -n '/<script>/,/<\\/script>/p' source/app/src/main/assets/teacher_3d_stage.html | sed '1d;$d' > /tmp/wq-teacher3d.js
+          node --check /tmp/wq-teacher3d.js
+      - name: Repair Android WebGL teacher visibility for v1.0.22
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 -m py_compile tools/patch_teacher_render_122.py
+          python3 tools/patch_teacher_render_122.py
+          grep -q 'versionCode = 45' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.22-3d-render-fix"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'alpha:false' source/app/src/main/assets/teacher_3d_stage.html
+          grep -q '__teacherRenderReady' source/app/src/main/assets/teacher_3d_stage.html
+          grep -q 'LAYER_TYPE_HARDWARE' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          sed -n '/<script>/,/<\/script>/p' source/app/src/main/assets/teacher_3d_stage.html | sed '1d;$d' > /tmp/wq-teacher3d-v122.js
+          node --check /tmp/wq-teacher3d-v122.js
+      - name: Apply native teacher that remains visible when Android WebGL silently fails
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 -m py_compile tools/patch_teacher_native_123.py
+          python3 tools/patch_teacher_native_123.py
+          grep -q 'versionCode = 46' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.23-native-avatar-safety"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'internal fun TeacherStage3D' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'drawIntoCanvas' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          ! grep -q 'WebView(context)' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q '2D güvenli görünüm' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+      - name: Apply v1.0.24 full body OpenGL ES teacher, pinch zoom and foreign names
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 -m py_compile tools/patch_teacher_3d_124.py
+          python3 tools/patch_teacher_3d_124.py
+          grep -q 'versionCode = 47' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.24-native-fullbody-3d"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'GLSurfaceView.Renderer' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'MotionEvent.ACTION_POINTER_DOWN' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'GL_TRIANGLES' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherFallback2D.kt
+          grep -q 'Elif("Emma"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Deniz("Sophia"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Mert("Ethan"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Teacher3DCameraTest.kt
+      - name: Refine full body 3D anatomy and natural facial features for 1.0.25
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 -m py_compile tools/patch_teacher_quality_125.py
+          python3 tools/patch_teacher_quality_125.py
+          grep -q 'versionCode = 48' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.25-teacher-anatomy-polish"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'ProfileMesh' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'geometry.bind(posLoc,normalLoc)' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'val mouthOpen = if(state.speaking)' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'motionEvent' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt || grep -q 'MotionEvent.ACTION_POINTER_DOWN' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher3DRenderer.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherFallback2D.kt
+          grep -q 'Elif("Emma"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Deniz("Sophia"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+          grep -q 'Mert("Ethan"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
+      - name: Install CC0 rigged humans and native Filament renderer
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 -m py_compile tools/patch_humanoid_glb_126.py tools/v126/install_humanoid_assets.py
+          python3 tools/patch_humanoid_glb_126.py
+          python3 tools/v126/install_humanoid_assets.py
+          grep -q 'versionCode = 49' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.26-rigged-humanoid-glb"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'implementation("io.github.sceneview:sceneview:2.3.0")' source/app/build.gradle.kts
+          grep -q 'ModelNode(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          test -s source/app/src/main/assets/avatars/AVATAR_PROVENANCE.json
+          test -s source/app/src/main/assets/avatars/emma.glb
+          test -s source/app/src/main/assets/avatars/sophia.glb
+          test -s source/app/src/main/assets/avatars/ethan.glb
+      - name: Stage actual licensed human teachers (Emma/Sophia/Ethan), never VRoid anime
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m pip install Pillow==11.3.0
+          python3 -m py_compile tools/patch_premium_avatar_127.py \
+            tools/v1271/audit_human_teachers_1271.py \
+            tools/v127/normalize_rocketbox_textures.py \
+            tools/v1271/bake_human_visemes_1271.py \
+            tools/v1271/stage_human_teachers_1271.py \
+            tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/patch_premium_avatar_127.py
+          python3 tools/v1271/audit_human_teachers_1271.py
+          for teacher in emma sophia ethan; do
+            python3 tools/v127/normalize_rocketbox_textures.py \
+              "candidate-human-teachers/$teacher/$teacher.glb" \
+              "candidate-human-teachers/$teacher/$teacher-mobile.glb"
+            python3 tools/v1271/bake_human_visemes_1271.py \
+              "candidate-human-teachers/$teacher/$teacher-mobile.glb" \
+              "candidate-human-teachers/$teacher/$teacher-animated.glb"
+          done
+          python3 tools/v1271/stage_human_teachers_1271.py
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          grep -q 'versionCode = 50' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.27-premium-human-avatar"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'cameraPreset' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'rememberMainLightNode' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+          echo 'HUMAN GLBs ONLY. Visual/Android approval still pending.'
+      - name: Apply 1.0.27.1 real voice callbacks, animation state engine and JUnit tests
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v1271/apply_animated_1271.py tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v1271/apply_animated_1271.py
+          test -s source/app/src/main/assets/avatars/AVATAR_LIPSYNC_METADATA.json
+          grep -q 'versionCode = 51' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.27.1-animated-lipsync-avatar"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'onRangeStart' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationAudio.kt
+          grep -q 'onActualSpeechRange' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          folder=Path("source/app/src/main/assets/avatars")
+          meta=json.loads((folder/"AVATAR_LIPSYNC_METADATA.json").read_text())
+          assert meta["quality"]=="TEXT_RANGE_APPROXIMATION"
+          assert {a["actor"] for a in meta["actors"]}=={"emma","sophia","ethan"}
+          for actor in meta["actors"]:
+              assert len(actor["clips"])==7 and actor["rigs"]>0
+              assert all(name.startswith("Teacher_Viseme_") for name in actor["clips"])
+          print("Three Rocketbox human GLB rigs kept, 13 original movements + 7 mouth clips each. Phoneme sync NOT claimed.")
+          PY
+          grep -q 'AvatarStateController' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -q 'AvatarMotionCoreTest' <(ls source/app/src/test/java/com/kelimebulmacasi/a1/AvatarMotionCoreTest.kt)
+          grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
+      - name: Activate user-authorized 1.0.28 updater-compatible preview (upgrade over beta 51)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v1271/prepare_user_preview_1272.py
+          python3 tools/v1271/prepare_user_preview_1272.py
+          python3 -m py_compile tools/v129/apply_teacher_crash_safemode.py tools/generate_release_manifest.py tools/prune_public_releases.py
+          python3 tools/v129/apply_teacher_crash_safemode.py
+          grep -q 'versionCode = 54' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.29-teacher-crash-safemode"' source/app/build.gradle.kts
+          grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
+          grep -q 'AVATAR_LIPSYNC_METADATA' <(ls source/app/src/main/assets/avatars/AVATAR_LIPSYNC_METADATA.json)
+          python3 tools/v1271/verify_staged_human_teachers_1271.py
+          python3 tools/v129/test_teacher_safe_mode.py
+      - name: Build QA v1.0.30 real Android GLB in isolated renderer process
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          python3 -m py_compile tools/v130/apply_android_real_glb_probe.py tools/v130/test_android_real_glb_probe.py
+          python3 tools/v130/apply_android_real_glb_probe.py
+          python3 tools/v130/build_android_mobile_glb.py
+          python3 tools/v130/test_android_real_glb_probe.py
+          python3 tools/v130/audit_android_glb_memory.py
+      - name: Apply 1.0.31 Android female crash containment and improved camera/Idle QA
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v131/build_female_lite_glb.py tools/v131/apply_android_131.py tools/v131/test_android_131.py
+          python3 tools/v131/build_female_lite_glb.py
+          python3 tools/v131/apply_android_131.py
+          python3 tools/v131/test_android_131.py
+          python3 tools/v131/audit_human_idle_pose.py
+      - name: Audit female GLB render risks and build native morph-isolation QA
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v132b/audit_female_gpu_risks.py tools/v132b/build_morph_isolation.py tools/v132b/densify_female_morphs.py tools/v132b/apply_qa_132.py tools/v132b/test_qa_132.py
+          python3 tools/v132b/audit_female_gpu_risks.py
+          python3 tools/v132b/build_morph_isolation.py
+          python3 tools/v132b/densify_female_morphs.py
+          python3 tools/v132b/apply_qa_132.py
+          python3 tools/v132b/test_qa_132.py
+      - name: Validate female human GLB skin/index geometry and native crash trace QA
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v133/audit_human_geometry.py tools/v133/apply_qa_133.py tools/v133/test_qa_133.py
+          python3 tools/v133/audit_human_geometry.py
+          python3 tools/v133/apply_qa_133.py
+          python3 tools/v133/test_qa_133.py
+      - name: Restore startup-stable runtime for 1.0.35 recovery APK
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v135/apply_launch_recovery_135.py tools/v135/test_launch_recovery_135.py
+          python3 tools/v135/apply_launch_recovery_135.py
+          python3 tools/v135/test_launch_recovery_135.py
+      - name: Enable Ethan-only real AI teacher without launcher regressions
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v136/apply_ethan_teacher_136.py tools/v136/test_safe_ethan_teacher_136.py
+          python3 tools/v136/apply_ethan_teacher_136.py
+      - name: Archive inactive Emma and Sophia outside Android APK
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v134/archive_inactive_teachers_134.py
+          python3 tools/v134/archive_inactive_teachers_134.py
+          python3 tools/v136/test_safe_ethan_teacher_136.py
+      - name: Build crash-isolated Ethan 3D AI voice teacher QA
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v137/apply_isolated_3d_voice_137.py tools/v137/test_isolated_3d_voice_137.py
+          python3 tools/v137/apply_isolated_3d_voice_137.py
+          python3 tools/v137/test_isolated_3d_voice_137.py
+      - name: Disable Claude provider choice while preserving saved user credentials
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v138/apply_hide_claude_138.py tools/v138/test_hide_claude_138.py
+          python3 tools/v138/apply_hide_claude_138.py
+          python3 tools/v138/test_hide_claude_138.py
+      - name: Diagnose conversation AI errors without exposing keys (1.0.39 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v139/apply_conversation_diagnostics_139.py tools/v139/test_conversation_diagnostics_139.py
+          python3 tools/v139/apply_conversation_diagnostics_139.py
+          python3 tools/v139/test_conversation_diagnostics_139.py
+      - name: Polish real Ethan voice range sync and calm rigged arms (1.0.40 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v140/tune_ethan_glb_140.py tools/v140/apply_ethan_motion_140.py tools/v140/test_ethan_motion_140.py
+          python3 tools/v140/tune_ethan_glb_140.py
+          python3 tools/v140/apply_ethan_motion_140.py
+          python3 tools/v140/test_ethan_motion_140.py
+      - name: Test user-video grounded Ethan head, arm and facial-loop improvement (1.0.41 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v141/apply_ethan_video_141.py tools/v141/test_ethan_video_141.py
+          python3 tools/v141/apply_ethan_video_141.py
+          python3 tools/v141/test_ethan_video_141.py
+      - name: Archive original Ethan and replace live 3D tutor with native human 2D (1.0.42 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v142/apply_realistic_2d_teacher_142.py tools/v142/test_realistic_2d_teacher_142.py
+          python3 tools/v142/apply_realistic_2d_teacher_142.py
+          python3 tools/v142/test_realistic_2d_teacher_142.py
+      - name: Validate actual articulated 2D eye-mouth-arm rig (1.0.43 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v143/apply_articulated_2d_143.py tools/v143/test_articulated_2d_143.py
+          python3 tools/v143/apply_articulated_2d_143.py
+          python3 tools/v143/test_articulated_2d_143.py
+      - name: Generate and verify 100 fixed-identity 2D animation images (1.0.44 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v144/generate_teacher_100.py tools/v144/apply_teacher_100_144.py tools/v144/test_teacher_100_144.py
+          python3 tools/v144/apply_teacher_100_144.py
+          python3 tools/v144/test_teacher_100_144.py
+      - name: Correct mouth alignment, natural blinking and verify 100-frame pixel stability (1.0.45 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v145/generate_teacher_100_145.py tools/v145/apply_facial_alignment_145.py tools/v145/test_facial_alignment_145.py
+          python3 tools/v145/apply_facial_alignment_145.py
+          python3 tools/v145/test_facial_alignment_145.py
+      - name: Install word-memory learning modes and keep existing folders/history
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v146/apply_vocabulary_studio_146.py
+          python3 tools/v146/apply_vocabulary_studio_146.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyStudyModel.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularySetupScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyPracticeScreen.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/VocabularyAnswerCheckerTest.kt
+          grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
+      - name: Preserve already-installed 2.5D experimental renderer and upgrade with vocabulary modes (v1.0.47)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v147/apply_25d_147.py tools/v147/test_25d_147.py
+          python3 tools/v147/apply_25d_147.py
+          python3 tools/v147/test_25d_147.py
+          grep -q 'versionCode = 72' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.47-vocabulary-2p5d-compat"' source/app/build.gradle.kts
+          grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
+          grep -q 'Teacher25DPortrait' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+      - name: Install approved neon vocabulary design and preserve word records (v1.0.48)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v148/apply_word_memory_148.py tools/v148/verify_word_memory_148.py
+          python3 tools/v148/apply_word_memory_148.py
+          python3 tools/v148/verify_word_memory_148.py
+          grep -q 'versionCode = 73' source/app/build.gradle.kts
+          grep -q 'NeonVocabularyPractice' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Apply approved light-blue Word Memory 1.0.50 screens
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v150/apply_word_memory_150.py
+          python3 tools/v148/configure_new_install.py
+          python3 tools/v150/apply_word_memory_150.py
+          grep -q 'versionCode = 79' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.54-word-memory"' source/app/build.gradle.kts
+          grep -q 'internal fun VocabularyNeonHome' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Integrate v1.0.53 Arena into v1.0.54 Word Memory for v1.0.57 QA
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          # Pin the previously reviewed Arena sources; do not mix in later experiments.
+          git fetch --depth=1 origin bdef5f95369c61944cd0c31477be7bd34be04c09
+          mkdir -p /tmp/wq-arena-153
+          git archive FETCH_HEAD tools/v122 tools/v148 tools/v150 tools/v151 tools/v152 tools/v153 | tar -x -C /tmp/wq-arena-153
+          # Apply the complete 1.0.53 keyboard-safe crossword transformation
+          # BEFORE Arena V2 and full-word conversion; copying one Kotlin file was insufficient.
+          mkdir -p tools/v122 source/app/src/test/java/com/kelimebulmacasi/a1
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordTyping.kt tools/v122/
+          cp /tmp/wq-arena-153/tools/v122/ArenaCrosswordInputTest.kt tools/v122/
+          cp /tmp/wq-arena-153/tools/v122/apply_mobile_arena_keyboard.py tools/v122/
+          cp /tmp/wq-arena-153/tools/v148/Arena*.kt tools/v148/
+          cp /tmp/wq-arena-153/tools/v148/PremiumOnlineRoomV2.kt tools/v148/
+          # Use the versioned compatibility script with both bare and
+          # keyboard-visible same-line Arena score-strip variants.
+          cp /tmp/wq-arena-153/tools/v150/Arena*.kt tools/v150/
+          cp /tmp/wq-arena-153/tools/v150/apply_arena_v3.py tools/v150/
+          mkdir -p tools/v151 tools/v152 tools/v153
+          cp /tmp/wq-arena-153/tools/v151/ArenaApproved*.kt tools/v151/
+          cp /tmp/wq-arena-153/tools/v151/approved_arena_hero.webp.b64 tools/v151/
+          cp /tmp/wq-arena-153/tools/v152/* tools/v152/
+          cp /tmp/wq-arena-153/tools/v153/* tools/v153/
+          # The 1.0.54 source has already dropped the unused missingCount declaration.
+          # Reuse the guarded version from the earlier compatibility branch.
+          git fetch --depth=1 origin 0280d52c6aa75bfa02782aa6073b1621016c72e3
+          git show FETCH_HEAD:tools/v152/apply_arena_full_word.py > tools/v152/apply_arena_full_word.py
+          python3 tools/v122/apply_mobile_arena_keyboard.py
+          grep -q 'val missingCount = fixedPattern.count' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
+          grep -q 'ArenaCrosswordTypingStrip(' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+          python3 tools/v157/apply_arena_v2_compat.py
+          python3 tools/v150/apply_arena_v3.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          d=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          patterns=["missingCount","ArenaCrosswordTypingStrip","answerText","wordAnswer","fillCrosswordGaps","Kelimeyi yaz","Eksik harfleri yaz","PAS GEÇ","BİLMİYORUM","crosswordFullWord"]
+          for name in ["PremiumOnlineScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt"]:
+              src=(d/name).read_text()
+              lines=src.splitlines()
+              print("=== FULL WORD INPUT COMPATIBILITY:",name,"===")
+              matched=[i for i,line in enumerate(lines) if any(p in line for p in patterns)]
+              print("Anchor matches:",len(matched))
+              for i in matched[:85]:
+                  lo=max(0,i-1);hi=min(len(lines),i+2)
+                  for k in range(lo,hi):
+                      print(f"{k+1}: {lines[k]}")
+                  print("--")
+          PY
+          python3 tools/v152/apply_arena_full_word.py
+          python3 tools/v153/apply_arena_rigs_153.py
+          python3 - <<'PY'
+          from pathlib import Path
+          pkg=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          for name in ["ArenaApprovedHome.kt","ArenaFullWordInput.kt","ArenaMascotRig.kt","ArenaRiggedMascot.kt","VocabularyNeonHome.kt","VocabularyNeonPractice.kt"]:
+              assert (pkg/name).is_file(),name
+          gradle=Path("source/app/build.gradle.kts")
+          content=gradle.read_text()
+          assert content.count("versionCode = 79")==1
+          assert content.count('versionName = "1.0.54-word-memory"')==1
+          assert 'applicationIdSuffix = ".fresh"' in content
+          content=content.replace("versionCode = 79","versionCode = 82")
+          content=content.replace('versionName = "1.0.54-word-memory"','versionName = "1.0.57-arena-memory"')
+          gradle.write_text(content)
+          print("v1.0.57 QA: v1.0.54 base, v1.0.53 Arena, unchanged .fresh identity")
+          PY
+          rm -rf /tmp/wq-arena-153
+      - name: Stage verified Lena GLB and connect isolated live AI conversation (1.0.58 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v158/apply_lena_conversation_158.py tools/verify_lena_glb.py
+          python3 tools/v158/apply_lena_conversation_158.py
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -q 'LenaIsolatedVoiceTeacherActivity' source/app/src/main/AndroidManifest.xml
+          grep -q 'Lena ile 3D konuş' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -q 'versionCode = 83' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.58-lena-voice"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Fix existing saved AI key access in Lena process (v1.0.59 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v159/apply_lena_saved_key_159.py
+          python3 tools/v159/apply_lena_saved_key_159.py
+          grep -Fq 'useMainProcessBridge = true' source/app/src/main/java/com/kelimebulmacasi/a1/LenaIsolatedVoiceTeacherActivity.kt
+          grep -Fq 'android:authorities="${applicationId}.teacher_credentials"' source/app/src/main/AndroidManifest.xml
+          grep -Fq 'android:exported="false"' source/app/src/main/AndroidManifest.xml
+          grep -Fq 'versionCode = 84' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.59-lena-saved-key"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Fix and regression-test Lena's saved conversation marker (1.0.60 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v160/apply_lena_thread_fix_160.py
+          python3 tools/v160/apply_lena_thread_fix_160.py
+          grep -Fq '"ethan_thread_ids"))' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStore.kt
+          grep -Fq 'setSetting("ethan_thread_ids"' source/app/src/main/java/com/kelimebulmacasi/a1/AiSession.kt
+          grep -Fq 'versionCode = 85' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.60-lena-thread-persistence"' source/app/build.gradle.kts
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaThreadPersistenceRegressionTest.kt
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Apply colored Lena 3D materials and real mouth-blink mesh morphs (v1.0.61 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v161/paint_lena_glb.py tools/v161/add_lena_face_morphs.py tools/v161/apply_lena_visuals_161.py
+          python3 tools/v161/apply_lena_visuals_161.py
+          python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -q 'versionCode = 86' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.61-lena-expression-colors"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaFaceAnimationClipsTest.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/LenaAnimationClipsTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          p=Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb")
+          b=p.read_bytes()
+          size,kind=struct.unpack_from("<I4s",b,12)
+          assert kind==b"JSON"
+          d=json.loads(b[20:20+size])
+          prim=d["meshes"][0]["primitives"][0]
+          assert len(prim["targets"])==2
+          assert "COLOR_0" in prim["attributes"]
+          assert len(d["animations"])==18
+          assert len(d["skins"][0]["joints"])==201
+          assert all(a in [x["name"] for x in d["animations"]] for a in ("Lena_V161_Face_IdleBlink","Lena_V161_Face_TalkBlink"))
+          print("GLB build gate: colored vertex material, true facial morphs, 201 bones, 18 clips.")
+          PY
+      - name: Fix overbroad nose-mouth and washed-out Lena material (v1.0.62 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v162/paint_lena_162.py tools/v162/face_lena_162.py tools/v162/rebuild_lena_162.py tools/v162/apply_lena_precision_162.py
+          python3 tools/v162/apply_lena_precision_162.py
+          grep -q 'versionCode = 87' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.62-lena-precise-face"' source/app/build.gradle.kts
+          grep -q 'intensity = 50_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -q 'Lena_V162_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Upgrade Lena with brown hair, true iris/pupils and eye-level blink (v1.0.63 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v163/upgrade_lena_163.py tools/v163/apply_lena_visual_quality_163.py
+          python3 tools/v163/apply_lena_visual_quality_163.py
+          grep -q 'versionCode = 88' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.63-lena-eyes-brown-hair"' source/app/build.gradle.kts
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0,"tools/v162")
+          from paint_lena_162 import read_chunks,accessor_values
+          glb=Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb")
+          d,b=read_chunks(glb.read_bytes())
+          body,*parts=d["meshes"][0]["primitives"]
+          names=[p.get("extras",{}).get("name","") for p in parts]
+          for name,count in (("sclera",2),("iris",2),("pupil",2),
+                             ("glint",2),("eyelash",2),("inner_mouth",1)):
+              assert names.count(name)==count,(name,names)
+          assert len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(p.get("targets",[]))==2 for p in [body]+parts)
+          assert all(not any(any(abs(v)>1e-7 for v in row)
+                    for row in accessor_values(d,b,target["POSITION"]))
+                    for target in body["targets"])
+          print("Android asset QA: real iris/pupils, mouth and blink; no brow/cheek morphs.")
+          PY
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Restore original Prisma3D mesh part materials in Lena 1.0.64 (QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v164/build_lena_prisma_parts.py tools/v164/apply_lena_original_parts_164.py
+          python3 tools/v164/apply_lena_original_parts_164.py
+          grep -q 'versionCode = 89' source/app/build.gradle.kts
+          grep -q 'versionName = "1.0.64-prisma-original-look"' source/app/build.gradle.kts
+          grep -q 'Lena_V164_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          grep -q 'intensity = 38_000f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tools/v164")
+          from build_lena_prisma_parts import read_glb, getacc
+          d,blob=read_glb(Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb").read_bytes())
+          surfaces=[p["extras"]["originalPrisma3DObject"] for p in d["meshes"][0]["primitives"]]
+          assert surfaces==["Body","Tshirt","Sneakers","Pants","Hair","Eyes","Eyelash","Eyebrow","Belt"]
+          assert len(d["materials"])==9 and len(d["skins"][0]["joints"])==201
+          assert len(d["animations"])==18
+          assert all(len(p["targets"])==2 for p in d["meshes"][0]["primitives"])
+          assert sum(d["accessors"][p["indices"]]["count"] for p in d["meshes"][0]["primitives"])==47904
+          # No floating eyes or mouth, and blinking never moves eyebrows.
+          body,*other=d["meshes"][0]["primitives"]
+          assert all(not any(any(abs(x)>1e-8 for x in vec) for vec in getacc(d,blob,body["targets"][1]["POSITION"])[30502:30790]) for _ in [0])
+          print("PASS original Prisma3D 9 mesh material groups, no false added face objects")
+          PY
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+      - name: Open Lena by default, hide Alex, and enable visible lip movement (v1.0.65 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v165/build_lena_lip_open_165.py tools/v165/apply_lena_default_165.py
+          python3 tools/v165/apply_lena_default_165.py
+          grep -Fq 'versionCode = 90' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.65-lena-speaking-default"' source/app/build.gradle.kts
+          grep -Fq 'Lena_V165_Face_TalkBlink' source/app/src/main/java/com/kelimebulmacasi/a1/LenaFaceAnimationClips.kt
+          grep -Fq 'LaunchedEffect(ai.boundProfile)' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'LenaIsolatedVoiceTeacherActivity::class.java' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Eq 'TeacherStage2D\\(|TeacherAvatar\\.Mert|Alex' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Eq 'Teacher2DPortrait\\(|Alex' source/app/src/main/java/com/kelimebulmacasi/a1/LenaIsolatedVoiceTeacherActivity.kt
+          grep -Fq 'TeacherPersonality.entries' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+          python3 - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,"tools/v165")
+          from build_lena_lip_open_165 import read_glb,getacc
+          d,b=read_glb(Path("source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb").read_bytes())
+          assert len(d["animations"])==18 and len(d["skins"][0]["joints"])==201
+          assert len(d["meshes"][0]["primitives"])==9
+          assert "Lena_V165_Face_TalkBlink" in {a["name"] for a in d["animations"]}
+          body=d["meshes"][0]["primitives"][0]
+          vertices=getacc(d,b,body["attributes"]["POSITION"])
+          positions=getacc(d,b,body["targets"][0]["POSITION"])
+          lower=[v[1] for p,v in zip(vertices,positions) if p[1]<1.563 and v[1]<0]
+          upper=[v[1] for p,v in zip(vertices,positions) if p[1]>=1.563 and v[1]>0]
+          assert len(lower)>=20 and len(upper)>=10, (len(lower),len(upper))
+          assert min(lower)<-.006 and max(upper)>.001, (min(lower),max(upper))
+          print("PASS: real upper and lower lips visibly separate on TTS, face preserved.")
+          PY
+      - name: Embed Lena in live lesson and enable true messaging fallback (v1.0.66 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v166/apply_embedded_lena_messenger_166.py
+          python3 tools/v166/apply_embedded_lena_messenger_166.py
+          grep -Fq 'versionCode = 91' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.66-lena-inline-messenger"' source/app/build.gradle.kts
+          grep -Fq 'LenaLive3DStage(' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'onRecoverableError = {' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'openTextChat()' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Fq 'Lena ile yüz yüze sesli konuşma' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Fq 'openLena' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          ! grep -Fq 'TeacherStage2D(' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'Lena · Mesajlar' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ConversationBubble(turn.answer, "Lena")' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'learningToolsOpen' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.searchThreads' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          ! grep -Fq 'TeacherAvatarPicker(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+      - name: Generate authentic Lena GLB profile portrait, 17 original icons and photo-uploadable light chat (v1.0.67 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v167/render_lena_real_portrait.py tools/v167/generate_messenger_icons.py tools/v167/apply_lena_messenger_visuals_167.py
+          python3 tools/v167/apply_lena_messenger_visuals_167.py
+          grep -Fq 'versionCode = 92' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.67-lena-real-profile-icons"' source/app/build.gradle.kts
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test "$(find source/app/src/main/res/drawable -name 'wq167_*.xml' | wc -l)" -ge 15
+          grep -Fq 'LenaMessengerProfileHeader(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'rememberLenaUserPortrait(session.profileKey)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaActualAvatar(37.dp)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ActivityResultContracts.GetContent()' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'context.filesDir' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'scene3d by remember { mutableStateOf(false) }' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          ! grep -Fq 'TeacherAvatarPicker(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          from xml.etree import ElementTree
+          p=Path("source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png")
+          data=p.read_bytes()
+          assert data[:8]==b"\x89PNG\r\n\x1a\n"
+          assert struct.unpack(">II",data[16:24])==(448,448)
+          icons=sorted(Path("source/app/src/main/res/drawable").glob("wq167_*.xml"))
+          assert len(icons)==17,icons
+          for f in icons:
+              root=ElementTree.parse(f).getroot()
+              assert "vector" in root.tag
+              assert len(root)>0
+          print("UI assets verified: real Lena GLB portrait + 17 original vector icons.")
+          PY
+      - name: Install approved Lena messenger styling and voice UI (v1.0.68 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v168/apply_approved_lena_ui_168.py
+          python3 tools/v168/apply_approved_lena_ui_168.py
+          grep -Fq 'versionCode = 93' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.68-lena-approved-messenger-ui"' source/app/build.gradle.kts
+          grep -Fq 'LenaVoiceWaveform(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'session.changePreferences' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'R.drawable.wq167_lena_portrait' source/app/src/main/java/com/kelimebulmacasi/a1/LenaMessengerBrand.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.newConversation()' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          echo "Approved Lena messenger code staged without replacing the actual Lena model or portrait."
+
+      - name: Apply Lena premium messaging, real 3D studio and waist-up camera (v1.0.69 QA)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v169/build_lena_studio.py tools/v169/apply_lena_studio_169.py
+          python3 tools/v169/apply_lena_studio_169.py
+          grep -Fq 'versionCode = 94' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.69-lena-premium-3d-studio"' source/app/build.gradle.kts
+          grep -Fq 'studio/lena_studio.glb' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq '1.88f' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq 'LenaMessageAudioBar(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaMessageBookmark(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaMessengerProfileHeader(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'audio?.play(turn)' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'ai.newConversation()' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          test -s source/app/src/main/assets/studio/lena_studio.glb
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/res/drawable-nodpi/wq167_lena_portrait.png
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          data=Path("source/app/src/main/assets/studio/lena_studio.glb").read_bytes()
+          magic,version,length=struct.unpack_from("<4sII",data)
+          assert magic==b"glTF" and version==2 and length==len(data)
+          json_len=struct.unpack_from("<I",data,12)[0]
+          d=json.loads(data[20:20+json_len])
+          assert len(d["meshes"][0]["primitives"])>=12
+          assert all("min" in d["accessors"][p["attributes"]["POSITION"]]
+              for p in d["meshes"][0]["primitives"])
+          print("PASS: studio is real 3D glTF geometry with valid position bounds.")
+          PY
+
+      - name: Stage EXACT user-uploaded chair and window GLB and safe Lena greeting (v1.0.70)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v170/stage_user_chair_170.py tools/v170/apply_lena_chair_170.py tools/v170/audit_lena_rig_170.py
+          # FAIL here when the original attached 19MB GLB has not been
+          # uploaded to GitHub. Never publish a fake or substitute chair.
+          test -s assets/studio/chairs_and_window_set_-_game_ready.glb || {
+            echo "::error::Original chair/window GLB not yet uploaded to GitHub branch. No v1.0.70 APK will be published."
+            exit 1
+          }
+          python3 tools/v170/apply_lena_chair_170.py
+          python3 tools/v170/audit_lena_rig_170.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          grep -Fq 'versionCode = 95' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.70-user-chair-safe-greeting"' source/app/build.gradle.kts
+          test -s source/app/src/main/assets/studio/chairs_and_window_set_-_game_ready.glb
+          test -s source/app/src/main/assets/studio/chairs_and_window_set_provenance.json
+          grep -Fq 'if (userChairSet != null) add(userChairSet)' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq '01_Idle_Natural_Breathing' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          src=Path('assets/studio/chairs_and_window_set_-_game_ready.glb')
+          dst=Path('source/app/src/main/assets/studio')/src.name
+          assert src.stat().st_size==19765636
+          assert src.read_bytes()==dst.read_bytes()
+          assert hashlib.sha256(src.read_bytes()).hexdigest()=='379c0537249af58dc1115184dc9f2257f045a1ba4bb9a266b7ab67898e8e8c81'
+          print('Original user-provided GLB copied byte-for-byte.')
+          PY
+      - name: Apply Lena actual emoji, file attachments, animation and subtitles (v1.0.71)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v171/apply_lena_interaction_171.py
+          python3 tools/v171/apply_lena_interaction_171.py
+          grep -Fq 'versionCode = 96' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.71-lena-animation-chat-tools"' source/app/build.gradle.kts
+          grep -Fq 'LenaRichComposer(' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
+          grep -Fq 'LenaRichComposer(' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          grep -Fq 'Görsel ekle' source/app/src/main/java/com/kelimebulmacasi/a1/LenaRichComposer.kt
+          grep -Fq 'Belge ekle' source/app/src/main/java/com/kelimebulmacasi/a1/LenaRichComposer.kt
+          grep -Fq 'readLenaSelectedAttachment(' source/app/src/main/java/com/kelimebulmacasi/a1/LenaAttachmentReader.kt
+          grep -Fq 'LaunchedEffect(node, motion, speechRate)' source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt
+          grep -Fq 'outside the SceneView surface' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
+          test -s source/app/src/main/assets/studio/chairs_and_window_set_-_game_ready.glb
+          test -s source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
+      - name: Apply approved Arena mode icons, countdown scoreboard and match settings (v1.0.72)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v172/apply_arena_reference_172.py tools/v172/verify_arena_reference_172.py
+          python3 tools/v172/apply_arena_reference_172.py
+          python3 tools/v172/verify_arena_reference_172.py
+          grep -Fq 'versionCode = 97' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.72-arena-reference-controls"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaReferenceComponents.kt
+      - name: Install approved original 2D characters, compact selection and victory screens (v1.0.73)
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v173_2d/apply_wordquest_173_2d.py tools/v173_2d/verify_wordquest_173_2d.py
+          python3 tools/v173_2d/apply_wordquest_173_2d.py
+          python3 tools/v173_2d/verify_wordquest_173_2d.py
+          grep -Fq 'versionCode = 99' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.73-original-2d-complete"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DCharacters.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DPicker.kt
+      - name: Install premium v1.0.74 Arena and Word Memory designs
+        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v174/apply_wordquest_174.py tools/v174/verify_wordquest_174.py
+          python3 tools/v174/apply_wordquest_174.py
+          python3 tools/v174/verify_wordquest_174.py
+          grep -Fq 'versionCode = 100' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.74-premium-arena-memory"' source/app/build.gradle.kts
+      - name: Cache verified pre-1.0.75 Android baseline for next incremental build
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) && steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: source
+          key: ${{ env.WQ175_BASELINE_CACHE_KEY }}
+      - name: Install and verify in-development 1.0.75 learning improvements
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_core_175.py tools/v175/verify_stage_one.py
+          python3 tools/v175/apply_core_175.py
+          python3 tools/v175/verify_stage_one.py
+          grep -Fq 'versionCode = 101' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.75"' source/app/build.gradle.kts
+      - name: Activate and verify opt-in timed crossword mode (v1.0.75)
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_timed_175.py tools/v175/verify_timed_175.py
+          python3 tools/v175/apply_timed_175.py
+          python3 tools/v175/verify_timed_175.py
+      - name: Upgrade New Game with visual mascot builder and verified selection summary
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_premium_new_game_175.py tools/v175/verify_premium_new_game_175.py
+          python3 tools/v175/apply_premium_new_game_175.py
+          python3 tools/v175/verify_premium_new_game_175.py
+      - name: Connect and verify Word Memory PDF, image, camera and personal AI imports
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_import_175.py tools/v175/verify_import_175.py
+          python3 tools/v175/apply_import_175.py
+          python3 tools/v175/verify_import_175.py
+      - name: Install and verify themed Daily Plan and all five original exercise interiors
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_practice_visuals_175.py tools/v175/verify_practice_visuals_175.py
+          python3 tools/v175/apply_practice_visuals_175.py
+          python3 tools/v175/verify_practice_visuals_175.py
+      - name: Generate and install 17 original premium app icons for all rooms
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/generate_premium_icons_175.py tools/v175/apply_icons_175.py tools/v175/verify_icons_175.py
+          python3 tools/v175/generate_premium_icons_175.py
+          python3 tools/v175/apply_icons_175.py
+          python3 tools/v175/verify_icons_175.py
+      - name: Install separate YDS Academy and refined CEFR package landing screen
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_academy_175.py tools/v175/verify_academy_175.py
+          python3 tools/v175/apply_academy_175.py
+          python3 tools/v175/verify_academy_175.py
+      - name: Refresh crossword board, clues and accessible buttons without changing game rules
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_crossword_visuals_175.py tools/v175/verify_crossword_175.py
+          python3 tools/v175/apply_crossword_visuals_175.py
+          python3 tools/v175/verify_crossword_175.py
+      - name: Upgrade My Puzzles with true profile counts and completion filters
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_mypuzzles_175.py tools/v175/verify_mypuzzles_175.py
+          python3 tools/v175/apply_mypuzzles_175.py
+          python3 tools/v175/verify_mypuzzles_175.py
+      - name: Install licensed and quality-checked A1-C1 extended wordlists
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/install_vocabulary_175.py tools/v175/verify_vocabulary_175.py
+          python3 tools/v175/install_vocabulary_175.py
+          python3 tools/v175/verify_vocabulary_175.py
+      - name: Install and test premium YDS exams with original grammar content
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_yds_exam_ui_175.py tools/v175/verify_yds_exam_175.py
+          python3 tools/v175/apply_yds_exam_ui_175.py
+          python3 tools/v175/verify_yds_exam_175.py
+      - name: Add paragraph dictation and expand YDS to 150 verified original questions
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_paragraph_and_yds_175.py tools/v175/verify_paragraph_and_yds_175.py
+          python3 tools/v175/apply_paragraph_and_yds_175.py
+          python3 tools/v175/verify_paragraph_and_yds_175.py
+      - name: Install 80-question full YDS exam with real three-hour timer
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_full_yds_175.py tools/v175/verify_full_yds_175.py
+          python3 tools/v175/apply_full_yds_175.py
+          python3 tools/v175/verify_full_yds_175.py
+      - name: Prevent answer leakage in timed YDS exams while keeping practice feedback
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_yds_exam_integrity_175.py tools/v175/verify_yds_exam_integrity_175.py
+          python3 tools/v175/apply_yds_exam_integrity_175.py
+          python3 tools/v175/verify_yds_exam_integrity_175.py
+      - name: Install post-exam review of incorrect and unanswered YDS questions
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_yds_exam_review_175.py tools/v175/verify_yds_exam_review_175.py
+          python3 tools/v175/apply_yds_exam_review_175.py
+          python3 tools/v175/verify_yds_exam_review_175.py
+      - name: Install YDS bank duplicate and explanation quality regression
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 tools/v175/install_yds_bank_quality_175.py
+      - name: Add 48 authored YDS questions across 8 disciplines and verify no filler counts
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_yds_quality_batch_175.py tools/v175/verify_yds_quality_batch_175.py
+          python3 tools/v175/apply_yds_quality_batch_175.py
+          python3 tools/v175/verify_yds_quality_batch_175.py
+      - name: Complete daily plan custom goals and weekly activity
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_daily_goals_175.py tools/v175/install_daily_tests_175.py tools/v175/verify_daily_goals_175.py
+          python3 tools/v175/apply_daily_goals_175.py
+          python3 tools/v175/install_daily_tests_175.py
+          python3 tools/v175/verify_daily_goals_175.py
+      - name: Display verified real word availability and CEFR shortfalls by level
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_real_coverage_175.py tools/v175/verify_real_coverage_175.py
+          python3 tools/v175/apply_real_coverage_175.py
+          python3 tools/v175/verify_real_coverage_175.py
+      - name: Verify 1.0.75 production release evidence gate rejects missing device QA
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 tools/v175/test_release_gate_175.py -v
+          if python3 tools/v175/release_gate_175.py tools/v175/release_evidence_175.json; then
+            echo "::error::Production gate accepted pending real-device QA"
+            exit 1
+          fi
+          echo "PASS: release remains blocked until hardware, user-data, Arena and visual evidence exists"
+      - name: Regression test 1.0.75 Android install and permission continuity gate
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/verify_upgrade_metadata_175.py tools/v175/test_upgrade_metadata_175.py
+          python3 tools/v175/test_upgrade_metadata_175.py -v
+      - name: Reject blank-but-valid emulator screenshots in v175 QA
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 tools/v175/test_emulator_screen_content_175.py -v
+      - name: Apply real selectable Arena quiz count and darker crossword blanks
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_arena_count_and_cells_175.py tools/v175/verify_arena_count_and_cells_175.py
+          python3 tools/v175/apply_arena_count_and_cells_175.py
+          python3 tools/v175/verify_arena_count_and_cells_175.py
+      - name: Stage and verify Firebase rules for selectable Arena 5-choice questions
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_arena_firebase_rules_175.py tools/v175/verify_arena_firebase_rules_175.py
+          python3 tools/v175/apply_arena_firebase_rules_175.py
+          python3 tools/v175/verify_arena_firebase_rules_175.py
+      - name: Install approved 1.0.75 premium native art across ten rooms
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_theme_art_175.py tools/v175/verify_theme_art_175.py
+          python3 tools/v175/apply_theme_art_175.py
+          python3 tools/v175/verify_theme_art_175.py
+      - name: Build final approved mobile-first home and glossy Arena mode icons
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_mobile_home_175.py tools/v175/verify_mobile_home_175.py
+          python3 tools/v175/apply_mobile_home_175.py
+          python3 tools/v175/verify_mobile_home_175.py
+      - name: Install responsive 2.5D Daily Plan game cards without losing progress
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_premium_practice_grid_175.py tools/v175/verify_premium_practice_grid_175.py
+          python3 tools/v175/apply_premium_practice_grid_175.py
+          python3 tools/v175/verify_premium_practice_grid_175.py
+      - name: Add native Home bottom navigation and real due-word notification actions
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v175/apply_home_navigation_175.py tools/v175/verify_home_navigation_175.py
+          python3 tools/v175/apply_home_navigation_175.py
+          python3 tools/v175/verify_home_navigation_175.py
+      - name: Add 1.0.76 original content bank and daily-question anti-repeat engine
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v176/apply_content_176.py tools/v176/verify_content_176.py tools/v176/verify_upgrade_metadata_176.py
+          python3 tools/v176/apply_content_176.py
+          python3 tools/v176/verify_content_176.py
+          python3 tools/v176/verify_latest_design_176.py
+          python3 -m py_compile tools/v176/audit_levels_176.py
+          python3 tools/v176/audit_levels_176.py
+          test -s source/app/src/main/assets/vocabulary-v176-coverage.json
+      - name: Probe original editor and card-rotation source before 1.0.77 changes
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          python3 tools/v177/probe_ui_177.py
+      - name: Apply 1.0.77 local import, premium responsive design and expanded daily exercises
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v177/apply_polish_177.py tools/v177/verify_177.py tools/v177/verify_upgrade_metadata_177.py
+          python3 tools/v177/apply_polish_177.py
+          python3 tools/v177/verify_177.py
+      - name: Repair 1.0.78 Arena readiness, participant mascot and secure Firebase room rules
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v178/apply_arena_rules_178.py tools/v178/apply_arena_lobby_178.py tools/v178/verify_arena_lobby_178.py tools/v178/verify_upgrade_metadata_178.py
+          python3 tools/v178/apply_arena_rules_178.py
+          python3 tools/v178/apply_arena_lobby_178.py
+          python3 tools/v178/verify_arena_lobby_178.py
+      - name: Apply 1.0.79 compact Arena board, clue order, sound and player glow
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v179/apply_arena_179.py tools/v179/verify_arena_179.py tools/v179/verify_upgrade_metadata_179.py
+          python3 tools/v179/apply_arena_179.py
+          python3 tools/v179/apply_arena_finale_179.py
+          python3 tools/v179/verify_arena_179.py
+          cp tools/v179/Wq179ArenaOrderTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaOrderTest.kt
+          cp tools/v179/Wq179ArenaFinaleTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaFinaleTest.kt
+      - name: Apply 1.0.80 friend cards, privacy summary, new Arena palette and full-size board
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v180/apply_social_180.py tools/v180/apply_ui_180.py tools/v180/verify_ui_180.py tools/v180/verify_upgrade_metadata_180.py
+          python3 tools/v180/apply_social_180.py
+          python3 tools/v180/apply_ui_180.py
+          python3 tools/v180/verify_ui_180.py
+          cp tools/v180/Wq180FriendActivityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq180FriendActivityTest.kt
+      - name: Apply 1.0.81 original Arena hero wallpaper, visible hints and large responsive board
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v181/apply_arena_181.py tools/v181/verify_arena_181.py tools/v181/verify_upgrade_metadata_181.py
+          python3 tools/v181/apply_arena_181.py
+          python3 tools/v181/verify_arena_181.py
+          cp tools/v181/Wq181ArenaHintTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintTest.kt
+          cp tools/v181/Wq181ArenaHintSlotTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintSlotTest.kt
+      - name: Apply 1.0.82 approved icons, 5-choice quiz cards and custom nickname
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v182/apply_ui_182.py tools/v182/verify_ui_182.py tools/v182/verify_upgrade_metadata_182.py
+          python3 tools/v182/apply_ui_182.py
+          python3 tools/v182/verify_ui_182.py
+          cp tools/v182/Wq182IconRoutingTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq182IconRoutingTest.kt
+      - name: Apply 1.0.83 quiz contrast, protected mascot ZIP and responsive Arena
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena'))) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v183/apply_quality_183.py tools/v183/verify_quality_183.py tools/v183/stage_arena_assets_183.py tools/v183/build_mascot_template_183.py
+          python3 tools/v183/apply_quality_183.py
+          python3 tools/v183/apply_home_183.py
+          python3 tools/v183/verify_quality_183.py
+          mkdir -p source/app/src/test/java/com/kelimebulmacasi/a1
+          cp tools/v183/Wq183QuizQualityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq183QuizQualityTest.kt
+          python3 tools/v183/build_mascot_template_183.py "$RUNNER_TEMP/WordQuest_Mascot_Template_v1.zip"
+      - name: Apply 1.0.84 approved Arena art, full-size custom mascots, win poses
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena')) }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v184/apply_visuals_184.py tools/v184/verify_assets_184.py
+          python3 tools/v184/apply_visuals_184.py
+          python3 -m pip install --quiet pillow
+          python3 tools/v184/verify_assets_184.py
+      - name: Apply 1.0.85 large account mascot, edit-only saved nickname, private friend portraits
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena') }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v185/apply_profile_185.py tools/v185/verify_upgrade_metadata_185.py
+          python3 tools/v185/apply_profile_185.py
+          grep -Fq 'versionCode = 111' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.85"' source/app/build.gradle.kts
+          grep -Fq 'Wq185FriendSharingSetting' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+          grep -Fq 'Wq185FriendProfilePublisher' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+      - name: Verify independent app identity
+        run: |
+          set -euo pipefail
+          grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
+      - name: Generate US/UK audio and verify pronunciation data
+        working-directory: source
+        run: |
+          python3 tools/build_offline_voices.py
+          python3 tools/verify_audio_ipa.py
+      - uses: gradle/actions/setup-gradle@v4
+      # Check 1.0.85 overlap diagnostics before touching original source files.
+      - name: Apply Package 4 to assembled 1.0.85 source without release
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v186-package5-responsive-matching-lena' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v186/apply_package4_to_185.py
+          python3 tools/v186/apply_package4_to_185.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ParagraphWorkspace.kt
+          grep -Fq 'MAX_BOARD_WORDS = 70' source/app/src/main/java/com/kelimebulmacasi/a1/CustomLayout.kt
+      - name: Apply isolated Package 5 and verify all proposed sources
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v186/apply_package5_to_186.py tools/v186/verify_package5_186.py
+          python3 tools/v186/verify_package5_186.py
+          python3 tools/v186/apply_package5_to_186.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186MatchingImporter.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186LenaVoiceSettings.kt
+          grep -Fq 'listOf("6","10","15","20","30")' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest175Matching.kt
+      - name: Compile fully assembled Kotlin and Compose without APK or release
+        working-directory: source
+        run: |
+          set -euo pipefail
+          chmod +x ./gradlew
+          ./gradlew --no-daemon :app:compileOfflineKotlin --stacktrace
+      - name: QA-only notice
+        run: |
+          echo 'Source-only package5 build. No signing, update-feed modification, or Firebase deployment.'
