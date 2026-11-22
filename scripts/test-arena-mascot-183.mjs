@@ -82,7 +82,9 @@ try{
    await ctx.database().ref(roomPath).set({
     hostUid:'host',guestUid:'guest',hostAvatar:mine,guestAvatar:theirs,
     phase:'playing',mode,createdAt:Date.now(),size:mode==='quiz'?10:20,
-    hostName:'Host',guestName:'Guest'
+    hostName:'Host',guestName:'Guest',level:'A1',topic:'General',
+    seconds:30,boardId:'',quizSeed:123,turn:{uid:'host',until:0},
+    quotaDay:20000,quotaSlot:'0'
    });
   });
   const h=env.authenticatedContext('host').database().ref(roomPath);
