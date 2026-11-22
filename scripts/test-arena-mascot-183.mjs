@@ -63,6 +63,12 @@ try{
  await assertFails(stranger.child('hostAvatar').set(mine));
  await assertSucceeds(host.child('hostAvatar').set(mine));
  await assertSucceeds(host.child('hostMascotPreview').set(good(mine)));
+ // Switching back to a built-in avatar forbids all custom thumbnail writes.
+ await assertSucceeds(host.child('hostAvatar').set('piko'));
+ await assertFails(host.child('hostMascotPreview').set(good(mine)));
+ await assertSucceeds(host.child('hostMascotPreview').remove());
+ await assertSucceeds(host.child('hostAvatar').set(mine));
+ await assertSucceeds(host.child('hostMascotPreview').set(good(mine)));
  // Revoking consent deletes only own payload; the rival remains intact.
  await assertSucceeds(host.child('hostMascotPreview').remove());
  assert.equal((await assertSucceeds(guest.child('hostMascotPreview').get())).val(),null);
@@ -70,8 +76,9 @@ try{
  await env.withSecurityRulesDisabled(async ctx=>{
   await ctx.database().ref(path+'/phase').set('finished');
  });
- // No renewed preview upload after the match closes; deletion stays allowed.
+ // No renewed preview upload or avatar swapping after the match closes.
  await assertFails(host.child('hostMascotPreview').set(good(mine)));
+ await assertFails(host.child('hostAvatar').set('piko'));
  // Result screens can still read the opponent's image while the room exists.
  assert.equal((await assertSucceeds(host.child('guestMascotPreview').get())).val(),good(theirs));
  await assertSucceeds(guest.child('guestMascotPreview').remove());
