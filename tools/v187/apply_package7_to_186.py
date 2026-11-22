@@ -2,6 +2,7 @@
 """P7 after P4-P6 assembly: Lena, speech, animated face, settings/Arena icons."""
 from pathlib import Path
 import shutil
+import re
 ROOT=Path(__file__).resolve().parents[2]
 APP=ROOT/"source/app/src/main/java/com/kelimebulmacasi/a1"
 TEST=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
