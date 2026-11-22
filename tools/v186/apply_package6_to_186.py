@@ -1,0 +1,277 @@
+#!/usr/bin/env python3
+"""Package 6 overlay after fully assembled Package 4 + Package 5.
+
+No signing, release, data removal, avatar overwrite, or automatic Firebase
+deployment. Each source edit is checked before a single byte is changed.
+"""
+from pathlib import Path
+import json
+import shutil
+
+ROOT = Path(__file__).resolve().parents[2]
+APP = ROOT / "source/app/src/main/java/com/kelimebulmacasi/a1"
+P6 = ROOT / "tools/v186/package6"
+DB = ROOT / "source/database.rules.json"
+PENDING = {}
+
+def load(name):
+    path = APP / name
+    if not path.exists():
+        raise AssertionError("Missing fully assembled Android source: " + name)
+    return PENDING.get(path, path.read_text("utf-8"))
+
+def save(name, contents):
+    PENDING[APP / name] = contents
+
+def once(contents, old, new, label):
+    found = contents.count(old)
+    if found != 1:
+        raise AssertionError(f"P6 {label}: expected exactly one anchor, got {found}")
+    return contents.replace(old, new, 1)
+
+def compact_lobby():
+    s = load("WordQuest175Arena.kt")
+    s = once(s, ".heightIn(min=98.dp)", ".heightIn(min=76.dp)", "native mode-card height")
+    s = once(s, "Box(Modifier.size(67.dp)", "Box(Modifier.size(54.dp)", "mode illustration")
+    s = once(s, ".padding(horizontal=15.dp,vertical=12.dp)",
+             ".padding(horizontal=13.dp,vertical=8.dp)", "mode card padding")
+    s = once(s, "val heroHeight = if (customMascot) {\n"
+                "                if (compact) 382.dp else if (wideTablet) 438.dp else 405.dp\n"
+                "            } else if(compact)310.dp else if(wideTablet)378.dp else 342.dp",
+             "val heroHeight = if (customMascot) {\n"
+             "                if (compact) 273.dp else if (wideTablet) 348.dp else 316.dp\n"
+             "            } else if(compact)250.dp else if(wideTablet)326.dp else 287.dp",
+             "preserve Arena artwork while fitting mobile viewports")
+    s = once(s,
+             "if (compact) 212.dp else if (wideTablet) 288.dp else 262.dp",
+             "if (compact) 171.dp else if (wideTablet) 236.dp else 212.dp",
+             "full-body mascot widths remain proportional")
+    s = once(s,
+             "if (compact) 348.dp else if (wideTablet) 410.dp else 380.dp",
+             "if (compact) 249.dp else if (wideTablet) 320.dp else 288.dp",
+             "full-body mascot feet fit on podium")
+    s = once(s,
+             "Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(14.dp)) {",
+             "Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(7.dp)) {",
+             "compress Arena selector without removing labels")
+    s = once(s,'Text("Maceranı seç",fontSize=19.sp',
+             'Text("Maceranı seç",fontSize=16.sp',"selector heading")
+    save("WordQuest175Arena.kt",s)
+
+def fair_online():
+    s = load("PremiumOnlineScreen.kt")
+    s = once(s,
+             "    Wq183OnlinePortraitStrip(\n",
+             "    if (match.phase == \"finished\") Wq183OnlinePortraitStrip(\n",
+             "no duplicate green player banner during live game")
+    s = once(s,
+             "    BackHandler(match != null) { client.leave() }",
+             """    var confirmRoomExit by rememberSaveable { mutableStateOf(false) }
+    BackHandler(match != null) { confirmRoomExit = true }
+    if(confirmRoomExit) AlertDialog(
+        onDismissRequest={confirmRoomExit=false},
+        title={Text("Arena maçından ayrıl?")},
+        text={Text("Odadan çıkarsan oyunun devam eder; yeniden katılmak için oda kodunu kullanabilirsin.")},
+        confirmButton={TextButton(onClick={
+            confirmRoomExit=false
+            client.leave()
+        }) {Text("Odadan çık")}},
+        dismissButton={TextButton(onClick={confirmRoomExit=false}) {Text("Oyuna dön")}}
+    )""",
+             "hardware back never exits Arena instantly")
+    s = once(s,
+             "if (match != null) client.leave() else back()",
+             "if (match != null) confirmRoomExit = true else back()",
+             "top bar uses same leave confirmation")
+    s = once(s,
+             "optionsOpen = false; client.leave()",
+             "optionsOpen = false; requestLeave()",
+             "room menu leave confirmation")
+    s = once(s,
+             "    openLearning: () -> Unit, openTeacher: (String) -> Unit,\n) {\n"
+             "    val context = LocalContext.current",
+             "    openLearning: () -> Unit, openTeacher: (String) -> Unit,\n"
+             "    requestLeave: () -> Unit,\n) {\n"
+             "    val context = LocalContext.current",
+             "match-screen callback")
+    s = once(s,
+             "wallTime, openLearning, openTeacher)",
+             "wallTime, openLearning, openTeacher, {confirmRoomExit=true})",
+             "pass leave callback into match screen")
+
+    # UI scores are recomputed on identical deterministic board/quiz content
+    # on BOTH devices; RTDB owns solvedBy/answers and mistake penalties.
+    marker = '    val hostName = ArenaNickname.safeDisplay(match.hostName, "Kurucu")'
+    score = """    fun arenaScore(player: String): Int {
+        if (match.mode == "quiz") {
+            return match.answers[player].orEmpty().entries.sumOf { (index, choice) ->
+                val q=questions.getOrNull(index)
+                when {
+                    q == null || choice == -1 -> 0
+                    choice == q.correct -> Wq186ArenaFairPlay.wordPoints(
+                        q.options.getOrNull(q.correct)?.count(Char::isLetter) ?: 4,
+                        match.level)
+                    else -> -3
+                }
+            }
+        }
+        return Wq186ArenaFairPlay.totalScore(
+            match.solvedBy,player,
+            { index -> board?.puzzle?.words?.getOrNull(index)?.cells?.size ?: 4 },
+            { _ -> match.level },match.mistakesBy
+        )
+    }
+"""
+    s = once(s,marker,score+marker,"score by level and letter count")
+    # Limit rewrites to this match composable. The rest of the file uses the
+    # pre-existing scorer for lobby-only information.
+    s = once(s,"val myScore = match.score(myUid, questions)",
+             "val myScore = arenaScore(myUid)","current player weighted score")
+    s = once(s,
+             "val otherScore = match.score(PremiumOnlineLimits.otherPlayer(match, myUid), questions)",
+             "val otherScore = arenaScore(PremiumOnlineLimits.otherPlayer(match, myUid))",
+             "opponent weighted score")
+    for player in ("match.hostUid","match.guestUid"):
+        s = s.replace("match.score("+player+", questions)",
+                      "arenaScore("+player+")")
+    # The above scorer cannot be used before board/questions were loaded;
+    # all matching score calls are inside the live match composable.
+    if "arenaScore(match.hostUid)" not in s or "arenaScore(match.guestUid)" not in s:
+        raise AssertionError("P6 host/guest scorer was not wired")
+    s = once(s,
+             "    // Gameplay stays compact. The room code, sharing and full settings are under ⋮.",
+             """    Wq186ArenaSocialHud(
+        session=session,match=match,myUid=myUid,isHost=isHost,
+        hostName=hostName,guestName=guestName,
+        hostScore=arenaScore(match.hostUid),guestScore=arenaScore(match.guestUid)
+    )
+    // Gameplay stays compact. The room code, sharing and full settings are under ⋮.""",
+             "emojis profiles connection and consensus live for both players")
+    # Prevent 'All Words' dialog from bypassing the designed skip budget.
+    s = once(s,
+             """                    Wq179ArenaWordChooser(puzzle,solved,selected){ newIndex ->
+                        setWordIndex(newIndex)
+                        setAnswerText("")
+                    }
+""",
+             """                    // No player-controlled clue picker during a live match.
+""",
+             "remove manual selection dialog")
+    s = once(s,
+             """                    setWordIndex(it)
+                    setAnswerText("")
+                }""",
+             """                    // Live puzzle tiles are read-only; only the active clue accepts text.
+                }""",
+             "disable selecting an arbitrary puzzle cell")
+    s = once(s,
+             """    var freeSkipUsed by rememberSaveable(match.code,myUid) {
+        mutableStateOf(Wq179ArenaSkip.used(context,match.code,myUid))
+    }""",
+             """    var freeSkips by rememberSaveable(match.code,myUid) {
+        mutableIntStateOf(Wq179ArenaSkip.count(context,match.code,myUid))
+    }""",
+             "two retained skip rights")
+    s = once(s,"if(!freeSkipUsed && canAnswer &&","if(freeSkips < 2 && canAnswer &&",
+             "allow two automatic word changes")
+    s = once(s,'"1 ÜCRETSİZ KELİME GEÇ"',
+             '"KELİMEYİ GEÇ · ${2-freeSkips} HAK"',"dynamic skip label")
+    s = once(s,
+             """                                    Wq179ArenaSkip.consume(context,match.code,myUid)
+                                    freeSkipUsed=true""",
+             """                                    freeSkips=Wq179ArenaSkip.consume(context,match.code,myUid)""",
+             "consume a skip atomically")
+    save("PremiumOnlineScreen.kt",s)
+
+def skip_storage():
+    s=load("Wq179ArenaExtras.kt")
+    start=s.index("internal object Wq179ArenaSkip {")
+    end=s.index("\n}\n\n@Composable",start)+2
+    old=s[start:end]
+    if "getBoolean(key(room,uid),false)" not in old:
+        raise AssertionError("P6 skip baseline drift")
+    new="""internal object Wq179ArenaSkip {
+    private fun key(room:String,uid:String)="p6-skip-count-"+room+"-"+uid
+    private fun store(ctx:Context)=ctx.getSharedPreferences(
+        "wordquest_arena_skips",Context.MODE_PRIVATE)
+    fun count(ctx:Context,room:String,uid:String):Int =
+        store(ctx).getInt(key(room,uid),0).coerceIn(0,2)
+    fun used(ctx:Context,room:String,uid:String)=count(ctx,room,uid)>=2
+    fun consume(ctx:Context,room:String,uid:String):Int {
+        val next=(count(ctx,room,uid)+1).coerceAtMost(2)
+        store(ctx).edit().putInt(key(room,uid),next).commit()
+        return next
+    }
+}"""
+    s=s[:start]+new+s[end:]
+    save("Wq179ArenaExtras.kt",s)
+
+def hint_area():
+    s=load("Wq181ArenaHintBar.kt")
+    s=once(s,"modifier=Modifier.fillMaxWidth()){",
+            "modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)){",
+            "compact native hint action")
+    s=once(s,".padding(horizontal=12.dp,vertical=9.dp)",
+            ".padding(horizontal=9.dp,vertical=3.dp)",
+            "hint card reduced paddings")
+    s=once(s,'Text("İPUCU ($left)"','Text("💡 $left"',
+            "compact hint button")
+    save("Wq181ArenaHintBar.kt",s)
+
+def reconnect():
+    s=load("PremiumOnlineRoom.kt")
+    s=once(s,
+             """                status = "Oda bağlantısı reddedildi: ${error.message}"
+                match = null""",
+             """                status = "Bağlantı kesildi: ${error.message}. Oda saklandı; internet geldiğinde yeniden katılabilirsin."
+                // Do not discard a live match or award a loss for a temporary network outage.""",
+             "retain last game after Firebase listener interruption")
+    save("PremiumOnlineRoom.kt",s)
+
+def firebase_rules():
+    current=json.loads(DB.read_text("utf-8"))
+    approved=json.loads((ROOT/"firebase/database.rules.json").read_text("utf-8"))
+    base=current["rules"]["premiumRooms"]["$code"]
+    incoming=approved["rules"]["premiumRooms"]["$code"]["package6"]
+    if "package6" in base:
+        raise AssertionError("P6 already installed or unexpected Firebase rule drift")
+    assert set(incoming)=={"emoji","finishVotes","presence"}
+    base["package6"]=incoming
+    PENDING[DB]=json.dumps(current,ensure_ascii=False,indent=2)+"\n"
+
+def main():
+    assert (APP/"Wq186MatchingImporter.kt").exists(),"Package 5 must be assembled first"
+    assert all((P6 / x).exists() for x in (
+        "Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt",
+        "Wq186ArenaFairPlayTest.kt"))
+    compact_lobby()
+    fair_online()
+    skip_storage()
+    hint_area()
+    reconnect()
+    firebase_rules()
+    home=load("HomeScreen.kt")
+    assert "confirmLeaveWork" in home and "navigationTrail" in home, (
+        "Package 6 Android back staging did not merge into the full Android source")
+    gradle=ROOT/"source/app/build.gradle.kts"
+    build=gradle.read_text("utf-8")
+    if 'versionName = "1.0.86"' not in build:
+        raise AssertionError("P6 must follow verified 1.0.86 Package 5")
+    assert 'applicationIdSuffix = ".fresh"' in build
+    PENDING[gradle]=once(build,'versionName = "1.0.86"',
+                      'versionName = "1.0.86-paket6-qa"',
+                      "version metadata, same signed app identity")
+
+    # All anchors and additive Firebase rules verified before mutating sources.
+    for path,value in PENDING.items():
+        path.write_text(value,"utf-8")
+        print("PASS Package 6",path.relative_to(ROOT))
+    for name in ("Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt"):
+        shutil.copyfile(P6/name,APP/name)
+    tests=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
+    tests.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(P6/"Wq186ArenaFairPlayTest.kt",tests/"Wq186ArenaFairPlayTest.kt")
+    print("Source staged only; APK/Firebase deployment are separate, guarded operations.")
+
+if __name__=="__main__":
+    main()
