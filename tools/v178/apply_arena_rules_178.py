@@ -52,6 +52,16 @@ premium_verified.pop("configRevision",None)
 # Package 6 is applied only AFTER the complete v178-v185 historical assembly.
 # Ignore its separate additive subtree when checking this earlier rule revision.
 premium_verified.pop("package6",None)
+# P6 completion consent is added at its own final assembly step, not v178.
+# Its historical parent still matches EXACTLY after discarding the later
+# staged completion amendment. No unchecked rule is ever copied here.
+historical=s["rules"]["premiumRooms"]["$code"]["phase"][".write"]
+latest=premium_verified["phase"][".write"]
+assert historical.startswith("auth != null && data.parent().child('hostUid')")
+assert "child('finishVotes')" in latest and "numChildren()" in latest
+assert "data.val() === 'playing' && newData.val() === 'finished'" in latest
+assert "data.val() === 'playing' && newData.val() === 'finished'" in historical
+premium_verified["phase"][".write"]=historical
 for key in changes:
     premium_verified[key][".write"]=False
 assert verified==s,"Existing RTDB Arena rules differ from reviewed source; refuse to overwrite."
