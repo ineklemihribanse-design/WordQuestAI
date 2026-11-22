@@ -314,6 +314,13 @@ def rules():
     sub["settings"]=want
     sub["hintClaims"]=json.loads(official.read_text("utf-8"))["rules"]["premiumRooms"]["$code"]["package6"]["hintClaims"]
     sub["retrySpent"]=json.loads(official.read_text("utf-8"))["rules"]["premiumRooms"]["$code"]["package6"]["retrySpent"]
+    # Apply the v1.0.86 finish gate only now; never defeat historical v178 audit.
+    historic=obj["rules"]["premiumRooms"]["$code"]["phase"][".write"]
+    future=json.loads(official.read_text("utf-8"))["rules"]["premiumRooms"]["$code"]["phase"][".write"]
+    assert "data.val() === 'playing' && newData.val() === 'finished'" in historic
+    assert "finishVotes" in future and "numChildren()" in future
+    assert future.startswith(historic.split("(data.val() === 'playing'")[0])
+    obj["rules"]["premiumRooms"]["$code"]["phase"][".write"]=future
     CHANGES[source]=json.dumps(obj,indent=2,ensure_ascii=False)+"\n"
 
 def main():
