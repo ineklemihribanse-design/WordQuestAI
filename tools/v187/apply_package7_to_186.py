@@ -127,6 +127,27 @@ private fun Wq174SettingIcon(kind:String) {
     s=s[:begin]+replacement+s[end:]
     store("WordQuest174Arena.kt",s)
 
+def audio_diagnostics():
+    s=load("WordQuestSettings.kt")
+    old='''        Text("Cihaz / çevrimdışı ses durumu", color = Ink, fontFamily = Serif, fontSize = 19.sp)
+        Text(pronunciation.accentDiagnostics, fontFamily = Sans)
+        Text(pronunciation.voiceDetails, fontFamily = Sans)
+        Text("Eski yedek kayıtlar eSpeak ile sentezlenmiştir ve robotiktir. " +
+            "Cihaz sesinin de doğal duyulması garanti edilemez. " +
+            "Amerikan/Britanya farkını Tomato, Can't, Schedule ile karşılaştırın.",
+            fontFamily = Sans, fontSize = 12.sp)'''
+    replacement='''        Wq187InfoTip(
+            "Cihaz / çevrimdışı ses durumu",
+            pronunciation.accentDiagnostics + " — " +
+            pronunciation.voiceDetails +
+            " — Eski yedek eSpeak kayıtları robotik duyulabilir. " +
+            "Cihaz sesi de her zaman doğal olmayabilir. " +
+            "US/UK farkını Tomato, Can't ve Schedule ile karşılaştırabilirsin."
+        )'''
+    s=once(s,old,replacement,
+        "move dynamic voice/region diagnostics behind scrollable info without hiding controls")
+    store("WordQuestSettings.kt",s)
+
 def privacy():
     s=load("AiProviderSettings.kt")
     old='''        Text("Anahtar yalnızca seçili cihazdaki bu hesaba aittir; Firebase'e veya GitHub'a kaydedilmez. " +
@@ -154,6 +175,7 @@ def main():
     conversation()
     scene()
     layout()
+    audio_diagnostics()
     privacy()
     g=GRADLE.read_text("utf-8")
     g=once(g,"versionCode = 112","versionCode = 113","versionCode")
