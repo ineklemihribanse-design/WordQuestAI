@@ -94,12 +94,13 @@ internal object Wq183MascotStore {
     /** Call on Dispatchers.IO. All extraction remains in app-private storage. */
     fun importPack(context: Context, uri: Uri, profile: String): Item {
         require(profile.isNotBlank()) { "Önce profil seçilmeli" }
+        // Reject excess packs before allocating temporary files or staging dirs.
+        require(list(context, profile).size < 20) { "En fazla 20 kişisel maskot saklanabilir" }
         val ownedRoot = root(context, profile)
         val stage = File(ownedRoot, ".staging_" + UUID.randomUUID())
         val input = File.createTempFile("wq183_zip_", ".tmp", context.cacheDir)
-        stage.mkdirs()
-        require(list(context, profile).size < 20) { "En fazla 20 kişisel maskot saklanabilir" }
         try {
+            require(stage.mkdirs()) { "Geçici maskot klasörü açılamadı" }
             val stream = context.contentResolver.openInputStream(uri)
                 ?: error("ZIP dosyası açılamadı")
             stream.use { source ->
