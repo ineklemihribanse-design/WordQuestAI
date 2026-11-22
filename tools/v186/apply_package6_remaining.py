@@ -298,6 +298,10 @@ def compact_live_hud():
     if(match.phase!="playing") Row(Modifier.fillMaxWidth(),
         horizontalArrangement=Arrangement.SpaceBetween) {''',
         "hide redundant score names during live Arena")
+    s=once(s,
+        'Text("Takım: ${solved.size * 10} puan"',
+        'Text("Takım: ${arenaScore(match.hostUid)+arenaScore(match.guestUid)} puan"',
+        "cooperative team score uses same weighted formula")
     store("PremiumOnlineScreen.kt",s)
 
 def rules():
