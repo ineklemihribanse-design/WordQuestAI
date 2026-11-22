@@ -49,6 +49,9 @@ verified["rules"].pop("friendProfiles",None)
 premium_verified=verified["rules"]["premiumRooms"]["$code"]
 premium_verified.pop("hintUsed",None)
 premium_verified.pop("configRevision",None)
+# Package 6 is applied only AFTER the complete v178-v185 historical assembly.
+# Ignore its separate additive subtree when checking this earlier rule revision.
+premium_verified.pop("package6",None)
 for key in changes:
     premium_verified[key][".write"]=False
 assert verified==s,"Existing RTDB Arena rules differ from reviewed source; refuse to overwrite."
