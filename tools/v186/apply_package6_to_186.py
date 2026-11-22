@@ -259,19 +259,30 @@ def fair_online():
              """    var freeSkipUsed by rememberSaveable(match.code,myUid) {
         mutableStateOf(Wq179ArenaSkip.used(context,match.code,myUid))
     }""",
-             """    var freeSkips by rememberSaveable(match.code,myUid) {
-        mutableIntStateOf(Wq179ArenaSkip.count(context,match.code,myUid))
-    }""",
+             """    val freeSkips = Wq186ArenaSkipNetwork.count(session,match.code,myUid)""",
              "two retained skip rights")
     s = once(s,"if(!freeSkipUsed && canAnswer &&","if(freeSkips < 2 && canAnswer &&",
              "allow two automatic word changes")
     s = once(s,'"1 ÜCRETSİZ KELİME GEÇ"',
              '"KELİMEYİ GEÇ · ${2-freeSkips} HAK"',"dynamic skip label")
     s = once(s,
-             """                                    Wq179ArenaSkip.consume(context,match.code,myUid)
-                                    freeSkipUsed=true""",
+             """                                    Wq186ArenaSkipNetwork.consume(session,match.code,myUid){ ok ->
+                                        if(ok) {
+                                            setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))
+                                            setAnswerText("")
+                                        } else client.note("Kelime geçişi kaydedilemedi.")
+                                    }""",
              """                                    freeSkips=Wq179ArenaSkip.consume(context,match.code,myUid)""",
              "consume a skip atomically")
+    # The actual word change happens only after Firebase transaction commits.
+    stale='''                                    setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))
+                                    setAnswerText("")
+                                },Modifier.fillMaxWidth())'''
+    if stale not in s:
+        raise AssertionError("P6 skip callback source differs")
+    s=once(s,stale,
+        '''                                },Modifier.fillMaxWidth())''',
+        "remove old unguarded client-side skip")
     save("PremiumOnlineScreen.kt",s)
 
 def skip_storage():
@@ -377,7 +388,7 @@ def firebase_rules():
     incoming=approved["rules"]["premiumRooms"]["$code"]["package6"]
     if "package6" in base:
         raise AssertionError("P6 already installed or unexpected Firebase rule drift")
-    assert set(incoming)=={"emoji","finishVotes","presence"}
+    assert set(incoming)=={"emoji","finishVotes","presence","skips"}
     base["package6"]=incoming
     PENDING[DB]=json.dumps(current,ensure_ascii=False,indent=2)+"\n"
 
@@ -385,7 +396,7 @@ def main():
     assert (APP/"Wq186MatchingImporter.kt").exists(),"Package 5 must be assembled first"
     assert all((P6 / x).exists() for x in (
         "Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt",
-        "Wq186ArenaFairPlayTest.kt"))
+        "Wq186ArenaSkipNetwork.kt","Wq186ArenaFairPlayTest.kt"))
     navigation()
     compact_lobby()
     fair_online()
@@ -411,7 +422,8 @@ def main():
     for path,value in PENDING.items():
         path.write_text(value,"utf-8")
         print("PASS Package 6",path.relative_to(ROOT))
-    for name in ("Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt"):
+    for name in ("Wq186ArenaFairPlay.kt","Wq186ArenaSocialHud.kt",
+                 "Wq186ArenaSkipNetwork.kt"):
         shutil.copyfile(P6/name,APP/name)
     tests=ROOT/"source/app/src/test/java/com/kelimebulmacasi/a1"
     tests.mkdir(parents=True,exist_ok=True)
