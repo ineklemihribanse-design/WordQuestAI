@@ -1765,7 +1765,13 @@ jobs:
           d=json.load(open(sys.argv[1]))
           assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=d["elements"][0]
-          expected=(112,"1.0.86") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v186-arena-responsive-flow-friend-profiles" else ((111,"1.0.85") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v185-profile-friend-personal-mascots" else ((110,"1.0.84") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v184-mascot-victory-arena" else ((109,"1.0.83") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v183-quality-stability" else (108,"1.0.82")))
+          known={
+              "refs/heads/feature/v183-quality-stability": (109,"1.0.83"),
+              "refs/heads/feature/v184-mascot-victory-arena": (110,"1.0.84"),
+              "refs/heads/feature/v185-profile-friend-personal-mascots": (111,"1.0.85"),
+              "refs/heads/feature/v186-arena-responsive-flow-friend-profiles": (112,"1.0.86"),
+          }
+          expected=known.get(os.environ.get("GITHUB_REF"),(108,"1.0.82"))
           assert (item["versionCode"],item["versionName"])==expected, item
           print("Upgrade candidate identity verified: original .fresh and expected code")
           PY
