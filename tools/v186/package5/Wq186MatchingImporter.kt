@@ -142,12 +142,38 @@ internal fun Wq186MatchingImporter(
                     }
                     collected.take(aiCount)
                 }
+                val offline=if(englishDefinitions) Wq186MeaningBank.load(listOf(level))
+                    .associateBy{it.english.trim().lowercase()} else emptyMap()
+                val unknown=if(englishDefinitions)found
+                    .map{it.answer.trim()}
+                    .filterNot{it.lowercase() in offline}
+                    .distinctBy{it.lowercase()} else emptyList()
+                var definitionsFailed=false
+                val online=if(unknown.isNotEmpty()) {
+                    try {
+                        withContext(Dispatchers.IO) {
+                            unknown.chunked(10).flatMap { batch ->
+                                ai.defineMatchingWords("",batch,level).entries
+                            }.associate{it.key to it.value}
+                        }
+                    }catch(cancelled:CancellationException){throw cancelled}
+                    catch(_:Exception){definitionsFailed=true;emptyMap()}
+                } else emptyMap()
                 addBatch(found.map {
+                    val key=it.answer.trim().lowercase()
                     Wq175MatchPair(level,"AI",it.answer,
-                        if(englishDefinitions)"" else it.clue)
+                        if(englishDefinitions)
+                            offline[key]?.turkish ?: online[key].orEmpty()
+                        else it.clue)
                 },"Yapay zekâ")
-                if(englishDefinitions)
-                    status="AI kelimeleri önerdi. İngilizce tanımları tek tek doğrulayıp doldur."
+                if(englishDefinitions) {
+                    val missing=staged.count{it.turkish.isBlank()}
+                    status=if(missing==0)
+                        "İngilizce tanımlar hazır. Klasöre kaydetmeden önce kontrol et."
+                    else "${missing} kelimenin İngilizce tanımı eksik. " +
+                        (if(definitionsFailed)"AI tanım isteği başarısız. " else "") +
+                        "Eksikleri kendin düzenleyebilirsin."
+                }
             } catch(cancelled:CancellationException){throw cancelled}
             catch(e:Exception){status=e.message?.take(140)?:"Yapay zekâdan sonuç alınamadı."}
             finally {busy=false}
