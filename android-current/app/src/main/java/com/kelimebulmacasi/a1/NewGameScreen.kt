@@ -32,10 +32,9 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
-// A single crossword board is most reliable with 8–20 entries; larger selections
-// must be implemented as separate rounds instead of forcing an oversized board.
-private const val SAFE_BOARD_MAX_WORDS = 20
-private val gameSizes = listOf(8, 10, 15, 20)
+// 20 words per board; 21–70 words are generated as linked 8–20 word boards.
+private const val SAFE_SESSION_MAX_WORDS = 70
+private val gameSizes = listOf(10, 20, 30, 50, 70)
 
 @Composable
 internal fun NewGameScreen(
@@ -57,7 +56,7 @@ internal fun NewGameScreen(
     val topics = bank?.categories(level, if (yds) GameMode.Yds else GameMode.Topics).orEmpty()
     val kinds = bank?.categories(level, GameMode.Kinds).orEmpty()
     val available = remember(bank, level, topic, kind) { bank?.pool(level, topic, kind)?.size ?: 0 }
-    val permitted = MIN_NEW_GAME_WORDS..minOf(available, MAX_BOARD_WORDS, SAFE_BOARD_MAX_WORDS)
+    val permitted = MIN_NEW_GAME_WORDS..minOf(available, SAFE_SESSION_MAX_WORDS)
 
     LaunchedEffect(session) {
         try { bank = session.vocabulary() } catch (cancelled: CancellationException) { throw cancelled }
@@ -110,10 +109,10 @@ internal fun NewGameScreen(
         when {
             bank == null && error.isEmpty() -> BodyText("Kelime havuzu yükleniyor…")
             bank != null && permitted.isEmpty() -> BodyText("Bu filtrede $available kelime var. Tahta için en az $MIN_NEW_GAME_WORDS kelime gerekir.", ErrorInk)
-            bank != null -> BodyText("$available farklı kelime · tek tahtada güvenilir sınır: ${permitted.first}–${permitted.last} kelime", Forest)
+            bank != null -> BodyText("$available farklı kelime · ${permitted.first}–${permitted.last} kelime. 20 üzeri seçimler, 20 kelimeyi geçmeyen bölümlere ayrılır.", Forest)
         }
         if (error.isNotBlank()) BodyText(error, ErrorInk)
-        PrimaryAction(if (loading) "Bulmaca hazırlanıyor…" else "Bulmacayı başlat", {
+        PrimaryAction(if (loading) "Bulmacalar hazırlanıyor…" else "Bulmacayı başlat", {
             val size = count ?: return@PrimaryAction
             if (loading) return@PrimaryAction
             focus.clearFocus()
@@ -121,7 +120,8 @@ internal fun NewGameScreen(
             error = ""
             scope.launch {
                 try {
-                    val game = session.newGame(level, topic, kind, size)
+                    val game = if (size <= 20) session.newGame(level, topic, kind, size)
+                        else session.newGameSeries(level, topic, kind, size)
                     if (game != null) open(game)
                     else error = "Bu seçimle geçerli bir tahta kurulamadı. Başka bir sayı seç veya filtreyi genişlet."
                 } catch (cancelled: CancellationException) {
