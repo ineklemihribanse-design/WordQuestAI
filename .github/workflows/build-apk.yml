@@ -105,6 +105,7 @@ on:
       - 'tools/v183/**'
       - 'tools/v184/**'
       - 'tools/v185/**'
+      - 'tools/v186/**'
       - 'assets/user_uploads/WordQuestAI_Arena_13inc_Tablet_ve_Telefon.zip'
       - 'assets/user_uploads/arena_v184/**'
       - 'firebase/database.rules.json'
@@ -125,7 +126,7 @@ permissions:
   contents: write
 concurrency:
   group: wq175-comprehensive-${{ github.ref }}
-  cancel-in-progress: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+  cancel-in-progress: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -168,7 +169,7 @@ jobs:
       # except tools/v175/**; those are applied fresh below on every run.
       # Keying from git tree object IDs avoids hashing multi-megabyte GLBs.
       - name: Compute validated pre-1.0.75 baseline cache identity
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           BASE_HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v175\//' | sha256sum | cut -d' ' -f1)"
@@ -176,7 +177,7 @@ jobs:
           echo "WQ175_BASELINE_CACHE_KEY=wq175-pre175-v1-$BASE_HASH" >> "$GITHUB_ENV"
       - name: Restore unchanged pre-1.0.75 Android baseline
         id: v175_baseline_restore
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         uses: actions/cache/restore@v4
         with:
           path: source
@@ -1384,14 +1385,14 @@ jobs:
           grep -Fq 'versionCode = 100' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.74-premium-arena-memory"' source/app/build.gradle.kts
       - name: Cache verified pre-1.0.75 Android baseline for next incremental build
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) && steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) && steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: source
           key: ${{ env.WQ175_BASELINE_CACHE_KEY }}
       - name: Install and verify in-development 1.0.75 learning improvements
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_core_175.py tools/v175/verify_stage_one.py
@@ -1400,35 +1401,35 @@ jobs:
           grep -Fq 'versionCode = 101' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.75"' source/app/build.gradle.kts
       - name: Activate and verify opt-in timed crossword mode (v1.0.75)
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_timed_175.py tools/v175/verify_timed_175.py
           python3 tools/v175/apply_timed_175.py
           python3 tools/v175/verify_timed_175.py
       - name: Upgrade New Game with visual mascot builder and verified selection summary
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_premium_new_game_175.py tools/v175/verify_premium_new_game_175.py
           python3 tools/v175/apply_premium_new_game_175.py
           python3 tools/v175/verify_premium_new_game_175.py
       - name: Connect and verify Word Memory PDF, image, camera and personal AI imports
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_import_175.py tools/v175/verify_import_175.py
           python3 tools/v175/apply_import_175.py
           python3 tools/v175/verify_import_175.py
       - name: Install and verify themed Daily Plan and all five original exercise interiors
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_practice_visuals_175.py tools/v175/verify_practice_visuals_175.py
           python3 tools/v175/apply_practice_visuals_175.py
           python3 tools/v175/verify_practice_visuals_175.py
       - name: Generate and install 17 original premium app icons for all rooms
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/generate_premium_icons_175.py tools/v175/apply_icons_175.py tools/v175/verify_icons_175.py
@@ -1436,82 +1437,82 @@ jobs:
           python3 tools/v175/apply_icons_175.py
           python3 tools/v175/verify_icons_175.py
       - name: Install separate YDS Academy and refined CEFR package landing screen
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_academy_175.py tools/v175/verify_academy_175.py
           python3 tools/v175/apply_academy_175.py
           python3 tools/v175/verify_academy_175.py
       - name: Refresh crossword board, clues and accessible buttons without changing game rules
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_crossword_visuals_175.py tools/v175/verify_crossword_175.py
           python3 tools/v175/apply_crossword_visuals_175.py
           python3 tools/v175/verify_crossword_175.py
       - name: Upgrade My Puzzles with true profile counts and completion filters
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_mypuzzles_175.py tools/v175/verify_mypuzzles_175.py
           python3 tools/v175/apply_mypuzzles_175.py
           python3 tools/v175/verify_mypuzzles_175.py
       - name: Install licensed and quality-checked A1-C1 extended wordlists
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/install_vocabulary_175.py tools/v175/verify_vocabulary_175.py
           python3 tools/v175/install_vocabulary_175.py
           python3 tools/v175/verify_vocabulary_175.py
       - name: Install and test premium YDS exams with original grammar content
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_ui_175.py tools/v175/verify_yds_exam_175.py
           python3 tools/v175/apply_yds_exam_ui_175.py
           python3 tools/v175/verify_yds_exam_175.py
       - name: Add paragraph dictation and expand YDS to 150 verified original questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_paragraph_and_yds_175.py tools/v175/verify_paragraph_and_yds_175.py
           python3 tools/v175/apply_paragraph_and_yds_175.py
           python3 tools/v175/verify_paragraph_and_yds_175.py
       - name: Install 80-question full YDS exam with real three-hour timer
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_full_yds_175.py tools/v175/verify_full_yds_175.py
           python3 tools/v175/apply_full_yds_175.py
           python3 tools/v175/verify_full_yds_175.py
       - name: Prevent answer leakage in timed YDS exams while keeping practice feedback
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_integrity_175.py tools/v175/verify_yds_exam_integrity_175.py
           python3 tools/v175/apply_yds_exam_integrity_175.py
           python3 tools/v175/verify_yds_exam_integrity_175.py
       - name: Install post-exam review of incorrect and unanswered YDS questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_review_175.py tools/v175/verify_yds_exam_review_175.py
           python3 tools/v175/apply_yds_exam_review_175.py
           python3 tools/v175/verify_yds_exam_review_175.py
       - name: Install YDS bank duplicate and explanation quality regression
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/install_yds_bank_quality_175.py
       - name: Add 48 authored YDS questions across 8 disciplines and verify no filler counts
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_quality_batch_175.py tools/v175/verify_yds_quality_batch_175.py
           python3 tools/v175/apply_yds_quality_batch_175.py
           python3 tools/v175/verify_yds_quality_batch_175.py
       - name: Complete daily plan custom goals and weekly activity
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_daily_goals_175.py tools/v175/install_daily_tests_175.py tools/v175/verify_daily_goals_175.py
@@ -1519,14 +1520,14 @@ jobs:
           python3 tools/v175/install_daily_tests_175.py
           python3 tools/v175/verify_daily_goals_175.py
       - name: Display verified real word availability and CEFR shortfalls by level
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_real_coverage_175.py tools/v175/verify_real_coverage_175.py
           python3 tools/v175/apply_real_coverage_175.py
           python3 tools/v175/verify_real_coverage_175.py
       - name: Verify 1.0.75 production release evidence gate rejects missing device QA
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/test_release_gate_175.py -v
@@ -1536,60 +1537,60 @@ jobs:
           fi
           echo "PASS: release remains blocked until hardware, user-data, Arena and visual evidence exists"
       - name: Regression test 1.0.75 Android install and permission continuity gate
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/verify_upgrade_metadata_175.py tools/v175/test_upgrade_metadata_175.py
           python3 tools/v175/test_upgrade_metadata_175.py -v
       - name: Reject blank-but-valid emulator screenshots in v175 QA
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/test_emulator_screen_content_175.py -v
       - name: Apply real selectable Arena quiz count and darker crossword blanks
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_arena_count_and_cells_175.py tools/v175/verify_arena_count_and_cells_175.py
           python3 tools/v175/apply_arena_count_and_cells_175.py
           python3 tools/v175/verify_arena_count_and_cells_175.py
       - name: Stage and verify Firebase rules for selectable Arena 5-choice questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_arena_firebase_rules_175.py tools/v175/verify_arena_firebase_rules_175.py
           python3 tools/v175/apply_arena_firebase_rules_175.py
           python3 tools/v175/verify_arena_firebase_rules_175.py
       - name: Install approved 1.0.75 premium native art across ten rooms
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_theme_art_175.py tools/v175/verify_theme_art_175.py
           python3 tools/v175/apply_theme_art_175.py
           python3 tools/v175/verify_theme_art_175.py
       - name: Build final approved mobile-first home and glossy Arena mode icons
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_mobile_home_175.py tools/v175/verify_mobile_home_175.py
           python3 tools/v175/apply_mobile_home_175.py
           python3 tools/v175/verify_mobile_home_175.py
       - name: Install responsive 2.5D Daily Plan game cards without losing progress
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_premium_practice_grid_175.py tools/v175/verify_premium_practice_grid_175.py
           python3 tools/v175/apply_premium_practice_grid_175.py
           python3 tools/v175/verify_premium_practice_grid_175.py
       - name: Add native Home bottom navigation and real due-word notification actions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_home_navigation_175.py tools/v175/verify_home_navigation_175.py
           python3 tools/v175/apply_home_navigation_175.py
           python3 tools/v175/verify_home_navigation_175.py
       - name: Add 1.0.76 original content bank and daily-question anti-repeat engine
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v176/apply_content_176.py tools/v176/verify_content_176.py tools/v176/verify_upgrade_metadata_176.py
@@ -1600,18 +1601,18 @@ jobs:
           python3 tools/v176/audit_levels_176.py
           test -s source/app/src/main/assets/vocabulary-v176-coverage.json
       - name: Probe original editor and card-rotation source before 1.0.77 changes
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           python3 tools/v177/probe_ui_177.py
       - name: Apply 1.0.77 local import, premium responsive design and expanded daily exercises
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v177/apply_polish_177.py tools/v177/verify_177.py tools/v177/verify_upgrade_metadata_177.py
           python3 tools/v177/apply_polish_177.py
           python3 tools/v177/verify_177.py
       - name: Repair 1.0.78 Arena readiness, participant mascot and secure Firebase room rules
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v178/apply_arena_rules_178.py tools/v178/apply_arena_lobby_178.py tools/v178/verify_arena_lobby_178.py tools/v178/verify_upgrade_metadata_178.py
@@ -1619,7 +1620,7 @@ jobs:
           python3 tools/v178/apply_arena_lobby_178.py
           python3 tools/v178/verify_arena_lobby_178.py
       - name: Apply 1.0.79 compact Arena board, clue order, sound and player glow
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v179/apply_arena_179.py tools/v179/verify_arena_179.py tools/v179/verify_upgrade_metadata_179.py
@@ -1629,7 +1630,7 @@ jobs:
           cp tools/v179/Wq179ArenaOrderTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaOrderTest.kt
           cp tools/v179/Wq179ArenaFinaleTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaFinaleTest.kt
       - name: Apply 1.0.80 friend cards, privacy summary, new Arena palette and full-size board
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v180/apply_social_180.py tools/v180/apply_ui_180.py tools/v180/verify_ui_180.py tools/v180/verify_upgrade_metadata_180.py
@@ -1638,7 +1639,7 @@ jobs:
           python3 tools/v180/verify_ui_180.py
           cp tools/v180/Wq180FriendActivityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq180FriendActivityTest.kt
       - name: Apply 1.0.81 original Arena hero wallpaper, visible hints and large responsive board
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v181/apply_arena_181.py tools/v181/verify_arena_181.py tools/v181/verify_upgrade_metadata_181.py
@@ -1647,7 +1648,7 @@ jobs:
           cp tools/v181/Wq181ArenaHintTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintTest.kt
           cp tools/v181/Wq181ArenaHintSlotTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintSlotTest.kt
       - name: Apply 1.0.82 approved icons, 5-choice quiz cards and custom nickname
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v182/apply_ui_182.py tools/v182/verify_ui_182.py tools/v182/verify_upgrade_metadata_182.py
@@ -1655,7 +1656,7 @@ jobs:
           python3 tools/v182/verify_ui_182.py
           cp tools/v182/Wq182IconRoutingTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq182IconRoutingTest.kt
       - name: Apply 1.0.83 quiz contrast, protected mascot ZIP and responsive Arena
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots')) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles')) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v183/apply_quality_183.py tools/v183/verify_quality_183.py tools/v183/stage_arena_assets_183.py tools/v183/build_mascot_template_183.py
@@ -1666,7 +1667,7 @@ jobs:
           cp tools/v183/Wq183QuizQualityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq183QuizQualityTest.kt
           python3 tools/v183/build_mascot_template_183.py "$RUNNER_TEMP/WordQuest_Mascot_Template_v1.zip"
       - name: Apply 1.0.84 approved Arena art, full-size custom mascots, win poses
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots') }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v184/apply_visuals_184.py tools/v184/verify_assets_184.py
@@ -1674,7 +1675,7 @@ jobs:
           python3 -m pip install --quiet pillow
           python3 tools/v184/verify_assets_184.py
       - name: Apply 1.0.85 large account mascot, edit-only saved nickname, private friend portraits
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v185/apply_profile_185.py tools/v185/verify_upgrade_metadata_185.py
@@ -1683,6 +1684,16 @@ jobs:
           grep -Fq 'versionName = "1.0.85"' source/app/build.gradle.kts
           grep -Fq 'Wq185FriendSharingSetting' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
           grep -Fq 'Wq185FriendProfilePublisher' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+      - name: Apply 1.0.86 keyboard-stable crossword, enlarged mutual-friend profile
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles' }}
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v186/apply_arena_186.py tools/v186/verify_upgrade_metadata_186.py
+          python3 tools/v186/apply_arena_186.py
+          grep -Fq 'versionCode = 112' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.86"' source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaBoardV2.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186FriendProfileDetail.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail
@@ -1725,7 +1736,7 @@ jobs:
           test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" app/build/outputs/apk/offline/apksigner.jar
       - name: Verify selected 1.0.82 / 1.0.83 signed QA candidate
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
@@ -1738,6 +1749,7 @@ jobs:
           if [[ "$GITHUB_REF" == 'refs/heads/feature/v183-quality-stability' ]]; then SIGNED_LABEL=v1.0.83; fi
           if [[ "$GITHUB_REF" == 'refs/heads/feature/v184-mascot-victory-arena' ]]; then SIGNED_LABEL=v1.0.84; fi
           if [[ "$GITHUB_REF" == 'refs/heads/feature/v185-profile-friend-personal-mascots' ]]; then SIGNED_LABEL=v1.0.85; fi
+          if [[ "$GITHUB_REF" == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles' ]]; then SIGNED_LABEL=v1.0.86; fi
           test -n "$WQ_RELEASE_KEYSTORE_B64"
           test -n "$WQ_STORE_PASS"
           test -n "$WQ_KEY_ALIAS"
@@ -1753,7 +1765,7 @@ jobs:
           d=json.load(open(sys.argv[1]))
           assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           item=d["elements"][0]
-          expected=(111,"1.0.85") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v185-profile-friend-personal-mascots" else ((110,"1.0.84") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v184-mascot-victory-arena" else ((109,"1.0.83") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v183-quality-stability" else (108,"1.0.82")))
+          expected=(112,"1.0.86") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v186-arena-responsive-flow-friend-profiles" else ((111,"1.0.85") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v185-profile-friend-personal-mascots" else ((110,"1.0.84") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v184-mascot-victory-arena" else ((109,"1.0.83") if os.environ.get("GITHUB_REF") == "refs/heads/feature/v183-quality-stability" else (108,"1.0.82")))
           assert (item["versionCode"],item["versionName"])==expected, item
           print("Upgrade candidate identity verified: original .fresh and expected code")
           PY
@@ -1781,7 +1793,7 @@ jobs:
           fi
           echo 'PASS: signed current candidate is non-debuggable.'
       - name: Enable KVM for emulator-only upgrade QA
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::Host /dev/kvm unavailable"; fi
       - name: Test genuine 1.0.80 to 1.0.82 in-place emulator installation
@@ -1824,8 +1836,18 @@ jobs:
           profile: pixel_4
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
           script: bash tools/v185/qa_emulator_upgrade_185.sh
+      - name: Test genuine signed v1.0.85 to v1.0.86 in-place emulator installation
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles' }}
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: pixel_4
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          script: bash tools/v186/qa_emulator_upgrade_186.sh
       - name: Save emulator screenshots for manual responsive visual review
-        if: ${{ always() && github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots'))) }}
+        if: ${{ always() && github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles'))) }}
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
@@ -1868,6 +1890,15 @@ jobs:
         with:
           name: WordQuestAI-v1.0.85-code111-signed-QA-${{ github.run_number }}
           path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.85-signed-qa.apk
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+      - name: Archive signed 1.0.86 QA APK only after successful in-place upgrade test
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/feature/v186-arena-responsive-flow-friend-profiles' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.86-code112-signed-QA-${{ github.run_number }}
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.86-signed-qa.apk
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
