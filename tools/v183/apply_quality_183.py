@@ -98,6 +98,29 @@ def online(source):
     return source
 
 update("PremiumOnlineScreen.kt", online)
+# Replace only the header score text, preserving game-state callbacks and the
+# five-choice question/answer layout. The same header remains on result screens.
+def online_two_player_portraits(source):
+    return replace_one(source,
+        '''    // Two scores remain visible while the large settings card is hidden.
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        Text("$hostName  ★ ${match.score(match.hostUid, questions)}", color = Color.White,
+            fontSize = 13.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+        Text("$guestName  ★ ${match.score(match.guestUid, questions)}", color = OnlineGold,
+            fontSize = 13.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+    }''',
+        '''    // Both private Arena previews are rendered in one compact, scrollable header.
+    // The same strip stays visible during play and after finishing the match.
+    Wq183OnlinePortraitStrip(
+        hostAvatar=match.hostAvatar, guestAvatar=match.guestAvatar,
+        hostName=hostName, guestName=guestName,
+        hostScore=match.score(match.hostUid, questions),
+        guestScore=match.score(match.guestUid, questions),
+        mode=match.mode, isHost=isHost
+    )''',
+        "render both participant maskots in online match + finished HUD")
+update("PremiumOnlineScreen.kt", online_two_player_portraits)
+
 update("PremiumOnlineScreen.kt", lambda source: replace_one(
     source,
     '''    val match = client.match
@@ -145,6 +168,7 @@ update(
 shutil.copyfile(TOOLS / "Wq183MascotStore.kt", SRC / "Wq183MascotStore.kt")
 shutil.copyfile(TOOLS / "Wq183MascotManager.kt", SRC / "Wq183MascotManager.kt")
 shutil.copyfile(TOOLS / "Wq183ArenaShare.kt", SRC / "Wq183ArenaShare.kt")
+shutil.copyfile(TOOLS / "Wq183OnlinePortraitStrip.kt", SRC / "Wq183OnlinePortraitStrip.kt")
 
 def mascots(source):
     source = replace_one(source,
