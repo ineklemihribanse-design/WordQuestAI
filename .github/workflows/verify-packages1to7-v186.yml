@@ -1606,6 +1606,10 @@ jobs:
             python3 -m unittest discover -s "$PKG3/tests" -p test_package3.py -v
           WQ_ROOT="$GITHUB_WORKSPACE" \
             python3 "$PKG3/tools/v186/apply_memory_package3_186.py"
+          # P3's temporary feedback effect must see the card's reviewed state
+          # in lexical scope; verify that before any downstream overlays.
+          python3 -m py_compile tools/v186/repair_memory_feedback_186.py
+          python3 tools/v186/repair_memory_feedback_186.py
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
