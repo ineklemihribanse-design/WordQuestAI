@@ -301,14 +301,16 @@ def replays():
 
 def compact_live_hud():
     s=load("PremiumOnlineScreen.kt")
-    s=once(s,
-        '''    // Two scores remain visible while the large settings card is hidden.
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {''',
-        '''    // Score is already inside the real purple match scoreboard.
-    // Do not display a second host/guest line above it during live play.
-    if(match.phase!="playing") Row(Modifier.fillMaxWidth(),
-        horizontalArrangement=Arrangement.SpaceBetween) {''',
-        "hide redundant score names during live Arena")
+    # Previous versions changed the comment, but this actual score ROW must
+    # still be the one immediately before the first host score label.
+    host_token='Text("$hostName'
+    if s.count(host_token)!=1:
+        raise AssertionError("P6 expects exactly one redundant host label")
+    at=s.index(host_token)
+    begin=s.rfind("    Row(",0,at)
+    if begin<0 or at-begin>420 or "SpaceBetween" not in s[begin:at]:
+        raise AssertionError("P6 live score row moved: refuse wrong layout edit")
+    s=s[:begin]+'    if(match.phase!="playing") '+s[begin+4:]
     s=once(s,
         'Text("Takım: ${solved.size * 10} puan"',
         'Text("Takım: ${arenaScore(match.hostUid)+arenaScore(match.guestUid)} puan"',
