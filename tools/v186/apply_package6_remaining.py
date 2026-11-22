@@ -188,6 +188,82 @@ def hint_network():
         "multiple revealed letters printed inside grid")
     store("ArenaBoardV2.kt",s)
 
+def replays():
+    s=load("PremiumOnlineScreen.kt")
+    s=once(s,
+        "wordIndex=Wq186ArenaNext.choose(m,myUid,-1)",
+        "wordIndex=Wq186ArenaNext.choose(m,myUid,-1,client.package6Rules.retries,client.package6Retries)",
+        "opening clue respects retry budget")
+    s=once(s,
+        "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex)",
+        "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex,client.package6Rules.retries,client.package6Retries)",
+        "next clue respects retry budget")
+    s=once(s,
+        "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))",
+        "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected,client.package6Rules.retries,client.package6Retries))",
+        "skip does not revisit exhausted clue")
+    s=once(s,
+        'val canAnswer = myTurn && (countdown == null || countdown > 0) && !alreadyUnknown',
+        '''val previouslyFailed=PremiumOnlineLimits.gaveUpOrFailed(match,selected,myUid)
+                        val replayAllowed=(!previouslyFailed ||
+                            (client.package6Retries[selected] ?: 0) < client.package6Rules.retries)
+                        val canAnswer=myTurn && (countdown==null || countdown>0) &&
+                            replayAllowed''',
+        "allow last-round retry only within budget")
+    s=once(s,"client.markSolved(selected)","client.submitWithRetry(selected,true)",
+        "correct answer consumes replay")
+    s=once(s,"client.wrong(selected)","client.submitWithRetry(selected,false)",
+        "wrong answer consumes replay")
+    store("PremiumOnlineScreen.kt",s)
+    s=load("PremiumOnlineRoom.kt")
+    s=once(s,
+        '''    var package6Rules by mutableStateOf(Wq186MatchPreset(listOf("A1")))
+        private set''',
+        '''    var package6Rules by mutableStateOf(Wq186MatchPreset(listOf("A1")))
+        private set
+    var package6Retries by mutableStateOf<Map<Int,Int>>(emptyMap())
+        private set''',"room replay counters")
+    s=once(s,
+        '''                package6Rules=Wq186MatchPreset.fromRoom(
+                    snapshot.child("package6").child("settings"), childString("level")
+                )''',
+        '''                package6Rules=Wq186MatchPreset.fromRoom(
+                    snapshot.child("package6").child("settings"), childString("level")
+                )
+                package6Retries=snapshot.child("package6").child("retrySpent").child(uid)
+                    .children.mapNotNull { e ->
+                        val n=e.key?.toIntOrNull()
+                        val count=(e.value as? Number)?.toInt()
+                        if(n!=null && count!=null)n to count else null
+                    }.toMap()''',"server retry counters")
+    s=once(s,"    fun pass() {",'''    fun submitWithRetry(index:Int,correct:Boolean) {
+        val m=match ?:return
+        if(m.phase!="playing" || !m.isCrossword || index !in 0 until m.size)return
+        val failed=PremiumOnlineLimits.gaveUpOrFailed(m,index,uid)
+        fun submit() { if(correct)markSolved(index) else wrong(index) }
+        if(!failed) { submit();return }
+        val limit=package6Rules.retries
+        if(limit==0) {status="Bu kelimede tekrar hakkın yok.";return}
+        val attempt=ref?.child("package6")?.child("retrySpent")
+            ?.child(uid)?.child(index.toString()) ?:return
+        attempt.runTransaction(object:Transaction.Handler {
+            override fun doTransaction(data:MutableData):Transaction.Result {
+                val used=(data.value as? Number)?.toInt() ?: 0
+                if(used>=limit)return Transaction.abort()
+                data.value=used+1
+                return Transaction.success(data)
+            }
+            override fun onComplete(error:DatabaseError?,committed:Boolean,latest:DataSnapshot?) {
+                if(error!=null)status="Tekrar Firebase'de kaydedilemedi: ${error.message}"
+                else if(!committed)status="Bu kelimedeki tekrar hakkın doldu."
+                else submit()
+            }
+        },false)
+    }
+
+    fun pass() {''',"guard repeated submission with RTDB transaction")
+    store("PremiumOnlineRoom.kt",s)
+
 def rules():
     source=ROOT/"source/database.rules.json"
     official=ROOT/"firebase/database.rules.json"
@@ -197,6 +273,7 @@ def rules():
     if "settings" in sub: raise AssertionError("P6 duplicate RTDB rules")
     sub["settings"]=want
     sub["hintClaims"]=json.loads(official.read_text("utf-8"))["rules"]["premiumRooms"]["$code"]["package6"]["hintClaims"]
+    sub["retrySpent"]=json.loads(official.read_text("utf-8"))["rules"]["premiumRooms"]["$code"]["package6"]["retrySpent"]
     CHANGES[source]=json.dumps(obj,indent=2,ensure_ascii=False)+"\n"
 
 def main():
@@ -208,6 +285,7 @@ def main():
     screen()
     room()
     hint_network()
+    replays()
     rules()
     for p,s in CHANGES.items():
         p.write_text(s,"utf-8")
