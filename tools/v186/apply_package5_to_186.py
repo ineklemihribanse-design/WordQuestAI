@@ -353,8 +353,8 @@ def main() -> None:
                 "    val windowHeight = if(phoneGrid && !enlarged) height else minOf(height, actualHeight)",
                 "phone board viewport height")
             board=change_once(board,
-                "    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {\\n        if (enlarged) {",
-                "    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {\\n        if (enlarged || phoneGrid) {",
+                "    LaunchedEffect(selected, enlarged, windowWidth, windowHeight) {\n        if (enlarged) {",
+                "    LaunchedEffect(selected, enlarged, phoneGrid, windowWidth, windowHeight) {\n        if (enlarged || phoneGrid) {",
                 "keep selected word visible when phone grid scrolls")
     else:
         board=change_once(board,
