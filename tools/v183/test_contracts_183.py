@@ -27,7 +27,7 @@ class SourceContracts(unittest.TestCase):
         self.assertNotIn("FirebaseDatabase",text)
         self.assertNotIn("HttpURLConnection",text)
         self.assertIn("readFully(bytes)",text)
-        self.assertIn("rename(context", (V/"Wq183MascotManager.kt").read_text("utf-8"))
+        self.assertIn("Wq183MascotStore.rename(", (V/"Wq183MascotManager.kt").read_text("utf-8"))
 
     def test_5_answers_and_contrast(self):
         text=(V/"Wq183QuizQuality.kt").read_text("utf-8")
