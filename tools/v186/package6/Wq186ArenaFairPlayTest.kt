@@ -25,7 +25,8 @@ class Wq186ArenaFairPlayTest {
     }
 
     @Test fun deferredWordsOnlyAppearInFinalRound() {
-        val room="DUEL",count=6
+        val room = "DUEL"
+        val count = 6
         val deferred=setOf(0,1)
         val solved=setOf(2,3,4,5)
         assertNull(Wq186ArenaFairPlay.nextWord(room,count,solved,deferred,-1,false))
