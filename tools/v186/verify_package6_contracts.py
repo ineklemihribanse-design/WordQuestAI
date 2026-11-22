@@ -28,6 +28,8 @@ assert "guestUid" in room["guestUid"][".write"]
 assert "auth.uid === $uid" in room["answers"]["$uid"]["$index"][".write"]
 assert "mode" in room["answers"]["$uid"]["$index"][".write"]
 assert "team" in room["solved"]["$index"][".write"]
+assert "finishVotes" in room["phase"][".write"]
+assert "numChildren()" in room["phase"][".write"]
 assert set(extra)=={"presence","emoji","finishVotes","skips","settings",
     "hintClaims","retrySpent"}
 for category in ("emoji","finishVotes","presence","skips",
