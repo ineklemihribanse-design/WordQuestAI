@@ -98,6 +98,17 @@ def online(source):
     return source
 
 update("PremiumOnlineScreen.kt", online)
+
+# The live Arena already uses a separately configured FirebaseApp. Expose the
+# exact authenticated instance alongside its existing database; do NOT create
+# a disconnected Firebase default app for mascot preview sharing.
+update("Accounts.kt", lambda source: replace_one(
+    source,
+    '''    internal fun socialDatabase(): FirebaseDatabase? = database''',
+    '''    internal fun socialDatabase(): FirebaseDatabase? = database
+    internal fun socialAuth(): FirebaseAuth? = auth''',
+    "reuse the room's authenticated Firebase instance for private previews"))
+
 # Replace only the header score text, preserving game-state callbacks and the
 # five-choice question/answer layout. The same header remains on result screens.
 def online_two_player_portraits(source):
@@ -132,7 +143,9 @@ update("PremiumOnlineScreen.kt", lambda source: replace_one(
         guestUid=match?.guestUid,
         hostAvatar=match?.hostAvatar,
         guestAvatar=match?.guestAvatar,
-        profileKey=session.profileKey
+        profileKey=session.profileKey,
+        auth=session.accounts.socialAuth(),
+        database=session.accounts.socialDatabase()
     )
     LaunchedEffect(match?.code,match?.phase,match?.hostAvatar,match?.guestAvatar,''',
     "connect opponent preview to existing authenticated online Arena session"))
