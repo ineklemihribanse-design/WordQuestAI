@@ -1613,7 +1613,22 @@ jobs:
           python3 -m py_compile tools/v186/apply_package6_remaining.py
           python3 tools/v186/apply_package6_remaining.py
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ArenaPresetControls.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ArenaHintNetwork.kt
           python3 -m json.tool source/database.rules.json > /dev/null
+          python3 - <<'PY'
+          from pathlib import Path
+          base=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          for name,term in [
+              ("ArenaApprovedHome.kt","Wq175ArenaHeroAndModes"),
+              ("PremiumOnlineScreen.kt","Wq186ArenaHintAction"),
+              ("Wq175PremiumHome.kt",'Wq175HomeTile("ARENA"'),
+          ]:
+              source=(base/name).read_text("utf-8")
+              at=source.find(term)
+              assert at>=0, (name,term)
+              print("PACKAGE6_LAYOUT_AUDIT",name, "\\n",
+                    source[max(0,at-650):at+3000])
+          PY
       - name: Compile fully assembled Kotlin and Compose without APK or release
         working-directory: source
         run: |
