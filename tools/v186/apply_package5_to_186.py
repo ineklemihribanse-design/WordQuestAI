@@ -329,7 +329,7 @@ def main() -> None:
         # merged puzzle geometry. Restore only the missing, audited cell
         # readability behavior, never override another active implementation.
         if "else if(phoneGrid) maxOf(regularTile, 28.dp) else regularTile" not in board:
-            phone_var = "    val phoneGrid = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600\\n"
+            phone_var = "    val phoneGrid = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp < 600\n"
             # 1.0.85 can already declare phoneGrid above the viewport.
             # Only insert a new declaration when none is present.
             if "val phoneGrid" in board:
@@ -381,6 +381,20 @@ def main() -> None:
         print("KEEP pre-existing approved responsive crossword heading")
     else:
         raise ValueError("SAFE STOP: missing crossword title or mobile viewport")
+
+    # Compile-time declarations must be unique even after prior overlays.
+    header_start=h.index("private fun HomeScreen(")
+    header_end=h.index(") {",header_start)
+    premium_start=p.index("internal fun Wq175PremiumHomeGrid(")
+    premium_end=p.index(") {",premium_start)
+    if h[header_start:header_end].count("ai: AiSession")!=1:
+        raise ValueError("SAFE STOP: HomeScreen AiSession parameter must appear once")
+    if p[premium_start:premium_end].count("ai:AiSession")!=1:
+        raise ValueError("SAFE STOP: premium home AiSession parameter must appear once")
+    if board.count("val phoneGrid")!=1:
+        raise ValueError("SAFE STOP: mobile crossword phoneGrid must appear once")
+    if merged_text.count("fun Wq186OptionTiles(")!=0:
+        raise ValueError("SAFE STOP: matching screen must reuse Package 4 option tiles")
 
     # All merge operations validated; now write only the prepared sources.
     current.write_text(merged_text,"utf-8")
