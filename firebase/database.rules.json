@@ -260,6 +260,26 @@
         "configRevision": {
           ".write": "auth != null && data.isNumber() && data.parent().child('hostUid').val() === auth.uid && data.parent().child('phase').val() === 'lobby' && newData.isNumber() && newData.val() === data.val() + 1",
           ".validate": "newData.isNumber() && ((data.exists() && newData.val() === data.val() + 1) || (!data.exists() && newData.val() === 1))"
+        },
+        "package6": {
+          "emoji": {
+            "$uid": {
+              ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().child('phase').val() === 'playing' && newData.hasChildren(['symbol','sentAt']) && (newData.child('symbol').val() === '👏' || newData.child('symbol').val() === '🔥' || newData.child('symbol').val() === '🎉' || newData.child('symbol').val() === '😄' || newData.child('symbol').val() === '👍' || newData.child('symbol').val() === '💪' || newData.child('symbol').val() === '🤝' || newData.child('symbol').val() === '🏆') && newData.child('sentAt').isNumber() && newData.child('sentAt').val() >= now - 120000 && newData.child('sentAt').val() <= now + 5000 && (!data.exists() || now - data.child('sentAt').val() >= 650)",
+              ".validate": "newData.hasChildren(['symbol','sentAt']) && newData.child('symbol').isString() && newData.child('sentAt').isNumber()"
+            }
+          },
+          "finishVotes": {
+            "$uid": {
+              ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().child('phase').val() === 'playing' && !data.exists() && newData.val() === true",
+              ".validate": "newData.val() === true"
+            }
+          },
+          "presence": {
+            "$uid": {
+              ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().child('guestUid').val() === auth.uid) && newData.hasChildren(['connected','at']) && newData.child('connected').isBoolean() && newData.child('at').isNumber() && newData.child('at').val() >= now - 120000 && newData.child('at').val() <= now + 5000",
+              ".validate": "newData.hasChildren(['connected','at']) && newData.child('connected').isBoolean() && newData.child('at').isNumber()"
+            }
+          }
         }
       }
     },
