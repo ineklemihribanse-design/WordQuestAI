@@ -45,6 +45,37 @@ def main() -> None:
         choices = []
         def choose(match):
             ours, base, new = match.groups()
+            # v175's premium home grid supersedes the old legacy menu.
+            # Package 4 must preserve that approved grid rather than reintroduce it.
+            if name == "HomeScreen.kt" and "Wq175PremiumHomeGrid(" in ours and 'PrimaryAction("Yeni Oyun", newGame)' in new:
+                choices.append((name, "retain approved premium home navigation"))
+                return ours
+            # Keep the existing 1.0.85 deadline AND the optional new clock;
+            # old saved timed games must keep their original time limit.
+            if name == "PuzzleScreen.kt" and "if (shuffling || timedOut) return" in ours and "if (shuffling || outOfTime) return" in new:
+                choices.append((name, "honor original timedOut and new outOfTime"))
+                return ours.replace(
+                    "if (shuffling || timedOut) return",
+                    "if (shuffling || timedOut || outOfTime) return",
+                )
+            # Retain v175 progress/streak tracking, but display its large
+            # original banner only when the compact daily-goal card is edited.
+            if name == "PracticeHubScreen.kt" and "Wq175DailyPlanBanner(" in ours and 'Text("Günlük çalışma hedefi"' in new:
+                start = "        Wq175DailyPlanBanner("
+                end = "            onMinutes={value->store.minutes=value;refresh++}\n        )"
+                if ours.count(start) != 1 or ours.count(end) != 1:
+                    raise ValueError("Unexpected daily-plan banner layout; safe stop")
+                choices.append((name, "retain premium daily banner inside compact editable card"))
+                return ours.replace(
+                    start,
+                    "        Wq186CollapsibleDailyPlan(mins, doneMinutes, remaining, store.isGoalConfigured) {\n"
+                    "            Wq175DailyPlanBanner(",
+                    1,
+                ).replace(
+                    end,
+                    "            onMinutes={value->store.minutes=value;refresh++}\n            )\n        }",
+                    1,
+                )
             if name == "HomeScreen.kt" and "session.profileKey" in ours and "clock = clock" in new:
                 if "pronunciation, session.profileKey)" not in ours:
                     raise ValueError("HomeScreen signature unexpectedly changed")
@@ -187,6 +218,23 @@ def main() -> None:
     if text.count(old_call) != 1:
         raise SystemExit("SAFE STOP: daily-plan navigation signature differs.")
     home.write_text(text.replace(old_call, "PracticeHubScreen(session, ai, pronunciation,", 1), "utf-8")
+
+    # Existing paragraph dialog stays available in other routes; British is
+    # the initial choice only and never overwrites an explicit selection.
+    paragraph = SRC / "WordQuest175ParagraphDictation.kt"
+    old_voice = 'var accent by rememberSaveable(profileKey) { mutableStateOf("US") }'
+    new_voice = 'var accent by rememberSaveable(profileKey) { mutableStateOf("UK") }'
+    if not paragraph.is_file():
+        raise SystemExit("SAFE STOP: v175 paragraph voice component missing")
+    paragraph_text = paragraph.read_text("utf-8")
+    if old_voice in paragraph_text:
+        if paragraph_text.count(old_voice) != 1:
+            raise SystemExit("SAFE STOP: ambiguous paragraph voice default")
+        paragraph.write_text(paragraph_text.replace(old_voice, new_voice, 1), "utf-8")
+    elif new_voice not in paragraph_text:
+        raise SystemExit("SAFE STOP: unknown paragraph voice default")
+    assert new_voice in paragraph.read_text("utf-8")
+    assert 'mutableStateOf("UK")' in (SRC / "Wq186ParagraphWorkspace.kt").read_text("utf-8")
 
     assert "MAX_BOARD_WORDS = 70" in (SRC / "CustomLayout.kt").read_text("utf-8")
     assert "newGameFiltered(" in (SRC / "AppSession.kt").read_text("utf-8")
