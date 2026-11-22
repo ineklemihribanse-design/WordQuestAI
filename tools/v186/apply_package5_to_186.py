@@ -19,6 +19,7 @@ FILES=[
     "Wq186MatchingFolders.kt",
     "Wq186MatchingImporter.kt",
     "Wq186LenaVoiceSettings.kt",
+    "Wq186LenaTranslation.kt",
 ]
 
 def change_once(contents: str, old: str, new: str, label: str) -> str:
@@ -105,6 +106,9 @@ def main() -> None:
     updated_lena=safe_three_way(
         ROOT/"tools/v169/LenaMessengerBrand.kt",
         P5/"LenaMessengerBrand.kt",APP/"LenaMessengerBrand.kt")
+    updated_composer=safe_three_way(
+        ROOT/"tools/v171/LenaRichComposer.kt",
+        P5/"LenaRichComposer.kt",APP/"LenaRichComposer.kt")
 
     # The v168 modal offered speed and volume but omitted the installed
     # voices and American/British switch. Replace just that existing modal.
@@ -114,6 +118,54 @@ def main() -> None:
     end=chat_original.find("        deleteCandidate?.let { thread ->",start)
     if start<0 or end<start or chat_original.count("if (voiceSettingsOpen)")!=1:
         raise ValueError("SAFE STOP: Lena voice-settings modal differs")
+    chat_original=change_once(chat_original,
+        "    var speaking by remember { mutableStateOf<Long?>(null) }",
+        "    var speaking by remember { mutableStateOf<Long?>(null) }\\n"
+        "    var translatingDraft by remember { mutableStateOf(false) }",
+        "Lena draft translation state")
+    chat_original=change_once(chat_original,
+        "    val canEdit = !sending && !recording",
+        "    val canEdit = !sending && !recording && !translatingDraft",
+        "translate while preserving draft and chat")
+    extra="""                onTranslate = { targetEnglish ->
+                    if(ai.draft.isNotBlank() && !translatingDraft) {
+                        translatingDraft=true
+                        val original=ai.draft.trim()
+                        scope.launch {
+                            try {
+                                val translated=ai.translateDraftForLena(
+                                    apiKey,original,targetEnglish)
+                                if(ai.draft.trim()==original) {
+                                    ai.draft=translated.take(maxMessageLength)
+                                    error=""
+                                }else error="Taslak değişti, çeviri uygulanmadı."
+                            }catch(cancelled:CancellationException){throw cancelled}
+                            catch(e:Exception){
+                                error=e.message ?: "Çeviri alınamadı."
+                            }finally {translatingDraft=false}
+                        }
+                    }
+                },
+"""
+    chat_original=change_once(chat_original,
+        "                onLanguageToggle = {",extra+
+        "                onLanguageToggle = {",
+        "Lena chat translate callback")
+    ai_file=APP/"AiSession.kt"
+    ai_source=ai_file.read_text("utf-8")
+    marker="""    internal suspend fun suggestWords(key: String, topic: String, level: String, count: Int, used: Set<String>): List<WordPair> =
+        withProviderKey(key) { requestOnlineWords(it, topic, level, count, used, provider, providerModel) }
+"""
+    addition=marker+"""
+    /** Translate a draft without modifying saved conversations or account data. */
+    internal suspend fun translateDraftForLena(
+        key:String,text:String,targetEnglish:Boolean
+    ):String = withProviderKey(key) {
+        requestWq186LenaTranslation(provider,providerModel,it,text,targetEnglish)
+    }
+"""
+    ai_source=change_once(ai_source,marker,addition,"Lena authenticated translation")
+
     updated_chat=(chat_original[:start]+
         '        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\n'+
         chat_original[end:])
@@ -151,6 +203,8 @@ def main() -> None:
     premium.write_text(p,"utf-8")
     (APP/"Wq185FriendMascot.kt").write_text(updated_mascot,"utf-8")
     (APP/"LenaMessengerBrand.kt").write_text(updated_lena,"utf-8")
+    (APP/"LenaRichComposer.kt").write_text(updated_composer,"utf-8")
+    ai_file.write_text(ai_source,"utf-8")
     chat.write_text(updated_chat,"utf-8")
     puzzle.write_text(board,"utf-8")
     for file in FILES:
