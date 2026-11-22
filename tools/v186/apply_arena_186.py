@@ -65,8 +65,31 @@ def apply():
     assert s.count("onProfile={inspectedUid=p.uid}")==1
     cards.write_text(s,"utf-8")
 
+
+    # Avoid skipping into failed/passed clues waiting for the replay phase.
+    # The server snapshot remains authoritative for whether a word can be tried.
+    online=SRC/"PremiumOnlineScreen.kt"
+    onlineText=online.read_text("utf-8")
+    onlineText=exact_replace(onlineText,
+        '''                            if(!freeSkipUsed && canAnswer &&
+                                puzzle.words.indices.count{it !in solved}>1) {''',
+        '''                            val nextPlayable=Wq186ArenaNextWord.next(
+                                match.code,myUid,match.size,solved,selected) {
+                                index->PremiumOnlineLimits.canAttempt(match,index,myUid)
+                            }
+                            if(!freeSkipUsed && canAnswer &&
+                                nextPlayable!=null) {''',
+        "free skip can only select truly playable clues")
+    onlineText=exact_replace(onlineText,
+        '''                                    setWordIndex(Wq179ArenaOrder.next(
+                                        match.code,myUid,puzzle.words.size,solved,selected))''',
+        '''                                    setWordIndex(nextPlayable)''',
+        "free skip cannot route into replay-waiting words")
+    online.write_text(onlineText,encoding="utf-8")
+
     for source,destination in (
       ("Wq186ArenaGridPolicy.kt", "Wq186ArenaGridPolicy.kt"),
+      ("Wq186ArenaNextWord.kt", "Wq186ArenaNextWord.kt"),
       ("ArenaBoardV186.kt","ArenaBoardV2.kt"),
       ("Wq186FriendProfileDetail.kt","Wq186FriendProfileDetail.kt"),
     ):
@@ -75,6 +98,8 @@ def apply():
     SRC_TEST.mkdir(parents=True,exist_ok=True)
     shutil.copyfile(PKG/"Wq186ArenaGridPolicyTest.kt",
                     SRC_TEST/"Wq186ArenaGridPolicyTest.kt")
+    shutil.copyfile(PKG/"Wq186ArenaNextWordTest.kt",
+                    SRC_TEST/"Wq186ArenaNextWordTest.kt")
     version=version.replace("versionCode = 111","versionCode = 112",1)
     version=version.replace('versionName = "1.0.85"','versionName = "1.0.86"',1)
     gradle.write_text(version,"utf-8")
