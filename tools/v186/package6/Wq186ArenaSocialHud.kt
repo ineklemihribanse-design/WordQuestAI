@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.delay
 
 /** Firebase events are room-scoped and each player can write ONLY their own events. */
 @Composable
@@ -39,6 +40,8 @@ internal fun Wq186ArenaSocialHud(
     var emoji by remember(match.code) { mutableStateOf(mapOf<String, Pair<String, Long>>()) }
     var votes by remember(match.code) { mutableStateOf(emptySet<String>()) }
     var presence by remember(match.code) { mutableStateOf(emptyMap<String, Boolean>()) }
+    var disconnectedAt by remember(match.code) { mutableStateOf(emptyMap<String,Long>()) }
+    var tick by remember(match.code) { mutableLongStateOf(System.currentTimeMillis()) }
     var emojiOpen by remember(match.code) { mutableStateOf(false) }
     var profileOpen by remember(match.code) { mutableStateOf<String?>(null) }
     var askFinish by remember(match.code) { mutableStateOf(false) }
@@ -59,6 +62,11 @@ internal fun Wq186ArenaSocialHud(
                     votes = snapshot.child("finishVotes").children.mapNotNull { it.key
                         ?.takeIf { key -> it.getValue(Boolean::class.java) == true }
                     }.toSet()
+                    disconnectedAt = snapshot.child("presence").children.mapNotNull { user ->
+                        val id=user.key ?: return@mapNotNull null
+                        val at=(user.child("at").value as? Number)?.toLong() ?: 0L
+                        id to at
+                    }.toMap()
                     presence = snapshot.child("presence").children.mapNotNull { user ->
                         val id = user.key ?: return@mapNotNull null
                         val online = user.child("connected").getValue(Boolean::class.java)
@@ -114,6 +122,15 @@ internal fun Wq186ArenaSocialHud(
     val opponent = if (isHost) guestName else hostName
     val disconnected = opponentUid.isNotBlank() &&
         presence[opponentUid] == false
+    LaunchedEffect(disconnected) {
+        while(disconnected) {
+            tick=System.currentTimeMillis()
+            delay(1000)
+        }
+    }
+    val offlineAt=disconnectedAt[opponentUid] ?: tick
+    val waitingSeconds=((Wq186ArenaFairPlay.DISCONNECT_GRACE_MS -
+        (tick-offlineAt).coerceAtLeast(0)).coerceAtLeast(0L)/1000L)
     val latest = emoji[opponentUid]
     val showEmoji = latest != null &&
         System.currentTimeMillis() - latest.second in 0L..8000L
@@ -150,13 +167,30 @@ internal fun Wq186ArenaSocialHud(
             }
             if (showEmoji) Text(latest!!.first,fontSize=25.sp)
             Spacer(Modifier.weight(1f))
-            if (match.phase=="playing") TextButton(onClick={askFinish=true}) {
-                Text(if(myUid in votes)"Teklif ✓" else "Bitirme teklifi",
+            if (match.phase=="playing") TextButton(onClick={
+                if(myUid in votes)extra?.child("finishVotes")?.child(myUid)?.removeValue()
+                else askFinish=true
+            }) {
+                Text(if(myUid in votes)"Teklifi geri çek" else "Bitirme teklifi",
                     color=Color(0xFFFFDF9B),fontSize=11.sp)
             }
         }
-        if (disconnected) Text("$opponent bağlantıdan ayrıldı. Oda korunuyor; bağlantının geri gelmesi bekleniyor.",
+        if (disconnected) Text(
+            if(waitingSeconds>0)
+                "$opponent çevrimdışı. Oda korunuyor · yeniden bağlanma için $waitingSeconds sn."
+            else "$opponent henüz bağlanmadı. Maç açık; bağlantı gelince devam edebilir.",
             color=Color(0xFFFFDF9B),fontSize=12.sp)
+        if (match.phase=="playing" && opponentUid in votes && myUid !in votes) {
+            Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
+                Text("Rakibin birlikte bitirmeyi teklif etti.",
+                    modifier=Modifier.weight(1f),color=Color(0xFFFFDF9B),
+                    fontSize=12.sp)
+                TextButton(onClick={
+                    extra?.child("finishVotes")?.child(myUid)?.setValue(true)
+                        ?.addOnFailureListener { notice="Teklif kabul edilemedi." }
+                }) { Text("Kabul et",color=Color.White) }
+            }
+        }
         if (myUid in votes && opponentUid !in votes && match.phase=="playing")
             Text("Maçı bitirme teklifin karşı oyuncunun onayını bekliyor.",
                 color=Color(0xFFE2D4FF),fontSize=11.sp)
