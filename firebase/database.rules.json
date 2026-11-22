@@ -289,6 +289,14 @@
           "settings": {
             ".write": "auth != null && data.parent().parent().child('hostUid').val() === auth.uid && data.parent().parent().child('phase').val() === 'lobby' && newData.exists()",
             ".validate": "newData.hasChildren(['levels','hints','retries']) && newData.child('levels').isString() && newData.child('levels').val().matches(/^(A1|A2|B1|B2|C1|C2)(,(A1|A2|B1|B2|C1|C2)){0,5}$/) && newData.child('hints').isNumber() && newData.child('hints').val() >= 0 && newData.child('hints').val() <= 20 && newData.child('retries').isNumber() && newData.child('retries').val() >= 0 && newData.child('retries').val() <= 3"
+          },
+          "hintClaims": {
+            "$uid": {
+              "$slot": {
+                ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().parent().child('phase').val() === 'playing' && data.parent().parent().parent().parent().child('mode').val() !== 'quiz' && (data.parent().parent().parent().parent().child('mode').val() === 'team' || data.parent().parent().parent().parent().child('turn').child('uid').val() === auth.uid) && !data.exists() && newData.exists() && $slot.matches(/^([0-9]|1[0-9])$/) && newData.parent().numChildren() <= data.parent().parent().parent().parent().child('package6').child('settings').child('hints').val()",
+                ".validate": "newData.hasChildren(['word','position']) && newData.child('word').isNumber() && newData.child('word').val() >= 0 && newData.child('word').val() < data.parent().parent().parent().parent().child('size').val() && newData.child('position').isNumber() && newData.child('position').val() >= 0 && newData.child('position').val() < 50"
+              }
+            }
           }
         }
       }
