@@ -153,32 +153,28 @@ def apply():
                 } else if (compact) 163.dp else 220.dp))'''),
     ])
 
+    # The v175 phone/tablet polish replaced the original 258dp hero with a
+    # BoxWithConstraints stage. Patch the *post-v175* layout, not obsolete code.
+    # These anchors match source produced by apply_phone_tablet_polish_175.py
+    # after the v183 background switch to Wq183ArenaBackdrop.
     edit("WordQuest175Arena.kt", [
-        ("width-adaptive mascot on stadium poster",
-         'import androidx.compose.ui.unit.sp',
-         'import androidx.compose.ui.unit.sp\nimport androidx.compose.ui.platform.LocalConfiguration'),
-        ("larger custom stadium container",
-         '''    Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(14.dp)) {
-        Box(Modifier.fillMaxWidth().heightIn(min=258.dp)''',
-         '''    val isTablet = LocalConfiguration.current.screenWidthDp >= 600
-    val customMascot = Wq183MascotStore.isCustomId(selectedAvatar)
-    val heroHeight = if(customMascot) { if(isTablet) 415.dp else 344.dp } else 258.dp
-    val mascotWidth = if(customMascot) { if(isTablet) 265.dp else 176.dp } else 163.dp
-    val mascotHeight = if(customMascot) { if(isTablet) 393.dp else 327.dp } else 208.dp
-    Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(14.dp)) {
-        Box(Modifier.fillMaxWidth().heightIn(min=heroHeight)'''),
-        ("stadium uses near full height for personal mascot",
-         '''                Box(Modifier.width(163.dp).height(208.dp),
-                    contentAlignment=Alignment.BottomCenter) {''',
-         '''                Box(Modifier.width(mascotWidth).height(mascotHeight),
-                    contentAlignment=Alignment.BottomCenter) {'''),
-        ("use normal image on entry, not victory before the match",
-         '''                    Wq2DPortrait(selectedAvatar,
-                        Modifier.fillMaxWidth().height(194.dp),
-                        victory=(mode=="duel"))''',
-         '''                    Wq2DPortrait(selectedAvatar,
-                        Modifier.fillMaxWidth().height(mascotHeight - 12.dp),
-                        victory=false)'''),
+        ("enlarge existing responsive stadium for personal artwork",
+         '''            val heroHeight = if(compact)310.dp else if(wideTablet)378.dp else 342.dp''',
+         '''            val customMascot = Wq183MascotStore.isCustomId(selectedAvatar)
+            val heroHeight = if (customMascot) {
+                if (compact) 382.dp else if (wideTablet) 438.dp else 405.dp
+            } else if(compact)310.dp else if(wideTablet)378.dp else 342.dp
+            val mascotWidth = if (customMascot) {
+                if (compact) 212.dp else if (wideTablet) 288.dp else 262.dp
+            } else if(compact)170.dp else if(wideTablet)218.dp else 196.dp
+            val mascotHeight = if (customMascot) {
+                if (compact) 348.dp else if (wideTablet) 410.dp else 380.dp
+            } else mascotWidth'''),
+        ("preserve stage but render tall personal mascot at full size",
+         '''                        .offset(y=(-43).dp)
+                        .size(if(compact)170.dp else if(wideTablet)218.dp else 196.dp),''',
+         '''                        .offset(y=if (customMascot) (-24).dp else (-43).dp)
+                        .width(mascotWidth).height(mascotHeight),'''),
     ])
 
     edit("Wq183OnlinePortraitStrip.kt", [
