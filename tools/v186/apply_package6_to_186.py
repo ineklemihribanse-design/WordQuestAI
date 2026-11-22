@@ -136,6 +136,16 @@ def compact_lobby():
 
 def fair_online():
     s = load("PremiumOnlineScreen.kt")
+    # The next clue is automatic and deferred incorrect/unknown clues return last.
+    s=once(s,
+        "wordIndex=Wq179ArenaOrder.next(m.code,myUid,m.size,m.solvedBy.keys,-1)",
+        "wordIndex=Wq186ArenaNext.choose(m,myUid,-1)",
+        "random opening word")
+    s=once(s,
+        "wordIndex = Wq179ArenaOrder.next(match.code,myUid,match.size,match.solvedBy.keys,wordIndex)",
+        "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex)",
+        "automatic next word with final-round deferred failures")
+
     s = once(s,
              "    Wq183OnlinePortraitStrip(\n",
              "    if (match.phase == \"finished\") Wq183OnlinePortraitStrip(\n",
@@ -240,6 +250,11 @@ def fair_online():
              """                    // Live puzzle tiles are read-only; only the active clue accepts text.
                 }""",
              "disable selecting an arbitrary puzzle cell")
+    import re
+    grid_skip=r"Wq179ArenaOrder\\.next\\(\\s*match\\.code,myUid,puzzle\\.words\\.size,solved,selected\\)"
+    s,n=re.subn(grid_skip,"Wq186ArenaNext.choose(match,myUid,selected)",s)
+    if n!=1:
+        raise AssertionError(f"P6 automatic skip word selector: {n} matches")
     s = once(s,
              """    var freeSkipUsed by rememberSaveable(match.code,myUid) {
         mutableStateOf(Wq179ArenaSkip.used(context,match.code,myUid))
