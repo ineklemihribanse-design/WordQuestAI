@@ -41,3 +41,9 @@ Bu ZIP gerçek proje için **kaynak kodu entegrasyon paketidir**; APK değildir.
 ## Doğrulama durumunun sınırı
 
 PNG/ZIP/arşiv kontratları yerel olarak test edilmiştir. **Android Gradle derlemesi, gerçek cihaz üzerinde görsel test, firebase çoklu oyuncu ve APK üretimi henüz gerçekleştirilmemiştir.** Bu işler başarılı olmadan sürümü yayınlanmış saymayın.
+
+## GitHub 1.0.84 dalındaki eksiksiz Arena görselleri
+
+Bu dal artık orijinal ZIP arşivindeki **dört onaylı WebP'yi aynı baytlarla** `assets/user_uploads/arena_v184/` altında içeriyor. `apply_visuals_184.py` önce orijinal ZIP varsa onu, yoksa bu dört dosyanın sabit SHA-256 özetlerini kontrol ederek sahneyi uygulamaya kopyalar. Boş/mor yedeğe sessiz geçişe izin vermez. ZIP'in elle GitHub'a yüklenmesine gerek yoktur.
+
+Kişisel maskot paketleri mahremiyet nedeniyle GitHub depoya eklenmedi; bu konuşmadaki **iki ayrı telefon ZIP'i** ile yerel olarak yüklenmelidir. Android derlemesi ve emülatör testleri başarılı olsa dahi iki cihazlı Arena ve gerçek cihaz görsel kontrolü ayrıca tamamlanmalıdır.
