@@ -70,9 +70,26 @@ def main() -> None:
                 if "day.goalMinutes !in 5..180" in ours:
                     choices.append((name, "retain existing daily-goal import validator"))
                     return ours
+            if name == "HomeScreen.kt" and "Wq175PremiumHomeGrid" in ours:
+                choices.append((name, "preserve approved v175 premium Home layout and mascot cards"))
+                return ours
+            if name == "PracticeHubScreen.kt" and "Wq175DailyPlanBanner" in ours:
+                choices.append((name, "retain all v175/v176 daily widgets for targeted compact-banner insertion"))
+                return ours
+            if name == "PracticeHubScreen.kt":
+                choices.append((name, "retain newer daily mode and progress logic"))
+                return ours
+            if name == "PuzzleScreen.kt" and "timedOut" in ours:
+                choices.append((name, "retain legacy timer AND new countdown expiration"))
+                return ours.replace("|| timedOut)", "|| timedOut || outOfTime)").replace(
+                    "if (timedOut)", "if (timedOut || outOfTime)"
+                )
+            if name == "PuzzleScreen.kt":
+                choices.append((name, "preserve v185 responsive board and input behavior"))
+                return ours
             print("UNRESOLVED CONFLICT:", name, flush=True)
-            print("ours: " + ours[:900].replace("\n", "\n"), flush=True)
-            print("theirs: " + new[:900].replace("\n", "\n"), flush=True)
+            print("ours: " + ours[:900], flush=True)
+            print("theirs: " + new[:900], flush=True)
             raise ValueError(f"Manual decision required for {name}")
 
         resolved = pattern.sub(choose, text)
@@ -136,6 +153,22 @@ def main() -> None:
     for name in ADDED:
         origin = (CHANGED / name) if (CHANGED / name).is_file() else (P4 / name)
         shutil.copyfile(origin, SRC / name)
+    # Replace only the single old daily-goal banner with the compact editor.
+    # The custom paragraphs, YDS daily challenge, and five mini-games stay intact.
+    hub = SRC / "PracticeHubScreen.kt"
+    legacy = hub.read_text("utf-8")
+    old_card = re.compile(
+        r"(?ms)^        Wq175DailyPlanBanner\\(\\n.*?^        \\)\\n"
+    )
+    candidate = (CHANGED / "PracticeHubScreen.kt").read_text("utf-8")
+    intro = '        androidx.compose.material3.ElevatedCard(Modifier.fillMaxWidth()) {'
+    start = candidate.index(intro)
+    end = candidate.index('        for (kind in PracticeKind.entries) {', start)
+    new_card = candidate[start:end]
+    if len(old_card.findall(legacy)) != 1:
+        raise SystemExit("SAFE STOP: exactly one approved v175 DailyPlanBanner expected")
+    legacy = old_card.sub(lambda _: new_card, legacy, count=1)
+    hub.write_text(legacy, encoding="utf-8")
     # Add the new paragraph tool without losing existing dictation entries and callbacks.
     hub = SRC / "PracticeHubScreen.kt"
     text = hub.read_text("utf-8")
