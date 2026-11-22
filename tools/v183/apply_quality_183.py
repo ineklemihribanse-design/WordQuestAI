@@ -109,19 +109,14 @@ update("Accounts.kt", lambda source: replace_one(
     internal fun socialAuth(): FirebaseAuth? = auth''',
     "reuse the room's authenticated Firebase instance for private previews"))
 
-# Replace only the header score text, preserving game-state callbacks and the
-# five-choice question/answer layout. The same header remains on result screens.
+# Keep the existing score widgets and other Arena callbacks untouched.
+# Earlier releases have several different scoreboard implementations, so the
+# only safe stable insertion point is the common host/guest model binding.
+# The compact portrait strip renders for all match phases, including results.
 def online_two_player_portraits(source):
-    return replace_one(source,
-        '''    // Two scores remain visible while the large settings card is hidden.
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-        Text("$hostName  ★ ${match.score(match.hostUid, questions)}", color = Color.White,
-            fontSize = 13.sp, fontWeight = FontWeight.Bold, maxLines = 1)
-        Text("$guestName  ★ ${match.score(match.guestUid, questions)}", color = OnlineGold,
-            fontSize = 13.sp, fontWeight = FontWeight.Bold, maxLines = 1)
-    }''',
-        '''    // Both private Arena previews are rendered in one compact, scrollable header.
-    // The same strip stays visible during play and after finishing the match.
+    anchor = '''    val guestName = ArenaNickname.safeDisplay(match.guestName, "Arkadaş bekleniyor")'''
+    return replace_one(source, anchor,
+        anchor + '''
     Wq183OnlinePortraitStrip(
         hostAvatar=match.hostAvatar, guestAvatar=match.guestAvatar,
         hostName=hostName, guestName=guestName,
