@@ -49,11 +49,20 @@ def conversation():
     store("Conversation.kt",s)
 
     s=load("ConversationScreen.kt")
-    s=once(s,'val turn = ai.reply(key, message, optionalContext, session.profileName)',
-      '''val turn = ai.reply(key, message, optionalContext,
-                    session.profileName,personaOverride=
-                        "You are Lena, the warm and friendly English conversation tutor.")''',
-      "Lena messenger uses Lena instead of generic tutor")
+    # Earlier Lena attachment composer revisions change the number and names
+    # of ai.reply parameters. Preserve each original argument exactly.
+    matches=list(re.finditer(r'\\bai\\.reply\\(',s))
+    if len(matches)!=1:
+        raise AssertionError("P7 Lena messenger expected one AI reply, found "+str(len(matches)))
+    a=matches[0].start()
+    b=s.index(")",matches[0].end())
+    prior=s[a:b+1]
+    if "personaOverride" not in prior:
+        revised=prior[:-1]+(
+            ', personaOverride="You are Lena, the warm and friendly '
+            'English conversation tutor.")')
+        s=s[:a]+revised+s[b+1:]
+    store("ConversationScreen.kt",s)
     store("ConversationScreen.kt",s)
     s=load("LenaIsolatedVoiceTeacherActivity.kt")
     s=once(s,
