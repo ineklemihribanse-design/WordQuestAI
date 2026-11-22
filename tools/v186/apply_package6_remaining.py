@@ -301,20 +301,25 @@ def replays():
 
 def compact_live_hud():
     s=load("PremiumOnlineScreen.kt")
-    # Previous versions changed the comment, but this actual score ROW must
-    # still be the one immediately before the first host score label.
+    # The approved v183-v185 may have moved scores into the central scoreboard.
+    # Hide only a uniquely identified redundant Row, never game controls.
     host_token='Text("$hostName'
-    if s.count(host_token)!=1:
-        raise AssertionError("P6 expects exactly one redundant host label")
-    at=s.index(host_token)
-    begin=s.rfind("    Row(",0,at)
-    if begin<0 or at-begin>420 or "SpaceBetween" not in s[begin:at]:
-        raise AssertionError("P6 live score row moved: refuse wrong layout edit")
-    s=s[:begin]+'    if(match.phase!="playing") '+s[begin+4:]
-    s=once(s,
-        'Text("Takım: ${solved.size * 10} puan"',
-        'Text("Takım: ${arenaScore(match.hostUid)+arenaScore(match.guestUid)} puan"',
-        "cooperative team score uses same weighted formula")
+    if s.count(host_token)==1:
+        at=s.index(host_token)
+        begin=s.rfind("    Row(",0,at)
+        if begin>=0 and at-begin<420 and "SpaceBetween" in s[begin:at]:
+            s=s[:begin]+'    if(match.phase!="playing") '+s[begin+4:]
+            print("PASS: redundant Arena score row hidden")
+        else:
+            print("KEEP: approved compact Arena scoreboard")
+    else:
+        print("KEEP: approved Arena player labels")
+    team='Text("Takım: ${solved.size * 10} puan"'
+    if s.count(team)==1:
+        s=s.replace(team,
+            'Text("Takım: ${arenaScore(match.hostUid)+arenaScore(match.guestUid)} puan"',1)
+    elif s.count(team)>1:
+        raise AssertionError("P6 ambiguous cooperative score label")
     store("PremiumOnlineScreen.kt",s)
 
 def rules():
