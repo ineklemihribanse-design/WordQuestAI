@@ -270,7 +270,7 @@
           },
           "finishVotes": {
             "$uid": {
-              ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().child('phase').val() === 'playing' && !data.exists() && newData.val() === true",
+              ".write": "auth != null && auth.uid === $uid && (data.parent().parent().parent().child('hostUid').val() === auth.uid || data.parent().parent().parent().child('guestUid').val() === auth.uid) && data.parent().parent().parent().child('phase').val() === 'playing' && ((!data.exists() && newData.val() === true) || (data.exists() && !newData.exists()))",
               ".validate": "newData.val() === true"
             }
           },
