@@ -42,6 +42,25 @@ internal class VocabularyBank(games: List<Game>, extra: List<String>) {
         }
     }.distinct().sorted()
 
+    /** All selected CEFR/YDS levels, subjects and parts of speech form one combined bank. */
+    fun pool(
+        levels: Collection<String>,
+        topics: Collection<String>,
+        kinds: Collection<String>,
+    ): List<Entry> {
+        if (levels.isEmpty()) return emptyList()
+        val filtered = levels.distinct().flatMap(::senses).distinct()
+        val kindsLetters = if (kinds.isEmpty()) emptySet()
+            else filtered.filter { it.kind in kinds }.map { it.entry.letters }.toSet()
+        return filtered.filter { sense ->
+            (topics.isEmpty() || sense.topic in topics) &&
+                (kinds.isEmpty() || sense.kind in kinds ||
+                    (topics.isNotEmpty() && sense.kind == null && sense.entry.letters in kindsLetters))
+        }.map(WordSense::entry)
+            .filter { it.letters.length in 2..22 && it.clue.isNotBlank() }
+            .distinctBy(Entry::letters)
+    }
+
     fun pool(level: String, topic: String? = null, kind: String? = null): List<Entry> {
         val levelSenses = senses(level)
         val matchingKind = kind?.let { value -> levelSenses.filter { it.kind == value }.map { it.entry.letters }.toSet() }
