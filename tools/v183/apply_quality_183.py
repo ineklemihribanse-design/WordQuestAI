@@ -62,6 +62,19 @@ sys.path.insert(0, str(TOOLS))
 from stage_arena_assets_183 import stage as stage_arena
 stage_arena()
 
+from stage_icons_183 import stage as stage_icons
+stage_icons()
+shutil.copyfile(TOOLS / "Wq183HighResIcons.kt", SRC / "Wq183HighResIcons.kt")
+
+def icon_route(source):
+    return replace_one(
+        source,
+        "    val cropped=remember(atlas,index){",
+        """    if(Wq183HighResArtwork(name,modifier)) return true
+    val cropped=remember(atlas,index){""",
+        "prefer user-approved 512px icon, fall back to existing atlas")
+update("Wq182Icons.kt", icon_route)
+
 def online(source):
     source = replace_one(
         source,
