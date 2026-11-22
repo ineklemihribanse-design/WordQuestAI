@@ -61,7 +61,10 @@ jobs:
         if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
         run: |
           set -euo pipefail
-          BASE_HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v175\//' | sha256sum | cut -d' ' -f1)"
+          # Cache depends on the historical inputs through v174 only.
+          # Later P1-P7, workflow and release-note edits must NOT rebuild
+          # 100+ unchanged historical setup steps on every fix.
+          BASE_HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v(17[5-9]|18[0-9]|19[0-9])\// && $2 !~ /^\.github\// && $2 !~ /^docs\//' | sha256sum | cut -d' ' -f1)"
           test -n "$BASE_HASH"
           echo "WQ175_BASELINE_CACHE_KEY=wq175-pre175-v1-$BASE_HASH" >> "$GITHUB_ENV"
       - name: Restore unchanged pre-1.0.75 Android baseline
@@ -1644,6 +1647,12 @@ jobs:
           python3 -m py_compile tools/v186/apply_package5_to_186.py tools/v186/verify_package5_186.py
           python3 tools/v186/verify_package5_186.py
           python3 tools/v186/apply_package5_to_186.py
+          # Fast regression gate for P3+P5 selector types BEFORE Gradle.
+          grep -Fq 'Wq186LevelChips(levels.toSet(),' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest175Matching.kt
+          if grep -Fq 'levelsEncoded' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest175Matching.kt; then
+            echo '::error::Obsolete P3 levelsEncoded escaped into P5 matching screen' >&2
+            exit 1
+          fi
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186MatchingImporter.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186LenaVoiceSettings.kt
           grep -Fq 'listOf("6","10","15","20","30")' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest175Matching.kt

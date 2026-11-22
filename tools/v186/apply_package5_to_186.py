@@ -170,6 +170,26 @@ def main() -> None:
         print("Audited matching resolutions:",decisions,flush=True)
     else:
         merged_text=merged.stdout
+    # P3 stores levels as a Set, but the final P5 screen uses a
+    # rememberSaveable List<String> for the same CEFR selection. Reconcile
+    # BOTH the displayed collection type and its callback; otherwise Kotlin
+    # fails with List-vs-Set and undefined levelsEncoded at the chip row.
+    # Preserve the user's choices and keep A1-C2 in canonical order.
+    import re
+    p3_chip=(r'Wq186LevelChips\(levels,\s*\{\s*levelsEncoded\s*=\s*'
+             r'Wq186MultiSelection\.encodeLevels\(it\)\s*\}\)')
+    p3_chip_fixed=(
+        'Wq186LevelChips(levels.toSet(), { chosen ->\n'
+        '                            levels = Wq186MultiSelection.levels.filter { it in chosen }\n'
+        '                        })'
+    )
+    merged_text,number=re.subn(p3_chip,p3_chip_fixed,merged_text)
+    if number!=1 or "levelsEncoded" in merged_text:
+        raise SystemExit(
+            f"SAFE STOP: P3/P5 CEFR state reconciliation expected one chip, found {number}")
+    assert "var levels by rememberSaveable" in merged_text
+    assert "Wq186LevelChips(levels.toSet()," in merged_text
+    print("PASS: P3/P5 shared CEFR chip uses one List state and Set-compatible callback")
     if any(marker in merged_text for marker in
         ("<<<<<<<","|||||||","=======",">>>>>>>")):
         raise SystemExit("SAFE STOP: unresolved matching conflict")
