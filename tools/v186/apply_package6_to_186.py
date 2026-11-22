@@ -187,10 +187,17 @@ def fair_online():
         "wordIndex=Wq179ArenaOrder.next(m.code,myUid,m.size,m.solvedBy.keys,-1)",
         "wordIndex=Wq186ArenaNext.choose(m,myUid,-1)",
         "random opening word")
-    s=once(s,
-        "wordIndex = Wq179ArenaOrder.next(match.code,myUid,match.size,match.solvedBy.keys,wordIndex)",
-        "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex)",
-        "automatic next word with final-round deferred failures")
+    # Package 1 already installed the stricter server-authorized next-word
+    # selector. Keep it when combining P1 and P6; older P6-only builds
+    # continue to use the original branch below.
+    original_next="wordIndex = Wq179ArenaOrder.next(match.code,myUid,match.size,match.solvedBy.keys,wordIndex)"
+    if original_next in s:
+        s=once(s,original_next,
+            "wordIndex = Wq186ArenaNext.choose(match,myUid,wordIndex)",
+            "automatic next word with final-round deferred failures")
+    else:
+        assert "wordIndex = Wq186ArenaNextWord.next(" in s, (
+            "P6 unexpected word selector after Package 1")
 
     s = once(s,
              "    Wq183OnlinePortraitStrip(\n",
@@ -313,7 +320,8 @@ def fair_online():
     grid_skip=r"Wq179ArenaOrder\.next\(\s*match\.code,myUid,puzzle\.words\.size,solved,selected\)"
     s,n=re.subn(grid_skip,"Wq186ArenaNext.choose(match,myUid,selected)",s)
     if n!=1:
-        raise AssertionError(f"P6 automatic skip word selector: {n} matches")
+        assert n==0 and "setWordIndex(nextPlayable)" in s, (
+            f"P6 automatic skip word selector: {n} matches")
     s = once(s,
              """    var freeSkipUsed by rememberSaveable(match.code,myUid) {
         mutableStateOf(Wq179ArenaSkip.used(context,match.code,myUid))
@@ -339,7 +347,14 @@ def fair_online():
                                     setAnswerText("")
                                 },Modifier.fillMaxWidth())'''
     if stale not in s:
-        raise AssertionError("P6 skip callback source differs")
+        # P1 reuses a validated nextPlayable instead of the legacy selector.
+        # Do not duplicate that client-side action after Firebase confirms it.
+        p1_stale='''                                    setWordIndex(nextPlayable)
+                                    setAnswerText("")
+                                },Modifier.fillMaxWidth())'''
+        if p1_stale not in s:
+            raise AssertionError("P6 skip callback source differs")
+        stale=p1_stale
     s=once(s,stale,
         '''                                },Modifier.fillMaxWidth())''',
         "remove old unguarded client-side skip")
