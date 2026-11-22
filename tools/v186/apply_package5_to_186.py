@@ -87,7 +87,7 @@ def main() -> None:
                 if ours.count(expected_if)!=1:
                     raise ValueError("P3/P5 selector guard differs")
                 combined=ours.replace(expected_if,
-                    'if((mode=="classic" || mode=="timed" || mode=="definitions")\\n'
+                    'if((mode=="classic" || mode=="timed" || mode=="definitions")\n'
                     '                        && wordSource=="Hazır Paketten Seç") {',1)
                 combined=combined.replace('Text("Seviye",color=MatchInk,',
                     'Text("Seviye · çoklu seçim",color=MatchInk,',1)
@@ -95,9 +95,9 @@ def main() -> None:
                 if combined.count(kind_label)!=1:
                     raise ValueError("P3/P5 word-type selection anchor differs")
                 combined=combined.replace(kind_label,
-                    '                        if(mode!="definitions") {\\n'
+                    '                        if(mode!="definitions") {\n'
                     '    '+kind_label,1)
-                combined=combined.rstrip('\\n')+'\\n                        }\\n'
+                combined=combined.rstrip('\n')+'\n                        }\n'
                 decisions.append("preserve P3 multilevel/type chips with P5 English definitions mode")
                 return combined
             # Matching bank filtering must honor P3 multi-kind selections
