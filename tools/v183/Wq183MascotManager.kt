@@ -69,28 +69,55 @@ internal fun Wq183MascotManager(
                 ) { Text(if (busy) "Kontrol ediliyor…" else "ZIP dosyası seç") }
                 if (info.isNotBlank()) Text(info)
                 items.forEach { mascot ->
-                    Row(
-                        Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Wq2DPortrait(mascot.id, Modifier.size(70.dp))
-                        Column(Modifier.weight(1f)) {
-                            Text(mascot.name, maxLines = 2)
-                            Text(if (mascot.id == selected) "Seçili maskot" else "Kişisel maskot")
+                    var draftName by remember(mascot.id) { mutableStateOf(mascot.name) }
+                    Column(Modifier.fillMaxWidth()) {
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Wq2DPortrait(mascot.id, Modifier.size(64.dp))
+                            Column(Modifier.weight(1f)) {
+                                Text(mascot.name, maxLines = 2)
+                                Text(if (mascot.id == selected) "Seçili maskot"
+                                    else "Kişisel maskot")
+                            }
                         }
-                        TextButton(onClick = {
-                            Wq183MascotStore.activate(context, profileKey)
-                            onSelected(mascot.id)
-                            pending = null
-                            info = "Maskot seçildi."
-                        }) { Text(if (pending == mascot.id) "Seç" else "Kullan") }
-                        TextButton(onClick = {
-                            if (mascot.id == selected) onSelected("piko")
-                            Wq183MascotStore.delete(context, profileKey, mascot.id)
-                            items = Wq183MascotStore.list(context, profileKey)
-                            pending = null
-                        }) { Text("Sil") }
+                        OutlinedTextField(
+                            value = draftName,
+                            onValueChange = { draftName = it.take(40) },
+                            modifier = Modifier.fillMaxWidth(),
+                            label = { Text("Maskot adı") },
+                            singleLine = true
+                        )
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
+                            TextButton(
+                                onClick = {
+                                    if (Wq183MascotStore.rename(
+                                            context, profileKey, mascot.id, draftName)) {
+                                        items = Wq183MascotStore.list(context, profileKey)
+                                        info = "Maskot adı kaydedildi."
+                                    } else info = "Geçersiz maskot adı."
+                                },
+                                enabled = draftName.trim().isNotBlank() &&
+                                    draftName.trim() != mascot.name
+                            ) { Text("Adı kaydet") }
+                            TextButton(onClick = {
+                                Wq183MascotStore.activate(context, profileKey)
+                                onSelected(mascot.id)
+                                pending = null
+                                info = "Maskot seçildi."
+                            }) { Text(if (pending == mascot.id) "Seç" else "Kullan") }
+                            TextButton(onClick = {
+                                if (mascot.id == selected) onSelected("piko")
+                                Wq183MascotStore.delete(context, profileKey, mascot.id)
+                                items = Wq183MascotStore.list(context, profileKey)
+                                pending = null
+                            }) { Text("Sil") }
+                        }
                     }
                 }
             }
