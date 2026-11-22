@@ -57,12 +57,13 @@ def main() -> None:
         ("<<<<<<<","=======",">>>>>>>")):
         # CI diagnostic: report only the conflicting fragments from our own
         # source, never publish Android source or override existing work.
-        import re
-        hunks=re.findall(
-            r"(?ms)^<<<<<<<[^\\n]*\\n.*?^>>>>>>>[^\\n]*\\n",merged.stdout)
-        for i,hunk in enumerate(hunks):
-            print(f"PACKAGE5 CONFLICT {i+1}/{len(hunks)}",flush=True)
-            print(hunk[:5500],flush=True)
+        marker=merged.stdout.find("<<<<<<<")
+        print("MERGE RETURN:",merged.returncode,"MARKER:",marker,flush=True)
+        if marker>=0:
+            print("MATCHING CONFLICT EXCERPT",flush=True)
+            print(merged.stdout[marker:marker+14000],flush=True)
+        else:
+            print("MERGE ERROR:",merged.stderr[:1800],flush=True)
         raise SystemExit("SAFE STOP: approved matching UI changed; manual merge required")
 
     # Pass the existing bound AI session down to the matching screen; do not
