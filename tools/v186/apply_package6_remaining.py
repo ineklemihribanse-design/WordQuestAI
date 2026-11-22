@@ -21,14 +21,71 @@ def once(s,old,new,label):
 def ui():
     s=load("ArenaApprovedHome.kt")
     s=once(s,"        Wq174UnifiedMatchSettings(",
-        """        Wq186ArenaPresetControls(
-            profile=avatarProfileKey,selectedLevel=level,onLevel=onLevel
-        )
-        Wq174UnifiedMatchSettings(""","visible multilevel settings")
+        """        Wq174UnifiedMatchSettings(
+            profile=avatarProfileKey,""",
+        "pass profile to one unified Arena settings card")
     store("ArenaApprovedHome.kt",s)
+
     s=load("WordQuest174Arena.kt")
-    s=once(s,'"3 hak · maç kurallarına bağlı"',
-        '"İpucu sınırı maç ayarlarından seçilir"',"old fixed hint label")
+    s=once(s,
+        '''internal fun Wq174UnifiedMatchSettings(
+    solo:Boolean''',
+        '''internal fun Wq174UnifiedMatchSettings(
+    profile:String="",
+    solo:Boolean''',
+        "profile-scoped settings without changing other callers")
+    s=once(s,
+        '''            Wq174SettingRow("level","Seviye Seçiniz",
+                level.ifBlank{"Seçiniz"},PremiumArenaRules.allowedLevels,
+                onSelect=onLevel)''',
+        '''            if(solo) {
+                Wq174SettingRow("level","Seviye Seçiniz",
+                    level.ifBlank{"Seçiniz"},PremiumArenaRules.allowedLevels,
+                    onSelect=onLevel)
+            } else {
+                // Online modes share a level pool. No second single-level picker.
+                Wq186ArenaPresetControls(profile,level,onLevel)
+            }''',
+        "remove redundant single-level picker from online game")
+    s=once(s,
+        '''            Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp))
+                .background(Color(0xFFFFF5DB)).padding(11.dp),
+                verticalAlignment=Alignment.CenterVertically){
+                Wq174SettingIcon("hint")
+                Spacer(Modifier.width(9.dp))
+                Text("İpucu",modifier=Modifier.weight(1f),
+                    color=Ink174,fontWeight=FontWeight.Bold)
+                Text("3 hak · maç kurallarına bağlı",color=Color(0xFF6B438D),
+                    fontSize=12.sp,fontWeight=FontWeight.SemiBold)
+            }''',
+        '''            if(solo) Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp))
+                .background(Color(0xFFFFF5DB)).padding(11.dp),
+                verticalAlignment=Alignment.CenterVertically){
+                Wq174SettingIcon("hint")
+                Spacer(Modifier.width(9.dp))
+                Text("İpucu",modifier=Modifier.weight(1f),
+                    color=Ink174,fontWeight=FontWeight.Bold)
+                Text("Oyun kurallarına bağlı",color=Color(0xFF6B438D),
+                    fontSize=12.sp,fontWeight=FontWeight.SemiBold)
+            }''',
+        "remove duplicated hint card for online Arena")
+    s=once(s,
+        '''            Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(18.dp))
+                .background(Brush.verticalGradient(listOf(
+                    Color(0xFFEBD9FF),Color(0xFFF7EFFF))))
+                .padding(13.dp),verticalArrangement=Arrangement.spacedBy(5.dp)){''',
+        '''            var detailsOpen by remember { mutableStateOf(false) }
+            TextButton(onClick={detailsOpen=!detailsOpen},
+                modifier=Modifier.align(Alignment.End)) {
+                Text(if(detailsOpen) "ⓘ Maç kurallarını gizle"
+                    else "ⓘ Maç kuralları",fontSize=12.sp,color=Ink174)
+            }
+            if(detailsOpen) Column(Modifier.fillMaxWidth()
+                .clip(RoundedCornerShape(18.dp))
+                .background(Brush.verticalGradient(listOf(
+                    Color(0xFFEBD9FF),Color(0xFFF7EFFF))))
+                .padding(13.dp),verticalArrangement=Arrangement.spacedBy(5.dp)){''',
+        "collapse explanatory rules into compact native info control")
     store("WordQuest174Arena.kt",s)
 
 def packs():
