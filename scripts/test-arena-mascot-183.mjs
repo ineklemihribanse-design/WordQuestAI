@@ -50,6 +50,19 @@ try{
  await assertFails(host.child('hostMascotPreview').set('INVALID'));
  await assertFails(host.child('hostMascotPreview').set(good(mine)+'X'.repeat(18051)));
  await assertFails(host.child('hostAvatar').set('custom_bad/name'));
+ // Once playing, only the owning participant may change their selected maskot.
+ await env.withSecurityRulesDisabled(async ctx=>{
+  await ctx.database().ref(path+'/phase').set('playing');
+ });
+ const alternate='custom_'+'3'.repeat(32);
+ await assertFails(guest.child('hostAvatar').set(alternate));
+ await assertFails(host.child('guestAvatar').set(alternate));
+ await assertSucceeds(host.child('hostAvatar').set(alternate));
+ await assertFails(host.child('hostMascotPreview').set(good(mine)));
+ await assertSucceeds(host.child('hostMascotPreview').set(good(alternate)));
+ await assertFails(stranger.child('hostAvatar').set(mine));
+ await assertSucceeds(host.child('hostAvatar').set(mine));
+ await assertSucceeds(host.child('hostMascotPreview').set(good(mine)));
  // Revoking consent deletes only own payload; the rival remains intact.
  await assertSucceeds(host.child('hostMascotPreview').remove());
  assert.equal((await assertSucceeds(guest.child('hostMascotPreview').get())).val(),null);
