@@ -8,6 +8,8 @@ from pathlib import Path
 import subprocess
 import tempfile
 import shutil
+import base64
+import hashlib
 
 ROOT=Path(__file__).resolve().parents[2]
 APP=ROOT/"source/app/src/main/java/com/kelimebulmacasi/a1"
@@ -396,6 +398,20 @@ def main() -> None:
     if merged_text.count("fun Wq186OptionTiles(")!=0:
         raise ValueError("SAFE STOP: matching screen must reuse Package 4 option tiles")
 
+    # Use the exact approved icon (resized to 96px and WebP-compressed).
+    # The SHA guard also detects truncation or accidental alterations in the
+    # transport-safe base64 file; no remote image URL or runtime download.
+    icon_source=P5/"approved_english_meaning_icon.webp.b64"
+    icon_raw=base64.b64decode(icon_source.read_text("ascii").strip(),validate=True)
+    if (hashlib.sha256(icon_raw).hexdigest()!=
+        "7a747dfc18cc791bd69e8f55099f44a5828248028344628dec682f9faccdcdec" or
+        len(icon_raw)!=3236 or icon_raw[:4]!=b"RIFF" or
+        icon_raw[8:12]!=b"WEBP"):
+        raise ValueError("SAFE STOP: original approved matching icon checksum differs")
+    icon_dest=ROOT/"source/app/src/main/res/drawable-nodpi/wq186_english_meaning.webp"
+    if icon_dest.exists():
+        raise ValueError("SAFE STOP: new matching icon conflicts with existing drawable")
+
     # All merge operations validated; now write only the prepared sources.
     current.write_text(merged_text,"utf-8")
     home.write_text(h,"utf-8")
@@ -408,6 +424,8 @@ def main() -> None:
     puzzle.write_text(board,"utf-8")
     for file in FILES:
         shutil.copyfile(P5/file,APP/file)
+    icon_dest.parent.mkdir(parents=True,exist_ok=True)
+    icon_dest.write_bytes(icon_raw)
     print("PASS: Package 5 source overlay installed; 20/30 pairs and folders ready")
     print("NO publication / Firebase write / data reset")
 
