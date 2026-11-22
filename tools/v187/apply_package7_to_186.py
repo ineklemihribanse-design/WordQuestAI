@@ -127,6 +127,21 @@ private fun Wq174SettingIcon(kind:String) {
     s=s[:begin]+replacement+s[end:]
     store("WordQuest174Arena.kt",s)
 
+def privacy():
+    s=load("AiProviderSettings.kt")
+    old='''        Text("Anahtar yalnızca seçili cihazdaki bu hesaba aittir; Firebase'e veya GitHub'a kaydedilmez. " +
+            "Bir API anahtarının cihazda bulunması riski tamamen ortadan kaldırmaz. Öğretmene gönderdiğiniz içerik " +
+            "seçili sağlayıcıya iletilir. Sohbet ve mikrofon işlemleri veri kullanımına neden olabilir.",
+            fontFamily = Sans)'''
+    new='''        Text("Sohbet içerikleri seçtiğin AI sağlayıcısına iletilir.",fontFamily=Sans)
+        Wq187InfoTip("Veri ve API anahtarı güvenliği",
+            "Anahtar yalnızca seçili cihazdaki bu hesaba aittir; Firebase'e veya GitHub'a kaydedilmez. " +
+            "Bir API anahtarının cihazda bulunması riski tamamen ortadan kaldırmaz. " +
+            "Öğretmene gönderdiğiniz içerik seçili sağlayıcıya iletilir. " +
+            "Sohbet ve mikrofon işlemleri veri kullanımına neden olabilir.")'''
+    s=once(s,old,new,"privacy: retain short always-visible disclosure")
+    store("AiProviderSettings.kt",s)
+
 def main():
     for name in ("Wq186ArenaFairPlay.kt","LenaFaceAnimationClips.kt",
                  "LenaLive3DStage.kt","Wq175SettingsCards.kt"):
@@ -139,6 +154,7 @@ def main():
     conversation()
     scene()
     layout()
+    privacy()
     g=GRADLE.read_text("utf-8")
     g=once(g,"versionCode = 112","versionCode = 113","versionCode")
     g=once(g,'versionName = "1.0.86"','versionName = "1.0.87"',"versionName")
