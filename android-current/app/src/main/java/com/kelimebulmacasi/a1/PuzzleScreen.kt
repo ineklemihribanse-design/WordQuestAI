@@ -42,6 +42,7 @@ internal fun PuzzleScreen(
     onLearning: (LearningSignal) -> Unit,
     preferences: WordQuestPreferences,
     pronunciation: WordPronunciation,
+    clock: PuzzleClock? = null,
     save: (Progress) -> Progress,
 ) {
     val context = LocalContext.current
@@ -50,6 +51,19 @@ internal fun PuzzleScreen(
     DisposableEffect(correctSound) { onDispose { correctSound.close() } }
     val density = LocalDensity.current
     val keyboardVisible = WindowInsets.ime.getBottom(density) > 0
+    var tick by remember(game.id) { mutableLongStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(game.id, clock?.startedAtMillis) {
+        if (clock != null && clock.mode != PuzzleClockMode.Classic) {
+            while (true) {
+                delay(1000L)
+                tick = System.currentTimeMillis()
+            }
+        }
+    }
+    val outOfTime = clock?.expired(tick) == true
+    LaunchedEffect(outOfTime) {
+        if (outOfTime) keyboard.closeKeyboard()
+    }
     var engine by remember(crossword) { mutableStateOf(crossword) }
     var view by remember(crossword) { mutableStateOf(crossword.view()) }
     var confirmReset by remember { mutableStateOf(false) }
@@ -78,7 +92,7 @@ internal fun PuzzleScreen(
     }
 
     fun edit(typedWord: Boolean = false, action: (Crossword) -> Unit) {
-        if (shuffling) return
+        if (shuffling || outOfTime) return
         val wasComplete = engine.complete
         val activeAtStart = engine.wordIndex
         val before = engine.progress()
@@ -118,6 +132,7 @@ internal fun PuzzleScreen(
     }
 
     fun checkAndLearn() {
+        if (outOfTime) return
         val active = board.words[view.wordIndex]
         if (view.wordIndex !in view.solvedIndices) {
             val typed = active.cells.joinToString("") { view.letters[it]?.toString() ?: "_" }
@@ -162,7 +177,7 @@ internal fun PuzzleScreen(
         }
         if (board.words.size <= 20) expanded = false
         scope.launch { pageScroll.scrollTo(0) }
-        if (index !in view.solvedIndices) keyboard.openKeyboard()
+        if (!outOfTime && index !in view.solvedIndices) keyboard.openKeyboard()
     }
 
     fun leave() {
@@ -172,7 +187,7 @@ internal fun PuzzleScreen(
     }
 
     fun shuffleRound() {
-        if (shuffling) return
+        if (shuffling || outOfTime) return
         keyboard.closeKeyboard()
         shuffling = true
         shuffleError = false
@@ -218,7 +233,18 @@ internal fun PuzzleScreen(
                 verticalArrangement = Arrangement.spacedBy(if (keyboardVisible) 8.dp else 14.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                if (!keyboardVisible) GameHeading(game, view, ::leave, ::shuffleRound, shuffling)
+                if (!keyboardVisible) GameHeading(game, view, ::leave, ::shuffleRound, shuffling || outOfTime)
+                if (clock != null && clock.mode != PuzzleClockMode.Classic) {
+                    val seconds = if (clock.mode == PuzzleClockMode.Countdown)
+                        clock.remainingSeconds(tick) else clock.elapsedSeconds(tick)
+                    val display = "%02d:%02d".format(seconds / 60, seconds % 60)
+                    BodyText(
+                        if (outOfTime) "⏱ Süre doldu · ilerlemen kaydedildi"
+                        else if (clock.mode == PuzzleClockMode.Countdown) "⏱ Kalan süre: $display"
+                        else "⏱ Geçen süre: $display",
+                        if (outOfTime) ErrorInk else Forest,
+                    )
+                }
                 if (shuffleError) BodyText("Bu kelimelerle farklı bir tahta oluşturulamadı. Mevcut tahta açık kaldı.", ErrorInk)
                 if (wide) {
                     Row(
