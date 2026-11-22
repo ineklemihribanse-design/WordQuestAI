@@ -74,6 +74,42 @@ def main() -> None:
                 and new.strip() == 'levels.flatMap { Wq175MatchingBank.load(context,it) }'):
                 decisions.append("keep Package 3 multilevel matching (format-only conflict)")
                 return ours
+            # Both packages change the same selector region. Retain P3's
+            # multi-level AND multi-word-type controls, while bringing in P5's
+            # separate English-definition matching and the new game modes.
+            if ("Wq186LevelChips(levels" in ours and
+                "Wq186TopicChips(" in ours and
+                'if((mode=="classic" || mode=="timed")' in ours and
+                'mode=="definitions"' in new and
+                'Wq186OptionTiles(listOf("A1"' in new and
+                'if(mode!="definitions")' in new):
+                expected_if='if((mode=="classic" || mode=="timed") && wordSource=="Hazır Paketten Seç") {'
+                if ours.count(expected_if)!=1:
+                    raise ValueError("P3/P5 selector guard differs")
+                combined=ours.replace(expected_if,
+                    'if((mode=="classic" || mode=="timed" || mode=="definitions")\\n'
+                    '                        && wordSource=="Hazır Paketten Seç") {',1)
+                combined=combined.replace('Text("Seviye",color=MatchInk,',
+                    'Text("Seviye · çoklu seçim",color=MatchInk,',1)
+                kind_label='                        Text("Kelime türü",color=MatchInk,fontWeight=FontWeight.Bold)'
+                if combined.count(kind_label)!=1:
+                    raise ValueError("P3/P5 word-type selection anchor differs")
+                combined=combined.replace(kind_label,
+                    '                        if(mode!="definitions") {\\n'
+                    '    '+kind_label,1)
+                combined=combined.rstrip('\\n')+'\\n                        }\\n'
+                decisions.append("preserve P3 multilevel/type chips with P5 English definitions mode")
+                return combined
+            # Matching bank filtering must honor P3 multi-kind selections
+            # without applying word types to P5 English-definition questions.
+            if ("kinds.isEmpty()" in ours and "it.kind in kinds" in ours
+                and 'mode=="definitions"' in new and
+                'kind=="Tümü"' in new and 'it.kind==kind' in new):
+                a='kind=="Tümü" || it.kind==kind'
+                if new.count(a)!=1:
+                    raise ValueError("P3/P5 filter drift")
+                decisions.append("combine P3 multi-kind filter with P5 definitions exemption")
+                return new.replace(a,'kinds.isEmpty() || it.kind in kinds',1)
             if ("internal fun Wq175MatchingDialog" in ours and
                 "onDismiss:()->Unit)" in ours and
                 "onImport:()->Unit" in new):
@@ -119,6 +155,12 @@ def main() -> None:
             print("OURS:",ours[:1600],flush=True)
             print("NEW:",new[:1600],flush=True)
             raise ValueError("unapproved matching conflict")
+        all_conflicts=list(matcher.finditer(merged.stdout))
+        print("P3_P5_MATCHING_CONFLICT_COUNT",len(all_conflicts),flush=True)
+        for ix,clash in enumerate(all_conflicts,1):
+            ours_text,base_text,theirs_text=clash.groups()
+            print("P3_P5_CONFLICT",ix,"OURS",repr(ours_text[:700]),
+                  "NEW",repr(theirs_text[:700]),flush=True)
         try:
             merged_text=matcher.sub(choose,merged.stdout)
         except ValueError as error:
