@@ -59,6 +59,27 @@ try{
  });
  // No renewed preview upload after the match closes; deletion stays allowed.
  await assertFails(host.child('hostMascotPreview').set(good(mine)));
+ // Result screens can still read the opponent's image while the room exists.
+ assert.equal((await assertSucceeds(host.child('guestMascotPreview').get())).val(),good(theirs));
  await assertSucceeds(guest.child('guestMascotPreview').remove());
- console.log('PASS: opt-in per-room thumbnails, host/guest isolation, bounded values, revocation and finished-room lock');
+ // Repeat cross-player preview access for every backend Arena match mode.
+ for (const mode of ['duel','team','quiz']) {
+  const roomPath='premiumRooms/MASCOT183_'+mode;
+  await env.withSecurityRulesDisabled(async ctx=>{
+   await ctx.database().ref(roomPath).set({
+    hostUid:'host',guestUid:'guest',hostAvatar:mine,guestAvatar:theirs,
+    phase:'playing',mode,createdAt:Date.now(),size:mode==='quiz'?10:20,
+    hostName:'Host',guestName:'Guest'
+   });
+  });
+  const h=env.authenticatedContext('host').database().ref(roomPath);
+  const g=env.authenticatedContext('guest').database().ref(roomPath);
+  const x=env.authenticatedContext('stranger').database().ref(roomPath);
+  await assertSucceeds(h.child('hostMascotPreview').set(good(mine)));
+  await assertSucceeds(g.child('guestMascotPreview').set(good(theirs)));
+  assert.equal((await assertSucceeds(g.child('hostMascotPreview').get())).val(),good(mine));
+  assert.equal((await assertSucceeds(h.child('guestMascotPreview').get())).val(),good(theirs));
+  await assertFails(x.child('hostMascotPreview').get());
+ }
+ console.log('PASS: all three Arena backend modes, participant isolation, avatar-ID binding, revocation and result-room visibility');
 }finally{await env.cleanup();}
