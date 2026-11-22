@@ -266,13 +266,14 @@ def fair_online():
     s = once(s,'"1 ÜCRETSİZ KELİME GEÇ"',
              '"KELİMEYİ GEÇ · ${2-freeSkips} HAK"',"dynamic skip label")
     s = once(s,
+             """                                    Wq179ArenaSkip.consume(context,match.code,myUid)
+                                    freeSkipUsed=true""",
              """                                    Wq186ArenaSkipNetwork.consume(session,match.code,myUid){ ok ->
                                         if(ok) {
                                             setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))
                                             setAnswerText("")
                                         } else client.note("Kelime geçişi kaydedilemedi.")
                                     }""",
-             """                                    freeSkips=Wq179ArenaSkip.consume(context,match.code,myUid)""",
              "consume a skip atomically")
     # The actual word change happens only after Firebase transaction commits.
     stale='''                                    setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))
