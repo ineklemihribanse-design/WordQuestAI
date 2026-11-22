@@ -221,38 +221,30 @@ def replays():
         "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected))",
         "setWordIndex(Wq186ArenaNext.choose(match,myUid,selected,client.package6Rules.retries,client.package6Retries))",
         "skip does not revisit exhausted clue")
-    s=once(s,
-        'val canAnswer = myTurn && (countdown == null || countdown > 0) && !alreadyUnknown',
-        '''val previouslyFailed=PremiumOnlineLimits.gaveUpOrFailed(match,selected,myUid)
-                        val pendingFresh=(0 until match.size).any { index ->
-                            index !in solved &&
-                                !PremiumOnlineLimits.gaveUpOrFailed(match,index,myUid)
-                        }
-                        val replayAllowed=(!previouslyFailed ||
-                            (!pendingFresh && (client.package6Retries[selected] ?: 0) <
-                                client.package6Rules.retries))
-                        val canAnswer=myTurn && (countdown==null || countdown>0) &&
-                            replayAllowed''',
-        "allow last-round retry only within budget")
-    s=once(s,
-        '        client.syncFailedAttemptReveals()\\n    }'.replace('\\n','\n'),
-        '''        client.syncFailedAttemptReveals()
-    }
-    LaunchedEffect(match?.code,match?.unknownBy,match?.mistakesBy,
-        match?.solvedBy,client.package6Retries,myUid) {
-        val current=match
-        if(current!=null && current.phase=="playing" && current.isCrossword &&
-            PremiumOnlineLimits.gaveUpOrFailed(current,wordIndex,myUid) &&
-            (0 until current.size).any { index ->
-                index !in current.solvedBy &&
-                    !PremiumOnlineLimits.gaveUpOrFailed(current,index,myUid)
-            }) {
-            wordIndex=Wq186ArenaNext.choose(current,myUid,wordIndex,
-                client.package6Rules.retries,client.package6Retries)
-            answerText=""
-        }
-    }''',
-        "automatically defer failed clues rather than trapping the same word")
+    # Keep any later turn/deadline validations while changing the unknown rule.
+    import re
+    matches=list(re.finditer(r'(?m)^([ \t]*)val canAnswer\s*=\s*([^\n]+)$',s))
+    if len(matches)!=1:
+        raise AssertionError("P6 expected one online crossword canAnswer rule")
+    rule=matches[0]
+    indent=rule.group(1)
+    expression=rule.group(2).strip()
+    if "myTurn" not in expression or "countdown" not in expression or expression.endswith("&&"):
+        raise AssertionError("P6 changed online turn guard: "+expression)
+    # Unknown words are replayable ONLY in the final round within the agreed budget.
+    expression=re.sub(r'\s*&&\s*!alreadyUnknown\b','',expression)
+    replacement=(
+        indent+'val previouslyFailed=PremiumOnlineLimits.gaveUpOrFailed(match,selected,myUid)\n'+
+        indent+'val pendingFresh=(0 until match.size).any { index ->\n'+
+        indent+'    index !in solved &&\n'+
+        indent+'        !PremiumOnlineLimits.gaveUpOrFailed(match,index,myUid)\n'+
+        indent+'}\n'+
+        indent+'val replayAllowed=(!previouslyFailed ||\n'+
+        indent+'    (!pendingFresh && (client.package6Retries[selected] ?: 0) <\n'+
+        indent+'        client.package6Rules.retries))\n'+
+        indent+'val canAnswer=('+expression+') && replayAllowed'
+    )
+    s=s[:rule.start()]+replacement+s[rule.end():]
     s=once(s,"client.markSolved(selected)","client.submitWithRetry(selected,true)",
         "correct answer consumes replay")
     s=once(s,"client.wrong(selected)","client.submitWithRetry(selected,false)",
