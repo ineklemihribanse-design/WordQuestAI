@@ -94,6 +94,73 @@ update(
     ),
 )
 
+
+# The existing v173 avatar preference, profile scope and defaults stay intact.
+# Custom IDs are accepted only when installed under that same profile.
+shutil.copyfile(TOOLS / "Wq183MascotStore.kt", SRC / "Wq183MascotStore.kt")
+shutil.copyfile(TOOLS / "Wq183MascotManager.kt", SRC / "Wq183MascotManager.kt")
+
+def mascots(source):
+    source = replace_one(source,
+        'fun valid(id:String?):Boolean=id!=null && id in ids',
+        'fun valid(id:String?):Boolean=id!=null && (id in ids || Wq183MascotStore.isCustomId(id))',
+        "allow custom identifiers without changing original IDs")
+    source = replace_one(source,
+        'fun label(id:String):String=labels.getOrElse(ids.indexOf(id)){"Piko"}',
+        'fun label(id:String):String=if(Wq183MascotStore.isCustomId(id)) "Kişisel maskot" '
+        'else labels.getOrElse(ids.indexOf(id)){"Piko"}',
+        "label personal portrait")
+    source = replace_one(source,
+        '''        val saved=prefs(context).getString("user_"+profile,null)
+        return if(valid(saved))saved!! else "piko"''',
+        '''        Wq183MascotStore.activate(context,profile)
+        val saved=prefs(context).getString("user_"+profile,null)
+        return if(valid(saved) && (!Wq183MascotStore.isCustomId(saved) ||
+            Wq183MascotStore.exists(context,profile,saved!!))) saved!! else "piko"''',
+        "custom mascots are selected only from their owner profile")
+    source = replace_one(source,
+        '''        require(valid(id))
+        prefs(context).edit().putString("user_"+profile,id).apply()''',
+        '''        require(valid(id))
+        if(Wq183MascotStore.isCustomId(id))
+            require(Wq183MascotStore.exists(context,profile,id))
+        Wq183MascotStore.activate(context,profile)
+        prefs(context).edit().putString("user_"+profile,id).apply()''',
+        "prevent cross-account selection")
+    source = replace_one(source,
+        '''        val safe=if(valid(id))id else "piko"
+        val pose=if(victory)"victory" else "idle"''',
+        '''        if(Wq183MascotStore.isCustomId(id)) {
+            return Wq183MascotStore.picture(context,id,victory)
+                ?: picture(context,"piko",victory)
+        }
+        val safe=if(valid(id))id else "piko"
+        val pose=if(victory)"victory" else "idle"''',
+        "draw selected local artwork, default portrait on opponent device")
+    return source
+
+update("WordQuest2DCharacters.kt", mascots)
+
+def account_mascot(source):
+    return replace_one(source,
+        '''                TextButton(onClick={choosingMaskot=true}) {
+                    Text("Karakteri değiştir",fontSize=13.sp)
+                }''',
+        '''                TextButton(onClick={choosingMaskot=true}) {
+                    Text("Karakteri değiştir",fontSize=13.sp)
+                }
+                Wq183MascotManager(
+                    profileKey=session.profileKey,
+                    selected=chosenMaskot.value,
+                    onSelected={id->
+                        Wq2DMascots.choose(appContext,session.profileKey,id)
+                        chosenMaskot.value=id
+                    }
+                )''',
+        "custom ZIP importer beside profile avatar")
+
+update("HomeScreen.kt", account_mascot)
+
 gradle = ROOT / "source/app/build.gradle.kts"
 before = gradle.read_text("utf-8")
 assert before.count("versionCode = 108") == 1
