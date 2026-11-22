@@ -158,7 +158,7 @@ def main() -> None:
     hub = SRC / "PracticeHubScreen.kt"
     legacy = hub.read_text("utf-8")
     old_card = re.compile(
-        r"(?ms)^        Wq175DailyPlanBanner\\(\\n.*?^        \\)\\n"
+        r"(?ms)^        Wq175DailyPlanBanner\(\n.*?^        \)\n"
     )
     candidate = (CHANGED / "PracticeHubScreen.kt").read_text("utf-8")
     intro = '        androidx.compose.material3.ElevatedCard(Modifier.fillMaxWidth()) {'
