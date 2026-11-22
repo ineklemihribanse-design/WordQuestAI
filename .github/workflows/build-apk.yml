@@ -1681,7 +1681,8 @@ jobs:
           python3 tools/v185/apply_profile_185.py
           grep -Fq 'versionCode = 111' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.85"' source/app/build.gradle.kts
-          grep -Fq 'Wq185FriendMascot' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+          grep -Fq 'Wq185FriendSharingSetting' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
+          grep -Fq 'Wq185FriendProfilePublisher' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
       - name: Verify independent app identity
         run: |
           set -euo pipefail
