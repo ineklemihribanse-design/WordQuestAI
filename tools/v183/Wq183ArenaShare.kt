@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -50,7 +52,7 @@ internal object Wq183ArenaShare {
         if (Wq183MascotStore.isCustomId(id)) remote[id] else null
 
     fun removeRemote(id: String?) {
-        if (id != null) remote.remove(id)
+        if (id != null) remote.remove(id)?.let { if (!it.isRecycled) it.recycle() }
     }
 
     /** Only decode bounded, valid WebP content that matches an exact room avatar ID. */
@@ -105,14 +107,18 @@ internal object Wq183ArenaShare {
 
     fun receive(id: String, data: String?) {
         val decoded = decodePreview(id, data)
+        val previous = remote[id]
         if (decoded == null) remote.remove(id) else remote[id] = decoded
+        if (previous != null && previous !== decoded && !previous.isRecycled)
+            previous.recycle()
     }
 
-    fun side(match: PremiumOnlineMatch, uid: String): String? = when(uid) {
-        match.hostUid -> "host"
-        match.guestUid -> "guest"
-        else -> null
-    }
+    fun side(hostUid: String?, guestUid: String?, uid: String): String? =
+        if (uid.isBlank()) null else when(uid) {
+            hostUid -> "host"
+            guestUid -> "guest"
+            else -> null
+        }
 
     fun previewField(side: String): String = if (side == "host")
         "hostMascotPreview" else "guestMascotPreview"
@@ -139,19 +145,28 @@ internal fun rememberWq183ShareConsent(profileKey: String): State<Boolean> {
 
 /** Side-effect bridge: attach only to an AUTHENTICATED match participant. */
 @Composable
-internal fun Wq183ArenaShareBridge(match: PremiumOnlineMatch?, session: AppSession) {
+internal fun Wq183ArenaShareBridge(
+    code: String?, hostUid: String?, guestUid: String?,
+    hostAvatar: String?, guestAvatar: String?, profileKey: String
+) {
     val context = LocalContext.current
-    val selected by rememberWq2DSelection(session.profileKey)
-    val allowed by rememberWq183ShareConsent(session.profileKey)
-    val uid = session.accounts.uid.orEmpty()
-    val side = if (match != null) Wq183ArenaShare.side(match, uid) else null
-    val myId = if (side == "host") match?.hostAvatar else match?.guestAvatar
-    val rivalId = if (side == "host") match?.guestAvatar else match?.hostAvatar
+    val selected by rememberWq2DSelection(profileKey)
+    val allowed by rememberWq183ShareConsent(profileKey)
+    // Reuse the already authenticated Arena account. Never accept a client-supplied UID.
+    val uid = remember { runCatching {
+        FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
+    }.getOrDefault("") }
+    val side = Wq183ArenaShare.side(hostUid, guestUid, uid)
+    val myId = if (side == "host") hostAvatar else guestAvatar
+    val rivalId = if (side == "host") guestAvatar else hostAvatar
     val otherSide = if (side == "host") "guest" else "host"
-    val room = remember(match?.code, uid, side) {
-        if (side != null && match != null && match.code.isNotBlank())
-            session.accounts.socialDatabase()
-                ?.reference?.child("premiumRooms")?.child(match.code)
+    val room = remember(code, uid, side) {
+        if (side != null && !code.isNullOrBlank() &&
+            code.matches(Regex("[A-Za-z0-9_-]{3,32}")))
+            runCatching {
+                FirebaseDatabase.getInstance().reference
+                    .child("premiumRooms").child(code)
+            }.getOrNull()
         else null
     }
     val myField = if (side != null) Wq183ArenaShare.previewField(side) else null
@@ -182,14 +197,12 @@ internal fun Wq183ArenaShareBridge(match: PremiumOnlineMatch?, session: AppSessi
     LaunchedEffect(room, myField, myId, selected, allowed) {
         if (room == null || myField == null) return@LaunchedEffect
         val node = room.child(myField)
-        if (!allowed || !Wq183MascotStore.isCustomId(selected)) {
-            // A user who withdraws consent can retract an existing room preview.
+        if (!allowed || !Wq183MascotStore.isCustomId(selected) || myId != selected) {
+            // Withdrawn consent, a built-in maskot or a changed avatar always retracts.
             node.removeValue()
             node.onDisconnect().cancel()
             return@LaunchedEffect
         }
-        // Avatar field is server-authored and owner-only. Only publish when it matches.
-        if (myId != selected) return@LaunchedEffect
         val value = withContext(Dispatchers.Default) {
             val image = Wq183MascotStore.picture(context, selected, false)
             image?.let { Wq183ArenaShare.encodePreview(selected, it) }
