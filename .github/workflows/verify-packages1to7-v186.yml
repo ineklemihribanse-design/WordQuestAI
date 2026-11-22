@@ -1596,8 +1596,13 @@ jobs:
           test -s "$PKG3/tools/v186/apply_memory_package3_186.py"
           test -s "$PKG3/README_PAKET3_TR.md"
           ln -s "$GITHUB_WORKSPACE/source" "$PKG3/source"
-          python3 -m unittest discover -s "$PKG3/tests" -p test_package3.py -v
-          python3 "$PKG3/tools/v186/apply_memory_package3_186.py"
+          # The original package test defaults to the author's old local /mnt/data
+          # checkout. In GitHub Actions the canonical v1.0.85 source is this
+          # repository's checked-out tools/v148 and tools/v175 directories.
+          WQ_TEST_SOURCE_ROOT="$GITHUB_WORKSPACE" \
+            python3 -m unittest discover -s "$PKG3/tests" -p test_package3.py -v
+          WQ_ROOT="$GITHUB_WORKSPACE" \
+            python3 "$PKG3/tools/v186/apply_memory_package3_186.py"
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
