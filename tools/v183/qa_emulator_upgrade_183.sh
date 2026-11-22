@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# GitHub-hosted emulator QA for an already installed WordQuest AI 1.0.83.
+# GitHub-hosted emulator QA for an already installed WordQuest AI 1.0.82.
 # This script NEVER publishes an APK or touches a user's physical device.
 set -euo pipefail
 
@@ -56,7 +56,7 @@ test -n "$new_uid"
 test "$old_uid" = "$new_uid"
 adb shell dumpsys package "$PKG" > "$RUNNER_TEMP/wq175-upgraded-package.txt"
 grep -q 'versionCode=109' "$RUNNER_TEMP/wq175-upgraded-package.txt"
-python3 tools/v182/verify_upgrade_metadata_183.py \
+python3 tools/v183/verify_upgrade_metadata_183.py \
     "$RUNNER_TEMP/wq175-original-package.txt" \
     "$RUNNER_TEMP/wq175-upgraded-package.txt" "$PKG"
 adb logcat -c || true
