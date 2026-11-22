@@ -150,14 +150,17 @@ internal fun rememberWq183ShareConsent(profileKey: String): State<Boolean> {
 @Composable
 internal fun Wq183ArenaShareBridge(
     code: String?, hostUid: String?, guestUid: String?,
-    hostAvatar: String?, guestAvatar: String?, profileKey: String
+    hostAvatar: String?, guestAvatar: String?, profileKey: String,
+    auth: FirebaseAuth?, database: FirebaseDatabase?
 ) {
     val context = LocalContext.current
     val selected by rememberWq2DSelection(profileKey)
     val allowed by rememberWq183ShareConsent(profileKey)
     // Follow actual Firebase authentication changes, including session restore,
     // account switching and logout. Never trust a UID supplied by room UI.
-    val auth = remember { runCatching { FirebaseAuth.getInstance() }.getOrNull() }
+    // The online room uses the application's explicitly configured FirebaseApp.
+    // NEVER use FirebaseAuth.getInstance() / FirebaseDatabase.getInstance()
+    // without that app: the default instance may be absent or point elsewhere.
     val currentUid = remember(auth) {
         mutableStateOf(auth?.currentUser?.uid.orEmpty())
     }
@@ -175,13 +178,10 @@ internal fun Wq183ArenaShareBridge(
     val myId = if (side == "host") hostAvatar else guestAvatar
     val rivalId = if (side == "host") guestAvatar else hostAvatar
     val otherSide = if (side == "host") "guest" else "host"
-    val room = remember(code, uid, side) {
-        if (side != null && !code.isNullOrBlank() &&
+    val room = remember(database, code, uid, side) {
+        if (database != null && side != null && !code.isNullOrBlank() &&
             code.matches(Regex("[A-Za-z0-9_-]{3,32}")))
-            runCatching {
-                FirebaseDatabase.getInstance().reference
-                    .child("premiumRooms").child(code)
-            }.getOrNull()
+            database.reference.child("premiumRooms").child(code)
         else null
     }
     val myField = if (side != null) Wq183ArenaShare.previewField(side) else null
@@ -191,9 +191,7 @@ internal fun Wq183ArenaShareBridge(
     val connected = remember(room) { mutableStateOf(false) }
     DisposableEffect(room) {
         // Official Firebase SDK connection-state path, not a normal data child.
-        val ref = if (room != null) runCatching {
-            FirebaseDatabase.getInstance().getReference(".info/connected")
-        }.getOrNull() else null
+        val ref = if (room != null) database?.getReference(".info/connected") else null
         val listener = if (ref != null) object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 connected.value = snapshot.getValue(Boolean::class.java) == true
