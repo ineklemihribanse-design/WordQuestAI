@@ -174,13 +174,21 @@ internal fun Wq175MatchingEntry(onClick:()->Unit) {
 }
 
 @Composable
-internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:()->Unit) {
+internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->Unit,onImport:()->Unit) {
     val context=LocalContext.current
     val scope=rememberCoroutineScope()
     val store=remember(context,session.profileKey){
         Wq175MatchingProgress(context,session.profileKey)
     }
     var mode by rememberSaveable { mutableStateOf("classic") }
+    var importOpen by remember { mutableStateOf(false) }
+    var folderRevision by remember { mutableIntStateOf(0) }
+    var chosenFolderId by rememberSaveable { mutableStateOf("") }
+    val foldersStore=remember(context,session.profileKey) {
+        Wq186MatchingFolders(context,session.profileKey)
+    }
+    val savedFolders=remember(folderRevision,session.profileKey){foldersStore.all()}
+    val selectedFolder=savedFolders.firstOrNull { it.id==chosenFolderId }
     var wordSource by rememberSaveable { mutableStateOf("Hazır Paketten Seç") }
     var levels by rememberSaveable { mutableStateOf(listOf("A1")) }
     var number by rememberSaveable { mutableIntStateOf(10) }
@@ -234,7 +242,11 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:
             val items=try {
                 when {
                     mode=="mistakes" -> store.missed()
+                    mode=="definitions" && wordSource=="Klasörlerim" ->
+                        selectedFolder?.takeIf { it.englishDefinitions }?.words.orEmpty()
                     mode=="definitions" -> Wq186MeaningBank.load(levels)
+                    wordSource=="Klasörlerim" ->
+                        selectedFolder?.takeIf { !it.englishDefinitions }?.words.orEmpty()
                     mode=="notebook" || wordSource=="Kendi Kelimelerinle" ->
                         session.searchLearning("",0,5000).map {
                             Wq175MatchPair("Defterim","Kişisel",it.answer,it.clue)
@@ -244,11 +256,11 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:
                     }
                 }
             }catch(_:Exception){emptyList()}
-            val personalDeck = mode=="notebook" || (mode!="mistakes" && wordSource=="Kendi Kelimelerinle")
+            val personalDeck = mode=="notebook" || (mode!="mistakes" && wordSource=="Kendi Kelimelerinle") || wordSource=="Klasörlerim"
             val filtered=items.filter { mode=="mistakes" || mode=="definitions" || personalDeck || kind=="Tümü" || it.kind==kind }
             val available=Wq175MatchingBank.prepare(filtered,number)
             busy=false
-            val minimum = if(personalDeck) 2 else Wq175MatchingBank.requiredPairs(mode,number)
+            val minimum = if(mode=="mistakes") 2 else number
             if(available.size<minimum) {
                 issue=if(mode=="mistakes" || personalDeck)
                     "Bu koleksiyonda en az 2 farklı eşleştirme çifti gerekiyor. " +
@@ -270,6 +282,15 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:
         }
     }
 
+    if(importOpen) Wq186MatchingImporter(
+        ai=ai,profile=session.profileKey,englishDefinitions=englishDefinitionGame,
+        onDone={ id ->
+            folderRevision++
+            chosenFolderId=id
+            wordSource="Klasörlerim"
+            importOpen=false
+        },onDismiss={importOpen=false}
+    )
     Dialog(onDismissRequest=onDismiss,
         properties=DialogProperties(usePlatformDefaultWidth=false)) {
         Surface(modifier=Modifier.fillMaxSize(),color=Color(0xFFF7FBFD)) {
@@ -301,14 +322,41 @@ internal fun Wq175MatchingDialog(session:AppSession,onDismiss:()->Unit,onImport:
                     }
                 }
                 if(!played) {
-                    Wq175PuzzleSourceShortcuts(
-                        onManual={wordSource="Kendi Kelimelerinle";mode="notebook";issue=""},
-                        onPackage={wordSource="Hazır Paketten Seç";mode="classic";issue=""},
-                        onImport={onDismiss();onImport()},
-                        heading="Eşleştirme için kelime kaynağın",
-                        guidance="PDF, görsel ve yapay zekâ önce Kelime Hafızam’daki içe aktarma bölümüne gider. "+
-                            "Kelimeleri onayladıktan sonra geri dönüp Kendi Kelimelerinle seç.",
-                        selected=wordSource)
+                    Text("Eşleştirme için kelime kaynağın",
+                        fontWeight=FontWeight.Bold,color=MatchInk,fontSize=15.sp)
+                    Wq186OptionTiles(
+                        listOf("Hazır Paketten Seç","Klasörlerim","Kendi Kelimelerinle"),
+                        setOf(wordSource),!busy
+                    ) { chosen ->
+                        wordSource=chosen
+                        if(chosen=="Kendi Kelimelerinle")mode="notebook"
+                        else if(mode=="notebook")mode="classic"
+                        issue=""
+                    }
+                    if(wordSource=="Klasörlerim") {
+                        Text("Klasörünü seç",color=MatchInk,fontWeight=FontWeight.Bold)
+                        val compatible=savedFolders.filter{
+                            it.englishDefinitions == englishDefinitionGame
+                        }
+                        if(compatible.isEmpty()) Text(
+                            "Bu eşleştirme türü için henüz klasör yok. Kelimeleri içe aktar.",
+                            fontSize=12.sp,color=MatchPink
+                        )
+                        else Wq186OptionTiles(
+                            compatible.map{it.name},
+                            compatible.firstOrNull{it.id==chosenFolderId}
+                                ?.let{setOf(it.name)} ?: emptySet(),!busy
+                        ) { name ->
+                            chosenFolderId=compatible.first{it.name==name}.id
+                        }
+                    }
+                    OutlinedButton(
+                        onClick={importOpen=true},
+                        modifier=Modifier.fillMaxWidth()
+                    ) { Text("＋ Kelime / PDF / Görsel / Kamera / Yapay zekâ") }
+                    Text("Aktarılan kelimeler eşleştirme klasöründe saklanır; " +
+                        "Kelime Hafızam'a otomatik eklenmez.",
+                        fontSize=11.sp,color=Color(0xFF58747A))
                     Text("Oyununu seç",fontWeight=FontWeight.ExtraBold,
                         color=MatchInk,fontSize=19.sp)
                     val modes=listOf(
