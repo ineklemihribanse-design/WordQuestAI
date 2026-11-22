@@ -496,6 +496,11 @@ def main() -> None:
         shutil.copyfile(P5/file,APP/file)
     icon_dest.parent.mkdir(parents=True,exist_ok=True)
     icon_dest.write_bytes(icon_raw)
+    # Package 3 temporary feedback runs in the same composable as 'reviewed'.
+    # Repair its lexical declaration order as part of cumulative P5 application,
+    # so no independent workflow-only patch can accidentally omit this fix.
+    import runpy
+    runpy.run_path(str(ROOT/"tools/v186/repair_memory_feedback_186.py"),run_name="__main__")
     print("PASS: Package 5 source overlay installed; 20/30 pairs and folders ready")
     print("NO publication / Firebase write / data reset")
 
