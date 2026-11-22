@@ -272,10 +272,10 @@ private fun PracticeGameScreen(
     val context = LocalContext.current
     val preferences = session.preferences
     var practiceAccentName by rememberSaveable(session.profileKey, kind.name) {
-        mutableStateOf(preferences.voice.name)
+        mutableStateOf(EnglishVoice.British.name)
     }
     val practiceAccent = EnglishVoice.entries.firstOrNull { it.name == practiceAccentName }
-        ?: preferences.voice
+        ?: EnglishVoice.British
     val cards = remember(session.profileKey, number) {
         session.searchLearning("", 0, 400).filter { isEnglishAnswer(it.answer) }
             .sortedByDescending { it.wrong * 3 + it.forgotten * 2 + it.hints }
