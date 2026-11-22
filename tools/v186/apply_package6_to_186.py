@@ -136,6 +136,10 @@ def compact_lobby():
 
 def fair_online():
     s = load("PremiumOnlineScreen.kt")
+    for _probe in ("Wq179ArenaWordChooser(", "setWordIndex(it)",
+                   "Wq179ArenaSkip.consume(", "freeSkipUsed",
+                   "Wq179ArenaOrder.next(", "Wq181ArenaHintBar("):
+        print("P6 online source probe:",_probe,s.count(_probe))
     # The next clue is automatic and deferred incorrect/unknown clues return last.
     s=once(s,
         "wordIndex=Wq179ArenaOrder.next(m.code,myUid,m.size,m.solvedBy.keys,-1)",
@@ -239,15 +243,20 @@ def fair_online():
     // Gameplay stays compact. The room code, sharing and full settings are under ⋮.""",
              "emojis profiles connection and consensus live for both players")
     # Prevent 'All Words' dialog from bypassing the designed skip budget.
-    s = once(s,
-             """                    Wq179ArenaWordChooser(puzzle,solved,selected){ newIndex ->
-                        setWordIndex(newIndex)
-                        setAnswerText("")
-                    }
-""",
-             """                    // No player-controlled clue picker during a live match.
-""",
-             "remove manual selection dialog")
+
+    # Accept whitespace differences from v181+ without swallowing another component.
+    import re
+    call=re.search(r"(?m)^[ \\t]*Wq179ArenaWordChooser\\(puzzle,\\s*solved,\\s*selected\\)",s)
+    if not call:
+        raise AssertionError("P6 word chooser: expected exactly one active chooser call")
+    if s.count("Wq179ArenaWordChooser(")!=1:
+        raise AssertionError("P6 word chooser: ambiguous multiple calls")
+    begin=s.rfind("\n",0,call.start())+1
+    closing=re.search(r"(?m)^\\s{20}\\}[ \\t]*$",s[call.end():])
+    if closing is None:
+        raise AssertionError("P6 word chooser: no lambda closing")
+    after=call.end()+closing.end()
+    s=s[:begin]+"                    // Manual clue chooser disabled during live Arena.\n"+s[after:]
     s = once(s,
              """                    setWordIndex(it)
                     setAnswerText("")
