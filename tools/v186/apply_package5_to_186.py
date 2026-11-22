@@ -66,6 +66,14 @@ def main() -> None:
         decisions=[]
         def choose(match):
             ours,old,new=match.groups()
+            # Package 3 and Package 5 already agree on merging the selected
+            # CEFR levels. This is only an extra space after a Kotlin comma,
+            # not a competing feature or a reason to reject the full release.
+            # Limit the exception to this one exact statement.
+            if (ours.strip() == 'levels.flatMap { Wq175MatchingBank.load(context, it) }'
+                and new.strip() == 'levels.flatMap { Wq175MatchingBank.load(context,it) }'):
+                decisions.append("keep Package 3 multilevel matching (format-only conflict)")
+                return ours
             if ("internal fun Wq175MatchingDialog" in ours and
                 "onDismiss:()->Unit)" in ours and
                 "onImport:()->Unit" in new):
