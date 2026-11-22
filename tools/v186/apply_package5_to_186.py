@@ -115,7 +115,7 @@ def main() -> None:
     if start<0 or end<start or chat_original.count("if (voiceSettingsOpen)")!=1:
         raise ValueError("SAFE STOP: Lena voice-settings modal differs")
     updated_chat=(chat_original[:start]+
-        '        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\\n'+
+        '        if (voiceSettingsOpen) Wq186LenaVoiceSettings(session) { voiceSettingsOpen = false }\n'+
         chat_original[end:])
 
     # Crop oversize mascot slots while retaining each user's exact own ZIP.
