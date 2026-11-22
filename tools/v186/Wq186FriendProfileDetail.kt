@@ -29,6 +29,9 @@ internal fun Wq186FriendProfileDetail(entry: FriendEntry, onDismiss: () -> Unit)
     val avatar = remember(entry.avatarPreview) {
         Wq185FriendMascot.decode(entry.avatarPreview)
     }
+    val builtinId = entry.avatarId?.takeIf {
+        Wq2DMascots.valid(it) && !Wq183MascotStore.isCustomId(it)
+    }
 
     ModalBottomSheet(onDismissRequest = onDismiss,
         containerColor=Color(0xFFFFFBFF),
@@ -49,9 +52,8 @@ internal fun Wq186FriendProfileDetail(entry: FriendEntry, onDismiss: () -> Unit)
                         contentDescription="Arkadaşının paylaştığı maskot",
                         modifier=Modifier.fillMaxSize(),
                         contentScale=ContentScale.Fit)
-                } else if(Wq2DMascots.valid(entry.avatarId) &&
-                          !Wq183MascotStore.isCustomId(entry.avatarId)) {
-                    Wq2DPortrait(entry.avatarId,Modifier.fillMaxSize())
+                } else if(builtinId != null) {
+                    Wq2DPortrait(builtinId,Modifier.fillMaxSize())
                 } else {
                     Text("Maskot paylaşılmadı",fontSize=13.sp,
                         color=Color(0xFF67567D))
