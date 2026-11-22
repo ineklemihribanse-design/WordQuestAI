@@ -155,10 +155,22 @@ internal fun Wq183ArenaShareBridge(
     val context = LocalContext.current
     val selected by rememberWq2DSelection(profileKey)
     val allowed by rememberWq183ShareConsent(profileKey)
-    // Reuse the already authenticated Arena account. Never accept a client-supplied UID.
-    val uid = remember(profileKey) { runCatching {
-        FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
-    }.getOrDefault("") }
+    // Follow actual Firebase authentication changes, including session restore,
+    // account switching and logout. Never trust a UID supplied by room UI.
+    val auth = remember { runCatching { FirebaseAuth.getInstance() }.getOrNull() }
+    val currentUid = remember(auth) {
+        mutableStateOf(auth?.currentUser?.uid.orEmpty())
+    }
+    DisposableEffect(auth) {
+        val listener = if (auth != null) FirebaseAuth.AuthStateListener {
+            currentUid.value = it.currentUser?.uid.orEmpty()
+        } else null
+        if (auth != null && listener != null) auth.addAuthStateListener(listener)
+        onDispose {
+            if (auth != null && listener != null) auth.removeAuthStateListener(listener)
+        }
+    }
+    val uid = currentUid.value
     val side = Wq183ArenaShare.side(hostUid, guestUid, uid)
     val myId = if (side == "host") hostAvatar else guestAvatar
     val rivalId = if (side == "host") guestAvatar else hostAvatar
@@ -178,7 +190,10 @@ internal fun Wq183ArenaShareBridge(
     // onDisconnect runs once on the server; restore preview on reconnect.
     val connected = remember(room) { mutableStateOf(false) }
     DisposableEffect(room) {
-        val ref = room?.root?.child(".info")?.child("connected")
+        // Official Firebase SDK connection-state path, not a normal data child.
+        val ref = if (room != null) runCatching {
+            FirebaseDatabase.getInstance().getReference(".info/connected")
+        }.getOrNull() else null
         val listener = if (ref != null) object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 connected.value = snapshot.getValue(Boolean::class.java) == true
