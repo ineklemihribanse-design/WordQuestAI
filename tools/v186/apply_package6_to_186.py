@@ -244,19 +244,22 @@ def fair_online():
              "emojis profiles connection and consensus live for both players")
     # Prevent 'All Words' dialog from bypassing the designed skip budget.
 
-    # Accept whitespace differences from v181+ without swallowing another component.
-    import re
-    call=re.search(r"(?m)^[ \\t]*Wq179ArenaWordChooser\\(puzzle,\\s*solved,\\s*selected\\)",s)
-    if not call:
-        raise AssertionError("P6 word chooser: expected exactly one active chooser call")
-    if s.count("Wq179ArenaWordChooser(")!=1:
-        raise AssertionError("P6 word chooser: ambiguous multiple calls")
-    begin=s.rfind("\n",0,call.start())+1
-    closing=re.search(r"(?m)^\\s{20}\\}[ \\t]*$",s[call.end():])
-    if closing is None:
-        raise AssertionError("P6 word chooser: no lambda closing")
-    after=call.end()+closing.end()
-    s=s[:begin]+"                    // Manual clue chooser disabled during live Arena.\n"+s[after:]
+    # Disable the existing chooser only; never remove the selected-clue header.
+    needle="Wq179ArenaWordChooser("
+    if s.count(needle)!=1:
+        raise AssertionError("P6 word chooser: expected exactly one call")
+    start_call=s.index(needle)
+    check=s[start_call:start_call+130]
+    if not all(key in check for key in ("puzzle","solved","selected")):
+        raise AssertionError("P6 word chooser: unknown signature")
+    begin=s.rfind("\n",0,start_call)+1
+    indent=s[begin:start_call]
+    if indent.strip():
+        raise AssertionError("P6 chooser: unexpected line prefix")
+    end_call=s.find("\n"+indent+"}",start_call)
+    if end_call<0:
+        raise AssertionError("P6 word chooser: no terminating lambda")
+    s=s[:begin]+indent+"// Clue selection is automatic in live competition.\n"+s[end_call+len(indent)+2:]
     s = once(s,
              """                    setWordIndex(it)
                     setAnswerText("")
