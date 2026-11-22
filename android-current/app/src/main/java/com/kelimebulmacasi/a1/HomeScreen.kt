@@ -225,7 +225,8 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
                 key(game.progressId, game.modifiedAt, saved.layout, saved.layoutAt) {
                     val crossword = remember { Crossword(round.puzzle, round.onBoard(saved)) }
                     PuzzleScreen(game, crossword, round.onBoard(saved), ::back, { session.shuffle(game) },
-                        { signal -> session.recordLearning(game, signal) }, session.preferences, pronunciation) { progress ->
+                        { signal -> session.recordLearning(game, signal) }, session.preferences, pronunciation,
+                        nextRound = session.nextGeneratedPart(game)?.let { next -> { gameId = next.id } }) { progress ->
                         round.onBoard(session.save(game, round.inStore(progress, saved.layoutAt)))
                     }
                 }
