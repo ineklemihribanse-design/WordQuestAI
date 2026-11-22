@@ -32,34 +32,43 @@ def main() -> None:
         raise SystemExit("The full v175 paragraph classes were not assembled; abort.")
     if not (SRC / "Wq176DailyChallenge.kt").is_file():
         raise SystemExit("The daily YDS source is missing; abort.")
-    changes = []
+    # Three-way merge current 1.0.85 against the exact old source and new P4.
+    # All merges are computed in memory before any application.
+    merged = {}
+    conflicts = []
     for name in MODIFIED + ["Wq176DailyChallenge.kt"]:
         old = BASE / name
         revised = (P4 / "Wq176DailyChallenge_186.kt") if name.startswith("Wq176") else (CHANGED / name)
         current = SRC / name
         if not old.is_file() or not revised.is_file() or not current.is_file():
             raise SystemExit(f"Missing base/source/revised for {name}; abort.")
-        a = old.read_text("utf-8").splitlines(keepends=True)
-        z = revised.read_text("utf-8").splitlines(keepends=True)
-        target = f"app/src/main/java/com/kelimebulmacasi/a1/{name}"
-        changes.extend(difflib.unified_diff(a, z, fromfile="a/"+target, tofile="b/"+target, n=3))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paths = [root / "ours.kt", root / "base.kt", root / "theirs.kt"]
+            paths[0].write_bytes(current.read_bytes())
+            paths[1].write_bytes(old.read_bytes())
+            paths[2].write_bytes(revised.read_bytes())
+            result = subprocess.run(["git", "merge-file", "-p", "--diff3",
+                                     *[str(x) for x in paths]], text=True,
+                                    capture_output=True)
+            if result.returncode:
+                conflicts.append(name)
+                print(f"CONFLICT {name}:", flush=True)
+                lines = result.stdout.splitlines()
+                for start, line in enumerate(lines):
+                    if line.startswith("<<<<<<<"):
+                        print("\\n".join(lines[max(0,start-5):min(len(lines),start+75)])[:6500], flush=True)
+                        break
+            else:
+                merged[name] = result.stdout
+    if conflicts:
+        raise SystemExit("SAFE STOP: manual merge required in " + ", ".join(conflicts))
     for name in ADDED:
         origin = (CHANGED / name) if (CHANGED / name).is_file() else (P4 / name)
         if not origin.is_file() or (SRC / name).exists():
             raise SystemExit(f"Missing new source or source already exists: {name}; abort.")
-    if not changes:
-        raise SystemExit("Empty overlay; abort.")
-    with tempfile.TemporaryDirectory() as tmp:
-        patch = Path(tmp) / "package4.patch"
-        patch.write_text("".join(changes), encoding="utf-8")
-        # With no --3way fallback, this refuses to overwrite any conflicting change.
-        check = subprocess.run(["git", "apply", "--check", "--whitespace=nowarn",
-                                str(patch)], cwd=ROOT / "source", capture_output=True, text=True)
-        if check.returncode:
-            raise SystemExit("SAFE STOP: v185 overlaps with Package 4; manual merge required.\n"
-                             + check.stdout + check.stderr)
-        subprocess.run(["git", "apply", "--whitespace=nowarn", str(patch)],
-                       cwd=ROOT / "source", check=True)
+    for name, body in merged.items():
+        (SRC / name).write_text(body, encoding='utf-8')
     for name in ADDED:
         origin = (CHANGED / name) if (CHANGED / name).is_file() else (P4 / name)
         shutil.copyfile(origin, SRC / name)
