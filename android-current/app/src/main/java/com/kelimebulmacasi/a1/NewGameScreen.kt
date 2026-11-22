@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
-// 20 words per board; 21–70 words are generated as linked 8–20 word boards.
+// One connected crossword contains the requested 8–70 words; never split the board.
 private const val SAFE_SESSION_MAX_WORDS = 70
 private val gameSizes = listOf(10, 20, 30, 50, 70)
 
@@ -109,7 +109,7 @@ internal fun NewGameScreen(
         when {
             bank == null && error.isEmpty() -> BodyText("Kelime havuzu yükleniyor…")
             bank != null && permitted.isEmpty() -> BodyText("Bu filtrede $available kelime var. Tahta için en az $MIN_NEW_GAME_WORDS kelime gerekir.", ErrorInk)
-            bank != null -> BodyText("$available farklı kelime · ${permitted.first}–${permitted.last} kelime. 20 üzeri seçimler, 20 kelimeyi geçmeyen bölümlere ayrılır.", Forest)
+            bank != null -> BodyText("$available farklı kelime · tek tahtada ${permitted.first}–${permitted.last} kelime seçebilirsin.", Forest)
         }
         if (error.isNotBlank()) BodyText(error, ErrorInk)
         PrimaryAction(if (loading) "Bulmacalar hazırlanıyor…" else "Bulmacayı başlat", {
@@ -120,10 +120,9 @@ internal fun NewGameScreen(
             error = ""
             scope.launch {
                 try {
-                    val game = if (size <= 20) session.newGame(level, topic, kind, size)
-                        else session.newGameSeries(level, topic, kind, size)
+                    val game = session.newGame(level, topic, kind, size)
                     if (game != null) open(game)
-                    else error = "Bu seçimle geçerli bir tahta kurulamadı. Başka bir sayı seç veya filtreyi genişlet."
+                    else error = "Seçtiğin kelimeler tek tahtaya yerleştirilemedi. Konuyu genişlet veya daha az kelime dene."
                 } catch (cancelled: CancellationException) {
                     throw cancelled
                 } catch (_: Exception) {
