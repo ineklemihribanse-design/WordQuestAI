@@ -224,9 +224,13 @@ internal fun CrosswordApp(session: AppSession, ai: AiSession, arena: ArenaSessio
                 LaunchedEffect(game.id) { session.recordOpen(game) }
                 key(game.progressId, game.modifiedAt, saved.layout, saved.layoutAt) {
                     val crossword = remember { Crossword(round.puzzle, round.onBoard(saved)) }
+                    val clock = remember(game.id, session.profileKey) {
+                        PuzzleClockStore(context, session.profileKey).load(game.id)
+                    }
                     PuzzleScreen(game, crossword, round.onBoard(saved), ::back, { session.shuffle(game) },
                         { signal -> session.recordLearning(game, signal) }, session.preferences, pronunciation,
-                        { progress ->
+                        clock = clock,
+                    ) { progress ->
                         round.onBoard(session.save(game, round.inStore(progress, saved.layoutAt)))
                     }
                 }
