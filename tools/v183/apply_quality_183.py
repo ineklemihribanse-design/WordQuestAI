@@ -98,6 +98,22 @@ def online(source):
     return source
 
 update("PremiumOnlineScreen.kt", online)
+update("PremiumOnlineScreen.kt", lambda source: replace_one(
+    source,
+    '''    val match = client.match
+    LaunchedEffect(match?.code,match?.phase,match?.hostAvatar,match?.guestAvatar,''',
+    '''    val match = client.match
+    Wq183ArenaShareBridge(
+        code=match?.code,
+        hostUid=match?.hostUid,
+        guestUid=match?.guestUid,
+        hostAvatar=match?.hostAvatar,
+        guestAvatar=match?.guestAvatar,
+        profileKey=session.profileKey
+    )
+    LaunchedEffect(match?.code,match?.phase,match?.hostAvatar,match?.guestAvatar,''',
+    "connect opponent preview to existing authenticated online Arena session"))
+
 update("WordQuest175Arena.kt", lambda source: replace_one(
     source, 'Wq175SceneBackdrop("arena",Modifier.matchParentSize())',
     'Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)',
@@ -128,6 +144,7 @@ update(
 # Custom IDs are accepted only when installed under that same profile.
 shutil.copyfile(TOOLS / "Wq183MascotStore.kt", SRC / "Wq183MascotStore.kt")
 shutil.copyfile(TOOLS / "Wq183MascotManager.kt", SRC / "Wq183MascotManager.kt")
+shutil.copyfile(TOOLS / "Wq183ArenaShare.kt", SRC / "Wq183ArenaShare.kt")
 
 def mascots(source):
     source = replace_one(source,
@@ -166,6 +183,16 @@ def mascots(source):
         val safe=if(valid(id))id else "piko"
         val pose=if(victory)"victory" else "idle"''',
         "draw selected local artwork, default portrait on opponent device")
+    source = replace_one(source,
+        '''    val bitmap=remember(context,id,victory,revision) {
+        Wq2DMascots.picture(context,id,victory)
+    }''',
+        '''    // State-map read makes the rival preview reactive without altering saved art.
+    val opponentPreview=Wq183ArenaShare.remoteImage(id)
+    val bitmap=remember(context,id,victory,revision,opponentPreview) {
+        opponentPreview ?: Wq2DMascots.picture(context,id,victory)
+    }''',
+        "render room-scoped remote custom preview")
     return source
 
 update("WordQuest2DCharacters.kt", mascots)
@@ -181,6 +208,7 @@ def account_mascot(source):
                 Wq183MascotManager(
                     profileKey=session.profileKey,
                     selected=chosenMaskot.value,
+                    onlineEligible=session.accountName!=null,
                     onSelected={id->
                         Wq2DMascots.choose(appContext,session.profileKey,id)
                         chosenMaskot.value=id
