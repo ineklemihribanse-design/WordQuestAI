@@ -123,9 +123,23 @@ internal fun Wq186MatchingImporter(
         busy=true;status="Yapay zekâ kelime önerilerini hazırlıyor…"
         scope.launch {
             try {
-                val used=(staged+folders.flatMap{it.words}).map{it.english}.toSet()
+                // The existing AI word endpoint accepts bounded requests.
+                // Accumulate up to 50 unique suggestions in safe 10-word batches.
+                // Do not widen a shared endpoint's constraints for one UI.
+                val used=(staged+folders.flatMap{it.words})
+                    .map{englishLetters(it.english)}.toMutableSet()
                 val found=withContext(Dispatchers.IO) {
-                    ai.suggestWords("",topic,level,aiCount,used)
+                    val collected=mutableListOf<WordPair>()
+                    repeat((aiCount+9)/10) {
+                        val desired=minOf(10,aiCount-collected.size)
+                        if(desired<=0)return@repeat
+                        val batch=ai.suggestWords("",topic,level,desired,used)
+                        for(pair in batch) {
+                            val key=englishLetters(pair.answer)
+                            if(used.add(key))collected.add(pair)
+                        }
+                    }
+                    collected.take(aiCount)
                 }
                 addBatch(found.map {
                     Wq175MatchPair(level,"AI",it.answer,
