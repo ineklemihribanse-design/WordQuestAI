@@ -288,6 +288,18 @@ def replays():
     fun pass() {''',"guard repeated submission with RTDB transaction")
     store("PremiumOnlineRoom.kt",s)
 
+def compact_live_hud():
+    s=load("PremiumOnlineScreen.kt")
+    s=once(s,
+        '''    // Two scores remain visible while the large settings card is hidden.
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {''',
+        '''    // Score is already inside the real purple match scoreboard.
+    // Do not display a second host/guest line above it during live play.
+    if(match.phase!="playing") Row(Modifier.fillMaxWidth(),
+        horizontalArrangement=Arrangement.SpaceBetween) {''',
+        "hide redundant score names during live Arena")
+    store("PremiumOnlineScreen.kt",s)
+
 def rules():
     source=ROOT/"source/database.rules.json"
     official=ROOT/"firebase/database.rules.json"
@@ -310,6 +322,7 @@ def main():
     room()
     hint_network()
     replays()
+    compact_live_hud()
     rules()
     for p,s in CHANGES.items():
         p.write_text(s,"utf-8")
