@@ -85,11 +85,55 @@ def apply():
                                         match.code,myUid,puzzle.words.size,solved,selected))''',
         '''                                    setWordIndex(nextPlayable)''',
         "free skip cannot route into replay-waiting words")
+
+    # Reuse the same server-authorized hint guard for the normal panel and
+    # a compact hint control when the IME is open. Otherwise the hint button
+    # disappears exactly while the player is typing on a small phone.
+    onlineText=exact_replace(onlineText,
+        '''                            canUse=(myTurn && (countdown==null || countdown>0)
+                                && selected !in solved && !hintIsUsed
+                                && fixedPattern.contains('.')),''',
+        '''                            canUse=Wq186ArenaHintPolicy.canUse(
+                                myTurn,countdown,selected in solved,hintIsUsed,
+                                fixedPattern,
+                                PremiumOnlineLimits.canAttempt(match,selected,myUid),
+                                hintsLeft),''',
+        "normal hint requires a currently playable selected clue")
+    onlineText=exact_replace(onlineText,
+        '''                ArenaCompactCrosswordBoard(puzzle, solved, selected, keyboardIsOpen,
+                    answerText,hintIndex=revealedIndex,hintChar=revealedChar) {''',
+        '''                if(keyboardIsOpen && match.rulesVersion>=2 &&
+                    match.mode=="duel" && !match.cooperative) {
+                    val hintsLeft=(ArenaDuelEngine.hintsFor(match.size) -
+                        match.hintBy[myUid].orEmpty().size).coerceAtLeast(0)
+                    Wq181ArenaHintBar(
+                        left=hintsLeft,
+                        alreadyUsed=hintIsUsed,
+                        canUse=Wq186ArenaHintPolicy.canUse(
+                            myTurn,countdown,selected in solved,hintIsUsed,
+                            fixedPattern,
+                            PremiumOnlineLimits.canAttempt(match,selected,myUid),
+                            hintsLeft),
+                        revealed=if(revealedIndex>=0 && revealedChar!=null)
+                            "${revealedIndex+1}. harf: $revealedChar"
+                            else null,
+                        onHint={
+                            if(Wq181ArenaHintSlot.reserve(context,match.code,
+                                myUid,selected,fixedPattern)>=0)
+                                client.useHint(selected)
+                        }
+                    )
+                }
+                ArenaCompactCrosswordBoard(puzzle, solved, selected, keyboardIsOpen,
+                    answerText,hintIndex=revealedIndex,hintChar=revealedChar) {''',
+        "IME-visible authorized hint action for active crossword clue")
+
     online.write_text(onlineText,encoding="utf-8")
 
     for source,destination in (
       ("Wq186ArenaGridPolicy.kt", "Wq186ArenaGridPolicy.kt"),
       ("Wq186ArenaNextWord.kt", "Wq186ArenaNextWord.kt"),
+      ("Wq186ArenaHintPolicy.kt", "Wq186ArenaHintPolicy.kt"),
       ("ArenaBoardV186.kt","ArenaBoardV2.kt"),
       ("Wq186FriendProfileDetail.kt","Wq186FriendProfileDetail.kt"),
     ):
@@ -100,6 +144,8 @@ def apply():
                     SRC_TEST/"Wq186ArenaGridPolicyTest.kt")
     shutil.copyfile(PKG/"Wq186ArenaNextWordTest.kt",
                     SRC_TEST/"Wq186ArenaNextWordTest.kt")
+    shutil.copyfile(PKG/"Wq186ArenaHintPolicyTest.kt",
+                    SRC_TEST/"Wq186ArenaHintPolicyTest.kt")
     version=version.replace("versionCode = 111","versionCode = 112",1)
     version=version.replace('versionName = "1.0.85"','versionName = "1.0.86"',1)
     gradle.write_text(version,"utf-8")
