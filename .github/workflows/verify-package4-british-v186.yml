@@ -1,0 +1,26 @@
+name: Verify WordQuest 1.0.86 Package 4 British accent (no release)
+on:
+  push:
+    branches: [feature/v186-package4-gameplay-learning]
+    paths:
+      - 'android-current/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt'
+      - 'tools/v186/apply_british_paragraph_default_186.py'
+      - 'tools/v186/test_package4_british.py'
+      - '.github/workflows/verify-package4-british-v186.yml'
+permissions:
+  contents: read
+jobs:
+  verify-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run British accent source regression suite
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v186/apply_british_paragraph_default_186.py tools/v186/test_package4_british.py
+          python3 -m unittest tools/v186/test_package4_british.py -v
+      - name: Keep staging separate from release
+        run: |
+          echo 'British is the default voice for practice and paragraph after patch assembly'
+          echo 'No APK, Firebase deployment, live release, or user-data migration'
