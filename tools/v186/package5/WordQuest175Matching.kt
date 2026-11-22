@@ -382,7 +382,14 @@ internal fun Wq175MatchingDialog(session:AppSession,ai:AiSession,onDismiss:()->U
                             "mistakes" -> "Önceki yanlışlarını tekrar et"
                             else -> "Kendi kaydettiğin kelimeler"
                         }
-                        Surface(onClick={mode=value;issue="";if(value=="definitions")englishFirst=true},
+                        Surface(onClick={
+                            mode=value;issue=""
+                            if(value=="definitions") {
+                                englishFirst=true
+                                if(wordSource=="Kendi Kelimelerinle")
+                                    wordSource="Hazır Paketten Seç"
+                            }
+                        },
                             shape=RoundedCornerShape(20.dp),
                             shadowElevation=if(mode==value)5.dp else 2.dp,
                             color=if(mode==value)Color(0xFFDBFAF1)
