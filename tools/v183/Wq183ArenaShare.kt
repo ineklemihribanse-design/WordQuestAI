@@ -52,7 +52,9 @@ internal object Wq183ArenaShare {
         if (Wq183MascotStore.isCustomId(id)) remote[id] else null
 
     fun removeRemote(id: String?) {
-        if (id != null) remote.remove(id)?.let { if (!it.isRecycled) it.recycle() }
+        // Let Compose release the previous ImageBitmap after its frame; never
+        // recycle a bitmap that a still-visible portrait might be drawing.
+        if (id != null) remote.remove(id)
     }
 
     /** Only decode bounded, valid WebP content that matches an exact room avatar ID. */
@@ -107,10 +109,7 @@ internal object Wq183ArenaShare {
 
     fun receive(id: String, data: String?) {
         val decoded = decodePreview(id, data)
-        val previous = remote[id]
         if (decoded == null) remote.remove(id) else remote[id] = decoded
-        if (previous != null && previous !== decoded && !previous.isRecycled)
-            previous.recycle()
     }
 
     fun side(hostUid: String?, guestUid: String?, uid: String): String? =
@@ -153,7 +152,7 @@ internal fun Wq183ArenaShareBridge(
     val selected by rememberWq2DSelection(profileKey)
     val allowed by rememberWq183ShareConsent(profileKey)
     // Reuse the already authenticated Arena account. Never accept a client-supplied UID.
-    val uid = remember { runCatching {
+    val uid = remember(profileKey) { runCatching {
         FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
     }.getOrDefault("") }
     val side = Wq183ArenaShare.side(hostUid, guestUid, uid)
