@@ -105,6 +105,7 @@ on:
       - 'tools/v183/**'
       - 'tools/v184/**'
       - 'assets/user_uploads/WordQuestAI_Arena_13inc_Tablet_ve_Telefon.zip'
+      - 'assets/user_uploads/arena_v184/**'
       - 'firebase/database.rules.json'
       - 'assets/studio/**'
       - 'assets/avatars/lena/**'
