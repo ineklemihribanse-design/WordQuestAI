@@ -35,7 +35,8 @@ class AndroidBackNavigationChecks(unittest.TestCase):
         self.assertIn('title = { Text("Uygulamadan çıkılsın mı?") }', s)
         self.assertIn("if (confirmExitApp && page == Page.Home.name) AlertDialog(", s)
         self.assertIn("confirmExitApp = false", s)
-        self.assertIn("(appContext as? android.app.Activity)?.finish()", s)
+        self.assertIn("val activity = appContext as? android.app.Activity", s)
+        self.assertIn("activity?.finish()", s)
         self.assertNotIn("BackHandler(page != Page.Home.name)", s)
 
     def test_replace_one_rejects_missing_or_duplicate_anchor(self):
