@@ -68,7 +68,8 @@ def apply() -> None:
         confirmButton = {
             TextButton(onClick = {
                 confirmExitApp = false
-                (appContext as? android.app.Activity)?.finish()
+                val activity = appContext as? android.app.Activity
+                activity?.finish()
             }) { Text("Çık") }
         },
         dismissButton = {
