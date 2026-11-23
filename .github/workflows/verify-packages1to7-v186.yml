@@ -1623,7 +1623,7 @@ jobs:
           # This feature branch must assemble the same 1.0.85 baseline as the
           # release branch; the P3 ZIP may retain a different metadata stamp.
           import os,re
-          if os.environ.get("GITHUB_REF") == "refs/heads/fix/v189-crossword-board-live-input":
+          if os.environ.get("GITHUB_REF") in ("refs/heads/fix/v189-crossword-board-live-input", "refs/heads/fix/v190-tablet-board-and-visible-icons"):
               assert len(re.findall(r"versionCode\s*=\s*\d+",s))==1
               assert len(re.findall(r'versionName\s*=\s*"1\.0\.\d+"',s))==1
               s=re.sub(r"versionCode\s*=\s*\d+","versionCode = 111",s,count=1)
