@@ -1550,7 +1550,7 @@ jobs:
           python3 tools/v182/verify_ui_182.py
           cp tools/v182/Wq182IconRoutingTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq182IconRoutingTest.kt
       - name: Apply 1.0.83 quiz contrast, protected mascot ZIP and responsive Arena
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v183/apply_quality_183.py tools/v183/verify_quality_183.py tools/v183/stage_arena_assets_183.py tools/v183/build_mascot_template_183.py
@@ -1561,7 +1561,7 @@ jobs:
           cp tools/v183/Wq183QuizQualityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq183QuizQualityTest.kt
           python3 tools/v183/build_mascot_template_183.py "$RUNNER_TEMP/WordQuest_Mascot_Template_v1.zip"
       - name: Apply 1.0.84 approved Arena art, full-size custom mascots, win poses
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v184/apply_visuals_184.py tools/v184/verify_assets_184.py
@@ -1569,7 +1569,7 @@ jobs:
           python3 -m pip install --quiet pillow
           python3 tools/v184/verify_assets_184.py
       - name: Apply 1.0.85 large account mascot, edit-only saved nickname, private friend portraits
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration') }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v185/apply_profile_185.py tools/v185/verify_upgrade_metadata_185.py
