@@ -102,6 +102,58 @@ def apply():
         "make uploaded house visible in the actual home page")
     planned[p] = s
 
+    p = SRC / "WordQuest175MyPuzzles.kt"
+    s = p.read_text("utf-8")
+    s = one(s,
+        '''                Wq175GlossIcon("arena_team",
+                    Modifier.align(Alignment.Center).size(if(compact)85.dp else 110.dp))''',
+        '''                Wq189UploadedArtwork("solo_puzzle",
+                    Modifier.align(Alignment.Center).size(if(compact)85.dp else 110.dp))''',
+        "replace old misleading Arena mascot on Bulmacalarım hero")
+    s = one(s,
+        '''                Wq175GlossIcon("notebook",
+                    Modifier.align(Alignment.BottomEnd).size(47.dp))''',
+        '''                Wq189UploadedArtwork("learning",
+                    Modifier.align(Alignment.BottomEnd).size(47.dp))''',
+        "show supplied book/learning arrow on puzzle hero")
+    s = one(s,
+        '''            Wq175GlossIcon("arena_team",Modifier.size(69.dp))''',
+        '''            Wq189UploadedArtwork("new_game",Modifier.size(69.dp))''',
+        "show unique create-puzzle illustration on green CTA")
+    planned[p] = s
+
+    p = SRC / "WordQuest175ThemeArt.kt"
+    s = p.read_text("utf-8")
+    s = one(s, '''        "ana_sayfa" -> "puzzle"''',
+        '''        "ana_sayfa" -> "home"''', "home instead of generic puzzle")
+    s = one(s, '''        "yeni_oyun" -> "completion"''',
+        '''        "yeni_oyun" -> "new_game"''', "dedicated new game")
+    s = one(s, '''        "bulmacalarim" -> "arena_team"''',
+        '''        "bulmacalarim" -> "solo_puzzle"''', "no team avatar in single-player mode")
+    s = one(s,
+        '''    Image(painter=painterResource(Wq175ThemeArt.icon(slug)),
+        contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
+}''',
+        '''    val requested=when(slug) {
+        "ana_sayfa" -> "home"
+        "yeni_oyun" -> "new_game"
+        "bulmacalarim" -> "solo_puzzle"
+        "gunluk_plan" -> "plan"
+        "kelime_hafizam" -> "cards"
+        "eslestirmelerim" -> "synonym"
+        "dinle_ve_yaz" -> "listen"
+        "yds_akademi" -> "exam"
+        "dilbilgisi" -> "grammar"
+        else -> null
+    }
+    if (requested == null || !Wq189UploadedArtwork(requested, modifier)) {
+        Image(painter=painterResource(Wq175ThemeArt.icon(slug)),
+            contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
+    }
+}''',
+        "direct theme icons also load user-provided artwork")
+    planned[p] = s
+
     # All checks precede writing; abort without partially changing the Android UI.
     assert KOTLIN.is_file()
     code = KOTLIN.read_text("utf-8")
