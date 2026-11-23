@@ -32,4 +32,29 @@ class Wq190BoardPolicyTest {
             0f, 450f, 20, 20
         ), 0.01f)
     }
+
+    @Test fun phoneShowsWholeBoardWhenThereIsRoom() {
+        assertEquals(350f, Wq190BoardPolicy.phoneHeightDp(
+            350f, 760f, 20, 20, false), 0.01f)
+    }
+
+    @Test fun phoneLimitsBoardHeightWhenScreenIsShort() {
+        assertEquals(215f, Wq190BoardPolicy.phoneHeightDp(
+            350f, 500f, 20, 20, false), 0.01f)
+    }
+
+    @Test fun keyboardReservesSpaceForTextEditor() {
+        assertEquals(218f, Wq190BoardPolicy.phoneHeightDp(
+            350f, 390f, 20, 20, true), 0.01f)
+    }
+
+    @Test fun mobileHeightRespectsUnusuallyTallBoard() {
+        assertEquals(435f, Wq190BoardPolicy.phoneHeightDp(
+            350f, 720f, 25, 15, false), 0.01f)
+    }
+
+    @Test fun mobileHeightRejectsInvalidDimensions() {
+        assertEquals(0f, Wq190BoardPolicy.phoneHeightDp(
+            350f, 390f, 0, 20, true), 0.01f)
+    }
 }
