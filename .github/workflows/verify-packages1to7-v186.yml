@@ -1619,6 +1619,14 @@ jobs:
           for a,b in [("versionCode = 112","versionCode = 111"),
                        ('versionName = "1.0.86"','versionName = "1.0.85"')]:
               if a in s: s=s.replace(a,b,1)
+          # This feature branch must assemble the same 1.0.85 baseline as the
+          # release branch; the P3 ZIP may retain a different metadata stamp.
+          import os,re
+          if os.environ.get("GITHUB_REF") == "refs/heads/fix/v189-crossword-board-live-input":
+              assert len(re.findall(r"versionCode\s*=\s*\d+",s))==1
+              assert len(re.findall(r'versionName\s*=\s*"1\.0\.\d+"',s))==1
+              s=re.sub(r"versionCode\s*=\s*\d+","versionCode = 111",s,count=1)
+              s=re.sub(r'versionName\s*=\s*"1\.0\.\d+"','versionName = "1.0.85"',s,count=1)
           assert "versionCode = 111" in s and 'versionName = "1.0.85"' in s
           p.write_text(s)
           PY
@@ -1640,7 +1648,7 @@ jobs:
                          .replace('versionName = "1.0.86"','versionName = "1.0.85"',1))
           PY
       - name: Apply Package 4 to assembled 1.0.85 source without release
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package4_to_185.py
@@ -1740,6 +1748,12 @@ jobs:
           set -euo pipefail
           python3 -m py_compile tools/v189/apply_board_input_189.py
           python3 tools/v189/apply_board_input_189.py
+          python3 -m py_compile tools/v189/apply_icons_189.py
+          python3 tools/v189/apply_icons_189.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq189UploadedIcons.kt
+          test "$(find source/app/src/main/assets/approved_icons_v189 -type f -name '*.webp' | wc -l)" -eq 22
+          grep -Fq 'Wq189UploadedArtwork(userApproved' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
+          grep -Fq 'Wq189UploadedArtwork("new_game"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
           FILE=source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'val previewLetters: Map<Cell, Char?>' "$FILE"
           grep -Fq 'if (position in previewLetters) previewLetters[position]' "$FILE"
