@@ -27,6 +27,17 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text()
+          # Inspect the CURRENT post-v191/v192/v193/v194 screen, never a stale staged file.
+          import subprocess
+          for patch in ("v191/apply_mobile_crossword_191.py", "v192/apply_overview_focus_192.py",
+                        "v193/apply_editable_entry_193.py", "v194/apply_cell_text_alignment_194.py"):
+              subprocess.run(["python3", "tools/"+patch], check=True)
+          s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text()
+          start=s.index("private fun GameHeading(")
+          end=s.index("@Composable\\nprivate fun BoardFrame(",start)
+          print("=== CURRENT GameHeading (post v194) ===")
+          print(s[start:end])
+          print("=== End current heading ===")
           for name,first,last in (
             ("draft","var inlineTyping by remember", "    Box("),
             ("submit","fun submitInlineWord()", "    val inlineEditor: @Composable () -> Unit ="),
