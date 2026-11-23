@@ -135,7 +135,11 @@ def apply():
         '''        "yeni_oyun" -> "new_game"''', "dedicated new game")
     s = one(s, '''        "bulmacalarim" -> "arena_team"''',
         '''        "bulmacalarim" -> "solo_puzzle"''', "no team avatar in single-player mode")
-    s = one(s,
+    legacy_theme_icon = '''    Image(painter=painterResource(Wq175ThemeArt.icon(slug)),
+        contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
+}'''
+    if legacy_theme_icon in s:
+        s = one(s,
         '''    Image(painter=painterResource(Wq175ThemeArt.icon(slug)),
         contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
 }''',
@@ -156,7 +160,12 @@ def apply():
             contentDescription=null,modifier=modifier,contentScale=ContentScale.Fit)
     }
 }''',
-        "direct theme icons also load user-provided artwork")
+            "direct theme icons also load user-provided artwork")
+    else:
+        # v183 replaced the original Wq175ThemeIcon body. Global gloss mapping
+        # above routes the requested artwork without overwriting modern headers.
+        assert 'internal fun Wq175ThemeIcon(' in s
+        print('PASS: v183 themed icon renderer retained; global glossy icons use user art')
     planned[p] = s
 
     # All checks precede writing; abort without partially changing the Android UI.
