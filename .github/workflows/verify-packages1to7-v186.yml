@@ -1,9 +1,10 @@
-name: WordQuest AI 1.0.88 - Klavye, ikon, arkadas maskotu
+name: WordQuest AI 1.0.89 - Klavye, ikon, arkadas maskotu
 on:
   push:
-    branches: [release/v1.0.86-pakets1-7-integration]
+    branches: [release/v1.0.86-pakets1-7-integration, fix/v189-crossword-board-live-input]
     paths:
       - 'tools/v188/**'
+      - 'tools/v189/**'
       - 'tools/v187/**'
       - 'tools/v186/**'
       - '.github/workflows/verify-packages1to7-v186.yml'
@@ -59,7 +60,7 @@ jobs:
       # except tools/v175/**; those are applied fresh below on every run.
       # Keying from git tree object IDs avoids hashing multi-megabyte GLBs.
       - name: Compute validated pre-1.0.75 baseline cache identity
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           # Cache depends on the historical inputs through v174 only.
@@ -70,7 +71,7 @@ jobs:
           echo "WQ175_BASELINE_CACHE_KEY=wq175-pre175-v1-$BASE_HASH" >> "$GITHUB_ENV"
       - name: Restore unchanged pre-1.0.75 Android baseline
         id: v175_baseline_restore
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         uses: actions/cache/restore@v4
         with:
           path: source
@@ -1285,7 +1286,7 @@ jobs:
           path: source
           key: ${{ env.WQ175_BASELINE_CACHE_KEY }}
       - name: Install and verify in-development 1.0.75 learning improvements
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_core_175.py tools/v175/verify_stage_one.py
@@ -1294,35 +1295,35 @@ jobs:
           grep -Fq 'versionCode = 101' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.75"' source/app/build.gradle.kts
       - name: Activate and verify opt-in timed crossword mode (v1.0.75)
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_timed_175.py tools/v175/verify_timed_175.py
           python3 tools/v175/apply_timed_175.py
           python3 tools/v175/verify_timed_175.py
       - name: Upgrade New Game with visual mascot builder and verified selection summary
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_premium_new_game_175.py tools/v175/verify_premium_new_game_175.py
           python3 tools/v175/apply_premium_new_game_175.py
           python3 tools/v175/verify_premium_new_game_175.py
       - name: Connect and verify Word Memory PDF, image, camera and personal AI imports
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_import_175.py tools/v175/verify_import_175.py
           python3 tools/v175/apply_import_175.py
           python3 tools/v175/verify_import_175.py
       - name: Install and verify themed Daily Plan and all five original exercise interiors
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_practice_visuals_175.py tools/v175/verify_practice_visuals_175.py
           python3 tools/v175/apply_practice_visuals_175.py
           python3 tools/v175/verify_practice_visuals_175.py
       - name: Generate and install 17 original premium app icons for all rooms
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/generate_premium_icons_175.py tools/v175/apply_icons_175.py tools/v175/verify_icons_175.py
@@ -1330,82 +1331,82 @@ jobs:
           python3 tools/v175/apply_icons_175.py
           python3 tools/v175/verify_icons_175.py
       - name: Install separate YDS Academy and refined CEFR package landing screen
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_academy_175.py tools/v175/verify_academy_175.py
           python3 tools/v175/apply_academy_175.py
           python3 tools/v175/verify_academy_175.py
       - name: Refresh crossword board, clues and accessible buttons without changing game rules
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_crossword_visuals_175.py tools/v175/verify_crossword_175.py
           python3 tools/v175/apply_crossword_visuals_175.py
           python3 tools/v175/verify_crossword_175.py
       - name: Upgrade My Puzzles with true profile counts and completion filters
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_mypuzzles_175.py tools/v175/verify_mypuzzles_175.py
           python3 tools/v175/apply_mypuzzles_175.py
           python3 tools/v175/verify_mypuzzles_175.py
       - name: Install licensed and quality-checked A1-C1 extended wordlists
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/install_vocabulary_175.py tools/v175/verify_vocabulary_175.py
           python3 tools/v175/install_vocabulary_175.py
           python3 tools/v175/verify_vocabulary_175.py
       - name: Install and test premium YDS exams with original grammar content
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_ui_175.py tools/v175/verify_yds_exam_175.py
           python3 tools/v175/apply_yds_exam_ui_175.py
           python3 tools/v175/verify_yds_exam_175.py
       - name: Add paragraph dictation and expand YDS to 150 verified original questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_paragraph_and_yds_175.py tools/v175/verify_paragraph_and_yds_175.py
           python3 tools/v175/apply_paragraph_and_yds_175.py
           python3 tools/v175/verify_paragraph_and_yds_175.py
       - name: Install 80-question full YDS exam with real three-hour timer
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_full_yds_175.py tools/v175/verify_full_yds_175.py
           python3 tools/v175/apply_full_yds_175.py
           python3 tools/v175/verify_full_yds_175.py
       - name: Prevent answer leakage in timed YDS exams while keeping practice feedback
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_integrity_175.py tools/v175/verify_yds_exam_integrity_175.py
           python3 tools/v175/apply_yds_exam_integrity_175.py
           python3 tools/v175/verify_yds_exam_integrity_175.py
       - name: Install post-exam review of incorrect and unanswered YDS questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_review_175.py tools/v175/verify_yds_exam_review_175.py
           python3 tools/v175/apply_yds_exam_review_175.py
           python3 tools/v175/verify_yds_exam_review_175.py
       - name: Install YDS bank duplicate and explanation quality regression
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/install_yds_bank_quality_175.py
       - name: Add 48 authored YDS questions across 8 disciplines and verify no filler counts
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_quality_batch_175.py tools/v175/verify_yds_quality_batch_175.py
           python3 tools/v175/apply_yds_quality_batch_175.py
           python3 tools/v175/verify_yds_quality_batch_175.py
       - name: Complete daily plan custom goals and weekly activity
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_daily_goals_175.py tools/v175/install_daily_tests_175.py tools/v175/verify_daily_goals_175.py
@@ -1413,14 +1414,14 @@ jobs:
           python3 tools/v175/install_daily_tests_175.py
           python3 tools/v175/verify_daily_goals_175.py
       - name: Display verified real word availability and CEFR shortfalls by level
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_real_coverage_175.py tools/v175/verify_real_coverage_175.py
           python3 tools/v175/apply_real_coverage_175.py
           python3 tools/v175/verify_real_coverage_175.py
       - name: Verify 1.0.75 production release evidence gate rejects missing device QA
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/test_release_gate_175.py -v
@@ -1430,60 +1431,60 @@ jobs:
           fi
           echo "PASS: release remains blocked until hardware, user-data, Arena and visual evidence exists"
       - name: Regression test 1.0.75 Android install and permission continuity gate
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/verify_upgrade_metadata_175.py tools/v175/test_upgrade_metadata_175.py
           python3 tools/v175/test_upgrade_metadata_175.py -v
       - name: Reject blank-but-valid emulator screenshots in v175 QA
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/test_emulator_screen_content_175.py -v
       - name: Apply real selectable Arena quiz count and darker crossword blanks
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_arena_count_and_cells_175.py tools/v175/verify_arena_count_and_cells_175.py
           python3 tools/v175/apply_arena_count_and_cells_175.py
           python3 tools/v175/verify_arena_count_and_cells_175.py
       - name: Stage and verify Firebase rules for selectable Arena 5-choice questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_arena_firebase_rules_175.py tools/v175/verify_arena_firebase_rules_175.py
           python3 tools/v175/apply_arena_firebase_rules_175.py
           python3 tools/v175/verify_arena_firebase_rules_175.py
       - name: Install approved 1.0.75 premium native art across ten rooms
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_theme_art_175.py tools/v175/verify_theme_art_175.py
           python3 tools/v175/apply_theme_art_175.py
           python3 tools/v175/verify_theme_art_175.py
       - name: Build final approved mobile-first home and glossy Arena mode icons
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_mobile_home_175.py tools/v175/verify_mobile_home_175.py
           python3 tools/v175/apply_mobile_home_175.py
           python3 tools/v175/verify_mobile_home_175.py
       - name: Install responsive 2.5D Daily Plan game cards without losing progress
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_premium_practice_grid_175.py tools/v175/verify_premium_practice_grid_175.py
           python3 tools/v175/apply_premium_practice_grid_175.py
           python3 tools/v175/verify_premium_practice_grid_175.py
       - name: Add native Home bottom navigation and real due-word notification actions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_home_navigation_175.py tools/v175/verify_home_navigation_175.py
           python3 tools/v175/apply_home_navigation_175.py
           python3 tools/v175/verify_home_navigation_175.py
       - name: Add 1.0.76 original content bank and daily-question anti-repeat engine
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v176/apply_content_176.py tools/v176/verify_content_176.py tools/v176/verify_upgrade_metadata_176.py
@@ -1494,18 +1495,18 @@ jobs:
           python3 tools/v176/audit_levels_176.py
           test -s source/app/src/main/assets/vocabulary-v176-coverage.json
       - name: Probe original editor and card-rotation source before 1.0.77 changes
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           python3 tools/v177/probe_ui_177.py
       - name: Apply 1.0.77 local import, premium responsive design and expanded daily exercises
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v177/apply_polish_177.py tools/v177/verify_177.py tools/v177/verify_upgrade_metadata_177.py
           python3 tools/v177/apply_polish_177.py
           python3 tools/v177/verify_177.py
       - name: Repair 1.0.78 Arena readiness, participant mascot and secure Firebase room rules
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v178/apply_arena_rules_178.py tools/v178/apply_arena_lobby_178.py tools/v178/verify_arena_lobby_178.py tools/v178/verify_upgrade_metadata_178.py
@@ -1513,7 +1514,7 @@ jobs:
           python3 tools/v178/apply_arena_lobby_178.py
           python3 tools/v178/verify_arena_lobby_178.py
       - name: Apply 1.0.79 compact Arena board, clue order, sound and player glow
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v179/apply_arena_179.py tools/v179/verify_arena_179.py tools/v179/verify_upgrade_metadata_179.py
@@ -1523,7 +1524,7 @@ jobs:
           cp tools/v179/Wq179ArenaOrderTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaOrderTest.kt
           cp tools/v179/Wq179ArenaFinaleTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaFinaleTest.kt
       - name: Apply 1.0.80 friend cards, privacy summary, new Arena palette and full-size board
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v180/apply_social_180.py tools/v180/apply_ui_180.py tools/v180/verify_ui_180.py tools/v180/verify_upgrade_metadata_180.py
@@ -1532,7 +1533,7 @@ jobs:
           python3 tools/v180/verify_ui_180.py
           cp tools/v180/Wq180FriendActivityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq180FriendActivityTest.kt
       - name: Apply 1.0.81 original Arena hero wallpaper, visible hints and large responsive board
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v181/apply_arena_181.py tools/v181/verify_arena_181.py tools/v181/verify_upgrade_metadata_181.py
@@ -1541,7 +1542,7 @@ jobs:
           cp tools/v181/Wq181ArenaHintTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintTest.kt
           cp tools/v181/Wq181ArenaHintSlotTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintSlotTest.kt
       - name: Apply 1.0.82 approved icons, 5-choice quiz cards and custom nickname
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v182/apply_ui_182.py tools/v182/verify_ui_182.py tools/v182/verify_upgrade_metadata_182.py
@@ -1549,7 +1550,7 @@ jobs:
           python3 tools/v182/verify_ui_182.py
           cp tools/v182/Wq182IconRoutingTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq182IconRoutingTest.kt
       - name: Apply 1.0.83 quiz contrast, protected mascot ZIP and responsive Arena
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration'))) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v183/apply_quality_183.py tools/v183/verify_quality_183.py tools/v183/stage_arena_assets_183.py tools/v183/build_mascot_template_183.py
@@ -1560,7 +1561,7 @@ jobs:
           cp tools/v183/Wq183QuizQualityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq183QuizQualityTest.kt
           python3 tools/v183/build_mascot_template_183.py "$RUNNER_TEMP/WordQuest_Mascot_Template_v1.zip"
       - name: Apply 1.0.84 approved Arena art, full-size custom mascots, win poses
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')) }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input')) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v184/apply_visuals_184.py tools/v184/verify_assets_184.py
@@ -1568,7 +1569,7 @@ jobs:
           python3 -m pip install --quiet pillow
           python3 tools/v184/verify_assets_184.py
       - name: Apply 1.0.85 large account mascot, edit-only saved nickname, private friend portraits
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration') }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v185/apply_profile_185.py tools/v185/verify_upgrade_metadata_185.py
@@ -1618,6 +1619,14 @@ jobs:
           for a,b in [("versionCode = 112","versionCode = 111"),
                        ('versionName = "1.0.86"','versionName = "1.0.85"')]:
               if a in s: s=s.replace(a,b,1)
+          # This feature branch must assemble the same 1.0.85 baseline as the
+          # release branch; the P3 ZIP may retain a different metadata stamp.
+          import os,re
+          if os.environ.get("GITHUB_REF") == "refs/heads/fix/v189-crossword-board-live-input":
+              assert len(re.findall(r"versionCode\s*=\s*\d+",s))==1
+              assert len(re.findall(r'versionName\s*=\s*"1\.0\.\d+"',s))==1
+              s=re.sub(r"versionCode\s*=\s*\d+","versionCode = 111",s,count=1)
+              s=re.sub(r'versionName\s*=\s*"1\.0\.\d+"','versionName = "1.0.85"',s,count=1)
           assert "versionCode = 111" in s and 'versionName = "1.0.85"' in s
           p.write_text(s)
           PY
@@ -1639,7 +1648,7 @@ jobs:
                          .replace('versionName = "1.0.86"','versionName = "1.0.85"',1))
           PY
       - name: Apply Package 4 to assembled 1.0.85 source without release
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package4_to_185.py
@@ -1734,7 +1743,43 @@ jobs:
           grep -Fq 'val wide = maxWidth >= 760.dp' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           ! grep -Fq 'val wide = maxWidth >= 760.dp && !keyboardVisible' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'MAX_SIDE = 1024' source/app/src/main/java/com/kelimebulmacasi/a1/Wq188FriendPreview.kt
-      - name: Stamp v1.0.88 after all seven packages and verify requested UI fixes
+      - name: Fit the entire crossword and show letters on the grid while typing
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v189/apply_mascot_hd_189.py
+          python3 tools/v189/apply_mascot_hd_189.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt")
+          lines=p.read_text(encoding="utf-8").splitlines()
+          needles=["expanded","BoardFrame(","keyboardBoard","boardHeight","val word","softKeyboard","GameHeading(","inlineEditor","previewLetters","widthIn(max","selectedReplacement","Text(game.title"]
+          for i,line in enumerate(lines):
+              if any(k in line for k in needles) and i < 430:
+                  print(f"ACTUAL PUZZLE SOURCE {i+1}: {line[:210]}")
+          PY
+          python3 -m py_compile tools/v189/apply_board_input_189.py
+          python3 tools/v189/apply_board_input_189.py
+          python3 -m py_compile tools/v189/apply_icons_189.py
+          python3 tools/v189/apply_icons_189.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq189UploadedIcons.kt
+          test "$(find source/app/src/main/assets/approved_icons_v189 -type f -name '*.webp' | wc -l)" -eq 22
+          grep -Fq 'Wq189UploadedArtwork(userApproved' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
+          grep -Fq 'Wq189UploadedArtwork("new_game"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
+          FILE=source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'val previewLetters: Map<Cell, Char?>' "$FILE"
+          grep -Fq 'if (position in previewLetters) previewLetters[position]' "$FILE"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt")
+          t=p.read_text(encoding="utf-8")
+          assert re.search(r"var expanded by remember\([^\n]+\)\s*\{\s*mutableStateOf\(false\)\s*\}", t)
+          assert "fittedBoardHeight" in t
+          assert "val previewLetters: Map<Cell, Char?>" in t
+          assert "if (position in previewLetters) previewLetters[position]" in t
+          print("PASS: post-P1-to-P7 assembled grid and live typing")
+          PY
+      - name: Stamp v1.0.89 after all seven packages and verify requested UI fixes
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -1742,7 +1787,7 @@ jobs:
           gradle=Path("source/app/build.gradle.kts")
           s=gradle.read_text("utf-8")
           assert s.count("versionCode = 112")==1 and s.count('versionName = "1.0.86"')==1
-          gradle.write_text(s.replace("versionCode = 112","versionCode = 114",1).replace('versionName = "1.0.86"','versionName = "1.0.88"',1),encoding="utf-8")
+          gradle.write_text(s.replace("versionCode = 112","versionCode = 115",1).replace('versionName = "1.0.86"','versionName = "1.0.89"',1),encoding="utf-8")
           root=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
           puzzle=(root/"PuzzleScreen.kt").read_text("utf-8")
           assert puzzle.count("inlineEditor()")==2
@@ -1763,10 +1808,19 @@ jobs:
           assert "val wide = maxWidth >= 760.dp && !keyboardVisible" not in puzzle
           preview=(root/"Wq188FriendPreview.kt").read_text("utf-8")
           assert "MAX_SIDE = 1024" in preview
+          hd=(root/"Wq183ArenaShare.kt").read_text("utf-8")
+          assert "Wq188FriendPreview.encode(id, bitmap)" in hd
+          assert "Wq188FriendPreview.decode(avatarId, payload)" in hd
+          portrait=(root/"WordQuest2DCharacters.kt").read_text("utf-8")
+          assert "filterQuality=androidx.compose.ui.graphics.FilterQuality.High" in portrait
+          icon_router=(root/"Wq189UploadedIcons.kt").read_text("utf-8")
+          assert "ready_folders" in icon_router and "verb_forms" in icon_router
+          assert "val previewLetters: Map<Cell, Char?>" in puzzle
+          assert "fittedBoardHeight" in puzzle
           home=(root/"Wq175PremiumHome.kt").read_text("utf-8")
           for art in ('"wq_yeni_oyun"','"wq_hazir_paketler"','"wq_bulmacalarim"'):
               assert art in home,art
-          print("PASS: v1.0.88/114 stable IME, approved game/folder artwork, bounded HD friend preview")
+          print("PASS: v1.0.89/115 stable IME, approved game/folder artwork, bounded HD friend preview")
           PY
       - name: Compile fully assembled Kotlin and Compose without APK or release
         working-directory: source
@@ -1802,10 +1856,10 @@ jobs:
           import json
           m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
           assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(114,"1.0.88")
-          print("PASS: v1.0.88/114 package preserved")
+          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(115,"1.0.89")
+          print("PASS: v1.0.89/115 package preserved")
           PY
-      - name: Sign v1.0.88 APK with verified existing installed certificate
+      - name: Sign v1.0.89 APK with verified existing installed certificate
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
@@ -1824,24 +1878,24 @@ jobs:
             --ks "$key" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" \
             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out "$out/WordQuestAI-v1.0.88-signed-qa.apk" \
+            --out "$out/WordQuestAI-v1.0.89-signed-qa.apk" \
             "$out/app-offline-unsigned.apk"
           java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" \
-            verify --verbose --print-certs "$out/WordQuestAI-v1.0.88-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-certs.txt"
+            verify --verbose --print-certs "$out/WordQuestAI-v1.0.89-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-certs.txt"
           grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v186-certs.txt"
           grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v186-certs.txt"
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v186-certs.txt"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.88-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.89-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionCode='114'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionName='1.0.88'" "$RUNNER_TEMP/wq-v186-badging.txt"
+          grep -Fq "versionCode='115'" "$RUNNER_TEMP/wq-v186-badging.txt"
+          grep -Fq "versionName='1.0.89'" "$RUNNER_TEMP/wq-v186-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v186-badging.txt"; then exit 1; fi
-          unzip -tq "$out/WordQuestAI-v1.0.88-signed-qa.apk"
+          unzip -tq "$out/WordQuestAI-v1.0.89-signed-qa.apk"
           echo 'PASS: original app identity and production signing certificate'
       - name: Enable KVM for real in-place emulator upgrade test
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
-      - name: Test existing v1.0.87 app upgrades in-place to v1.0.88
+      - name: Test existing v1.0.88 app upgrades in-place to v1.0.89
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -1849,29 +1903,29 @@ jobs:
           arch: x86_64
           profile: pixel_4
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
-          script: bash tools/v188/qa_emulator_upgrade_188.sh
-      - name: Publish v1.0.88 to installed app update channel only after all gates pass
+          script: bash tools/v189/qa_emulator_upgrade_189.sh
+      - name: Publish v1.0.89 to installed app update channel only after all gates pass
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.87
-          if gh release view v1.0.88 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo 'Immutable v1.0.88 release already exists. Refusing overwrite.' >&2
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.88
+          if gh release view v1.0.89 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo 'Immutable v1.0.89 release already exists. Refusing overwrite.' >&2
             exit 1
           fi
           mkdir -p dist
-          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.88-signed-qa.apk dist/WordQuestAI.apk
+          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.89-signed-qa.apk dist/WordQuestAI.apk
           python3 - <<'PY'
           import hashlib,json,pathlib
           apk=pathlib.Path('dist/WordQuestAI.apk')
           assert apk.stat().st_size>100_000_000
           payload={
            "schemaVersion":1,
-           "tag":"v1.0.88",
-           "versionCode":114,
-           "versionName":"1.0.88",
+           "tag":"v1.0.89",
+           "versionCode":115,
+           "versionName":"1.0.89",
            "packageName":"com.kelimebulmacasi.a1.practice.fresh",
            "apkFile":"WordQuestAI.apk",
            "sizeBytes":apk.stat().st_size,
@@ -1880,11 +1934,11 @@ jobs:
           }
           pathlib.Path('dist/update.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
-          gh release create v1.0.88 dist/WordQuestAI.apk dist/update.json \
+          gh release create v1.0.89 dist/WordQuestAI.apk dist/update.json \
             -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
-            --title 'WordQuest AI 1.0.88 — Paket 1–7 Birleşik Güncelleme' \
-            --notes 'Paket 1-7 ve yazma/ikon/maskot düzeltmeleri, Android code114. Tam kaynak derlemesi/JVM testleri, aynı paket/sertifika ve mevcut v1.0.87 üzerine veri koruyan emülatör kurulum kontrolü başarıyla tamamlandı. Firebase canlı kurallarının yönetici tarafından ayrıca yayımlanması gerekebilir.'
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.88
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.88" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
-          echo 'PASS: v1.0.88 is now visible in Settings > Updates.'
+            --title 'WordQuest AI 1.0.89 — Paket 1–7 Birleşik Güncelleme' \
+            --notes 'Paket 1-7 ve yazma/ikon/maskot düzeltmeleri, Android code115. Tam kaynak derlemesi/JVM testleri, aynı paket/sertifika ve mevcut v1.0.88 üzerine veri koruyan emülatör kurulum kontrolü başarıyla tamamlandı. Firebase canlı kurallarının yönetici tarafından ayrıca yayımlanması gerekebilir.'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.89
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.89" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
+          echo 'PASS: v1.0.89 is now visible in Settings > Updates.'
 
