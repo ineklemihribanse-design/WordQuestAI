@@ -84,7 +84,7 @@ jobs:
                         .replace('versionName = "1.0.90"','versionName = "1.0.93"',1),"utf-8")
           p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text("utf-8")
           for code in ("Wq192Viewport.overviewTileDp(", "horizontal.animateScrollTo(targetX)",
-                       "keyboardWasShown = false", "Modifier.weight(1f).height(46.dp)",
+                       "keyboardWasShown = false", "Modifier.weight(1f).heightIn(min=56.dp)",
                        "Wq190CrosswordHintInput.completedWord(", "state.enter(completeAnswer)"):
               assert code in p,code
           assert "maxOf(regularTile, 28.dp)" not in p
