@@ -72,7 +72,7 @@ puzzle=contains(src,"PuzzleScreen.kt","inlineTyping","wordDraft","inlineEditor()
 assert 'title={Text("Kelimeyi yaz")}' not in puzzle
 assert "if(typedDialog" not in puzzle
 assert puzzle.count("inlineEditor()") == 3
-assert "onClick={submitInlineWord}" in puzzle
+assert "onClick={ submitInlineWord() }" in puzzle
 contains(src,"ArenaBoardV2.kt","hintLetters:Map<Int,Char>",
          "val hinted=active")
 for file in ("Wq186ArenaFairPlay.kt","Wq186ArenaHintNetwork.kt",
