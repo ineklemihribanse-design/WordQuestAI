@@ -20,6 +20,11 @@ def one(s,old,new,label):
 def apply():
     src=FILE.read_text("utf-8")
     s=src
+    if "import androidx.compose.ui.text.style.TextOverflow" not in s:
+        s=one(s,
+            "import androidx.compose.ui.text.font.FontWeight",
+            "import androidx.compose.ui.text.font.FontWeight\nimport androidx.compose.ui.text.style.TextOverflow",
+            "import ellipsis rendering for compact clue")
 
     # Keep the informative "YDS · Kolay · Karışık" subtitle and remove
     # the huge repeated "Kolay · Karışık" title directly below it.
