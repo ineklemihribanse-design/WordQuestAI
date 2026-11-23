@@ -57,12 +57,42 @@ jobs:
           python3 -m pip install --retries 5 --timeout 60 soundfile
           SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
           "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+      # Cache the entire assembled 1.0.90 source (pre-v191).
+      # Every source input is hashed except current v191 and this CI definition.
+      - name: Calculate immutable assembled Android source cache key
+        if: ${{ github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons' }}
+        run: |
+          set -euo pipefail
+          SRC_HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v191\// && $2 != ".github/workflows/verify-packages1to7-v186.yml"' | sha256sum | cut -d' ' -f1)"
+          test -n "$SRC_HASH"
+          echo "WQ190_FULL_KEY=wq190-source-v1-$SRC_HASH" >> "$GITHUB_ENV"
+      - name: Restore complete verified v190 source
+        id: wq190_full_restore
+        if: ${{ github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons' }}
+        uses: actions/cache/restore@v4
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Verify restored snapshot before patching
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit == 'true' }}
+        run: |
+          set -euo pipefail
+          test -s source/gradlew
+          test -s source/app/src/main/AndroidManifest.xml
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          grep -Fq 'versionCode = 116' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.90"' source/app/build.gradle.kts
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'fun phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          (cd source && python3 tools/verify_audio_ipa.py)
+          echo "CACHE HIT: rebuilt-only source bypassed, all old overlays skipped."
       # Build the historical source once, then reuse its exact source tree on
       # later v1.0.75-only edits. The cache key includes EVERY tracked input
       # except tools/v175/**; those are applied fresh below on every run.
       # Keying from git tree object IDs avoids hashing multi-megabyte GLBs.
       - name: Compute validated pre-1.0.75 baseline cache identity
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           # Cache depends on the historical inputs through v174 only.
@@ -72,6 +102,7 @@ jobs:
           test -n "$BASE_HASH"
           echo "WQ175_BASELINE_CACHE_KEY=wq175-pre175-v1-$BASE_HASH" >> "$GITHUB_ENV"
       - name: Restore unchanged pre-1.0.75 Android baseline
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         id: v175_baseline_restore
         if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
         uses: actions/cache/restore@v4
@@ -79,7 +110,7 @@ jobs:
           path: source
           key: ${{ env.WQ175_BASELINE_CACHE_KEY }}
       - name: Validate restored Android source before applying fresh v1.0.75 code
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit == 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit == 'true') }}
         run: |
           set -euo pipefail
           test -s source/gradlew
@@ -91,7 +122,7 @@ jobs:
           echo 'CACHE HIT: unchanged full 1.0.74 source restored; 1.0.75 overlays still run.'
 
       - name: Extract complete source (except generated audio)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s wq-noaudio.zip
           unzip -tq wq-noaudio.zip
@@ -99,7 +130,7 @@ jobs:
           unzip -q wq-noaudio.zip -d source
           test -s source/gradlew
       - name: Restore v0.8.1 source changes
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v081-patch.b64
           base64 -d v081-patch.b64 > /tmp/wordquest-081-patch.zip
@@ -109,7 +140,7 @@ jobs:
           grep -q 'applicationIdSuffix = ".offline081"' source/app/build.gradle.kts
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/DeviceAccentPlayer.kt
       - name: Apply UK-only locale speech compatibility fix
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v081-ukfix.patch.gz.b64
           base64 -d v081-ukfix.patch.gz.b64 | gzip -dc > /tmp/wordquest-uk-fix.patch
@@ -120,7 +151,7 @@ jobs:
           grep -q 'applicationIdSuffix = ".offline081uk"' app/build.gradle.kts
           grep -q SYSTEM_BRITISH_VOICE app/src/main/java/com/kelimebulmacasi/a1/DeviceAccentPlayer.kt
       - name: Apply v0.8.2 font scale and gentle sound update
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v082-features.patch.gz.b64
           base64 -d v082-features.patch.gz.b64 | gzip -dc > /tmp/wordquest-082.patch
@@ -133,7 +164,7 @@ jobs:
           grep -q 'versionName = "0.8.2"' app/build.gradle.kts
           grep -q 'applicationIdSuffix = ".offline082"' app/build.gradle.kts
       - name: Restore all v0.9.0 features and version
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v090-delta.b64
           base64 -d v090-delta.b64 > /tmp/wq090.zip
@@ -145,7 +176,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/PracticeHubScreen.kt
           test -s source/app/src/main/res/raw/correct_soft.wav
       - name: Apply v1.0 learning and YDS preview
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v100-source-overlay.b64
           base64 -d v100-source-overlay.b64 > /tmp/wordquest-v100-overlay.zip
@@ -163,7 +194,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/YdsCenterScreen.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/LearningDashboardScreen.kt
       - name: Apply complete Firebase arena and separate-install v1.0.1 configuration
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v101-standalone-overlay.b64
           base64 -d v101-standalone-overlay.b64 > /tmp/wordquest-101.zip
@@ -176,7 +207,7 @@ jobs:
           test -s source/app/src/main/res/values/cloud_config.xml
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/FirebaseLiveArenaTest.kt
       - name: Apply v1.0.2 all competition modes and optional server
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v102-firebase-modes-overlay-fixed.b64
           base64 -d v102-firebase-modes-overlay-fixed.b64 > /tmp/wordquest-102.zip
@@ -187,7 +218,7 @@ jobs:
           grep -q 'applicationIdSuffix = ".offline101"' source/app/build.gradle.kts
           grep -q 'Google OAuth' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
       - name: Configure Google OAuth and upgrade-compatible v1.0.3
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           cd source
           git apply --check ../v103-google-oauth.patch
@@ -197,7 +228,7 @@ jobs:
           grep -q 'applicationIdSuffix = ".offline101"' app/build.gradle.kts
           grep -q '198875801515-cn2hcpeg16vs9vsq0de38tbf0ne8t5er.apps.googleusercontent.com' app/src/main/res/values/cloud_config.xml
       - name: Match Firebase registered Android client (offline101) for v1.0.4
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           cd source
           git apply --check ../v104-firebase-android-id.patch
@@ -207,7 +238,7 @@ jobs:
           grep -q 'applicationIdSuffix = ".offline101"' app/build.gradle.kts
           grep -q '1:198875801515:android:73562494e08141b79954ee' app/src/main/res/values/cloud_config.xml
       - name: Fix persistent Google-account sync using Firebase Realtime Database
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v105-realtime-sync-overlay.b64
           base64 -d v105-realtime-sync-overlay.b64 > /tmp/wordquest-105.zip
@@ -221,7 +252,7 @@ jobs:
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/CloudSyncKeyTest.kt
           python3 -m json.tool source/database.rules.json >/dev/null
       - name: Apply v1.0.6 shared Google-account room quota and invitations
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v106-account-quota-share-overlay.b64
           base64 -d v106-account-quota-share-overlay.b64 > /tmp/wordquest-106.zip
@@ -237,7 +268,7 @@ jobs:
           grep -q 'roomQuota' source/database.rules.json
           grep -q 'roomsPerAccountPerUtcDay = 10' source/app/src/main/java/com/kelimebulmacasi/a1/FirebaseLiveArena.kt
       - name: Keep only Copy and Share buttons in v1.0.7
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -260,7 +291,7 @@ jobs:
           print("Only the duplicate WhatsApp button removed; Copy and Share retained")
           PY
       - name: Apply v1.0.8 account nicknames and safe account deletion
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v108-nickname-account-delete-overlay.b64
           base64 -d v108-nickname-account-delete-overlay.b64 > /tmp/wordquest-108-overlay.zip
@@ -279,7 +310,7 @@ jobs:
           grep -q 'accountDeleteBusy' source/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
           python3 -m json.tool source/database.rules.json >/dev/null
       - name: Apply v1.0.9 friends, names, account sign-in and deletion
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v109-source-overlay.b64
           base64 -d v109-source-overlay.b64 > /tmp/wordquest-v109-overlay.zip
@@ -292,7 +323,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/FriendsHub.kt
           python3 -m json.tool source/database.rules.json >/dev/null
       - name: Apply v1.0.10 app-wide live friend and room request popups
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v110-live-notifications-overlay.b64
           base64 -d v110-live-notifications-overlay.b64 > /tmp/wordquest-v110-overlay.zip
@@ -304,7 +335,7 @@ jobs:
           grep -q 'activeAlert' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/SocialAlertTest.kt
       - name: Apply v1.0.11 Premium Arena and A1-A2 content library
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v111-premium-a1-a2-overlay.b64
           base64 -d v111-premium-a1-a2-overlay.b64 > /tmp/wq-v111.zip
@@ -317,7 +348,7 @@ jobs:
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/PremiumArenaRulesTest.kt
           python3 source/tools/verify_premium_arena_content.py
       - name: Apply v1.0.12 realtime Premium Arena multiplayer migration
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v112-premium-online-overlay.b64
           base64 -d v112-premium-online-overlay.b64 > /tmp/wordquest-v112-overlay.zip
@@ -342,7 +373,7 @@ jobs:
           print('Premium room and invite rules: valid JSON')
           PY
       - name: Apply v1.0.13 fair turns, automatic timer and compact responsive Arena
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v113-premium-ux-overlay.b64
           base64 -d v113-premium-ux-overlay.b64 > /tmp/wq-v113-overlay.zip
@@ -356,7 +387,7 @@ jobs:
           grep -q 'fun passIfExpired()' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
           grep -q 'Yeni oyuna başlamak ister misiniz?' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Apply v1.0.14 live typed letters, two-player unknown and score penalties
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v114-answer-feedback-overlay.b64
           base64 -d v114-answer-feedback-overlay.b64 > /tmp/wq-v114-overlay.zip
@@ -371,7 +402,7 @@ jobs:
           grep -q 'fun wrong(index: Int)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
           grep -q 'keyboardActions = KeyboardActions(onDone' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Apply v1.0.15 both-player failed answer reveal and score preservation
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v115-duel-reveal-fix-overlay.b64
           base64 -d v115-duel-reveal-fix-overlay.b64 > /tmp/wq-v115-overlay.zip
@@ -386,7 +417,7 @@ jobs:
           grep -q 'fun syncFailedAttemptReveals()' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineRoom.kt
           grep -q 'fun wrongThenUnknownAlsoRevealsWithoutPenalizingUnknownPlayer()' source/app/src/test/java/com/kelimebulmacasi/a1/PremiumOnlineRulesTest.kt
       - name: Apply v1.0.16 in-app GitHub Releases automatic updater
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v116-updater-overlay.b64
           base64 -d v116-updater-overlay.b64 > /tmp/wq-v116-overlay.zip
@@ -404,7 +435,7 @@ jobs:
           python3 -m xml.dom.minidom source/app/src/main/AndroidManifest.xml > /dev/null
           python3 -m unittest discover -s tools/tests -v
       - name: Apply v1.0.17 summary, spaced-repetition notebook, teacher and celebration
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v117-premium-summary-overlay.b64
           base64 -d v117-premium-summary-overlay.b64 > /tmp/wq-v117-overlay.zip
@@ -422,7 +453,7 @@ jobs:
           grep -q 'fun recordPremiumMatchLearning' source/app/src/main/java/com/kelimebulmacasi/a1/AppSession.kt
           grep -q 'AI ÖĞRETMENİ İLE ÇALIŞ' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Apply v1.0.18 dated collections, flashcards and synchronized result flow
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v118-learning-studio-overlay.b64
           base64 -d v118-learning-studio-overlay.b64 > /tmp/wq-v118-overlay.zip
@@ -442,7 +473,7 @@ jobs:
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/LearningCollectionsTest.kt
           grep -q 'PremiumWinnerCelebration(match.code, winnerName)' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumOnlineScreen.kt
       - name: Apply v1.0.19 Turkey midnight, phone sounds and direct friend invitations
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v119-arena-midnight-sounds-overlay.b64
           base64 -d v119-arena-midnight-sounds-overlay.b64 > /tmp/wq-v119-overlay.zip
@@ -467,7 +498,7 @@ jobs:
               assert "10800000" in rule, 'A quota security rule still uses UTC midnight'
           PY
       - name: Apply v1.0.20 multi-AI, avatars, C1-C2 Arena and phrasal scan improvements
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v120-multi-ai-arena-overlay.b64
           base64 -d v120-multi-ai-arena-overlay.b64 > /tmp/wq-v120-overlay.zip
@@ -501,7 +532,7 @@ jobs:
           assert all("'" + lvl + "'" in rules['premiumRooms']['$code']['level']['.validate'] for lvl in ('B1','B2','C1','C2'))
           PY
       - name: Apply v1.0.21 genuine offline 3D teacher and conversation controls
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           test -s v121-live-3d-teacher-overlay.b64
           base64 -d v121-live-3d-teacher-overlay.b64 > /tmp/wq-v121-overlay.zip
@@ -527,7 +558,7 @@ jobs:
           sed -n '/<script>/,/<\\/script>/p' source/app/src/main/assets/teacher_3d_stage.html | sed '1d;$d' > /tmp/wq-teacher3d.js
           node --check /tmp/wq-teacher3d.js
       - name: Repair Android WebGL teacher visibility for v1.0.22
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 -m py_compile tools/patch_teacher_render_122.py
           python3 tools/patch_teacher_render_122.py
@@ -540,7 +571,7 @@ jobs:
           sed -n '/<script>/,/<\/script>/p' source/app/src/main/assets/teacher_3d_stage.html | sed '1d;$d' > /tmp/wq-teacher3d-v122.js
           node --check /tmp/wq-teacher3d-v122.js
       - name: Apply native teacher that remains visible when Android WebGL silently fails
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 -m py_compile tools/patch_teacher_native_123.py
           python3 tools/patch_teacher_native_123.py
@@ -552,7 +583,7 @@ jobs:
           ! grep -q 'WebView(context)' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
           grep -q '2D güvenli görünüm' source/app/src/main/java/com/kelimebulmacasi/a1/LiveTeacherScreen.kt
       - name: Apply v1.0.24 full body OpenGL ES teacher, pinch zoom and foreign names
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 -m py_compile tools/patch_teacher_3d_124.py
           python3 tools/patch_teacher_3d_124.py
@@ -568,7 +599,7 @@ jobs:
           grep -q 'Mert("Ethan"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Teacher3DCameraTest.kt
       - name: Refine full body 3D anatomy and natural facial features for 1.0.25
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 -m py_compile tools/patch_teacher_quality_125.py
           python3 tools/patch_teacher_quality_125.py
@@ -584,7 +615,7 @@ jobs:
           grep -q 'Deniz("Sophia"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
           grep -q 'Mert("Ethan"' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherAvatar.kt
       - name: Install CC0 rigged humans and native Filament renderer
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 -m py_compile tools/patch_humanoid_glb_126.py tools/v126/install_humanoid_assets.py
           python3 tools/patch_humanoid_glb_126.py
@@ -600,7 +631,7 @@ jobs:
           test -s source/app/src/main/assets/avatars/sophia.glb
           test -s source/app/src/main/assets/avatars/ethan.glb
       - name: Stage actual licensed human teachers (Emma/Sophia/Ethan), never VRoid anime
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m pip install Pillow==11.3.0
@@ -630,7 +661,7 @@ jobs:
           grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
           echo 'HUMAN GLBs ONLY. Visual/Android approval still pending.'
       - name: Apply 1.0.27.1 real voice callbacks, animation state engine and JUnit tests
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v1271/apply_animated_1271.py tools/v1271/verify_staged_human_teachers_1271.py
@@ -658,7 +689,7 @@ jobs:
           grep -q 'AvatarMotionCoreTest' <(ls source/app/src/test/java/com/kelimebulmacasi/a1/AvatarMotionCoreTest.kt)
           grep -q 'TeacherFallback2D(' source/app/src/main/java/com/kelimebulmacasi/a1/TeacherStage3D.kt
       - name: Activate user-authorized 1.0.28 updater-compatible preview (upgrade over beta 51)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v1271/prepare_user_preview_1272.py
@@ -672,7 +703,7 @@ jobs:
           python3 tools/v1271/verify_staged_human_teachers_1271.py
           python3 tools/v129/test_teacher_safe_mode.py
       - name: Build QA v1.0.30 real Android GLB in isolated renderer process
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           python3 -m py_compile tools/v130/apply_android_real_glb_probe.py tools/v130/test_android_real_glb_probe.py
           python3 tools/v130/apply_android_real_glb_probe.py
@@ -680,7 +711,7 @@ jobs:
           python3 tools/v130/test_android_real_glb_probe.py
           python3 tools/v130/audit_android_glb_memory.py
       - name: Apply 1.0.31 Android female crash containment and improved camera/Idle QA
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v131/build_female_lite_glb.py tools/v131/apply_android_131.py tools/v131/test_android_131.py
@@ -689,7 +720,7 @@ jobs:
           python3 tools/v131/test_android_131.py
           python3 tools/v131/audit_human_idle_pose.py
       - name: Audit female GLB render risks and build native morph-isolation QA
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v132b/audit_female_gpu_risks.py tools/v132b/build_morph_isolation.py tools/v132b/densify_female_morphs.py tools/v132b/apply_qa_132.py tools/v132b/test_qa_132.py
@@ -699,7 +730,7 @@ jobs:
           python3 tools/v132b/apply_qa_132.py
           python3 tools/v132b/test_qa_132.py
       - name: Validate female human GLB skin/index geometry and native crash trace QA
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v133/audit_human_geometry.py tools/v133/apply_qa_133.py tools/v133/test_qa_133.py
@@ -707,48 +738,48 @@ jobs:
           python3 tools/v133/apply_qa_133.py
           python3 tools/v133/test_qa_133.py
       - name: Restore startup-stable runtime for 1.0.35 recovery APK
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v135/apply_launch_recovery_135.py tools/v135/test_launch_recovery_135.py
           python3 tools/v135/apply_launch_recovery_135.py
           python3 tools/v135/test_launch_recovery_135.py
       - name: Enable Ethan-only real AI teacher without launcher regressions
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v136/apply_ethan_teacher_136.py tools/v136/test_safe_ethan_teacher_136.py
           python3 tools/v136/apply_ethan_teacher_136.py
       - name: Archive inactive Emma and Sophia outside Android APK
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v134/archive_inactive_teachers_134.py
           python3 tools/v134/archive_inactive_teachers_134.py
           python3 tools/v136/test_safe_ethan_teacher_136.py
       - name: Build crash-isolated Ethan 3D AI voice teacher QA
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v137/apply_isolated_3d_voice_137.py tools/v137/test_isolated_3d_voice_137.py
           python3 tools/v137/apply_isolated_3d_voice_137.py
           python3 tools/v137/test_isolated_3d_voice_137.py
       - name: Disable Claude provider choice while preserving saved user credentials
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v138/apply_hide_claude_138.py tools/v138/test_hide_claude_138.py
           python3 tools/v138/apply_hide_claude_138.py
           python3 tools/v138/test_hide_claude_138.py
       - name: Diagnose conversation AI errors without exposing keys (1.0.39 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v139/apply_conversation_diagnostics_139.py tools/v139/test_conversation_diagnostics_139.py
           python3 tools/v139/apply_conversation_diagnostics_139.py
           python3 tools/v139/test_conversation_diagnostics_139.py
       - name: Polish real Ethan voice range sync and calm rigged arms (1.0.40 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v140/tune_ethan_glb_140.py tools/v140/apply_ethan_motion_140.py tools/v140/test_ethan_motion_140.py
@@ -756,42 +787,42 @@ jobs:
           python3 tools/v140/apply_ethan_motion_140.py
           python3 tools/v140/test_ethan_motion_140.py
       - name: Test user-video grounded Ethan head, arm and facial-loop improvement (1.0.41 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v141/apply_ethan_video_141.py tools/v141/test_ethan_video_141.py
           python3 tools/v141/apply_ethan_video_141.py
           python3 tools/v141/test_ethan_video_141.py
       - name: Archive original Ethan and replace live 3D tutor with native human 2D (1.0.42 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v142/apply_realistic_2d_teacher_142.py tools/v142/test_realistic_2d_teacher_142.py
           python3 tools/v142/apply_realistic_2d_teacher_142.py
           python3 tools/v142/test_realistic_2d_teacher_142.py
       - name: Validate actual articulated 2D eye-mouth-arm rig (1.0.43 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v143/apply_articulated_2d_143.py tools/v143/test_articulated_2d_143.py
           python3 tools/v143/apply_articulated_2d_143.py
           python3 tools/v143/test_articulated_2d_143.py
       - name: Generate and verify 100 fixed-identity 2D animation images (1.0.44 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v144/generate_teacher_100.py tools/v144/apply_teacher_100_144.py tools/v144/test_teacher_100_144.py
           python3 tools/v144/apply_teacher_100_144.py
           python3 tools/v144/test_teacher_100_144.py
       - name: Correct mouth alignment, natural blinking and verify 100-frame pixel stability (1.0.45 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v145/generate_teacher_100_145.py tools/v145/apply_facial_alignment_145.py tools/v145/test_facial_alignment_145.py
           python3 tools/v145/apply_facial_alignment_145.py
           python3 tools/v145/test_facial_alignment_145.py
       - name: Install word-memory learning modes and keep existing folders/history
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v146/apply_vocabulary_studio_146.py
@@ -802,7 +833,7 @@ jobs:
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/VocabularyAnswerCheckerTest.kt
           grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
       - name: Preserve already-installed 2.5D experimental renderer and upgrade with vocabulary modes (v1.0.47)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v147/apply_25d_147.py tools/v147/test_25d_147.py
@@ -813,7 +844,7 @@ jobs:
           grep -q 'VocabularyPracticeScreen(session' source/app/src/main/java/com/kelimebulmacasi/a1/LearningStudioScreen.kt
           grep -q 'Teacher25DPortrait' source/app/src/main/java/com/kelimebulmacasi/a1/Teacher2DPortrait.kt
       - name: Install approved neon vocabulary design and preserve word records (v1.0.48)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v148/apply_word_memory_148.py tools/v148/verify_word_memory_148.py
@@ -822,7 +853,7 @@ jobs:
           grep -q 'versionCode = 73' source/app/build.gradle.kts
           grep -q 'NeonVocabularyPractice' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Apply approved light-blue Word Memory 1.0.50 screens
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v150/apply_word_memory_150.py
@@ -832,7 +863,7 @@ jobs:
           grep -q 'versionName = "1.0.54-word-memory"' source/app/build.gradle.kts
           grep -q 'internal fun VocabularyNeonHome' source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Integrate v1.0.53 Arena into v1.0.54 Word Memory for v1.0.57 QA
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           # Pin the previously reviewed Arena sources; do not mix in later experiments.
@@ -901,7 +932,7 @@ jobs:
           PY
           rm -rf /tmp/wq-arena-153
       - name: Stage verified Lena GLB and connect isolated live AI conversation (1.0.58 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v158/apply_lena_conversation_158.py tools/verify_lena_glb.py
@@ -915,7 +946,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Fix existing saved AI key access in Lena process (v1.0.59 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v159/apply_lena_saved_key_159.py
@@ -930,7 +961,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Fix and regression-test Lena's saved conversation marker (1.0.60 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v160/apply_lena_thread_fix_160.py
@@ -946,7 +977,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Apply colored Lena 3D materials and real mouth-blink mesh morphs (v1.0.61 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v161/paint_lena_glb.py tools/v161/add_lena_face_morphs.py tools/v161/apply_lena_visuals_161.py
@@ -977,7 +1008,7 @@ jobs:
           print("GLB build gate: colored vertex material, true facial morphs, 201 bones, 18 clips.")
           PY
       - name: Fix overbroad nose-mouth and washed-out Lena material (v1.0.62 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v162/paint_lena_162.py tools/v162/face_lena_162.py tools/v162/rebuild_lena_162.py tools/v162/apply_lena_precision_162.py
@@ -991,7 +1022,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
       - name: Upgrade Lena with brown hair, true iris/pupils and eye-level blink (v1.0.63 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v163/upgrade_lena_163.py tools/v163/apply_lena_visual_quality_163.py
@@ -1023,7 +1054,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
       - name: Restore original Prisma3D mesh part materials in Lena 1.0.64 (QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v164/build_lena_prisma_parts.py tools/v164/apply_lena_original_parts_164.py
@@ -1054,7 +1085,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/TeacherCredentialBridgeProvider.kt
       - name: Open Lena by default, hide Alex, and enable visible lip movement (v1.0.65 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v165/build_lena_lip_open_165.py tools/v165/apply_lena_default_165.py
@@ -1090,7 +1121,7 @@ jobs:
           print("PASS: real upper and lower lips visibly separate on TTS, face preserved.")
           PY
       - name: Embed Lena in live lesson and enable true messaging fallback (v1.0.66 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v166/apply_embedded_lena_messenger_166.py
@@ -1114,7 +1145,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
           python3 tools/verify_lena_glb.py source/app/src/main/assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb
       - name: Generate authentic Lena GLB profile portrait, 17 original icons and photo-uploadable light chat (v1.0.67 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v167/render_lena_real_portrait.py tools/v167/generate_messenger_icons.py tools/v167/apply_lena_messenger_visuals_167.py
@@ -1148,7 +1179,7 @@ jobs:
           print("UI assets verified: real Lena GLB portrait + 17 original vector icons.")
           PY
       - name: Install approved Lena messenger styling and voice UI (v1.0.68 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v168/apply_approved_lena_ui_168.py
@@ -1167,7 +1198,7 @@ jobs:
           echo "Approved Lena messenger code staged without replacing the actual Lena model or portrait."
 
       - name: Apply Lena premium messaging, real 3D studio and waist-up camera (v1.0.69 QA)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v169/build_lena_studio.py tools/v169/apply_lena_studio_169.py
@@ -1201,7 +1232,7 @@ jobs:
           PY
 
       - name: Stage EXACT user-uploaded chair and window GLB and safe Lena greeting (v1.0.70)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v170/stage_user_chair_170.py tools/v170/apply_lena_chair_170.py tools/v170/audit_lena_rig_170.py
@@ -1232,7 +1263,7 @@ jobs:
           print('Original user-provided GLB copied byte-for-byte.')
           PY
       - name: Apply Lena actual emoji, file attachments, animation and subtitles (v1.0.71)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v171/apply_lena_interaction_171.py
@@ -1251,7 +1282,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaApprovedHome.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/VocabularyNeonHome.kt
       - name: Apply approved Arena mode icons, countdown scoreboard and match settings (v1.0.72)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v172/apply_arena_reference_172.py tools/v172/verify_arena_reference_172.py
@@ -1261,7 +1292,7 @@ jobs:
           grep -Fq 'versionName = "1.0.72-arena-reference-controls"' source/app/build.gradle.kts
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/ArenaReferenceComponents.kt
       - name: Install approved original 2D characters, compact selection and victory screens (v1.0.73)
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v173_2d/apply_wordquest_173_2d.py tools/v173_2d/verify_wordquest_173_2d.py
@@ -1272,7 +1303,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DCharacters.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest2DPicker.kt
       - name: Install premium v1.0.74 Arena and Word Memory designs
-        if: ${{ steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (steps.v175_baseline_restore.outputs.cache-hit != 'true') }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v174/apply_wordquest_174.py tools/v174/verify_wordquest_174.py
@@ -1281,14 +1312,14 @@ jobs:
           grep -Fq 'versionCode = 100' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.74-premium-arena-memory"' source/app/build.gradle.kts
       - name: Cache verified pre-1.0.75 Android baseline for next incremental build
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration')))) && steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
+        if: ${{ (github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v183-quality-stability' || github.ref == 'refs/heads/feature/v175-comprehensive-learning-update') && steps.wq190_full_restore.outputs.cache-hit != 'true' && steps.v175_baseline_restore.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: source
           key: ${{ env.WQ175_BASELINE_CACHE_KEY }}
       - name: Install and verify in-development 1.0.75 learning improvements
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_core_175.py tools/v175/verify_stage_one.py
@@ -1297,35 +1328,35 @@ jobs:
           grep -Fq 'versionCode = 101' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.75"' source/app/build.gradle.kts
       - name: Activate and verify opt-in timed crossword mode (v1.0.75)
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_timed_175.py tools/v175/verify_timed_175.py
           python3 tools/v175/apply_timed_175.py
           python3 tools/v175/verify_timed_175.py
       - name: Upgrade New Game with visual mascot builder and verified selection summary
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_premium_new_game_175.py tools/v175/verify_premium_new_game_175.py
           python3 tools/v175/apply_premium_new_game_175.py
           python3 tools/v175/verify_premium_new_game_175.py
       - name: Connect and verify Word Memory PDF, image, camera and personal AI imports
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_import_175.py tools/v175/verify_import_175.py
           python3 tools/v175/apply_import_175.py
           python3 tools/v175/verify_import_175.py
       - name: Install and verify themed Daily Plan and all five original exercise interiors
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_practice_visuals_175.py tools/v175/verify_practice_visuals_175.py
           python3 tools/v175/apply_practice_visuals_175.py
           python3 tools/v175/verify_practice_visuals_175.py
       - name: Generate and install 17 original premium app icons for all rooms
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/generate_premium_icons_175.py tools/v175/apply_icons_175.py tools/v175/verify_icons_175.py
@@ -1333,82 +1364,82 @@ jobs:
           python3 tools/v175/apply_icons_175.py
           python3 tools/v175/verify_icons_175.py
       - name: Install separate YDS Academy and refined CEFR package landing screen
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_academy_175.py tools/v175/verify_academy_175.py
           python3 tools/v175/apply_academy_175.py
           python3 tools/v175/verify_academy_175.py
       - name: Refresh crossword board, clues and accessible buttons without changing game rules
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_crossword_visuals_175.py tools/v175/verify_crossword_175.py
           python3 tools/v175/apply_crossword_visuals_175.py
           python3 tools/v175/verify_crossword_175.py
       - name: Upgrade My Puzzles with true profile counts and completion filters
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_mypuzzles_175.py tools/v175/verify_mypuzzles_175.py
           python3 tools/v175/apply_mypuzzles_175.py
           python3 tools/v175/verify_mypuzzles_175.py
       - name: Install licensed and quality-checked A1-C1 extended wordlists
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/install_vocabulary_175.py tools/v175/verify_vocabulary_175.py
           python3 tools/v175/install_vocabulary_175.py
           python3 tools/v175/verify_vocabulary_175.py
       - name: Install and test premium YDS exams with original grammar content
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_ui_175.py tools/v175/verify_yds_exam_175.py
           python3 tools/v175/apply_yds_exam_ui_175.py
           python3 tools/v175/verify_yds_exam_175.py
       - name: Add paragraph dictation and expand YDS to 150 verified original questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_paragraph_and_yds_175.py tools/v175/verify_paragraph_and_yds_175.py
           python3 tools/v175/apply_paragraph_and_yds_175.py
           python3 tools/v175/verify_paragraph_and_yds_175.py
       - name: Install 80-question full YDS exam with real three-hour timer
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_full_yds_175.py tools/v175/verify_full_yds_175.py
           python3 tools/v175/apply_full_yds_175.py
           python3 tools/v175/verify_full_yds_175.py
       - name: Prevent answer leakage in timed YDS exams while keeping practice feedback
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_integrity_175.py tools/v175/verify_yds_exam_integrity_175.py
           python3 tools/v175/apply_yds_exam_integrity_175.py
           python3 tools/v175/verify_yds_exam_integrity_175.py
       - name: Install post-exam review of incorrect and unanswered YDS questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_exam_review_175.py tools/v175/verify_yds_exam_review_175.py
           python3 tools/v175/apply_yds_exam_review_175.py
           python3 tools/v175/verify_yds_exam_review_175.py
       - name: Install YDS bank duplicate and explanation quality regression
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/install_yds_bank_quality_175.py
       - name: Add 48 authored YDS questions across 8 disciplines and verify no filler counts
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_yds_quality_batch_175.py tools/v175/verify_yds_quality_batch_175.py
           python3 tools/v175/apply_yds_quality_batch_175.py
           python3 tools/v175/verify_yds_quality_batch_175.py
       - name: Complete daily plan custom goals and weekly activity
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_daily_goals_175.py tools/v175/install_daily_tests_175.py tools/v175/verify_daily_goals_175.py
@@ -1416,14 +1447,14 @@ jobs:
           python3 tools/v175/install_daily_tests_175.py
           python3 tools/v175/verify_daily_goals_175.py
       - name: Display verified real word availability and CEFR shortfalls by level
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_real_coverage_175.py tools/v175/verify_real_coverage_175.py
           python3 tools/v175/apply_real_coverage_175.py
           python3 tools/v175/verify_real_coverage_175.py
       - name: Verify 1.0.75 production release evidence gate rejects missing device QA
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/test_release_gate_175.py -v
@@ -1433,60 +1464,60 @@ jobs:
           fi
           echo "PASS: release remains blocked until hardware, user-data, Arena and visual evidence exists"
       - name: Regression test 1.0.75 Android install and permission continuity gate
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/verify_upgrade_metadata_175.py tools/v175/test_upgrade_metadata_175.py
           python3 tools/v175/test_upgrade_metadata_175.py -v
       - name: Reject blank-but-valid emulator screenshots in v175 QA
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 tools/v175/test_emulator_screen_content_175.py -v
       - name: Apply real selectable Arena quiz count and darker crossword blanks
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_arena_count_and_cells_175.py tools/v175/verify_arena_count_and_cells_175.py
           python3 tools/v175/apply_arena_count_and_cells_175.py
           python3 tools/v175/verify_arena_count_and_cells_175.py
       - name: Stage and verify Firebase rules for selectable Arena 5-choice questions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_arena_firebase_rules_175.py tools/v175/verify_arena_firebase_rules_175.py
           python3 tools/v175/apply_arena_firebase_rules_175.py
           python3 tools/v175/verify_arena_firebase_rules_175.py
       - name: Install approved 1.0.75 premium native art across ten rooms
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_theme_art_175.py tools/v175/verify_theme_art_175.py
           python3 tools/v175/apply_theme_art_175.py
           python3 tools/v175/verify_theme_art_175.py
       - name: Build final approved mobile-first home and glossy Arena mode icons
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_mobile_home_175.py tools/v175/verify_mobile_home_175.py
           python3 tools/v175/apply_mobile_home_175.py
           python3 tools/v175/verify_mobile_home_175.py
       - name: Install responsive 2.5D Daily Plan game cards without losing progress
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_premium_practice_grid_175.py tools/v175/verify_premium_practice_grid_175.py
           python3 tools/v175/apply_premium_practice_grid_175.py
           python3 tools/v175/verify_premium_practice_grid_175.py
       - name: Add native Home bottom navigation and real due-word notification actions
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v175/apply_home_navigation_175.py tools/v175/verify_home_navigation_175.py
           python3 tools/v175/apply_home_navigation_175.py
           python3 tools/v175/verify_home_navigation_175.py
       - name: Add 1.0.76 original content bank and daily-question anti-repeat engine
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v176/apply_content_176.py tools/v176/verify_content_176.py tools/v176/verify_upgrade_metadata_176.py
@@ -1497,18 +1528,18 @@ jobs:
           python3 tools/v176/audit_levels_176.py
           test -s source/app/src/main/assets/vocabulary-v176-coverage.json
       - name: Probe original editor and card-rotation source before 1.0.77 changes
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && ((github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           python3 tools/v177/probe_ui_177.py
       - name: Apply 1.0.77 local import, premium responsive design and expanded daily exercises
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v177/apply_polish_177.py tools/v177/verify_177.py tools/v177/verify_upgrade_metadata_177.py
           python3 tools/v177/apply_polish_177.py
           python3 tools/v177/verify_177.py
       - name: Repair 1.0.78 Arena readiness, participant mascot and secure Firebase room rules
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v178/apply_arena_rules_178.py tools/v178/apply_arena_lobby_178.py tools/v178/verify_arena_lobby_178.py tools/v178/verify_upgrade_metadata_178.py
@@ -1516,7 +1547,7 @@ jobs:
           python3 tools/v178/apply_arena_lobby_178.py
           python3 tools/v178/verify_arena_lobby_178.py
       - name: Apply 1.0.79 compact Arena board, clue order, sound and player glow
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v179/apply_arena_179.py tools/v179/verify_arena_179.py tools/v179/verify_upgrade_metadata_179.py
@@ -1526,7 +1557,7 @@ jobs:
           cp tools/v179/Wq179ArenaOrderTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaOrderTest.kt
           cp tools/v179/Wq179ArenaFinaleTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq179ArenaFinaleTest.kt
       - name: Apply 1.0.80 friend cards, privacy summary, new Arena palette and full-size board
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v180/apply_social_180.py tools/v180/apply_ui_180.py tools/v180/verify_ui_180.py tools/v180/verify_upgrade_metadata_180.py
@@ -1535,7 +1566,7 @@ jobs:
           python3 tools/v180/verify_ui_180.py
           cp tools/v180/Wq180FriendActivityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq180FriendActivityTest.kt
       - name: Apply 1.0.81 original Arena hero wallpaper, visible hints and large responsive board
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v181/apply_arena_181.py tools/v181/verify_arena_181.py tools/v181/verify_upgrade_metadata_181.py
@@ -1544,7 +1575,7 @@ jobs:
           cp tools/v181/Wq181ArenaHintTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintTest.kt
           cp tools/v181/Wq181ArenaHintSlotTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq181ArenaHintSlotTest.kt
       - name: Apply 1.0.82 approved icons, 5-choice quiz cards and custom nickname
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v182/apply_ui_182.py tools/v182/verify_ui_182.py tools/v182/verify_upgrade_metadata_182.py
@@ -1552,7 +1583,7 @@ jobs:
           python3 tools/v182/verify_ui_182.py
           cp tools/v182/Wq182IconRoutingTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq182IconRoutingTest.kt
       - name: Apply 1.0.83 quiz contrast, protected mascot ZIP and responsive Arena
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v183/apply_quality_183.py tools/v183/verify_quality_183.py tools/v183/stage_arena_assets_183.py tools/v183/build_mascot_template_183.py
@@ -1563,7 +1594,7 @@ jobs:
           cp tools/v183/Wq183QuizQualityTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq183QuizQualityTest.kt
           python3 tools/v183/build_mascot_template_183.py "$RUNNER_TEMP/WordQuest_Mascot_Template_v1.zip"
       - name: Apply 1.0.84 approved Arena art, full-size custom mascots, win poses
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v184/apply_visuals_184.py tools/v184/verify_assets_184.py
@@ -1571,7 +1602,7 @@ jobs:
           python3 -m pip install --quiet pillow
           python3 tools/v184/verify_assets_184.py
       - name: Apply 1.0.85 large account mascot, edit-only saved nickname, private friend portraits
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v185/apply_profile_185.py tools/v185/verify_upgrade_metadata_185.py
@@ -1581,10 +1612,12 @@ jobs:
           grep -Fq 'Wq185FriendSharingSetting' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
           grep -Fq 'Wq185FriendProfilePublisher' source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt
       - name: Verify independent app identity
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           grep -q 'applicationIdSuffix = ".fresh"' source/app/build.gradle.kts
       - name: Generate US/UK audio and verify pronunciation data
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         working-directory: source
         run: |
           python3 tools/build_offline_voices.py
@@ -1592,6 +1625,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       # Check 1.0.85 overlap diagnostics before touching original source files.
       - name: Restore and integrate exact Package 3 Word Memory ZIP on 1.0.85
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/wq-p3"
@@ -1633,6 +1667,7 @@ jobs:
           p.write_text(s)
           PY
       - name: Integrate Package 1 Arena board, hint continuity and friend detail
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_arena_186.py
@@ -1650,7 +1685,7 @@ jobs:
                          .replace('versionName = "1.0.86"','versionName = "1.0.85"',1))
           PY
       - name: Apply Package 4 to assembled 1.0.85 source without release
-        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons')) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.event_name == 'push' && (github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))) }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package4_to_185.py
@@ -1658,6 +1693,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186ParagraphWorkspace.kt
           grep -Fq 'MAX_BOARD_WORDS = 70' source/app/src/main/java/com/kelimebulmacasi/a1/CustomLayout.kt
       - name: Apply isolated Package 5 and verify all proposed sources
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package5_to_186.py tools/v186/verify_package5_186.py
@@ -1673,6 +1709,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq186LenaVoiceSettings.kt
           grep -Fq 'listOf("6","10","15","20","30")' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest175Matching.kt
       - name: Apply Package 6 protected Arena rules, native layout and UI
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package6_to_186.py
@@ -1683,6 +1720,7 @@ jobs:
           python3 -m json.tool source/database.rules.json > /dev/null
           python3 -m json.tool firebase/database.rules.json > /dev/null
       - name: Integrate Package 6 multi-level rules and verify Firebase JSON
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package6_remaining.py
@@ -1707,6 +1745,7 @@ jobs:
                     source[max(0,at-650):at+3000])
           PY
       - name: Integrate Lena 3D, humanlike dialogue, speech cleaning, approved icons
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v187/apply_package7_to_186.py
@@ -1716,6 +1755,7 @@ jobs:
           grep -Fq 'versionCode = 112' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.86"' source/app/build.gradle.kts
       - name: Convert informational text throughout every Android app section
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v187/apply_info_everywhere_187.py
@@ -1730,6 +1770,7 @@ jobs:
           print("All-app info audit:",audit["pages"],"pages;",audit["info_controls"],"controls")
           PY
       - name: Apply Package 2 category-folder and verb icon supplement
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v186/apply_package2_icons_186.py
@@ -1737,6 +1778,7 @@ jobs:
           test -s source/app/src/main/res/drawable/wq186_category_folder_icon.xml
           test -s source/app/src/main/res/drawable/wq186_verb_forms_icon.xml
       - name: Repair crashing input, missing home icons and high-detail friend portrait
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v188/apply_ui_regressions_188.py
@@ -1746,6 +1788,7 @@ jobs:
           ! grep -Fq 'val wide = maxWidth >= 760.dp && !keyboardVisible' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'MAX_SIDE = 1024' source/app/src/main/java/com/kelimebulmacasi/a1/Wq188FriendPreview.kt
       - name: Fit the entire crossword and show letters on the grid while typing
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v189/apply_mascot_hd_189.py
@@ -1782,6 +1825,7 @@ jobs:
           print("PASS: post-P1-to-P7 assembled grid and live typing")
           PY
       - name: V190 full-height tablet crossword and distinct real navigation icons
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v190/apply_tablet_board_icons_190.py
@@ -1809,11 +1853,6 @@ jobs:
           python3 tools/v190/apply_compact_puzzle_ui_190.py
           python3 -m py_compile tools/v190/apply_hint_draft_integration_190.py
           python3 tools/v190/apply_hint_draft_integration_190.py
-          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py
-          python3 tools/v191/apply_mobile_crossword_191.py
-          grep -Fq 'Wq190BoardPolicy.phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
-          grep -Fq 'Wq189UploadedArtwork("solo_puzzle"' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
-          grep -Fq 'if (!keyboardVisible)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190CrosswordHintInput.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190CrosswordHintInputTest.kt
           grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
@@ -1875,12 +1914,14 @@ jobs:
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190ArenaSoloPolicyTest.kt
           python3 tools/v190/audit_arena_190.py
       - name: Fix real Android Back navigation for nested Home sections
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v190/apply_system_back_190.py tools/v190/test_system_back_190.py tools/v190/qa_system_back_190.py
           python3 tools/v190/apply_system_back_190.py
           python3 tools/v190/test_system_back_190.py
       - name: Stamp v1.0.90 after all seven packages and verify requested UI fixes
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -1923,57 +1964,37 @@ jobs:
               assert art in home,art
           print("PASS: v1.0.90/116 stable IME, approved game/folder artwork, bounded HD friend preview")
           PY
-      - name: Compile fully assembled Kotlin and Compose without APK or release
+      - name: Cache fully assembled source before current v191 edits
+        if: ${{ github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons' && steps.wq190_full_restore.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Apply newest crossword fix on both cached and freshly assembled sources
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py
+          python3 tools/v191/apply_mobile_crossword_191.py
+          grep -Fq 'Wq190BoardPolicy.phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'Wq189UploadedArtwork("solo_puzzle"' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+      - name: Compile, test ALL offline unit tests and assemble ONCE
         working-directory: source
         run: |
           set -euo pipefail
-          chmod +x ./gradlew
-          ./gradlew --no-daemon :app:compileOfflineKotlin --stacktrace
-      - name: Unit test revealed letters and partial typed answer
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq190CrosswordHintInputTest' --stacktrace
-      - name: Unit test v190 landscape board fitting
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq190BoardPolicyTest' --stacktrace
-      - name: Unit test solo mode routing and selected-level pool
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq190ArenaSoloPolicyTest' --stacktrace
-      - name: Run deterministic Package 6 Arena rules unit tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaFairPlayTest' --stacktrace
-      - name: Run Lena speech and hidden-parenthesis unit tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq187LenaSpeechTest' --stacktrace
-      - name: Run Package 1 Arena state tests
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaGridPolicyTest' --stacktrace
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaNextWordTest' --stacktrace
-          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq186ArenaHintPolicyTest' --stacktrace
-      - name: Fully test and assemble signed-candidate production variant
-        working-directory: source
-        run: |
-          set -euo pipefail
-          ./gradlew --no-daemon :app:testOfflineUnitTest :app:assembleOffline --stacktrace
+          chmod +x gradlew
+          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline --stacktrace
           test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
           test -s app/build/outputs/apk/offline/output-metadata.json
           python3 - <<'PY'
           import json
-          m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
-          assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(116,"1.0.90")
-          print("PASS: v1.0.90/116 package preserved")
+          from pathlib import Path
+          d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text())
+          assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
+          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(116,"1.0.90")
+          assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          print("PASS: all offline JVM tests, compilation, APK and original package")
           PY
       - name: Sign v1.0.90 APK with verified existing installed certificate
         env:
@@ -2009,9 +2030,11 @@ jobs:
           unzip -tq "$out/WordQuestAI-v1.0.90-signed-qa.apk"
           echo 'PASS: original app identity and production signing certificate'
       - name: Enable KVM for real in-place emulator upgrade test
+        if: ${{ github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.event_name == 'workflow_dispatch' }}
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
       - name: Test existing v1.0.89 app upgrades in-place to v1.0.90
+        if: ${{ github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.event_name == 'workflow_dispatch' }}
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
