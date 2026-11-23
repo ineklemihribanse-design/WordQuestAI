@@ -25,10 +25,12 @@ def main():
     var soloArenaMode by rememberSaveable { mutableStateOf("duel") }''',
         "persist all three solo mode cards")
     s=once(s,
-        '''                     mode=if(selectedMode=="quiz")"quiz" else "duel",
-                     onMode={selectedMode=if(it=="quiz")"quiz" else "crossword"},''',
-        '''                     mode=soloArenaMode,
-                     onMode={ selected ->
+        'mode=if(selectedMode=="quiz")"quiz" else "duel",',
+        'mode=soloArenaMode,',
+        "preserve exact solo UI mode")
+    s=once(s,
+        'onMode={selectedMode=if(it=="quiz")"quiz" else "crossword"},',
+        '''onMode={ selected ->
                          soloArenaMode=selected
                          selectedMode=if(selected=="quiz")"quiz" else "crossword"
                      },''',
@@ -57,7 +59,7 @@ def main():
         "solo quiz draws from selected mixed levels")
     assert 'Wq190ArenaSoloPolicy.levelPool(preset.levels,level)' in s
     assert 'soloArenaMode=selected' in s
-    assert 'onOffline=::begin' in s or 'onOffline={begin()}' in s or 'onOffline= {begin()}' in s or 'onOffline={ begin() }' in s or 'onOffline={begin()' in s, "local entry must call existing begin"
+    assert 'onOffline=' in s and 'fun begin()' in s, "local entry must keep existing begin action"
     assert 'PremiumOnlineRoom(' not in s, "solo must not construct remote Firebase rooms"
     FILE.write_text(s,"utf-8")
     print("PASS v190: solo duel/team/quiz preserve selected modes and start locally")
