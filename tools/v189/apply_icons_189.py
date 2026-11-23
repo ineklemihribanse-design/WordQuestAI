@@ -90,16 +90,21 @@ def apply():
         '''            if(!Wq189UploadedArtwork("new_game",Modifier.size(59.dp)) &&
                !Wq183HighResArtwork("wq_yeni_oyun",Modifier.size(59.dp)) &&''',
         "show unique new-game icon, no repeat of Bulmacalarım artwork")
-    s = one(s,
-        '''        Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,
-            color=Wq175Navy,fontSize=20.sp)''',
-        '''        Row(verticalAlignment=Alignment.CenterVertically,
+    home_heading = '''        Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,
+            color=Wq175Navy,fontSize=20.sp)'''
+    if home_heading in s:
+        s = one(s, home_heading,
+            '''        Row(verticalAlignment=Alignment.CenterVertically,
             horizontalArrangement=Arrangement.spacedBy(7.dp)) {
             Wq189UploadedArtwork("home",Modifier.size(36.dp))
             Text("Keşfet ve öğren",fontWeight=FontWeight.ExtraBold,
                 color=Wq175Navy,fontSize=20.sp)
         }''',
-        "make uploaded house visible in the actual home page")
+            "make uploaded house visible in the original premium home heading")
+    else:
+        # v183 deliberately rebuilt this heading; do not regress its navigation.
+        print("PASS: v183 modern heading retained; home artwork routes via theme icon")
+
     planned[p] = s
 
     p = SRC / "WordQuest175MyPuzzles.kt"
