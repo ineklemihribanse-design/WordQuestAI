@@ -73,13 +73,8 @@ def apply():
                 if (!Wq189UploadedArtwork("new_game",Modifier.size(35.dp)))
                     Wq175GlossIcon("new_game",Modifier.size(35.dp))
             },""", 1)
-    s = one(s,
-        """            icon={Wq175GlossIcon("plan",Modifier.size(29.dp))},""",
-        """            icon={
-                if (!Wq189UploadedArtwork("daily_plan",Modifier.size(35.dp)))
-                    Wq175GlossIcon("plan",Modifier.size(35.dp))
-            },""",
-        "daily nav uses premium study checklist")
+    # Günlük was not part of the requested replacement set. Preserve its
+    # existing icon and callback without modifying it.
     assert 'icon={Wq2DPortrait(chosen,Modifier.size(29.dp))}' in s, (
         "Profile must retain the user's own mascot rather than a stock icon")
     planned[file] = s
@@ -90,7 +85,6 @@ def apply():
     for marker in (
         '"home" to "home"',
         '"new_game" to "puzzle_abc_neon"',
-        '"daily_plan" to "study_checklist"',
         '"packages" to "ready_folders"',
         '"verbs" to "verb_forms"',
         '"solo_puzzle" to "puzzle_builder"',
