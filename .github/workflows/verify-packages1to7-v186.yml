@@ -1800,13 +1800,6 @@ jobs:
           assert "YDS Akademi" not in wanted and "YDS Hazırlık" not in wanted
           print("PASS: YDS Akademi/Hazırlık original icons restored")
           PY
-          python3 -m py_compile tools/v190/restore_yds_icons_190.py
-          python3 tools/v190/restore_yds_icons_190.py
-          ! grep -Fq '"YDS Akademi" -> "exam"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
-          ! grep -Fq '"YDS Hazırlık" -> "review"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
-          ! grep -Fq '"exam" to "reading_review_neon"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq189UploadedIcons.kt
-          grep -Fq '"yds_akademi" -> "exam"' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest175ThemeArt.kt
-
           python3 -m py_compile tools/v190/apply_lena_overflow_190.py
           python3 tools/v190/apply_lena_overflow_190.py
           grep -Fq 'onLessons = { learningToolsOpen = true }' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
