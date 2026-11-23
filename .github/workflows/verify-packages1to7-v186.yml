@@ -1834,7 +1834,7 @@ jobs:
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
           script: bash tools/v187/qa_emulator_upgrade_187.sh
       - name: Publish v1.0.87 to installed app update channel only after all gates pass
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.87-pakets1-7-integration' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
