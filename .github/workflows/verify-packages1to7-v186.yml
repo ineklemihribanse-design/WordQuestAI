@@ -1804,6 +1804,28 @@ jobs:
           python3 tools/v190/apply_lena_overflow_190.py
           python3 -m py_compile tools/v190/apply_yds_paragraph_phone_190.py
           python3 tools/v190/apply_yds_paragraph_phone_190.py
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          home=(root/"ArenaApprovedHome.kt").read_text("utf-8")
+          for term in ("matchSettingsPage", "Wq175ArenaHeroAndModes(", "Wq174UnifiedMatchSettings(", "startSolo", "solo", "startPractice", "soloPlay", "PlaySolo", "info"):
+              matches=[i for i in range(len(home)) if home.startswith(term,i)]
+              for loc in matches[:7]:
+                  print("V190 ARENA SOURCE",term,loc,repr(home[max(0,loc-420):loc+780]))
+          nav=(root/"Wq175PremiumHome.kt").read_text("utf-8")
+          for term in ('val ydsExpanded','"paragraph" to "reading_review_classic"'):
+              print("V190 DEBUG",term,term in nav)
+          for name in ("PuzzleScreen.kt","LenaMessengerBrand.kt","ConversationScreen.kt","Wq175HomeNavigation.kt","Wq189UploadedIcons.kt"):
+              txt=(root/name).read_text("utf-8")
+              needles={
+                "PuzzleScreen.kt":["if (keyboardVisible) expanded = false","({ expanded = !expanded })"],
+                "LenaMessengerBrand.kt":['contentDescription="Sohbet ve ders araçları"'],
+                "ConversationScreen.kt":["onLessons = { learningToolsOpen = true }"],
+                "Wq175HomeNavigation.kt":['Wq189UploadedArtwork("home"','Wq189UploadedArtwork("new_game"'],
+                "Wq189UploadedIcons.kt":['"paragraph" to "reading_review_classic"'],
+              }[name]
+              for term in needles: print("V190 CHECK",name,term,term in txt)
+          PY
           grep -Fq '"paragraph" to "reading_review_classic"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq189UploadedIcons.kt
           grep -Fq 'val ydsExpanded' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
           grep -Fq 'if (keyboardVisible) expanded = false' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
