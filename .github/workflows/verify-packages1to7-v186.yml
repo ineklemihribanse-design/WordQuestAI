@@ -1811,7 +1811,7 @@ jobs:
           home=(root/"Wq175PremiumHome.kt").read_text("utf-8")
           for art in ('"wq_yeni_oyun"','"wq_hazir_paketler"','"wq_bulmacalarim"'):
               assert art in home,art
-          print("PASS: v1.0.89/114 stable IME, approved game/folder artwork, bounded HD friend preview")
+          print("PASS: v1.0.89/115 stable IME, approved game/folder artwork, bounded HD friend preview")
           PY
       - name: Compile fully assembled Kotlin and Compose without APK or release
         working-directory: source
@@ -1847,8 +1847,8 @@ jobs:
           import json
           m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
           assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(114,"1.0.89")
-          print("PASS: v1.0.89/114 package preserved")
+          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(115,"1.0.89")
+          print("PASS: v1.0.89/115 package preserved")
           PY
       - name: Sign v1.0.89 APK with verified existing installed certificate
         env:
@@ -1878,7 +1878,7 @@ jobs:
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v186-certs.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.89-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionCode='114'" "$RUNNER_TEMP/wq-v186-badging.txt"
+          grep -Fq "versionCode='115'" "$RUNNER_TEMP/wq-v186-badging.txt"
           grep -Fq "versionName='1.0.89'" "$RUNNER_TEMP/wq-v186-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v186-badging.txt"; then exit 1; fi
           unzip -tq "$out/WordQuestAI-v1.0.89-signed-qa.apk"
@@ -1915,7 +1915,7 @@ jobs:
           payload={
            "schemaVersion":1,
            "tag":"v1.0.89",
-           "versionCode":114,
+           "versionCode":115,
            "versionName":"1.0.89",
            "packageName":"com.kelimebulmacasi.a1.practice.fresh",
            "apkFile":"WordQuestAI.apk",
