@@ -1853,6 +1853,15 @@ jobs:
           grep -Fq 'Wq189UploadedArtwork("home"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175HomeNavigation.kt
           grep -Fq 'Wq189UploadedArtwork("new_game"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175HomeNavigation.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190BoardPolicyTest.kt
+          python3 -m py_compile tools/v190/apply_arena_two_stage_190.py
+          python3 tools/v190/apply_arena_two_stage_190.py
+          python3 -m py_compile tools/v190/apply_arena_local_modes_190.py
+          python3 tools/v190/apply_arena_local_modes_190.py
+          python3 tools/v190/verify_arena_firebase_contract_190.py
+          grep -Fq 'val preset = Wq186ArenaPresetStore.read' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+          grep -Fq 'mode=soloArenaMode' source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt
+          grep -Fq 'solo=solo' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest174Arena.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190ArenaSoloPolicyTest.kt
           python3 tools/v190/audit_arena_190.py
       - name: Stamp v1.0.89 after all seven packages and verify requested UI fixes
         run: |
@@ -1908,6 +1917,11 @@ jobs:
         run: |
           set -euo pipefail
           ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq190BoardPolicyTest' --stacktrace
+      - name: Unit test solo mode routing and selected-level pool
+        working-directory: source
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq190ArenaSoloPolicyTest' --stacktrace
       - name: Run deterministic Package 6 Arena rules unit tests
         working-directory: source
         run: |
