@@ -1804,6 +1804,19 @@ jobs:
           python3 tools/v190/apply_lena_overflow_190.py
           python3 -m py_compile tools/v190/apply_yds_paragraph_phone_190.py
           python3 tools/v190/apply_yds_paragraph_phone_190.py
+
+          python3 - <<'PY'
+          from pathlib import Path
+          f=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt")
+          s=f.read_text("utf-8")
+          for needle in ("inlineEditor()", "val wordDraft", "fun revealAndLearn()", "fun GameHeading(", "private fun ActiveClue(", "private fun Actions(", "private fun WordFields(", "if (wide) {", "GameHeading(game", "val previewLetters"):
+              start=0
+              for n in range(min(s.count(needle),4)):
+                  pos=s.find(needle,start)
+                  print("PUZZLE_SOURCE_CONTEXT",needle,n,repr(s[max(0,pos-650):pos+1150]))
+                  start=pos+len(needle)
+          PY
+
           python3 - <<'PY'
           from pathlib import Path
           root=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
@@ -1827,7 +1840,7 @@ jobs:
               for term in needles: print("V190 CHECK",name,term,term in txt)
           PY
           grep -Fq '"paragraph" to "reading_review_classic"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq189UploadedIcons.kt
-          grep -Fq 'val ydsExpanded' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
+          grep -Fq 'var ydsExpanded by' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
           grep -Fq 'if (keyboardVisible) expanded = false' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq '({ expanded = !expanded })' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'onLessons = { learningToolsOpen = true }' source/app/src/main/java/com/kelimebulmacasi/a1/ConversationScreen.kt
