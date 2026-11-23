@@ -93,9 +93,8 @@ import androidx.compose.ui.unit.sp''', "imports")
                 )
             } else {
                 BoxWithConstraints(Modifier.fillMaxWidth()) {
-                    val limit = if (maxWidth >= 700.dp) 12
-                        else if (maxWidth >= 430.dp) 6 else 4
-                    val preview = (active.toList() + choices).distinct().take(limit)
+                    val limit = Wq197LayoutPolicy.previewLimit(maxWidth.value)
+                    val preview = Wq197LayoutPolicy.preview(choices, active, limit)
                     Wq197OptionGrid(
                         listOf(everything) + preview,
                         if (active.isEmpty()) setOf(everything) else active,
@@ -312,10 +311,21 @@ private fun NewGameSection(
     assert s.count('NewGameSection("Kelime Havuzu"') == 1
     assert s.count('Wq197OptionGrid(timeSizes.map { "$it dk" } + "Özel"') == 1
     assert s.count('gameSizes.map(Int::toString) + "Özel"') == 1
-    assert (HERE / "Wq197CompactNewGameUi.kt").is_file()
+    for name in (
+        "Wq197CompactNewGameUi.kt",
+        "Wq197LayoutPolicy.kt",
+        "Wq197LayoutPolicyTest.kt",
+    ):
+        assert (HERE / name).is_file(), name
+    tests = ROOT / "source/app/src/test/java/com/kelimebulmacasi/a1"
+    tests.mkdir(parents=True, exist_ok=True)
     SCREEN.write_text(s, "utf-8")
     shutil.copyfile(HERE / "Wq197CompactNewGameUi.kt",
                     SRC / "Wq197CompactNewGameUi.kt")
+    shutil.copyfile(HERE / "Wq197LayoutPolicy.kt",
+                    SRC / "Wq197LayoutPolicy.kt")
+    shutil.copyfile(HERE / "Wq197LayoutPolicyTest.kt",
+                    tests / "Wq197LayoutPolicyTest.kt")
     print("PASS v197: levels/3D badge compact, 6 CEFR across on tablet, 3 columns on phone")
     print("PASS v197: topic or kind with popup for long lists; main page stays short")
     print("PASS v197: compact combined game mode + word count including 70 and custom")
