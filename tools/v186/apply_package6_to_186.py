@@ -407,51 +407,108 @@ def crossword_typing():
     s=load("PuzzleScreen.kt")
     needle='    val word = board.words[view.wordIndex]'
     s=once(s,needle,
-        needle+'''\n    var typedDialog by remember { mutableStateOf(false) }
-    var wordDraft by remember(view.wordIndex) { mutableStateOf("") }''',
-        "Arena-style full-word typing state")
-    if s.count("keyboard.openKeyboard()") < 3:
-        raise AssertionError("P6 missing legacy letter-by-letter keyboard calls")
-    s=s.replace("keyboard.openKeyboard()","typedDialog = true")
+        needle+''' 
+    // P6 + UX patch: never interrupt the game with an answer dialog.
+    // The editable word is always in the visible clue panel.
+    var inlineTyping by remember { mutableStateOf(false) }
+    var wordDraft by remember(view.wordIndex) { mutableStateOf("") }
+    val entryFocus = remember { FocusRequester() }
+    val softKeyboard = LocalSoftwareKeyboardController.current
+    LaunchedEffect(inlineTyping, view.wordIndex, outOfTime) {
+        if(inlineTyping && !outOfTime &&
+            view.wordIndex !in view.solvedIndices) {
+            entryFocus.requestFocus()
+            softKeyboard?.show()
+        }
+    }''', "inline word-entry state and focus")
+    s=once(s,"import androidx.compose.ui.draw.clip",
+        '''import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions''',
+        "inline field keyboard/focus imports")
+    # Preserve the native AndroidView's other callbacks and the existing
+    # answer-check/persistence pipeline. Only replace openings of its IME.
+    assert s.count("keyboard.openKeyboard()") >= 3
+    s=s.replace("keyboard.openKeyboard()","inlineTyping = true")
     marker='    Box(\n        Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding(),'
-    dialog='''    if(typedDialog && !outOfTime && view.wordIndex !in view.solvedIndices) {
-        AlertDialog(
-            onDismissRequest={typedDialog=false},
-            title={Text("Kelimeyi yaz")},
-            text={
-                Column(verticalArrangement=Arrangement.spacedBy(10.dp)) {
-                    Text("${word.number} ${word.direction.label} · ${word.cells.size} harf",
-                        fontWeight=FontWeight.Bold,color=Forest)
-                    Text(word.entry.clue,color=Ink,fontSize=19.sp)
-                    OutlinedTextField(
-                        value=wordDraft,
-                        onValueChange={ wordDraft=englishLetters(it).take(word.cells.size) },
-                        modifier=Modifier.fillMaxWidth(),
-                        label={Text("İngilizce kelime")},
-                        placeholder={Text("Cevabı yaz")},
-                        singleLine=true
-                    )
-                    Text("Kelimenin tamamını yaz. Açık harfler tahtada korunur.",
-                        fontSize=12.sp,color=Forest)
-                }
-            },
-            confirmButton={
-                TextButton(
-                    enabled=englishLetters(wordDraft).length==word.cells.size,
-                    onClick={
-                        edit(typedWord=true) { crossword -> crossword.enter(wordDraft) }
-                        checkAndLearn()
-                        typedDialog=false
-                        wordDraft=""
+    inline='''    fun submitInlineWord() {
+        if(outOfTime || view.wordIndex in view.solvedIndices ||
+            englishLetters(wordDraft).length != word.cells.size) return
+        edit(typedWord=true) { state -> state.enter(wordDraft) }
+        checkAndLearn()
+        wordDraft=""
+        inlineTyping=false
+        softKeyboard?.hide()
+    }
+
+    val inlineEditor: @Composable () -> Unit = {
+        if (!outOfTime && view.wordIndex !in view.solvedIndices) {
+            Surface(
+                modifier=Modifier.fillMaxWidth(),
+                shape=RoundedCornerShape(16.dp),
+                color=Color(0xFFF7F1FD),
+                border=BorderStroke(1.dp, Color(0xFFDCCFEB))
+            ) {
+                Column(Modifier.fillMaxWidth().padding(11.dp),
+                    verticalArrangement=Arrangement.spacedBy(7.dp)) {
+                    Row(Modifier.fillMaxWidth(),
+                        verticalAlignment=Alignment.CenterVertically) {
+                        Text("İngilizce cevabı yaz", color=Ink,
+                            fontFamily=Sans,fontSize=14.sp,
+                            fontWeight=FontWeight.SemiBold,
+                            modifier=Modifier.weight(1f))
+                        Text(word.cells.size.toString()+" harf",
+                            color=Forest,fontSize=12.sp)
                     }
-                ) { Text("Cevabı gönder") }
-            },
-            dismissButton={TextButton(onClick={typedDialog=false}){Text("Vazgeç")}}
-        )
+                    Row(Modifier.fillMaxWidth(),
+                        horizontalArrangement=Arrangement.spacedBy(8.dp),
+                        verticalAlignment=Alignment.CenterVertically) {
+                        OutlinedTextField(
+                            value=wordDraft,
+                            onValueChange={ wordDraft=englishLetters(it).take(word.cells.size) },
+                            modifier=Modifier.weight(1f).focusRequester(entryFocus),
+                            placeholder={Text("Cevabı buraya yaz")},
+                            singleLine=true,
+                            shape=RoundedCornerShape(12.dp),
+                            keyboardOptions=KeyboardOptions(imeAction=ImeAction.Done),
+                            keyboardActions=KeyboardActions(onDone={ submitInlineWord() })
+                        )
+                        Button(onClick={submitInlineWord},
+                            enabled=englishLetters(wordDraft).length==word.cells.size,
+                            modifier=Modifier.heightIn(min=52.dp),
+                            colors=ButtonDefaults.buttonColors(containerColor=Forest),
+                            shape=RoundedCornerShape(12.dp)) {
+                            Text("Gönder",color=Color.White)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 '''
-    s=once(s,marker,dialog+marker,"native Arena typing modal")
+    s=once(s,marker,inline+marker,"inline answer panel inside puzzle screen")
+    s=once(s,
+       '''                            if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)''',
+       '''                            inlineEditor()
+                            if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)''',
+       "tablet word input beneath active clue")
+    s=once(s,
+       '''                        WordFields(word, view) { engine.selectLetter(it); view = engine.view(); inlineTyping = true }''',
+       '''                        inlineEditor()''',
+       "phone keyboard-visible answer stays in clue instead of modal")
+    s=once(s,
+       '''                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)''',
+       '''                    if (!keyboardVisible) inlineEditor()
+                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)''',
+       "phone normal answer input underneath board")
+    assert 'if(typedDialog' not in s and 'title={Text("Kelimeyi yaz")}' not in s
+    assert s.count("inlineEditor()")==3
+    assert s.count("focusRequester(entryFocus)")==1
     save("PuzzleScreen.kt",s)
 
 def reconnect():
