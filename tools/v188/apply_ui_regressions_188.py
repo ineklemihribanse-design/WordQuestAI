@@ -33,7 +33,8 @@ def apply():
             // Never crash the game if focus is temporarily unavailable.
             withFrameNanos { }
             runCatching {
-                if (entryFocus.requestFocus()) softKeyboard?.show()
+                entryFocus.requestFocus()
+                softKeyboard?.show()
             }''',"safe IME focus")
     s=once(s,'''                    if (keyboardVisible) {
                         ActiveClue(word, view.wordIndex in view.solvedIndices, true) {
@@ -137,8 +138,8 @@ def apply():
     planned[p]=s
 
     codec=(PKG/"Wq188FriendPreview.kt").read_text("utf-8")
-    assert "MAX_SIDE = 320" in codec and "MAX_RAW = 13000" in codec
-    assert 'for(edge in listOf(320, 288, 256, 224, 192, 160))' in codec
+    assert "MAX_SIDE = 1024" in codec and "MAX_RAW = 13000" in codec
+    assert 'for(edge in listOf(1024, 896, 768, 640, 512, 448, 384, 320, 256, 192, 160))' in codec
     planned[SRC/"Wq188FriendPreview.kt"]=codec
     for path,data in planned.items():
         path.write_text(data,encoding="utf-8")

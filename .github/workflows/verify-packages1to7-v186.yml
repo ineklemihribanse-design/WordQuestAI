@@ -1733,7 +1733,7 @@ jobs:
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq188FriendPreview.kt
           grep -Fq 'val wide = maxWidth >= 760.dp' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           ! grep -Fq 'val wide = maxWidth >= 760.dp && !keyboardVisible' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
-          grep -Fq 'MAX_SIDE = 320' source/app/src/main/java/com/kelimebulmacasi/a1/Wq188FriendPreview.kt
+          grep -Fq 'MAX_SIDE = 1024' source/app/src/main/java/com/kelimebulmacasi/a1/Wq188FriendPreview.kt
       - name: Stamp v1.0.88 after all seven packages and verify requested UI fixes
         run: |
           set -euo pipefail
@@ -1762,7 +1762,7 @@ jobs:
           assert "withFrameNanos" in puzzle and "runCatching" in puzzle
           assert "val wide = maxWidth >= 760.dp && !keyboardVisible" not in puzzle
           preview=(root/"Wq188FriendPreview.kt").read_text("utf-8")
-          assert "MAX_SIDE = 320" in preview
+          assert "MAX_SIDE = 1024" in preview
           home=(root/"Wq175PremiumHome.kt").read_text("utf-8")
           for art in ('"wq_yeni_oyun"','"wq_hazir_paketler"','"wq_bulmacalarim"'):
               assert art in home,art
