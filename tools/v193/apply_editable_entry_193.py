@@ -87,7 +87,7 @@ def apply() -> None:
                             trailingIcon={
                                 if(wordDraft.isNotEmpty()) {
                                     TextButton(
-                                        onClick={ wordDraft=""; inlineTyping=true },
+                                        onClick={ wordDraft=""; inlineTyping=true; runCatching { entryFocus.requestFocus() }; softKeyboard?.show() },
                                         contentPadding=PaddingValues(horizontal=5.dp)
                                     ) { Text("Sil",color=Forest,fontSize=12.sp) }
                                 }
