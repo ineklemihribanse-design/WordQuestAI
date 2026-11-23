@@ -66,6 +66,19 @@ def apply():
         "taller portrait ensures entire mascot is visible")
     changes[file]=s
 
+    # Both bundled mascots and remote Arena portraits use this shared
+    # renderer. High-quality filtering avoids jagged/pixelated upscaling.
+    file=SRC/"WordQuest2DCharacters.kt"
+    s=file.read_text("utf-8")
+    s=patch(s,
+        """                contentScale=ContentScale.Fit,
+                modifier=Modifier.fillMaxSize().scale(scale))""",
+        """                contentScale=ContentScale.Fit,
+                filterQuality=androidx.compose.ui.graphics.FilterQuality.High,
+                modifier=Modifier.fillMaxSize().scale(scale))""",
+        "smooth local and remote 2D portrait rendering")
+    changes[file]=s
+
     for file,s in changes.items():
         file.write_text(s,encoding="utf-8")
         print("PASS v189 mascot quality:",file.name)
