@@ -1,4 +1,4 @@
-name: WordQuest AI 1.0.88 - Klavye, ikon, arkadas maskotu
+name: WordQuest AI 1.0.89 - Klavye, ikon, arkadas maskotu
 on:
   push:
     branches: [release/v1.0.86-pakets1-7-integration, fix/v189-crossword-board-live-input]
@@ -1770,7 +1770,7 @@ jobs:
           grep -Fq 'if (position in previewLetters) previewLetters[position]' "$FILE"
           grep -Fq 'var expanded by remember(game.id) { mutableStateOf(false) }' "$FILE"
           grep -Fq 'fontSize = 26.sp, lineHeight = 29.sp' "$FILE"
-      - name: Stamp v1.0.88 after all seven packages and verify requested UI fixes
+      - name: Stamp v1.0.89 after all seven packages and verify requested UI fixes
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -1778,7 +1778,7 @@ jobs:
           gradle=Path("source/app/build.gradle.kts")
           s=gradle.read_text("utf-8")
           assert s.count("versionCode = 112")==1 and s.count('versionName = "1.0.86"')==1
-          gradle.write_text(s.replace("versionCode = 112","versionCode = 114",1).replace('versionName = "1.0.86"','versionName = "1.0.88"',1),encoding="utf-8")
+          gradle.write_text(s.replace("versionCode = 112","versionCode = 115",1).replace('versionName = "1.0.86"','versionName = "1.0.89"',1),encoding="utf-8")
           root=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
           puzzle=(root/"PuzzleScreen.kt").read_text("utf-8")
           assert puzzle.count("inlineEditor()")==2
@@ -1799,10 +1799,19 @@ jobs:
           assert "val wide = maxWidth >= 760.dp && !keyboardVisible" not in puzzle
           preview=(root/"Wq188FriendPreview.kt").read_text("utf-8")
           assert "MAX_SIDE = 1024" in preview
+          hd=(root/"Wq183ArenaShare.kt").read_text("utf-8")
+          assert "Wq188FriendPreview.encode(id, bitmap)" in hd
+          assert "Wq188FriendPreview.decode(avatarId, payload)" in hd
+          portrait=(root/"WordQuest2DCharacters.kt").read_text("utf-8")
+          assert "filterQuality=androidx.compose.ui.graphics.FilterQuality.High" in portrait
+          icon_router=(root/"Wq189UploadedIcons.kt").read_text("utf-8")
+          assert "ready_folders" in icon_router and "verb_forms" in icon_router
+          assert "val previewLetters: Map<Cell, Char?>" in puzzle
+          assert "fittedBoardHeight" in puzzle
           home=(root/"Wq175PremiumHome.kt").read_text("utf-8")
           for art in ('"wq_yeni_oyun"','"wq_hazir_paketler"','"wq_bulmacalarim"'):
               assert art in home,art
-          print("PASS: v1.0.88/114 stable IME, approved game/folder artwork, bounded HD friend preview")
+          print("PASS: v1.0.89/114 stable IME, approved game/folder artwork, bounded HD friend preview")
           PY
       - name: Compile fully assembled Kotlin and Compose without APK or release
         working-directory: source
@@ -1838,10 +1847,10 @@ jobs:
           import json
           m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
           assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(114,"1.0.88")
-          print("PASS: v1.0.88/114 package preserved")
+          assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(114,"1.0.89")
+          print("PASS: v1.0.89/114 package preserved")
           PY
-      - name: Sign v1.0.88 APK with verified existing installed certificate
+      - name: Sign v1.0.89 APK with verified existing installed certificate
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
@@ -1860,24 +1869,24 @@ jobs:
             --ks "$key" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" \
             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS \
             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true \
-            --out "$out/WordQuestAI-v1.0.88-signed-qa.apk" \
+            --out "$out/WordQuestAI-v1.0.89-signed-qa.apk" \
             "$out/app-offline-unsigned.apk"
           java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" \
-            verify --verbose --print-certs "$out/WordQuestAI-v1.0.88-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-certs.txt"
+            verify --verbose --print-certs "$out/WordQuestAI-v1.0.89-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-certs.txt"
           grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v186-certs.txt"
           grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v186-certs.txt"
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v186-certs.txt"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.88-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$out/WordQuestAI-v1.0.89-signed-qa.apk" > "$RUNNER_TEMP/wq-v186-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v186-badging.txt"
           grep -Fq "versionCode='114'" "$RUNNER_TEMP/wq-v186-badging.txt"
-          grep -Fq "versionName='1.0.88'" "$RUNNER_TEMP/wq-v186-badging.txt"
+          grep -Fq "versionName='1.0.89'" "$RUNNER_TEMP/wq-v186-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v186-badging.txt"; then exit 1; fi
-          unzip -tq "$out/WordQuestAI-v1.0.88-signed-qa.apk"
+          unzip -tq "$out/WordQuestAI-v1.0.89-signed-qa.apk"
           echo 'PASS: original app identity and production signing certificate'
       - name: Enable KVM for real in-place emulator upgrade test
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
-      - name: Test existing v1.0.87 app upgrades in-place to v1.0.88
+      - name: Test existing v1.0.88 app upgrades in-place to v1.0.89
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -1885,29 +1894,29 @@ jobs:
           arch: x86_64
           profile: pixel_4
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
-          script: bash tools/v188/qa_emulator_upgrade_188.sh
-      - name: Publish v1.0.88 to installed app update channel only after all gates pass
+          script: bash tools/v189/qa_emulator_upgrade_189.sh
+      - name: Publish v1.0.89 to installed app update channel only after all gates pass
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.87
-          if gh release view v1.0.88 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo 'Immutable v1.0.88 release already exists. Refusing overwrite.' >&2
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.88
+          if gh release view v1.0.89 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo 'Immutable v1.0.89 release already exists. Refusing overwrite.' >&2
             exit 1
           fi
           mkdir -p dist
-          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.88-signed-qa.apk dist/WordQuestAI.apk
+          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.89-signed-qa.apk dist/WordQuestAI.apk
           python3 - <<'PY'
           import hashlib,json,pathlib
           apk=pathlib.Path('dist/WordQuestAI.apk')
           assert apk.stat().st_size>100_000_000
           payload={
            "schemaVersion":1,
-           "tag":"v1.0.88",
+           "tag":"v1.0.89",
            "versionCode":114,
-           "versionName":"1.0.88",
+           "versionName":"1.0.89",
            "packageName":"com.kelimebulmacasi.a1.practice.fresh",
            "apkFile":"WordQuestAI.apk",
            "sizeBytes":apk.stat().st_size,
@@ -1916,11 +1925,11 @@ jobs:
           }
           pathlib.Path('dist/update.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
           PY
-          gh release create v1.0.88 dist/WordQuestAI.apk dist/update.json \
+          gh release create v1.0.89 dist/WordQuestAI.apk dist/update.json \
             -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
-            --title 'WordQuest AI 1.0.88 — Paket 1–7 Birleşik Güncelleme' \
-            --notes 'Paket 1-7 ve yazma/ikon/maskot düzeltmeleri, Android code114. Tam kaynak derlemesi/JVM testleri, aynı paket/sertifika ve mevcut v1.0.87 üzerine veri koruyan emülatör kurulum kontrolü başarıyla tamamlandı. Firebase canlı kurallarının yönetici tarafından ayrıca yayımlanması gerekebilir.'
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.88
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.88" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
-          echo 'PASS: v1.0.88 is now visible in Settings > Updates.'
+            --title 'WordQuest AI 1.0.89 — Paket 1–7 Birleşik Güncelleme' \
+            --notes 'Paket 1-7 ve yazma/ikon/maskot düzeltmeleri, Android code115. Tam kaynak derlemesi/JVM testleri, aynı paket/sertifika ve mevcut v1.0.88 üzerine veri koruyan emülatör kurulum kontrolü başarıyla tamamlandı. Firebase canlı kurallarının yönetici tarafından ayrıca yayımlanması gerekebilir.'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.89
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.89" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
+          echo 'PASS: v1.0.89 is now visible in Settings > Updates.'
 
