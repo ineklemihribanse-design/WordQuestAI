@@ -502,9 +502,11 @@ import androidx.compose.foundation.text.KeyboardOptions''',
        '''                        inlineEditor()''',
        "phone keyboard-visible answer stays in clue instead of modal")
     s=once(s,
-       '''                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)''',
+       '''                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)
+                    Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)''',
        '''                    if (!keyboardVisible) inlineEditor()
-                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)''',
+                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)
+                    Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)''',
        "phone normal answer input underneath board")
     assert 'if(typedDialog' not in s and 'title={Text("Kelimeyi yaz")}' not in s
     assert s.count("inlineEditor()")==3
