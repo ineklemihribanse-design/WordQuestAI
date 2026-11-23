@@ -23,6 +23,10 @@ def apply():
     p=SRC/"Wq175PremiumHome.kt"
     s=p.read_text("utf-8")
     s=once(s,
+        "import androidx.compose.material3.Text",
+        "import androidx.compose.material3.Text\nimport androidx.compose.material3.TextButton",
+        "import YDS TextButton before use in Compose")
+    s=once(s,
         '''    var activeSection by remember { mutableStateOf<String?>(null) }''',
         '''    var activeSection by remember { mutableStateOf<String?>(null) }
     var ydsExpanded by remember { mutableStateOf(true) }''',
