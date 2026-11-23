@@ -74,10 +74,15 @@ def apply():
         "revealed hints and saved crossing letters must win over unsent draft")
 
     # Compact meaning card in landscape (clue on right) and portrait.
+    # v188 keeps one phone clue call using the IME state and the other
+    # tablet clue call using a fixed false. Compact BOTH, without inventing
+    # extra cards or changing when the keyboard appears.
     original='ActiveClue(word, view.wordIndex in view.solvedIndices, false)'
-    if s.count(original)!=2:
-        raise AssertionError(f"expected two noncompact clue call sites, got {s.count(original)}")
-    s=s.replace(original,'ActiveClue(word, view.wordIndex in view.solvedIndices, true)')
+    phone='ActiveClue(word, view.wordIndex in view.solvedIndices, keyboardVisible)'
+    if s.count(original)!=1 or s.count(phone)!=1:
+        raise AssertionError(f"clue cards changed: tablet={s.count(original)} phone={s.count(phone)}")
+    s=s.replace(original,'ActiveClue(word, view.wordIndex in view.solvedIndices, true)',1)
+    s=s.replace(phone,'ActiveClue(word, view.wordIndex in view.solvedIndices, true)',1)
 
     # Put the only editor *after* the grid. On tablets the board and answer
     # actions form a single left column. On phones the editor stays in the same
