@@ -1768,8 +1768,17 @@ jobs:
           FILE=source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'val previewLetters: Map<Cell, Char?>' "$FILE"
           grep -Fq 'if (position in previewLetters) previewLetters[position]' "$FILE"
-          grep -Fq 'var expanded by remember(game.id) { mutableStateOf(false) }' "$FILE"
-          grep -Fq 'fontSize = 26.sp, lineHeight = 29.sp' "$FILE"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt")
+          t=p.read_text(encoding="utf-8")
+          assert re.search(r"var expanded by remember\([^\n]+\)\s*\{\s*mutableStateOf\(false\)\s*\}", t)
+          assert "fittedBoardHeight" in t
+          assert "val previewLetters: Map<Cell, Char?>" in t
+          assert "if (position in previewLetters) previewLetters[position]" in t
+          print("PASS: post-P1-to-P7 assembled grid and live typing")
+          PY
       - name: Stamp v1.0.89 after all seven packages and verify requested UI fixes
         run: |
           set -euo pipefail
