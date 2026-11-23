@@ -21,18 +21,27 @@ def apply():
     src=FILE.read_text("utf-8")
     s=src
 
-    # It was duplicating "YDS · Kolay · Karışık" above/below the heading.
-    path='        Text(game.path, color = Forest, fontFamily = Sans, fontWeight = FontWeight.Bold, fontSize = 12.sp)\n'
-    s=one(s,path,"","remove duplicated game level/category line")
-    # Keep title, progress/score, Back and Shuffle controls intact.
-    assert 'Text(game.title,' in s
+    # Keep the informative "YDS · Kolay · Karışık" subtitle and remove
+    # the huge repeated "Kolay · Karışık" title directly below it.
+    # v175 placed the title on TWO lines, so older single-line matchers missed it.
+    s=one(s,
+        '''                Text(game.title, color = Ink, fontFamily = Serif,
+                    fontSize = 28.sp, lineHeight = 31.sp)
+''',
+        '',"remove repeated level/category heading; keep path, score and progress")
+    s=one(s,
+        'Wq175GlossIcon("puzzle",Modifier.size(45.dp))',
+        'Wq175GlossIcon("puzzle",Modifier.size(32.dp))',
+        "compact game header icon")
+    assert 'Text(game.path,' in s
+    assert 'Text(game.title,' not in s
     assert 'view.points.toString() + " puan"' in s
 
     # The answer clue remains readable but should not occupy a large card.
     s=one(s,
-        "vertical = if (compact) 7.dp else 10.dp",
+        "vertical = if (compact) 10.dp else 14.dp",
         "vertical = if (compact) 5.dp else 7.dp",
-        "reduce question-card vertical padding")
+        "reduce v175 inflated question-card vertical padding")
     s=one(s,
         "fontSize = if (compact) 17.sp else 22.sp, lineHeight = if (compact) 20.sp else 25.sp,",
         "fontSize = if (compact) 15.sp else 18.sp, lineHeight = if (compact) 18.sp else 21.sp,\n                    maxLines = 2, overflow = TextOverflow.Ellipsis,",
