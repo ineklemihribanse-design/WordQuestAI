@@ -1806,6 +1806,11 @@ jobs:
           python3 tools/v190/apply_yds_paragraph_phone_190.py
           python3 -m py_compile tools/v190/apply_compact_puzzle_ui_190.py
           python3 tools/v190/apply_compact_puzzle_ui_190.py
+          python3 -m py_compile tools/v190/apply_hint_draft_integration_190.py
+          python3 tools/v190/apply_hint_draft_integration_190.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190CrosswordHintInput.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190CrosswordHintInputTest.kt
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'remember(view.wordIndex, wordDraft, inlineTyping, view.letters, view.locked)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
 
           python3 - <<'PY'
@@ -1904,7 +1909,7 @@ jobs:
           home=(root/"Wq175PremiumHome.kt").read_text("utf-8")
           for art in ('"wq_yeni_oyun"','"wq_hazir_paketler"','"wq_bulmacalarim"'):
               assert art in home,art
-          print("PASS: v1.0.90/115 stable IME, approved game/folder artwork, bounded HD friend preview")
+          print("PASS: v1.0.90/116 stable IME, approved game/folder artwork, bounded HD friend preview")
           PY
       - name: Compile fully assembled Kotlin and Compose without APK or release
         working-directory: source
@@ -1912,6 +1917,11 @@ jobs:
           set -euo pipefail
           chmod +x ./gradlew
           ./gradlew --no-daemon :app:compileOfflineKotlin --stacktrace
+      - name: Unit test revealed letters and partial typed answer
+        working-directory: source
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq190CrosswordHintInputTest' --stacktrace
       - name: Unit test v190 landscape board fitting
         working-directory: source
         run: |
@@ -1951,7 +1961,7 @@ jobs:
           m=json.load(open("app/build/outputs/apk/offline/output-metadata.json"))
           assert m["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           assert (m["elements"][0]["versionCode"],m["elements"][0]["versionName"])==(116,"1.0.90")
-          print("PASS: v1.0.90/115 package preserved")
+          print("PASS: v1.0.90/116 package preserved")
           PY
       - name: Sign v1.0.90 APK with verified existing installed certificate
         env:
