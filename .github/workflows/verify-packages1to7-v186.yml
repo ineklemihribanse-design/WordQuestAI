@@ -49,14 +49,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install Android dependencies and voice generator
+      - name: Ensure required Android SDK is installed (only if missing)
         run: |
           set -euo pipefail
-          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 update
-          sudo apt-get -o Acquire::Retries=5 -o Acquire::Queue-Mode=access -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 install -y --no-install-recommends espeak libsndfile1
-          python3 -m pip install --retries 5 --timeout 60 soundfile
-          SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
-          "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+          if ! test -s "$ANDROID_HOME/platforms/android-35/android.jar" ||
+             ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+          else
+            echo 'Android API 35 and build tools 35 already installed; skip sdkmanager.'
+          fi
       # Cache the entire assembled 1.0.90 source (pre-v191).
       # Every source input is hashed except current v191 and this CI definition.
       - name: Calculate immutable assembled Android source cache key
@@ -87,6 +89,13 @@ jobs:
           grep -Fq 'fun phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
           (cd source && python3 tools/verify_audio_ipa.py)
           echo "CACHE HIT: rebuilt-only source bypassed, all old overlays skipped."
+      - name: Install voice generator dependencies only when source cache misses
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
+        run: |
+          set -euo pipefail
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 update
+          sudo apt-get -o Acquire::Retries=5 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 install -y --no-install-recommends espeak libsndfile1
+          python3 -m pip install --retries 5 --timeout 60 soundfile
       # Build the historical source once, then reuse its exact source tree on
       # later v1.0.75-only edits. The cache key includes EVERY tracked input
       # except tools/v175/**; those are applied fresh below on every run.
