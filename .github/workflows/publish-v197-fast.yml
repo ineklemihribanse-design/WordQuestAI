@@ -179,6 +179,30 @@ jobs:
           assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
           print("PASS: signed-candidate identity and ALL offline unit tests.")
           PY
+      - name: Print exact failing JVM tests, if any
+        if: failure()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+          base=Path("source/app/build/test-results/testOfflineUnitTest")
+          found=False
+          for path in sorted(base.glob("TEST-*.xml")):
+              try:
+                  root=ElementTree.parse(path).getroot()
+              except Exception as exc:
+                  print("Cannot read",path,exc)
+                  continue
+              for case in root.iter("testcase"):
+                  for bad in ("failure","error"):
+                      for node in case.findall(bad):
+                          found=True
+                          print("FAILED TEST:",path.name,case.get("classname"),case.get("name"))
+                          print("WHY:",node.get("message",""))
+                          print((node.text or "")[:2500])
+          print("Failed test found:",found)
+          PY
       - name: Sign v1.0.97 with current installed-app production certificate
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
