@@ -29,47 +29,34 @@ once('            "arena" in s || "yarış" in s -> "trophy"',
      '            "arena" in s || "yarış" in s -> "trophy"',
      "Differentiate approved game-mode icons")
 assert '"fiil" in s -> "verbs"' in s, "Verb forms mapping lost"
-# Historical Wq175GlossIcon only checked the old wq175_icons assets, so the
-# 33 installed user-approved atlas icons were not actually rendered in most
-# cards. This is the missing integration, not an icon-file download issue.
-old_gloss='''    if (approved != null) {
-        Image(painter = painterResource(approved), contentDescription = null,
-            modifier = modifier, contentScale = ContentScale.Fit)
-    } else if (image != null) {
-        Image(bitmap = image, contentDescription = null,
-            modifier = modifier, contentScale = ContentScale.Fit)
-    } else {
-        Box(modifier.background(Color(0xFFEAE5F8), RoundedCornerShape(12.dp)),
-            contentAlignment = Alignment.Center) {
-            Text("•", color = Color(0xFF6654A2))
-        }
-    }'''
-new_gloss='''    if (approved != null) {
-        Image(painter = painterResource(approved), contentDescription = null,
-            modifier = modifier, contentScale = ContentScale.Fit)
-    } else {
-        // Package 2: route generic/repeated UI icon keys to the 33 approved
-        // 512px source artworks, then to their verified 6x6 atlas, and only
-        // then to the existing bitmap fallback. Premium room icons stay first.
-        val atlasKey = Wq182Icons.preferred(name)
-        val drawn = if (atlasKey != null) {
-            Wq183HighResArtwork(atlasKey, modifier) ||
-                Wq182Artwork(atlasKey, modifier)
-        } else false
-        if (!drawn && image != null) {
-            Image(bitmap = image, contentDescription = null,
-                modifier = modifier, contentScale = ContentScale.Fit)
-        } else if (!drawn) {
-            Box(modifier.background(Color(0xFFEAE5F8), RoundedCornerShape(12.dp)),
-                contentAlignment = Alignment.Center) {
-                Text("•", color = Color(0xFF6654A2))
-            }
-        }
-    }'''
-once(old_gloss,new_gloss,"Real 33-icon atlas routing in all Wq175GlossIcon cards")
-assert s.count('Wq183HighResArtwork(atlasKey, modifier)')==1
-assert s.count('Wq182Artwork(atlasKey, modifier)')==1
-assert '"kategori" in s || "klasör" in s -> "categories"' in s
+# The v1.0.82 overlay already inserted an approved 33-icon atlas route
+# before the legacy glossy bitmap fallback. Earlier P2 tried replacing the
+# untouched v175 if/else chain and failed (the chain is no longer identical).
+# Assert the REAL assembled route, then extend its semantic coverage.
+assert "val selectedReplacement=Wq182Icons.preferred(name)" in s, (
+    "P2 expected installed 33-icon atlas router")
+assert "Wq182Artwork(selectedReplacement,modifier)" in s, (
+    "P2 icon provider was not connected to generic card renderer")
+atlas=root/"source/app/src/main/java/com/kelimebulmacasi/a1/Wq182Icons.kt"
+assert atlas.is_file(), "P2 approved 33-icon atlas not assembled"
+a=atlas.read_text(encoding="utf-8")
+needle='''        "level_a1" to "wq_seviye_a1",'''
+assert a.count(needle)==1,"P2 approved atlas replacement table changed"
+a=a.replace(needle,'''        "library" to "wq_kelime_hafizam",
+        "notebook" to "wq_kelime_hafizam",
+        "review" to "wq_yanlislarimdan_bulmaca",
+        "exam" to "wq_yds_hazirlik",
+        "level" to "wq_seviye_rozeti_genel",
+        "completion" to "wq_cumle_olustur",
+        "level_a1" to "wq_seviye_a1",''',1)
+for old,new in (("library","wq_kelime_hafizam"),
+                ("notebook","wq_kelime_hafizam"),
+                ("review","wq_yanlislarimdan_bulmaca"),
+                ("exam","wq_yds_hazirlik"),
+                ("level","wq_seviye_rozeti_genel"),
+                ("completion","wq_cumle_olustur")):
+    assert a.count('"'+old+'" to "'+new+'"')==1
+atlas.write_text(a,encoding="utf-8")
 res.mkdir(parents=True,exist_ok=True)
 category='''<vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="64dp" android:height="64dp" android:viewportWidth="64"
@@ -94,6 +81,5 @@ verbs='''<vector xmlns:android="http://schemas.android.com/apk/res/android"
 main.write_text(s,encoding="utf-8")
 assert s.count("R.drawable.wq186_category_folder_icon")==1
 assert s.count("R.drawable.wq186_verb_forms_icon")==1
-assert 'Wq183HighResArtwork(atlasKey, modifier)' in s
-assert 'Wq182Artwork(atlasKey, modifier)' in s
-print("PASS Package2: original premium rooms, 33 atlas icons, category and verb art actively routed")
+assert "Wq182Artwork(selectedReplacement,modifier)" in s
+print("PASS Package2: original premium rooms, verified 33-icon atlas routes, category/verb artwork and six additional semantic routes")
