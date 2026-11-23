@@ -65,6 +65,54 @@ def apply():
         raise AssertionError(f"expected two noncompact clue call sites, got {s.count(original)}")
     s=s.replace(original,'ActiveClue(word, view.wordIndex in view.solvedIndices, true)')
 
+    # Put the only editor *after* the grid. On tablets the board and answer
+    # actions form a single left column. On phones the editor stays in the same
+    # unconditional composition branch when the IME appears (focus is stable).
+    s=one(s,
+        """                        Box(Modifier.weight(1.22f), contentAlignment = Alignment.TopCenter) {""",
+        """                        Column(Modifier.weight(1.42f), horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(6.dp)) {""",
+        "full-width landscape crossword plus its answer controls")
+
+    s=one(s,
+        """                            inlineEditor()
+                            if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)
+                            Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)""",
+        """                            if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)""",
+        "remove duplicate tablet input/actions from right side")
+
+    s=one(s,
+        """                            }
+                        }
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp)) {""",
+        """                            }
+                            inlineEditor()
+                            Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)
+                        }
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp)) {""",
+        "move tablet answer entry and Harf aç directly below the grid")
+
+    s=one(s,
+        """                    inlineEditor()
+                    BoardFrame(""",
+        """                    BoardFrame(""",
+        "phone grid must appear above the answer textbox with IME open")
+    s=one(s,
+        """                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)
+                    Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)""",
+        """                    inlineEditor()
+                    if (view.wordIndex in view.solvedIndices) WordIpa(word.entry.answer, preferences)
+                    Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)""",
+        "place phone answer textbox and Harf aç below the crossword")
+
+    s=one(s,
+        "(maxWidth * .55f - 22.dp).coerceAtMost(570.dp)",
+        "(maxWidth * .56f - 16.dp).coerceAtMost(600.dp)",
+        "slightly enlarge actual tablet grid with reclaimed clue space")
+
+    assert s.count("inlineEditor()")==2
+    assert s.count("Actions(view, ::checkAndLearn, ::revealAndLearn, listen, pronunciation.error)")==2
+
     assert "fun revealAndLearn()" in s
     assert '"Harf aç"' in s
     assert 'val previewLetters: Map<Cell, Char?>' in s
