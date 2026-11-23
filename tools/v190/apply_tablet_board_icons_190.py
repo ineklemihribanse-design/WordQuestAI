@@ -60,20 +60,19 @@ def apply():
     # Changing only the home tile router cannot replace this bottom nav.
     file = SRC / "Wq175HomeNavigation.kt"
     s = file.read_text("utf-8")
-    s = one(s,
-        """            icon={Wq175GlossIcon("puzzle",Modifier.size(29.dp))},""",
+    previous_nav = '            icon={Wq175GlossIcon("puzzle",Modifier.size(29.dp))},'
+    assert s.count(previous_nav) == 2, (
+        "Home and New Game are the two original puzzle-icon navigation items")
+    s = s.replace(previous_nav,
         """            icon={
                 if (!Wq189UploadedArtwork("home",Modifier.size(35.dp)))
                     Wq175GlossIcon("home",Modifier.size(35.dp))
-            },""",
-        "main bottom-nav uses distinct uploaded house")
-    s = one(s,
-        """            icon={Wq175GlossIcon("puzzle",Modifier.size(29.dp))},""",
+            },""", 1)
+    s = s.replace(previous_nav,
         """            icon={
                 if (!Wq189UploadedArtwork("new_game",Modifier.size(35.dp)))
                     Wq175GlossIcon("new_game",Modifier.size(35.dp))
-            },""",
-        "new-game bottom-nav uses separate uploaded puzzle-ABC")
+            },""", 1)
     s = one(s,
         """            icon={Wq175GlossIcon("plan",Modifier.size(29.dp))},""",
         """            icon={
