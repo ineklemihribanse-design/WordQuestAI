@@ -1746,6 +1746,17 @@ jobs:
       - name: Fit the entire crossword and show letters on the grid while typing
         run: |
           set -euo pipefail
+          python3 -m py_compile tools/v189/apply_mascot_hd_189.py
+          python3 tools/v189/apply_mascot_hd_189.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt")
+          lines=p.read_text(encoding="utf-8").splitlines()
+          needles=["expanded","BoardFrame(","keyboardBoard","boardHeight","val word","softKeyboard","GameHeading(","inlineEditor","previewLetters","widthIn(max","selectedReplacement","Text(game.title"]
+          for i,line in enumerate(lines):
+              if any(k in line for k in needles) and i < 430:
+                  print(f"ACTUAL PUZZLE SOURCE {i+1}: {line[:210]}")
+          PY
           python3 -m py_compile tools/v189/apply_board_input_189.py
           python3 tools/v189/apply_board_input_189.py
           python3 -m py_compile tools/v189/apply_icons_189.py
