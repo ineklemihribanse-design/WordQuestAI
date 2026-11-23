@@ -28,12 +28,14 @@ jobs:
           from pathlib import Path
           s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text()
           for name,first,last in (
+            ("draft","var inlineTyping by remember", "    Box("),
+            ("submit","fun submitInlineWord()", "    val inlineEditor: @Composable () -> Unit ="),
             ("editor","val inlineEditor: @Composable () -> Unit =", "    Box("),
             ("board","private fun BoardFrame(", "@Composable\nprivate fun WordFields("),
           ):
             start=s.index(first)
             end=s.find(last,start+len(first))
-            block=s[start:end] if name=="board" else s[start:start+3800]
+            block=s[start:end] if name in ("board","submit") else s[start:start+5500]
             print("=== "+name+" source ===")
-            print(block[:10500])
+            print(block[:16000])
           PY
