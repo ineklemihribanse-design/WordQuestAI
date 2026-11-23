@@ -6,6 +6,7 @@ on:
       - 'tools/v188/**'
       - 'tools/v189/**'
       - 'tools/v190/**'
+      - 'tools/v191/**'
       - 'tools/v187/**'
       - 'tools/v186/**'
       - '.github/workflows/verify-packages1to7-v186.yml'
@@ -1808,6 +1809,11 @@ jobs:
           python3 tools/v190/apply_compact_puzzle_ui_190.py
           python3 -m py_compile tools/v190/apply_hint_draft_integration_190.py
           python3 tools/v190/apply_hint_draft_integration_190.py
+          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py
+          python3 tools/v191/apply_mobile_crossword_191.py
+          grep -Fq 'Wq190BoardPolicy.phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'Wq189UploadedArtwork("solo_puzzle"' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'if (!keyboardVisible)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190CrosswordHintInput.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190CrosswordHintInputTest.kt
           grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
