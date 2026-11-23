@@ -1785,6 +1785,21 @@ jobs:
           set -euo pipefail
           python3 -m py_compile tools/v190/apply_tablet_board_icons_190.py
           python3 tools/v190/apply_tablet_board_icons_190.py
+          python3 -m py_compile tools/v190/restore_unrequested_icons_190.py
+          python3 tools/v190/restore_unrequested_icons_190.py
+          grep -Fq 'Wq175GlossIcon("plan"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175HomeNavigation.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          icons=(root/"Wq189UploadedIcons.kt").read_text("utf-8")
+          scoped=icons[icons.index("private val routes"):icons.index("fun asset(")]
+          for forbidden in ('"exam" to', '"review" to', '"yds" to', '"analytics" to', '"cards" to', '"assistant" to'):
+              assert forbidden not in scoped, f"Unrequested icon override: {forbidden}"
+          home=(root/"Wq175PremiumHome.kt").read_text("utf-8")
+          wanted=home[home.index("val userApproved = when"):home.index("val illustrated=when")]
+          assert "YDS Akademi" not in wanted and "YDS Hazırlık" not in wanted
+          print("PASS: YDS Akademi/Hazırlık original icons restored")
+          PY
           python3 -m py_compile tools/v190/restore_yds_icons_190.py
           python3 tools/v190/restore_yds_icons_190.py
           ! grep -Fq '"YDS Akademi" -> "exam"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175PremiumHome.kt
