@@ -17,39 +17,25 @@ def patch(s,old,new,label):
 def apply():
     changes={}
 
-    file=SRC/"Wq183MascotStore.kt"
-    s=file.read_text("utf-8")
-    s=patch(s,
-        "fun picture(context: Context, id: String, victory: Boolean): Bitmap? {",
-        "fun picture(context: Context, id: String, victory: Boolean, fullResolution: Boolean = false): Bitmap? {",
-        "add opt-in full-res image decode")
-    s=patch(s,
-        "                inSampleSize = 2",
-        "                inSampleSize = if (fullResolution) 1 else 2",
-        "preserve originals for network HD; keep old lightweight in-app defaults")
-    changes[file]=s
-
-    file=SRC/"Wq185FriendMascot.kt"
-    s=file.read_text("utf-8")
-    s=patch(s,
-        "Wq183MascotStore.picture(context, avatar, false) ?: return null",
-        "Wq183MascotStore.picture(context, avatar, false, fullResolution = true) ?: return null",
-        "full resolution friend preview source")
-    assert "Wq188FriendPreview.encode(avatar, source)" in s
-    changes[file]=s
+    # v184 already loads/crops the unscaled full-resolution mascot image.
+    store=(SRC/"Wq183MascotStore.kt").read_text("utf-8")
+    assert "inSampleSize = 1" in store and "Wq184BitmapTrim.crop(decoded)" in store
+    friend=(SRC/"Wq185FriendMascot.kt").read_text("utf-8")
+    assert "Wq188FriendPreview.encode(avatar, source)" in friend
+    assert "Wq183MascotStore.picture(context, avatar, false)" in friend
 
     file=SRC/"Wq183ArenaShare.kt"
     s=file.read_text("utf-8")
     s=patch(s,
         """            val image = Wq183MascotStore.picture(context, selected, false)
             image?.let { Wq183ArenaShare.encodePreview(selected, it) }""",
-        """            val image = Wq183MascotStore.picture(context, selected, false, fullResolution = true)
+        """            val image = Wq183MascotStore.picture(context, selected, false)
             try {
                 image?.let { Wq183ArenaShare.encodePreview(selected, it) }
             } finally {
                 image?.recycle()
             }""",
-        "use full resolution, recycle image after Arena preview creation")
+        "recycle full-resolution Arena source after encoding")
     start=s.index("    /** Only decode bounded, valid WebP content")
     end=s.index("    fun receive(id: String, data: String?) {",start)
     s=s[:start]+"""    /**
