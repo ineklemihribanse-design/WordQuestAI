@@ -1,0 +1,239 @@
+name: WordQuest AI 1.0.93 - Cevap duzeltme ve silme
+on:
+  push:
+    branches: [fix/v190-tablet-board-and-visible-icons]
+    paths:
+      - '.github/workflows/publish-v193-fast.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: wordquest-v193-release
+  cancel-in-progress: false
+
+jobs:
+  publish_verified_update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check published 1.0.92 and prevent accidental overwrite
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.92
+          if gh release view v1.0.93 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::v1.0.93 is already published; refusing overwrite.'
+            exit 1
+          fi
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/fix/v190-tablet-board-and-visible-icons" --jq .object.sha)" = "$GITHUB_SHA"
+      - name: Use immutable cached full source from validated 1.0.91 build
+        run: |
+          echo "WQ190_FULL_KEY=wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8" >> "$GITHUB_ENV"
+      - name: Restore complete Android 1.0.90 source without replaying historical packages
+        id: complete_source
+        uses: actions/cache/restore@v4
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Verify complete source and update prerequisites
+        env:
+          CACHE_HIT: ${{ steps.complete_source.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          if [ "$CACHE_HIT" != true ]; then
+            echo '::error::No verified assembled source cache. Refusing an incomplete APK; run the verified v190 assembler first.'
+            exit 1
+          fi
+          test -s source/gradlew
+          test -s source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          grep -Fq 'versionCode = 116' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.90"' source/app/build.gradle.kts
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'fun phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          (cd source && python3 tools/verify_audio_ipa.py)
+          echo 'PASS: exact complete 1.0.90 source and US/UK audio retained.'
+      - name: Apply stable v192 overview/focus and v193 editable answers
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py tools/v192/apply_overview_focus_192.py tools/v193/apply_editable_entry_193.py
+          python3 tools/v191/apply_mobile_crossword_191.py
+          python3 tools/v192/apply_overview_focus_192.py
+          python3 tools/v193/apply_editable_entry_193.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq192Viewport.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq192ViewportTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq193EditableDraft.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq193EditableDraftTest.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          g=Path("source/app/build.gradle.kts")
+          s=g.read_text("utf-8")
+          assert s.count("versionCode = 116")==1 and s.count('versionName = "1.0.90"')==1
+          g.write_text(s.replace("versionCode = 116","versionCode = 119",1)
+                        .replace('versionName = "1.0.90"','versionName = "1.0.93"',1),"utf-8")
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text("utf-8")
+          for code in ("Wq192Viewport.overviewTileDp(", "horizontal.animateScrollTo(targetX)",
+                       "keyboardWasShown = false", "Modifier.weight(1f).height(46.dp)",
+                       "Wq190CrosswordHintInput.completedWord(", "state.enter(completeAnswer)"):
+              assert code in p,code
+          assert "maxOf(regularTile, 28.dp)" not in p
+          assert p.count("inlineEditor()")==2
+          assert "Wq193EditableDraft.protectedPositions(" in p
+          assert 'Text("Sil",color=Forest,fontSize=12.sp)' in p
+          assert "if (cell !in view.locked) {" in p
+          assert "Modifier.weight(1f).heightIn(min=56.dp)" in p
+          assert "runCatching { entryFocus.requestFocus() }" in p
+          print("PASS: overview/focus, compact stable editor, unchanged game state/Firebase.")
+          PY
+      - name: Verify Android SDK and Gradle
+        run: |
+          set -euo pipefail
+          if ! test -s "$ANDROID_HOME/platforms/android-35/android.jar" ||
+             ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+          fi
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Run complete offline tests and build new production APK in one Gradle invocation
+        working-directory: source
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline --stacktrace
+          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
+          test -s app/build/outputs/apk/offline/output-metadata.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text("utf-8"))
+          assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
+          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(119,"1.0.93")
+          assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          print("PASS: signed-candidate identity and ALL offline unit tests.")
+          PY
+      - name: Sign v1.0.93 with current installed-app production certificate
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          umask 077
+          KEY="$RUNNER_TEMP/wq-v193-signing.p12"
+          trap 'rm -f "$RUNNER_TEMP/wq-v193-signing.p12"' EXIT
+          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
+          OUT=source/app/build/outputs/apk/offline
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          java -jar "$SIGNER" sign             --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS"             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$OUT/WordQuestAI-v1.0.93-signed-qa.apk" "$OUT/app-offline-unsigned.apk"
+          java -jar "$SIGNER" verify --verbose --print-certs "$OUT/WordQuestAI-v1.0.93-signed-qa.apk" > "$RUNNER_TEMP/wq-v193-signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v193-signature.txt"
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v193-signature.txt"
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v193-signature.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-v1.0.93-signed-qa.apk" > "$RUNNER_TEMP/wq-v193-badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v193-badging.txt"
+          grep -Fq "versionCode='119'" "$RUNNER_TEMP/wq-v193-badging.txt"
+          grep -Fq "versionName='1.0.93'" "$RUNNER_TEMP/wq-v193-badging.txt"
+          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v193-badging.txt"; then exit 1; fi
+          unzip -tq "$OUT/WordQuestAI-v1.0.93-signed-qa.apk"
+          echo 'PASS: verified installed-app identity and same v2/v3 production signer.'
+      - name: Install image validation dependency for responsive emulator screenshot QA
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --retries 4 --timeout 30 Pillow==11.3.0
+          python3 - <<'PY'
+          from PIL import Image
+          print("PASS: Pillow screenshot verification dependency available",Image.__version__)
+          PY
+      - name: Prepare v192 to v193 upgrade and responsive screenshots
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          tmp=Path(os.environ["RUNNER_TEMP"])
+          src=Path("tools/v190/qa_emulator_upgrade_190.sh").read_text("utf-8")
+          edits=(
+            ("releases/download/v1.0.89/","releases/download/v1.0.92/"),
+            ("WordQuestAI-v1.0.90-signed-qa.apk","WordQuestAI-v1.0.93-signed-qa.apk"),
+            ("versionCode='116'","versionCode='119'"),
+            ("versionCode='115'","versionCode='118'"),
+            ("versionCode=116","versionCode=119"),
+            ("python3 tools/v190/verify_upgrade_metadata_190.py",'python3 "$RUNNER_TEMP/wq193-verify-upgrade.py"'),
+          )
+          for old,new in edits:
+              assert old in src,old
+              src=src.replace(old,new)
+          (tmp/"wq193-emulator-upgrade.sh").write_text(src,"utf-8")
+          verify=Path("tools/v190/verify_upgrade_metadata_190.py").read_text("utf-8")
+          assert 'old["version"] != 115 or new["version"] != 116' in verify
+          verify=verify.replace('old["version"] != 115 or new["version"] != 116',
+                                'old["version"] != 118 or new["version"] != 119')
+          verify=verify.replace('Expected in-place code 115 -> 116',
+                                'Expected in-place code 118 -> 119')
+          (tmp/"wq193-verify-upgrade.py").write_text(verify,"utf-8")
+          print("PASS: staged signed v1.0.92 -> v1.0.93 upgrade test")
+          PY
+      - name: Enable KVM for production upgrade QA
+        run: |
+          if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
+      - name: Test 1.0.92 to 1.0.93 in-place upgrade without uninstall
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: pixel_4
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          script: bash "$RUNNER_TEMP/wq193-emulator-upgrade.sh"
+
+      - name: Publish immutable v1.0.93 to installed app update channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.92
+          if gh release view v1.0.93 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::Existing v1.0.93 release; refusing overwrite.' >&2
+            exit 1
+          fi
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/fix/v190-tablet-board-and-visible-icons" --jq .object.sha)" = "$GITHUB_SHA"
+          mkdir -p dist
+          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.93-signed-qa.apk dist/WordQuestAI.apk
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          apk=pathlib.Path("dist/WordQuestAI.apk")
+          assert apk.stat().st_size > 100_000_000
+          payload={
+            "schemaVersion":1,
+            "tag":"v1.0.93",
+            "versionCode":119,
+            "versionName":"1.0.93",
+            "packageName":"com.kelimebulmacasi.a1.practice.fresh",
+            "apkFile":"WordQuestAI.apk",
+            "sizeBytes":apk.stat().st_size,
+            "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
+            "notes":"Yanlis cevaptaki harfleri yeniden yazma ve silme; cevabi dogrulanmamis harfler artik kilitlenmez. Duzenleme sirasinda klavye acik kalir. Cevap kutusu metin kaymasi duzeltildi. Tam tahta ve yumusak yakinlasma korundu. Firebase, puanlar, Arena ve kayitlar korunur."
+          }
+          pathlib.Path("dist/update.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          gh release create v1.0.93 dist/WordQuestAI.apk dist/update.json \
+            -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
+            --title 'WordQuest AI 1.0.93 — Cevap Düzeltme ve Silme' \
+            --notes '1.0.92 üstüne aynı Android paket kimliği ve imzayla yerinde güncelleme. Hatalı cevap gönderildiğinde kelimeyi silme, düzeltme ve yeniden yazma artık mümkün. Henüz doğrulanmamış harfler kilitlenmiyor; yanlış cevapta klavye açık kalıyor. Giriş yazısı kaymıyor. Tam tahta, yazarken yaklaşma, geri dönme, Firebase, ilerleme, Arena ve maskotlar korunur. Birim testleri, imza ve 1.0.92→1.0.93 yükseltmesi doğrulandı.'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.93
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.93" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
+          echo 'PASS: v1.0.93 published for Settings > Updates.'
