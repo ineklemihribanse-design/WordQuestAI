@@ -41,9 +41,15 @@ def apply():
     file=SRC/"Wq183ArenaShare.kt"
     s=file.read_text("utf-8")
     s=patch(s,
-        "Wq183MascotStore.picture(context, selected, false)",
-        "Wq183MascotStore.picture(context, selected, false, fullResolution = true)",
-        "use full resolution source before Arena compression")
+        """            val image = Wq183MascotStore.picture(context, selected, false)
+            image?.let { Wq183ArenaShare.encodePreview(selected, it) }""",
+        """            val image = Wq183MascotStore.picture(context, selected, false, fullResolution = true)
+            try {
+                image?.let { Wq183ArenaShare.encodePreview(selected, it) }
+            } finally {
+                image?.recycle()
+            }""",
+        "use full resolution, recycle image after Arena preview creation")
     start=s.index("    /** Only decode bounded, valid WebP content")
     end=s.index("    fun receive(id: String, data: String?) {",start)
     s=s[:start]+"""    /**
