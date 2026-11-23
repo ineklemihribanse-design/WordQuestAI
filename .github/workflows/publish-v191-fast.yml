@@ -146,6 +146,14 @@ jobs:
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v191-badging.txt"; then exit 1; fi
           unzip -tq "$OUT/WordQuestAI-v1.0.91-signed-qa.apk"
           echo 'PASS: verified installed-app identity and same v2/v3 production signer.'
+      - name: Install image validation dependency for responsive emulator screenshot QA
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --retries 4 --timeout 30 Pillow==11.3.0
+          python3 - <<'PY'
+          from PIL import Image
+          print("PASS: Pillow screenshot verification dependency available",Image.__version__)
+          PY
       - name: Prepare tested v190 emulator QA for signed v190 to v191 upgrade
         run: |
           set -euo pipefail
