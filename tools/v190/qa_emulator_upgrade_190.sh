@@ -76,6 +76,9 @@ assert p.stat().st_size>10000, "Emulator screenshot not captured"
 assert p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
 print("PASS: emulator produced a valid startup screenshot",p.stat().st_size,"bytes")
 PY
+# Press Android's actual hardware/software Back key inside a Home category.
+# This regression previously closed the entire WordQuest Android process.
+python3 tools/v190/qa_system_back_190.py
 # Exercise screen-size, font-scale and rotation compatibility without modifying app data.
 # Capture screenshots for human review; a screenshot is not a visual-design pass.
 qa_dir="$RUNNER_TEMP/wq175-responsive-qa"
