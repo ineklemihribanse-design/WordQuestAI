@@ -1804,6 +1804,9 @@ jobs:
           python3 tools/v190/apply_lena_overflow_190.py
           python3 -m py_compile tools/v190/apply_yds_paragraph_phone_190.py
           python3 tools/v190/apply_yds_paragraph_phone_190.py
+          python3 -m py_compile tools/v190/apply_compact_puzzle_ui_190.py
+          python3 tools/v190/apply_compact_puzzle_ui_190.py
+          grep -Fq 'remember(view.wordIndex, wordDraft, inlineTyping, view.letters, view.locked)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
 
           python3 - <<'PY'
           from pathlib import Path
