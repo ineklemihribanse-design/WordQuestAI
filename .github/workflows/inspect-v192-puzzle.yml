@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Resolve known verified full-source cache
+      - name: Pin exact successful 1.0.91 source snapshot for inspection
         run: |
-          set -euo pipefail
-          HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v191\// && $2 != ".github/workflows/verify-packages1to7-v186.yml" && $2 != ".github/workflows/inspect-v192-puzzle.yml"' | sha256sum | cut -d ' ' -f1)"
-          echo "WQ190_FULL_KEY=wq190-source-v1-$HASH" >> "$GITHUB_ENV"
+          echo "WQ190_FULL_KEY=wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8" >> "$GITHUB_ENV"
       - uses: actions/cache/restore@v4
         id: source
         with:
