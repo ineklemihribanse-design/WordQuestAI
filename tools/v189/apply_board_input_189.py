@@ -107,8 +107,8 @@ def apply() -> None:
         "derive all visible draft letters without editing saved progress")
 
     s = once(s,
-        "BoardFrame(board, view, viewWidth, boardHeight, expanded, { expanded = !expanded }) {",
-        "BoardFrame(board, view, viewWidth, boardHeight, expanded, { expanded = !expanded }, previewLetters) {",
+        "BoardFrame(board, view, viewWidth, fittedBoardHeight, expanded, { expanded = !expanded }) {",
+        "BoardFrame(board, view, viewWidth, fittedBoardHeight, expanded, { expanded = !expanded }, previewLetters) {",
         "show live letters in tablet grid")
     s = once(s,
         """                        if (keyboardVisible) null else ({ expanded = !expanded }),
