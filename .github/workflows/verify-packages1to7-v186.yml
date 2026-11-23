@@ -1739,9 +1739,14 @@ jobs:
           assert "focusRequester(entryFocus)" in puzzle and "submitInlineWord()" in puzzle
           assert 'title={Text("Kelimeyi yaz")}' not in puzzle
           icons=(root/"WordQuest175Icons.kt").read_text("utf-8")
-          for marker in ("Wq183HighResArtwork(atlasKey, modifier)","Wq182Artwork(atlasKey, modifier)",
+          for marker in ("Wq182Artwork(selectedReplacement,modifier)",
                          "R.drawable.wq186_category_folder_icon","R.drawable.wq186_verb_forms_icon"):
               assert marker in icons,marker
+          atlas=(root/"Wq182Icons.kt").read_text("utf-8")
+          for marker in ('"library" to "wq_kelime_hafizam"',
+                         '"review" to "wq_yanlislarimdan_bulmaca"',
+                         '"exam" to "wq_yds_hazirlik"'):
+              assert marker in atlas,marker
           friends=(root/"Wq186FriendProfileDetail.kt").read_text("utf-8")
           assert "Wq186FriendStat(" in friends and "Kullanım bilgisi" in friends
           print("PASS: v1.0.87/113 and all three requested UI changes")
