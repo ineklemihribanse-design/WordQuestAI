@@ -81,18 +81,7 @@ internal fun Wq197OptionGrid(
     if (options.isEmpty()) return
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val longest = options.maxOfOrNull { it.length } ?: 0
-        val columns = when {
-            options.size <= 2 -> options.size
-            longest >= 17 -> if (maxWidth >= 730.dp) 4 else 2
-            longest >= 12 -> when {
-                maxWidth >= 730.dp -> 5
-                maxWidth >= 480.dp -> 3
-                else -> 2
-            }
-            maxWidth >= 750.dp -> 6
-            maxWidth >= 540.dp -> 5
-            else -> 3
-        }.coerceIn(1, options.size)
+        val columns = Wq197LayoutPolicy.columns(maxWidth.value, options.size, longest)
         Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
             options.chunked(columns).forEach { group ->
                 Row(Modifier.fillMaxWidth(),
