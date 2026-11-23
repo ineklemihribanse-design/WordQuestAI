@@ -1868,6 +1868,12 @@ jobs:
           grep -Fq 'solo=solo' source/app/src/main/java/com/kelimebulmacasi/a1/WordQuest174Arena.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190ArenaSoloPolicyTest.kt
           python3 tools/v190/audit_arena_190.py
+      - name: Fix real Android Back navigation for nested Home sections
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v190/apply_system_back_190.py tools/v190/test_system_back_190.py tools/v190/qa_system_back_190.py
+          python3 tools/v190/apply_system_back_190.py
+          python3 tools/v190/test_system_back_190.py
       - name: Stamp v1.0.90 after all seven packages and verify requested UI fixes
         run: |
           set -euo pipefail
