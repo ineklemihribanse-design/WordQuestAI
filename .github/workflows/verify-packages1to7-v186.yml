@@ -1837,6 +1837,7 @@ jobs:
           grep -Fq 'Wq189UploadedArtwork("home"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175HomeNavigation.kt
           grep -Fq 'Wq189UploadedArtwork("new_game"' source/app/src/main/java/com/kelimebulmacasi/a1/Wq175HomeNavigation.kt
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq190BoardPolicyTest.kt
+          python3 tools/v190/audit_arena_190.py
       - name: Stamp v1.0.89 after all seven packages and verify requested UI fixes
         run: |
           set -euo pipefail
