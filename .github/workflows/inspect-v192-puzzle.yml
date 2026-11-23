@@ -1,0 +1,41 @@
+name: Inspect assembled crossword UI for v192
+on:
+  push:
+    branches: [fix/v190-tablet-board-and-visible-icons]
+    paths: ['.github/workflows/inspect-v192-puzzle.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve known verified full-source cache
+        run: |
+          set -euo pipefail
+          HASH="$(git ls-tree -r HEAD | awk -F '\t' '$2 !~ /^tools\/v191\// && $2 != ".github/workflows/verify-packages1to7-v186.yml" && $2 != ".github/workflows/inspect-v192-puzzle.yml"' | sha256sum | cut -d ' ' -f1)"
+          echo "WQ190_FULL_KEY=wq190-source-v1-$HASH" >> "$GITHUB_ENV"
+      - uses: actions/cache/restore@v4
+        id: source
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Display source-level non-secret layout only
+        env:
+          HIT: ${{ steps.source.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          test "$HIT" = true
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text()
+          for name,first,last in (
+            ("editor","val inlineEditor: @Composable () -> Unit =", "    Box("),
+            ("board","private fun BoardFrame(", "@Composable\nprivate fun WordFields("),
+          ):
+            start=s.index(first)
+            end=s.find(last,start+len(first))
+            block=s[start:end] if name=="board" else s[start:start+3800]
+            print("=== "+name+" source ===")
+            print(block[:10500])
+          PY
