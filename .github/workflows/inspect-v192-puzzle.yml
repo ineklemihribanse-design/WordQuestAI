@@ -34,7 +34,7 @@ jobs:
               subprocess.run(["python3", "tools/"+patch], check=True)
           s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text()
           start=s.index("private fun GameHeading(")
-          end=s.index("@Composable\\nprivate fun BoardFrame(",start)
+          end=s.index("private fun BoardFrame(",start)
           print("=== CURRENT GameHeading (post v194) ===")
           print(s[start:end])
           print("=== End current heading ===")
