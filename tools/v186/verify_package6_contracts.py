@@ -67,7 +67,12 @@ contains(src,"PremiumOnlineRoom.kt","package6Rules","package6Retries",
          "submitWithRetry", "premiumRooms")
 contains(src,"PremiumArenaContent.kt","levelForWord",
          "levelPool: List<String>","target.level")
-contains(src,"PuzzleScreen.kt","typedDialog","wordDraft","Kelimeyi yaz")
+puzzle=contains(src,"PuzzleScreen.kt","inlineTyping","wordDraft","inlineEditor()",
+                "focusRequester(entryFocus)","submitInlineWord()")
+assert 'title={Text("Kelimeyi yaz")}' not in puzzle
+assert "if(typedDialog" not in puzzle
+assert puzzle.count("inlineEditor()") == 3
+assert "onClick={submitInlineWord}" in puzzle
 contains(src,"ArenaBoardV2.kt","hintLetters:Map<Int,Char>",
          "val hinted=active")
 for file in ("Wq186ArenaFairPlay.kt","Wq186ArenaHintNetwork.kt",
