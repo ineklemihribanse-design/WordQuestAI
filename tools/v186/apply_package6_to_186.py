@@ -428,7 +428,8 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions''',
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.BorderStroke''',
         "inline field keyboard/focus imports")
     # Preserve the native AndroidView's other callbacks and the existing
     # answer-check/persistence pipeline. Only replace openings of its IME.
@@ -477,7 +478,7 @@ import androidx.compose.foundation.text.KeyboardOptions''',
                             keyboardOptions=KeyboardOptions(imeAction=ImeAction.Done),
                             keyboardActions=KeyboardActions(onDone={ submitInlineWord() })
                         )
-                        Button(onClick={submitInlineWord},
+                        Button(onClick={ submitInlineWord() },
                             enabled=englishLetters(wordDraft).length==word.cells.size,
                             modifier=Modifier.heightIn(min=52.dp),
                             colors=ButtonDefaults.buttonColors(containerColor=Forest),
