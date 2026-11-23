@@ -110,7 +110,7 @@ def apply() -> None:
         "compact heading progress gap")
 
     assert "inlineEditor()" in s and "submitInlineWord()" in s
-    assert s.count("previewLetters,") == 2
+    assert s.count("previewLetters,") == 1 and s.count(", previewLetters) {") == 1
     assert "expanded || (keyboardVisible && keyboardKeys)" not in s
     if s == source:
         raise AssertionError("No crossword changes")
