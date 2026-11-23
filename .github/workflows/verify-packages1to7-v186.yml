@@ -102,9 +102,8 @@ jobs:
           test -n "$BASE_HASH"
           echo "WQ175_BASELINE_CACHE_KEY=wq175-pre175-v1-$BASE_HASH" >> "$GITHUB_ENV"
       - name: Restore unchanged pre-1.0.75 Android baseline
-        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' }}
         id: v175_baseline_restore
-        if: ${{ (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || (github.ref == 'refs/heads/feature/v183-quality-stability' || (github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || (github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || (github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons'))))) }}
+        if: ${{ steps.wq190_full_restore.outputs.cache-hit != 'true' && (github.ref == 'refs/heads/feature/v175-comprehensive-learning-update' || github.ref == 'refs/heads/feature/v183-quality-stability' || github.ref == 'refs/heads/feature/v184-mascot-victory-arena' || github.ref == 'refs/heads/feature/v185-profile-friend-personal-mascots' || github.ref == 'refs/heads/release/v1.0.86-pakets1-7-integration' || github.ref == 'refs/heads/fix/v189-crossword-board-live-input' || github.ref == 'refs/heads/fix/v190-tablet-board-and-visible-icons') }}
         uses: actions/cache/restore@v4
         with:
           path: source
