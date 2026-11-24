@@ -397,15 +397,24 @@ jobs:
       - name: Enable KVM for production upgrade QA
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
-      - name: Test current release to 1.0.101 in-place upgrade without uninstall
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Test current release to 1.0.101 in-place upgrade with bounded emulator shutdown
+        timeout-minutes: 28
+        run: |
+          set -euo pipefail
+          bash -n tools/v201/run_bounded_emulator_qa_201.sh
+          bash tools/v201/run_bounded_emulator_qa_201.sh "$RUNNER_TEMP/wq201-emulator-upgrade.sh" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.101-signed-qa.apk
+          sha256sum --check "$RUNNER_TEMP/wq201-upgrade-passed.sha256"
+
+      - name: Preserve emulator diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          profile: pixel_4
-          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
-          script: bash "$RUNNER_TEMP/wq201-emulator-upgrade.sh"
+          name: WordQuestAI-v201-emulator-diagnostics
+          path: |
+            ${{ runner.temp }}/wq201-emulator.log
+            ${{ runner.temp }}/wq201-upgrade-qa.log
+            ${{ runner.temp }}/wq201-upgrade-passed.sha256
+          if-no-files-found: ignore
 
       - name: Publish immutable v1.0.101 to installed app update channel
         env:
@@ -418,6 +427,7 @@ jobs:
             exit 1
           fi
           test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/fix/v190-tablet-board-and-visible-icons" --jq .object.sha)" = "$GITHUB_SHA"
+          sha256sum --check "$RUNNER_TEMP/wq201-upgrade-passed.sha256"
           mkdir -p dist
           cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.101-signed-qa.apk dist/WordQuestAI.apk
           python3 - <<'PY'
