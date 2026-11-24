@@ -175,6 +175,21 @@ jobs:
           sha256sum --check /tmp/wq199-newgame.sha
           test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq199TabletFocusTest.kt
           grep -Fq 'else if (enlarged) maxOf(regularTile, 30.dp) else regularTile' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+      - name: Verify Start validation is declared in sticky footer scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt").read_text("utf-8")
+          start=s.index("Wq198NewGamePage(back,")
+          footer=s.index("footer = {",start)
+          valid=s.index("val valid =",footer)
+          action=s.index("PrimaryAction(",footer)
+          assert footer < valid < action
+          assert s.count("val valid =")==1
+          assert "val valid = !loading && bank != null && count != null" in s
+          print("PASS: original Start validation is visible to both callback and enabled state.")
+          PY
       - name: Verify Android SDK and Gradle
         run: |
           set -euo pipefail
