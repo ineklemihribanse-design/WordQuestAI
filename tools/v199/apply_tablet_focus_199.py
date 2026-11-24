@@ -59,6 +59,8 @@ def patch(original):
     new_tile = selected + '''    val tabletFocus = Wq199TabletFocus.enabled(
         androidx.compose.ui.platform.LocalConfiguration.current.smallestScreenWidthDp, enlarged
     )
+    var measuredBoardWidth by remember { mutableStateOf(0) }
+    var measuredBoardHeight by remember { mutableStateOf(0) }
     // Keep the old zoom and all ordinary overview geometry on phones.
     val tile = if (tabletFocus) Wq199TabletFocus.tileDp(
         maxOf(regularTile, 30.dp).value, width.value, height.value,
@@ -73,18 +75,19 @@ def patch(original):
             // animation/rotation. Never center against stale pre-IME bounds.
             snapshotFlow {
                 listOf(horizontal.maxValue, vertical.maxValue,
-                    horizontal.viewportSize, vertical.viewportSize)
+                    measuredBoardWidth, measuredBoardHeight)
             }.collectLatest { measured ->
                 val (maxX, maxY, viewportX, viewportY) = measured
                 if (maxX == Int.MAX_VALUE || maxY == Int.MAX_VALUE ||
                     viewportX <= 0 || viewportY <= 0) return@collectLatest
-                val tilePx = with(density) { tile.roundToPx().coerceAtLeast(1).toFloat() }
+                val cellPx = with(density) { (tile - gap).roundToPx().coerceAtLeast(1).toFloat() }
+                val tilePx = cellPx + with(density) { gap.roundToPx().toFloat() }
                 val insetPx = with(density) { 6.dp.toPx() }
                 val targetX = Wq199TabletFocus.scrollPx(
-                    firstColumn, lastColumn, tilePx, tilePx,
+                    firstColumn, lastColumn, tilePx, cellPx,
                     viewportX, maxX, insetPx)
                 val targetY = Wq199TabletFocus.scrollPx(
-                    firstRow, lastRow, tilePx, tilePx,
+                    firstRow, lastRow, tilePx, cellPx,
                     viewportY, maxY, insetPx)
                 kotlinx.coroutines.coroutineScope {
                     launch { horizontal.animateScrollTo(targetX) }
@@ -93,11 +96,21 @@ def patch(original):
             }
         } else if (enlarged) {'''
     board = one(board, old_effect, new_effect)
+    board = one(board,
+        'val gap = if (tile < 25.dp) 1.dp else 2.dp',
+        'val gap = if (tabletFocus && tile <= 2.dp) 0.dp else if (tile < 25.dp) 1.dp else 2.dp')
+    board = one(board,
+        'Modifier.width(windowWidth).height(windowHeight).clip(boardShape).background(Board)',
+        '''Modifier.width(windowWidth).height(windowHeight)
+                .then(if (tabletFocus) Modifier.onSizeChanged {
+                    measuredBoardWidth = it.width
+                    measuredBoardHeight = it.height
+                } else Modifier).clip(boardShape).background(Board)''')
     # The original phone scroll and overview reset branch must remain identical.
-    assert board[board.index('        } else if (enlarged) {') + len('        } else '):] == old_board[old_board.index('        if (enlarged) {') + 8:]
+    assert board[board.index('        } else if (enlarged) {') + len('        } else '):board.index('    Column(Modifier.fillMaxWidth()')] == old_board[old_board.index('        if (enlarged) {') + 8:old_board.index('    Column(Modifier.fillMaxWidth()')]
     s = before + board + after
     imports = []
-    for item in ('androidx.compose.runtime.snapshotFlow', 'kotlinx.coroutines.flow.collectLatest'):
+    for item in ('androidx.compose.runtime.snapshotFlow', 'kotlinx.coroutines.flow.collectLatest', 'androidx.compose.ui.layout.onSizeChanged'):
         if 'import ' + item not in s:
             imports.append('import ' + item)
     if imports:
