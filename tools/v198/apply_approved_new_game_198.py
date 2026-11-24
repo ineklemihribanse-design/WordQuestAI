@@ -137,6 +137,9 @@ def patch_screen(original):
                 }''')
     # Avoid duplicate summary/hero above pinned CTA.
     footer = one(footer, '"Bulmacayı başlat"', '"Oyuna Başla"')
+    # Any early exit originally labelled with the old composable must retain its target.
+    body = body.replace("return@ScreenPage", "return@Wq198NewGamePage")
+    footer = footer.replace("return@ScreenPage", "return@Wq198NewGamePage")
     s = (s[:i] + '    Wq198NewGamePage(back, levels.joinToString(" · "), available, footer = {\n'
          + footer + '\n    }) {' + body + s[close:])
     # NewGameSection is a helper private to this file; no other screen uses it.
