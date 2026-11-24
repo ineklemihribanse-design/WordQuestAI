@@ -74,8 +74,19 @@ def make_clip(region, source, path):
 def main():
     manifest = BASE / "manifest.json"
     manifest_before = manifest.read_bytes()
-    words = json.loads(manifest_before)["words"]
-    assert {"do", "hi"} <= set(words), "Required short lexical entries missing"
+    manifest_data = json.loads(manifest_before)
+    words = manifest_data["words"]
+    old_words = dict(words)
+    ipa_path = BASE / "ipa.json"
+    ipa_data = json.loads(ipa_path.read_text("utf-8"))
+    added = sorted({"do", "hi"} - set(words))
+    print("Missing requested audio entries:", added, flush=True)
+    for word in added:
+        file_id = hashlib.sha1(word.encode()).hexdigest()[:16]
+        assert file_id not in words.values(), (word, "existing asset collision")
+        words[word] = file_id
+    assert len(words) == len(old_words) + len(added)
+    assert all(words[k] == v for k, v in old_words.items())
     player = BASE.parents[1] / "java/com/kelimebulmacasi/a1/OfflineAccentPlayer.kt"
     # Assembled app must still use the verified whole-word offline playback.
     source = player.read_text("utf-8")
@@ -107,16 +118,44 @@ def main():
             else:
                 print("Dictionary-based lexical entry (manual listening not verified):", word, region, actual)
             path = BASE / region / (file_id + ".ogg")
-            assert path.is_file(), path
+            if word not in added:
+                assert path.is_file(), path
+            else:
+                path.parent.mkdir(parents=True, exist_ok=True)
             hashes[region] = make_clip(region, spoken, path)
             changed.add(path.relative_to(BASE).as_posix())
             report.setdefault(word, {})[region] = {"ipa": actual, "sha256": hashes[region]}
             print("PASS short pronunciation:", word, region, actual)
         assert hashes[REGIONS[0]] != hashes[REGIONS[1]], word
-    assert manifest.read_bytes() == manifest_before
+    # Keep existing dictionary IDs, add only explicitly missing lexical entries.
+    # IPA for the requested words must agree with the generated phonemes.
+    for word in ("do", "hi"):
+        ipa_data["entries"][word] = {
+            **ipa_data["entries"].get(word, {}),
+            "origin": "espeak-phonemic",
+            "us": report[word]["en-us"]["ipa"],
+            "uk": report[word]["en-gb"]["ipa"],
+        }
+        unresolved = ipa_data["unresolved"]
+        if isinstance(unresolved, dict):
+            unresolved.pop(word, None)
+        elif word in unresolved:
+            unresolved.remove(word)
+    ipa_path.write_text(json.dumps(ipa_data, ensure_ascii=False, separators=(",", ":")), "utf-8")
+    manifest_data["clipsPerRegion"] = len(words)
+    manifest.write_text(json.dumps(manifest_data, ensure_ascii=False, separators=(",", ":")), "utf-8")
+    # Original full integrity verification ran before this patch. Keep every
+    # verification condition; adjust only its pinned expected count by the
+    # exact number of newly generated, explicitly requested entries.
+    verifier = ROOT / "source/tools/verify_audio_ipa.py"
+    verify_text = verifier.read_text("utf-8")
+    count_anchor = "assert len(words) == 2203,"
+    assert verify_text.count(count_anchor) == 1
+    assert len(old_words) == 2203
+    verifier.write_text(verify_text.replace(count_anchor, f"assert len(words) == {len(words)},", 1), "utf-8")
     assert len(changed) == 2 * len(report)
     assert "do" in report and "hi" in report
-    print("PASS: regenerated", len(report), "whole-word recordings per accent; manifest and vocabulary unchanged")
+    print("PASS: regenerated", len(report), "whole-word recordings per accent; existing IDs unchanged; added " + str(len(added)) + " missing entries")
     import os
     if os.environ.get("RUNNER_TEMP"):
         (Path(os.environ["RUNNER_TEMP"]) / "wq204-pronunciation-report.json").write_text(
