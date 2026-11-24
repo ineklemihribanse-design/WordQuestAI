@@ -1,0 +1,212 @@
+name: QA - Approved New Game phone and tablet design
+on:
+  push:
+    branches: [fix/v190-tablet-board-and-visible-icons]
+    paths:
+      - '.github/workflows/qa-v198-new-game.yml'
+      - 'tools/v198/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: wordquest-v198-newgame-qa
+  cancel-in-progress: false
+
+jobs:
+  verify_new_game:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Use immutable cached full source from validated 1.0.91 build
+        run: |
+          echo "WQ190_FULL_KEY=wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8" >> "$GITHUB_ENV"
+      - name: Restore complete Android 1.0.90 source without replaying historical packages
+        id: complete_source
+        uses: actions/cache/restore@v4
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Verify complete source and update prerequisites
+        env:
+          CACHE_HIT: ${{ steps.complete_source.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          if [ "$CACHE_HIT" != true ]; then
+            echo '::error::No verified assembled source cache. Refusing an incomplete APK; run the verified v190 assembler first.'
+            exit 1
+          fi
+          test -s source/gradlew
+          test -s source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          grep -Fq 'versionCode = 116' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.90"' source/app/build.gradle.kts
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'fun phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          (cd source && python3 tools/verify_audio_ipa.py)
+          echo 'PASS: exact complete 1.0.90 source and US/UK audio retained.'
+      - name: Apply approved v196 source plus compact New Game cards, filters, mode and count
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py tools/v192/apply_overview_focus_192.py tools/v193/apply_editable_entry_193.py tools/v194/apply_cell_text_alignment_194.py tools/v195/apply_a1_level_badge_195.py tools/v196/apply_exclusive_game_filter_196.py tools/v196/apply_universal_level_badge_196.py tools/v197/apply_compact_new_game_197.py
+          python3 tools/v191/apply_mobile_crossword_191.py
+          python3 tools/v192/apply_overview_focus_192.py
+          python3 tools/v193/apply_editable_entry_193.py
+          python3 tools/v194/apply_cell_text_alignment_194.py
+          python3 tools/v195/apply_a1_level_badge_195.py
+          python3 tools/v196/apply_exclusive_game_filter_196.py
+          python3 tools/v196/apply_universal_level_badge_196.py
+          python3 tools/v197/apply_compact_new_game_197.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq197CompactNewGameUi.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq197LayoutPolicy.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq197LayoutPolicyTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq192Viewport.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq192ViewportTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq193EditableDraft.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq193EditableDraftTest.kt
+          test -s tools/v194/apply_cell_text_alignment_194.py
+          test -s tools/v195/apply_a1_level_badge_195.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq196FilterPolicy.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq196LevelBadge.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq196FilterPolicyTest.kt
+          test -s source/app/src/main/assets/wq196_level_badge.webp
+          echo "8abe9cae51a083a2450902302c71b5a9f2d5ccf0a16b14a8d51026353a87babf  source/app/src/main/assets/wq196_level_badge.webp" | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path
+          g=Path("source/app/build.gradle.kts")
+          s=g.read_text("utf-8")
+          assert s.count("versionCode = 116")==1 and s.count('versionName = "1.0.90"')==1
+          g.write_text(s.replace("versionCode = 116","versionCode = 123",1)
+                        .replace('versionName = "1.0.90"','versionName = "1.0.97"',1),"utf-8")
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text("utf-8")
+          for code in ("Wq192Viewport.overviewTileDp(", "horizontal.animateScrollTo(targetX)",
+                       "keyboardWasShown = false", "Modifier.weight(1f).heightIn(min=56.dp)",
+                       "Wq190CrosswordHintInput.completedWord(", "state.enter(completeAnswer)"):
+              assert code in p,code
+          assert "maxOf(regularTile, 28.dp)" not in p
+          assert p.count("inlineEditor()")==2
+          assert "Wq193EditableDraft.protectedPositions(" in p
+          assert 'Text("Sil",color=Forest,fontSize=12.sp)' in p
+          assert "if (cell !in view.locked) {" in p
+          assert "Modifier.weight(1f).heightIn(min=56.dp)" in p
+          assert "runCatching { entryFocus.requestFocus() }" in p
+          cell = p[p.index("private fun LetterCell("):]
+          assert 'Text(number.toString(), Modifier.align(Alignment.TopStart)' in cell
+          assert 'Text(letter.toString(), Modifier.align(Alignment.Center)' in cell
+          assert 'padding(top = if (number == null) 0.dp else 3.dp)' not in cell
+          header=p[p.index("private fun GameHeading("):p.index("private fun BoardFrame(")]
+          assert 'fontWeight = FontWeight.Bold, fontSize = 15.sp)' in header
+          assert 'Modifier.size(30.dp)' in header
+          assert 'Wq196LevelBadge(Modifier.size(30.dp))' in header
+          assert 'Text("★"' not in header
+          assert 'padding(horizontal=11.dp,vertical=7.dp)' in header
+          assert 'Wq189UploadedArtwork("solo_puzzle"' not in header
+          newgame=Path("source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt").read_text("utf-8")
+          assert 'NewGameSection("Kelime Havuzu"' in newgame
+          assert 'NewGameSection("Oyun Ayarları"' in newgame
+          assert 'Wq197CompactHero(levels.first(),session.profileKey,available)' in newgame
+          assert 'Wq197LevelSelector(levels, !loading, ::toggleLevel)' in newgame
+          assert 'Wq197FilterDialog(' in newgame
+          assert 'filterMode = next' in newgame
+          assert 'check(topics.isEmpty() || kinds.isEmpty())' in newgame
+          assert 'Wq197OptionGrid(timeSizes.map { "$it dk" } + "Özel"' in newgame
+          assert 'gameSizes.map(Int::toString) + "Özel"' in newgame
+          assert 'session.newGameFiltered(levels, topics, kinds, count!!)' in newgame
+          assert 'MAX_NEW_GAME_WORDS = 70' in newgame
+          assert 'PuzzleClockStore(context, session.profileKey).save(' in newgame
+          print("PASS v197: 3D level icon, responsive 6/3-col levels, compact category chooser")
+          print("PASS v197: combined game mode and word count, 70-word/custom, save and clock retained")
+          PY
+      - name: Install approved art and responsive New Game page only
+        run: |
+          set -euo pipefail
+          sha256sum source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt > /tmp/wq198-board.sha
+          python3 -m py_compile tools/v198/apply_approved_new_game_198.py
+          python3 tools/v198/apply_approved_new_game_198.py
+          sha256sum --check /tmp/wq198-board.sha
+          test "$(find source/app/src/main/assets/new_game_198 -name '*.webp' | wc -l)" -eq 6
+          grep -Fq 'Wq198NewGamePage(back,' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          grep -Fq 'Wq198FilterTabs(' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          grep -Fq 'session.newGameFiltered(levels, topics, kinds, count!!)' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Verify Android SDK and Gradle
+        run: |
+          set -euo pipefail
+          if ! test -s "$ANDROID_HOME/platforms/android-35/android.jar" ||
+             ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+          fi
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Run complete offline tests and build new production APK in one Gradle invocation
+        working-directory: source
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          # First run the same full compile/test/lint path as v1.0.96.
+          # Maven Central sometimes throttles ONLY the lint artifact fetch (HTTP 429).
+          # If and only if HTTP 429 prevented lint's dependencies, re-run ALL
+          # unit tests and assemble the APK while skipping that previously
+          # successful network-dependent lint task. Never bypass code errors.
+          LOG="$RUNNER_TEMP/wq-v197-gradle.log"
+          if ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
+            tail -n 70 "$LOG"
+          else
+            if grep -Eiq 'status code 429|Too Many Requests' "$LOG"; then
+              echo "::warning::Maven Central HTTP 429 on lint artifact downloads; using prior v1.0.96 lint validation."
+              tail -n 70 "$LOG"
+              ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline -x :app:lintVitalAnalyzeOffline --stacktrace
+            else
+              tail -n 150 "$LOG"
+              exit 1
+            fi
+          fi
+          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
+          test -s app/build/outputs/apk/offline/output-metadata.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text("utf-8"))
+          assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
+          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(123,"1.0.97")
+          assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          print("PASS: signed-candidate identity and ALL offline unit tests.")
+          PY
+      - name: Print exact failing JVM tests, if any
+        if: failure()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+          base=Path("source/app/build/test-results/testOfflineUnitTest")
+          found=False
+          for path in sorted(base.glob("TEST-*.xml")):
+              try:
+                  root=ElementTree.parse(path).getroot()
+              except Exception as exc:
+                  print("Cannot read",path,exc)
+                  continue
+              for case in root.iter("testcase"):
+                  for bad in ("failure","error"):
+                      for node in case.findall(bad):
+                          found=True
+                          print("FAILED TEST:",path.name,case.get("classname"),case.get("name"))
+                          print("WHY:",node.get("message",""))
+                          print((node.text or "")[:2500])
+          print("Failed test found:",found)
+          PY
+      - name: Archive unsigned design QA candidate (never publish)
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-NewGame-v198-design-QA-unsigned
+          path: source/app/build/outputs/apk/offline/app-offline-unsigned.apk
+          if-no-files-found: error
