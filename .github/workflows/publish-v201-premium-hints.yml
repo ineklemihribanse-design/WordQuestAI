@@ -397,6 +397,14 @@ jobs:
       - name: Enable KVM for production upgrade QA
         run: |
           if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
+      - name: Preserve signed candidate after successful build and tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v201-signed-candidate
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.101-signed-qa.apk
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
       - name: Test current release to 1.0.101 in-place upgrade with bounded emulator shutdown
         timeout-minutes: 28
         run: |
@@ -414,6 +422,7 @@ jobs:
         with:
           name: WordQuestAI-v201-emulator-diagnostics
           path: |
+            ${{ runner.temp }}/wq201-avd-list.log
             ${{ runner.temp }}/wq201-emulator.log
             ${{ runner.temp }}/wq201-upgrade-qa.log
             ${{ runner.temp }}/wq201-upgrade-passed.sha256
