@@ -1,0 +1,26 @@
+name: Lena Mixamo FBX export
+on:
+  push:
+    branches: ['export/lena-mixamo-fbx']
+    paths: ['.github/workflows/export-lena-mixamo.yml','tools/export_lena_mixamo.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install free Blender
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends blender
+      - name: Convert original GLB to textured rigged FBX and verify import
+        run: blender -b --python-exit-code 1 --python tools/export_lena_mixamo.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lena-Mixamo-FBX
+          path: exports/Lena_Mixamo.fbx
+          if-no-files-found: error
+          retention-days: 30
