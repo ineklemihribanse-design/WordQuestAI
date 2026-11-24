@@ -9,9 +9,10 @@ def once(s,a,b):
     if s.count(a)!=1:raise ValueError("Unexpected updater anchor: "+a[:150])
     return s.replace(a,b,1)
 p=P/'UpdateProtocol.kt';s=p.read_text()
+s=once(s,'MAX_APK_BYTES = 250L * 1024L * 1024L','MAX_APK_BYTES = 512L * 1024L * 1024L')
 s=once(s,'    val apkUrl: String,\n) {','    val apkUrl: String,\n    val delta: WqDeltaOffer? = null,\n) {')
 s=once(s,'    val sizeLabel: String get() =','    val fullSizeLabel: String get() =')
-s=once(s,'sizeBytes / (1024.0 * 1024.0))','sizeBytes / 1_000_000.0)\n    val sizeLabel: String get() = delta?.let { "%.1f MB (fark)".format(java.util.Locale.ROOT,it.size / 1_000_000.0) } ?: fullSizeLabel')
+s=once(s,'sizeBytes / (1024.0 * 1024.0))','sizeBytes / 1_000_000.0)\n    val sizeLabel: String get() = delta?.let { "%.1f MB (fark)".format(java.util.Locale.ROOT,it.size / 1_000_000.0) } ?: fullSizeLabel\n    val savingPercent: Int get() = delta?.let { ((sizeBytes-it.size)*100L/sizeBytes).toInt() } ?: 0')
 a=P/'AppUpdater.kt';u=a.read_text()
 u=once(u,'        return UpdateProtocol.parseRelease(metadata, fetchText(jsonUrl), currentCode, context.packageName)', '''        val manifest = fetchText(jsonUrl)
         val installedCode = currentCode
@@ -86,7 +87,7 @@ assert 'offer.' not in seg
 u=u[:start]+seg+u[end:]
 ui=P/'UpdateUi.kt';v=ui.read_text()
 v=once(v,'                    Text("İndirme boyutu: ${offer.sizeLabel}")','''                    Text("İndirme boyutu: ${offer.sizeLabel}")
-                    if (offer.delta != null) Text("Tam APK: ${offer.fullSizeLabel}. Fark paketi başarısız olursa tam indirme için tekrar onay istenir.")''')
+                    if (offer.delta != null) Text("Tam APK: ${offer.fullSizeLabel} · %${offer.savingPercent} tasarruf. Fark paketi başarısız olursa tam indirme için tekrar onay istenir.")''')
 v=v.replace('APK indiriliyor: %','Güncelleme hazırlanıyor: %')
 for file,content in [(p,s),(a,u),(ui,v)]:file.write_text(content)
 for file in ('WqDeltaMetadata.kt',):shutil.copyfile(ROOT/'tools/delta_android'/file,P/file)
