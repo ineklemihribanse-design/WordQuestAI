@@ -8,6 +8,7 @@ on:
       - '.github/workflows/qa-v117-smart-lena.yml'
 permissions:
   contents: read
+  actions: read
 jobs:
   android:
     if: github.head_ref == 'qa/v117-smart-lena'
