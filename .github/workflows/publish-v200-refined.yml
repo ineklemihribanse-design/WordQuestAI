@@ -198,6 +198,11 @@ jobs:
           grep -Fq 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' source/app/src/main/java/com/kelimebulmacasi/a1/Wq198NewGameUi.kt
           grep -Fq 'if (tabletTyping) Modifier.fillMaxHeight() else Modifier.verticalScroll(pageScroll)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
           grep -Fq 'session.newGameFiltered(levels, topics, kinds, count!!)' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Add Harf ac beside next clue only while phone keyboard is open
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v200/apply_phone_hint_while_typing_200.py
+          python3 tools/v200/apply_phone_hint_while_typing_200.py
       - name: Verify Android SDK and Gradle
         run: |
           set -euo pipefail
@@ -212,27 +217,36 @@ jobs:
         run: |
           set -euo pipefail
           chmod +x gradlew
-          # First run the same full compile/test/lint path as v1.0.96.
-          # Maven Central sometimes throttles ONLY the lint artifact fetch (HTTP 429).
-          # If and only if HTTP 429 prevented lint's dependencies, re-run ALL
-          # unit tests and assemble the APK while skipping that previously
-          # successful network-dependent lint task. Never bypass code errors.
+          # Robolectric runtime downloads are independent of Gradle dependency caching.
+          # Use Maven Central's canonical endpoint and retry transient artifact errors.
+          INIT="$RUNNER_TEMP/wq200-robolectric.init.gradle"
+          cat > "$INIT" <<'GRADLE'
+          allprojects {
+              tasks.withType(org.gradle.api.tasks.testing.Test).configureEach {
+                  systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+              }
+          }
+          GRADLE
           LOG="$RUNNER_TEMP/wq-v200-gradle.log"
-          if ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
-            tail -n 70 "$LOG"
-          else
-            if grep -Eiq 'status code 429|Too Many Requests' "$LOG"; then
-              echo "::warning::Maven Central HTTP 429 on lint artifact downloads; using prior v1.0.96 lint validation."
+          success=false
+          for attempt in 1 2 3; do
+            if ./gradlew --no-daemon --build-cache -I "$INIT" :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
+              success=true
               tail -n 70 "$LOG"
-              ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline -x :app:lintVitalAnalyzeOffline --stacktrace
+              break
+            fi
+            echo "::group::Build attempt $attempt diagnostics"
+            grep -nE '(^e:|^w:|\.kt:[0-9]+|\.kt: ?\(|Unresolved reference|Type mismatch|Cannot infer|Compilation error|Failed to fetch|429|503)' "$LOG" | head -n 150 || true
+            tail -n 100 "$LOG"
+            echo "::endgroup::"
+            if grep -Eiq 'Failed to fetch maven artifact|status code 429|Too Many Requests|status code 503|Read timed out|Connection reset' "$LOG" || grep -Rqs 'Failed to fetch maven artifact' app/build/test-results/testOfflineUnitTest; then
+              echo "::warning::Transient dependency download error; retrying all tests and APK build."
+              if [ "$attempt" != 3 ]; then sleep $((attempt * 15)); fi
             else
-              echo "::group::Exact Kotlin compiler diagnostics"
-              grep -nE '(^e:|^w:|\.kt:[0-9]+|\.kt: ?\(|Unresolved reference|Type mismatch|Cannot infer|Compilation error)' "$LOG" | head -n 150 || true
-              echo "::endgroup::"
-              tail -n 150 "$LOG"
               exit 1
             fi
-          fi
+          done
+          test "$success" = true
           test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
           test -s app/build/outputs/apk/offline/output-metadata.json
           python3 - <<'PY'
@@ -385,14 +399,14 @@ jobs:
             "apkFile":"WordQuestAI.apk",
             "sizeBytes":apk.stat().st_size,
             "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
-            "notes":"Yeni Oyun ekraninda daha sade arka plan, sistem cubuklarina uygun guvenli alan, telefonda kompakt kartlar ve tablette dengeli yerlesim. Tablet yatay modda klavye acildiginda tahta sabitlenir, ipucu listesi bagimsiz kayar. Telefon bulmaca tahtasi, mevcut oyun kayitlari, puanlama ve imza korunur."
+            "notes":"Yeni Oyun ekraninda daha sade arka plan, sistem cubuklarina uygun guvenli alan, telefonda kompakt kartlar ve tablette dengeli yerlesim. Tablet yatay modda klavye acildiginda tahta sabitlenir, ipucu listesi bagimsiz kayar. Telefonda yazarken Sonraki ipucu yaninda Harf ac bulunur. Telefon bulmaca tahtasi, mevcut oyun kayitlari, puanlama ve imza korunur."
           }
           pathlib.Path("dist/update.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
           gh release create v1.0.100 dist/WordQuestAI.apk dist/update.json \
             -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
             --title 'WordQuest AI 1.0.100 — Yeni Oyun ve Sabit Tablet Tahtası' \
-            --notes 'Yeni Oyun: sade arka plan, güvenli sistem çubuğu boşlukları, kompakt telefon kartları ve dengeli tablet düzeni. Yatay tablet: klavye açıkken tahta ve cevap alanı sabit; ipuçları ayrı kaydırılabilir. Telefon bulmacası ve oyun mantığı korunur. Aynı paket ve imza ile yerinde güncelleme.'
+            --notes 'Yeni Oyun: sade arka plan, güvenli sistem çubuğu boşlukları, kompakt telefon kartları ve dengeli tablet düzeni. Yatay tablet: klavye açıkken tahta ve cevap alanı sabit; ipuçları ayrı kaydırılabilir. Telefonda yazarken Sonraki ipucu yanında Harf aç kullanılabilir. Telefon tahtası ve oyun mantığı korunur. Aynı paket ve imza ile yerinde güncelleme.'
           test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.100
           test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.100" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
           echo 'PASS: v1.0.100 published for Settings > Updates.'
