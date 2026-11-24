@@ -26,16 +26,24 @@ once("    val softKeyboard = LocalSoftwareKeyboardController.current",
 once('''    LaunchedEffect(inlineTyping, view.wordIndex, outOfTime) {
         if(inlineTyping && !outOfTime &&
             view.wordIndex !in view.solvedIndices) {
-            entryFocus.requestFocus()
-            softKeyboard?.show()
+            // Wait for the visible editor to attach before requesting focus.
+            // Never crash the game if focus is temporarily unavailable.
+            withFrameNanos { }
+            runCatching {
+                entryFocus.requestFocus()
+                softKeyboard?.show()
+            }
         }
     }''',
 '''    LaunchedEffect(inlineTyping, view.wordIndex, outOfTime, timedOut, view.complete) {
         if (inlineTyping && !outOfTime && !timedOut && !view.complete) {
             // Same TextField remains mounted; request focus after composition.
             // Do not hide and re-show an IME that is already visible.
-            entryFocus.requestFocus()
-            if (!imeVisible) softKeyboard?.show()
+            withFrameNanos { }
+            runCatching {
+                entryFocus.requestFocus()
+                if (!imeVisible) softKeyboard?.show()
+            }
         }
     }
     LaunchedEffect(outOfTime, timedOut, view.complete) {
