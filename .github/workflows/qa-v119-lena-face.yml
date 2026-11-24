@@ -7,12 +7,14 @@ on:
       - 'Lena_V5_Android_Entegrasyon.zip'
       - 'Lena_Mixamo_38_Stabil_Android_QA.zip'
       - '.github/workflows/qa-v119-lena-face.yml'
+      - '.github/workflows/auto-release-verified.yml'
+      - 'tools/auto_release/**'
 permissions:
   contents: read
   actions: read
 jobs:
   android:
-    if: github.head_ref == 'qa/v119-lena-face'
+    if: github.head_ref == 'qa/v119-lena-face' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 85
     steps:
@@ -727,3 +729,18 @@ jobs:
           compression-level: 0
           if-no-files-found: error
           retention-days: 7
+  automatic_release:
+    needs: android
+    if: needs.android.result == 'success'
+    permissions:
+      contents: write
+      actions: read
+    uses: ./.github/workflows/auto-release-verified.yml
+    with:
+      version: '1.0.119'
+      base_version: '1.0.118'
+      version_code: 145
+      base_code: 144
+      base_sha: '825ec5dc519f0b5deffb0191e61b9c1f5c99f7da8bdada8ebde8ebf6cddcc8f1'
+      source_sha: ${{ github.event.pull_request.head.sha }}
+      notes: 'Lena: ses motorunun mevcut zamanlama bildirimlerine bağlı ağız şekilleri, doğal göz kırpma ve hafif gülümseme. Orijinal 38 vücut animasyonu ve yumuşak geçiş sistemi korunur.'
