@@ -79,6 +79,19 @@ def patch_screen(original):
     body = one(body,
         '        Wq197CompactHero(levels.first(),session.profileKey,available)\n', '')
     body = remove_call(body, "Wq175NewGameSummary")
+    # v197 defines the start validation inside the old page content.
+    # After splitting content and sticky footer, move that complete expression
+    # into the shared enclosing scope so the original callback and enabled
+    # argument can both access it. Do not change the validation conditions.
+    valid_match = re.search(r"(?m)^        val valid = !loading && bank != null && count != null[^\n]*(?:\n[ \t]{12,}[^\n]*)*", body)
+    assert valid_match is not None, "missing original Start validation"
+    valid_decl = valid_match.group(0)
+    assert "val valid =" not in footer
+    body = body[:valid_match.start()] + body[valid_match.end():]
+    footer = valid_decl + "\n" + footer
+    assert footer.count("val valid =") == 1
+    assert "val valid =" not in body
+
     body = one(body,
         '''            Wq197OptionGrid(
                 listOf("▤ Konu Seç", "◇ Kelime Türü Seç"),
