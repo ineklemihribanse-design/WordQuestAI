@@ -21,7 +21,7 @@ jobs:
         run: blender -b --python-exit-code 1 --python tools/export_lena_mixamo.py
       - uses: actions/upload-artifact@v4
         with:
-          name: Lena-Mixamo-AutoRig-FBX
-          path: exports/Lena_Mixamo_AutoRig.fbx
+          name: Lena-Mixamo-Clean-FBX
+          path: exports/Lena_Mixamo_Clean.fbx
           if-no-files-found: error
           retention-days: 30
