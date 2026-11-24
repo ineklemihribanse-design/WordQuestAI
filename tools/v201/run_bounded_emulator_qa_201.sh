@@ -10,6 +10,12 @@ LOG="$RUNNER_TEMP/wq201-emulator.log"
 QA_LOG="$RUNNER_TEMP/wq201-upgrade-qa.log"
 IMAGE='system-images;android-30;google_apis;x86_64'
 AVD='wq201-upgrade'
+# Pin the same absolute AVD directory for Java avdmanager and native emulator.
+export ANDROID_USER_HOME="$RUNNER_TEMP/wq201-android-user"
+export ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
+export ANDROID_EMULATOR_HOME="$ANDROID_USER_HOME"
+unset ANDROID_SDK_HOME
+mkdir -p "$ANDROID_AVD_HOME"
 rm -f "$PROOF"
 test -s "$QA"
 test -s "$APK"
@@ -28,7 +34,15 @@ echo "PASS: ADB is on PATH for all upgrade test subprocesses"
 # GitHub runner licenses are normally accepted already. Limit SDK setup.
 timeout --kill-after=15s 480s "$SDKM" --install emulator "$IMAGE" --channel=0
 test -x "$EMU"
-printf 'no\n' | timeout --kill-after=5s 60s "$AVDM" create avd --force -n "$AVD" --package "$IMAGE" --device pixel_4
+printf 'no\n' | timeout --kill-after=5s 60s "$AVDM" create avd --force -n "$AVD" --package "$IMAGE" --device pixel_4 --path "$ANDROID_AVD_HOME/$AVD.avd"
+# The previous avdmanager invocation returned zero without a discoverable INI.
+# Refuse to start an absent AVD; verify its directory and native discovery.
+test -s "$ANDROID_AVD_HOME/$AVD.ini"
+test -s "$ANDROID_AVD_HOME/$AVD.avd/config.ini"
+grep -Fxq "path=$ANDROID_AVD_HOME/$AVD.avd" "$ANDROID_AVD_HOME/$AVD.ini"
+timeout 20s "$EMU" -list-avds | tee "$RUNNER_TEMP/wq201-avd-list.log"
+grep -Fxq "$AVD" "$RUNNER_TEMP/wq201-avd-list.log"
+echo "PASS: avdmanager and emulator agree on $ANDROID_AVD_HOME/$AVD.ini"
 timeout --kill-after=5s 20s "$ADB" start-server
 # Separate session and redirected streams prevent orphan processes from
 # holding the runner's output descriptors open after test completion.
@@ -66,14 +80,21 @@ trap cleanup EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
 export ANDROID_SERIAL=emulator-5554
-timeout --kill-after=5s 600s bash -euo pipefail -c '
-    "$ADB" wait-for-device
-    while true; do
-        state="$(timeout 10s "$ADB" shell getprop sys.boot_completed 2>/dev/null | tr -d "\r")" || state=""
-        [ "$state" = 1 ] && break
-        sleep 2
-    done
-'
+# Check process liveness on every boot poll, rather than waiting ten minutes
+# for a process which already exited. Bound every ADB call independently.
+booted=false
+deadline=$((SECONDS + 600))
+while (( SECONDS < deadline )); do
+    if ! kill -0 "$emulator_pid" 2>/dev/null; then
+        echo "::error::Emulator exited before boot completed"
+        tail -n 100 "$LOG"
+        exit 1
+    fi
+    state="$(timeout --kill-after=2s 8s "$ADB" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" || state=""
+    if [ "$state" = 1 ]; then booted=true; break; fi
+    sleep 2
+done
+test "$booted" = true
 timeout --kill-after=5s 30s "$ADB" shell input keyevent 82
 echo "Android emulator boot completed"
 # Keep every old QA test: installation, package/signature/UID continuity,
