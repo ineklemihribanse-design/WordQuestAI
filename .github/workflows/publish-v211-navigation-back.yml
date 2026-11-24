@@ -4,6 +4,7 @@ on:
     branches: [fix/v190-tablet-board-and-visible-icons]
     paths:
       - '.github/workflows/publish-v211-navigation-back.yml'
+      - 'tools/v211/**'
   workflow_dispatch:
 permissions:
   contents: write

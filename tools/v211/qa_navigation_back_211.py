@@ -25,7 +25,7 @@ def main():
     wait_for("Ana bölümlere dön")
     click_node(visible("Bulmacalarım"))
     # Ensure we actually entered the child rather than immediately backing.
-    wait_for("Bulmaca ekle")
+    visible("Tüm Bulmacalar")
     back()
     wait_for("Ana bölümlere dön")
     wait_for("Bulmacalarım")
