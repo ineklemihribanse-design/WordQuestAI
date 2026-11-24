@@ -203,6 +203,9 @@ jobs:
               tail -n 70 "$LOG"
               ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest :app:assembleOffline -x :app:lintVitalAnalyzeOffline --stacktrace
             else
+              echo "::group::Exact Kotlin compiler diagnostics"
+              grep -nE '(^e:|^w:|\.kt:[0-9]+|\.kt: ?\(|Unresolved reference|Type mismatch|Cannot infer|Compilation error)' "$LOG" | head -n 150 || true
+              echo "::endgroup::"
               tail -n 150 "$LOG"
               exit 1
             fi
@@ -218,6 +221,13 @@ jobs:
           assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
           print("PASS: signed-candidate identity and ALL offline unit tests.")
           PY
+      - name: Preserve complete Gradle log on failed compilation
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v199-full-Gradle-error-log
+          path: ${{ runner.temp }}/wq-v199-gradle.log
+          if-no-files-found: ignore
       - name: Print exact failing JVM tests, if any
         if: failure()
         run: |
