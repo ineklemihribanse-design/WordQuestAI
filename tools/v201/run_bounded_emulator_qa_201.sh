@@ -19,6 +19,12 @@ AVDM="$(dirname "$SDKM")/avdmanager"
 ADB="$ANDROID_HOME/platform-tools/adb"
 EMU="$ANDROID_HOME/emulator/emulator"
 test -x "$SDKM" && test -x "$AVDM" && test -x "$ADB"
+# All child shells and Python subprocesses use the same verified ADB binary.
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+export ADB
+test "$(command -v adb)" = "$ADB"
+adb version
+echo "PASS: ADB is on PATH for all upgrade test subprocesses"
 # GitHub runner licenses are normally accepted already. Limit SDK setup.
 timeout --kill-after=15s 480s "$SDKM" --install emulator "$IMAGE" --channel=0
 test -x "$EMU"
@@ -60,9 +66,13 @@ trap cleanup EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
 export ANDROID_SERIAL=emulator-5554
-timeout --kill-after=5s 600s bash -c '
-    adb wait-for-device
-    until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d "\r")" = 1 ]; do sleep 2; done
+timeout --kill-after=5s 600s bash -euo pipefail -c '
+    "$ADB" wait-for-device
+    while true; do
+        state="$(timeout 10s "$ADB" shell getprop sys.boot_completed 2>/dev/null | tr -d "\r")" || state=""
+        [ "$state" = 1 ] && break
+        sleep 2
+    done
 '
 timeout --kill-after=5s 30s "$ADB" shell input keyevent 82
 echo "Android emulator boot completed"
