@@ -402,6 +402,9 @@ jobs:
         run: |
           set -euo pipefail
           bash -n tools/v201/run_bounded_emulator_qa_201.sh
+          export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+          command -v adb
+          adb version
           bash tools/v201/run_bounded_emulator_qa_201.sh "$RUNNER_TEMP/wq201-emulator-upgrade.sh" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.101-signed-qa.apk
           sha256sum --check "$RUNNER_TEMP/wq201-upgrade-passed.sha256"
 
