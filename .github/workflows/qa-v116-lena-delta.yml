@@ -570,6 +570,14 @@ jobs:
                           print((node.text or "")[:2500])
           print("Failed test found:",found)
           PY
+      - name: Preserve verified unsigned candidate before signing
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.116-unsigned-QA
+          path: source/app/build/outputs/apk/offline/app-offline-unsigned.apk
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 3
       - name: Sign v1.0.116 with current installed-app production certificate
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
@@ -592,9 +600,10 @@ jobs:
           grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v206-signature.txt"
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v206-signature.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-v1.0.116-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -m1 "^package:" "$RUNNER_TEMP/wq-v206-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v206-badging.txt"
           grep -Fq "versionCode='142'" "$RUNNER_TEMP/wq-v206-badging.txt"
-          grep -Fq "versionName='1.0.115'" "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -Fq "versionName='1.0.116'" "$RUNNER_TEMP/wq-v206-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v206-badging.txt"; then exit 1; fi
           unzip -tq "$OUT/WordQuestAI-v1.0.116-signed-qa.apk"
           python3 - "$OUT/WordQuestAI-v1.0.116-signed-qa.apk" <<'PY'
@@ -611,6 +620,16 @@ jobs:
               print("PASS signed APK includes both recordings and IPA index for",len(words),"words")
           PY
           echo 'PASS: verified installed-app identity and same v2/v3 production signer.'
+      - name: Preserve signing diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.116-signature-diagnostics
+          path: |
+            ${{ runner.temp }}/wq-v206-signature.txt
+            ${{ runner.temp }}/wq-v206-badging.txt
+          if-no-files-found: ignore
+          retention-days: 3
       - name: Validate model bytes and calculate signed transition delta
         env:
           GH_TOKEN: ${{ github.token }}
