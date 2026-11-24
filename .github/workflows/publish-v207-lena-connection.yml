@@ -575,11 +575,23 @@ jobs:
         timeout-minutes: 28
         run: |
           set -euo pipefail
-          bash -n tools/v206/run_bounded_emulator_qa_206.sh
+          # Reuse the tested emulator wrapper without changing the historical v106 release.
+          # Its final PASS marker contains the previous release pair; bind it to this release.
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          source=Path("tools/v206/run_bounded_emulator_qa_206.sh").read_text("utf-8")
+          old="PASS: old v1.0.105 -> v1.0.106 in-place upgrade"
+          assert source.count(old)==1, "Unexpected upstream upgrade proof anchor"
+          assert os.environ["WQ_OLD_TAG"]=="v1.0.106"
+          new=f'PASS: old {os.environ["WQ_OLD_TAG"]} -> v1.0.107 in-place upgrade'
+          (Path(os.environ["RUNNER_TEMP"])/"wq207-run-emulator-qa.sh").write_text(source.replace(old,new,1),"utf-8")
+          PY
+          bash -n "$RUNNER_TEMP/wq207-run-emulator-qa.sh"
           export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
           command -v adb
           adb version
-          bash tools/v206/run_bounded_emulator_qa_206.sh "$RUNNER_TEMP/wq206-emulator-upgrade.sh" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.107-signed-qa.apk
+          bash "$RUNNER_TEMP/wq207-run-emulator-qa.sh" "$RUNNER_TEMP/wq206-emulator-upgrade.sh" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.107-signed-qa.apk
           sha256sum --check "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
 
       - name: Preserve emulator diagnostics
