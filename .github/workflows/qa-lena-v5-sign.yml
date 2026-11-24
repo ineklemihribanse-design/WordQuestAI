@@ -1,0 +1,90 @@
+name: Lena V5 signed private QA candidate
+on:
+  push:
+    branches: [qa/lena-v5-android]
+    paths:
+      - '.github/workflows/qa-lena-v5-sign.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  sign:
+    if: github.ref == 'refs/heads/qa/lena-v5-android'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Verify successful exact QA artifact and unchanged release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45485598879" | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d["conclusion"]=="success" and d["head_sha"]=="de8c40201856a460d9f6b776eb4b67309b1b3d7a"'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.115
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14965070300" | python3 -c 'import json,sys; d=json.load(sys.stdin); assert not d["expired"] and d["digest"]=="sha256:e0f5691e628cead8ec8bc74dac6b90a3b112d9cae51aefdcddad828b2517e15d"'
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14965070300/zip" > "$RUNNER_TEMP/lena-qa.zip"
+          echo "e0f5691e628cead8ec8bc74dac6b90a3b112d9cae51aefdcddad828b2517e15d  $RUNNER_TEMP/lena-qa.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/lena-candidate"
+          unzip -q "$RUNNER_TEMP/lena-qa.zip" -d "$RUNNER_TEMP/lena-candidate"
+          test -s "$RUNNER_TEMP/lena-candidate/app-offline-unsigned.apk"
+          python3 - <<'PY'
+          import os, zipfile, hashlib, json, struct
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'lena-candidate/app-offline-unsigned.apk'
+          with zipfile.ZipFile(p) as z:
+              b=z.read('assets/avatars/lena/Lena_V5_Runtime.glb')
+              assert hashlib.sha256(b).hexdigest()=='ff5989c5056596fc487973e87974794603981890fec8a3dcb83561683f4f3a4d'
+              d=json.loads(b[20:20+struct.unpack_from('<I',b,12)[0]])
+              assert len(d['skins'][0]['joints'])==201 and len(d['animations'])==73
+              assert 'assets/avatars/lena/Lena_Prism3D_AnimationPack_v6.glb' in z.namelist()
+          print('PASS: exact tested runtime and original fallback both bundled')
+          PY
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Verify Android SDK signing tools
+        run: |
+          set -euo pipefail
+          if ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+      - name: Sign only the verified candidate with existing app identity
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          umask 077
+          KEY="$RUNNER_TEMP/lena-signing.p12"
+          trap 'rm -f "$KEY"' EXIT
+          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
+          OUT="$RUNNER_TEMP/lena-candidate"
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          java -jar "$SIGNER" sign --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true --out "$OUT/WordQuestAI-Lena-V5-QA.apk" "$OUT/app-offline-unsigned.apk"
+          java -jar "$SIGNER" verify --verbose --print-certs "$OUT/WordQuestAI-Lena-V5-QA.apk" > "$OUT/signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$OUT/signature.txt"
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$OUT/signature.txt"
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$OUT/signature.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-Lena-V5-QA.apk" > "$OUT/badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$OUT/badging.txt"
+          grep -Fq "versionCode='141'" "$OUT/badging.txt"
+          grep -Fq "versionName='1.0.115'" "$OUT/badging.txt"
+          if grep -Fq 'application-debuggable' "$OUT/badging.txt"; then exit 1; fi
+          unzip -tq "$OUT/WordQuestAI-Lena-V5-QA.apk"
+          (cd "$OUT" && sha256sum WordQuestAI-Lena-V5-QA.apk > SHA256SUMS.txt)
+          echo 'PASS: existing app signer and version retained; no release publication.'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Lena-V5-Signed-QA-APK
+          path: |
+            ${{ runner.temp }}/lena-candidate/WordQuestAI-Lena-V5-QA.apk
+            ${{ runner.temp }}/lena-candidate/SHA256SUMS.txt
+          compression-level: 0
+          retention-days: 7
+          if-no-files-found: error
