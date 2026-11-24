@@ -17,11 +17,11 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends blender python3-numpy
           blender -b --python-exit-code 1 --python-expr 'import numpy; print(numpy.__version__)'
-      - name: Convert original GLB to textured rigged FBX and verify import
+      - name: Convert original GLB to neutral skeleton-free FBX and verify import
         run: blender -b --python-exit-code 1 --python tools/export_lena_mixamo.py
       - uses: actions/upload-artifact@v4
         with:
-          name: Lena-Mixamo-FBX
-          path: exports/Lena_Mixamo.fbx
+          name: Lena-Mixamo-AutoRig-FBX
+          path: exports/Lena_Mixamo_AutoRig.fbx
           if-no-files-found: error
           retention-days: 30
