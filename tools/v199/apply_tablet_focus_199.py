@@ -78,7 +78,7 @@ def patch(original):
                 val (maxX, maxY, viewportX, viewportY) = measured
                 if (maxX == Int.MAX_VALUE || maxY == Int.MAX_VALUE ||
                     viewportX <= 0 || viewportY <= 0) return@collectLatest
-                val tilePx = with(density) { tile.toPx() }
+                val tilePx = with(density) { tile.roundToPx().coerceAtLeast(1).toFloat() }
                 val insetPx = with(density) { 6.dp.toPx() }
                 val targetX = Wq199TabletFocus.scrollPx(
                     firstColumn, lastColumn, tilePx, tilePx,
