@@ -213,6 +213,8 @@ jobs:
           find source/app/src/main/assets/new_game_198 -name '*.webp' -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq201-art.sha"
           python3 -m py_compile tools/v201/apply_hint_and_premium_new_game_201.py
           python3 tools/v201/apply_hint_and_premium_new_game_201.py
+          grep -Fq 'val landscapeArtwork = wide && maxWidth > maxHeight' "$P/Wq198NewGameUi.kt"
+          grep -Fq 'Wq198Artwork(if (landscapeArtwork) "tablet" else "phone",' "$P/Wq198NewGameUi.kt"
           sha256sum -c "$RUNNER_TEMP/wq201-board-policy.sha"
           sha256sum -c "$RUNNER_TEMP/wq201-art.sha"
           python3 - <<'PY'
