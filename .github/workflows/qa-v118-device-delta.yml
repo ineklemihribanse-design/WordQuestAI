@@ -1,0 +1,86 @@
+name: WordQuest 1.0.118 exact delta install QA
+on:
+  push:
+    branches: [qa/v118-smooth-lena]
+    paths:
+      - '.github/workflows/qa-v118-device-delta.yml'
+      - 'tools/v118_device/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  upgrade:
+    if: github.ref == 'refs/heads/qa/v118-smooth-lena'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download exact already verified artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wq117-device"
+          mkdir -p "$D/classes"
+          gh release download v1.0.117 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -D "$D"
+          mv "$D/WordQuestAI.apk" "$D/old.apk"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14973833590/zip" > "$D/new.zip"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14974147982/zip" > "$D/delta.zip"
+          echo "9e6dc7c218fda8728560c81bbffe6f238174ac6849176ebb9597f7e111452451  $D/old.apk" | sha256sum -c -
+          echo "0a62a6c63156bde4d57deeed07eda7fc621d94d64e62f73f3b3ef79c87ec8f29  $D/new.zip" | sha256sum -c -
+          echo "f16bbbfc00347c8c1b5ed367f50133d56d7441ada3664f4371187a4f2c1615b3  $D/delta.zip" | sha256sum -c -
+          python3 - "$D" <<'PY'
+          import sys,zipfile,shutil,json,hashlib
+          from pathlib import Path
+          d=Path(sys.argv[1])
+          def extract(archive,suffix,target):
+              with zipfile.ZipFile(d/archive) as z:
+                  names=[x for x in z.namelist() if x.endswith(suffix)]
+                  assert len(names)==1,names
+                  with z.open(names[0]) as src,(d/target).open('wb') as dst:
+                      shutil.copyfileobj(src,dst)
+          extract('new.zip','WordQuestAI-v1.0.118-signed-qa.apk','target.apk')
+          extract('delta.zip','.wqd.gz','patch.gz')
+          extract('delta.zip','delta-report.json','report.json')
+          r=json.loads((d/'report.json').read_text())['delta']
+          for name,key in [('old.apk','baseSha256'),('target.apk','targetSha256'),('patch.gz','sha256')]:
+              assert hashlib.sha256((d/name).read_bytes()).hexdigest()==r[key],name
+          assert r['fromVersionCode']==143 and r['toVersionCode']==144
+          PY
+          javac -d "$D/classes" tools/delta_android/WqDeltaApplier.java
+          rm "$D/new.zip" "$D/delta.zip"
+      - name: Prepare Android signing utilities and KVM
+        run: |
+          set -euo pipefail
+          if ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+          test -e /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - name: Install base, reconstruct from installed APK and upgrade without uninstall
+        timeout-minutes: 28
+        run: |
+          set -euo pipefail
+          bash tools/v118_device/run_emulator.sh tools/v118_device/verify_delta_install.sh "$RUNNER_TEMP/wq117-device/target.apk"
+          sha256sum -c "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: WordQuest-v118-device-delta-proof
+          path: |
+            ${{ runner.temp }}/wq117-device/report.json
+            ${{ runner.temp }}/wq117-device/before.txt
+            ${{ runner.temp }}/wq117-device/after.txt
+            ${{ runner.temp }}/wq117-device/startup.png
+            ${{ runner.temp }}/wq117-device/*.cert
+            ${{ runner.temp }}/wq206-upgrade-passed.sha256
+            ${{ runner.temp }}/wq206-upgrade-qa.log
+            ${{ runner.temp }}/wq206-emulator.log
+          if-no-files-found: ignore
+          retention-days: 7
