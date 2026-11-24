@@ -434,6 +434,7 @@ jobs:
           path: ${{ runner.temp }}/wq-robolectric-i7
           key: wq-robolectric-sdk-i7-android14-15-v1
       - name: Run complete offline tests and build experimental unsigned APK in one Gradle invocation
+        timeout-minutes: 28
         working-directory: source
         env:
           WQ_ROBOLECTRIC_DIR: ${{ runner.temp }}/wq-robolectric-i7
@@ -452,25 +453,39 @@ jobs:
           }
           GRADLE
           LOG="$RUNNER_TEMP/wq-v206-gradle.log"
-          success=false
-          for attempt in 1 2 3; do
-            if ./gradlew --no-daemon --build-cache -I "$INIT" :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
-              success=true
+          # First use already verified cached dependencies; don't hit Central unnecessarily.
+          # Only retry a demonstrably network/cache-related failure, never a compilation or test failure.
+          run_build() {
+            local label="$1"; shift
+            if ./gradlew --no-daemon --build-cache -I "$INIT" "$@" :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
               tail -n 70 "$LOG"
-              break
+              return 0
             fi
-            echo "::group::Build attempt $attempt diagnostics"
-            grep -nE '(^e:|^w:|\.kt:[0-9]+|\.kt: ?\(|Unresolved reference|Type mismatch|Cannot infer|Compilation error|Failed to fetch|429|503)' "$LOG" | head -n 150 || true
-            tail -n 100 "$LOG"
+            cp "$LOG" "$RUNNER_TEMP/wq-delta-${label}.log"
+            echo "::group::${label} diagnostics"
+            grep -nE '(^e:|^w:|Could not (GET|resolve|find)|No cached version|429|503|502|timed out|FAILURE)' "$LOG" | head -n 100 || true
+            tail -n 70 "$LOG"
             echo "::endgroup::"
-            if grep -Eiq 'Failed to fetch maven artifact|status code 429|Too Many Requests|status code 503|Read timed out|Connection reset' "$LOG" || grep -Rqs 'Failed to fetch maven artifact' app/build/test-results/testOfflineUnitTest; then
-              echo "::warning::Transient dependency download error; retrying all tests and APK build."
-              if [ "$attempt" != 3 ]; then sleep $((attempt * 15)); fi
-            else
+            return 1
+          }
+          if run_build cached --offline; then
+            echo 'PASS: cached offline build'
+          else
+            if ! grep -Eiq 'No cached version|not available for offline mode|not available in offline mode|no cached resource|offline mode' "$LOG"; then
+              echo "::error::Offline build failed for a non-cache reason; not retrying."
               exit 1
             fi
-          done
-          test "$success" = true
+            if run_build central; then
+              echo 'PASS: normal Maven Central build'
+            else
+              if ! grep -Eiq 'status code (429|502|503|504)|Too Many Requests|Read timed out|Connection reset' "$LOG"; then
+                echo "::error::Non-transient Gradle failure; not retrying."
+                exit 1
+              fi
+              echo "::warning::Maven Central request failed; switch to its alternate HTTPS endpoint."
+              run_build central-alternate -I "$GITHUB_WORKSPACE/tools/delta_android/maven_central_alternate.init.gradle"
+            fi
+          fi
           test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
           test -s app/build/outputs/apk/offline/output-metadata.json
           python3 - <<'PY'
@@ -479,7 +494,13 @@ jobs:
           d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text("utf-8"))
           assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
           assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(141,"1.0.115")
-          assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          reports=list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          assert reports
+          from xml.etree import ElementTree as ET
+          delta=[p for p in reports if p.name.endswith(".WqDeltaMetadataTest.xml")]
+          assert len(delta)==1, "New updater tests must actually run"
+          report=ET.parse(delta[0]).getroot()
+          assert int(report.get("tests","0"))>0 and int(report.get("failures","0"))==0 and int(report.get("errors","0"))==0 and int(report.get("skipped","0"))==0
           print("PASS: unsigned QA identity and ALL offline unit tests.")
           PY
       - name: Preserve complete Gradle log on failed compilation
@@ -487,7 +508,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: WordQuestAI-v206-full-Gradle-error-log
-          path: ${{ runner.temp }}/wq-v206-gradle.log
+          path: |
+            ${{ runner.temp }}/wq-v206-gradle.log
+            ${{ runner.temp }}/wq-delta-*.log
           if-no-files-found: ignore
       - name: Print exact failing JVM tests, if any
         if: failure()
