@@ -1,0 +1,112 @@
+name: Stage exact verified WordQuest 1.0.117 release draft
+on:
+  push:
+    branches: [qa/v117-smart-lena]
+    paths:
+      - '.github/workflows/stage-v117-delta-draft.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: wq-v117-stage
+  cancel-in-progress: false
+jobs:
+  stage:
+    if: github.ref == 'refs/heads/qa/v117-smart-lena'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Download only the artifacts that passed exact device upgrade QA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wq117-stage"
+          mkdir -p "$D/dist"
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.115
+          for run in 45505132566 45506452108; do
+            test "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run" --jq .conclusion)" = success
+          done
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14973293639/zip" > "$D/new.zip"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14972589293/zip" > "$D/delta.zip"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14973697114/zip" > "$D/proof.zip"
+          echo "0e0e0674d67d2ea853483c39c786127a55fe8239e674404ad95b4ffcf7f6dffa  $D/new.zip" | sha256sum -c -
+          echo "c4a8a79b071c84f3561cb6e5abb54b563d4499da03c4465bf331e8b7c7256080  $D/delta.zip" | sha256sum -c -
+          echo "7d83714dccb74aa70ad6869d83bd99516aeaab61ddc34e64de272642624054b1  $D/proof.zip" | sha256sum -c -
+          python3 - "$D" <<'PY'
+          import sys,zipfile,shutil,json,hashlib
+          from pathlib import Path
+          d=Path(sys.argv[1]); out=d/'dist'
+          def extract(archive,suffix,dst):
+              with zipfile.ZipFile(d/archive) as z:
+                  entries=[n for n in z.namelist() if n.endswith(suffix)]
+                  assert len(entries)==1,entries
+                  with z.open(entries[0]) as src,dst.open('wb') as target: shutil.copyfileobj(src,target)
+          extract('new.zip','WordQuestAI-v1.0.117-signed-qa.apk',out/'WordQuestAI.apk')
+          extract('delta.zip','update.json',out/'update.json')
+          extract('delta.zip','delta-report.json',d/'report.json')
+          extract('proof.zip','wq206-upgrade-passed.sha256',d/'proof.txt')
+          r=json.loads((d/'report.json').read_text()); m=json.loads((out/'update.json').read_text())
+          assert r['eligible'] and m['versionCode']==143 and m['versionName']=='1.0.117'
+          assert m['tag']=='v1.0.117' and m['packageName']=='com.kelimebulmacasi.a1.practice.fresh'
+          assert m['apkFile']=='WordQuestAI.apk' and len(m['deltas'])==1 and m['deltas'][0]==r['delta']
+          p=r['delta'];assert p['fromVersionCode']==142 and p['toVersionCode']==143 and p['file']=='WordQuestAI-142-to-143.wqd.gz'
+          extract('delta.zip','.wqd.gz',out/p['file'])
+          def sha(f):
+              with f.open('rb') as x:return hashlib.file_digest(x,'sha256').hexdigest()
+          apk=out/'WordQuestAI.apk'
+          assert sha(apk)==m['sha256']==p['targetSha256']==(d/'proof.txt').read_text().split()[0]
+          assert apk.stat().st_size==m['sizeBytes']==p['targetSizeBytes']
+          assert sha(out/p['file'])==p['sha256'] and (out/p['file']).stat().st_size==p['sizeBytes']==64057859
+          m['notes']='Akıllı Lena: konuşma içeriğine göre doğal jest seçimi. 38 orijinal animasyon ve kıyafetler korunur. Uyumlu 1.0.116 sürümünde yaklaşık 64 MB fark paketi; diğer sürümlerde tam APK seçeneği.'
+          (out/'update.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('PASS: exact emulator-tested target APK and 64,057,859-byte delta')
+          PY
+      - name: Verify signer, package identity and compiled update channel
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wq117-stage"
+          APK="$D/dist/WordQuestAI.apk"
+          SDK="$ANDROID_HOME/build-tools/35.0.0"
+          if [ ! -s "$SDK/lib/apksigner.jar" ]; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+          java -jar "$SDK/lib/apksigner.jar" verify --verbose --print-certs "$APK" > "$D/cert.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$D/cert.txt"
+          "$SDK/aapt" dump badging "$APK" > "$D/badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$D/badging.txt"
+          grep -Fq "versionCode='143'" "$D/badging.txt"
+          grep -Fq "versionName='1.0.117'" "$D/badging.txt"
+          ! grep -Fq 'application-debuggable' "$D/badging.txt"
+          python3 - "$APK" "$GITHUB_REPOSITORY" <<'PY'
+          import sys,zipfile
+          with zipfile.ZipFile(sys.argv[1]) as z:
+              ds=[z.read(n) for n in z.namelist() if n.startswith('classes') and n.endswith('.dex')]
+          endpoint=('https://api.github.com/repos/'+sys.argv[2]+'/releases/latest').encode()
+          assert any(endpoint in b for b in ds), 'Compiled updater endpoint does not match release repository'
+          print('PASS: compiled updater uses expected release endpoint')
+          PY
+      - name: Stage immutable draft with both APK and delta, do not publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wq117-stage"
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.115
+          if gh release view v1.0.117 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::Existing release or draft; refusing overwrite.'
+            exit 1
+          fi
+          gh release create v1.0.117 "$D/dist/WordQuestAI.apk" "$D/dist/update.json" "$D/dist/WordQuestAI-142-to-143.wqd.gz" \
+            -R "$GITHUB_REPOSITORY" --target 6826416646e1900d06537465877bf7fbb722aa2c --draft \
+            --title 'WordQuest AI 1.0.117 — Akıllı Lena ve Fark Güncellemesi' \
+            --notes 'Tested exact APK and delta. Draft only: real-device Lena and in-app update flow await validation.'
+          gh release view v1.0.117 -R "$GITHUB_REPOSITORY" --json isDraft,assets --jq '{draft:.isDraft,assets:[.assets[].name]}' | tee "$D/draft.json"
+          python3 - "$D/draft.json" <<'PY'
+          import sys,json
+          d=json.load(open(sys.argv[1]));assert d['draft'] and set(d['assets'])=={'WordQuestAI.apk','update.json','WordQuestAI-142-to-143.wqd.gz'}
+          PY
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.115
+          echo 'PASS: draft staged, public latest unchanged'
