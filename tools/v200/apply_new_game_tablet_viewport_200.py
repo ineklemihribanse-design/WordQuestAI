@@ -152,6 +152,9 @@ def puzzle(s):
     marker = "                } else {\n                    // Phone editor"
     assert marker in original and marker in s
     assert original[original.index(marker):] == s[s.index(marker):]
+    if "import androidx.compose.foundation.layout.fillMaxHeight\n" not in s and "import androidx.compose.foundation.layout.*\n" not in s:
+        s = one(s, "import androidx.compose.foundation.layout.Arrangement",
+                   "import androidx.compose.foundation.layout.Arrangement\nimport androidx.compose.foundation.layout.fillMaxHeight")
     return s
 
 def main():
