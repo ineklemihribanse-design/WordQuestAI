@@ -25,7 +25,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          D="$RUNNER_TEMP/wq117-device"
+          D="$RUNNER_TEMP/wq118-device"
           mkdir -p "$D/classes"
           gh release download v1.0.117 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -D "$D"
           mv "$D/WordQuestAI.apk" "$D/old.apk"
@@ -67,18 +67,18 @@ jobs:
         timeout-minutes: 28
         run: |
           set -euo pipefail
-          bash tools/v118_device/run_emulator.sh tools/v118_device/verify_delta_install.sh "$RUNNER_TEMP/wq117-device/target.apk"
+          bash tools/v118_device/run_emulator.sh tools/v118_device/verify_delta_install.sh "$RUNNER_TEMP/wq118-device/target.apk"
           sha256sum -c "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: WordQuest-v118-device-delta-proof
           path: |
-            ${{ runner.temp }}/wq117-device/report.json
-            ${{ runner.temp }}/wq117-device/before.txt
-            ${{ runner.temp }}/wq117-device/after.txt
-            ${{ runner.temp }}/wq117-device/startup.png
-            ${{ runner.temp }}/wq117-device/*.cert
+            ${{ runner.temp }}/wq118-device/report.json
+            ${{ runner.temp }}/wq118-device/before.txt
+            ${{ runner.temp }}/wq118-device/after.txt
+            ${{ runner.temp }}/wq118-device/startup.png
+            ${{ runner.temp }}/wq118-device/*.cert
             ${{ runner.temp }}/wq206-upgrade-passed.sha256
             ${{ runner.temp }}/wq206-upgrade-qa.log
             ${{ runner.temp }}/wq206-emulator.log
