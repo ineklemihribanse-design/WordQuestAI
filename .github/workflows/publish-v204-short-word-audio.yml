@@ -301,6 +301,19 @@ jobs:
           find source/app/src/main/java -type f -name '*.kt' -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq204-kotlin.sha"
           python3 -m py_compile tools/v204/fix_short_word_audio_204.py
           python3 tools/v204/fix_short_word_audio_204.py
+          python3 - <<'PY'
+          import json, hashlib
+          from pathlib import Path
+          base=Path("source/app/src/main/assets/pronunciation")
+          words=json.loads((base/"manifest.json").read_text())["words"]
+          entries=json.loads((base/"ipa.json").read_text())["entries"]
+          for word in ("do", "hi"):
+              assert words[word]==hashlib.sha1(word.encode()).hexdigest()[:16]
+              for region, key in (("en-us","us"),("en-gb","uk")):
+                  assert (base/region/(words[word]+".ogg")).stat().st_size>1000
+                  assert entries[word][key].replace("ˈ","").replace("ˌ","").strip()=={"do":"duː","hi":"haɪ"}[word]
+          print("PASS: do and hi resolve to verified whole-word US/UK assets and IPA")
+          PY
           sha256sum -c "$RUNNER_TEMP/wq204-kotlin.sha" >/dev/null
           (cd source && python3 tools/verify_audio_ipa.py)
           test -s "$RUNNER_TEMP/wq204-pronunciation-report.json"
