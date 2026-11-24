@@ -1,0 +1,510 @@
+name: WordQuest AI 1.0.102 - Sabit Tablet Harf Ac ve Yeni Oyun
+on:
+  push:
+    branches: [fix/v190-tablet-board-and-visible-icons]
+    paths:
+      - '.github/workflows/publish-v202-final-design.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: wordquest-v202-release
+  cancel-in-progress: false
+
+jobs:
+  publish_verified_update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin existing installed-app release and verify monotonic upgrade
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          case "$tag" in
+            v1.0.101) ;;
+            *) echo "::error::Unexpected current release $tag; refusing stale or downgrade publication"; exit 1 ;;
+          esac
+          if gh release view v1.0.102 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::v1.0.102 already exists; immutable release cannot be overwritten.'
+            exit 1
+          fi
+          mkdir -p "$RUNNER_TEMP/wq202-old"
+          gh release download "$tag" -R "$GITHUB_REPOSITORY" --pattern update.json --dir "$RUNNER_TEMP/wq202-old"
+          python3 - "$tag" <<'PY'
+          import json, os, pathlib, re, sys
+          tag=sys.argv[1]
+          d=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'wq202-old/update.json').read_text())
+          assert d['tag']==tag and d['versionName']==tag[1:]
+          assert d['packageName']=='com.kelimebulmacasi.a1.practice.fresh'
+          assert d['apkFile']=='WordQuestAI.apk'
+          code=int(d['versionCode'])
+          assert code==int(tag.rsplit('.',1)[-1])+26 and code<128
+          assert re.fullmatch(r'[a-fA-F0-9]{64}', d['sha256'])
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write(f"WQ_OLD_TAG={tag}\nWQ_OLD_CODE={code}\nWQ_OLD_SHA256={d['sha256']}\n")
+          PY
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/fix/v190-tablet-board-and-visible-icons" --jq .object.sha)" = "$GITHUB_SHA"
+      - name: Use immutable cached full source from validated 1.0.91 build
+        run: |
+          echo "WQ190_FULL_KEY=wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8" >> "$GITHUB_ENV"
+      - name: Restore complete Android 1.0.90 source without replaying historical packages
+        id: complete_source
+        uses: actions/cache/restore@v4
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Verify complete source and update prerequisites
+        env:
+          CACHE_HIT: ${{ steps.complete_source.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          if [ "$CACHE_HIT" != true ]; then
+            echo '::error::No verified assembled source cache. Refusing an incomplete APK; run the verified v190 assembler first.'
+            exit 1
+          fi
+          test -s source/gradlew
+          test -s source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          grep -Fq 'versionCode = 116' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.90"' source/app/build.gradle.kts
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'fun phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          (cd source && python3 tools/verify_audio_ipa.py)
+          echo 'PASS: exact complete 1.0.90 source and US/UK audio retained.'
+      - name: Apply approved v196 source plus compact New Game cards, filters, mode and count
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py tools/v192/apply_overview_focus_192.py tools/v193/apply_editable_entry_193.py tools/v194/apply_cell_text_alignment_194.py tools/v195/apply_a1_level_badge_195.py tools/v196/apply_exclusive_game_filter_196.py tools/v196/apply_universal_level_badge_196.py tools/v197/apply_compact_new_game_197.py
+          python3 tools/v191/apply_mobile_crossword_191.py
+          python3 tools/v192/apply_overview_focus_192.py
+          python3 tools/v193/apply_editable_entry_193.py
+          python3 tools/v194/apply_cell_text_alignment_194.py
+          python3 tools/v195/apply_a1_level_badge_195.py
+          python3 tools/v196/apply_exclusive_game_filter_196.py
+          python3 tools/v196/apply_universal_level_badge_196.py
+          python3 tools/v197/apply_compact_new_game_197.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq197CompactNewGameUi.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq197LayoutPolicy.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq197LayoutPolicyTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq192Viewport.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq192ViewportTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq193EditableDraft.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq193EditableDraftTest.kt
+          test -s tools/v194/apply_cell_text_alignment_194.py
+          test -s tools/v195/apply_a1_level_badge_195.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq196FilterPolicy.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq196LevelBadge.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq196FilterPolicyTest.kt
+          test -s source/app/src/main/assets/wq196_level_badge.webp
+          echo "8abe9cae51a083a2450902302c71b5a9f2d5ccf0a16b14a8d51026353a87babf  source/app/src/main/assets/wq196_level_badge.webp" | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path
+          g=Path("source/app/build.gradle.kts")
+          s=g.read_text("utf-8")
+          assert s.count("versionCode = 116")==1 and s.count('versionName = "1.0.90"')==1
+          g.write_text(s.replace("versionCode = 116","versionCode = 128",1)
+                        .replace('versionName = "1.0.90"','versionName = "1.0.102"',1),"utf-8")
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text("utf-8")
+          for code in ("Wq192Viewport.overviewTileDp(", "horizontal.animateScrollTo(targetX)",
+                       "keyboardWasShown = false", "Modifier.weight(1f).heightIn(min=56.dp)",
+                       "Wq190CrosswordHintInput.completedWord(", "state.enter(completeAnswer)"):
+              assert code in p,code
+          assert "maxOf(regularTile, 28.dp)" not in p
+          assert p.count("inlineEditor()")==2
+          assert "Wq193EditableDraft.protectedPositions(" in p
+          assert 'Text("Sil",color=Forest,fontSize=12.sp)' in p
+          assert "if (cell !in view.locked) {" in p
+          assert "Modifier.weight(1f).heightIn(min=56.dp)" in p
+          assert "runCatching { entryFocus.requestFocus() }" in p
+          cell = p[p.index("private fun LetterCell("):]
+          assert 'Text(number.toString(), Modifier.align(Alignment.TopStart)' in cell
+          assert 'Text(letter.toString(), Modifier.align(Alignment.Center)' in cell
+          assert 'padding(top = if (number == null) 0.dp else 3.dp)' not in cell
+          header=p[p.index("private fun GameHeading("):p.index("private fun BoardFrame(")]
+          assert 'fontWeight = FontWeight.Bold, fontSize = 15.sp)' in header
+          assert 'Modifier.size(30.dp)' in header
+          assert 'Wq196LevelBadge(Modifier.size(30.dp))' in header
+          assert 'Text("★"' not in header
+          assert 'padding(horizontal=11.dp,vertical=7.dp)' in header
+          assert 'Wq189UploadedArtwork("solo_puzzle"' not in header
+          newgame=Path("source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt").read_text("utf-8")
+          assert 'NewGameSection("Kelime Havuzu"' in newgame
+          assert 'NewGameSection("Oyun Ayarları"' in newgame
+          assert 'Wq197CompactHero(levels.first(),session.profileKey,available)' in newgame
+          assert 'Wq197LevelSelector(levels, !loading, ::toggleLevel)' in newgame
+          assert 'Wq197FilterDialog(' in newgame
+          assert 'filterMode = next' in newgame
+          assert 'check(topics.isEmpty() || kinds.isEmpty())' in newgame
+          assert 'Wq197OptionGrid(timeSizes.map { "$it dk" } + "Özel"' in newgame
+          assert 'gameSizes.map(Int::toString) + "Özel"' in newgame
+          assert 'session.newGameFiltered(levels, topics, kinds, count!!)' in newgame
+          assert 'MAX_NEW_GAME_WORDS = 70' in newgame
+          assert 'PuzzleClockStore(context, session.profileKey).save(' in newgame
+          print("PASS v197: 3D level icon, responsive 6/3-col levels, compact category chooser")
+          print("PASS v197: combined game mode and word count, 70-word/custom, save and clock retained")
+          PY
+      - name: Install approved art and responsive New Game page only
+        run: |
+          set -euo pipefail
+          sha256sum source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt > /tmp/wq198-board.sha
+          python3 -m py_compile tools/v198/apply_approved_new_game_198.py
+          python3 tools/v198/apply_approved_new_game_198.py
+          sha256sum --check /tmp/wq198-board.sha
+          test "$(find source/app/src/main/assets/new_game_198 -name '*.webp' | wc -l)" -eq 6
+          grep -Fq 'Wq198NewGamePage(back,' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          grep -Fq 'Wq198FilterTabs(' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          grep -Fq 'session.newGameFiltered(levels, topics, kinds, count!!)' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Apply only tablet focus zoom and verify New Game remains untouched
+        run: |
+          set -euo pipefail
+          sha256sum source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt > /tmp/wq202-newgame.sha
+          python3 -m py_compile tools/v199/apply_tablet_focus_199.py
+          python3 tools/v199/apply_tablet_focus_199.py
+          sha256sum --check /tmp/wq202-newgame.sha
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq199TabletFocusTest.kt
+          grep -Fq 'else if (enlarged) maxOf(regularTile, 30.dp) else regularTile' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+      - name: Verify Start validation is declared in sticky footer scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt").read_text("utf-8")
+          start=s.index("Wq198NewGamePage(back,")
+          footer=s.index("footer = {",start)
+          valid=s.index("val valid =",footer)
+          action=s.index("PrimaryAction(",footer)
+          assert footer < valid < action
+          assert s.count("val valid =")==1
+          assert "val valid = !loading && bank != null && count != null" in s
+          print("PASS: original Start validation is visible to both callback and enabled state.")
+          PY
+      - name: Refine safe New Game layout and pin tablet-only typing viewport
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v200/apply_new_game_tablet_viewport_200.py
+          python3 tools/v200/apply_new_game_tablet_viewport_200.py
+          grep -Fq 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' source/app/src/main/java/com/kelimebulmacasi/a1/Wq198NewGameUi.kt
+          grep -Fq 'if (tabletTyping) Modifier.fillMaxHeight() else Modifier.verticalScroll(pageScroll)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'session.newGameFiltered(levels, topics, kinds, count!!)' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Add Harf ac beside next clue only while phone keyboard is open
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v200/apply_phone_hint_while_typing_200.py
+          python3 tools/v200/apply_phone_hint_while_typing_200.py
+      - name: Reconstruct exact published 1.0.101 hint state and premium art
+        run: |
+          set -euo pipefail
+          P=source/app/src/main/java/com/kelimebulmacasi/a1
+          cp "$P/PuzzleScreen.kt" "$RUNNER_TEMP/wq202-before-puzzle.kt"
+          cp "$P/NewGameScreen.kt" "$RUNNER_TEMP/wq202-before-newgame.kt"
+          sha256sum "$P/Wq192Viewport.kt" "$P/Wq199TabletFocus.kt" "$P/Wq190BoardPolicy.kt" > "$RUNNER_TEMP/wq202-board-policy.sha"
+          find source/app/src/main/assets/new_game_198 -name '*.webp' -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq202-art.sha"
+          python3 -m py_compile tools/v201/apply_hint_and_premium_new_game_201.py
+          python3 tools/v201/apply_hint_and_premium_new_game_201.py
+          grep -Fq 'val landscapeArtwork = wide && maxWidth > maxHeight' "$P/Wq198NewGameUi.kt"
+          grep -Fq 'Wq198Artwork(if (landscapeArtwork) "tablet" else "phone",' "$P/Wq198NewGameUi.kt"
+          sha256sum -c "$RUNNER_TEMP/wq202-board-policy.sha"
+          sha256sum -c "$RUNNER_TEMP/wq202-art.sha"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,hashlib
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          old=(Path(os.environ["RUNNER_TEMP"])/"wq202-before-puzzle.kt").read_text()
+          new=(p/"PuzzleScreen.kt").read_text()
+          for marker in ("private fun GameHeading(", "private fun BoardFrame(", "private fun LetterCell("):
+              assert old[old.index(marker):]==new[new.index(marker):],marker
+          print("PASS: identical BoardFrame SHA-256:",hashlib.sha256(new[new.index("private fun BoardFrame("):].encode()).hexdigest())
+          oldform=(Path(os.environ["RUNNER_TEMP"])/"wq202-before-newgame.kt").read_text()
+          newform=(p/"NewGameScreen.kt").read_text()
+          assert oldform==newform.replace("Wq201StartAction","PrimaryAction")
+          assert new.count("wq201TypingActions()")==2
+          assert "Wq201HintDraft.authoritative(" in new
+          assert "state.enter(completeAnswer)" in new
+          assert "if (tabletTyping) wq201TypingActions()" in new
+          assert "if (keyboardVisible) { wq201TypingActions() }" in new
+          print("PASS: exact existing game creation callback and 1.0.100 settings layout")
+          print("PASS: tablet and phone typing actions use the same tested hint controller")
+          PY
+      - name: Apply final New Game style and fix tablet typing actions without touching board
+        run: |
+          set -euo pipefail
+          P=source/app/src/main/java/com/kelimebulmacasi/a1
+          cp "$P/PuzzleScreen.kt" "$RUNNER_TEMP/wq202-published-puzzle.kt"
+          sha256sum "$P/NewGameScreen.kt" "$P/Wq192Viewport.kt" "$P/Wq199TabletFocus.kt" "$P/Wq190BoardPolicy.kt" > "$RUNNER_TEMP/wq202-protected.sha"
+          python3 - <<'PY'
+          import base64,hashlib,json
+          from pathlib import Path
+          d=json.loads(Path("tools/v202/backgrounds.b64.json").read_text())
+          expected={"tablet_202":"7e0057a98bb6b3c621ad7d929022360077745ceb95e644495589f3f2f9b4e644",
+                    "phone_202":"3ce47be36435c0e9de941d08ba59a0aa87f8838ad35b1146fb2ac606c453bb9f"}
+          assert set(d)==set(expected)
+          out=Path("source/app/src/main/assets/new_game_198")
+          for key,value in d.items():
+              data=base64.b64decode(value,validate=True)
+              assert hashlib.sha256(data).hexdigest()==expected[key],key
+              assert data[:4]==b"RIFF" and data[8:12]==b"WEBP"
+              (out/(key+".webp")).write_bytes(data)
+          print("PASS: supplied phone and tablet background assets verified")
+          PY
+          python3 -m py_compile tools/v202/apply_final_newgame_and_tablet_actions_202.py
+          python3 tools/v202/apply_final_newgame_and_tablet_actions_202.py
+          sha256sum -c "$RUNNER_TEMP/wq202-protected.sha"
+          python3 - <<'PY'
+          import os,hashlib
+          from pathlib import Path
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          old=(Path(os.environ["RUNNER_TEMP"])/"wq202-published-puzzle.kt").read_text()
+          new=(p/"PuzzleScreen.kt").read_text()
+          for marker in ("private fun BoardFrame(", "private fun LetterCell(", "                } else {\n                    // Phone editor"):
+              assert old[old.index(marker):]==new[new.index(marker):],marker
+          print("PASS: unchanged 1.0.101 BoardFrame SHA-256:",hashlib.sha256(new[new.index("private fun BoardFrame("):].encode()).hexdigest())
+          assert "Fixed above the independently scrolling clues" in new
+          assert new.count("wq201TypingActions()")==2
+          ui=(p/"Wq198NewGameUi.kt").read_text()
+          assert 'Wq198Artwork(if (landscapeArtwork) "tablet_202" else "phone_202"' in ui
+          assert 'alignment = Alignment.TopCenter' in ui
+          assert 'horizontalAlignment = Alignment.CenterHorizontally' in ui
+          assert 'border = null,' in (p/"Wq197CompactNewGameUi.kt").read_text()
+          print("PASS: source guards for fixed tablet actions and centered full-page New Game artwork")
+          PY
+      - name: Verify Android SDK and Gradle
+        run: |
+          set -euo pipefail
+          if ! test -s "$ANDROID_HOME/platforms/android-35/android.jar" ||
+             ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+          fi
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Run complete offline tests and build new production APK in one Gradle invocation
+        working-directory: source
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          # Robolectric runtime downloads are independent of Gradle dependency caching.
+          # Use Maven Central's canonical endpoint and retry transient artifact errors.
+          INIT="$RUNNER_TEMP/wq202-robolectric.init.gradle"
+          cat > "$INIT" <<'GRADLE'
+          allprojects {
+              tasks.withType(org.gradle.api.tasks.testing.Test).configureEach {
+                  systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+              }
+          }
+          GRADLE
+          LOG="$RUNNER_TEMP/wq-v202-gradle.log"
+          success=false
+          for attempt in 1 2 3; do
+            if ./gradlew --no-daemon --build-cache -I "$INIT" :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
+              success=true
+              tail -n 70 "$LOG"
+              break
+            fi
+            echo "::group::Build attempt $attempt diagnostics"
+            grep -nE '(^e:|^w:|\.kt:[0-9]+|\.kt: ?\(|Unresolved reference|Type mismatch|Cannot infer|Compilation error|Failed to fetch|429|503)' "$LOG" | head -n 150 || true
+            tail -n 100 "$LOG"
+            echo "::endgroup::"
+            if grep -Eiq 'Failed to fetch maven artifact|status code 429|Too Many Requests|status code 503|Read timed out|Connection reset' "$LOG" || grep -Rqs 'Failed to fetch maven artifact' app/build/test-results/testOfflineUnitTest; then
+              echo "::warning::Transient dependency download error; retrying all tests and APK build."
+              if [ "$attempt" != 3 ]; then sleep $((attempt * 15)); fi
+            else
+              exit 1
+            fi
+          done
+          test "$success" = true
+          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
+          test -s app/build/outputs/apk/offline/output-metadata.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text("utf-8"))
+          assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
+          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(128,"1.0.102")
+          assert list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          print("PASS: signed-candidate identity and ALL offline unit tests.")
+          PY
+      - name: Preserve complete Gradle log on failed compilation
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v202-full-Gradle-error-log
+          path: ${{ runner.temp }}/wq-v202-gradle.log
+          if-no-files-found: ignore
+      - name: Print exact failing JVM tests, if any
+        if: failure()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+          base=Path("source/app/build/test-results/testOfflineUnitTest")
+          found=False
+          for path in sorted(base.glob("TEST-*.xml")):
+              try:
+                  root=ElementTree.parse(path).getroot()
+              except Exception as exc:
+                  print("Cannot read",path,exc)
+                  continue
+              for case in root.iter("testcase"):
+                  for bad in ("failure","error"):
+                      for node in case.findall(bad):
+                          found=True
+                          print("FAILED TEST:",path.name,case.get("classname"),case.get("name"))
+                          print("WHY:",node.get("message",""))
+                          print((node.text or "")[:2500])
+          print("Failed test found:",found)
+          PY
+      - name: Sign v1.0.102 with current installed-app production certificate
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          umask 077
+          KEY="$RUNNER_TEMP/wq-v202-signing.p12"
+          trap 'rm -f "$RUNNER_TEMP/wq-v202-signing.p12"' EXIT
+          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
+          OUT=source/app/build/outputs/apk/offline
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          java -jar "$SIGNER" sign             --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS"             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$OUT/WordQuestAI-v1.0.102-signed-qa.apk" "$OUT/app-offline-unsigned.apk"
+          java -jar "$SIGNER" verify --verbose --print-certs "$OUT/WordQuestAI-v1.0.102-signed-qa.apk" > "$RUNNER_TEMP/wq-v202-signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v202-signature.txt"
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v202-signature.txt"
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v202-signature.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-v1.0.102-signed-qa.apk" > "$RUNNER_TEMP/wq-v202-badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v202-badging.txt"
+          grep -Fq "versionCode='128'" "$RUNNER_TEMP/wq-v202-badging.txt"
+          grep -Fq "versionName='1.0.102'" "$RUNNER_TEMP/wq-v202-badging.txt"
+          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v202-badging.txt"; then exit 1; fi
+          unzip -tq "$OUT/WordQuestAI-v1.0.102-signed-qa.apk"
+          echo 'PASS: verified installed-app identity and same v2/v3 production signer.'
+      - name: Install image validation dependency for responsive emulator screenshot QA
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --retries 4 --timeout 30 Pillow==11.3.0
+          python3 - <<'PY'
+          from PIL import Image
+          print("PASS: Pillow screenshot verification dependency available",Image.__version__)
+          PY
+      - name: Prepare actual published version to v1.0.102 in-place upgrade QA
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          tmp=Path(os.environ["RUNNER_TEMP"])
+          old_tag=os.environ["WQ_OLD_TAG"]
+          old_code=os.environ["WQ_OLD_CODE"]
+          old_hash=os.environ["WQ_OLD_SHA256"]
+          src=Path("tools/v190/qa_emulator_upgrade_190.sh").read_text("utf-8")
+          edits=(
+            ("releases/download/v1.0.89/",f"releases/download/{old_tag}/"),
+            ("WordQuestAI-v1.0.90-signed-qa.apk","WordQuestAI-v1.0.102-signed-qa.apk"),
+            ("versionCode='116'","versionCode='128'"),
+            ("versionCode='115'",f"versionCode='{old_code}'"),
+            ("versionCode=116","versionCode=128"),
+            ("python3 tools/v190/verify_upgrade_metadata_190.py",'python3 "$RUNNER_TEMP/wq202-verify-upgrade.py"'),
+            ('test -s "$OLD"','test -s "$OLD"\nprintf "%s  %s\\n" "$WQ_OLD_SHA256" "$OLD" | sha256sum --check'),
+          )
+          for old,new in edits:
+              assert old in src,old
+              src=src.replace(old,new)
+          src=src.replace("v1.0.89",old_tag).replace("v1.0.90","v1.0.102")
+          (tmp/"wq202-emulator-upgrade.sh").write_text(src,"utf-8")
+          verify=Path("tools/v190/verify_upgrade_metadata_190.py").read_text("utf-8")
+          assert 'old["version"] != 115 or new["version"] != 116' in verify
+          verify=verify.replace('old["version"] != 115 or new["version"] != 116',
+                                f'old["version"] != {old_code} or new["version"] != 128')
+          verify=verify.replace('Expected in-place code 115 -> 116',
+                                f'Expected in-place code {old_code} -> 128')
+          verify=verify.replace("v1.0.89",old_tag).replace("v1.0.90","v1.0.102")
+          (tmp/"wq202-verify-upgrade.py").write_text(verify,"utf-8")
+          print("PASS: staged signed",old_tag,"-> v1.0.102 upgrade test")
+          PY
+      - name: Enable KVM for production upgrade QA
+        run: |
+          if test -e /dev/kvm; then sudo chmod 666 /dev/kvm; else echo "::warning::KVM unavailable"; fi
+      - name: Preserve signed candidate after successful build and tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v202-signed-candidate
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.102-signed-qa.apk
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - name: Test current release to 1.0.102 in-place upgrade with bounded emulator shutdown
+        timeout-minutes: 28
+        run: |
+          set -euo pipefail
+          bash -n tools/v202/run_bounded_emulator_qa_202.sh
+          export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+          command -v adb
+          adb version
+          bash tools/v202/run_bounded_emulator_qa_202.sh "$RUNNER_TEMP/wq202-emulator-upgrade.sh" source/app/build/outputs/apk/offline/WordQuestAI-v1.0.102-signed-qa.apk
+          sha256sum --check "$RUNNER_TEMP/wq202-upgrade-passed.sha256"
+
+      - name: Preserve emulator diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v202-emulator-diagnostics
+          path: |
+            ${{ runner.temp }}/wq202-avd-list.log
+            ${{ runner.temp }}/wq202-emulator.log
+            ${{ runner.temp }}/wq202-upgrade-qa.log
+            ${{ runner.temp }}/wq202-upgrade-passed.sha256
+          if-no-files-found: ignore
+
+      - name: Publish immutable v1.0.102 to installed app update channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$WQ_OLD_TAG"
+          if gh release view v1.0.102 -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::Existing v1.0.102 release; refusing overwrite.' >&2
+            exit 1
+          fi
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/fix/v190-tablet-board-and-visible-icons" --jq .object.sha)" = "$GITHUB_SHA"
+          sha256sum --check "$RUNNER_TEMP/wq202-upgrade-passed.sha256"
+          mkdir -p dist
+          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.102-signed-qa.apk dist/WordQuestAI.apk
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          apk=pathlib.Path("dist/WordQuestAI.apk")
+          assert apk.stat().st_size > 100_000_000
+          payload={
+            "schemaVersion":1,
+            "tag":"v1.0.102",
+            "versionCode":128,
+            "versionName":"1.0.102",
+            "packageName":"com.kelimebulmacasi.a1.practice.fresh",
+            "apkFile":"WordQuestAI.apk",
+            "sizeBytes":apk.stat().st_size,
+            "sha256":hashlib.sha256(apk.read_bytes()).hexdigest(),
+            "notes":"Tablet yazma modunda Harf ac ve Sonraki ipucu klavye ustunde sabit ipucu panelinde gorunur. Telefon ve tablet tahtalari, klavye, yakinlastirma ve oyun mantigi korunur. Yeni Oyun: kullanicinin gonderdigi yesil-lila dalgali arka plan, ortalanmis baslik, tek kenarli 3D butonlar ve mevcut kompakt duzen."
+          }
+          pathlib.Path("dist/update.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          gh release create v1.0.102 dist/WordQuestAI.apk dist/update.json \
+            -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
+            --title 'WordQuest AI 1.0.102 — Tablet Harf Aç ve Yeni Oyun' \
+            --notes 'Tablette yazarken Harf aç ve Sonraki ipucu sabit sağ panelde; tahta boyutları, konumu, yakınlaştırma, telefon oyun ekranı ve klavye aynen korunur. Yeni Oyun: kullanıcı tarafından sağlanan yeşil-lila dalgalı arka plan, ortalanmış başlık ve çift çizgisi kaldırılmış 3D butonlar. Mevcut ayarlar, oyun kayıtları, paket kimliği ve imza korunur.'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.102
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.102" --jq '[.assets[].name] | sort | join(",")')" = 'WordQuestAI.apk,update.json'
+          echo 'PASS: v1.0.102 published for Settings > Updates.'
