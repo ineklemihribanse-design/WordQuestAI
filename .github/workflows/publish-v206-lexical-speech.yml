@@ -370,18 +370,39 @@ jobs:
             "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
           fi
       - uses: gradle/actions/setup-gradle@v4
+      - name: Restore verified Robolectric runtime SDK cache
+        id: robolectric_sdk_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/wq-robolectric-i7
+          key: wq-robolectric-sdk-i7-android14-15-v1
+      - name: Prefetch and validate both required Robolectric SDKs
+        timeout-minutes: 18
+        run: |
+          set -euo pipefail
+          bash -n tools/v206/prefetch_robolectric_206.sh
+          bash tools/v206/prefetch_robolectric_206.sh "$RUNNER_TEMP/wq-robolectric-i7"
+      - name: Save verified Robolectric SDK cache
+        if: steps.robolectric_sdk_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/wq-robolectric-i7
+          key: wq-robolectric-sdk-i7-android14-15-v1
       - name: Run complete offline tests and build new production APK in one Gradle invocation
         working-directory: source
+        env:
+          WQ_ROBOLECTRIC_DIR: ${{ runner.temp }}/wq-robolectric-i7
         run: |
           set -euo pipefail
           chmod +x gradlew
           # Robolectric runtime downloads are independent of Gradle dependency caching.
-          # Use Maven Central's canonical endpoint and retry transient artifact errors.
+          # Use only the verified local SDK files; keep every unit test enabled.
           INIT="$RUNNER_TEMP/wq206-robolectric.init.gradle"
           cat > "$INIT" <<'GRADLE'
           allprojects {
               tasks.withType(org.gradle.api.tasks.testing.Test).configureEach {
-                  systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+                  systemProperty 'robolectric.offline', 'true'
+                  systemProperty 'robolectric.dependency.dir', System.getenv('WQ_ROBOLECTRIC_DIR')
               }
           }
           GRADLE
