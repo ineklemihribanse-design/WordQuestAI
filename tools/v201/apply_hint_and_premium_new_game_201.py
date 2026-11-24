@@ -158,10 +158,11 @@ def theme(s):
     # is cropped proportionally; only the header zone receives the artwork.
     s=one(s,"        val short = maxHeight < 680.dp\n        CompositionLocalProvider",
         '''        val short = maxHeight < 680.dp
+        val landscapeArtwork = wide && maxWidth > maxHeight
         Box(Modifier.matchParentSize().background(Color(0xFFF1EDF5)))
         Box(Modifier.fillMaxWidth().height(if (wide) 108.dp else 78.dp)
             .background(Color(0xFF17483C))) {
-            Wq198Artwork(if (wide && maxWidth > maxHeight) "tablet" else "phone",
+            Wq198Artwork(if (landscapeArtwork) "tablet" else "phone",
                 Modifier.matchParentSize(), scale = ContentScale.Crop,
                 alignment = Alignment.TopCenter)
             Box(Modifier.matchParentSize().background(Brush.verticalGradient(
