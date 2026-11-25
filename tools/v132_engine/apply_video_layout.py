@@ -149,6 +149,28 @@ s=once(s,'.coerceIn(6f,9f).sp,','.coerceIn(if(fittedOverview)4f else 6f,9f).sp,'
 s=once(s,'lineHeight=9.sp,','lineHeight=if(fittedOverview)(cell.value*.28f).coerceIn(5f,9f).sp else 9.sp,')
 s=once(s,'.coerceIn(11f,21f).sp,','.coerceIn(if(fittedOverview)5f else 11f,21f).sp,')
 s=once(s,'.coerceIn(13f,24f).sp,','.coerceIn(if(fittedOverview)6f else 13f,24f).sp,')
+# The fitted landscape overview must not use a second pair of nested scroll
+# containers. Give the actual cell and board accessibility bounds, not a
+# synthetic test-only success signal. Preserve old zoom/IME/phone paths.
+s=once(s,'import androidx.compose.ui.Modifier','import androidx.compose.ui.Modifier\nimport androidx.compose.ui.semantics.semantics\nimport androidx.compose.ui.semantics.contentDescription')
+s=once(s,'        val cell=if(fittedOverview)','        val cell=if(fittedOverview)')
+s=once(s,'Wq140ArenaFit.cell(maxWidth.value,requireNotNull(fittedHeight),rows,cols,gap.value).dp',
+'Wq140ArenaFit.cell((maxWidth.value-4f).coerceAtLeast(1f),(requireNotNull(fittedHeight)-4f).coerceAtLeast(1f),rows,cols,gap.value).dp')
+s=once(s,'            if(selectedCols.isNotEmpty() && selectedRows.isNotEmpty()){',
+'            if(!fittedOverview && selectedCols.isNotEmpty() && selectedRows.isNotEmpty()){')
+s=once(s,'''            .horizontalScroll(horizontal)
+            .verticalScroll(vertical)){''',
+'''            .then(if(fittedOverview)Modifier else Modifier.horizontalScroll(horizontal).verticalScroll(vertical))){
+'''.rstrip())
+s=once(s,'Column(Modifier.padding(start=leftInset).width(boardWidth)',
+'''Column(Modifier.padding(start=leftInset).width(boardWidth)''')
+s=once(s,'                            Box(Modifier.size(cell)',
+'''                            val cellNumber=puzzle.numbers[address]
+                            Box(Modifier.size(cell)
+                                .then(if(fittedOverview && usable) Modifier.semantics {
+                                    contentDescription=if(cellNumber!=null) "Tahta hücresi "+cellNumber
+                                        else "Tahta harfi "+(row+1)+"/"+(col+1)
+                                } else Modifier)''')
 f.write_text(s)
 shutil.copyfile(pack/"Wq140SoloUi.kt",p/"Wq140SoloUi.kt")
 test=main.parent/"test/java/com/kelimebulmacasi/a1"
