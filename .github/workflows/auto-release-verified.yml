@@ -1,0 +1,185 @@
+name: Verified Android auto-release
+on:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
+      base_version:
+        type: string
+        required: true
+      version_code:
+        type: number
+        required: true
+      base_code:
+        type: number
+        required: true
+      base_sha:
+        type: string
+        required: true
+      source_sha:
+        type: string
+        required: true
+      notes:
+        type: string
+        required: true
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: wordquest-public-release
+  cancel-in-progress: false
+env:
+  WQ_VERSION: ${{ inputs.version }}
+  WQ_BASE_VERSION: ${{ inputs.base_version }}
+  WQ_TARGET_CODE: ${{ inputs.version_code }}
+  WQ_BASE_CODE: ${{ inputs.base_code }}
+  WQ_BASE_SHA: ${{ inputs.base_sha }}
+  WQ_SOURCE_SHA: ${{ inputs.source_sha }}
+  WQ_NOTES: ${{ inputs.notes }}
+jobs:
+  upgrade:
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.sha == inputs.source_sha
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_sha }}
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set shared directory
+        run: |
+          echo "WQ_RELEASE_DIR=$RUNNER_TEMP/wq-auto-release" >> "$GITHUB_ENV"
+      - uses: actions/download-artifact@v4
+        with:
+          name: WordQuestAI-v${{ inputs.version }}-signed-QA
+          path: ${{ runner.temp }}/wq-auto-release/signed
+      - uses: actions/download-artifact@v4
+        with:
+          name: WordQuestAI-v${{ inputs.version }}-delta-QA
+          path: ${{ runner.temp }}/wq-auto-release/delta
+      - name: Check current production base and validate exact build artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "v$WQ_BASE_VERSION"
+          mkdir -p "$WQ_RELEASE_DIR/base" "$WQ_RELEASE_DIR/classes"
+          gh release download "v$WQ_BASE_VERSION" -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$WQ_RELEASE_DIR/base"
+          python3 tools/auto_release/prepare.py
+          javac -d "$WQ_RELEASE_DIR/classes" tools/delta_android/WqDeltaApplier.java
+          if [ ! -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" ]; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+          test -e /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - name: Reconstruct installed APK and verify Android upgrade without uninstall
+        timeout-minutes: 28
+        run: |
+          set -euo pipefail
+          bash tools/auto_release/run_emulator.sh tools/auto_release/verify_delta_install.sh "$WQ_RELEASE_DIR/target.apk"
+          sha256sum -c "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
+          cp "$RUNNER_TEMP/wq206-upgrade-passed.sha256" "$WQ_RELEASE_DIR/upgrade-proof.sha256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v${{ inputs.version }}-verified-release
+          path: |
+            ${{ runner.temp }}/wq-auto-release/dist
+            ${{ runner.temp }}/wq-auto-release/upgrade-proof.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: WordQuestAI-v${{ inputs.version }}-device-diagnostics
+          path: |
+            ${{ runner.temp }}/wq-auto-release/report.json
+            ${{ runner.temp }}/wq-auto-release/before.txt
+            ${{ runner.temp }}/wq-auto-release/after.txt
+            ${{ runner.temp }}/wq-auto-release/startup.png
+            ${{ runner.temp }}/wq-auto-release/arena-*.png
+            ${{ runner.temp }}/wq-auto-release/arena-*.xml
+            ${{ runner.temp }}/wq206-upgrade-qa.log
+            ${{ runner.temp }}/wq206-emulator.log
+          if-no-files-found: ignore
+          retention-days: 7
+  publish:
+    needs: upgrade
+    if: needs.upgrade.result == 'success'
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: WordQuestAI-v${{ inputs.version }}-verified-release
+          path: ${{ runner.temp }}/verified
+      - name: Validate final signed bytes, draft, upload and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/verified"
+          export D
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          d=Path(os.environ['D']); out=d/'dist'; m=json.loads((out/'update.json').read_text()); p=m['deltas'][0]
+          def sha(f):
+              with f.open('rb') as s:return hashlib.file_digest(s,'sha256').hexdigest()
+          assert m['versionName']==os.environ['WQ_VERSION'] and m['versionCode']==int(os.environ['WQ_TARGET_CODE'])
+          assert p['fromVersionCode']==int(os.environ['WQ_BASE_CODE']) and p['baseSha256']==os.environ['WQ_BASE_SHA']
+          assert sha(out/'WordQuestAI.apk')==m['sha256']==p['targetSha256']==(d/'upgrade-proof.sha256').read_text().split()[0]
+          assert sha(out/p['file'])==p['sha256'] and (out/p['file']).stat().st_size==p['sizeBytes']
+          assert {f.name for f in out.iterdir()}=={'WordQuestAI.apk','update.json',p['file']}
+          PY
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          TAG="v$WQ_VERSION"
+          if [ "$latest" != "$TAG" ] && [ "$latest" != "v$WQ_BASE_VERSION" ]; then
+            echo "::error::Production base changed; refusing outdated publication"
+            exit 1
+          fi
+          # Never replace an existing release. Allow recovery of an identical
+          # draft or public release after transient API propagation delays.
+          if ! gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$latest" = "v$WQ_BASE_VERSION"
+            gh release create "$TAG" "$D/dist/"* -R "$GITHUB_REPOSITORY" --target "$WQ_SOURCE_SHA" --draft --title "WordQuest AI $WQ_VERSION" --notes "$WQ_NOTES"
+          fi
+          ID=$(gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json databaseId --jq .databaseId)
+          gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/uploaded.json"
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          d=Path(os.environ['D']);r=json.loads((d/'uploaded.json').read_text())
+          assert r['tag_name']=='v'+os.environ['WQ_VERSION'] and not r['prerelease']
+          assert r['target_commitish']==os.environ['WQ_SOURCE_SHA']
+          files={f.name:f for f in (d/'dist').iterdir()}
+          assert len(r['assets'])==3 and set(files)=={a['name'] for a in r['assets']}
+          for a in r['assets']:
+              f=files[a['name']]
+              with f.open('rb') as s: digest=hashlib.file_digest(s,'sha256').hexdigest()
+              assert a['state']=='uploaded' and a['size']==f.stat().st_size and a['digest']=='sha256:'+digest
+          print('PASS: uploaded assets equal emulator-tested bytes')
+          PY
+          if [ "$(gh api "repos/$GITHUB_REPOSITORY/releases/$ID" --jq .draft)" = true ]; then
+            test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "v$WQ_BASE_VERSION"
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$ID" -F draft=false -f make_latest=true --jq '{tag:.tag_name,draft:.draft}'
+          fi
+          # GitHub's latest endpoint can lag a newly published release.
+          for attempt in $(seq 1 18); do
+            if [ "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$TAG" ]; then
+              echo "PASS: $TAG is live on installed-app update channel"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::Release latest endpoint did not confirm within bounded retries"
+          exit 1
