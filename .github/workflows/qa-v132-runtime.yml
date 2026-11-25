@@ -2,7 +2,7 @@ name: Verify actual 1.0.132 Android WebView gameplay
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/qa-v132-runtime.yml']
+    paths: ['.github/workflows/qa-v132-runtime.yml','tools/v132_runtime/**']
   workflow_dispatch:
 permissions:
   contents: read

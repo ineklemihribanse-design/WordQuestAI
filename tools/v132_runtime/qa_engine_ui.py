@@ -26,11 +26,22 @@ def scroll(direction):
 def find(pattern,allow_scroll=True):
     for i in range(12):
         ns=nodes();n=visible(ns,pattern)
+        print("Find",pattern,i,[label(x).strip() for x in ns if label(x).strip()][-35:],flush=True)
         if n is not None:return n
         if allow_scroll:scroll("up" if i<3 else "down")
         else:time.sleep(1)
     capture("missing-control")
     raise AssertionError("Missing control: "+pattern)
+def selected_chip(value):
+    ns=nodes()
+    root=ET.fromstring(adb("exec-out","cat","/sdcard/wq121.xml"))
+    parents={child:parent for parent in root.iter("node") for child in parent}
+    for n in root.iter("node"):
+        if label(n).strip()!=value.casefold():continue
+        p=parents.get(n)
+        if p is not None and any(label(x).strip()=="✓" for x in p.iter("node")):return True
+        if n.attrib.get("selected")=="true" or n.attrib.get("checked")=="true":return True
+    return False
 def start_mode(mode):
     find_arena(mode)
     tap(find(r"^"+mode))
@@ -45,9 +56,11 @@ def start_mode(mode):
     for level in ("A2","B1"):
         n=find(r"^"+level+r"$")
         # Fresh install starts at A1; use checked/selected if exposed.
-        if n.attrib.get("selected")!="true" and n.attrib.get("checked")!="true":tap(n)
+        if not selected_chip(level):tap(n)
+        assert selected_chip(level),"Level did not select: "+level
+    assert selected_chip("A1"),"A1 was not retained in mixed pool"
     capture("settings-"+("quiz" if "Şıklı" in mode else "crossword"))
-    tap(find(r"oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"))
+    tap(find(r"oyuna başla|oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"))
 def wait_game(mode):
     deadline=time.monotonic()+65
     while time.monotonic()<deadline:
@@ -80,8 +93,9 @@ try:
     ns=nodes()
     if visible(ns,r"oyun modları") is not None and visible(ns,r"maç ayarları") is None:
         tap(find(r"^5 şıklı düello"));find(r"maç ayarları")
-    tap(find(r"oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"))
+    tap(find(r"oyuna başla|oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"))
     wait_game("quiz")
     print("PASS: actual Android web quiz gameplay opens",flush=True)
 finally:
+    (OUT/"android-logcat.txt").write_text(adb("logcat","-d","-t","2000"))
     adb("shell","wm","size","reset");adb("shell","wm","density","reset")
