@@ -62,19 +62,17 @@ online=online[:j]+online[j:].replace('        Row(Modifier.fillMaxWidth()', '   
 online=once(online,'            ArenaApprovedHome(','''            ArenaApprovedHome(
                 wq121FullScreen=true,wq121Back=back,
                 wq121OnLayout={wq121LobbyVisible=it},''')
-# Existing light stage background otherwise paints white over the new root; hide it only in full-screen lobby.
-# v183 replaced Wq179ArenaStageBackground with Wq183ArenaBackdrop.
-# Only inspect the root between the outer Box and its first Column, never the
-# board/playing composables below it. Preserve the exact current call.
+# Exact source confirmed by the failed 45569173793 run: a separate white
+# layer is drawn when match==null, and the live game uses its own backdrop.
+# Keep the original match/settings background; remove white ONLY for lobby.
 outer_start=online.index('val wq121FullLobby')
 outer_end=online.index('    Column(if(wq121FullLobby)',outer_start)
 outer=online[outer_start:outer_end]
-background_calls=list(re.finditer(r'(?m)^(\s*)(Wq183ArenaBackdrop|Wq181ArenaHeroStage|Wq179ArenaStageBackground)\(',outer))
-assert len(background_calls)==1,('unexpected outer Arena backdrop',outer)
-call=background_calls[0]
-j=outer_start+call.start(2)
-online=online[:j]+'if(!wq121FullLobby) '+online[j:]
-print('PASS: current root backdrop gated:',call.group(2))
+old_white='Box(Modifier.matchParentSize().background(Color.White))'
+assert 'if(match==null)' in outer and '} else Wq183ArenaBackdrop(' in outer,outer
+outer=once(outer,old_white,'if(!wq121FullLobby) '+old_white)
+online=online[:outer_start]+outer+online[outer_end:]
+print('PASS: exact current lobby white layer disabled; active match backdrop unchanged')
 # Read actual scoring from the existing match result calculation. New isolated
 # history is populated only after a real online match finishes.
 m=re.search(r'(?m)^    val guestName\s*=.*$',online)
