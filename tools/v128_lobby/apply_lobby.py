@@ -21,7 +21,10 @@ s=once(s,"if (Wq183MascotStore.isCustomId(id)) remote[id] else null","if (Wq183M
 a="    // A player's maskot can change while a match is active."
 s=once(s,a,"    Wq128RoomHdBridge(room,side,myId,rivalId,selected,allowed,connected.value)\n\n"+a)
 f.write_text(s)
-for name in ("Wq128PremiumRoomLobby.kt","Wq128RoomHd.kt"):
+for name in ("Wq128PremiumRoomLobby.kt","Wq128RoomHd.kt","Wq128LobbyDesign.kt"):
     shutil.copyfile(pack/name,p/name)
+out=main/"assets/design"
+out.mkdir(parents=True,exist_ok=True)
+shutil.copyfile(pack/"arena_lobby.json",out/"arena_lobby.json")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
 print("PASS: responsive native lobby, independent HD consented preview, exact artwork and puzzle source preserved")

@@ -34,6 +34,20 @@ class ContentTest(unittest.TestCase):
         self.assertEqual(entry['sha256'],digest)
         self.assertEqual((self.out/'objects'/f'{digest}.webp').read_bytes(),data)
         self.assertEqual(manifest['coreCode'],150)
+    def test_design_snapshot_and_rejection(self):
+        from lobby_design import validate
+        p=self.source/'design'/'arena_lobby.json'
+        p.parent.mkdir()
+        good=Path(__file__).resolve().parents[1]/'v128_lobby'/'arena_lobby.json'
+        data=good.read_bytes()
+        o=validate(data)
+        p.write_bytes(data)
+        make(self.source,self.out,153,'1.0.129',1,self.key)
+        self.assertEqual((self.out/'objects'/(hashlib.sha256(data).hexdigest()+'.json')).read_bytes(),data)
+        for patch in ({'actionHeight':0},{'phoneCardPercent':100},{'palette':'file://bad'},
+                      {'sectionOrder':'javascript'},{'script':'run()'},{'nameSp':True}):
+            p.write_text(json.dumps(dict(o,**patch)))
+            with self.assertRaises(AssertionError):make(self.source,self.out,153,'1.0.129',1,self.key)
     def test_reject_executable_and_invalid_image(self):
         (self.source/'code.dex').write_bytes(b'dex')
         with self.assertRaises(AssertionError):make(self.source,self.out,150,'1.0.125',1,self.key)

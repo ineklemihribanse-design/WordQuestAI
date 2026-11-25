@@ -27,6 +27,8 @@ internal object WqContentUpdates {
     private const val MAX_FILE = 12L * 1024 * 1024
     private const val MAX_TOTAL = 96L * 1024 * 1024
     private val safePath = Regex("(arena_v120|arena_v122|new_game_198)/[a-zA-Z0-9_-]{1,80}\\.webp")
+    private fun allowedPath(path:String)=safePath.matches(path)||path==Wq128LobbyDesign.PATH
+    private fun extension(path:String)=if(path==Wq128LobbyDesign.PATH)".json" else ".webp"
     private val hashPattern = Regex("[a-f0-9]{64}")
     private val versionPattern = Regex("1\\.0\\.[0-9]{1,8}")
     @Volatile private var active: File? = null
@@ -48,7 +50,7 @@ internal object WqContentUpdates {
     fun version(c: Context): String = activeVersion ?: core(c).second
 
     fun open(c: Context, path: String): InputStream {
-        if (safePath.matches(path)) {
+        if (allowedPath(path)) {
             val f = active?.let { File(it,path) }
             if (f != null && f.isFile) {
                 try { return f.inputStream() } catch (_: java.io.IOException) { }
@@ -189,8 +191,8 @@ internal object WqContentUpdates {
                 val path = entry.getString("path")
                 val hash = entry.getString("sha256")
                 val size = entry.getLong("size")
-                require(safePath.matches(path) && seen.add(path) && hashPattern.matches(hash))
-                require(size in 1..MAX_FILE)
+                require(allowedPath(path) && seen.add(path) && hashPattern.matches(hash))
+                require(size in 1..(if(path==Wq128LobbyDesign.PATH)Wq128LobbyDesign.MAX_BYTES.toLong() else MAX_FILE))
                 total += size
                 require(total<=MAX_TOTAL)
                 // Never add arbitrary new asset paths in schema 1.
@@ -198,9 +200,9 @@ internal object WqContentUpdates {
                 val old = active?.let { File(it,path) }
                 val cached = if(old != null && old.isFile && old.length()==size)
                     old.inputStream().use { readLimited(it,size) }.takeIf { digest(it)==hash } else null
-                val bytes = cached ?: get("objects/"+hash+".webp",size)
+                val bytes = cached ?: get("objects/"+hash+extension(path),size)
                 require(bytes.size.toLong()==size && digest(bytes)==hash)
-                imageValid(bytes)
+                if(path==Wq128LobbyDesign.PATH) Wq128LobbyDesign.parse(bytes) else imageValid(bytes)
                 val target = File(staging,path)
                 check(target.parentFile?.let { it.mkdirs() || it.isDirectory } == true)
                 target.outputStream().use { it.write(bytes); it.fd.sync() }

@@ -41,9 +41,17 @@ private val LobbyLav128=Color(0xFFE7D9FF)
 private val LobbyGreen128=Color(0xFFB5F6AE)
 private val LobbyWhite128=Color(0xFFFFF8FF)
 
+private val LocalLobbyDesign128=staticCompositionLocalOf { Wq128LobbyDesign() }
+
+@Composable
 private fun Modifier.lobbyPlate128(gold:Boolean=false,radius:Int=18):Modifier {
     val shape=RoundedCornerShape(radius.dp)
-    return clip(shape).background(Brush.verticalGradient(listOf(Color(0xEE49317C),Color(0xF021123D))))
+    val colors=when(LocalLobbyDesign128.current.palette) {
+        "midnight" -> listOf(Color(0xF02D2869),Color(0xF0131339))
+        "amethyst" -> listOf(Color(0xF05C308B),Color(0xF02B124A))
+        else -> listOf(Color(0xEE49317C),Color(0xF021123D))
+    }
+    return clip(shape).background(Brush.verticalGradient(colors))
         .border(if(gold)1.7.dp else 1.dp,if(gold)LobbyGold128 else Color(0xFFAC78E3),shape)
 }
 
@@ -56,7 +64,7 @@ private fun LobbyAction128(text:String,onClick:()->Unit,modifier:Modifier=Modifi
         gold -> listOf(Color(0xFFFFE6A2),Color(0xFFFFB729))
         else -> listOf(Color(0xFF8C38CB),Color(0xFF452185))
     }
-    Box(modifier.heightIn(min=44.dp).clip(shape).background(Brush.verticalGradient(colors))
+    Box(modifier.heightIn(min=LocalLobbyDesign128.current.actionHeight.dp).clip(shape).background(Brush.verticalGradient(colors))
         .border(1.dp,if(ready)LobbyGreen128 else if(gold&&enabled)LobbyGold128 else Color(0xFFAC83E5),shape)
         .clickable(enabled=enabled,onClick=onClick),contentAlignment=Alignment.Center) {
         Text(text,Modifier.padding(horizontal=7.dp,vertical=5.dp),color=if(gold&&enabled)Color(0xFF321746) else if(ready)LobbyGreen128 else LobbyWhite128,
@@ -84,7 +92,8 @@ private fun LobbyPortrait128(avatar:String,mine:Boolean,modifier:Modifier) {
 
 @Composable
 private fun LobbyPlayer128(name:String,avatar:String,host:Boolean,present:Boolean,mine:Boolean,ready:Boolean,busy:Boolean,height:Dp,onReady:()->Unit,onInvite:()->Unit,canInvite:Boolean,modifier:Modifier) {
-    Column(modifier.height(height).lobbyPlate128(gold=host||ready,radius=20).padding(7.dp),
+    val design=LocalLobbyDesign128.current
+    Column(modifier.height(height).lobbyPlate128(gold=host||ready,radius=design.radius).padding(design.cardPadding.dp),
         horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(3.dp)) {
         Box(Modifier.fillMaxWidth().weight(1f),contentAlignment=Alignment.Center) {
             Canvas(Modifier.fillMaxWidth().height(24.dp).align(Alignment.BottomCenter)) {
@@ -94,7 +103,7 @@ private fun LobbyPlayer128(name:String,avatar:String,host:Boolean,present:Boolea
                 drawOval(Brush.radialGradient(listOf(Color(0x88D98DFF),Color.Transparent),center=Offset(size.width/2f,size.height/2f),radius=size.width*.5f),topLeft=p,size=Size(w,h))
                 drawOval(if(host)LobbyGold128 else Color(0xFFDC9AFF),topLeft=p,size=Size(w,h),style=androidx.compose.ui.graphics.drawscope.Stroke(width=1.8.dp.toPx()))
             }
-            if(present) LobbyPortrait128(avatar,mine,Modifier.fillMaxSize().padding(bottom=9.dp))
+            if(present) LobbyPortrait128(avatar,mine,Modifier.fillMaxSize().padding(bottom=design.portraitBottom.dp))
             else Box(Modifier.fillMaxSize().clip(RoundedCornerShape(15.dp)).clickable(enabled=canInvite,onClick=onInvite),contentAlignment=Alignment.Center) {
                 Column(horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(6.dp)) {
                     Wq122Art("friends",Modifier.size(54.dp))
@@ -105,7 +114,7 @@ private fun LobbyPlayer128(name:String,avatar:String,host:Boolean,present:Boolea
                 .background(Color(0xE52A154B)).padding(horizontal=6.dp,vertical=3.dp),
                 color=LobbyGold128,fontSize=10.sp,fontWeight=FontWeight.Bold)
         }
-        Text(if(present)name.ifBlank{"Bağlanıyor…"} else "Arkadaş bekleniyor",color=LobbyWhite128,fontSize=15.sp,
+        Text(if(present)name.ifBlank{"Bağlanıyor…"} else "Arkadaş bekleniyor",color=LobbyWhite128,fontSize=design.nameSp.sp,
             fontWeight=FontWeight.ExtraBold,maxLines=1,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
         if(present) LobbyAction128(
             text=if(ready)"✓ Hazır" else if(mine)"Hazırım" else "Hazır değil",
@@ -131,7 +140,9 @@ internal fun Wq128PremiumRoomLobby(
     val config=LocalConfiguration.current
     val wide=config.screenWidthDp>=650
     val short=config.screenHeightDp<560
-    val cardHeight=(config.screenHeightDp*(if(wide).49f else .47f)).coerceIn(if(short)180f else 242f,if(wide)490f else 405f).dp
+    val design=remember(context.applicationContext){Wq128LobbyDesign.load(context)}
+    val cardHeight=(config.screenHeightDp*(if(wide)design.tabletCardPercent else design.phoneCardPercent)/100f)
+        .coerceIn(if(short)180f else 242f,if(wide)550f else 465f).dp
     var editOpen by remember(match.code){mutableStateOf(false)}
     var inviteOpen by remember(match.code){mutableStateOf(false)}
     var infoOpen by remember(match.code){mutableStateOf(false)}
@@ -140,9 +151,10 @@ internal fun Wq128PremiumRoomLobby(
     val guestReady=guestPresent&&match.guestUid in match.readyBy
     val allReady=guestPresent&&hostReady&&guestReady
     val mode=when(match.mode){"team"->"Ortak";"quiz"->"5 Şıklı";else->"Düello"}
-    Column(Modifier.fillMaxWidth().padding(horizontal=if(wide)12.dp else 2.dp),verticalArrangement=Arrangement.spacedBy(if(short)5.dp else 8.dp)) {
+    CompositionLocalProvider(LocalLobbyDesign128 provides design) {
+    Column(Modifier.fillMaxWidth().padding(horizontal=if(wide)12.dp else 2.dp),verticalArrangement=Arrangement.spacedBy(if(short)minOf(5,design.gap).dp else design.gap.dp)) {
         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-            Wq122Art("friends",Modifier.size(34.dp))
+            Wq122Art("friends",Modifier.size(design.iconSize.dp))
             Column(Modifier.weight(1f)) {
                 Text("Oda Lobisi",color=LobbyWhite128,fontSize=if(wide)26.sp else 22.sp,fontWeight=FontWeight.Black)
                 Text("WordQuest AI · Arena",color=LobbyGold128,fontSize=11.sp,fontWeight=FontWeight.Bold)
@@ -152,6 +164,10 @@ internal fun Wq128PremiumRoomLobby(
                 Wq122Art("info",Modifier.size(27.dp))
             }
         }
+        for(section in design.sections) {
+            key(section) {
+                when(section) {
+                    "code" -> {
         Row(Modifier.fillMaxWidth().lobbyPlate128().padding(horizontal=9.dp,vertical=4.dp),
             verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)) {
             Column(Modifier.weight(1f)) {
@@ -168,6 +184,8 @@ internal fun Wq128PremiumRoomLobby(
                 },"Arkadaşını davet et"))
             })
         }
+                    }
+                    "settings" -> {
         Column(Modifier.fillMaxWidth().lobbyPlate128().padding(7.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
                 Wq122Art("settings",Modifier.size(25.dp))
@@ -183,11 +201,17 @@ internal fun Wq128PremiumRoomLobby(
                 LobbyChip128("${match.size} ${if(match.mode=="quiz")"soru" else "kelime"}",Modifier.weight(1.1f))
             }
         }
+                    }
+                    "players" -> {
         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(if(wide)12.dp else 7.dp)) {
             LobbyPlayer128(hostName,match.hostAvatar,true,true,myUid==match.hostUid,hostReady,client.busy,cardHeight,
                 client::toggleReady,{inviteOpen=true},false,Modifier.weight(1f))
             LobbyPlayer128(guestName,match.guestAvatar,false,guestPresent,myUid==match.guestUid,guestReady,client.busy,cardHeight,
                 client::toggleReady,{inviteOpen=true},isHost&&!guestPresent,Modifier.weight(1f))
+        }
+                    }
+                }
+            }
         }
         Text(when {
             allReady -> "✓ İki oyuncu da hazır."
@@ -199,6 +223,7 @@ internal fun Wq128PremiumRoomLobby(
         else Text("Oda sahibi yarışmayı başlatacak.",Modifier.fillMaxWidth(),color=LobbyWhite128,textAlign=TextAlign.Center,fontSize=12.sp)
         if(client.status.isNotBlank() && listOf("hata","kaydedilemedi","başlatılamadı","izin","reddedildi").any{client.status.contains(it,true)})
             Text(client.status,Modifier.fillMaxWidth().lobbyPlate128().padding(8.dp),color=Color(0xFFFFBCBE),fontSize=12.sp)
+    }
     }
     if(editOpen&&isHost) ArenaLobbyEditDialogV3(match,packs,profileKey,onDismiss={editOpen=false},
         onSave={mode,level,topic,size,seconds,boardId->client.updateLobbySettings(mode,level,topic,size,seconds,boardId);editOpen=false})
