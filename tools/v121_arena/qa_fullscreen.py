@@ -27,19 +27,45 @@ def bounds(n):
 def tap(n):
     a,b,c,d=bounds(n)
     adb("shell","input","tap",str((a+c)//2),str((b+d)//2))
-def find_arena():
-    for _ in range(4):
+def find_arena(name):
+    # Home has a two-step ARENA category -> Arena'ya Gir route. Compose
+    # may merge tile title and subtitle into one accessible node.
+    # Use real viewport dimensions, not fixed phone coordinates on tablets.
+    size=adb("shell","wm","size")
+    dims=re.findall(r"(\d+)x(\d+)",size)
+    w,h=map(int,dims[-1])
+    last_action=""
+    for attempt in range(16):
         ns=nodes()
-        exact=[n for n in ns if n.attrib.get("text","").strip().casefold()=="arena"]
-        if exact:
-            tap(exact[-1]);return
-        games=[n for n in ns if "oyunlar" in label(n)]
-        if games:
-            tap(games[-1]);time.sleep(1)
+        labels=[label(n).strip() for n in ns if label(n).strip()]
+        print("Arena route",name,attempt,labels[:45],flush=True)
+        def pick(predicate):
+            found=[n for n in ns if predicate(label(n).strip())]
+            return next((n for n in found if n.attrib.get("clickable")=="true"),found[-1] if found else None)
+        if any("oyun modları" in l for l in labels):return
+        entry=pick(lambda l: re.search(r"arena[’']?ya\s+gir",l) is not None)
+        category=pick(lambda l: l=="arena" or l.startswith("arena düello") or l.startswith("arena, düello"))
+        # The category label can be a heading on the second screen;
+        # always prioritize the actionable Arena'ya Gir tile.
+        if entry is not None:
+            tap(entry);last_action="entry"
+        elif category is not None and last_action!="category":
+            tap(category);last_action="category"
         else:
-            adb("shell","input","swipe","350","1050","350","380","300")
-        time.sleep(1)
-    raise AssertionError("Could not locate existing Arena route from Home")
+            # Dismiss only recognized optional app dialogs; never bypass
+            # account/login, security or system permission prompts.
+            dismiss=pick(lambda l:l in ("daha sonra","şimdi değil","kapat","vazgeç") )
+            if dismiss is not None and not any("oyun modları" in l for l in labels):
+                tap(dismiss)
+            else:
+                # Home content may be retained at an arbitrary scroll offset.
+                # Scan both directions with bounded attempts.
+                up=(attempt%8)<4
+                adb("shell","input","swipe",str(w//2),str(int(h*(.78 if up else .25))),str(w//2),str(int(h*(.25 if up else .78))),"350")
+        time.sleep(1.5)
+    (OUT/f"arena-{name}-route-failure.xml").write_text(adb("exec-out","cat","/sdcard/wq121.xml"))
+    (OUT/f"arena-{name}-route-failure.png").write_bytes(subprocess.check_output(["adb","exec-out","screencap","-p"],timeout=35))
+    raise AssertionError("Could not locate existing Arena route from Home; see route XML and screenshot")
 def screenshot(name,wide):
     p=OUT/f"arena-{name}.png"
     p.write_bytes(subprocess.check_output(["adb","exec-out","screencap","-p"],timeout=35))
@@ -62,7 +88,7 @@ def viewport(name,size,density,wide):
     adb("shell","am","force-stop",PKG)
     adb("shell","am","start","-n",PKG+"/com.kelimebulmacasi.a1.MainActivity")
     time.sleep(8)
-    find_arena()
+    find_arena(name)
     get("Oyun Modları")
     card=[bounds(get(s)) for s in ("Bulmaca Düellosu","Ortak Bulmaca","5 Şıklı Düello")]
     centers=[((x+xx)/2,(y+yy)/2) for x,y,xx,yy in card]
@@ -89,7 +115,11 @@ def viewport(name,size,density,wide):
         screenshot(name+"-settings",wide)
         print("PASS: custom hint selection and dark match settings on",name)
 
-    adb("shell","input","keyevent","KEYCODE_BACK");get("Oyun Modları")
+    if any("maç ayarları" in label(n) for n in nodes()):
+        # Use the existing explicit back control after the keyboard/dialog closes.
+        # Subsequent cycles below still exercise the hardware Back key.
+        tap(get("Oyun modlarına dön"))
+    get("Oyun Modları")
     if os.environ.get("WQ_VERSION")=="1.0.123":
         for _ in range(2):
             tap(get("Ortak Bulmaca"));get("Maç Ayarları")
