@@ -530,6 +530,7 @@ jobs:
           python3 tools/v132_engine/apply_engine.py
           python3 tools/v132_engine/apply_online.py
           python3 tools/v132_engine/apply_video_layout.py
+          python3 tools/full_source_audit/apply_confirmed_fixes.py
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
