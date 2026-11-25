@@ -17,18 +17,18 @@ env:
   WQ_TARGET_CODE: '159'
   WQ_BASE_CODE: '158'
   WQ_BASE_SHA: '9a95b9ad1ffb54db5b1fcce141967370aa8b90c2f7c4d91c78393a11dacabea2'
-  WQ_SOURCE_SHA: '4382f82a8d03acb1a998bd2540cf5cabcf26e6f7'
+  WQ_SOURCE_SHA: '667a0706c7d50b588b9b7013eb19e166543624e6'
   WQ_NOTES: 'Arena: mor-altın tek kişilik oyun ekranları, yatay tablette tam tahta ve yan yana cevap paneli, gerçek karma seviye başlığı, tek soru sayısı seçimi ve temiz menüye dönüş. Yerel motor, imza, Firebase ve ana bulmaca tahtası korunur.'
-  WQ_QA_RUN: '45700689225'
+  WQ_QA_RUN: '45707909837'
 jobs:
   upgrade:
     if: github.repository == 'ineklemihribanse-design/WordQuestAI'
     runs-on: ubuntu-latest
-    timeout-minutes: 85
+    timeout-minutes: 110
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 4382f82a8d03acb1a998bd2540cf5cabcf26e6f7
+          ref: 667a0706c7d50b588b9b7013eb19e166543624e6
           persist-credentials: false
       - uses: actions/setup-java@v4
         with:
@@ -46,25 +46,28 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh api "repos/$GITHUB_REPOSITORY/commits/$WQ_SOURCE_SHA" | jq -e '.parents[0].sha=="8583db948ca809a0ab7727cae77028e50bc0c462" and ([.files[].filename]==["tools/v132_engine/apply_video_layout.py"])'
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45696005369" > /tmp/wq125-rules.json
-          # Rule bytes are unchanged from the successfully tested 1.0.138 release.
-          for attempt in $(seq 1 80); do
-            gh api "repos/$GITHUB_REPOSITORY/actions/runs/45696005369" > /tmp/wq125-rules.json
-            if [ "$(jq -r .status /tmp/wq125-rules.json)" = completed ]; then break; fi
-            sleep 15
+          # Require the complete new source audit, Android Lint, Firebase and
+          # signed build to succeed on the exact same commit.
+          for id in 45707909791 45707909737 "$WQ_QA_RUN"; do
+            for attempt in $(seq 1 180); do
+              gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" > /tmp/wq-proof.json
+              jq -e --arg sha "$WQ_SOURCE_SHA" '.head_sha==$sha and .head_branch=="feature/v132-hybrid-engine"' /tmp/wq-proof.json
+              if [ "$(jq -r .status /tmp/wq-proof.json)" = completed ]; then break; fi
+              sleep 15
+            done
+            jq -e --arg sha "$WQ_SOURCE_SHA" '.status=="completed" and .conclusion=="success" and .head_sha==$sha' /tmp/wq-proof.json
           done
-          jq -e --arg sha "8583db948ca809a0ab7727cae77028e50bc0c462" '.status=="completed" and .conclusion=="success" and .head_sha==$sha' /tmp/wq125-rules.json
-          # Wait only for the exact pinned candidate; never select an unrelated newer run.
-          for attempt in $(seq 1 80); do
-            gh api "repos/$GITHUB_REPOSITORY/actions/runs/$WQ_QA_RUN" > /tmp/wq124-run.json
-            jq -e --arg sha "$WQ_SOURCE_SHA" '.head_sha==$sha and .head_branch=="feature/v132-hybrid-engine"' /tmp/wq124-run.json
-            if [ "$(jq -r .status /tmp/wq124-run.json)" = completed ]; then break; fi
-            sleep 15
-          done
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45696005103" > /tmp/wq132-engine-tests.json
-          jq -e --arg sha "8583db948ca809a0ab7727cae77028e50bc0c462" '.status=="completed" and .conclusion=="success" and .head_sha==$sha' /tmp/wq132-engine-tests.json
-          jq -e --arg sha "$WQ_SOURCE_SHA" '.status=="completed" and .conclusion=="success" and .head_sha==$sha and .head_branch=="feature/v132-hybrid-engine"' /tmp/wq124-run.json
+          gh run download 45707909791 -R "$GITHUB_REPOSITORY" -n WordQuestAI-full-assembled-source-audit -D "$RUNNER_TEMP/full-audit-proof"
+          python3 - <<'PY'
+          import os,json
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"full-audit-proof"
+          r=json.loads((p/"summary.json").read_text())
+          assert not r["structural_errors"],r["structural_errors"]
+          assert all(r["contracts"].values()),r["contracts"]
+          assert (p/"lint-exit-code.txt").read_text().strip()=="0"
+          print("PASS: complete source inventory, all structural contracts and Android Lint")
+          PY
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$WQ_QA_RUN/jobs?per_page=100" > /tmp/wq124-jobs.json
           python3 - <<'PY'
           import json
@@ -295,7 +298,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          ref: 4382f82a8d03acb1a998bd2540cf5cabcf26e6f7
+          ref: 667a0706c7d50b588b9b7013eb19e166543624e6
           path: verified-source
           persist-credentials: false
       - uses: actions/setup-java@v4
