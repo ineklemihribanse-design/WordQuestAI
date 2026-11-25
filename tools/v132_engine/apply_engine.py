@@ -49,6 +49,13 @@ if "import kotlinx.coroutines.launch\n" not in s and "import kotlinx.coroutines.
 f.write_text(s)
 shutil.copyfile(pack/"Wq132WebEngine.kt",p/"Wq132WebEngine.kt")
 shutil.copyfile(pack/"Wq136RecoveryEngine.kt",p/"Wq136RecoveryEngine.kt")
+# Test the independent fallback with the same dictionary and a real JVM JSON implementation.
+test_dir=main.parent/"test/java/com/kelimebulmacasi/a1"
+test_dir.mkdir(parents=True,exist_ok=True)
+shutil.copyfile(pack/"Wq136RecoveryEngineTest.kt",test_dir/"Wq136RecoveryEngineTest.kt")
+gradle=main.parents[1]/"build.gradle.kts"
+assert gradle.is_file(),gradle
+gradle.write_text(gradle.read_text()+'\n// Real JSON for JVM recovery engine tests only.\ndependencies { testImplementation("org.json:json:20240303") }\n')
 out=main/"assets/web";out.mkdir(parents=True,exist_ok=True)
 shutil.copyfile(pack/"arena_engine.html",out/"arena_engine.html")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
