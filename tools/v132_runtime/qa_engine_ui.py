@@ -42,25 +42,32 @@ def selected_chip(value):
         if p is not None and any(label(x).strip()=="✓" for x in p.iter("node")):return True
         if n.attrib.get("selected")=="true" or n.attrib.get("checked")=="true":return True
     return False
+START=r"oyuna başla|oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"
+def select_pool():
+    for level in ("A1","A2","B1"):
+        n=find(r"^"+level+r"$")
+        if not selected_chip(level):
+            tap(n);time.sleep(.5)
+        assert selected_chip(level),"Level did not select: "+level
 def start_mode(mode):
     find_arena(mode)
-    tap(find(r"^"+mode))
-    find(r"maç ayarları")
-    solo=find(r"tek başına oyna")
-    tap(solo)
-    time.sleep(1.5)
-    # Some routes switch to the dedicated local mode picker first.
+    tap(find(r"^"+mode));find(r"maç ayarları")
+    tap(find(r"tek başına oyna"));time.sleep(1.5)
+    select_pool()
+    kind="quiz" if "Şıklı" in mode else "crossword"
+    capture("settings-"+kind)
+    tap(find(START));time.sleep(2)
+    # The first start hands off from online Arena to the local Arena
+    # mode picker. This is a normal navigation step, not a round start.
     ns=nodes()
-    if visible(ns,r"oyun modları") is not None and visible(ns,r"maç ayarları") is None:
+    if visible(ns,r"oyun modları") is not None:
+        print("Local Arena handoff detected; choosing requested mode",flush=True)
+        capture("local-picker-"+kind)
         tap(find(r"^"+mode));find(r"maç ayarları")
-    for level in ("A2","B1"):
-        n=find(r"^"+level+r"$")
-        # Fresh install starts at A1; use checked/selected if exposed.
-        if not selected_chip(level):tap(n)
-        assert selected_chip(level),"Level did not select: "+level
-    assert selected_chip("A1"),"A1 was not retained in mixed pool"
-    capture("settings-"+("quiz" if "Şıklı" in mode else "crossword"))
-    tap(find(r"oyuna başla|oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"))
+        select_pool()
+        capture("local-settings-"+kind)
+        tap(find(START));time.sleep(2)
+    # Never treat a lobby as a successful gameplay screen.
 def wait_game(mode):
     deadline=time.monotonic()+65
     while time.monotonic()<deadline:
@@ -86,14 +93,7 @@ try:
     adb("shell","am","force-stop",PKG)
     adb("shell","am","start","-n",PKG+"/com.kelimebulmacasi.a1.MainActivity")
     time.sleep(6)
-    # Preset persists from prior game; do not toggle the selected levels twice.
-    find_arena("quiz")
-    tap(find(r"^5 şıklı düello"));find(r"maç ayarları")
-    tap(find(r"tek başına oyna"));time.sleep(1.5)
-    ns=nodes()
-    if visible(ns,r"oyun modları") is not None and visible(ns,r"maç ayarları") is None:
-        tap(find(r"^5 şıklı düello"));find(r"maç ayarları")
-    tap(find(r"oyuna başla|oyunu başlat|yarışmayı başlat|maçı başlat|^başlat$|^oyna$"))
+    start_mode("5 Şıklı Düello")
     wait_game("quiz")
     print("PASS: actual Android web quiz gameplay opens",flush=True)
 finally:
