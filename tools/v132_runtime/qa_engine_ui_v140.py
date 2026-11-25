@@ -143,28 +143,40 @@ def wait_game(mode,wide=False):
             return
         time.sleep(2)
     capture("engine-timeout");raise AssertionError("Game did not reach actual gameplay: "+mode)
+FULL_SCENARIOS=("phone-crossword","phone-quiz","tablet-crossword","tablet-quiz")
+raw=os.environ.get("WQ_UI_SCENARIOS",",".join(FULL_SCENARIOS))
+scenarios=tuple(raw.split(","))
+assert scenarios and len(scenarios)==len(set(scenarios)) and set(scenarios)<=set(FULL_SCENARIOS+("phone-start",)),scenarios
 try:
-    adb("shell","wm","size","1080x2340");adb("shell","wm","density","360")
-    launch_foreground()
-    start_mode("Bulmaca Düellosu");wait_game("crossword")
-    print("PASS: actual Android mixed crossword gameplay opens",flush=True)
-    launch_foreground()
-    start_mode("5 Şıklı Düello")
-    wait_game("quiz")
-    print("PASS: actual Android web quiz gameplay opens",flush=True)
-    adb("shell","wm","size","1680x978");adb("shell","wm","density","240")
-    adb("shell","settings","put","system","accelerometer_rotation","0")
-    adb("shell","settings","put","system","user_rotation","0")
-    launch_foreground()
-    start_mode("Bulmaca Düellosu");wait_game("crossword",wide=True)
-    print("PASS: landscape Arena board, answers and mixed-level title",flush=True)
-    launch_foreground()
-    start_mode("5 Şıklı Düello");wait_game("quiz",wide=True)
-    adb("shell","input","keyevent","KEYCODE_BACK");time.sleep(2)
-    ns=capture("tablet-quiz-return")
-    labels=folded(" | ".join(label(n) for n in ns))
-    assert "oyun modlari" in labels and "soru sayisi" not in labels,labels
-    print("PASS: landscape Arena quiz and clean return",flush=True)
+    if any(x.startswith("phone-") for x in scenarios):
+        adb("shell","wm","size","1080x2340");adb("shell","wm","density","360")
+        if "phone-start" in scenarios:
+            launch_foreground()
+            capture("phone-start")
+        if "phone-crossword" in scenarios:
+            launch_foreground()
+            start_mode("Bulmaca Düellosu");wait_game("crossword")
+            print("PASS: actual Android mixed crossword gameplay opens",flush=True)
+        if "phone-quiz" in scenarios:
+            launch_foreground()
+            start_mode("5 Şıklı Düello");wait_game("quiz")
+            print("PASS: actual Android web quiz gameplay opens",flush=True)
+    if any(x.startswith("tablet-") for x in scenarios):
+        adb("shell","wm","size","1680x978");adb("shell","wm","density","240")
+        adb("shell","settings","put","system","accelerometer_rotation","0")
+        adb("shell","settings","put","system","user_rotation","0")
+        if "tablet-crossword" in scenarios:
+            launch_foreground()
+            start_mode("Bulmaca Düellosu");wait_game("crossword",wide=True)
+            print("PASS: landscape Arena board, answers and mixed-level title",flush=True)
+        if "tablet-quiz" in scenarios:
+            launch_foreground()
+            start_mode("5 Şıklı Düello");wait_game("quiz",wide=True)
+            adb("shell","input","keyevent","KEYCODE_BACK");time.sleep(2)
+            ns=capture("tablet-quiz-return")
+            labels=folded(" | ".join(label(n) for n in ns))
+            assert "oyun modlari" in labels and "soru sayisi" not in labels,labels
+            print("PASS: landscape Arena quiz and clean return",flush=True)
 finally:
     (OUT/"android-logcat.txt").write_text(adb("logcat","-d","-t","2000"))
     adb("shell","wm","size","reset");adb("shell","wm","density","reset")
