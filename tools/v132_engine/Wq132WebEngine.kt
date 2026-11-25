@@ -10,6 +10,10 @@ import android.webkit.RenderProcessGoneDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.TimeoutCancellationException
+import android.util.Base64
+import android.util.Log
+import java.io.IOException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import org.json.JSONObject
@@ -35,11 +39,11 @@ internal object Wq132WebEngine {
         val snapshot:String="",val snapshotId:String="",val wordLevels:Map<String,String> = emptyMap())
     fun snapshotId(snapshot:String):String {
         val bytes=snapshot.toByteArray(Charsets.UTF_8)
-        require(bytes.size in 2..MAX_ROUND_BYTES){"Ortak tahta boyutu geçersiz"}
+        require(bytes.size in 2..MAX_ROUND_BYTES){"Ortak oyun verisi sınır dışı ("+bytes.size+" bayt, en fazla "+MAX_ROUND_BYTES+" bayt)"}
         return "web:"+MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it.toInt() and 255)}
     }
     private data class Input(val html:String,val words:JSONArray,val settings:JSONObject,val seed:Int)
-    private fun read(c:Context):String=WqContentUpdates.open(c,PATH).use {
+    private fun read(c:Context,bundled:Boolean=false):String=(if(bundled)c.assets.open(PATH) else WqContentUpdates.open(c,PATH)).use {
         val out=ByteArrayOutputStream();val buf=ByteArray(4096)
         while(true){val n=it.read(buf);if(n<0)break;require(out.size()+n<=MAX_BYTES);out.write(buf,0,n)}
         validate(out.toByteArray())
@@ -52,54 +56,99 @@ internal object Wq132WebEngine {
         val filtered=JSONArray()
         for(i in 0 until all.length()){
             val w=all.getJSONObject(i)
-            if(w.getString("level") in pool)filtered.put(JSONObject().put("answer",w.getString("answer"))
+            if(w.getString("level") in pool && (mode=="quiz" || topic==PremiumArenaRules.allTopics || topic=="all" || w.getString("category")==topic))filtered.put(JSONObject().put("answer",w.getString("answer"))
                 .put("meaning",w.getString("meaning")).put("category",w.getString("category")).put("level",w.getString("level")))
         }
         val settings=JSONObject().put("mode",mode).put("levels",JSONArray(pool)).put("topic",topic)
             .put("size",size).put("seconds",seconds).put("hints",hints).put("retries",retries)
-        return Input(if(loadEngine)read(c) else "",filtered,settings,seed)
+        return Input(if(loadEngine)runCatching{read(c)}.getOrElse{read(c,bundled=true)} else "",filtered,settings,seed)
     }
-    private suspend fun evaluate(c:Context,i:Input):String=withContext(Dispatchers.Main.immediate) {
-        val view=WebView(c)
-        try {
-            view.settings.apply {
-                javaScriptEnabled=true;domStorageEnabled=false;allowFileAccess=false;allowContentAccess=false
-                blockNetworkLoads=true;javaScriptCanOpenWindowsAutomatically=false;setSupportMultipleWindows(false)
-                mixedContentMode=android.webkit.WebSettings.MIXED_CONTENT_NEVER_ALLOW
-            }
-            val request=JSONObject().put("words",i.words).put("settings",i.settings).put("seed",i.seed).toString()
-            withTimeout(20000L) {
-                suspendCancellableCoroutine { cont ->
-                    var started=false
-                    view.webViewClient=object:WebViewClient(){
-                        override fun shouldOverrideUrlLoading(v:WebView,r:WebResourceRequest)=true
-                        @Suppress("DEPRECATION")
-                        override fun shouldOverrideUrlLoading(v:WebView,url:String)=true
-                        override fun shouldInterceptRequest(v:WebView,r:WebResourceRequest):WebResourceResponse =
-                            WebResourceResponse("text/plain","UTF-8",403,"Blocked",emptyMap(),ByteArray(0).inputStream())
-                        override fun onReceivedError(v:WebView,r:WebResourceRequest,e:WebResourceError){
-                            if(r.isForMainFrame&&cont.isActive)cont.resume("")
-                        }
-                        override fun onRenderProcessGone(v:WebView,d:RenderProcessGoneDetail):Boolean {
-                            if(cont.isActive)cont.resume("");return true
-                        }
-                        override fun onPageFinished(v:WebView,url:String){
-                            if(started||!cont.isActive)return
-                            started=true
-                            v.evaluateJavascript("window.wqGenerate("+JSONObject.quote(request)+")"){ result->
-                                if(cont.isActive)cont.resume((runCatching{JSONTokener(result).nextValue() as? String}.getOrNull()).orEmpty())
+    private class TransportFailure(message:String,cause:Throwable?=null):IOException(message,cause)
+    private const val MAX_REQUEST_BYTES=8*1024*1024
+    private const val CHUNK_CHARS=24*1024
+    // Never put a multi-megabyte vocabulary in one evaluateJavascript IPC message.
+    // Base64 keeps the chunks ASCII, including Turkish characters and surrogate pairs.
+    private suspend fun evaluate(c:Context,i:Input):String {
+        val chunks=withContext(Dispatchers.Default){
+            val raw=JSONObject().put("words",i.words).put("settings",i.settings).put("seed",i.seed)
+                .toString().toByteArray(Charsets.UTF_8)
+            require(raw.size in 2..MAX_REQUEST_BYTES){"Kelime havuzu aktarım sınırını aşıyor."}
+            Log.i("Wq132Engine","Request: "+raw.size+" bytes, "+i.words.length()+" records, mode="+i.settings.getString("mode"))
+            Base64.encodeToString(raw,Base64.NO_WRAP).chunked(CHUNK_CHARS)
+        }
+        return withContext(Dispatchers.Main.immediate) {
+            val view=WebView(c)
+            var renderGone=false
+            try {
+                view.settings.apply {
+                    javaScriptEnabled=true;domStorageEnabled=false;allowFileAccess=false;allowContentAccess=false
+                    blockNetworkLoads=true;javaScriptCanOpenWindowsAutomatically=false;setSupportMultipleWindows(false)
+                    mixedContentMode=android.webkit.WebSettings.MIXED_CONTENT_NEVER_ALLOW
+                }
+                try {
+                    withTimeout(45000L) {
+                        suspendCancellableCoroutine<String> { cont ->
+                            var started=false
+                            fun fail(message:String) {
+                                if(cont.isActive)cont.resumeWith(Result.failure(TransportFailure(message)))
                             }
+                            fun transfer(n:Int) {
+                                if(!cont.isActive)return
+                                if(n<chunks.size){
+                                    view.evaluateJavascript("window.__wqChunks.push("+JSONObject.quote(chunks[n])+")"){ answer->
+                                        if(cont.isActive){
+                                            if(answer!=(n+1).toString())fail("Kelime havuzu aktarımı kesildi.")
+                                            else transfer(n+1)
+                                        }
+                                    }
+                                }else{
+                                    val call="(function(){var encoded=window.__wqChunks.join('');delete window.__wqChunks;var binary=atob(encoded);var bytes=new Uint8Array(binary.length);for(var j=0;j<binary.length;j++)bytes[j]=binary.charCodeAt(j);return window.wqGenerate(new TextDecoder('utf-8',{fatal:true}).decode(bytes));})()"
+                                    view.evaluateJavascript(call){ answer->
+                                        if(cont.isActive){
+                                            val decoded=runCatching{JSONTokener(answer).nextValue() as? String}.getOrNull()
+                                            if(decoded.isNullOrBlank()||decoded=="null")fail("Oyun motorundan boş yanıt geldi.")
+                                            else cont.resume(decoded)
+                                        }
+                                    }
+                                }
+                            }
+                            view.webViewClient=object:WebViewClient(){
+                                override fun shouldOverrideUrlLoading(v:WebView,r:WebResourceRequest)=true
+                                @Suppress("DEPRECATION")
+                                override fun shouldOverrideUrlLoading(v:WebView,url:String)=true
+                                override fun shouldInterceptRequest(v:WebView,r:WebResourceRequest):WebResourceResponse =
+                                    WebResourceResponse("text/plain","UTF-8",403,"Blocked",emptyMap(),ByteArray(0).inputStream())
+                                override fun onReceivedError(v:WebView,r:WebResourceRequest,e:WebResourceError){
+                                    if(r.isForMainFrame)fail("Oyun motoru yüklenemedi.")
+                                }
+                                override fun onRenderProcessGone(v:WebView,d:RenderProcessGoneDetail):Boolean {
+                                    renderGone=true;fail("Oyun motorunun WebView işlemi kapandı.");return true
+                                }
+                                override fun onPageFinished(v:WebView,url:String){
+                                    if(started||!cont.isActive)return
+                                    started=true
+                                    v.evaluateJavascript("(function(){if(typeof window.wqGenerate!=='function')return false;window.__wqChunks=[];return true;})()"){ answer->
+                                        if(cont.isActive){if(answer=="true")transfer(0) else fail("Oyun motoru başlatılamadı.")}
+                                    }
+                                }
+                            }
+                            view.loadDataWithBaseURL("https://wq-engine.invalid/",i.html,"text/html","UTF-8",null)
                         }
                     }
-                    view.loadDataWithBaseURL("https://wq-engine.invalid/",i.html,"text/html","UTF-8",null)
+                } catch(e:TimeoutCancellationException) {
+                    throw TransportFailure("Oyun motoru zaman aşımına uğradı.",e)
                 }
+            } finally {
+                if(!renderGone)runCatching{view.stopLoading()}
+                runCatching{view.destroy()}
             }
-        } finally {view.stopLoading();view.destroy()}
+        }
     }
     private fun decode(input:Input,result:String):Round {
-        val roundId=snapshotId(result)
+        require(result.isNotBlank()){"Oyun motorundan boş yanıt geldi."}
         val response=JSONObject(result)
         require(response.optBoolean("ok")){response.optString("error","Oyun üretilemedi")}
+        val roundId=snapshotId(result)
         val s=input.settings
         val levels=s.getJSONArray("levels").let{a->List(a.length()){a.getString(it)}}
         val size=s.getInt("size")
@@ -107,7 +156,7 @@ internal object Wq132WebEngine {
         val records=(0 until input.words.length()).map{input.words.getJSONObject(it)}
         fun matches(answer:String,meaning:String,level:String,topicRequired:Boolean)=records.any{
             it.getString("answer").equals(answer,true)&&it.getString("meaning")==meaning&&it.getString("level")==level&&
-                (!topicRequired||topic==PremiumArenaRules.allTopics||it.getString("category")==topic)
+                (!topicRequired||topic==PremiumArenaRules.allTopics||topic=="all"||it.getString("category")==topic)
         }
         if(s.getString("mode")=="quiz"){
             val a=response.getJSONArray("data");require(a.length()==size)
@@ -160,7 +209,14 @@ internal object Wq132WebEngine {
     }
     suspend fun generate(c:Context,mode:String,levels:List<String>,topic:String,size:Int,seconds:Int,hints:Int,retries:Int,seed:Int):Round {
         val i=withContext(Dispatchers.Default){input(c,mode,levels,topic,size,seconds,hints,retries,seed)}
-        val result=evaluate(c,i)
+        val result=try {
+            evaluate(c,i)
+        }catch(first:TransportFailure){
+            // Retry once using the APK's known-good engine, not a different word pool.
+            Log.w("Wq132Engine","Web transport failed; retry bundled engine: "+first.message)
+            val fallback=withContext(Dispatchers.Default){i.copy(html=read(c,bundled=true))}
+            evaluate(c,fallback)
+        }
         return withContext(Dispatchers.Default){decode(i,result)}
     }
 }
