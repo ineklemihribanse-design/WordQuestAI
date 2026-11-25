@@ -1,4 +1,4 @@
-name: Publish verified WordQuest AI 1.0.140 Arena recorded tablet and solo UI repair
+name: Publish verified WordQuest AI 1.0.142 Arena stability and compact player cards
 on:
   push:
     branches: [main]
@@ -12,23 +12,24 @@ concurrency:
   # Supersede the older candidate before publication; do not publish known room-create bug.
   cancel-in-progress: true
 env:
-  WQ_VERSION: '1.0.140'
-  WQ_BASE_VERSION: '1.0.138'
-  WQ_TARGET_CODE: '159'
-  WQ_BASE_CODE: '158'
-  WQ_BASE_SHA: '9a95b9ad1ffb54db5b1fcce141967370aa8b90c2f7c4d91c78393a11dacabea2'
-  WQ_SOURCE_SHA: '667a0706c7d50b588b9b7013eb19e166543624e6'
-  WQ_NOTES: 'Arena: mor-altın tek kişilik oyun ekranları, yatay tablette tam tahta ve yan yana cevap paneli, gerçek karma seviye başlığı, tek soru sayısı seçimi ve temiz menüye dönüş. Yerel motor, imza, Firebase ve ana bulmaca tahtası korunur.'
-  WQ_QA_RUN: '45707909837'
+  WQ_VERSION: '1.0.142'
+  WQ_BASE_VERSION: '1.0.140'
+  WQ_TARGET_CODE: '160'
+  WQ_BASE_CODE: '159'
+  WQ_SOURCE_SHA: '969ea663ec486a080f54697af0fca1312215cb7a'
+  WQ_NOTES: 'Arena: 5 şıklı düello ve ortak bulmaca bitişi, rakip maskotu, ayrı açılır kapanır oyuncu kartları, merkezi süre, bitirme teklif penceresi. Ana bulmaca tahtası, veriler ve imza korunur.'
+  WQ_QA_RUN: '45720792026'
 jobs:
   upgrade:
     if: github.repository == 'ineklemihribanse-design/WordQuestAI'
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: 75
+    outputs:
+      base_sha: ${{ steps.qa_proof.outputs.base_sha }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 667a0706c7d50b588b9b7013eb19e166543624e6
+          ref: 969ea663ec486a080f54697af0fca1312215cb7a
           persist-credentials: false
       - uses: actions/setup-java@v4
         with:
@@ -42,22 +43,20 @@ jobs:
       - name: Set shared directory
         run: echo "WQ_RELEASE_DIR=$RUNNER_TEMP/wq-auto-release" >> "$GITHUB_ENV"
       - name: Verify exact successful QA and obtain existing signed APK
+        id: qa_proof
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # Require the complete new source audit, Android Lint, Firebase and
-          # signed build to succeed on the exact same commit.
-          for id in 45707909791 45707909737 "$WQ_QA_RUN"; do
-            for attempt in $(seq 1 180); do
-              gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" > /tmp/wq-proof.json
-              jq -e --arg sha "$WQ_SOURCE_SHA" '.head_sha==$sha and .head_branch=="feature/v132-hybrid-engine"' /tmp/wq-proof.json
-              if [ "$(jq -r .status /tmp/wq-proof.json)" = completed ]; then break; fi
-              sleep 15
-            done
-            jq -e --arg sha "$WQ_SOURCE_SHA" '.status=="completed" and .conclusion=="success" and .head_sha==$sha' /tmp/wq-proof.json
+          for id in 45720792126 45720791913 "$WQ_QA_RUN"; do
+            gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" > /tmp/wq-proof.json
+            jq -e --arg sha "$WQ_SOURCE_SHA" '.head_sha==$sha and .head_branch=="feature/v132-hybrid-engine" and .status=="completed" and .conclusion=="success"' /tmp/wq-proof.json
           done
-          gh run download 45707909791 -R "$GITHUB_REPOSITORY" -n WordQuestAI-full-assembled-source-audit -D "$RUNNER_TEMP/full-audit-proof"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45707909737" > /tmp/wq-firebase-proof.json
+          jq -e --arg sha "667a0706c7d50b588b9b7013eb19e166543624e6" '.head_sha==$sha and .status=="completed" and .conclusion=="success"' /tmp/wq-firebase-proof.json
+          gh api "repos/$GITHUB_REPOSITORY/compare/667a0706c7d50b588b9b7013eb19e166543624e6...$WQ_SOURCE_SHA" > /tmp/wq-rule-diff.json
+          jq -e '.status=="ahead" and (.files|length)==3 and all(.files[]; .filename==".github/workflows/audit-full-assembled-source.yml" or .filename==".github/workflows/qa-v132-engine.yml" or .filename=="tools/v132_engine/apply_online.py")' /tmp/wq-rule-diff.json
+          gh run download 45720792126 -R "$GITHUB_REPOSITORY" -n WordQuestAI-full-assembled-source-audit -D "$RUNNER_TEMP/full-audit-proof"
           python3 - <<'PY'
           import os,json
           from pathlib import Path
@@ -72,14 +71,20 @@ jobs:
           python3 - <<'PY'
           import json
           good={s['name'] for j in json.load(open('/tmp/wq124-jobs.json'))['jobs'] for s in j['steps'] if s['conclusion']=='success'}
-          assert {'Integrate signed data-only content updater and run packer tests','Run complete offline tests and build experimental unsigned APK in one Gradle invocation','Sign v1.0.140 with current installed-app production certificate','Preserve signed content updater candidate for separate device testing'} <= good
+          assert {'Integrate signed data-only content updater and run packer tests','Run complete offline tests and build experimental unsigned APK in one Gradle invocation','Sign v1.0.142 with current installed-app production certificate','Preserve signed content updater candidate for separate device testing'} <= good
           PY
           test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "v$WQ_BASE_VERSION"
           mkdir -p "$WQ_RELEASE_DIR/"{base,signed,delta,classes}
-          gh run download "$WQ_QA_RUN" -R "$GITHUB_REPOSITORY" -n WordQuestAI-v1.0.140-signed-hybrid-engine-QA -D "$WQ_RELEASE_DIR/signed"
+          gh run download "$WQ_QA_RUN" -R "$GITHUB_REPOSITORY" -n WordQuestAI-v1.0.142-signed-hybrid-engine-QA -D "$WQ_RELEASE_DIR/signed"
           gh release download "v$WQ_BASE_VERSION" -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$WQ_RELEASE_DIR/base"
-          test -s "$WQ_RELEASE_DIR/signed/WordQuestAI-v1.0.140-signed-qa.apk"
+          test -s "$WQ_RELEASE_DIR/signed/WordQuestAI-v1.0.142-signed-qa.apk"
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/v$WQ_BASE_VERSION" > /tmp/wq-base-release.json
+          jq -e --arg tag "v$WQ_BASE_VERSION" '.tag_name==$tag and .draft==false and .prerelease==false' /tmp/wq-base-release.json
+          WQ_BASE_SHA=$(jq -er '.assets[]|select(.name=="WordQuestAI.apk" and .state=="uploaded")|.digest|select(test("^sha256:[0-9a-f]{64}$"))|sub("^sha256:";"")' /tmp/wq-base-release.json)
+          jq -e --arg sha "$WQ_BASE_SHA" --argjson code "$WQ_BASE_CODE" '.sha256==$sha and .versionCode==$code and .packageName=="com.kelimebulmacasi.a1.practice.fresh"' "$WQ_RELEASE_DIR/base/update.json"
           echo "$WQ_BASE_SHA  $WQ_RELEASE_DIR/base/WordQuestAI.apk" | sha256sum -c -
+          echo "WQ_BASE_SHA=$WQ_BASE_SHA" >> "$GITHUB_ENV"
+          echo "base_sha=$WQ_BASE_SHA" >> "$GITHUB_OUTPUT"
       - name: Verify signed APK and prepare compatible delta manifest
         run: |
           set -euo pipefail
@@ -88,22 +93,22 @@ jobs:
             SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
             "$SDKM" --install 'build-tools;35.0.0'
           fi
-          apk="$D/signed/WordQuestAI-v1.0.140-signed-qa.apk"
+          apk="$D/signed/WordQuestAI-v1.0.142-signed-qa.apk"
           java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify --verbose --print-certs "$apk" > "$D/signature.txt"
           grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$D/signature.txt"
           grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$D/signature.txt"
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$D/signature.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$apk" > "$D/badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$D/badging.txt"
-          grep -Fq "versionCode='159'" "$D/badging.txt"
-          grep -Fq "versionName='1.0.140'" "$D/badging.txt"
+          grep -Fq "versionCode='160'" "$D/badging.txt"
+          grep -Fq "versionName='1.0.142'" "$D/badging.txt"
           ! grep -Fq 'application-debuggable' "$D/badging.txt"
           unzip -tq "$apk"
           python3 - <<'PY'
           import os,json,hashlib,zipfile
           from pathlib import Path
           d=Path(os.environ['WQ_RELEASE_DIR'])
-          p=d/'signed/WordQuestAI-v1.0.140-signed-qa.apk'
+          p=d/'signed/WordQuestAI-v1.0.142-signed-qa.apk'
           with p.open('rb') as f: h=hashlib.file_digest(f,'sha256').hexdigest()
           with zipfile.ZipFile(p) as z:
               dex=[z.read(n) for n in z.namelist() if n.startswith('classes') and n.endswith('.dex')]
@@ -113,7 +118,7 @@ jobs:
               assert 'assets/design/arena_lobby.json' in z.namelist()
               (d/'arena_engine.html').write_bytes(z.read('assets/web/arena_engine.html'))
               (d/'arena-vocabulary-v1.json').write_bytes(z.read('assets/arena-vocabulary-v1.json'))
-          m=dict(schemaVersion=1,tag='v1.0.140',versionCode=159,versionName='1.0.140',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=h,notes=os.environ['WQ_NOTES'])
+          m=dict(schemaVersion=1,tag='v1.0.142',versionCode=160,versionName='1.0.142',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=h,notes=os.environ['WQ_NOTES'])
           (d/'signed/update.json').write_text(json.dumps(m))
           PY
           node tools/v132_engine/smoke_bundle.mjs "$D/arena_engine.html" "$D/arena-vocabulary-v1.json"
@@ -158,7 +163,7 @@ jobs:
           cp "$RUNNER_TEMP/wq206-upgrade-passed.sha256" "$WQ_RELEASE_DIR/upgrade-proof.sha256"
       - uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.140-verified-release
+          name: WordQuestAI-v1.0.142-verified-release
           path: |
             ${{ runner.temp }}/wq-auto-release/dist
             ${{ runner.temp }}/wq-auto-release/upgrade-proof.sha256
@@ -168,7 +173,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: WordQuestAI-v1.0.140-device-diagnostics
+          name: WordQuestAI-v1.0.142-device-diagnostics
           path: |
             ${{ runner.temp }}/wq-auto-release/report.json
             ${{ runner.temp }}/wq-auto-release/before.txt
@@ -183,6 +188,8 @@ jobs:
   publish:
     needs: upgrade
     if: needs.upgrade.result == 'success'
+    env:
+      WQ_BASE_SHA: ${{ needs.upgrade.outputs.base_sha }}
     permissions:
       contents: write
       actions: read
@@ -191,7 +198,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: WordQuestAI-v1.0.140-verified-release
+          name: WordQuestAI-v1.0.142-verified-release
           path: ${{ runner.temp }}/verified
       - name: Validate final signed bytes, draft, upload and publish
         env:
@@ -291,14 +298,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      CORE_TAG: v1.0.140
-      CORE_CODE: '159'
-      CONTENT_VERSION: '1.0.141'
+      CORE_TAG: v1.0.142
+      CORE_CODE: '160'
+      CONTENT_VERSION: '1.0.143'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          ref: 667a0706c7d50b588b9b7013eb19e166543624e6
+          ref: 969ea663ec486a080f54697af0fca1312215cb7a
           path: verified-source
           persist-credentials: false
       - uses: actions/setup-java@v4
@@ -307,7 +314,7 @@ jobs:
           java-version: '17'
       - uses: actions/download-artifact@v4
         with:
-          name: WordQuestAI-v1.0.140-verified-release
+          name: WordQuestAI-v1.0.142-verified-release
           path: ${{ runner.temp }}/verified-content
       - name: Assemble and validate cumulative signed web and design content
         env:
@@ -316,7 +323,7 @@ jobs:
           set -euo pipefail
           test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$CORE_TAG"
           mkdir -p "$RUNNER_TEMP/content-base" "$RUNNER_TEMP/content-out/objects"
-          gh release download "$CORE_TAG" -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$RUNNER_TEMP/content-base"
+          cp "$RUNNER_TEMP/verified-content/dist/WordQuestAI.apk" "$RUNNER_TEMP/verified-content/dist/update.json" "$RUNNER_TEMP/content-base/"
           CORE_SHA="$(cut -d" " -f1 "$RUNNER_TEMP/verified-content/upgrade-proof.sha256")"
           export CORE_SHA
           echo "$CORE_SHA  $RUNNER_TEMP/content-base/WordQuestAI.apk" | sha256sum -c -
@@ -378,9 +385,9 @@ jobs:
           out=Path(os.environ['RUNNER_TEMP'])/'content-out'
           old=json.loads(base64.b64decode(json.loads((here/'index.json').read_text())['payload']))
           new=json.loads(base64.b64decode(json.loads((out/'index.json').read_text())['payload']))
-          assert new['coreCode']==159 and new['version']=='1.0.141' and new['schema']==1
+          assert new['coreCode']==160 and new['version']=='1.0.143' and new['schema']==1
           if old!=new:
-              assert old['coreCode']==158 and old['version']=='1.0.139','Unexpected content channel'
+              assert old['coreCode']==159 and old['version']=='1.0.141','Unexpected content channel'
               for obj in (out/'objects').iterdir():
                   assert obj.suffix in ('.html','.json')
                   assert obj.name==hashlib.sha256(obj.read_bytes()).hexdigest()+obj.suffix
@@ -391,7 +398,7 @@ jobs:
           PY
           git add -- index.json objects
           if ! git diff --cached --quiet; then
-            git commit -m "Signed hybrid web and design content 1.0.141 for core 159"
+            git commit -m "Signed hybrid web and design content 1.0.143 for core 160"
             git push origin HEAD:refs/heads/content-channel
           fi
-          echo "Content 1.0.141 published for Android core 159; no APK installation." >> "$GITHUB_STEP_SUMMARY"
+          echo "Content 1.0.143 published for Android core 160; no APK installation." >> "$GITHUB_STEP_SUMMARY"
