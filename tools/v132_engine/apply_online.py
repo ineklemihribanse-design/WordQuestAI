@@ -20,19 +20,19 @@ s=once(s,'    var busy by mutableStateOf(false)','''    private var validatedRou
     var busy by mutableStateOf(false)''')
 a=s.index("    fun create(");b=s.index("        refreshQuotaForToday()",a)
 s=s[:a]+'''    fun create(mode: String, level: String, topic: String, size: Int, seconds: Int, boardId: String,
-        snapshot: String? = null, selectedPreset: Wq186MatchPreset? = null) {
+        roundPayload: String? = null, selectedPreset: Wq186MatchPreset? = null) {
         val preset=(selectedPreset ?: Wq186ArenaPresetStore.read(context,session.profileKey,level)).sanitized(level)
-        if(snapshot!=null && runCatching{Wq132WebEngine.snapshotId(snapshot)}.getOrNull()!=boardId) {
+        if(roundPayload!=null && runCatching{Wq132WebEngine.snapshotId(roundPayload)}.getOrNull()!=boardId) {
             status="Ortak oyun verisi geçersiz.";return
         }
-        if(snapshot==null && (boardId.startsWith("web:") || preset.levels.size>1)) {
+        if(roundPayload==null && (boardId.startsWith("web:") || preset.levels.size>1)) {
             status="Karışık seviye için ortak web oyunu gerekli.";return
         }
         val actualLevel=level
         val actualBoardId=boardId
 '''+s[b:]
 s=once(s,'database.reference.updateChildren(mapOf<String, Any>("roomQuotaV2/$myUid/$day/$slot" to code, "premiumRooms/$code" to initial))','''database.reference.updateChildren(mapOf<String, Any>("roomQuotaV2/$myUid/$day/$slot" to code,
-                        "premiumRooms/$code" to (initial + if(snapshot!=null)mapOf("roundData" to snapshot) else emptyMap())))''')
+                        "premiumRooms/$code" to (initial + if(roundPayload!=null)mapOf("roundData" to roundPayload) else emptyMap())))''')
 a=s.index("    fun toggleReady()");b=s.index("    /**",a)
 s=s[:a]+'''    fun toggleReady() {
         val m=match ?: return
@@ -82,6 +82,11 @@ s=once(s,'        val room = ref ?: return\n        busy = true\n        status 
         busy = true
         status = "Oyuncular hazırlanıyor…"''')
 s=once(s,'ref = null; listener = null; match = null; roomCode = ""','ref = null; listener = null; match = null; roomCode = ""; validatedRound=null')
+# The quota callback's snapshot is a Firebase DataSnapshot, NOT game JSON.
+# Assert the actual assembled create function sends its String parameter.
+create=s[s.index('    fun create('):s.index('    private fun reserve(',s.index('    fun create('))]
+assert 'roundPayload: String?' in create and 'mapOf("roundData" to roundPayload)' in create
+assert 'mapOf("roundData" to snapshot)' not in create
 f.write_text(s)
 f=p/"PremiumOnlineScreen.kt";s=f.read_text()
 if "import kotlinx.coroutines.launch\n" not in s and "import kotlinx.coroutines.*\n" not in s:
