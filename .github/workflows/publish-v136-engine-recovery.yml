@@ -34,7 +34,7 @@ jobs:
             gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" | jq -e --arg sha "$WQ_SOURCE_SHA" '.status=="completed" and .conclusion=="success" and .head_sha==$sha'
           done
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/45647423613" | jq -e '.head_sha=="8b6a537bea624fff7cab10081e7ba15fe0ba5527"'
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45647423613/jobs?per_page=100" | jq -e '.jobs | any(.id==139322070943 and .name=="upgrade" and .conclusion=="success" and (.steps|any(.name=="Reconstruct installed APK and verify Android upgrade without uninstall" and .conclusion=="success")))'
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45647423613/attempts/1/jobs?per_page=100" | jq -e '.jobs | any(.id==139322070943 and .name=="upgrade" and .conclusion=="success" and (.steps|any(.name=="Reconstruct installed APK and verify Android upgrade without uninstall" and .conclusion=="success")))'
           gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15038369193" | jq -e '.name=="WordQuestAI-v1.0.136-verified-release" and .expired==false and .digest=="sha256:efd875616a50ae089f3acbcf4615ca34bb48bb851f30649f5766ce67bdccfb3f"'
           echo 'PASS: previous Android upgrade and gameplay tests are valid; reuse exact artifact.'
   publish:
