@@ -6,6 +6,7 @@ Publish objects before index.json, and never replace hash-named objects.
 import argparse,base64,hashlib,json,re,subprocess,tempfile
 from pathlib import Path
 from lobby_design import validate, PATH as DESIGN_PATH
+from web_bundle import validate as validate_web, PATH as WEB_PATH
 PATH=re.compile(r'(arena_v120|arena_v122|new_game_198)/[a-zA-Z0-9_-]{1,80}\.webp')
 def make(source,out,core,version,sequence,key):
     assert re.fullmatch(r'1\.0\.\d{1,8}',version) and sequence>0 and core>0
@@ -14,9 +15,10 @@ def make(source,out,core,version,sequence,key):
     for p in sorted(source.rglob('*')):
         if p.is_dir():continue
         path=p.relative_to(source).as_posix()
-        assert not p.is_symlink() and (PATH.fullmatch(path) or path==DESIGN_PATH),path
+        assert not p.is_symlink() and (PATH.fullmatch(path) or path in (DESIGN_PATH,WEB_PATH)),path
         data=p.read_bytes()
         if path==DESIGN_PATH:validate(data)
+        elif path==WEB_PATH:validate_web(data)
         else:assert 12<=len(data)<=12*1024*1024 and data[:4]==b'RIFF' and data[8:12]==b'WEBP',path
         total+=len(data)
         digest=hashlib.sha256(data).hexdigest()

@@ -151,7 +151,26 @@ internal fun Wq128PremiumRoomLobby(
     val guestReady=guestPresent&&match.guestUid in match.readyBy
     val allReady=guestPresent&&hostReady&&guestReady
     val mode=when(match.mode){"team"->"Ortak";"quiz"->"5 Şıklı";else->"Düello"}
-    CompositionLocalProvider(LocalLobbyDesign128 provides design) {
+    // Opt-in pilot; native controls remain available on the same room and session.
+    var webPilot by remember(match.code){mutableStateOf(false)}
+    TextButton(onClick={webPilot=!webPilot},modifier=Modifier.fillMaxWidth()){
+        Text(if(webPilot)"Yerel Lobiye Dön" else "Web Lobi · Deneme",color=LobbyGold128)
+    }
+    if(webPilot) Wq130WebLobby(match,client,isHost,myUid,hostName,guestName,onAction={verb->
+        when(verb){
+            "ready"->client.toggleReady()
+            "start"->if(isHost&&allReady&&!client.busy)client.start()
+            "invite"->if(isHost)inviteOpen=true
+            "edit"->if(isHost)editOpen=true
+            "info"->infoOpen=true
+            "copy"->(context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager)
+                ?.setPrimaryClip(ClipData.newPlainText("WordQuest Arena",match.code))
+            "share"->context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).apply {
+                type="text/plain";putExtra(Intent.EXTRA_TEXT,"WordQuest AI Arena daveti! Oda kodu: ${match.code}")
+            },"Arkadaşını davet et"))
+        }
+    },onFallback={webPilot=false})
+    else CompositionLocalProvider(LocalLobbyDesign128 provides design) {
     Column(Modifier.fillMaxWidth().padding(horizontal=if(wide)12.dp else 2.dp),verticalArrangement=Arrangement.spacedBy(if(short)minOf(5,design.gap).dp else design.gap.dp)) {
         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)) {
             Wq122Art("friends",Modifier.size(design.iconSize.dp))

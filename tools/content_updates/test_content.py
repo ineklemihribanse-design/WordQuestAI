@@ -48,6 +48,18 @@ class ContentTest(unittest.TestCase):
                       {'sectionOrder':'javascript'},{'script':'run()'},{'nameSp':True}):
             p.write_text(json.dumps(dict(o,**patch)))
             with self.assertRaises(AssertionError):make(self.source,self.out,153,'1.0.129',1,self.key)
+    def test_web_snapshot_is_signed_and_bounded(self):
+        p=self.source/'web'/'arena_lobby.html'
+        p.parent.mkdir()
+        data=(Path(__file__).resolve().parents[1]/'v130_web'/'arena_lobby.html').read_bytes()
+        p.write_bytes(data)
+        make(self.source,self.out,154,'1.0.131',1,self.key)
+        self.assertEqual((self.out/'objects'/(hashlib.sha256(data).hexdigest()+'.html')).read_bytes(),data)
+        p.write_bytes(b'<html><script>alert(1)</script></html>')
+        with self.assertRaises(AssertionError):make(self.source,self.out,154,'1.0.131',1,self.key)
+        p.unlink()
+        (self.source/'web'/'arbitrary.js').write_text('test')
+        with self.assertRaises(AssertionError):make(self.source,self.out,154,'1.0.131',1,self.key)
     def test_reject_executable_and_invalid_image(self):
         (self.source/'code.dex').write_bytes(b'dex')
         with self.assertRaises(AssertionError):make(self.source,self.out,150,'1.0.125',1,self.key)
