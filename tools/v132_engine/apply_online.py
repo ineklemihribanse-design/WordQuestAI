@@ -471,3 +471,109 @@ s=once(s,'color=Color(0xFFFFDF9B),fontSize=11.sp)\n            }','color=Color(0
 s=once(s,'Wq2DPortrait(avatar.orEmpty().ifBlank { "piko" },','Wq2DPortrait(avatar.orEmpty(),')
 f.write_text(s)
 print("PASS: separate collapsible score cards, compact live match header, incoming finish vote dialog")
+
+
+# Reliable per-participant mascot delivery. Privacy remains explicit opt-in.
+f=p/"Wq183MascotStore.kt";s=f.read_text()
+s=once(s,'''    fun picture(context: Context, id: String, victory: Boolean): Bitmap? {
+        if (!isCustomId(id)) return null
+        val token = context.getSharedPreferences(ownerPrefs, Context.MODE_PRIVATE)
+            .getString("owner", null) ?: return null''','''    fun picture(context: Context, id: String, victory: Boolean): Bitmap? {
+        val token = context.getSharedPreferences(ownerPrefs, Context.MODE_PRIVATE)
+            .getString("owner", null) ?: return null
+        return pictureForOwner(context,token,id,victory)
+    }
+
+    fun pictureForProfile(context:Context,profile:String,id:String,victory:Boolean):Bitmap? =
+        if(profile.isBlank()) null else pictureForOwner(context,owner(profile),id,victory)
+
+    private fun pictureForOwner(context:Context,token:String,id:String,victory:Boolean):Bitmap? {
+        if (!isCustomId(id)) return null''')
+f.write_text(s)
+f=p/"Wq183ArenaShare.kt";s=f.read_text()
+s=once(s,'import kotlinx.coroutines.Dispatchers','import kotlinx.coroutines.Dispatchers\nimport kotlinx.coroutines.delay\nimport kotlinx.coroutines.withTimeoutOrNull')
+s=once(s,'    private val remote = mutableStateMapOf<String, Bitmap>()','''    private val remote = mutableStateMapOf<String, Bitmap>()
+    val delivery = mutableStateOf("")
+    suspend fun completeWrite(task:com.google.android.gms.tasks.Task<Void>):Boolean =
+        withTimeoutOrNull(8000L) {
+            suspendCancellableCoroutine<Boolean> { c ->
+                task.addOnCompleteListener { if(c.isActive)c.resume(it.isSuccessful) }
+            }
+        } ?: false''')
+s=once(s,'    Wq128RoomHdBridge(room,side,myId,rivalId,selected,allowed,connected.value)','    Wq128RoomHdBridge(room,side,myId,rivalId,selected,allowed,connected.value,profileKey)')
+a=s.index('        val retracted = suspendCancellableCoroutine<Boolean>')
+z=s.index('\n    }\n',a)
+s=s[:a]+'''        val avatarField = if (side == "host") "hostAvatar" else "guestAvatar"
+        val hdField = Wq128RoomHd.field(side ?: return@LaunchedEffect)
+        // Change avatar and retract stale previews in a single atomic update.
+        val updates=mapOf<String,Any?>(avatarField to selected,myField to null,hdField to null)
+        repeat(3) { attempt ->
+            if(Wq183ArenaShare.completeWrite(room.updateChildren(updates)))return@LaunchedEffect
+            Wq183ArenaShare.delivery.value="Maskot kimliği eşitleniyor…"
+            delay(1000L*(attempt+1))
+        }
+        Wq183ArenaShare.delivery.value="Maskot kimliği gönderilemedi. Bağlantıyı ve Arena izinlerini kontrol et."'''+s[z:]
+s=once(s,'''        val node = room.child(myField)
+        if (!allowed''','''        val node = room.child(myField)
+        if (!allowed''')
+s=once(s,'''            node.removeValue()
+            node.onDisconnect().cancel()
+            return@LaunchedEffect''','''            node.removeValue()
+            node.onDisconnect().cancel()
+            Wq183ArenaShare.delivery.value=if(!allowed)"Maskot paylaşımı kapalı" else "Maskot eşitleniyor…"
+            return@LaunchedEffect''')
+s=once(s,'val image = Wq183MascotStore.picture(context, selected, false)','val image = Wq183MascotStore.pictureForProfile(context, profileKey, selected, false)')
+a=s.index('        // Register server-side deletion first')
+z=s.index('\n    }\n',a)
+s=s[:a]+'''        // Register server cleanup first, then observe actual write success.
+        repeat(3) { attempt ->
+            currentCoroutineContext().ensureActive()
+            val registered=Wq183ArenaShare.completeWrite(node.onDisconnect().removeValue())
+            if(registered && connected.value &&
+                Wq183ArenaShare.completeWrite(node.setValue(value))) {
+                Wq183ArenaShare.delivery.value="Maskot rakibinle paylaşıldı"
+                return@LaunchedEffect
+            }
+            Wq183ArenaShare.delivery.value="Maskot gönderimi tekrar deneniyor…"
+            delay(1000L*(attempt+1))
+        }
+        Wq183ArenaShare.delivery.value="Maskot gönderilemedi. Bağlantı veya Firebase izinlerini kontrol et."'''+s[z:]
+s=once(s,'''        } ?: return@LaunchedEffect
+        // Register server cleanup''','''        } ?: run {
+            Wq183ArenaShare.delivery.value="Maskot görseli okunamadı. Maskotu yeniden seç."
+            return@LaunchedEffect
+        }
+        // Register server cleanup''')
+f.write_text(s)
+f=p/"Wq128RoomHd.kt";s=f.read_text()
+s=once(s,'import kotlinx.coroutines.Dispatchers','import kotlinx.coroutines.Dispatchers\nimport kotlinx.coroutines.delay')
+s=once(s,'selected:String,allowed:Boolean,connected:Boolean) {','selected:String,allowed:Boolean,connected:Boolean,profileKey:String) {')
+s=once(s,'Wq183MascotStore.picture(context,selected,false)?.let {Wq128RoomHd.encode(selected,it)}','Wq183MascotStore.pictureForProfile(context,profileKey,selected,false)?.let { image ->\n                try { Wq128RoomHd.encode(selected,image) } finally { image.recycle() }\n            }')
+a=s.index('        val registered=suspendCancellableCoroutine<Boolean>')
+z=s.index('\n    }\n',a)
+s=s[:a]+'''        repeat(3) { attempt ->
+            currentCoroutineContext().ensureActive()
+            if(Wq183ArenaShare.completeWrite(node.onDisconnect().removeValue()) && connected &&
+                Wq183ArenaShare.completeWrite(node.setValue(value))) return@LaunchedEffect
+            delay(1000L*(attempt+1))
+        }'''+s[z:]
+f.write_text(s)
+f=p/"PremiumOnlineScreen.kt";s=f.read_text()
+a=s.index('    LaunchedEffect(match?.code,match?.phase,match?.hostAvatar,match?.guestAvatar,')
+z=s.index('    val isHost = client.isHost',a)
+s=s[:a]+'''    // Wq183ArenaShareBridge owns avatar updates; avoid competing writes.
+'''+s[z:]
+f.write_text(s)
+f=p/"Wq128PremiumRoomLobby.kt";s=f.read_text()
+s=once(s,'''        else ArenaMascotV2(avatar,modifier)''','''        else if(!mine && custom) Box(modifier,contentAlignment=Alignment.Center) {
+            Text("Rakibin maskotu bekleniyor",color=Color.White.copy(alpha=.85f),fontSize=13.sp)
+        }
+        else ArenaMascotV2(avatar,modifier)''')
+# Exact insertion after the permission label without altering player card layout.
+a=s.index('Text("Maskotumu rakibime göster"')
+z=s.index('\n',a)
+# Keep the existing label; display status in the lobby row, below the label if it has a Column.
+# Use a single line to avoid altering Compose hierarchy.
+s=s[:a]+s[a:].replace('Text("Maskotumu rakibime göster"', 'Text(if(Wq183ArenaShare.delivery.value.isBlank())"Maskotumu rakibime göster" else "Maskotumu rakibime göster · "+Wq183ArenaShare.delivery.value',1)
+f.write_text(s)
+print("PASS: profile-scoped custom mascot decoding, atomic avatar update and acknowledged retries")
