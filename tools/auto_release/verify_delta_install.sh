@@ -68,6 +68,10 @@ from pathlib import Path
 import sys
 p=Path(sys.argv[1]); assert p.stat().st_size>10000 and p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
 PY
+if [ "${WQ_VERSION:-}" = "1.0.121" ]; then
+  python3 -c 'import PIL' || python3 -m pip install --disable-pip-version-check Pillow
+  python3 tools/v121_arena/qa_fullscreen.py
+fi
 echo 'PASS: exact installed base reconstructed and upgraded to verified target'
 echo 'PASS: original Android UID unchanged, signatures match and app process stays alive.'
 echo 'LIMITATION: host Java reconstructs pulled installed APK; in-app download, real device rendering and private user database content are not yet tested.'

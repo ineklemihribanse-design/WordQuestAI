@@ -103,6 +103,8 @@ jobs:
             ${{ runner.temp }}/wq-auto-release/before.txt
             ${{ runner.temp }}/wq-auto-release/after.txt
             ${{ runner.temp }}/wq-auto-release/startup.png
+            ${{ runner.temp }}/wq-auto-release/arena-*.png
+            ${{ runner.temp }}/wq-auto-release/arena-*.xml
             ${{ runner.temp }}/wq206-upgrade-qa.log
             ${{ runner.temp }}/wq206-emulator.log
           if-no-files-found: ignore
