@@ -119,21 +119,27 @@ jobs:
               assert a['state']=='uploaded' and a['size']==f.stat().st_size and a['digest']=='sha256:'+digest
           print('PASS: uploaded assets equal emulator-tested bytes')
           PY
-          if [ "$(gh api "repos/$GITHUB_REPOSITORY/releases/$ID" --jq .draft)" = true ]; then
-            test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "v$WQ_BASE_VERSION"
-            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$ID" -F draft=false -f make_latest=true --jq '{tag:.tag_name,draft:.draft}'
-          fi
-          # GitHub's latest endpoint can lag a newly published release.
+          # The server may accept PATCH but return an empty or truncated JSON body.
+          # Do not parse the write response. Read back the release and latest endpoint instead.
           for attempt in $(seq 1 18); do
-            if [ "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$TAG" ]; then
-              echo "PASS: $TAG is live on installed-app update channel"
-              exit 0
+            if gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/state.json" && jq -e --arg tag "$TAG" '.tag_name==$tag and .draft==false and .prerelease==false' "$D/state.json" >/dev/null 2>&1; then
+              if gh api "repos/$GITHUB_REPOSITORY/releases/latest" > "$D/latest.json" && jq -e --arg tag "$TAG" --argjson id "$ID" '.tag_name==$tag and .id==$id and .draft==false' "$D/latest.json" >/dev/null 2>&1; then
+                echo "PASS: $TAG is live on installed-app update channel"
+                exit 0
+              fi
+              echo "Release is public; waiting for latest endpoint"
+            elif jq -e --arg tag "$TAG" '.tag_name==$tag and .draft==true and .prerelease==false' "$D/state.json" >/dev/null 2>&1; then
+              if gh api "repos/$GITHUB_REPOSITORY/releases/latest" > "$D/latest.json" && jq -e --arg base "v$WQ_BASE_VERSION" '.tag_name==$base' "$D/latest.json" >/dev/null 2>&1; then
+                echo "Finalizing verified draft (attempt $attempt)"
+                gh api --method PATCH --silent "repos/$GITHUB_REPOSITORY/releases/$ID" -F draft=false -f make_latest=true || echo "Publish response failed; checking server state before retry"
+              fi
+            else
+              echo "Release status response not available; retrying read"
             fi
-            sleep 5
+            sleep 10
           done
-          echo "::error::Release latest endpoint did not confirm within bounded retries"
+          echo "::error::Public release not confirmed after bounded retries; verified draft preserved"
           exit 1
-
 
   content:
     needs: publish
