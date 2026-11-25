@@ -526,6 +526,9 @@ jobs:
           python3 -m py_compile tools/v130_web/apply_web.py
           python3 tools/v130_web/apply_web.py
           python3 tools/v132_engine/apply_settings.py
+          node --test tools/v132_engine/engine.test.mjs
+          node tools/v132_engine/build_engine.mjs tools/v132_engine/arena_engine.html
+          python3 tools/v132_engine/apply_engine.py
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")

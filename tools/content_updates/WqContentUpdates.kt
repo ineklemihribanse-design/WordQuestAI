@@ -27,8 +27,8 @@ internal object WqContentUpdates {
     private const val MAX_FILE = 12L * 1024 * 1024
     private const val MAX_TOTAL = 96L * 1024 * 1024
     private val safePath = Regex("(arena_v120|arena_v122|new_game_198)/[a-zA-Z0-9_-]{1,80}\\.webp")
-    private fun allowedPath(path:String)=safePath.matches(path)||path==Wq128LobbyDesign.PATH||path==Wq130WebBundle.PATH
-    private fun extension(path:String)=when(path){Wq128LobbyDesign.PATH->".json";Wq130WebBundle.PATH->".html";else->".webp"}
+    private fun allowedPath(path:String)=safePath.matches(path)||path==Wq128LobbyDesign.PATH||path==Wq130WebBundle.PATH||path==Wq132WebEngine.PATH
+    private fun extension(path:String)=when(path){Wq128LobbyDesign.PATH->".json";Wq130WebBundle.PATH,Wq132WebEngine.PATH->".html";else->".webp"}
     private val hashPattern = Regex("[a-f0-9]{64}")
     private val versionPattern = Regex("1\\.0\\.[0-9]{1,8}")
     @Volatile private var active: File? = null
@@ -192,7 +192,7 @@ internal object WqContentUpdates {
                 val hash = entry.getString("sha256")
                 val size = entry.getLong("size")
                 require(allowedPath(path) && seen.add(path) && hashPattern.matches(hash))
-                require(size in 1..(when(path){Wq128LobbyDesign.PATH->Wq128LobbyDesign.MAX_BYTES.toLong();Wq130WebBundle.PATH->Wq130WebBundle.MAX_BYTES.toLong();else->MAX_FILE}))
+                require(size in 1..(when(path){Wq128LobbyDesign.PATH->Wq128LobbyDesign.MAX_BYTES.toLong();Wq130WebBundle.PATH->Wq130WebBundle.MAX_BYTES.toLong();Wq132WebEngine.PATH->Wq132WebEngine.MAX_BYTES.toLong();else->MAX_FILE}))
                 total += size
                 require(total<=MAX_TOTAL)
                 // Never add arbitrary new asset paths in schema 1.
@@ -202,7 +202,7 @@ internal object WqContentUpdates {
                     old.inputStream().use { readLimited(it,size) }.takeIf { digest(it)==hash } else null
                 val bytes = cached ?: get("objects/"+hash+extension(path),size)
                 require(bytes.size.toLong()==size && digest(bytes)==hash)
-                when(path){Wq128LobbyDesign.PATH->Wq128LobbyDesign.parse(bytes);Wq130WebBundle.PATH->Wq130WebBundle.validate(bytes);else->imageValid(bytes)}
+                when(path){Wq128LobbyDesign.PATH->Wq128LobbyDesign.parse(bytes);Wq130WebBundle.PATH->Wq130WebBundle.validate(bytes);Wq132WebEngine.PATH->Wq132WebEngine.validate(bytes);else->imageValid(bytes)}
                 val target = File(staging,path)
                 check(target.parentFile?.let { it.mkdirs() || it.isDirectory } == true)
                 target.outputStream().use { it.write(bytes); it.fd.sync() }

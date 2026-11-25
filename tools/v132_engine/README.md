@@ -1,2 +1,3 @@
 # Hybrid engine migration
 First portable deterministic selection/quiz module. It is not yet wired to Android room creation, crossword layout, server scoring or user records. Existing native engine remains live. This branch audits the exact assembled source before integration. No existing user data, release or Firebase rules changed. Tests use synthetic vocabulary only.
+The next integration runs the signed HTML engine inside an isolated WebView for solo Arena. Android checks returned vocabulary, count, levels, coordinates, crossings and connectivity before constructing the existing native Puzzle. No online payload protocol is enabled yet; current multiplayer still uses legacy boards. Compile and real device test before release.

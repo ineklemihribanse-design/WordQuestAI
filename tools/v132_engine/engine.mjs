@@ -21,10 +21,11 @@ function shuffle(xs,rng){const a=[...xs];for(let i=a.length-1;i>0;i--){const j=M
 const key=x=>String(x).trim().toLowerCase();
 export function mixedPool(records,input,seed) {
   const s=normalizeSettings(input), rng=seeded(seed);
+  if(s.size<s.levels.length)throw new Error("Soru sayısı seçilen seviye sayısından az olamaz");
   const groups=new Map(s.levels.map(l=>[l,[]]));
   const seen=new Set();
   const sorted=[...records].filter(w=>w&&typeof w.answer==="string"&&typeof w.meaning==="string"&&w.answer.trim()&&w.meaning.trim()&&groups.has(w.level)&&((s.topic==="all"||s.topic==="Tüm konular")||(w.category??w.topic)===s.topic)).sort((a,b)=>{
-    const x=JSON.stringify([a.level,key(a.answer),a.meaning,a.topic]),y=JSON.stringify([b.level,key(b.answer),b.meaning,b.topic]);return x<y?-1:x>y?1:0;
+    const x=JSON.stringify([a.level,key(a.answer),a.meaning,a.category??a.topic]),y=JSON.stringify([b.level,key(b.answer),b.meaning,b.category??b.topic]);return x<y?-1:x>y?1:0;
   });
   for(const w of sorted){const k=key(w.answer);if(!seen.has(k)){seen.add(k);groups.get(w.level).push({...w,answer:w.answer.trim()})}}
   for(const level of s.levels){if(!groups.get(level).length)throw new Error("Seçilen seviyede uygun kelime yok: "+level);groups.set(level,shuffle(groups.get(level),rng))}
@@ -39,9 +40,9 @@ export function mixedPool(records,input,seed) {
 export function quiz(records,input,seed) {
   const s=normalizeSettings(input);if(s.mode!=="quiz")throw new Error("Quiz modu gerekli");
   const targets=mixedPool(records,s,seed),rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
-  const answers=[...new Set(records.filter(w=>w&&s.levels.includes(w.level)&&((s.topic==="all"||s.topic==="Tüm konular")||(w.category??w.topic)===s.topic)&&typeof w.answer==="string"&&w.answer.trim()).map(w=>w.answer.trim()))].sort();
+  const candidates=records.filter(w=>w&&s.levels.includes(w.level)&&typeof w.answer==="string"&&w.answer.trim()&&typeof w.meaning==="string").sort((a,b)=>{const x=JSON.stringify([a.answer,a.meaning]),y=JSON.stringify([b.answer,b.meaning]);return x<y?-1:x>y?1:0});
   return targets.map(t=>{
-    const distractors=shuffle(answers.filter(a=>key(a)!==key(t.answer)),rng).filter((a,i,arr)=>arr.findIndex(b=>key(b)===key(a))===i).slice(0,4);
+    const distractors=shuffle(candidates.filter(a=>key(a.answer)!==key(t.answer)&&key(a.meaning)!==key(t.meaning)&&key(a.meaning.split(",")[0])!==key(t.meaning.split(",")[0])).map(a=>a.answer.trim()),rng).filter((a,i,arr)=>arr.findIndex(b=>key(b)===key(a))===i).slice(0,4);
     if(distractors.length!==4)throw new Error("Beş seçenek için yeterli farklı kelime yok");
     const options=shuffle([t.answer,...distractors],rng);
     return {prompt:t.meaning,options,correct:options.indexOf(t.answer),answer:t.answer,level:t.level};

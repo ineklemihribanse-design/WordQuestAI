@@ -43,3 +43,5 @@ test('connected mixed crossword has exact count, valid crossings and determinist
  const reached=new Set([0]),queue=[0];while(queue.length){for(const j of links[queue.shift()])if(!reached.has(j)){reached.add(j);queue.push(j)}}assert.equal(reached.size,20);
  for(const l of cfg.levels)assert.ok(b.words.some(w=>w[2]===l));
 });
+
+test("reject too few questions for selected levels",()=>assert.throws(()=>mixedPool(records,{...s,levels:LEVELS,size:5},12),/Seviye|seviye/));
