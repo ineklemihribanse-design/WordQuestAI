@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/audit-full-assembled-source.yml'
       - 'tools/full_source_audit/**'
+      - 'tools/v132_engine/**'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 permissions:
   contents: read
   actions: read
@@ -256,7 +260,53 @@ jobs:
           sha256sum -c "$RUNNER_TEMP/wq206-unchanged.sha"
           grep -Fq 'Wq203NewGameBackground(landscapeArtwork, Modifier.matchParentSize())' "$P/Wq198NewGameUi.kt"
           grep -Fq 'scaleX = 1.18f' "$P/Wq198NewGameUi.kt"
+      - name: Fingerprint pronunciation inputs (not Arena changes)
+        id: audio_key
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,os
+          from pathlib import Path
+          root=Path('source/app/src/main')
+          roots=[root/'assets',root/'java',Path('source/tools/verify_audio_ipa.py'),Path('tools/v204/fix_short_word_audio_204.py'),Path('tools/v205/complete_pronunciation_205.py')]
+          h=hashlib.sha256(b'wq-pronunciation-cache-v1\0')
+          h.update((os.environ.get('ImageOS','unknown')+'|'+os.environ.get('RUNNER_ARCH','unknown')).encode())
+          files=sorted({p for r in roots for p in ([r] if r.is_file() else r.rglob('*')) if p.is_file()})
+          assert len(files)>4000
+          for p in files:
+              with p.open('rb') as f: digest=hashlib.file_digest(f,'sha256').digest()
+              h.update(p.as_posix().encode()+b'\0'+digest)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out: print('key=wq-pronunciation-v1-'+h.hexdigest(),file=out)
+          PY
+      - name: Restore exact verified US and UK audio snapshot
+        id: audio_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .wq-pronunciation-cache
+          key: ${{ steps.audio_key.outputs.key }}
+      - name: Restore cached audio only after byte integrity verification
+        if: steps.audio_cache.outputs.cache-hit == 'true'
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,shutil
+          from pathlib import Path
+          c=Path('.wq-pronunciation-cache')
+          expected=json.loads((c/'sha256.json').read_text())
+          actual={p.relative_to(c).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in c.rglob('*') if p.is_file() and p!=c/'sha256.json'}
+          assert expected==actual and len(actual)>10000, 'Cached audio integrity failure'
+          assert all((c/n).is_file() for n in ('verify_audio_ipa.py','wq204-pronunciation-report.json','wq205-pronunciation-coverage.json'))
+          dest=Path('source/app/src/main/assets/pronunciation')
+          shutil.rmtree(dest)
+          shutil.copytree(c/'pronunciation',dest)
+          shutil.copyfile(c/'verify_audio_ipa.py','source/tools/verify_audio_ipa.py')
+          for name in ('wq204-pronunciation-report.json','wq205-pronunciation-coverage.json'):
+              shutil.copyfile(c/name,Path(os.environ['RUNNER_TEMP'])/name)
+          PY
+          (cd source && python3 tools/verify_audio_ipa.py)
+          echo 'PASS: reused exact verified pronunciation files; no speech synthesis.'
       - name: Regenerate short English words in both independent offline voices
+        if: steps.audio_cache.outputs.cache-hit != 'true'
         run: |
           set -euo pipefail
           if ! command -v espeak >/dev/null || ! command -v ffmpeg >/dev/null; then
@@ -285,13 +335,8 @@ jobs:
           (cd source && python3 tools/verify_audio_ipa.py)
           test -s "$RUNNER_TEMP/wq204-pronunciation-report.json"
           echo 'PASS: all existing Kotlin sources unchanged; corrected offline short-word audio only'
-      - name: Preserve short-word phoneme and generated clip verification
-        uses: actions/upload-artifact@v4
-        with:
-          name: WordQuestAI-v206-short-word-audio-report
-          path: ${{ runner.temp }}/wq204-pronunciation-report.json
-          if-no-files-found: error
       - name: Complete US and UK offline pronunciation for the actual bundled word bank
+        if: steps.audio_cache.outputs.cache-hit != 'true'
         timeout-minutes: 45
         run: |
           set -euo pipefail
@@ -315,6 +360,53 @@ jobs:
                   assert (base/region/(words[word]+".ogg")).stat().st_size > 1000,word
           print("PASS all bundled word-bank entries have two audio files and two IPA values:",len(required))
           PY
+      - name: Validate full pronunciation snapshot on every build
+        run: |
+          set -euo pipefail
+          (cd source && python3 tools/verify_audio_ipa.py)
+          python3 - <<'PY'
+          import json,os,re
+          from pathlib import Path
+          base=Path('source/app/src/main/assets/pronunciation')
+          words=json.loads((base/'manifest.json').read_text())['words']
+          ipa=json.loads((base/'ipa.json').read_text())
+          report=json.loads((Path(os.environ['RUNNER_TEMP'])/'wq205-pronunciation-coverage.json').read_text())
+          assert report['remaining_missing']==0 and len(words)==report['audio_words']==report['ipa_words']
+          assert not ipa['unresolved'] and set(words)==set(ipa['entries'])
+          for word,ident in words.items():
+              for region in ('en-us','en-gb'): assert (base/region/(ident+'.ogg')).stat().st_size>1000,word
+          for word,value in {'do':'duː','hi':'haɪ','my':'maɪ'}.items():
+              for accent in ('us','uk'): assert re.sub(r'[\sˈˌ]','',ipa['entries'][word][accent])==value
+          PY
+      - name: Stage verified pronunciation snapshot for future Arena builds
+        if: steps.audio_cache.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,shutil
+          from pathlib import Path
+          c=Path('.wq-pronunciation-cache')
+          c.mkdir(exist_ok=False)
+          shutil.copytree('source/app/src/main/assets/pronunciation',c/'pronunciation')
+          shutil.copyfile('source/tools/verify_audio_ipa.py',c/'verify_audio_ipa.py')
+          for name in ('wq204-pronunciation-report.json','wq205-pronunciation-coverage.json'):
+              shutil.copyfile(Path(os.environ['RUNNER_TEMP'])/name,c/name)
+          inventory={p.relative_to(c).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in c.rglob('*') if p.is_file()}
+          assert len(inventory)>10000
+          (c/'sha256.json').write_text(json.dumps(inventory,sort_keys=True))
+          PY
+      - name: Save exact verified audio snapshot
+        if: steps.audio_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .wq-pronunciation-cache
+          key: ${{ steps.audio_key.outputs.key }}
+      - name: Preserve short-word phoneme and generated clip verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v206-short-word-audio-report
+          path: ${{ runner.temp }}/wq204-pronunciation-report.json
+          if-no-files-found: error
       - name: Preserve full audio and IPA coverage report
         uses: actions/upload-artifact@v4
         with:
