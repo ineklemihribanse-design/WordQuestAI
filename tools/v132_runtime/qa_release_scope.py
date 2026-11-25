@@ -72,7 +72,23 @@ MARKERS={
  "tablet-quiz":"PASS: landscape Arena quiz and clean return",
 }
 
+def selfcheck():
+    base={"AndroidManifest.xml":"old","classes.dex":"same","assets/pronunciation/en-us/0123456789abcdef.ogg":"a"}
+    voice=dict(base); voice["assets/pronunciation/en-us/0123456789abcdef.ogg"]="b"
+    assert select(base,voice)[0:2]==("pronunciation",SMOKE)
+    version=dict(voice); version["AndroidManifest.xml"]="new"
+    assert select(base,version)[0:2]==("full",FULL)
+    assert select(base,version,True)[0:2]==("pronunciation",SMOKE)
+    native=dict(voice);native["classes.dex"]="changed"
+    assert select(base,native,True)[0:2]==("full",FULL)
+    unknown=dict(voice);unknown["assets/web/arena_engine.html"]="new"
+    assert select(base,unknown,True)[0:2]==("full",FULL)
+    art=dict(base);art["assets/arena_v120/bg.webp"]="new"
+    assert select(base,art)[0:2]==("arena-art",ARENA)
+    assert select(base,base)[0:2]==("full",FULL)
+
 def main():
+    selfcheck()
     p=argparse.ArgumentParser()
     p.add_argument("base",type=Path);p.add_argument("target",type=Path)
     p.add_argument("--harness",type=Path)
