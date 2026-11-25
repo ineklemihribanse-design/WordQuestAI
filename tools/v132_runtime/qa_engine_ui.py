@@ -68,19 +68,32 @@ def start_mode(mode):
         capture("local-settings-"+kind)
         tap(find(START));time.sleep(2)
     # Never treat a lobby as a successful gameplay screen.
+def folded(value):
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFKD",value.casefold().replace("ı","i")) if not unicodedata.combining(c))
 def wait_game(mode):
     deadline=time.monotonic()+65
     while time.monotonic()<deadline:
         ns=nodes()
-        all_labels=" | ".join(label(n) for n in ns if label(n).strip())
-        print("Game UI:",all_labels[:1800],flush=True)
-        if "oyun hazırlanamadı" in all_labels or "web motoru yanıt vermedi" in all_labels:
+        labels=[label(n).strip() for n in ns if label(n).strip()]
+        all_labels=folded(" | ".join(labels))
+        print("Game UI:",all_labels[:2000],flush=True)
+        if "oyun hazirlanamadi" in all_labels or "web motoru yanit vermedi" in all_labels:
             capture("engine-error");raise AssertionError("Android game engine failed: "+all_labels[:1000])
-        # Native game displays a crossword answer/hint control or a real five-choice prompt.
-        if mode=="crossword" and ("harf aç" in all_labels or "bilmiyorum" in all_labels or "cevabı yaz" in all_labels) and "maç ayarları" not in all_labels:
-            capture("web-crossword-started");return
-        if mode=="quiz" and ("ingilizcesi hangisidir" in all_labels or "ingilizcesi hangisi" in all_labels):
-            capture("web-quiz-started");return
+        # Match the ACTUAL observed v132 gameplay UI: the answer controls
+        # are below the viewport on the 30-word board. Never require them
+        # just to prove the game is running.
+        if mode=="crossword" and all(t in all_labels for t in ("kelime bulmacasi","aktif ipucu","tum tahta","ilerleme")):
+            count=re.search(r"ilerleme\s*\d+/(20|30|40|50)\b",all_labels)
+            cells=sum(x.isdigit() for x in labels)
+            assert count and cells>=4,(all_labels,cells)
+            capture("web-crossword-started")
+            print("Verified real crossword progress and numbered cells:",count.group(1),cells,flush=True)
+            return
+        if mode=="quiz" and "ingilizcesi hangisidir" in all_labels:
+            assert "mac ayarlari" not in all_labels
+            capture("web-quiz-started")
+            return
         time.sleep(2)
     capture("engine-timeout");raise AssertionError("Game did not reach actual gameplay: "+mode)
 try:

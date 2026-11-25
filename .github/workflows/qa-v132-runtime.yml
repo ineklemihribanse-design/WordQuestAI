@@ -42,6 +42,12 @@ jobs:
           echo "WQ_RELEASE_DIR=$D" >> "$GITHUB_ENV"
           python3 -m pip install --disable-pip-version-check Pillow
           sudo chmod 666 /dev/kvm
+      - name: Audit exact packaged engine across levels, counts and modes
+        run: |
+          set -euo pipefail
+          unzip -p "$WQ_RELEASE_DIR/target.apk" assets/web/arena_engine.html > "$RUNNER_TEMP/arena_engine.html"
+          unzip -p "$WQ_RELEASE_DIR/target.apk" assets/arena-vocabulary-v1.json > "$RUNNER_TEMP/arena-vocabulary-v1.json"
+          node tools/v132_runtime/matrix.mjs "$RUNNER_TEMP/arena_engine.html" "$RUNNER_TEMP/arena-vocabulary-v1.json"
       - name: Start the exact signed APK and play solo mixed-level crossword and quiz
         working-directory: candidate-source
         run: bash ../tools/v132_runtime/run_emulator.sh ../tools/v132_runtime/verify_gameplay.sh "$WQ_RELEASE_DIR/target.apk"
