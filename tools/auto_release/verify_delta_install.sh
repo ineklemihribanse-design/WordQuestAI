@@ -68,7 +68,7 @@ from pathlib import Path
 import sys
 p=Path(sys.argv[1]); assert p.stat().st_size>10000 and p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
 PY
-if [ "${WQ_VERSION:-}" = "1.0.121" ] || [ "${WQ_VERSION:-}" = "1.0.122" ]; then
+if [ "${WQ_VERSION:-}" = "1.0.121" ] || [ "${WQ_VERSION:-}" = "1.0.122" ] || [ "${WQ_VERSION:-}" = "1.0.123" ]; then
   python3 -c 'import PIL' || python3 -m pip install --disable-pip-version-check Pillow
   python3 tools/v121_arena/qa_fullscreen.py
 fi

@@ -78,7 +78,7 @@ def viewport(name,size,density,wide):
     for shortcut,expect in (("Bilgi","Kapat"),("Ayarlar","Arena sesleri"),("Sıralama","Bu cihazda"),("Son Maçlarım","Bu cihazda"),("Arkadaşlarım","Kapat")):
         tap(get(shortcut));get(expect);tap(get("Kapat"));get("Oyun Modları")
     tap(get("Bulmaca Düellosu"));get("Maç Ayarları")
-    if os.environ.get("WQ_VERSION")=="1.0.122":
+    if os.environ.get("WQ_VERSION") in ("1.0.122","1.0.123"):
         tap(get("Özel"));get("Özel ipucu hakkı")
         field=get("İpucu sayısı");tap(field)
         adb("shell","input","keyevent","KEYCODE_MOVE_END")
@@ -90,6 +90,19 @@ def viewport(name,size,density,wide):
         print("PASS: custom hint selection and dark match settings on",name)
 
     adb("shell","input","keyevent","KEYCODE_BACK");get("Oyun Modları")
+    if os.environ.get("WQ_VERSION")=="1.0.123":
+        for _ in range(2):
+            tap(get("Ortak Bulmaca"));get("Maç Ayarları")
+            adb("shell","input","keyevent","KEYCODE_BACK");get("Oyun Modları")
+            card=[bounds(get(s)) for s in ("Bulmaca Düellosu","Ortak Bulmaca","5 Şıklı Düello")]
+            centers=[((x+xx)/2,(y+yy)/2) for x,y,xx,yy in card]
+            if wide:
+                assert centers[0][0]<centers[1][0]<centers[2][0],centers
+                assert max(c[1] for c in centers)-min(c[1] for c in centers)<80,centers
+            else: assert centers[0][1]<centers[1][1]<centers[2][1],centers
+        screenshot(name+"-back",wide)
+        print("PASS: repeated return keeps the correct full-screen Arena layout",name)
+
     print("PASS: cards, native settings/back and all shortcuts on",name)
 try:
     viewport("phone","1080x2340","420",False)
