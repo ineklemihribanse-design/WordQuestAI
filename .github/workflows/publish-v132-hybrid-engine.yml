@@ -1,5 +1,9 @@
 name: Publish verified WordQuest AI 1.0.132 hybrid Arena engine and signed web updates
 on:
+  # One-time release activation: user confirmed live v132 Firebase rules on 2026-11-25.
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-v132-hybrid-engine.yml']
   workflow_dispatch:
     inputs:
       firebase_rules_live:
@@ -24,7 +28,7 @@ env:
   WQ_QA_RUN: '45631761621'
 jobs:
   upgrade:
-    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && inputs.firebase_rules_live == true
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && (github.event_name == 'push' || inputs.firebase_rules_live == true)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -69,7 +73,7 @@ jobs:
           retention-days: 7
   publish:
     needs: upgrade
-    if: needs.upgrade.result == 'success' && github.event_name == 'workflow_dispatch' && inputs.firebase_rules_live == true
+    if: needs.upgrade.result == 'success' && (github.event_name == 'push' || inputs.firebase_rules_live == true)
     permissions:
       contents: write
       actions: read
