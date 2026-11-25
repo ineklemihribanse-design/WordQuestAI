@@ -157,3 +157,195 @@ s=once(s,'Text("${match.level} · ${if (match.phase == "lobby")','Text("${rules.
 f.write_text(s)
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
 print("PASS: online room create/edit uses frozen validated web round, ready revision and unchanged board renderer")
+
+
+# Online Arena lifecycle and portrait regression repair.
+repair_names={"PremiumOnlineRoom.kt","PremiumOnlineScreen.kt","ArenaV2Visuals.kt",
+              "Wq128PremiumRoomLobby.kt","WordQuest2DCharacters.kt","Wq183OnlinePortraitStrip.kt"}
+repair_protected={f:hashlib.sha256(f.read_bytes()).digest() for f in main.rglob("*") if f.is_file() and f.name not in repair_names}
+f=p/"PremiumOnlineRoom.kt";s=f.read_text()
+s=once(s,'''    val complete: Boolean get() = if (mode == "quiz") {
+        hostUid.isNotBlank() && guestUid.isNotBlank() &&
+            (answers[hostUid]?.size ?: 0) >= size && (answers[guestUid]?.size ?: 0) >= size
+    } else solvedBy.size >= size''','''    val complete: Boolean get() = size > 0 && hostUid.isNotBlank() && guestUid.isNotBlank() &&
+        if (mode == "quiz") {
+            (0 until size).all { i ->
+                (answers[hostUid]?.get(i) ?: -2) in -1..4 && (answers[guestUid]?.get(i) ?: -2) in -1..4
+            }
+        } else (0 until size).all { it in solvedBy }''')
+s=once(s,'    private var validatedRound: String? = null','''    private var validatedRound: String? = null
+    private var finishingRoom: DatabaseReference? = null
+    private val pendingQuizAnswers = mutableSetOf<Int>()''')
+s=once(s,'        ref = next\n        listener = object : ValueEventListener {','''        ref = next
+        busy = true
+        var initialSnapshot = true
+        listener = object : ValueEventListener {''')
+s=once(s,'                if (!snapshot.exists()) { match = null; status = "Oda bulunamadı."; return }','''                if (ref !== next) return
+                if (!snapshot.exists()) {
+                    if (initialSnapshot) { busy=false; status="Oda bulunamadı." }
+                    else status="Oda verisi geçici olarak alınamadı."
+                    return
+                }''')
+s=once(s,'                    childString("guestAvatar").ifBlank {"fox"}, revision, childString("roundData"))','''                    childString("guestAvatar"), revision, childString("roundData"))
+                if(initialSnapshot) { initialSnapshot=false; busy=false }''')
+s=once(s,'                    childString("hostAvatar").ifBlank {"robot"},','                    childString("hostAvatar"),')
+s=once(s,'                status = "Bağlantı kesildi: '+chr(36)+'{error.message}. Oda saklandı; internet geldiğinde yeniden katılabilirsin."','''                if (ref !== next) return
+                if (initialSnapshot) busy=false
+                status = "Bağlantı kesildi: '''+chr(36)+'''{error.message}. Oda saklandı; internet geldiğinde yeniden katılabilirsin."''')
+s=once(s,'''                    status = "Odaya katıldın."; observe(code); onJoined?.invoke()
+                    ref.child("guestAvatar").setValue(myAvatar).addOnFailureListener {
+                        status = "Avatarın çevrim içi odaya kaydedilemedi."
+                    }''','''                    busy=true
+                    ref.child("guestAvatar").setValue(myAvatar).addOnCompleteListener { avatarResult ->
+                        status=if(avatarResult.isSuccessful) "Odaya katıldın."
+                            else "Maskot henüz eşitlenemedi."
+                        observe(code); onJoined?.invoke()
+                    }''')
+a=s.index('    fun answer(index: Int, choice: Int) {');z=s.index('    fun useHint(',a)
+s=s[:a]+'''    fun answer(index: Int, choice: Int): Boolean {
+        val m = match ?: return false
+        val room = ref ?: return false
+        if (m.mode != "quiz" || m.phase != "playing" || index !in 0 until m.size || choice !in -1..4 ||
+            uid !in listOf(m.hostUid,m.guestUid) ||
+            m.answers[uid]?.containsKey(index) == true || !pendingQuizAnswers.add(index)) return false
+        room.child("answers").child(uid).child(index.toString()).setValue(choice)
+            .addOnCompleteListener { task ->
+                if(ref === room) {
+                    pendingQuizAnswers.remove(index)
+                    if(!task.isSuccessful) status="Cevap kaydedilemedi. Tekrar dene."
+                }
+            }
+        return true
+    }
+
+'''+s[z:]
+a=s.index('    fun finish() {');z=s.index('    fun note(',a)
+s=s[:a]+'''    fun finish() {
+        val m = match ?: return
+        val room = ref ?: return
+        if (!isHost || m.phase != "playing" || !m.complete || finishingRoom === room) return
+        finishingRoom=room
+        room.child("phase").setValue("finished").addOnCompleteListener { task ->
+            if(finishingRoom === room) finishingRoom=null
+            if(ref === room && !task.isSuccessful) status="Sonuç eşitleniyor. Bağlantı kontrol ediliyor."
+        }
+    }
+
+'''+s[z:]
+s=once(s,'ref = null; listener = null; match = null; roomCode = ""; validatedRound=null','ref = null; listener = null; match = null; roomCode = ""; validatedRound=null; finishingRoom=null; pendingQuizAnswers.clear(); busy=false')
+f.write_text(s)
+f=p/"PremiumOnlineScreen.kt";s=f.read_text()
+s=once(s,'''        if (match != null && match.complete && match.phase == "playing" && isHost) client.finish()
+    }''','''    }
+    LaunchedEffect(match?.code,match?.configRevision,match?.phase,match?.complete,isHost) {
+        if(match?.complete==true && match.phase=="playing" && isHost) {
+            val code=match.code
+            while(true) {
+                val latest=client.match ?: break
+                if(latest.code!=code || latest.phase!="playing" || !latest.complete || !client.isHost) break
+                client.finish()
+                delay(3000)
+            }
+        }
+    }
+    LaunchedEffect(match?.code,match?.configRevision) {
+        quizIndex=0
+        answerText=""
+    }''')
+s=once(s,'onJoin = {if(!creatingWebRoom)client.join(codeInput)},','onJoin = {if(!creatingWebRoom && !client.busy)client.join(codeInput)},')
+s=once(s,'    if (match.phase == "finished") Wq183OnlinePortraitStrip(','    if (match.phase == "finished" || (match.phase == "playing" && match.mode == "quiz")) Wq183OnlinePortraitStrip(')
+s=once(s,'                    val index = if (quizIndex !in questions.indices) 0 else quizIndex','''                    val index = quizIndex.coerceIn(0,questions.lastIndex)
+                    val unanswered=questions.indices.firstOrNull { it !in own }
+                    if(unanswered==null) {
+                        ArenaV2Panel {
+                            Text("Tüm sorularını tamamladın!",color=OnlineGood,fontWeight=FontWeight.Bold)
+                            Text(if(match.complete) "Sonuçlar eşitleniyor…" else "Rakibinin kalan soruları tamamlaması bekleniyor.",color=OnlineCream)
+                            Text("Sen: "+own.size+"/"+questions.size+" · Rakip: "+
+                                (match.answers[PremiumOnlineLimits.otherPlayer(match,myUid)]?.size ?: 0)+"/"+questions.size,color=OnlineCream)
+                        }
+                    } else {''')
+s=once(s,'''                                        client.answer(index,n)
+                                        if(n==question.correct) sounds.correct(session.preferences)
+                                        else sounds.wrong(session.preferences)''','''                                        if(client.answer(index,n)) {
+                                            if(n==question.correct) sounds.correct(session.preferences)
+                                            else sounds.wrong(session.preferences)
+                                        }''')
+s=once(s,'''                            ArenaOutlineButton("Sonraki", { setQuizIndex((index + 1).coerceAtMost(questions.lastIndex)) }, Modifier.weight(1f))
+                        }
+                    }
+                }
+            } else if (board''','''                            ArenaOutlineButton("Sonraki", {
+                                setQuizIndex(if(index<questions.lastIndex)index+1 else unanswered)
+                            }, Modifier.weight(1f))
+                        }
+                    }
+                    }
+                }
+            } else if (board''')
+s=once(s,'''                match.score(match.hostUid,questions),
+                match.score(match.guestUid,questions))''','''                arenaScore(match.hostUid),
+                arenaScore(match.guestUid))''')
+f.write_text(s)
+f=p/"ArenaV2Visuals.kt";s=f.read_text()
+s=once(s,'''    if(Wq2DMascots.valid(kind)) Wq2DPortrait(kind,modifier)
+    else ArenaRiggedMascot(kind,modifier)''','''    Wq2DPortrait(kind,modifier)''')
+s=once(s,'''            if(Wq2DMascots.valid(winnerAvatar))
+                Wq2DPortrait(winnerAvatar,
+                    Modifier.size(110.dp).scale(jump.value),victory=!isDraw)
+            else ArenaRiggedMascot(winnerAvatar,
+                Modifier.size(86.dp).scale(jump.value),holdingTrophy=!isDraw)''','''            Wq2DPortrait(winnerAvatar,
+                Modifier.size(110.dp).scale(jump.value),victory=!isDraw)''')
+f.write_text(s)
+f=p/"WordQuest2DCharacters.kt";s=f.read_text()
+s=once(s,'''            return Wq183MascotStore.picture(context,id,victory)
+                ?: picture(context,"piko",victory)''','''            return Wq183MascotStore.picture(context,id,victory)''')
+s=once(s,'        opponentPreview ?: Wq2DMascots.picture(context,id,victory)','        if(Wq2DMascots.valid(id)) opponentPreview ?: Wq2DMascots.picture(context,id,victory) else null')
+s=once(s,'''                Text(Wq2DMascots.label(id).take(1),fontSize=24.sp,
+                    color=Color(0xFF513587),fontWeight=FontWeight.ExtraBold)''','''                Text(if(Wq183MascotStore.isCustomId(id)) "Maskot" else "—",fontSize=12.sp,
+                    color=Color(0xFF513587),fontWeight=FontWeight.ExtraBold)''')
+f.write_text(s)
+f=p/"Wq183OnlinePortraitStrip.kt";s=f.read_text()
+s=once(s,'    val safeId = if (Wq2DMascots.valid(avatar)) avatar!! else "piko"','    val safeId = avatar.orEmpty()')
+f.write_text(s)
+f=p/"Wq128PremiumRoomLobby.kt";s=f.read_text()
+s=once(s,'    val hostReady=match.hostUid in match.readyBy','''    val selectedMaskot by rememberWq2DSelection(profileKey)
+    val shareMaskot by rememberWq183ShareConsent(profileKey)
+    val hostReady=match.hostUid in match.readyBy''')
+s=once(s,'        Text(when {\n            allReady -> "✓ İki oyuncu da hazır."','''        if(Wq183MascotStore.isCustomId(selectedMaskot)) {
+            Row(Modifier.fillMaxWidth().lobbyPlate128(radius=12).padding(horizontal=8.dp),
+                verticalAlignment=Alignment.CenterVertically) {
+                Text("Maskotumu rakibime göster",Modifier.weight(1f),color=LobbyWhite128,fontSize=12.sp)
+                Switch(checked=shareMaskot,onCheckedChange={ Wq183ArenaShare.setConsent(context,profileKey,it) })
+            }
+        }
+        Text(when {
+            allReady -> "✓ İki oyuncu da hazır."''')
+s=once(s,'.clickable(enabled=enabled,onClick=onClick),contentAlignment=Alignment.Center) {','.heightIn(min=44.dp).clickable(enabled=enabled,onClick=onClick),contentAlignment=Alignment.Center) {')
+f.write_text(s)
+assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in repair_protected.items())
+test=main.parent/"test/java/com/kelimebulmacasi/a1/PremiumOnlineCompletionRegressionTest.kt"
+test.write_text('''package com.kelimebulmacasi.a1
+
+import org.junit.Assert.*
+import org.junit.Test
+
+class PremiumOnlineCompletionRegressionTest {
+    private val base=PremiumOnlineMatch("ABCDEF234","h","g","Host","Guest","playing",
+        "quiz","board","A1","Tüm konular",5,30,1,"h",0L,emptyMap(),emptyMap())
+    @Test fun quizNeedsEveryAnswerFromBothPlayers() {
+        val all=(0..4).associateWith { if(it==4)-1 else 0 }
+        assertFalse(base.copy(answers=mapOf("h" to all)).complete)
+        assertFalse(base.copy(answers=mapOf("h" to all,"g" to (all-4))).complete)
+        assertFalse(base.copy(answers=mapOf("h" to all,"g" to ((all-4)+(7 to 1)))).complete)
+        assertTrue(base.copy(answers=mapOf("h" to all,"g" to all)).complete)
+    }
+    @Test fun sharedBoardCompletesOnlyWhenEveryClueIsResolved() {
+        val all=(0..4).associateWith { if(it==4)"reveal" else "h" }
+        assertFalse(base.copy(mode="team",solvedBy=all-4).complete)
+        assertTrue(base.copy(mode="team",solvedBy=all).complete)
+        assertTrue(base.copy(mode="duel",solvedBy=all).complete)
+        assertFalse(base.copy(mode="team",size=0).complete)
+    }
+}
+''')
+print("PASS: targeted completion, answer deduplication, stable room listener and no legacy mascot fallback patch applied")
