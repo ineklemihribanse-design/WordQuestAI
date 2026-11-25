@@ -17,6 +17,9 @@ import java.security.MessageDigest
 import java.security.Signature
 import java.security.cert.CertificateFactory
 import javax.net.ssl.HttpsURLConnection
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 /** Data only: no APK, dex, scripts, native libraries, or external storage. */
 internal object WqContentUpdates {
@@ -29,6 +32,11 @@ internal object WqContentUpdates {
     @Volatile private var active: File? = null
     @Volatile private var activeVersion: String? = null
     private var started = false
+    private var checking = false
+    private val _status = MutableStateFlow("İçerik kontrolü hazırlanıyor…")
+    val status: StateFlow<String> = _status.asStateFlow()
+    private val _checking = MutableStateFlow(false)
+    val isChecking: StateFlow<Boolean> = _checking.asStateFlow()
 
     @Suppress("DEPRECATION")
     private fun core(c: Context): Pair<Int,String> {
@@ -64,9 +72,30 @@ internal object WqContentUpdates {
                 activeVersion = v
             }
         }
+        checkNow(app)
+    }
+
+    fun pendingVersion(c: Context): String? {
+        val p = prefs(c)
+        if (p.getInt("core",-1) != core(c).first) return null
+        val v = p.getString("version",null) ?: return null
+        return v.takeIf { versionPattern.matches(it) && it != activeVersion }
+    }
+
+    @Synchronized fun checkNow(c: Context) {
+        if (checking) return
+        checking = true
+        _checking.value = true
+        _status.value = "APK'sız içerikler kontrol ediliyor…"
+        val app = c.applicationContext ?: c
         Thread({
-            try { refresh(app) } catch (e: Exception) {
+            try {
+                _status.value = refresh(app)
+            } catch (e: Exception) {
                 Log.w("WqContentUpdates","Content update skipped; bundled/active content retained",e)
+                _status.value = "İçerik kontrolü başarısız. Mevcut içerik korundu. İnterneti kontrol edip tekrar dene."
+            } finally {
+                synchronized(this) { checking = false; _checking.value = false }
             }
         },"wq-content-check").start()
     }
@@ -93,7 +122,8 @@ internal object WqContentUpdates {
         conn.readTimeout = 15000
         conn.useCaches = false
         try {
-            require(conn.responseCode == 200)
+            val status = conn.responseCode
+            if (status != 200) throw java.io.IOException("Content HTTP $status")
             return conn.inputStream.use { readLimited(it,max) }
         } finally { conn.disconnect() }
     }
@@ -122,7 +152,7 @@ internal object WqContentUpdates {
         require(options.outWidth.toLong()*options.outHeight <= 12_000_000L)
     }
 
-    private fun refresh(c: Context) {
+    private fun refresh(c: Context): String {
         val envelope = JSONObject(String(get("index.json",262144),Charsets.UTF_8))
         val payload = Base64.decode(envelope.getString("payload"),Base64.NO_WRAP)
         val sig = Base64.decode(envelope.getString("signature"),Base64.NO_WRAP)
@@ -130,14 +160,18 @@ internal object WqContentUpdates {
         val m = JSONObject(String(payload,Charsets.UTF_8))
         val (code, name) = core(c)
         require(m.getInt("schema")==1 && m.getString("packageName")==c.packageName)
-        if (m.getInt("coreCode")!=code) return
+        if (m.getInt("coreCode")!=code) return "Bu Android sürümüne uygun yeni içerik paketi yok."
         val version = m.getString("version")
         require(versionPattern.matches(version) && versionPattern.matches(name))
         val sequence = m.getLong("sequence")
         val p = prefs(c)
         val prior = if(p.getInt("core",-1)==code) p.getLong("sequence",0) else 0
         if (sequence <= prior || version.substringAfterLast('.').toLong() <=
-            (if(p.getInt("core",-1)==code) p.getString("version",name) ?: name else name).substringAfterLast('.').toLong()) return
+            (if(p.getInt("core",-1)==code) p.getString("version",name) ?: name else name).substringAfterLast('.').toLong()) {
+            val pending = pendingVersion(c)
+            return if (pending != null) "İçerik $pending indirildi. Uygulamayı tamamen kapatıp aç."
+                else "İçerik güncel: ${version(c)}"
+        }
         val files = m.getJSONArray("files")
         require(files.length() in 1..100)
         val id = digest(payload)
@@ -177,6 +211,7 @@ internal object WqContentUpdates {
             check(p.edit().putString("active",id).putInt("core",code)
                 .putLong("sequence",sequence).putString("version",version).commit())
         } finally { staging.deleteRecursively() }
+        return "İçerik $version indirildi. APK kurulumu gerekmez; uygulamayı tamamen kapatıp aç."
     }
 }
 

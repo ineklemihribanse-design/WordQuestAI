@@ -4,6 +4,7 @@ on:
     branches: [fix/v190-tablet-board-and-visible-icons]
     paths:
       - 'tools/v126_room/**'
+      - 'tools/content_updates/**'
       - '.github/workflows/qa-v126-room-repair.yml'
 permissions:
   contents: read

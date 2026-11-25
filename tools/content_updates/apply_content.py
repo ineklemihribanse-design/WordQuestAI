@@ -37,6 +37,25 @@ s=ui.read_text()
 anchor='Text("İndirme boyutu: ${offer.sizeLabel}")'
 assert s.count(anchor)==1
 s=s.replace(anchor,'Text("İçerik sürümü: ${WqContentUpdates.version(androidx.compose.ui.platform.LocalContext.current)}")\n                    '+anchor)
+# Put the data channel in the permanent settings section, not just the APK offer dialog.
+s=s.replace('import androidx.compose.runtime.Composable',
+            'import androidx.compose.runtime.Composable\nimport androidx.compose.runtime.collectAsState',1)
+anchor='    Text("Son kontrol: ${updater.lastCheckLabel()}", color = Muted, fontSize = 13.sp)'
+assert s.count(anchor)==1
+s=s.replace(anchor,anchor+'''
+    val contentStatus = WqContentUpdates.status.collectAsState().value
+    val contentChecking = WqContentUpdates.isChecking.collectAsState().value
+    Text("Android sürümü: ${updater.installedVersion()}", color = Ink, fontSize = 13.sp)
+    Text("İçerik sürümü: ${WqContentUpdates.version(context)}", color = Forest, fontWeight = FontWeight.Bold)
+    Text(contentStatus, color = Ink, fontSize = 13.sp)
+    OutlinedButton(modifier = Modifier.fillMaxWidth(), enabled = !contentChecking,
+        onClick = { WqContentUpdates.checkNow(context) }) {
+        Text(if (contentChecking) "İçerik kontrol ediliyor…" else "APK'sız İçerikleri Kontrol Et")
+    }
+''')
+anchor='onClick = { updater.check(force = true) }'
+assert s.count(anchor)==1
+s=s.replace(anchor,'onClick = { WqContentUpdates.checkNow(context); updater.check(force = true) }')
 ui.write_text(s)
 assert hashlib.sha256(board.read_bytes()).digest()==before
 print('Content updater integrated; phone puzzle source unchanged. APK version is controlled by release workflow.')
