@@ -577,3 +577,259 @@ z=s.index('\n',a)
 s=s[:a]+s[a:].replace('Text("Maskotumu rakibime göster"', 'Text(if(Wq183ArenaShare.delivery.value.isBlank())"Maskotumu rakibime göster" else "Maskotumu rakibime göster · "+Wq183ArenaShare.delivery.value',1)
 f.write_text(s)
 print("PASS: profile-scoped custom mascot decoding, atomic avatar update and acknowledged retries")
+
+
+# Google Drive app-data backup: explicit consent, stable IDs and merge-only restore.
+f=p/"Wq183MascotStore.kt";s=f.read_text()
+s=once(s,'fun importPack(context: Context, uri: Uri, profile: String): Item {',
+'fun importPack(context: Context, uri: Uri, profile: String, restoredId:String?=null): Item {')
+s=once(s,'''            val id = "custom_" + UUID.randomUUID().toString().replace("-", "")
+            val target = File(ownedRoot, id)''','''            val id = restoredId ?: ("custom_" + UUID.randomUUID().toString().replace("-", ""))
+            require(isCustomId(id))
+            val target = File(ownedRoot, id)
+            require(!target.exists()) { "Maskot zaten cihazda var" }''')
+s=once(s,'    fun rename(context: Context, profile: String, id: String, newName: String): Boolean {','''    fun exportPack(context:Context,profile:String,id:String):File {
+        require(exists(context,profile,id))
+        val folder=File(root(context,profile),id)
+        val out=File.createTempFile("wq-drive-mascot-",".zip",context.cacheDir)
+        try {
+            java.util.zip.ZipOutputStream(BufferedOutputStream(FileOutputStream(out))).use { zip ->
+                val files=folder.walkTopDown().filter { it.isFile }.toList()
+                require(files.size<=FILE_MAX)
+                for(file in files.sortedBy { it.relativeTo(folder).invariantSeparatorsPath }) {
+                    val relative=file.relativeTo(folder).invariantSeparatorsPath
+                    require(relative=="manifest.json" || relative=="README_TR.txt" || pathPattern.matches(relative))
+                    require(file.length()<=ENTRY_MAX)
+                    zip.putNextEntry(java.util.zip.ZipEntry(relative))
+                    file.inputStream().use { it.copyTo(zip) }
+                    zip.closeEntry()
+                }
+            }
+            require(out.length() in 1..ZIP_MAX) { "Maskot yedek boyutu sınırı aşıldı" }
+            return out
+        } catch(e:Exception) { out.delete(); throw e }
+    }
+
+    fun rename(context: Context, profile: String, id: String, newName: String): Boolean {''')
+f.write_text(s)
+f=p/"Wq183MascotManager.kt";s=f.read_text()
+s=once(s,'    onlineEligible: Boolean\n)','    onlineEligible: Boolean,\n    driveAuth:com.google.firebase.auth.FirebaseAuth?=null\n)')
+s=once(s,'Text("Yalnızca WordQuest Mascot Pack v1 ZIP yüklenir. Asıl ZIP dosyası cihazında kalır.")','''Text("WordQuest Mascot Pack v1 ZIP yüklenir. Drive yedeklemesi isteğe bağlıdır.")
+                WqDriveMascotPanel(profileKey,driveAuth) {
+                    items=Wq183MascotStore.list(context,profileKey)
+                }''')
+f.write_text(s)
+f=p/"HomeScreen.kt";s=f.read_text()
+s=once(s,'                    onlineEligible=session.accountName!=null,\n                    onSelected={id->','                    onlineEligible=session.accountName!=null,\n                    driveAuth=session.accounts.socialAuth(),\n                    onSelected={id->')
+f.write_text(s)
+gradle=Path("source/app/build.gradle.kts");s=gradle.read_text()
+s=once(s,'implementation("androidx.credentials:credentials-play-services-auth:1.5.0")','implementation("androidx.credentials:credentials-play-services-auth:1.5.0")\n    implementation("com.google.android.gms:play-services-auth:22.0.0")')
+gradle.write_text(s)
+(p/"WqDriveMascot.kt").write_text('''package com.kelimebulmacasi.a1
+
+import android.accounts.Account
+import android.app.Activity
+import android.content.Context
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import com.google.android.gms.auth.api.identity.AuthorizationRequest
+import com.google.android.gms.auth.api.identity.AuthorizationResult
+import com.google.android.gms.auth.api.identity.Identity
+import com.google.android.gms.common.api.Scope
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.File
+import java.net.HttpURLConnection
+import java.net.URL
+import java.security.MessageDigest
+import java.util.UUID
+
+private object WqDriveMascot {
+    const val APPDATA="https://www.googleapis.com/auth/drive.appdata"
+    const val EMAIL="https://www.googleapis.com/auth/userinfo.email"
+    private const val API="https://www.googleapis.com/drive/v3"
+    private const val UPLOAD="https://www.googleapis.com/upload/drive/v3"
+    private const val LIMIT=25L*1024*1024
+    private fun hex(value:String)=MessageDigest.getInstance("SHA-256")
+        .digest(value.toByteArray()).joinToString("") { "%02x".format(it) }
+    private fun prefix(uid:String)="wq-mascot-"+hex(uid).take(24)+"-"
+    private fun request(url:String,token:String,method:String="GET"):HttpURLConnection =
+        (URL(url).openConnection() as HttpURLConnection).apply {
+            requestMethod=method;connectTimeout=15000;readTimeout=45000
+            instanceFollowRedirects=false
+            setRequestProperty("Authorization","Bearer "+token)
+        }
+    private fun checked(c:HttpURLConnection) {
+        val code=c.responseCode
+        require(code in 200..299) {
+            when(code) { 401 -> "Google izni sona erdi. Tekrar izin ver."
+                403 -> "Google Drive erişimi reddedildi. Drive API ve hesap izinlerini kontrol et."
+                429 -> "Google Drive yoğun. Tekrar dene."
+                else -> "Google Drive işlemi başarısız (HTTP "+code+")." }
+        }
+    }
+    private fun json(url:String,token:String):JSONObject {
+        val c=request(url,token)
+        try { checked(c); return JSONObject(c.inputStream.bufferedReader().use { it.readText() }) }
+        finally { c.disconnect() }
+    }
+    fun verifyAccount(token:String,email:String) {
+        val info=json("https://www.googleapis.com/oauth2/v3/userinfo",token)
+        require(info.optBoolean("email_verified") && info.optString("email").equals(email,true)) {
+            "WordQuest ve Google Drive hesapları farklı. Aynı Google hesabını seç."
+        }
+    }
+    private fun files(token:String,uid:String):Map<String,String> {
+        val found=linkedMapOf<String,String>()
+        var page=""
+        var count=0
+        do {
+            require(++count<=100) { "Yedek listesi çok büyük" }
+            val q=Uri.encode("trashed = false")
+            val data=json(API+"/files?spaces=appDataFolder&q="+q+
+                "&fields=nextPageToken,files(id,name)&pageSize=100"+
+                if(page.isEmpty()) "" else "&pageToken="+Uri.encode(page),token)
+            val list=data.getJSONArray("files")
+            for(i in 0 until list.length()) {
+                val f=list.getJSONObject(i);val name=f.optString("name")
+                if(!name.startsWith(prefix(uid))||!name.endsWith(".zip"))continue
+                val mascot=name.removePrefix(prefix(uid)).removeSuffix(".zip")
+                if(!Wq183MascotStore.isCustomId(mascot))continue
+                require(found.put(mascot,f.getString("id"))==null) { "Çift yedek kaydı; yerel maskotlar korundu." }
+            }
+            page=data.optString("nextPageToken")
+        } while(page.isNotBlank())
+        return found
+    }
+    private fun upload(token:String,uid:String,id:String,file:File,remote:String?) {
+        val boundary="wq"+UUID.randomUUID().toString().replace("-","")
+        val meta=JSONObject().put("name",prefix(uid)+id+".zip").put("mimeType","application/zip")
+        if(remote==null)meta.put("parents",org.json.JSONArray().put("appDataFolder"))
+        val pre=("--"+boundary+"\\\\r\\\\nContent-Type: application/json; charset=UTF-8\\\\r\\\\n\\\\r\\\\n"+meta+
+            "\\\\r\\\\n--"+boundary+"\\\\r\\\\nContent-Type: application/zip\\\\r\\\\n\\\\r\\\\n").replace("\\\\r","\\r").replace("\\\\n","\\n").toByteArray()
+        val end=("\\\\r\\\\n--"+boundary+"--\\\\r\\\\n").replace("\\\\r","\\r").replace("\\\\n","\\n").toByteArray()
+        val url=UPLOAD+"/files"+(remote?.let{"/"+Uri.encode(it)} ?: "")+"?uploadType=multipart&fields=id"
+        val c=request(url,token,if(remote==null)"POST" else "PATCH")
+        try {
+            c.doOutput=true;c.setRequestProperty("Content-Type","multipart/related; boundary="+boundary)
+            c.setFixedLengthStreamingMode(pre.size.toLong()+file.length()+end.size)
+            c.outputStream.use { out -> out.write(pre);file.inputStream().use{it.copyTo(out)};out.write(end) }
+            checked(c);c.inputStream.close()
+        } finally { c.disconnect() }
+    }
+    private fun download(token:String,id:String,target:File) {
+        val c=request(API+"/files/"+Uri.encode(id)+"?alt=media",token)
+        try {
+            checked(c)
+            c.inputStream.use { input -> target.outputStream().use { output ->
+                val b=ByteArray(32768);var total=0L
+                while(true) {
+                    val n=input.read(b);if(n<0)break
+                    total+=n;require(total<=LIMIT) { "Yedek boyutu sınırı aşıldı" }
+                    output.write(b,0,n)
+                }
+            }}
+        } finally { c.disconnect() }
+    }
+    fun sync(context:Context,profile:String,uid:String,token:String,restore:Boolean,stillOwner:()->Boolean):Int {
+        require(stillOwner()) { "Hesap değişti." }
+        val remote=files(token,uid)
+        var count=0
+        if(restore) {
+            for((id,fileId) in remote) {
+                require(stillOwner()) { "Hesap değişti." }
+                if(Wq183MascotStore.exists(context,profile,id))continue
+                val temp=File.createTempFile("wq-drive-restore-",".zip",context.cacheDir)
+                try {
+                    download(token,fileId,temp)
+                    require(stillOwner()) { "Hesap değişti." }
+                    Wq183MascotStore.importPack(context,Uri.fromFile(temp),profile,id)
+                    count++
+                } finally { temp.delete() }
+            }
+        } else {
+            for(item in Wq183MascotStore.list(context,profile)) {
+                require(stillOwner()) { "Hesap değişti." }
+                val temp=Wq183MascotStore.exportPack(context,profile,item.id)
+                try {
+                    require(stillOwner()) { "Hesap değişti." }
+                    upload(token,uid,item.id,temp,remote[item.id]);count++
+                } finally { temp.delete() }
+            }
+        }
+        return count
+    }
+}
+
+@Composable internal fun WqDriveMascotPanel(profile:String,auth:FirebaseAuth?,onRestored:()->Unit) {
+    val context=LocalContext.current
+    val scope=rememberCoroutineScope()
+    val user=auth?.currentUser
+    val googleEmail=user?.providerData?.firstOrNull { it.providerId=="google.com" }?.email.orEmpty()
+    val uid=user?.uid.orEmpty()
+    val client=remember(context){Identity.getAuthorizationClient(context)}
+    var busy by remember(profile,uid){mutableStateOf(false)}
+    var message by remember(profile,uid){mutableStateOf("")}
+    var restore by remember(profile,uid){mutableStateOf(false)}
+    fun useResult(result:AuthorizationResult) {
+        val token=result.accessToken
+        if(token.isNullOrBlank()) { busy=false;message="Google Drive izni verilmedi.";return }
+        scope.launch {
+            try {
+                val count=withContext(Dispatchers.IO) {
+                    WqDriveMascot.verifyAccount(token,googleEmail)
+                    WqDriveMascot.sync(context,profile,uid,token,restore){auth?.currentUser?.uid==uid}
+                }
+                if(restore)onRestored()
+                message=if(restore)"Geri yüklenen maskot: "+count+". Cihazdaki maskotlar korundu."
+                    else "Google Drive'a yedeklenen maskot: "+count
+            } catch(e:kotlinx.coroutines.CancellationException){throw e}
+              catch(e:Exception){message=e.message ?: "Drive işlemi tamamlanamadı."}
+            finally { busy=false }
+        }
+    }
+    val launcher=rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+        if(result.resultCode!=Activity.RESULT_OK) { busy=false;message="Google Drive izni iptal edildi." }
+        else runCatching { client.getAuthorizationResultFromIntent(result.data) }
+            .onSuccess { useResult(it) }.onFailure {busy=false;message="Google Drive izni alınamadı."}
+    }
+    fun start(wantRestore:Boolean) {
+        if(busy||googleEmail.isBlank()||uid.isBlank())return
+        restore=wantRestore;busy=true;message="Google Drive izni kontrol ediliyor…"
+        val request=AuthorizationRequest.builder()
+            .setAccount(Account(googleEmail,"com.google"))
+            .setRequestedScopes(listOf(Scope(WqDriveMascot.APPDATA),Scope(WqDriveMascot.EMAIL)))
+            .build()
+        client.authorize(request).addOnSuccessListener { result ->
+            if(auth?.currentUser?.uid!=uid){busy=false;message="Hesap değişti.";return@addOnSuccessListener}
+            if(result.hasResolution()) {
+                val pending=result.pendingIntent
+                if(pending==null){busy=false;message="İzin penceresi açılamadı."}
+                else launcher.launch(IntentSenderRequest.Builder(pending.intentSender).build())
+            } else useResult(result)
+        }.addOnFailureListener {busy=false;message="Google Drive izni alınamadı. Google hesabını ve Drive API ayarını kontrol et."}
+    }
+    Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(6.dp)) {
+        Text("Google Drive maskot yedeği",style=MaterialTheme.typography.titleSmall)
+        Text("Yalnızca uygulamanın gizli yedek klasörü kullanılır. Geri yükleme mevcut maskotları silmez.",style=MaterialTheme.typography.bodySmall)
+        if(googleEmail.isBlank())Text("Google hesabıyla giriş yap.",style=MaterialTheme.typography.bodySmall)
+        Row(horizontalArrangement=Arrangement.spacedBy(6.dp)) {
+            OutlinedButton(onClick={start(false)},enabled=!busy&&googleEmail.isNotBlank(),modifier=Modifier.weight(1f)){Text("Yedekle")}
+            OutlinedButton(onClick={start(true)},enabled=!busy&&googleEmail.isNotBlank(),modifier=Modifier.weight(1f)){Text("Geri yükle")}
+        }
+        if(message.isNotBlank())Text(message,style=MaterialTheme.typography.bodySmall)
+    }
+}
+'''.replace('\\\\r\\\\n','\\r\\n'))
+print("PASS: optional Drive appData consent and profile-bound bounded mascot backup/restore")
