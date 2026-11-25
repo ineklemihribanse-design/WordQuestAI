@@ -46,3 +46,5 @@ jobs:
         with:
           node-version: '22'
       - run: node --test tools/v132_engine/engine.test.mjs
+      - name: Verify mixed crossword generator on real offline vocabulary
+        run: node tools/v132_engine/real_pool.mjs source/app/src/main/assets/arena-vocabulary-v1.json
