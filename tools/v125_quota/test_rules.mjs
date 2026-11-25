@@ -17,10 +17,16 @@ try {
  await assertFails(db.ref().update(create(0,'ROOM00000',{mode:'invalid'})));
  assert.equal((await db.ref(quota+'/0').get()).exists(),false);
  await assertSucceeds(db.ref().update(create(0,'ROOM00000')));
+ await env.withSecurityRulesDisabled(async c=>{await c.database().ref('users/'+uid+'/nickname').set('QuotaUser');});
+ const premium=(i,code,patch={})=>({[quota+'/'+i]:code,['premiumRooms/'+code]:{hostUid:uid,hostName:'QuotaUser',phase:'lobby',mode:'duel',level:'A1',topic:'all',size:30,seconds:30,boardId:'test-board',quizSeed:123,turn:{uid,until:0},createdAt:Date.now(),quotaDay:day,quotaSlot:String(i),...patch}});
+ await assertFails(db.ref().update(premium(1,'PRM000001',{size:31})));
+ assert.equal((await db.ref(quota+'/1').get()).exists(),false);
+ await assertSucceeds(db.ref().update(premium(1,'PRM000001')));
+ await assertFails(db.ref().update(premium(1,'PRM000002')));
  await assertFails(second.ref().update(create(0,'ROOM99999')));
  await assertFails(guest.ref(quota).get());
  await assertFails(anon.ref().update(create(1,'ROOM00001')));
- for(let i=1;i<20;i++) await assertSucceeds(db.ref().update(create(i,'ROOM'+String(i).padStart(5,'0'))));
+ for(let i=2;i<20;i++) await assertSucceeds(db.ref().update(create(i,'ROOM'+String(i).padStart(5,'0'))));
  await assertFails(db.ref().update(create(20,'ROOM00020')));
  await assertFails(db.ref(old+'/1').set('OLD000002'));
  assert.equal((await db.ref(quota).get()).numChildren(),20);
