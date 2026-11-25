@@ -66,3 +66,14 @@ jobs:
               print('ONLINE EXACT',name)
               for i in sorted(chosen):print(f'{i+1}: {lines[i]}')
           PY
+
+      - name: Inspect exact solo Arena gameplay and responsive layout
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/app/src/main/java/com/kelimebulmacasi/a1')
+          for name in ('PremiumArenaScreen.kt','ArenaApprovedHome.kt','ArenaCrosswordTyping.kt','ArenaBoardV2.kt'):
+              print('BEGIN_LAYOUT_FILE',name)
+              print((p/name).read_text())
+              print('END_LAYOUT_FILE',name)
+          PY
