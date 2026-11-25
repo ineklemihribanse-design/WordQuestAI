@@ -760,7 +760,7 @@ jobs:
           p=Path("source/app/build.gradle.kts")
           s=p.read_text()
           assert s.count("versionCode = 149")==1 and s.count('versionName = "1.0.123"')==1
-          p.write_text(s.replace("versionCode = 149","versionCode = 159").replace('versionName = "1.0.123"','versionName = "1.0.140"'))
+          p.write_text(s.replace("versionCode = 149","versionCode = 160").replace('versionName = "1.0.123"','versionName = "1.0.142"'))
           PY
       - name: Verify Android SDK and Gradle
         run: |
