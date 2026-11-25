@@ -349,3 +349,125 @@ class PremiumOnlineCompletionRegressionTest {
 }
 ''')
 print("PASS: targeted completion, answer deduplication, stable room listener and no legacy mascot fallback patch applied")
+
+
+# Compact independent Arena player cards and incoming finish offer dialog.
+f=p/"ArenaReferenceComponents.kt";s=f.read_text()
+s=once(s,'import androidx.compose.runtime.*','import androidx.compose.runtime.*\nimport androidx.compose.runtime.saveable.rememberSaveable')
+s=once(s,'''    val tablet=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
+    Row(modifier.heightIn(min=if(tablet)116.dp else 99.dp)''','''    val tablet=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
+    var expanded by rememberSaveable { mutableStateOf(true) }
+    Row(modifier.heightIn(min=if(expanded) { if(tablet)90.dp else 78.dp } else 48.dp)''')
+s=once(s,'''        .padding(horizontal=5.dp,vertical=8.dp),
+        verticalAlignment=Alignment.CenterVertically,
+        horizontalArrangement=Arrangement.spacedBy(4.dp)) {
+        ArenaMascotV2(avatar,Modifier.size(
+            if(tablet) { if(active)85.dp else 73.dp }
+            else { if(active)66.dp else 57.dp }))''','''        .clickable(onClickLabel=if(expanded)"Profili küçült" else "Profili genişlet") { expanded=!expanded }
+        .padding(horizontal=7.dp,vertical=4.dp),
+        verticalAlignment=Alignment.CenterVertically,
+        horizontalArrangement=Arrangement.spacedBy(4.dp)) {
+        if(expanded) ArenaMascotV2(avatar,Modifier.size(
+            if(tablet) { if(active)75.dp else 68.dp }
+            else { if(active)51.dp else 45.dp }))''')
+s=once(s,'''            Text(points.toString(),color=Color.White,fontSize=22.sp,
+                fontWeight=FontWeight.ExtraBold)
+            if(active) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)
+        }
+    }
+}''','''            Text(points.toString(),color=Color.White,fontSize=if(expanded)22.sp else 16.sp,
+                fontWeight=FontWeight.ExtraBold)
+            if(active && expanded) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)
+        }
+        Text(if(expanded)"⌃" else "⌄",color=Color.White,fontSize=14.sp,
+            fontWeight=FontWeight.Bold)
+    }
+}''')
+s=once(s,'''    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(26.dp))
+        .background(Brush.horizontalGradient(
+            listOf(Color(0xFF28134F),Color(0xFF8B53BB),Color(0xFF422877))))
+        .padding(horizontal=5.dp,vertical=8.dp),
+        verticalAlignment=Alignment.CenterVertically,
+        horizontalArrangement=Arrangement.spacedBy(4.dp)) {''','''    val wide=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
+    Row(Modifier.fillMaxWidth(),
+        verticalAlignment=Alignment.CenterVertically,
+        horizontalArrangement=Arrangement.spacedBy(if(wide)10.dp else 5.dp)) {''')
+s=once(s,'Box(Modifier.size(if(urgent)103.dp else 87.dp)','Box(Modifier.size(if(wide) { if(urgent)91.dp else 78.dp } else { if(urgent)76.dp else 65.dp })')
+s=once(s,'fontSize=if(urgent)25.sp else 18.sp','fontSize=if(urgent) { if(wide)24.sp else 20.sp } else 17.sp')
+f.write_text(s)
+f=p/"PremiumOnlineScreen.kt";s=f.read_text()
+s=once(s,'.verticalScroll(rememberScrollState()).padding(horizontal = 12.dp, vertical = 10.dp),\n        verticalArrangement = Arrangement.spacedBy(if (match == null) 12.dp else 9.dp)) {',
+'''.verticalScroll(rememberScrollState()).padding(horizontal = 10.dp, vertical = 2.dp),
+        verticalArrangement = Arrangement.spacedBy(if (match == null) 12.dp else 5.dp)) {''')
+s=once(s,'TextButton(onClick = { if (match != null) confirmRoomExit = true else back() }) {',
+'''TextButton(onClick = { if (match != null) confirmRoomExit = true else back() },
+                contentPadding=PaddingValues(horizontal=6.dp,vertical=0.dp)) {''')
+s=once(s,'Text(gameTitle, color = Color.White, fontSize = 19.sp, fontWeight = FontWeight.Black)',
+'Text(gameTitle, color = Color.White, fontSize = 17.sp, fontWeight = FontWeight.Black)')
+s=once(s,'if (match.phase == "finished" || (match.phase == "playing" && match.mode == "quiz")) Wq183OnlinePortraitStrip(',
+'if (match.phase == "finished") Wq183OnlinePortraitStrip(')
+a=s.index('    // Two scores remain visible while the large settings card is hidden.')
+z=s.index('    if (match.cooperative)',a)
+s=s[:a]+s[z:]
+s=once(s,'                    ArenaScoreStrip(own.size, questions.size, myScore, null)',
+'''                    ArenaLiveScoreV2(hostName,guestName,arenaScore(match.hostUid),arenaScore(match.guestUid),
+                        false,if(quizDeadline>0) PremiumOnlineLimits.remainingSeconds(quizDeadline,client.serverNow(wallTime)) else null,
+                        own.size,questions.size,true,match.hostAvatar,match.guestAvatar)''')
+s=once(s,'''                ArenaLiveScoreV2(hostName, guestName,
+                    match.score(match.hostUid,questions), match.score(match.guestUid,questions),''',
+'''                ArenaLiveScoreV2(hostName, guestName,
+                    arenaScore(match.hostUid), arenaScore(match.guestUid),''')
+f.write_text(s)
+f=p/"Wq186ArenaSocialHud.kt";s=f.read_text()
+s=once(s,'    var askFinish by remember(match.code) { mutableStateOf(false) }',
+'''    var askFinish by remember(match.code) { mutableStateOf(false) }
+    var offerDismissed by remember(match.code) { mutableStateOf(false) }
+    var acceptingOffer by remember(match.code) { mutableStateOf(false) }''')
+s=once(s,'    val opponent = if (isHost) guestName else hostName',
+'''    val opponent = if (isHost) guestName else hostName
+    val incomingOffer=match.phase=="playing" && opponentUid.isNotBlank() &&
+        opponentUid in votes && myUid !in votes
+    LaunchedEffect(incomingOffer) {
+        if(!incomingOffer) { offerDismissed=false; acceptingOffer=false }
+    }''')
+a=s.index('        if (match.phase=="playing" && opponentUid in votes && myUid !in votes) {')
+z=s.index('        if (myUid in votes',a)
+s=s[:a]+'''        if(incomingOffer && offerDismissed) {
+            OutlinedButton(onClick={offerDismissed=false},modifier=Modifier.fillMaxWidth()) {
+                Text("Bekleyen bitirme teklifini aç",color=Color(0xFFFFDF9B))
+            }
+        }
+'''+s[z:]
+s=once(s,'    if (askFinish) AlertDialog(',
+'''    if(incomingOffer && !offerDismissed) AlertDialog(
+        onDismissRequest={if(!acceptingOffer)offerDismissed=true},
+        title={Text("Maçı bitirme teklifi",fontWeight=FontWeight.Bold)},
+        text={
+            Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                Text("$opponent maçı mevcut puanlarla tamamlamak istiyor.")
+                Text("$hostName: $hostScore puan · $guestName: $guestScore puan",
+                    fontWeight=FontWeight.SemiBold)
+                Text("Kabul edersen sonuç ekranı açılır. İstersen oynamaya devam edebilirsin.")
+            }
+        },
+        confirmButton={
+            Button(enabled=!acceptingOffer && extra!=null,onClick={
+                acceptingOffer=true
+                extra?.child("finishVotes")?.child(myUid)?.setValue(true)
+                    ?.addOnCompleteListener { task ->
+                        acceptingOffer=false
+                        if(!task.isSuccessful)notice="Teklif kabul edilemedi. Tekrar dene."
+                    }
+            }) {Text(if(acceptingOffer)"Kaydediliyor…" else "Kabul et")}
+        },
+        dismissButton={OutlinedButton(enabled=!acceptingOffer,onClick={offerDismissed=true}) {
+            Text("Oyuna devam et")
+        }}
+    )
+
+    if (askFinish && !incomingOffer) AlertDialog(''')
+s=once(s,'if (match.phase=="playing") TextButton(onClick={','if (match.phase=="playing") OutlinedButton(onClick={')
+s=once(s,'color=Color(0xFFFFDF9B),fontSize=11.sp)\n            }','color=Color(0xFFFFDF9B),fontSize=12.sp,fontWeight=FontWeight.SemiBold)\n            }')
+s=once(s,'Wq2DPortrait(avatar.orEmpty().ifBlank { "piko" },','Wq2DPortrait(avatar.orEmpty(),')
+f.write_text(s)
+print("PASS: separate collapsible score cards, compact live match header, incoming finish vote dialog")
