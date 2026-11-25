@@ -1,0 +1,28 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {initializeTestEnvironment,assertFails,assertSucceeds} from '@firebase/rules-unit-testing';
+const env=await initializeTestEnvironment({projectId:'demo-wordquest',database:{host:'127.0.0.1',port:9000,rules:fs.readFileSync('firebase/database.rules.v125.json','utf8')}});
+try {
+ const day=Math.floor((Date.now()+10800000)/86400000),uid='quota-user',other='other-user';
+ const db=env.authenticatedContext(uid,{firebase:{sign_in_provider:'google.com'}}).database();
+ const second=env.authenticatedContext(uid,{firebase:{sign_in_provider:'google.com'}}).database();
+ const guest=env.authenticatedContext(other,{firebase:{sign_in_provider:'password'}}).database();
+ const anon=env.authenticatedContext('anon',{firebase:{sign_in_provider:'anonymous'}}).database();
+ const quota='roomQuotaV2/'+uid+'/'+day;
+ const old='roomQuota/'+uid+'/'+day;
+ await env.withSecurityRulesDisabled(async c=>{await c.database().ref(old+'/0').set('OLD000001');});
+ assert.equal((await db.ref(quota).get()).exists(),false);
+ const create=(i,code,patch={})=>({[quota+'/'+i]:code,['rooms/'+code]:{hostUid:uid,mode:'words',phase:'lobby',createdAt:Date.now(),quotaDay:day,quotaSlot:String(i),...patch}});
+ await assertFails(db.ref(quota+'/0').set('ROOM00000'));
+ await assertFails(db.ref().update(create(0,'ROOM00000',{mode:'invalid'})));
+ assert.equal((await db.ref(quota+'/0').get()).exists(),false);
+ await assertSucceeds(db.ref().update(create(0,'ROOM00000')));
+ await assertFails(second.ref().update(create(0,'ROOM99999')));
+ await assertFails(guest.ref(quota).get());
+ await assertFails(anon.ref().update(create(1,'ROOM00001')));
+ for(let i=1;i<20;i++) await assertSucceeds(db.ref().update(create(i,'ROOM'+String(i).padStart(5,'0'))));
+ await assertFails(db.ref().update(create(20,'ROOM00020')));
+ await assertFails(db.ref(old+'/1').set('OLD000002'));
+ assert.equal((await db.ref(quota).get()).numChildren(),20);
+ console.log('PASS atomic 20/day, failed create not charged, old ledger retained, account isolation');
+} finally {await env.cleanup();}
