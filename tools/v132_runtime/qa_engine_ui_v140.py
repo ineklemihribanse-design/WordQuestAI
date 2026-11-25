@@ -106,20 +106,34 @@ def wait_game(mode,wide=False):
         # just to prove the game is running.
         if mode=="crossword" and all(t in all_labels for t in ("kelime bulmacasi","tum tahta","ilerleme")):
             count=re.search(r"ilerleme\s*\d+/(20|30|40|50)\b",all_labels)
-            cells=sum(x.isdigit() for x in labels)
-            assert count and cells>=4,(all_labels,cells)
-            assert "a1 + a2 + b1 + b2 + c1 + c2" in all_labels,all_labels
             if wide:
-                # No scrolling before this check: the answer panel must be
-                # visible beside the board, not below the viewport.
+                # Always preserve actual screenshot and XML before any assertions.
+                ns=capture("tablet-crossword-started")
+                labels=[label(n).strip() for n in ns if label(n).strip()]
+                all_labels=folded(" | ".join(labels))
+                cellnodes=[n for n in ns if re.search(r"tahta hucresi\s+\d+",folded(label(n)))]
+                letters=[n for n in ns if re.search(r"tahta harfi\s+\d+/\d+",folded(label(n)))]
+                cells=len(cellnodes)
+                assert count and cells>=4 and len(letters)>=10,(all_labels,cells,len(letters))
                 assert all(t in all_labels for t in ("kelimeyi yaz","cevabi gonder","pas gec","harf ipucu")),all_labels
-                cellnodes=[n for n in ns if label(n).strip().isdigit()]
                 field=next(n for n in ns if "kelimeyi yaz" in folded(label(n)))
-                assert max(bounds(n)[2] for n in cellnodes)<bounds(field)[0],(bounds(field),[bounds(n) for n in cellnodes])
-                capture("tablet-crossword-started")
-                img=Image.open(OUT/"arena-tablet-crossword-started.png")
+                img=Image.open(OUT/"arena-tablet-crossword-started.png").convert("RGB")
                 assert img.width>img.height
-            else:capture("web-crossword-started")
+                bb=[bounds(n) for n in cellnodes+letters]
+                assert max(v[2] for v in bb)<bounds(field)[0],(bounds(field),bb)
+                assert min(v[1] for v in bb)>0 and max(v[3] for v in bb)<img.height
+                # Real board pixels: white/lilac cell fills must exist in the
+                # visible cell bounds, not merely an accessibility label.
+                visible_pixels=0
+                for x,y,xx,yy in bb:
+                    px=img.getpixel(((x+xx)//2,(y+yy)//2))
+                    if min(px)>170 and max(px)>210:visible_pixels+=1
+                assert visible_pixels>=len(bb)//3,(visible_pixels,len(bb))
+            else:
+                cells=sum(x.isdigit() for x in labels)
+                assert count and cells>=4,(all_labels,cells)
+                capture("web-crossword-started")
+            assert "a1 + a2 + b1 + b2 + c1 + c2" in all_labels,all_labels
             print("Verified real crossword progress and numbered cells:",count.group(1),cells,flush=True)
             return
         if mode=="quiz" and "ingilizcesi hangisidir" in all_labels:
