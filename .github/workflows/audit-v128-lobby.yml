@@ -1,16 +1,19 @@
 name: Inspect exact assembled Arena room lobby contracts
 on:
-  push:
-    branches: ['feature/v128-premium-room-lobby']
+  pull_request:
+    branches: ['fix/v190-tablet-board-and-visible-icons']
     paths: ['.github/workflows/audit-v128-lobby.yml']
 permissions:
   contents: read
 jobs:
   inspect:
+    if: github.head_ref == 'feature/v128-premium-room-lobby' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: actions/cache/restore@v4
         id: full
         with:
