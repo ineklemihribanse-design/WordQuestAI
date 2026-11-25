@@ -1,0 +1,2 @@
+# Hybrid engine migration
+First portable deterministic selection/quiz module. It is not yet wired to Android room creation, crossword layout, server scoring or user records. Existing native engine remains live. This branch audits the exact assembled source before integration. No existing user data, release or Firebase rules changed. Tests use synthetic vocabulary only.
