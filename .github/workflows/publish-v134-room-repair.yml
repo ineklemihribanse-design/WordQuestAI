@@ -35,7 +35,7 @@ jobs:
           java-version: '17'
       - uses: actions/checkout@v4
         with:
-          ref: 3aaf709cdee544facedd16c644275f61fa20ca80
+          ref: ${{ github.sha }}
           path: verified-ui-harness
           persist-credentials: false
       - name: Set shared directory
@@ -136,16 +136,7 @@ jobs:
           set -euo pipefail
           # Run the established upgrade proof AND six-level real Android gameplay
           # within the same emulator session before any public release.
-          cp verified-ui-harness/tools/v132_runtime/qa_engine_ui.py "$RUNNER_TEMP/wq134-gameplay.py"
-          python3 - <<'PY'
-          import os
-          from pathlib import Path
-          p=Path(os.environ['RUNNER_TEMP'])/'wq134-gameplay.py'
-          s=p.read_text()
-          anchor='for level in ("A1","A2","B1"):'
-          assert s.count(anchor)==1
-          p.write_text(s.replace(anchor,'for level in ("A1","A2","B1","B2","C1","C2"):'))
-          PY
+          cp verified-ui-harness/tools/v132_runtime/qa_engine_ui_v134.py "$RUNNER_TEMP/wq134-gameplay.py"
           cat > "$RUNNER_TEMP/wq134-upgrade-and-gameplay.sh" <<'SH'
           #!/usr/bin/env bash
           set -euo pipefail
