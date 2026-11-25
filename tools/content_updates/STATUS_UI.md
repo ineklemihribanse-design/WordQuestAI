@@ -1,0 +1,2 @@
+# APK'sız güncelleme görünürlüğü
+1.0.125 otomatik kontrol ve sonraki açılışta etkinleştirme yapar, ancak kalıcı içerik sürümü ve indirme durumunu Ayarlar'da göstermez. 1.0.126 için bu iki kanal aynı ekranda ayrı gösterilir; elle APK'sız içerik kontrolü ve mevcut kontrol düğmesiyle iki kanalın kontrolü mümkündür. Başarısız kontrolde mevcut veri korunur, yeni paket etkinleşene kadar Android sürümü ve içerik sürümü ayrı kalır. Yeni içerik paketi, tam Android çekirdek koduyla eşleşmelidir. Bu değişiklik henüz cihazda test edilmemiştir.

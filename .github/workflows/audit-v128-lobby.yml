@@ -1,0 +1,42 @@
+name: Inspect exact assembled Arena room lobby contracts
+on:
+  pull_request:
+    branches: ['fix/v190-tablet-board-and-visible-icons']
+    paths: ['.github/workflows/audit-v128-lobby.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    if: github.head_ref == 'feature/v128-premium-room-lobby' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/cache/restore@v4
+        id: full
+        with:
+          path: source
+          key: wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8
+      - name: Print exact room UI and portrait source for integration
+        run: |
+          set -euo pipefail
+          test "${{ steps.full.outputs.cache-hit }}" = true
+          P=source/app/src/main/java/com/kelimebulmacasi/a1
+          ls "$P" | grep -E 'ArenaV2|PremiumOnline|Mascot|Lobby'
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          for f in p.glob("*.kt"):
+              s=f.read_text()
+              if f.name in ("ArenaV2Visuals.kt","PremiumOnlineScreen.kt") or any(x in s for x in ('"Oda Lobisi"','"Arkadaşlarını Davet Et"')):
+                  print("FILE",f.name)
+                  lines=s.splitlines()
+                  if f.name=="ArenaV2Visuals.kt": print(s[:30000]);continue
+                  ids=set()
+                  for i,l in enumerate(lines):
+                      if any(x in l for x in ('lobby','Lobby','"Oda Lobisi"','"Arkadaşlarını Davet Et"','"Oyuncu profili"','"Arkadaş bekleniyor"','"Yarışmayı Başlat"','fun PremiumOnlineScreen','Wq183OnlinePortraitStrip','Wq183ArenaBackdrop')):
+                          ids.update(range(max(0,i-12),min(len(lines),i+32)))
+                  for i in sorted(ids):print(f"{i+1}: {lines[i]}")
+          PY

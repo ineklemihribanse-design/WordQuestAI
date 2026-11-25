@@ -1,0 +1,5 @@
+# v1.0.125 Arena quota migration
+- New quota ledger: roomQuotaV2. Existing roomQuota data remains untouched/readable by its owners. Old clients cannot create new rooms after migration; install 1.0.125 first when available, then publish rules. The new app cannot create rooms until the rules are deployed.
+- Exactly 20 slots per registered account per Türkiye calendar day. No repeated reset; switching ledger once restores today's full allowance. Room and quota are one atomic root update, so denied room creation does not consume a slot. Concurrent slot collision should show an error, retry selects a free slot.
+- Existing game room fields, user/friend rules and history preserved. No unrestricted database access. No live deployment performed. Compare the currently deployed rules with this repository baseline, and merge only these changes if they differ. Do not replace unrelated live changes.
+- APK is needed because the Kotlin networking logic changes. The content-only trial moves to 1.0.126.
