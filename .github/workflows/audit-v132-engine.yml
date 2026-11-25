@@ -53,3 +53,16 @@ jobs:
         run: |
           node tools/v132_engine/build_engine.mjs /tmp/arena_engine.html
           node tools/v132_engine/smoke_bundle.mjs /tmp/arena_engine.html source/app/src/main/assets/arena-vocabulary-v1.json
+
+      - name: Exact online entry points for shared round integration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/app/src/main/java/com/kelimebulmacasi/a1')
+          for name,terms in {'PremiumOnlineScreen.kt':('onCreate','client.create(','puzzleById(','questionsForSeed(','val board','val questions','fun PremiumOnline','phase == "finished"'), 'PremiumOnlineRoom.kt':('fun leave(','fun join(','fun close(','fun create(','fun start(','fun toggleReady(','fun updateLobbySettings(','fun observe(')}.items():
+              lines=(p/name).read_text().splitlines();chosen=set()
+              for i,l in enumerate(lines):
+                  if any(t in l for t in terms):chosen.update(range(max(0,i-4),min(len(lines),i+30)))
+              print('ONLINE EXACT',name)
+              for i in sorted(chosen):print(f'{i+1}: {lines[i]}')
+          PY

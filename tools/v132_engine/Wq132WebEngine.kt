@@ -30,14 +30,21 @@ internal object Wq132WebEngine {
         require(html.startsWith("<!DOCTYPE html>")&&html.contains(CSP)&&html.contains("window.wqGenerate"))
         return html
     }
-    data class Round(val board:PremiumArenaBoard?=null,val questions:List<PremiumQuestion> = emptyList())
+    const val MAX_ROUND_BYTES=48*1024
+    data class Round(val board:PremiumArenaBoard?=null,val questions:List<PremiumQuestion> = emptyList(),
+        val snapshot:String="",val snapshotId:String="")
+    fun snapshotId(snapshot:String):String {
+        val bytes=snapshot.toByteArray(Charsets.UTF_8)
+        require(bytes.size in 2..MAX_ROUND_BYTES){"Ortak tahta boyutu geçersiz"}
+        return "web:"+MessageDigest.getInstance("SHA-256").digest(bytes).joinToString(""){"%02x".format(it.toInt() and 255)}
+    }
     private data class Input(val html:String,val words:JSONArray,val settings:JSONObject,val seed:Int)
     private fun read(c:Context):String=WqContentUpdates.open(c,PATH).use {
         val out=ByteArrayOutputStream();val buf=ByteArray(4096)
         while(true){val n=it.read(buf);if(n<0)break;require(out.size()+n<=MAX_BYTES);out.write(buf,0,n)}
         validate(out.toByteArray())
     }
-    private fun input(c:Context,mode:String,levels:List<String>,topic:String,size:Int,seconds:Int,hints:Int,retries:Int,seed:Int):Input {
+    private fun input(c:Context,mode:String,levels:List<String>,topic:String,size:Int,seconds:Int,hints:Int,retries:Int,seed:Int,loadEngine:Boolean=true):Input {
         require(mode in setOf("duel","team","quiz"))
         val pool=Wq186ArenaPresetStore.LEVELS.filter{it in levels}
         require(pool.isNotEmpty()&&pool.size<=size)
@@ -50,7 +57,7 @@ internal object Wq132WebEngine {
         }
         val settings=JSONObject().put("mode",mode).put("levels",JSONArray(pool)).put("topic",topic)
             .put("size",size).put("seconds",seconds).put("hints",hints).put("retries",retries)
-        return Input(read(c),filtered,settings,seed)
+        return Input(if(loadEngine)read(c) else "",filtered,settings,seed)
     }
     private suspend fun evaluate(c:Context,i:Input):String=withContext(Dispatchers.Main.immediate) {
         val view=WebView(c)
@@ -90,7 +97,7 @@ internal object Wq132WebEngine {
         } finally {view.stopLoading();view.destroy()}
     }
     private fun decode(input:Input,result:String):Round {
-        require(result.length in 2..160000){"Web motoru yanıt vermedi"}
+        val roundId=snapshotId(result)
         val response=JSONObject(result)
         require(response.optBoolean("ok")){response.optString("error","Oyun üretilemedi")}
         val s=input.settings
@@ -112,7 +119,7 @@ internal object Wq132WebEngine {
                 PremiumQuestion("$meaning — İngilizcesi hangisidir?",options,correct,answer,level)
             }
             require(questions.map{it.answer.lowercase()}.distinct().size==size&&questions.map{it.level}.toSet()==levels.toSet())
-            return Round(questions=questions)
+            return Round(questions=questions,snapshot=result,snapshotId=roundId)
         }
         val words=response.getJSONObject("data").getJSONArray("words")
         require(words.length()==size)
@@ -142,8 +149,14 @@ internal object Wq132WebEngine {
         val reached=mutableSetOf(0);val queue=java.util.ArrayDeque<Int>();queue.add(0)
         while(queue.isNotEmpty())links[queue.removeFirst()].forEach{if(reached.add(it))queue.add(it)}
         require(reached.size==size)
-        val id=MessageDigest.getInstance("SHA-256").digest(words.toString().toByteArray()).joinToString(""){"%02x".format(it.toInt() and 255)}
-        return Round(board=PremiumArenaBoard("web:"+id,levels.first(),topic,Puzzle.create(entries,places)))
+        return Round(board=PremiumArenaBoard(roundId,levels.first(),topic,Puzzle.create(entries,places)),snapshot=result,snapshotId=roundId)
+    }
+    /** Guests use the exact frozen host payload, never rerun a potentially updated engine.
+     * The digest covers its bytes; the existing native board parser checks all entries. */
+    fun decodeShared(c:Context,mode:String,levels:List<String>,topic:String,size:Int,seconds:Int,hints:Int,retries:Int,
+        id:String,payload:String):Round {
+        require(id==snapshotId(payload)){"Ortak oyun verisi doğrulanamadı"}
+        return decode(input(c,mode,levels,topic,size,seconds,hints,retries,0,loadEngine=false),payload)
     }
     suspend fun generate(c:Context,mode:String,levels:List<String>,topic:String,size:Int,seconds:Int,hints:Int,retries:Int,seed:Int):Round {
         val i=withContext(Dispatchers.Default){input(c,mode,levels,topic,size,seconds,hints,retries,seed)}
