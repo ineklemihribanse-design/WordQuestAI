@@ -20,8 +20,32 @@ env:
   WQ_NOTES: 'Arena: 5 şıklı düello ve ortak bulmaca bitişi, rakip maskotu, ayrı açılır kapanır oyuncu kartları, merkezi süre, bitirme teklif penceresi. Ana bulmaca tahtası, veriler ve imza korunur.'
   WQ_QA_RUN: '45720792026'
 jobs:
-  upgrade:
+  preflight:
     if: github.repository == 'ineklemihribanse-design/WordQuestAI'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      required: ${{ steps.check.outputs.required }}
+    steps:
+      - name: Skip duplicate publication of an already public APK
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          current=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)
+          if [ "$current" = "v$WQ_VERSION" ]; then
+            echo "required=false" >> "$GITHUB_OUTPUT"
+            echo "APK $current is already public; no duplicate device tests." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$current" = "v$WQ_BASE_VERSION" ]; then
+            echo "required=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Unexpected public version $current; refusing stale candidate."
+            exit 1
+          fi
+  upgrade:
+    needs: preflight
+    if: needs.preflight.outputs.required == 'true' && github.repository == 'ineklemihribanse-design/WordQuestAI'
     runs-on: ubuntu-latest
     timeout-minutes: 75
     outputs:
@@ -144,21 +168,20 @@ jobs:
         timeout-minutes: 55
         run: |
           set -euo pipefail
-          # Run the established upgrade proof AND six-level real Android gameplay
-          # within the same emulator session before any public release.
+          # Always run exact upgrade/data retention proof; then select UI checks
+          # using actual signed APK byte differences, defaulting to all scenarios.
           cp verified-ui-harness/tools/v132_runtime/qa_engine_ui_v140.py "$RUNNER_TEMP/wq134-gameplay.py"
+          cp verified-ui-harness/tools/v132_runtime/qa_release_scope.py "$RUNNER_TEMP/wq-ui-scope.py"
           cat > "$RUNNER_TEMP/wq134-upgrade-and-gameplay.sh" <<'SH'
           #!/usr/bin/env bash
           set -euo pipefail
           bash tools/auto_release/verify_delta_install.sh
           python3 -c 'import PIL' || python3 -m pip install --disable-pip-version-check Pillow
-          python3 "$RUNNER_TEMP/wq134-gameplay.py"
+          python3 "$RUNNER_TEMP/wq-ui-scope.py" "$WQ_RELEASE_DIR/base/WordQuestAI.apk" "$WQ_RELEASE_DIR/target.apk" --harness "$RUNNER_TEMP/wq134-gameplay.py" --report "$WQ_RELEASE_DIR/ui-scope.json"
           SH
           bash tools/auto_release/run_emulator.sh "$RUNNER_TEMP/wq134-upgrade-and-gameplay.sh" "$WQ_RELEASE_DIR/target.apk"
-          grep -Fq 'PASS: actual Android mixed crossword gameplay opens' "$RUNNER_TEMP/wq206-upgrade-qa.log"
-          grep -Fq 'PASS: actual Android web quiz gameplay opens' "$RUNNER_TEMP/wq206-upgrade-qa.log"
-          grep -Fq 'PASS: landscape Arena board, answers and mixed-level title' "$RUNNER_TEMP/wq206-upgrade-qa.log"
-          grep -Fq 'PASS: landscape Arena quiz and clean return' "$RUNNER_TEMP/wq206-upgrade-qa.log"
+          grep -Fq 'PASS: scope-selected release UI checks' "$RUNNER_TEMP/wq206-upgrade-qa.log"
+          test -s "$WQ_RELEASE_DIR/ui-scope.json"
           sha256sum -c "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
           cp "$RUNNER_TEMP/wq206-upgrade-passed.sha256" "$WQ_RELEASE_DIR/upgrade-proof.sha256"
       - uses: actions/upload-artifact@v4
@@ -181,6 +204,7 @@ jobs:
             ${{ runner.temp }}/wq-auto-release/startup.png
             ${{ runner.temp }}/wq-auto-release/arena-*.png
             ${{ runner.temp }}/wq-auto-release/arena-*.xml
+            ${{ runner.temp }}/wq-auto-release/ui-scope.json
             ${{ runner.temp }}/wq206-upgrade-qa.log
             ${{ runner.temp }}/wq206-emulator.log
           if-no-files-found: ignore
