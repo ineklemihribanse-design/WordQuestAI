@@ -1,0 +1,59 @@
+name: Verify actual 1.0.132 Android WebView gameplay
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/qa-v132-runtime.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  gameplay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: cf69426d8de66aef632e11a824d2c641ddeb8c89
+          path: candidate-source
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Get exact emulator-upgrade-tested APK without rebuilding
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wq132-runtime"
+          mkdir -p "$D/verified"
+          gh run download 45632285812 -R "$GITHUB_REPOSITORY" -n WordQuestAI-v1.0.132-verified-release -D "$D/verified"
+          cp "$D/verified/dist/WordQuestAI.apk" "$D/target.apk"
+          test "$(sha256sum "$D/target.apk" | cut -d' ' -f1)" = "$(cut -d' ' -f1 "$D/verified/upgrade-proof.sha256")"
+          if [ ! -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" ]; then
+            "$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)" --install 'build-tools;35.0.0'
+          fi
+          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify --print-certs "$D/target.apk" > "$D/cert.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$D/cert.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$D/target.apk" > "$D/badging.txt"
+          grep -Fq "versionCode='155'" "$D/badging.txt"
+          echo "WQ_RELEASE_DIR=$D" >> "$GITHUB_ENV"
+          python3 -m pip install --disable-pip-version-check Pillow
+          sudo chmod 666 /dev/kvm
+      - name: Start the exact signed APK and play solo mixed-level crossword and quiz
+        working-directory: candidate-source
+        run: bash ../tools/v132_runtime/run_emulator.sh ../tools/v132_runtime/verify_gameplay.sh "$WQ_RELEASE_DIR/target.apk"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: WordQuestAI-v132-actual-gameplay-diagnostics
+          path: |
+            ${{ runner.temp }}/wq132-runtime/arena-*.png
+            ${{ runner.temp }}/wq132-runtime/arena-*.xml
+            ${{ runner.temp }}/wq132-runtime/android-logcat.txt
+            ${{ runner.temp }}/wq206-upgrade-qa.log
+            ${{ runner.temp }}/wq206-emulator.log
+          if-no-files-found: ignore
+          retention-days: 7
