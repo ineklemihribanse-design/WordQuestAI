@@ -48,6 +48,7 @@ if "import kotlinx.coroutines.launch\n" not in s and "import kotlinx.coroutines.
     s=once(s,"package com.kelimebulmacasi.a1\n","package com.kelimebulmacasi.a1\n\nimport kotlinx.coroutines.launch\n")
 f.write_text(s)
 shutil.copyfile(pack/"Wq132WebEngine.kt",p/"Wq132WebEngine.kt")
+shutil.copyfile(pack/"Wq136RecoveryEngine.kt",p/"Wq136RecoveryEngine.kt")
 out=main/"assets/web";out.mkdir(parents=True,exist_ok=True)
 shutil.copyfile(pack/"arena_engine.html",out/"arena_engine.html")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())

@@ -132,7 +132,8 @@ internal object Wq132WebEngine {
                                     }
                                 }
                             }
-                            view.loadDataWithBaseURL("https://wq-engine.invalid/",i.html,"text/html","UTF-8",null)
+                            // A local data document needs no network or intercepted main-frame request.
+                            view.loadData(Base64.encodeToString(i.html.toByteArray(Charsets.UTF_8),Base64.NO_WRAP),"text/html","base64")
                         }
                     }
                 } catch(e:TimeoutCancellationException) {
@@ -215,7 +216,10 @@ internal object Wq132WebEngine {
             // Retry once using the APK's known-good engine, not a different word pool.
             Log.w("Wq132Engine","Web transport failed; retry bundled engine: "+first.message)
             val fallback=withContext(Dispatchers.Default){i.copy(html=read(c,bundled=true))}
-            evaluate(c,fallback)
+            try { evaluate(c,fallback) } catch(second:TransportFailure) {
+                Log.w("Wq132Engine","Both web launches failed; recovering locally: "+second.message)
+                withContext(Dispatchers.Default){Wq136RecoveryEngine.generate(i.words,i.settings,i.seed)}
+            }
         }
         return withContext(Dispatchers.Default){decode(i,result)}
     }

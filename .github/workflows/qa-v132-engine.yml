@@ -1,4 +1,4 @@
-name: WordQuest AI v1.0.134 Hybrid shared match settings QA
+name: WordQuest AI v1.0.136 Hybrid shared match settings QA
 on:
   pull_request:
     branches: [fix/v190-tablet-board-and-visible-icons]
@@ -537,7 +537,7 @@ jobs:
           p=Path("source/app/build.gradle.kts")
           s=p.read_text()
           assert s.count("versionCode = 149")==1 and s.count('versionName = "1.0.123"')==1
-          p.write_text(s.replace("versionCode = 149","versionCode = 156").replace('versionName = "1.0.123"','versionName = "1.0.134"'))
+          p.write_text(s.replace("versionCode = 149","versionCode = 157").replace('versionName = "1.0.123"','versionName = "1.0.136"'))
           PY
       - name: Verify Android SDK and Gradle
         run: |
@@ -626,7 +626,7 @@ jobs:
           from pathlib import Path
           d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text("utf-8"))
           assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
-          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(156,"1.0.134")
+          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(157,"1.0.136")
           reports=list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
           assert reports
           from xml.etree import ElementTree as ET
@@ -684,12 +684,12 @@ jobs:
       - name: Preserve verified unsigned candidate before signing
         uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.134-unsigned-QA
+          name: WordQuestAI-v1.0.136-unsigned-QA
           path: source/app/build/outputs/apk/offline/app-offline-unsigned.apk
           compression-level: 0
           if-no-files-found: error
           retention-days: 3
-      - name: Sign v1.0.134 with current installed-app production certificate
+      - name: Sign v1.0.136 with current installed-app production certificate
         env:
           WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
           WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
@@ -705,19 +705,19 @@ jobs:
           printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
           OUT=source/app/build/outputs/apk/offline
           SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
-          java -jar "$SIGNER" sign             --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS"             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$OUT/WordQuestAI-v1.0.134-signed-qa.apk" "$OUT/app-offline-unsigned.apk"
-          java -jar "$SIGNER" verify --verbose --print-certs "$OUT/WordQuestAI-v1.0.134-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-signature.txt"
+          java -jar "$SIGNER" sign             --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS"             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$OUT/WordQuestAI-v1.0.136-signed-qa.apk" "$OUT/app-offline-unsigned.apk"
+          java -jar "$SIGNER" verify --verbose --print-certs "$OUT/WordQuestAI-v1.0.136-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-signature.txt"
           grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v206-signature.txt"
           grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v206-signature.txt"
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v206-signature.txt"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-v1.0.134-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-badging.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-v1.0.136-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-badging.txt"
           grep -m1 "^package:" "$RUNNER_TEMP/wq-v206-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v206-badging.txt"
-          grep -Fq "versionCode='156'" "$RUNNER_TEMP/wq-v206-badging.txt"
-          grep -Fq "versionName='1.0.134'" "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -Fq "versionCode='157'" "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -Fq "versionName='1.0.136'" "$RUNNER_TEMP/wq-v206-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v206-badging.txt"; then exit 1; fi
-          unzip -tq "$OUT/WordQuestAI-v1.0.134-signed-qa.apk"
-          python3 - "$OUT/WordQuestAI-v1.0.134-signed-qa.apk" <<'PY'
+          unzip -tq "$OUT/WordQuestAI-v1.0.136-signed-qa.apk"
+          python3 - "$OUT/WordQuestAI-v1.0.136-signed-qa.apk" <<'PY'
           import json,sys,zipfile
           from pathlib import Path
           base=Path("source/app/src/main/assets/pronunciation")
@@ -745,7 +745,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.134-signature-diagnostics
+          name: WordQuestAI-v1.0.136-signature-diagnostics
           path: |
             ${{ runner.temp }}/wq-v206-signature.txt
             ${{ runner.temp }}/wq-v206-badging.txt
@@ -754,8 +754,8 @@ jobs:
       - name: Preserve signed content updater candidate for separate device testing
         uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.134-signed-hybrid-engine-QA
-          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.134-signed-qa.apk
+          name: WordQuestAI-v1.0.136-signed-hybrid-engine-QA
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.136-signed-qa.apk
           if-no-files-found: error
           compression-level: 0
           retention-days: 7
