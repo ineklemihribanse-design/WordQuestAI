@@ -63,9 +63,18 @@ online=once(online,'            ArenaApprovedHome(','''            ArenaApproved
                 wq121FullScreen=true,wq121Back=back,
                 wq121OnLayout={wq121LobbyVisible=it},''')
 # Existing light stage background otherwise paints white over the new root; hide it only in full-screen lobby.
-marker='Wq179ArenaStageBackground('
-j=online.index(marker,online.index('val wq121FullLobby'))
+# v183 replaced Wq179ArenaStageBackground with Wq183ArenaBackdrop.
+# Only inspect the root between the outer Box and its first Column, never the
+# board/playing composables below it. Preserve the exact current call.
+outer_start=online.index('val wq121FullLobby')
+outer_end=online.index('    Column(if(wq121FullLobby)',outer_start)
+outer=online[outer_start:outer_end]
+background_calls=list(re.finditer(r'(?m)^(\s*)(Wq183ArenaBackdrop|Wq181ArenaHeroStage|Wq179ArenaStageBackground)\(',outer))
+assert len(background_calls)==1,('unexpected outer Arena backdrop',outer)
+call=background_calls[0]
+j=outer_start+call.start(2)
 online=online[:j]+'if(!wq121FullLobby) '+online[j:]
+print('PASS: current root backdrop gated:',call.group(2))
 # Read actual scoring from the existing match result calculation. New isolated
 # history is populated only after a real online match finishes.
 m=re.search(r'(?m)^    val guestName\s*=.*$',online)

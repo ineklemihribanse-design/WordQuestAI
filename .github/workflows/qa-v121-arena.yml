@@ -477,7 +477,13 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m py_compile tools/v121_arena/apply_fullscreen.py
-          python3 tools/v121_arena/apply_fullscreen.py
+          if ! python3 tools/v121_arena/apply_fullscreen.py; then
+            echo "::group::Current Arena source layout anchors"
+            P=source/app/src/main/java/com/kelimebulmacasi/a1
+            grep -nE 'ArenaBackdrop|ArenaHeroStage|ArenaStageBackground|Column\(|ArenaApprovedHome\(|val guestName|fun arenaScore|matchSettingsPage|avatarPicker|ArenaNight|OnlineNight' "$P/PremiumOnlineScreen.kt" "$P/PremiumArenaScreen.kt" "$P/ArenaApprovedHome.kt" | head -n 180 || true
+            echo "::endgroup::"
+            exit 1
+          fi
           grep -Fq 'versionCode = 147' source/app/build.gradle.kts
           grep -Fq 'versionName = "1.0.121"' source/app/build.gradle.kts
       - name: Verify Android SDK and Gradle
