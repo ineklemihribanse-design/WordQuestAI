@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Start pipeline timing
+        run: date +%s > "$RUNNER_TEMP/wq-pipeline-start"
       - name: Fingerprint stable pre-Arena assembly inputs
         id: source_checkpoint_key
         run: |
@@ -795,3 +797,25 @@ jobs:
           path: ${{ runner.temp }}/wq-full-audit/
           if-no-files-found: error
           retention-days: 7
+      - name: Report pipeline timing and cache reuse
+        if: always()
+        env:
+          SOURCE_CACHE_HIT: ${{ steps.source_checkpoint.outputs.cache-hit }}
+          AUDIO_CACHE_HIT: ${{ steps.audio_cache.outputs.cache-hit }}
+          JOB_RESULT: ${{ job.status }}
+        run: |
+          set -euo pipefail
+          start_file="$RUNNER_TEMP/wq-pipeline-start"
+          if [ -f "$start_file" ]; then elapsed=$(( $(date +%s) - $(cat "$start_file") )); else elapsed=0; fi
+          {
+            echo '### WordQuest AI build efficiency'
+            echo "- Result: $JOB_RESULT"
+            echo "- Elapsed pipeline: ${elapsed}s (excluding initial runner setup)"
+            echo "- Exact assembled source reused: ${SOURCE_CACHE_HIT:-false}"
+            if [ "$SOURCE_CACHE_HIT" = true ]; then
+              echo '- Pronunciation assets reused inside verified source snapshot; generation skipped.'
+            else
+              echo "- Exact pronunciation snapshot reused: ${AUDIO_CACHE_HIT:-false}"
+            fi
+            echo '- All final compilation, lint/test and signature gates remain unchanged for their respective workflows.'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
