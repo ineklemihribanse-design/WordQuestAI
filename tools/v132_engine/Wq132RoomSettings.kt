@@ -8,6 +8,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.launch
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -23,8 +25,11 @@ internal fun Wq132RoomSettings(match:PremiumOnlineMatch,client:PremiumOnlineRoom
     var hints by remember(match.code,match.configRevision){mutableIntStateOf(client.package6Rules.hints)}
     var retries by remember(match.code,match.configRevision){mutableIntStateOf(client.package6Rules.retries)}
     val config=LocalConfiguration.current
-    val topics=remember(pool,mode){(listOf(PremiumArenaRules.allTopics)+pool.flatMap{packs.topics(it,mode!="quiz")}).distinct()}
-    val sizes=remember(pool,topic,mode){if(mode=="quiz")listOf(5,10,12,15,20) else pool.flatMap{packs.availableSizes(it,topic)}.distinct().sorted()}
+    val context=LocalContext.current
+    val scope=rememberCoroutineScope()
+    var generating by remember{mutableStateOf(false)}
+    val topics=remember(pool,mode){(listOf(PremiumArenaRules.allTopics)+pool.flatMap{packs.topics(it,false)}).distinct()}
+    val sizes=remember(pool,topic,mode){if(mode=="quiz")listOf(5,10,12,15,20).filter{it>=pool.size} else PremiumArenaRules.allowedSizes}
     var issue by remember{mutableStateOf("")}
     LaunchedEffect(topics,sizes){if(topic !in topics)topic=PremiumArenaRules.allTopics;if(size !in sizes&&sizes.isNotEmpty())size=sizes.first()}
     MaterialTheme(colorScheme=Wq122Scheme) {
@@ -49,15 +54,27 @@ internal fun Wq132RoomSettings(match:PremiumOnlineMatch,client:PremiumOnlineRoom
                 listOf(0,3,5,8,12,20).chunked(3).forEach{row->Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){row.forEach{n->Wq122Choice(n.toString(),n==hints,Modifier.weight(1f)){hints=n}}}}
                 Text("Tekrar hakkı",color=Wq122Gold,fontWeight=FontWeight.Bold)
                 Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){(0..3).forEach{n->Wq122Choice(n.toString(),n==retries,Modifier.weight(1f)){retries=n}}}
-                if(mode!="quiz"&&pool.size>1)Text("Karışık seviyeli tahta motoru bağlanana kadar bu mod tek seviyeli tahta kullanır.",color=Wq122Ink)
+                if(generating)Text("Ortak oyun hazırlanıyor…",color=Wq122Ink)
                 if(issue.isNotBlank())Text(issue,color=Color(0xFFFFB4B4))
             }},
-            confirmButton={TextButton(enabled=size in sizes&&pool.isNotEmpty()&&!client.busy,onClick={
+            confirmButton={TextButton(enabled=size in sizes&&pool.isNotEmpty()&&!client.busy&&!generating,onClick={
                 val preset=Wq186MatchPreset(Wq186ArenaPresetStore.LEVELS.filter{it in pool},hints,retries)
-                val board=if(mode=="quiz")null else preset.levels.firstNotNullOfOrNull{l->packs.nextPuzzle(l,size,topic,profileKey)}
-                if(mode!="quiz"&&board==null){issue="Bu ayarlara uygun tahta yok.";return@TextButton}
-                client.updateLobbySettings(mode,board?.level?:preset.levels.first(),topic,size,seconds,board?.id.orEmpty(),preset)
-                onDismiss()
+                val requestedMode=mode;val requestedTopic=topic;val requestedSize=size
+                val requestedSeconds=if(mode=="team")0 else seconds
+                generating=true;issue=""
+                scope.launch{
+                    try{
+                        val result=Wq132WebEngine.generate(context,requestedMode,preset.levels,requestedTopic,requestedSize,
+                            requestedSeconds,preset.hints,preset.retries,java.security.SecureRandom().nextInt())
+                        if(client.match?.code==match.code&&client.match?.configRevision==match.configRevision){
+                            client.updateLobbySettings(requestedMode,preset.levels.first(),requestedTopic,requestedSize,requestedSeconds,
+                                result.snapshotId,preset,result.snapshot)
+                            onDismiss()
+                        }
+                    }catch(e:kotlinx.coroutines.CancellationException){throw e}
+                    catch(e:Exception){issue="Oyun hazırlanamadı: "+(e.message?:"Başka ayar seç.").take(180)}
+                    finally{generating=false}
+                }
             }){Text("Kaydet",color=Wq122Gold,fontWeight=FontWeight.Bold)}},
             dismissButton={TextButton(onClick=onDismiss){Text("Vazgeç",color=Wq122Ink)}})
     }

@@ -32,7 +32,7 @@ internal object Wq132WebEngine {
     }
     const val MAX_ROUND_BYTES=48*1024
     data class Round(val board:PremiumArenaBoard?=null,val questions:List<PremiumQuestion> = emptyList(),
-        val snapshot:String="",val snapshotId:String="")
+        val snapshot:String="",val snapshotId:String="",val wordLevels:Map<String,String> = emptyMap())
     fun snapshotId(snapshot:String):String {
         val bytes=snapshot.toByteArray(Charsets.UTF_8)
         require(bytes.size in 2..MAX_ROUND_BYTES){"Ortak tahta boyutu geçersiz"}
@@ -124,7 +124,7 @@ internal object Wq132WebEngine {
         val words=response.getJSONObject("data").getJSONArray("words")
         require(words.length()==size)
         val entries=mutableListOf<Entry>();val places=mutableListOf<Placement>()
-        val seen=mutableSetOf<String>();val used=mutableSetOf<String>()
+        val seen=mutableSetOf<String>();val used=mutableSetOf<String>();val wordLevels=mutableMapOf<String,String>()
         val cells=mutableMapOf<Pair<Int,Int>,Pair<Char,MutableSet<String>>>()
         val owners=mutableMapOf<Pair<Int,Int>,MutableSet<Int>>()
         val links=List(size){mutableSetOf<Int>()}
@@ -134,7 +134,7 @@ internal object Wq132WebEngine {
             val r=w.getInt(3);val c=w.getInt(4);val d=w.getString(5)
             require(answer.matches(Regex("[A-Z]{2,24}"))&&meaning.length<=1000&&level in levels&&matches(answer,meaning,level,true))
             require(seen.add(answer)&&d in setOf("A","D")&&r in 0..79&&c in 0..79)
-            used.add(level)
+            used.add(level);wordLevels[answer]=level
             val dr=if(d=="D")1 else 0;val dc=1-dr
             answer.forEachIndexed{j,ch->
                 val y=r+j*dr;val x=c+j*dc;require(y in 0..79&&x in 0..79)
@@ -149,7 +149,7 @@ internal object Wq132WebEngine {
         val reached=mutableSetOf(0);val queue=java.util.ArrayDeque<Int>();queue.add(0)
         while(queue.isNotEmpty())links[queue.removeFirst()].forEach{if(reached.add(it))queue.add(it)}
         require(reached.size==size)
-        return Round(board=PremiumArenaBoard(roundId,levels.first(),topic,Puzzle.create(entries,places)),snapshot=result,snapshotId=roundId)
+        return Round(board=PremiumArenaBoard(roundId,levels.first(),topic,Puzzle.create(entries,places)),snapshot=result,snapshotId=roundId,wordLevels=wordLevels)
     }
     /** Guests use the exact frozen host payload, never rerun a potentially updated engine.
      * The digest covers its bytes; the existing native board parser checks all entries. */

@@ -530,6 +530,7 @@ jobs:
           node tools/v132_engine/build_engine.mjs tools/v132_engine/arena_engine.html
           node tools/v132_engine/smoke_bundle.mjs tools/v132_engine/arena_engine.html source/app/src/main/assets/arena-vocabulary-v1.json
           python3 tools/v132_engine/apply_engine.py
+          python3 tools/v132_engine/apply_online.py
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
