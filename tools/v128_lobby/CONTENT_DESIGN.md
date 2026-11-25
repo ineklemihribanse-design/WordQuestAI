@@ -1,0 +1,2 @@
+# Signed lobby design updates
+Core 153 (1.0.128) embeds a bounded renderer for exact design/arena_lobby.json. The next data-only snapshot 1.0.129 changes card height, padding, mascot inset, palette and name size. It has no executable code. Sections can be reordered within three enumerated arrangements; essential controls are never removed. Active snapshot applied on next process start. APK changes and Firebase rule deployments remain separate. Future new screen components require native release until supported by renderer.

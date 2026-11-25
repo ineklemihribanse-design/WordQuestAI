@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "phoneCardPercent": 53,
+  "tabletCardPercent": 56,
+  "cardPadding": 5,
+  "portraitBottom": 3,
+  "nameSp": 16,
+  "actionHeight": 44,
+  "gap": 6,
+  "iconSize": 34,
+  "radius": 20,
+  "palette": "amethyst",
+  "sectionOrder": "code_settings_players"
+}
