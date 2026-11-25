@@ -78,6 +78,17 @@ def viewport(name,size,density,wide):
     for shortcut,expect in (("Bilgi","Kapat"),("Ayarlar","Arena sesleri"),("Sıralama","Bu cihazda"),("Son Maçlarım","Bu cihazda"),("Arkadaşlarım","Kapat")):
         tap(get(shortcut));get(expect);tap(get("Kapat"));get("Oyun Modları")
     tap(get("Bulmaca Düellosu"));get("Maç Ayarları")
+    if os.environ.get("WQ_VERSION")=="1.0.122":
+        tap(get("Özel"));get("Özel ipucu hakkı")
+        field=get("İpucu sayısı");tap(field)
+        adb("shell","input","keyevent","KEYCODE_MOVE_END")
+        adb("shell","input","keyevent","KEYCODE_DEL")
+        adb("shell","input","keyevent","KEYCODE_DEL")
+        adb("shell","input","text","7")
+        tap(get("Uygula"));get("Özel: 7")
+        screenshot(name+"-settings",wide)
+        print("PASS: custom hint selection and dark match settings on",name)
+
     adb("shell","input","keyevent","KEYCODE_BACK");get("Oyun Modları")
     print("PASS: cards, native settings/back and all shortcuts on",name)
 try:
