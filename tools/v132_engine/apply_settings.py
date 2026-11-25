@@ -21,6 +21,11 @@ b=s.index("    if(inviteOpen&&isHost)",a)
 s=s[:a]+'''    if(editOpen&&isHost) Wq132RoomSettings(match,client,packs,profileKey,onDismiss={editOpen=false})
 '''+s[b:]
 s=once(s,'LobbyChip128(match.level,Modifier.weight(.7f))','LobbyChip128(client.package6Rules.levels.joinToString(" · "),Modifier.weight(1.5f))')
+# Native lobby only.
+a=s.index('    // Opt-in pilot;')
+b=s.index('    else CompositionLocalProvider(LocalLobbyDesign128 provides design) {',a)
+s=s[:a]+'    CompositionLocalProvider(LocalLobbyDesign128 provides design) {'+s[b+len('    else CompositionLocalProvider(LocalLobbyDesign128 provides design) {'):]
+assert 'Wq130WebLobby(' not in s and 'webPilot' not in s
 f.write_text(s)
 f=p/"Wq130WebLobby.kt";s=f.read_text()
 s=once(s,'put("level",match.level);','put("level",client.package6Rules.levels.joinToString(" · "));')

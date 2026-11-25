@@ -12,7 +12,8 @@ internal object Wq136RecoveryEngine {
     private data class Mark(val ch:Char,val dirs:String)
     private data class Placed(val w:Word,val r:Int,val c:Int,val d:String)
     private data class Candidate(val index:Int,val r:Int,val c:Int,val d:String,val cost:Int)
-    fun generate(words:JSONArray,s:JSONObject,seed:Int):String {
+    fun generate(words:JSONArray,s:JSONObject,seed:Int,checkCancelled:()->Unit = {}):String {
+        checkCancelled()
         val mode=s.getString("mode")
         val levels=s.getJSONArray("levels").let{a->List(a.length()){a.getString(it)}}
         val size=s.getInt("size")
@@ -41,6 +42,7 @@ internal object Wq136RecoveryEngine {
         if(mode=="quiz"){
             val rng=Random(seed);val output=JSONArray()
             for(w in pool(rng)){
+                checkCancelled()
                 val wrong=all.asSequence().filter{!it.answer.equals(w.answer,true)&&!it.meaning.equals(w.meaning,true)&&
                     !it.meaning.substringBefore(',').trim().equals(w.meaning.substringBefore(',').trim(),true)}
                     .map{it.answer}.distinctBy{it.lowercase()}.toList().shuffled(rng).take(4)
@@ -52,6 +54,7 @@ internal object Wq136RecoveryEngine {
             return JSONObject().put("ok",true).put("data",output).toString()
         }
         repeat(48){attempt->
+                checkCancelled()
             val pending=pool(Random(seed+attempt*7919)).map{it.copy(answer=it.answer.uppercase(java.util.Locale.ROOT))}
                 .sortedByDescending{it.answer.length}.toMutableList()
             val grid=HashMap<Pos,Mark>();val placed=mutableListOf<Placed>()
@@ -73,6 +76,7 @@ internal object Wq136RecoveryEngine {
             }
             put(pending.removeAt(0),0,0,"A")
             while(pending.isNotEmpty()){
+                checkCancelled()
                 val minR=grid.keys.minOf{it.r};val maxR=grid.keys.maxOf{it.r}
                 val minC=grid.keys.minOf{it.c};val maxC=grid.keys.maxOf{it.c}
                 var best:Candidate?=null

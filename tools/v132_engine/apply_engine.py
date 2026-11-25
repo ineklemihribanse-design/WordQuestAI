@@ -22,7 +22,7 @@ s=s[:a]+'''        webEngineBusy=true
         feedback="Oyun hazırlanıyor…"
         val requestMode=if(selectedMode=="quiz")"quiz" else soloArenaMode
         val requestId=roundId
-        val requestSize=if(requestMode=="quiz")quizCount else size
+        val requestSize=if(requestMode=="quiz")(listOf(5,10,12,15,20).filter{it>=chosenLevels.size}.minByOrNull{kotlin.math.abs(it-quizCount)}?:10) else size
         webEngineScope.launch {
             try {
                 val result=Wq132WebEngine.generate(context,requestMode,chosenLevels,topic,requestSize,timeSeconds,preset.hints,preset.retries,requestId.hashCode())
@@ -59,4 +59,5 @@ gradle.write_text(gradle.read_text()+'\n// Real JSON for JVM recovery engine tes
 out=main/"assets/web";out.mkdir(parents=True,exist_ok=True)
 shutil.copyfile(pack/"arena_engine.html",out/"arena_engine.html")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
-print("PASS: solo Arena executes signed web engine; board drawing and existing sources protected")
+assert "WebView(" not in (p/"Wq132WebEngine.kt").read_text()
+print("PASS: native-only round generation; board drawing and existing sources protected")

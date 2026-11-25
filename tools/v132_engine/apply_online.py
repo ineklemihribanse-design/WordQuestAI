@@ -40,8 +40,8 @@ s=s[:a]+'''    fun toggleReady() {
         val room=ref ?: return
         val acknowledgement: Any?=if(uid in m.readyBy)null else m.configRevision
         fun submitReady(){
-            val current=match ?: return
-            if(current.code!=m.code||current.configRevision!=m.configRevision||current.phase!="lobby"){
+            val current=match ?: run { busy=false;return }
+            if(current.code!=m.code||current.configRevision!=m.configRevision||current.boardId!=m.boardId||current.roundData!=m.roundData||current.phase!="lobby"){
                 busy=false;return
             }
             room.child("ready").child(uid).setValue(acknowledgement).addOnCompleteListener{task->
@@ -96,7 +96,11 @@ s=s[:a]+'''                onCreate = {
                     if(!creatingWebRoom && client.canCreate) {
                         val preset=Wq186ArenaPresetStore.read(context,session.profileKey,level)
                         val requestedMode=selectedMode;val requestedTopic=topic
-                        val requestedSize=size;val requestedSeconds=if(requestedMode=="team")0 else seconds
+                        val requestedSize=if(requestedMode=="quiz"){
+                            val allowed=listOf(5,10,12,15,20).filter{it>=preset.levels.size}
+                            size.takeIf{it in allowed}?:allowed.minByOrNull{kotlin.math.abs(it-size)}?:10
+                        }else size
+                        val requestedSeconds=if(requestedMode=="team")0 else seconds
                         creatingWebRoom=true
                         client.note("Ortak oyun hazırlanıyor…")
                         webRoomScope.launch {
