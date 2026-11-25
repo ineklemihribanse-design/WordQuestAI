@@ -4,7 +4,8 @@ Run only after the mandatory signed APK upgrade/data preservation check.
 A native code change (including any DEX), manifest, web engine, rules or
 unknown asset change never qualifies for a reduced UI test set.
 """
-import argparse, hashlib, json, os, re, subprocess, sys, zipfile
+import argparse, hashlib, json, os, re, shutil, subprocess, sys, zipfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 FULL=("phone-crossword","phone-quiz","tablet-crossword","tablet-quiz")
@@ -26,13 +27,34 @@ def inventory(path):
                 result[name]=hashlib.file_digest(f,"sha256").hexdigest()
         return result
 
-def select(old,new):
+def manifest_without_version(path):
+    # SDK's XML decoder must succeed; only version attributes on the root
+    # manifest are ignored. Permission, component, SDK or feature changes
+    # still force the full suite.
+    analyzer=shutil.which("apkanalyzer")
+    if not analyzer:
+        home=Path(os.environ.get("ANDROID_HOME","/nonexistent"))
+        candidates=sorted(home.glob("cmdline-tools/*/bin/apkanalyzer"))
+        if not candidates: raise ValueError("apkanalyzer unavailable")
+        analyzer=str(candidates[-1])
+    xml=subprocess.check_output([analyzer,"manifest","print",str(path)],timeout=60)
+    root=ET.fromstring(xml)
+    if root.tag!="manifest": raise ValueError("Unexpected manifest root")
+    ns="{http://schemas.android.com/apk/res/android}"
+    for k in ("versionCode","versionName"):
+        if root.attrib.pop(ns+k,None) is None: raise ValueError("Missing version attribute")
+    def normalized(el):
+        return (el.tag,tuple(sorted(el.attrib.items())),(el.text or "").strip(),
+                tuple(normalized(child) for child in el))
+    return normalized(root)
+
+def select(old,new,version_only_manifest=False):
     changed=sorted(k for k in old.keys()|new.keys() if old.get(k)!=new.get(k))
     # Never reduce if actual native or unknown data changed, even when
     # a commit message claims a visual-only update.
     substantive=[k for k in changed if k!="AndroidManifest.xml"]
-    # A changed manifest is conservatively full (could change permissions).
-    if "AndroidManifest.xml" in changed:
+    # A changed manifest is full unless SDK-decoded trees differ only in version.
+    if "AndroidManifest.xml" in changed and not version_only_manifest:
         return "full",FULL,changed
     if not substantive:
         return "full",FULL,changed
@@ -57,7 +79,11 @@ def main():
     p.add_argument("--report",type=Path,required=True)
     args=p.parse_args()
     try:
-        mode,scenarios,changed=select(inventory(args.base),inventory(args.target))
+        old,new=inventory(args.base),inventory(args.target)
+        version_only=False
+        if old.get("AndroidManifest.xml")!=new.get("AndroidManifest.xml"):
+            version_only=manifest_without_version(args.base)==manifest_without_version(args.target)
+        mode,scenarios,changed=select(old,new,version_only)
     except Exception as error:
         mode,scenarios,changed="full",FULL,[f"Inventory unavailable: {error}"]
     report=dict(scope=mode,scenarios=scenarios,changed_entries=changed)
