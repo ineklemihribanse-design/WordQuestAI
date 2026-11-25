@@ -473,6 +473,18 @@ jobs:
         with:
           path: .wq-pronunciation-cache
           key: ${{ steps.audio_key.outputs.key }}
+      - name: Ensure pronunciation validation dependencies even on audio cache hit
+        if: steps.source_checkpoint.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          if ! command -v espeak >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y espeak ffmpeg
+          fi
+          if ! python3 -c 'import numpy, soundfile' >/dev/null 2>&1; then
+            python3 -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'soundfile>=0.12,<1'
+          fi
+          python3 -c 'import numpy, soundfile; print("PASS: pronunciation validation dependencies ready")'
       - name: Correct actual short-word voice routing and verify OGG phoneme waveforms
         if: steps.source_checkpoint.outputs.cache-hit != 'true'
         run: |
