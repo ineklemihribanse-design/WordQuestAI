@@ -1502,14 +1502,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe asked for a shorter pair in the same size.",
     "options": [
-      "Görevliden başka bir lambayı denemesini istedi.",
-      "Raftan açılmamış bir paket aldı.",
-      "Onun yerine yeşil bir defter seçti.",
-      "Daha küçük bir pasta sipariş etti.",
+      "Aynı bedende daha uzun bir pantolon istedi.",
+      "Daha küçük bedende aynı uzunlukta bir pantolon istedi.",
+      "Aynı bedende daha kısa bir pantolon istemedi.",
+      "Aynı bedende daha kısa bir pantolon isteyecek.",
       "Aynı bedende daha kısa bir pantolon istedi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Aynı bedende daha kısa bir pantolon istedi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Aynı bedende daha kısa bir pantolon istedi.\". Shorter daha kısa, in the same size aynı bedende demektir."
   },
   {
     "id": "wq150_ab1250_scene_0085",
@@ -1520,14 +1520,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nİkinci pantolon üzerine tam oldu.",
     "options": [
-      "No flour spilled into his shopping bag",
-      "She had a notebook for her afternoon lesson",
-      "He stayed within his budget",
+      "The first pair fitted him properly",
+      "The second pair was too tight for him",
+      "The second pair will fit him properly",
       "The second pair fitted him properly",
-      "The replacement lamp worked perfectly"
+      "The second pair did not fit him"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The second pair fitted him properly\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The second pair fitted him properly\". Second ikinci, fitted properly tam oldu anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0086",
@@ -1772,14 +1772,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe asked the assistant to test another lamp.",
     "options": [
-      "Raftan açılmamış bir paket aldı.",
-      "Onun yerine yeşil bir defter seçti.",
-      "Daha küçük bir pasta sipariş etti.",
-      "Aynı bedende daha kısa bir pantolon istedi.",
+      "Görevliden aynı lambayı denemesini istedi.",
+      "Görevliden başka bir lambayı satmasını istedi.",
+      "Görevliden başka bir lambayı denemesini istemedi.",
+      "Görevliden başka bir lambayı denemesini isteyecek.",
       "Görevliden başka bir lambayı denemesini istedi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Görevliden başka bir lambayı denemesini istedi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Görevliden başka bir lambayı denemesini istedi.\". Another başka bir, test denemek veya çalışıp çalışmadığını kontrol etmektir."
   },
   {
     "id": "wq150_ab1250_scene_0100",
@@ -1790,14 +1790,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nDiğer lamba sorunsuz çalıştı.",
     "options": [
-      "She had a notebook for her afternoon lesson",
-      "He stayed within his budget",
-      "The second pair fitted him properly",
+      "The replacement lamp did not work",
+      "The original lamp worked perfectly",
+      "The replacement lamp will work perfectly",
       "The replacement lamp worked perfectly",
-      "No flour spilled into his shopping bag"
+      "The replacement lamp worked only occasionally"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The replacement lamp worked perfectly\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The replacement lamp worked perfectly\". Replacement yerine verilen, worked perfectly sorunsuz çalıştı demektir."
   },
   {
     "id": "wq150_ab1250_scene_0101",
@@ -2042,14 +2042,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe took an unopened bag from the shelf.",
     "options": [
-      "Onun yerine yeşil bir defter seçti.",
-      "Daha küçük bir pasta sipariş etti.",
-      "Aynı bedende daha kısa bir pantolon istedi.",
-      "Görevliden başka bir lambayı denemesini istedi.",
+      "Raftan açılmış bir paket aldı.",
+      "Açılmamış bir paketi rafa koydu.",
+      "Raftan açılmamış bir paket alacak.",
+      "Raftan açılmamış bir paket almadı.",
       "Raftan açılmamış bir paket aldı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Raftan açılmamış bir paket aldı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Raftan açılmamış bir paket aldı.\". Unopened açılmamış, took from the shelf raftan aldı anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0115",
@@ -2060,14 +2060,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nAlışveriş çantasına un dökülmedi.",
     "options": [
-      "He stayed within his budget",
-      "The second pair fitted him properly",
-      "The replacement lamp worked perfectly",
+      "Some flour spilled into his shopping bag",
+      "No flour spilled onto the floor",
+      "No flour will spill into his shopping bag",
       "No flour spilled into his shopping bag",
-      "She had a notebook for her afternoon lesson"
+      "All the flour spilled into his shopping bag"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"No flour spilled into his shopping bag\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"No flour spilled into his shopping bag\". No flour hiçbir miktarda un, spilled döküldü demektir; no olumsuzluk sağlar."
   },
   {
     "id": "wq150_ab1250_scene_0116",
@@ -2312,14 +2312,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe chose a green notebook instead.",
     "options": [
-      "Daha küçük bir pasta sipariş etti.",
-      "Aynı bedende daha kısa bir pantolon istedi.",
-      "Görevliden başka bir lambayı denemesini istedi.",
-      "Raftan açılmamış bir paket aldı.",
+      "Onun yerine mavi bir defter seçti.",
+      "Yeşil bir defteri geri verdi.",
+      "Onun yerine yeşil bir defter seçecek.",
+      "Onun yerine yeşil bir defter seçmedi.",
       "Onun yerine yeşil bir defter seçti."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Onun yerine yeşil bir defter seçti.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Onun yerine yeşil bir defter seçti.\". Chose seçti, instead onun yerine, green yeşil demektir."
   },
   {
     "id": "wq150_ab1250_scene_0130",
@@ -2330,14 +2330,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nÖğleden sonraki dersi için bir defteri oldu.",
     "options": [
-      "The second pair fitted him properly",
-      "The replacement lamp worked perfectly",
-      "No flour spilled into his shopping bag",
+      "She had a notebook for her morning lesson",
+      "She did not have a notebook for her afternoon lesson",
+      "She will have a notebook for her afternoon lesson",
       "She had a notebook for her afternoon lesson",
-      "He stayed within his budget"
+      "She had a textbook for her afternoon lesson"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"She had a notebook for her afternoon lesson\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"She had a notebook for her afternoon lesson\". Had geçmişte sahip olmayı, notebook defteri, afternoon öğleden sonrayı belirtir."
   },
   {
     "id": "wq150_ab1250_scene_0131",
@@ -2582,14 +2582,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe ordered a smaller cake.",
     "options": [
-      "Aynı bedende daha kısa bir pantolon istedi.",
-      "Görevliden başka bir lambayı denemesini istedi.",
-      "Raftan açılmamış bir paket aldı.",
-      "Onun yerine yeşil bir defter seçti.",
+      "Daha büyük bir pasta sipariş etti.",
+      "Daha küçük bir pasta siparişini iptal etti.",
+      "Daha küçük bir pasta sipariş edecek.",
+      "Daha küçük bir pasta sipariş etmedi.",
       "Daha küçük bir pasta sipariş etti."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Daha küçük bir pasta sipariş etti.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Daha küçük bir pasta sipariş etti.\". Smaller daha küçük, ordered sipariş etti demektir."
   },
   {
     "id": "wq150_ab1250_scene_0145",
@@ -2600,14 +2600,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nBütçesini aşmadı.",
     "options": [
-      "The replacement lamp worked perfectly",
-      "No flour spilled into his shopping bag",
-      "She had a notebook for her afternoon lesson",
+      "He went over his budget",
+      "He will stay within his budget",
+      "He doubled his budget",
       "He stayed within his budget",
-      "The second pair fitted him properly"
+      "He set a new budget"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"He stayed within his budget\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"He stayed within his budget\". Stay within a budget bütçe sınırını aşmamak, go over ise aşmak anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0146",
@@ -2852,14 +2852,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe asked the receptionist for directions.",
     "options": [
-      "Randevuyu kontrol etmek için diş kliniğini aradı.",
-      "Resepsiyon masasından bir bone satın aldı.",
-      "Oturma alanında bekledi.",
-      "Telefonundaki onay mesajını açtı.",
+      "Resepsiyon görevlisine yolu tarif etti.",
+      "Resepsiyon görevlisine fiyatı sordu.",
+      "Resepsiyon görevlisine yolu soracak.",
+      "Resepsiyon görevlisine yolu sormadı.",
       "Resepsiyon görevlisine yolu sordu."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Resepsiyon görevlisine yolu sordu.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Resepsiyon görevlisine yolu sordu.\". Ask for directions yol tarifi istemektir; give directions yol tarif etmektir."
   },
   {
     "id": "wq150_ab1250_scene_0160",
@@ -2870,14 +2870,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nDoğru odayı hemen buldu.",
     "options": [
-      "She was allowed to enter the pool",
-      "The instructor arrived fifteen minutes later",
-      "The nurse checked her booking details",
+      "She found the wrong room immediately",
+      "She found the correct room much later",
+      "She will find the correct room immediately",
       "She found the correct room immediately",
-      "The assistant confirmed the correct date"
+      "She could not find the correct room"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"She found the correct room immediately\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"She found the correct room immediately\". Correct doğru, immediately hemen, found buldu anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0161",
@@ -3122,14 +3122,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe phoned the practice to check the booking.",
     "options": [
-      "Resepsiyon masasından bir bone satın aldı.",
-      "Oturma alanında bekledi.",
-      "Telefonundaki onay mesajını açtı.",
-      "Resepsiyon görevlisine yolu sordu.",
+      "Randevuyu iptal etmek için diş kliniğini aradı.",
+      "Diş kliniği randevuyu kontrol etmek için onu aradı.",
+      "Randevuyu kontrol etmek için diş kliniğini arayacak.",
+      "Randevuyu kontrol etmek için diş kliniğini aramadı.",
       "Randevuyu kontrol etmek için diş kliniğini aradı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Randevuyu kontrol etmek için diş kliniğini aradı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Randevuyu kontrol etmek için diş kliniğini aradı.\". Phoned aradı, to check the booking randevuyu kontrol etmek amacıyla demektir."
   },
   {
     "id": "wq150_ab1250_scene_0175",
@@ -3140,14 +3140,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nGörevli doğru tarihi onayladı.",
     "options": [
-      "The instructor arrived fifteen minutes later",
-      "The nurse checked her booking details",
-      "She found the correct room immediately",
+      "The assistant confirmed the wrong date",
+      "The assistant changed the correct date",
+      "The assistant will confirm the correct date",
       "The assistant confirmed the correct date",
-      "She was allowed to enter the pool"
+      "The assistant did not confirm the correct date"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The assistant confirmed the correct date\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The assistant confirmed the correct date\". Confirmed onayladı, correct date doğru tarih demektir."
   },
   {
     "id": "wq150_ab1250_scene_0176",
@@ -3392,14 +3392,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe bought a cap at the reception desk.",
     "options": [
-      "Oturma alanında bekledi.",
-      "Telefonundaki onay mesajını açtı.",
-      "Resepsiyon görevlisine yolu sordu.",
-      "Randevuyu kontrol etmek için diş kliniğini aradı.",
+      "Resepsiyon masasına bir bone bıraktı.",
+      "Resepsiyon masasından bir havlu satın aldı.",
+      "Resepsiyon masasından bir bone satın alacak.",
+      "Resepsiyon masasından bir bone satın almadı.",
       "Resepsiyon masasından bir bone satın aldı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Resepsiyon masasından bir bone satın aldı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Resepsiyon masasından bir bone satın aldı.\". Bought satın aldı, cap bone, at the reception desk resepsiyon masasında anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0190",
@@ -3410,14 +3410,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nHavuza girmesine izin verildi.",
     "options": [
-      "The nurse checked her booking details",
-      "She found the correct room immediately",
-      "The assistant confirmed the correct date",
+      "She was not allowed to enter the pool",
+      "She was allowed to leave the pool",
+      "She will be allowed to enter the pool",
       "She was allowed to enter the pool",
-      "The instructor arrived fifteen minutes later"
+      "She allowed someone else to enter the pool"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"She was allowed to enter the pool\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"She was allowed to enter the pool\". Was allowed edilgen izin yapısıdır; enter girmek, leave ayrılmak demektir."
   },
   {
     "id": "wq150_ab1250_scene_0191",
@@ -3662,14 +3662,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe waited in the seating area.",
     "options": [
-      "Telefonundaki onay mesajını açtı.",
-      "Resepsiyon görevlisine yolu sordu.",
-      "Randevuyu kontrol etmek için diş kliniğini aradı.",
-      "Resepsiyon masasından bir bone satın aldı.",
+      "Oturma alanından ayrıldı.",
+      "Giriş kapısında bekledi.",
+      "Oturma alanında bekleyecek.",
+      "Oturma alanında beklemedi.",
       "Oturma alanında bekledi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Oturma alanında bekledi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Oturma alanında bekledi.\". Waited bekledi, in the seating area oturma alanında demektir."
   },
   {
     "id": "wq150_ab1250_scene_0205",
@@ -3680,14 +3680,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nEğitmen on beş dakika sonra geldi.",
     "options": [
-      "She found the correct room immediately",
-      "The assistant confirmed the correct date",
-      "She was allowed to enter the pool",
+      "The instructor arrived fifteen minutes earlier",
+      "The instructor left fifteen minutes later",
+      "The instructor will arrive fifteen minutes later",
       "The instructor arrived fifteen minutes later",
-      "The nurse checked her booking details"
+      "The instructor arrived fifty minutes later"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The instructor arrived fifteen minutes later\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The instructor arrived fifteen minutes later\". Arrived geldi, fifteen on beş, later sonra demektir."
   },
   {
     "id": "wq150_ab1250_scene_0206",
@@ -3932,14 +3932,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe opened the confirmation message on her phone.",
     "options": [
-      "Resepsiyon görevlisine yolu sordu.",
-      "Randevuyu kontrol etmek için diş kliniğini aradı.",
-      "Resepsiyon masasından bir bone satın aldı.",
-      "Oturma alanında bekledi.",
+      "Telefonundaki onay mesajını sildi.",
+      "Bilgisayarındaki onay mesajını açtı.",
+      "Telefonundaki onay mesajını açacak.",
+      "Telefonundaki onay mesajını açmadı.",
       "Telefonundaki onay mesajını açtı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Telefonundaki onay mesajını açtı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Telefonundaki onay mesajını açtı.\". Opened açtı, confirmation message onay mesajı, on her phone telefonunda demektir."
   },
   {
     "id": "wq150_ab1250_scene_0220",
@@ -3950,14 +3950,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nHemşire randevu bilgilerini kontrol etti.",
     "options": [
-      "The assistant confirmed the correct date",
-      "She was allowed to enter the pool",
-      "The instructor arrived fifteen minutes later",
+      "The nurse changed her booking details",
+      "The nurse checked her payment details",
+      "The nurse will check her booking details",
       "The nurse checked her booking details",
-      "She found the correct room immediately"
+      "The nurse did not check her booking details"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The nurse checked her booking details\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The nurse checked her booking details\". Checked kontrol etti, booking details randevu bilgileri anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0221",
@@ -4202,14 +4202,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe found the correct code in his email.",
     "options": [
-      "Kitabı dışarıdaki iade kutusuna bıraktı.",
-      "Tamirciden lastiği onarmasını istedi.",
-      "Görevliye adını ve telefon numarasını verdi.",
-      "Orijinal anahtarla geri döndü.",
+      "Yanlış kodu e-postasında buldu.",
+      "Doğru kodu kısa mesajında buldu.",
+      "Doğru kodu e-postasında bulacak.",
+      "Doğru kodu e-postasında bulamadı.",
       "Doğru kodu e-postasında buldu."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Doğru kodu e-postasında buldu.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Doğru kodu e-postasında buldu.\". Correct doğru, email e-posta, found buldu anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0235",
@@ -4220,14 +4220,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nGörevli ona paketi verdi.",
     "options": [
-      "He could cycle home safely",
-      "The worker located her repaired shoes",
-      "The worker made a copy that opened the lock",
+      "The clerk took the parcel from him",
+      "The clerk gave him the receipt",
+      "The clerk will give him the parcel",
       "The clerk gave him the parcel",
-      "The book was returned before its due date"
+      "The clerk did not give him the parcel"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The clerk gave him the parcel\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The clerk gave him the parcel\". Gave verdi, him ona, parcel paket demektir; took from geri alma yönünü belirtir."
   },
   {
     "id": "wq150_ab1250_scene_0236",
@@ -4472,14 +4472,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe put the book in the outdoor return box.",
     "options": [
-      "Tamirciden lastiği onarmasını istedi.",
-      "Görevliye adını ve telefon numarasını verdi.",
-      "Orijinal anahtarla geri döndü.",
-      "Doğru kodu e-postasında buldu.",
+      "Kitabı dışarıdaki iade kutusundan aldı.",
+      "Kitabı içerideki iade kutusuna bıraktı.",
+      "Kitabı dışarıdaki iade kutusuna bırakacak.",
+      "Kitabı dışarıdaki iade kutusuna bırakmadı.",
       "Kitabı dışarıdaki iade kutusuna bıraktı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Kitabı dışarıdaki iade kutusuna bıraktı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Kitabı dışarıdaki iade kutusuna bıraktı.\". Put in içine koymak, outdoor dışarıdaki, return box iade kutusu demektir."
   },
   {
     "id": "wq150_ab1250_scene_0250",
@@ -4490,14 +4490,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nKitap son teslim tarihinden önce iade edildi.",
     "options": [
-      "The worker located her repaired shoes",
-      "The worker made a copy that opened the lock",
-      "The clerk gave him the parcel",
+      "The book was returned after its due date",
+      "The book was borrowed before its due date",
+      "The book will be returned before its due date",
       "The book was returned before its due date",
-      "He could cycle home safely"
+      "The book was not returned before its due date"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The book was returned before its due date\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The book was returned before its due date\". Was returned geçmiş edilgen, before its due date son teslim tarihinden önce demektir."
   },
   {
     "id": "wq150_ab1250_scene_0251",
@@ -4742,14 +4742,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe asked the mechanic to fix the tyre.",
     "options": [
-      "Görevliye adını ve telefon numarasını verdi.",
-      "Orijinal anahtarla geri döndü.",
-      "Doğru kodu e-postasında buldu.",
-      "Kitabı dışarıdaki iade kutusuna bıraktı.",
+      "Tamirciden lastiği değiştirmesini istedi.",
+      "Tamirciye lastiği kendisinin onaracağını söyledi.",
+      "Tamirciden lastiği onarmasını isteyecek.",
+      "Tamirciden lastiği onarmasını istemedi.",
       "Tamirciden lastiği onarmasını istedi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Tamirciden lastiği onarmasını istedi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Tamirciden lastiği onarmasını istedi.\". Ask someone to do something birinden bir iş yapmasını istemektir; fix onarmak demektir."
   },
   {
     "id": "wq150_ab1250_scene_0265",
@@ -4760,14 +4760,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nEvine güvenle bisikletle dönebildi.",
     "options": [
-      "The worker made a copy that opened the lock",
-      "The clerk gave him the parcel",
-      "The book was returned before its due date",
+      "He could walk home safely",
+      "He could not cycle home safely",
+      "He will be able to cycle home safely",
       "He could cycle home safely",
-      "The worker located her repaired shoes"
+      "He could cycle to work safely"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"He could cycle home safely\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"He could cycle home safely\". Cycle bisikletle gitmek, home eve, safely güvenle anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0266",
@@ -5012,14 +5012,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe gave the worker her name and phone number.",
     "options": [
-      "Orijinal anahtarla geri döndü.",
-      "Doğru kodu e-postasında buldu.",
-      "Kitabı dışarıdaki iade kutusuna bıraktı.",
-      "Tamirciden lastiği onarmasını istedi.",
+      "Görevliden adını ve telefon numarasını aldı.",
+      "Görevliye yalnızca telefon numarasını verdi.",
+      "Görevliye adını ve telefon numarasını verecek.",
+      "Görevliye adını ve telefon numarasını vermedi.",
       "Görevliye adını ve telefon numarasını verdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Görevliye adını ve telefon numarasını verdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Görevliye adını ve telefon numarasını verdi.\". Gave the worker görevliye verdi; and iki bilginin de verildiğini gösterir."
   },
   {
     "id": "wq150_ab1250_scene_0280",
@@ -5030,14 +5030,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nGörevli onarılan ayakkabılarını buldu.",
     "options": [
-      "The clerk gave him the parcel",
-      "The book was returned before its due date",
-      "He could cycle home safely",
+      "The worker located her new shoes",
+      "The worker repaired her shoes",
+      "The worker will locate her repaired shoes",
       "The worker located her repaired shoes",
-      "The worker made a copy that opened the lock"
+      "The worker could not locate her repaired shoes"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The worker located her repaired shoes\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The worker located her repaired shoes\". Located buldu, repaired shoes onarılmış ayakkabılar demektir."
   },
   {
     "id": "wq150_ab1250_scene_0281",
@@ -5282,14 +5282,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe returned with the original key.",
     "options": [
-      "Doğru kodu e-postasında buldu.",
-      "Kitabı dışarıdaki iade kutusuna bıraktı.",
-      "Tamirciden lastiği onarmasını istedi.",
-      "Görevliye adını ve telefon numarasını verdi.",
+      "Yedek anahtarla geri döndü.",
+      "Orijinal anahtarı geride bıraktı.",
+      "Orijinal anahtarla geri dönecek.",
+      "Orijinal anahtarla geri dönmedi.",
       "Orijinal anahtarla geri döndü."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Orijinal anahtarla geri döndü.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Orijinal anahtarla geri döndü.\". Returned geri döndü, with beraberinde, original key orijinal anahtar demektir."
   },
   {
     "id": "wq150_ab1250_scene_0295",
@@ -5300,14 +5300,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nGörevli kilidi açan bir kopya yaptı.",
     "options": [
-      "The book was returned before its due date",
-      "He could cycle home safely",
-      "The worker located her repaired shoes",
+      "The worker made a copy that did not open the lock",
+      "The worker repaired the original lock",
+      "The worker will make a copy that opens the lock",
       "The worker made a copy that opened the lock",
-      "The clerk gave him the parcel"
+      "The worker made a copy that opened a different lock"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The worker made a copy that opened the lock\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The worker made a copy that opened the lock\". Made a copy kopya yaptı; that opened the lock, kopyanın söz konusu kilidi açtığını bildirir."
   },
   {
     "id": "wq150_ab1250_scene_0296",
@@ -5552,14 +5552,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe put on her waterproof boots.",
     "options": [
-      "Şişeyi içme suyu çeşmesinde doldurdu.",
-      "Piknik örtüsünü bir ağacın altına taşıdı.",
-      "Pili dolu bir pille değiştirdi.",
-      "Organizatörden daha sağlam bir torba aldı.",
+      "Su geçirmez botlarını çıkardı.",
+      "Su geçirmez ceketini giydi.",
+      "Su geçirmez botlarını giyecek.",
+      "Su geçirmez botlarını giymedi.",
       "Su geçirmez botlarını giydi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Su geçirmez botlarını giydi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Su geçirmez botlarını giydi.\". Put on giymek, take off çıkarmak, waterproof su geçirmez demektir."
   },
   {
     "id": "wq150_ab1250_scene_0310",
@@ -5570,14 +5570,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nYürüyüş boyunca ayakları kuru kaldı.",
     "options": [
-      "The group could eat in the shade",
-      "He could take photos for the whole walk",
-      "She collected litter without spilling it",
+      "Her feet stayed wet throughout the walk",
+      "Her feet stayed dry only at the start of the walk",
+      "Her feet will stay dry throughout the walk",
       "Her feet stayed dry throughout the walk",
-      "He had enough water during the session"
+      "Her hands stayed dry throughout the walk"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"Her feet stayed dry throughout the walk\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"Her feet stayed dry throughout the walk\". Feet ayaklar, dry kuru, throughout baştan sona demektir."
   },
   {
     "id": "wq150_ab1250_scene_0311",
@@ -5822,14 +5822,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe filled it at the drinking fountain.",
     "options": [
-      "Piknik örtüsünü bir ağacın altına taşıdı.",
-      "Pili dolu bir pille değiştirdi.",
-      "Organizatörden daha sağlam bir torba aldı.",
-      "Su geçirmez botlarını giydi.",
+      "Şişeyi içme suyu çeşmesinde boşalttı.",
+      "Şişeyi mutfaktaki muslukta doldurdu.",
+      "Şişeyi içme suyu çeşmesinde dolduracak.",
+      "Şişeyi içme suyu çeşmesinde doldurmadı.",
       "Şişeyi içme suyu çeşmesinde doldurdu."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Şişeyi içme suyu çeşmesinde doldurdu.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Şişeyi içme suyu çeşmesinde doldurdu.\". Filled doldurdu, drinking fountain içme suyu çeşmesi demektir."
   },
   {
     "id": "wq150_ab1250_scene_0325",
@@ -5840,14 +5840,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nAntrenman boyunca yeterli suyu vardı.",
     "options": [
-      "He could take photos for the whole walk",
-      "She collected litter without spilling it",
-      "Her feet stayed dry throughout the walk",
+      "He did not have enough water during the session",
+      "He had enough water before the session only",
+      "He will have enough water during the session",
       "He had enough water during the session",
-      "The group could eat in the shade"
+      "He had enough food during the session"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"He had enough water during the session\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"He had enough water during the session\". Enough yeterli, water su, during the session antrenman sırasında demektir."
   },
   {
     "id": "wq150_ab1250_scene_0326",
@@ -6092,14 +6092,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe moved the picnic blanket under a tree.",
     "options": [
-      "Pili dolu bir pille değiştirdi.",
-      "Organizatörden daha sağlam bir torba aldı.",
-      "Su geçirmez botlarını giydi.",
-      "Şişeyi içme suyu çeşmesinde doldurdu.",
+      "Piknik örtüsünü ağacın yanından kaldırdı.",
+      "Piknik örtüsünü güneşli bir yere taşıdı.",
+      "Piknik örtüsünü bir ağacın altına taşıyacak.",
+      "Piknik örtüsünü bir ağacın altına taşımadı.",
       "Piknik örtüsünü bir ağacın altına taşıdı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Piknik örtüsünü bir ağacın altına taşıdı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Piknik örtüsünü bir ağacın altına taşıdı.\". Moved taşıdı, under a tree bir ağacın altına anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0340",
@@ -6110,14 +6110,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nGrup gölgede yemek yiyebildi.",
     "options": [
-      "She collected litter without spilling it",
-      "Her feet stayed dry throughout the walk",
-      "He had enough water during the session",
+      "The group could eat in the sun",
+      "The group could not eat in the shade",
+      "The group will be able to eat in the shade",
       "The group could eat in the shade",
-      "He could take photos for the whole walk"
+      "The group could sleep in the shade"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The group could eat in the shade\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The group could eat in the shade\". Could eat yemek yiyebildi, in the shade gölgede demektir."
   },
   {
     "id": "wq150_ab1250_scene_0341",
@@ -6362,14 +6362,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe replaced it with a charged battery.",
     "options": [
-      "Organizatörden daha sağlam bir torba aldı.",
-      "Su geçirmez botlarını giydi.",
-      "Şişeyi içme suyu çeşmesinde doldurdu.",
-      "Piknik örtüsünü bir ağacın altına taşıdı.",
+      "Pili boş bir pille değiştirdi.",
+      "Dolu pili cihazdan çıkardı ama yerine pil takmadı.",
+      "Pili dolu bir pille değiştirecek.",
+      "Pili dolu bir pille değiştirmedi.",
       "Pili dolu bir pille değiştirdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Pili dolu bir pille değiştirdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Pili dolu bir pille değiştirdi.\". Replace X with Y, X'i Y ile değiştirmek; charged battery dolu pil demektir."
   },
   {
     "id": "wq150_ab1250_scene_0355",
@@ -6380,14 +6380,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nYürüyüş boyunca fotoğraf çekebildi.",
     "options": [
-      "Her feet stayed dry throughout the walk",
-      "He had enough water during the session",
-      "The group could eat in the shade",
+      "He could take photos only at the end of the walk",
+      "He could not take photos during the walk",
+      "He will be able to take photos for the whole walk",
       "He could take photos for the whole walk",
-      "She collected litter without spilling it"
+      "He could record sound for the whole walk"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"He could take photos for the whole walk\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"He could take photos for the whole walk\". For the whole walk yürüyüşün tamamı boyunca, take photos fotoğraf çekmek demektir."
   },
   {
     "id": "wq150_ab1250_scene_0356",
@@ -6632,14 +6632,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe collected a stronger bag from the organiser.",
     "options": [
-      "Su geçirmez botlarını giydi.",
-      "Şişeyi içme suyu çeşmesinde doldurdu.",
-      "Piknik örtüsünü bir ağacın altına taşıdı.",
-      "Pili dolu bir pille değiştirdi.",
+      "Organizatöre daha sağlam bir torba verdi.",
+      "Organizatörden daha ince bir torba aldı.",
+      "Organizatörden daha sağlam bir torba alacak.",
+      "Organizatörden daha sağlam bir torba almadı.",
       "Organizatörden daha sağlam bir torba aldı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Organizatörden daha sağlam bir torba aldı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Organizatörden daha sağlam bir torba aldı.\". Collected from birinden aldı, stronger daha sağlam demektir."
   },
   {
     "id": "wq150_ab1250_scene_0370",
@@ -6650,14 +6650,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nÇöpleri dökmeden topladı.",
     "options": [
-      "He had enough water during the session",
-      "The group could eat in the shade",
-      "He could take photos for the whole walk",
+      "She spilled the litter while collecting it",
+      "She collected litter without sorting it",
+      "She will collect litter without spilling it",
       "She collected litter without spilling it",
-      "Her feet stayed dry throughout the walk"
+      "She did not collect any litter"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"She collected litter without spilling it\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"She collected litter without spilling it\". Collected topladı, without spilling it dökmeden anlamındadır."
   },
   {
     "id": "wq150_ab1250_scene_0371",
@@ -8252,14 +8252,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe suggested measuring from a safe viewing point.",
     "options": [
-      "Kutulara resimli, açık etiketler ekledi.",
-      "Dikimden önce ek sulama düzenledi.",
-      "Gruptan sessizce uzaktan gözlem yapmasını istedi.",
-      "Düğmelerin yanına hatırlatma notları astı.",
+      "Güvenli bir gözlem noktasından ölçüm yapmayı reddetti.",
+      "Tehlikeli bir gözlem noktasından ölçüm yapmayı önerdi.",
+      "Güvenli bir gözlem noktasından ölçüm yapmayı önerecek.",
+      "Güvenli bir gözlem noktasından fotoğraf çekmeyi önerdi.",
       "Güvenli bir gözlem noktasından ölçüm yapmayı önerdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Güvenli bir gözlem noktasından ölçüm yapmayı önerdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Güvenli bir gözlem noktasından ölçüm yapmayı önerdi.\". Suggested measuring ölçüm yapmayı önerdi; safe viewing point güvenli gözlem noktasıdır."
   },
   {
     "id": "wq150_ab1250_scene_0460",
@@ -8270,14 +8270,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nEkip suya girmeden veri topladı.",
     "options": [
-      "The soil became suitable for planting",
-      "The birds returned to the feeding area",
-      "Staff began switching off unnecessary lights",
+      "The team collected data after entering the water",
+      "The team entered the water without collecting data",
+      "The team will collect data without entering the water",
       "The team collected data without entering the water",
-      "More waste was sorted correctly"
+      "The team collected samples without recording any data"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The team collected data without entering the water\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The team collected data without entering the water\". Without entering the water suya girmeden; collected data veri topladı demektir."
   },
   {
     "id": "wq150_ab1250_scene_0461",
@@ -8522,14 +8522,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe added clear labels with pictures to the bins.",
     "options": [
-      "Dikimden önce ek sulama düzenledi.",
-      "Gruptan sessizce uzaktan gözlem yapmasını istedi.",
-      "Düğmelerin yanına hatırlatma notları astı.",
-      "Güvenli bir gözlem noktasından ölçüm yapmayı önerdi.",
+      "Kutulardan resimli etiketleri çıkardı.",
+      "Kutulara resimsiz etiketler ekledi.",
+      "Kutulara resimli, açık etiketler ekleyecek.",
+      "Kutulara resimli etiketler eklemedi.",
       "Kutulara resimli, açık etiketler ekledi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Kutulara resimli, açık etiketler ekledi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Kutulara resimli, açık etiketler ekledi.\". Added ekledi, clear labels with pictures anlaşılır resimli etiketler demektir."
   },
   {
     "id": "wq150_ab1250_scene_0475",
@@ -8540,14 +8540,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nDaha fazla atık doğru biçimde ayrıldı.",
     "options": [
-      "The birds returned to the feeding area",
-      "Staff began switching off unnecessary lights",
-      "The team collected data without entering the water",
+      "Less waste was sorted correctly",
+      "More waste was sorted incorrectly",
+      "More waste will be sorted correctly",
       "More waste was sorted correctly",
-      "The soil became suitable for planting"
+      "More waste was collected but not sorted"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"More waste was sorted correctly\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"More waste was sorted correctly\". More daha fazla, was sorted edilgen ayrıldı, correctly doğru biçimde demektir."
   },
   {
     "id": "wq150_ab1250_scene_0476",
@@ -8792,14 +8792,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe organised extra watering before planting.",
     "options": [
-      "Gruptan sessizce uzaktan gözlem yapmasını istedi.",
-      "Düğmelerin yanına hatırlatma notları astı.",
-      "Güvenli bir gözlem noktasından ölçüm yapmayı önerdi.",
-      "Kutulara resimli, açık etiketler ekledi.",
+      "Dikimden sonra ek sulama düzenledi.",
+      "Dikimden önce sulamayı azalttı.",
+      "Dikimden önce ek sulama düzenleyecek.",
+      "Dikimden önce ek sulama düzenlemedi.",
       "Dikimden önce ek sulama düzenledi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Dikimden önce ek sulama düzenledi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Dikimden önce ek sulama düzenledi.\". Extra watering ek sulama, before planting dikimden önce demektir."
   },
   {
     "id": "wq150_ab1250_scene_0490",
@@ -8810,14 +8810,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nToprak dikime uygun hâle geldi.",
     "options": [
-      "Staff began switching off unnecessary lights",
-      "The team collected data without entering the water",
-      "More waste was sorted correctly",
+      "The soil became unsuitable for planting",
+      "The soil was already suitable for planting",
+      "The soil will become suitable for planting",
       "The soil became suitable for planting",
-      "The birds returned to the feeding area"
+      "The soil became suitable for building"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The soil became suitable for planting\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The soil became suitable for planting\". Became hâle geldi, suitable for planting dikime uygun demektir."
   },
   {
     "id": "wq150_ab1250_scene_0491",
@@ -9062,14 +9062,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe asked the group to observe from a quiet distance.",
     "options": [
-      "Düğmelerin yanına hatırlatma notları astı.",
-      "Güvenli bir gözlem noktasından ölçüm yapmayı önerdi.",
-      "Kutulara resimli, açık etiketler ekledi.",
-      "Dikimden önce ek sulama düzenledi.",
+      "Gruptan yakından ve sesli biçimde gözlem yapmasını istedi.",
+      "Gruptan gözlem yapmayı bırakmasını istedi.",
+      "Gruptan sessizce uzaktan gözlem yapmasını isteyecek.",
+      "Gruptan uzaktan fotoğraf çekmesini istedi.",
       "Gruptan sessizce uzaktan gözlem yapmasını istedi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Gruptan sessizce uzaktan gözlem yapmasını istedi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Gruptan sessizce uzaktan gözlem yapmasını istedi.\". Asked the group to observe gruptan gözlem yapmasını istedi; from a quiet distance sessizliği ve mesafeyi belirtir."
   },
   {
     "id": "wq150_ab1250_scene_0505",
@@ -9080,14 +9080,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nKuşlar beslenme alanına geri döndü.",
     "options": [
-      "The team collected data without entering the water",
-      "More waste was sorted correctly",
-      "The soil became suitable for planting",
+      "The birds left the feeding area",
+      "The birds returned to the nesting area",
+      "The birds will return to the feeding area",
       "The birds returned to the feeding area",
-      "Staff began switching off unnecessary lights"
+      "The birds did not return to the feeding area"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The birds returned to the feeding area\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The birds returned to the feeding area\". Returned geri döndü, feeding area beslenme alanı demektir."
   },
   {
     "id": "wq150_ab1250_scene_0506",
@@ -9332,14 +9332,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe placed reminder notices next to the switches.",
     "options": [
-      "Güvenli bir gözlem noktasından ölçüm yapmayı önerdi.",
-      "Kutulara resimli, açık etiketler ekledi.",
-      "Dikimden önce ek sulama düzenledi.",
-      "Gruptan sessizce uzaktan gözlem yapmasını istedi.",
+      "Düğmelerin yanındaki hatırlatma notlarını kaldırdı.",
+      "Hatırlatma notlarını kapının yanına astı.",
+      "Düğmelerin yanına hatırlatma notları asacak.",
+      "Düğmelerin yanına hatırlatma notları asmadı.",
       "Düğmelerin yanına hatırlatma notları astı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Düğmelerin yanına hatırlatma notları astı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Düğmelerin yanına hatırlatma notları astı.\". Placed yerleştirdi, reminder notices hatırlatma notları, next to yanında demektir."
   },
   {
     "id": "wq150_ab1250_scene_0520",
@@ -9350,14 +9350,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nPersonel gereksiz ışıkları kapatmaya başladı.",
     "options": [
-      "More waste was sorted correctly",
-      "The soil became suitable for planting",
-      "The birds returned to the feeding area",
+      "Staff stopped switching off unnecessary lights",
+      "Staff began switching on unnecessary lights",
+      "Staff will begin switching off unnecessary lights",
       "Staff began switching off unnecessary lights",
-      "The team collected data without entering the water"
+      "Staff began replacing unnecessary lights"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"Staff began switching off unnecessary lights\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"Staff began switching off unnecessary lights\". Began -ing başladı, switch off kapatmak, unnecessary gereksiz demektir."
   },
   {
     "id": "wq150_ab1250_scene_0521",
@@ -9602,14 +9602,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe forwarded the message with photographs of the damage.",
     "options": [
-      "Çantanın tam rengini ve markasını bildirdi.",
-      "Yakın tarihli bir fatura yükledi.",
-      "Doğru girişin fotoğrafını gönderdi.",
-      "Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi.",
+      "Hasarın fotoğraflarını mesajdan çıkardı.",
+      "Mesajı hasarın fotoğrafları olmadan iletti.",
+      "Mesajı hasarın fotoğraflarıyla birlikte iletecek.",
+      "Mesajı hasarın fotoğraflarıyla birlikte iletmedi.",
       "Mesajı hasarın fotoğraflarıyla birlikte iletti."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Mesajı hasarın fotoğraflarıyla birlikte iletti.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Mesajı hasarın fotoğraflarıyla birlikte iletti.\". Forwarded iletti, with photographs fotoğraflarla birlikte, damage hasar demektir."
   },
   {
     "id": "wq150_ab1250_scene_0535",
@@ -9620,14 +9620,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nOnarım ertesi güne planlandı.",
     "options": [
-      "The application was accepted as complete",
-      "The courier delivered the parcel to the right address",
-      "The updated ticket showed the correct day",
+      "The repair was scheduled for the same day",
+      "The repair was completed the following day",
+      "The repair will be scheduled for the following day",
       "The repair was scheduled for the following day",
-      "The employee matched the report to a found bag"
+      "The repair was cancelled the following day"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The repair was scheduled for the following day\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The repair was scheduled for the following day\". Was scheduled planlandı; following day ertesi gün demektir. Planlama tamamlanma anlamına gelmez."
   },
   {
     "id": "wq150_ab1250_scene_0536",
@@ -9872,14 +9872,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe provided the exact colour and brand of the bag.",
     "options": [
-      "Yakın tarihli bir fatura yükledi.",
-      "Doğru girişin fotoğrafını gönderdi.",
-      "Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi.",
-      "Mesajı hasarın fotoğraflarıyla birlikte iletti.",
+      "Çantanın yalnızca rengini bildirdi.",
+      "Çantanın rengini ve fiyatını bildirdi.",
+      "Çantanın tam rengini ve markasını bildirecek.",
+      "Çantanın tam rengini ve markasını bildirmedi.",
       "Çantanın tam rengini ve markasını bildirdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Çantanın tam rengini ve markasını bildirdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Çantanın tam rengini ve markasını bildirdi.\". Provided bildirdi, exact tam, colour and brand renk ve marka demektir."
   },
   {
     "id": "wq150_ab1250_scene_0550",
@@ -9890,14 +9890,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nÇalışan bildirimi bulunan bir çantayla eşleştirdi.",
     "options": [
-      "The courier delivered the parcel to the right address",
-      "The updated ticket showed the correct day",
-      "The repair was scheduled for the following day",
+      "The employee matched the report to a missing key",
+      "The employee rejected the report about the found bag",
+      "The employee will match the report to a found bag",
       "The employee matched the report to a found bag",
-      "The application was accepted as complete"
+      "The employee could not match the report to a found bag"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The employee matched the report to a found bag\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The employee matched the report to a found bag\". Matched X to Y, X'i Y ile eşleştirdi; found bag bulunan çanta demektir."
   },
   {
     "id": "wq150_ab1250_scene_0551",
@@ -10142,14 +10142,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe uploaded a recent utility bill.",
     "options": [
-      "Doğru girişin fotoğrafını gönderdi.",
-      "Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi.",
-      "Mesajı hasarın fotoğraflarıyla birlikte iletti.",
-      "Çantanın tam rengini ve markasını bildirdi.",
+      "Yakın tarihli bir faturayı sildi.",
+      "Eski tarihli bir fatura yükledi.",
+      "Yakın tarihli bir fatura yükleyecek.",
+      "Yakın tarihli bir fatura yüklemedi.",
       "Yakın tarihli bir fatura yükledi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Yakın tarihli bir fatura yükledi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Yakın tarihli bir fatura yükledi.\". Uploaded yükledi, recent yakın tarihli; utility bill elektrik, su veya benzeri hizmet faturasıdır."
   },
   {
     "id": "wq150_ab1250_scene_0565",
@@ -10160,14 +10160,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nBaşvuru eksiksiz olarak kabul edildi.",
     "options": [
-      "The updated ticket showed the correct day",
-      "The repair was scheduled for the following day",
-      "The employee matched the report to a found bag",
+      "The application was rejected as incomplete",
+      "The application was accepted as incomplete",
+      "The application will be accepted as complete",
       "The application was accepted as complete",
-      "The courier delivered the parcel to the right address"
+      "The application was returned for further information"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The application was accepted as complete\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The application was accepted as complete\". Was accepted kabul edildi, as complete eksiksiz olarak demektir."
   },
   {
     "id": "wq150_ab1250_scene_0566",
@@ -10412,14 +10412,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe sent a photograph of the correct entrance.",
     "options": [
-      "Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi.",
-      "Mesajı hasarın fotoğraflarıyla birlikte iletti.",
-      "Çantanın tam rengini ve markasını bildirdi.",
-      "Yakın tarihli bir fatura yükledi.",
+      "Yanlış girişin fotoğrafını gönderdi.",
+      "Doğru girişin adresini gönderdi.",
+      "Doğru girişin fotoğrafını gönderecek.",
+      "Doğru girişin fotoğrafını göndermedi.",
       "Doğru girişin fotoğrafını gönderdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Doğru girişin fotoğrafını gönderdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Doğru girişin fotoğrafını gönderdi.\". Sent gönderdi, photograph fotoğraf, correct entrance doğru giriş demektir."
   },
   {
     "id": "wq150_ab1250_scene_0580",
@@ -10430,14 +10430,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nKurye paketi doğru adrese teslim etti.",
     "options": [
-      "The repair was scheduled for the following day",
-      "The employee matched the report to a found bag",
-      "The application was accepted as complete",
+      "The courier delivered the parcel to the wrong address",
+      "The courier collected the parcel from the right address",
+      "The courier will deliver the parcel to the right address",
       "The courier delivered the parcel to the right address",
-      "The updated ticket showed the correct day"
+      "The courier did not deliver the parcel to the right address"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The courier delivered the parcel to the right address\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The courier delivered the parcel to the right address\". Delivered teslim etti, to the right address doğru adrese; collect from bir yerden almak demektir."
   },
   {
     "id": "wq150_ab1250_scene_0581",
@@ -10682,14 +10682,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe asked the agent to move it to the agreed date.",
     "options": [
-      "Mesajı hasarın fotoğraflarıyla birlikte iletti.",
-      "Çantanın tam rengini ve markasını bildirdi.",
-      "Yakın tarihli bir fatura yükledi.",
-      "Doğru girişin fotoğrafını gönderdi.",
+      "Görevliden rezervasyonu iptal etmesini istedi.",
+      "Görevliden rezervasyonu farklı bir tarihe almasını istedi.",
+      "Görevliden rezervasyonu kararlaştırılan tarihe almasını isteyecek.",
+      "Görevliden rezervasyonu kararlaştırılan tarihe almasını istemedi.",
       "Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Görevliden rezervasyonu kararlaştırılan tarihe almasını istedi.\". Move a booking to a date rezervasyonu o tarihe almak; agreed date üzerinde anlaşılan tarih demektir."
   },
   {
     "id": "wq150_ab1250_scene_0595",
@@ -10700,14 +10700,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nGüncellenen bilet doğru günü gösterdi.",
     "options": [
-      "The employee matched the report to a found bag",
-      "The application was accepted as complete",
-      "The courier delivered the parcel to the right address",
+      "The updated ticket showed the wrong day",
+      "The original ticket showed the correct day",
+      "The updated ticket will show the correct day",
       "The updated ticket showed the correct day",
-      "The repair was scheduled for the following day"
+      "The updated ticket did not show any date"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The updated ticket showed the correct day\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The updated ticket showed the correct day\". Updated güncellenmiş, showed gösterdi, correct day doğru gün demektir."
   },
   {
     "id": "wq150_ab1250_scene_0596",
@@ -11222,14 +11222,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe checked the date against two reference books.",
     "options": [
-      "Konuşmasını daha sessiz bir odada yeniden kaydetti.",
-      "Çok küçük sembolleri daha büyükleriyle değiştirdi.",
-      "Kararlaştırılan görevlerin özetini paylaştı.",
-      "Deneyi aynı koşullar altında tekrarladı.",
+      "Tarihi tek bir kaynak kitaptan kontrol etti.",
+      "Tarihi iki kaynak kitaba yazdı.",
+      "Tarihi iki kaynak kitaptan kontrol edecek.",
+      "Tarihi iki kaynak kitaptan kontrol etmedi.",
       "Tarihi iki kaynak kitaptan kontrol etti."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Tarihi iki kaynak kitaptan kontrol etti.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Tarihi iki kaynak kitaptan kontrol etti.\". Check against karşılaştırarak doğrulamak, two reference books iki kaynak kitap demektir."
   },
   {
     "id": "wq150_ab1250_scene_0625",
@@ -11240,14 +11240,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nSunum doğrulanmış bir tarih içerdi.",
     "options": [
-      "Visitors could identify the map features easily",
-      "Everyone knew their responsibilities",
-      "The new measurements were consistent",
+      "The presentation included an unverified date",
+      "The presentation omitted the verified date",
+      "The presentation will include a verified date",
       "The presentation included a verified date",
-      "The teacher could understand every word"
+      "The presentation included a verified name"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The presentation included a verified date\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The presentation included a verified date\". Included içerdi, verified doğrulanmış, date tarih demektir."
   },
   {
     "id": "wq150_ab1250_scene_0626",
@@ -11492,14 +11492,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe recorded his speech again in a quieter room.",
     "options": [
-      "Çok küçük sembolleri daha büyükleriyle değiştirdi.",
-      "Kararlaştırılan görevlerin özetini paylaştı.",
-      "Deneyi aynı koşullar altında tekrarladı.",
-      "Tarihi iki kaynak kitaptan kontrol etti.",
+      "Konuşmasını daha gürültülü bir odada yeniden kaydetti.",
+      "Konuşmasının kaydını daha sessiz bir odada dinledi.",
+      "Konuşmasını daha sessiz bir odada yeniden kaydedecek.",
+      "Konuşmasını daha sessiz bir odada yeniden kaydetmedi.",
       "Konuşmasını daha sessiz bir odada yeniden kaydetti."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Konuşmasını daha sessiz bir odada yeniden kaydetti.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Konuşmasını daha sessiz bir odada yeniden kaydetti.\". Recorded again yeniden kaydetti, quieter daha sessiz demektir."
   },
   {
     "id": "wq150_ab1250_scene_0640",
@@ -11510,14 +11510,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nÖğretmen her kelimeyi anlayabildi.",
     "options": [
-      "Everyone knew their responsibilities",
-      "The new measurements were consistent",
-      "The presentation included a verified date",
+      "The teacher could not understand any words",
+      "The teacher could understand only a few words",
+      "The teacher will be able to understand every word",
       "The teacher could understand every word",
-      "Visitors could identify the map features easily"
+      "The student could understand every word"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The teacher could understand every word\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The teacher could understand every word\". Every word her kelime, could understand anlayabildi; only a few yalnızca birkaç demektir."
   },
   {
     "id": "wq150_ab1250_scene_0641",
@@ -11762,14 +11762,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe replaced the tiny symbols with larger ones.",
     "options": [
-      "Kararlaştırılan görevlerin özetini paylaştı.",
-      "Deneyi aynı koşullar altında tekrarladı.",
-      "Tarihi iki kaynak kitaptan kontrol etti.",
-      "Konuşmasını daha sessiz bir odada yeniden kaydetti.",
+      "Büyük sembolleri daha küçükleriyle değiştirdi.",
+      "Çok küçük sembolleri aynı boyuttakilerle değiştirdi.",
+      "Çok küçük sembolleri daha büyükleriyle değiştirecek.",
+      "Çok küçük sembolleri daha büyükleriyle değiştirmedi.",
       "Çok küçük sembolleri daha büyükleriyle değiştirdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Çok küçük sembolleri daha büyükleriyle değiştirdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Çok küçük sembolleri daha büyükleriyle değiştirdi.\". Tiny çok küçük, larger ones daha büyük olanlar; replace with ile değiştirmek demektir."
   },
   {
     "id": "wq150_ab1250_scene_0655",
@@ -11780,14 +11780,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nZiyaretçiler haritadaki unsurları kolayca tanıyabildi.",
     "options": [
-      "The new measurements were consistent",
-      "The presentation included a verified date",
-      "The teacher could understand every word",
+      "Visitors could identify the map features only with difficulty",
+      "Visitors could not identify the map features",
+      "Visitors will be able to identify the map features easily",
       "Visitors could identify the map features easily",
-      "Everyone knew their responsibilities"
+      "Visitors could identify the guide's name easily"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"Visitors could identify the map features easily\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"Visitors could identify the map features easily\". Identify tanımak veya belirlemek, map features harita unsurları, easily kolayca demektir."
   },
   {
     "id": "wq150_ab1250_scene_0656",
@@ -12032,14 +12032,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe shared a summary of the agreed tasks.",
     "options": [
-      "Deneyi aynı koşullar altında tekrarladı.",
-      "Tarihi iki kaynak kitaptan kontrol etti.",
-      "Konuşmasını daha sessiz bir odada yeniden kaydetti.",
-      "Çok küçük sembolleri daha büyükleriyle değiştirdi.",
+      "Kararlaştırılan görevlerin ayrıntılı listesini gizledi.",
+      "Kararlaştırılmamış görevlerin özetini paylaştı.",
+      "Kararlaştırılan görevlerin özetini paylaşacak.",
+      "Kararlaştırılan görevlerin özetini paylaşmadı.",
       "Kararlaştırılan görevlerin özetini paylaştı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Kararlaştırılan görevlerin özetini paylaştı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Kararlaştırılan görevlerin özetini paylaştı.\". Shared paylaştı, summary özet, agreed tasks kararlaştırılan görevler demektir."
   },
   {
     "id": "wq150_ab1250_scene_0670",
@@ -12050,14 +12050,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nHerkes kendi sorumluluklarını biliyordu.",
     "options": [
-      "The presentation included a verified date",
-      "The teacher could understand every word",
-      "Visitors could identify the map features easily",
+      "Nobody knew their responsibilities",
+      "Everyone knew only the manager's responsibilities",
+      "Everyone will know their responsibilities",
       "Everyone knew their responsibilities",
-      "The new measurements were consistent"
+      "Everyone forgot their responsibilities"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"Everyone knew their responsibilities\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"Everyone knew their responsibilities\". Everyone herkes, knew biliyordu, their responsibilities kendi sorumlulukları demektir."
   },
   {
     "id": "wq150_ab1250_scene_0671",
@@ -12302,14 +12302,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe attached clear price stickers to each book.",
     "options": [
-      "Tüm dönüşleri gösteren bir harita dağıttı.",
-      "Bir mikrofon kurulmasını ayarladı.",
-      "Depodan daha büyük kaplar getirdi.",
-      "Panoları uygun ağırlıklarla sabitledi.",
+      "Her kitaptaki fiyat etiketlerini çıkardı.",
+      "Yalnızca bir kitaba fiyat etiketi yapıştırdı.",
+      "Her kitaba açık fiyat etiketleri yapıştıracak.",
+      "Her kitaba başlık etiketi yapıştırdı.",
       "Her kitaba açık fiyat etiketleri yapıştırdı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Her kitaba açık fiyat etiketleri yapıştırdı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Her kitaba açık fiyat etiketleri yapıştırdı.\". Attached yapıştırdı, price stickers fiyat etiketleri, each book her kitap demektir."
   },
   {
     "id": "wq150_ab1250_scene_0685",
@@ -12320,14 +12320,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nAlıcılar sormadan fiyatları kontrol edebildi.",
     "options": [
-      "Everyone could follow the discussion",
-      "There was enough space for all the donated food",
-      "The display remained stable throughout the event",
+      "Buyers had to ask to check the prices",
+      "Buyers could check prices only after asking",
+      "Buyers will be able to check prices without asking",
       "Buyers could check prices without asking",
-      "The riders followed the intended course"
+      "Sellers could check prices without asking"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"Buyers could check prices without asking\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"Buyers could check prices without asking\". Buyers alıcılar, without asking sormadan, could check kontrol edebildi demektir."
   },
   {
     "id": "wq150_ab1250_scene_0686",
@@ -12572,14 +12572,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe distributed a map showing all the turns.",
     "options": [
-      "Bir mikrofon kurulmasını ayarladı.",
-      "Depodan daha büyük kaplar getirdi.",
-      "Panoları uygun ağırlıklarla sabitledi.",
-      "Her kitaba açık fiyat etiketleri yapıştırdı.",
+      "Tüm dönüşleri gösteren haritaları topladı.",
+      "Yalnızca başlangıç noktasını gösteren bir harita dağıttı.",
+      "Tüm dönüşleri gösteren bir harita dağıtacak.",
+      "Tüm dönüşleri gösteren bir harita dağıtmadı.",
       "Tüm dönüşleri gösteren bir harita dağıttı."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Tüm dönüşleri gösteren bir harita dağıttı.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Tüm dönüşleri gösteren bir harita dağıttı.\". Distributed dağıttı, showing all the turns tüm dönüşleri gösteren demektir."
   },
   {
     "id": "wq150_ab1250_scene_0700",
@@ -12590,14 +12590,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nBisikletçiler planlanan rotayı takip etti.",
     "options": [
-      "There was enough space for all the donated food",
-      "The display remained stable throughout the event",
-      "Buyers could check prices without asking",
+      "The riders followed an unintended course",
+      "The riders left the intended course",
+      "The riders will follow the intended course",
       "The riders followed the intended course",
-      "Everyone could follow the discussion"
+      "The organisers changed the intended course"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The riders followed the intended course\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The riders followed the intended course\". Riders bisikletçiler, followed takip etti, intended course planlanan rota demektir."
   },
   {
     "id": "wq150_ab1250_scene_0701",
@@ -13112,14 +13112,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nHe brought larger containers from the storeroom.",
     "options": [
-      "Panoları uygun ağırlıklarla sabitledi.",
-      "Her kitaba açık fiyat etiketleri yapıştırdı.",
-      "Tüm dönüşleri gösteren bir harita dağıttı.",
-      "Bir mikrofon kurulmasını ayarladı.",
+      "Daha büyük kapları depoya götürdü.",
+      "Depodan daha küçük kaplar getirdi.",
+      "Depodan daha büyük kaplar getirecek.",
+      "Depodan daha büyük kaplar getirmedi.",
       "Depodan daha büyük kaplar getirdi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Depodan daha büyük kaplar getirdi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Depodan daha büyük kaplar getirdi.\". Brought getirdi, larger containers daha büyük kaplar, from the storeroom depodan demektir."
   },
   {
     "id": "wq150_ab1250_scene_0730",
@@ -13130,14 +13130,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nBağışlanan tüm yiyecekler için yeterli yer oldu.",
     "options": [
-      "Buyers could check prices without asking",
-      "The riders followed the intended course",
-      "Everyone could follow the discussion",
+      "There was not enough space for all the donated food",
+      "There was enough space for only half the donated food",
+      "There will be enough space for all the donated food",
       "There was enough space for all the donated food",
-      "The display remained stable throughout the event"
+      "There was enough space for all the donated clothes"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"There was enough space for all the donated food\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"There was enough space for all the donated food\". There was enough space yeterli yer vardı, all the donated food bağışlanan tüm yiyecekler demektir."
   },
   {
     "id": "wq150_ab1250_scene_0731",
@@ -13382,14 +13382,14 @@ export const ab1250Scenes = [
     "kind": "Translation_EN_TR",
     "prompt": "Choose the Turkish sentence closest in meaning.\n\nShe secured the boards with suitable weights.",
     "options": [
-      "Her kitaba açık fiyat etiketleri yapıştırdı.",
-      "Tüm dönüşleri gösteren bir harita dağıttı.",
-      "Bir mikrofon kurulmasını ayarladı.",
-      "Depodan daha büyük kaplar getirdi.",
+      "Panolardaki ağırlıkları kaldırdı.",
+      "Panoları uygun olmayan ağırlıklarla sabitledi.",
+      "Panoları uygun ağırlıklarla sabitleyecek.",
+      "Panoları uygun ağırlıklarla sabitlemedi.",
       "Panoları uygun ağırlıklarla sabitledi."
     ],
     "correct": 4,
-    "explanation": "Doğru çeviri \"Panoları uygun ağırlıklarla sabitledi.\" biçimindedir; eylem, nesne ve zaman korunur."
+    "explanation": "Doğru çeviri \"Panoları uygun ağırlıklarla sabitledi.\". Secured sabitledi, suitable weights uygun ağırlıklar demektir."
   },
   {
     "id": "wq150_ab1250_scene_0745",
@@ -13400,14 +13400,14 @@ export const ab1250Scenes = [
     "kind": "Translation_TR_EN",
     "prompt": "Verilen Türkçe cümlenin İngilizce karşılığını seçiniz.\n\nSergi etkinlik boyunca sabit kaldı.",
     "options": [
-      "The riders followed the intended course",
-      "Everyone could follow the discussion",
-      "There was enough space for all the donated food",
+      "The display became unstable during the event",
+      "The display remained stable only before the event",
+      "The display will remain stable throughout the event",
       "The display remained stable throughout the event",
-      "Buyers could check prices without asking"
+      "The display was removed before the event"
     ],
     "correct": 3,
-    "explanation": "Doğru çeviri \"The display remained stable throughout the event\" cümlesidir; olayın sonucu aynı anlamda aktarılır."
+    "explanation": "Doğru çeviri \"The display remained stable throughout the event\". Remained stable sabit kaldı, throughout the event etkinliğin tamamı boyunca demektir."
   },
   {
     "id": "wq150_ab1250_scene_0746",
