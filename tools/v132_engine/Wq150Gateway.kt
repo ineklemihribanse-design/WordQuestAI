@@ -22,6 +22,8 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.coroutineContext
 
+internal fun wq150ValidRoom(id:String)=Regex("^[A-Za-z0-9_-]{6,64}$").matches(id)&&id !in listOf("constructor","prototype","__proto__")
+
 /** Explicitly configured HTTPS origin. Never discover a gateway from room content. */
 internal class Wq150Endpoint(raw:String) {
     private val origin:URI=URI(raw.trim()).also{
@@ -30,7 +32,7 @@ internal class Wq150Endpoint(raw:String) {
             (it.rawPath.isNullOrEmpty()||it.rawPath=="/")){"Geçersiz Arena sunucusu"}
     }
     private fun roomUrl(path:String,id:String,commands:Boolean):URI {
-        require(Regex("^[A-Za-z0-9_-]{6,64}$").matches(id)&&id !in listOf("constructor","prototype","__proto__"))
+        require(wq150ValidRoom(id))
         return origin.resolve("/v150/"+path+"/"+id+(if(commands)"/commands" else ""))
     }
     fun matchUrl(id:String,commands:Boolean=false):URI=roomUrl("matches",id,commands)

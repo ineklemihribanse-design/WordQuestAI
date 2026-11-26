@@ -8,6 +8,14 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -175,6 +183,15 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
         else -> false
     }
     val enabled=eligible&&phase=="playing"&&!remote.busy&&remote.pending==null&&remote.error==null
+    val typingAllowed=eligible&&phase=="playing"&&!choose&&!quiz
+    val imeVisible=WindowInsets.ime.getBottom(LocalDensity.current)>0
+    val focusRequester=remember(room){FocusRequester()}
+    val focusManager=LocalFocusManager.current
+    var hadFocus by remember(room){mutableStateOf(false)}
+    LaunchedEffect(typingAllowed,index){
+        if(!typingAllowed){focusManager.clearFocus();hadFocus=false}
+        else if(hadFocus)runCatching{focusRequester.requestFocus()}
+    }
     val question=if(kind=="quiz")game.optJSONObject("question") else entry
     val prompt=question?.optString(if(kind=="quiz")"prompt" else "clue").orEmpty()
     val known=remember(game,kind,words){letters(game,kind,words)}
@@ -301,7 +318,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                                 members.forEach{player->
                                     Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
                                         Wq150Portrait(profiles.optJSONObject(player),ownAvatar.takeIf{player==uid},
-                                            Modifier.fillMaxWidth().height(if(tablet)110.dp else 64.dp))
+                                            Modifier.fillMaxWidth().height(if(imeVisible)24.dp else if(tablet)110.dp else 64.dp))
                                         Text(profiles.optJSONObject(player)?.optString("name")?.takeIf{it.isNotBlank()}?:if(player==uid)session.profileName else "Oyuncu",
                                             color=Wq122Ink,fontSize=if(tablet)15.sp else 12.sp,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
                                     }
@@ -358,18 +375,24 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                             }
                         }else{
                             val length=entry?.optInt("length",entry.optInt("letterCount"))?:0
-                            Text("Kelime "+(index+1)+" · "+length+" harf",color=Wq122Gold)
-                            Text(answerText.ifBlank{"—"},color=Wq122Gold,fontWeight=FontWeight.Bold)
-                            OutlinedTextField(draft,{draft=it.filter{c->c.isLetter()}.uppercase(java.util.Locale.ROOT).take(if(currentCells.isEmpty())totalLength else missing.size)},enabled=enabled&&(!answerComplete||draft.isNotEmpty()),singleLine=true,
-                                label={Text("Eksik harfleri yaz")},modifier=Modifier.fillMaxWidth())
-                            Button(enabled=enabled&&answerComplete&&answerText.isNotBlank(),onClick={send("submit",answer=answerText)},modifier=Modifier.fillMaxWidth()){Text("Gönder")}
-                        }
-                        Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){
-                            OutlinedButton(enabled=enabled,onClick={send("pass")}){Text("Pas")}
-                            OutlinedButton(enabled=enabled&&hintBudget>0,onClick={send(if(kind=="quiz")"eliminate" else "hint")}){
-                                Text((if(quiz)"Şık ele" else "Harf aç")+" ($hintBudget)")
+                            val direction=if(currentCells.size>=2&&currentCells[0].row==currentCells[1].row)"Yatay" else "Dikey"
+                            Text("Kelime "+(index+1)+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=12.sp)
+                            Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
+                                OutlinedTextField(draft,{if(typingAllowed)draft=it.filter{c->c.isLetter()}.uppercase(java.util.Locale.ROOT).take(if(currentCells.isEmpty())totalLength else missing.size)},
+                                    enabled=typingAllowed,readOnly=!enabled,singleLine=true,
+                                    keyboardOptions=KeyboardOptions(capitalization=KeyboardCapitalization.Characters,imeAction=ImeAction.Send),
+                                    keyboardActions=KeyboardActions(onSend={if(enabled&&answerComplete&&answerText.isNotBlank())send("submit",answer=answerText)}),
+                                    label={Text("Eksik harfler")},modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
+                                Button(enabled=enabled&&answerComplete&&answerText.isNotBlank(),onClick={send("submit",answer=answerText)},contentPadding=PaddingValues(horizontal=10.dp,vertical=8.dp)){Text("Gönder")}
                             }
-                            if(kind=="duel")OutlinedButton(enabled=enabled,onClick={send("skip")}){Text("Kelimeyi geç")}
+                        }
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
+                            val padding=PaddingValues(horizontal=4.dp,vertical=4.dp)
+                            OutlinedButton(enabled=enabled,onClick={send("pass")},modifier=Modifier.weight(1f),contentPadding=padding){Text("Pas",fontSize=12.sp)}
+                            OutlinedButton(enabled=enabled&&hintBudget>0,onClick={send(if(kind=="quiz")"eliminate" else "hint")},modifier=Modifier.weight(1f),contentPadding=padding){
+                                Text((if(quiz)"Şık ele" else "Harf aç")+" ($hintBudget)",fontSize=12.sp)
+                            }
+                            if(kind=="duel")OutlinedButton(enabled=enabled,onClick={send("skip")},modifier=Modifier.weight(1f),contentPadding=padding){Text("Kelimeyi geç",fontSize=12.sp)}
                         }
                         if(kind=="quiz")Row(horizontalArrangement=Arrangement.spacedBy(6.dp)){
                             OutlinedButton(enabled=enabled&&hintBudget>0&&"half" !in mine.strings("used"),onClick={send("half")}){Text("50:50")}
@@ -418,13 +441,43 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
 }
 @Composable
 internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,legacy:()->Unit){
-    var room by remember{mutableStateOf<String?>(null)}
-    var initial by remember{mutableStateOf<JSONObject?>(null)}
     val auth=session.accounts.socialAuth()
     val uid=session.accounts.uid.orEmpty()
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val prefs=remember(context){context.getSharedPreferences("wq150_active_room",android.content.Context.MODE_PRIVATE)}
     val gateway=remember(endpoint,auth,uid){auth?.let{Wq150Gateway(endpoint,it)}}
+    var room by remember(uid){mutableStateOf(if(uid.isBlank())null else prefs.getString(uid,null)?.takeIf(::wq150ValidRoom))}
+    var initial by remember(uid){mutableStateOf<JSONObject?>(null)}
+    var resumeError by remember(uid){mutableStateOf<String?>(null)}
+    var retry by remember(uid){mutableIntStateOf(0)}
+    fun clearRoom(){
+        if(uid.isNotBlank())prefs.edit().remove(uid).apply()
+        room=null;initial=null;resumeError=null
+    }
     val id=room;val snapshot=initial
+    LaunchedEffect(uid,id,retry,gateway){
+        if(id==null||initial!=null||gateway==null)return@LaunchedEffect
+        resumeError=null
+        try{
+            initial=gateway.view(id)
+        }catch(e:kotlinx.coroutines.CancellationException){throw e}
+        catch(e:Wq150GatewayError){
+            if(e.status==404)clearRoom()
+            else resumeError="Aktif maç doğrulanamadı. Bağlantını kontrol et."
+        }catch(e:Exception){resumeError="Bağlantı kurulamadı. Maç kaydı korunuyor."}
+    }
     if(id!=null&&snapshot!=null&&gateway!=null&&uid.isNotBlank())
-        Wq150ArenaMatch(id,snapshot,uid,gateway,session,back)
-    else Wq150ArenaEntry(session,endpoint,back,account,legacy){r,v->room=r;initial=v}
+        Wq150ArenaMatch(id,snapshot,uid,gateway,session,{clearRoom();back()})
+    else if(id!=null&&gateway!=null){
+        BackHandler{back()}
+        Column(Modifier.fillMaxSize().background(Color(0xFF150B3E)).windowInsetsPadding(WindowInsets.safeDrawing).padding(20.dp),
+            verticalArrangement=Arrangement.spacedBy(12.dp)){
+            Text("Aktif maçına dön",color=Wq122Gold,style=MaterialTheme.typography.headlineSmall)
+            if(resumeError==null){LinearProgressIndicator(Modifier.fillMaxWidth());Text("Maç durumu alınıyor…",color=Wq122Ink)}
+            else{Text(resumeError.orEmpty(),color=Wq122Ink);Button(onClick={retry++}){Text("Tekrar dene")}}
+            TextButton(onClick=back){Text("Geri · maç kaydını koru",color=Wq122Gold)}
+        }
+    }else Wq150ArenaEntry(session,endpoint,back,account,legacy){r,v->
+        if(uid.isNotBlank()&&wq150ValidRoom(r)){prefs.edit().putString(uid,r).apply();room=r;initial=v}
+    }
 }

@@ -3,6 +3,9 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class Wq150GatewayTest {
+    @Test fun savedRoomIdentityIsValidated(){
+        assertTrue(wq150ValidRoom("abc123456789"));assertFalse(wq150ValidRoom("../other"));assertFalse(wq150ValidRoom("constructor"));assertFalse(wq150ValidRoom("abc"))
+    }
     @Test fun endpointRequiresExplicitHttpsOrigin(){
         val e=Wq150Endpoint("https://arena.example.org")
         assertEquals("https://arena.example.org/v150/matches/room123/commands",e.matchUrl("room123",true).toString())
