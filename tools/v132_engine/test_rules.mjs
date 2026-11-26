@@ -74,6 +74,21 @@ try {
  await assertFails(db.ref(path).update({configRevision:3,roundData:'tamper'}));
  await assertFails(guest.ref(path+'/roundAck/'+other).set(3));
  console.log('PASS hybrid snapshot authorization, revision gate, stale/legacy clients blocked, immutable active round');
+ // New reactions preserve participant-only writes, timestamp and cooldown.
+ const emoji=path+'/package6/emoji/';
+ const react=(symbol)=>({symbol,sentAt:Date.now()});
+ await assertSucceeds(db.ref(emoji+uid).set(react('❤️')));
+ assert.equal((await guest.ref(emoji+uid).get()).val().symbol,'❤️');
+ await assertFails(db.ref(emoji+uid).set(react('😮')));
+ await assertFails(guest.ref(emoji+uid).set(react('😮')));
+ await assertFails(anon.ref(emoji+'anon').set(react('❤️')));
+ await assertFails(guest.ref(emoji+other).set(react('not-allowed')));
+ await assertFails(guest.ref(emoji+other).set({symbol:'😮',sentAt:Date.now()-180000}));
+ await assertSucceeds(guest.ref(emoji+other).set(react('😮')));
+ assert.equal((await db.ref(emoji+other).get()).val().symbol,'😮');
+ await new Promise(resolve=>setTimeout(resolve,700));
+ await assertSucceeds(db.ref(emoji+uid).set(react('👏')));
+ console.log('PASS v148 reaction authorization, bidirectional delivery, cooldown and legacy reactions');
  for(let i=3;i<20;i++) await assertSucceeds(db.ref().update(create(i,'ROOM'+String(i).padStart(5,'0'))));
  await assertFails(db.ref().update(create(20,'ROOM00020')));
  await assertFails(db.ref(old+'/1').set('OLD000002'));
