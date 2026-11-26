@@ -177,3 +177,79 @@ test=main.parent/"test/java/com/kelimebulmacasi/a1"
 shutil.copyfile(pack/"Wq140ArenaFitTest.kt",test/"Wq140ArenaFitTest.kt")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
 print("PASS: solo Arena dark gameplay, complete selected levels, single question count, two-column landscape layout; phone and online grid policy preserved")
+
+
+# First-click Arena launch. Only state and callbacks; no visual/board/rules edits.
+first_start_names={"PremiumArenaScreen.kt","PremiumOnlineScreen.kt"}
+first_start_protected={f:hashlib.sha256(f.read_bytes()).digest() for f in main.rglob("*") if f.is_file() and f.name not in first_start_names}
+f=p/"PremiumArenaScreen.kt";s=f.read_text()
+s=once(s,'''private enum class PremiumStage { Lobby, Crossword, FiveChoices, Result }''','''private enum class PremiumStage { Lobby, Crossword, FiveChoices, Result }
+
+internal data class WqArenaSoloLaunch(
+    val id:String, val mode:String, val level:String, val topic:String,
+    val size:Int, val seconds:Int, val preset:Wq186MatchPreset, val round:Wq132WebEngine.Round
+)''')
+s=once(s,'''    var offline by rememberSaveable { mutableStateOf(false) }
+    if (offline) PremiumArenaOfflineScreen(session, { offline = false }, { offline = false },
+        openLearning, openTeacher)
+    else PremiumOnlineScreen(session, back, account, { offline = true }, openLearning, openTeacher)''','''    var soloLaunch by remember { mutableStateOf<WqArenaSoloLaunch?>(null) }
+    val launch=soloLaunch
+    if (launch!=null) key(launch.id) {
+        PremiumArenaOfflineScreen(session, { soloLaunch=null }, { soloLaunch=null },
+            openLearning, openTeacher, launch)
+    } else PremiumOnlineScreen(session, back, account, { soloLaunch=it }, openLearning, openTeacher)''')
+s=once(s,'''                                      openLearning: () -> Unit, openTeacher: (String) -> Unit) {''','''                                      openLearning: () -> Unit, openTeacher: (String) -> Unit,
+                                      launch: WqArenaSoloLaunch) {''')
+for old,new in [
+('mutableStateOf(java.util.UUID.randomUUID().toString())','mutableStateOf(launch.id)'),
+('mutableStateOf(PremiumStage.Lobby)','mutableStateOf(if(launch.mode=="quiz")PremiumStage.FiveChoices else PremiumStage.Crossword)'),
+('var level by rememberSaveable { mutableStateOf("A1") }','var level by rememberSaveable { mutableStateOf(launch.level) }'),
+('var topic by rememberSaveable { mutableStateOf(PremiumArenaRules.allTopics) }','var topic by rememberSaveable { mutableStateOf(launch.topic) }'),
+('var size by rememberSaveable { mutableIntStateOf(30) }','var size by rememberSaveable { mutableIntStateOf(launch.size) }'),
+('var quizCount by rememberSaveable { mutableIntStateOf(10) }','var quizCount by rememberSaveable { mutableIntStateOf(if(launch.mode=="quiz")launch.round.questions.size else 10) }'),
+('mutableStateOf(listOf("A1"))','mutableStateOf(launch.preset.levels.toList())'),
+('var activeRoundTopic by remember { mutableStateOf(PremiumArenaRules.allTopics) }','var activeRoundTopic by remember { mutableStateOf(launch.topic) }'),
+('var timeSeconds by rememberSaveable { mutableIntStateOf(30) }','var timeSeconds by rememberSaveable { mutableIntStateOf(launch.seconds) }'),
+('var selectedMode by rememberSaveable { mutableStateOf("crossword") }','var selectedMode by rememberSaveable { mutableStateOf(if(launch.mode=="quiz")"quiz" else "crossword") }'),
+('var soloArenaMode by rememberSaveable { mutableStateOf("duel") }','var soloArenaMode by rememberSaveable { mutableStateOf(launch.mode) }'),
+('mutableStateOf<PremiumArenaBoard?>(null)','mutableStateOf<PremiumArenaBoard?>(launch.round.board)'),
+('var currentWord by remember { mutableIntStateOf(0) }','var currentWord by remember { mutableIntStateOf(launch.round.board?.let { Wq179ArenaOrder.next(launch.id,session.profileKey,it.puzzle.words.size,emptySet(),-1) } ?: 0) }'),
+('mutableStateOf<List<PremiumQuestion>>(emptyList())','mutableStateOf<List<PremiumQuestion>>(launch.round.questions)'),
+('var wq122HintBudget by remember { mutableIntStateOf(0) }','var wq122HintBudget by remember { mutableIntStateOf(launch.preset.hints) }'),
+('wq122HintBudget=Wq186ArenaPresetStore.read(context,session.profileKey,level).hints','wq122HintBudget=launch.preset.hints'),
+('val preset = Wq186ArenaPresetStore.read(context,session.profileKey,level)','val preset = launch.preset'),
+('        stage=PremiumStage.Lobby\n        feedback=""','        feedback=""\n        back()'),
+]: s=once(s,old,new)
+f.write_text(s)
+f=p/"PremiumOnlineScreen.kt";s=f.read_text()
+s=once(s,'account: () -> Unit, offline: () -> Unit,','account: () -> Unit, offline: (WqArenaSoloLaunch) -> Unit,')
+s=once(s,'                onOffline = offline,','''                onOffline = {
+                    if(!creatingWebRoom && !client.busy && client.match==null) {
+                        val preset=Wq186ArenaPresetStore.read(context,session.profileKey,level)
+                        val requestedMode=selectedMode;val requestedTopic=topic
+                        val requestedLevel=level
+                        val requestedSize=if(requestedMode=="quiz"){
+                            val allowed=listOf(5,10,12,15,20).filter{it>=preset.levels.size}
+                            allowed.minByOrNull{kotlin.math.abs(it-size)}?:10
+                        }else size
+                        val requestedSeconds=seconds
+                        val id=java.util.UUID.randomUUID().toString()
+                        creatingWebRoom=true
+                        client.note("Oyun hazırlanıyor…")
+                        webRoomScope.launch {
+                            try {
+                                val generated=Wq132WebEngine.generate(context,requestedMode,preset.levels,requestedTopic,
+                                    requestedSize,requestedSeconds,preset.hints,preset.retries,id.hashCode())
+                                if(requestedMode=="quiz")require(generated.questions.isNotEmpty())
+                                else require(generated.board!=null)
+                                if(client.match==null)offline(WqArenaSoloLaunch(id,requestedMode,requestedLevel,requestedTopic,
+                                    requestedSize,requestedSeconds,preset,generated))
+                            } catch(e:kotlinx.coroutines.CancellationException){throw e}
+                            catch(e:Exception){client.note("Oyun hazırlanamadı: "+(e.message?:"Başka ayar seç.").take(180))}
+                            finally {creatingWebRoom=false}
+                        }
+                    }
+                },''')
+f.write_text(s)
+assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in first_start_protected.items())
+print("PASS: a single settings route starts actual solo gameplay or creates the online room; all visual assets and other files unchanged")
