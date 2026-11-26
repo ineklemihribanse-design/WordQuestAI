@@ -14199,13 +14199,13 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "A doctor recommends fresh fruit as a ____ snack instead of sweets.",
+    "prompt": "A doctor recommends fresh fruit as a ____ snack because it provides useful nutrients.",
     "options": [
       "health",
       "healthy",
       "unhealthy",
       "healthily",
-      "healthier"
+      "healthiest"
     ],
     "correct": 1,
     "explanation": "Snack ismini niteleyen healthy sıfatıdır."
@@ -14969,8 +14969,8 @@ export const foundationQuestions = [
       "improve",
       "improvement",
       "improved",
-      "improving",
-      "improves"
+      "improves",
+      "improvable"
     ],
     "correct": 2,
     "explanation": "An improved version geliştirilmiş sürümdür."
@@ -15037,7 +15037,7 @@ export const foundationQuestions = [
       "explain",
       "explanation",
       "explanatory",
-      "explained",
+      "explaining",
       "unexplained"
     ],
     "correct": 2,
@@ -15984,7 +15984,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The equipment was carefully ____ throughout the trial.",
+    "prompt": "The equipment was carefully ____ by technicians throughout the trial.",
     "options": [
       "maintain",
       "maintenance",
@@ -16103,13 +16103,13 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The seasonal ____ in rainfall was greater than anticipated.",
+    "prompt": "The seasonal ____ in rainfall followed a clear annual pattern, with a predictable rise in winter and fall in summer.",
     "options": [
       "vary",
       "variation",
       "variable",
-      "variability",
-      "varied"
+      "varied",
+      "varying"
     ],
     "correct": 1,
     "explanation": "Variation mevsimsel değişimi ifade eden isimdir."
@@ -16141,8 +16141,8 @@ export const foundationQuestions = [
     "options": [
       "vary",
       "variation",
-      "variable",
       "variability",
+      "varies",
       "varied"
     ],
     "correct": 4,
