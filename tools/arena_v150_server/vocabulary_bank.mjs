@@ -77,6 +77,6 @@ export function createVocabularyBank(input,{curated=false}={}){
   }
   // Verify all chosen levels, filters and word counts again against the game engine.
   const selected=selectBank(result,cfg,seed);
-  return curated&&cfg.format==='quiz'?selectBank(diversifyQuiz(selected,cfg,seed),cfg,seed):selected;
+  return curated&&cfg.format==='quiz'?selectBank(diversifyQuiz(selected,cfg,seed,pool),cfg,seed):selected;
  };
 }

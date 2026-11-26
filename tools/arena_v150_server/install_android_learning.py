@@ -6,6 +6,8 @@ java=src/'java/com/kelimebulmacasi/a1'
 data=(root/'tools/arena_v150_server/learning_content.mjs').read_text('utf-8')
 words=json.loads(data.split('export const authoredWords = ',1)[1].split(';\nexport const authoredQuestions',1)[0])
 qs=json.loads(data.split('export const authoredQuestions = ',1)[1].rstrip().removesuffix(';'))
+more=(root/'tools/arena_v150_server/learning_more.mjs').read_text('utf-8')
+qs += json.loads(more.split('export const extraQuestions = ',1)[1].split(';\nexport const grammarVariants = ',1)[0])
 # Existing YDS Academy has a strict four-choice contract; keep it unchanged.
 # Arena uses all five authored choices.
 qs=[q for q in qs if q['yds']]
@@ -16,7 +18,9 @@ for q in qs:
  opts=', '.join(k(o) for o in q['options'][:4])
  diff={'easy':'Easy','medium':'Medium','hard':'Hard'}[q['yds']]
  rows.append('        YdsQuestion('+', '.join([k(q['id']),'YdsTopic.'+q['topic'],'YdsDifficulty.'+diff,k(q['prompt']),'listOf('+opts+')','0',k(q['explanation'])])+')')
-(java/'Wq150LearningQuestions.kt').write_text('package com.kelimebulmacasi.a1\n\ninternal object Wq150LearningQuestions {\n    val questions = listOf(\n'+',\n'.join(rows)+'\n    )\n}\n','utf-8')
+chunks=['    private fun batch'+str(i//30)+'() = listOf(\n'+',\n'.join(rows[i:i+30])+'\n    )' for i in range(0,len(rows),30)]
+joined=' + '.join('batch'+str(i)+'()' for i in range(len(chunks)))
+(java/'Wq150LearningQuestions.kt').write_text('package com.kelimebulmacasi.a1\n\ninternal object Wq150LearningQuestions {\n'+'\n'.join(chunks)+'\n    val questions by lazy { '+joined+' }\n}\n','utf-8')
 yds=java/'YdsContent.kt'
 s=yds.read_text('utf-8')
 anchor='Wq176YdsGenerated.questions'

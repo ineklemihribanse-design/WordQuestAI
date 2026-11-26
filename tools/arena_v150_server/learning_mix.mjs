@@ -17,11 +17,19 @@ export function appendLearningWords(input,licensed=[]){
 // Replace a bounded share of translation items only when an unfiltered match
 // has an eligible curated question at the same selected difficulty. Never
 // alter requested count, selected levels, word-type filters or topic filters.
-export function diversifyQuiz(items,cfg,seed){
- if(cfg.topic!==null||cfg.wordType!==null)return items;
+export function diversifyQuiz(items,cfg,seed,records=[]){
+ const filtered=cfg.topic!==null||cfg.wordType!==null;
  const used=new Set(),result=[];
  const key=q=>cfg.scale==='yds'?q.yds:q.level;
- const eligible=allLearningQuestions.filter(q=>cfg.levels.includes(key(q)));
+ const eligible=allLearningQuestions.filter(q=>cfg.levels.includes(key(q))).flatMap(q=>{
+  if(!filtered)return [{...q,topicId:null,wordType:null}];
+  // A filtered vocabulary question must have a verified matching target word.
+  if(q.topic!=='Vocabulary')return [];
+  const answer=q.options[q.correct].toUpperCase();
+  const record=records.find(w=>w.answer.toUpperCase()===answer&&key(w)===key(q)&&
+    (cfg.topic===null||w.topic===cfg.topic)&&(cfg.wordType===null||w.wordType===cfg.wordType));
+  return record?[{...q,topicId:record.topic,wordType:record.wordType}]:[];
+ });
  const byLevel=new Map();
  for(const q of eligible){
   const k=key(q);if(!byLevel.has(k))byLevel.set(k,[]);byLevel.get(k).push(q);
@@ -36,7 +44,7 @@ export function diversifyQuiz(items,cfg,seed){
   if(q&&used.size<Math.ceil(items.length*0.65)){
    used.add(q.id);families.add(q.topic);if(q.family)usedPatterns.add(q.family);
    const options=[...q.options].sort((a,b)=>hash(seed,q.id,a).localeCompare(hash(seed,q.id,b)));
-   result.push({id:q.id,level:q.level,yds:q.yds,topic:null,wordType:null,prompt:q.prompt,options,correct:options.indexOf(q.options[q.correct]),letterCount:Math.max(2,Math.min(24,q.options[q.correct].length))});
+   result.push({id:q.id,level:q.level,yds:q.yds,topic:q.topicId,wordType:q.wordType,prompt:q.prompt,options,correct:options.indexOf(q.options[q.correct]),letterCount:Math.max(2,Math.min(24,q.options[q.correct].length))});
   }else result.push(item);
  }
  return result;
