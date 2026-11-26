@@ -81,7 +81,7 @@ s=once(s,"                val myTurn = match.cooperative || match.turnUid == myU
                     }
                 }
                 val hintPattern=word.cells.mapIndexed { i,cell ->
-                    retainedHints[cell] ?: fixedPattern.getOrElse(i){'.'}
+                    retainedHints[cell] ?: (if(i==revealedIndex)revealedChar else null) ?: fixedPattern.getOrElse(i){'.'}
                 }.joinToString("")
                 val hintBudget=Wq186ArenaFairPlay.hintsLeft(claimedHints.size,client.package6Rules.hints)
                 var hintPending by remember(match.code){mutableStateOf(false)}
@@ -171,8 +171,8 @@ s=read("ArenaReferenceComponents.kt")
 s=once(s,"""        if(expanded) ArenaMascotV2(avatar,Modifier.size(
             if(tablet) { if(active)75.dp else 68.dp }
             else { if(active)51.dp else 45.dp }))""","""        ArenaMascotV2(avatar,Modifier.size(
-            if(tablet)104.dp else 64.dp))""")
-s=once(s,".heightIn(min=if(expanded) { if(tablet)90.dp else 78.dp } else 48.dp)",".heightIn(min=if(expanded) { if(tablet)116.dp else 86.dp } else if(tablet)104.dp else 64.dp)")
+            if(tablet)120.dp else 76.dp))""")
+s=once(s,".heightIn(min=if(expanded) { if(tablet)90.dp else 78.dp } else 48.dp)",".heightIn(min=if(expanded) { if(tablet)132.dp else 90.dp } else if(tablet)120.dp else 76.dp)")
 out["ArenaReferenceComponents.kt"]=s
 
 
@@ -183,6 +183,8 @@ s=once(s,"    guestScore: Int\n) {","    guestScore: Int,\n    cardSocial: Wq148
 s=once(s,'    if (match.phase == "playing" || match.phase == "lobby") {', '''    SideEffect {
         cardSocial?.let { card ->
             card.events=emoji
+            card.hostDetails=if(match.mode=="quiz")"" else "Doğru: "+match.solvedBy.values.count{it==match.hostUid}+" · Yanlış: "+match.mistakesBy.values.sumOf{it[match.hostUid]?:0}
+            card.guestDetails=if(match.mode=="quiz")"" else "Doğru: "+match.solvedBy.values.count{it==match.guestUid}+" · Yanlış: "+match.mistakesBy.values.sumOf{it[match.guestUid]?:0}
             card.send={ symbol ->
                 if(myUid.isNotBlank() && match.phase=="playing" &&
                     Wq186ArenaFairPlay.validEmoji(symbol)) {
@@ -234,6 +236,8 @@ import androidx.compose.ui.platform.LocalDensity
 import kotlin.math.roundToInt""")
 s=once(s,"@Composable\nprivate fun Arena172ScorePlayer(","""internal class Wq148LiveSocial(val myUid:String,val hostUid:String,val guestUid:String) {
     var events by mutableStateOf<Map<String,Pair<String,Long>>>(emptyMap())
+    var hostDetails by mutableStateOf("")
+    var guestDetails by mutableStateOf("")
     var send:(String)->Unit={}
     var profile:()->Unit={}
     var finish:()->Unit={}
@@ -244,12 +248,12 @@ s=once(s,"@Composable\nprivate fun Arena172ScorePlayer(","""internal class Wq148
 private fun Wq148EmojiFlight(event:Pair<String,Long>?,from:Offset?,to:Offset?,origin:Offset) {
     val progress=remember{Animatable(1f)}
     var displayed by remember {mutableStateOf("")}
-    var last by remember {mutableLongStateOf(0L)}
+    var last by remember {mutableLongStateOf(System.currentTimeMillis())}
     val density=LocalDensity.current
     LaunchedEffect(event) {
         val next=event ?: return@LaunchedEffect
         val age=System.currentTimeMillis()-next.second
-        if(age !in -1500L..8000L || next.second<=last) return@LaunchedEffect
+        if(age !in -5000L..8000L || next.second<=last) return@LaunchedEffect
         // Firebase may replace a local server timestamp estimate. Avoid replaying
         // the same event twice, while still allowing repeated reactions.
         if(next.first==displayed && next.second-last<350L)return@LaunchedEffect
@@ -265,20 +269,22 @@ private fun Wq148EmojiFlight(event:Pair<String,Long>?,from:Offset?,to:Offset?,or
         Text(displayed,Modifier.offset{
             IntOffset((from.x+(to.x-from.x)*t-origin.x-center).roundToInt(),
                 (from.y+(to.y-from.y)*t-origin.y-arc-center).roundToInt())
-        },fontSize=28.sp)
+        }.graphicsLayer { alpha=minOf(1f,t*10f,(1f-t)*8f); scaleX=.8f+.2f*kotlin.math.sin(Math.PI*t).toFloat();scaleY=scaleX },fontSize=28.sp)
     }
 }
 
 @Composable
 private fun Arena172ScorePlayer(""")
 s=once(s,'    name:String,points:Int,avatar:String,active:Boolean,modifier:Modifier\n) {','''    name:String,points:Int,avatar:String,active:Boolean,modifier:Modifier,
-    onMascotPosition:(Offset)->Unit={},onEmoji:((String)->Unit)?=null,onProfile:(()->Unit)?=null
+    onMascotPosition:(Offset)->Unit={},onEmoji:((String)->Unit)?=null,onProfile:(()->Unit)?=null,
+    details:String=""
 ) {''')
-s=once(s,"        ArenaMascotV2(avatar,Modifier.size(\n            if(tablet)104.dp else 64.dp))","""        ArenaMascotV2(avatar,Modifier.size(
-            if(tablet)104.dp else 64.dp).onGloballyPositioned {
+s=once(s,"        ArenaMascotV2(avatar,Modifier.size(\n            if(tablet)120.dp else 76.dp))","""        ArenaMascotV2(avatar,Modifier.size(
+            if(tablet)120.dp else 76.dp).onGloballyPositioned {
                 onMascotPosition(it.positionInWindow()+Offset(it.size.width/2f,it.size.height/2f))
             })""")
-s=once(s,'            if(active && expanded) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)','''            if(active && expanded) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)
+s=once(s,'            if(active && expanded) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)','''            if(active) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)
+            if(expanded && details.isNotBlank())Text(details,color=Color(0xFFF3E6FF),fontSize=9.sp)
             if(onEmoji!=null) {
                 var menu by remember { mutableStateOf(false) }
                 Box {
@@ -307,11 +313,13 @@ s=s[:a]+'''    var origin by remember{mutableStateOf(Offset.Zero)}
 s=once(s,'Arena172ScorePlayer(hostName,hostScore,hostAvatar,!cooperative&&isHostTurn,\n            Modifier.weight(1f))','''Arena172ScorePlayer(hostName,hostScore,hostAvatar,!cooperative&&isHostTurn,
             Modifier.weight(1f),onMascotPosition={hostPosition=it},
             onEmoji=if(social!=null && social.myUid!=social.hostUid) ({ symbol:String -> social.send(symbol) }) else null,
-            onProfile=if(social!=null && social.myUid!=social.hostUid) ({ social.profile() }) else null)''')
+            onProfile=if(social!=null && social.myUid!=social.hostUid) ({ social.profile() }) else null,
+            details=social?.hostDetails.orEmpty())''')
 s=once(s,'Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!isHostTurn,\n            Modifier.weight(1f))\n    }\n}','''Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!isHostTurn,
             Modifier.weight(1f),onMascotPosition={guestPosition=it},
             onEmoji=if(social!=null && social.myUid!=social.guestUid) ({ symbol:String -> social.send(symbol) }) else null,
-            onProfile=if(social!=null && social.myUid!=social.guestUid) ({ social.profile() }) else null)
+            onProfile=if(social!=null && social.myUid!=social.guestUid) ({ social.profile() }) else null,
+            details=social?.guestDetails.orEmpty())
     }
     if(social!=null) {
         Wq148EmojiFlight(social.events[social.hostUid],hostPosition,guestPosition,origin)
