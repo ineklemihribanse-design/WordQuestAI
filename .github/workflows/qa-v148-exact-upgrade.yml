@@ -1,0 +1,245 @@
+name: Verify WordQuest AI 1.0.148 exact APK and delta (no publication)
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/qa-v148-exact-upgrade.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: wordquest-v148-exact-upgrade
+  # Read-only verification: never creates a public release.
+  cancel-in-progress: true
+env:
+  WQ_VERSION: '1.0.148'
+  WQ_BASE_VERSION: '1.0.146'
+  WQ_TARGET_CODE: '163'
+  WQ_BASE_CODE: '162'
+  WQ_SOURCE_SHA: 'd4b57cd7c745ac2f21f39df59568ecb2e803ff32'
+  WQ_NOTES: 'Arena canlı maç: profil kartları, emoji animasyonu, kalıcı ipuçları, tam ekran tahta ve klavye akışı. Yayın öncesi test adayı.'
+  WQ_QA_RUN: '45781313712'
+jobs:
+  preflight:
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      required: ${{ steps.check.outputs.required }}
+    steps:
+      - name: Skip duplicate publication of an already public APK
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          current=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)
+          if [ "$current" = "v$WQ_VERSION" ]; then
+            echo "required=false" >> "$GITHUB_OUTPUT"
+            echo "APK $current is already public; no duplicate device tests." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$current" = "v$WQ_BASE_VERSION" ]; then
+            echo "required=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Unexpected public version $current; refusing stale candidate."
+            exit 1
+          fi
+  upgrade:
+    needs: preflight
+    if: needs.preflight.outputs.required == 'true' && github.repository == 'ineklemihribanse-design/WordQuestAI'
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    outputs:
+      base_sha: ${{ steps.qa_proof.outputs.base_sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: d4b57cd7c745ac2f21f39df59568ecb2e803ff32
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: verified-ui-harness
+          persist-credentials: false
+      - name: Set shared directory
+        run: echo "WQ_RELEASE_DIR=$RUNNER_TEMP/wq-auto-release" >> "$GITHUB_ENV"
+      - name: Verify exact successful QA and obtain existing signed APK
+        id: qa_proof
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # Reuse the exact signed candidate and independent audit once complete.
+          # This job never publishes or deploys any Firebase rules.
+          for id in 45781313726 45781313702 "$WQ_QA_RUN"; do
+            deadline=$((SECONDS+1500))
+            while true; do
+              gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" > /tmp/wq-proof.json
+              jq -e --arg sha "$WQ_SOURCE_SHA" '.head_sha==$sha and .head_branch=="feature/v148-live-arena-refinement"' /tmp/wq-proof.json
+              if [ "$(jq -r .status /tmp/wq-proof.json)" = completed ]; then
+                jq -e '.conclusion=="success"' /tmp/wq-proof.json
+                break
+              fi
+              test "$SECONDS" -lt "$deadline"
+              sleep 20
+            done
+          done
+          # Validate the sole rule change against the v146 active rules.
+          git show HEAD:firebase/database.rules.v132.json > /tmp/v148-rules.json
+          gh api "repos/$GITHUB_REPOSITORY/contents/firebase/database.rules.v132.json?ref=11a56378d3ace007e01f1bbb52638426e002d412" --jq .content | base64 -d > /tmp/v146-rules.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("/tmp/v146-rules.json").read_text())
+          b=json.loads(Path("/tmp/v148-rules.json").read_text())
+          rule=a["rules"]["premiumRooms"]["$code"]["package6"]["emoji"]["$uid"]
+          old="newData.child('symbol').val() === '🏆')"
+          new="newData.child('symbol').val() === '🏆' || newData.child('symbol').val() === '❤️' || newData.child('symbol').val() === '😮')"
+          assert rule[".write"].count(old)==1
+          rule[".write"]=rule[".write"].replace(old,new)
+          assert a==b,"Unexpected Firebase policy change"
+          print("PASS: only two emoji values allowed; other security rules identical")
+          PY
+          gh run download 45781313726 -R "$GITHUB_REPOSITORY" -n WordQuestAI-full-assembled-source-audit -D "$RUNNER_TEMP/full-audit-proof"
+          gh run download 45776215250 -R "$GITHUB_REPOSITORY" -n WordQuestAI-full-assembled-source-audit -D "$RUNNER_TEMP/base-audit-proof"
+          python3 - <<'PY'
+          import os,json
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"full-audit-proof"
+          r=json.loads((p/"summary.json").read_text())
+          assert not r["structural_errors"],r["structural_errors"]
+          assert all(r["contracts"].values()),r["contracts"]
+          assert (p/"lint-exit-code.txt").read_text().strip()=="0"
+          def inventory(folder):
+              return {x["path"]:x["sha256"] for x in json.loads((folder/"inventory.json").read_text())}
+          old=inventory(Path(os.environ["RUNNER_TEMP"])/"base-audit-proof")
+          new=inventory(p)
+          changed={n for n in old.keys()|new.keys() if old.get(n)!=new.get(n)}
+          allowed={"app/build.gradle.kts"}|{"app/src/main/java/com/kelimebulmacasi/a1/"+n+".kt" for n in (
+            "ArenaBoardV2","ArenaCrosswordTyping","ArenaReferenceComponents","ArenaV2Visuals",
+            "PremiumOnlineScreen","Wq186ArenaFairPlay","Wq186ArenaSocialHud")}
+          assert changed==allowed,sorted(changed^allowed)
+          print("PASS: all unrelated sources and all voice/art assets byte-identical to v146")
+          print("PASS: complete source inventory, all structural contracts and Android Lint")
+          PY
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$WQ_QA_RUN/jobs?per_page=100" > /tmp/wq124-jobs.json
+          python3 - <<'PY'
+          import json
+          good={s['name'] for j in json.load(open('/tmp/wq124-jobs.json'))['jobs'] for s in j['steps'] if s['conclusion']=='success'}
+          assert {'Integrate signed data-only content updater and run packer tests','Run complete offline tests and build experimental unsigned APK in one Gradle invocation','Sign v1.0.148 with current installed-app production certificate','Preserve signed content updater candidate for separate device testing'} <= good
+          PY
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "v$WQ_BASE_VERSION"
+          mkdir -p "$WQ_RELEASE_DIR/"{base,signed,delta,classes}
+          gh run download "$WQ_QA_RUN" -R "$GITHUB_REPOSITORY" -n WordQuestAI-v1.0.148-signed-hybrid-engine-QA -D "$WQ_RELEASE_DIR/signed"
+          gh release download "v$WQ_BASE_VERSION" -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$WQ_RELEASE_DIR/base"
+          test -s "$WQ_RELEASE_DIR/signed/WordQuestAI-v1.0.148-signed-qa.apk"
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/v$WQ_BASE_VERSION" > /tmp/wq-base-release.json
+          jq -e --arg tag "v$WQ_BASE_VERSION" '.tag_name==$tag and .draft==false and .prerelease==false' /tmp/wq-base-release.json
+          WQ_BASE_SHA=$(jq -er '.assets[]|select(.name=="WordQuestAI.apk" and .state=="uploaded")|.digest|select(test("^sha256:[0-9a-f]{64}$"))|sub("^sha256:";"")' /tmp/wq-base-release.json)
+          jq -e --arg sha "$WQ_BASE_SHA" --argjson code "$WQ_BASE_CODE" '.sha256==$sha and .versionCode==$code and .packageName=="com.kelimebulmacasi.a1.practice.fresh"' "$WQ_RELEASE_DIR/base/update.json"
+          echo "$WQ_BASE_SHA  $WQ_RELEASE_DIR/base/WordQuestAI.apk" | sha256sum -c -
+          echo "WQ_BASE_SHA=$WQ_BASE_SHA" >> "$GITHUB_ENV"
+          echo "base_sha=$WQ_BASE_SHA" >> "$GITHUB_OUTPUT"
+      - name: Verify signed APK and prepare compatible delta manifest
+        run: |
+          set -euo pipefail
+          D="$WQ_RELEASE_DIR"
+          if [ ! -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" ]; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+          apk="$D/signed/WordQuestAI-v1.0.148-signed-qa.apk"
+          java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify --verbose --print-certs "$apk" > "$D/signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$D/signature.txt"
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$D/signature.txt"
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$D/signature.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$apk" > "$D/badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$D/badging.txt"
+          grep -Fq "versionCode='163'" "$D/badging.txt"
+          grep -Fq "versionName='1.0.148'" "$D/badging.txt"
+          ! grep -Fq 'application-debuggable' "$D/badging.txt"
+          unzip -tq "$apk"
+          python3 - <<'PY'
+          import os,json,hashlib,zipfile
+          from pathlib import Path
+          d=Path(os.environ['WQ_RELEASE_DIR'])
+          p=d/'signed/WordQuestAI-v1.0.148-signed-qa.apk'
+          with p.open('rb') as f: h=hashlib.file_digest(f,'sha256').hexdigest()
+          with zipfile.ZipFile(p) as z:
+              dex=[z.read(n) for n in z.namelist() if n.startswith('classes') and n.endswith('.dex')]
+              for cls in (b'WqContentInitProvider',b'Wq130WebLobby',b'Wq130WebBundle',b'Wq132WebEngine',b'Wq132RoomSettings',b'Wq136RecoveryEngine',b'Wq140ArenaFit',b'WqDriveMascotKt',b'Wq183ArenaShare',b'Wq183MascotStore',b'Wq148LiveSocial'):
+                  assert any(cls in d for d in dex),cls
+              assert z.read('assets/web/arena_lobby.html').startswith(b'<!DOCTYPE html>')
+              assert 'assets/design/arena_lobby.json' in z.namelist()
+              (d/'arena_engine.html').write_bytes(z.read('assets/web/arena_engine.html'))
+              (d/'arena-vocabulary-v1.json').write_bytes(z.read('assets/arena-vocabulary-v1.json'))
+          m=dict(schemaVersion=1,tag='v1.0.148',versionCode=163,versionName='1.0.148',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=h,notes=os.environ['WQ_NOTES'])
+          (d/'signed/update.json').write_text(json.dumps(m))
+          PY
+          node tools/v132_engine/smoke_bundle.mjs "$D/arena_engine.html" "$D/arena-vocabulary-v1.json"
+          node tools/v132_engine/test_transport.mjs "$D/arena_engine.html" "$D/arena-vocabulary-v1.json"
+          python3 tools/delta_v1/make_delta.py "$D/base/WordQuestAI.apk" "$apk" "$D/base/update.json" "$D/signed/update.json" "$D/delta"
+          python3 - <<'PY'
+          import os,json,shutil
+          from pathlib import Path
+          d=Path(os.environ['WQ_RELEASE_DIR'])
+          r=json.loads((d/'delta/delta-report.json').read_text())
+          assert r['eligible'], 'Delta too large; no silent full APK fallback'
+          m=json.loads((d/'signed/update.json').read_text())
+          m['deltas']=[r['delta']]
+          for dest in ('signed','delta'):
+              (d/dest/'update.json').write_text(json.dumps(m))
+          shutil.copyfile(d/'delta/delta-report.json',d/'signed/delta-report.json')
+          PY
+          python3 tools/auto_release/prepare.py
+          javac -d "$D/classes" tools/delta_android/WqDeltaApplier.java
+          test -e /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - name: Reconstruct installed APK and verify Android upgrade without uninstall
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          # Always run exact upgrade/data retention proof; then select UI checks
+          # using actual signed APK byte differences, defaulting to all scenarios.
+          cp verified-ui-harness/tools/v132_runtime/qa_engine_ui_v140.py "$RUNNER_TEMP/wq134-gameplay.py"
+          cp verified-ui-harness/tools/v132_runtime/qa_release_scope.py "$RUNNER_TEMP/wq-ui-scope.py"
+          cat > "$RUNNER_TEMP/wq134-upgrade-and-gameplay.sh" <<'SH'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          bash tools/auto_release/verify_delta_install.sh
+          python3 -c 'import PIL' || python3 -m pip install --disable-pip-version-check Pillow
+          python3 "$RUNNER_TEMP/wq-ui-scope.py" "$WQ_RELEASE_DIR/base/WordQuestAI.apk" "$WQ_RELEASE_DIR/target.apk" --harness "$RUNNER_TEMP/wq134-gameplay.py" --report "$WQ_RELEASE_DIR/ui-scope.json"
+          SH
+          bash tools/auto_release/run_emulator.sh "$RUNNER_TEMP/wq134-upgrade-and-gameplay.sh" "$WQ_RELEASE_DIR/target.apk"
+          grep -Fq 'PASS: scope-selected release UI checks' "$RUNNER_TEMP/wq206-upgrade-qa.log"
+          test -s "$WQ_RELEASE_DIR/ui-scope.json"
+          sha256sum -c "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
+          cp "$RUNNER_TEMP/wq206-upgrade-passed.sha256" "$WQ_RELEASE_DIR/upgrade-proof.sha256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.148-verified-upgrade-only
+          path: |
+            ${{ runner.temp }}/wq-auto-release/dist
+            ${{ runner.temp }}/wq-auto-release/upgrade-proof.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: WordQuestAI-v1.0.148-device-diagnostics
+          path: |
+            ${{ runner.temp }}/wq-auto-release/report.json
+            ${{ runner.temp }}/wq-auto-release/before.txt
+            ${{ runner.temp }}/wq-auto-release/after.txt
+            ${{ runner.temp }}/wq-auto-release/startup.png
+            ${{ runner.temp }}/wq-auto-release/arena-*.png
+            ${{ runner.temp }}/wq-auto-release/arena-*.xml
+            ${{ runner.temp }}/wq-auto-release/ui-scope.json
+            ${{ runner.temp }}/wq206-upgrade-qa.log
+            ${{ runner.temp }}/wq206-emulator.log
+          if-no-files-found: ignore
+          retention-days: 7
