@@ -1,0 +1,16 @@
+{
+  "name": "wordquest-arena-v150",
+  "version": "1.0.150",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "firebase-admin": "13.4.0"
+  },
+  "scripts": {
+    "start": "node arena_runtime.mjs",
+    "test": "node --test trusted_bank.test.mjs"
+  }
+}
