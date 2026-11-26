@@ -4,7 +4,7 @@ import {createArenaHandler} from '../v132_engine/arena_gateway.mjs';
 import {sweepRoom} from '../v132_engine/presence.mjs';
 import {safeNickname} from '../v132_engine/profiles.mjs';
 import {createVocabularyBank} from './vocabulary_bank.mjs';
-import {roomDatabase,nextAlarm,handleFetch} from './free_room_adapter.mjs';
+import {roomDatabase,nextAlarm,retentionDeadline,handleFetch} from './free_room_adapter.mjs';
 import {authenticate} from './free_auth.mjs';
 import bank from './arena-vocabulary-v1.json';
 const bankBuilder=createVocabularyBank(bank);
@@ -97,22 +97,32 @@ export class ArenaRoom extends DurableObject{
     await this.ctx.storage.put('nickname:'+uid,safeNickname(decodeURIComponent(nick)));
    if(state){
     await this.ctx.storage.put('room',room);
-    const next=nextAlarm(state,Date.now());
-    if(next!==null)await this.ctx.storage.setAlarm(next);
-    else await this.ctx.storage.setAlarm(Date.now()+24*60*60*1000);
+    await this.schedule(state);
    }
    return response;
   });
  }
+ async schedule(state){
+  const now=Date.now(),existing=await this.ctx.storage.get('retentionUntil');
+  const due=retentionDeadline(state,now,existing);
+  if(due===null)return;
+  if(nextAlarm(state,now)===null&&!Number.isSafeInteger(existing))await this.ctx.storage.put('retentionUntil',due);
+  if(await this.ctx.storage.getAlarm()!==due)await this.ctx.storage.setAlarm(due);
+ }
  async alarm(){
   const room=await this.ctx.storage.get('room');if(!roomId(room))return;
   const db=roomDatabase(this.ctx.storage,room),ref=db.ref('arenaV150Private/'+room);
-  const before=(await ref.get()).val();
-  if(!before||!before.game||before.result!==null||before.game.phase==='finished'||before.connection.phase==='finished'){
+  const before=(await ref.get()).val(),now=Date.now();
+  if(!before||before.phase==='lobby'&&now>=before.now+600000){
    await this.ctx.storage.deleteAll();return;
   }
+  if(before.phase==='lobby'){await this.schedule(before);return;}
+  if(nextAlarm(before,now)===null){
+   const until=await this.ctx.storage.get('retentionUntil');
+   if(Number.isSafeInteger(until)&&now>=until){await this.ctx.storage.deleteAll();return;}
+   await this.schedule(before);return;
+  }
   await sweepRoom(ref,Date.now);
-  const next=nextAlarm((await ref.get()).val(),Date.now());
-  await this.ctx.storage.setAlarm(next??Date.now()+24*60*60*1000);
+  await this.schedule((await ref.get()).val());
  }
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {roomDatabase,nextAlarm,handleFetch} from './free_room_adapter.mjs';
+import {roomDatabase,nextAlarm,retentionDeadline,handleFetch} from './free_room_adapter.mjs';
 function storage(){
  const data=new Map();const tx={get:async k=>data.get(k),put:async(k,v)=>data.set(k,structuredClone(v)),delete:async k=>data.delete(k),
   list:async({prefix})=>new Map([...data].filter(([k])=>k.startsWith(prefix)))};
@@ -28,4 +28,12 @@ test('HTTP bridge keeps public actor header out',async()=>{
  const request=new Request('https://x/v150/matches/room123',{method:'POST',headers:{'x-internal-uid':'fake'},body:'{"type":"pass"}'});
  const res=await handleFetch(async(req,res)=>{assert.equal(req.headers['x-internal-uid'],undefined);let body='';for await(const b of req)body+=Buffer.from(b).toString();assert.equal(body,'{"type":"pass"}');res.statusCode=200;res.end('ok');},request,{uid:'real'});
  assert.equal(await res.text(),'ok');
+});
+
+test('lobby polling does not extend its idle deadline',()=>{
+ const s={phase:'lobby',now:1000};assert.equal(nextAlarm(s,100000),601000);assert.equal(nextAlarm(s,200000),601000);
+});
+test('finished room retention is fixed, not extended by reads',()=>{
+ const s={game:{phase:'finished'},result:{kind:'forfeit'}};
+ const due=retentionDeadline(s,1000,null);assert.equal(due,86401000);assert.equal(retentionDeadline(s,100000,due),due);
 });

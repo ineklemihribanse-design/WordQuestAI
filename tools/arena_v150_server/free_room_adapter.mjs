@@ -33,7 +33,7 @@ export function roomDatabase(storage,room){
 }
 export function nextAlarm(state,now){
  if(!state)return null;
- if(state.phase==='lobby')return now+600000;
+ if(state.phase==='lobby')return Math.max(now+50,state.now+600000);
  if(!state.game||state.result!==null||state.game.phase==='finished'||state.connection.phase==='finished')return null;
  const times=[];
  for(const p of state.connection.players){
@@ -64,4 +64,12 @@ export async function handleFetch(handler,request,identity){
   set statusCode(v){statusCode=v;},end(v){body=v??'';}};
  await handler(req,res,identity);
  return new Response(body,{status:statusCode,headers});
+}
+
+// Retention is measured from the first terminal observation, not the last poll.
+export function retentionDeadline(state,now,existing){
+ if(!state)return null;
+ const live=nextAlarm(state,now);
+ if(live!==null)return live;
+ return Number.isSafeInteger(existing)?existing:now+86400000;
 }
