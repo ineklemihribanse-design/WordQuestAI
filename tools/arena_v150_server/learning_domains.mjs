@@ -2558,8 +2558,697 @@ export const domainWords = [
     "wordType": "İsimler",
     "answer": "BIJECTION",
     "meaning": "bire bir ve örten eşleme"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "METROLOGY",
+    "meaning": "ölçüm bilimi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "DOSIMETRY",
+    "meaning": "doz ölçümü"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "SPECTROMETRY",
+    "meaning": "spektrum ölçümü"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "PHOTOMETRY",
+    "meaning": "ışık ölçümü"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "CENTRIFUGATION",
+    "meaning": "merkezkaçla ayırma"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "CHROMATOGRAPHY",
+    "meaning": "kromatografi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "CRYOGENICS",
+    "meaning": "çok düşük sıcaklıklar bilimi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "VISCOMETRY",
+    "meaning": "viskozite ölçümü"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "ELECTROLYSIS",
+    "meaning": "elektroliz"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "PASSIVATION",
+    "meaning": "pasifleştirme"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "ADSORBENT",
+    "meaning": "yüzeyde tutucu madde"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "ELUENT",
+    "meaning": "elüsyon çözücüsü"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "LEACHATE",
+    "meaning": "sızıntı suyu"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "ALIQUOT",
+    "meaning": "ölçülü alt numune"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "REPLICABILITY",
+    "meaning": "tekrarlanabilirlik"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "TRACEABILITY",
+    "meaning": "izlenebilirlik"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Bilim ve Araştırma",
+    "wordType": "İsimler",
+    "answer": "COMMENSURABILITY",
+    "meaning": "ortak ölçüyle karşılaştırılabilirlik"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "PEATLAND",
+    "meaning": "turba arazisi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "WATERSHED",
+    "meaning": "su toplama havzası"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "HEADWATER",
+    "meaning": "akarsu kaynağı"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "FLOODPLAIN",
+    "meaning": "taşkın ovası"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "ESTUARY",
+    "meaning": "gelgit etkili nehir ağzı"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "MUDFLAT",
+    "meaning": "gelgit çamur düzlüğü"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "WATERSPOUT",
+    "meaning": "su hortumu"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "PERMAFROST",
+    "meaning": "kalıcı donmuş zemin"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "THAWING",
+    "meaning": "çözülme"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "SALINIZATION",
+    "meaning": "tuzlanma"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "EUTROPHICATION",
+    "meaning": "besin zenginleşmesi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "REVEGETATION",
+    "meaning": "bitki örtüsünü yeniden oluşturma"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "AFFORESTATION",
+    "meaning": "ağaçlandırma"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "REFORESTATION",
+    "meaning": "yeniden ormanlaştırma"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "AGROFORESTRY",
+    "meaning": "tarımsal ormancılık"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "OVERGRAZING",
+    "meaning": "aşırı otlatma"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "BYCATCH",
+    "meaning": "hedef dışı av"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "UPWELLING",
+    "meaning": "derin suların yüzeye yükselmesi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "ECOTONE",
+    "meaning": "ekolojik geçiş bölgesi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Çevre ve Ekoloji",
+    "wordType": "İsimler",
+    "answer": "DETRITUS",
+    "meaning": "organik kalıntılar"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "FORECLOSURE",
+    "meaning": "ipoteğin paraya çevrilmesi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "AMORTIZATION",
+    "meaning": "borcun dönemsel ödenmesi"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "ARREARS",
+    "meaning": "vadesi geçmiş borçlar"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "RECEIVABLE",
+    "meaning": "alacak"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "DELEVERAGING",
+    "meaning": "borçluluğun azaltılması"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "UNDERWRITING",
+    "meaning": "risk üstlenme ve değerlendirme"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "OLIGOPSONY",
+    "meaning": "az sayıda alıcının egemenliği"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "WINDFALL",
+    "meaning": "beklenmedik kazanç"
+  },
+  {
+    "level": "C1",
+    "yds": "hard",
+    "category": "Ekonomi",
+    "wordType": "İsimler",
+    "answer": "SHORTFALL",
+    "meaning": "açık"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "ADUMBRATE",
+    "meaning": "ana hatlarıyla belirtmek"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "CIRCUMSCRIBE",
+    "meaning": "sınırlandırmak"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "DEMARCATE",
+    "meaning": "sınırlarını belirlemek"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "DISAMBIGUATE",
+    "meaning": "anlam belirsizliğini gidermek"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "EXPLICATE",
+    "meaning": "ayrıntılı biçimde açıklamak"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "EXCULPATE",
+    "meaning": "suçsuzluğunu göstermek"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "EXONERATE",
+    "meaning": "suçlamadan aklamak"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "IMPUTE",
+    "meaning": "atfetmek"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "OBFUSCATE",
+    "meaning": "anlaşılmaz hâle getirmek"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "PROSCRIBE",
+    "meaning": "yasaklamak"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Fiiller",
+    "answer": "SUPERSEDE",
+    "meaning": "yerini almak"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "INCHOATE",
+    "meaning": "henüz biçimlenmemiş"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "PUTATIVE",
+    "meaning": "varsayılan"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "INCOMMENSURABLE",
+    "meaning": "ortak ölçüyle karşılaştırılamaz"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "SPURIOUS",
+    "meaning": "sahte veya yanıltıcı"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "SUPERFLUOUS",
+    "meaning": "gereksiz"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "TACIT",
+    "meaning": "örtük"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "INEXORABLE",
+    "meaning": "önlenemez"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "OBDURATE",
+    "meaning": "inatla direnen"
+  },
+  {
+    "level": "C2",
+    "yds": "hard",
+    "category": "Akademik İngilizce",
+    "wordType": "Sıfatlar",
+    "answer": "RECALCITRANT",
+    "meaning": "otoriteye direnen"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "KINSHIP",
+    "meaning": "akrabalık"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "LINEAGE",
+    "meaning": "soy"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "DIASPORA",
+    "meaning": "diaspora"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "ASSIMILATION",
+    "meaning": "özümseme"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "ACCULTURATION",
+    "meaning": "kültürlenme"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "SEGREGATION",
+    "meaning": "ayrımcı ayrıştırma"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "DISENFRANCHISEMENT",
+    "meaning": "haklardan yoksun bırakma"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "STIGMA",
+    "meaning": "toplumsal damgalanma"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "SOLIDARITY",
+    "meaning": "dayanışma"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "RECIPROCITY",
+    "meaning": "karşılıklılık"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "PATRONAGE",
+    "meaning": "himaye"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "NEPOTISM",
+    "meaning": "akraba kayırmacılığı"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "PLURALISM",
+    "meaning": "çoğulculuk"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "SECULARISM",
+    "meaning": "laiklik"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "CITIZENSHIP",
+    "meaning": "vatandaşlık"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "DISPLACEMENT",
+    "meaning": "yerinden edilme"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "RESETTLEMENT",
+    "meaning": "yeniden yerleştirme"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "LIVELIHOOD",
+    "meaning": "geçim kaynağı"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "ARTISAN",
+    "meaning": "zanaatkâr"
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "category": "Toplum ve Kültür",
+    "wordType": "İsimler",
+    "answer": "APPRENTICESHIP",
+    "meaning": "çıraklık"
   }
 ];
+
 export const domainQuestions = [
   {
     "id": "wq150_domain_1",
@@ -3696,5 +4385,421 @@ export const domainQuestions = [
     ],
     "correct": 0,
     "explanation": "Homeomorphism iki topolojik uzay arasında sürekli ve sürekli tersli bire bir örten eşlemedir."
+  },
+  {
+    "id": "wq150_domain_nov26_1",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The wetland became increasingly unsuitable for freshwater species as irrigation caused soil ____ .",
+    "options": [
+      "salinization",
+      "sedimentation",
+      "pollination",
+      "aeration",
+      "decomposition"
+    ],
+    "correct": 0,
+    "explanation": "Sulama kaynaklı tuz birikimi salinization ile ifade edilir."
+  },
+  {
+    "id": "wq150_domain_nov26_2",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "To identify the source of a manufacturing defect, the team needed full ____ of each component from supplier to assembly.",
+    "options": [
+      "traceability",
+      "portability",
+      "permeability",
+      "elasticity",
+      "solubility"
+    ],
+    "correct": 0,
+    "explanation": "Traceability, bir parçanın geçmişinin ve kaynağının izlenebilmesidir."
+  },
+  {
+    "id": "wq150_domain_nov26_3",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "A decline in the inflation rate from 8% to 3%, while prices continue rising, is an example of ____ .",
+    "options": [
+      "disinflation",
+      "deflation",
+      "stagflation",
+      "depreciation",
+      "insolvency"
+    ],
+    "correct": 0,
+    "explanation": "Disinflation fiyatların değil, fiyat artış hızının düşmesidir."
+  },
+  {
+    "id": "wq150_domain_nov26_4",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "A fishing method that unintentionally captures turtles creates a significant problem of ____ .",
+    "options": [
+      "bycatch",
+      "upwelling",
+      "overgrazing",
+      "runoff",
+      "reforestation"
+    ],
+    "correct": 0,
+    "explanation": "Bycatch, hedeflenmeyen canlıların avlanmasıdır."
+  },
+  {
+    "id": "wq150_domain_nov26_5",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The two surveys measured different constructs; treating their scores as interchangeable would ____ distinct concepts.",
+    "options": [
+      "conflate",
+      "substantiate",
+      "demarcate",
+      "explicate",
+      "corroborate"
+    ],
+    "correct": 0,
+    "explanation": "Conflate, ayrı kavramları birbirine karıştırmak anlamına gelir."
+  },
+  {
+    "id": "wq150_domain_nov26_6",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The old regulation ceased to apply when a later law explicitly ____ it.",
+    "options": [
+      "abrogated",
+      "substantiated",
+      "ratified",
+      "codified",
+      "enforced"
+    ],
+    "correct": 0,
+    "explanation": "Abrogate, bir yasayı veya düzenlemeyi yürürlükten kaldırmaktır."
+  },
+  {
+    "id": "wq150_domain_nov26_7",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The reasoning initially appeared convincing, but its central premise was false; the argument was therefore ____ .",
+    "options": [
+      "specious",
+      "irrefutable",
+      "conclusive",
+      "sound",
+      "empirical"
+    ],
+    "correct": 0,
+    "explanation": "Specious, görünüşte doğru ama gerçekte yanıltıcı demektir."
+  },
+  {
+    "id": "wq150_domain_nov26_8",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "Without a larger sample, the researchers could not ____ their claim about rare adverse events.",
+    "options": [
+      "substantiate",
+      "obfuscate",
+      "repudiate",
+      "circumscribe",
+      "proscribe"
+    ],
+    "correct": 0,
+    "explanation": "Substantiate, bir iddiayı kanıtlarla desteklemektir."
+  },
+  {
+    "id": "wq150_domain_nov26_9",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The organisation was criticised for appointing relatives rather than selecting candidates on merit; the practice is known as ____ .",
+    "options": [
+      "nepotism",
+      "pluralism",
+      "reciprocity",
+      "solidarity",
+      "assimilation"
+    ],
+    "correct": 0,
+    "explanation": "Nepotism, akraba kayırmacılığıdır."
+  },
+  {
+    "id": "wq150_domain_nov26_10",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "After flooding destroyed their farmland, many families lost their primary ____ .",
+    "options": [
+      "livelihood",
+      "citizenship",
+      "lineage",
+      "kinship",
+      "patronage"
+    ],
+    "correct": 0,
+    "explanation": "Livelihood, geçim kaynağı anlamına gelir."
+  },
+  {
+    "id": "wq150_domain_nov26_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "Only after the samples had been independently analysed ____ the discrepancy.",
+    "options": [
+      "did the researchers identify",
+      "the researchers identified",
+      "had the researchers identifying",
+      "the researchers did identify",
+      "were the researchers identify"
+    ],
+    "correct": 0,
+    "explanation": "Only after öne geldiğinde ana cümlede devrik yapı kullanılır."
+  },
+  {
+    "id": "wq150_domain_nov26_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "The archive contains letters that ____ before the collection was donated.",
+    "options": [
+      "had never been catalogued",
+      "have never catalogued",
+      "would never catalogue",
+      "are never cataloguing",
+      "were never catalogue"
+    ],
+    "correct": 0,
+    "explanation": "Bağıştan önce tamamlanmamış edilgen işlem için past perfect passive gerekir."
+  },
+  {
+    "id": "wq150_domain_nov26_13",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The committee recommended that each proposal ____ by two independent reviewers.",
+    "options": [
+      "be assessed",
+      "is assessing",
+      "has assessed",
+      "was assessing",
+      "assesses"
+    ],
+    "correct": 0,
+    "explanation": "Recommend that sonrasında yalın fiilli subjunctive kullanılır; burada edilgen be assessed gerekir."
+  },
+  {
+    "id": "wq150_domain_nov26_14",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "Had the instrument been recalibrated before the trial, the researchers ____ the systematic error.",
+    "options": [
+      "might have avoided",
+      "might avoid yesterday",
+      "will have avoided",
+      "had been avoiding",
+      "would avoid yesterday"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişe aykırı koşulda had + V3 ve might have + V3 kullanılır."
+  },
+  {
+    "id": "wq150_domain_nov26_15",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Connectors",
+    "prompt": "The intervention reduced average waiting times. ____ , its effect was negligible in remote districts.",
+    "options": [
+      "However",
+      "Consequently",
+      "Similarly",
+      "For instance",
+      "In addition"
+    ],
+    "correct": 0,
+    "explanation": "İkinci cümle ilk sonucun sınırlılığını gösterir; however karşıtlık kurar."
+  },
+  {
+    "id": "wq150_domain_nov26_16",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The coastal road was closed ____ the risk of landslides following prolonged rainfall.",
+    "options": [
+      "because of",
+      "even though",
+      "so that",
+      "whereas",
+      "provided that"
+    ],
+    "correct": 0,
+    "explanation": "Because of sonrasında isim öbeği gelir ve neden bildirir."
+  },
+  {
+    "id": "wq150_domain_nov26_17",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Completion",
+    "prompt": "Unless the findings can be reproduced under comparable conditions, ____ .",
+    "options": [
+      "the proposed explanation should be treated with caution",
+      "their validity is established beyond doubt",
+      "the original method is necessarily flawless",
+      "the sample size cannot influence any estimate",
+      "the replication has already succeeded"
+    ],
+    "correct": 0,
+    "explanation": "Unless koşulu, doğrulanmamış bulgulara temkinli yaklaşmayı gerektirir."
+  },
+  {
+    "id": "wq150_domain_nov26_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Completion",
+    "prompt": "Although the categories are analytically useful, ____ .",
+    "options": [
+      "their boundaries may be less distinct in practice",
+      "they must be universally applicable by definition",
+      "no empirical observation can challenge them",
+      "they eliminate every source of uncertainty",
+      "their definitions require no justification"
+    ],
+    "correct": 0,
+    "explanation": "Although zıtlık kurar; kuramsal yarar uygulamadaki kesin sınırları garanti etmez."
+  },
+  {
+    "id": "wq150_domain_nov26_19",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A city planted trees to reduce summer heat. Temperature readings improved in shaded streets, while nearby unshaded streets showed little change. What does the evidence most directly suggest?",
+    "options": [
+      "The cooling effect was spatially uneven.",
+      "Tree planting increased temperatures everywhere.",
+      "All streets benefited equally.",
+      "The city no longer experienced summer heat.",
+      "Shade was unrelated to the measurements."
+    ],
+    "correct": 0,
+    "explanation": "Gölge alan ve gölgesiz sokaklar farklı sonuç verdiğinden etki mekânsal olarak eşit değildir."
+  },
+  {
+    "id": "wq150_domain_nov26_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An evaluation found that participants who chose a training programme earned more than those who did not. Yet the former group already had higher earnings before enrolment. What is the principal limitation?",
+    "options": [
+      "Pre-existing differences complicate causal attribution.",
+      "The programme necessarily reduced earnings.",
+      "The observed difference proves the programme was effective.",
+      "Baseline earnings are irrelevant to the comparison.",
+      "Self-selection guarantees equivalent groups."
+    ],
+    "correct": 0,
+    "explanation": "Başlangıç farkları seçilim yanlılığına yol açabilir; nedensel etki doğrudan çıkarılamaz."
+  },
+  {
+    "id": "wq150_domain_nov26_21",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Synonym",
+    "prompt": "The investigator described the conclusions as 'provisional'. Which expression is closest in meaning?",
+    "options": [
+      "subject to revision",
+      "beyond dispute",
+      "legally binding",
+      "entirely unrelated",
+      "deliberately fabricated"
+    ],
+    "correct": 0,
+    "explanation": "Provisional geçici, sonradan değiştirilebilir anlamındadır."
+  },
+  {
+    "id": "wq150_domain_nov26_22",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Synonym",
+    "prompt": "The policy was intended to 'preclude' further conflicts of interest. What does preclude mean here?",
+    "options": [
+      "make impossible",
+      "bring to light",
+      "give rise to",
+      "assess impartially",
+      "tolerate reluctantly"
+    ],
+    "correct": 0,
+    "explanation": "Preclude bir şeyin gerçekleşmesini önlemek, olanaksız kılmaktır."
+  },
+  {
+    "id": "wq150_domain_nov26_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "By the time the new bridge opens, engineers ____ its safety systems for several months.",
+    "options": [
+      "will have been testing",
+      "have tested yesterday",
+      "had tested last year",
+      "were testing tomorrow",
+      "are tested"
+    ],
+    "correct": 0,
+    "explanation": "Gelecekte bir noktaya kadar sürmüş eylem için future perfect continuous kullanılır."
+  },
+  {
+    "id": "wq150_domain_nov26_24",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The experiment used a measured portion of the original solution rather than the entire sample. This portion is called an ____ .",
+    "options": [
+      "aliquot",
+      "eluent",
+      "adsorbent",
+      "effluent",
+      "precipitate"
+    ],
+    "correct": 0,
+    "explanation": "Aliquot, numuneden ölçülerek ayrılmış alt miktardır."
+  },
+  {
+    "id": "wq150_domain_nov26_25",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The historian avoided making an ____ inference from a single ambiguous letter.",
+    "options": [
+      "unwarranted",
+      "irrefutable",
+      "conclusive",
+      "substantiated",
+      "well-founded"
+    ],
+    "correct": 0,
+    "explanation": "Tek ve belirsiz mektuba dayanarak temelsiz çıkarımdan kaçınılması anlatılır."
+  },
+  {
+    "id": "wq150_domain_nov26_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The vaccine must be stored at a controlled temperature; ____ , it may lose effectiveness.",
+    "options": [
+      "otherwise",
+      "likewise",
+      "moreover",
+      "nevertheless",
+      "therefore"
+    ],
+    "correct": 0,
+    "explanation": "Otherwise, belirtilen koşul sağlanmazsa ortaya çıkabilecek sonucu bildirir."
   }
 ];
