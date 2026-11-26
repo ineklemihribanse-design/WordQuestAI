@@ -26,6 +26,28 @@ internal class Wq150SoundPlayer(context:Context):AutoCloseable{
         SoundPool.Builder().setMaxStreams(2).setAudioAttributes(AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build()
     }.getOrNull()
+    private val resourceIds=mapOf(
+        "crystal_correct" to R.raw.wq150_crystal_correct,
+        "crystal_wrong" to R.raw.wq150_crystal_wrong,
+        "crystal_tick" to R.raw.wq150_crystal_tick,
+        "crystal_urgent" to R.raw.wq150_crystal_urgent,
+        "crystal_ambient" to R.raw.wq150_crystal_ambient,
+        "stadium_correct" to R.raw.wq150_stadium_correct,
+        "stadium_wrong" to R.raw.wq150_stadium_wrong,
+        "stadium_tick" to R.raw.wq150_stadium_tick,
+        "stadium_urgent" to R.raw.wq150_stadium_urgent,
+        "stadium_ambient" to R.raw.wq150_stadium_ambient,
+        "digital_correct" to R.raw.wq150_digital_correct,
+        "digital_wrong" to R.raw.wq150_digital_wrong,
+        "digital_tick" to R.raw.wq150_digital_tick,
+        "digital_urgent" to R.raw.wq150_digital_urgent,
+        "digital_ambient" to R.raw.wq150_digital_ambient,
+        "soft_correct" to R.raw.wq150_soft_correct,
+        "soft_wrong" to R.raw.wq150_soft_wrong,
+        "soft_tick" to R.raw.wq150_soft_tick,
+        "soft_urgent" to R.raw.wq150_soft_urgent,
+        "soft_ambient" to R.raw.wq150_soft_ambient
+    )
     private val samples=mutableMapOf<String,Int>()
     private val loaded=mutableSetOf<Int>()
     private var stream=0
@@ -35,7 +57,7 @@ internal class Wq150SoundPlayer(context:Context):AutoCloseable{
         Wq150SoundPacks.names.keys.filter{it!="silent"}.forEach{pack->
             Wq150SoundPacks.events.forEach{event->
                 val key=pack+"_"+event
-                val res=context.resources.getIdentifier("wq150_"+key,"raw",context.packageName)
+                val res=resourceIds.getValue(key)
                 if(res!=0)runCatching{pool?.load(context,res,1)?.let{samples[key]=it}}
             }
         }

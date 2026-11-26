@@ -70,3 +70,6 @@ test('context question batch has unique stems, five options and paired concept f
 
 import {deepReadingQuestions} from './learning_deep_reading.mjs';
 test('extended comprehension bank has distinct stems and five unique options',()=>{assert.equal(deepReadingQuestions.length,201);assert.ok(deepReadingQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.correct===0&&q.explanation.length>=20&&q.yds));const cloze=deepReadingQuestions.filter(q=>q.family?.startsWith('cloze_deep_'));assert.equal(cloze.length,100);assert.ok(cloze.every(q=>q.prompt.split('____').length===2));const reading=deepReadingQuestions.filter(q=>q.family?.startsWith('reading_deep_'));assert.equal(reading.length,60);assert.ok(reading.every(q=>q.prompt.split('\n\n')[0].split(/\s+/).length>=40));});
+
+import {foundationQuestions} from './learning_foundation.mjs';
+test('foundation questions add A1 A2 B1 contextual practice',()=>{assert.equal(foundationQuestions.length,206);assert.ok(['A1','A2','B1'].every(l=>foundationQuestions.filter(q=>q.level===l).length>=40));assert.ok(foundationQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.prompt.split('____').length===2));});

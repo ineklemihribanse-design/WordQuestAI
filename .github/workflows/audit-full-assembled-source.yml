@@ -874,10 +874,23 @@ jobs:
           unzip -tq "$APK"
           test "$(unzip -p "$APK" assets/wq150_arena_origin.txt)" = 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev'
           python3 - "$APK" <<'PY'
-          import sys,zipfile
+          import sys,zipfile,hashlib
+          from pathlib import Path
+          from collections import Counter
+          source=sorted(Path("source/app/src/main/res/raw").glob("wq150_*_*.wav"))
+          assert len(source)==20,source
+          expected=Counter(hashlib.sha256(p.read_bytes()).hexdigest() for p in source)
           with zipfile.ZipFile(sys.argv[1]) as z:
-              files=[n for n in z.namelist() if n.startswith("res/raw/wq150_") and n.endswith(".wav")]
-              assert len(files)==20,files
+              actual=Counter()
+              for entry in z.infolist():
+                  if not entry.filename.startswith("res/") or entry.file_size<44 or entry.file_size>40000:
+                      continue
+                  payload=z.read(entry)
+                  if payload[:4]==b"RIFF" and payload[8:12]==b"WAVE":
+                      actual[hashlib.sha256(payload).hexdigest()]+=1
+              missing=expected-actual
+              assert not missing,("Missing Arena PCM payloads",dict(missing))
+              print("PASS: all 20 Arena sound payloads in signed APK, independent of resource path shortening")
           PY
           sha256sum "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate.sha256"
       - name: Upload signed device-test APK only (not a GitHub release)
