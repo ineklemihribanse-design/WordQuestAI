@@ -4,6 +4,11 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -64,28 +69,65 @@ private fun letters(game:JSONObject,kind:String,words:List<JSONObject>):Map<Wq15
     }
     return fixed
 }
+/** Compute a measured viewport. All coordinates are in dp, not screen fractions. */
+internal data class Wq150Viewport(val cell:Float,val x:Float,val y:Float,val minX:Float,val maxX:Float,val minY:Float,val maxY:Float)
+internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,focusRow:Float,focusCol:Float):Wq150Viewport{
+    require(width>0&&height>0&&rows>0&&cols>0&&zoom in 0..2)
+    val fit=minOf(width/cols,height/rows,40f)
+    val scale=when(zoom){1->1.55f;2->2.35f;else->1f}
+    val cell=fit*scale
+    val boardW=cols*cell;val boardH=rows*cell
+    val minX=minOf(0f,width-boardW);val maxX=maxOf(0f,(width-boardW)/2f)
+    val minY=minOf(0f,height-boardH);val maxY=maxOf(0f,(height-boardH)/2f)
+    val x=if(boardW<=width)(width-boardW)/2f else (width/2f-focusCol*cell).coerceIn(minX,0f)
+    val y=if(boardH<=height)(height-boardH)/2f else (height/2f-focusRow*cell).coerceIn(minY,0f)
+    return Wq150Viewport(cell,x,y,if(boardW<=width)x else minX,maxX,if(boardH<=height)y else minY,maxY)
+}
 @Composable
 private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,String>,
-    selectable:Boolean,onSelect:(Int)->Unit,modifier:Modifier=Modifier){
+    selectable:Boolean,onSelect:(Int)->Unit,zoom:Int,modifier:Modifier=Modifier){
     val positions=remember(words){words.map(::wordCells)}
     val cells=remember(positions){positions.flatten().distinct()}
     if(cells.isEmpty())return
     val r0=cells.minOf{it.row};val c0=cells.minOf{it.col}
     val rows=cells.maxOf{it.row}-r0+1;val cols=cells.maxOf{it.col}-c0+1
     val active=positions.getOrNull(selected).orEmpty()
-    BoxWithConstraints(modifier.fillMaxWidth(),contentAlignment=Alignment.Center){
-        val size=minOf(maxWidth.value/cols,maxHeight.value/rows,40f).coerceAtLeast(1f).dp
-        Box(Modifier.size(size*cols,size*rows)){
+    val owners=remember(positions){buildMap<Wq150Cell,List<Int>>{
+        positions.forEachIndexed{i,word->word.forEach{p->put(p,get(p).orEmpty()+i)}}
+    }}
+    BoxWithConstraints(modifier.fillMaxWidth().clipToBounds()){
+        val density=LocalDensity.current.density
+        val width=maxWidth.value.coerceAtLeast(1f);val height=maxHeight.value.coerceAtLeast(1f)
+        val focusRow=if(active.isEmpty())rows/2f else (active.map{it.row-r0}.average().toFloat()+.5f)
+        val focusCol=if(active.isEmpty())cols/2f else (active.map{it.col-c0}.average().toFloat()+.5f)
+        val viewport=wq150Viewport(width,height,rows,cols,zoom,focusRow,focusCol)
+        var x by remember(zoom,selected,width,height,rows,cols){mutableFloatStateOf(viewport.x)}
+        var y by remember(zoom,selected,width,height,rows,cols){mutableFloatStateOf(viewport.y)}
+        val size=viewport.cell.dp
+        val drag=if(zoom==0)Modifier else Modifier.pointerInput(zoom,selected,width,height,rows,cols){
+            detectDragGestures{change,amount->
+                change.consume()
+                x=(x+amount.x/density).coerceIn(viewport.minX,viewport.maxX)
+                y=(y+amount.y/density).coerceIn(viewport.minY,viewport.maxY)
+            }
+        }
+        Box(Modifier.fillMaxSize().then(drag)){
             cells.forEach{p->
-                val i=positions.indexOfFirst{p in it}
+                val candidates=owners[p].orEmpty()
+                val i=candidates.firstOrNull{it==selected}?:candidates.firstOrNull()?:-1
                 val label=fixed[p].orEmpty()
-                Box(Modifier.offset(size*(p.col-c0),size*(p.row-r0)).size(size)
-                    .background(if(p in active)Color(0xFFF4D58D)else Color(0xFFFAF3DE))
-                    .border(0.7.dp,Color(0xFF645580))
-                    .clickable(enabled=selectable&&i>=0){onSelect(i)},contentAlignment=Alignment.Center){
-                    if(label.isNotBlank())Text(label,color=Color(0xFF241638),fontSize=(size.value*.55f).coerceIn(5f,22f).sp,fontWeight=FontWeight.Bold)
-                    else if(size.value>=14f&&positions.getOrNull(i)?.firstOrNull()==p)
-                        Text((i+1).toString(),Modifier.align(Alignment.TopStart).padding(1.dp),color=Color(0xFF645580),fontSize=(size.value*.28f).coerceIn(6f,10f).sp)
+                val px=x+(p.col-c0)*viewport.cell;val py=y+(p.row-r0)*viewport.cell
+                if(px+viewport.cell>0&&px<width&&py+viewport.cell>0&&py<height){
+                    Box(Modifier.offset(px.dp,py.dp).requiredSize(size)
+                        .background(if(p in active)Color(0xFFF4D58D)else Color(0xFFFAF3DE))
+                        .border(0.7.dp,Color(0xFF645580))
+                        .clickable(enabled=selectable&&i>=0){
+                            onSelect(candidates.firstOrNull{it!=selected}?:i)
+                        },contentAlignment=Alignment.Center){
+                        if(label.isNotBlank())Text(label,color=Color(0xFF241638),fontSize=(size.value*.55f).coerceIn(4f,22f).sp,fontWeight=FontWeight.Bold)
+                        else if(size.value>=14f&&positions.getOrNull(i)?.firstOrNull()==p)
+                            Text((i+1).toString(),Modifier.align(Alignment.TopStart).padding(1.dp),color=Color(0xFF645580),fontSize=(size.value*.28f).coerceIn(6f,10f).sp)
+                    }
                 }
             }
         }
@@ -114,6 +156,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val choose=mode=="strategy"&&active==null
     val free=kind=="coop"&&mode in listOf("free","timed","perfect")
     var selected by remember(room,active){mutableIntStateOf(active?:0)}
+    var zoom by rememberSaveable(room){mutableIntStateOf(0)}
     val index=if(kind=="quiz")game.optInt("index") else if(free||choose)selected else active?:selected
     val entry=words.getOrNull(index)
     val attempted=game.strings("attempted")
@@ -256,7 +299,14 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 }
             }
             if(!quiz&&!finished){
-                Wq150Board(words,index,known,enabled&&(choose||free),{selected=it},Modifier.weight(1f))
+                Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
+                    Text(when(zoom){1->"Orta yakınlık";2->"Aktif kelime";else->"Tüm tahta"},color=Wq122Ink,modifier=Modifier.weight(1f),fontSize=12.sp)
+                    TextButton(onClick={zoom=(zoom+1)%3},contentPadding=PaddingValues(horizontal=8.dp,vertical=0.dp)){
+                        Text(when(zoom){1->"Yakınlaştır +";2->"Tüm tahta";else->"Yakınlaştır"},color=Wq122Gold)
+                    }
+                }
+                val typed=missing.zip(draft.map{it.toString()}).toMap()
+                Wq150Board(words,index,typed+known,enabled&&(choose||free),{selected=it},zoom,Modifier.weight(1f))
             }
             Column(Modifier.fillMaxWidth().then(if(quiz||finished)Modifier.weight(1f)else Modifier.heightIn(max=320.dp))
                 .verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){

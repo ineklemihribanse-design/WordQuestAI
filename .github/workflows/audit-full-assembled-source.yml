@@ -777,6 +777,7 @@ jobs:
           install -m 644 tools/v132_engine/Wq150ArenaEntry.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaEntry.kt
           install -m 644 tools/v132_engine/Wq150ArenaMatch.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaMatch.kt
           install -m 644 tools/v132_engine/Wq150Profiles.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150Profiles.kt
+          install -m 644 tools/v132_engine/Wq150ViewportTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150ViewportTest.kt
           python3 tools/v132_engine/apply_v150_entry.py
           install -m 644 tools/v132_engine/Wq150LobbyClientTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150LobbyClientTest.kt
           python3 - <<'PY'
@@ -817,7 +818,7 @@ jobs:
         working-directory: source
         run: |
           set -euo pipefail
-          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest' --tests 'com.kelimebulmacasi.a1.Wq150GatewayTest' --tests 'com.kelimebulmacasi.a1.Wq150LobbyClientTest'
+          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest' --tests 'com.kelimebulmacasi.a1.Wq150GatewayTest' --tests 'com.kelimebulmacasi.a1.Wq150LobbyClientTest' --tests 'com.kelimebulmacasi.a1.Wq150ViewportTest'
           test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest.xml
       - name: Preserve full audit and exact audited source snapshot
         if: always()
