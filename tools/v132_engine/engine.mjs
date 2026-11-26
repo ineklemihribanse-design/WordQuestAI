@@ -1,14 +1,14 @@
 // Deterministic, portable web engine. No Android, network, DOM, or account access.
 export const LEVELS=Object.freeze(["A1","A2","B1","B2","C1","C2"]);
-export function normalizeSettings(input) {
+export function normalizeSettings(input, trustedServer=false) {
   if(!input||!Array.isArray(input.levels)||input.levels.length<1||input.levels.length>6||
       input.levels.some(x=>!LEVELS.includes(x)))throw new Error("Seviye seçimi geçersiz");
   const levels=LEVELS.filter(x=>input.levels.includes(x));
   const mode=input.mode;
   if(!["duel","team","quiz"].includes(mode))throw new Error("Oyun türü geçersiz");
   const sizes=mode==="quiz"?[5,10,12,15,20]:[20,30,40,50];
-  if(!sizes.includes(input.size))throw new Error("Sayı geçersiz");
-  if(!Number.isInteger(input.seconds)||![0,20,30,45].includes(input.seconds))throw new Error("Süre geçersiz");
+  if(trustedServer?(!Number.isInteger(input.size)||input.size<(mode==="quiz"?5:10)||input.size>70):!sizes.includes(input.size))throw new Error("Sayı geçersiz");
+  if(!Number.isInteger(input.seconds)||(trustedServer?input.seconds<0||input.seconds>3600:![0,20,30,45].includes(input.seconds)))throw new Error("Süre geçersiz");
   if(!Number.isInteger(input.hints)||input.hints<0||input.hints>20||!Number.isInteger(input.retries)||input.retries<0||input.retries>3)throw new Error("Hak geçersiz");
   if(typeof input.topic!=="string"||input.topic.length>75)throw new Error("Konu geçersiz");
   return Object.freeze({mode,levels:Object.freeze(levels),size:input.size,seconds:input.seconds,hints:input.hints,retries:input.retries,topic:input.topic});
@@ -19,8 +19,8 @@ export function seeded(seed) {
 }
 function shuffle(xs,rng){const a=[...xs];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 const key=x=>String(x).trim().toLowerCase();
-export function mixedPool(records,input,seed) {
-  const s=normalizeSettings(input), rng=seeded(seed);
+export function mixedPool(records,input,seed,trustedServer=false) {
+  const s=normalizeSettings(input,trustedServer), rng=seeded(seed);
   if(s.size<s.levels.length)throw new Error("Soru sayısı seçilen seviye sayısından az olamaz");
   const groups=new Map(s.levels.map(l=>[l,[]]));
   const seen=new Set();
@@ -37,9 +37,9 @@ export function mixedPool(records,input,seed) {
   }
   return result;
 }
-export function quiz(records,input,seed) {
-  const s=normalizeSettings(input);if(s.mode!=="quiz")throw new Error("Quiz modu gerekli");
-  const targets=mixedPool(records,s,seed),rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
+export function quiz(records,input,seed,trustedServer=false) {
+  const s=normalizeSettings(input,trustedServer);if(s.mode!=="quiz")throw new Error("Quiz modu gerekli");
+  const targets=mixedPool(records,s,seed,trustedServer),rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
   const candidates=records.filter(w=>w&&s.levels.includes(w.level)&&typeof w.answer==="string"&&w.answer.trim()&&typeof w.meaning==="string").sort((a,b)=>{const x=JSON.stringify([a.answer,a.meaning]),y=JSON.stringify([b.answer,b.meaning]);return x<y?-1:x>y?1:0});
   return targets.map(t=>{
     const distractors=shuffle(candidates.filter(a=>key(a.answer)!==key(t.answer)&&key(a.meaning)!==key(t.meaning)&&key(a.meaning.split(",")[0])!==key(t.meaning.split(",")[0])).map(a=>a.answer.trim()),rng).filter((a,i,arr)=>arr.findIndex(b=>key(b)===key(a))===i).slice(0,4);
@@ -51,12 +51,12 @@ export function quiz(records,input,seed) {
 
 // Connected crossword with strict crossings and no touching parallel words.
 // Each attempt uses the selected levels, never substitutes an unselected level.
-export function crossword(records,input,seed) {
-  const s=normalizeSettings(input);if(s.mode==="quiz")throw new Error("Bulmaca modu gerekli");
+export function crossword(records,input,seed,trustedServer=false) {
+  const s=normalizeSettings(input,trustedServer);if(s.mode==="quiz")throw new Error("Bulmaca modu gerekli");
   const source=records.filter(w=>w&&typeof w.answer==="string"&&/^[A-Za-z]{2,24}$/.test(w.answer.trim()));
   const coord=(r,c)=>r+","+c;
   for(let attempt=0;attempt<48;attempt++){
-    const pool=mixedPool(source,s,(Number(seed)+attempt*7919)>>>0);
+    const pool=mixedPool(source,s,(Number(seed)+attempt*7919)>>>0,trustedServer);
     const pending=pool.map(w=>({...w,answer:w.answer.toUpperCase()}));
     const grid=new Map(), placed=[];
     function put(w,r,c,d){

@@ -763,6 +763,7 @@ jobs:
           node tools/v132_engine/build_engine.mjs tools/v132_engine/arena_engine.html
           node tools/v132_engine/smoke_bundle.mjs tools/v132_engine/arena_engine.html source/app/src/main/assets/arena-vocabulary-v1.json
           node tools/v132_engine/test_transport.mjs tools/v132_engine/arena_engine.html source/app/src/main/assets/arena-vocabulary-v1.json
+          node tools/arena_v150_server/real_vocabulary_smoke.mjs source/app/src/main/assets/arena-vocabulary-v1.json "$RUNNER_TEMP/wq150-bank"
           python3 tools/v132_engine/apply_engine.py
           python3 tools/v132_engine/apply_online.py
           python3 tools/v132_engine/apply_video_layout.py
@@ -801,6 +802,12 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/wq-full-audit"
           python3 tools/full_source_audit/audit.py source "$RUNNER_TEMP/wq-full-audit"
+      - name: Upload verified existing Arena vocabulary for staging
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v150-verified-arena-bank
+          path: ${{ runner.temp }}/wq150-bank/
+          retention-days: 7
       - name: Android Lint across the complete offline application
         working-directory: source
         run: |

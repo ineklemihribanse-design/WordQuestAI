@@ -10,6 +10,7 @@ import {createArenaHandler} from '../v132_engine/arena_gateway.mjs';
 import {arenaDatabase,activeRoomIds} from '../v132_engine/room_storage.mjs';
 import {sweepRoom} from '../v132_engine/presence.mjs';
 import {createTrustedBank} from './trusted_bank.mjs';
+import {createVocabularyBank} from './vocabulary_bank.mjs';
 
 const env=name=>{const v=process.env[name];if(!v)throw Error('Missing configuration: '+name);return v;};
 const secret=name=>{const s=env(name);if(s.length<32)throw Error('Invalid secret configuration: '+name);return s;};
@@ -17,7 +18,7 @@ const projectId=env('FIREBASE_PROJECT_ID'),databaseURL=env('FIREBASE_DATABASE_UR
 const roomSecret=secret('ARENA_ROOM_SECRET'),schedulerSecret=secret('ARENA_SCHEDULER_SECRET');
 if(roomSecret===schedulerSecret)throw Error('Secrets must be distinct');
 const rawBank=JSON.parse(await readFile(env('ARENA_BANK_FILE'),'utf8'));
-const bankBuilder=createTrustedBank(rawBank);
+const bankBuilder=Array.isArray(rawBank)?createVocabularyBank(rawBank):createTrustedBank(rawBank);
 const app=initializeApp({credential:applicationDefault(),projectId,databaseURL});
 const raw=getDatabase(app),database=arenaDatabase(raw);
 const handler=createArenaHandler({auth:getAuth(app),database,bankBuilder,roomSecret,presenceEnabled:true,
