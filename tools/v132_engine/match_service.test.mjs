@@ -71,3 +71,27 @@ test('admin transaction retries do not duplicate scores',async()=>{
  assert.equal((await transactMatch(ref,p,c,1002)).committed,false);
  assert.equal(value.game.stats[p].correct,1);
 });
+
+test('team players are authorized and actual team commands work through common service',()=>{
+ let s=base(cfg('team','classic',{format:'crossword',hints:2}));
+ const first=s.game.teams.find(t=>t.id===s.game.turn).members[0];
+ const next=matchCommand(s,first,{id:'team-hint',type:'hint',item:0,revision:0},1001);
+ assert.equal(matchView(next,first).game.hintsLeft,1);
+ const rival=next.game.teams.find(t=>!t.members.includes(first)).members[0];
+ assert.deepEqual(matchView(next,rival).game.myHints,{});
+ s=matchCommand(next,first,{id:'team-answer',type:'submit',item:0,answer:next.game.items[0].answer,revision:1},1002);
+ assert.equal(s.game.playerStats[first].correct,1);
+});
+test('simultaneous quiz accepts both original-revision answers to same question',()=>{
+ let s=base(cfg('quiz','simultaneous'));
+ const choice=s.game.questions[0].correct;
+ s=matchCommand(s,'a',{id:'same',type:'answer',index:0,choice,revision:0},1001);
+ s=matchCommand(s,'b',{id:'same',type:'answer',index:0,choice,revision:0},1002);
+ assert.equal(s.game.stats.a.correct,1);assert.equal(s.game.stats.b.correct,1);assert.equal(s.game.index,1);
+});
+test('duel hints use shared service but do not leak to opponent',()=>{
+ let s=base(cfg('duel','classic',{hints:2}));const p=s.game.turn,other=p==='a'?'b':'a';
+ s=matchCommand(s,p,{id:'hint',type:'hint',word:0,revision:0},1001);
+ assert.equal(matchView(s,p).game.hintsLeft,1);assert.equal(Object.keys(matchView(s,p).game.myHints[0]).length,1);
+ assert.deepEqual(matchView(s,other).game.myHints[0],{});assert.equal(matchView(s,other).game.claims,undefined);
+});

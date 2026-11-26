@@ -51,7 +51,7 @@ export function selectBank(bank,settings,seed){
  return picked;
 }
 const reducers={duel:applyDuel,quiz:applyQuiz,coop:applyCoop,team:applyTeam};
-const roster=s=>s.kind==='team'?s.teams.flatMap(t=>t.members):s.players;
+const roster=s=>Array.isArray(s.teams)?s.teams.flatMap(t=>t.members):s.players;
 export function createMatch({settings,bank,players,teams,epochs,seed,now}){
  const cfg=validateSettings(settings),kind=cfg.kind,picked=selectBank(bank,cfg,seed);
  const ids=kind==='team'?teams?.flatMap(t=>t.members):players;
@@ -88,7 +88,9 @@ export function matchCommand(state,uid,cmd,now){
  const receipt=uid+':'+cmd.id;
  if(Object.hasOwn(state.receipts,receipt))return state;
  if(phase(state)!=='playing'||!gameplayAllowed(state.connection,uid))fail('Match not active');
- if(cmd.revision!==state.revision)fail('Stale match revision');
+ const concurrentQuiz=state.kind==='quiz'&&['speed','simultaneous'].includes(state.game.mode)&&
+  cmd.index===state.game.index&&Number.isInteger(cmd.revision)&&cmd.revision>=0&&cmd.revision<state.revision;
+ if(cmd.revision!==state.revision&&!concurrentQuiz)fail('Stale match revision');
  if(cmd.type==='leave'||cmd.type==='tick')fail('Transport operations require trusted gateway');
  const s=clone(state);
  // Internal command ID is actor-scoped and bounded; client IDs cannot collide.
@@ -124,7 +126,7 @@ export function matchTick(state,now){
 }
 export function matchView(s,uid){
  if(!roster(s.game).includes(uid))fail('Not a participant');
- const game=s.kind==='duel'?publicDuel(s.game):s.kind==='coop'?coopView(s.game):s.kind==='quiz'?quizView(s.game,uid):teamView(s.game,uid);
+ const game=s.kind==='duel'?publicDuel(s.game,uid):s.kind==='coop'?coopView(s.game):s.kind==='quiz'?quizView(s.game,uid):teamView(s.game,uid);
  // Never leak transport epochs, private bank, seed or other players' hint claims.
  return clone({schema:150,kind:s.kind,settings:s.settings,revision:s.revision,phase:phase(s),result:s.result,
   connection:{phase:s.connection.phase,pausedAt:s.pauseAt,players:s.connection.players.map(({id,connected,drops,until,removed,reason})=>({id,connected,drops,until,removed,reason}))},

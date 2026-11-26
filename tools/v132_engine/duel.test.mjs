@@ -63,3 +63,14 @@ test('command receipts are idempotent; private answer keys never exposed',()=>{
  const view=publicDuel(next);assert.equal(view.words[0].answer,undefined);assert.equal(view.words[0].length,5);
  assert.equal(view.words[1].answer,undefined);assert.equal(view.receipts,undefined);assert.equal(s.stats.a.score,0);
 });
+
+test('personal hint claims are unique, preserve crossings and hide from rival',()=>{
+ const w=[{answer:'CAT',level:'A1',clue:'kedi',cells:['0,0','0,1','0,2']},{answer:'CUP',level:'A1',clue:'fincan',cells:['0,0','1,0','2,0']}];
+ let s=base('streak',{words:w,hints:3,seed:'private'});
+ for(let i=0;i<3;i++)s=cmd(s,'hint','a');
+ assert.equal(Object.keys(publicDuel(s,'a').myHints[0]).length,3);
+ assert.deepEqual(publicDuel(s,'b').myHints[0],{});
+ assert.equal(publicDuel(s,'b').seed,undefined);assert.equal(publicDuel(s,'b').claims,undefined);
+ assert.throws(()=>cmd(s,'hint','a'));
+ s=correct(s,'a');assert.equal(publicDuel(s,'b').myHints[1][0],'C');
+});
