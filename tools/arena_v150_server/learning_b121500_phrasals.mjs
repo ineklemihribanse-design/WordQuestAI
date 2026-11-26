@@ -1810,12 +1810,12 @@ export const b121500Phrasals = [
     "options": [
       "add up to",
       "amount to",
-      "allow for",
+      "adhere to",
       "appeal to",
       "account for"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: account for. Açıklama, toplam, eşdeğer sonuç, hesaba katma ve ilgi çekme farklıdır."
+    "explanation": "Doğru seçenek: account for. Örneklem büyüklüğündeki değişiklik, sonuçlardaki farkı açıklayabilir. Adhere to bir kurala uymak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_1_2",
@@ -1847,11 +1847,11 @@ export const b121500Phrasals = [
       "allow for",
       "appeal to",
       "account for",
-      "add up to",
+      "adhere to",
       "amount to"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: amount to. Açıklama, toplam, eşdeğer sonuç, hesaba katma ve ilgi çekme farklıdır."
+    "explanation": "Doğru seçenek: amount to. Amount to, bir eylemin ciddi bir ihlal teşkil ettiğini ifade eder; adhere to uymak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_1_4",
@@ -1863,13 +1863,13 @@ export const b121500Phrasals = [
     "prompt": "The timetable must ____ possible delays caused by equipment failure.",
     "options": [
       "appeal to",
-      "account for",
+      "adhere to",
       "add up to",
       "amount to",
       "allow for"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: allow for. Açıklama, toplam, eşdeğer sonuç, hesaba katma ve ilgi çekme farklıdır."
+    "explanation": "Doğru seçenek: allow for. Allow for, olası gecikmeleri önceden hesaba katıp programda pay bırakmaktır."
   },
   {
     "id": "wq150_b121500_ph_b2_1_5",
@@ -2042,14 +2042,14 @@ export const b121500Phrasals = [
     "kind": "Phrasal",
     "prompt": "The representative intends to ____ the unresolved issue at the next meeting.",
     "options": [
-      "bring forward",
+      "bring back",
       "bring in",
       "bring up",
       "bring out",
       "bring about"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: bring up. Meydana getirme, öne çekme, getirme, gündeme alma ve ortaya çıkarma ayrılır."
+    "explanation": "Doğru seçenek: bring up. Bring up bir konuyu görüşülmek üzere gündeme getirmek; bring back geri getirmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_3_5",
@@ -2116,12 +2116,12 @@ export const b121500Phrasals = [
     "options": [
       "carry over",
       "carry through",
-      "carry forward",
+      "carry off",
       "carry on",
-      "carry out"
+      "carry away"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: carry through. Uygulama, sonraki döneme aktarma, sonuna kadar sürdürme ve devam etme ayrılır."
+    "explanation": "Doğru seçenek: carry through. Carry through, zorluklara rağmen reformları sonuna kadar tamamlamak anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_4_4",
@@ -2277,13 +2277,13 @@ export const b121500Phrasals = [
     "prompt": "The authority intends to ____ unnecessary administrative spending.",
     "options": [
       "cut off",
-      "cut out",
-      "cut down",
+      "cut in",
+      "cut through",
       "cut across",
       "cut back on"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: cut back on. Kapsamı aşma, azaltma, kesinti, çıkarma ve fiziksel kesme ayrılır."
+    "explanation": "Doğru seçenek: cut back on. Cut back on harcamaları azaltmak demektir; cut in araya girmek, cut through içinden geçmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_6_3",
@@ -2368,12 +2368,12 @@ export const b121500Phrasals = [
     "options": [
       "draw on",
       "draw up",
-      "deal with",
+      "do without",
       "dispose of",
-      "do away with"
+      "draw back"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: dispose of. İlgilenme, bertaraf, kaldırma, yararlanma ve taslak hazırlama farklıdır."
+    "explanation": "Doğru seçenek: dispose of. Dispose of, kimyasal atığı yönetmeliklere uygun biçimde bertaraf etmek anlamına gelir."
   },
   {
     "id": "wq150_b121500_ph_b2_7_3",
@@ -2386,12 +2386,12 @@ export const b121500Phrasals = [
     "options": [
       "draw up",
       "deal with",
-      "dispose of",
+      "draw back",
       "do away with",
       "draw on"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: do away with. İlgilenme, bertaraf, kaldırma, yararlanma ve taslak hazırlama farklıdır."
+    "explanation": "Doğru seçenek: do away with. Do away with, artık gerekli olmayan bir kuralı tamamen kaldırmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_7_4",
@@ -2496,10 +2496,10 @@ export const b121500Phrasals = [
       "fall through",
       "fall short of",
       "fall into",
-      "fall behind"
+      "fall apart"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: fall short of. Geride kalma, başvurma, gerçekleşmeme, yetersiz kalma ve kategoriye girme ayrılır."
+    "explanation": "Doğru seçenek: fall short of. Fall short of, gereken asgari ölçüte ulaşamamak anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_8_5",
@@ -2604,10 +2604,10 @@ export const b121500Phrasals = [
       "get at",
       "follow through",
       "follow up",
-      "get across"
+      "get by"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: get at. Tamamlama, takip, aktarma, engeli aşma ve ima etme anlamları farklıdır."
+    "explanation": "Doğru seçenek: get at. Get at, dolaylı olarak neyi kastettiğini anlamaya çalışmak; get by idare etmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_10_1",
@@ -2729,11 +2729,11 @@ export const b121500Phrasals = [
       "hold off",
       "hold on to",
       "hold out for",
-      "hold back",
+      "hold together",
       "hold up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: hold up. Engelleme, geciktirme, erteleme, elinde tutma ve daha iyi teklif bekleme ayrılır."
+    "explanation": "Doğru seçenek: hold up. Hold up, bir işlemin gecikmesine yol açmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_11_3",
@@ -2798,14 +2798,14 @@ export const b121500Phrasals = [
     "kind": "Phrasal",
     "prompt": "Specialists must ____ developments in their field by reading current publications.",
     "options": [
-      "keep track of",
-      "keep up with",
+      "keep from",
+      "keep out of",
       "keep away from",
       "keep abreast of",
       "keep to"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: keep abreast of. Güncel kalma, kurala bağlılık, kayıt takibi, tempoya uyma ve uzak durma farklıdır."
+    "explanation": "Doğru seçenek: keep abreast of. Keep abreast of, bir alandaki en güncel gelişmelerden haberdar olmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_12_2",
@@ -2980,12 +2980,12 @@ export const b121500Phrasals = [
     "options": [
       "look beyond",
       "look back on",
-      "look into",
+      "look after",
       "look to",
-      "look through"
+      "look down on"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: look back on. Geçmişi değerlendirme, araştırma, başvurma, inceleme ve ötesini düşünme ayrılır."
+    "explanation": "Doğru seçenek: look back on. Look back on, geçmişte tamamlanmış bir süreci geriye dönük değerlendirmektir."
   },
   {
     "id": "wq150_b121500_ph_b2_14_2",
@@ -3252,10 +3252,10 @@ export const b121500Phrasals = [
       "put down",
       "put aside",
       "pin down",
-      "point to"
+      "put up with"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: pin down. Kesinleştirme, işaret etme, önerme, nedenine bağlama ve ayırma farklıdır."
+    "explanation": "Doğru seçenek: pin down. Pin down, kesin nedeni belirlemek; put up with tahammül etmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_17_2",
@@ -3467,11 +3467,11 @@ export const b121500Phrasals = [
       "set out",
       "set aside",
       "set back",
-      "set apart",
+      "set off",
       "set about"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: set aside. Başlama, açıklama, ayırma, geciktirme ve farklı kılma ayrılır."
+    "explanation": "Doğru seçenek: set aside. Set aside, belirli bir amaç için para ayırmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_19_4",
@@ -3519,13 +3519,13 @@ export const b121500Phrasals = [
     "prompt": "The small department cannot ____ additional responsibilities without more staff.",
     "options": [
       "take on",
-      "take over",
-      "take up",
+      "take after",
+      "take off",
       "take into account",
       "take issue with"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: take on. Üstlenme, devralma, yer kaplama, hesaba katma ve itiraz farklıdır."
+    "explanation": "Doğru seçenek: take on. Take on, yeni sorumluluk üstlenmek; take after benzemek, take off havalanmak veya çıkarmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_20_2",
@@ -3558,10 +3558,10 @@ export const b121500Phrasals = [
       "take into account",
       "take issue with",
       "take on",
-      "take over"
+      "take after"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: take up. Üstlenme, devralma, yer kaplama, hesaba katma ve itiraz farklıdır."
+    "explanation": "Doğru seçenek: take up. Take up, bir alanı kaplamak anlamındadır; take after birine benzemektir."
   },
   {
     "id": "wq150_b121500_ph_b2_20_4",
