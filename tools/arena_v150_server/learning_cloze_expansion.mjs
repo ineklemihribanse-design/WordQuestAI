@@ -5590,7 +5590,7 @@ export const clozeExpansion = [
       "with"
     ],
     "correct": 0,
-    "explanation": "On foot yürüyerek demektir."
+    "explanation": "On foot yürüyerek demektir; by bus gibi taşıt kalıplarından farklıdır."
   },
   {
     "id": "wq150_nov26_cloze14_1_5",
@@ -5839,13 +5839,13 @@ export const clozeExpansion = [
     "prompt": "Last Saturday, Mia met an old friend at the market. They had not seen each other for several months. They decided to have lunch together. The café was busy, ____ they waited outside until a table became free. They enjoyed talking about their plans.\n\nChoose the best option for the blank.",
     "options": [
       "so",
-      "although",
-      "unless",
+      "yet",
       "whereas",
-      "despite"
+      "even though",
+      "unless"
     ],
     "correct": 0,
-    "explanation": "Beklemek yoğunluğun sonucudur."
+    "explanation": "So yoğunluğun sonucu olarak dışarıda beklemeyi belirtir."
   },
   {
     "id": "wq150_nov26_cloze14_4_5",
@@ -5924,13 +5924,13 @@ export const clozeExpansion = [
     "prompt": "A shop assistant helped me choose a coat yesterday. The first coat was too small, but the second one was large enough. It was also cheaper than the first coat. I asked whether I could pay by card. The assistant gave me a receipt ____ I could return the coat if necessary. I left the shop feeling satisfied with my purchase.\n\nChoose the best option for the blank.",
     "options": [
       "so that",
+      "even though",
       "unless",
-      "whereas",
-      "despite",
-      "instead of"
+      "as if",
+      "whereas"
     ],
     "correct": 0,
-    "explanation": "Fiş verme amacı so that ile açıklanır."
+    "explanation": "So that fiş vermenin amacını belirtir: gerektiğinde iade edebilmek."
   },
   {
     "id": "wq150_nov26_cloze14_5_5",
@@ -6423,7 +6423,7 @@ export const clozeExpansion = [
       "when are"
     ],
     "correct": 0,
-    "explanation": "Tools nesne, çoğul edilgen relative clause that are gerekir."
+    "explanation": "Tools nesne olduğu için that are damaged kullanılır."
   },
   {
     "id": "wq150_nov26_cloze14_11_4",
@@ -6502,13 +6502,13 @@ export const clozeExpansion = [
     "prompt": "A company noticed that new employees often had difficulty using the internal software. Instead of providing a long written manual, it introduced short video demonstrations. Each video focuses on one specific task. Employees can pause the recording ____ necessary and repeat difficult sections. The company collected feedback after three months, which revealed a decrease in requests for technical help. It plans to expand the training to include more advanced tasks.\n\nChoose the best option for the blank.",
     "options": [
       "when",
-      "despite",
-      "unless of",
-      "whereas of",
-      "because of"
+      "although",
+      "whereas",
+      "because",
+      "unless"
     ],
     "correct": 0,
-    "explanation": "When necessary gerektiğinde demektir."
+    "explanation": "When necessary gerektiğinde demektir; diğer bağlaçlar burada doğal bir zaman koşulu kurmaz."
   },
   {
     "id": "wq150_nov26_cloze14_12_4",
@@ -7097,13 +7097,13 @@ export const clozeExpansion = [
     "prompt": "An organisation introduced a new performance indicator based on the number of cases completed each week. Initially, the figures improved, but an audit revealed that some complex cases were being postponed. The indicator had encouraged staff to prioritise simpler tasks over those requiring more time. The organisation revised the measure to account for case complexity. ____, it introduced independent quality checks to detect errors. The revised framework was intended to distinguish genuine efficiency gains from changes in case selection. Its effectiveness will be assessed once sufficient data have been collected.\n\nChoose the best option for the blank.",
     "options": [
       "Moreover",
-      "Nevertheless not",
+      "Nevertheless",
       "Conversely",
       "Otherwise",
-      "Instead of"
+      "Instead"
     ],
     "correct": 0,
-    "explanation": "Moreover ek kalite kontrolünü önceki değişikliğe ekler."
+    "explanation": "Moreover ek kalite kontrolünün önceki düzenlemeye ilave olduğunu gösterir."
   },
   {
     "id": "wq150_nov26_cloze14_19_4",
@@ -7403,13 +7403,13 @@ export const clozeExpansion = [
     "prompt": "A survey sought to estimate the proportion of residents satisfied with public transport. Invitations were distributed online, ____ people without reliable internet access were less likely to participate. The researchers acknowledged that this might lead to a biased estimate. To address the limitation, they offered paper questionnaires at several public facilities. Responses collected through both channels were compared to determine whether the samples differed substantially. Although the revised approach improved coverage, it could not guarantee that all groups were equally represented. The report therefore advised against interpreting the figures as an exact measure of public opinion and recommended that further evidence be collected.\n\nChoose the best option for the blank.",
     "options": [
       "but",
-      "because of",
-      "despite",
-      "unless of",
-      "in order to"
+      "whereas not",
+      "unless",
+      "because",
+      "so that"
     ],
     "correct": 0,
-    "explanation": "But çevrim içi dağıtımın kapsama sorununu belirtir."
+    "explanation": "But çevrim içi dağıtımın oluşturduğu kapsama sorununa dikkat çeker."
   },
   {
     "id": "wq150_nov26_cloze14_23_2",
