@@ -1263,7 +1263,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "How ____ milk is left in the fridge?",
+    "prompt": "How ____ milk is in the jug beside your cereal bowl?",
     "options": [
       "a",
       "an",
@@ -5734,7 +5734,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "That's the café ____ we first met.",
+    "prompt": "This is the little bookshop ____ we bought our first guidebook.",
     "options": [
       "who",
       "which",
@@ -6634,7 +6634,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "Please ____ the radio; the baby is asleep.",
     "options": [
       "turn down",
@@ -6651,7 +6651,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "Can you ____ my cat while I am away?",
     "options": [
       "turn down",
@@ -6668,7 +6668,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "I will ____ the parcel from the collection point tomorrow.",
     "options": [
       "turn down",
@@ -6685,7 +6685,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "We had to ____ the meeting until next week.",
     "options": [
       "turn down",
@@ -6702,7 +6702,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "We may ____ milk before breakfast, so buy another bottle.",
     "options": [
       "turn down",
@@ -6719,7 +6719,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "The speaker was too loud, so I asked him to ____ the volume.",
     "options": [
       "turn down",
@@ -6736,7 +6736,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "My neighbour will ____ the plants during our holiday.",
     "options": [
       "turn down",
@@ -6753,7 +6753,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "Could you ____ the children from school at four?",
     "options": [
       "turn down",
@@ -6770,7 +6770,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "Don't ____ the dentist's appointment for another month.",
     "options": [
       "turn down",
@@ -6787,7 +6787,7 @@ export const a12ThousandQuestions = [
     "family": "a12_1000_a2_phrasals",
     "level": "A2",
     "yds": null,
-    "topic": "Vocabulary",
+    "topic": "Phrasals",
     "prompt": "We must buy more paper before we ____ it.",
     "options": [
       "turn down",
@@ -7485,7 +7485,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The storm caused serious ____ to the roof.",
+    "prompt": "The falling branch caused serious ____ to the parked car; its roof is now bent.",
     "options": [
       "damage",
       "fault",
