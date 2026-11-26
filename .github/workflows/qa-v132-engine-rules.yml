@@ -1,4 +1,4 @@
-name: Test v148 shared round and reaction protocol
+name: Test v150 shared round, reaction and finish protocol
 on:
   pull_request:
     branches: [fix/v190-tablet-board-and-visible-icons]
@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   test:
-    if: github.head_ref == 'feature/v148-live-arena-refinement' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
