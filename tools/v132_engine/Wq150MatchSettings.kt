@@ -36,6 +36,21 @@ internal data class Wq150Settings(
     val topic:String?=null,val wordType:String?=null,val count:Int=20,val seconds:Int=30,
     val hints:Int=3,val retries:Int=0,val skipLimit:Int=2,val limit:Int=3,val maxMistakes:Int=3
 ) {
+    companion object {
+        fun fromJson(j:JSONObject):Wq150Settings {
+            val levels=j.optJSONArray("levels")
+            val result=Wq150Settings(kind=j.optString("kind","duel"),mode=j.optString("mode","classic"),
+                format=j.optString("format","crossword"),scale=j.optString("scale","cefr"),
+                levels=if(levels==null)listOf("A1") else (0 until levels.length()).map{levels.optString(it)},
+                topic=j.optString("topic").takeIf{!j.isNull("topic")&&it.isNotBlank()},
+                wordType=j.optString("wordType").takeIf{!j.isNull("wordType")&&it.isNotBlank()},
+                count=j.optInt("count",20),seconds=j.optInt("seconds",30),hints=j.optInt("hints",3),
+                retries=j.optInt("retries",0),skipLimit=j.optInt("skipLimit",2),limit=j.optInt("limit",3),
+                maxMistakes=j.optInt("maxMistakes",3))
+            require(result.valid())
+            return result
+        }
+    }
     fun changeKind(value:String):Wq150Settings {
         require(value in Wq150ModeCatalog.kinds)
         val nextFormat=if(value=="quiz")"quiz" else "crossword"
