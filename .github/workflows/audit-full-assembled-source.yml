@@ -803,6 +803,12 @@ jobs:
           find app/build/reports -maxdepth 2 -type f -name 'lint-results*' -exec cp '{}' "$RUNNER_TEMP/wq-full-audit/" ';' || true
           tail -n 50 "$RUNNER_TEMP/wq-full-audit/android-lint.log"
           exit "$code"
+      - name: Run Arena v150 revealed-letter and draft regression tests
+        working-directory: source
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest'
+          test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest.xml
       - name: Preserve full audit and exact audited source snapshot
         if: always()
         uses: actions/upload-artifact@v4
