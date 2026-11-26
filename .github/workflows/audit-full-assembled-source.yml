@@ -14,7 +14,7 @@ permissions:
   actions: read
 jobs:
   audit:
-    if: github.head_ref == 'feature/v132-hybrid-engine' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.head_ref == 'feature/v148-live-arena-refinement' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -755,12 +755,14 @@ jobs:
           python3 tools/v132_engine/apply_online.py
           python3 tools/v132_engine/apply_video_layout.py
           python3 tools/full_source_audit/apply_confirmed_fixes.py
+          python3 -m py_compile tools/v132_engine/apply_live_refinement.py
+          python3 tools/v132_engine/apply_live_refinement.py
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
           s=p.read_text()
           assert s.count("versionCode = 149")==1 and s.count('versionName = "1.0.123"')==1
-          p.write_text(s.replace("versionCode = 149","versionCode = 162").replace('versionName = "1.0.123"','versionName = "1.0.146"'))
+          p.write_text(s.replace("versionCode = 149","versionCode = 163").replace('versionName = "1.0.123"','versionName = "1.0.148"'))
           PY
       - name: Verify Android SDK and Gradle
         run: |
