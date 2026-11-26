@@ -3823,5 +3823,1705 @@ export const clozeExpansion = [
     ],
     "correct": 0,
     "explanation": "What could be inferred, neyin çıkarılabileceği anlamında isim cümleciğidir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_1_1",
+    "family": "cloze_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "My name ____ Eva. I live in a small town. My brother and I walk to school together every morning. After school, he plays football with his friends. I usually read a book at home.\n\nChoose the best option for the blank.",
+    "options": [
+      "is",
+      "am",
+      "are",
+      "be",
+      "were"
+    ],
+    "correct": 0,
+    "explanation": "My name tekil özne olduğu için is kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_1_2",
+    "family": "cloze_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "My name is Eva. I live ____ a small town. My brother and I walk to school together every morning. After school, he plays football with his friends. I usually read a book at home.\n\nChoose the best option for the blank.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "to",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Bir kasabada yaşamak live in ile ifade edilir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_1_3",
+    "family": "cloze_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "My name is Eva. I live in a small town. My brother and I ____ to school together every morning. After school, he plays football with his friends. I usually read a book at home.\n\nChoose the best option for the blank.",
+    "options": [
+      "walk",
+      "walks",
+      "walking",
+      "walked",
+      "to walk"
+    ],
+    "correct": 0,
+    "explanation": "My brother and I çoğul özne, every morning geniş zaman bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_1_4",
+    "family": "cloze_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "My name is Eva. I live in a small town. My brother and I walk to school together every morning. After school, he ____ football with his friends. I usually read a book at home.\n\nChoose the best option for the blank.",
+    "options": [
+      "plays",
+      "play",
+      "playing",
+      "played",
+      "to play"
+    ],
+    "correct": 0,
+    "explanation": "He ile geniş zamanda plays gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_1_5",
+    "family": "cloze_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "My name is Eva. I live in a small town. My brother and I walk to school together every morning. After school, he plays football with his friends. I usually read ____ book at home.\n\nChoose the best option for the blank.",
+    "options": [
+      "a",
+      "an",
+      "many",
+      "these",
+      "those"
+    ],
+    "correct": 0,
+    "explanation": "Tekil ve ünsüz sesle başlayan book önünde a kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_2_1",
+    "family": "cloze_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Our kitchen is small. There ____ a table next to the window. There are four chairs around the table. My mother makes lunch here every day. At the moment, she is cooking some soup. I help her by washing the dishes.\n\nChoose the best option for the blank.",
+    "options": [
+      "is",
+      "are",
+      "am",
+      "be",
+      "have"
+    ],
+    "correct": 0,
+    "explanation": "Tekil a table ile there is gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_2_2",
+    "family": "cloze_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Our kitchen is small. There is a table next to the window. There are four chairs ____ the table. My mother makes lunch here every day. At the moment, she is cooking some soup. I help her by washing the dishes.\n\nChoose the best option for the blank.",
+    "options": [
+      "around",
+      "during",
+      "since",
+      "from",
+      "until"
+    ],
+    "correct": 0,
+    "explanation": "Around the table masanın çevresinde demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_2_3",
+    "family": "cloze_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Our kitchen is small. There is a table next to the window. There are four chairs around the table. My mother ____ lunch here every day. At the moment, she is cooking some soup. I help her by washing the dishes.\n\nChoose the best option for the blank.",
+    "options": [
+      "makes",
+      "make",
+      "making",
+      "made",
+      "to make"
+    ],
+    "correct": 0,
+    "explanation": "Every day geniş zaman, my mother tekil özne olduğu için makes gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_2_4",
+    "family": "cloze_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Our kitchen is small. There is a table next to the window. There are four chairs around the table. My mother makes lunch here every day. At the moment, she is ____ some soup. I help her by washing the dishes.\n\nChoose the best option for the blank.",
+    "options": [
+      "cooking",
+      "cook",
+      "cooks",
+      "cooked",
+      "to cook"
+    ],
+    "correct": 0,
+    "explanation": "Is cooking şu anda süren eylemdir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_2_5",
+    "family": "cloze_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Our kitchen is small. There is a table next to the window. There are four chairs around the table. My mother makes lunch here every day. At the moment, she is cooking some soup. I help ____ by washing the dishes.\n\nChoose the best option for the blank.",
+    "options": [
+      "her",
+      "she",
+      "he",
+      "hers",
+      "they"
+    ],
+    "correct": 0,
+    "explanation": "Help fiilinden sonra my mother yerine nesne zamiri her kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_3_1",
+    "family": "cloze_nov26_11_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Last month, our class ____ a science museum. We travelled there by bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "options": [
+      "visited",
+      "visits",
+      "visit",
+      "has visited",
+      "is visiting"
+    ],
+    "correct": 0,
+    "explanation": "Last month tamamlanmış geçmiş zaman bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_3_2",
+    "family": "cloze_nov26_11_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Last month, our class visited a science museum. We travelled there ____ bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "options": [
+      "by",
+      "on",
+      "with",
+      "at",
+      "for"
+    ],
+    "correct": 0,
+    "explanation": "By bus, ulaşım biçimini belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_3_3",
+    "family": "cloze_nov26_11_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was ____ than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "options": [
+      "older",
+      "old",
+      "oldest",
+      "as old",
+      "the oldest"
+    ],
+    "correct": 0,
+    "explanation": "Than karşılaştırma sıfatı older gerektirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_3_4",
+    "family": "cloze_nov26_11_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions ____ how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "options": [
+      "about",
+      "from",
+      "at",
+      "into",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Questions about, bir konu hakkında sorular demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_3_5",
+    "family": "cloze_nov26_11_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought ____ postcards for our families.\n\nChoose the best option for the blank.",
+    "options": [
+      "some",
+      "much",
+      "a little",
+      "an",
+      "a"
+    ],
+    "correct": 0,
+    "explanation": "Postcards sayılabilen çoğul isim; olumlu cümlede some uygundur."
+  },
+  {
+    "id": "wq150_nov26_cloze11_4_1",
+    "family": "cloze_nov26_11_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Lena has been learning the guitar ____ six months. At first she found it difficult to press the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "options": [
+      "for",
+      "since",
+      "during",
+      "at",
+      "until"
+    ],
+    "correct": 0,
+    "explanation": "Six months bir süre olduğu için for kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_4_2",
+    "family": "cloze_nov26_11_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult ____ the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "options": [
+      "to press",
+      "press",
+      "pressed",
+      "presses",
+      "to pressing"
+    ],
+    "correct": 0,
+    "explanation": "Find it difficult to do something kalıbı kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_4_3",
+    "family": "cloze_nov26_11_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises every evening ____ she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "options": [
+      "if",
+      "despite",
+      "because of",
+      "until of",
+      "in spite of"
+    ],
+    "correct": 0,
+    "explanation": "If yeterli zaman olması koşulunu bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_4_4",
+    "family": "cloze_nov26_11_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting ____ each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "options": [
+      "better",
+      "best",
+      "well",
+      "more good",
+      "the better of"
+    ],
+    "correct": 0,
+    "explanation": "Getting better giderek daha iyi olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_4_5",
+    "family": "cloze_nov26_11_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert ____ June.\n\nChoose the best option for the blank.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "from",
+      "by of"
+    ],
+    "correct": 0,
+    "explanation": "Ay adlarından önce in kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_5_1",
+    "family": "cloze_nov26_11_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest noticed that the heating in her room was not working. She called reception and asked someone ____ it. A member of staff arrived within ten minutes. He explained that the radiator needed a new part, so the guest was offered another room. She accepted the offer because she wanted to sleep in a warm room. She did not have to pay for the change.\n\nChoose the best option for the blank.",
+    "options": [
+      "to check",
+      "check",
+      "checked",
+      "checking",
+      "checks"
+    ],
+    "correct": 0,
+    "explanation": "Ask someone to do something, birinden bir iş yapmasını istemektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_5_2",
+    "family": "cloze_nov26_11_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest noticed that the heating in her room was not working. She called reception and asked someone to check it. A member of staff arrived ____ ten minutes. He explained that the radiator needed a new part, so the guest was offered another room. She accepted the offer because she wanted to sleep in a warm room. She did not have to pay for the change.\n\nChoose the best option for the blank.",
+    "options": [
+      "within",
+      "since",
+      "during",
+      "until of",
+      "from of"
+    ],
+    "correct": 0,
+    "explanation": "Within ten minutes on dakika içinde demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_5_3",
+    "family": "cloze_nov26_11_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest noticed that the heating in her room was not working. She called reception and asked someone to check it. A member of staff arrived within ten minutes. He explained that the radiator needed a new part, so the guest ____ another room. She accepted the offer because she wanted to sleep in a warm room. She did not have to pay for the change.\n\nChoose the best option for the blank.",
+    "options": [
+      "was offered",
+      "offered",
+      "has offering",
+      "was offering herself",
+      "offers"
+    ],
+    "correct": 0,
+    "explanation": "Misafire başka oda teklif edildi; edilgen past simple gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_5_4",
+    "family": "cloze_nov26_11_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest noticed that the heating in her room was not working. She called reception and asked someone to check it. A member of staff arrived within ten minutes. He explained that the radiator needed a new part, so the guest was offered another room. She accepted the offer ____ she wanted to sleep in a warm room. She did not have to pay for the change.\n\nChoose the best option for the blank.",
+    "options": [
+      "because",
+      "although",
+      "unless",
+      "whereas",
+      "despite"
+    ],
+    "correct": 0,
+    "explanation": "Sıcak odada uyumak istemesi teklifi kabul etme nedenidir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_5_5",
+    "family": "cloze_nov26_11_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest noticed that the heating in her room was not working. She called reception and asked someone to check it. A member of staff arrived within ten minutes. He explained that the radiator needed a new part, so the guest was offered another room. She accepted the offer because she wanted to sleep in a warm room. She did not have to pay ____ the change.\n\nChoose the best option for the blank.",
+    "options": [
+      "for",
+      "on",
+      "at",
+      "from",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Pay for bir hizmetin bedelini ödemek kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_6_1",
+    "family": "cloze_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new sports club is opening near our school. Students who join ____ the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "options": [
+      "before",
+      "during",
+      "since",
+      "from of",
+      "between"
+    ],
+    "correct": 0,
+    "explanation": "Ay sonundan önce kayıt olma koşulu before ile verilir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_6_2",
+    "family": "cloze_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has ____ equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "options": [
+      "enough",
+      "many of",
+      "a few",
+      "several",
+      "a number of"
+    ],
+    "correct": 0,
+    "explanation": "Equipment sayılamayan isimdir; enough yeterli miktarı belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_6_3",
+    "family": "cloze_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available ____ Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "options": [
+      "on",
+      "in",
+      "at",
+      "by of",
+      "from of"
+    ],
+    "correct": 0,
+    "explanation": "Gün adlarından önce on kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_6_4",
+    "family": "cloze_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students ____ their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "options": [
+      "improve",
+      "improved",
+      "improves",
+      "to improving",
+      "improvement"
+    ],
+    "correct": 0,
+    "explanation": "Help + nesne + yalın fiil improve kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_6_5",
+    "family": "cloze_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested ____ joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "to",
+      "for"
+    ],
+    "correct": 0,
+    "explanation": "Interested in ilgi duymak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_7_1",
+    "family": "cloze_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "When Adam moved into his flat, he discovered that there was ____ space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "options": [
+      "not enough",
+      "many",
+      "a few",
+      "several",
+      "a number of"
+    ],
+    "correct": 0,
+    "explanation": "Space sayılamayan isim; yetersiz alan not enough ile belirtilir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_7_2",
+    "family": "cloze_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided ____ a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "options": [
+      "to order",
+      "ordering",
+      "order",
+      "ordered",
+      "orders"
+    ],
+    "correct": 0,
+    "explanation": "Decide ardından to infinitive gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_7_3",
+    "family": "cloze_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was ____ expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "options": [
+      "the least",
+      "the fewest",
+      "less than",
+      "as",
+      "the most of"
+    ],
+    "correct": 0,
+    "explanation": "Birden fazla seçenek arasında en düşük fiyat the least expensive ile ifade edilir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_7_4",
+    "family": "cloze_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days ____ than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "options": [
+      "earlier",
+      "earliest",
+      "early",
+      "as early",
+      "the earlier"
+    ],
+    "correct": 0,
+    "explanation": "Than karşılaştırma biçimi earlier gerektirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_7_5",
+    "family": "cloze_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture ____ his guests arrived.\n\nChoose the best option for the blank.",
+    "options": [
+      "before",
+      "despite",
+      "unless",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "Before misafirler gelmeden önce anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_8_1",
+    "family": "cloze_nov26_11_8",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local shop introduced a refill station for cleaning products. Customers can bring their own containers instead of ____ new plastic bottles each time. The shop provides clear instructions so that the containers can be filled safely. Initially, few customers used the station because they were unfamiliar with the process. Staff began demonstrating how it worked, and demand has increased steadily since then. The owner plans to expand the service if interest continues to grow.\n\nChoose the best option for the blank.",
+    "options": [
+      "buying",
+      "buy",
+      "to buy",
+      "bought",
+      "buys"
+    ],
+    "correct": 0,
+    "explanation": "Instead of ardından gerund buying gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_8_2",
+    "family": "cloze_nov26_11_8",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local shop introduced a refill station for cleaning products. Customers can bring their own containers instead of buying new plastic bottles each time. The shop provides clear instructions ____ the containers can be filled safely. Initially, few customers used the station because they were unfamiliar with the process. Staff began demonstrating how it worked, and demand has increased steadily since then. The owner plans to expand the service if interest continues to grow.\n\nChoose the best option for the blank.",
+    "options": [
+      "so that",
+      "even though",
+      "unless",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "So that güvenli dolumu amaç olarak belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_8_3",
+    "family": "cloze_nov26_11_8",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local shop introduced a refill station for cleaning products. Customers can bring their own containers instead of buying new plastic bottles each time. The shop provides clear instructions so that the containers can be filled safely. Initially, few customers used the station because they were unfamiliar ____ the process. Staff began demonstrating how it worked, and demand has increased steadily since then. The owner plans to expand the service if interest continues to grow.\n\nChoose the best option for the blank.",
+    "options": [
+      "with",
+      "for",
+      "on",
+      "at",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Unfamiliar with bir şeye aşina olmamak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_8_4",
+    "family": "cloze_nov26_11_8",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local shop introduced a refill station for cleaning products. Customers can bring their own containers instead of buying new plastic bottles each time. The shop provides clear instructions so that the containers can be filled safely. Initially, few customers used the station because they were unfamiliar with the process. Staff began demonstrating how it worked, and demand ____ steadily since then. The owner plans to expand the service if interest continues to grow.\n\nChoose the best option for the blank.",
+    "options": [
+      "has increased",
+      "had increase",
+      "increases yesterday",
+      "will increased",
+      "has increasing"
+    ],
+    "correct": 0,
+    "explanation": "Since then geçmişten bugüne değişim için present perfect gerektirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_8_5",
+    "family": "cloze_nov26_11_8",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local shop introduced a refill station for cleaning products. Customers can bring their own containers instead of buying new plastic bottles each time. The shop provides clear instructions so that the containers can be filled safely. Initially, few customers used the station because they were unfamiliar with the process. Staff began demonstrating how it worked, and demand has increased steadily since then. The owner plans to expand the service if interest continues to ____.\n\nChoose the best option for the blank.",
+    "options": [
+      "grow",
+      "decline",
+      "disappear",
+      "end",
+      "fall"
+    ],
+    "correct": 0,
+    "explanation": "Hizmetin genişletilmesi ilginin artmaya devam etmesine bağlanmıştır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_9_1",
+    "family": "cloze_nov26_11_9",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A community theatre wanted to attract younger audiences. Its managers discovered that many students ____ to attend but found the ticket prices too high. They introduced cheaper tickets for people under twenty-five. The discount was announced through local schools, which helped the theatre reach new audiences. Ticket sales increased, although the managers needed to assess whether the extra visitors compensated for the lower price. They decided to review the figures at the end of the season.\n\nChoose the best option for the blank.",
+    "options": [
+      "wanted",
+      "wanting",
+      "will want yesterday",
+      "were wanted",
+      "have want"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişteki keşfin içerdiği istek wanted ile aktarılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_9_2",
+    "family": "cloze_nov26_11_9",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A community theatre wanted to attract younger audiences. Its managers discovered that many students wanted to attend but found the ticket prices too high. They introduced cheaper tickets ____ people under twenty-five. The discount was announced through local schools, which helped the theatre reach new audiences. Ticket sales increased, although the managers needed to assess whether the extra visitors compensated for the lower price. They decided to review the figures at the end of the season.\n\nChoose the best option for the blank.",
+    "options": [
+      "for",
+      "from",
+      "at",
+      "of",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Cheaper tickets for belirli gruba yönelik ucuz biletlerdir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_9_3",
+    "family": "cloze_nov26_11_9",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A community theatre wanted to attract younger audiences. Its managers discovered that many students wanted to attend but found the ticket prices too high. They introduced cheaper tickets for people under twenty-five. The discount was announced through local schools, ____ helped the theatre reach new audiences. Ticket sales increased, although the managers needed to assess whether the extra visitors compensated for the lower price. They decided to review the figures at the end of the season.\n\nChoose the best option for the blank.",
+    "options": [
+      "which",
+      "who",
+      "whose",
+      "where",
+      "what"
+    ],
+    "correct": 0,
+    "explanation": "Which önceki yan cümlenin tamamına gönderme yapar."
+  },
+  {
+    "id": "wq150_nov26_cloze11_9_4",
+    "family": "cloze_nov26_11_9",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A community theatre wanted to attract younger audiences. Its managers discovered that many students wanted to attend but found the ticket prices too high. They introduced cheaper tickets for people under twenty-five. The discount was announced through local schools, which helped the theatre reach new audiences. Ticket sales increased, although the managers needed to ____ whether the extra visitors compensated for the lower price. They decided to review the figures at the end of the season.\n\nChoose the best option for the blank.",
+    "options": [
+      "assess",
+      "assume",
+      "ignore",
+      "reject",
+      "conceal"
+    ],
+    "correct": 0,
+    "explanation": "Gelir etkisini değerlendirmek assess whether ile ifade edilir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_9_5",
+    "family": "cloze_nov26_11_9",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A community theatre wanted to attract younger audiences. Its managers discovered that many students wanted to attend but found the ticket prices too high. They introduced cheaper tickets for people under twenty-five. The discount was announced through local schools, which helped the theatre reach new audiences. Ticket sales increased, although the managers needed to assess whether the extra visitors compensated for the lower price. They decided to review the figures ____ the end of the season.\n\nChoose the best option for the blank.",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "to",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "At the end of bir dönemin sonunda demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_10_1",
+    "family": "cloze_nov26_11_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A language school began recording short lessons for students who could not attend every class. The recordings were made available ____ a password-protected website. Students could watch them whenever they had time, although they were still expected to complete the regular assignments. The teachers found that recordings were most useful when students took notes and tried the exercises. They therefore added questions to encourage learners to check their understanding. The new material was intended to support lessons rather than replace them completely.\n\nChoose the best option for the blank.",
+    "options": [
+      "on",
+      "at to",
+      "by of",
+      "from of",
+      "into of"
+    ],
+    "correct": 0,
+    "explanation": "On a website bir internet sitesinde anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_10_2",
+    "family": "cloze_nov26_11_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A language school began recording short lessons for students who could not attend every class. The recordings were made available on a password-protected website. Students could watch them whenever they had time, ____ they were still expected to complete the regular assignments. The teachers found that recordings were most useful when students took notes and tried the exercises. They therefore added questions to encourage learners to check their understanding. The new material was intended to support lessons rather than replace them completely.\n\nChoose the best option for the blank.",
+    "options": [
+      "although",
+      "because of",
+      "unless",
+      "so as to",
+      "in spite of"
+    ],
+    "correct": 0,
+    "explanation": "Esnek izleme ile devam eden ödev zorunluluğu arasında karşıtlık vardır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_10_3",
+    "family": "cloze_nov26_11_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A language school began recording short lessons for students who could not attend every class. The recordings were made available on a password-protected website. Students could watch them whenever they had time, although they were still expected to complete the regular assignments. The teachers found that recordings were most useful when students ____ notes and tried the exercises. They therefore added questions to encourage learners to check their understanding. The new material was intended to support lessons rather than replace them completely.\n\nChoose the best option for the blank.",
+    "options": [
+      "took",
+      "made of",
+      "paid",
+      "gave",
+      "set"
+    ],
+    "correct": 0,
+    "explanation": "Take notes not almak kalıbıdır; geçmiş anlatıda took gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_10_4",
+    "family": "cloze_nov26_11_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A language school began recording short lessons for students who could not attend every class. The recordings were made available on a password-protected website. Students could watch them whenever they had time, although they were still expected to complete the regular assignments. The teachers found that recordings were most useful when students took notes and tried the exercises. They therefore added questions ____ learners to check their understanding. The new material was intended to support lessons rather than replace them completely.\n\nChoose the best option for the blank.",
+    "options": [
+      "to encourage",
+      "encouraging of",
+      "encouraged",
+      "encourage of",
+      "to encouraging"
+    ],
+    "correct": 0,
+    "explanation": "To encourage soruların eklenme amacını belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_10_5",
+    "family": "cloze_nov26_11_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A language school began recording short lessons for students who could not attend every class. The recordings were made available on a password-protected website. Students could watch them whenever they had time, although they were still expected to complete the regular assignments. The teachers found that recordings were most useful when students took notes and tried the exercises. They therefore added questions to encourage learners to check their understanding. The new material was intended to support lessons rather than ____ them completely.\n\nChoose the best option for the blank.",
+    "options": [
+      "replace",
+      "replaced",
+      "replacing of",
+      "replaces",
+      "to replacing"
+    ],
+    "correct": 0,
+    "explanation": "Support ... rather than replace paralel fiil yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_11_1",
+    "family": "cloze_nov26_11_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bicycle repair service opened at a railway station. Commuters can leave their bikes there ____ they travel to work and collect them in the evening. The repair service was introduced after a survey revealed that many cyclists lacked time to visit a workshop. Customers receive a message once their bikes are ready for collection. If an expensive repair is needed, the mechanic contacts them before carrying out the work. This helps customers avoid paying for repairs they did not approve.\n\nChoose the best option for the blank.",
+    "options": [
+      "while",
+      "unless",
+      "despite",
+      "because of",
+      "rather than"
+    ],
+    "correct": 0,
+    "explanation": "While iki eş zamanlı süreci bağlar."
+  },
+  {
+    "id": "wq150_nov26_cloze11_11_2",
+    "family": "cloze_nov26_11_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bicycle repair service opened at a railway station. Commuters can leave their bikes there while they travel to work and collect them in the evening. The repair service was introduced after a survey ____ that many cyclists lacked time to visit a workshop. Customers receive a message once their bikes are ready for collection. If an expensive repair is needed, the mechanic contacts them before carrying out the work. This helps customers avoid paying for repairs they did not approve.\n\nChoose the best option for the blank.",
+    "options": [
+      "revealed",
+      "revealing of",
+      "has reveal",
+      "was reveal",
+      "will revealing"
+    ],
+    "correct": 0,
+    "explanation": "After a survey revealed, geçmişte yapılan araştırmanın sonucunu anlatır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_11_3",
+    "family": "cloze_nov26_11_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bicycle repair service opened at a railway station. Commuters can leave their bikes there while they travel to work and collect them in the evening. The repair service was introduced after a survey revealed that many cyclists lacked time to visit a workshop. Customers receive a message once their bikes ____ ready for collection. If an expensive repair is needed, the mechanic contacts them before carrying out the work. This helps customers avoid paying for repairs they did not approve.\n\nChoose the best option for the blank.",
+    "options": [
+      "are",
+      "will be of",
+      "was",
+      "is",
+      "be"
+    ],
+    "correct": 0,
+    "explanation": "Bikes çoğul; once yan cümlesinde are ready gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_11_4",
+    "family": "cloze_nov26_11_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bicycle repair service opened at a railway station. Commuters can leave their bikes there while they travel to work and collect them in the evening. The repair service was introduced after a survey revealed that many cyclists lacked time to visit a workshop. Customers receive a message once their bikes are ready for collection. If an expensive repair is needed, the mechanic contacts them ____ carrying out the work. This helps customers avoid paying for repairs they did not approve.\n\nChoose the best option for the blank.",
+    "options": [
+      "before",
+      "until of",
+      "despite",
+      "since of",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "Onay almak iş yapılmadan önce gerçekleşir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_11_5",
+    "family": "cloze_nov26_11_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bicycle repair service opened at a railway station. Commuters can leave their bikes there while they travel to work and collect them in the evening. The repair service was introduced after a survey revealed that many cyclists lacked time to visit a workshop. Customers receive a message once their bikes are ready for collection. If an expensive repair is needed, the mechanic contacts them before carrying out the work. This helps customers avoid ____ for repairs they did not approve.\n\nChoose the best option for the blank.",
+    "options": [
+      "paying",
+      "pay",
+      "to pay",
+      "paid",
+      "pays"
+    ],
+    "correct": 0,
+    "explanation": "Avoid ardından gerund paying kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_12_1",
+    "family": "cloze_nov26_11_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small firm decided to offer training to employees who wanted to improve their digital skills. The lessons were arranged ____ the normal working day so that staff did not need to stay late. Employees were divided into groups according to their experience. Beginners learned basic tasks, whereas more experienced users practised advanced functions. The trainer encouraged participants to ask questions whenever they encountered a problem. After the course, staff were asked to suggest ways in which the programme could be improved.\n\nChoose the best option for the blank.",
+    "options": [
+      "during",
+      "since",
+      "until",
+      "from of",
+      "between"
+    ],
+    "correct": 0,
+    "explanation": "During the normal working day normal çalışma saatleri içinde demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_12_2",
+    "family": "cloze_nov26_11_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small firm decided to offer training to employees who wanted to improve their digital skills. The lessons were arranged during the normal working day so that staff did not need to stay late. Employees were divided into groups according ____ their experience. Beginners learned basic tasks, whereas more experienced users practised advanced functions. The trainer encouraged participants to ask questions whenever they encountered a problem. After the course, staff were asked to suggest ways in which the programme could be improved.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "for",
+      "on",
+      "with",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "According to ... e göre kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_12_3",
+    "family": "cloze_nov26_11_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small firm decided to offer training to employees who wanted to improve their digital skills. The lessons were arranged during the normal working day so that staff did not need to stay late. Employees were divided into groups according to their experience. Beginners learned basic tasks, ____ more experienced users practised advanced functions. The trainer encouraged participants to ask questions whenever they encountered a problem. After the course, staff were asked to suggest ways in which the programme could be improved.\n\nChoose the best option for the blank.",
+    "options": [
+      "whereas",
+      "because of",
+      "unless",
+      "so that",
+      "in order to"
+    ],
+    "correct": 0,
+    "explanation": "Whereas iki grubun farklı faaliyetlerini karşılaştırır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_12_4",
+    "family": "cloze_nov26_11_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small firm decided to offer training to employees who wanted to improve their digital skills. The lessons were arranged during the normal working day so that staff did not need to stay late. Employees were divided into groups according to their experience. Beginners learned basic tasks, whereas more experienced users practised advanced functions. The trainer encouraged participants to ask questions whenever they ____ a problem. After the course, staff were asked to suggest ways in which the programme could be improved.\n\nChoose the best option for the blank.",
+    "options": [
+      "encountered",
+      "encountering",
+      "were encounter",
+      "have encounter",
+      "will encountered"
+    ],
+    "correct": 0,
+    "explanation": "Geçmiş bağlamda encountered, sorunla karşılaştıklarında anlamını verir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_12_5",
+    "family": "cloze_nov26_11_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small firm decided to offer training to employees who wanted to improve their digital skills. The lessons were arranged during the normal working day so that staff did not need to stay late. Employees were divided into groups according to their experience. Beginners learned basic tasks, whereas more experienced users practised advanced functions. The trainer encouraged participants to ask questions whenever they encountered a problem. After the course, staff were asked to suggest ways in which the programme could ____.\n\nChoose the best option for the blank.",
+    "options": [
+      "be improved",
+      "improve itself yesterday",
+      "be improving of",
+      "have improve",
+      "been improved"
+    ],
+    "correct": 0,
+    "explanation": "Could + be + V3 programın geliştirilebilmesini belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_13_1",
+    "family": "cloze_nov26_11_13",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, ____ the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "and",
+      "because of",
+      "unless",
+      "so as to",
+      "in spite of"
+    ],
+    "correct": 0,
+    "explanation": "And iki yöntemsel uygulamayı birbirine bağlar."
+  },
+  {
+    "id": "wq150_nov26_cloze11_13_2",
+    "family": "cloze_nov26_11_13",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused ____ familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "by",
+      "from of",
+      "to",
+      "at",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Caused by bir etkinin nedenini belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_13_3",
+    "family": "cloze_nov26_11_13",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. ____ , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "However",
+      "Therefore",
+      "For instance",
+      "Similarly",
+      "Consequently"
+    ],
+    "correct": 0,
+    "explanation": "Genel bulguya görevin karmaşıklığına bağlı bir sınırlama eklenir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_13_4",
+    "family": "cloze_nov26_11_13",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against ____ the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "generalising",
+      "generalise",
+      "to generalise",
+      "generalised",
+      "generalises"
+    ],
+    "correct": 0,
+    "explanation": "Warn against ardından gerund kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_13_5",
+    "family": "cloze_nov26_11_13",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research ____ real-world conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "under",
+      "onto",
+      "between",
+      "throughout of",
+      "from of"
+    ],
+    "correct": 0,
+    "explanation": "Under real-world conditions gerçek dünya koşulları altında demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_14_1",
+    "family": "cloze_nov26_11_14",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a programme to reduce household water consumption. Residents received information about their usage compared ____ that of similar households. Some residents reduced consumption immediately, whereas others showed little change. The researchers noted that the information might be less effective for households that had already adopted efficient practices. They therefore examined the results taking initial consumption levels into account. This allowed them to identify groups for whom the programme was particularly useful. The findings suggest that interventions should be adapted to the needs of their target population rather than applied uniformly.\n\nChoose the best option for the blank.",
+    "options": [
+      "with",
+      "at",
+      "to of",
+      "from",
+      "on"
+    ],
+    "correct": 0,
+    "explanation": "Compared with karşılaştırma kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_14_2",
+    "family": "cloze_nov26_11_14",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a programme to reduce household water consumption. Residents received information about their usage compared with that of similar households. Some residents reduced consumption immediately, ____ others showed little change. The researchers noted that the information might be less effective for households that had already adopted efficient practices. They therefore examined the results taking initial consumption levels into account. This allowed them to identify groups for whom the programme was particularly useful. The findings suggest that interventions should be adapted to the needs of their target population rather than applied uniformly.\n\nChoose the best option for the blank.",
+    "options": [
+      "whereas",
+      "so that",
+      "because of",
+      "unless",
+      "in order to"
+    ],
+    "correct": 0,
+    "explanation": "Whereas farklı tepkileri karşılaştırır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_14_3",
+    "family": "cloze_nov26_11_14",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a programme to reduce household water consumption. Residents received information about their usage compared with that of similar households. Some residents reduced consumption immediately, whereas others showed little change. The researchers noted that the information might be less effective for households that had already adopted efficient practices. They therefore examined the results ____ initial consumption levels into account. This allowed them to identify groups for whom the programme was particularly useful. The findings suggest that interventions should be adapted to the needs of their target population rather than applied uniformly.\n\nChoose the best option for the blank.",
+    "options": [
+      "taking",
+      "take",
+      "to taking",
+      "taken",
+      "takes"
+    ],
+    "correct": 0,
+    "explanation": "Taking ... into account yan eylem olarak hesaba katmayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_cloze11_14_4",
+    "family": "cloze_nov26_11_14",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a programme to reduce household water consumption. Residents received information about their usage compared with that of similar households. Some residents reduced consumption immediately, whereas others showed little change. The researchers noted that the information might be less effective for households that had already adopted efficient practices. They therefore examined the results taking initial consumption levels into account. This allowed them to identify groups for ____ the programme was particularly useful. The findings suggest that interventions should be adapted to the needs of their target population rather than applied uniformly.\n\nChoose the best option for the blank.",
+    "options": [
+      "whom",
+      "which of",
+      "whose",
+      "where",
+      "what"
+    ],
+    "correct": 0,
+    "explanation": "For whom insan gruplarına gönderme yapar."
+  },
+  {
+    "id": "wq150_nov26_cloze11_14_5",
+    "family": "cloze_nov26_11_14",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a programme to reduce household water consumption. Residents received information about their usage compared with that of similar households. Some residents reduced consumption immediately, whereas others showed little change. The researchers noted that the information might be less effective for households that had already adopted efficient practices. They therefore examined the results taking initial consumption levels into account. This allowed them to identify groups for whom the programme was particularly useful. The findings suggest that interventions should be adapted to the needs of their target population rather than ____ uniformly.\n\nChoose the best option for the blank.",
+    "options": [
+      "applied",
+      "apply",
+      "applying of",
+      "applies",
+      "to applying"
+    ],
+    "correct": 0,
+    "explanation": "Should be adapted rather than applied paralel edilgen yapıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_15_1",
+    "family": "cloze_nov26_11_15",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A team developed a method for detecting defects in manufactured products. The method was initially tested on samples ____ under controlled conditions. Although accuracy was high, the researchers acknowledged that actual production lines involved greater variability. They therefore conducted additional tests using products collected during routine operations. The results revealed that the method was sensitive to changes in lighting. Rather than abandoning the system, the team modified the image-processing procedure to address this limitation. A final assessment examined whether the revised method performed consistently across a range of environments.\n\nChoose the best option for the blank.",
+    "options": [
+      "prepared",
+      "preparing them",
+      "were prepared",
+      "had prepared",
+      "which preparing"
+    ],
+    "correct": 0,
+    "explanation": "Prepared kısaltılmış edilgen relative clause biçimidir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_15_2",
+    "family": "cloze_nov26_11_15",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A team developed a method for detecting defects in manufactured products. The method was initially tested on samples prepared under controlled conditions. Although accuracy was high, the researchers acknowledged that actual production lines involved greater variability. They therefore conducted additional tests using products collected ____ routine operations. The results revealed that the method was sensitive to changes in lighting. Rather than abandoning the system, the team modified the image-processing procedure to address this limitation. A final assessment examined whether the revised method performed consistently across a range of environments.\n\nChoose the best option for the blank.",
+    "options": [
+      "during",
+      "since",
+      "until",
+      "between of",
+      "towards of"
+    ],
+    "correct": 0,
+    "explanation": "During routine operations normal üretim işlemleri sırasında demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_15_3",
+    "family": "cloze_nov26_11_15",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A team developed a method for detecting defects in manufactured products. The method was initially tested on samples prepared under controlled conditions. Although accuracy was high, the researchers acknowledged that actual production lines involved greater variability. They therefore conducted additional tests using products collected during routine operations. The results revealed that the method was sensitive ____ changes in lighting. Rather than abandoning the system, the team modified the image-processing procedure to address this limitation. A final assessment examined whether the revised method performed consistently across a range of environments.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "at",
+      "for",
+      "from",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Sensitive to bir etkene duyarlı olma kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_15_4",
+    "family": "cloze_nov26_11_15",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A team developed a method for detecting defects in manufactured products. The method was initially tested on samples prepared under controlled conditions. Although accuracy was high, the researchers acknowledged that actual production lines involved greater variability. They therefore conducted additional tests using products collected during routine operations. The results revealed that the method was sensitive to changes in lighting. Rather than abandoning the system, the team modified the image-processing procedure to ____ this limitation. A final assessment examined whether the revised method performed consistently across a range of environments.\n\nChoose the best option for the blank.",
+    "options": [
+      "address",
+      "assume",
+      "conceal",
+      "classify",
+      "preserve"
+    ],
+    "correct": 0,
+    "explanation": "Address a limitation bir sınırlamayı ele alıp çözmeye çalışmaktır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_15_5",
+    "family": "cloze_nov26_11_15",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A team developed a method for detecting defects in manufactured products. The method was initially tested on samples prepared under controlled conditions. Although accuracy was high, the researchers acknowledged that actual production lines involved greater variability. They therefore conducted additional tests using products collected during routine operations. The results revealed that the method was sensitive to changes in lighting. Rather than abandoning the system, the team modified the image-processing procedure to address this limitation. A final assessment examined whether the revised method performed consistently ____ a range of environments.\n\nChoose the best option for the blank.",
+    "options": [
+      "across",
+      "into",
+      "onto",
+      "from of",
+      "until"
+    ],
+    "correct": 0,
+    "explanation": "Across a range of çeşitli ortamlar boyunca anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_16_1",
+    "family": "cloze_nov26_11_16",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university evaluated a mentoring programme for first-year students. Participants were compared with students who had not enrolled, ____ their previous academic performance was also considered. The researchers recognised that students who chose to participate might differ from those who did not in ways that were difficult to measure. Consequently, they avoided presenting the observed association as definitive evidence of causation. They proposed a follow-up study in which access to mentoring would be assigned at random. Such a design could provide a stronger basis for estimating the programme's effect.\n\nChoose the best option for the blank.",
+    "options": [
+      "and",
+      "unless",
+      "because of",
+      "whereas of",
+      "despite"
+    ],
+    "correct": 0,
+    "explanation": "And aynı değerlendirmede ikinci uygulamayı ekler."
+  },
+  {
+    "id": "wq150_nov26_cloze11_16_2",
+    "family": "cloze_nov26_11_16",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university evaluated a mentoring programme for first-year students. Participants were compared with students who had not enrolled, and their previous academic performance was also considered. The researchers recognised that students who chose to participate might differ ____ those who did not in ways that were difficult to measure. Consequently, they avoided presenting the observed association as definitive evidence of causation. They proposed a follow-up study in which access to mentoring would be assigned at random. Such a design could provide a stronger basis for estimating the programme's effect.\n\nChoose the best option for the blank.",
+    "options": [
+      "from",
+      "of",
+      "at",
+      "by",
+      "on"
+    ],
+    "correct": 0,
+    "explanation": "Differ from birinden veya bir şeyden farklı olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_16_3",
+    "family": "cloze_nov26_11_16",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university evaluated a mentoring programme for first-year students. Participants were compared with students who had not enrolled, and their previous academic performance was also considered. The researchers recognised that students who chose to participate might differ from those who did not in ways that were difficult to measure. Consequently, they avoided presenting the observed association as definitive evidence ____ causation. They proposed a follow-up study in which access to mentoring would be assigned at random. Such a design could provide a stronger basis for estimating the programme's effect.\n\nChoose the best option for the blank.",
+    "options": [
+      "of",
+      "at",
+      "on to",
+      "with of",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Evidence of causation nedensellik kanıtıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_16_4",
+    "family": "cloze_nov26_11_16",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university evaluated a mentoring programme for first-year students. Participants were compared with students who had not enrolled, and their previous academic performance was also considered. The researchers recognised that students who chose to participate might differ from those who did not in ways that were difficult to measure. Consequently, they avoided presenting the observed association as definitive evidence of causation. They proposed a follow-up study in which access to mentoring would be assigned ____ random. Such a design could provide a stronger basis for estimating the programme's effect.\n\nChoose the best option for the blank.",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "to",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "At random rastgele anlamında kalıptır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_16_5",
+    "family": "cloze_nov26_11_16",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university evaluated a mentoring programme for first-year students. Participants were compared with students who had not enrolled, and their previous academic performance was also considered. The researchers recognised that students who chose to participate might differ from those who did not in ways that were difficult to measure. Consequently, they avoided presenting the observed association as definitive evidence of causation. They proposed a follow-up study in which access to mentoring would be assigned at random. Such a design could provide a stronger basis for ____ the programme's effect.\n\nChoose the best option for the blank.",
+    "options": [
+      "estimating",
+      "estimate",
+      "estimated",
+      "to estimate",
+      "estimates"
+    ],
+    "correct": 0,
+    "explanation": "For ardından gerund estimating kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_17_1",
+    "family": "cloze_nov26_11_17",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer introduced an incentive scheme based on the number of products completed each day. Productivity initially rose, ____ so did the number of defects. Managers realised that the indicator encouraged employees to prioritise speed over accuracy. The scheme was revised to include measures of product quality as well as output. Although the revised approach was more complex, it provided a better picture of performance. The company also introduced periodic inspections to verify that the reported figures were accurate. This example illustrates the importance of aligning incentives with organisational objectives.\n\nChoose the best option for the blank.",
+    "options": [
+      "but",
+      "because of",
+      "unless",
+      "in order to",
+      "despite"
+    ],
+    "correct": 0,
+    "explanation": "But verim artışı ile kusur artışı arasındaki karşıtlığı kurar."
+  },
+  {
+    "id": "wq150_nov26_cloze11_17_2",
+    "family": "cloze_nov26_11_17",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer introduced an incentive scheme based on the number of products completed each day. Productivity initially rose, but so did the number of defects. Managers realised that the indicator encouraged employees to prioritise speed ____ accuracy. The scheme was revised to include measures of product quality as well as output. Although the revised approach was more complex, it provided a better picture of performance. The company also introduced periodic inspections to verify that the reported figures were accurate. This example illustrates the importance of aligning incentives with organisational objectives.\n\nChoose the best option for the blank.",
+    "options": [
+      "over",
+      "into",
+      "from",
+      "at",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Prioritise X over Y, X'e Y'den fazla öncelik vermektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_17_3",
+    "family": "cloze_nov26_11_17",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer introduced an incentive scheme based on the number of products completed each day. Productivity initially rose, but so did the number of defects. Managers realised that the indicator encouraged employees to prioritise speed over accuracy. The scheme was revised to include measures of product quality as well as output. ____ the revised approach was more complex, it provided a better picture of performance. The company also introduced periodic inspections to verify that the reported figures were accurate. This example illustrates the importance of aligning incentives with organisational objectives.\n\nChoose the best option for the blank.",
+    "options": [
+      "Although",
+      "Because of",
+      "Unless",
+      "In spite of",
+      "So that"
+    ],
+    "correct": 0,
+    "explanation": "Karmaşıklık ve daha iyi değerlendirme karşıtlık oluşturur."
+  },
+  {
+    "id": "wq150_nov26_cloze11_17_4",
+    "family": "cloze_nov26_11_17",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer introduced an incentive scheme based on the number of products completed each day. Productivity initially rose, but so did the number of defects. Managers realised that the indicator encouraged employees to prioritise speed over accuracy. The scheme was revised to include measures of product quality as well as output. Although the revised approach was more complex, it provided a better picture of performance. The company also introduced periodic inspections to verify that the reported figures ____ accurate. This example illustrates the importance of aligning incentives with organisational objectives.\n\nChoose the best option for the blank.",
+    "options": [
+      "were",
+      "was",
+      "be",
+      "having",
+      "being"
+    ],
+    "correct": 0,
+    "explanation": "Figures çoğul, geçmişte doğrulanacak özellik were accurate olur."
+  },
+  {
+    "id": "wq150_nov26_cloze11_17_5",
+    "family": "cloze_nov26_11_17",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer introduced an incentive scheme based on the number of products completed each day. Productivity initially rose, but so did the number of defects. Managers realised that the indicator encouraged employees to prioritise speed over accuracy. The scheme was revised to include measures of product quality as well as output. Although the revised approach was more complex, it provided a better picture of performance. The company also introduced periodic inspections to verify that the reported figures were accurate. This example illustrates the importance of aligning incentives ____ organisational objectives.\n\nChoose the best option for the blank.",
+    "options": [
+      "with",
+      "at",
+      "from",
+      "of",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Align X with Y, X'i Y ile uyumlu hâle getirmektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_18_1",
+    "family": "cloze_nov26_11_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused ____ the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "options": [
+      "on",
+      "at",
+      "to",
+      "with",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Focus on odaklanmak anlamında kalıptır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_18_2",
+    "family": "cloze_nov26_11_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement ____ disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "options": [
+      "was",
+      "were being of",
+      "had being",
+      "will disrupted",
+      "is disrupt"
+    ],
+    "correct": 0,
+    "explanation": "If natural sediment movement was disrupted geçmişteki olası edilgen koşuldur."
+  },
+  {
+    "id": "wq150_nov26_cloze11_18_3",
+    "family": "cloze_nov26_11_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have ____ unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "options": [
+      "gone",
+      "went",
+      "going",
+      "go",
+      "goes"
+    ],
+    "correct": 0,
+    "explanation": "Might have gone unnoticed fark edilmemiş olabilirdi anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_18_4",
+    "family": "cloze_nov26_11_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits ____ broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "options": [
+      "alongside",
+      "instead of always",
+      "in opposition of",
+      "rather of",
+      "apart to"
+    ],
+    "correct": 0,
+    "explanation": "Alongside yerel faydaları daha geniş maliyetlerle birlikte değerlendirmeyi bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_18_5",
+    "family": "cloze_nov26_11_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be ____ justified.\n\nChoose the best option for the blank.",
+    "options": [
+      "adequately",
+      "adequate",
+      "adequacy",
+      "adequate of",
+      "adequately of"
+    ],
+    "correct": 0,
+    "explanation": "Justified fiilini niteleyen zarf adequately yeterli biçimde demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_19_1",
+    "family": "cloze_nov26_11_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An archive digitised a collection of handwritten documents. The software used to recognise text worked well for clear handwriting but was less reliable ____ faded or damaged pages. Instead of treating the generated text as definitive, archivists retained links to the original images. Users could therefore check uncertain readings against the source material. Volunteers were invited to correct errors, and the revised versions were reviewed by specialist staff. This process improved accuracy without eliminating the need for access to the original documents. The project demonstrated the value of combining automation with human judgement.\n\nChoose the best option for the blank.",
+    "options": [
+      "on",
+      "into",
+      "at of",
+      "from of",
+      "throughout of"
+    ],
+    "correct": 0,
+    "explanation": "On faded pages solmuş sayfalarda sistemin çalışmasını belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_19_2",
+    "family": "cloze_nov26_11_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An archive digitised a collection of handwritten documents. The software used to recognise text worked well for clear handwriting but was less reliable on faded or damaged pages. Instead of treating the generated text as definitive, archivists retained links to the original images. Users could therefore check uncertain readings ____ the source material. Volunteers were invited to correct errors, and the revised versions were reviewed by specialist staff. This process improved accuracy without eliminating the need for access to the original documents. The project demonstrated the value of combining automation with human judgement.\n\nChoose the best option for the blank.",
+    "options": [
+      "against",
+      "into",
+      "upon of",
+      "from of",
+      "among"
+    ],
+    "correct": 0,
+    "explanation": "Check against bir veriyi referansla karşılaştırarak doğrulamaktır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_19_3",
+    "family": "cloze_nov26_11_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An archive digitised a collection of handwritten documents. The software used to recognise text worked well for clear handwriting but was less reliable on faded or damaged pages. Instead of treating the generated text as definitive, archivists retained links to the original images. Users could therefore check uncertain readings against the source material. Volunteers were invited to correct errors, ____ the revised versions were reviewed by specialist staff. This process improved accuracy without eliminating the need for access to the original documents. The project demonstrated the value of combining automation with human judgement.\n\nChoose the best option for the blank.",
+    "options": [
+      "and",
+      "unless",
+      "because of",
+      "in spite of",
+      "so as to"
+    ],
+    "correct": 0,
+    "explanation": "And düzeltme ve uzman incelemesini bağlar."
+  },
+  {
+    "id": "wq150_nov26_cloze11_19_4",
+    "family": "cloze_nov26_11_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An archive digitised a collection of handwritten documents. The software used to recognise text worked well for clear handwriting but was less reliable on faded or damaged pages. Instead of treating the generated text as definitive, archivists retained links to the original images. Users could therefore check uncertain readings against the source material. Volunteers were invited to correct errors, and the revised versions were reviewed by specialist staff. This process improved accuracy without ____ the need for access to the original documents. The project demonstrated the value of combining automation with human judgement.\n\nChoose the best option for the blank.",
+    "options": [
+      "eliminating",
+      "eliminate",
+      "eliminated",
+      "to eliminate",
+      "eliminates"
+    ],
+    "correct": 0,
+    "explanation": "Without ardından -ing kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_19_5",
+    "family": "cloze_nov26_11_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An archive digitised a collection of handwritten documents. The software used to recognise text worked well for clear handwriting but was less reliable on faded or damaged pages. Instead of treating the generated text as definitive, archivists retained links to the original images. Users could therefore check uncertain readings against the source material. Volunteers were invited to correct errors, and the revised versions were reviewed by specialist staff. This process improved accuracy without eliminating the need for access to the original documents. The project demonstrated the value of combining automation ____ human judgement.\n\nChoose the best option for the blank.",
+    "options": [
+      "with",
+      "at",
+      "of",
+      "from",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Combine X with Y birleştirme kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze11_20_1",
+    "family": "cloze_nov26_11_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A transport operator tested a new timetable intended to reduce waiting times. The average wait fell, but the improvement was not evenly distributed ____ all routes. Some passengers travelling late in the evening experienced longer waits than before. The evaluation team therefore recommended reporting results by time of day and location. This would make it easier to detect groups for whom the service had actually deteriorated. The team emphasised that an improvement in the average did not necessarily imply an improvement for every passenger. Future decisions would take these differences into account.\n\nChoose the best option for the blank.",
+    "options": [
+      "across",
+      "onto",
+      "into",
+      "from of",
+      "until"
+    ],
+    "correct": 0,
+    "explanation": "Across all routes tüm güzergâhlar arasında dağılımı bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_20_2",
+    "family": "cloze_nov26_11_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A transport operator tested a new timetable intended to reduce waiting times. The average wait fell, but the improvement was not evenly distributed across all routes. Some passengers travelling late in the evening experienced longer waits than before. The evaluation team therefore recommended reporting results ____ time of day and location. This would make it easier to detect groups for whom the service had actually deteriorated. The team emphasised that an improvement in the average did not necessarily imply an improvement for every passenger. Future decisions would take these differences into account.\n\nChoose the best option for the blank.",
+    "options": [
+      "by",
+      "at",
+      "to",
+      "of",
+      "with of"
+    ],
+    "correct": 0,
+    "explanation": "Report by time and location zaman ve konuma göre raporlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_20_3",
+    "family": "cloze_nov26_11_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A transport operator tested a new timetable intended to reduce waiting times. The average wait fell, but the improvement was not evenly distributed across all routes. Some passengers travelling late in the evening experienced longer waits than before. The evaluation team therefore recommended reporting results by time of day and location. This would make it easier to detect groups for whom the service had ____ deteriorated. The team emphasised that an improvement in the average did not necessarily imply an improvement for every passenger. Future decisions would take these differences into account.\n\nChoose the best option for the blank.",
+    "options": [
+      "actually",
+      "actual",
+      "actuality",
+      "actual of",
+      "actualise"
+    ],
+    "correct": 0,
+    "explanation": "Deteriorated fiilini niteleyen zarf actually gerçekten demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_20_4",
+    "family": "cloze_nov26_11_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A transport operator tested a new timetable intended to reduce waiting times. The average wait fell, but the improvement was not evenly distributed across all routes. Some passengers travelling late in the evening experienced longer waits than before. The evaluation team therefore recommended reporting results by time of day and location. This would make it easier to detect groups for whom the service had actually deteriorated. The team emphasised that an improvement in the average did not necessarily ____ an improvement for every passenger. Future decisions would take these differences into account.\n\nChoose the best option for the blank.",
+    "options": [
+      "imply",
+      "implied",
+      "implies",
+      "implying",
+      "to imply"
+    ],
+    "correct": 0,
+    "explanation": "Did not + yalın fiil imply gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze11_20_5",
+    "family": "cloze_nov26_11_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A transport operator tested a new timetable intended to reduce waiting times. The average wait fell, but the improvement was not evenly distributed across all routes. Some passengers travelling late in the evening experienced longer waits than before. The evaluation team therefore recommended reporting results by time of day and location. This would make it easier to detect groups for whom the service had actually deteriorated. The team emphasised that an improvement in the average did not necessarily imply an improvement for every passenger. Future decisions would take these differences ____ account.\n\nChoose the best option for the blank.",
+    "options": [
+      "into",
+      "at",
+      "on",
+      "from",
+      "to"
+    ],
+    "correct": 0,
+    "explanation": "Take into account hesaba katmak kalıbıdır."
   }
 ];
