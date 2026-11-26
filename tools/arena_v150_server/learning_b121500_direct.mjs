@@ -9,13 +9,13 @@ export const b121500Direct = [
     "prompt": "By the time the bus arrived, I realised I ____ my travel pass at home.",
     "options": [
       "had forgotten",
-      "forgot",
+      "had been forgetting",
       "has forgotten",
       "forgets",
       "was forgetting"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: had forgotten. Zaman sırası ve zaman belirteci fiilin biçimini belirler."
+    "explanation": "Doğru seçenek: had forgotten. Seyahat kartını evde unutma eylemi otobüs gelmeden ve kişinin bunu fark etmesinden önce tamamlanmıştır."
   },
   {
     "id": "wq150_b12_1500_direct_b1_1_2",
@@ -3086,14 +3086,14 @@ export const b121500Direct = [
     "kind": "Synonym",
     "prompt": "In 'Please get a copy of the form', which word means 'get'?",
     "options": [
-      "purchase",
+      "deliver",
       "obtain",
       "require",
       "recognise",
       "repair"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: obtain. Verilen fiilin cümledeki yakın anlamını seç."
+    "explanation": "Doğru seçenek: obtain. Get a copy, bir nüsha edinmek demektir; deliver ise teslim etmek anlamındadır."
   },
   {
     "id": "wq150_b12_1500_direct_b1_35_3",

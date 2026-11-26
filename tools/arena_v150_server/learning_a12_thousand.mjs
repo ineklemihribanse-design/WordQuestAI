@@ -11055,7 +11055,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m.. Please bring a small present. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m. Please bring a small present. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a birthday party",
       "a picnic",
@@ -11072,7 +11072,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m.. Please bring a small present. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m. Please bring a small present. See you there!\n\nWhich day is the event?",
     "options": [
       "Wednesday",
       "Monday",
@@ -11089,7 +11089,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m.. Please bring a small present. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m. Please bring a small present. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the sports centre",
       "the youth club",
@@ -11106,7 +11106,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m.. Please bring a small present. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m. Please bring a small present. See you there!\n\nWhat time does it start?",
     "options": [
       "7:10 p.m.",
       "2:20 p.m.",
@@ -11123,7 +11123,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m.. Please bring a small present. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Bella. Please come to a birthday party on Monday at the community hall. It starts at 4:00 p.m. Please bring a small present. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a sun hat",
       "a board game",
@@ -11140,7 +11140,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m.. Please bring a sandwich. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m. Please bring a sandwich. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a film evening",
       "a picnic",
@@ -11157,7 +11157,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m.. Please bring a sandwich. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m. Please bring a sandwich. See you there!\n\nWhich day is the event?",
     "options": [
       "Thursday",
       "Friday",
@@ -11174,7 +11174,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m.. Please bring a sandwich. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m. Please bring a sandwich. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the youth club",
       "the back garden",
@@ -11191,7 +11191,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m.. Please bring a sandwich. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m. Please bring a sandwich. See you there!\n\nWhat time does it start?",
     "options": [
       "2:20 p.m.",
       "10:45 a.m.",
@@ -11208,7 +11208,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m.. Please bring a sandwich. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Archie. Please come to a picnic on Tuesday at the riverside park. It starts at 12:30 p.m. Please bring a sandwich. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a sandwich",
       "a board game",
@@ -11225,7 +11225,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m.. Please bring a cushion. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m. Please bring a cushion. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a football party",
       "a dance evening",
@@ -11242,7 +11242,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m.. Please bring a cushion. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m. Please bring a cushion. See you there!\n\nWhich day is the event?",
     "options": [
       "Friday",
       "Saturday",
@@ -11259,7 +11259,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m.. Please bring a cushion. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m. Please bring a cushion. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the back garden",
       "the town library",
@@ -11276,7 +11276,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m.. Please bring a cushion. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m. Please bring a cushion. See you there!\n\nWhat time does it start?",
     "options": [
       "6:15 p.m.",
       "10:45 a.m.",
@@ -11293,7 +11293,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m.. Please bring a cushion. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Holly. Please come to a film evening on Wednesday at the school hall. It starts at 6:15 p.m. Please bring a cushion. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a camera",
       "a cushion",
@@ -11310,7 +11310,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m.. Please bring sports shoes. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m. Please bring sports shoes. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a dance evening",
       "a garden party",
@@ -11327,7 +11327,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m.. Please bring sports shoes. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m. Please bring sports shoes. See you there!\n\nWhich day is the event?",
     "options": [
       "Saturday",
       "Sunday",
@@ -11344,7 +11344,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m.. Please bring sports shoes. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m. Please bring sports shoes. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the sports centre",
       "the town library",
@@ -11361,7 +11361,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m.. Please bring sports shoes. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m. Please bring sports shoes. See you there!\n\nWhat time does it start?",
     "options": [
       "5:05 p.m.",
       "3:30 p.m.",
@@ -11378,7 +11378,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m.. Please bring sports shoes. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Toby. Please come to a football party on Thursday at the sports centre. It starts at 3:30 p.m. Please bring sports shoes. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "an apron",
       "a towel",
@@ -11395,7 +11395,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m.. Please bring a bottle of water. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m. Please bring a bottle of water. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a garden party",
       "a games morning",
@@ -11412,7 +11412,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m.. Please bring a bottle of water. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m. Please bring a bottle of water. See you there!\n\nWhich day is the event?",
     "options": [
       "Friday",
       "Sunday",
@@ -11429,7 +11429,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m.. Please bring a bottle of water. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m. Please bring a bottle of water. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the arts centre",
       "the youth club",
@@ -11446,7 +11446,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m.. Please bring a bottle of water. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m. Please bring a bottle of water. See you there!\n\nWhat time does it start?",
     "options": [
       "1:50 p.m.",
       "11:20 a.m.",
@@ -11463,7 +11463,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m.. Please bring a bottle of water. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Maya. Please come to a dance evening on Friday at the youth club. It starts at 7:10 p.m. Please bring a bottle of water. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a towel",
       "a small present",
@@ -11480,7 +11480,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m.. Please bring a sun hat. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m. Please bring a sun hat. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a garden party",
       "a games morning",
@@ -11497,7 +11497,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m.. Please bring a sun hat. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m. Please bring a sun hat. See you there!\n\nWhich day is the event?",
     "options": [
       "Monday",
       "Saturday",
@@ -11514,7 +11514,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m.. Please bring a sun hat. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m. Please bring a sun hat. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the school kitchen",
       "the indoor pool",
@@ -11531,7 +11531,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m.. Please bring a sun hat. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m. Please bring a sun hat. See you there!\n\nWhat time does it start?",
     "options": [
       "11:20 a.m.",
       "4:00 p.m.",
@@ -11548,7 +11548,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m.. Please bring a sun hat. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Felix. Please come to a garden party on Saturday at the back garden. It starts at 2:20 p.m. Please bring a sun hat. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a small present",
       "a sandwich",
@@ -11565,7 +11565,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m.. Please bring a board game. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m. Please bring a board game. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a music show",
       "a games morning",
@@ -11582,7 +11582,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m.. Please bring a board game. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m. Please bring a board game. See you there!\n\nWhich day is the event?",
     "options": [
       "Tuesday",
       "Wednesday",
@@ -11599,7 +11599,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m.. Please bring a board game. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m. Please bring a board game. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the indoor pool",
       "the community hall",
@@ -11616,7 +11616,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m.. Please bring a board game. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m. Please bring a board game. See you there!\n\nWhat time does it start?",
     "options": [
       "4:00 p.m.",
       "12:30 p.m.",
@@ -11633,7 +11633,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m.. Please bring a board game. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Lola. Please come to a games morning on Sunday at the town library. It starts at 10:45 a.m. Please bring a board game. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a board game",
       "a sandwich",
@@ -11650,7 +11650,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m.. Please bring a camera. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m. Please bring a camera. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a baking afternoon",
       "a swimming party",
@@ -11667,7 +11667,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m.. Please bring a camera. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m. Please bring a camera. See you there!\n\nWhich day is the event?",
     "options": [
       "Wednesday",
       "Tuesday",
@@ -11684,7 +11684,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m.. Please bring a camera. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m. Please bring a camera. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the community hall",
       "the riverside park",
@@ -11701,7 +11701,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m.. Please bring a camera. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m. Please bring a camera. See you there!\n\nWhat time does it start?",
     "options": [
       "5:05 p.m.",
       "12:30 p.m.",
@@ -11718,7 +11718,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m.. Please bring a camera. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Dylan. Please come to a music show on Monday at the arts centre. It starts at 5:05 p.m. Please bring a camera. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a cushion",
       "a camera",
@@ -11735,7 +11735,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m.. Please bring an apron. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m. Please bring an apron. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a swimming party",
       "a birthday party",
@@ -11752,7 +11752,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m.. Please bring an apron. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m. Please bring an apron. See you there!\n\nWhich day is the event?",
     "options": [
       "Monday",
       "Wednesday",
@@ -11769,7 +11769,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m.. Please bring an apron. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m. Please bring an apron. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the school kitchen",
       "the riverside park",
@@ -11786,7 +11786,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m.. Please bring an apron. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m. Please bring an apron. See you there!\n\nWhat time does it start?",
     "options": [
       "6:15 p.m.",
       "1:50 p.m.",
@@ -11803,7 +11803,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m.. Please bring an apron. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Alice. Please come to a baking afternoon on Tuesday at the school kitchen. It starts at 1:50 p.m. Please bring an apron. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "sports shoes",
       "a bottle of water",
@@ -11820,7 +11820,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m.. Please bring a towel. See you there!\n\nWhat is the invitation for?",
+    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m. Please bring a towel. See you there!\n\nWhat is the invitation for?",
     "options": [
       "a birthday party",
       "a picnic",
@@ -11837,7 +11837,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m.. Please bring a towel. See you there!\n\nWhich day is the event?",
+    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m. Please bring a towel. See you there!\n\nWhich day is the event?",
     "options": [
       "Wednesday",
       "Tuesday",
@@ -11854,7 +11854,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m.. Please bring a towel. See you there!\n\nWhere will the guests meet?",
+    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m. Please bring a towel. See you there!\n\nWhere will the guests meet?",
     "options": [
       "the school hall",
       "the indoor pool",
@@ -11871,7 +11871,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m.. Please bring a towel. See you there!\n\nWhat time does it start?",
+    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m. Please bring a towel. See you there!\n\nWhat time does it start?",
     "options": [
       "3:30 p.m.",
       "7:10 p.m.",
@@ -11888,7 +11888,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m.. Please bring a towel. See you there!\n\nWhat does the guest need to bring?",
+    "prompt": "Hello! It's Ben. Please come to a swimming party on Wednesday at the indoor pool. It starts at 11:20 a.m. Please bring a towel. See you there!\n\nWhat does the guest need to bring?",
     "options": [
       "a bottle of water",
       "a sun hat",
@@ -11905,7 +11905,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m.. Closing time: 4:00 p.m.. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhich place is this notice for?",
+    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m. Closing time: 4:00 p.m. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhich place is this notice for?",
     "options": [
       "The Bluebird Pool",
       "The Hilltop Museum",
@@ -11922,7 +11922,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m.. Closing time: 4:00 p.m.. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhen does the place open?",
+    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m. Closing time: 4:00 p.m. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhen does the place open?",
     "options": [
       "10:30 a.m.",
       "8:00 a.m.",
@@ -11939,7 +11939,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m.. Closing time: 4:00 p.m.. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhen does the place close?",
+    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m. Closing time: 4:00 p.m. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhen does the place close?",
     "options": [
       "3:30 p.m.",
       "9:00 p.m.",
@@ -11956,7 +11956,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m.. Closing time: 4:00 p.m.. Entry: £4 per person. Important: Wear a swimming cap.\n\nHow much is one entry ticket?",
+    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m. Closing time: 4:00 p.m. Entry: £4 per person. Important: Wear a swimming cap.\n\nHow much is one entry ticket?",
     "options": [
       "£9",
       "£3",
@@ -11973,7 +11973,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m.. Closing time: 4:00 p.m.. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhich instruction must visitors follow?",
+    "prompt": "The Bluebird Pool: Visitor information for Monday. Opening time: 8:00 a.m. Closing time: 4:00 p.m. Entry: £4 per person. Important: Wear a swimming cap.\n\nWhich instruction must visitors follow?",
     "options": [
       "Stay on the paths.",
       "Keep your voice quiet.",
@@ -11990,7 +11990,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m.. Closing time: 5:15 p.m.. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhich place is this notice for?",
+    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m. Closing time: 5:15 p.m. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhich place is this notice for?",
     "options": [
       "The Oak Tennis Club",
       "The Hilltop Museum",
@@ -12007,7 +12007,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m.. Closing time: 5:15 p.m.. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhen does the place open?",
+    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m. Closing time: 5:15 p.m. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhen does the place open?",
     "options": [
       "11:00 a.m.",
       "12:45 p.m.",
@@ -12024,7 +12024,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m.. Closing time: 5:15 p.m.. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhen does the place close?",
+    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m. Closing time: 5:15 p.m. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhen does the place close?",
     "options": [
       "9:00 p.m.",
       "2:30 p.m.",
@@ -12041,7 +12041,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m.. Closing time: 5:15 p.m.. Entry: £6 per person. Important: Leave large bags at the desk.\n\nHow much is one entry ticket?",
+    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m. Closing time: 5:15 p.m. Entry: £6 per person. Important: Leave large bags at the desk.\n\nHow much is one entry ticket?",
     "options": [
       "£3",
       "£0",
@@ -12058,7 +12058,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m.. Closing time: 5:15 p.m.. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhich instruction must visitors follow?",
+    "prompt": "The Hilltop Museum: Visitor information for Tuesday. Opening time: 9:15 a.m. Closing time: 5:15 p.m. Entry: £6 per person. Important: Leave large bags at the desk.\n\nWhich instruction must visitors follow?",
     "options": [
       "Leave large bags at the desk.",
       "Keep your voice quiet.",
@@ -12075,7 +12075,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m.. Closing time: 6:00 p.m.. Entry: £8 per person. Important: Wear sports shoes.\n\nWhich place is this notice for?",
+    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m. Closing time: 6:00 p.m. Entry: £8 per person. Important: Wear sports shoes.\n\nWhich place is this notice for?",
     "options": [
       "The Rose Art Room",
       "The River Cinema",
@@ -12092,7 +12092,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m.. Closing time: 6:00 p.m.. Entry: £8 per person. Important: Wear sports shoes.\n\nWhen does the place open?",
+    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m. Closing time: 6:00 p.m. Entry: £8 per person. Important: Wear sports shoes.\n\nWhen does the place open?",
     "options": [
       "12:45 p.m.",
       "7:30 a.m.",
@@ -12109,7 +12109,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m.. Closing time: 6:00 p.m.. Entry: £8 per person. Important: Wear sports shoes.\n\nWhen does the place close?",
+    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m. Closing time: 6:00 p.m. Entry: £8 per person. Important: Wear sports shoes.\n\nWhen does the place close?",
     "options": [
       "10:30 a.m.",
       "5:45 p.m.",
@@ -12126,7 +12126,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m.. Closing time: 6:00 p.m.. Entry: £8 per person. Important: Wear sports shoes.\n\nHow much is one entry ticket?",
+    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m. Closing time: 6:00 p.m. Entry: £8 per person. Important: Wear sports shoes.\n\nHow much is one entry ticket?",
     "options": [
       "£8",
       "£0",
@@ -12143,7 +12143,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m.. Closing time: 6:00 p.m.. Entry: £8 per person. Important: Wear sports shoes.\n\nWhich instruction must visitors follow?",
+    "prompt": "The Oak Tennis Club: Visitor information for Wednesday. Opening time: 10:30 a.m. Closing time: 6:00 p.m. Entry: £8 per person. Important: Wear sports shoes.\n\nWhich instruction must visitors follow?",
     "options": [
       "Bring a water bottle.",
       "Wear sports shoes.",
@@ -12160,7 +12160,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m.. Closing time: 3:30 p.m.. Entry: £5 per person. Important: Bring your own pencils.\n\nWhich place is this notice for?",
+    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m. Closing time: 3:30 p.m. Entry: £5 per person. Important: Bring your own pencils.\n\nWhich place is this notice for?",
     "options": [
       "The River Cinema",
       "The Sun Garden",
@@ -12177,7 +12177,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m.. Closing time: 3:30 p.m.. Entry: £5 per person. Important: Bring your own pencils.\n\nWhen does the place open?",
+    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m. Closing time: 3:30 p.m. Entry: £5 per person. Important: Bring your own pencils.\n\nWhen does the place open?",
     "options": [
       "3:30 p.m.",
       "10:00 a.m.",
@@ -12194,7 +12194,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m.. Closing time: 3:30 p.m.. Entry: £5 per person. Important: Bring your own pencils.\n\nWhen does the place close?",
+    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m. Closing time: 3:30 p.m. Entry: £5 per person. Important: Bring your own pencils.\n\nWhen does the place close?",
     "options": [
       "3:30 p.m.",
       "11:00 a.m.",
@@ -12211,7 +12211,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m.. Closing time: 3:30 p.m.. Entry: £5 per person. Important: Bring your own pencils.\n\nHow much is one entry ticket?",
+    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m. Closing time: 3:30 p.m. Entry: £5 per person. Important: Bring your own pencils.\n\nHow much is one entry ticket?",
     "options": [
       "£7",
       "£5",
@@ -12228,7 +12228,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m.. Closing time: 3:30 p.m.. Entry: £5 per person. Important: Bring your own pencils.\n\nWhich instruction must visitors follow?",
+    "prompt": "The Rose Art Room: Visitor information for Thursday. Opening time: 11:00 a.m. Closing time: 3:30 p.m. Entry: £5 per person. Important: Bring your own pencils.\n\nWhich instruction must visitors follow?",
     "options": [
       "Do not feed the fish.",
       "Wear warm clothes.",
@@ -12245,7 +12245,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m.. Closing time: 9:00 p.m.. Entry: £9 per person. Important: Switch off your phone.\n\nWhich place is this notice for?",
+    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m. Closing time: 9:00 p.m. Entry: £9 per person. Important: Switch off your phone.\n\nWhich place is this notice for?",
     "options": [
       "The Sun Garden",
       "The Green Library",
@@ -12262,7 +12262,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m.. Closing time: 9:00 p.m.. Entry: £9 per person. Important: Switch off your phone.\n\nWhen does the place open?",
+    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m. Closing time: 9:00 p.m. Entry: £9 per person. Important: Switch off your phone.\n\nWhen does the place open?",
     "options": [
       "12:45 p.m.",
       "9:00 p.m.",
@@ -12279,7 +12279,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m.. Closing time: 9:00 p.m.. Entry: £9 per person. Important: Switch off your phone.\n\nWhen does the place close?",
+    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m. Closing time: 9:00 p.m. Entry: £9 per person. Important: Switch off your phone.\n\nWhen does the place close?",
     "options": [
       "7:15 p.m.",
       "9:00 p.m.",
@@ -12296,7 +12296,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m.. Closing time: 9:00 p.m.. Entry: £9 per person. Important: Switch off your phone.\n\nHow much is one entry ticket?",
+    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m. Closing time: 9:00 p.m. Entry: £9 per person. Important: Switch off your phone.\n\nHow much is one entry ticket?",
     "options": [
       "£11",
       "£10",
@@ -12313,7 +12313,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m.. Closing time: 9:00 p.m.. Entry: £9 per person. Important: Switch off your phone.\n\nWhich instruction must visitors follow?",
+    "prompt": "The River Cinema: Visitor information for Friday. Opening time: 12:45 p.m. Closing time: 9:00 p.m. Entry: £9 per person. Important: Switch off your phone.\n\nWhich instruction must visitors follow?",
     "options": [
       "Wear warm clothes.",
       "Wear a swimming cap.",
@@ -12330,7 +12330,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m.. Closing time: 2:30 p.m.. Entry: £3 per person. Important: Stay on the paths.\n\nWhich place is this notice for?",
+    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m. Closing time: 2:30 p.m. Entry: £3 per person. Important: Stay on the paths.\n\nWhich place is this notice for?",
     "options": [
       "The Sun Garden",
       "The Green Library",
@@ -12347,7 +12347,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m.. Closing time: 2:30 p.m.. Entry: £3 per person. Important: Stay on the paths.\n\nWhen does the place open?",
+    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m. Closing time: 2:30 p.m. Entry: £3 per person. Important: Stay on the paths.\n\nWhen does the place open?",
     "options": [
       "6:45 a.m.",
       "7:30 a.m.",
@@ -12364,7 +12364,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m.. Closing time: 2:30 p.m.. Entry: £3 per person. Important: Stay on the paths.\n\nWhen does the place close?",
+    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m. Closing time: 2:30 p.m. Entry: £3 per person. Important: Stay on the paths.\n\nWhen does the place close?",
     "options": [
       "4:50 p.m.",
       "8:30 p.m.",
@@ -12381,7 +12381,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m.. Closing time: 2:30 p.m.. Entry: £3 per person. Important: Stay on the paths.\n\nHow much is one entry ticket?",
+    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m. Closing time: 2:30 p.m. Entry: £3 per person. Important: Stay on the paths.\n\nHow much is one entry ticket?",
     "options": [
       "£10",
       "£4",
@@ -12398,7 +12398,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m.. Closing time: 2:30 p.m.. Entry: £3 per person. Important: Stay on the paths.\n\nWhich instruction must visitors follow?",
+    "prompt": "The Sun Garden: Visitor information for Saturday. Opening time: 7:30 a.m. Closing time: 2:30 p.m. Entry: £3 per person. Important: Stay on the paths.\n\nWhich instruction must visitors follow?",
     "options": [
       "Wear a swimming cap.",
       "Leave large bags at the desk.",
@@ -12415,7 +12415,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m.. Closing time: 5:45 p.m.. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhich place is this notice for?",
+    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m. Closing time: 5:45 p.m. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhich place is this notice for?",
     "options": [
       "The West Sports Hall",
       "The Green Library",
@@ -12432,7 +12432,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m.. Closing time: 5:45 p.m.. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhen does the place open?",
+    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m. Closing time: 5:45 p.m. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhen does the place open?",
     "options": [
       "9:40 a.m.",
       "1:20 p.m.",
@@ -12449,7 +12449,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m.. Closing time: 5:45 p.m.. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhen does the place close?",
+    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m. Closing time: 5:45 p.m. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhen does the place close?",
     "options": [
       "8:30 p.m.",
       "4:00 p.m.",
@@ -12466,7 +12466,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m.. Closing time: 5:45 p.m.. Entry: £0 per person. Important: Keep your voice quiet.\n\nHow much is one entry ticket?",
+    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m. Closing time: 5:45 p.m. Entry: £0 per person. Important: Keep your voice quiet.\n\nHow much is one entry ticket?",
     "options": [
       "£4",
       "£6",
@@ -12483,7 +12483,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m.. Closing time: 5:45 p.m.. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhich instruction must visitors follow?",
+    "prompt": "The Green Library: Visitor information for Sunday. Opening time: 10:00 a.m. Closing time: 5:45 p.m. Entry: £0 per person. Important: Keep your voice quiet.\n\nWhich instruction must visitors follow?",
     "options": [
       "Keep your voice quiet.",
       "Leave large bags at the desk.",
@@ -12500,7 +12500,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m.. Closing time: 7:15 p.m.. Entry: £7 per person. Important: Bring a water bottle.\n\nWhich place is this notice for?",
+    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m. Closing time: 7:15 p.m. Entry: £7 per person. Important: Bring a water bottle.\n\nWhich place is this notice for?",
     "options": [
       "The City Aquarium",
       "The North Ice Rink",
@@ -12517,7 +12517,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m.. Closing time: 7:15 p.m.. Entry: £7 per person. Important: Bring a water bottle.\n\nWhen does the place open?",
+    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m. Closing time: 7:15 p.m. Entry: £7 per person. Important: Bring a water bottle.\n\nWhen does the place open?",
     "options": [
       "1:20 p.m.",
       "8:00 a.m.",
@@ -12534,7 +12534,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m.. Closing time: 7:15 p.m.. Entry: £7 per person. Important: Bring a water bottle.\n\nWhen does the place close?",
+    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m. Closing time: 7:15 p.m. Entry: £7 per person. Important: Bring a water bottle.\n\nWhen does the place close?",
     "options": [
       "6:45 a.m.",
       "5:15 p.m.",
@@ -12551,7 +12551,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m.. Closing time: 7:15 p.m.. Entry: £7 per person. Important: Bring a water bottle.\n\nHow much is one entry ticket?",
+    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m. Closing time: 7:15 p.m. Entry: £7 per person. Important: Bring a water bottle.\n\nHow much is one entry ticket?",
     "options": [
       "£7",
       "£6",
@@ -12568,7 +12568,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m.. Closing time: 7:15 p.m.. Entry: £7 per person. Important: Bring a water bottle.\n\nWhich instruction must visitors follow?",
+    "prompt": "The West Sports Hall: Visitor information for Monday. Opening time: 6:45 a.m. Closing time: 7:15 p.m. Entry: £7 per person. Important: Bring a water bottle.\n\nWhich instruction must visitors follow?",
     "options": [
       "Wear sports shoes.",
       "Bring a water bottle.",
@@ -12585,7 +12585,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m.. Closing time: 4:50 p.m.. Entry: £11 per person. Important: Do not feed the fish.\n\nWhich place is this notice for?",
+    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m. Closing time: 4:50 p.m. Entry: £11 per person. Important: Do not feed the fish.\n\nWhich place is this notice for?",
     "options": [
       "The North Ice Rink",
       "The Bluebird Pool",
@@ -12602,7 +12602,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m.. Closing time: 4:50 p.m.. Entry: £11 per person. Important: Do not feed the fish.\n\nWhen does the place open?",
+    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m. Closing time: 4:50 p.m. Entry: £11 per person. Important: Do not feed the fish.\n\nWhen does the place open?",
     "options": [
       "4:50 p.m.",
       "9:15 a.m.",
@@ -12619,7 +12619,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m.. Closing time: 4:50 p.m.. Entry: £11 per person. Important: Do not feed the fish.\n\nWhen does the place close?",
+    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m. Closing time: 4:50 p.m. Entry: £11 per person. Important: Do not feed the fish.\n\nWhen does the place close?",
     "options": [
       "4:50 p.m.",
       "9:40 a.m.",
@@ -12636,7 +12636,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m.. Closing time: 4:50 p.m.. Entry: £11 per person. Important: Do not feed the fish.\n\nHow much is one entry ticket?",
+    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m. Closing time: 4:50 p.m. Entry: £11 per person. Important: Do not feed the fish.\n\nHow much is one entry ticket?",
     "options": [
       "£8",
       "£11",
@@ -12653,7 +12653,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m.. Closing time: 4:50 p.m.. Entry: £11 per person. Important: Do not feed the fish.\n\nWhich instruction must visitors follow?",
+    "prompt": "The City Aquarium: Visitor information for Tuesday. Opening time: 9:40 a.m. Closing time: 4:50 p.m. Entry: £11 per person. Important: Do not feed the fish.\n\nWhich instruction must visitors follow?",
     "options": [
       "Bring your own pencils.",
       "Switch off your phone.",
@@ -12670,7 +12670,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m.. Closing time: 8:30 p.m.. Entry: £10 per person. Important: Wear warm clothes.\n\nWhich place is this notice for?",
+    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m. Closing time: 8:30 p.m. Entry: £10 per person. Important: Wear warm clothes.\n\nWhich place is this notice for?",
     "options": [
       "The Bluebird Pool",
       "The Hilltop Museum",
@@ -12687,7 +12687,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m.. Closing time: 8:30 p.m.. Entry: £10 per person. Important: Wear warm clothes.\n\nWhen does the place open?",
+    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m. Closing time: 8:30 p.m. Entry: £10 per person. Important: Wear warm clothes.\n\nWhen does the place open?",
     "options": [
       "1:20 p.m.",
       "8:30 p.m.",
@@ -12704,7 +12704,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m.. Closing time: 8:30 p.m.. Entry: £10 per person. Important: Wear warm clothes.\n\nWhen does the place close?",
+    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m. Closing time: 8:30 p.m. Entry: £10 per person. Important: Wear warm clothes.\n\nWhen does the place close?",
     "options": [
       "6:00 p.m.",
       "8:30 p.m.",
@@ -12721,7 +12721,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m.. Closing time: 8:30 p.m.. Entry: £10 per person. Important: Wear warm clothes.\n\nHow much is one entry ticket?",
+    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m. Closing time: 8:30 p.m. Entry: £10 per person. Important: Wear warm clothes.\n\nHow much is one entry ticket?",
     "options": [
       "£5",
       "£9",
@@ -12738,7 +12738,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m.. Closing time: 8:30 p.m.. Entry: £10 per person. Important: Wear warm clothes.\n\nWhich instruction must visitors follow?",
+    "prompt": "The North Ice Rink: Visitor information for Wednesday. Opening time: 1:20 p.m. Closing time: 8:30 p.m. Entry: £10 per person. Important: Wear warm clothes.\n\nWhich instruction must visitors follow?",
     "options": [
       "Switch off your phone.",
       "Stay on the paths.",
@@ -16155,7 +16155,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m.. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhich day's shift has been changed?",
+    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhich day's shift has been changed?",
     "options": [
       "Monday",
       "Tuesday",
@@ -16172,7 +16172,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m.. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhen was the shift originally due to start?",
+    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhen was the shift originally due to start?",
     "options": [
       "10:30 a.m.",
       "8:00 a.m.",
@@ -16189,7 +16189,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m.. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhen should the employee arrive now?",
+    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhen should the employee arrive now?",
     "options": [
       "1:45 p.m.",
       "9:20 a.m.",
@@ -16206,7 +16206,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m.. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhy was the start time changed?",
+    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhy was the start time changed?",
     "options": [
       "the kitchen equipment is being serviced",
       "the sports centre is hosting a morning event",
@@ -16223,7 +16223,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m.. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Megan's shift on Monday was due to begin at 8:00 a.m. However, the office heating is being repaired, so the manager has asked Megan to start at 10:00 a.m. instead. The shift is still the same length. On arrival, Megan should first check the morning emails.\n\nWhat should the employee do first on arrival?",
     "options": [
       "prepare the reception desk",
       "label the fresh bread",
@@ -16240,7 +16240,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m.. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhich day's shift has been changed?",
+    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhich day's shift has been changed?",
     "options": [
       "Wednesday",
       "Tuesday",
@@ -16257,7 +16257,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m.. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhen was the shift originally due to start?",
+    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhen was the shift originally due to start?",
     "options": [
       "11:45 a.m.",
       "7:20 a.m.",
@@ -16274,7 +16274,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m.. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhen should the employee arrive now?",
+    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhen should the employee arrive now?",
     "options": [
       "9:20 a.m.",
       "2:10 p.m.",
@@ -16291,7 +16291,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m.. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhy was the start time changed?",
+    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhy was the start time changed?",
     "options": [
       "the sports centre is hosting a morning event",
       "the bakery's oven needs a repair",
@@ -16308,7 +16308,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m.. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhat should the employee do first on arrival?",
     "options": [
       "count the boxes in the storeroom",
       "label the fresh bread",
@@ -16325,7 +16325,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m.. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhich day's shift has been changed?",
+    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhich day's shift has been changed?",
     "options": [
       "Thursday",
       "Friday",
@@ -16342,7 +16342,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m.. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhen was the shift originally due to start?",
+    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhen was the shift originally due to start?",
     "options": [
       "7:20 a.m.",
       "12:10 p.m.",
@@ -16359,7 +16359,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m.. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhen should the employee arrive now?",
+    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhen should the employee arrive now?",
     "options": [
       "10:30 a.m.",
       "8:40 a.m.",
@@ -16376,7 +16376,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m.. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhy was the start time changed?",
+    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhy was the start time changed?",
     "options": [
       "the shop needs an electrical inspection",
       "the bakery's oven needs a repair",
@@ -16393,7 +16393,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m.. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Laura's shift on Wednesday was due to begin at 10:30 a.m. However, the shop needs an electrical inspection, so the manager has asked Laura to start at 12:30 p.m. instead. The shift is still the same length. On arrival, Laura should first prepare the till for opening.\n\nWhat should the employee do first on arrival?",
     "options": [
       "prepare the training materials",
       "prepare the till for opening",
@@ -16410,7 +16410,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m.. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhich day's shift has been changed?",
+    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhich day's shift has been changed?",
     "options": [
       "Friday",
       "Saturday",
@@ -16427,7 +16427,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m.. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhen was the shift originally due to start?",
+    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhen was the shift originally due to start?",
     "options": [
       "1:45 p.m.",
       "6:40 a.m.",
@@ -16444,7 +16444,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m.. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhen should the employee arrive now?",
+    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhen should the employee arrive now?",
     "options": [
       "1:45 p.m.",
       "11:45 a.m.",
@@ -16461,7 +16461,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m.. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhy was the start time changed?",
+    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhy was the start time changed?",
     "options": [
       "the afternoon training has been moved",
       "the manager has changed the staff meeting",
@@ -16478,7 +16478,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m.. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Oliver's shift on Thursday was due to begin at 11:45 a.m. However, the manager has changed the staff meeting, so the manager has asked Oliver to start at 1:45 p.m. instead. The shift is still the same length. On arrival, Oliver should first print the meeting agenda.\n\nWhat should the employee do first on arrival?",
     "options": [
       "review the customer's order",
       "check the new booking system",
@@ -16495,7 +16495,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m.. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhich day's shift has been changed?",
+    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhich day's shift has been changed?",
     "options": [
       "Saturday",
       "Sunday",
@@ -16512,7 +16512,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m.. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhen was the shift originally due to start?",
+    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhen was the shift originally due to start?",
     "options": [
       "7:20 a.m.",
       "9:20 a.m.",
@@ -16529,7 +16529,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m.. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhen should the employee arrive now?",
+    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhen should the employee arrive now?",
     "options": [
       "4:25 p.m.",
       "9:20 a.m.",
@@ -16546,7 +16546,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m.. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhy was the start time changed?",
+    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhy was the start time changed?",
     "options": [
       "the customer appointment has been delayed",
       "the computer system is being updated",
@@ -16563,7 +16563,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m.. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Daisy's shift on Friday was due to begin at 7:20 a.m. However, the kitchen equipment is being serviced, so the manager has asked Daisy to start at 9:20 a.m. instead. The shift is still the same length. On arrival, Daisy should first check the food supplies.\n\nWhat should the employee do first on arrival?",
     "options": [
       "check the new booking system",
       "check the morning emails",
@@ -16580,7 +16580,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m.. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhich day's shift has been changed?",
+    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhich day's shift has been changed?",
     "options": [
       "Saturday",
       "Sunday",
@@ -16597,7 +16597,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m.. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhen was the shift originally due to start?",
+    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhen was the shift originally due to start?",
     "options": [
       "2:25 p.m.",
       "12:10 p.m.",
@@ -16614,7 +16614,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m.. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhen should the employee arrive now?",
+    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhen should the employee arrive now?",
     "options": [
       "5:35 p.m.",
       "3:50 p.m.",
@@ -16631,7 +16631,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m.. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhy was the start time changed?",
+    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhy was the start time changed?",
     "options": [
       "the computer system is being updated",
       "the office heating is being repaired",
@@ -16648,7 +16648,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m.. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Isaac's shift on Saturday was due to begin at 12:10 p.m. However, the sports centre is hosting a morning event, so the manager has asked Isaac to start at 2:10 p.m. instead. The shift is still the same length. On arrival, Isaac should first prepare the reception desk.\n\nWhat should the employee do first on arrival?",
     "options": [
       "check the morning emails",
       "count the boxes in the storeroom",
@@ -16665,7 +16665,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m.. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhich day's shift has been changed?",
+    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhich day's shift has been changed?",
     "options": [
       "Monday",
       "Sunday",
@@ -16682,7 +16682,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m.. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhen was the shift originally due to start?",
+    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhen was the shift originally due to start?",
     "options": [
       "3:35 p.m.",
       "1:50 p.m.",
@@ -16699,7 +16699,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m.. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhen should the employee arrive now?",
+    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhen should the employee arrive now?",
     "options": [
       "3:50 p.m.",
       "10:00 a.m.",
@@ -16716,7 +16716,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m.. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhy was the start time changed?",
+    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhy was the start time changed?",
     "options": [
       "the office heating is being repaired",
       "a delivery is arriving later than expected",
@@ -16733,7 +16733,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m.. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Martha's shift on Sunday was due to begin at 6:40 a.m. However, the bakery's oven needs a repair, so the manager has asked Martha to start at 8:40 a.m. instead. The shift is still the same length. On arrival, Martha should first label the fresh bread.\n\nWhat should the employee do first on arrival?",
     "options": [
       "label the fresh bread",
       "count the boxes in the storeroom",
@@ -16750,7 +16750,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m.. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhich day's shift has been changed?",
+    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhich day's shift has been changed?",
     "options": [
       "Tuesday",
       "Wednesday",
@@ -16767,7 +16767,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m.. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhen was the shift originally due to start?",
+    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhen was the shift originally due to start?",
     "options": [
       "1:50 p.m.",
       "8:00 a.m.",
@@ -16784,7 +16784,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m.. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhen should the employee arrive now?",
+    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhen should the employee arrive now?",
     "options": [
       "2:25 p.m.",
       "11:15 a.m.",
@@ -16801,7 +16801,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m.. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhy was the start time changed?",
+    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhy was the start time changed?",
     "options": [
       "the afternoon training has been moved",
       "a delivery is arriving later than expected",
@@ -16818,7 +16818,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m.. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Henry's shift on Monday was due to begin at 2:25 p.m. However, the afternoon training has been moved, so the manager has asked Henry to start at 4:25 p.m. instead. The shift is still the same length. On arrival, Henry should first prepare the training materials.\n\nWhat should the employee do first on arrival?",
     "options": [
       "prepare the till for opening",
       "prepare the training materials",
@@ -16835,7 +16835,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m.. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhich day's shift has been changed?",
+    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhich day's shift has been changed?",
     "options": [
       "Wednesday",
       "Monday",
@@ -16852,7 +16852,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m.. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhen was the shift originally due to start?",
+    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhen was the shift originally due to start?",
     "options": [
       "5:35 p.m.",
       "9:15 a.m.",
@@ -16869,7 +16869,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m.. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhen should the employee arrive now?",
+    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhen should the employee arrive now?",
     "options": [
       "5:35 p.m.",
       "3:35 p.m.",
@@ -16886,7 +16886,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m.. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhy was the start time changed?",
+    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhy was the start time changed?",
     "options": [
       "the shop needs an electrical inspection",
       "the customer appointment has been delayed",
@@ -16903,7 +16903,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m.. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Amber's shift on Tuesday was due to begin at 3:35 p.m. However, the customer appointment has been delayed, so the manager has asked Amber to start at 5:35 p.m. instead. The shift is still the same length. On arrival, Amber should first review the customer's order.\n\nWhat should the employee do first on arrival?",
     "options": [
       "print the meeting agenda",
       "check the food supplies",
@@ -16920,7 +16920,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m.. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhich day's shift has been changed?",
+    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhich day's shift has been changed?",
     "options": [
       "Monday",
       "Tuesday",
@@ -16937,7 +16937,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m.. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhen was the shift originally due to start?",
+    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhen was the shift originally due to start?",
     "options": [
       "1:50 p.m.",
       "3:50 p.m.",
@@ -16954,7 +16954,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m.. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhen should the employee arrive now?",
+    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhen should the employee arrive now?",
     "options": [
       "12:30 p.m.",
       "3:50 p.m.",
@@ -16971,7 +16971,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m.. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhy was the start time changed?",
+    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhy was the start time changed?",
     "options": [
       "the manager has changed the staff meeting",
       "the kitchen equipment is being serviced",
@@ -16988,7 +16988,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m.. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhat should the employee do first on arrival?",
+    "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhat should the employee do first on arrival?",
     "options": [
       "check the food supplies",
       "prepare the reception desk",

@@ -6400,12 +6400,12 @@ export const ab1250Direct = [
     "options": [
       "in",
       "at",
-      "by",
+      "to",
       "of",
       "about"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: in. Kalıplaşmış fiil ve sıfat-edat bağlantılarına dikkat et."
+    "explanation": "Doğru seçenek: in. Succeed in doing something, bir işi başarmak anlamında kullanılan fiil-edat kalıbıdır."
   },
   {
     "id": "wq150_ab1250_direct_b1_22_2",

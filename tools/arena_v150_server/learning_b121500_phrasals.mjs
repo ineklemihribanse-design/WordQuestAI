@@ -11,11 +11,11 @@ export const b121500Phrasals = [
       "get by",
       "get on with",
       "get away",
-      "get through",
+      "get together",
       "get over"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get over. İyileşme, geçinme, işe devam etme, uzaklaşma ve tamamlama ayrılır."
+    "explanation": "Doğru seçenek: get over. Hayal kırıklığını atlatmak anlamındadır; get together bir araya gelmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_1_2",
@@ -510,7 +510,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "After the meeting, the crowd began to ____ into small groups.",
+    "prompt": "The band decided to ____ permanently after its final concert; the members will pursue separate careers.",
     "options": [
       "break off",
       "break down",
@@ -519,7 +519,7 @@ export const b121500Phrasals = [
       "break up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break up. Arıza, zorla giriş, patlak verme, dağılma ve kesme anlamları farklıdır."
+    "explanation": "Doğru seçenek: break up. Bir müzik grubunun dağılmasını ifade eder; break down arızalanmak, break out ise patlak vermek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_6_5",
@@ -2530,12 +2530,12 @@ export const b121500Phrasals = [
     "options": [
       "get at",
       "follow through",
-      "follow up",
+      "follow suit",
       "get across",
       "get around"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: follow through. Tamamlama, takip, aktarma, engeli aşma ve ima etme anlamları farklıdır."
+    "explanation": "Doğru seçenek: follow through. Verilen sözü uygulayarak tamamlamak anlamındadır; follow suit başkasının yaptığına benzer davranmaktır."
   },
   {
     "id": "wq150_b121500_ph_b2_9_2",
@@ -3534,16 +3534,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "An external provider will ____ the maintenance service when the contract begins.",
+    "prompt": "The new contractor will ____ the maintenance service from the current provider when the contract transfers on Monday.",
     "options": [
       "take over",
       "take up",
       "take into account",
       "take issue with",
-      "take on"
+      "take after"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: take over. Üstlenme, devralma, yer kaplama, hesaba katma ve itiraz farklıdır."
+    "explanation": "Doğru seçenek: take over. Mevcut sağlayıcıdan bir sorumluluğu devralmak anlamındadır; take after birine benzemektir."
   },
   {
     "id": "wq150_b121500_ph_b2_20_3",
