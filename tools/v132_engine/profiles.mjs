@@ -9,8 +9,14 @@ export function safeNickname(raw){
  return typeof raw==='string'&&/^[\p{L}\p{N} ._-]{2,24}$/u.test(raw.trim())?raw.trim():'Oyuncu';
 }
 export function validatePortrait(input){
- if(!input||typeof input!=='object'||Object.keys(input).some(k=>!['avatar','preview'].includes(k)))throw Error('Invalid profile');
- if(avatars.has(input.avatar)&&input.preview==null)return {avatar:input.avatar,preview:null};
+ if(!input||typeof input!=='object'||Object.keys(input).some(k=>!['avatar','preview','victory'].includes(k)))throw Error('Invalid profile');
+ if(avatars.has(input.avatar)&&input.preview==null&&input.victory==null)return {avatar:input.avatar,preview:null};
+ const preview=validateImage(input.avatar,input.preview);
+ const victory=input.victory==null?null:validateImage(input.avatar,input.victory);
+ return {avatar:input.avatar,preview,...(victory===null?{}:{victory})};
+}
+function validateImage(avatar,preview){
+ const input={avatar,preview};
  if(typeof input.avatar!=='string'||!/^custom_[A-Za-z0-9_-]{8,80}$/.test(input.avatar)||typeof input.preview!=='string'||
   input.preview.length>180050||!input.preview.startsWith(input.avatar+':'))throw Error('Invalid portrait');
  const data=input.preview.slice(input.avatar.length+1);
@@ -19,7 +25,7 @@ export function validatePortrait(input){
  if(b.length<80||b.length>130000||b.toString('ascii',0,4)!=='RIFF'||b.toString('ascii',8,12)!=='WEBP'||
   b.readUInt32LE(4)+8!==b.length)throw Error('Invalid WebP');
  // The existing Android codec also checks actual decoded dimensions before allocation.
- return {avatar:input.avatar,preview:input.preview};
+ return input.preview;
 }
 export function profileVersion(profiles){
  return createHash('sha256').update(JSON.stringify(profiles)).digest('hex');
@@ -28,7 +34,7 @@ export async function readProfiles(db,room,members){
  const snap=await db.ref('arenaV150Profiles/'+room).get(),saved=snap.val()??{};
  const profiles=Object.fromEntries(await Promise.all(members.map(async uid=>{
   const nickname=await db.ref('users/'+uid+'/nickname').get();
-  return [uid,{name:safeNickname(nickname.val()),avatar:saved[uid]?.avatar??'piko',preview:saved[uid]?.preview??null}];
+  return [uid,{name:safeNickname(nickname.val()),avatar:saved[uid]?.avatar??'piko',preview:saved[uid]?.preview??null,victory:saved[uid]?.victory??null}];
  })));
  return {profiles,version:profileVersion(profiles)};
 }

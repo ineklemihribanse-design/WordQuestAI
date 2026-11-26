@@ -105,8 +105,10 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
         }
     }
     suspend fun profiles(room:String,version:String?):JSONObject=request(endpoint.profileUrl(room,version),null)
-    suspend fun publishPortrait(room:String,avatar:String,preview:String?){
-        request(endpoint.profileUrl(room),JSONObject().put("avatar",avatar).put("preview",preview?:JSONObject.NULL))
+    suspend fun publishPortrait(room:String,avatar:String,preview:String?,victory:String?=null){
+        val body=JSONObject().put("avatar",avatar).put("preview",preview?:JSONObject.NULL)
+        if(victory!=null)body.put("victory",victory)
+        request(endpoint.profileUrl(room),body)
     }
     suspend fun view(room:String):JSONObject=matchView(request(endpoint.matchUrl(room),null))
     suspend fun presence(room:String,session:String,leave:Boolean=false):JSONObject {
@@ -170,7 +172,8 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
                     val out=ByteArrayOutputStream();val buffer=ByteArray(8192)
                     while(true){
                         val n=input.read(buffer);if(n<0)break
-                        if(out.size()+n>1_048_576)throw IOException("Arena yanıtı çok büyük")
+                        val max=if(uri.path.startsWith("/v150/profiles/"))1_600_000 else 1_048_576
+                        if(out.size()+n>max)throw IOException("Arena yanıtı çok büyük")
                         out.write(buffer,0,n)
                     }
                     out.toString("UTF-8")

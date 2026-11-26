@@ -29,9 +29,14 @@ internal fun rememberWq150Profiles(room:String,session:AppSession,gateway:Wq150G
                 try{Wq128RoomHd.encode(selected,image)}finally{image.recycle()}
             }
         }else null
+        val victory=if(custom&&consent&&preview!=null)withContext(Dispatchers.Default){
+            Wq183MascotStore.pictureForProfile(context,session.profileKey,selected,true)?.let{image->
+                try{Wq128RoomHd.encode(selected,image)}finally{image.recycle()}
+            }
+        }else null
         val avatar=if(custom&&preview==null)"piko" else selected
         repeat(3){
-            try{gateway.publishPortrait(room,avatar,preview);return@LaunchedEffect}
+            try{gateway.publishPortrait(room,avatar,preview,victory);return@LaunchedEffect}
             catch(e:CancellationException){throw e}
             catch(e:Exception){delay(1500L)}
         }
@@ -53,10 +58,12 @@ internal fun rememberWq150Profiles(room:String,session:AppSession,gateway:Wq150G
 @Composable
 internal fun Wq150Portrait(profile:JSONObject?,ownAvatar:String?,modifier:Modifier=Modifier,victory:Boolean=false){
     val id=profile?.optString("avatar","piko")?:"piko"
-    val preview=profile?.optString("preview")?.takeIf{it.isNotBlank()&&it!="null"}
+    val idle=profile?.optString("preview")?.takeIf{it.isNotBlank()&&it!="null"}
+    val win=profile?.optString("victory")?.takeIf{it.isNotBlank()&&it!="null"}
+    val preview=if(victory)win?:idle else idle
     var bitmap by remember(id,preview){mutableStateOf<Bitmap?>(null)}
     LaunchedEffect(id,preview){
-        bitmap=withContext(Dispatchers.Default){Wq128RoomHd.decode(id,preview)}
+        bitmap=withContext(Dispatchers.Default){Wq128RoomHd.decode(id,preview)?:if(victory)Wq128RoomHd.decode(id,idle) else null}
     }
     val image=bitmap
     if(ownAvatar!=null)Wq2DPortrait(ownAvatar,modifier,victory)

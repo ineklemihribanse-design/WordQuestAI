@@ -94,7 +94,7 @@ export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bank
     if(!members.includes(uid))return problem(res,404,'not-found');
     if(req.method==='POST'){
      let value;
-     try{value=validatePortrait(await readBody(req,190000));}
+     try{value=validatePortrait(await readBody(req,365000));}
      catch(e){return problem(res,e.message==='body-too-large'?413:400,'invalid-portrait');}
      await database.ref('arenaV150Profiles/'+room+'/'+uid).set(value);
      return reply(res,200,{ok:true});

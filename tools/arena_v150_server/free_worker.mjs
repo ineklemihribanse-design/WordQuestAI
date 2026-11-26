@@ -36,7 +36,7 @@ export default {async fetch(req,env){
  try{identity=await authenticate(bearer[1],env);}catch{return json(401,{ok:false,code:'unauthenticated'});}
  let id=match?.[1],body;
  try{
-  if(req.method==='POST')body=await smallBody(req,path.startsWith('/v150/profiles/')?190000:8192);
+  if(req.method==='POST')body=await smallBody(req,path.startsWith('/v150/profiles/')?365000:8192);
   if(create){
    const data=JSON.parse(new TextDecoder().decode(body));
    if(!requestId(data.id))return json(400,{ok:false,code:'invalid-command'});
