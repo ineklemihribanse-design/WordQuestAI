@@ -1,20 +1,21 @@
-name: WordQuest AI full assembled-source audit (no publication)
+name: WordQuest AI 1.0.150 Arena development audit (no publication)
 on:
-  pull_request:
-    branches: [fix/v190-tablet-board-and-visible-icons]
+  push:
+    branches: [feature/v150-arena-nextgen]
     paths:
       - '.github/workflows/audit-full-assembled-source.yml'
       - 'tools/full_source_audit/**'
       - 'tools/v132_engine/**'
+  workflow_dispatch:
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 permissions:
   contents: read
   actions: read
 jobs:
   audit:
-    if: github.head_ref == 'feature/v148-live-arena-refinement' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -771,7 +772,7 @@ jobs:
           p=Path("source/app/build.gradle.kts")
           s=p.read_text()
           assert s.count("versionCode = 149")==1 and s.count('versionName = "1.0.123"')==1
-          p.write_text(s.replace("versionCode = 149","versionCode = 163").replace('versionName = "1.0.123"','versionName = "1.0.148"'))
+          p.write_text(s.replace("versionCode = 149","versionCode = 164").replace('versionName = "1.0.123"','versionName = "1.0.150"'))
           PY
       - name: Verify Android SDK and Gradle
         run: |
