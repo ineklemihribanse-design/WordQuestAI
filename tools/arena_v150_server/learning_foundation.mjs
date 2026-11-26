@@ -17109,13 +17109,13 @@ export const foundationQuestions = [
     "prompt": "Keep your ____ as proof that you paid for the shoes.",
     "options": [
       "receipt",
-      "invoice",
+      "unpaid invoice",
       "menu",
       "timetable",
       "prescription"
     ],
     "correct": 0,
-    "explanation": "receipt: fiş. Diğer seçenekler: invoice: ödeme talep eden fatura; menu: menü; timetable: çizelge; prescription: reçete."
+    "explanation": "Receipt ödeme yapıldığını gösteren fiştir; unpaid invoice henüz ödenmemiş faturadır."
   },
   {
     "id": "wq150_nov26_mixed13a_9_2",
@@ -17285,7 +17285,7 @@ export const foundationQuestions = [
       "cancel"
     ],
     "correct": 0,
-    "explanation": "miss: kaçırmak. Diğer seçenekler: catch: yetişmek; board: binmek; change: aktarma yapmak; cancel: iptal etmek."
+    "explanation": "Miss the last bus son otobüsü kaçırmak demektir."
   },
   {
     "id": "wq150_nov26_mixed13a_11_2",
@@ -17297,12 +17297,12 @@ export const foundationQuestions = [
     "options": [
       "miss",
       "catch",
-      "board",
+      "cancel",
       "change",
-      "cancel"
+      "delay"
     ],
     "correct": 1,
-    "explanation": "catch: yetişmek. Diğer seçenekler: miss: kaçırmak; board: binmek; change: aktarma yapmak; cancel: iptal etmek."
+    "explanation": "Catch the train: kalkmadan trene yetişmek. Miss kaçırmak anlamındadır."
   },
   {
     "id": "wq150_nov26_mixed13a_11_3",
@@ -17387,7 +17387,7 @@ export const foundationQuestions = [
       "fee"
     ],
     "correct": 1,
-    "explanation": "refund: iade edilen para. Diğer seçenekler: receipt: fiş; discount: indirim; deposit: depozito; fee: hizmet ücreti."
+    "explanation": "Refund: ödenen paranın iadesi. Deposit: depozito; discount: indirim."
   },
   {
     "id": "wq150_nov26_mixed13a_12_3",
@@ -17552,12 +17552,12 @@ export const foundationQuestions = [
     "options": [
       "commute",
       "trip",
-      "tour",
+      "tour guide",
       "flight",
       "voyage"
     ],
     "correct": 1,
-    "explanation": "trip: kısa gezi. Diğer seçenekler: commute: işe düzenli gidiş geliş; tour: tur; flight: uçuş; voyage: uzun deniz yolculuğu."
+    "explanation": "School trip okul gezisi demektir."
   },
   {
     "id": "wq150_nov26_mixed13a_14_3",
@@ -17568,13 +17568,13 @@ export const foundationQuestions = [
     "prompt": "A guide led a walking ____ with stops at six landmarks.",
     "options": [
       "commute",
-      "trip",
+      "business trip",
       "tour",
       "flight",
       "voyage"
     ],
     "correct": 2,
-    "explanation": "tour: tur. Diğer seçenekler: commute: işe düzenli gidiş geliş; trip: kısa gezi; flight: uçuş; voyage: uzun deniz yolculuğu."
+    "explanation": "Walking tour rehberli yürüyüş turudur."
   },
   {
     "id": "wq150_nov26_mixed13a_14_4",
@@ -18196,14 +18196,14 @@ export const foundationQuestions = [
     "topic": "Vocabulary",
     "prompt": "Use both hands to ____ the heavy box off the floor.",
     "options": [
-      "raise",
+      "raise concerns about",
       "rise",
       "arise",
       "arouse",
       "lift"
     ],
     "correct": 4,
-    "explanation": "lift: fiziksel kaldırmak. Diğer seçenekler: raise: artırmak (geçişli); rise: yükselmek (geçişsiz); arise: ortaya çıkmak; arouse: uyandırmak."
+    "explanation": "Lift a box off the floor: kutuyu yerden kaldırmak."
   },
   {
     "id": "wq150_nov26_mixed13a_22_1",
@@ -18492,7 +18492,7 @@ export const foundationQuestions = [
       "appropriate"
     ],
     "correct": 1,
-    "explanation": "efficient: verimli. Diğer seçenekler: effective: etkili; accurate: doğru; reliable: güvenilir; appropriate: uygun."
+    "explanation": "Efficient, aynı çıktıyı daha az kaynakla üretmeyi ifade eder."
   },
   {
     "id": "wq150_nov26_mixed13a_25_3",
@@ -19047,13 +19047,13 @@ export const foundationQuestions = [
     "prompt": "Independent records corroborated her testimony, making her a ____ witness.",
     "options": [
       "credible",
-      "plausible",
       "feasible",
       "viable",
-      "legitimate"
+      "legitimate",
+      "inaccurate"
     ],
     "correct": 0,
-    "explanation": "credible: inandırıcı. Diğer seçenekler: plausible: makul; feasible: uygulanabilir; viable: sürdürülebilir; legitimate: meşru."
+    "explanation": "Credible witness: tanıklığına güvenilebilecek kişi."
   },
   {
     "id": "wq150_nov26_mixed13a_32_2",
@@ -19063,14 +19063,14 @@ export const foundationQuestions = [
     "topic": "Vocabulary",
     "prompt": "The untested explanation is logically ____ , although evidence is still lacking.",
     "options": [
-      "credible as a witness",
+      "definitive",
       "plausible",
-      "feasible to construct",
-      "viable as a business",
-      "legitimate under law"
+      "implausible",
+      "infeasible",
+      "illegitimate"
     ],
     "correct": 1,
-    "explanation": "plausible: makul. Diğer seçenekler: credible: inandırıcı; feasible: uygulanabilir; viable: sürdürülebilir; legitimate: meşru."
+    "explanation": "Plausible: henüz doğrulanmasa bile mantıken makul. Definitive kesin, implausible mantıksız, infeasible uygulanamaz, illegitimate gayrimeşru anlamındadır."
   },
   {
     "id": "wq150_nov26_mixed13a_32_3",
@@ -19081,13 +19081,13 @@ export const foundationQuestions = [
     "prompt": "The engineers examined whether construction was technically ____ with available equipment.",
     "options": [
       "credible",
-      "plausible as an explanation",
+      "plausible",
       "feasible",
-      "viable as a business",
-      "legitimate under law"
+      "legitimate",
+      "unworkable"
     ],
     "correct": 2,
-    "explanation": "feasible: uygulanabilir. Diğer seçenekler: credible: inandırıcı; plausible: makul; viable: sürdürülebilir; legitimate: meşru."
+    "explanation": "Technically feasible teknik açıdan uygulanabilir demektir."
   },
   {
     "id": "wq150_nov26_mixed13a_32_4",
@@ -19099,12 +19099,12 @@ export const foundationQuestions = [
     "options": [
       "credible",
       "plausible",
-      "feasible to construct",
+      "infeasible",
       "viable",
       "legitimate"
     ],
     "correct": 3,
-    "explanation": "viable: sürdürülebilir. Diğer seçenekler: credible: inandırıcı; plausible: makul; feasible: uygulanabilir; legitimate: meşru."
+    "explanation": "Financially viable uzun vadede ekonomik olarak sürdürülebilir demektir."
   },
   {
     "id": "wq150_nov26_mixed13a_32_5",
@@ -19121,7 +19121,7 @@ export const foundationQuestions = [
       "legitimate"
     ],
     "correct": 4,
-    "explanation": "legitimate: meşru. Diğer seçenekler: credible: inandırıcı; plausible: makul; feasible: uygulanabilir; viable: sürdürülebilir."
+    "explanation": "Legitimate right yasal veya meşru hak anlamındadır."
   },
   {
     "id": "wq150_nov26_mixed13a_33_1",
