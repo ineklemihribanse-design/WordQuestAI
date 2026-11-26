@@ -306,12 +306,12 @@ s=s[:a]+'''    var origin by remember{mutableStateOf(Offset.Zero)}
 '''+s[a:]
 s=once(s,'Arena172ScorePlayer(hostName,hostScore,hostAvatar,!cooperative&&isHostTurn,\n            Modifier.weight(1f))','''Arena172ScorePlayer(hostName,hostScore,hostAvatar,!cooperative&&isHostTurn,
             Modifier.weight(1f),onMascotPosition={hostPosition=it},
-            onEmoji=if(social!=null && social.myUid!=social.hostUid) social.send else null,
-            onProfile=if(social!=null && social.myUid!=social.hostUid) social.profile else null)''')
+            onEmoji=if(social!=null && social.myUid!=social.hostUid) ({ symbol:String -> social.send(symbol) }) else null,
+            onProfile=if(social!=null && social.myUid!=social.hostUid) ({ social.profile() }) else null)''')
 s=once(s,'Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!isHostTurn,\n            Modifier.weight(1f))\n    }\n}','''Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!isHostTurn,
             Modifier.weight(1f),onMascotPosition={guestPosition=it},
-            onEmoji=if(social!=null && social.myUid!=social.guestUid) social.send else null,
-            onProfile=if(social!=null && social.myUid!=social.guestUid) social.profile else null)
+            onEmoji=if(social!=null && social.myUid!=social.guestUid) ({ symbol:String -> social.send(symbol) }) else null,
+            onProfile=if(social!=null && social.myUid!=social.guestUid) ({ social.profile() }) else null)
     }
     if(social!=null) {
         Wq148EmojiFlight(social.events[social.hostUid],hostPosition,guestPosition,origin)
