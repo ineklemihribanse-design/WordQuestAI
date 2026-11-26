@@ -1,6 +1,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {appendLearningWords} from './learning_mix.mjs';
 import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
 const base=new URL('../v175/content/',import.meta.url);
 const rank=s=>createHash('sha256').update(s).digest('hex');
 export async function expandLearning(input){
@@ -16,7 +17,8 @@ export async function expandLearning(input){
  }
  return appendLearningWords(input,licensed);
 }
-if(process.argv[2]&&process.argv[3]){
+if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
+ if(!process.argv[2]||!process.argv[3])throw Error('usage: expand_learning.mjs input output-file');
  const raw=JSON.parse(await readFile(process.argv[2],'utf8'));
  const out=await expandLearning(raw);
  await writeFile(process.argv[3],JSON.stringify(out));
