@@ -777,6 +777,7 @@ jobs:
           install -m 644 tools/v132_engine/Wq150GatewayTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150GatewayTest.kt
           install -m 644 tools/v132_engine/Wq150LobbyClient.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150LobbyClient.kt
           install -m 644 tools/v132_engine/Wq150ArenaEntry.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaEntry.kt
+          install -m 644 tools/v132_engine/Wq150Invites.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150Invites.kt
           install -m 644 tools/v132_engine/Wq150ArenaMatch.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaMatch.kt
           install -m 644 tools/v132_engine/Wq150SoundPacks.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150SoundPacks.kt
           python3 tools/v132_engine/prepare_arena_sounds.py

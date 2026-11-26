@@ -82,6 +82,9 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                     Wq122Primary("Odaya katıl",roomCode.matches(Regex("^[A-Za-z0-9_-]{6,64}$"))&&!state.busy&&!state.pending,{
                         scope.launch{controller.join(roomCode)}
                     },green=false)
+                    if(auth!=null)Wq150Invites(session,auth,uid,null,false,!state.busy&&!state.pending,null){id->
+                        controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
+                    }
                     TextButton(onClick=legacy,enabled=!state.busy&&!state.pending){Text("Mevcut Arena / tek başına",color=Wq122Gold)}
                 }else if(lobby&&snapshot!=null&&room!=null){
                     val host=snapshot.optString("host")==uid
@@ -118,6 +121,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                             }
                         }
                     }
+                    if(auth!=null)Wq150Invites(session,auth,uid,room,host&&count<capacity,!state.busy&&!state.pending,room){false}
                     Wq122Primary(if(myReady)"Hazır değilim" else "Hazırım",!state.busy&&!state.pending,{
                         scope.launch{controller.action("ready",ready=!myReady)}
                     },green=true)
