@@ -1,0 +1,73 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validateSettings,selectBank,createMatch,matchCommand,matchTransport,matchTick,matchView,transactMatch} from './match_service.mjs';
+const words=['APPLE','HOUSE','RIVER','CHAIR','WATER','GREEN','TABLE','MOUSE','BREAD','PLANT'];
+const bank=words.map((answer,i)=>({id:'w'+i,answer,clue:'clue '+i,prompt:'question '+i,level:i%2?'A2':'A1',yds:i%2?'medium':'easy',topic:'daily',wordType:'noun',options:['a','b','c','d','e'],correct:0,letterCount:5,cells:Array.from({length:5},(_,j)=>i+','+j)}));
+const cfg=(kind='duel',mode='classic',extra={})=>({kind,mode,levels:['A1','A2'],count:10,seconds:30,...extra});
+const base=(settings=cfg())=>createMatch({settings,bank,players:['a','b'],teams:[{id:'red',members:['a','b']},{id:'blue',members:['c','d']}],epochs:{a:1,b:1,c:1,d:1},seed:'trusted-private-seed',now:1000});
+test('multi-level settings normalized, filters exclusive, limits validated',()=>{
+ assert.deepEqual(validateSettings(cfg('duel','limited',{levels:['A2','A1','A2']})).levels,['A1','A2']);
+ assert.throws(()=>validateSettings(cfg('duel','classic',{topic:'daily',wordType:'noun'})));
+ assert.throws(()=>validateSettings(cfg('duel','classic',{count:71})));
+ assert.throws(()=>validateSettings(cfg('coop','timed',{seconds:0})));
+});
+test('bank really applies both selected levels and filter',()=>{
+ const s=validateSettings(cfg('quiz','classic',{count:5,topic:'daily'}));const picked=selectBank(bank,s,'seed');
+ assert.equal(picked.length,5);assert.deepEqual(new Set(picked.map(q=>q.level)),new Set(['A1','A2']));
+ assert.throws(()=>selectBank(bank,{...s,topic:'other'},'seed'));
+});
+test('YDS selection does not silently use CEFR filters',()=>{
+ const s=validateSettings(cfg('quiz','classic',{count:5,scale:'yds',levels:['medium']}));
+ assert.ok(selectBank(bank,s,'seed').every(q=>q.yds==='medium'));
+});
+test('all four engines use shared match settings',()=>{
+ for(const [kind,mode,format] of [['duel','classic'],['quiz','simultaneous'],['coop','free'],['team','speed','quiz']]){
+  const s=base(cfg(kind,mode,{format}));assert.equal(s.kind,kind);assert.equal(s.game.mode,mode);assert.equal(s.settings.count,10);
+ }
+});
+test('authenticated actor cannot impersonate rival or replay another revision',()=>{
+ const s=base(),p=s.game.turn,c={id:'1',type:'submit',word:s.game.active,answer:s.game.words[s.game.active].answer,revision:0};
+ assert.throws(()=>matchCommand(s,'outsider',c,1001));
+ assert.throws(()=>matchCommand(s,p,{...c,actor:p==='a'?'b':'a'},1001));
+ const next=matchCommand(s,p,c,1001);assert.equal(next.revision,1);
+ assert.equal(matchCommand(next,p,c,1002),next);
+ assert.throws(()=>matchCommand(next,next.game.turn,{...c,id:'2'},1002));
+});
+test('pause blocks commands and resumes exact remaining time',()=>{
+ let s=base();const p=s.game.turn;
+ s=matchTransport(s,{type:'lost',id:p,epoch:1},6000);assert.equal(matchView(s,p).phase,'paused');
+ assert.throws(()=>matchCommand(s,p,{id:'bad',type:'pass',word:0,revision:s.revision},6001));
+ s=matchTransport(s,{type:'restored',id:p,epoch:2},26000);
+ assert.equal(s.game.deadline,51000);assert.equal(matchView(s,p).phase,'playing');
+});
+test('personal quiz timers both shift after reconnect without equalizing them',()=>{
+ let s=base(cfg('quiz','simultaneous',{hints:2}));s=matchCommand(s,'a',{id:'hint',type:'time',index:0,revision:0},1001);
+ s=matchTransport(s,{type:'lost',id:'a',epoch:1},6000);
+ s=matchTransport(s,{type:'restored',id:'a',epoch:2},16000);
+ assert.equal(s.game.current.a.deadline,51000);assert.equal(s.game.current.b.deadline,41000);
+ assert.equal(matchView(s,'b').game.mine.deadline,41000);
+});
+test('trusted timeout and forfeit result require no disconnected client',()=>{
+ let s=base();s=matchTransport(s,{type:'lost',id:'a',epoch:1},2000);
+ s=matchTick(s,62000);assert.equal(matchView(s,'b').phase,'finished');assert.deepEqual(s.result,{kind:'forfeit',winner:'b'});
+});
+test('removed team member cannot play, teammate can remain',()=>{
+ let s=base(cfg('team','classic',{format:'crossword'}));s=matchTransport(s,{type:'leave',id:'a',epoch:1},2000);
+ assert.equal(s.game.removed.includes('a'),true);assert.equal(s.connection.phase,'playing');
+ assert.throws(()=>matchCommand(s,'a',{id:'x',type:'pass',item:0,revision:s.revision},2001));
+});
+test('private views omit answer bank, seed and session epochs',()=>{
+ const s=base(cfg('quiz','simultaneous',{hints:2}));
+ const next=matchCommand(s,'a',{id:'hint',type:'half',index:0,revision:0},1001);
+ const b=matchView(next,'b');assert.equal(b.game.question.correct,undefined);assert.deepEqual(b.game.mine.removed,[]);
+ assert.equal(b.connection.players[0].epoch,undefined);assert.equal(b.game.seed,undefined);
+ assert.throws(()=>matchView(next,'outsider'));
+});
+test('admin transaction retries do not duplicate scores',async()=>{
+ let value=base();const p=value.game.turn;
+ const ref={transaction:async f=>{f(value);const next=f(value);if(next!==undefined)value=next;return {committed:next!==undefined,snapshot:{val:()=>value}};}};
+ const c={id:'unique',type:'submit',word:0,answer:value.game.words[0].answer,revision:0};
+ assert.equal((await transactMatch(ref,p,c,1001)).committed,true);
+ assert.equal((await transactMatch(ref,p,c,1002)).committed,false);
+ assert.equal(value.game.stats[p].correct,1);
+});

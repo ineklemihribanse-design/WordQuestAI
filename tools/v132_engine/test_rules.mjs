@@ -107,6 +107,12 @@ try {
  await assertFails(db.ref(path+'/phase').set('finished'));
  await env.withSecurityRulesDisabled(async c=>{await c.database().ref(connPath).remove();});
  console.log('PASS v150 server-owned connection state, pause write barriers and legacy compatibility');
+ // Private v150 authoritative state is accessible only via Admin SDK.
+ await env.withSecurityRulesDisabled(async c=>{await c.database().ref('arenaV150Private/private-match').set({secret:'answer-bank'});});
+ await assertFails(db.ref('arenaV150Private/private-match').get());
+ await assertFails(guest.ref('arenaV150Private/private-match').get());
+ await assertFails(db.ref('arenaV150Private/private-match/secret').set('tampered'));
+ console.log('PASS v150 private match state is server-only');
  // v150 finish offer: both identities, immutable ID, explicit response, cooldown, expiry.
  const offerPath=path+'/package6/finishOffer';
  const offerId='a'.repeat(32), t=Date.now();

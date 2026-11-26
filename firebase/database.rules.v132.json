@@ -398,6 +398,10 @@
           }
         }
       }
+    },
+    "arenaV150Private": {
+      ".read": false,
+      ".write": false
     }
   }
 }
