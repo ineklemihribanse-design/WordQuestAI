@@ -44,6 +44,8 @@ bulkphrase=(root/'tools/arena_v150_server/learning_bulk_phrases.mjs').read_text(
 qs += json.loads(bulkphrase.split('export const bulkPhraseQuestions = ',1)[1].rstrip().removesuffix(';'))
 prep_basic=(root/'tools/arena_v150_server/learning_preposition_basic.mjs').read_text('utf-8')
 qs += json.loads(prep_basic.split('export const prepositionBasicQuestions = ',1)[1].rstrip().removesuffix(';'))
+verbalnew=(root/'tools/arena_v150_server/learning_verbal_new.mjs').read_text('utf-8')
+qs += json.loads(verbalnew.split('export const verbalNewQuestions = ',1)[1].rstrip().removesuffix(';'))
 # Existing YDS Academy has a strict four-choice contract; keep it unchanged.
 # Arena uses all five authored choices.
 qs=[q for q in qs if q['yds']]
