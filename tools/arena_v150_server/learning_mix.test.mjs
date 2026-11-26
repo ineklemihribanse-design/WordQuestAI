@@ -46,3 +46,15 @@ test('cloze sets are distinct and all have one answer with five options',()=>{co
 
 import {wordFormWords,wordFormQuestions} from './learning_wordforms.mjs';
 test('word formation practice uses distinct families and five forms',()=>{assert.equal(wordFormQuestions.length,140);assert.equal(new Set(wordFormQuestions.map(q=>q.family)).size,35);assert.ok(wordFormQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.prompt.split('____').length===2&&q.correct===0));assert.ok(wordFormWords.every(w=>/^[A-Z]{2,22}$/.test(w.answer)&&['İsimler','Fiiller','Sıfatlar','Zarflar'].includes(w.wordType)));});
+
+test('unfiltered mixed match balances question families, including word forms and cloze',()=>{
+ const cfg={scale:'cefr',levels:['B2'],topic:null,wordType:null};
+ const items=Array.from({length:30},(_,i)=>({id:'legacy'+i,level:'B2',yds:'medium'}));
+ const picked=diversifyQuiz(items,cfg,'balance-2026');
+ const curated=picked.filter(q=>q.id.startsWith('wq150_'));
+ assert.equal(picked.length,30);assert.equal(curated.length,20);
+ assert.ok(curated.some(q=>q.id.startsWith('wq150_form_')));assert.ok(curated.some(q=>q.id.startsWith('wq150_cloze_')));
+ const byId=new Map(allLearningQuestions.map(q=>[q.id,q]));
+ const families=curated.map(q=>byId.get(q.id).family).filter(Boolean);assert.equal(new Set(families).size,families.length);
+ const types=new Set(curated.map(q=>{const x=byId.get(q.id);return x.family?.startsWith('cloze_')?'Cloze':x.family?.startsWith('wordform_')?'WordForm':x.topic;}));assert.ok(types.size>=7);
+});

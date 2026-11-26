@@ -28,7 +28,7 @@ export function diversifyQuiz(items,cfg,seed,records=[]){
  const eligible=allLearningQuestions.filter(q=>cfg.levels.includes(key(q))).flatMap(q=>{
   if(!filtered)return [{...q,topicId:null,wordType:null}];
   // A filtered vocabulary question must have a verified matching target word.
-  if(q.topic!=='Vocabulary')return [];
+  if(q.topic!=='Vocabulary'&&!q.family?.startsWith('wordform_'))return [];
   const answer=q.options[q.correct].toUpperCase();
   const record=records.find(w=>w.answer.toUpperCase()===answer&&key(w)===key(q)&&
     (cfg.topic===null||w.topic===cfg.topic)&&(cfg.wordType===null||w.wordType===cfg.wordType));
@@ -38,15 +38,18 @@ export function diversifyQuiz(items,cfg,seed,records=[]){
  for(const q of eligible){
   const k=key(q);if(!byLevel.has(k))byLevel.set(k,[]);byLevel.get(k).push(q);
  }
- for(const pool of byLevel.values())pool.sort((a,b)=>hash(seed,a.id).localeCompare(hash(seed,b.id)));
+ for(const [level,pool] of byLevel){
+  byLevel.set(level,pool.map(q=>({q,rank:hash(seed,q.id)})).sort((a,b)=>a.rank.localeCompare(b.rank)).map(x=>x.q));
+ }
  // Prefer different question families before reusing the same family.
- const families=new Set(),usedPatterns=new Set();
+ const typeCounts=new Map(),usedPatterns=new Set();
+ const type=q=>q.family?.startsWith('cloze_')?'Cloze':q.family?.startsWith('wordform_')?'WordForm':q.topic;
  for(const item of items){
   const k=key(item),pool=byLevel.get(k)??[];
   const available=pool.filter(q=>!used.has(q.id)&&(!q.family||!usedPatterns.has(q.family)));
-  const q=available.find(q=>!families.has(q.topic))??available[0];
+  const q=available.reduce((best,candidate)=>!best||(typeCounts.get(type(candidate))??0)<(typeCounts.get(type(best))??0)?candidate:best,null);
   if(q&&used.size<Math.ceil(items.length*0.65)){
-   used.add(q.id);families.add(q.topic);if(q.family)usedPatterns.add(q.family);
+   used.add(q.id);typeCounts.set(type(q),(typeCounts.get(type(q))??0)+1);if(q.family)usedPatterns.add(q.family);
    const options=[...q.options].sort((a,b)=>hash(seed,q.id,a).localeCompare(hash(seed,q.id,b)));
    result.push({id:q.id,level:q.level,yds:q.yds,topic:q.topicId,wordType:q.wordType,prompt:q.prompt,options,correct:options.indexOf(q.options[q.correct]),letterCount:Math.max(2,Math.min(24,q.options[q.correct].length))});
   }else result.push(item);
