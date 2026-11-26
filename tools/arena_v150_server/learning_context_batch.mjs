@@ -5329,13 +5329,13 @@ export const contextQuestions = [
     "prompt": "The court required reliable ____ to support the accusation.",
     "options": [
       "evidence",
-      "clue",
       "rumour",
       "opinion",
-      "fact"
+      "clue",
+      "assumption"
     ],
     "correct": 0,
-    "explanation": "evidence: kanıt. Diğer seçenekler: clue: ipucu; rumour: söylenti; opinion: görüş; fact: olgu."
+    "explanation": "Evidence iddiayı destekleyen kanıttır; clue araştırma ipucudur."
   },
   {
     "id": "wq150_nov26_lex15_22_2",
@@ -5924,13 +5924,13 @@ export const contextQuestions = [
     "prompt": "A road ____ involving two cars blocked the motorway.",
     "options": [
       "accident",
-      "incident",
       "injury",
       "damage",
-      "fault"
+      "fault",
+      "emergency call"
     ],
     "correct": 0,
-    "explanation": "accident: kaza. Diğer seçenekler: incident: olay; injury: yaralanma; damage: hasar; fault: arıza/kusur."
+    "explanation": "A road accident trafik kazasıdır. Injury yaralanma, damage hasar, fault arıza demektir."
   },
   {
     "id": "wq150_nov26_lex15_29_2",
@@ -6805,16 +6805,16 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The policy aims to ____ income from higher earners towards lower-income households.",
+    "prompt": "The policy aims to ____ existing income from higher earners towards lower-income households.",
     "options": [
       "allocate",
-      "distribute",
+      "distribute equally",
       "redistribute",
       "retain",
       "withhold"
     ],
     "correct": 2,
-    "explanation": "redistribute: yeniden dağıtmak. Diğer seçenekler: allocate: tahsis etmek; distribute: dağıtmak; retain: elde tutmak; withhold: alıkoymak."
+    "explanation": "Redistribute mevcut kaynakların dağılımını yeniden düzenlemek demektir."
   },
   {
     "id": "wq150_nov26_lex15_39_4",
@@ -7375,7 +7375,7 @@ export const contextQuestions = [
       "obtain"
     ],
     "correct": 0,
-    "explanation": "Assure someone that: birine güvence vermek."
+    "explanation": "Assure someone that: bir kişiye güvence vermek."
   },
   {
     "id": "wq150_nov26_lex15_46_2",
@@ -7621,7 +7621,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The patient developed sudden ____ pain that required immediate assessment.",
+    "prompt": "The physician classified the pain as ____ rather than chronic because it began suddenly only a few hours earlier.",
     "options": [
       "acute",
       "chronic",
@@ -7630,7 +7630,7 @@ export const contextQuestions = [
       "intermittent"
     ],
     "correct": 0,
-    "explanation": "acute: akut. Diğer seçenekler: chronic: kronik; recurrent: tekrarlayan; persistent: sürekli; intermittent: aralıklı."
+    "explanation": "Acute akut, yeni ve ani başlayan; chronic uzun süreli demektir."
   },
   {
     "id": "wq150_nov26_lex15_49_2",
@@ -7655,16 +7655,16 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The patient had ____ infections, each resolving completely before the next episode.",
+    "prompt": "The patient had ____ infections: three separate episodes with complete recovery between them.",
     "options": [
       "acute",
       "chronic",
       "recurrent",
       "persistent",
-      "intermittent"
+      "continuous"
     ],
     "correct": 2,
-    "explanation": "recurrent: tekrarlayan. Diğer seçenekler: acute: akut; chronic: kronik; persistent: sürekli; intermittent: aralıklı."
+    "explanation": "Recurrent ayrı dönemler halinde tekrar eden demektir."
   },
   {
     "id": "wq150_nov26_lex15_49_4",
@@ -7672,16 +7672,16 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "A ____ cough continued without stopping for the entire month.",
+    "prompt": "A ____ cough lasted throughout the month despite several attempts to treat it.",
     "options": [
+      "brief",
       "acute",
-      "chronic",
       "recurrent",
       "persistent",
       "intermittent"
     ],
     "correct": 3,
-    "explanation": "persistent: sürekli. Diğer seçenekler: acute: akut; chronic: kronik; recurrent: tekrarlayan; intermittent: aralıklı."
+    "explanation": "Persistent ortadan kaldırma girişimlerine rağmen süren demektir."
   },
   {
     "id": "wq150_nov26_lex15_49_5",
@@ -7693,12 +7693,12 @@ export const contextQuestions = [
     "options": [
       "acute",
       "chronic",
-      "recurrent",
+      "permanent",
       "persistent",
       "intermittent"
     ],
     "correct": 4,
-    "explanation": "intermittent: aralıklı. Diğer seçenekler: acute: akut; chronic: kronik; recurrent: tekrarlayan; persistent: sürekli."
+    "explanation": "Intermittent aralıklı, kesilip tekrar ortaya çıkan demektir."
   },
   {
     "id": "wq150_nov26_lex15_50_1",
