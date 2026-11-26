@@ -623,7 +623,7 @@ f=p/"HomeScreen.kt";s=f.read_text()
 s=once(s,'                    onlineEligible=session.accountName!=null,\n                    onSelected={id->','                    onlineEligible=session.accountName!=null,\n                    driveAuth=session.accounts.socialAuth(),\n                    onSelected={id->')
 f.write_text(s)
 gradle=Path("source/app/build.gradle.kts");s=gradle.read_text()
-s=once(s,'implementation("androidx.credentials:credentials-play-services-auth:1.5.0")','implementation("androidx.credentials:credentials-play-services-auth:1.5.0")\n    implementation("com.google.android.gms:play-services-auth:22.0.0")')
+s=once(s,'implementation("androidx.credentials:credentials-play-services-auth:1.5.0")','implementation("androidx.credentials:credentials-play-services-auth:1.5.0")\n    implementation("com.google.android.gms:play-services-auth:21.1.1")')
 gradle.write_text(s)
 (p/"WqDriveMascot.kt").write_text('''package com.kelimebulmacasi.a1
 
