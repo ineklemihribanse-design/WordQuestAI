@@ -3,7 +3,8 @@ import {authoredWords,authoredQuestions} from './learning_content.mjs';
 import {extraQuestions,grammarVariants} from './learning_more.mjs';
 import {academicWords,collocationQuestions} from './learning_academic.mjs';
 import {readingQuestions} from './learning_reading.mjs';
-export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions];
+import {coherenceQuestions} from './learning_coherence.mjs';
+export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions];
 const hash=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // Keep every existing record and only append distinct new headwords. An
 // explicit YDS sense may coexist with a previously untagged CEFR entry.
