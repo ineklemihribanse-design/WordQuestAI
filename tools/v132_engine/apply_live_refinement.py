@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib
 main=Path("source/app/src/main")
 p=main/"java/com/kelimebulmacasi/a1"
-names={"PremiumOnlineScreen.kt","ArenaReferenceComponents.kt","ArenaV2Visuals.kt","ArenaBoardV2.kt","ArenaCrosswordTyping.kt","Wq186ArenaSocialHud.kt"}
+names={"PremiumOnlineScreen.kt","ArenaReferenceComponents.kt","ArenaV2Visuals.kt","ArenaBoardV2.kt","ArenaCrosswordTyping.kt","Wq186ArenaSocialHud.kt","Wq186ArenaFairPlay.kt"}
 protected={f:hashlib.sha256(f.read_bytes()).digest() for f in main.rglob("*") if f.is_file() and f.name not in names}
 out={}
 def once(s,a,b):
@@ -70,8 +70,16 @@ out["ArenaCrosswordTyping.kt"]=s
 # Keep one hint network/budget for keyboard and non-keyboard.
 s=read("PremiumOnlineScreen.kt")
 s=once(s,"verticalArrangement = Arrangement.spacedBy(if (match == null) 12.dp else 5.dp)","verticalArrangement = Arrangement.spacedBy(if (match == null) 12.dp else if(match.phase==\"playing\") 3.dp else 5.dp)")
-s=once(s,"                val myTurn = match.cooperative || match.turnUid == myUid","""                val retainedHints=remember(puzzle,claimedHints) {
+s=once(s,"                val myTurn = match.cooperative || match.turnUid == myUid","""                val retainedHints=remember(puzzle,claimedHints,match.hintBy[myUid],solved) {
                     buildMap<Cell,Char> {
+                        match.hintBy[myUid].orEmpty().forEach { index ->
+                            val w=puzzle.words.getOrNull(index) ?: return@forEach
+                            val position=Wq181ArenaHintSlot.reserve(context,match.code,myUid,index,
+                                crosswordFixedPattern(puzzle,solved,index))
+                            val cell=w.cells.getOrNull(position)
+                            val letter=w.entry.letters.getOrNull(position)
+                            if(cell!=null && letter!=null)put(cell,letter)
+                        }
                         claimedHints.forEach { claim ->
                             val w=puzzle.words.getOrNull(claim.word)
                             val cell=w?.cells?.getOrNull(claim.position)
@@ -328,6 +336,10 @@ s=once(s,'Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!is
     }
 }''')
 out["ArenaReferenceComponents.kt"]=s
+
+s=read("Wq186ArenaFairPlay.kt")
+s=once(s,'setOf("👏", "🔥", "🎉", "😄", "👍", "💪", "🤝", "🏆")','setOf("👏", "🔥", "🎉", "😄", "👍", "💪", "🤝", "🏆", "❤️", "😮")')
+out["Wq186ArenaFairPlay.kt"]=s
 
 assert set(out)<=names
 for n,s in out.items(): (p/n).write_text(s)
