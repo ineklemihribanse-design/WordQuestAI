@@ -4000,7 +4000,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Last month, our class ____ a science museum. We travelled there by bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "prompt": "Last month, our class ____ a science museum. We travelled there by bus. The guide showed us a machine that was built in 1890 and was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
     "options": [
       "visited",
       "visits",
@@ -4017,7 +4017,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Last month, our class visited a science museum. We travelled there ____ bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "prompt": "Last month, our class visited a science museum. We travelled there ____ bus. The guide showed us a machine that was built in 1890 and was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
     "options": [
       "by",
       "on",
@@ -4034,7 +4034,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was ____ than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was built in 1890 and was ____ than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
     "options": [
       "older",
       "old",
@@ -4051,7 +4051,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions ____ how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
+    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was built in 1890 and was older than the other machines in the room. We asked several questions ____ how it worked. Before leaving, we bought some postcards for our families.\n\nChoose the best option for the blank.",
     "options": [
       "about",
       "from",
@@ -4068,7 +4068,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought ____ postcards for our families.\n\nChoose the best option for the blank.",
+    "prompt": "Last month, our class visited a science museum. We travelled there by bus. The guide showed us a machine that was built in 1890 and was older than the other machines in the room. We asked several questions about how it worked. Before leaving, we bought ____ postcards for our families.\n\nChoose the best option for the blank.",
     "options": [
       "some",
       "much",
@@ -4085,7 +4085,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Lena has been learning the guitar ____ six months. At first she found it difficult to press the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "prompt": "Lena has been learning the guitar ____ six months. At first she found it difficult to press the strings correctly. She now practises in the evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
     "options": [
       "for",
       "since",
@@ -4102,7 +4102,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult ____ the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult ____ the strings correctly. She now practises in the evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
     "options": [
       "to press",
       "press",
@@ -4119,7 +4119,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises every evening ____ she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises in the evening ____ she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
     "options": [
       "if",
       "despite",
@@ -4136,7 +4136,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting ____ each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises in the evening if she has enough time before dinner. Her teacher says she is getting ____ each week. She hopes to play in a school concert in June.\n\nChoose the best option for the blank.",
     "options": [
       "better",
       "best",
@@ -4153,7 +4153,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises every evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert ____ June.\n\nChoose the best option for the blank.",
+    "prompt": "Lena has been learning the guitar for six months. At first she found it difficult to press the strings correctly. She now practises in the evening if she has enough time before dinner. Her teacher says she is getting better each week. She hopes to play in a school concert ____ June.\n\nChoose the best option for the blank.",
     "options": [
       "in",
       "on",
@@ -4340,7 +4340,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was ____ space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "When Adam moved into his flat, he discovered that there was ____ space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
     "options": [
       "not enough",
       "many",
@@ -4357,7 +4357,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided ____ a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided ____ a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
     "options": [
       "to order",
       "ordering",
@@ -4374,7 +4374,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was ____ expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was ____ expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
     "options": [
       "the least",
       "the fewest",
@@ -4391,7 +4391,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days ____ than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days ____ than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
     "options": [
       "earlier",
       "earliest",
@@ -4408,7 +4408,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. The website offered several models, but he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture ____ his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture ____ his guests arrived.\n\nChoose the best option for the blank.",
     "options": [
       "before",
       "despite",
@@ -5275,7 +5275,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused ____ the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused ____ the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement were disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
     "options": [
       "on",
       "at",
@@ -5294,14 +5294,14 @@ export const clozeExpansion = [
     "topic": "Paragraph",
     "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement ____ disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
     "options": [
-      "was",
-      "were being of",
-      "had being",
-      "will disrupted",
-      "is disrupt"
+      "were",
+      "has been",
+      "will be",
+      "is being",
+      "had being"
     ],
     "correct": 0,
-    "explanation": "If natural sediment movement was disrupted geçmişteki olası edilgen koşuldur."
+    "explanation": "If ile varsayımsal koşulda were disrupted edilgen yapı kullanılır."
   },
   {
     "id": "wq150_nov26_cloze11_18_3",
@@ -5309,7 +5309,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have ____ unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement were disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have ____ unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
     "options": [
       "gone",
       "went",
@@ -5326,7 +5326,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits ____ broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement were disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits ____ broader environmental costs. Future projects would be approved only if their overall impact could be adequately justified.\n\nChoose the best option for the blank.",
     "options": [
       "alongside",
       "instead of always",
@@ -5343,7 +5343,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement was disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be ____ justified.\n\nChoose the best option for the blank.",
+    "prompt": "A coastal authority introduced measures to protect beaches from erosion. The initial evaluation focused on the amount of sand retained after construction. However, scientists pointed out that erosion elsewhere might increase if natural sediment movement were disrupted. The authority expanded monitoring to include adjacent stretches of coastline. This was intended to identify unintended consequences that might otherwise have gone unnoticed. The resulting evidence allowed the authority to assess local benefits alongside broader environmental costs. Future projects would be approved only if their overall impact could be ____ justified.\n\nChoose the best option for the blank.",
     "options": [
       "adequately",
       "adequate",
