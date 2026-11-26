@@ -15,6 +15,7 @@ def read(n): return (p/n).read_text()
 # Retain revealed letters for every word, not just the selected word.
 s=read("ArenaBoardV2.kt")
 s=once(s,"@Composable\ninternal fun ArenaBoardV2(","""internal val LocalWq148ArenaHints=compositionLocalOf<Map<Cell,Char>>{emptyMap()}
+internal val LocalWq150ArenaZoom=compositionLocalOf{0}
 
 @Composable
 internal fun ArenaBoardV2(""")
@@ -22,47 +23,41 @@ s=once(s,"    val chosen=puzzle.words.getOrNull(selected)","    val retainedHint
 s=once(s,"val hinted=active && (","val hinted=address in retainedHints || (active && (")
 s=once(s,"(hintPosition>=0 && hintLetters.containsKey(hintPosition))\n                            )","(hintPosition>=0 && hintLetters.containsKey(hintPosition))\n                            ))")
 s=once(s,"val visibleLetter = fixed[address] ?:","val visibleLetter = fixed[address] ?: retainedHints[address] ?:")
+# Arena-only zoom levels; preserve offline and keyboard drawing paths.
+s=once(s,"        val cell=if(fittedOverview)","""        val arenaZoom=LocalWq150ArenaZoom.current
+        val cell=if(arenaZoom>0 && fittedHeight!=null && !compact)
+            (Wq140ArenaFit.cell((maxWidth.value-4f).coerceAtLeast(1f),
+                (fittedHeight-4f).coerceAtLeast(1f),rows,cols,gap.value) *
+                (if(arenaZoom==1)1.55f else 2.35f)).coerceIn(8f,90f).dp
+            else if(fittedOverview)""")
 out["ArenaBoardV2.kt"]=s
 
-# Online-only fitted overview and a genuine full-screen board; offline callers unchanged.
+# Online-only three-state zoom cycle; offline callers keep their existing controls.
 s=read("ArenaCrosswordTyping.kt")
-s=once(s,"import androidx.compose.ui.unit.dp","import androidx.compose.ui.unit.dp\nimport androidx.compose.ui.window.Dialog\nimport androidx.compose.ui.window.DialogProperties\nimport androidx.compose.ui.platform.LocalConfiguration\nimport androidx.compose.material3.Surface\nimport androidx.compose.material3.TextButton")
+s=once(s,"import androidx.compose.ui.unit.dp","import androidx.compose.ui.unit.dp\nimport androidx.compose.ui.platform.LocalConfiguration")
 s=once(s,"@Composable\ninternal fun ArenaCompactCrosswordBoard(","""internal val LocalWq148OnlineBoard=compositionLocalOf{false}
 
 @Composable
 internal fun ArenaCompactCrosswordBoard(""")
 s=once(s,"    var zoomed by rememberSaveable(puzzle.hashCode()) { mutableStateOf(false) }","""    var zoomed by rememberSaveable(puzzle.hashCode()) { mutableStateOf(false) }
     val online=LocalWq148OnlineBoard.current
-    var fullscreen by rememberSaveable(puzzle.hashCode()) { mutableStateOf(false) }
+    var onlineZoom by rememberSaveable(puzzle.hashCode()) { mutableStateOf(0) }
     val config=LocalConfiguration.current""")
-s=once(s,"        OutlinedButton(onClick={zoomed=!zoomed},","""        Row(verticalAlignment=Alignment.CenterVertically) {
-        if(online && !compact) TextButton(onClick={fullscreen=true},
-            contentPadding=PaddingValues(horizontal=5.dp,vertical=0.dp)){
-            Text("Tam ekran",color=Color(0xFFFFE3A4),fontSize=12.sp)
-        }
-        OutlinedButton(onClick={zoomed=!zoomed},""")
-s=once(s,"color=androidx.compose.ui.graphics.Color(0xFF34214F),fontSize=12.sp)\n        }\n    }\n    }","color=androidx.compose.ui.graphics.Color(0xFF34214F),fontSize=12.sp)\n        }\n        }\n    }\n    }")
 s=once(s,"    if(LocalWq140BoundedBoard.current && !compact) {","""    if(online) {
-        header()
-        val height=(config.screenHeightDp*(if(config.screenWidthDp>=600) .44f else .48f)).coerceAtLeast(130f)
-        CompositionLocalProvider(LocalWq140ArenaViewport provides if(!compact && !zoomed)height else null) {
-            ArenaBoardV2(puzzle,solved,selected,placed,compact,zoomed,hintIndex,hintChar,hintLetters,onSelect)
-        }
-        if(fullscreen) Dialog(onDismissRequest={fullscreen=false},
-            properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)) {
-            Surface(Modifier.fillMaxSize(),color=Color(0xFF21143F)) {
-                Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(8.dp)) {
-                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
-                        Text("TÜM BULMACA",Modifier.weight(1f),color=Color(0xFFFFE3A4),fontWeight=FontWeight.Bold)
-                        TextButton(onClick={fullscreen=false}){Text("Kapat",color=Color.White)}
-                    }
-                    BoxWithConstraints(Modifier.fillMaxWidth().weight(1f),contentAlignment=Alignment.Center) {
-                        CompositionLocalProvider(LocalWq140ArenaViewport provides maxHeight.value) {
-                            ArenaBoardV2(puzzle,solved,selected,placed,false,false,hintIndex,hintChar,hintLetters,onSelect)
-                        }
-                    }
-                }
+        if(!compact) Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.End) {
+            OutlinedButton(onClick={onlineZoom=(onlineZoom+1)%3},
+                contentPadding=PaddingValues(horizontal=10.dp,vertical=0.dp)) {
+                Text(when(onlineZoom){0->"Büyüt 1/2";1->"Büyüt 2/2";else->"Tüm tahta"},
+                    fontSize=12.sp,color=Color(0xFFFFE3A4))
             }
+        }
+        val height=(config.screenHeightDp*(if(config.screenWidthDp>=600) .44f else .48f)).coerceAtLeast(130f)
+        CompositionLocalProvider(
+            LocalWq140ArenaViewport provides if(!compact)height else null,
+            LocalWq150ArenaZoom provides if(!compact)onlineZoom else 0
+        ) {
+            ArenaBoardV2(puzzle,solved,selected,placed,compact,onlineZoom>0 && !compact,
+                hintIndex,hintChar,hintLetters,onSelect)
         }
     } else if(LocalWq140BoundedBoard.current && !compact) {""")
 out["ArenaCrosswordTyping.kt"]=s
@@ -112,7 +107,6 @@ s=s[:a]+'''                val canHint=match.rulesVersion>=2 && myTurn &&
                     }
                 }
                 if(!keyboardIsOpen) {
-                    Wq179ArenaClueHeader(puzzle,selected)
                     if(!match.cooperative) Wq179ArenaReplayPanel(match,puzzle,myUid){chosen->
                         setWordIndex(chosen)
                         setAnswerText("")
@@ -148,7 +142,11 @@ solved=part[:state_start]
 assert solved.endswith("                    } else {\n")
 status=part[state_end:part.index("                        fun submitAnswer()")]
 submit=part[part.index("                        fun submitAnswer()"):part.index("                        OutlinedTextField(")]
-field='''                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
+field='''                        Text(word.number.toString()+" · "+
+                            (if(word.direction==Direction.Across)"Yatay" else "Dikey")+" · "+
+                            word.entry.letters.length+" harf",color=OnlineGold,fontSize=12.sp)
+                        Text(word.entry.clue,color=OnlineCream,fontSize=14.sp)
+                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
                             horizontalArrangement=Arrangement.spacedBy(5.dp)) {
                             OutlinedTextField(answerText, { if(canAnswer)setAnswerText(englishLetters(it).take(word.entry.letters.length)) },
                                 Modifier.weight(1f),label={Text(if(myTurn)"Kelimeyi yaz" else "Rakibin sırası")},
@@ -344,4 +342,4 @@ out["Wq186ArenaFairPlay.kt"]=s
 assert set(out)<=names
 for n,s in out.items(): (p/n).write_text(s)
 assert all(hashlib.sha256(f.read_bytes()).digest()==h for f,h in protected.items())
-print("PASS: staged live-only profile, emoji flight, retained hints, fitted board, fullscreen and stable IME input. No unrelated source or artwork changed.")
+print("PASS: staged live-only profile, emoji flight, retained hints, fitted board, two-step zoom and stable IME input. No unrelated source or artwork changed.")
