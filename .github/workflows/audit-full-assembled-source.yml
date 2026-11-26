@@ -771,6 +771,8 @@ jobs:
           python3 tools/v132_engine/apply_live_refinement.py
           install -m 644 tools/v132_engine/Wq150MatchSettings.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150MatchSettings.kt
           install -m 644 tools/v132_engine/Wq150SettingsTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150SettingsTest.kt
+          install -m 644 tools/v132_engine/Wq150Gateway.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150Gateway.kt
+          install -m 644 tools/v132_engine/Wq150GatewayTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150GatewayTest.kt
           python3 - <<'PY'
           from pathlib import Path
           p=Path("source/app/build.gradle.kts")
@@ -809,7 +811,7 @@ jobs:
         working-directory: source
         run: |
           set -euo pipefail
-          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest'
+          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest' --tests 'com.kelimebulmacasi.a1.Wq150GatewayTest'
           test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest.xml
       - name: Preserve full audit and exact audited source snapshot
         if: always()
