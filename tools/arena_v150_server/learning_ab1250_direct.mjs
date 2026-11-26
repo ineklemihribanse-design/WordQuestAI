@@ -546,16 +546,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "I ____ swim now, but last year I couldn't.",
+    "prompt": "I ____ swim now, but last year I couldn't; I have learned at last.",
     "options": [
       "can",
-      "could",
-      "have to",
-      "may",
-      "would"
+      "couldn't",
+      "mustn't",
+      "cannot",
+      "shouldn't"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: can. Yetenek, geçmiş yetenek, gereklilik, izin ve varsayımsal tercih bağlama göre değişir."
+    "explanation": "Can, şu anda kazanılmış yüzme yeteneğini belirtir."
   },
   {
     "id": "wq150_ab1250_direct_a2_7_2",
@@ -600,16 +600,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "____ I leave the room for a moment, please?",
+    "prompt": "Choose the formal permission request: ____ I leave the room for a moment, please?",
     "options": [
-      "can",
-      "could",
+      "must",
+      "shall",
       "have to",
       "may",
       "would"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: may. Yetenek, geçmiş yetenek, gereklilik, izin ve varsayımsal tercih bağlama göre değişir."
+    "explanation": "May I ...? kibar ve resmî izin isteme kalıbıdır."
   },
   {
     "id": "wq150_ab1250_direct_a2_7_5",
@@ -2796,16 +2796,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "Check the address ____ you send the letter.",
+    "prompt": "You may use the garden ____ it is not raining.",
     "options": [
-      "before",
-      "after",
-      "while",
-      "when",
-      "until"
+      "if",
+      "unless",
+      "although",
+      "because",
+      "so that"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: before. Zaman bağlaçları olayların sırasını, eşzamanlılığını veya bitişini gösterir."
+    "explanation": "If koşulu, yağmur yağmaması durumunda bahçenin kullanılabileceğini ifade eder."
   },
   {
     "id": "wq150_ab1250_direct_a2_32_2",
@@ -4713,7 +4713,7 @@ export const ab1250Direct = [
       "was about to"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: would rather. Geçmiş alışkanlık, tercih, alışkın olma, alışma ve gerçekleşmek üzere olma ayrı yapılardır."
+    "explanation": "Would rather + yalın fiil + than, iki tercih arasındaki üstünlüğü belirtir."
   },
   {
     "id": "wq150_ab1250_direct_b1_3_3",
@@ -5370,7 +5370,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "Three of the eight people agreed, but ____ stayed silent.",
+    "prompt": "Some of the eight people agreed, but ____ expressed a different view.",
     "options": [
       "another",
       "other",
@@ -5379,7 +5379,7 @@ export const ab1250Direct = [
       "each other"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: others. Another ilave tekil, other başka, the other belirli kalan, others başka kişiler/şeyler, each other karşılıklılık bildirir."
+    "explanation": "Others, başka kişiler anlamında çoğul zamir olarak kullanılır."
   },
   {
     "id": "wq150_ab1250_direct_b1_10_5",

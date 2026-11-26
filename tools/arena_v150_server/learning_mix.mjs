@@ -21,7 +21,9 @@ import {verbalNewQuestions} from './learning_verbal_new.mjs';
 import {formExtension} from './learning_form_extension.mjs';
 import {clozeExpansion} from './learning_cloze_expansion.mjs';
 import {a12ThousandQuestions} from './learning_a12_thousand.mjs';
-export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions,...prepositionBasicQuestions,...verbalNewQuestions,...formExtension,...clozeExpansion,...a12ThousandQuestions];
+import {ab1250Direct} from './learning_ab1250_direct.mjs';
+import {ab1250Scenes} from './learning_ab1250_scenes.mjs';
+export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions,...prepositionBasicQuestions,...verbalNewQuestions,...formExtension,...clozeExpansion,...a12ThousandQuestions,...ab1250Direct,...ab1250Scenes];
 const hash=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // Keep every existing record and only append distinct new headwords. An
 // explicit YDS sense may coexist with a previously untagged CEFR entry.
@@ -59,7 +61,7 @@ export function diversifyQuiz(items,cfg,seed,records=[]){
  }
  // Prefer different question families before reusing the same family.
  const typeCounts=new Map(),usedPatterns=new Set();
- const type=q=>q.family?.startsWith('cloze_')?'Cloze':q.family?.startsWith('wordform_')?'WordForm':(q.id.startsWith('wq150_ant_')||q.id.startsWith('wq150_speedlex_')&&q.id.endsWith('_ant'))?'Antonym':q.id.startsWith('wq150_cohesion_fill_')?'ParagraphCompletion':q.id.startsWith('wq150_cohesion_odd_')?'IrrelevantSentence':q.family?.startsWith('prepbulk_')?'Preposition':q.topic;
+ const type=q=>q.kind??(q.family?.startsWith('cloze_')?'Cloze':q.family?.startsWith('wordform_')?'WordForm':(q.id.startsWith('wq150_ant_')||q.id.startsWith('wq150_speedlex_')&&q.id.endsWith('_ant'))?'Antonym':q.id.startsWith('wq150_cohesion_fill_')?'ParagraphCompletion':q.id.startsWith('wq150_cohesion_odd_')?'IrrelevantSentence':q.family?.startsWith('prepbulk_')?'Preposition':q.topic);
  for(const item of items){
   const k=key(item),pool=byLevel.get(k)??[];
   const available=pool.filter(q=>!used.has(q.id)&&(!q.family||!usedPatterns.has(q.family)));

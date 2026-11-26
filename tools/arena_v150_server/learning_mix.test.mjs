@@ -115,3 +115,15 @@ test('A1/A2 thousand-question pack has five distinct options, level balance, and
  const old=new Set(allLearningQuestions.filter(q=>!a12ThousandQuestions.includes(q)).map(q=>q.prompt.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase()));
  assert.deepEqual(a12ThousandQuestions.filter(q=>old.has(q.prompt.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase())).map(q=>q.id),[],'New pack must not repeat prior questions');
 });
+
+import {ab1250Direct} from './learning_ab1250_direct.mjs';
+import {ab1250Scenes} from './learning_ab1250_scenes.mjs';
+test('A2/B1 1250 pack is complete, level balanced, and covers all authored test types',()=>{
+ const pack=[...ab1250Direct,...ab1250Scenes];assert.equal(pack.length,1250);
+ for(const level of ['A2','B1']){const rows=pack.filter(q=>q.level===level);assert.equal(rows.length,625);assert.equal(new Set(rows.map(q=>q.kind)).size,17);}
+ assert.equal(new Set(pack.map(q=>q.family)).size,150);
+ assert.ok(pack.every(q=>q.yds===null&&q.kind&&q.family&&allLearningQuestions.includes(q)));
+ const norm=s=>s.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
+ const old=new Set(allLearningQuestions.filter(q=>!pack.includes(q)).map(q=>norm(q.prompt)));
+ assert.deepEqual(pack.filter(q=>old.has(norm(q.prompt))).map(q=>q.id),[]);
+});
