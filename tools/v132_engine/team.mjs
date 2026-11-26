@@ -19,6 +19,7 @@ export function createTeam({teams,items,kind,mode,first,now,seconds=30,limit=3,h
  !teams.some(t=>t.id===first)||!Array.isArray(items)||items.length<1||items.length>70||
  !Number.isSafeInteger(now)||now<0||!Number.isInteger(seconds)||seconds<0||seconds>600||
  ![2,3,5].includes(limit)||!Number.isInteger(hints)||hints<0||hints>20||typeof seed!=='string'||!seed)fail('Invalid team config');
+ const geometry={};
  const normalized=items.map(q=>{
   if(!q||typeof q.clue!=='string'||!q.clue.trim()||!Object.hasOwn(tier,q.level))fail('Invalid item');
   if(kind==='quiz'){
@@ -28,7 +29,11 @@ export function createTeam({teams,items,kind,mode,first,now,seconds=30,limit=3,h
    return {clue:q.clue,options:[...q.options],correct:q.correct,level:q.level,letterCount:q.letterCount};
   }
   if(typeof q.answer!=='string'||!/^[A-Za-z]{2,35}$/.test(q.answer))fail('Invalid answer');
-  return {clue:q.clue,answer:q.answer.toUpperCase(),level:q.level,letterCount:q.answer.length};
+  const answer=q.answer.toUpperCase();
+  if(q.cells!==undefined&&(!Array.isArray(q.cells)||q.cells.length!==answer.length||new Set(q.cells).size!==q.cells.length||
+   !q.cells.every(c=>typeof c==='string'&&/^[0-9]{1,3},[0-9]{1,3}$/.test(c))))fail('Invalid geometry');
+  (q.cells??[]).forEach((c,i)=>{if(Object.hasOwn(geometry,c)&&geometry[c]!==answer[i])fail('Conflicting crossing');geometry[c]=answer[i];});
+  return {clue:q.clue,answer,level:q.level,letterCount:answer.length,cells:q.cells};
  });
  const s={teams:clone(teams),items:normalized,kind,mode,turn:first,limit,streak:0,seconds,hints,seed,now,revision:0,phase:'playing',
   active:null,queue:normalized.map((_,i)=>i),deferred:[],round:1,deadline:null,removed:[],attempted:[],resolved:{},receipts:{},result:null,
@@ -134,6 +139,6 @@ export function teamView(s,p){
  const scores=Object.fromEntries(s.teams.map(x=>[x.id,s.teamStats[x.id].score]));
  return clone({teams:s.teams,kind:s.kind,mode:s.mode,phase:s.phase,revision:s.revision,turn:s.turn,streak:s.streak,active:s.active,
   activePlayers:Object.fromEntries(s.teams.map(x=>[x.id,activePlayer(s,x.id)])),deadline:s.deadline,removed:s.removed,
-  queue:s.queue,round:s.round,items,resolved:s.resolved,scores,myHints,hintsLeft:s.hints-s.teamStats[t].spent,
+  queue:s.queue,round:s.round,attempted:s.attempted,items,resolved:s.resolved,scores,myHints,hintsLeft:s.hints-s.teamStats[t].spent,
   result:s.result,stats:s.phase==='finished'?{teams:s.teamStats,players:s.playerStats}:undefined});
 }

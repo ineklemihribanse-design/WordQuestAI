@@ -162,9 +162,9 @@ internal data class Wq150RemoteState(
  * Call poll() only inside a lifecycle-owned coroutine; cancellation stops polling.
  * The old Arena is never used as fallback for a partially completed new match.
  */
-internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq150Gateway){
+internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq150Gateway,initial:JSONObject?=null){
     private val lock=Mutex()
-    private val mutable=MutableStateFlow(Wq150RemoteState())
+    private val mutable=MutableStateFlow(Wq150RemoteState(snapshot=initial))
     val state:StateFlow<Wq150RemoteState> = mutable.asStateFlow()
     private fun accept(view:JSONObject) {
         val before=mutable.value.snapshot
