@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Conservative WordQuestAI Actions artifact cleanup.
 
-Runs only in repo's GitHub Actions with Actions write permission.
+Runs only in the designated repo's GitHub Actions. Defaults to a read-only inventory; deletion requires explicit --apply and Actions write permission.
 Never touches Git source, releases, tags, updater assets, user content or secrets.
 Dry run locally: python3 tools/maintenance/prune_actions_artifacts.py --dry-run
 """
@@ -15,7 +15,7 @@ import time
 import urllib.error
 import urllib.request
 
-REPO = "mihribansezik5-lgtm/WordQuestAI"
+REPO = "ineklemihribanse-design/WordQuestAI"
 API = "https://api.github.com"
 MIN_BYTES = 1_000_000
 MAIN_AGE_HOURS = 48
@@ -111,7 +111,7 @@ def main():
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
         sys.exit("GITHUB_TOKEN missing; unable to clean. No files modified.")
-    dry_run = "--dry-run" in sys.argv
+    dry_run = "--apply" not in sys.argv or "--dry-run" in sys.argv
     now = datetime.now(timezone.utc)
     all_artifacts = fetch_all(token)
     candidates = choose(all_artifacts, now)
