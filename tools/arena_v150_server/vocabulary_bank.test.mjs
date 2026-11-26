@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createVocabularyBank,loadVocabulary,vocabularyReport} from './vocabulary_bank.mjs';
+import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog} from './vocabulary_bank.mjs';
 import {LEVELS,normalizeSettings} from '../v132_engine/engine.mjs';
 const answers=['APPLE','PLANE','LEMON','MELON','PEACH','GRAPE','PEAR','PAPER','PENCIL','CHAIR','TABLE','WATER','RIVER','GREEN','BREAD','CLOUD','FLOWER','GARDEN','WINDOW','HOUSE'];
 const records=LEVELS.flatMap((level,i)=>answers.map((answer,j)=>({level,answer,meaning:level+' clue '+j,category:'food',kind:'noun',...(i===0?{yds:'easy'}:{})})));
@@ -27,4 +27,13 @@ test('YDS requires explicit metadata, does not invent level mapping',async()=>{
  const q=await build({kind:'quiz',mode:'classic',scale:'yds',levels:['easy'],count:5},'private');
  assert.ok(q.every(x=>x.yds==='easy'));
  await assert.rejects(()=>build({kind:'quiz',mode:'classic',scale:'yds',levels:['hard'],count:5},'private'));
+});
+
+test('catalog reports real filters and safe stable identifiers without answers',async()=>{
+ const input=records.map(w=>({...w,category:'Günlük yaşam'}));
+ const c=vocabularyCatalog(loadVocabulary(input));
+ assert.equal(c.topics.length,1);assert.equal(c.topics[0].name,'Günlük yaşam');assert.match(c.topics[0].id,/^f_[a-f0-9]{32}$/);
+ assert.equal(c.topics[0].counts.cefr.A1.crossword,20);assert.equal(c.all.yds.hard.quiz,0);
+ assert.ok(!JSON.stringify(c).includes('APPLE'));
+ const q=await createVocabularyBank(input)({kind:'quiz',mode:'classic',levels:['A1'],count:5,topic:c.topics[0].id},'private');assert.ok(q.every(x=>x.topic===c.topics[0].id));
 });

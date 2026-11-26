@@ -1,6 +1,6 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {createVocabularyBank,loadVocabulary,vocabularyReport} from './vocabulary_bank.mjs';
+import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog} from './vocabulary_bank.mjs';
 import assert from 'node:assert/strict';
 const input=process.argv[2],out=process.argv[3];
 if(!input||!out)throw Error('usage: real_vocabulary_smoke.mjs input output-dir');
@@ -15,4 +15,5 @@ for(const levels of [['A1'],['A1','A2','B1'],['B2','C1','C2']]){
 await mkdir(out,{recursive:true});
 await writeFile(out+'/arena-vocabulary-v1.json',bytes);
 await writeFile(out+'/report.json',JSON.stringify({...report,sha256:createHash('sha256').update(bytes).digest('hex'),tested:'3 connected boards and 3 quizzes'},null,2)+'\n');
+await writeFile(out+'/catalog.json',JSON.stringify(vocabularyCatalog(rows),null,2)+'\n');
 console.log('PASS real shipped vocabulary',JSON.stringify(report));

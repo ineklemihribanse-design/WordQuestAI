@@ -27,6 +27,8 @@ internal object Wq150ArenaFeature {
 @Composable
 internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,
     legacy:()->Unit,onMatch:(String,JSONObject)->Unit){
+    val context=LocalContext.current
+    val catalog=remember(context){Wq150Catalog.read(context)}
     val auth=session.accounts.socialAuth()
     val uid=session.accounts.uid.orEmpty()
     val controller=remember(endpoint,auth,uid){auth?.let{Wq150LobbyController(Wq150Gateway(endpoint,it))}}
@@ -140,11 +142,11 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
-        if(edit)Wq150MatchSettingsDialog(settings,emptyMap(),emptyMap(),!state.busy&&!state.pending,
+        if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending,
             onDismiss={edit=false},onApply={next->
                 settings=next;edit=false
                 scope.launch{if(lobby)controller.action("settings",settings=next) else controller.create(next)}
-            })
+            },catalog=catalog)
         if(exit)AlertDialog(onDismissRequest={exit=false},title={Text("Arena'dan ayrıl?")},
             text={Text(if(active)"Aktif maçın durumu korunur. Bu ekrandan ayrılmak maçtan hükmen çıkış değildir." else "Odadan ayrılmak istediğine emin misin?")},
             confirmButton={TextButton(onClick={exit=false;if(lobby)scope.launch{controller.action("leave")} else back()}){Text("Ayrıl")}},

@@ -94,9 +94,37 @@ internal data class Wq150Settings(
             .put("skipLimit",skipLimit).put("limit",limit).put("maxMistakes",maxMistakes)
     }
 }
+internal data class Wq150Catalog(val data:JSONObject){
+    private fun groups(key:String):List<JSONObject>{
+        val a=data.optJSONArray(key)?:return emptyList()
+        return (0 until a.length()).mapNotNull{a.optJSONObject(it)}
+    }
+    fun options(key:String):Map<String,String> = groups(key).associate{it.optString("id") to it.optString("name")}
+    private fun counts(s:Wq150Settings):JSONObject?{
+        val filter=if(s.topic!=null)groups("topics").firstOrNull{it.optString("id")==s.topic}
+            else if(s.wordType!=null)groups("wordTypes").firstOrNull{it.optString("id")==s.wordType}
+            else null
+        val base=if(s.topic!=null||s.wordType!=null)filter?.optJSONObject("counts") else data.optJSONObject("all")
+        return base?.optJSONObject(s.scale)
+    }
+    fun coverage(s:Wq150Settings):List<Int> = s.levels.map{counts(s)?.optJSONObject(it)?.optInt(s.format,0)?:0}
+    fun supports(s:Wq150Settings):Boolean{
+        val c=coverage(s)
+        return c.isNotEmpty()&&c.all{it>0}&&c.sum()>=s.count
+    }
+    fun hasYds():Boolean=listOf("easy","medium","hard").any{level->
+        (data.optJSONObject("all")?.optJSONObject("yds")?.optJSONObject(level)?.optInt("crossword")?:0)>0
+    }
+    companion object{
+        fun read(context:android.content.Context):Wq150Catalog?=runCatching{
+            val j=JSONObject(context.assets.open("wq150_arena_catalog.json").bufferedReader().use{it.readText()})
+            require(j.optInt("schema")==150);Wq150Catalog(j)
+        }.getOrNull()
+    }
+}
 @Composable
 internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,String>,wordTypes:Map<String,String>,
-    available:Boolean,onDismiss:()->Unit,onApply:(Wq150Settings)->Unit) {
+    available:Boolean,onDismiss:()->Unit,onApply:(Wq150Settings)->Unit,catalog:Wq150Catalog?=null) {
     var s by remember(initial){mutableStateOf(initial)}
     val config=LocalConfiguration.current
     MaterialTheme(colorScheme=Wq122Scheme) {
@@ -109,7 +137,9 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                 if(s.kind=="team")Wq150Choices("2'ye 2 · içerik",mapOf("crossword" to "Bulmaca","quiz" to "5 Şıklı"),s.format){s=s.changeFormat(it)}
                 if(s.mode=="limited")Wq150Choices("Seri sınırı",listOf(2,3,5).associate{it.toString() to "$it doğru"},s.limit.toString()){s=s.copy(limit=it.toInt())}
                 if(s.kind=="coop"&&s.mode=="perfect")Wq150Choices("Ortak yanlış hakkı",listOf(1,2,3,5).associate{it.toString() to it.toString()},s.maxMistakes.toString()){s=s.copy(maxMistakes=it.toInt())}
-                Wq150Choices("Seviye sistemi",mapOf("cefr" to "CEFR","yds" to "YDS"),s.scale){s=s.changeScale(it)}
+                val scales=if(catalog==null||catalog.hasYds())mapOf("cefr" to "CEFR","yds" to "YDS")else mapOf("cefr" to "CEFR")
+                Wq150Choices("Seviye sistemi",scales,s.scale){s=s.changeScale(it)}
+                if(catalog!=null&&!catalog.hasYds())Text("YDS içerikleri henüz aktarılmadı.",color=Color(0xFFFFD6A1))
                 Text("Seviyeler · birden fazla seçilebilir",color=Wq122Gold,fontWeight=FontWeight.Bold)
                 Wq150ModeCatalog.levels(s.scale).chunked(3).forEach{row->
                     Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){
@@ -118,7 +148,9 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                     }
                 }
                 Wq150Choices("Konu",mapOf("all" to "Tümü")+topics,s.topic?:"all"){s=s.copy(topic=it.takeUnless{x->x=="all"},wordType=null)}
-                Wq150Choices("Kelime türü",mapOf("all" to "Tümü")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
+                if(wordTypes.isNotEmpty()||catalog==null)
+                    Wq150Choices("Kelime türü",mapOf("all" to "Tümü")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
+                else Text("Kelime türü etiketleri henüz aktarılmadı.",color=Color(0xFFFFD6A1))
                 Wq150Choices(if(s.format=="quiz")"Soru sayısı" else "Kelime sayısı",
                     Wq150ModeCatalog.sizes(s.format).associate{it.toString() to it.toString()},s.count.toString()){s=s.copy(count=it.toInt())}
                 val timed=s.kind=="coop"&&s.mode=="timed"
@@ -129,9 +161,10 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                     Wq150Choices("Tekrar hakkı",(0..3).associate{it.toString() to it.toString()},s.retries.toString()){s=s.copy(retries=it.toInt())}
                     Wq150Choices("Kelimeyi geçme hakkı",(0..5).associate{it.toString() to it.toString()},s.skipLimit.toString()){s=s.copy(skipLimit=it.toInt())}
                 }
+                if(catalog!=null&&!catalog.supports(s))Text("Seçilen seviyeler ve filtre için yeterli içerik yok. Soru sayısını azalt veya filtreyi değiştir.",color=Color(0xFFFFD6A1))
                 if(!available)Text("Yeni maç sunucusu henüz etkin değil. Bu ayarlar mevcut maça uygulanmaz.",color=Color(0xFFFFD6A1))
             }},
-            confirmButton={TextButton(enabled=available&&s.valid(),onClick={onApply(s)}){Text("Kaydet",color=Wq122Gold)}},
+            confirmButton={TextButton(enabled=available&&s.valid()&&(catalog?.supports(s)!=false),onClick={onApply(s)}){Text("Kaydet",color=Wq122Gold)}},
             dismissButton={TextButton(onClick=onDismiss){Text("Vazgeç",color=Wq122Ink)}})
     }
 }

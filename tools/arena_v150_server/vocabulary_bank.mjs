@@ -7,16 +7,20 @@ const fail=m=>{throw Error(m)};
 const canonical=x=>typeof x==='string'?x.trim().normalize('NFC'):'';
 const code=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 const ydsMap={easy:'A1',medium:'A2',hard:'B1'};
+// Preserve established safe IDs; map labels containing spaces or non-ASCII
+// characters to deterministic IDs accepted by the existing settings validator.
+const filterId=x=>!x?null:/^[A-Za-z0-9_-]{1,100}$/.test(x)&&!['all','constructor','prototype','__proto__'].includes(x)?x:'f_'+code(x).slice(0,32);
 export function loadVocabulary(input){
  if(!Array.isArray(input)||!input.length)fail('Missing shipped vocabulary');
  const rows=input.flatMap(w=>{
   if(!w||!LEVELS.includes(w.level)||!canonical(w.answer)||!canonical(w.meaning))return [];
   const answer=canonical(w.answer),meaning=canonical(w.meaning);
   if(!/^[A-Za-z]{2,24}$/.test(answer))return [];
-  const topic=canonical(w.category??w.topic)||null,wordType=canonical(w.wordType??w.kind)||null;
+  const topicLabel=canonical(w.category??w.topic)||null,wordTypeLabel=canonical(w.wordType??w.kind)||null;
+  const topic=filterId(topicLabel),wordType=filterId(wordTypeLabel);
   const yds=Object.hasOwn(ydsMap,w.yds)?w.yds:null;
   return [{id:code(w.level,answer.toLowerCase(),meaning,topic,wordType,yds).slice(0,32),
-   answer,meaning,level:w.level,topic,wordType,yds}];
+   answer,meaning,level:w.level,topic,wordType,yds,topicLabel,wordTypeLabel}];
  });
  if(!rows.length||LEVELS.some(l=>!rows.some(w=>w.level===l)))fail('Incomplete CEFR vocabulary');
  return [...new Map(rows.map(w=>[w.id,w])).values()];
@@ -26,6 +30,19 @@ export function vocabularyReport(rows){
   yds:Object.fromEntries(Object.keys(ydsMap).map(l=>[l,rows.filter(w=>w.yds===l).length])),
   topicCount:new Set(rows.map(w=>w.topic).filter(Boolean)).size,
   wordTypeCount:new Set(rows.map(w=>w.wordType).filter(Boolean)).size};
+}
+// Only metadata and aggregate counts are exported, never private answer keys.
+export function vocabularyCatalog(rows){
+ const scales={cefr:LEVELS,yds:Object.keys(ydsMap)};
+ const summarize=pool=>Object.fromEntries(Object.entries(scales).map(([scale,levels])=>[scale,
+  Object.fromEntries(levels.map(level=>{
+   const selected=pool.filter(w=>(scale==='cefr'?w.level:w.yds)===level);
+   return [level,{crossword:new Set(selected.map(w=>w.answer.toUpperCase())).size,
+    quiz:new Set(selected.map(w=>w.meaning.toLowerCase())).size}];
+  }))]));
+ const groups=(key,label)=>[...new Map(rows.filter(w=>w[key]).map(w=>[w[key],w[label]])).entries()]
+  .sort((a,b)=>a[1].localeCompare(b[1],'tr')).map(([id,name])=>({id,name,counts:summarize(rows.filter(w=>w[key]===id))}));
+ return {schema:150,all:summarize(rows),topics:groups('topic','topicLabel'),wordTypes:groups('wordType','wordTypeLabel')};
 }
 export function createVocabularyBank(input){
  const rows=loadVocabulary(input);
