@@ -4238,7 +4238,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A hotel guest noticed that the heating in her room was not working. She called reception and asked someone to check it. A member of staff arrived within ten minutes. He explained that the radiator needed a new part, so the guest was offered another room. She accepted the offer because she wanted to sleep in a warm room. She did not have to pay ____ the change.\n\nChoose the best option for the blank.",
+    "prompt": "The heating in a hotel room was broken. A member of staff offered the guest a warmer room. She accepted it. She did not have to pay ____ the change.\n\nChoose the best option for the blank.",
     "options": [
       "for",
       "on",
@@ -4247,7 +4247,7 @@ export const clozeExpansion = [
       "of"
     ],
     "correct": 0,
-    "explanation": "Pay for bir hizmetin bedelini ödemek kalıbıdır."
+    "explanation": "Pay for, bir hizmetin veya değişikliğin bedelini ödemek demektir."
   },
   {
     "id": "wq150_nov26_cloze11_6_1",
@@ -4255,16 +4255,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A new sports club is opening near our school. Students who join ____ the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "prompt": "A new sports club is opening near our school. Students who join ____ the end of this month will receive an early registration discount. The club offers equipment and lessons.\n\nChoose the best option for the blank.",
     "options": [
       "before",
       "during",
       "since",
-      "from of",
+      "after",
       "between"
     ],
     "correct": 0,
-    "explanation": "Ay sonundan önce kayıt olma koşulu before ile verilir."
+    "explanation": "Early registration discount, erken kayıt indirimi demektir; ay sonundan önce kayıt yapılmalıdır."
   },
   {
     "id": "wq150_nov26_cloze11_6_2",
@@ -4272,16 +4272,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has ____ equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "prompt": "A new sports club is opening near our school. It has ____ equipment for all beginners, so members do not need to buy any. Lessons are on Monday and Friday.\n\nChoose the best option for the blank.",
     "options": [
       "enough",
-      "many of",
-      "a few",
-      "several",
-      "a number of"
+      "too little",
+      "little",
+      "no",
+      "not enough"
     ],
     "correct": 0,
-    "explanation": "Equipment sayılamayan isimdir; enough yeterli miktarı belirtir."
+    "explanation": "Equipment sayılamaz. Üyelerin ekipman satın almasına gerek kalmaması yeterli ekipman olduğunu gösterir: enough."
   },
   {
     "id": "wq150_nov26_cloze11_6_3",
@@ -4289,16 +4289,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available ____ Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "prompt": "A new sports club is opening near our school. It offers equipment for beginners. Lessons take place ____ Monday and Friday each week. The coaches are friendly.\n\nChoose the best option for the blank.",
     "options": [
       "on",
       "in",
       "at",
-      "by of",
-      "from of"
+      "by",
+      "until"
     ],
     "correct": 0,
-    "explanation": "Gün adlarından önce on kullanılır."
+    "explanation": "Haftanın belirli günlerinden önce on kullanılır: on Monday and Friday."
   },
   {
     "id": "wq150_nov26_cloze11_6_4",
@@ -4306,16 +4306,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students ____ their skills. Anyone who is interested in joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "prompt": "A new sports club is opening near our school. Its friendly coaches will help students ____ their skills. The club has equipment for beginners.\n\nChoose the best option for the blank.",
     "options": [
       "improve",
       "improved",
       "improves",
-      "to improving",
+      "improving",
       "improvement"
     ],
     "correct": 0,
-    "explanation": "Help + nesne + yalın fiil improve kullanılır."
+    "explanation": "Help + nesne + yalın fiil kullanılabilir: help students improve. To improve da dilbilgisel olarak doğrudur ancak seçeneklerde yoktur."
   },
   {
     "id": "wq150_nov26_cloze11_6_5",
@@ -4323,7 +4323,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A new sports club is opening near our school. Students who join before the end of this month will receive a discount. The club has enough equipment for beginners, so members do not need to buy their own. Lessons are available on Monday and Friday. The coaches are friendly and will help students improve their skills. Anyone who is interested ____ joining can visit the club after school.\n\nChoose the best option for the blank.",
+    "prompt": "A new sports club is opening near our school. Anyone who is interested ____ joining can visit after school. Lessons are on Monday and Friday.\n\nChoose the best option for the blank.",
     "options": [
       "in",
       "on",
@@ -4332,7 +4332,7 @@ export const clozeExpansion = [
       "for"
     ],
     "correct": 0,
-    "explanation": "Interested in ilgi duymak kalıbıdır."
+    "explanation": "Interested in + isim veya -ing yapısı, bir şeye ilgi duymak anlamındadır."
   },
   {
     "id": "wq150_nov26_cloze11_7_1",
@@ -4340,16 +4340,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was ____ space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "Adam moved into a small flat. He found there was ____ space for the large sofa he wanted, so he ordered a smaller one instead. He had a limited budget.\n\nChoose the best option for the blank.",
     "options": [
       "not enough",
-      "many",
-      "a few",
-      "several",
-      "a number of"
+      "enough",
+      "plenty of",
+      "more than enough",
+      "ample"
     ],
     "correct": 0,
-    "explanation": "Space sayılamayan isim; yetersiz alan not enough ile belirtilir."
+    "explanation": "Küçük kanepeye yönelmesi, büyük kanepe için yeterli alan olmadığını gösterir: not enough space."
   },
   {
     "id": "wq150_nov26_cloze11_7_2",
@@ -4357,7 +4357,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided ____ a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "Adam moved into a small flat. There was not enough space for a large sofa, so he decided ____ a smaller one online. The sofa arrived early.\n\nChoose the best option for the blank.",
     "options": [
       "to order",
       "ordering",
@@ -4366,7 +4366,7 @@ export const clozeExpansion = [
       "orders"
     ],
     "correct": 0,
-    "explanation": "Decide ardından to infinitive gerekir."
+    "explanation": "Decide ardından to + yalın fiil gelir: decided to order, sipariş vermeye karar verdi."
   },
   {
     "id": "wq150_nov26_cloze11_7_3",
@@ -4374,16 +4374,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was ____ expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "Adam needed a small sofa and wanted to spend as little as possible. He compared five models and chose the one that was ____ expensive of all.\n\nChoose the best option for the blank.",
     "options": [
       "the least",
-      "the fewest",
-      "less than",
+      "the most",
+      "less",
       "as",
-      "the most of"
+      "more"
     ],
     "correct": 0,
-    "explanation": "Birden fazla seçenek arasında en düşük fiyat the least expensive ile ifade edilir."
+    "explanation": "As little as possible ve of all ifadeleri en düşük fiyatı işaret eder: the least expensive."
   },
   {
     "id": "wq150_nov26_cloze11_7_4",
@@ -4391,16 +4391,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days ____ than expected. Adam was pleased because he had enough time to arrange the furniture before his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "Adam ordered a small sofa online. It was due on Friday but arrived on Wednesday, two days ____ than expected. He was pleased.\n\nChoose the best option for the blank.",
     "options": [
       "earlier",
+      "later",
       "earliest",
       "early",
-      "as early",
-      "the earlier"
+      "as early"
     ],
     "correct": 0,
-    "explanation": "Than karşılaştırma biçimi earlier gerektirir."
+    "explanation": "Çarşamba, cumadan iki gün öncedir. Than ile karşılaştırma biçimi earlier kullanılır."
   },
   {
     "id": "wq150_nov26_cloze11_7_5",
@@ -4408,16 +4408,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "When Adam moved into his flat, he discovered that there was not enough space for a large sofa. He decided to order a smaller one online. He had a limited budget and wanted to spend as little as possible. The website offered several models, and he chose the one that was the least expensive. The delivery arrived two days earlier than expected. Adam was pleased because he had enough time to arrange the furniture ____ his guests arrived.\n\nChoose the best option for the blank.",
+    "prompt": "Adam ordered a small sofa online. It arrived early, and he finished arranging the room ____ his guests arrived. Everything was ready when they came.\n\nChoose the best option for the blank.",
     "options": [
       "before",
-      "despite",
+      "after",
+      "while",
       "unless",
-      "whereas",
       "because of"
     ],
     "correct": 0,
-    "explanation": "Before misafirler gelmeden önce anlamındadır."
+    "explanation": "Misafirler geldiğinde her şey hazır olduğundan düzenleme daha önce tamamlanmıştır: before."
   },
   {
     "id": "wq150_nov26_cloze11_8_1",
@@ -6295,7 +6295,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A family booked a holiday cottage ____ the countryside. When they arrived, they found that the kitchen was better equipped than they had expected. The owner had provided everything they needed, including pots and plates. They spent the first evening cooking dinner together. The next morning, they went for a walk along the river. They were glad they had chosen a place away from the busy city.\n\nChoose the best option for the blank.",
+    "prompt": "A family booked a holiday cottage ____ the countryside, far from the busy city. They enjoyed cooking together and walking by the river.\n\nChoose the best option for the blank.",
     "options": [
       "in",
       "on",
@@ -6304,7 +6304,7 @@ export const clozeExpansion = [
       "from"
     ],
     "correct": 0,
-    "explanation": "In the countryside kırsal bölgede demektir."
+    "explanation": "In the countryside, kırsal bölgede demektir."
   },
   {
     "id": "wq150_nov26_cloze14_10_2",
@@ -6312,16 +6312,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A family booked a holiday cottage in the countryside. When they arrived, they found that the kitchen was ____ equipped than they had expected. The owner had provided everything they needed, including pots and plates. They spent the first evening cooking dinner together. The next morning, they went for a walk along the river. They were glad they had chosen a place away from the busy city.\n\nChoose the best option for the blank.",
+    "prompt": "A family booked a holiday cottage. They expected only a few kitchen items, but found everything they needed. The kitchen was ____ equipped than expected.\n\nChoose the best option for the blank.",
     "options": [
       "better",
+      "worse",
       "best",
       "well",
-      "good",
-      "more well"
+      "good"
     ],
     "correct": 0,
-    "explanation": "Better equipped than daha iyi donatılmış karşılaştırmasıdır."
+    "explanation": "Beklenenden fazla mutfak eşyası buldukları için mutfak daha iyi donatılmıştır: better equipped than expected."
   },
   {
     "id": "wq150_nov26_cloze14_10_3",
@@ -6329,7 +6329,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A family booked a holiday cottage in the countryside. When they arrived, they found that the kitchen was better equipped than they had expected. The owner had provided everything they needed, including pots and plates. They spent the first evening ____ dinner together. The next morning, they went for a walk along the river. They were glad they had chosen a place away from the busy city.\n\nChoose the best option for the blank.",
+    "prompt": "A family booked a holiday cottage. The kitchen had everything they needed. They spent the first evening ____ dinner together.\n\nChoose the best option for the blank.",
     "options": [
       "cooking",
       "cook",
@@ -6338,7 +6338,7 @@ export const clozeExpansion = [
       "cooks"
     ],
     "correct": 0,
-    "explanation": "Spend time doing something kalıbıdır."
+    "explanation": "Spend time doing something kalıbında eylem -ing biçimindedir: spent the evening cooking."
   },
   {
     "id": "wq150_nov26_cloze14_10_4",
@@ -6346,16 +6346,16 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A family booked a holiday cottage in the countryside. When they arrived, they found that the kitchen was better equipped than they had expected. The owner had provided everything they needed, including pots and plates. They spent the first evening cooking dinner together. The next morning, they went for a walk ____ the river. They were glad they had chosen a place away from the busy city.\n\nChoose the best option for the blank.",
+    "prompt": "A family booked a holiday cottage by a river. The next morning, they followed the path ____ the river, staying beside the water.\n\nChoose the best option for the blank.",
     "options": [
       "along",
-      "into",
-      "onto",
+      "across",
+      "away from",
       "under",
-      "inside"
+      "into"
     ],
     "correct": 0,
-    "explanation": "Along the river nehir boyunca demektir."
+    "explanation": "Staying beside the water, suyun yanında kaldıklarını belirtir. Along the river nehir boyunca demektir."
   },
   {
     "id": "wq150_nov26_cloze14_10_5",
@@ -6363,7 +6363,7 @@ export const clozeExpansion = [
     "level": "A2",
     "yds": null,
     "topic": "Paragraph",
-    "prompt": "A family booked a holiday cottage in the countryside. When they arrived, they found that the kitchen was better equipped than they had expected. The owner had provided everything they needed, including pots and plates. They spent the first evening cooking dinner together. The next morning, they went for a walk along the river. They were glad they had chosen a place away ____ the busy city.\n\nChoose the best option for the blank.",
+    "prompt": "A family booked a quiet holiday cottage in the countryside. They were glad to stay away ____ the busy city for a few days.\n\nChoose the best option for the blank.",
     "options": [
       "from",
       "to",
@@ -6372,7 +6372,7 @@ export const clozeExpansion = [
       "with"
     ],
     "correct": 0,
-    "explanation": "Away from bir yerden uzakta demektir."
+    "explanation": "Away from, bir yerden uzakta anlamına gelen kalıptır."
   },
   {
     "id": "wq150_nov26_cloze14_11_1",

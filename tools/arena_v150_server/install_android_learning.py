@@ -1,5 +1,5 @@
 from pathlib import Path
-import json,re
+import json,re,hashlib
 root=Path(__file__).resolve().parents[2]
 src=root/'source/app/src/main'
 java=src/'java/com/kelimebulmacasi/a1'
@@ -79,10 +79,15 @@ for q in qs:
  assert isinstance(correct,int) and 0<=correct<len(q['options']), q['id']
  answer=q['options'][correct]
  selected=[answer]+[o for i,o in enumerate(q['options']) if i!=correct][:3]
+ # Stable per-ID rotation avoids placing every imported correct answer first.
+ offset=int(hashlib.sha256(q['id'].encode('utf-8')).hexdigest()[:8],16)%4
+ selected=selected[-offset:]+selected[:-offset] if offset else selected
+ answer_index=selected.index(answer)
+ assert selected[answer_index]==answer
  assert len(selected)==4 and len({o.casefold() for o in selected})==4, q['id']
  opts=', '.join(k(o) for o in selected)
  diff={'easy':'Easy','medium':'Medium','hard':'Hard'}[q['yds']]
- rows.append('        YdsQuestion('+', '.join([k(q['id']),'YdsTopic.'+q['topic'],'YdsDifficulty.'+diff,k(q['prompt']),'listOf('+opts+')','0',k(q['explanation'])])+')')
+ rows.append('        YdsQuestion('+', '.join([k(q['id']),'YdsTopic.'+q['topic'],'YdsDifficulty.'+diff,k(q['prompt']),'listOf('+opts+')',str(answer_index),k(q['explanation'])])+')')
 chunks=['    private fun batch'+str(i//30)+'() = listOf(\n'+',\n'.join(rows[i:i+30])+'\n    )' for i in range(0,len(rows),30)]
 joined=' + '.join('batch'+str(i)+'()' for i in range(len(chunks)))
 (java/'Wq150LearningQuestions.kt').write_text('package com.kelimebulmacasi.a1\n\ninternal object Wq150LearningQuestions {\n'+'\n'.join(chunks)+'\n    val questions by lazy { '+joined+' }\n}\n','utf-8')

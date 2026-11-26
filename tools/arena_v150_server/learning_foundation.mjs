@@ -7817,16 +7817,16 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Look at ____ birds over there!",
+    "prompt": "Can you see ____ houses on the hill far away?",
     "options": [
       "those",
       "this",
       "that",
-      "a",
+      "it",
       "an"
     ],
     "correct": 0,
-    "explanation": "Uzaktaki çoğul nesneler için those kullanılır."
+    "explanation": "Those, konuşandan uzakta bulunan çoğul isimlerle kullanılır. Houses çoğuldur; this ve that tekil isimlerle kullanılır."
   },
   {
     "id": "wq150_nov26_foundation6_14",
