@@ -3374,5 +3374,1685 @@ export const deepReadingQuestions = [
     ],
     "correct": 0,
     "explanation": "Göstergeye uyumun asıl hedefteki değişimden ayrılması gerekir."
+  },
+  {
+    "id": "wq150_nov26_read2_1_1",
+    "family": "reading_nov26_2_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small library began lending tools as well as books. Members can borrow drills, gardening equipment and sewing machines for a week. Staff initially worried that equipment would be damaged, so they introduced short demonstrations before each first loan. After six months, most tools were returned in good condition. The library plans to extend the scheme to nearby villages, where buying rarely used equipment can be expensive.\n\nWhat is the main purpose of the new scheme?",
+    "options": [
+      "To give people temporary access to useful equipment",
+      "To replace all printed books with equipment",
+      "To sell professional tools to local companies",
+      "To train librarians as full-time repair technicians",
+      "To reduce the number of library members"
+    ],
+    "correct": 0,
+    "explanation": "Kütüphane seyrek kullanılan araçları satın almadan ödünç alma olanağı sağlıyor."
+  },
+  {
+    "id": "wq150_nov26_read2_1_2",
+    "family": "reading_nov26_2_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small library began lending tools as well as books. Members can borrow drills, gardening equipment and sewing machines for a week. Staff initially worried that equipment would be damaged, so they introduced short demonstrations before each first loan. After six months, most tools were returned in good condition. The library plans to extend the scheme to nearby villages, where buying rarely used equipment can be expensive.\n\nWhy were demonstrations introduced?",
+    "options": [
+      "To reduce the risk of damage",
+      "To advertise expensive new equipment",
+      "To test whether members could read instructions",
+      "To collect additional membership fees",
+      "To decide which villages needed books"
+    ],
+    "correct": 0,
+    "explanation": "Personel hasardan endişelendiği için ilk ödünçten önce gösterim düzenledi."
+  },
+  {
+    "id": "wq150_nov26_read2_1_3",
+    "family": "reading_nov26_2_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small library began lending tools as well as books. Members can borrow drills, gardening equipment and sewing machines for a week. Staff initially worried that equipment would be damaged, so they introduced short demonstrations before each first loan. After six months, most tools were returned in good condition. The library plans to extend the scheme to nearby villages, where buying rarely used equipment can be expensive.\n\nWhat can be inferred about the first six months?",
+    "options": [
+      "The initial concern was not generally borne out.",
+      "The library stopped lending gardening equipment.",
+      "Villagers were the only people allowed to borrow tools.",
+      "Most borrowers requested longer loan periods.",
+      "The demonstrations were abandoned immediately."
+    ],
+    "correct": 0,
+    "explanation": "Araçların çoğu iyi durumda döndüğünden ilk endişe genel olarak gerçekleşmedi."
+  },
+  {
+    "id": "wq150_nov26_read2_1_4",
+    "family": "reading_nov26_2_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small library began lending tools as well as books. Members can borrow drills, gardening equipment and sewing machines for a week. Staff initially worried that equipment would be damaged, so they introduced short demonstrations before each first loan. After six months, most tools were returned in good condition. The library plans to extend the scheme to nearby villages, where buying rarely used equipment can be expensive.\n\nThe word 'scheme' is closest in meaning to ____ .",
+    "options": [
+      "programme",
+      "device",
+      "expense",
+      "building",
+      "complaint"
+    ],
+    "correct": 0,
+    "explanation": "Scheme burada düzenli yürütülen program anlamında."
+  },
+  {
+    "id": "wq150_nov26_read2_2_1",
+    "family": "reading_nov26_2_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bakery used to prepare the same number of loaves every morning. On rainy days, however, fewer customers visited, and unsold bread was often thrown away. The owner began recording daily sales alongside weather conditions. The records helped staff estimate demand more accurately. Although some bread still remains at closing time, the bakery now donates it to a local shelter instead of discarding it.\n\nWhat problem prompted the bakery to change its routine?",
+    "options": [
+      "Bread was frequently left unsold.",
+      "Customers demanded more varieties of bread.",
+      "Staff could not operate the ovens.",
+      "The shelter refused to accept donations.",
+      "The owner wanted to open a second bakery."
+    ],
+    "correct": 0,
+    "explanation": "Başlangıç sorunu satılamayan ekmeğin çöpe gitmesiydi."
+  },
+  {
+    "id": "wq150_nov26_read2_2_2",
+    "family": "reading_nov26_2_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bakery used to prepare the same number of loaves every morning. On rainy days, however, fewer customers visited, and unsold bread was often thrown away. The owner began recording daily sales alongside weather conditions. The records helped staff estimate demand more accurately. Although some bread still remains at closing time, the bakery now donates it to a local shelter instead of discarding it.\n\nHow did the owner improve estimates of demand?",
+    "options": [
+      "By comparing sales records with weather conditions",
+      "By increasing the price of every loaf",
+      "By asking the shelter to predict orders",
+      "By baking only during rainy weather",
+      "By limiting sales to regular customers"
+    ],
+    "correct": 0,
+    "explanation": "Satış ve hava durumu kayıtları talep tahminine yardımcı oldu."
+  },
+  {
+    "id": "wq150_nov26_read2_2_3",
+    "family": "reading_nov26_2_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bakery used to prepare the same number of loaves every morning. On rainy days, however, fewer customers visited, and unsold bread was often thrown away. The owner began recording daily sales alongside weather conditions. The records helped staff estimate demand more accurately. Although some bread still remains at closing time, the bakery now donates it to a local shelter instead of discarding it.\n\nWhat does the passage indicate about waste?",
+    "options": [
+      "It has been addressed both through planning and donation.",
+      "It disappeared entirely once records were introduced.",
+      "It is caused mainly by the local shelter.",
+      "It increased because daily production doubled.",
+      "It can only be reduced by closing the bakery."
+    ],
+    "correct": 0,
+    "explanation": "Daha iyi üretim planı ve bağış iki ayrı çözüm olarak kullanılıyor."
+  },
+  {
+    "id": "wq150_nov26_read2_2_4",
+    "family": "reading_nov26_2_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bakery used to prepare the same number of loaves every morning. On rainy days, however, fewer customers visited, and unsold bread was often thrown away. The owner began recording daily sales alongside weather conditions. The records helped staff estimate demand more accurately. Although some bread still remains at closing time, the bakery now donates it to a local shelter instead of discarding it.\n\n'Discarding' most nearly means ____ .",
+    "options": [
+      "throwing away",
+      "setting aside temporarily",
+      "weighing carefully",
+      "selling cheaply",
+      "producing again"
+    ],
+    "correct": 0,
+    "explanation": "Discard atmak, elden çıkarmak demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_3_1",
+    "family": "reading_nov26_2_3",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal town installed artificial reefs to provide shelter for marine life. Divers recorded more fish near the structures within the first year. However, researchers noted that fish may simply have moved from surrounding areas rather than increased in number overall. To distinguish these possibilities, the monitoring programme was extended to include nearby natural reefs and sites without artificial structures.\n\nWhat uncertainty motivated the expanded monitoring?",
+    "options": [
+      "Whether the structures increased fish numbers or merely attracted existing fish",
+      "Whether the divers were trained to use underwater cameras",
+      "Whether the town could remove the structures easily",
+      "Whether artificial reefs were made from natural stone",
+      "Whether tourists preferred swimming at natural reefs"
+    ],
+    "correct": 0,
+    "explanation": "Balık sayısı artışı ile mevcut balıkların yer değiştirmesi ayrılmak isteniyor."
+  },
+  {
+    "id": "wq150_nov26_read2_3_2",
+    "family": "reading_nov26_2_3",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal town installed artificial reefs to provide shelter for marine life. Divers recorded more fish near the structures within the first year. However, researchers noted that fish may simply have moved from surrounding areas rather than increased in number overall. To distinguish these possibilities, the monitoring programme was extended to include nearby natural reefs and sites without artificial structures.\n\nWhat was observed in the first year?",
+    "options": [
+      "More fish were recorded near the artificial reefs.",
+      "All natural reefs lost their marine life.",
+      "Fish reproduction rates doubled across the coast.",
+      "The artificial structures collapsed.",
+      "Monitoring showed no change at any location."
+    ],
+    "correct": 0,
+    "explanation": "İlk yıl doğrudan gözlenen durum yapılar çevresindeki balık artışıydı."
+  },
+  {
+    "id": "wq150_nov26_read2_3_3",
+    "family": "reading_nov26_2_3",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal town installed artificial reefs to provide shelter for marine life. Divers recorded more fish near the structures within the first year. However, researchers noted that fish may simply have moved from surrounding areas rather than increased in number overall. To distinguish these possibilities, the monitoring programme was extended to include nearby natural reefs and sites without artificial structures.\n\nWhich additional result would most strengthen the claim of an overall increase?",
+    "options": [
+      "Fish abundance rises across monitored sites without a corresponding decline elsewhere.",
+      "Fish gather more densely at the artificial structures alone.",
+      "Divers spend more time observing artificial than natural reefs.",
+      "The structures attract greater numbers of tourists.",
+      "The artificial reefs are photographed more frequently."
+    ],
+    "correct": 0,
+    "explanation": "Başka yerlerde kayıp olmadan toplam artış gözlenmesi üretim artışı yorumunu güçlendirir."
+  },
+  {
+    "id": "wq150_nov26_read2_3_4",
+    "family": "reading_nov26_2_3",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal town installed artificial reefs to provide shelter for marine life. Divers recorded more fish near the structures within the first year. However, researchers noted that fish may simply have moved from surrounding areas rather than increased in number overall. To distinguish these possibilities, the monitoring programme was extended to include nearby natural reefs and sites without artificial structures.\n\n'Distinguish' most nearly means ____ .",
+    "options": [
+      "tell apart",
+      "bring together",
+      "rule out both",
+      "measure precisely",
+      "make identical"
+    ],
+    "correct": 0,
+    "explanation": "Distinguish iki olasılığı birbirinden ayırmak demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_4_1",
+    "family": "reading_nov26_2_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An urban transport authority introduced a cheaper monthly pass. Passenger numbers increased, but surveys revealed that many new journeys had previously been made on foot rather than by car. Consequently, the reduction in traffic congestion was smaller than expected. Officials decided to investigate parking policies alongside fare reductions instead of assuming that cheaper public transport alone would significantly reduce car use.\n\nWhat was the unexpected finding?",
+    "options": [
+      "Many additional public transport trips replaced walking rather than driving.",
+      "Monthly passes became less popular after the price reduction.",
+      "Traffic congestion was completely eliminated.",
+      "Most car users stopped travelling altogether.",
+      "Parking prices had already increased substantially."
+    ],
+    "correct": 0,
+    "explanation": "Yeni yolculukların çoğu otomobil yerine yürüyüşün yerini aldı."
+  },
+  {
+    "id": "wq150_nov26_read2_4_2",
+    "family": "reading_nov26_2_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An urban transport authority introduced a cheaper monthly pass. Passenger numbers increased, but surveys revealed that many new journeys had previously been made on foot rather than by car. Consequently, the reduction in traffic congestion was smaller than expected. Officials decided to investigate parking policies alongside fare reductions instead of assuming that cheaper public transport alone would significantly reduce car use.\n\nWhy did officials decide to investigate parking policies?",
+    "options": [
+      "The fare reduction alone had limited effects on car use.",
+      "The monthly pass was too costly for the authority.",
+      "Public transport had become inaccessible to pedestrians.",
+      "Surveys showed that parking demand had disappeared.",
+      "The authority planned to remove all buses."
+    ],
+    "correct": 0,
+    "explanation": "Tek başına ücret indirimi araç kullanımını beklenen ölçüde azaltmadı."
+  },
+  {
+    "id": "wq150_nov26_read2_4_3",
+    "family": "reading_nov26_2_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An urban transport authority introduced a cheaper monthly pass. Passenger numbers increased, but surveys revealed that many new journeys had previously been made on foot rather than by car. Consequently, the reduction in traffic congestion was smaller than expected. Officials decided to investigate parking policies alongside fare reductions instead of assuming that cheaper public transport alone would significantly reduce car use.\n\nWhich outcome would better demonstrate success against congestion?",
+    "options": [
+      "A measured shift from private car trips to public transport",
+      "A higher proportion of existing pedestrians using buses",
+      "A rise in the number of passes sold without trip data",
+      "An increase in the distance walked to bus stops",
+      "A larger number of bus advertisements"
+    ],
+    "correct": 0,
+    "explanation": "Trafik sıkışıklığını azaltma hedefi için otomobilden toplu taşımaya geçiş daha doğrudan kanıttır."
+  },
+  {
+    "id": "wq150_nov26_read2_4_4",
+    "family": "reading_nov26_2_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An urban transport authority introduced a cheaper monthly pass. Passenger numbers increased, but surveys revealed that many new journeys had previously been made on foot rather than by car. Consequently, the reduction in traffic congestion was smaller than expected. Officials decided to investigate parking policies alongside fare reductions instead of assuming that cheaper public transport alone would significantly reduce car use.\n\n'Alongside' is closest in meaning to ____ .",
+    "options": [
+      "in combination with",
+      "instead of",
+      "in opposition to",
+      "long before",
+      "regardless of"
+    ],
+    "correct": 0,
+    "explanation": "Alongside burada birlikte anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_read2_5_1",
+    "family": "reading_nov26_2_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A museum digitised thousands of handwritten documents. Optical recognition software produced searchable text, but unusual handwriting frequently led to errors. Rather than discarding the technology, curators invited volunteers to compare the generated text with scans. The corrected transcriptions made the collection easier to search while retaining links to the original images for researchers who needed to verify uncertain readings.\n\nWhy were volunteers recruited?",
+    "options": [
+      "To check and correct errors in automated transcription",
+      "To replace original documents with printed copies",
+      "To translate every manuscript into another language",
+      "To design new handwriting for the software",
+      "To restrict access to the digitised collection"
+    ],
+    "correct": 0,
+    "explanation": "Gönüllüler otomatik metni görüntülerle karşılaştırıp düzeltmek üzere çağrıldı."
+  },
+  {
+    "id": "wq150_nov26_read2_5_2",
+    "family": "reading_nov26_2_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A museum digitised thousands of handwritten documents. Optical recognition software produced searchable text, but unusual handwriting frequently led to errors. Rather than discarding the technology, curators invited volunteers to compare the generated text with scans. The corrected transcriptions made the collection easier to search while retaining links to the original images for researchers who needed to verify uncertain readings.\n\nWhat benefit did the corrected transcriptions provide?",
+    "options": [
+      "They improved the searchability of the collection.",
+      "They made the original scans unnecessary.",
+      "They eliminated every historical uncertainty.",
+      "They prevented researchers from viewing the manuscripts.",
+      "They allowed all documents to be physically restored."
+    ],
+    "correct": 0,
+    "explanation": "Düzeltilen metinler koleksiyon içinde aramayı kolaylaştırdı."
+  },
+  {
+    "id": "wq150_nov26_read2_5_3",
+    "family": "reading_nov26_2_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A museum digitised thousands of handwritten documents. Optical recognition software produced searchable text, but unusual handwriting frequently led to errors. Rather than discarding the technology, curators invited volunteers to compare the generated text with scans. The corrected transcriptions made the collection easier to search while retaining links to the original images for researchers who needed to verify uncertain readings.\n\nWhat general approach does the project illustrate?",
+    "options": [
+      "Combining automated processing with human verification",
+      "Rejecting digital tools whenever mistakes occur",
+      "Prioritising access over all forms of accuracy",
+      "Preserving only documents that machines recognise",
+      "Using volunteers instead of any technological system"
+    ],
+    "correct": 0,
+    "explanation": "Otomatik işlem ile insan denetiminin bir arada kullanılması anlatılıyor."
+  },
+  {
+    "id": "wq150_nov26_read2_5_4",
+    "family": "reading_nov26_2_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A museum digitised thousands of handwritten documents. Optical recognition software produced searchable text, but unusual handwriting frequently led to errors. Rather than discarding the technology, curators invited volunteers to compare the generated text with scans. The corrected transcriptions made the collection easier to search while retaining links to the original images for researchers who needed to verify uncertain readings.\n\n'Retaining' most nearly means ____ .",
+    "options": [
+      "keeping",
+      "removing",
+      "replacing",
+      "concealing",
+      "summarising"
+    ],
+    "correct": 0,
+    "explanation": "Retain korumak, elinde tutmak demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_6_1",
+    "family": "reading_nov26_2_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A group of farmers experimented with planting strips of flowers between fields. The flowers attracted insects that could pollinate crops and feed on some agricultural pests. Crop yields did not rise uniformly: fields next to flower strips benefited more in some seasons than in others. Researchers therefore advised farmers to consider local conditions, including rainfall and the types of crops grown, before deciding how much land to allocate to the strips.\n\nWhat did the experiment reveal about crop yields?",
+    "options": [
+      "The benefits varied across conditions and seasons.",
+      "The yields increased equally in every field.",
+      "Flower strips invariably reduced production.",
+      "Rainfall had no relevance to the experiment.",
+      "Only crops far from flowers benefited."
+    ],
+    "correct": 0,
+    "explanation": "Verim artışının her zaman ve her yerde eşit olmadığı belirtiliyor."
+  },
+  {
+    "id": "wq150_nov26_read2_6_2",
+    "family": "reading_nov26_2_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A group of farmers experimented with planting strips of flowers between fields. The flowers attracted insects that could pollinate crops and feed on some agricultural pests. Crop yields did not rise uniformly: fields next to flower strips benefited more in some seasons than in others. Researchers therefore advised farmers to consider local conditions, including rainfall and the types of crops grown, before deciding how much land to allocate to the strips.\n\nWhy might the flower strips be useful?",
+    "options": [
+      "They attract insects that pollinate crops or consume pests.",
+      "They eliminate the need for sunlight.",
+      "They prevent all rainfall from reaching crops.",
+      "They replace the soil's mineral content directly.",
+      "They provide a mechanical barrier against harvesting."
+    ],
+    "correct": 0,
+    "explanation": "Çiçekler tozlaştırıcı ve zararlıları tüketen böcekleri çekebilir."
+  },
+  {
+    "id": "wq150_nov26_read2_6_3",
+    "family": "reading_nov26_2_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A group of farmers experimented with planting strips of flowers between fields. The flowers attracted insects that could pollinate crops and feed on some agricultural pests. Crop yields did not rise uniformly: fields next to flower strips benefited more in some seasons than in others. Researchers therefore advised farmers to consider local conditions, including rainfall and the types of crops grown, before deciding how much land to allocate to the strips.\n\nWhich recommendation is most consistent with the findings?",
+    "options": [
+      "Adapt the use of flower strips to local agricultural circumstances.",
+      "Require all farms to allocate exactly the same area.",
+      "Remove flower strips whenever a single season is disappointing.",
+      "Assume flower strips are ineffective without further testing.",
+      "Replace all productive farmland with flower strips."
+    ],
+    "correct": 0,
+    "explanation": "Yerel koşullara göre karar verme önerisi araştırmanın sonucudur."
+  },
+  {
+    "id": "wq150_nov26_read2_6_4",
+    "family": "reading_nov26_2_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A group of farmers experimented with planting strips of flowers between fields. The flowers attracted insects that could pollinate crops and feed on some agricultural pests. Crop yields did not rise uniformly: fields next to flower strips benefited more in some seasons than in others. Researchers therefore advised farmers to consider local conditions, including rainfall and the types of crops grown, before deciding how much land to allocate to the strips.\n\n'Allocate' most nearly means ____ .",
+    "options": [
+      "set aside for a purpose",
+      "take away permanently",
+      "measure inaccurately",
+      "exchange informally",
+      "cover completely"
+    ],
+    "correct": 0,
+    "explanation": "Allocate belirli amaç için ayırmak demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_7_1",
+    "family": "reading_nov26_2_7",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A hospital introduced a digital alert intended to warn clinicians when a patient was at risk of deterioration. Early evaluation showed that the system detected many serious cases, but it also generated numerous alerts for patients who remained stable. Some staff began responding less promptly to notifications. The hospital subsequently adjusted the alert threshold and evaluated not only detection rates but also the frequency of unnecessary interruptions.\n\nWhat problem arose despite the system's ability to detect serious cases?",
+    "options": [
+      "Frequent unnecessary alerts reduced staff responsiveness.",
+      "Serious cases were never identified by the system.",
+      "Clinicians stopped receiving all notifications.",
+      "The alert system replaced all routine examinations.",
+      "The hospital could no longer collect patient data."
+    ],
+    "correct": 0,
+    "explanation": "Gereksiz uyarıların fazlalığı tepki hızını olumsuz etkiledi."
+  },
+  {
+    "id": "wq150_nov26_read2_7_2",
+    "family": "reading_nov26_2_7",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A hospital introduced a digital alert intended to warn clinicians when a patient was at risk of deterioration. Early evaluation showed that the system detected many serious cases, but it also generated numerous alerts for patients who remained stable. Some staff began responding less promptly to notifications. The hospital subsequently adjusted the alert threshold and evaluated not only detection rates but also the frequency of unnecessary interruptions.\n\nWhy was the evaluation expanded?",
+    "options": [
+      "To account for the practical burden of false alarms",
+      "To abandon any measurement of serious cases",
+      "To compare the salaries of clinical staff",
+      "To determine whether digital devices could be sold",
+      "To eliminate human judgement from clinical practice"
+    ],
+    "correct": 0,
+    "explanation": "Yanlış alarmların iş akışına etkisini de ölçmek gerekti."
+  },
+  {
+    "id": "wq150_nov26_read2_7_3",
+    "family": "reading_nov26_2_7",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A hospital introduced a digital alert intended to warn clinicians when a patient was at risk of deterioration. Early evaluation showed that the system detected many serious cases, but it also generated numerous alerts for patients who remained stable. Some staff began responding less promptly to notifications. The hospital subsequently adjusted the alert threshold and evaluated not only detection rates but also the frequency of unnecessary interruptions.\n\nWhat trade-off is implied by adjusting the threshold?",
+    "options": [
+      "Sensitivity may decrease if unnecessary alerts are reduced.",
+      "All false alarms can be removed without affecting detection.",
+      "More alerts necessarily produce faster clinical responses.",
+      "Lower staff workload guarantees more accurate diagnoses.",
+      "Threshold changes have no bearing on alert frequency."
+    ],
+    "correct": 0,
+    "explanation": "Eşik değişimi duyarlılık ile yanlış alarm arasında ödünleşme doğurabilir."
+  },
+  {
+    "id": "wq150_nov26_read2_7_4",
+    "family": "reading_nov26_2_7",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A hospital introduced a digital alert intended to warn clinicians when a patient was at risk of deterioration. Early evaluation showed that the system detected many serious cases, but it also generated numerous alerts for patients who remained stable. Some staff began responding less promptly to notifications. The hospital subsequently adjusted the alert threshold and evaluated not only detection rates but also the frequency of unnecessary interruptions.\n\n'Deterioration' refers to ____ .",
+    "options": [
+      "a worsening condition",
+      "a complete recovery",
+      "a delayed appointment",
+      "a routine discharge",
+      "a stable measurement"
+    ],
+    "correct": 0,
+    "explanation": "Deterioration durumun kötüleşmesidir."
+  },
+  {
+    "id": "wq150_nov26_read2_8_1",
+    "family": "reading_nov26_2_8",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A university compared students who attended optional revision sessions with those who did not. Attendees achieved higher final marks, but they had also performed better on assignments completed before the sessions began. The researchers used the earlier marks to adjust their comparison. The difference became smaller, although it did not disappear. They cautioned that motivation and other unmeasured characteristics could still influence the results.\n\nWhy were earlier assignment marks included?",
+    "options": [
+      "To account for pre-existing differences between groups",
+      "To determine whether final examinations were necessary",
+      "To identify the exact duration of every revision session",
+      "To exclude all students with high final marks",
+      "To replace the final results with attendance records"
+    ],
+    "correct": 0,
+    "explanation": "Önceki başarı farkını hesaba katmak amacıyla kullanıldı."
+  },
+  {
+    "id": "wq150_nov26_read2_8_2",
+    "family": "reading_nov26_2_8",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A university compared students who attended optional revision sessions with those who did not. Attendees achieved higher final marks, but they had also performed better on assignments completed before the sessions began. The researchers used the earlier marks to adjust their comparison. The difference became smaller, although it did not disappear. They cautioned that motivation and other unmeasured characteristics could still influence the results.\n\nWhat happened after the adjustment?",
+    "options": [
+      "The observed difference was reduced but remained.",
+      "The attendees' average became lower in every subject.",
+      "The two groups had exactly identical marks.",
+      "All earlier assignment data were discarded.",
+      "The difference doubled in magnitude."
+    ],
+    "correct": 0,
+    "explanation": "Düzeltmeden sonra fark küçüldü fakat ortadan kalkmadı."
+  },
+  {
+    "id": "wq150_nov26_read2_8_3",
+    "family": "reading_nov26_2_8",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A university compared students who attended optional revision sessions with those who did not. Attendees achieved higher final marks, but they had also performed better on assignments completed before the sessions began. The researchers used the earlier marks to adjust their comparison. The difference became smaller, although it did not disappear. They cautioned that motivation and other unmeasured characteristics could still influence the results.\n\nWhy should the findings not be treated as definitive causal evidence?",
+    "options": [
+      "Unmeasured differences may influence both attendance and achievement.",
+      "The study recorded no academic outcomes.",
+      "The earlier assignments were taken after the final examination.",
+      "The revision sessions were compulsory for all students.",
+      "The final results were unavailable to the researchers."
+    ],
+    "correct": 0,
+    "explanation": "Ölçülmemiş değişkenler hem katılımı hem başarıyı etkileyebilir."
+  },
+  {
+    "id": "wq150_nov26_read2_8_4",
+    "family": "reading_nov26_2_8",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A university compared students who attended optional revision sessions with those who did not. Attendees achieved higher final marks, but they had also performed better on assignments completed before the sessions began. The researchers used the earlier marks to adjust their comparison. The difference became smaller, although it did not disappear. They cautioned that motivation and other unmeasured characteristics could still influence the results.\n\n'Cautioned' most nearly means ____ .",
+    "options": [
+      "warned",
+      "demonstrated",
+      "requested permission",
+      "celebrated",
+      "denied categorically"
+    ],
+    "correct": 0,
+    "explanation": "Caution burada uyarmak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_read2_9_1",
+    "family": "reading_nov26_2_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In a region dependent on groundwater, authorities encouraged farmers to adopt more efficient irrigation equipment. Water use per hectare fell, yet total extraction declined little because some farmers expanded their cultivated area. Policymakers concluded that equipment subsidies would need to be accompanied by limits on total extraction if the aquifer was to recover. They also recognised that monitoring withdrawals would be essential to enforcing such limits.\n\nWhy did total water extraction decline only slightly?",
+    "options": [
+      "Some farmers used the efficiency gains to cultivate more land.",
+      "The new equipment used more water per hectare.",
+      "Rainfall made irrigation unnecessary throughout the region.",
+      "The authorities had prohibited all farm expansion.",
+      "The aquifer had already recovered before the intervention."
+    ],
+    "correct": 0,
+    "explanation": "Birim alan tasarrufunun bir kısmı tarım alanının genişlemesiyle geri alındı."
+  },
+  {
+    "id": "wq150_nov26_read2_9_2",
+    "family": "reading_nov26_2_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In a region dependent on groundwater, authorities encouraged farmers to adopt more efficient irrigation equipment. Water use per hectare fell, yet total extraction declined little because some farmers expanded their cultivated area. Policymakers concluded that equipment subsidies would need to be accompanied by limits on total extraction if the aquifer was to recover. They also recognised that monitoring withdrawals would be essential to enforcing such limits.\n\nWhat policy did authorities consider necessary?",
+    "options": [
+      "Combining efficiency support with limits on total withdrawals",
+      "Subsidising equipment while ending all withdrawal monitoring",
+      "Encouraging unrestricted expansion of cultivated land",
+      "Prohibiting the use of efficient irrigation equipment",
+      "Measuring only annual crop prices"
+    ],
+    "correct": 0,
+    "explanation": "Toplam çekime sınır getirilmesi ve verimlilik desteğinin birlikte uygulanması önerildi."
+  },
+  {
+    "id": "wq150_nov26_read2_9_3",
+    "family": "reading_nov26_2_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In a region dependent on groundwater, authorities encouraged farmers to adopt more efficient irrigation equipment. Water use per hectare fell, yet total extraction declined little because some farmers expanded their cultivated area. Policymakers concluded that equipment subsidies would need to be accompanied by limits on total extraction if the aquifer was to recover. They also recognised that monitoring withdrawals would be essential to enforcing such limits.\n\nWhat broader principle does the passage illustrate?",
+    "options": [
+      "Efficiency gains do not necessarily produce equivalent reductions in total resource use.",
+      "Technical efficiency always increases resource extraction.",
+      "Resource conservation is unrelated to human decisions.",
+      "Monitoring alone guarantees the recovery of natural resources.",
+      "Subsidies invariably reduce agricultural productivity."
+    ],
+    "correct": 0,
+    "explanation": "Verimlilik artışı toplam tüketimin aynı oranda düşmesini garanti etmiyor."
+  },
+  {
+    "id": "wq150_nov26_read2_9_4",
+    "family": "reading_nov26_2_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In a region dependent on groundwater, authorities encouraged farmers to adopt more efficient irrigation equipment. Water use per hectare fell, yet total extraction declined little because some farmers expanded their cultivated area. Policymakers concluded that equipment subsidies would need to be accompanied by limits on total extraction if the aquifer was to recover. They also recognised that monitoring withdrawals would be essential to enforcing such limits.\n\n'Withdrawals' refers to ____ .",
+    "options": [
+      "amounts of water removed",
+      "farmers leaving the programme",
+      "reductions in crop prices",
+      "equipment subsidy payments",
+      "rainwater entering the soil"
+    ],
+    "correct": 0,
+    "explanation": "Withdrawals burada yer altından çekilen su miktarlarıdır."
+  },
+  {
+    "id": "wq150_nov26_read2_10_1",
+    "family": "reading_nov26_2_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An archaeological team used residue analysis to investigate the former contents of ancient ceramic vessels. Certain chemical markers suggested that some vessels had held plant oils. The team noted, however, that similar compounds could also originate from substances absorbed during burial. By examining surrounding soil samples and comparing the results with modern reference materials, the researchers sought to reduce the risk of attributing contamination to original use.\n\nWhat was the chief difficulty in interpreting the chemical markers?",
+    "options": [
+      "Some markers might originate from burial contamination rather than vessel contents.",
+      "The researchers could not identify any chemical compounds.",
+      "The vessels had all been manufactured recently.",
+      "Modern reference materials contained no plant substances.",
+      "The surrounding soil had been removed before excavation."
+    ],
+    "correct": 0,
+    "explanation": "Kimyasal işaretlerin özgün içerikten mi yoksa gömülme ortamından mı geldiği belirsizdi."
+  },
+  {
+    "id": "wq150_nov26_read2_10_2",
+    "family": "reading_nov26_2_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An archaeological team used residue analysis to investigate the former contents of ancient ceramic vessels. Certain chemical markers suggested that some vessels had held plant oils. The team noted, however, that similar compounds could also originate from substances absorbed during burial. By examining surrounding soil samples and comparing the results with modern reference materials, the researchers sought to reduce the risk of attributing contamination to original use.\n\nWhy were soil samples examined?",
+    "options": [
+      "To investigate a possible alternative source of the residues",
+      "To determine the exact market value of the vessels",
+      "To establish the identity of the potters",
+      "To replace all ceramic samples with soil",
+      "To calculate the original volume of each vessel"
+    ],
+    "correct": 0,
+    "explanation": "Toprak analizi olası dış kaynaklı bulaşmayı değerlendirmeye yaradı."
+  },
+  {
+    "id": "wq150_nov26_read2_10_3",
+    "family": "reading_nov26_2_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An archaeological team used residue analysis to investigate the former contents of ancient ceramic vessels. Certain chemical markers suggested that some vessels had held plant oils. The team noted, however, that similar compounds could also originate from substances absorbed during burial. By examining surrounding soil samples and comparing the results with modern reference materials, the researchers sought to reduce the risk of attributing contamination to original use.\n\nWhich finding would strengthen the original-use interpretation?",
+    "options": [
+      "Markers occur inside vessels but are absent from surrounding soil and match oil references.",
+      "Identical markers are equally abundant in every soil sample.",
+      "The markers disappear whenever reference materials are analysed.",
+      "The vessels are similar in colour to the surrounding earth.",
+      "No comparison with uncontaminated materials is possible."
+    ],
+    "correct": 0,
+    "explanation": "Kapta bulunup çevre toprağında bulunmayan ve yağla eşleşen işaretler özgün kullanım yorumunu güçlendirir."
+  },
+  {
+    "id": "wq150_nov26_read2_10_4",
+    "family": "reading_nov26_2_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An archaeological team used residue analysis to investigate the former contents of ancient ceramic vessels. Certain chemical markers suggested that some vessels had held plant oils. The team noted, however, that similar compounds could also originate from substances absorbed during burial. By examining surrounding soil samples and comparing the results with modern reference materials, the researchers sought to reduce the risk of attributing contamination to original use.\n\n'Attributing' is closest in meaning to ____ .",
+    "options": [
+      "assigning as the cause or source",
+      "removing from consideration",
+      "preventing from spreading",
+      "dividing into categories",
+      "observing without explanation"
+    ],
+    "correct": 0,
+    "explanation": "Attribute X to Y, X'i Y'ye bağlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_11_1",
+    "family": "reading_nov26_2_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An environmental agency published a map of urban noise based on measurements from fixed sensors. Community groups welcomed the map but pointed out that several densely populated neighbourhoods contained few sensors. To improve coverage, the agency introduced temporary mobile measurements. It retained the original fixed network because short mobile visits could not capture long-term fluctuations as reliably as continuous monitoring.\n\nWhat weakness did community groups identify?",
+    "options": [
+      "Several populated areas were poorly represented by sensors.",
+      "Fixed sensors were unable to detect any sound.",
+      "Mobile measurements had already replaced continuous monitoring.",
+      "The map was published without any measurement data.",
+      "The agency included too many rural areas."
+    ],
+    "correct": 0,
+    "explanation": "Bazı yoğun nüfuslu mahallelerde sensör sayısı azdı."
+  },
+  {
+    "id": "wq150_nov26_read2_11_2",
+    "family": "reading_nov26_2_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An environmental agency published a map of urban noise based on measurements from fixed sensors. Community groups welcomed the map but pointed out that several densely populated neighbourhoods contained few sensors. To improve coverage, the agency introduced temporary mobile measurements. It retained the original fixed network because short mobile visits could not capture long-term fluctuations as reliably as continuous monitoring.\n\nWhy was the fixed network retained?",
+    "options": [
+      "It provided more reliable information about variation over time.",
+      "It was the only means of collecting data in every neighbourhood.",
+      "Mobile sensors could not record sound at all.",
+      "Community groups refused to allow mobile visits.",
+      "The agency no longer needed spatial coverage."
+    ],
+    "correct": 0,
+    "explanation": "Sürekli izleme zamansal değişimleri kısa ziyaretlerden daha güvenilir gösterir."
+  },
+  {
+    "id": "wq150_nov26_read2_11_3",
+    "family": "reading_nov26_2_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An environmental agency published a map of urban noise based on measurements from fixed sensors. Community groups welcomed the map but pointed out that several densely populated neighbourhoods contained few sensors. To improve coverage, the agency introduced temporary mobile measurements. It retained the original fixed network because short mobile visits could not capture long-term fluctuations as reliably as continuous monitoring.\n\nWhat is the advantage of combining both methods?",
+    "options": [
+      "Better spatial coverage while preserving long-term observations",
+      "Complete elimination of the need for sampling",
+      "Guaranteed identical readings at every location",
+      "Reduced access to neighbourhood-level information",
+      "Immediate proof of the health effects of noise"
+    ],
+    "correct": 0,
+    "explanation": "Mobil ölçüm mekânsal kapsama, sabit ağ zamansal izlemeye katkı sağlar."
+  },
+  {
+    "id": "wq150_nov26_read2_11_4",
+    "family": "reading_nov26_2_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An environmental agency published a map of urban noise based on measurements from fixed sensors. Community groups welcomed the map but pointed out that several densely populated neighbourhoods contained few sensors. To improve coverage, the agency introduced temporary mobile measurements. It retained the original fixed network because short mobile visits could not capture long-term fluctuations as reliably as continuous monitoring.\n\n'Fluctuations' means ____ .",
+    "options": [
+      "variations over time",
+      "measurement locations",
+      "permanent reductions",
+      "fixed boundaries",
+      "unrecorded complaints"
+    ],
+    "correct": 0,
+    "explanation": "Fluctuation dalgalanma veya değişimdir."
+  },
+  {
+    "id": "wq150_nov26_read2_12_1",
+    "family": "reading_nov26_2_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A language-learning platform found that students remembered vocabulary better when reviews were spread over several days rather than concentrated in one session. However, the benefit was weaker for learners who repeatedly missed their scheduled reviews. The designers began allowing users to reschedule missed sessions without abandoning the spacing principle. Their aim was to reconcile a useful learning strategy with the practical constraints of everyday life.\n\nWhat limitation of the original schedule was observed?",
+    "options": [
+      "Its benefit weakened when learners frequently missed reviews.",
+      "Spaced reviews worked only when completed on the same day.",
+      "Concentrated sessions produced better results for every learner.",
+      "The platform could not record vocabulary performance.",
+      "All scheduled reviews were automatically completed."
+    ],
+    "correct": 0,
+    "explanation": "Sık kaçırılan tekrarlar aralıklı çalışmanın yararını azalttı."
+  },
+  {
+    "id": "wq150_nov26_read2_12_2",
+    "family": "reading_nov26_2_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A language-learning platform found that students remembered vocabulary better when reviews were spread over several days rather than concentrated in one session. However, the benefit was weaker for learners who repeatedly missed their scheduled reviews. The designers began allowing users to reschedule missed sessions without abandoning the spacing principle. Their aim was to reconcile a useful learning strategy with the practical constraints of everyday life.\n\nWhat did the designers change?",
+    "options": [
+      "They made missed reviews reschedulable.",
+      "They removed all vocabulary review activities.",
+      "They required everyone to use one long session.",
+      "They stopped adapting schedules to learners.",
+      "They eliminated the spacing principle entirely."
+    ],
+    "correct": 0,
+    "explanation": "Kaçırılan oturumlar aralıklı tekrar ilkesi korunarak yeniden planlanabilir oldu."
+  },
+  {
+    "id": "wq150_nov26_read2_12_3",
+    "family": "reading_nov26_2_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A language-learning platform found that students remembered vocabulary better when reviews were spread over several days rather than concentrated in one session. However, the benefit was weaker for learners who repeatedly missed their scheduled reviews. The designers began allowing users to reschedule missed sessions without abandoning the spacing principle. Their aim was to reconcile a useful learning strategy with the practical constraints of everyday life.\n\nWhich statement best captures the design goal?",
+    "options": [
+      "Make an evidence-informed strategy easier to follow in real life.",
+      "Maximise the number of notifications regardless of attendance.",
+      "Guarantee identical learning outcomes for everyone.",
+      "Prioritise strict scheduling over actual participation.",
+      "Replace vocabulary practice with unrelated activities."
+    ],
+    "correct": 0,
+    "explanation": "Amaç etkili öğrenme stratejisini günlük yaşamın koşullarıyla uyumlu kılmaktır."
+  },
+  {
+    "id": "wq150_nov26_read2_12_4",
+    "family": "reading_nov26_2_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A language-learning platform found that students remembered vocabulary better when reviews were spread over several days rather than concentrated in one session. However, the benefit was weaker for learners who repeatedly missed their scheduled reviews. The designers began allowing users to reschedule missed sessions without abandoning the spacing principle. Their aim was to reconcile a useful learning strategy with the practical constraints of everyday life.\n\n'Reconcile' most nearly means ____ .",
+    "options": [
+      "make compatible",
+      "keep permanently separate",
+      "evaluate independently",
+      "remove completely",
+      "criticise publicly"
+    ],
+    "correct": 0,
+    "explanation": "Reconcile iki unsur arasında uyum sağlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_13_1",
+    "family": "reading_nov26_2_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers evaluating a flood-warning service discovered that issuing more detailed technical forecasts did not necessarily improve residents' responses. Interviews suggested that many people were uncertain about what action to take at each warning level. The service was redesigned to include clear action instructions alongside forecasts. The next evaluation examined whether residents understood and acted on the messages, rather than assessing forecast accuracy alone.\n\nWhat gap did the interviews reveal?",
+    "options": [
+      "Residents lacked clarity about appropriate actions.",
+      "Residents had never received any warning message.",
+      "The forecasts contained no technical information.",
+      "All residents already followed emergency instructions.",
+      "The service could not measure forecast accuracy."
+    ],
+    "correct": 0,
+    "explanation": "Uyarı düzeylerinde hangi eylemin yapılacağı belirsizdi."
+  },
+  {
+    "id": "wq150_nov26_read2_13_2",
+    "family": "reading_nov26_2_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers evaluating a flood-warning service discovered that issuing more detailed technical forecasts did not necessarily improve residents' responses. Interviews suggested that many people were uncertain about what action to take at each warning level. The service was redesigned to include clear action instructions alongside forecasts. The next evaluation examined whether residents understood and acted on the messages, rather than assessing forecast accuracy alone.\n\nHow was the service redesigned?",
+    "options": [
+      "Forecasts were accompanied by practical instructions.",
+      "Forecasts were replaced entirely by interviews.",
+      "Warnings were issued only after flooding had ended.",
+      "Technical information was made more complex.",
+      "Residents were asked to develop forecasts themselves."
+    ],
+    "correct": 0,
+    "explanation": "Tahminlerin yanında uygulanabilir eylem talimatları verildi."
+  },
+  {
+    "id": "wq150_nov26_read2_13_3",
+    "family": "reading_nov26_2_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers evaluating a flood-warning service discovered that issuing more detailed technical forecasts did not necessarily improve residents' responses. Interviews suggested that many people were uncertain about what action to take at each warning level. The service was redesigned to include clear action instructions alongside forecasts. The next evaluation examined whether residents understood and acted on the messages, rather than assessing forecast accuracy alone.\n\nWhat distinction is central to the passage?",
+    "options": [
+      "Technical accuracy and effective public communication are different outcomes.",
+      "Public understanding makes forecast accuracy unnecessary.",
+      "More detailed forecasts are always less accurate.",
+      "Emergency instructions are useful only to forecasters.",
+      "Residents cannot respond to risk information."
+    ],
+    "correct": 0,
+    "explanation": "Doğru tahmin ve doğru eyleme yönlendiren iletişim ayrı başarı ölçütleridir."
+  },
+  {
+    "id": "wq150_nov26_read2_13_4",
+    "family": "reading_nov26_2_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers evaluating a flood-warning service discovered that issuing more detailed technical forecasts did not necessarily improve residents' responses. Interviews suggested that many people were uncertain about what action to take at each warning level. The service was redesigned to include clear action instructions alongside forecasts. The next evaluation examined whether residents understood and acted on the messages, rather than assessing forecast accuracy alone.\n\n'Assessing' most nearly means ____ .",
+    "options": [
+      "evaluating",
+      "avoiding",
+      "publishing",
+      "predicting",
+      "simplifying"
+    ],
+    "correct": 0,
+    "explanation": "Assess değerlendirmek demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_14_1",
+    "family": "reading_nov26_2_14",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of historical wages relied on records preserved by large institutions. These archives provided detailed information about employees, but workers hired informally were rarely documented. The authors resisted the temptation to treat the surviving records as representative of the entire labour market. They supplemented the data with household accounts, acknowledging that the additional sources introduced their own selective biases.\n\nWhat is the primary methodological concern?",
+    "options": [
+      "The surviving records selectively represent certain workers.",
+      "Institutional records provide no reliable wage information whatsoever.",
+      "Household accounts are always more complete than archives.",
+      "Informal employment did not exist during the period studied.",
+      "Historical wages cannot be compared under any circumstances."
+    ],
+    "correct": 0,
+    "explanation": "Kalan kayıtlar belirli işçi gruplarını seçici biçimde temsil ediyor."
+  },
+  {
+    "id": "wq150_nov26_read2_14_2",
+    "family": "reading_nov26_2_14",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of historical wages relied on records preserved by large institutions. These archives provided detailed information about employees, but workers hired informally were rarely documented. The authors resisted the temptation to treat the surviving records as representative of the entire labour market. They supplemented the data with household accounts, acknowledging that the additional sources introduced their own selective biases.\n\nWhy were household accounts added?",
+    "options": [
+      "To broaden the evidence beyond institutional employment records",
+      "To establish that the original archives were forged",
+      "To eliminate the need to examine employee wages",
+      "To calculate the exact wages of every worker",
+      "To prove that selective bias affected only institutions"
+    ],
+    "correct": 0,
+    "explanation": "Hane kayıtları kurum arşivlerinin kapsamadığı kanıtları tamamlamak için eklendi."
+  },
+  {
+    "id": "wq150_nov26_read2_14_3",
+    "family": "reading_nov26_2_14",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of historical wages relied on records preserved by large institutions. These archives provided detailed information about employees, but workers hired informally were rarely documented. The authors resisted the temptation to treat the surviving records as representative of the entire labour market. They supplemented the data with household accounts, acknowledging that the additional sources introduced their own selective biases.\n\nWhich conclusion is most consistent with the authors' position?",
+    "options": [
+      "Combining sources may improve coverage without eliminating selection bias.",
+      "The larger the archive, the more representative it necessarily becomes.",
+      "Any selective source must be excluded regardless of its usefulness.",
+      "Household accounts automatically correct every institutional omission.",
+      "Informal workers can be assumed to earn the institutional average."
+    ],
+    "correct": 0,
+    "explanation": "Kaynak çeşitliliği kapsama alanını artırabilir ama tüm seçilim yanlılığını ortadan kaldırmaz."
+  },
+  {
+    "id": "wq150_nov26_read2_14_4",
+    "family": "reading_nov26_2_14",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of historical wages relied on records preserved by large institutions. These archives provided detailed information about employees, but workers hired informally were rarely documented. The authors resisted the temptation to treat the surviving records as representative of the entire labour market. They supplemented the data with household accounts, acknowledging that the additional sources introduced their own selective biases.\n\n'Resisted the temptation' implies that the authors ____ .",
+    "options": [
+      "avoided an appealing but potentially unjustified inference",
+      "were unable to access alternative historical sources",
+      "rejected the possibility of analysing wages altogether",
+      "believed the records accurately represented every worker",
+      "preferred to preserve the documents rather than examine them"
+    ],
+    "correct": 0,
+    "explanation": "Yazarlar çekici ama temelsiz olabilecek genellemeden kaçındı."
+  },
+  {
+    "id": "wq150_nov26_read2_15_1",
+    "family": "reading_nov26_2_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A team developed a model that predicted demand using data collected during a period of stable prices. Its forecasts were accurate on a withheld sample from the same period. When a new pricing policy changed consumer incentives, performance declined. The researchers distinguished the ability to predict under familiar conditions from the ability to retain accuracy when the mechanisms generating the data were altered.\n\nWhy did the earlier validation fail to anticipate the later decline?",
+    "options": [
+      "The withheld data came from conditions similar to those used for training.",
+      "The withheld data contained only information from the new policy period.",
+      "The researchers never measured predictive accuracy.",
+      "The model had been built without any demand observations.",
+      "The policy left consumer incentives entirely unchanged."
+    ],
+    "correct": 0,
+    "explanation": "Ayrılan test verisi aynı koşullardan geldiği için mekanizma değişimini sınamadı."
+  },
+  {
+    "id": "wq150_nov26_read2_15_2",
+    "family": "reading_nov26_2_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A team developed a model that predicted demand using data collected during a period of stable prices. Its forecasts were accurate on a withheld sample from the same period. When a new pricing policy changed consumer incentives, performance declined. The researchers distinguished the ability to predict under familiar conditions from the ability to retain accuracy when the mechanisms generating the data were altered.\n\nWhat changed after the new policy?",
+    "options": [
+      "Consumer incentives and the model's predictive performance",
+      "The mathematical definition of a withheld sample",
+      "The existence of historical demand records",
+      "The purpose of collecting pricing data in the past",
+      "The fact that predictions could be evaluated"
+    ],
+    "correct": 0,
+    "explanation": "Yeni politika teşvikleri değiştirdi ve tahmin başarısı geriledi."
+  },
+  {
+    "id": "wq150_nov26_read2_15_3",
+    "family": "reading_nov26_2_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A team developed a model that predicted demand using data collected during a period of stable prices. Its forecasts were accurate on a withheld sample from the same period. When a new pricing policy changed consumer incentives, performance declined. The researchers distinguished the ability to predict under familiar conditions from the ability to retain accuracy when the mechanisms generating the data were altered.\n\nWhat does the passage suggest about generalisation?",
+    "options": [
+      "Success on familiar data need not imply robustness to structural change.",
+      "Any accurate model is invariant to changes in incentives.",
+      "A poor forecast proves the historical sample was unusable.",
+      "Validation is meaningful only after a model is abandoned.",
+      "Structural changes cannot affect data-driven predictions."
+    ],
+    "correct": 0,
+    "explanation": "Aynı dağılımdaki başarı yapısal değişime dayanıklılık anlamına gelmez."
+  },
+  {
+    "id": "wq150_nov26_read2_15_4",
+    "family": "reading_nov26_2_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A team developed a model that predicted demand using data collected during a period of stable prices. Its forecasts were accurate on a withheld sample from the same period. When a new pricing policy changed consumer incentives, performance declined. The researchers distinguished the ability to predict under familiar conditions from the ability to retain accuracy when the mechanisms generating the data were altered.\n\n'Withheld' most nearly means ____ .",
+    "options": [
+      "kept separate from the training process",
+      "collected after every forecast",
+      "deliberately falsified",
+      "combined with all training observations",
+      "removed from the historical record"
+    ],
+    "correct": 0,
+    "explanation": "Withheld sample eğitim sırasında ayrılan test örneklemidir."
+  },
+  {
+    "id": "wq150_nov26_read2_16_1",
+    "family": "reading_nov26_2_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A legal historian examined a reform that formally granted local councils greater autonomy. Subsequent budgets showed that councils remained heavily dependent on central grants whose conditions constrained spending decisions. Rather than equating the new legal framework with actual decentralisation, the historian assessed the distribution of fiscal discretion. The analysis suggested that formal authority and practical capacity could diverge considerably.\n\nWhat apparent contradiction is examined?",
+    "options": [
+      "Greater formal autonomy coexisted with restricted fiscal discretion.",
+      "Local councils became financially independent before the reform.",
+      "Central grants were unconditional after the new framework.",
+      "Councils lacked any legal authority before or after the reform.",
+      "Budgetary dependence was eliminated by the new legislation."
+    ],
+    "correct": 0,
+    "explanation": "Biçimsel özerklik artarken bütçe kararları üzerindeki fiilî kısıtlamalar sürdü."
+  },
+  {
+    "id": "wq150_nov26_read2_16_2",
+    "family": "reading_nov26_2_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A legal historian examined a reform that formally granted local councils greater autonomy. Subsequent budgets showed that councils remained heavily dependent on central grants whose conditions constrained spending decisions. Rather than equating the new legal framework with actual decentralisation, the historian assessed the distribution of fiscal discretion. The analysis suggested that formal authority and practical capacity could diverge considerably.\n\nWhy were budgets relevant to the analysis?",
+    "options": [
+      "They revealed practical limits on the councils' decision-making capacity.",
+      "They identified the personal political views of every councillor.",
+      "They showed that the historian had misdated the legislation.",
+      "They replaced the legal text as evidence of formal authority.",
+      "They proved that every council faced identical constraints."
+    ],
+    "correct": 0,
+    "explanation": "Bütçeler karar verme yetkisinin mali açıdan ne ölçüde kullanılabildiğini gösterdi."
+  },
+  {
+    "id": "wq150_nov26_read2_16_3",
+    "family": "reading_nov26_2_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A legal historian examined a reform that formally granted local councils greater autonomy. Subsequent budgets showed that councils remained heavily dependent on central grants whose conditions constrained spending decisions. Rather than equating the new legal framework with actual decentralisation, the historian assessed the distribution of fiscal discretion. The analysis suggested that formal authority and practical capacity could diverge considerably.\n\nWhich interpretation best reflects the historian's approach?",
+    "options": [
+      "Evaluate institutional change using both legal provisions and operational constraints.",
+      "Assume that legal autonomy automatically implies full financial independence.",
+      "Ignore financial arrangements when comparing local authorities.",
+      "Treat all central grants as evidence that no reform occurred.",
+      "Measure decentralisation exclusively by the number of councils."
+    ],
+    "correct": 0,
+    "explanation": "Hukuki düzenleme ile uygulamadaki mali kısıtlar birlikte değerlendiriliyor."
+  },
+  {
+    "id": "wq150_nov26_read2_16_4",
+    "family": "reading_nov26_2_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A legal historian examined a reform that formally granted local councils greater autonomy. Subsequent budgets showed that councils remained heavily dependent on central grants whose conditions constrained spending decisions. Rather than equating the new legal framework with actual decentralisation, the historian assessed the distribution of fiscal discretion. The analysis suggested that formal authority and practical capacity could diverge considerably.\n\n'Discretion' here is closest in meaning to ____ .",
+    "options": [
+      "freedom to decide",
+      "obligation to disclose",
+      "ability to postpone indefinitely",
+      "formal prohibition",
+      "automatic entitlement"
+    ],
+    "correct": 0,
+    "explanation": "Fiscal discretion mali kararları kendi takdiriyle verebilme yetkisidir."
+  },
+  {
+    "id": "wq150_nov26_read2_17_1",
+    "family": "reading_nov26_2_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical account defined scientific progress in terms of increasing explanatory scope. Critics noted that some advances deliberately narrow the domain of a theory to avoid unwarranted claims, even while improving its accuracy within that domain. The author responded by distinguishing the range of phenomena a theory explains from the strength of its explanations. Progress, on the revised account, could occur through improvements in either dimension.\n\nWhat objection did the critics raise?",
+    "options": [
+      "A theory may improve even if its intended explanatory range becomes narrower.",
+      "All scientific advances necessarily expand explanatory scope.",
+      "Accuracy is irrelevant when evaluating scientific progress.",
+      "Narrower theories cannot explain any phenomena.",
+      "The original account already treated scope and strength as unrelated."
+    ],
+    "correct": 0,
+    "explanation": "Daha dar kapsamla daha doğru açıklama yapılması da ilerleme olabilir."
+  },
+  {
+    "id": "wq150_nov26_read2_17_2",
+    "family": "reading_nov26_2_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical account defined scientific progress in terms of increasing explanatory scope. Critics noted that some advances deliberately narrow the domain of a theory to avoid unwarranted claims, even while improving its accuracy within that domain. The author responded by distinguishing the range of phenomena a theory explains from the strength of its explanations. Progress, on the revised account, could occur through improvements in either dimension.\n\nHow did the author revise the account?",
+    "options": [
+      "By recognising scope and explanatory strength as separate dimensions",
+      "By defining progress exclusively as numerical accuracy",
+      "By discarding explanation as a scientific aim",
+      "By requiring theories to expand both dimensions simultaneously",
+      "By treating unwarranted claims as evidence of progress"
+    ],
+    "correct": 0,
+    "explanation": "Açıklama kapsamı ve açıklama gücü ayrı boyutlar olarak ele alındı."
+  },
+  {
+    "id": "wq150_nov26_read2_17_3",
+    "family": "reading_nov26_2_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical account defined scientific progress in terms of increasing explanatory scope. Critics noted that some advances deliberately narrow the domain of a theory to avoid unwarranted claims, even while improving its accuracy within that domain. The author responded by distinguishing the range of phenomena a theory explains from the strength of its explanations. Progress, on the revised account, could occur through improvements in either dimension.\n\nWhich example best illustrates the revised view?",
+    "options": [
+      "A model gives more reliable explanations for a smaller, clearly specified class of events.",
+      "A theory extends to new cases by making unsupported assumptions.",
+      "A model is abandoned without any replacement or improvement.",
+      "A theory retains its original scope and explanatory quality unchanged.",
+      "A model makes additional claims without evaluating their validity."
+    ],
+    "correct": 0,
+    "explanation": "Daha dar kapsamda güvenilir açıklamalar üretmek revize edilmiş ilerleme tanımına uyar."
+  },
+  {
+    "id": "wq150_nov26_read2_17_4",
+    "family": "reading_nov26_2_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical account defined scientific progress in terms of increasing explanatory scope. Critics noted that some advances deliberately narrow the domain of a theory to avoid unwarranted claims, even while improving its accuracy within that domain. The author responded by distinguishing the range of phenomena a theory explains from the strength of its explanations. Progress, on the revised account, could occur through improvements in either dimension.\n\n'Unwarranted' means ____ .",
+    "options": [
+      "insufficiently justified",
+      "widely documented",
+      "unusually precise",
+      "conditionally accepted",
+      "systematically tested"
+    ],
+    "correct": 0,
+    "explanation": "Unwarranted yeterli dayanağı bulunmayan demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_18_1",
+    "family": "reading_nov26_2_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An economic evaluation compared two interventions designed to reduce household energy consumption. One produced immediate savings that diminished over time; the other yielded modest initial savings that persisted. Rankings changed when the analysts extended the evaluation horizon and varied the discount rate. Rather than reporting a single unconditional ordering, they presented the assumptions under which each intervention was preferable.\n\nWhy did the ranking change?",
+    "options": [
+      "The interventions had different time profiles of benefits.",
+      "Both interventions generated identical savings at every point.",
+      "The analysts stopped measuring energy consumption.",
+      "The discount rate could not affect comparisons across time.",
+      "Initial savings were the only outcome included in every analysis."
+    ],
+    "correct": 0,
+    "explanation": "Tasarrufların zaman içinde dağılımı farklı olduğundan değerlendirme varsayımlarına duyarlı sıralama oluştu."
+  },
+  {
+    "id": "wq150_nov26_read2_18_2",
+    "family": "reading_nov26_2_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An economic evaluation compared two interventions designed to reduce household energy consumption. One produced immediate savings that diminished over time; the other yielded modest initial savings that persisted. Rankings changed when the analysts extended the evaluation horizon and varied the discount rate. Rather than reporting a single unconditional ordering, they presented the assumptions under which each intervention was preferable.\n\nWhat did the analysts ultimately report?",
+    "options": [
+      "Conditions under which each intervention would be preferred",
+      "A universal ranking independent of the time horizon",
+      "A decision to omit all persistent savings",
+      "Only the initial effect of the more expensive intervention",
+      "Proof that both interventions were equally effective in all circumstances"
+    ],
+    "correct": 0,
+    "explanation": "Tek ve koşulsuz sıralama yerine tercih koşulları açıklandı."
+  },
+  {
+    "id": "wq150_nov26_read2_18_3",
+    "family": "reading_nov26_2_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An economic evaluation compared two interventions designed to reduce household energy consumption. One produced immediate savings that diminished over time; the other yielded modest initial savings that persisted. Rankings changed when the analysts extended the evaluation horizon and varied the discount rate. Rather than reporting a single unconditional ordering, they presented the assumptions under which each intervention was preferable.\n\nWhat general lesson follows from the evaluation?",
+    "options": [
+      "Policy comparisons can depend on how future outcomes are valued.",
+      "Short-term savings always outweigh long-term savings.",
+      "A discount rate measures only present consumption.",
+      "Evaluation horizons should never be extended.",
+      "Persistent benefits are irrelevant to economic analysis."
+    ],
+    "correct": 0,
+    "explanation": "Gelecekteki faydalara verilen değer politika karşılaştırmasını değiştirebilir."
+  },
+  {
+    "id": "wq150_nov26_read2_18_4",
+    "family": "reading_nov26_2_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An economic evaluation compared two interventions designed to reduce household energy consumption. One produced immediate savings that diminished over time; the other yielded modest initial savings that persisted. Rankings changed when the analysts extended the evaluation horizon and varied the discount rate. Rather than reporting a single unconditional ordering, they presented the assumptions under which each intervention was preferable.\n\n'Diminished' is closest in meaning to ____ .",
+    "options": [
+      "became smaller",
+      "became more predictable",
+      "remained constant",
+      "were measured differently",
+      "were transferred elsewhere"
+    ],
+    "correct": 0,
+    "explanation": "Diminish azalmak veya küçülmek demektir."
+  },
+  {
+    "id": "wq150_nov26_read2_19_1",
+    "family": "reading_nov26_2_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A conservation project assessed success using the area of habitat brought under legal protection. Although the target was met, subsequent ecological surveys revealed continued degradation in some designated sites. The researchers argued that legal designation was an intermediate output rather than direct evidence of ecological recovery. They proposed adding measures of habitat quality and population trends to the evaluation framework.\n\nWhat weakness did the researchers identify in the original indicator?",
+    "options": [
+      "It measured legal protection rather than actual ecological condition.",
+      "It measured species populations too frequently.",
+      "It failed to distinguish protected land from unprotected land.",
+      "It required ecological recovery before legal designation.",
+      "It included too many independent measures of habitat quality."
+    ],
+    "correct": 0,
+    "explanation": "Hukuki koruma alanı ölçülüyor, gerçek ekolojik durum doğrudan ölçülmüyordu."
+  },
+  {
+    "id": "wq150_nov26_read2_19_2",
+    "family": "reading_nov26_2_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A conservation project assessed success using the area of habitat brought under legal protection. Although the target was met, subsequent ecological surveys revealed continued degradation in some designated sites. The researchers argued that legal designation was an intermediate output rather than direct evidence of ecological recovery. They proposed adding measures of habitat quality and population trends to the evaluation framework.\n\nWhat did later surveys reveal?",
+    "options": [
+      "Some protected sites continued to deteriorate.",
+      "Every designated site showed rapid recovery.",
+      "The legal protection target had never been achieved.",
+      "No habitat could be located within the designated areas.",
+      "All species populations had become stable."
+    ],
+    "correct": 0,
+    "explanation": "Bazı koruma alanlarında bozulmanın sürdüğü görüldü."
+  },
+  {
+    "id": "wq150_nov26_read2_19_3",
+    "family": "reading_nov26_2_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A conservation project assessed success using the area of habitat brought under legal protection. Although the target was met, subsequent ecological surveys revealed continued degradation in some designated sites. The researchers argued that legal designation was an intermediate output rather than direct evidence of ecological recovery. They proposed adding measures of habitat quality and population trends to the evaluation framework.\n\nWhich revised evaluation would best address the criticism?",
+    "options": [
+      "Track legal designation together with habitat condition and species trends.",
+      "Measure only the area promised for protection.",
+      "Count legislative meetings rather than ecological outcomes.",
+      "Assume all designated sites have recovered.",
+      "Remove field surveys from the monitoring programme."
+    ],
+    "correct": 0,
+    "explanation": "Yasal çıktı ile gerçek habitat ve popülasyon durumunu birlikte izlemek gerekir."
+  },
+  {
+    "id": "wq150_nov26_read2_19_4",
+    "family": "reading_nov26_2_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A conservation project assessed success using the area of habitat brought under legal protection. Although the target was met, subsequent ecological surveys revealed continued degradation in some designated sites. The researchers argued that legal designation was an intermediate output rather than direct evidence of ecological recovery. They proposed adding measures of habitat quality and population trends to the evaluation framework.\n\n'Intermediate output' refers to ____ .",
+    "options": [
+      "a step towards a goal rather than the final outcome",
+      "a result that proves every desired effect",
+      "an unexpected harmful species",
+      "a measurement obtained before any intervention",
+      "a legal decision unrelated to conservation"
+    ],
+    "correct": 0,
+    "explanation": "Ara çıktı hedefe giden adımdır; nihai sonucu tek başına kanıtlamaz."
+  },
+  {
+    "id": "wq150_nov26_read2_20_1",
+    "family": "reading_nov26_2_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A comparative study of translation systems found that both achieved similar scores on a general benchmark. Error analysis, however, revealed different weaknesses: one system frequently mishandled ambiguous pronouns, while the other struggled with specialised terminology. The researchers cautioned against using the aggregate score as the sole basis for selecting a system. They recommended assessing the importance of particular error categories for the intended application.\n\nWhy did the researchers question the aggregate score as a selection criterion?",
+    "options": [
+      "Similar overall scores concealed different error profiles.",
+      "The benchmark included no translation tasks.",
+      "Both systems made exactly the same errors.",
+      "Specialised terminology was excluded from all analyses.",
+      "The score was calculated only for one system."
+    ],
+    "correct": 0,
+    "explanation": "Benzer toplam puanlar farklı hata türlerini gizliyordu."
+  },
+  {
+    "id": "wq150_nov26_read2_20_2",
+    "family": "reading_nov26_2_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A comparative study of translation systems found that both achieved similar scores on a general benchmark. Error analysis, however, revealed different weaknesses: one system frequently mishandled ambiguous pronouns, while the other struggled with specialised terminology. The researchers cautioned against using the aggregate score as the sole basis for selecting a system. They recommended assessing the importance of particular error categories for the intended application.\n\nWhat did the error analysis establish?",
+    "options": [
+      "The systems had contrasting weaknesses.",
+      "One system performed perfectly in every category.",
+      "Both systems handled pronouns more poorly than terminology.",
+      "The benchmark was deliberately manipulated.",
+      "Neither system could translate any text correctly."
+    ],
+    "correct": 0,
+    "explanation": "Bir sistem zamir belirsizliğinde, diğeri uzmanlık terimlerinde zorlandı."
+  },
+  {
+    "id": "wq150_nov26_read2_20_3",
+    "family": "reading_nov26_2_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A comparative study of translation systems found that both achieved similar scores on a general benchmark. Error analysis, however, revealed different weaknesses: one system frequently mishandled ambiguous pronouns, while the other struggled with specialised terminology. The researchers cautioned against using the aggregate score as the sole basis for selecting a system. They recommended assessing the importance of particular error categories for the intended application.\n\nWhich selection strategy follows from the findings?",
+    "options": [
+      "Weight error categories according to the requirements of the use case.",
+      "Choose whichever system was evaluated first.",
+      "Ignore terminology in every professional translation task.",
+      "Select a system using its aggregate score alone.",
+      "Require identical performance on all possible translation tasks."
+    ],
+    "correct": 0,
+    "explanation": "Seçim, kullanım amacına göre kritik hata türlerini ağırlıklandırmalıdır."
+  },
+  {
+    "id": "wq150_nov26_read2_20_4",
+    "family": "reading_nov26_2_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A comparative study of translation systems found that both achieved similar scores on a general benchmark. Error analysis, however, revealed different weaknesses: one system frequently mishandled ambiguous pronouns, while the other struggled with specialised terminology. The researchers cautioned against using the aggregate score as the sole basis for selecting a system. They recommended assessing the importance of particular error categories for the intended application.\n\n'Aggregate' means ____ .",
+    "options": [
+      "combined into an overall measure",
+      "specific to a single error",
+      "adjusted to exclude all uncertainty",
+      "unrelated to numerical evaluation",
+      "collected only from rare examples"
+    ],
+    "correct": 0,
+    "explanation": "Aggregate burada birleştirilmiş genel ölçüm anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_mix2_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The community centre ____ free computer lessons since September, and the classes are still running.",
+    "options": [
+      "has been offering",
+      "had offered",
+      "will offer",
+      "offered yesterday",
+      "was offered"
+    ],
+    "correct": 0,
+    "explanation": "Since ve halen süren etkinlik present perfect continuous gerektirir."
+  },
+  {
+    "id": "wq150_nov26_mix2_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "If the delivery arrives before noon tomorrow, we ____ the equipment that afternoon.",
+    "options": [
+      "will install",
+      "had installed",
+      "installed",
+      "would have installed",
+      "have been installed"
+    ],
+    "correct": 0,
+    "explanation": "Gerçekleşebilir gelecek koşulunda if + present, ana cümlede will kullanılır."
+  },
+  {
+    "id": "wq150_nov26_mix2_3",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The path was too narrow for cars; ____ , visitors had to continue on foot.",
+    "options": [
+      "therefore",
+      "otherwise",
+      "nevertheless",
+      "similarly",
+      "for example"
+    ],
+    "correct": 0,
+    "explanation": "İkinci ifade ilk durumun sonucudur; therefore uygundur."
+  },
+  {
+    "id": "wq150_nov26_mix2_4",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The meeting was scheduled for Monday but had to be ____ until Thursday because several members were ill.",
+    "options": [
+      "put off",
+      "taken over",
+      "brought up",
+      "carried out",
+      "turned down"
+    ],
+    "correct": 0,
+    "explanation": "Put off ertelemek demektir."
+  },
+  {
+    "id": "wq150_nov26_mix2_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The new regulations require that all laboratory equipment ____ before being used.",
+    "options": [
+      "be inspected",
+      "inspects",
+      "has inspected",
+      "is inspecting",
+      "was inspecting"
+    ],
+    "correct": 0,
+    "explanation": "Require that yapısında yalın subjunctive ve burada edilgen be inspected gerekir."
+  },
+  {
+    "id": "wq150_nov26_mix2_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The technician had the faulty sensor ____ by a specialist rather than replacing it immediately.",
+    "options": [
+      "repaired",
+      "repair",
+      "repairing",
+      "to repair",
+      "was repaired"
+    ],
+    "correct": 0,
+    "explanation": "Have something done yapısında nesnenin ardından past participle gelir."
+  },
+  {
+    "id": "wq150_nov26_mix2_7",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The journal rejected the manuscript, ____ the authors to revise the methodology before submitting it elsewhere.",
+    "options": [
+      "prompting",
+      "prompted",
+      "to be prompted",
+      "having been prompted",
+      "was prompting"
+    ],
+    "correct": 0,
+    "explanation": "Sonuç bildiren -ing yan cümlesinde prompting uygundur."
+  },
+  {
+    "id": "wq150_nov26_mix2_8",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The survey included both urban and rural households ____ differences in access to healthcare could be examined.",
+    "options": [
+      "so that",
+      "even if",
+      "as though",
+      "now that",
+      "whereas"
+    ],
+    "correct": 0,
+    "explanation": "So that amaç bildirir."
+  },
+  {
+    "id": "wq150_nov26_mix2_9",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "Investigators were unable to ____ the possibility that a faulty connection had caused the interruption.",
+    "options": [
+      "rule out",
+      "bring about",
+      "look after",
+      "set up",
+      "hand over"
+    ],
+    "correct": 0,
+    "explanation": "Rule out bir olasılığı dışlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_mix2_10",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Given that the initial sample was drawn exclusively from one district, ____ .",
+    "options": [
+      "the findings may not apply to the entire city",
+      "the researchers must have surveyed every district",
+      "the results automatically represent all regions",
+      "the sample cannot affect generalisability",
+      "a larger sample would necessarily be less representative"
+    ],
+    "correct": 0,
+    "explanation": "Tek bölge örneklemi tüm kente genellenebilirliği sınırlayabilir."
+  },
+  {
+    "id": "wq150_nov26_mix2_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "Not until the control samples were examined ____ that the original measurements had been biased.",
+    "options": [
+      "did the team realise",
+      "the team realised",
+      "had the team realising",
+      "the team did realised",
+      "was the team realise"
+    ],
+    "correct": 0,
+    "explanation": "Not until önde olduğunda ana cümlede yardımcı fiil ile devriklik gerekir."
+  },
+  {
+    "id": "wq150_nov26_mix2_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "The agreement, ____ its financial provisions are concerned, will remain unchanged until the next review.",
+    "options": [
+      "insofar as",
+      "as though",
+      "unless",
+      "even if",
+      "rather than"
+    ],
+    "correct": 0,
+    "explanation": "Insofar as burada ilgili olduğu ölçüde, bakımından anlamı verir."
+  },
+  {
+    "id": "wq150_nov26_mix2_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "The authors questioned whether the apparent improvement could ____ by a change in the composition of the sample.",
+    "options": [
+      "have been explained",
+      "have explained",
+      "be explaining",
+      "having explained",
+      "have been explaining"
+    ],
+    "correct": 0,
+    "explanation": "Could have been explained geçmişteki edilgen olasılığı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_mix2_14",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Connectors",
+    "prompt": "The two instruments were calibrated independently; ____ , their readings were remarkably similar.",
+    "options": [
+      "nevertheless",
+      "otherwise",
+      "henceforth",
+      "for example",
+      "in other words"
+    ],
+    "correct": 0,
+    "explanation": "Bağımsız kalibrasyona rağmen benzerlik beklentiyi aşan karşıtlık kurar."
+  },
+  {
+    "id": "wq150_nov26_mix2_15",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Synonym",
+    "prompt": "The report described the regulatory framework as 'piecemeal'. Which phrase best conveys this meaning?",
+    "options": [
+      "developed in separate, poorly coordinated stages",
+      "designed as a single comprehensive system",
+      "enforced uniformly across all sectors",
+      "based on a universally accepted principle",
+      "implemented simultaneously in every region"
+    ],
+    "correct": 0,
+    "explanation": "Piecemeal parça parça, bütüncül olmayan demektir."
+  },
+  {
+    "id": "wq150_nov26_mix2_16",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Completion",
+    "prompt": "Even if the new test is highly accurate in controlled settings, ____ .",
+    "options": [
+      "its performance in routine practice still needs to be assessed",
+      "its practical effectiveness is already beyond question",
+      "the conditions of use can never affect the results",
+      "further evaluation would necessarily invalidate the findings",
+      "all users must obtain identical results"
+    ],
+    "correct": 0,
+    "explanation": "Kontrollü koşullardaki başarı gerçek kullanım koşullarında ayrıca değerlendirilmelidir."
+  },
+  {
+    "id": "wq150_nov26_mix2_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Grammar",
+    "prompt": "Were the underlying assumptions to change substantially, the conclusions ____ without a reassessment of the model.",
+    "options": [
+      "could no longer be relied upon",
+      "could no longer rely upon",
+      "will no longer have relying",
+      "had no longer been relied upon",
+      "are no longer having relied upon"
+    ],
+    "correct": 0,
+    "explanation": "Were ... to varsayımsal koşulu, could + edilgen fiil ile tamamlanır."
+  },
+  {
+    "id": "wq150_nov26_mix2_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Synonym",
+    "prompt": "The distinction was described as 'heuristic rather than definitive'. What does this suggest?",
+    "options": [
+      "It helps guide inquiry without settling the issue conclusively.",
+      "It constitutes a proof that excludes all alternatives.",
+      "It is entirely unrelated to the inquiry.",
+      "It provides an exact numerical solution in every case.",
+      "It was introduced to conceal the evidence deliberately."
+    ],
+    "correct": 0,
+    "explanation": "Heuristic araştırmaya yön veren fakat kesin çözüm sunmayan yaklaşım anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_mix2_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Phrasals",
+    "prompt": "The additional evidence was insufficient to ____ the central objection raised by the reviewers.",
+    "options": [
+      "dispose of",
+      "give rise to",
+      "hinge on",
+      "stem from",
+      "bear witness to"
+    ],
+    "correct": 0,
+    "explanation": "Dispose of an objection bir itirazı gidermek veya çürütmek anlamında kullanılır."
+  },
+  {
+    "id": "wq150_nov26_mix2_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Completion",
+    "prompt": "To the extent that the classification reflects administrative convenience rather than meaningful differences, ____ .",
+    "options": [
+      "its explanatory value should not be taken for granted",
+      "its categories necessarily correspond to natural divisions",
+      "it cannot be revised under any circumstances",
+      "its practical origins guarantee theoretical validity",
+      "any evidence against it must be dismissed"
+    ],
+    "correct": 0,
+    "explanation": "İdari kolaylığa dayalı sınıflamanın açıklayıcı değeri sorgulanabilir."
   }
 ];
