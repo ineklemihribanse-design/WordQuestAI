@@ -36,6 +36,7 @@ internal class Wq150Endpoint(raw:String) {
     fun matchUrl(id:String,commands:Boolean=false):URI=roomUrl("matches",id,commands)
     fun lobbyUrl(id:String,commands:Boolean=false):URI=roomUrl("lobbies",id,commands)
     fun createUrl():URI=origin.resolve("/v150/lobbies")
+    fun presenceUrl(id:String):URI=roomUrl("presence",id,false)
     fun profileUrl(id:String,version:String?=null):URI {
         val base=roomUrl("profiles",id,false)
         if(version==null)return base
@@ -106,6 +107,11 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
         request(endpoint.profileUrl(room),JSONObject().put("avatar",avatar).put("preview",preview?:JSONObject.NULL))
     }
     suspend fun view(room:String):JSONObject=matchView(request(endpoint.matchUrl(room),null))
+    suspend fun presence(room:String,session:String,leave:Boolean=false):JSONObject {
+        require(Regex("^[A-Za-z0-9_-]{16,100}$").matches(session))
+        return matchView(request(endpoint.presenceUrl(room),JSONObject()
+            .put("type",if(leave)"leave" else "heartbeat").put("session",session)))
+    }
     suspend fun send(room:String,command:Wq150Command):JSONObject=
         matchView(request(endpoint.matchUrl(room,true),command.json()))
     suspend fun createLobby(settings:Wq150Settings,id:String):Wq150LobbyResponse {
@@ -183,7 +189,9 @@ internal data class Wq150RemoteState(
  * Call poll() only inside a lifecycle-owned coroutine; cancellation stops polling.
  * The old Arena is never used as fallback for a partially completed new match.
  */
-internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq150Gateway,initial:JSONObject?=null){
+internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq150Gateway,
+    private val sessionId:String,initial:JSONObject?=null){
+    private var departed=false
     private val lock=Mutex()
     private val mutable=MutableStateFlow(Wq150RemoteState(snapshot=initial))
     val state:StateFlow<Wq150RemoteState> = mutable.asStateFlow()
@@ -194,7 +202,8 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
         }
     }
     suspend fun refresh()=lock.withLock{
-        try{accept(gateway.view(room))}
+        if(departed)return@withLock
+        try{accept(gateway.presence(room,sessionId))}
         catch(e:CancellationException){throw e}
         catch(e:Exception){mutable.value=mutable.value.copy(error="Bağlantı doğrulanamadı.")}
     }
@@ -218,10 +227,25 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
         }finally{mutable.value=mutable.value.copy(busy=false)}
     }
     suspend fun retryPending(){state.value.pending?.let{submit(it)}}
+    suspend fun leave():Boolean=lock.withLock{
+        if(departed||mutable.value.snapshot?.optString("phase")=="finished")return@withLock true
+        mutable.value=mutable.value.copy(busy=true,error=null)
+        try{
+            val view=gateway.presence(room,sessionId,leave=true)
+            accept(view)
+            departed=true
+            mutable.value=mutable.value.copy(pending=null)
+            true
+        }catch(e:CancellationException){throw e}
+        catch(e:Exception){
+            mutable.value=mutable.value.copy(error="Ayrılma doğrulanamadı. Bağlantıyı kontrol edip tekrar dene.")
+            false
+        }finally{mutable.value=mutable.value.copy(busy=false)}
+    }
     suspend fun poll(){
         while(coroutineContext.isActive){
             refresh()
-            if(state.value.snapshot?.optString("phase")=="finished")break
+            if(departed||state.value.snapshot?.optString("phase")=="finished")break
             delay(if(state.value.error==null)1500L else 4000L)
         }
     }

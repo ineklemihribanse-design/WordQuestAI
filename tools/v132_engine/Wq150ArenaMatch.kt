@@ -140,7 +140,13 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val profiles=rememberWq150Profiles(room,session,gateway)
     val ownAvatar by rememberWq2DSelection(session.profileKey)
     val tablet=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
-    val controller=remember(room,uid,gateway){Wq150RemoteMatch(room,gateway,initial)}
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val sessionId=remember(room,uid){
+        val prefs=context.getSharedPreferences("wq150_match_session",android.content.Context.MODE_PRIVATE)
+        val key=uid+":"+room
+        prefs.getString(key,null)?:java.util.UUID.randomUUID().toString().also{prefs.edit().putString(key,it).apply()}
+    }
+    val controller=remember(room,uid,gateway,sessionId){Wq150RemoteMatch(room,gateway,sessionId,initial)}
     val remote by controller.state.collectAsState()
     val scope=rememberCoroutineScope()
     val view=remote.snapshot?:initial
@@ -196,9 +202,17 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     }
     val answerComplete=if(currentCells.isEmpty())draft.length==totalLength else draft.length==missing.size
     var exit by remember(room){mutableStateOf(false)}
-    var now by remember{mutableLongStateOf(System.currentTimeMillis())}
+    var now by remember{mutableLongStateOf(view.optLong("serverNow",System.currentTimeMillis()))}
     LaunchedEffect(room){controller.poll()}
-    LaunchedEffect(phase){while(phase!="finished"){now=System.currentTimeMillis();delay(250L)}}
+    LaunchedEffect(view,phase){
+        val serverBase=view.optLong("serverNow",System.currentTimeMillis())
+        val localBase=android.os.SystemClock.elapsedRealtime()
+        now=serverBase
+        while(phase!="finished"){
+            now=serverBase+android.os.SystemClock.elapsedRealtime()-localBase
+            delay(250L)
+        }
+    }
     val deadline=if(kind=="quiz")mine.number("deadline") else game.number("deadline")
     val connection=view.optJSONObject("connection")
     val clock=if(paused)connection.number("pausedAt")?:now else now
@@ -381,11 +395,25 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             text={Text("Rakibin maçı karşılıklı anlaşmayla bitirmek istiyor. Kalan süre: "+(((offer.number("expiresAt")?:now)-now+999L)/1000L).coerceAtLeast(0L)+" sn")},
             confirmButton={TextButton(enabled=canSocial,onClick={sendSocial("finish-accept",id=offerId)}){Text("Kabul et")}},
             dismissButton={TextButton(enabled=canSocial,onClick={sendSocial("finish-reject",id=offerId)}){Text("Reddet")}})
-        if(paused&&!finished)AlertDialog(onDismissRequest={},title={Text("Oyuncu bağlantısı kesildi")},
-            text={Text("Maç duraklatıldı. Tahta, puanlar ve süre korunuyor.")},confirmButton={})
-        if(exit)AlertDialog(onDismissRequest={exit=false},title={Text("Arena'dan ayrıl?")},
-            text={Text("Bu ekranı kapatmak sunucuda hükmen ayrılma işlemi değildir.")},
-            confirmButton={TextButton(onClick=onBack){Text("Çık")}},dismissButton={TextButton(onClick={exit=false}){Text("Devam et")}})
+        if(paused&&!finished&&!exit){
+            val disconnected=connection.objects("players").filter{!it.optBoolean("connected")&&!it.optBoolean("removed")}
+            val nextDeadline=disconnected.mapNotNull{it.number("until")}.minOrNull()
+            val seconds=nextDeadline?.let{((it-now+999L)/1000L).coerceAtLeast(0L)}
+            AlertDialog(onDismissRequest={},title={Text("Oyuncu bağlantısı kesildi")},
+                text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+                    Text("Maç duraklatıldı. Tahta, puanlar ve süre korunuyor.")
+                    seconds?.let{Text("Geri dönüş süresi: $it sn",fontWeight=FontWeight.Bold)}
+                }},confirmButton={TextButton(onClick={exit=true}){Text("Maçtan ayrıl")}})
+        }
+        if(exit)AlertDialog(onDismissRequest={if(!remote.busy)exit=false},title={Text("Arena'dan ayrıl?")},
+            text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+                Text(if(finished)"Arena'ya dönülsün mü?" else "Bilerek ayrılmak geri dönüş hakkını sonlandırır. Rakip hükmen kazanabilir.")
+                remote.error?.let{Text(it,color=MaterialTheme.colorScheme.error)}
+            }},
+            confirmButton={TextButton(enabled=!remote.busy,onClick={
+                scope.launch{if(controller.leave()){exit=false;onBack()}}
+            }){Text(if(remote.busy)"Doğrulanıyor…" else "Ayrıl")}},
+            dismissButton={TextButton(enabled=!remote.busy,onClick={exit=false}){Text("Devam et")}})
     }
 }
 @Composable
