@@ -94,7 +94,10 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
 
 /** All actions use the current authenticated server snapshot; no local scoring. */
 @Composable
-internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:Wq150Gateway,onBack:()->Unit){
+internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:Wq150Gateway,session:AppSession,onBack:()->Unit){
+    val profiles=rememberWq150Profiles(room,session,gateway)
+    val ownAvatar by rememberWq2DSelection(session.profileKey)
+    val tablet=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
     val controller=remember(room,uid,gateway){Wq150RemoteMatch(room,gateway,initial)}
     val remote by controller.state.collectAsState()
     val scope=rememberCoroutineScope()
@@ -236,7 +239,17 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                     Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.weight(1f),
                         border=if(currentTurn&&phase=="playing")androidx.compose.foundation.BorderStroke(2.dp,Color(0xFFFFD56B))else null){
                         Column(Modifier.padding(8.dp),horizontalAlignment=Alignment.CenterHorizontally){
-                            Text(if(id==uid)"Sen" else if(kind=="team")"Takım "+(i+1) else "Oyuncu "+(i+1),color=Wq122Ink)
+                            val members=if(kind=="team")game.objects("teams").firstOrNull{it.optString("id")==id}.strings("members") else listOf(id)
+                            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
+                                members.forEach{player->
+                                    Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
+                                        Wq150Portrait(profiles.optJSONObject(player),ownAvatar.takeIf{player==uid},
+                                            Modifier.fillMaxWidth().height(if(tablet)110.dp else 64.dp))
+                                        Text(profiles.optJSONObject(player)?.optString("name")?.takeIf{it.isNotBlank()}?:if(player==uid)session.profileName else "Oyuncu",
+                                            color=Wq122Ink,fontSize=if(tablet)15.sp else 12.sp,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+                                    }
+                                }
+                            }
                             Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontWeight=FontWeight.Black)
                         }
                     }
@@ -334,6 +347,6 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
     val gateway=remember(endpoint,auth,uid){auth?.let{Wq150Gateway(endpoint,it)}}
     val id=room;val snapshot=initial
     if(id!=null&&snapshot!=null&&gateway!=null&&uid.isNotBlank())
-        Wq150ArenaMatch(id,snapshot,uid,gateway,back)
+        Wq150ArenaMatch(id,snapshot,uid,gateway,session,back)
     else Wq150ArenaEntry(session,endpoint,back,account,legacy){r,v->room=r;initial=v}
 }

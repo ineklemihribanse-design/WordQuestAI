@@ -4,13 +4,14 @@
 import {matchView,transactMatch,matchCommand,validateSettings} from './match_service.mjs';
 import {createLobby,lobbyView,transactLobby,transactStart} from './lobby.mjs';
 import {createHmac,randomBytes} from 'node:crypto';
+import {profileMembers,validatePortrait,readProfiles} from './profiles.mjs';
 const matchId=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{6,64}$/.test(x)&&!['constructor','__proto__','prototype'].includes(x);
 const allowed=new Set(['submit','answer','pass','skip','choose','hint','eliminate','half','time','reaction','finish-offer','finish-accept','finish-reject','finish-withdraw']);
 const reply=(res,status,body)=>{res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','application/json; charset=utf-8');res.statusCode=status;res.end(JSON.stringify(body));};
 const problem=(res,status,code)=>reply(res,status,{ok:false,code});
-async function readBody(req){
+async function readBody(req,max=8192){
  let bytes=0,parts=[];
- for await(const chunk of req){const b=Buffer.isBuffer(chunk)?chunk:Buffer.from(chunk);bytes+=b.length;if(bytes>8192)throw Error('body-too-large');parts.push(b);}
+ for await(const chunk of req){const b=Buffer.isBuffer(chunk)?chunk:Buffer.from(chunk);bytes+=b.length;if(bytes>max)throw Error('body-too-large');parts.push(b);}
  const data=JSON.parse(Buffer.concat(parts).toString('utf8'));
  if(!data||typeof data!=='object'||Array.isArray(data))throw Error('invalid-body');return data;
 }
@@ -59,17 +60,36 @@ export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bank
  return async function handle(req,res){
   const path=new URL(req.url,'http://localhost').pathname;
   const match=/^\/v150\/matches\/([A-Za-z0-9_-]+)(\/commands)?$/.exec(path);
+  const portrait=/^\/v150\/profiles\/([A-Za-z0-9_-]+)$/.exec(path);
   const create=path==='/v150/lobbies';
   const lobby=/^\/v150\/lobbies\/([A-Za-z0-9_-]+)(\/commands)?$/.exec(path);
-  if(!create&&!(lobby&&matchId(lobby[1]))&&!(match&&matchId(match[1])))return problem(res,404,'not-found');
+  if(!create&&!(portrait&&matchId(portrait[1]))&&!(lobby&&matchId(lobby[1]))&&!(match&&matchId(match[1])))return problem(res,404,'not-found');
   const write=create||Boolean((lobby??match)?.[2]);
-  if(req.method!==(write?'POST':'GET'))return problem(res,405,'method-not-allowed');
+  if(portrait?!['GET','POST'].includes(req.method):req.method!==(write?'POST':'GET'))return problem(res,405,'method-not-allowed');
   const bearer=/^Bearer ([^\s]+)$/.exec(req.headers.authorization??'');
   if(!bearer)return problem(res,401,'unauthenticated');
   let identity;
   try{identity=await auth.verifyIdToken(bearer[1],true);}catch{return problem(res,401,'unauthenticated');}
   if(typeof identity?.uid!=='string'||!identity.uid)return problem(res,401,'unauthenticated');
   const uid=identity.uid;
+  if(portrait){
+   const room=portrait[1];
+   try{
+    const state=(await database.ref('arenaV150Private/'+room).get()).val();
+    const members=profileMembers(state);
+    if(!members.includes(uid))return problem(res,404,'not-found');
+    if(req.method==='POST'){
+     let value;
+     try{value=validatePortrait(await readBody(req,190000));}
+     catch(e){return problem(res,e.message==='body-too-large'?413:400,'invalid-portrait');}
+     await database.ref('arenaV150Profiles/'+room+'/'+uid).set(value);
+     return reply(res,200,{ok:true});
+    }
+    const result=await readProfiles(database,room,members);
+    const since=new URL(req.url,'http://localhost').searchParams.get('version');
+    return reply(res,200,since===result.version?{ok:true,version:result.version}:{ok:true,...result});
+   }catch(e){log('arena-profile-request-failed',String(e?.name??'Error'));return problem(res,409,'refresh-required');}
+  }
   if(create||lobby){
    if(typeof bankBuilder!=='function'||typeof roomSecret!=='string'||roomSecret.length<32)return problem(res,503,'lobby-unavailable');
    let data;

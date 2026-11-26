@@ -776,6 +776,7 @@ jobs:
           install -m 644 tools/v132_engine/Wq150LobbyClient.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150LobbyClient.kt
           install -m 644 tools/v132_engine/Wq150ArenaEntry.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaEntry.kt
           install -m 644 tools/v132_engine/Wq150ArenaMatch.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaMatch.kt
+          install -m 644 tools/v132_engine/Wq150Profiles.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150Profiles.kt
           python3 tools/v132_engine/apply_v150_entry.py
           install -m 644 tools/v132_engine/Wq150LobbyClientTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150LobbyClientTest.kt
           python3 - <<'PY'

@@ -402,6 +402,10 @@
     "arenaV150Private": {
       ".read": false,
       ".write": false
+    },
+    "arenaV150Profiles": {
+      ".read": false,
+      ".write": false
     }
   }
 }

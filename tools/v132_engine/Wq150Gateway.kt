@@ -36,6 +36,12 @@ internal class Wq150Endpoint(raw:String) {
     fun matchUrl(id:String,commands:Boolean=false):URI=roomUrl("matches",id,commands)
     fun lobbyUrl(id:String,commands:Boolean=false):URI=roomUrl("lobbies",id,commands)
     fun createUrl():URI=origin.resolve("/v150/lobbies")
+    fun profileUrl(id:String,version:String?=null):URI {
+        val base=roomUrl("profiles",id,false)
+        if(version==null)return base
+        require(Regex("^[a-f0-9]{64}$").matches(version))
+        return URI(base.toString()+"?version="+version)
+    }
 }
 
 /** Stable request ID for safe retry. Never include a client actor or clock. */
@@ -94,6 +100,10 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
                 }
             }
         }
+    }
+    suspend fun profiles(room:String,version:String?):JSONObject=request(endpoint.profileUrl(room,version),null)
+    suspend fun publishPortrait(room:String,avatar:String,preview:String?){
+        request(endpoint.profileUrl(room),JSONObject().put("avatar",avatar).put("preview",preview?:JSONObject.NULL))
     }
     suspend fun view(room:String):JSONObject=matchView(request(endpoint.matchUrl(room),null))
     suspend fun send(room:String,command:Wq150Command):JSONObject=
