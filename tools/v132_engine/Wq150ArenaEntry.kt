@@ -61,7 +61,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     }
     MaterialTheme(colorScheme=Wq122Scheme){
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-            Wq122SettingsBackdrop(Modifier.matchParentSize())
+            Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
             Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding()
                 .verticalScroll(rememberScrollState()).padding(16.dp),verticalArrangement=Arrangement.spacedBy(12.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){

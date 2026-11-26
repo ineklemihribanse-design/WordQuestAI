@@ -59,7 +59,7 @@ export function applyCoop(state,cmd,now){
   if(s.mode==='double'&&s.confirmed.includes(p))fail('Already confirmed');
   if(s.mode==='double'){
    if(s.passes.includes(p))fail('Already passed');
-   s.passes.push(p);if(s.passes.length===2){next(s,i);}
+   s.passes.push(p);if(s.passes.length+s.confirmed.length===2){next(s,i);}
   }else next(s,i);
   s.stats[p].pass++;if(s.mode==='alternating')s.turn=other(s,p);
  }else if(cmd.type==='submit'){
@@ -70,6 +70,7 @@ export function applyCoop(state,cmd,now){
    if(s.mode==='double'){
     s.confirmed.push(p);
     if(s.confirmed.length===2)solve(s,i,[...s.confirmed]);
+    else if(s.confirmed.length+s.passes.length===2)next(s,i);
    }else solve(s,i,[p]);
    if(s.mode==='alternating')s.turn=other(s,p);
   }else{

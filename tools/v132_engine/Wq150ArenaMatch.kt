@@ -118,7 +118,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val eligible=when(kind){
         "duel" -> (mode=="speed"||game.optString("turn")==uid)&&uid !in attempted
         "quiz" -> (mode in listOf("speed","simultaneous")||game.optString("turn")==uid)&&mine?.optString("status")=="open"
-        "coop" -> (mode!="alternating"||game.optString("turn")==uid)&&uid !in game.strings("confirmed")&&uid !in game.strings("passes")
+        "coop" -> (mode!="alternating"||game.optString("turn")==uid)&&(mode!="double"||uid !in game.strings("confirmed")&&uid !in game.strings("passes"))
         "team" -> (mode=="speed"||game.optString("turn")==team)&&game.optJSONObject("activePlayers")?.optString(team)==uid&&team !in attempted
         else -> false
     }
@@ -126,12 +126,29 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val question=if(kind=="quiz")game.optJSONObject("question") else entry
     val prompt=question?.optString(if(kind=="quiz")"prompt" else "clue").orEmpty()
     val known=remember(game,kind,words){letters(game,kind,words)}
+    val currentCells=entry?.let(::wordCells).orEmpty()
+    val missing=currentCells.filterNot{it in known}
+    val totalLength=entry?.optInt("length",entry.optInt("letterCount"))?:0
     val hintBudget=when(kind){
         "quiz" -> mine?.optInt("hintsLeft")?:0
         "coop" -> (game.optInt("hints")-game.optInt("spent")).coerceAtLeast(0)
         else -> game.optInt("hintsLeft")
     }
     var draft by remember(room,index){mutableStateOf("")}
+    // Retain entered letters for cells that remain unfilled as hints arrive.
+    var previousMissing by remember(room,index){mutableStateOf(missing)}
+    LaunchedEffect(missing){
+        if(previousMissing!=missing){
+            val typed=previousMissing.zip(draft.map{it.toString()}).toMap()
+            draft=missing.mapNotNull{typed[it]}.joinToString("")
+            previousMissing=missing
+        }
+    }
+    val answerText=if(currentCells.isEmpty())draft else {
+        var at=0
+        currentCells.joinToString(""){c->known[c]?:draft.getOrNull(at++)?.toString().orEmpty()}
+    }
+    val answerComplete=if(currentCells.isEmpty())draft.length==totalLength else draft.length==missing.size
     var exit by remember(room){mutableStateOf(false)}
     var now by remember{mutableLongStateOf(System.currentTimeMillis())}
     LaunchedEffect(room){controller.poll()}
@@ -150,7 +167,9 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     }
     BackHandler{exit=true}
     MaterialTheme(colorScheme=Wq122Scheme){
-        Column(Modifier.fillMaxSize().background(Color(0xFF150B3E)).windowInsetsPadding(WindowInsets.safeDrawing)
+        Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+        Wq183ArenaBackdrop(Modifier.matchParentSize(),active=true)
+        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
             .imePadding().padding(10.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){
             Row(verticalAlignment=Alignment.CenterVertically){
                 TextButton(onClick={exit=true}){Text("‹ Geri",color=Wq122Gold)}
@@ -211,9 +230,10 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                         }else{
                             val length=entry?.optInt("length",entry.optInt("letterCount"))?:0
                             Text("Kelime "+(index+1)+" · "+length+" harf",color=Wq122Gold)
-                            OutlinedTextField(draft,{draft=it.take(80)},enabled=enabled,singleLine=true,
-                                label={Text("Cevabın")},modifier=Modifier.fillMaxWidth())
-                            Button(enabled=enabled&&draft.isNotBlank(),onClick={send("submit",answer=draft)},modifier=Modifier.fillMaxWidth()){Text("Gönder")}
+                            Text(answerText.ifBlank{"—"},color=Wq122Gold,fontWeight=FontWeight.Bold)
+                            OutlinedTextField(draft,{draft=it.filter{c->c.isLetter()}.uppercase(java.util.Locale.ROOT).take(if(currentCells.isEmpty())totalLength else missing.size)},enabled=enabled&&(!answerComplete||draft.isNotEmpty()),singleLine=true,
+                                label={Text("Eksik harfleri yaz")},modifier=Modifier.fillMaxWidth())
+                            Button(enabled=enabled&&answerComplete&&answerText.isNotBlank(),onClick={send("submit",answer=answerText)},modifier=Modifier.fillMaxWidth()){Text("Gönder")}
                         }
                         Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){
                             OutlinedButton(enabled=enabled,onClick={send("pass")}){Text("Pas")}
@@ -233,6 +253,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 remote.error?.let{Text(it,color=Color(0xFFFFB4B4))}
                 if(remote.pending!=null&&!remote.busy)TextButton(onClick={scope.launch{controller.retryPending()}}){Text("İşlemi tekrar dene")}
             }
+        }
         }
         if(paused&&!finished)AlertDialog(onDismissRequest={},title={Text("Oyuncu bağlantısı kesildi")},
             text={Text("Maç duraklatıldı. Tahta, puanlar ve süre korunuyor.")},confirmButton={})
