@@ -4,7 +4,7 @@ from pathlib import Path
 import hashlib
 main=Path("source/app/src/main")
 p=main/"java/com/kelimebulmacasi/a1"
-names={"PremiumOnlineScreen.kt","ArenaReferenceComponents.kt","ArenaV2Visuals.kt","ArenaBoardV2.kt","ArenaCrosswordTyping.kt","Wq186ArenaSocialHud.kt","Wq186ArenaFairPlay.kt"}
+names={"PremiumOnlineRoom.kt","PremiumOnlineScreen.kt","ArenaReferenceComponents.kt","ArenaV2Visuals.kt","ArenaBoardV2.kt","ArenaCrosswordTyping.kt","Wq186ArenaSocialHud.kt","Wq186ArenaFairPlay.kt"}
 protected={f:hashlib.sha256(f.read_bytes()).digest() for f in main.rglob("*") if f.is_file() and f.name not in names}
 out={}
 def once(s,a,b):
@@ -528,6 +528,144 @@ out["ArenaReferenceComponents.kt"]=s
 s=read("Wq186ArenaFairPlay.kt")
 s=once(s,'setOf("👏", "🔥", "🎉", "😄", "👍", "💪", "🤝", "🏆")','setOf("👏", "🔥", "🎉", "😄", "👍", "💪", "🤝", "🏆", "❤️", "😮")')
 out["Wq186ArenaFairPlay.kt"]=s
+
+# Server-owned connection snapshots: preserve the existing room/board across pauses.
+s=read("PremiumOnlineRoom.kt")
+s=once(s,'    val roundData: String = "",\n','''    val roundData: String = "",
+    val connection: Wq150ConnectionView = Wq150ConnectionView(),
+''')
+s=once(s,'                    childString("guestAvatar"), revision, childString("roundData"))','''                    childString("guestAvatar"), revision, childString("roundData"),
+                    Wq150ConnectionView.parse(snapshot.child("connectionV150").child("phase").getValue(String::class.java),
+                        snapshot.child("connectionV150").child("payload").getValue(String::class.java)))''')
+# Guard every entry point in addition to Firebase's authoritative write barrier.
+for signature in ("fun markSolved(index: Int)", "fun dontKnow(index: Int)",
+                  "fun syncFailedAttemptReveals()", "private fun checkForReveal(index: Int)",
+                  "private fun revealWord(index: Int)", "fun wrong(index: Int)",
+                  "fun answer(index: Int, choice: Int): Boolean", "fun useHint(index: Int)",
+                  "private fun passAfterAttempt(index: Int)", "fun submitWithRetry(index:Int,correct:Boolean)",
+                  "fun pass()", "fun passIfExpired()", "private fun renewOrPass(newUid: String)",
+                  "private fun changeTurn(m: PremiumOnlineMatch, newUid: String, onlyWhenExpired: Boolean)",
+                  "fun finish()"):
+    start=signature+" {"
+    s=once(s,start,start+'\n        if(match?.connection?.paused==true) return'+(' false' if signature.endswith('Boolean') else ''))
+s += """
+
+internal data class Wq150ConnectionView(
+    val paused:Boolean=false,val frozenQuestionMs:Long?=null,val since:Long=0L,
+    val graceUntil:Long=0L,val result:String="",val winner:String=""
+) {
+    companion object {
+        fun parse(phase:String?,payload:String?):Wq150ConnectionView {
+            if(phase==null)return Wq150ConnectionView()
+            return try {
+                val j=org.json.JSONObject(payload.orEmpty())
+                require(j.optString("phase")==phase)
+                val frozen=j.optJSONObject("frozen")
+                val players=j.optJSONArray("players")
+                var grace=0L
+                if(players!=null)for(i in 0 until players.length()){
+                    val p=players.getJSONObject(i)
+                    if(!p.optBoolean("connected")&&!p.optBoolean("removed")){
+                        val until=p.optLong("until",0L)
+                        if(until>0L && (grace==0L || until<grace))grace=until
+                    }
+                }
+                val result=j.optJSONObject("result")
+                Wq150ConnectionView(phase=="paused",
+                    frozen?.let{if(it.isNull("question"))null else it.optLong("question",0L).coerceAtLeast(0L)},
+                    j.optLong("now",0L),grace,result?.optString("kind").orEmpty(),
+                    result?.optString("winner").orEmpty())
+            }catch(_:Exception){
+                // Fail closed while the server-owned snapshot is incomplete.
+                Wq150ConnectionView(paused=phase!="finished")
+            }
+        }
+    }
+}
+"""
+out["PremiumOnlineRoom.kt"]=s
+s=out["PremiumOnlineScreen.kt"]
+s=once(s,'LaunchedEffect(match?.code, match?.phase, match?.turnUid, match?.turnUntil) {',
+'LaunchedEffect(match?.code, match?.phase, match?.turnUid, match?.turnUntil,match?.connection?.paused) {')
+s=once(s,'active != null && active.phase == "playing" && active.mode == "duel" &&',
+'active != null && active.phase == "playing" && !active.connection.paused && active.mode == "duel" &&')
+s=once(s,'if (latest.phase != "playing" || latest.turnUid != active.turnUid ||',
+'if (latest.phase != "playing" || latest.connection.paused || latest.turnUid != active.turnUid ||')
+s=once(s,'LaunchedEffect(match?.code, match?.unknownBy, match?.mistakesBy, match?.solvedBy, match?.replayBy)',
+'LaunchedEffect(match?.code, match?.unknownBy, match?.mistakesBy, match?.solvedBy, match?.replayBy,match?.connection?.paused)')
+s=once(s,'LaunchedEffect(match?.turnUid, match?.turnUntil) {',
+'LaunchedEffect(match?.turnUid) {')
+s=once(s,'    val keyboardIsOpen = WindowInsets.ime.getBottom(LocalDensity.current) > 0',
+'''    val connection=match.connection
+    val paused=connection.paused
+    val keyboardIsOpen = WindowInsets.ime.getBottom(LocalDensity.current) > 0''')
+s=once(s,'    val freeSkips = Wq186ArenaSkipNetwork.count(session,match.code,myUid)',
+'''    val freeSkips = Wq186ArenaSkipNetwork.count(session,match.code,myUid)
+    val quizDeadlines=remember(match.code,myUid){mutableStateMapOf<Int,Long>()}
+    var quizPauseAt by remember(match.code,myUid){mutableLongStateOf(0L)}
+    LaunchedEffect(paused,connection.since) {
+        if(paused && quizPauseAt==0L)
+            quizPauseAt=connection.since.takeIf{it>0L} ?: client.serverNow()
+        else if(!paused && quizPauseAt>0L) {
+            val resumed=connection.since.takeIf{it>=quizPauseAt} ?: client.serverNow()
+            val delta=(resumed-quizPauseAt).coerceAtLeast(0L)
+            quizDeadlines.keys.toList().forEach{key->quizDeadlines[key]=(quizDeadlines[key]?:0L)+delta}
+            quizPauseAt=0L
+        }
+    }
+    val quizClock=if(paused || quizPauseAt>0L)
+        quizPauseAt.takeIf{it>0L} ?: connection.since.takeIf{it>0L} ?: client.serverNow(wallTime)
+        else client.serverNow(wallTime)
+    if(paused && match.phase=="playing") AlertDialog(
+        onDismissRequest={}, title={Text("Oyuncu bağlantısı kesildi")},
+        text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+            Text("Maç duraklatıldı. Tahta, puanlar ve kalan süre korunuyor.")
+            val grace=((connection.graceUntil-client.serverNow(wallTime)+999L)/1000L).coerceAtLeast(0L)
+            Text(if(connection.graceUntil>0L && grace>0L)"Yeniden bağlanma süresi: "+grace+" sn"
+                else "Sunucu bağlantı durumunu doğruluyor…",fontWeight=FontWeight.Bold)
+        }},confirmButton={})
+''')
+s=once(s,'                    val quizDeadlines = remember(match.code, myUid) { mutableStateMapOf<Int, Long>() }\n',"")
+s=once(s,'quizDeadlines.getOrPut(index) { client.serverNow() + match.seconds * 1000L }',
+'quizDeadlines.getOrPut(index) { quizClock + match.seconds * 1000L }')
+s=once(s,'LaunchedEffect(match.code, index, quizDeadline, own.containsKey(index), match.phase) {',
+'LaunchedEffect(match.code, index, quizDeadline, own.containsKey(index), match.phase,paused,quizPauseAt) {')
+s=once(s,'if (quizDeadline > 0 && !own.containsKey(index)) {',
+'if (!paused && quizPauseAt==0L && quizDeadline > 0 && !own.containsKey(index)) {')
+s=s.replace('quizDeadline,client.serverNow(wallTime)','quizDeadline,quizClock').replace('quizDeadline, client.serverNow(wallTime)','quizDeadline, quizClock')
+s=once(s,'if(own[index]==null) {','if(!paused && quizPauseAt==0L && own[index]==null) {')
+s=once(s,'val countdown = if (match.seconds == 0) null else\n                    PremiumOnlineLimits.remainingSeconds(match.turnUntil, client.serverNow(wallTime))',
+'''val countdown = if (match.seconds == 0) null else if(paused)
+                    connection.frozenQuestionMs?.let{((it+999L)/1000L).toInt()}
+                    else PremiumOnlineLimits.remainingSeconds(match.turnUntil, client.serverNow(wallTime))''')
+s=s.replace('Wq179ArenaGameAudio(match.phase=="playing",','Wq179ArenaGameAudio(match.phase=="playing" && !paused,')
+s=once(s,'val canHint=match.rulesVersion>=2 && myTurn &&','val canHint=!paused && match.rulesVersion>=2 && myTurn &&')
+s=once(s,'val canAnswer=selected !in solved &&','val canAnswer=!paused && selected !in solved &&')
+s=once(s,'if (match.cooperative || (match.rulesVersion >= 2 && canAnswer) || (match.rulesVersion < 2 && !alreadyUnknown)) {',
+'if (!paused && (match.cooperative || (match.rulesVersion >= 2 && canAnswer) || (match.rulesVersion < 2 && !alreadyUnknown))) {')
+s=once(s,'if (match.cooperative) ArenaOutlineButton("BAŞKA KELİME SEÇ", {',
+'if (!paused && match.cooperative) ArenaOutlineButton("BAŞKA KELİME SEÇ", {')
+s=once(s,'if(match.phase=="playing") TextButton(onClick={cardSocial.finish()},',
+'if(match.phase=="playing" && !paused) TextButton(onClick={cardSocial.finish()},')
+s=once(s,'if (match.phase == "finished" && !match.cooperative && myScore > otherScore) {',
+'if (match.phase == "finished" && !match.cooperative && (if(connection.result=="forfeit")connection.winner==myUid else connection.result.isBlank() && myScore > otherScore)) {')
+s=once(s,'            Wq179ArenaGrandFinale(\n','            if(connection.result.isBlank()) Wq179ArenaGrandFinale(\n')
+s=once(s,'            val winnerName = when {\n','''            val winnerName = when {
+                connection.result=="forfeit" -> if(connection.winner==match.hostUid)hostName else guestName
+                connection.result=="incomplete" -> "ORTAK BULMACA TAMAMLANMADI"
+                connection.result=="no-contest" -> "SONUÇSUZ"
+''')
+s=once(s,'                ArenaBanner("YARIŞMA TAMAMLANDI", when {\n','''                ArenaBanner("YARIŞMA TAMAMLANDI", when {
+                    connection.result=="forfeit" -> if(connection.winner==myUid)"Hükmen kazandın!" else "Hükmen kaybettin."
+                    connection.result=="incomplete" -> "Ortak bulmaca tamamlanamadı."
+                    connection.result=="no-contest" -> "Maç sonuçsuz kaldı."
+''')
+out["PremiumOnlineScreen.kt"]=s
+s=out["Wq186ArenaSocialHud.kt"]
+s=once(s,'if (disconnected) Text(','if (disconnected && !match.connection.paused) Text(')
+s=once(s,'room,extra,myUid,opponentUid,match.phase,isHost,hostName,guestName,hostScore,guestScore,cardSocial)',
+'room,extra,myUid,opponentUid,if(match.connection.paused)"paused" else match.phase,isHost,hostName,guestName,hostScore,guestScore,cardSocial)')
+out["Wq186ArenaSocialHud.kt"]=s
 
 assert set(out)<=names
 for n,s in out.items(): (p/n).write_text(s)
