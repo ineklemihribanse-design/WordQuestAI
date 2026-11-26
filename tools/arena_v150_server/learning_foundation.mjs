@@ -6140,5 +6140,1484 @@ export const foundationQuestions = [
     ],
     "correct": 0,
     "explanation": "Yatırıma rağmen bazı bölgelerde erişim sorunu devam edebilir."
+  },
+  {
+    "id": "wq150_nov26_read5_1_1",
+    "family": "foundation_read5_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Lily, I'm at the supermarket. Dinner is in the oven. Please take the bread out of the bag. Dad.\n\nWhere is Dad?",
+    "options": [
+      "At the supermarket",
+      "At the bank",
+      "At school",
+      "At the bus stop",
+      "At the hospital"
+    ],
+    "correct": 0,
+    "explanation": "Baba markette olduğunu söylüyor."
+  },
+  {
+    "id": "wq150_nov26_read5_1_2",
+    "family": "foundation_read5_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Lily, I'm at the supermarket. Dinner is in the oven. Please take the bread out of the bag. Dad.\n\nWhere is dinner?",
+    "options": [
+      "In the oven",
+      "In the bag",
+      "On the table",
+      "In the fridge",
+      "In the car"
+    ],
+    "correct": 0,
+    "explanation": "Dinner is in the oven, akşam yemeği fırında demektir."
+  },
+  {
+    "id": "wq150_nov26_read5_1_3",
+    "family": "foundation_read5_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Lily, I'm at the supermarket. Dinner is in the oven. Please take the bread out of the bag. Dad.\n\nWhat should Lily take out of the bag?",
+    "options": [
+      "The bread",
+      "The dinner",
+      "The milk",
+      "The keys",
+      "The plates"
+    ],
+    "correct": 0,
+    "explanation": "Mesaj ekmeğin poşetten çıkarılmasını istiyor."
+  },
+  {
+    "id": "wq150_nov26_read5_2_1",
+    "family": "foundation_read5_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "The school shop sells pens for £1, notebooks for £2 and rulers for £3. It opens at eight and closes at four.\n\nHow much is a notebook?",
+    "options": [
+      "£2",
+      "£1",
+      "£3",
+      "£4",
+      "£8"
+    ],
+    "correct": 0,
+    "explanation": "Defterin fiyatı iki sterlin."
+  },
+  {
+    "id": "wq150_nov26_read5_2_2",
+    "family": "foundation_read5_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "The school shop sells pens for £1, notebooks for £2 and rulers for £3. It opens at eight and closes at four.\n\nWhat can you buy for £3?",
+    "options": [
+      "A ruler",
+      "A single pen",
+      "A single notebook",
+      "A school bag",
+      "A book"
+    ],
+    "correct": 0,
+    "explanation": "Metindeki üç sterlinlik ürün cetvel."
+  },
+  {
+    "id": "wq150_nov26_read5_2_3",
+    "family": "foundation_read5_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "The school shop sells pens for £1, notebooks for £2 and rulers for £3. It opens at eight and closes at four.\n\nWhen does the shop open?",
+    "options": [
+      "At eight",
+      "At one",
+      "At two",
+      "At three",
+      "At four"
+    ],
+    "correct": 0,
+    "explanation": "Opens at eight, saat sekizde açılır."
+  },
+  {
+    "id": "wq150_nov26_read5_3_1",
+    "family": "foundation_read5_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Mina lives with her mother and her little brother. Her mother works at a hospital. Mina goes to school by bus.\n\nWho is younger than Mina?",
+    "options": [
+      "Her brother",
+      "Her mother",
+      "Her teacher",
+      "Her aunt",
+      "Her grandmother"
+    ],
+    "correct": 0,
+    "explanation": "Little brother küçük erkek kardeş anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_read5_3_2",
+    "family": "foundation_read5_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Mina lives with her mother and her little brother. Her mother works at a hospital. Mina goes to school by bus.\n\nWhere does Mina's mother work?",
+    "options": [
+      "At a hospital",
+      "At a school",
+      "At a shop",
+      "At a station",
+      "At a library"
+    ],
+    "correct": 0,
+    "explanation": "Annesi hastanede çalışır."
+  },
+  {
+    "id": "wq150_nov26_read5_3_3",
+    "family": "foundation_read5_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Mina lives with her mother and her little brother. Her mother works at a hospital. Mina goes to school by bus.\n\nHow does Mina go to school?",
+    "options": [
+      "By bus",
+      "By bike",
+      "By car",
+      "By train",
+      "On foot"
+    ],
+    "correct": 0,
+    "explanation": "By bus, otobüsle demektir."
+  },
+  {
+    "id": "wq150_nov26_read5_4_1",
+    "family": "foundation_read5_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "On Saturday, Noah plays football at ten. He has lunch with his friends at twelve. In the afternoon, he visits his grandmother.\n\nWhat does Noah do at ten?",
+    "options": [
+      "Plays football",
+      "Has lunch",
+      "Visits his grandmother",
+      "Goes to bed",
+      "Reads a book"
+    ],
+    "correct": 0,
+    "explanation": "Saat onda futbol oynar."
+  },
+  {
+    "id": "wq150_nov26_read5_4_2",
+    "family": "foundation_read5_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "On Saturday, Noah plays football at ten. He has lunch with his friends at twelve. In the afternoon, he visits his grandmother.\n\nWho has lunch with Noah?",
+    "options": [
+      "His friends",
+      "His teachers",
+      "His grandmother",
+      "His parents",
+      "His neighbours"
+    ],
+    "correct": 0,
+    "explanation": "Öğle yemeğini arkadaşlarıyla yer."
+  },
+  {
+    "id": "wq150_nov26_read5_4_3",
+    "family": "foundation_read5_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "On Saturday, Noah plays football at ten. He has lunch with his friends at twelve. In the afternoon, he visits his grandmother.\n\nWhen does he visit his grandmother?",
+    "options": [
+      "In the afternoon",
+      "In the morning",
+      "At midnight",
+      "On Friday",
+      "On Sunday"
+    ],
+    "correct": 0,
+    "explanation": "Büyükannesini öğleden sonra ziyaret eder."
+  },
+  {
+    "id": "wq150_nov26_read5_5_1",
+    "family": "foundation_read5_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The town library is closed today. Please return books tomorrow between nine and five. You can read our books online today.\n\nCan you visit the library today?",
+    "options": [
+      "No, it is closed.",
+      "Yes, at nine.",
+      "Yes, at five.",
+      "Yes, after lunch.",
+      "Yes, before lunch."
+    ],
+    "correct": 0,
+    "explanation": "Kütüphane bugün kapalı."
+  },
+  {
+    "id": "wq150_nov26_read5_5_2",
+    "family": "foundation_read5_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The town library is closed today. Please return books tomorrow between nine and five. You can read our books online today.\n\nWhen can you return books?",
+    "options": [
+      "Tomorrow",
+      "Today at noon",
+      "Today at five",
+      "Next month only",
+      "Tonight"
+    ],
+    "correct": 0,
+    "explanation": "İade için yarın denmiş."
+  },
+  {
+    "id": "wq150_nov26_read5_5_3",
+    "family": "foundation_read5_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The town library is closed today. Please return books tomorrow between nine and five. You can read our books online today.\n\nWhat can you do today?",
+    "options": [
+      "Read books online.",
+      "Return books inside the library.",
+      "Visit the reading room.",
+      "Meet the librarian inside.",
+      "Borrow printed books at the desk."
+    ],
+    "correct": 0,
+    "explanation": "Duyuru bugün çevrim içi kitap okunabileceğini belirtiyor."
+  },
+  {
+    "id": "wq150_nov26_read5_6_1",
+    "family": "foundation_read5_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A message from the sports centre: Your swimming lesson on Thursday has moved from 6 p.m. to 7 p.m. The teacher and pool are the same. Please arrive ten minutes early.\n\nWhat has changed?",
+    "options": [
+      "The lesson time",
+      "The teacher",
+      "The pool",
+      "The day",
+      "The sport"
+    ],
+    "correct": 0,
+    "explanation": "Ders saati altıdan yediye alınmış."
+  },
+  {
+    "id": "wq150_nov26_read5_6_2",
+    "family": "foundation_read5_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A message from the sports centre: Your swimming lesson on Thursday has moved from 6 p.m. to 7 p.m. The teacher and pool are the same. Please arrive ten minutes early.\n\nWhen should students arrive?",
+    "options": [
+      "At 6:50 p.m.",
+      "At 5:50 p.m.",
+      "At 6 p.m.",
+      "At 7:10 p.m.",
+      "At 8 p.m."
+    ],
+    "correct": 0,
+    "explanation": "Yediye on dakika kala gelmeleri gerekiyor."
+  },
+  {
+    "id": "wq150_nov26_read5_6_3",
+    "family": "foundation_read5_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A message from the sports centre: Your swimming lesson on Thursday has moved from 6 p.m. to 7 p.m. The teacher and pool are the same. Please arrive ten minutes early.\n\nWhich detail remains unchanged?",
+    "options": [
+      "The teacher",
+      "The starting time",
+      "The arrival time",
+      "The previous timetable",
+      "The length of the wait"
+    ],
+    "correct": 0,
+    "explanation": "Öğretmen ve havuz aynı kalıyor."
+  },
+  {
+    "id": "wq150_nov26_read5_7_1",
+    "family": "foundation_read5_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hannah ordered a birthday cake for Saturday. On Friday, the bakery called to say that the chocolate cake was unavailable. Hannah chose a lemon cake instead, and the bakery agreed to deliver it for free.\n\nWhy did the bakery contact Hannah?",
+    "options": [
+      "Her original choice was unavailable.",
+      "Her delivery address was incorrect.",
+      "She had forgotten to pay.",
+      "The birthday was on the wrong day.",
+      "The bakery was closing permanently."
+    ],
+    "correct": 0,
+    "explanation": "İlk seçtiği çikolatalı pasta mevcut değildi."
+  },
+  {
+    "id": "wq150_nov26_read5_7_2",
+    "family": "foundation_read5_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hannah ordered a birthday cake for Saturday. On Friday, the bakery called to say that the chocolate cake was unavailable. Hannah chose a lemon cake instead, and the bakery agreed to deliver it for free.\n\nWhat did Hannah decide to do?",
+    "options": [
+      "Choose a different flavour.",
+      "Cancel the birthday party.",
+      "Collect a chocolate cake on Friday.",
+      "Buy two smaller cakes.",
+      "Change the delivery address."
+    ],
+    "correct": 0,
+    "explanation": "Limonlu pastayı seçti."
+  },
+  {
+    "id": "wq150_nov26_read5_7_3",
+    "family": "foundation_read5_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hannah ordered a birthday cake for Saturday. On Friday, the bakery called to say that the chocolate cake was unavailable. Hannah chose a lemon cake instead, and the bakery agreed to deliver it for free.\n\nWhat did the bakery offer?",
+    "options": [
+      "Delivery without an extra charge",
+      "A second cake at half price",
+      "A free birthday gift",
+      "A lesson in cake making",
+      "A chocolate cake for Sunday"
+    ],
+    "correct": 0,
+    "explanation": "Ücretsiz teslimat teklif edildi."
+  },
+  {
+    "id": "wq150_nov26_read5_8_1",
+    "family": "foundation_read5_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Eric planned to cycle to the coast with his cousin. The weather forecast warned of heavy rain, so they took the train instead. They rented bicycles when the weather improved and rode along the seafront.\n\nWhy did they change their travel plans?",
+    "options": [
+      "Heavy rain was expected.",
+      "Their bicycles were stolen.",
+      "The train was cancelled.",
+      "The coast was closed.",
+      "Their cousin was ill."
+    ],
+    "correct": 0,
+    "explanation": "Şiddetli yağmur beklendiği için trenle gittiler."
+  },
+  {
+    "id": "wq150_nov26_read5_8_2",
+    "family": "foundation_read5_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Eric planned to cycle to the coast with his cousin. The weather forecast warned of heavy rain, so they took the train instead. They rented bicycles when the weather improved and rode along the seafront.\n\nHow did they travel to the coast?",
+    "options": [
+      "By train",
+      "By rented bicycle",
+      "By boat",
+      "By bus",
+      "By taxi"
+    ],
+    "correct": 0,
+    "explanation": "Sahile trenle ulaştılar."
+  },
+  {
+    "id": "wq150_nov26_read5_8_3",
+    "family": "foundation_read5_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Eric planned to cycle to the coast with his cousin. The weather forecast warned of heavy rain, so they took the train instead. They rented bicycles when the weather improved and rode along the seafront.\n\nWhen did they rent bicycles?",
+    "options": [
+      "After the weather improved.",
+      "Before leaving home.",
+      "While travelling on the train.",
+      "Before hearing the forecast.",
+      "After returning home."
+    ],
+    "correct": 0,
+    "explanation": "Hava düzeldikten sonra bisiklet kiraladılar."
+  },
+  {
+    "id": "wq150_nov26_read5_9_1",
+    "family": "foundation_read5_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "An apartment listing says that rent includes water and heating but not electricity. The apartment has one bedroom and is a short walk from a bus stop. Pets are not allowed.\n\nWhich bill must tenants pay separately?",
+    "options": [
+      "Electricity",
+      "Water",
+      "Heating",
+      "All three bills",
+      "None of the bills"
+    ],
+    "correct": 0,
+    "explanation": "Elektrik kiraya dahil değil."
+  },
+  {
+    "id": "wq150_nov26_read5_9_2",
+    "family": "foundation_read5_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "An apartment listing says that rent includes water and heating but not electricity. The apartment has one bedroom and is a short walk from a bus stop. Pets are not allowed.\n\nWhat is near the apartment?",
+    "options": [
+      "A bus stop",
+      "A train station",
+      "A shopping centre",
+      "A university",
+      "A swimming pool"
+    ],
+    "correct": 0,
+    "explanation": "Otobüs durağı kısa yürüme mesafesinde."
+  },
+  {
+    "id": "wq150_nov26_read5_9_3",
+    "family": "foundation_read5_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "An apartment listing says that rent includes water and heating but not electricity. The apartment has one bedroom and is a short walk from a bus stop. Pets are not allowed.\n\nWho would need to look for a different apartment?",
+    "options": [
+      "Someone who wants to keep a dog",
+      "Someone who travels by bus",
+      "Someone who needs one bedroom",
+      "Someone who wants heating included",
+      "Someone who lives alone"
+    ],
+    "correct": 0,
+    "explanation": "Evcil hayvana izin verilmiyor."
+  },
+  {
+    "id": "wq150_nov26_read5_10_1",
+    "family": "foundation_read5_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new language club meets every Tuesday evening. The first meeting is free, but later meetings cost £4 each. Participants do not need to bring textbooks. The club provides conversation cards and other materials.\n\nHow often does the club meet?",
+    "options": [
+      "Once a week",
+      "Every evening",
+      "Twice a week",
+      "Once a month",
+      "Every weekend"
+    ],
+    "correct": 0,
+    "explanation": "Her salı buluşması haftada bir anlamına gelir."
+  },
+  {
+    "id": "wq150_nov26_read5_10_2",
+    "family": "foundation_read5_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new language club meets every Tuesday evening. The first meeting is free, but later meetings cost £4 each. Participants do not need to bring textbooks. The club provides conversation cards and other materials.\n\nWhat is special about the first meeting?",
+    "options": [
+      "There is no charge.",
+      "It takes place online.",
+      "It lasts only ten minutes.",
+      "It is held on a weekend.",
+      "Only teachers can attend."
+    ],
+    "correct": 0,
+    "explanation": "İlk buluşma ücretsizdir."
+  },
+  {
+    "id": "wq150_nov26_read5_10_3",
+    "family": "foundation_read5_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A new language club meets every Tuesday evening. The first meeting is free, but later meetings cost £4 each. Participants do not need to bring textbooks. The club provides conversation cards and other materials.\n\nWhat does the club provide?",
+    "options": [
+      "Learning materials",
+      "Free textbooks to keep",
+      "Transport home",
+      "Evening meals",
+      "Certificates for every meeting"
+    ],
+    "correct": 0,
+    "explanation": "Konuşma kartları ve başka materyaller sağlanır."
+  },
+  {
+    "id": "wq150_nov26_read5_11_1",
+    "family": "foundation_read5_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Jacob bought a ticket for an evening concert. When he checked his email, he noticed that he had selected the wrong date. The ticket office allowed him to exchange the ticket because there were still seats available on the correct day.\n\nWhat mistake did Jacob make?",
+    "options": [
+      "He booked the wrong date.",
+      "He paid the wrong price.",
+      "He entered the wrong email address.",
+      "He selected the wrong seat type.",
+      "He bought a ticket for a film."
+    ],
+    "correct": 0,
+    "explanation": "Yanlış tarih seçmiş."
+  },
+  {
+    "id": "wq150_nov26_read5_11_2",
+    "family": "foundation_read5_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Jacob bought a ticket for an evening concert. When he checked his email, he noticed that he had selected the wrong date. The ticket office allowed him to exchange the ticket because there were still seats available on the correct day.\n\nWhy was an exchange possible?",
+    "options": [
+      "There were seats available on the correct day.",
+      "The concert had been cancelled.",
+      "Jacob had lost his original ticket.",
+      "The ticket office had changed its opening hours.",
+      "The original ticket was free."
+    ],
+    "correct": 0,
+    "explanation": "Doğru günde boş yer olması değişimi mümkün kıldı."
+  },
+  {
+    "id": "wq150_nov26_read5_11_3",
+    "family": "foundation_read5_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Jacob bought a ticket for an evening concert. When he checked his email, he noticed that he had selected the wrong date. The ticket office allowed him to exchange the ticket because there were still seats available on the correct day.\n\nWhat does 'exchange' mean here?",
+    "options": [
+      "Change one ticket for another.",
+      "Sell a ticket to a friend.",
+      "Print an extra copy.",
+      "Pay for a second concert.",
+      "Reserve a seat without a ticket."
+    ],
+    "correct": 0,
+    "explanation": "Exchange burada bir bileti başka biletle değiştirmektir."
+  },
+  {
+    "id": "wq150_nov26_read5_12_1",
+    "family": "foundation_read5_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At a weekend market, Rosa sells homemade soap. She uses simple paper packaging rather than plastic. Customers who bring back an empty soap box receive a small discount on their next purchase.\n\nWhat does Rosa sell?",
+    "options": [
+      "Homemade soap",
+      "Plastic bags",
+      "Paper notebooks",
+      "Fresh vegetables",
+      "Empty bottles"
+    ],
+    "correct": 0,
+    "explanation": "Rosa ev yapımı sabun satıyor."
+  },
+  {
+    "id": "wq150_nov26_read5_12_2",
+    "family": "foundation_read5_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At a weekend market, Rosa sells homemade soap. She uses simple paper packaging rather than plastic. Customers who bring back an empty soap box receive a small discount on their next purchase.\n\nWhat is her packaging made of?",
+    "options": [
+      "Paper",
+      "Plastic",
+      "Metal",
+      "Glass",
+      "Wood"
+    ],
+    "correct": 0,
+    "explanation": "Ambalajda plastik yerine kâğıt kullanıyor."
+  },
+  {
+    "id": "wq150_nov26_read5_12_3",
+    "family": "foundation_read5_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At a weekend market, Rosa sells homemade soap. She uses simple paper packaging rather than plastic. Customers who bring back an empty soap box receive a small discount on their next purchase.\n\nHow can customers get a discount?",
+    "options": [
+      "By returning an empty soap box",
+      "By buying soap on Monday",
+      "By bringing their own bag",
+      "By paying in cash",
+      "By ordering online"
+    ],
+    "correct": 0,
+    "explanation": "Boş sabun kutusunu getirince sonraki alışverişte indirim alıyorlar."
+  },
+  {
+    "id": "wq150_nov26_read5_13_1",
+    "family": "foundation_read5_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A travel website offers a three-hour walking tour of the old town. The price includes a guide and entrance to one museum. Visitors should bring comfortable shoes and their own water. The tour takes place even in light rain.\n\nWhat is included in the price?",
+    "options": [
+      "Entrance to one museum",
+      "A pair of walking shoes",
+      "A bottle of water",
+      "Lunch at a restaurant",
+      "A taxi ride"
+    ],
+    "correct": 0,
+    "explanation": "Bir müzeye giriş ve rehber fiyata dahil."
+  },
+  {
+    "id": "wq150_nov26_read5_13_2",
+    "family": "foundation_read5_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A travel website offers a three-hour walking tour of the old town. The price includes a guide and entrance to one museum. Visitors should bring comfortable shoes and their own water. The tour takes place even in light rain.\n\nWhat should visitors bring?",
+    "options": [
+      "Their own water",
+      "A museum guide",
+      "A printed city map",
+      "A bicycle",
+      "A travel pillow"
+    ],
+    "correct": 0,
+    "explanation": "Kendi sularını getirmeleri gerekiyor."
+  },
+  {
+    "id": "wq150_nov26_read5_13_3",
+    "family": "foundation_read5_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A travel website offers a three-hour walking tour of the old town. The price includes a guide and entrance to one museum. Visitors should bring comfortable shoes and their own water. The tour takes place even in light rain.\n\nWhat happens if it rains lightly?",
+    "options": [
+      "The tour still takes place.",
+      "The tour becomes shorter.",
+      "Visitors receive a refund.",
+      "The tour moves to another day.",
+      "The tour changes into a bus trip."
+    ],
+    "correct": 0,
+    "explanation": "Even in light rain, hafif yağmurda bile tur gerçekleşir."
+  },
+  {
+    "id": "wq150_nov26_read5_14_1",
+    "family": "foundation_read5_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small company allowed staff to work from home on Wednesdays. After three months, a survey showed that most employees enjoyed the flexibility, but some found it difficult to discuss urgent matters with colleagues. The company introduced a shared online schedule indicating when each employee was available for quick meetings.\n\nWhat drawback was identified?",
+    "options": [
+      "Urgent communication could be difficult.",
+      "Employees refused to work on Wednesdays.",
+      "The company lost access to its offices.",
+      "Most employees disliked the flexibility.",
+      "Staff had to buy new computers every week."
+    ],
+    "correct": 0,
+    "explanation": "Acil konuları görüşmek zorlaşmıştı."
+  },
+  {
+    "id": "wq150_nov26_read5_14_2",
+    "family": "foundation_read5_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small company allowed staff to work from home on Wednesdays. After three months, a survey showed that most employees enjoyed the flexibility, but some found it difficult to discuss urgent matters with colleagues. The company introduced a shared online schedule indicating when each employee was available for quick meetings.\n\nHow did the company address the problem?",
+    "options": [
+      "By introducing a shared availability schedule",
+      "By ending all remote work",
+      "By requiring longer office hours",
+      "By replacing meetings with printed reports",
+      "By reducing the number of employees"
+    ],
+    "correct": 0,
+    "explanation": "Ortak uygunluk çizelgesi oluşturuldu."
+  },
+  {
+    "id": "wq150_nov26_read5_14_3",
+    "family": "foundation_read5_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small company allowed staff to work from home on Wednesdays. After three months, a survey showed that most employees enjoyed the flexibility, but some found it difficult to discuss urgent matters with colleagues. The company introduced a shared online schedule indicating when each employee was available for quick meetings.\n\nWhat does the passage suggest about the company?",
+    "options": [
+      "It tried to retain flexibility while improving coordination.",
+      "It considered remote work impossible.",
+      "It ignored all employee feedback.",
+      "It made the change without reviewing the results.",
+      "It preferred to eliminate collaboration."
+    ],
+    "correct": 0,
+    "explanation": "Esnekliği sürdürürken koordinasyonu iyileştirmeyi amaçladı."
+  },
+  {
+    "id": "wq150_nov26_read5_15_1",
+    "family": "foundation_read5_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "When an old cinema was renovated, the owners kept its original entrance and seating layout but installed modern sound equipment. They hoped to attract younger audiences without losing the building's character. A local history group supported the project because the renovation preserved features that were important to the town's identity.\n\nWhat was modernised?",
+    "options": [
+      "The sound equipment",
+      "The original entrance",
+      "The seating layout",
+      "The building's location",
+      "The town's street plan"
+    ],
+    "correct": 0,
+    "explanation": "Ses donanımı yenilendi."
+  },
+  {
+    "id": "wq150_nov26_read5_15_2",
+    "family": "foundation_read5_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "When an old cinema was renovated, the owners kept its original entrance and seating layout but installed modern sound equipment. They hoped to attract younger audiences without losing the building's character. A local history group supported the project because the renovation preserved features that were important to the town's identity.\n\nWhy did the history group support the project?",
+    "options": [
+      "Important historical features were retained.",
+      "All old features were removed.",
+      "The cinema became a museum.",
+      "Tickets were made free.",
+      "The town built a second cinema."
+    ],
+    "correct": 0,
+    "explanation": "Tarihi açıdan önemli özellikler korundu."
+  },
+  {
+    "id": "wq150_nov26_read5_15_3",
+    "family": "foundation_read5_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "When an old cinema was renovated, the owners kept its original entrance and seating layout but installed modern sound equipment. They hoped to attract younger audiences without losing the building's character. A local history group supported the project because the renovation preserved features that were important to the town's identity.\n\nWhich statement best describes the renovation?",
+    "options": [
+      "It combined modern technology with historical preservation.",
+      "It aimed to recreate the cinema in a different town.",
+      "It focused entirely on reducing ticket prices.",
+      "It involved replacing every original feature.",
+      "It prevented younger people from visiting."
+    ],
+    "correct": 0,
+    "explanation": "Yenileme modern teknolojiyle tarihi korumayı birleştirdi."
+  },
+  {
+    "id": "wq150_nov26_read5_16_1",
+    "family": "foundation_read5_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a deposit on reusable cups sold at outdoor events. Customers received the deposit back when they returned the cup. At first, some people complained about the higher initial price. Organisers displayed clearer signs explaining the refund, and the proportion of cups returned increased.\n\nWhat encouraged customers to return cups?",
+    "options": [
+      "A refundable deposit",
+      "A ban on drinking outdoors",
+      "Free drinks for every visitor",
+      "A discount on event tickets",
+      "A competition between sellers"
+    ],
+    "correct": 0,
+    "explanation": "İade edilebilir depozito bardakların geri getirilmesini teşvik etti."
+  },
+  {
+    "id": "wq150_nov26_read5_16_2",
+    "family": "foundation_read5_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a deposit on reusable cups sold at outdoor events. Customers received the deposit back when they returned the cup. At first, some people complained about the higher initial price. Organisers displayed clearer signs explaining the refund, and the proportion of cups returned increased.\n\nWhy were clearer signs introduced?",
+    "options": [
+      "To explain the refund system better",
+      "To announce new opening hours",
+      "To advertise more expensive cups",
+      "To explain why cups could not be returned",
+      "To list upcoming concerts"
+    ],
+    "correct": 0,
+    "explanation": "İade sistemi daha anlaşılır hale getirildi."
+  },
+  {
+    "id": "wq150_nov26_read5_16_3",
+    "family": "foundation_read5_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a deposit on reusable cups sold at outdoor events. Customers received the deposit back when they returned the cup. At first, some people complained about the higher initial price. Organisers displayed clearer signs explaining the refund, and the proportion of cups returned increased.\n\nWhat happened after the signs were improved?",
+    "options": [
+      "A greater share of cups was returned.",
+      "All customers stopped attending events.",
+      "The deposit was abolished.",
+      "The initial price doubled.",
+      "Reusable cups were replaced with glass bottles."
+    ],
+    "correct": 0,
+    "explanation": "İade edilen bardakların oranı arttı."
+  },
+  {
+    "id": "wq150_nov26_read5_17_1",
+    "family": "foundation_read5_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of neighbours wanted to reduce food waste. They created an online group where members could offer unwanted food before it expired. The group agreed that opened products requiring refrigeration should not be shared. Members found that the service worked best when offers included clear collection times.\n\nWhat was the purpose of the online group?",
+    "options": [
+      "To share surplus food before it went to waste",
+      "To sell restaurant meals at full price",
+      "To organise cooking competitions",
+      "To provide refrigerators to every household",
+      "To deliver groceries from supermarkets"
+    ],
+    "correct": 0,
+    "explanation": "Fazla gıdanın israf olmadan paylaşılması amaçlandı."
+  },
+  {
+    "id": "wq150_nov26_read5_17_2",
+    "family": "foundation_read5_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of neighbours wanted to reduce food waste. They created an online group where members could offer unwanted food before it expired. The group agreed that opened products requiring refrigeration should not be shared. Members found that the service worked best when offers included clear collection times.\n\nWhat restriction did the group establish?",
+    "options": [
+      "Certain opened refrigerated products could not be shared.",
+      "Food could be collected only on Sundays.",
+      "Members had to buy new packaging.",
+      "Every offer had to contain fresh fruit.",
+      "Only restaurant owners could participate."
+    ],
+    "correct": 0,
+    "explanation": "Soğukta tutulması gereken açılmış ürünlerin paylaşılması yasaklandı."
+  },
+  {
+    "id": "wq150_nov26_read5_17_3",
+    "family": "foundation_read5_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of neighbours wanted to reduce food waste. They created an online group where members could offer unwanted food before it expired. The group agreed that opened products requiring refrigeration should not be shared. Members found that the service worked best when offers included clear collection times.\n\nWhat helped the service operate effectively?",
+    "options": [
+      "Clear collection times",
+      "Longer descriptions of recipes",
+      "Higher membership fees",
+      "Removing all collection arrangements",
+      "Sharing only imported foods"
+    ],
+    "correct": 0,
+    "explanation": "Teslim alma saatlerinin açık olması işleri kolaylaştırdı."
+  },
+  {
+    "id": "wq150_nov26_read5_18_1",
+    "family": "foundation_read5_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A school replaced its traditional sports day with a wider range of activities, including dancing, walking challenges and team games. Teachers wanted students with different interests and abilities to participate. Attendance improved, although some students missed the competitive races that had been part of the old event.\n\nWhat was the main reason for changing the event?",
+    "options": [
+      "To encourage a broader range of students to participate",
+      "To remove all physical activity from school",
+      "To shorten the school year",
+      "To select professional athletes",
+      "To reduce the number of teachers"
+    ],
+    "correct": 0,
+    "explanation": "Farklı ilgi ve yeteneklere sahip öğrencilerin katılımı hedeflendi."
+  },
+  {
+    "id": "wq150_nov26_read5_18_2",
+    "family": "foundation_read5_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A school replaced its traditional sports day with a wider range of activities, including dancing, walking challenges and team games. Teachers wanted students with different interests and abilities to participate. Attendance improved, although some students missed the competitive races that had been part of the old event.\n\nWhat did some students miss?",
+    "options": [
+      "The competitive races",
+      "The walking challenges",
+      "The dancing sessions",
+      "The team games",
+      "The longer school lessons"
+    ],
+    "correct": 0,
+    "explanation": "Bazı öğrenciler eski yarışları özledi."
+  },
+  {
+    "id": "wq150_nov26_read5_18_3",
+    "family": "foundation_read5_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A school replaced its traditional sports day with a wider range of activities, including dancing, walking challenges and team games. Teachers wanted students with different interests and abilities to participate. Attendance improved, although some students missed the competitive races that had been part of the old event.\n\nWhich description fits the outcome?",
+    "options": [
+      "Participation improved, but not everyone preferred the new format.",
+      "Participation declined because all races were removed.",
+      "Every student supported the new event.",
+      "The school cancelled sports activities permanently.",
+      "The new format attracted only experienced athletes."
+    ],
+    "correct": 0,
+    "explanation": "Katılım arttı ama herkes yeni biçimi tercih etmedi."
+  },
+  {
+    "id": "wq150_nov26_read5_19_1",
+    "family": "foundation_read5_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A coffee shop began offering a discount to customers who brought their own cups. The owner expected disposable cup use to decrease immediately. However, many regular customers forgot their reusable cups. The shop placed a reminder near the entrance and began selling inexpensive reusable cups. Disposable cup use gradually fell.\n\nWhy was the initial effect limited?",
+    "options": [
+      "Customers often forgot to bring reusable cups.",
+      "The discount was available only to new customers.",
+      "The shop refused to accept reusable cups.",
+      "Disposable cups became unavailable.",
+      "The shop stopped selling coffee."
+    ],
+    "correct": 0,
+    "explanation": "Düzenli müşteriler yeniden kullanılabilir bardaklarını unutuyordu."
+  },
+  {
+    "id": "wq150_nov26_read5_19_2",
+    "family": "foundation_read5_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A coffee shop began offering a discount to customers who brought their own cups. The owner expected disposable cup use to decrease immediately. However, many regular customers forgot their reusable cups. The shop placed a reminder near the entrance and began selling inexpensive reusable cups. Disposable cup use gradually fell.\n\nWhat additional action did the shop take?",
+    "options": [
+      "It displayed a reminder and sold reusable cups.",
+      "It increased the price of every drink.",
+      "It banned all customers without cups.",
+      "It replaced coffee with bottled water.",
+      "It removed the discount permanently."
+    ],
+    "correct": 0,
+    "explanation": "Girişe hatırlatma konuldu ve uygun fiyatlı bardak satıldı."
+  },
+  {
+    "id": "wq150_nov26_read5_19_3",
+    "family": "foundation_read5_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A coffee shop began offering a discount to customers who brought their own cups. The owner expected disposable cup use to decrease immediately. However, many regular customers forgot their reusable cups. The shop placed a reminder near the entrance and began selling inexpensive reusable cups. Disposable cup use gradually fell.\n\nWhat can be inferred about behaviour change?",
+    "options": [
+      "Practical reminders can help people adopt a new habit.",
+      "A discount always changes behaviour immediately.",
+      "Regular customers never change their habits.",
+      "Selling reusable items necessarily increases waste.",
+      "Price is the only factor that influences decisions."
+    ],
+    "correct": 0,
+    "explanation": "Hatırlatmalar ve erişim kolaylığı alışkanlık edinmeyi destekleyebilir."
+  },
+  {
+    "id": "wq150_nov26_read5_20_1",
+    "family": "foundation_read5_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional bus operator introduced an app that displayed the estimated arrival time of each bus. Passengers appreciated knowing when to leave home, but the app occasionally showed incorrect times in areas with poor mobile reception. The company kept printed timetables available while working to improve the tracking system.\n\nWhat was the main advantage of the app?",
+    "options": [
+      "Passengers could plan when to leave home.",
+      "All buses began arriving earlier.",
+      "Tickets became cheaper automatically.",
+      "Passengers could reserve every seat.",
+      "The company stopped operating buses in rural areas."
+    ],
+    "correct": 0,
+    "explanation": "Yolcular evden ne zaman çıkacaklarını daha iyi planladı."
+  },
+  {
+    "id": "wq150_nov26_read5_20_2",
+    "family": "foundation_read5_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional bus operator introduced an app that displayed the estimated arrival time of each bus. Passengers appreciated knowing when to leave home, but the app occasionally showed incorrect times in areas with poor mobile reception. The company kept printed timetables available while working to improve the tracking system.\n\nWhen did incorrect times sometimes appear?",
+    "options": [
+      "In areas with poor mobile reception",
+      "Whenever buses were full",
+      "Only during summer",
+      "When passengers bought paper tickets",
+      "Only at the main station"
+    ],
+    "correct": 0,
+    "explanation": "Zayıf mobil bağlantı olan bölgelerde sorun yaşandı."
+  },
+  {
+    "id": "wq150_nov26_read5_20_3",
+    "family": "foundation_read5_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional bus operator introduced an app that displayed the estimated arrival time of each bus. Passengers appreciated knowing when to leave home, but the app occasionally showed incorrect times in areas with poor mobile reception. The company kept printed timetables available while working to improve the tracking system.\n\nWhy were printed timetables retained?",
+    "options": [
+      "They offered an alternative while tracking was improved.",
+      "They provided live bus locations more accurately.",
+      "The company had abandoned the app.",
+      "Passengers were forbidden to use smartphones.",
+      "The app had never been released."
+    ],
+    "correct": 0,
+    "explanation": "Takip sistemi iyileştirilirken alternatif bilgi kaynağı korundu."
+  },
+  {
+    "id": "wq150_nov26_read5_21_1",
+    "family": "foundation_read5_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bookshop organised evening talks with local authors. Initially, tickets were free, but visitors often reserved places and failed to attend. The owner introduced a small refundable booking fee. Attendance became more predictable, making it easier to arrange seating and refreshments.\n\nWhat problem did the owner face?",
+    "options": [
+      "Reserved places were frequently left empty.",
+      "Authors refused to give talks.",
+      "The shop had too many refreshments.",
+      "Books were too expensive to buy.",
+      "Visitors arrived before the shop opened."
+    ],
+    "correct": 0,
+    "explanation": "Rezervasyon yapanlar sık sık gelmiyordu."
+  },
+  {
+    "id": "wq150_nov26_read5_21_2",
+    "family": "foundation_read5_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bookshop organised evening talks with local authors. Initially, tickets were free, but visitors often reserved places and failed to attend. The owner introduced a small refundable booking fee. Attendance became more predictable, making it easier to arrange seating and refreshments.\n\nWhat change was introduced?",
+    "options": [
+      "A small booking fee that could be refunded",
+      "A higher price for every book",
+      "A ban on reservations",
+      "A requirement to buy a book",
+      "A shorter opening schedule"
+    ],
+    "correct": 0,
+    "explanation": "Küçük ve iade edilebilir rezervasyon ücreti getirildi."
+  },
+  {
+    "id": "wq150_nov26_read5_21_3",
+    "family": "foundation_read5_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A bookshop organised evening talks with local authors. Initially, tickets were free, but visitors often reserved places and failed to attend. The owner introduced a small refundable booking fee. Attendance became more predictable, making it easier to arrange seating and refreshments.\n\nWhat was the practical benefit?",
+    "options": [
+      "The shop could plan seating and refreshments more easily.",
+      "All talks became longer.",
+      "Every visitor bought a book.",
+      "The shop no longer needed seating.",
+      "Authors stopped travelling to the shop."
+    ],
+    "correct": 0,
+    "explanation": "Katılım daha öngörülebilir olunca hazırlıklar kolaylaştı."
+  },
+  {
+    "id": "wq150_nov26_read5_22_1",
+    "family": "foundation_read5_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional museum introduced free admission to attract visitors who had previously considered the entrance fee a barrier. Overall attendance rose, but the proportion of visitors from low-income neighbourhoods changed only slightly. A follow-up survey suggested that transport costs and unfamiliarity with the museum remained obstacles. The museum subsequently considered community partnerships and travel support.\n\nWhy was the policy only partly successful?",
+    "options": [
+      "Higher attendance did not substantially change the intended visitor mix.",
+      "The museum attracted fewer visitors overall.",
+      "The entrance fee was increased rather than removed.",
+      "Low-income visitors were prohibited from entering.",
+      "The museum stopped collecting attendance data."
+    ],
+    "correct": 0,
+    "explanation": "Toplam katılım artsa da hedeflenen grubun oranı çok az değişti."
+  },
+  {
+    "id": "wq150_nov26_read5_22_2",
+    "family": "foundation_read5_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional museum introduced free admission to attract visitors who had previously considered the entrance fee a barrier. Overall attendance rose, but the proportion of visitors from low-income neighbourhoods changed only slightly. A follow-up survey suggested that transport costs and unfamiliarity with the museum remained obstacles. The museum subsequently considered community partnerships and travel support.\n\nWhat did the follow-up survey reveal?",
+    "options": [
+      "Barriers other than the admission fee remained.",
+      "All visitors preferred paying an entrance fee.",
+      "Transport had become free across the region.",
+      "The museum was already familiar to every resident.",
+      "Community partnerships had caused attendance to fall."
+    ],
+    "correct": 0,
+    "explanation": "Ulaşım maliyetleri ve aşinalık eksikliği devam ediyordu."
+  },
+  {
+    "id": "wq150_nov26_read5_22_3",
+    "family": "foundation_read5_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional museum introduced free admission to attract visitors who had previously considered the entrance fee a barrier. Overall attendance rose, but the proportion of visitors from low-income neighbourhoods changed only slightly. A follow-up survey suggested that transport costs and unfamiliarity with the museum remained obstacles. The museum subsequently considered community partnerships and travel support.\n\nWhat broader lesson is supported by the passage?",
+    "options": [
+      "Removing one obstacle may be insufficient to ensure access.",
+      "Free admission is always ineffective.",
+      "Visitor numbers should never be measured.",
+      "Access depends exclusively on transport costs.",
+      "Museums cannot attract new audiences."
+    ],
+    "correct": 0,
+    "explanation": "Tek bir engelin kaldırılması erişim için yeterli olmayabilir."
+  },
+  {
+    "id": "wq150_nov26_read5_23_1",
+    "family": "foundation_read5_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A factory replaced several machines with energy-efficient models. Electricity consumption per unit produced fell considerably. Nevertheless, total consumption remained almost unchanged because production increased during the same period. Managers began reporting both energy intensity and absolute consumption to distinguish improvements in efficiency from reductions in overall demand.\n\nWhy did total electricity consumption remain stable?",
+    "options": [
+      "Production growth offset the efficiency gains.",
+      "The replacement machines used more energy per unit.",
+      "The factory stopped producing goods.",
+      "Managers failed to record electricity consumption.",
+      "The old machines continued running at full capacity."
+    ],
+    "correct": 0,
+    "explanation": "Üretim artışı birim başına enerji tasarrufunu dengeledi."
+  },
+  {
+    "id": "wq150_nov26_read5_23_2",
+    "family": "foundation_read5_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A factory replaced several machines with energy-efficient models. Electricity consumption per unit produced fell considerably. Nevertheless, total consumption remained almost unchanged because production increased during the same period. Managers began reporting both energy intensity and absolute consumption to distinguish improvements in efficiency from reductions in overall demand.\n\nWhich measure improved substantially?",
+    "options": [
+      "Electricity consumption per unit produced",
+      "The factory's absolute electricity savings",
+      "The reduction in production volume",
+      "The number of unused machines",
+      "The total hours without electricity"
+    ],
+    "correct": 0,
+    "explanation": "Ürün başına enerji tüketimi düştü."
+  },
+  {
+    "id": "wq150_nov26_read5_23_3",
+    "family": "foundation_read5_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A factory replaced several machines with energy-efficient models. Electricity consumption per unit produced fell considerably. Nevertheless, total consumption remained almost unchanged because production increased during the same period. Managers began reporting both energy intensity and absolute consumption to distinguish improvements in efficiency from reductions in overall demand.\n\nWhy were two measures reported?",
+    "options": [
+      "They capture different aspects of energy performance.",
+      "They were guaranteed to show identical trends.",
+      "Absolute consumption alone measures efficiency precisely.",
+      "Energy intensity makes total demand irrelevant.",
+      "Managers wanted to avoid measuring production."
+    ],
+    "correct": 0,
+    "explanation": "Yoğunluk ve toplam tüketim farklı performans boyutlarını ölçer."
+  },
+  {
+    "id": "wq150_nov26_read5_24_1",
+    "family": "foundation_read5_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city installed sensors to measure the number of cyclists using major roads. The data showed a rise in recorded cycling after new lanes were introduced. However, researchers noted that the sensors did not cover many minor streets. They advised against assuming that the increase represented a citywide change until data from additional locations were collected.\n\nWhat limitation did researchers identify?",
+    "options": [
+      "The sensors provided incomplete geographical coverage.",
+      "The sensors could not distinguish bicycles from trains.",
+      "The recorded number of cyclists had decreased.",
+      "The city had never installed cycling lanes.",
+      "The data included every minor street."
+    ],
+    "correct": 0,
+    "explanation": "Sensörler küçük sokakların çoğunu kapsamıyordu."
+  },
+  {
+    "id": "wq150_nov26_read5_24_2",
+    "family": "foundation_read5_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city installed sensors to measure the number of cyclists using major roads. The data showed a rise in recorded cycling after new lanes were introduced. However, researchers noted that the sensors did not cover many minor streets. They advised against assuming that the increase represented a citywide change until data from additional locations were collected.\n\nWhich claim would be premature?",
+    "options": [
+      "Cycling increased throughout the entire city.",
+      "More cyclists were recorded on monitored roads.",
+      "New lanes were introduced.",
+      "Additional locations should be monitored.",
+      "The existing sensors cover major roads."
+    ],
+    "correct": 0,
+    "explanation": "Şehir genelindeki artış mevcut ölçümlerle kesinleştirilemez."
+  },
+  {
+    "id": "wq150_nov26_read5_24_3",
+    "family": "foundation_read5_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city installed sensors to measure the number of cyclists using major roads. The data showed a rise in recorded cycling after new lanes were introduced. However, researchers noted that the sensors did not cover many minor streets. They advised against assuming that the increase represented a citywide change until data from additional locations were collected.\n\nWhat would address the limitation?",
+    "options": [
+      "Collecting observations from a wider range of streets",
+      "Removing sensors from major roads",
+      "Recording only the length of new lanes",
+      "Assuming all streets have similar traffic",
+      "Counting the number of bicycle shops"
+    ],
+    "correct": 0,
+    "explanation": "Daha geniş konumsal örnekleme kapsama sorununu azaltır."
+  },
+  {
+    "id": "wq150_nov26_read5_25_1",
+    "family": "foundation_read5_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two methods of teaching pronunciation. One used detailed written explanations of mouth movements; the other combined audio examples with guided repetition. Both groups improved, but the second group performed better when asked to pronounce unfamiliar words. The authors suggested that evaluation should include tasks requiring learners to apply their skills in new situations.\n\nWhat distinguished the two groups at the end?",
+    "options": [
+      "Their performance on unfamiliar words",
+      "Their access to written materials before enrolment",
+      "Their ability to attend lessons",
+      "The number of languages they spoke",
+      "Their knowledge of grammar rules"
+    ],
+    "correct": 0,
+    "explanation": "Gruplar yeni kelimelerin telaffuzundaki başarı bakımından ayrıldı."
+  },
+  {
+    "id": "wq150_nov26_read5_25_2",
+    "family": "foundation_read5_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two methods of teaching pronunciation. One used detailed written explanations of mouth movements; the other combined audio examples with guided repetition. Both groups improved, but the second group performed better when asked to pronounce unfamiliar words. The authors suggested that evaluation should include tasks requiring learners to apply their skills in new situations.\n\nWhat did the authors recommend?",
+    "options": [
+      "Assess whether learners can transfer skills to new tasks.",
+      "Use only words memorised during lessons.",
+      "Stop evaluating pronunciation altogether.",
+      "Replace audio examples with written tests.",
+      "Exclude unfamiliar words from all assessments."
+    ],
+    "correct": 0,
+    "explanation": "Öğrenilen becerinin yeni görevlere aktarılması ölçülmeli."
+  },
+  {
+    "id": "wq150_nov26_read5_25_3",
+    "family": "foundation_read5_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two methods of teaching pronunciation. One used detailed written explanations of mouth movements; the other combined audio examples with guided repetition. Both groups improved, but the second group performed better when asked to pronounce unfamiliar words. The authors suggested that evaluation should include tasks requiring learners to apply their skills in new situations.\n\nWhich conclusion is supported by the passage?",
+    "options": [
+      "Both methods helped, but one showed better transfer to unfamiliar items.",
+      "Written explanations produced no improvement.",
+      "Audio repetition guarantees perfect pronunciation.",
+      "The two methods produced identical outcomes on every task.",
+      "The study showed that pronunciation cannot be taught."
+    ],
+    "correct": 0,
+    "explanation": "Her iki yöntem yararlıydı, ancak biri yeni kelimelerde daha başarılıydı."
+  },
+  {
+    "id": "wq150_nov26_read5_26_1",
+    "family": "foundation_read5_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation group restored a wetland by blocking drainage channels. Water levels rose quickly, and several plant species returned. Bird populations, however, recovered more slowly. Ecologists explained that birds depended not only on suitable water levels but also on food availability and the development of nesting habitats. They recommended monitoring the site over several breeding seasons.\n\nWhy did bird recovery lag behind plant recovery?",
+    "options": [
+      "Birds required additional ecological conditions to develop.",
+      "Water levels failed to increase after restoration.",
+      "All nesting habitats were destroyed by the conservation group.",
+      "The site had no plant species after restoration.",
+      "Birds were unable to reach the region."
+    ],
+    "correct": 0,
+    "explanation": "Kuşlar su seviyesi yanında besin ve yuvalama ortamına da bağlıydı."
+  },
+  {
+    "id": "wq150_nov26_read5_26_2",
+    "family": "foundation_read5_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation group restored a wetland by blocking drainage channels. Water levels rose quickly, and several plant species returned. Bird populations, however, recovered more slowly. Ecologists explained that birds depended not only on suitable water levels but also on food availability and the development of nesting habitats. They recommended monitoring the site over several breeding seasons.\n\nWhat did ecologists recommend?",
+    "options": [
+      "Continued monitoring over multiple breeding seasons",
+      "Draining the wetland again",
+      "Counting plants instead of birds permanently",
+      "Declaring restoration unsuccessful immediately",
+      "Introducing new drainage channels"
+    ],
+    "correct": 0,
+    "explanation": "Birkaç üreme dönemi boyunca izleme önerildi."
+  },
+  {
+    "id": "wq150_nov26_read5_26_3",
+    "family": "foundation_read5_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation group restored a wetland by blocking drainage channels. Water levels rose quickly, and several plant species returned. Bird populations, however, recovered more slowly. Ecologists explained that birds depended not only on suitable water levels but also on food availability and the development of nesting habitats. They recommended monitoring the site over several breeding seasons.\n\nWhat general point does the passage illustrate?",
+    "options": [
+      "Different ecosystem components can recover at different rates.",
+      "Wetland restoration always produces immediate recovery.",
+      "Plant recovery guarantees instant bird recovery.",
+      "Water levels have no relevance to birds.",
+      "Long-term monitoring prevents ecological recovery."
+    ],
+    "correct": 0,
+    "explanation": "Ekosistem bileşenleri farklı hızlarda toparlanabilir."
+  },
+  {
+    "id": "wq150_nov26_read5_27_1",
+    "family": "foundation_read5_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An online retailer reduced the number of steps required to complete a purchase. Sales increased, but so did returns from customers who had accidentally selected the wrong product size. The retailer introduced a clear confirmation screen before payment. Although this added an extra step, it reduced avoidable returns while retaining most of the sales increase.\n\nWhat unintended consequence followed the simplified process?",
+    "options": [
+      "More customers returned incorrectly selected products.",
+      "Customers stopped making purchases.",
+      "Payment processing became impossible.",
+      "All products were offered in one size.",
+      "The retailer closed its website."
+    ],
+    "correct": 0,
+    "explanation": "Yanlış beden seçimi kaynaklı iadeler arttı."
+  },
+  {
+    "id": "wq150_nov26_read5_27_2",
+    "family": "foundation_read5_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An online retailer reduced the number of steps required to complete a purchase. Sales increased, but so did returns from customers who had accidentally selected the wrong product size. The retailer introduced a clear confirmation screen before payment. Although this added an extra step, it reduced avoidable returns while retaining most of the sales increase.\n\nHow was the problem addressed?",
+    "options": [
+      "By adding a confirmation screen before payment",
+      "By removing all product information",
+      "By preventing customers from returning items",
+      "By increasing the number of payment methods",
+      "By hiding the selected product size"
+    ],
+    "correct": 0,
+    "explanation": "Ödeme öncesi onay ekranı eklendi."
+  },
+  {
+    "id": "wq150_nov26_read5_27_3",
+    "family": "foundation_read5_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An online retailer reduced the number of steps required to complete a purchase. Sales increased, but so did returns from customers who had accidentally selected the wrong product size. The retailer introduced a clear confirmation screen before payment. Although this added an extra step, it reduced avoidable returns while retaining most of the sales increase.\n\nWhat does the example suggest about usability?",
+    "options": [
+      "Reducing steps is not always beneficial if important checks disappear.",
+      "Every additional step necessarily reduces customer satisfaction.",
+      "Returns are unrelated to website design.",
+      "The fastest purchase process always produces the best outcomes.",
+      "Confirmation screens make online shopping impossible."
+    ],
+    "correct": 0,
+    "explanation": "Önemli kontroller kaybolduğunda adımları azaltmak her zaman yararlı değildir."
+  },
+  {
+    "id": "wq150_nov26_read5_28_1",
+    "family": "foundation_read5_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public health campaign used posters to encourage people to attend free screening appointments. Awareness of the service increased, but appointment attendance remained low. Interviews revealed that many people could not attend during working hours. The organisers added evening sessions and assessed whether the revised schedule improved participation.\n\nWhy did greater awareness fail to produce high attendance?",
+    "options": [
+      "The available hours were inconvenient for many people.",
+      "The posters provided no information about the service.",
+      "Screening appointments became more expensive.",
+      "The campaign targeted people who had already attended.",
+      "The organisers stopped offering appointments."
+    ],
+    "correct": 0,
+    "explanation": "Çalışma saatleriyle çakışan randevular katılımı sınırladı."
+  },
+  {
+    "id": "wq150_nov26_read5_28_2",
+    "family": "foundation_read5_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public health campaign used posters to encourage people to attend free screening appointments. Awareness of the service increased, but appointment attendance remained low. Interviews revealed that many people could not attend during working hours. The organisers added evening sessions and assessed whether the revised schedule improved participation.\n\nWhat change did organisers introduce?",
+    "options": [
+      "Appointments outside normal working hours",
+      "A new charge for screening",
+      "Fewer appointment slots",
+      "More posters without changing the service",
+      "A requirement to attend during lunch breaks"
+    ],
+    "correct": 0,
+    "explanation": "Akşam oturumları eklendi."
+  },
+  {
+    "id": "wq150_nov26_read5_28_3",
+    "family": "foundation_read5_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public health campaign used posters to encourage people to attend free screening appointments. Awareness of the service increased, but appointment attendance remained low. Interviews revealed that many people could not attend during working hours. The organisers added evening sessions and assessed whether the revised schedule improved participation.\n\nWhich distinction is important in this passage?",
+    "options": [
+      "Knowing about a service is different from being able to use it.",
+      "Information campaigns always remove practical barriers.",
+      "Free services cannot have scheduling problems.",
+      "Attendance measures awareness alone.",
+      "Convenient hours are unrelated to participation."
+    ],
+    "correct": 0,
+    "explanation": "Hizmetten haberdar olmak ile hizmeti kullanabilmek farklıdır."
+  },
+  {
+    "id": "wq150_nov26_read5_29_1",
+    "family": "foundation_read5_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A publisher tested two versions of an electronic textbook. One included frequent interactive quizzes, while the other presented the same material without interruptions. Students using the first version scored higher on immediate tests, but their advantage was smaller after several weeks. The publisher decided to assess delayed retention as well as short-term performance in future trials.\n\nWhat happened after several weeks?",
+    "options": [
+      "The initial performance advantage became smaller.",
+      "The interactive group forgot every topic.",
+      "The non-interactive version was withdrawn.",
+      "The groups were never tested again.",
+      "The immediate scores increased for all students."
+    ],
+    "correct": 0,
+    "explanation": "Etkileşimli sürümün ilk avantajı zamanla küçüldü."
+  },
+  {
+    "id": "wq150_nov26_read5_29_2",
+    "family": "foundation_read5_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A publisher tested two versions of an electronic textbook. One included frequent interactive quizzes, while the other presented the same material without interruptions. Students using the first version scored higher on immediate tests, but their advantage was smaller after several weeks. The publisher decided to assess delayed retention as well as short-term performance in future trials.\n\nWhy did the publisher revise its evaluation?",
+    "options": [
+      "Immediate test results did not fully describe lasting learning.",
+      "Interactive quizzes could not be delivered electronically.",
+      "The two versions taught entirely different material.",
+      "Students refused to complete any tests.",
+      "The publisher wanted to stop measuring learning."
+    ],
+    "correct": 0,
+    "explanation": "Anlık performans uzun vadeli öğrenmeyi tek başına göstermiyor."
+  },
+  {
+    "id": "wq150_nov26_read5_29_3",
+    "family": "foundation_read5_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A publisher tested two versions of an electronic textbook. One included frequent interactive quizzes, while the other presented the same material without interruptions. Students using the first version scored higher on immediate tests, but their advantage was smaller after several weeks. The publisher decided to assess delayed retention as well as short-term performance in future trials.\n\nWhat is meant by 'retention' here?",
+    "options": [
+      "The ability to remember learned material over time",
+      "The number of textbook copies sold",
+      "The time needed to download a file",
+      "The ability to finish a quiz quickly",
+      "The removal of incorrect answers"
+    ],
+    "correct": 0,
+    "explanation": "Retention öğrenilen bilgiyi zaman içinde akılda tutabilmedir."
   }
 ];
