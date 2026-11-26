@@ -3586,7 +3586,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: What time is it? B: ____",
+    "prompt": "A: Excuse me, what time does the clock show? B: ____",
     "options": [
       "It's half past three.",
       "It's a blue clock.",
@@ -3595,7 +3595,7 @@ export const foundationQuestions = [
       "It's Friday."
     ],
     "correct": 0,
-    "explanation": "Half past three saat üç buçuk demektir."
+    "explanation": "What time saat sorar; half past three saat üç buçuk demektir."
   },
   {
     "id": "wq150_nov26_foundation4_7",
@@ -4274,16 +4274,16 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "If it rains tomorrow, we ____ at home.",
+    "prompt": "If the library is open tomorrow, we ____ there after school.",
     "options": [
-      "will stay",
-      "stayed",
-      "had stayed",
-      "would have stayed",
-      "have staying"
+      "will study",
+      "studied",
+      "had studied",
+      "would have studied",
+      "have studying"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşebilir gelecek koşulunda will + fiil kullanılır."
+    "explanation": "Gerçekleşebilir gelecek koşulunda if yan cümlesi geniş zaman, ana cümle will + fiil alır."
   },
   {
     "id": "wq150_nov26_foundation4_50",
@@ -5266,7 +5266,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "The organisers had to ____ the outdoor concert because of the storm.",
+    "prompt": "The ferry company had to ____ the evening crossing because strong winds made the route unsafe.",
     "options": [
       "call off",
       "look after",
@@ -5275,7 +5275,7 @@ export const foundationQuestions = [
       "bring back"
     ],
     "correct": 0,
-    "explanation": "Call off iptal etmek demektir."
+    "explanation": "Call off planlanan bir seferi ya da etkinliği iptal etmek anlamına gelir."
   },
   {
     "id": "wq150_nov26_foundation4_112",
