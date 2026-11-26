@@ -78,17 +78,21 @@ def start_mode(mode):
     kind="quiz" if "Şıklı" in mode else "crossword"
     capture("settings-"+kind)
     tap(find(START));time.sleep(2)
-    # The first start hands off from online Arena to the local Arena
-    # mode picker. This is a normal navigation step, not a round start.
+    # From native code 162 onwards one tap must reach actual gameplay.
+    # Older already-published binaries remain testable during migration.
+    version=re.search(r"versionCode=(\d+)",adb("shell","dumpsys","package",PKG))
+    assert version, "Installed Android version code not found"
     ns=nodes()
-    if visible(ns,r"oyun modları") is not None:
-        print("Local Arena handoff detected; choosing requested mode",flush=True)
-        capture("local-picker-"+kind)
+    if visible(ns,r"^oyun modları$") is not None:
+        capture("unexpected-mode-picker-"+kind)
+        if int(version.group(1))>=162:
+            raise AssertionError("First start returned to mode selection: "+mode)
+        print("Legacy local Arena handoff detected",flush=True)
         tap(find(r"^"+mode));find(r"maç ayarları")
         select_pool()
-        capture("local-settings-"+kind)
+        capture("legacy-local-settings-"+kind)
         tap(find(START));time.sleep(2)
-    # Never treat a lobby as a successful gameplay screen.
+    # No second start is allowed for repaired builds.
 def folded(value):
     import unicodedata
     return "".join(c for c in unicodedata.normalize("NFKD",value.casefold().replace("ı","i")) if not unicodedata.combining(c))
@@ -96,6 +100,10 @@ def wait_game(mode,wide=False):
     deadline=time.monotonic()+65
     while time.monotonic()<deadline:
         ns=nodes()
+        version=re.search(r"versionCode=(\d+)",adb("shell","dumpsys","package",PKG))
+        if version and int(version.group(1))>=162 and visible(ns,r"^oyun modları$") is not None:
+            capture("unexpected-lobby-during-start")
+            raise AssertionError("Arena returned to mode selection instead of starting")
         labels=[label(n).strip() for n in ns if label(n).strip()]
         all_labels=folded(" | ".join(labels))
         print("Game UI:",all_labels[:2000],flush=True)
