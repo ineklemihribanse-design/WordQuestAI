@@ -1014,16 +1014,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "She keeps her coins in a tiny zipped ____ that fits in her hand.",
+    "prompt": "She keeps her loose coins in a tiny zipped coin ____ that fits in her hand.",
     "options": [
-      "wallet",
+      "suitcase tag",
       "purse",
       "backpack",
       "suitcase",
       "pocket"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: purse. Eşyaları taşıma biçimi ve kullanım amacı ipucu verir."
+    "explanation": "Doğru seçenek: purse. Coin purse, bozuk para taşımak için kullanılan küçük cüzdandır."
   },
   {
     "id": "wq150_ab1250_direct_a2_12_3",
@@ -3034,12 +3034,12 @@ export const ab1250Direct = [
     "options": [
       "also",
       "instead",
-      "then",
+      "rarely",
       "finally",
       "otherwise"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: finally. Cümleler arası ekleme, alternatif, sıra ve sonuç ilişkilerine dikkat et."
+    "explanation": "Doğru seçenek: finally. Uzun bekleyişin ardından otobüs sonunda geldi; finally beklenen olayın gecikerek gerçekleştiğini belirtir."
   },
   {
     "id": "wq150_ab1250_direct_a2_34_5",
@@ -7071,7 +7071,7 @@ export const ab1250Direct = [
       "get over"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: put off. Araştırmak, baş etmek, ertelemek, rastlamak ve atlatmak farklıdır."
+    "explanation": "Doğru seçenek: put off. Denetim zaten gecikmiş; artık daha fazla ertelenemez. Deal with bir konuyla ilgilenmek, run into ise rastlamak demektir."
   },
   {
     "id": "wq150_ab1250_direct_b1_29_4",

@@ -2076,16 +2076,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "An independent laboratory will ____ the tests under controlled conditions.",
+    "prompt": "An independent laboratory will ____ a new series of chemical tests under controlled conditions, following a specified protocol.",
     "options": [
-      "carry on",
+      "carry away",
       "carry out",
       "carry over",
-      "carry through",
+      "carry off",
       "carry forward"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: carry out. Uygulama, sonraki döneme aktarma, sonuna kadar sürdürme ve devam etme ayrılır."
+    "explanation": "Doğru seçenek: carry out. Carry out tests, bir protokole göre testleri gerçekleştirmektir; carry away götürmek, carry over sonraki döneme aktarmaktır."
   },
   {
     "id": "wq150_b121500_ph_b2_4_2",
@@ -3318,7 +3318,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The board agreed to ____ a reserve fund for unforeseen repairs.",
+    "prompt": "The board agreed to ____ £5,000 from this year's surplus, keeping it in reserve for unforeseen repairs.",
     "options": [
       "point to",
       "put forward",
@@ -3327,7 +3327,7 @@ export const b121500Phrasals = [
       "pin down"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: put aside. Kesinleştirme, işaret etme, önerme, nedenine bağlama ve ayırma farklıdır."
+    "explanation": "Doğru seçenek: put aside. Parayı gelecekteki bir ihtiyacı karşılamak üzere ayırmak, burada beklenmedik onarımlar için biriktirmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_18_1",

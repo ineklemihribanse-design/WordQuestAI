@@ -1632,10 +1632,10 @@ export const b121500Direct = [
       "of",
       "for",
       "to",
-      "with"
+      "into"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: at. Fiil veya sıfat ile kalıplaşmış edat kullanımlarına dikkat et."
+    "explanation": "Doğru seçenek: at. Laugh at something bir şeye gülmek demektir; burada komedyenin hikâyesine gülüyorlar."
   },
   {
     "id": "wq150_b12_1500_direct_b1_19_2",
@@ -4875,7 +4875,7 @@ export const b121500Direct = [
       "feedback"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: impact. Etki, kapsam, derece, sonuç ve geri bildirim kavramları farklıdır."
+    "explanation": "Doğru seçenek: impact. Impact of X on Y, X'in Y üzerindeki etkisini anlatır. Araştırma trafik gürültüsünün uykuyu nasıl etkilediğini inceliyor."
   },
   {
     "id": "wq150_b12_1500_direct_b2_15_2",

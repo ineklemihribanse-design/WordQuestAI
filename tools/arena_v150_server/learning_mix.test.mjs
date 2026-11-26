@@ -139,3 +139,21 @@ test('B1/B2 1500 pack covers level-specific tense, phrasal verbs and varied gram
  const old=new Set(allLearningQuestions.filter(q=>!pack.includes(q)).map(q=>norm(q.prompt)));
  assert.deepEqual(pack.filter(q=>old.has(norm(q.prompt))).map(q=>q.id),[]);
 });
+
+
+test('editorial screening reports near duplicates, answer cues and family concentration',()=>{
+ const normalize=s=>String(s).normalize('NFKC').toLowerCase().replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim();
+ const group=(rows,key)=>{const m=new Map();for(const row of rows){const k=key(row);if(!m.has(k))m.set(k,[]);m.get(k).push(row);}return m;};
+ const tally=(rows,key)=>Object.fromEntries([...group(rows,key)].map(([k,v])=>[k,v.length]));
+ const near=[...group(allLearningQuestions,q=>normalize(q.prompt).replace(/\b\d+(?:[.,:]\d+)*\b/g,'#').replace(/[.!?]+$/,'')).values()].filter(v=>v.length>1);
+ const families=group(allLearningQuestions.filter(q=>q.family),q=>q.family);
+ const mismatch=allLearningQuestions.filter(q=>q.explanation.startsWith('Doğru seçenek:')&&!q.explanation.startsWith('Doğru seçenek: '+q.options[q.correct]+'.'));
+ const normalizedChoiceCollision=allLearningQuestions.filter(q=>new Set(q.options.map(normalize)).size!==5);
+ const punctuation=allLearningQuestions.filter(q=>/\b[ap]\.m\.\.|[!?]{2,}/.test(q.prompt));
+ const basicLong=allLearningQuestions.filter(q=>['A1','A2'].includes(q.level)&&q.prompt.length>400);
+ const explanationTemplates=[...group(allLearningQuestions,q=>normalize(q.explanation).replace(/^doğru seçenek:.*?\.\s*/, '')).entries()].sort((a,b)=>b[1].length-a[1].length).slice(0,20).map(([text,rows])=>({text,count:rows.length}));
+ console.log('EDITORIAL_SCREENING',JSON.stringify({total:allLearningQuestions.length,levels:tally(allLearningQuestions,q=>q.level),answerPositions:tally(allLearningQuestions,q=>q.correct),families:families.size,familyRecords:allLearningQuestions.filter(q=>q.family).length,largestFamilies:[...families].sort((a,b)=>b[1].length-a[1].length).slice(0,15).map(([name,rows])=>({name,count:rows.length})),nearDuplicateGroups:near.map(rows=>rows.map(q=>q.id)),answerExplanationMismatch:mismatch.map(q=>q.id),punctuationFlags:punctuation.map(q=>q.id),longBasicFlags:basicLong.map(q=>q.id),explanationTemplates}));
+ assert.deepEqual(mismatch.map(q=>q.id),[]);
+ assert.deepEqual(normalizedChoiceCollision.map(q=>q.id),[]);
+ // Similarity, length and template reports are review candidates, not automatic deletion or CEFR verdicts.
+});

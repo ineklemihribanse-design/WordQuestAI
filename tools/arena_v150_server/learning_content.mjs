@@ -2239,7 +2239,7 @@ export const authoredQuestions = [
       "had being"
     ],
     "correct": 0,
-    "explanation": "Had ile devrik üçüncü koşul kurulur; sonuç geçmişe ilişkindir."
+    "explanation": "Had the authorities acted sooner, if the authorities had acted sooner anlamında devrik üçüncü koşuldur. Might have been reduced, geçmişte gerçekleşmemiş olası edilgen sonucu belirtir."
   },
   {
     "id": "wq150_q_038",
