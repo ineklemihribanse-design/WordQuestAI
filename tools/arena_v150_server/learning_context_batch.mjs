@@ -2623,16 +2623,16 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Were the necessary funding available, the project ____ completed within a year.",
+    "prompt": "Were the necessary funding available, the project ____ completed within a year in the future.",
     "options": [
       "could be",
-      "had been yesterday",
-      "has being",
-      "could been",
-      "will being"
+      "will be",
+      "has been",
+      "had been",
+      "could have been"
     ],
     "correct": 0,
-    "explanation": "Were ile varsayımsal koşulda could be + V3 olası edilgen sonucu ifade eder."
+    "explanation": "Were ile devrik ikinci koşul kurulur. Gelecekteki varsayımsal edilgen sonuç could be + V3 biçimindedir; could have been geçmişteki olasılığı ifade eder."
   },
   {
     "id": "wq150_context_78_2",
@@ -2640,16 +2640,16 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Were the material more durable, it ____ used in a wider range of applications.",
+    "prompt": "Were the material more durable, it ____ used in a wider range of applications in the future.",
     "options": [
       "could be",
-      "had been yesterday",
-      "has being",
-      "could been",
-      "will being"
+      "will be",
+      "has been",
+      "had been",
+      "could have been"
     ],
     "correct": 0,
-    "explanation": "Were ile varsayımsal koşulda could be + V3 olası edilgen sonucu ifade eder."
+    "explanation": "Were ile devrik ikinci koşul kurulur. Gelecekteki varsayımsal edilgen sonuç could be + V3 biçimindedir; could have been geçmişteki olasılığı ifade eder."
   },
   {
     "id": "wq150_context_79_1",

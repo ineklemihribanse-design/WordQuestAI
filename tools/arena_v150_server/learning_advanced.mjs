@@ -1283,13 +1283,13 @@ export const advancedQuestions = [
     "prompt": "Plausible ____ seem, the explanation is not independently supported.",
     "options": [
       "as it might",
-      "as might it be",
-      "although might it",
-      "despite might it",
-      "as it has might"
+      "as might it",
+      "though might it",
+      "as it had",
+      "despite its"
     ],
     "correct": 0,
-    "explanation": "Sıfat + as + özne + modal fiil ödünleme bildiren devrik yapıdır."
+    "explanation": "Concessive adjective fronting: sıfat + as + özne + modal fiil. Örneğin Plausible as it might seem, ne kadar makul görünse de demektir. Ardından normal özne-fiil sırası korunur."
   },
   {
     "id": "wq150_advanced_31_2",
@@ -1300,13 +1300,13 @@ export const advancedQuestions = [
     "prompt": "Attractive ____ appear, the proposal depends on assumptions that have yet to be tested.",
     "options": [
       "as it might",
-      "as might it be",
-      "although might it",
-      "despite might it",
-      "as it has might"
+      "as might it",
+      "though might it",
+      "as it had",
+      "despite its"
     ],
     "correct": 0,
-    "explanation": "Sıfat + as + özne + modal fiil ödünleme bildiren devrik yapıdır."
+    "explanation": "Concessive adjective fronting: sıfat + as + özne + modal fiil. Örneğin Plausible as it might seem, ne kadar makul görünse de demektir. Ardından normal özne-fiil sırası korunur."
   },
   {
     "id": "wq150_advanced_31_3",
@@ -1317,13 +1317,13 @@ export const advancedQuestions = [
     "prompt": "Convincing ____ sound, the argument does not establish the claimed conclusion.",
     "options": [
       "as it might",
-      "as might it be",
-      "although might it",
-      "despite might it",
-      "as it has might"
+      "as might it",
+      "though might it",
+      "as it had",
+      "despite its"
     ],
     "correct": 0,
-    "explanation": "Sıfat + as + özne + modal fiil ödünleme bildiren devrik yapıdır."
+    "explanation": "Concessive adjective fronting: sıfat + as + özne + modal fiil. Örneğin Plausible as it might seem, ne kadar makul görünse de demektir. Ardından normal özne-fiil sırası korunur."
   },
   {
     "id": "wq150_advanced_33_1",

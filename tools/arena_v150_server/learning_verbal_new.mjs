@@ -1997,13 +1997,13 @@ export const verbalNewQuestions = [
     "prompt": "The authors appear ____ the influence of the omitted variable in their original analysis.",
     "options": [
       "to have underestimated",
-      "having underestimated",
-      "have underestimating",
-      "to underestimating",
-      "underestimated by"
+      "to be underestimating",
+      "to underestimate",
+      "to have been underestimated",
+      "to be underestimated"
     ],
     "correct": 0,
-    "explanation": "Perfect infinitive önceki hafife alma veya düşük tahmin eylemini gösterir."
+    "explanation": "Hafife alma eylemi, mevcut değerlendirmeden önce gerçekleşmiştir. Perfect infinitive to have + V3 önceki eylemi gösterir; edilgen seçenekler öznenin eylemi yapan taraf olmasıyla uyuşmaz."
   },
   {
     "id": "wq150_verbalnew_40_2",
@@ -2014,13 +2014,13 @@ export const verbalNewQuestions = [
     "prompt": "The planners are thought ____ demand when the initial capacity was specified.",
     "options": [
       "to have underestimated",
-      "having underestimated",
-      "have underestimating",
-      "to underestimating",
-      "underestimated by"
+      "to be underestimating",
+      "to underestimate",
+      "to have been underestimated",
+      "to be underestimated"
     ],
     "correct": 0,
-    "explanation": "Perfect infinitive önceki hafife alma veya düşük tahmin eylemini gösterir."
+    "explanation": "Hafife alma eylemi, mevcut değerlendirmeden önce gerçekleşmiştir. Perfect infinitive to have + V3 önceki eylemi gösterir; edilgen seçenekler öznenin eylemi yapan taraf olmasıyla uyuşmaz."
   },
   {
     "id": "wq150_verbalnew_40_3",
@@ -2031,13 +2031,13 @@ export const verbalNewQuestions = [
     "prompt": "The institution seems ____ the cost of maintenance before approving the project.",
     "options": [
       "to have underestimated",
-      "having underestimated",
-      "have underestimating",
-      "to underestimating",
-      "underestimated by"
+      "to be underestimating",
+      "to underestimate",
+      "to have been underestimated",
+      "to be underestimated"
     ],
     "correct": 0,
-    "explanation": "Perfect infinitive önceki hafife alma veya düşük tahmin eylemini gösterir."
+    "explanation": "Hafife alma eylemi, mevcut değerlendirmeden önce gerçekleşmiştir. Perfect infinitive to have + V3 önceki eylemi gösterir; edilgen seçenekler öznenin eylemi yapan taraf olmasıyla uyuşmaz."
   },
   {
     "id": "wq150_verbalnew_41_1",
