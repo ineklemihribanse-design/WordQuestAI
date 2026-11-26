@@ -16,7 +16,8 @@ import {researchQuestions} from './learning_research.mjs';
 import {cohesionExpansion} from './learning_cohesion_expansion.mjs';
 import {lexicalFastQuestions} from './learning_lexical_fast.mjs';
 import {bulkPhraseQuestions} from './learning_bulk_phrases.mjs';
-export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions];
+import {prepositionBasicQuestions} from './learning_preposition_basic.mjs';
+export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions,...prepositionBasicQuestions];
 const hash=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // Keep every existing record and only append distinct new headwords. An
 // explicit YDS sense may coexist with a previously untagged CEFR entry.
@@ -54,7 +55,7 @@ export function diversifyQuiz(items,cfg,seed,records=[]){
  }
  // Prefer different question families before reusing the same family.
  const typeCounts=new Map(),usedPatterns=new Set();
- const type=q=>q.family?.startsWith('cloze_')?'Cloze':q.family?.startsWith('wordform_')?'WordForm':(q.id.startsWith('wq150_ant_')||q.id.startsWith('wq150_speedlex_')&&q.id.endsWith('_ant'))?'Antonym':q.id.startsWith('wq150_cohesion_fill_')?'ParagraphCompletion':q.id.startsWith('wq150_cohesion_odd_')?'IrrelevantSentence':q.topic;
+ const type=q=>q.family?.startsWith('cloze_')?'Cloze':q.family?.startsWith('wordform_')?'WordForm':(q.id.startsWith('wq150_ant_')||q.id.startsWith('wq150_speedlex_')&&q.id.endsWith('_ant'))?'Antonym':q.id.startsWith('wq150_cohesion_fill_')?'ParagraphCompletion':q.id.startsWith('wq150_cohesion_odd_')?'IrrelevantSentence':q.family?.startsWith('prepbulk_')?'Preposition':q.topic;
  for(const item of items){
   const k=key(item),pool=byLevel.get(k)??[];
   const available=pool.filter(q=>!used.has(q.id)&&(!q.family||!usedPatterns.has(q.family)));

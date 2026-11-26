@@ -53,8 +53,8 @@ test('unfiltered mixed match balances question families, including word forms an
  const picked=diversifyQuiz(items,cfg,'balance-2026');
  const curated=picked.filter(q=>q.id.startsWith('wq150_'));
  assert.equal(picked.length,30);assert.equal(curated.length,20);
- assert.ok(curated.some(q=>q.id.startsWith('wq150_form_')));assert.ok(curated.some(q=>q.id.startsWith('wq150_cloze_')));
  const byId=new Map(allLearningQuestions.map(q=>[q.id,q]));
+ assert.ok(curated.some(q=>byId.get(q.id)?.family?.startsWith('wordform_')));assert.ok(curated.some(q=>byId.get(q.id)?.family?.startsWith('cloze_')));
  const families=curated.map(q=>byId.get(q.id).family).filter(Boolean);assert.equal(new Set(families).size,families.length);
  const types=new Set(curated.map(q=>{const x=byId.get(q.id);return x.family?.startsWith('cloze_')?'Cloze':x.family?.startsWith('wordform_')?'WordForm':x.topic;}));assert.ok(types.size>=7);
 });
@@ -91,3 +91,7 @@ test('bulk lexical expansion has distinct stems and bounded families',()=>{asser
 
 import {bulkPhraseQuestions} from './learning_bulk_phrases.mjs';
 test('bulk phrase questions have five unique options and no exact prior stem duplicates',()=>{assert.equal(bulkPhraseQuestions.length,618);assert.equal(new Set(bulkPhraseQuestions.map(q=>q.prompt.toLowerCase())).size,bulkPhraseQuestions.length);assert.ok(bulkPhraseQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.correct===0&&q.family&&q.yds&&q.explanation.length>=20));const prior=new Set(allLearningQuestions.filter(q=>!q.id.startsWith('wq150_bulkphrase_')).map(q=>q.prompt.toLowerCase()));assert.ok(bulkPhraseQuestions.every(q=>!prior.has(q.prompt.toLowerCase())));});
+
+import {prepositionBasicQuestions} from './learning_preposition_basic.mjs';
+test('preposition and basic meaning expansion is complete and unique',()=>{assert.equal(prepositionBasicQuestions.length,389);assert.ok(prepositionBasicQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.correct===0&&q.family&&q.explanation.length>=20));assert.ok(prepositionBasicQuestions.filter(q=>q.family.startsWith('prepbulk_')).every(q=>q.prompt.split('____').length===2));const prior=new Set(allLearningQuestions.filter(q=>!prepositionBasicQuestions.includes(q)).map(q=>q.prompt.toLowerCase()));assert.ok(prepositionBasicQuestions.every(q=>!prior.has(q.prompt.toLowerCase())));});
+test('B2 mixed selection retains cloze and word forms across seeds',()=>{const cfg={scale:'cefr',levels:['B2'],topic:null,wordType:null};const byId=new Map(allLearningQuestions.map(q=>[q.id,q]));for(const seed of ['mix-regression-a','mix-regression-b','mix-regression-c']){const items=Array.from({length:30},(_,i)=>({id:'legacy'+i,level:'B2',yds:'medium'}));const curated=diversifyQuiz(items,cfg,seed).filter(q=>byId.has(q.id));assert.equal(curated.length,20);assert.ok(curated.some(q=>byId.get(q.id).family?.startsWith('cloze_')));assert.ok(curated.some(q=>byId.get(q.id).family?.startsWith('wordform_')));assert.ok(curated.some(q=>byId.get(q.id).family?.startsWith('prepbulk_')));}});
