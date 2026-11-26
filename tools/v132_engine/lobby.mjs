@@ -64,7 +64,8 @@ export async function createLobbyRecord(ref,options){
 export async function transactLobby(ref,uid,cmd,now){
  const result=await ref.transaction(s=>{
   if(!s)fail('Room not found');
-  const next=applyLobby(s,uid,cmd,now);return next===s?undefined:next;
+  const effective=cmd.type==='join'?{...cmd,revision:s.revision}:cmd;
+  const next=applyLobby(s,uid,effective,now);return next===s?undefined:next;
  },undefined,false);
  const s=result.snapshot.val();
  return {committed:result.committed,view:s.phase==='closed'||cmd.type==='leave'?null:lobbyView(s,uid)};

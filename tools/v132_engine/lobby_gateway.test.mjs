@@ -51,3 +51,13 @@ test('client cannot provide its own question bank or seed',async()=>{
  const a=await f.req('POST',root,'a',{id:'create1',settings});
  assert.equal((await f.req('POST',root+'/'+a.id+'/commands','a',{id:'x',revision:0,type:'start',seed:'client'})).status,400);
 });
+
+test('invitee joins without private revision even if host already changed settings',async()=>{
+ const f=fixture(),created=await f.req('POST',root,'a',{id:'create1',settings}),url=root+'/'+created.id,action=url+'/commands';
+ assert.equal((await f.req('POST',action,'a',{id:'change',revision:0,type:'settings',settings:{...settings,hints:5}})).status,200);
+ assert.equal((await f.req('GET',url,'b')).status,404);
+ const joined=await f.req('POST',action,'b',{id:'join',type:'join'});
+ assert.equal(joined.status,200);assert.equal(joined.view.settings.hints,5);assert.equal(joined.view.members.length,2);
+ const retry=await f.req('POST',action,'b',{id:'join',type:'join'});
+ assert.equal(retry.status,200);assert.equal(retry.committed,false);
+});

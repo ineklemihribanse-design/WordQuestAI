@@ -35,7 +35,7 @@ function checkedSettings(data){
  return validateSettings(data);
 }
 function lobbyCommand(data){
- if(!requestId(data.id)||!Number.isSafeInteger(data.revision)||data.revision<0)throw Error('invalid-command');
+ if(!requestId(data.id)||(data.type!=='join'||data.revision!==undefined)&&(!Number.isSafeInteger(data.revision)||data.revision<0))throw Error('invalid-command');
  const base={id:data.id,revision:data.revision,type:data.type};
  const fields={join:[],leave:[],ready:['ready','configRevision'],settings:['settings'],start:[]};
  if(!Object.hasOwn(fields,data.type)||Object.keys(data).some(k=>!['id','revision','type',...fields[data.type]].includes(k)))throw Error('invalid-command');
