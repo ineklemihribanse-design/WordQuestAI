@@ -575,29 +575,28 @@ private fun Wq150Audio(room:String,phase:String,remaining:Long?,deadline:Long?,f
     val context=androidx.compose.ui.platform.LocalContext.current
     val ambient=Wq179ArenaSoundPrefs.ambient(context)
     val clockEnabled=Wq179ArenaSoundPrefs.clock(context)
-    val clockTones=remember(room){Wq179ArenaTones()}
-    val feedbackTone=remember(room){runCatching{android.media.ToneGenerator(android.media.AudioManager.STREAM_MUSIC,50)}.getOrNull()}
-    DisposableEffect(clockTones,feedbackTone){onDispose{clockTones.close();feedbackTone?.release()}}
+    val pack=Wq150SoundPacks.selected(context)
+    val player=remember(room){Wq150SoundPlayer(context)}
+    DisposableEffect(player){onDispose{player.close()}}
+    LaunchedEffect(phase,effects,pack){if(phase=="paused"||!effects||pack=="silent")player.stop()}
     val current=feedback?.let{it.optInt("correct") to it.optInt("wrong")}
     var previous by remember(room){mutableStateOf(current)}
     var lastTick by remember(room){mutableStateOf<Pair<Long,Long>?>(null)}
     LaunchedEffect(current,phase,effects){
         val cue=wq150Feedback(previous,current)
         if(current!=null)previous=current
-        if(effects&&phase!="paused"&&cue!=0)runCatching{
-            feedbackTone?.startTone(if(cue>0)android.media.ToneGenerator.TONE_PROP_ACK else android.media.ToneGenerator.TONE_PROP_NACK,if(cue>0)150 else 220)
-        }
+        if(effects&&phase!="paused"&&cue!=0)player.play(pack,if(cue>0)"correct" else "wrong")
     }
     LaunchedEffect(remaining,deadline,phase,effects,clockEnabled){
         if(phase=="playing"&&remaining!=null&&deadline!=null&&remaining in 1L..10L){
             val key=deadline to remaining
-            if(lastTick!=key){lastTick=key;if(effects&&clockEnabled)clockTones.tick(remaining.toInt())}
+            if(lastTick!=key){lastTick=key;if(effects&&clockEnabled)player.play(pack,if(remaining<=3)"urgent" else "tick")}
         }
     }
-    LaunchedEffect(phase,effects,ambient){
+    LaunchedEffect(phase,effects,ambient,pack,remaining!=null&&remaining<=10){
         while(phase=="playing"&&effects&&ambient){
             delay(12000L)
-            if(phase=="playing")clockTones.ambient()
+            if(phase=="playing"&&(remaining==null||remaining>10))player.play(pack,"ambient")
         }
     }
 }

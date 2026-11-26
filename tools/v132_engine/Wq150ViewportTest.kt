@@ -2,6 +2,13 @@ package com.kelimebulmacasi.a1
 import org.junit.Assert.*
 import org.junit.Test
 class Wq150ViewportTest {
+    @Test fun soundPacksHaveStableDefaults(){
+        assertEquals(5,Wq150SoundPacks.names.size)
+        assertEquals("crystal",Wq150SoundPacks.normalize(null))
+        assertEquals("crystal",Wq150SoundPacks.normalize("unknown"))
+        assertEquals("silent",Wq150SoundPacks.normalize("silent"))
+        assertEquals(5,Wq150SoundPacks.events.size)
+    }
     @Test fun feedbackOnlyPlaysForNewConfirmedCounts(){
         assertEquals(0,wq150Feedback(null,3 to 2));assertEquals(0,wq150Feedback(3 to 2,3 to 2));assertEquals(1,wq150Feedback(3 to 2,4 to 2));assertEquals(-1,wq150Feedback(3 to 2,3 to 3));assertEquals(0,wq150Feedback(3 to 2,null))
     }

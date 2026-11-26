@@ -778,6 +778,8 @@ jobs:
           install -m 644 tools/v132_engine/Wq150LobbyClient.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150LobbyClient.kt
           install -m 644 tools/v132_engine/Wq150ArenaEntry.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaEntry.kt
           install -m 644 tools/v132_engine/Wq150ArenaMatch.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150ArenaMatch.kt
+          install -m 644 tools/v132_engine/Wq150SoundPacks.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150SoundPacks.kt
+          python3 tools/v132_engine/prepare_arena_sounds.py
           install -m 644 tools/v132_engine/Wq150Profiles.kt source/app/src/main/java/com/kelimebulmacasi/a1/Wq150Profiles.kt
           install -m 644 tools/v132_engine/Wq150ViewportTest.kt source/app/src/test/java/com/kelimebulmacasi/a1/Wq150ViewportTest.kt
           python3 tools/v132_engine/apply_v150_entry.py
@@ -867,6 +869,12 @@ jobs:
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"; then exit 1; fi
           unzip -tq "$APK"
           test "$(unzip -p "$APK" assets/wq150_arena_origin.txt)" = 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev'
+          python3 - "$APK" <<'PY'
+          import sys,zipfile
+          with zipfile.ZipFile(sys.argv[1]) as z:
+              files=[n for n in z.namelist() if n.startswith("res/raw/wq150_") and n.endswith(".wav")]
+              assert len(files)==20,files
+          PY
           sha256sum "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate.sha256"
       - name: Upload signed device-test APK only (not a GitHub release)
         uses: actions/upload-artifact@v4
