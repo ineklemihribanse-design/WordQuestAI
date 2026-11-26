@@ -21,8 +21,12 @@ async function smallBody(req,max){
 }
 export default {async fetch(req,env){
  const url=new URL(req.url),path=url.pathname;
- if(path==='/healthz'&&req.method==='GET')return json(200,{ok:true,schema:150,hosting:'workers-free'});
- if(!env.ARENA_ROOM_SECRET||env.ARENA_ROOM_SECRET.length<32)return json(503,{ok:false,code:'not-configured'});
+ const configured=typeof env.ARENA_ROOM_SECRET==='string'&&env.ARENA_ROOM_SECRET.length>=32&&
+  typeof env.FIREBASE_PROJECT_ID==='string'&&env.FIREBASE_PROJECT_ID.length>0&&
+  typeof env.FIREBASE_WEB_API_KEY==='string'&&env.FIREBASE_WEB_API_KEY.length>0&&
+  typeof env.FIREBASE_DATABASE_URL==='string'&&env.FIREBASE_DATABASE_URL.startsWith('https://')&&!!env.ROOMS;
+ if(path==='/healthz'&&req.method==='GET')return json(configured?200:503,{ok:configured,schema:150,hosting:'workers-free'});
+ if(!configured)return json(503,{ok:false,code:'not-configured'});
  const match=/^\/v150\/(?:matches|lobbies|profiles|presence)\/([A-Za-z0-9_-]+)(?:\/commands)?$/.exec(path);
  const create=path==='/v150/lobbies'&&req.method==='POST';
  if(!create&&!roomId(match?.[1]))return json(404,{ok:false,code:'not-found'});

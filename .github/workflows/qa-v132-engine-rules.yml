@@ -2,7 +2,7 @@ name: Test v150 shared round, reaction and finish protocol
 on:
   pull_request:
     branches: [fix/v190-tablet-board-and-visible-icons]
-    paths: ['firebase/database.rules.v132.json','tools/v132_engine/**','.github/workflows/qa-v132-engine-rules.yml']
+    paths: ['firebase/database.rules.v132.json','tools/v132_engine/**','tools/arena_v150_server/**','.github/workflows/qa-v132-engine-rules.yml']
 permissions:
   contents: read
 jobs:
@@ -19,6 +19,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Check deployable Workers bundle using verified existing bank (no deployment)
+        working-directory: tools/arena_v150_server
+        run: |
+          npm install --no-audit --no-fund
+          npm run free:prepare
+          npm run free:check
       - name: Test trusted connection state transitions
         run: node --test tools/v132_engine/connection.test.mjs tools/v132_engine/connection_store.test.mjs tools/v132_engine/duel.test.mjs tools/v132_engine/quiz.test.mjs tools/v132_engine/coop.test.mjs tools/v132_engine/team.test.mjs tools/v132_engine/match_service.test.mjs tools/v132_engine/arena_gateway.test.mjs tools/v132_engine/lobby.test.mjs tools/v132_engine/lobby_gateway.test.mjs tools/v132_engine/social.test.mjs tools/v132_engine/profiles.test.mjs tools/v132_engine/presence.test.mjs tools/v132_engine/room_storage.test.mjs tools/arena_v150_server/trusted_bank.test.mjs tools/arena_v150_server/vocabulary_bank.test.mjs tools/arena_v150_server/free_room_adapter.test.mjs
       - run: |

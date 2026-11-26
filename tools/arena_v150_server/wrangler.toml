@@ -3,6 +3,7 @@ main = "free_worker.mjs"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = true
+keep_vars = true
 
 [[durable_objects.bindings]]
 name = "ROOMS"
@@ -12,7 +13,4 @@ class_name = "ArenaRoom"
 tag = "v1"
 new_sqlite_classes = ["ArenaRoom"]
 
-[vars]
-FIREBASE_PROJECT_ID = "REPLACE_WITH_PROJECT_ID"
-FIREBASE_WEB_API_KEY = "REPLACE_WITH_FIREBASE_WEB_API_KEY"
-FIREBASE_DATABASE_URL = "REPLACE_WITH_DATABASE_URL"
+# Configure Firebase connection settings and the room secret in the Worker dashboard.
