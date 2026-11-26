@@ -10,9 +10,9 @@ export async function expandLearning(input){
   const existing=new Set(input.filter(w=>w.level===level).map(w=>String(w.answer).toUpperCase()));
   const rows=lines.map(l=>l.split('\t')).filter(a=>a.length===5&&a[0]===level&&/^[A-Z]{2,22}$/.test(a[3])&&a[4].trim()&&!existing.has(a[3])&&['İsimler','Fiiller','Sıfatlar','Zarflar'].includes(a[2]));
   rows.sort((a,b)=>rank(a[3]).localeCompare(rank(b[3])));
-  // Bounded addition for Workers Free. CEFR attribution is preserved; do not
+  // Full compatible licensed list, deduplicated. CEFR attribution is preserved; do not
   // silently assign YDS labels to words from general CEFR lists.
-  for(const [level,category,wordType,answer,meaning] of rows.slice(0,200))licensed.push({level,category,wordType,answer,meaning});
+  for(const [level,category,wordType,answer,meaning] of rows)licensed.push({level,category,wordType,answer,meaning});
  }
  return appendLearningWords(input,licensed);
 }
