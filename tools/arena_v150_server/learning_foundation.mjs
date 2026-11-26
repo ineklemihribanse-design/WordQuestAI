@@ -19379,7 +19379,7 @@ export const foundationQuestions = [
     "explanation": "bring back: geri getirmek. Diğer seçenekler: bring about: yol açmak; bring forward: öne almak; bring up: konuyu açmak; bring in: getirmek."
   },
   {
-    "id": "wq150_nov26_forms15_1_1",
+    "id": "wq150_ant_nov26_forms15_1_1",
     "family": "forms15_1",
     "level": "A1",
     "yds": null,
@@ -19396,7 +19396,7 @@ export const foundationQuestions = [
     "explanation": "clean: temiz. Diğer seçenekler: dirty: kirli; wet: ıslak; dry: kuru; broken: kırık."
   },
   {
-    "id": "wq150_nov26_forms15_1_2",
+    "id": "wq150_ant_nov26_forms15_1_2",
     "family": "forms15_1",
     "level": "A1",
     "yds": null,
@@ -19413,7 +19413,7 @@ export const foundationQuestions = [
     "explanation": "dirty: kirli. Diğer seçenekler: clean: temiz; wet: ıslak; dry: kuru; broken: kırık."
   },
   {
-    "id": "wq150_nov26_forms15_1_3",
+    "id": "wq150_ant_nov26_forms15_1_3",
     "family": "forms15_1",
     "level": "A1",
     "yds": null,
@@ -19430,7 +19430,7 @@ export const foundationQuestions = [
     "explanation": "wet: ıslak. Diğer seçenekler: clean: temiz; dirty: kirli; dry: kuru; broken: kırık."
   },
   {
-    "id": "wq150_nov26_forms15_1_4",
+    "id": "wq150_ant_nov26_forms15_1_4",
     "family": "forms15_1",
     "level": "A1",
     "yds": null,
@@ -19447,7 +19447,7 @@ export const foundationQuestions = [
     "explanation": "dry: kuru. Diğer seçenekler: clean: temiz; dirty: kirli; wet: ıslak; broken: kırık."
   },
   {
-    "id": "wq150_nov26_forms15_1_5",
+    "id": "wq150_ant_nov26_forms15_1_5",
     "family": "forms15_1",
     "level": "A1",
     "yds": null,
@@ -19464,7 +19464,7 @@ export const foundationQuestions = [
     "explanation": "broken: kırık. Diğer seçenekler: clean: temiz; dirty: kirli; wet: ıslak; dry: kuru."
   },
   {
-    "id": "wq150_nov26_forms15_2_1",
+    "id": "wq150_ant_nov26_forms15_2_1",
     "family": "forms15_2",
     "level": "A1",
     "yds": null,
@@ -19481,7 +19481,7 @@ export const foundationQuestions = [
     "explanation": "wide: geniş. Diğer seçenekler: narrow: dar; high: yüksek; low: alçak; deep: derin."
   },
   {
-    "id": "wq150_nov26_forms15_2_2",
+    "id": "wq150_ant_nov26_forms15_2_2",
     "family": "forms15_2",
     "level": "A1",
     "yds": null,
@@ -19498,7 +19498,7 @@ export const foundationQuestions = [
     "explanation": "narrow: dar. Diğer seçenekler: wide: geniş; high: yüksek; low: alçak; deep: derin."
   },
   {
-    "id": "wq150_nov26_forms15_2_3",
+    "id": "wq150_ant_nov26_forms15_2_3",
     "family": "forms15_2",
     "level": "A1",
     "yds": null,
@@ -19515,7 +19515,7 @@ export const foundationQuestions = [
     "explanation": "high: yüksek. Diğer seçenekler: wide: geniş; narrow: dar; low: alçak; deep: derin."
   },
   {
-    "id": "wq150_nov26_forms15_2_4",
+    "id": "wq150_ant_nov26_forms15_2_4",
     "family": "forms15_2",
     "level": "A1",
     "yds": null,
@@ -19532,7 +19532,7 @@ export const foundationQuestions = [
     "explanation": "low: alçak. Diğer seçenekler: wide: geniş; narrow: dar; high: yüksek; deep: derin."
   },
   {
-    "id": "wq150_nov26_forms15_2_5",
+    "id": "wq150_ant_nov26_forms15_2_5",
     "family": "forms15_2",
     "level": "A1",
     "yds": null,
@@ -19758,7 +19758,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nHaving many features in common, but not necessarily the same.",
+    "prompt": "Choose the closest synonym of 'alike' when describing two objects that share many features but are not identical.",
     "options": [
       "ordinary",
       "unusual",
@@ -19804,7 +19804,7 @@ export const foundationQuestions = [
     "explanation": "identical: özdeş. Diğer seçenekler: ordinary: sıradan; unusual: alışılmadık; similar: benzer; different: farklı."
   },
   {
-    "id": "wq150_nov26_forms15_6_1",
+    "id": "wq150_ant_nov26_forms15_6_1",
     "family": "forms15_6",
     "level": "A2",
     "yds": null,
@@ -19821,7 +19821,7 @@ export const foundationQuestions = [
     "explanation": "increase: artırmak. Diğer seçenekler: decrease: azaltmak; maintain: sürdürmek; remove: kaldırmak; add: eklemek."
   },
   {
-    "id": "wq150_nov26_forms15_6_2",
+    "id": "wq150_ant_nov26_forms15_6_2",
     "family": "forms15_6",
     "level": "A2",
     "yds": null,
@@ -19889,7 +19889,7 @@ export const foundationQuestions = [
     "explanation": "add: eklemek. Diğer seçenekler: increase: artırmak; decrease: azaltmak; maintain: sürdürmek; remove: kaldırmak."
   },
   {
-    "id": "wq150_nov26_forms15_7_1",
+    "id": "wq150_ant_nov26_forms15_7_1",
     "family": "forms15_7",
     "level": "A2",
     "yds": null,
@@ -19906,7 +19906,7 @@ export const foundationQuestions = [
     "explanation": "accept: kabul etmek. Diğer seçenekler: reject: reddetmek; arrive: varmak; depart: ayrılmak; remain: kalmak."
   },
   {
-    "id": "wq150_nov26_forms15_7_2",
+    "id": "wq150_ant_nov26_forms15_7_2",
     "family": "forms15_7",
     "level": "A2",
     "yds": null,
@@ -20132,7 +20132,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nHappening without any delay.",
+    "prompt": "Choose the closest synonym of 'instant' when describing a response without delay.",
     "options": [
       "temporary",
       "permanent",
@@ -20353,7 +20353,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nAble to withstand wear over a long period.",
+    "prompt": "Choose the closest synonym of 'long-lasting' when describing a product resistant to wear.",
     "options": [
       "reliable",
       "unreliable",
@@ -20370,7 +20370,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nEasily broken or damaged.",
+    "prompt": "Choose the closest synonym of 'delicate' when describing an object that breaks easily.",
     "options": [
       "reliable",
       "unreliable",
@@ -20744,7 +20744,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nAuthentic rather than falsely presented as real.",
+    "prompt": "Choose the closest synonym of 'authentic' when describing an object that is not fake.",
     "options": [
       "genuine",
       "artificial",
@@ -21016,7 +21016,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nExpressed in a way that is easy to follow and understand.",
+    "prompt": "Choose the closest synonym of 'clear and intelligible' when describing an explanation.",
     "options": [
       "obscure",
       "lucid",
@@ -21118,7 +21118,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nSo small that it can be ignored for practical purposes.",
+    "prompt": "Choose the closest synonym of 'insignificant' when describing an effect too small to matter.",
     "options": [
       "salient",
       "marginal",
@@ -21152,7 +21152,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nNot central to the main issue under discussion.",
+    "prompt": "Choose the closest synonym of 'secondary' when describing an issue that is not central to the discussion.",
     "options": [
       "salient",
       "marginal",
@@ -21169,7 +21169,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nLasting for only a short period before disappearing.",
+    "prompt": "Choose the closest synonym of 'short-lived' when describing an effect.",
     "options": [
       "transient",
       "persistent",
@@ -21254,7 +21254,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "Choose the word that best matches this meaning:\n\nAbsolutely necessary for a process to function.",
+    "prompt": "Choose the synonym of 'essential' in the sense of absolutely necessary for a process to function.",
     "options": [
       "indispensable",
       "dispensable",
@@ -21505,7 +21505,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_26_1",
-    "family": "forms15_26",
+    "family": "wordform_nov26_15_26",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21522,7 +21522,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_26_2",
-    "family": "forms15_26",
+    "family": "wordform_nov26_15_26",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21539,7 +21539,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_26_3",
-    "family": "forms15_26",
+    "family": "wordform_nov26_15_26",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21556,11 +21556,11 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_26_4",
-    "family": "forms15_26",
+    "family": "wordform_nov26_15_26",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The warm lights made the room look ____ .",
+    "prompt": "The warm lights and comfortable seats made the room look particularly ____ to visitors.",
     "options": [
       "invite",
       "invitation",
@@ -21573,7 +21573,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_26_5",
-    "family": "forms15_26",
+    "family": "wordform_nov26_15_26",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21590,7 +21590,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_27_1",
-    "family": "forms15_27",
+    "family": "wordform_nov26_15_27",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21607,7 +21607,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_27_2",
-    "family": "forms15_27",
+    "family": "wordform_nov26_15_27",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21624,7 +21624,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_27_3",
-    "family": "forms15_27",
+    "family": "wordform_nov26_15_27",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21641,7 +21641,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_27_4",
-    "family": "forms15_27",
+    "family": "wordform_nov26_15_27",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21658,7 +21658,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_27_5",
-    "family": "forms15_27",
+    "family": "wordform_nov26_15_27",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21675,7 +21675,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_28_1",
-    "family": "forms15_28",
+    "family": "wordform_nov26_15_28",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21692,7 +21692,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_28_2",
-    "family": "forms15_28",
+    "family": "wordform_nov26_15_28",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21709,7 +21709,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_28_3",
-    "family": "forms15_28",
+    "family": "wordform_nov26_15_28",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21726,7 +21726,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_28_4",
-    "family": "forms15_28",
+    "family": "wordform_nov26_15_28",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21743,7 +21743,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_28_5",
-    "family": "forms15_28",
+    "family": "wordform_nov26_15_28",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21760,7 +21760,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_29_1",
-    "family": "forms15_29",
+    "family": "wordform_nov26_15_29",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21777,7 +21777,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_29_2",
-    "family": "forms15_29",
+    "family": "wordform_nov26_15_29",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21794,7 +21794,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_29_3",
-    "family": "forms15_29",
+    "family": "wordform_nov26_15_29",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21811,7 +21811,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_29_4",
-    "family": "forms15_29",
+    "family": "wordform_nov26_15_29",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21828,7 +21828,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_29_5",
-    "family": "forms15_29",
+    "family": "wordform_nov26_15_29",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21845,7 +21845,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_30_1",
-    "family": "forms15_30",
+    "family": "wordform_nov26_15_30",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21862,7 +21862,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_30_2",
-    "family": "forms15_30",
+    "family": "wordform_nov26_15_30",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21879,7 +21879,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_30_3",
-    "family": "forms15_30",
+    "family": "wordform_nov26_15_30",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21896,7 +21896,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_30_4",
-    "family": "forms15_30",
+    "family": "wordform_nov26_15_30",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21913,7 +21913,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_30_5",
-    "family": "forms15_30",
+    "family": "wordform_nov26_15_30",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21930,7 +21930,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_31_1",
-    "family": "forms15_31",
+    "family": "wordform_nov26_15_31",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21947,7 +21947,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_31_2",
-    "family": "forms15_31",
+    "family": "wordform_nov26_15_31",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21964,7 +21964,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_31_3",
-    "family": "forms15_31",
+    "family": "wordform_nov26_15_31",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21981,7 +21981,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_31_4",
-    "family": "forms15_31",
+    "family": "wordform_nov26_15_31",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -21998,7 +21998,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_31_5",
-    "family": "forms15_31",
+    "family": "wordform_nov26_15_31",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -22015,7 +22015,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_32_1",
-    "family": "forms15_32",
+    "family": "wordform_nov26_15_32",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -22032,7 +22032,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_32_2",
-    "family": "forms15_32",
+    "family": "wordform_nov26_15_32",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -22049,7 +22049,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_32_3",
-    "family": "forms15_32",
+    "family": "wordform_nov26_15_32",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -22066,7 +22066,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_32_4",
-    "family": "forms15_32",
+    "family": "wordform_nov26_15_32",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
@@ -22083,11 +22083,11 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_32_5",
-    "family": "forms15_32",
+    "family": "wordform_nov26_15_32",
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The shop will accept only ____ items in their original packaging.",
+    "prompt": "The shop accepts returns only if the items have never been worn or operated. They must be ____ .",
     "options": [
       "use",
       "useful",
@@ -22100,7 +22100,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_33_1",
-    "family": "forms15_33",
+    "family": "wordform_nov26_15_33",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22117,7 +22117,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_33_2",
-    "family": "forms15_33",
+    "family": "wordform_nov26_15_33",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22134,7 +22134,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_33_3",
-    "family": "forms15_33",
+    "family": "wordform_nov26_15_33",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22151,7 +22151,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_33_4",
-    "family": "forms15_33",
+    "family": "wordform_nov26_15_33",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22168,7 +22168,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_33_5",
-    "family": "forms15_33",
+    "family": "wordform_nov26_15_33",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22185,7 +22185,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_34_1",
-    "family": "forms15_34",
+    "family": "wordform_nov26_15_34",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22202,7 +22202,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_34_2",
-    "family": "forms15_34",
+    "family": "wordform_nov26_15_34",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22219,7 +22219,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_34_3",
-    "family": "forms15_34",
+    "family": "wordform_nov26_15_34",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22236,7 +22236,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_34_4",
-    "family": "forms15_34",
+    "family": "wordform_nov26_15_34",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22253,7 +22253,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_34_5",
-    "family": "forms15_34",
+    "family": "wordform_nov26_15_34",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22270,7 +22270,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_35_1",
-    "family": "forms15_35",
+    "family": "wordform_nov26_15_35",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22287,7 +22287,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_35_2",
-    "family": "forms15_35",
+    "family": "wordform_nov26_15_35",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22304,7 +22304,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_35_3",
-    "family": "forms15_35",
+    "family": "wordform_nov26_15_35",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22321,7 +22321,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_35_4",
-    "family": "forms15_35",
+    "family": "wordform_nov26_15_35",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22338,7 +22338,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_35_5",
-    "family": "forms15_35",
+    "family": "wordform_nov26_15_35",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22355,7 +22355,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_36_1",
-    "family": "forms15_36",
+    "family": "wordform_nov26_15_36",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22372,7 +22372,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_36_2",
-    "family": "forms15_36",
+    "family": "wordform_nov26_15_36",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22389,7 +22389,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_36_3",
-    "family": "forms15_36",
+    "family": "wordform_nov26_15_36",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22406,7 +22406,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_36_4",
-    "family": "forms15_36",
+    "family": "wordform_nov26_15_36",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22423,7 +22423,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_36_5",
-    "family": "forms15_36",
+    "family": "wordform_nov26_15_36",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22440,7 +22440,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_37_1",
-    "family": "forms15_37",
+    "family": "wordform_nov26_15_37",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22457,7 +22457,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_37_2",
-    "family": "forms15_37",
+    "family": "wordform_nov26_15_37",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22474,7 +22474,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_37_3",
-    "family": "forms15_37",
+    "family": "wordform_nov26_15_37",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22491,7 +22491,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_37_4",
-    "family": "forms15_37",
+    "family": "wordform_nov26_15_37",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22508,7 +22508,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_37_5",
-    "family": "forms15_37",
+    "family": "wordform_nov26_15_37",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22525,7 +22525,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_38_1",
-    "family": "forms15_38",
+    "family": "wordform_nov26_15_38",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22542,7 +22542,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_38_2",
-    "family": "forms15_38",
+    "family": "wordform_nov26_15_38",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22559,7 +22559,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_38_3",
-    "family": "forms15_38",
+    "family": "wordform_nov26_15_38",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22576,7 +22576,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_38_4",
-    "family": "forms15_38",
+    "family": "wordform_nov26_15_38",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22593,7 +22593,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_38_5",
-    "family": "forms15_38",
+    "family": "wordform_nov26_15_38",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22610,7 +22610,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_39_1",
-    "family": "forms15_39",
+    "family": "wordform_nov26_15_39",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22627,7 +22627,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_39_2",
-    "family": "forms15_39",
+    "family": "wordform_nov26_15_39",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22644,7 +22644,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_39_3",
-    "family": "forms15_39",
+    "family": "wordform_nov26_15_39",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22661,7 +22661,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_39_4",
-    "family": "forms15_39",
+    "family": "wordform_nov26_15_39",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22678,7 +22678,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_39_5",
-    "family": "forms15_39",
+    "family": "wordform_nov26_15_39",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22695,7 +22695,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_40_1",
-    "family": "forms15_40",
+    "family": "wordform_nov26_15_40",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22712,7 +22712,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_40_2",
-    "family": "forms15_40",
+    "family": "wordform_nov26_15_40",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22729,7 +22729,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_40_3",
-    "family": "forms15_40",
+    "family": "wordform_nov26_15_40",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22746,7 +22746,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_40_4",
-    "family": "forms15_40",
+    "family": "wordform_nov26_15_40",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22763,7 +22763,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_40_5",
-    "family": "forms15_40",
+    "family": "wordform_nov26_15_40",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22780,7 +22780,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_41_1",
-    "family": "forms15_41",
+    "family": "wordform_nov26_15_41",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22797,7 +22797,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_41_2",
-    "family": "forms15_41",
+    "family": "wordform_nov26_15_41",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22814,7 +22814,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_41_3",
-    "family": "forms15_41",
+    "family": "wordform_nov26_15_41",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22831,7 +22831,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_41_4",
-    "family": "forms15_41",
+    "family": "wordform_nov26_15_41",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22848,7 +22848,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_41_5",
-    "family": "forms15_41",
+    "family": "wordform_nov26_15_41",
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
@@ -22865,7 +22865,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_42_1",
-    "family": "forms15_42",
+    "family": "wordform_nov26_15_42",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -22882,7 +22882,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_42_2",
-    "family": "forms15_42",
+    "family": "wordform_nov26_15_42",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -22899,7 +22899,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_42_3",
-    "family": "forms15_42",
+    "family": "wordform_nov26_15_42",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -22916,7 +22916,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_42_4",
-    "family": "forms15_42",
+    "family": "wordform_nov26_15_42",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -22933,7 +22933,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_42_5",
-    "family": "forms15_42",
+    "family": "wordform_nov26_15_42",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -22950,11 +22950,11 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_43_1",
-    "family": "forms15_43",
+    "family": "wordform_nov26_15_43",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The team will ____ the expression from basic principles.",
+    "prompt": "Using only the basic principles given, the team will ____ the mathematical expression step by step.",
     "options": [
       "derive",
       "derivation",
@@ -22967,7 +22967,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_43_2",
-    "family": "forms15_43",
+    "family": "wordform_nov26_15_43",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -22984,7 +22984,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_43_3",
-    "family": "forms15_43",
+    "family": "wordform_nov26_15_43",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23001,7 +23001,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_43_4",
-    "family": "forms15_43",
+    "family": "wordform_nov26_15_43",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23018,7 +23018,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_43_5",
-    "family": "forms15_43",
+    "family": "wordform_nov26_15_43",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23035,7 +23035,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_44_1",
-    "family": "forms15_44",
+    "family": "wordform_nov26_15_44",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23052,7 +23052,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_44_2",
-    "family": "forms15_44",
+    "family": "wordform_nov26_15_44",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23069,7 +23069,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_44_3",
-    "family": "forms15_44",
+    "family": "wordform_nov26_15_44",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23086,7 +23086,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_44_4",
-    "family": "forms15_44",
+    "family": "wordform_nov26_15_44",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23103,7 +23103,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_44_5",
-    "family": "forms15_44",
+    "family": "wordform_nov26_15_44",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23120,7 +23120,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_45_1",
-    "family": "forms15_45",
+    "family": "wordform_nov26_15_45",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23137,7 +23137,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_45_2",
-    "family": "forms15_45",
+    "family": "wordform_nov26_15_45",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23154,7 +23154,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_45_3",
-    "family": "forms15_45",
+    "family": "wordform_nov26_15_45",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23171,7 +23171,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_45_4",
-    "family": "forms15_45",
+    "family": "wordform_nov26_15_45",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23188,7 +23188,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_45_5",
-    "family": "forms15_45",
+    "family": "wordform_nov26_15_45",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23205,24 +23205,24 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_46_1",
-    "family": "forms15_46",
+    "family": "wordform_nov26_15_46",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The committee must ____ funds to each department.",
+    "prompt": "For the first time, the committee must ____ funds to the newly created departments.",
     "options": [
       "allocate",
       "allocation",
       "allocated",
       "allocating",
-      "reallocate"
+      "reallocated"
     ],
     "correct": 0,
-    "explanation": "allocate: tahsis etmek. Diğer seçenekler: allocation: tahsis; allocated: tahsis edilmiş; allocating: tahsis etmekte; reallocate: yeniden tahsis etmek."
+    "explanation": "Allocate: ilk defa kaynak tahsis etmek. Reallocate yeniden tahsis etmektir."
   },
   {
     "id": "wq150_nov26_forms15_46_2",
-    "family": "forms15_46",
+    "family": "wordform_nov26_15_46",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23239,7 +23239,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_46_3",
-    "family": "forms15_46",
+    "family": "wordform_nov26_15_46",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23256,7 +23256,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_46_4",
-    "family": "forms15_46",
+    "family": "wordform_nov26_15_46",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23273,7 +23273,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_46_5",
-    "family": "forms15_46",
+    "family": "wordform_nov26_15_46",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23290,7 +23290,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_47_1",
-    "family": "forms15_47",
+    "family": "wordform_nov26_15_47",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23307,7 +23307,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_47_2",
-    "family": "forms15_47",
+    "family": "wordform_nov26_15_47",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23324,7 +23324,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_47_3",
-    "family": "forms15_47",
+    "family": "wordform_nov26_15_47",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23341,7 +23341,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_47_4",
-    "family": "forms15_47",
+    "family": "wordform_nov26_15_47",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23358,7 +23358,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_47_5",
-    "family": "forms15_47",
+    "family": "wordform_nov26_15_47",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23375,7 +23375,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_48_1",
-    "family": "forms15_48",
+    "family": "wordform_nov26_15_48",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23392,24 +23392,24 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_48_2",
-    "family": "forms15_48",
+    "family": "wordform_nov26_15_48",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The first ____ of the sample's length was recorded at noon.",
+    "prompt": "The first recorded ____ of the sample's length was made at noon.",
     "options": [
-      "measure",
+      "measuring",
       "measurement",
       "measurable",
       "measured",
       "immeasurable"
     ],
     "correct": 1,
-    "explanation": "measurement: ölçüm. Diğer seçenekler: measure: ölçmek; measurable: ölçülebilir; measured: ölçülmüş; immeasurable: ölçülemeyecek kadar büyük."
+    "explanation": "Measurement ölçüm sonucunu belirten isimdir."
   },
   {
     "id": "wq150_nov26_forms15_48_3",
-    "family": "forms15_48",
+    "family": "wordform_nov26_15_48",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23426,7 +23426,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_48_4",
-    "family": "forms15_48",
+    "family": "wordform_nov26_15_48",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23443,7 +23443,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_48_5",
-    "family": "forms15_48",
+    "family": "wordform_nov26_15_48",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23460,7 +23460,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_49_1",
-    "family": "forms15_49",
+    "family": "wordform_nov26_15_49",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23477,7 +23477,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_49_2",
-    "family": "forms15_49",
+    "family": "wordform_nov26_15_49",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23494,7 +23494,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_49_3",
-    "family": "forms15_49",
+    "family": "wordform_nov26_15_49",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23511,7 +23511,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_49_4",
-    "family": "forms15_49",
+    "family": "wordform_nov26_15_49",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
@@ -23528,7 +23528,7 @@ export const foundationQuestions = [
   },
   {
     "id": "wq150_nov26_forms15_49_5",
-    "family": "forms15_49",
+    "family": "wordform_nov26_15_49",
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
