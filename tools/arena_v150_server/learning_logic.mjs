@@ -3422,7 +3422,7 @@ export const logicQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: How long did you study yesterday? B: ____ A: That's a long time!",
+    "prompt": "A: How long did you study yesterday? B: ____ A: I only studied for one hour, so you studied twice as long as I did.",
     "options": [
       "At half past seven.",
       "On Tuesday.",
@@ -3431,7 +3431,7 @@ export const logicQuestions = [
       "For two hours."
     ],
     "correct": 4,
-    "explanation": "How long süre sorusudur."
+    "explanation": "Twice one hour iki saat eder; how long süre sorusudur."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_3_1",
@@ -4123,7 +4123,7 @@ export const logicQuestions = [
     "options": [
       "She started working here in 2022 and still works here.",
       "She worked here in 2022 but no longer does.",
-      "She will start working here in 2022.",
+      "She will start working here in 2032.",
       "She has worked here for two months.",
       "She worked here twice in 2022."
     ],
@@ -4140,7 +4140,7 @@ export const logicQuestions = [
     "options": [
       "She started working here in 2022 and still works here.",
       "She worked here in 2022 but no longer does.",
-      "She will start working here in 2022.",
+      "She will start working here in 2032.",
       "She has worked here for two months.",
       "She worked here twice in 2022."
     ],
@@ -4153,16 +4153,16 @@ export const logicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Synonym",
-    "prompt": "Choose the sentence closest in meaning:\n\nSpeaking in 2021, she said she was due to begin working here the following year.",
+    "prompt": "Choose the sentence closest in meaning:\n\nShe is scheduled to begin working here in 2032.",
     "options": [
       "She started working here in 2022 and still works here.",
       "She worked here in 2022 but no longer does.",
-      "She will start working here in 2022.",
+      "She will start working here in 2032.",
       "She has worked here for two months.",
       "She worked here twice in 2022."
     ],
     "correct": 2,
-    "explanation": "2021 bakış açısından gelecek başlangıç 2022'dir."
+    "explanation": "Be scheduled to begin planlanan gelecek başlangıcını ifade eder."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_11_4",
@@ -4174,7 +4174,7 @@ export const logicQuestions = [
     "options": [
       "She started working here in 2022 and still works here.",
       "She worked here in 2022 but no longer does.",
-      "She will start working here in 2022.",
+      "She will start working here in 2032.",
       "She has worked here for two months.",
       "She worked here twice in 2022."
     ],
@@ -4191,7 +4191,7 @@ export const logicQuestions = [
     "options": [
       "She started working here in 2022 and still works here.",
       "She worked here in 2022 but no longer does.",
-      "She will start working here in 2022.",
+      "She will start working here in 2032.",
       "She has worked here for two months.",
       "She worked here twice in 2022."
     ],
