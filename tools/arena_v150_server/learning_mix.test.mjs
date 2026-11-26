@@ -58,3 +58,6 @@ test('unfiltered mixed match balances question families, including word forms an
  const families=curated.map(q=>byId.get(q.id).family).filter(Boolean);assert.equal(new Set(families).size,families.length);
  const types=new Set(curated.map(q=>{const x=byId.get(q.id);return x.family?.startsWith('cloze_')?'Cloze':x.family?.startsWith('wordform_')?'WordForm':x.topic;}));assert.ok(types.size>=7);
 });
+
+import {lexicalRelationWords,lexicalRelationQuestions} from './learning_relations.mjs';
+test('lexical relations and phrasal verbs are complete and grouped',()=>{const relations=lexicalRelationQuestions.filter(q=>q.topic==='Synonym');assert.equal(relations.length,128);assert.equal(new Set(relations.map(q=>q.family)).size,64);assert.equal(lexicalRelationQuestions.filter(q=>q.topic==='Phrasals').length,32);assert.ok(lexicalRelationQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.explanation.length>=20));assert.ok(lexicalRelationWords.every(w=>/^[A-Z]{2,22}$/.test(w.answer)&&w.meaning));});
