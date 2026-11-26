@@ -1,2 +1,4 @@
 # Scientific and academic vocabulary extension
 287 new original question records: 185 verb-context stems, 54 adverb/academic-expression stems, 48 comprehension questions. 94 concept/passage families. Multiple contexts share options and target; not independent language concepts. Remzi Hoca Question Types Set 1 PDF pages 54 and 135 were inspected for vocabulary and reading-comprehension formats. All new passages are invented educational scenarios and all new stems independently authored; specialist content is illustrative and not sourced factual reporting. Exact stem deduplication against 2210 prior records. Academy keeps four options, Arena five. Difficulty is approximate, language review and Android/device tests pending.
+
+Supplement: 12 additional independent scientific terminology items. Final batch: 299 records, 106 families.

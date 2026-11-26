@@ -4877,5 +4877,209 @@ export const researchQuestions = [
     "correct": 0,
     "explanation": "Asymptotically limit davranışına yaklaşarak anlamındaki matematiksel zarftır.",
     "family": "researchadv_asymptotically"
+  },
+  {
+    "id": "wq150_science_independent_1",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researcher repeated the measurement using a second instrument to check whether the original reading was ____ .",
+    "options": [
+      "accurate",
+      "portable",
+      "visible",
+      "affordable",
+      "flexible"
+    ],
+    "correct": 0,
+    "explanation": "Accurate ölçümün gerçek değere yakınlığını ifade eder.",
+    "family": "science_independent_1"
+  },
+  {
+    "id": "wq150_science_independent_2",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The new bridge was designed with expansion joints to ____ thermal expansion during hot weather.",
+    "options": [
+      "accommodate",
+      "abolish",
+      "conceal",
+      "document",
+      "calculate"
+    ],
+    "correct": 0,
+    "explanation": "Accommodate burada fiziksel genleşmeye uygun alan sağlamak anlamındadır.",
+    "family": "science_independent_2"
+  },
+  {
+    "id": "wq150_science_independent_3",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The sample was taken from a depth of two metres, well below the surface, to avoid ____ by floating debris.",
+    "options": [
+      "contamination",
+      "evaporation",
+      "compression",
+      "reflection",
+      "illumination"
+    ],
+    "correct": 0,
+    "explanation": "Contamination yabancı maddelerin örneğe karışmasıdır.",
+    "family": "science_independent_3"
+  },
+  {
+    "id": "wq150_science_independent_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A material that allows light to pass through but scatters it so that objects cannot be seen clearly is described as ____ .",
+    "options": [
+      "translucent",
+      "opaque",
+      "transparent",
+      "magnetic",
+      "elastic"
+    ],
+    "correct": 0,
+    "explanation": "Translucent ışığı geçirirken net görüntü oluşturmayan yarı saydam malzemeyi niteler.",
+    "family": "science_independent_4"
+  },
+  {
+    "id": "wq150_science_independent_5",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The investigators used a control sample containing no target substance to establish the instrument's ____ response.",
+    "options": [
+      "baseline",
+      "cumulative",
+      "retrospective",
+      "seasonal",
+      "alternating"
+    ],
+    "correct": 0,
+    "explanation": "Baseline response karşılaştırma için kullanılan başlangıç veya referans yanıtıdır.",
+    "family": "science_independent_5"
+  },
+  {
+    "id": "wq150_science_independent_6",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "Because the data were collected at uneven intervals, the researchers could not assume that consecutive observations were equally ____ in time.",
+    "options": [
+      "spaced",
+      "weighted",
+      "classified",
+      "labelled",
+      "distributed geographically"
+    ],
+    "correct": 0,
+    "explanation": "Equally spaced gözlemler arasındaki zaman farklarının eşit olduğunu belirtir.",
+    "family": "science_independent_6"
+  },
+  {
+    "id": "wq150_science_independent_7",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The researchers excluded the first few readings because the sensor had not yet reached thermal ____ with its surroundings.",
+    "options": [
+      "equilibrium",
+      "dispersion",
+      "conduction",
+      "radiation",
+      "diffusion"
+    ],
+    "correct": 0,
+    "explanation": "Thermal equilibrium sistemler arasında net ısı alışverişinin olmadığı termal denge durumudur.",
+    "family": "science_independent_7"
+  },
+  {
+    "id": "wq150_science_independent_8",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The two measurements were expressed in different units, so a unit ____ was necessary before their numerical values could be compared.",
+    "options": [
+      "conversion",
+      "decomposition",
+      "rotation",
+      "interpolation",
+      "stratification"
+    ],
+    "correct": 0,
+    "explanation": "Unit conversion ölçü birimlerini eşdeğer birimlere dönüştürmektir.",
+    "family": "science_independent_8"
+  },
+  {
+    "id": "wq150_science_independent_9",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The new observation was incompatible with a necessary prediction of the hypothesis, thereby providing a potential ____ of that hypothesis.",
+    "options": [
+      "falsification",
+      "corroboration",
+      "replication",
+      "normalisation",
+      "calibration"
+    ],
+    "correct": 0,
+    "explanation": "Falsification hipotezin yanlışlanmasını ifade eder.",
+    "family": "science_independent_9"
+  },
+  {
+    "id": "wq150_science_independent_10",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The observed association reversed direction when the data were divided into relevant subgroups, illustrating the danger of relying on ____ statistics alone.",
+    "options": [
+      "aggregate",
+      "longitudinal",
+      "ordinal",
+      "experimental",
+      "qualitative"
+    ],
+    "correct": 0,
+    "explanation": "Aggregate statistics alt grupların birleştirildiği toplam istatistiklerdir.",
+    "family": "science_independent_10"
+  },
+  {
+    "id": "wq150_science_independent_11",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The two proposed definitions refer to the same set of observed cases but differ in the properties they regard as essential. They are extensionally equivalent but not necessarily ____ equivalent.",
+    "options": [
+      "intensionally",
+      "numerically",
+      "chronologically",
+      "spatially",
+      "procedurally"
+    ],
+    "correct": 0,
+    "explanation": "Intensionally kavramın tanımlayıcı içeriği bakımından anlamındadır.",
+    "family": "science_independent_11"
+  },
+  {
+    "id": "wq150_science_independent_12",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Vocabulary",
+    "prompt": "The proof established that the proposed condition was necessary for the result but did not show that it was ____ .",
+    "options": [
+      "sufficient",
+      "observable",
+      "continuous",
+      "measurable",
+      "finite"
+    ],
+    "correct": 0,
+    "explanation": "Sufficient koşul sağlandığında sonucun gerçekleşmesini garanti eden yeter koşulu ifade eder.",
+    "family": "science_independent_12"
   }
 ];
