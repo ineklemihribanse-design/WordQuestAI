@@ -38,6 +38,8 @@ research=(root/'tools/arena_v150_server/learning_research.mjs').read_text('utf-8
 qs += json.loads(research.split('export const researchQuestions = ',1)[1].rstrip().removesuffix(';'))
 cohesion_exp=(root/'tools/arena_v150_server/learning_cohesion_expansion.mjs').read_text('utf-8')
 qs += json.loads(cohesion_exp.split('export const cohesionExpansion = ',1)[1].rstrip().removesuffix(';'))
+lexfast=(root/'tools/arena_v150_server/learning_lexical_fast.mjs').read_text('utf-8')
+qs += json.loads(lexfast.split('export const lexicalFastQuestions = ',1)[1].rstrip().removesuffix(';'))
 # Existing YDS Academy has a strict four-choice contract; keep it unchanged.
 # Arena uses all five authored choices.
 qs=[q for q in qs if q['yds']]

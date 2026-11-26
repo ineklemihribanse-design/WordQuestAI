@@ -1,0 +1,2 @@
+# Bulk lexical expansion
+368 question records from 92 headword families, two independently worded contexts plus contextual synonym and antonym variants, not independent concepts. Remzi Hoca Question Types Set 1 PDF page 55 inspected for contextual vocabulary format; original authored contexts and options, no publisher question copied. Exact prompt comparison with 1157 existing records in six related modules; full-bank cross-check included in CI. Editorial CEFR/YDS estimates; linguistic review pending. Academy retains four-choice contract.
