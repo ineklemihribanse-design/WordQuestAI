@@ -5054,5 +5054,1705 @@ export const deepReadingQuestions = [
     ],
     "correct": 0,
     "explanation": "İdari kolaylığa dayalı sınıflamanın açıklayıcı değeri sorgulanabilir."
+  },
+  {
+    "id": "wq150_nov26_read12_1_1",
+    "family": "reading_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Nina works in a flower shop. On Mondays she starts at eight, but on Saturdays she starts at ten. She walks to work because the shop is near her home. After work, she often buys fruit at the market.\n\nWhere does Nina work?",
+    "options": [
+      "In a flower shop",
+      "At a fruit market",
+      "In a café",
+      "At a bus station",
+      "In a school"
+    ],
+    "correct": 0,
+    "explanation": "Çiçekçide çalıştığı ilk cümlede belirtiliyor."
+  },
+  {
+    "id": "wq150_nov26_read12_1_2",
+    "family": "reading_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Nina works in a flower shop. On Mondays she starts at eight, but on Saturdays she starts at ten. She walks to work because the shop is near her home. After work, she often buys fruit at the market.\n\nWhen does she start work on Saturdays?",
+    "options": [
+      "At ten",
+      "At eight",
+      "At nine",
+      "At twelve",
+      "At seven"
+    ],
+    "correct": 0,
+    "explanation": "Cumartesi başlangıç saati ondur."
+  },
+  {
+    "id": "wq150_nov26_read12_1_3",
+    "family": "reading_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Nina works in a flower shop. On Mondays she starts at eight, but on Saturdays she starts at ten. She walks to work because the shop is near her home. After work, she often buys fruit at the market.\n\nWhy does she walk to work?",
+    "options": [
+      "The shop is near her home.",
+      "She works at the market.",
+      "She starts work very early.",
+      "She has to carry flowers.",
+      "She buys fruit before work."
+    ],
+    "correct": 0,
+    "explanation": "Because sonrasında dükkânın yakın olduğu belirtiliyor."
+  },
+  {
+    "id": "wq150_nov26_read12_1_4",
+    "family": "reading_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Nina works in a flower shop. On Mondays she starts at eight, but on Saturdays she starts at ten. She walks to work because the shop is near her home. After work, she often buys fruit at the market.\n\nWhat does she often do after work?",
+    "options": [
+      "Buy fruit",
+      "Sell fruit",
+      "Buy flowers",
+      "Go to school",
+      "Walk to the flower shop"
+    ],
+    "correct": 0,
+    "explanation": "İşten sonra pazardan meyve alır."
+  },
+  {
+    "id": "wq150_nov26_read12_2_1",
+    "family": "reading_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The art club meets in Room 4 on Thursdays from 3 to 4. Bring a pencil and some paper. The teacher has paints for everyone. There is no meeting next Thursday because the school is closed.\n\nWhere does the club usually meet?",
+    "options": [
+      "Room 4",
+      "Room 3",
+      "Room 2",
+      "The school garden",
+      "The library"
+    ],
+    "correct": 0,
+    "explanation": "Oda numarası 4 olarak verilmiştir."
+  },
+  {
+    "id": "wq150_nov26_read12_2_2",
+    "family": "reading_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The art club meets in Room 4 on Thursdays from 3 to 4. Bring a pencil and some paper. The teacher has paints for everyone. There is no meeting next Thursday because the school is closed.\n\nWhat should students bring?",
+    "options": [
+      "A pencil and paper",
+      "Paints and paper",
+      "Paints and brushes",
+      "Only paints",
+      "A finished painting"
+    ],
+    "correct": 0,
+    "explanation": "Kalem ve kâğıt getirmeleri isteniyor."
+  },
+  {
+    "id": "wq150_nov26_read12_2_3",
+    "family": "reading_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The art club meets in Room 4 on Thursdays from 3 to 4. Bring a pencil and some paper. The teacher has paints for everyone. There is no meeting next Thursday because the school is closed.\n\nHow long is a usual meeting?",
+    "options": [
+      "One hour",
+      "Two hours",
+      "Three hours",
+      "Four hours",
+      "Half an hour"
+    ],
+    "correct": 0,
+    "explanation": "Üçten dörde bir saat sürer."
+  },
+  {
+    "id": "wq150_nov26_read12_2_4",
+    "family": "reading_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The art club meets in Room 4 on Thursdays from 3 to 4. Bring a pencil and some paper. The teacher has paints for everyone. There is no meeting next Thursday because the school is closed.\n\nWhy is there no meeting next Thursday?",
+    "options": [
+      "The school is closed.",
+      "The teacher has no paints.",
+      "The club changes rooms.",
+      "Students have no paper.",
+      "The meeting starts earlier."
+    ],
+    "correct": 0,
+    "explanation": "Gelecek perşembe okul kapalıdır."
+  },
+  {
+    "id": "wq150_nov26_read12_3_1",
+    "family": "reading_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Ben is making lunch for his two friends. He has rice, tomatoes and cheese at home, but he needs eggs. He goes to the shop at eleven. His friends arrive at twelve, and they eat together in the garden.\n\nHow many friends are coming?",
+    "options": [
+      "Two",
+      "One",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "correct": 0,
+    "explanation": "Two friends iki arkadaş demektir."
+  },
+  {
+    "id": "wq150_nov26_read12_3_2",
+    "family": "reading_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Ben is making lunch for his two friends. He has rice, tomatoes and cheese at home, but he needs eggs. He goes to the shop at eleven. His friends arrive at twelve, and they eat together in the garden.\n\nWhat does Ben need to buy?",
+    "options": [
+      "Eggs",
+      "Rice",
+      "Tomatoes",
+      "Cheese",
+      "All four foods"
+    ],
+    "correct": 0,
+    "explanation": "Evde yumurta olmadığı belirtiliyor."
+  },
+  {
+    "id": "wq150_nov26_read12_3_3",
+    "family": "reading_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Ben is making lunch for his two friends. He has rice, tomatoes and cheese at home, but he needs eggs. He goes to the shop at eleven. His friends arrive at twelve, and they eat together in the garden.\n\nWhen does he go to the shop?",
+    "options": [
+      "At eleven",
+      "At twelve",
+      "At ten",
+      "At one",
+      "At two"
+    ],
+    "correct": 0,
+    "explanation": "Alışverişe on birde gider."
+  },
+  {
+    "id": "wq150_nov26_read12_3_4",
+    "family": "reading_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Ben is making lunch for his two friends. He has rice, tomatoes and cheese at home, but he needs eggs. He goes to the shop at eleven. His friends arrive at twelve, and they eat together in the garden.\n\nWhere do they eat lunch?",
+    "options": [
+      "In the garden",
+      "In the shop",
+      "In the kitchen",
+      "At a restaurant",
+      "At a friend's house"
+    ],
+    "correct": 0,
+    "explanation": "Son cümlede bahçede yedikleri yazıyor."
+  },
+  {
+    "id": "wq150_nov26_read12_4_1",
+    "family": "reading_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Ava, your dance class is at five today, not four. Your dance shoes are in the blue bag. Take the bus to the sports centre. I can meet you there after your class. Dad.\n\nWho sends the message?",
+    "options": [
+      "Ava's father",
+      "Ava's teacher",
+      "Ava's friend",
+      "Ava's sister",
+      "A bus driver"
+    ],
+    "correct": 0,
+    "explanation": "Mesaj Dad imzasıyla bitiyor."
+  },
+  {
+    "id": "wq150_nov26_read12_4_2",
+    "family": "reading_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Ava, your dance class is at five today, not four. Your dance shoes are in the blue bag. Take the bus to the sports centre. I can meet you there after your class. Dad.\n\nWhat time is the class today?",
+    "options": [
+      "Five",
+      "Four",
+      "Three",
+      "Six",
+      "Seven"
+    ],
+    "correct": 0,
+    "explanation": "Bugün ders saati beş; dört değil."
+  },
+  {
+    "id": "wq150_nov26_read12_4_3",
+    "family": "reading_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Ava, your dance class is at five today, not four. Your dance shoes are in the blue bag. Take the bus to the sports centre. I can meet you there after your class. Dad.\n\nWhere are the dance shoes?",
+    "options": [
+      "In the blue bag",
+      "In the red bag",
+      "At the sports centre",
+      "On the bus",
+      "In the classroom"
+    ],
+    "correct": 0,
+    "explanation": "Ayakkabılar mavi çantada."
+  },
+  {
+    "id": "wq150_nov26_read12_4_4",
+    "family": "reading_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Hi Ava, your dance class is at five today, not four. Your dance shoes are in the blue bag. Take the bus to the sports centre. I can meet you there after your class. Dad.\n\nHow should Ava travel to the centre?",
+    "options": [
+      "By bus",
+      "By train",
+      "By bike",
+      "By car",
+      "On foot"
+    ],
+    "correct": 0,
+    "explanation": "Take the bus otobüse binmek demektir."
+  },
+  {
+    "id": "wq150_nov26_read12_5_1",
+    "family": "reading_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At the market, a kilo of apples costs £2 and a kilo of pears costs £3. Leo buys one kilo of each. He pays with a £10 note. The seller gives him his change and puts the fruit in one bag.\n\nHow much are the apples per kilo?",
+    "options": [
+      "£2",
+      "£3",
+      "£5",
+      "£10",
+      "£1"
+    ],
+    "correct": 0,
+    "explanation": "Elma kilosu iki sterlindir."
+  },
+  {
+    "id": "wq150_nov26_read12_5_2",
+    "family": "reading_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At the market, a kilo of apples costs £2 and a kilo of pears costs £3. Leo buys one kilo of each. He pays with a £10 note. The seller gives him his change and puts the fruit in one bag.\n\nHow much fruit does Leo buy?",
+    "options": [
+      "Two kilos",
+      "One kilo",
+      "Three kilos",
+      "Five kilos",
+      "Ten kilos"
+    ],
+    "correct": 0,
+    "explanation": "Her meyveden bir kilo, toplam iki kilodur."
+  },
+  {
+    "id": "wq150_nov26_read12_5_3",
+    "family": "reading_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At the market, a kilo of apples costs £2 and a kilo of pears costs £3. Leo buys one kilo of each. He pays with a £10 note. The seller gives him his change and puts the fruit in one bag.\n\nHow much does Leo pay for the fruit?",
+    "options": [
+      "£5",
+      "£2",
+      "£3",
+      "£10",
+      "£6"
+    ],
+    "correct": 0,
+    "explanation": "Ürünlerin toplam fiyatı 2+3=5 sterlin."
+  },
+  {
+    "id": "wq150_nov26_read12_5_4",
+    "family": "reading_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "At the market, a kilo of apples costs £2 and a kilo of pears costs £3. Leo buys one kilo of each. He pays with a £10 note. The seller gives him his change and puts the fruit in one bag.\n\nHow many bags does the seller use?",
+    "options": [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "correct": 0,
+    "explanation": "Meyveleri tek torbaya koyuyor."
+  },
+  {
+    "id": "wq150_nov26_read12_6_1",
+    "family": "reading_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest booked a room with a sea view. When she arrived, the room was not ready because the previous guest had checked out late. Reception offered her a garden-view room immediately or the original room an hour later. She chose to wait and left her suitcase at reception.\n\nWhy was the original room unavailable at first?",
+    "options": [
+      "The previous guest had left late.",
+      "The hotel had no sea-view rooms.",
+      "The booking had been cancelled.",
+      "The guest had arrived a day early.",
+      "Reception had lost her suitcase."
+    ],
+    "correct": 0,
+    "explanation": "Önceki misafirin geç ayrılması odanın hazır olmamasına neden olmuş."
+  },
+  {
+    "id": "wq150_nov26_read12_6_2",
+    "family": "reading_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest booked a room with a sea view. When she arrived, the room was not ready because the previous guest had checked out late. Reception offered her a garden-view room immediately or the original room an hour later. She chose to wait and left her suitcase at reception.\n\nWhich room did the guest choose?",
+    "options": [
+      "The sea-view room after waiting",
+      "The garden-view room immediately",
+      "A different hotel room",
+      "A room without a view",
+      "Both rooms for the night"
+    ],
+    "correct": 0,
+    "explanation": "She chose to wait, ilk seçtiği odayı beklemeyi seçti."
+  },
+  {
+    "id": "wq150_nov26_read12_6_3",
+    "family": "reading_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest booked a room with a sea view. When she arrived, the room was not ready because the previous guest had checked out late. Reception offered her a garden-view room immediately or the original room an hour later. She chose to wait and left her suitcase at reception.\n\nWhat did she do with her luggage?",
+    "options": [
+      "She left it at reception.",
+      "She took it to the garden-view room.",
+      "She sent it to another hotel.",
+      "She carried it to the beach.",
+      "She left it in her car."
+    ],
+    "correct": 0,
+    "explanation": "Valizini resepsiyona bıraktı."
+  },
+  {
+    "id": "wq150_nov26_read12_6_4",
+    "family": "reading_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel guest booked a room with a sea view. When she arrived, the room was not ready because the previous guest had checked out late. Reception offered her a garden-view room immediately or the original room an hour later. She chose to wait and left her suitcase at reception.\n\nWhat does 'original room' refer to?",
+    "options": [
+      "The room she had booked",
+      "The first room built in the hotel",
+      "The room offered as an alternative",
+      "The reception area",
+      "The previous guest's new room"
+    ],
+    "correct": 0,
+    "explanation": "Original room başlangıçta rezervasyon yaptığı odadır."
+  },
+  {
+    "id": "wq150_nov26_read12_7_1",
+    "family": "reading_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A community centre offers two cooking classes. The Tuesday class is for beginners and includes ingredients in the price. The Saturday class is for people with some experience, and students bring their own ingredients. Both classes last two hours. Spaces must be booked in advance.\n\nWhich class suits someone who has never cooked before?",
+    "options": [
+      "Tuesday's class",
+      "Saturday's class",
+      "Both classes equally",
+      "Neither class",
+      "Only a private class"
+    ],
+    "correct": 0,
+    "explanation": "Salı sınıfı beginners için."
+  },
+  {
+    "id": "wq150_nov26_read12_7_2",
+    "family": "reading_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A community centre offers two cooking classes. The Tuesday class is for beginners and includes ingredients in the price. The Saturday class is for people with some experience, and students bring their own ingredients. Both classes last two hours. Spaces must be booked in advance.\n\nWhat is included only in Tuesday's class?",
+    "options": [
+      "Ingredients",
+      "Two hours of teaching",
+      "A reserved place",
+      "Access to the centre",
+      "Cooking instruction"
+    ],
+    "correct": 0,
+    "explanation": "Malzemeler salı ücretine dahil, cumartesi katılımcılar getiriyor."
+  },
+  {
+    "id": "wq150_nov26_read12_7_3",
+    "family": "reading_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A community centre offers two cooking classes. The Tuesday class is for beginners and includes ingredients in the price. The Saturday class is for people with some experience, and students bring their own ingredients. Both classes last two hours. Spaces must be booked in advance.\n\nWhat do the classes have in common?",
+    "options": [
+      "Their duration",
+      "Their experience requirements",
+      "Their ingredient arrangements",
+      "Their day of the week",
+      "Their advertised level"
+    ],
+    "correct": 0,
+    "explanation": "İkisi de iki saat sürüyor."
+  },
+  {
+    "id": "wq150_nov26_read12_7_4",
+    "family": "reading_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A community centre offers two cooking classes. The Tuesday class is for beginners and includes ingredients in the price. The Saturday class is for people with some experience, and students bring their own ingredients. Both classes last two hours. Spaces must be booked in advance.\n\nWhat must students do before attending either class?",
+    "options": [
+      "Reserve a place",
+      "Buy ingredients",
+      "Complete the beginner course",
+      "Pay for private lessons",
+      "Bring a finished meal"
+    ],
+    "correct": 0,
+    "explanation": "Must be booked in advance önceden yer ayırtmak gerektiğini bildirir."
+  },
+  {
+    "id": "wq150_nov26_read12_8_1",
+    "family": "reading_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Oliver bought a used desk through an online marketplace. The seller said it was easy to take apart, but when Oliver arrived, one screw was stuck. Instead of damaging the desk, they borrowed a larger vehicle from a neighbour and moved it in one piece.\n\nWhat problem did Oliver encounter?",
+    "options": [
+      "A screw could not be removed.",
+      "The desk had been sold already.",
+      "The desk was smaller than advertised.",
+      "The seller had lost the desk.",
+      "The neighbour refused to help."
+    ],
+    "correct": 0,
+    "explanation": "Bir vida sıkışmıştı."
+  },
+  {
+    "id": "wq150_nov26_read12_8_2",
+    "family": "reading_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Oliver bought a used desk through an online marketplace. The seller said it was easy to take apart, but when Oliver arrived, one screw was stuck. Instead of damaging the desk, they borrowed a larger vehicle from a neighbour and moved it in one piece.\n\nHow was the problem solved?",
+    "options": [
+      "They transported the assembled desk.",
+      "They bought a new screw.",
+      "They damaged the desk to separate it.",
+      "They cancelled the purchase.",
+      "They left half the desk behind."
+    ],
+    "correct": 0,
+    "explanation": "Masayı sökmeden daha büyük araçla taşıdılar."
+  },
+  {
+    "id": "wq150_nov26_read12_8_3",
+    "family": "reading_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Oliver bought a used desk through an online marketplace. The seller said it was easy to take apart, but when Oliver arrived, one screw was stuck. Instead of damaging the desk, they borrowed a larger vehicle from a neighbour and moved it in one piece.\n\nWhy did they need a larger vehicle?",
+    "options": [
+      "The desk would remain in one piece.",
+      "They had bought several desks.",
+      "The original vehicle had broken down.",
+      "The neighbour wanted to travel with them.",
+      "They needed to carry tools only."
+    ],
+    "correct": 0,
+    "explanation": "Sökülemeyen masa bütün halde daha fazla yer kaplıyordu."
+  },
+  {
+    "id": "wq150_nov26_read12_8_4",
+    "family": "reading_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Oliver bought a used desk through an online marketplace. The seller said it was easy to take apart, but when Oliver arrived, one screw was stuck. Instead of damaging the desk, they borrowed a larger vehicle from a neighbour and moved it in one piece.\n\nWhat does 'take apart' mean here?",
+    "options": [
+      "Separate into pieces",
+      "Carry to another place",
+      "Purchase second-hand",
+      "Repair a broken part",
+      "Put pieces together"
+    ],
+    "correct": 0,
+    "explanation": "Take apart parçalarına ayırmaktır."
+  },
+  {
+    "id": "wq150_nov26_read12_9_1",
+    "family": "reading_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A student planned to take a morning train to an interview. The train was cancelled, but the railway company accepted the same ticket on a bus leaving twenty minutes later. She contacted the interviewer, who agreed to move the appointment back by half an hour. She arrived before the new appointment time.\n\nWhat caused the change in her travel plans?",
+    "options": [
+      "Her train was cancelled.",
+      "She bought the wrong ticket.",
+      "The interview was cancelled.",
+      "She missed the bus.",
+      "The interviewer changed the venue."
+    ],
+    "correct": 0,
+    "explanation": "Trenin iptal edilmesi planı değiştirdi."
+  },
+  {
+    "id": "wq150_nov26_read12_9_2",
+    "family": "reading_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A student planned to take a morning train to an interview. The train was cancelled, but the railway company accepted the same ticket on a bus leaving twenty minutes later. She contacted the interviewer, who agreed to move the appointment back by half an hour. She arrived before the new appointment time.\n\nDid she need a new ticket for the bus?",
+    "options": [
+      "No, her train ticket was accepted.",
+      "Yes, she had to buy a return ticket.",
+      "Yes, but the interviewer paid.",
+      "No, because she walked instead.",
+      "Yes, because the bus was earlier."
+    ],
+    "correct": 0,
+    "explanation": "Aynı bilet otobüste kabul edildi."
+  },
+  {
+    "id": "wq150_nov26_read12_9_3",
+    "family": "reading_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A student planned to take a morning train to an interview. The train was cancelled, but the railway company accepted the same ticket on a bus leaving twenty minutes later. She contacted the interviewer, who agreed to move the appointment back by half an hour. She arrived before the new appointment time.\n\nHow did the interviewer help?",
+    "options": [
+      "By arranging a later appointment",
+      "By paying for a taxi",
+      "By moving the interview online",
+      "By travelling to the station",
+      "By cancelling the interview"
+    ],
+    "correct": 0,
+    "explanation": "Randevu yarım saat ertelendi."
+  },
+  {
+    "id": "wq150_nov26_read12_9_4",
+    "family": "reading_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A student planned to take a morning train to an interview. The train was cancelled, but the railway company accepted the same ticket on a bus leaving twenty minutes later. She contacted the interviewer, who agreed to move the appointment back by half an hour. She arrived before the new appointment time.\n\nWhat was the final result?",
+    "options": [
+      "She arrived before the rescheduled interview.",
+      "She missed the new appointment.",
+      "She attended the original interview on time.",
+      "She had to return the following day.",
+      "She arrived thirty minutes after the new time."
+    ],
+    "correct": 0,
+    "explanation": "Yeni randevu saatinden önce vardı."
+  },
+  {
+    "id": "wq150_nov26_read12_10_1",
+    "family": "reading_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A library lends tablets to adults who do not own a computer. Each tablet can be borrowed for one week. Borrowers may renew the loan once, unless another person has reserved the device. The library offers a short lesson on using the tablet when it is collected.\n\nWho is the service intended for?",
+    "options": [
+      "Adults without a computer",
+      "Children with their own tablets",
+      "People who want to buy computers",
+      "Library employees only",
+      "Adults who already own several computers"
+    ],
+    "correct": 0,
+    "explanation": "Bilgisayarı olmayan yetişkinler hedefleniyor."
+  },
+  {
+    "id": "wq150_nov26_read12_10_2",
+    "family": "reading_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A library lends tablets to adults who do not own a computer. Each tablet can be borrowed for one week. Borrowers may renew the loan once, unless another person has reserved the device. The library offers a short lesson on using the tablet when it is collected.\n\nWhat is the standard loan period?",
+    "options": [
+      "One week",
+      "Two weeks",
+      "One month",
+      "One day",
+      "As long as the borrower wishes"
+    ],
+    "correct": 0,
+    "explanation": "Normal ödünç süresi bir haftadır."
+  },
+  {
+    "id": "wq150_nov26_read12_10_3",
+    "family": "reading_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A library lends tablets to adults who do not own a computer. Each tablet can be borrowed for one week. Borrowers may renew the loan once, unless another person has reserved the device. The library offers a short lesson on using the tablet when it is collected.\n\nWhen is renewal not possible?",
+    "options": [
+      "When someone else has reserved the tablet.",
+      "When the borrower has taken a lesson.",
+      "When the device is used at home.",
+      "When the first week has not ended.",
+      "When the borrower has no computer."
+    ],
+    "correct": 0,
+    "explanation": "Unless başka rezervasyon varsa uzatma yapılamadığını bildirir."
+  },
+  {
+    "id": "wq150_nov26_read12_10_4",
+    "family": "reading_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A library lends tablets to adults who do not own a computer. Each tablet can be borrowed for one week. Borrowers may renew the loan once, unless another person has reserved the device. The library offers a short lesson on using the tablet when it is collected.\n\nWhat extra support is offered?",
+    "options": [
+      "A brief lesson on operating the tablet",
+      "A free computer to keep",
+      "A second tablet for family members",
+      "A month of home visits",
+      "A payment for returning the tablet"
+    ],
+    "correct": 0,
+    "explanation": "Teslim sırasında kısa kullanım dersi sunulur."
+  },
+  {
+    "id": "wq150_nov26_read12_11_1",
+    "family": "reading_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A shop sells bicycles online. Customers can collect their orders for free or pay £8 for home delivery. If a bicycle is returned within fourteen days and has not been used, the shop refunds its price. The delivery charge is not refunded.\n\nWhich collection method costs nothing?",
+    "options": [
+      "Collecting the bicycle in person",
+      "Receiving it at home",
+      "Returning a used bicycle",
+      "Ordering a second bicycle",
+      "Asking for delivery on a weekday"
+    ],
+    "correct": 0,
+    "explanation": "Mağazadan teslim alma ücretsiz."
+  },
+  {
+    "id": "wq150_nov26_read12_11_2",
+    "family": "reading_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A shop sells bicycles online. Customers can collect their orders for free or pay £8 for home delivery. If a bicycle is returned within fourteen days and has not been used, the shop refunds its price. The delivery charge is not refunded.\n\nHow much is home delivery?",
+    "options": [
+      "£8",
+      "£14",
+      "Nothing",
+      "The full bicycle price",
+      "£22"
+    ],
+    "correct": 0,
+    "explanation": "Eve teslimat sekiz sterlin."
+  },
+  {
+    "id": "wq150_nov26_read12_11_3",
+    "family": "reading_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A shop sells bicycles online. Customers can collect their orders for free or pay £8 for home delivery. If a bicycle is returned within fourteen days and has not been used, the shop refunds its price. The delivery charge is not refunded.\n\nWhich bicycle qualifies for a refund under the stated rules?",
+    "options": [
+      "An unused bicycle returned after ten days",
+      "A used bicycle returned after five days",
+      "An unused bicycle returned after twenty days",
+      "A used bicycle returned after fourteen days",
+      "Any bicycle regardless of return date"
+    ],
+    "correct": 0,
+    "explanation": "Hem kullanılmamış olma hem 14 gün koşulu aranır."
+  },
+  {
+    "id": "wq150_nov26_read12_11_4",
+    "family": "reading_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A shop sells bicycles online. Customers can collect their orders for free or pay £8 for home delivery. If a bicycle is returned within fourteen days and has not been used, the shop refunds its price. The delivery charge is not refunded.\n\nWhat happens to the delivery charge when the bicycle is returned?",
+    "options": [
+      "It is not refunded.",
+      "It is refunded in full.",
+      "It is doubled.",
+      "It is refunded only if the bicycle is used.",
+      "It is deducted from a second order."
+    ],
+    "correct": 0,
+    "explanation": "Teslimat ücreti geri ödenmez."
+  },
+  {
+    "id": "wq150_nov26_read12_12_1",
+    "family": "reading_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A wildlife park has a morning tour and an afternoon tour. The morning tour is longer and includes a visit to the bird area. The afternoon tour is shorter but includes feeding the farm animals. Both tours begin at the visitor centre. Visitors who arrive late must wait for the next available tour.\n\nWhich tour visits the bird area?",
+    "options": [
+      "The morning tour",
+      "The afternoon tour",
+      "Both tours",
+      "Neither tour",
+      "Only the shortest tour"
+    ],
+    "correct": 0,
+    "explanation": "Kuş alanı sabah turuna dahil."
+  },
+  {
+    "id": "wq150_nov26_read12_12_2",
+    "family": "reading_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A wildlife park has a morning tour and an afternoon tour. The morning tour is longer and includes a visit to the bird area. The afternoon tour is shorter but includes feeding the farm animals. Both tours begin at the visitor centre. Visitors who arrive late must wait for the next available tour.\n\nWhat is special about the afternoon tour?",
+    "options": [
+      "Visitors can feed farm animals.",
+      "Visitors can see the bird area.",
+      "It lasts longer than the morning tour.",
+      "It begins outside the park.",
+      "It has no fixed starting point."
+    ],
+    "correct": 0,
+    "explanation": "Öğleden sonraki turda çiftlik hayvanları besleniyor."
+  },
+  {
+    "id": "wq150_nov26_read12_12_3",
+    "family": "reading_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A wildlife park has a morning tour and an afternoon tour. The morning tour is longer and includes a visit to the bird area. The afternoon tour is shorter but includes feeding the farm animals. Both tours begin at the visitor centre. Visitors who arrive late must wait for the next available tour.\n\nWhere do both tours begin?",
+    "options": [
+      "At the visitor centre",
+      "At the bird area",
+      "At the farm",
+      "At the ticket office outside town",
+      "At different places"
+    ],
+    "correct": 0,
+    "explanation": "İkisi de ziyaretçi merkezinde başlıyor."
+  },
+  {
+    "id": "wq150_nov26_read12_12_4",
+    "family": "reading_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A wildlife park has a morning tour and an afternoon tour. The morning tour is longer and includes a visit to the bird area. The afternoon tour is shorter but includes feeding the farm animals. Both tours begin at the visitor centre. Visitors who arrive late must wait for the next available tour.\n\nWhat happens if a visitor arrives after the start?",
+    "options": [
+      "They must wait for another available tour.",
+      "They can always join the current tour.",
+      "They receive a private tour.",
+      "They are automatically moved to the bird area.",
+      "They can start the tour independently."
+    ],
+    "correct": 0,
+    "explanation": "Geç gelenler bir sonraki uygun turu bekler."
+  },
+  {
+    "id": "wq150_nov26_read12_13_1",
+    "family": "reading_nov26_12_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small newspaper began publishing articles online as well as in print. The editor noticed that online readers often left after reading only the opening paragraphs. Instead of shortening every article, the team added clearer headings and summaries. Readers then spent more time on longer articles, although short articles remained popular.\n\nWhat problem did the editor identify?",
+    "options": [
+      "Online readers often stopped reading early.",
+      "Printed articles were becoming longer.",
+      "Readers refused to visit the website.",
+      "The newspaper could not publish summaries.",
+      "Short articles attracted no readers."
+    ],
+    "correct": 0,
+    "explanation": "Çevrim içi okuyucular ilk paragraflardan sonra ayrılıyordu."
+  },
+  {
+    "id": "wq150_nov26_read12_13_2",
+    "family": "reading_nov26_12_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small newspaper began publishing articles online as well as in print. The editor noticed that online readers often left after reading only the opening paragraphs. Instead of shortening every article, the team added clearer headings and summaries. Readers then spent more time on longer articles, although short articles remained popular.\n\nWhat did the team change?",
+    "options": [
+      "It improved headings and summaries.",
+      "It shortened every article.",
+      "It stopped printing the newspaper.",
+      "It removed all long articles.",
+      "It charged readers for opening paragraphs."
+    ],
+    "correct": 0,
+    "explanation": "Başlık ve özetler daha açık hale getirildi."
+  },
+  {
+    "id": "wq150_nov26_read12_13_3",
+    "family": "reading_nov26_12_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small newspaper began publishing articles online as well as in print. The editor noticed that online readers often left after reading only the opening paragraphs. Instead of shortening every article, the team added clearer headings and summaries. Readers then spent more time on longer articles, although short articles remained popular.\n\nWhat was the observed result?",
+    "options": [
+      "Readers spent more time on longer articles.",
+      "Short articles lost all their readers.",
+      "Printed readership immediately doubled.",
+      "All online readers finished every article.",
+      "The newspaper published fewer articles."
+    ],
+    "correct": 0,
+    "explanation": "Uzun yazılarda geçirilen süre arttı."
+  },
+  {
+    "id": "wq150_nov26_read12_13_4",
+    "family": "reading_nov26_12_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A small newspaper began publishing articles online as well as in print. The editor noticed that online readers often left after reading only the opening paragraphs. Instead of shortening every article, the team added clearer headings and summaries. Readers then spent more time on longer articles, although short articles remained popular.\n\nWhat is the main lesson?",
+    "options": [
+      "Clearer structure can improve engagement without eliminating detail.",
+      "Long articles must always be shortened.",
+      "Print is necessarily more engaging than online text.",
+      "Headings are useful only in short articles.",
+      "Reader behaviour cannot be influenced by presentation."
+    ],
+    "correct": 0,
+    "explanation": "İçeriği kısaltmadan yapı iyileştirilerek okuma ilgisi artırılabilir."
+  },
+  {
+    "id": "wq150_nov26_read12_14_1",
+    "family": "reading_nov26_12_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a collection point for unwanted electronic devices. At first, residents could leave any device there, but volunteers found that items containing personal information required special handling. The organisers added instructions on deleting data and created a separate area for devices awaiting secure processing.\n\nWhat was the initial concern?",
+    "options": [
+      "Some devices contained personal information.",
+      "Residents brought too few devices.",
+      "The volunteers could not repair any devices.",
+      "The town lacked space for ordinary household waste.",
+      "All devices were too heavy to carry."
+    ],
+    "correct": 0,
+    "explanation": "Kişisel bilgi içeren cihazlar özel işlem gerektiriyordu."
+  },
+  {
+    "id": "wq150_nov26_read12_14_2",
+    "family": "reading_nov26_12_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a collection point for unwanted electronic devices. At first, residents could leave any device there, but volunteers found that items containing personal information required special handling. The organisers added instructions on deleting data and created a separate area for devices awaiting secure processing.\n\nWhat change did organisers introduce?",
+    "options": [
+      "Guidance on data deletion and separate storage",
+      "A ban on all electronic devices",
+      "A charge for every device",
+      "A service for selling personal information",
+      "A requirement to replace every device"
+    ],
+    "correct": 0,
+    "explanation": "Veri silme talimatları ve ayrı alan oluşturuldu."
+  },
+  {
+    "id": "wq150_nov26_read12_14_3",
+    "family": "reading_nov26_12_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a collection point for unwanted electronic devices. At first, residents could leave any device there, but volunteers found that items containing personal information required special handling. The organisers added instructions on deleting data and created a separate area for devices awaiting secure processing.\n\nWhy were some devices separated?",
+    "options": [
+      "They needed secure processing.",
+      "They were newer than the others.",
+      "They belonged to the volunteers.",
+      "They were already repaired.",
+      "They were too valuable to recycle."
+    ],
+    "correct": 0,
+    "explanation": "Güvenli işlem bekleyen cihazlar ayrıldı."
+  },
+  {
+    "id": "wq150_nov26_read12_14_4",
+    "family": "reading_nov26_12_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A town introduced a collection point for unwanted electronic devices. At first, residents could leave any device there, but volunteers found that items containing personal information required special handling. The organisers added instructions on deleting data and created a separate area for devices awaiting secure processing.\n\nWhich statement best reflects the passage?",
+    "options": [
+      "A recycling scheme was adapted to address an additional privacy concern.",
+      "Recycling became impossible once privacy concerns arose.",
+      "The programme was replaced by a repair shop.",
+      "Personal information was the original purpose of the collection point.",
+      "Residents were prevented from recycling broken devices."
+    ],
+    "correct": 0,
+    "explanation": "Geri dönüşüm programına gizlilik için ek önlem getirildi."
+  },
+  {
+    "id": "wq150_nov26_read12_15_1",
+    "family": "reading_nov26_12_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A restaurant noticed that many guests ordered the same dishes even though the menu contained several vegetarian options. The manager moved those options into the main menu instead of listing them separately at the back. The dishes and prices did not change, but vegetarian orders increased.\n\nWhat was observed before the change?",
+    "options": [
+      "Guests tended to select familiar dishes.",
+      "Vegetarian dishes were unavailable.",
+      "Vegetarian meals cost more than all others.",
+      "The restaurant had no main menu.",
+      "Every guest requested a vegetarian meal."
+    ],
+    "correct": 0,
+    "explanation": "Müşteriler sıklıkla aynı yemekleri seçiyordu."
+  },
+  {
+    "id": "wq150_nov26_read12_15_2",
+    "family": "reading_nov26_12_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A restaurant noticed that many guests ordered the same dishes even though the menu contained several vegetarian options. The manager moved those options into the main menu instead of listing them separately at the back. The dishes and prices did not change, but vegetarian orders increased.\n\nWhat was changed?",
+    "options": [
+      "The position of vegetarian options on the menu",
+      "The ingredients in vegetarian dishes",
+      "The prices of the meals",
+      "The number of vegetarian dishes",
+      "The restaurant's opening hours"
+    ],
+    "correct": 0,
+    "explanation": "Vejetaryen seçeneklerin menüdeki yeri değişti."
+  },
+  {
+    "id": "wq150_nov26_read12_15_3",
+    "family": "reading_nov26_12_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A restaurant noticed that many guests ordered the same dishes even though the menu contained several vegetarian options. The manager moved those options into the main menu instead of listing them separately at the back. The dishes and prices did not change, but vegetarian orders increased.\n\nWhat increased afterwards?",
+    "options": [
+      "Orders for vegetarian dishes",
+      "The prices of vegetarian dishes",
+      "The length of the menu",
+      "The cost of ingredients",
+      "The number of separate menus"
+    ],
+    "correct": 0,
+    "explanation": "Vejetaryen yemek siparişleri arttı."
+  },
+  {
+    "id": "wq150_nov26_read12_15_4",
+    "family": "reading_nov26_12_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A restaurant noticed that many guests ordered the same dishes even though the menu contained several vegetarian options. The manager moved those options into the main menu instead of listing them separately at the back. The dishes and prices did not change, but vegetarian orders increased.\n\nWhat can reasonably be inferred?",
+    "options": [
+      "The way choices are presented may affect decisions.",
+      "Customers always select the cheapest dish.",
+      "A separate menu guarantees greater visibility.",
+      "Vegetarian dishes became more nutritious.",
+      "Only changes in price affect ordering behaviour."
+    ],
+    "correct": 0,
+    "explanation": "Seçeneklerin sunuluşu kararları etkileyebilir."
+  },
+  {
+    "id": "wq150_nov26_read12_16_1",
+    "family": "reading_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A training centre offered evening computer lessons to employees. Some learners completed the exercises quickly, whereas others needed more practice. The instructor introduced optional extra tasks for faster learners and additional guided practice for those who needed support. Everyone continued to work towards the same final objectives.\n\nWhat difficulty did the instructor face?",
+    "options": [
+      "Learners progressed at different speeds.",
+      "Learners had different final objectives.",
+      "The centre had no computers.",
+      "Nobody could finish the exercises.",
+      "The evening lessons were cancelled."
+    ],
+    "correct": 0,
+    "explanation": "Öğrenme hızları farklıydı."
+  },
+  {
+    "id": "wq150_nov26_read12_16_2",
+    "family": "reading_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A training centre offered evening computer lessons to employees. Some learners completed the exercises quickly, whereas others needed more practice. The instructor introduced optional extra tasks for faster learners and additional guided practice for those who needed support. Everyone continued to work towards the same final objectives.\n\nHow were faster learners supported?",
+    "options": [
+      "They received optional additional tasks.",
+      "They were asked to repeat basic tasks only.",
+      "They had to finish the course immediately.",
+      "They were assigned different final objectives.",
+      "They received no further work."
+    ],
+    "correct": 0,
+    "explanation": "İsteğe bağlı ek görevler verildi."
+  },
+  {
+    "id": "wq150_nov26_read12_16_3",
+    "family": "reading_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A training centre offered evening computer lessons to employees. Some learners completed the exercises quickly, whereas others needed more practice. The instructor introduced optional extra tasks for faster learners and additional guided practice for those who needed support. Everyone continued to work towards the same final objectives.\n\nWhat remained the same for everyone?",
+    "options": [
+      "The final learning objectives",
+      "The number of optional tasks",
+      "The amount of guided practice",
+      "The speed of progress",
+      "The need for extra help"
+    ],
+    "correct": 0,
+    "explanation": "Son öğrenme hedefleri değişmedi."
+  },
+  {
+    "id": "wq150_nov26_read12_16_4",
+    "family": "reading_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A training centre offered evening computer lessons to employees. Some learners completed the exercises quickly, whereas others needed more practice. The instructor introduced optional extra tasks for faster learners and additional guided practice for those who needed support. Everyone continued to work towards the same final objectives.\n\nWhat does the passage illustrate?",
+    "options": [
+      "Different learning support can serve common goals.",
+      "Every learner must complete identical tasks at the same speed.",
+      "Faster learners cannot benefit from extra tasks.",
+      "Additional practice requires changing the final objectives.",
+      "Evening lessons are unsuitable for employees."
+    ],
+    "correct": 0,
+    "explanation": "Farklı desteklerle ortak hedeflere ulaşılabilir."
+  },
+  {
+    "id": "wq150_nov26_read12_17_1",
+    "family": "reading_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional airline introduced online check-in to reduce queues. Passengers without checked luggage could go directly to security, but those with suitcases still needed to visit a bag-drop desk. The airline later added a separate queue for bag drop, allowing staff to serve those passengers more quickly.\n\nWhat was the purpose of online check-in?",
+    "options": [
+      "To shorten queues",
+      "To increase baggage charges",
+      "To reduce the number of flights",
+      "To replace airport security",
+      "To remove all luggage allowances"
+    ],
+    "correct": 0,
+    "explanation": "Kuyrukları azaltmak için çevrim içi check-in başlatıldı."
+  },
+  {
+    "id": "wq150_nov26_read12_17_2",
+    "family": "reading_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional airline introduced online check-in to reduce queues. Passengers without checked luggage could go directly to security, but those with suitcases still needed to visit a bag-drop desk. The airline later added a separate queue for bag drop, allowing staff to serve those passengers more quickly.\n\nWho still needed to visit a desk?",
+    "options": [
+      "Passengers with checked suitcases",
+      "Every passenger using online check-in",
+      "Passengers without luggage",
+      "Passengers travelling alone",
+      "Passengers with only boarding passes"
+    ],
+    "correct": 0,
+    "explanation": "Teslim edilecek valizi olanlar bag-drop masasına uğramalıydı."
+  },
+  {
+    "id": "wq150_nov26_read12_17_3",
+    "family": "reading_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional airline introduced online check-in to reduce queues. Passengers without checked luggage could go directly to security, but those with suitcases still needed to visit a bag-drop desk. The airline later added a separate queue for bag drop, allowing staff to serve those passengers more quickly.\n\nWhat did the airline introduce later?",
+    "options": [
+      "A dedicated bag-drop queue",
+      "A second security check for online users",
+      "A ban on suitcases",
+      "A new requirement to check in twice",
+      "A longer queue for passengers without bags"
+    ],
+    "correct": 0,
+    "explanation": "Bagaj teslimi için ayrı kuyruk oluşturuldu."
+  },
+  {
+    "id": "wq150_nov26_read12_17_4",
+    "family": "reading_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A regional airline introduced online check-in to reduce queues. Passengers without checked luggage could go directly to security, but those with suitcases still needed to visit a bag-drop desk. The airline later added a separate queue for bag drop, allowing staff to serve those passengers more quickly.\n\nWhat does the example suggest?",
+    "options": [
+      "One improvement may leave another part of a process in need of attention.",
+      "Online check-in always eliminates every queue.",
+      "Passengers without luggage create the longest delays.",
+      "Separate queues prevent staff from helping passengers.",
+      "All airport procedures should be completed online."
+    ],
+    "correct": 0,
+    "explanation": "Bir aşamanın iyileştirilmesi diğer aşamalardaki sorunları tamamen çözmeyebilir."
+  },
+  {
+    "id": "wq150_nov26_read12_18_1",
+    "family": "reading_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A museum invited visitors to vote for the object they found most interesting. The results showed that objects near the entrance received many votes. Staff suspected that visitors were more likely to notice these exhibits because of their location. They moved the objects to different positions and repeated the survey.\n\nWhat pattern did the first survey reveal?",
+    "options": [
+      "Exhibits near the entrance received many votes.",
+      "Visitors preferred only objects in the final room.",
+      "Every object received the same number of votes.",
+      "The oldest objects were never selected.",
+      "Visitors voted only for newly added objects."
+    ],
+    "correct": 0,
+    "explanation": "Girişe yakın nesneler fazla oy aldı."
+  },
+  {
+    "id": "wq150_nov26_read12_18_2",
+    "family": "reading_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A museum invited visitors to vote for the object they found most interesting. The results showed that objects near the entrance received many votes. Staff suspected that visitors were more likely to notice these exhibits because of their location. They moved the objects to different positions and repeated the survey.\n\nWhat explanation did staff consider?",
+    "options": [
+      "Location might influence which exhibits visitors noticed.",
+      "The objects near the entrance were necessarily more valuable.",
+      "Visitors had been instructed to select the first exhibit.",
+      "The voting system counted every vote twice.",
+      "Visitors did not understand the survey question."
+    ],
+    "correct": 0,
+    "explanation": "Konumun fark edilme olasılığını etkileyebileceğini düşündüler."
+  },
+  {
+    "id": "wq150_nov26_read12_18_3",
+    "family": "reading_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A museum invited visitors to vote for the object they found most interesting. The results showed that objects near the entrance received many votes. Staff suspected that visitors were more likely to notice these exhibits because of their location. They moved the objects to different positions and repeated the survey.\n\nHow did they investigate the explanation?",
+    "options": [
+      "By changing positions and surveying visitors again",
+      "By removing the most popular objects",
+      "By asking only museum employees to vote",
+      "By cancelling the survey",
+      "By increasing the entrance fee"
+    ],
+    "correct": 0,
+    "explanation": "Konumları değiştirip anketi tekrarladılar."
+  },
+  {
+    "id": "wq150_nov26_read12_18_4",
+    "family": "reading_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A museum invited visitors to vote for the object they found most interesting. The results showed that objects near the entrance received many votes. Staff suspected that visitors were more likely to notice these exhibits because of their location. They moved the objects to different positions and repeated the survey.\n\nWhich conclusion would be premature before the second survey?",
+    "options": [
+      "That the objects near the entrance were intrinsically more interesting",
+      "That some objects received more votes",
+      "That location could be worth investigating",
+      "That visitors had taken part in a vote",
+      "That the museum had exhibits near the entrance"
+    ],
+    "correct": 0,
+    "explanation": "İlk sonuçlardan konum etkisi ayrılmadan içsel ilgi çekicilik sonucu çıkarılamaz."
+  },
+  {
+    "id": "wq150_nov26_read12_19_1",
+    "family": "reading_nov26_12_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a subsidised bicycle rental scheme. Rental figures rose sharply during the first year, yet a survey showed that many users had previously walked rather than driven. The environmental benefits were therefore smaller than the number of rentals initially suggested. The city revised its evaluation to include the transport modes that rental journeys replaced.\n\nWhat did the survey reveal?",
+    "options": [
+      "Many rental journeys replaced walking rather than driving.",
+      "Most rental journeys replaced private car trips.",
+      "The number of rentals had been overstated.",
+      "The scheme attracted only existing car owners.",
+      "The scheme was introduced to discourage walking."
+    ],
+    "correct": 0,
+    "explanation": "Yeni bisiklet yolculuklarının çoğu daha önceki yürüyüşlerin yerini almıştı."
+  },
+  {
+    "id": "wq150_nov26_read12_19_2",
+    "family": "reading_nov26_12_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a subsidised bicycle rental scheme. Rental figures rose sharply during the first year, yet a survey showed that many users had previously walked rather than driven. The environmental benefits were therefore smaller than the number of rentals initially suggested. The city revised its evaluation to include the transport modes that rental journeys replaced.\n\nWhy were environmental benefits smaller than anticipated?",
+    "options": [
+      "The replaced journeys were not necessarily high-emission ones.",
+      "Rental bicycles consumed more fuel than private cars.",
+      "The city had reduced the subsidy too early.",
+      "The number of bicycles fell during the first year.",
+      "Users travelled longer distances in every case."
+    ],
+    "correct": 0,
+    "explanation": "Yürüyüş gibi düşük emisyonlu ulaşımın yerini almak beklenen çevre faydasını azaltır."
+  },
+  {
+    "id": "wq150_nov26_read12_19_3",
+    "family": "reading_nov26_12_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a subsidised bicycle rental scheme. Rental figures rose sharply during the first year, yet a survey showed that many users had previously walked rather than driven. The environmental benefits were therefore smaller than the number of rentals initially suggested. The city revised its evaluation to include the transport modes that rental journeys replaced.\n\nWhat did the revised evaluation measure?",
+    "options": [
+      "Which previous forms of transport were replaced",
+      "Only the total number of bicycles rented",
+      "The price of private cars in the city",
+      "The number of bicycle shops opened",
+      "Only the distance covered by rental bicycles"
+    ],
+    "correct": 0,
+    "explanation": "Yerine geçilen ulaşım türleri değerlendirilmeye alındı."
+  },
+  {
+    "id": "wq150_nov26_read12_19_4",
+    "family": "reading_nov26_12_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A city introduced a subsidised bicycle rental scheme. Rental figures rose sharply during the first year, yet a survey showed that many users had previously walked rather than driven. The environmental benefits were therefore smaller than the number of rentals initially suggested. The city revised its evaluation to include the transport modes that rental journeys replaced.\n\nWhat is the broader point?",
+    "options": [
+      "Participation figures alone may not establish an intervention's environmental impact.",
+      "Increasing participation always increases environmental benefits proportionally.",
+      "Walking should be excluded from transport research.",
+      "Subsidised programmes cannot change travel behaviour.",
+      "Rental counts are inherently inaccurate measures of usage."
+    ],
+    "correct": 0,
+    "explanation": "Katılım sayısı tek başına çevresel etkiyi göstermez."
+  },
+  {
+    "id": "wq150_nov26_read12_20_1",
+    "family": "reading_nov26_12_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A research team examined whether remote consultations reduced patients' travel expenses. Average savings were substantial, but the team noticed that some patients needed additional in-person examinations after their remote appointments. For those patients, total travel costs sometimes exceeded the costs of a conventional consultation. The authors recommended considering the entire sequence of care.\n\nWhat did the average savings conceal?",
+    "options": [
+      "Some patients faced additional travel costs.",
+      "Remote consultations had never been used.",
+      "Every patient paid less for travel.",
+      "The conventional service was free of charge.",
+      "The study excluded all patients needing examinations."
+    ],
+    "correct": 0,
+    "explanation": "Bazı hastaların sonraki yüz yüze muayene yolculukları ek maliyet yaratmıştı."
+  },
+  {
+    "id": "wq150_nov26_read12_20_2",
+    "family": "reading_nov26_12_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A research team examined whether remote consultations reduced patients' travel expenses. Average savings were substantial, but the team noticed that some patients needed additional in-person examinations after their remote appointments. For those patients, total travel costs sometimes exceeded the costs of a conventional consultation. The authors recommended considering the entire sequence of care.\n\nWhy were costs higher for certain patients?",
+    "options": [
+      "They needed further in-person appointments.",
+      "They travelled to a remote consultation centre every day.",
+      "Their remote appointments were more expensive to book.",
+      "They lived closer to the hospital than other patients.",
+      "They were required to travel before making any booking."
+    ],
+    "correct": 0,
+    "explanation": "Ek yüz yüze randevular toplam seyahat maliyetini artırabiliyordu."
+  },
+  {
+    "id": "wq150_nov26_read12_20_3",
+    "family": "reading_nov26_12_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A research team examined whether remote consultations reduced patients' travel expenses. Average savings were substantial, but the team noticed that some patients needed additional in-person examinations after their remote appointments. For those patients, total travel costs sometimes exceeded the costs of a conventional consultation. The authors recommended considering the entire sequence of care.\n\nWhat did the authors recommend?",
+    "options": [
+      "Evaluating costs across the complete course of care",
+      "Counting remote appointments in isolation",
+      "Excluding patients requiring follow-up",
+      "Treating average savings as universal",
+      "Replacing every in-person examination"
+    ],
+    "correct": 0,
+    "explanation": "Tüm bakım sürecinin değerlendirilmesi önerildi."
+  },
+  {
+    "id": "wq150_nov26_read12_20_4",
+    "family": "reading_nov26_12_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A research team examined whether remote consultations reduced patients' travel expenses. Average savings were substantial, but the team noticed that some patients needed additional in-person examinations after their remote appointments. For those patients, total travel costs sometimes exceeded the costs of a conventional consultation. The authors recommended considering the entire sequence of care.\n\nWhich conclusion is supported?",
+    "options": [
+      "Savings at one stage do not guarantee savings across the whole process.",
+      "Remote consultations inevitably increase costs.",
+      "Conventional consultations always require fewer journeys.",
+      "Average travel savings were absent.",
+      "Follow-up examinations are unnecessary after remote care."
+    ],
+    "correct": 0,
+    "explanation": "Tek aşamadaki tasarruf tüm süreçte tasarrufu garanti etmez."
+  },
+  {
+    "id": "wq150_nov26_read12_21_1",
+    "family": "reading_nov26_12_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A company introduced a system that automatically sorted customer messages by urgency. The system performed well during testing, but after deployment customers began using words associated with urgent cases to obtain faster replies. This change in behaviour reduced the accuracy of the classifications. The company began monitoring how its system affected the data on which it relied.\n\nWhy did classification accuracy decline?",
+    "options": [
+      "Customers adapted their language to the system.",
+      "The system had never been tested.",
+      "The company stopped receiving urgent messages.",
+      "The original testing data were deliberately destroyed.",
+      "Staff began responding more slowly to all messages."
+    ],
+    "correct": 0,
+    "explanation": "Müşteriler hızlı cevap için acil durum sözcüklerini kullanmaya başladı."
+  },
+  {
+    "id": "wq150_nov26_read12_21_2",
+    "family": "reading_nov26_12_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A company introduced a system that automatically sorted customer messages by urgency. The system performed well during testing, but after deployment customers began using words associated with urgent cases to obtain faster replies. This change in behaviour reduced the accuracy of the classifications. The company began monitoring how its system affected the data on which it relied.\n\nWhat did the company begin to monitor?",
+    "options": [
+      "Behavioural changes caused by the sorting system",
+      "Only the number of customer messages",
+      "The cost of the original testing procedure",
+      "The length of messages before deployment only",
+      "Staff preferences for message formatting"
+    ],
+    "correct": 0,
+    "explanation": "Sistemin kendi verisini üreten davranışı nasıl etkilediği izlendi."
+  },
+  {
+    "id": "wq150_nov26_read12_21_3",
+    "family": "reading_nov26_12_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A company introduced a system that automatically sorted customer messages by urgency. The system performed well during testing, but after deployment customers began using words associated with urgent cases to obtain faster replies. This change in behaviour reduced the accuracy of the classifications. The company began monitoring how its system affected the data on which it relied.\n\nWhat distinguishes testing from deployment here?",
+    "options": [
+      "Users responded strategically once the system affected service.",
+      "The testing phase contained no customer messages.",
+      "The deployed system used no classification rules.",
+      "Urgency was irrelevant during testing.",
+      "The deployment was conducted before the system was developed."
+    ],
+    "correct": 0,
+    "explanation": "Sistem hizmet hızını etkileyince kullanıcılar stratejik davranmaya başladı."
+  },
+  {
+    "id": "wq150_nov26_read12_21_4",
+    "family": "reading_nov26_12_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A company introduced a system that automatically sorted customer messages by urgency. The system performed well during testing, but after deployment customers began using words associated with urgent cases to obtain faster replies. This change in behaviour reduced the accuracy of the classifications. The company began monitoring how its system affected the data on which it relied.\n\nWhat broader limitation does the case highlight?",
+    "options": [
+      "A predictive system can alter the behaviour it attempts to predict.",
+      "A successful test establishes permanent accuracy.",
+      "Automated classification cannot use language data.",
+      "Customer behaviour is independent of service rules.",
+      "Monitoring system effects is useful only before deployment."
+    ],
+    "correct": 0,
+    "explanation": "Tahmin sistemi tahmin etmeye çalıştığı davranışı değiştirebilir."
+  },
+  {
+    "id": "wq150_nov26_read12_22_1",
+    "family": "reading_nov26_12_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation programme provided farmers with native tree seedlings. At the end of the first year, the programme reported that its distribution target had been exceeded. However, a later inspection found that survival rates varied considerably according to planting methods and local conditions. Future evaluations were designed to record established trees rather than simply seedlings distributed.\n\nWhich initial target had been exceeded?",
+    "options": [
+      "The number of seedlings distributed",
+      "The number of trees surviving after several years",
+      "The area of mature forest created",
+      "The proportion of farmers using identical methods",
+      "The number of species returning to the area"
+    ],
+    "correct": 0,
+    "explanation": "İlk hedef dağıtılan fide sayısıydı."
+  },
+  {
+    "id": "wq150_nov26_read12_22_2",
+    "family": "reading_nov26_12_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation programme provided farmers with native tree seedlings. At the end of the first year, the programme reported that its distribution target had been exceeded. However, a later inspection found that survival rates varied considerably according to planting methods and local conditions. Future evaluations were designed to record established trees rather than simply seedlings distributed.\n\nWhat did the later inspection establish?",
+    "options": [
+      "Seedling survival varied across planting circumstances.",
+      "Every distributed seedling had survived.",
+      "Planting methods had no effect on survival.",
+      "Farmers had refused to accept the seedlings.",
+      "All local conditions were identical."
+    ],
+    "correct": 0,
+    "explanation": "Yaşama oranları yöntem ve koşullara göre farklılık gösterdi."
+  },
+  {
+    "id": "wq150_nov26_read12_22_3",
+    "family": "reading_nov26_12_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation programme provided farmers with native tree seedlings. At the end of the first year, the programme reported that its distribution target had been exceeded. However, a later inspection found that survival rates varied considerably according to planting methods and local conditions. Future evaluations were designed to record established trees rather than simply seedlings distributed.\n\nWhat will future evaluations prioritise?",
+    "options": [
+      "Trees that have become established",
+      "Seedlings delivered to farmers only",
+      "The cost of distributing seedlings alone",
+      "The number of planting instructions printed",
+      "The number of farms contacted"
+    ],
+    "correct": 0,
+    "explanation": "Yerleşip büyüyen ağaçlar değerlendirilecek."
+  },
+  {
+    "id": "wq150_nov26_read12_22_4",
+    "family": "reading_nov26_12_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A conservation programme provided farmers with native tree seedlings. At the end of the first year, the programme reported that its distribution target had been exceeded. However, a later inspection found that survival rates varied considerably according to planting methods and local conditions. Future evaluations were designed to record established trees rather than simply seedlings distributed.\n\nWhat is the central distinction?",
+    "options": [
+      "Resources distributed are not equivalent to outcomes achieved.",
+      "Distribution targets are impossible to measure.",
+      "Native trees never survive on farms.",
+      "Survival rates can be predicted from distribution alone.",
+      "Planting programmes should avoid evaluation."
+    ],
+    "correct": 0,
+    "explanation": "Dağıtılan kaynaklar ile elde edilen sonuçlar aynı değildir."
+  },
+  {
+    "id": "wq150_nov26_read12_23_1",
+    "family": "reading_nov26_12_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two editions of a language-learning course. The newer edition included more practice questions and produced higher scores on its own end-of-unit tests. However, when students were given unfamiliar tasks covering the same skills, the advantage was much smaller. The researchers suggested that part of the improvement reflected familiarity with the test format.\n\nOn which measure was the newer edition's advantage greater?",
+    "options": [
+      "Its own end-of-unit tests",
+      "Unfamiliar tasks assessing the same skills",
+      "Every independent measure of language proficiency",
+      "A test conducted before the course began",
+      "A delayed assessment of all participants"
+    ],
+    "correct": 0,
+    "explanation": "Yeni baskının avantajı kendi ünite sonu sınavlarında daha büyüktü."
+  },
+  {
+    "id": "wq150_nov26_read12_23_2",
+    "family": "reading_nov26_12_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two editions of a language-learning course. The newer edition included more practice questions and produced higher scores on its own end-of-unit tests. However, when students were given unfamiliar tasks covering the same skills, the advantage was much smaller. The researchers suggested that part of the improvement reflected familiarity with the test format.\n\nWhat happened on unfamiliar tasks?",
+    "options": [
+      "The advantage became much smaller.",
+      "The newer edition's advantage increased substantially.",
+      "Both groups were unable to complete any task.",
+      "The newer edition necessarily performed worse.",
+      "The two editions were no longer compared."
+    ],
+    "correct": 0,
+    "explanation": "Yeni görevlerde fark azaldı."
+  },
+  {
+    "id": "wq150_nov26_read12_23_3",
+    "family": "reading_nov26_12_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two editions of a language-learning course. The newer edition included more practice questions and produced higher scores on its own end-of-unit tests. However, when students were given unfamiliar tasks covering the same skills, the advantage was much smaller. The researchers suggested that part of the improvement reflected familiarity with the test format.\n\nWhat explanation did researchers propose?",
+    "options": [
+      "Familiarity with the test format may partly explain the gain.",
+      "The newer edition taught completely unrelated skills.",
+      "The older edition contained more practice questions.",
+      "Unfamiliar tasks were impossible for every student.",
+      "All end-of-unit scores had been calculated incorrectly."
+    ],
+    "correct": 0,
+    "explanation": "Sınav biçimine aşinalığın kazanımın bir kısmını açıklayabileceği öne sürüldü."
+  },
+  {
+    "id": "wq150_nov26_read12_23_4",
+    "family": "reading_nov26_12_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "Researchers compared two editions of a language-learning course. The newer edition included more practice questions and produced higher scores on its own end-of-unit tests. However, when students were given unfamiliar tasks covering the same skills, the advantage was much smaller. The researchers suggested that part of the improvement reflected familiarity with the test format.\n\nWhat would be a useful addition to future evaluation?",
+    "options": [
+      "Independent tasks that assess transfer of learning",
+      "More questions identical to the practice items",
+      "Only students' opinions of the course",
+      "A count of printed pages in each edition",
+      "An assessment excluding unfamiliar situations"
+    ],
+    "correct": 0,
+    "explanation": "Bağımsız yeni görevler öğrenilen becerilerin aktarımını ölçer."
+  },
+  {
+    "id": "wq150_nov26_read12_24_1",
+    "family": "reading_nov26_12_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional authority compared the costs of two flood-prevention projects. One required more initial investment but was expected to last longer. The other was cheaper to build but would need frequent repairs. The ranking of the projects changed depending on the period over which costs were assessed. The authority decided to publish estimates for several time horizons.\n\nWhat distinguished the two projects?",
+    "options": [
+      "Their initial and ongoing cost profiles",
+      "Their intended geographical locations only",
+      "Their ability to prevent every possible flood",
+      "The date on which both were completed",
+      "Their use of identical maintenance schedules"
+    ],
+    "correct": 0,
+    "explanation": "Başlangıç ve bakım maliyetleri farklıydı."
+  },
+  {
+    "id": "wq150_nov26_read12_24_2",
+    "family": "reading_nov26_12_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional authority compared the costs of two flood-prevention projects. One required more initial investment but was expected to last longer. The other was cheaper to build but would need frequent repairs. The ranking of the projects changed depending on the period over which costs were assessed. The authority decided to publish estimates for several time horizons.\n\nWhy did the ranking change?",
+    "options": [
+      "The length of the evaluation period affected total costs.",
+      "The authority changed the original construction prices.",
+      "Both projects required exactly the same repairs.",
+      "The projects stopped preventing floods immediately.",
+      "The authority excluded all maintenance expenses."
+    ],
+    "correct": 0,
+    "explanation": "Değerlendirme süresi toplam maliyetleri etkiledi."
+  },
+  {
+    "id": "wq150_nov26_read12_24_3",
+    "family": "reading_nov26_12_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional authority compared the costs of two flood-prevention projects. One required more initial investment but was expected to last longer. The other was cheaper to build but would need frequent repairs. The ranking of the projects changed depending on the period over which costs were assessed. The authority decided to publish estimates for several time horizons.\n\nWhat did the authority decide to publish?",
+    "options": [
+      "Cost estimates for different time horizons",
+      "Only the lowest initial price",
+      "A single estimate without a specified period",
+      "Only the cost of the first repair",
+      "The names of every construction worker"
+    ],
+    "correct": 0,
+    "explanation": "Farklı zaman ufukları için tahminler yayımlanacak."
+  },
+  {
+    "id": "wq150_nov26_read12_24_4",
+    "family": "reading_nov26_12_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A regional authority compared the costs of two flood-prevention projects. One required more initial investment but was expected to last longer. The other was cheaper to build but would need frequent repairs. The ranking of the projects changed depending on the period over which costs were assessed. The authority decided to publish estimates for several time horizons.\n\nWhich principle is illustrated?",
+    "options": [
+      "The preferred option can depend on the evaluation horizon.",
+      "Initial investment always determines lifetime cost.",
+      "Longer-lasting projects are necessarily cheaper to construct.",
+      "Maintenance should be ignored in project comparisons.",
+      "A single short-term estimate is sufficient for every decision."
+    ],
+    "correct": 0,
+    "explanation": "Tercih edilen seçenek değerlendirme süresine göre değişebilir."
+  },
+  {
+    "id": "wq150_nov26_read12_25_1",
+    "family": "reading_nov26_12_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An organisation introduced a new application form to make selection more objective. All applicants answered the same questions, but the reviewers found that some questions favoured people familiar with particular professional terminology. The organisation retained the standardised format while revising the wording to assess the intended abilities more directly.\n\nWhat was the original purpose of the new form?",
+    "options": [
+      "To make selection more objective",
+      "To favour applicants with specialist vocabulary",
+      "To reduce the number of applications",
+      "To offer different questions to every applicant",
+      "To eliminate all evaluation criteria"
+    ],
+    "correct": 0,
+    "explanation": "Seçimi nesnelleştirmek amaçlandı."
+  },
+  {
+    "id": "wq150_nov26_read12_25_2",
+    "family": "reading_nov26_12_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An organisation introduced a new application form to make selection more objective. All applicants answered the same questions, but the reviewers found that some questions favoured people familiar with particular professional terminology. The organisation retained the standardised format while revising the wording to assess the intended abilities more directly.\n\nWhat problem was identified?",
+    "options": [
+      "Some wording favoured familiarity with specific terminology.",
+      "Applicants received different questions at random.",
+      "The form contained no questions about abilities.",
+      "Reviewers were unable to read any responses.",
+      "Every applicant had the same professional background."
+    ],
+    "correct": 0,
+    "explanation": "Belirli mesleki terimlere aşinalık bazı adaylara avantaj sağladı."
+  },
+  {
+    "id": "wq150_nov26_read12_25_3",
+    "family": "reading_nov26_12_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An organisation introduced a new application form to make selection more objective. All applicants answered the same questions, but the reviewers found that some questions favoured people familiar with particular professional terminology. The organisation retained the standardised format while revising the wording to assess the intended abilities more directly.\n\nHow did the organisation respond?",
+    "options": [
+      "It revised wording while retaining standardisation.",
+      "It abandoned the use of a standard form.",
+      "It made specialist terminology mandatory in every question.",
+      "It replaced the questions with random selection.",
+      "It kept the form unchanged and ignored the concern."
+    ],
+    "correct": 0,
+    "explanation": "Standart biçim korunup ifadeler değiştirildi."
+  },
+  {
+    "id": "wq150_nov26_read12_25_4",
+    "family": "reading_nov26_12_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An organisation introduced a new application form to make selection more objective. All applicants answered the same questions, but the reviewers found that some questions favoured people familiar with particular professional terminology. The organisation retained the standardised format while revising the wording to assess the intended abilities more directly.\n\nWhat distinction is central to the passage?",
+    "options": [
+      "Uniform procedures do not necessarily measure the intended ability fairly.",
+      "Standardised forms are inherently incapable of assessing ability.",
+      "Familiarity with terminology always demonstrates professional competence.",
+      "Objectivity requires every applicant to answer different questions.",
+      "Fairness can be established solely by counting questions."
+    ],
+    "correct": 0,
+    "explanation": "Aynı prosedürün herkese uygulanması hedeflenen yeteneğin adil ölçülmesini garanti etmez."
   }
 ];
