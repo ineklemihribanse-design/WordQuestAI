@@ -15,3 +15,6 @@ else
   mv "$tmp/$bank" "$bank"
 fi
 node --input-type=module -e 'import fs from "node:fs"; import {loadVocabulary,vocabularyReport} from "./vocabulary_bank.mjs"; const r=vocabularyReport(loadVocabulary(JSON.parse(fs.readFileSync("arena-vocabulary-v1.json","utf8")))); if(r.count!==1575)throw Error("Unexpected bank count"); console.log(JSON.stringify(r));'
+
+node expand_learning.mjs "$bank" arena-learning-expanded.json
+node --test learning_mix.test.mjs

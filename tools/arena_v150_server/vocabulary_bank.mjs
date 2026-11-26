@@ -3,6 +3,7 @@
 import {createHash} from 'node:crypto';
 import {crossword,quiz,LEVELS} from '../v132_engine/engine.mjs';
 import {validateSettings,selectBank} from '../v132_engine/match_service.mjs';
+import {diversifyQuiz} from './learning_mix.mjs';
 const fail=m=>{throw Error(m)};
 const canonical=x=>typeof x==='string'?x.trim().normalize('NFC'):'';
 const code=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
@@ -44,7 +45,7 @@ export function vocabularyCatalog(rows){
   .sort((a,b)=>a[1].localeCompare(b[1],'tr')).map(([id,name])=>({id,name,counts:summarize(rows.filter(w=>w[key]===id))}));
  return {schema:150,all:summarize(rows),topics:groups('topic','topicLabel'),wordTypes:groups('wordType','wordTypeLabel')};
 }
-export function createVocabularyBank(input){
+export function createVocabularyBank(input,{curated=false}={}){
  const rows=loadVocabulary(input);
  return async(raw,seed)=>{
   const cfg=validateSettings(raw),isYds=cfg.scale==='yds';
@@ -75,6 +76,7 @@ export function createVocabularyBank(input){
     answer,clue:meaning,cells:Array.from({length:answer.length},(_,i)=>(r+(d==='D'?i:0))+','+(c+(d==='A'?i:0)))}));
   }
   // Verify all chosen levels, filters and word counts again against the game engine.
-  return selectBank(result,cfg,seed);
+  const selected=selectBank(result,cfg,seed);
+  return curated&&cfg.format==='quiz'?selectBank(diversifyQuiz(selected,cfg,seed),cfg,seed):selected;
  };
 }

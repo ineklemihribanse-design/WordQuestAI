@@ -2,9 +2,10 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog} from './vocabulary_bank.mjs';
 import assert from 'node:assert/strict';
+import {expandLearning} from './expand_learning.mjs';
 const input=process.argv[2],out=process.argv[3];
 if(!input||!out)throw Error('usage: real_vocabulary_smoke.mjs input output-dir');
-const bytes=await readFile(input),raw=JSON.parse(bytes),rows=loadVocabulary(raw),build=createVocabularyBank(raw);
+const bytes=await readFile(input),raw=JSON.parse(bytes),expanded=await expandLearning(raw),rows=loadVocabulary(expanded),build=createVocabularyBank(expanded,{curated:true});
 const report=vocabularyReport(rows);
 for(const levels of [['A1'],['A1','A2','B1'],['B2','C1','C2']]){
  const b=await build({kind:'duel',mode:'classic',levels,count:20},'wq150-audit');
@@ -16,4 +17,5 @@ await mkdir(out,{recursive:true});
 await writeFile(out+'/arena-vocabulary-v1.json',bytes);
 await writeFile(out+'/report.json',JSON.stringify({...report,sha256:createHash('sha256').update(bytes).digest('hex'),tested:'3 connected boards and 3 quizzes'},null,2)+'\n');
 await writeFile(out+'/catalog.json',JSON.stringify(vocabularyCatalog(rows),null,2)+'\n');
+await writeFile(out+'/expanded-report.json',JSON.stringify({base:raw.length,expanded:expanded.length,net:expanded.length-raw.length},null,2)+'\n');
 console.log('PASS real shipped vocabulary',JSON.stringify(report));
