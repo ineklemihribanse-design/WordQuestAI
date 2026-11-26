@@ -3534,5 +3534,4340 @@ export const contextQuestions = [
     ],
     "correct": 0,
     "explanation": "Weed out uygun olmayanları bir gruptan ayıklamak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_lex15_1_1",
+    "family": "lex15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "He buttons his white ____ before going to work.",
+    "options": [
+      "shirt",
+      "skirt",
+      "gloves",
+      "scarf",
+      "belt"
+    ],
+    "correct": 0,
+    "explanation": "shirt: gömlek. Diğer seçenekler: skirt: etek; gloves: eldiven; scarf: atkı; belt: kemer."
+  },
+  {
+    "id": "wq150_nov26_lex15_1_2",
+    "family": "lex15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She wears a knee-length ____ rather than trousers.",
+    "options": [
+      "shirt",
+      "skirt",
+      "gloves",
+      "scarf",
+      "belt"
+    ],
+    "correct": 1,
+    "explanation": "skirt: etek. Diğer seçenekler: shirt: gömlek; gloves: eldiven; scarf: atkı; belt: kemer."
+  },
+  {
+    "id": "wq150_nov26_lex15_1_3",
+    "family": "lex15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My hands are cold; I need a pair of ____ .",
+    "options": [
+      "shirt",
+      "skirt",
+      "gloves",
+      "scarf",
+      "belt"
+    ],
+    "correct": 2,
+    "explanation": "gloves: eldiven. Diğer seçenekler: shirt: gömlek; skirt: etek; scarf: atkı; belt: kemer."
+  },
+  {
+    "id": "wq150_nov26_lex15_1_4",
+    "family": "lex15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Wrap a woollen ____ around your neck.",
+    "options": [
+      "shirt",
+      "skirt",
+      "gloves",
+      "scarf",
+      "belt"
+    ],
+    "correct": 3,
+    "explanation": "scarf: atkı. Diğer seçenekler: shirt: gömlek; skirt: etek; gloves: eldiven; belt: kemer."
+  },
+  {
+    "id": "wq150_nov26_lex15_1_5",
+    "family": "lex15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "His trousers are loose, so he wears a ____ around his waist.",
+    "options": [
+      "shirt",
+      "skirt",
+      "gloves",
+      "scarf",
+      "belt"
+    ],
+    "correct": 4,
+    "explanation": "belt: kemer. Diğer seçenekler: shirt: gömlek; skirt: etek; gloves: eldiven; scarf: atkı."
+  },
+  {
+    "id": "wq150_nov26_lex15_2_1",
+    "family": "lex15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I sleep on a ____ every night.",
+    "options": [
+      "bed",
+      "sofa",
+      "wardrobe",
+      "desk",
+      "shelf"
+    ],
+    "correct": 0,
+    "explanation": "bed: yatak. Diğer seçenekler: sofa: kanepe; wardrobe: gardırop; desk: çalışma masası; shelf: raf."
+  },
+  {
+    "id": "wq150_nov26_lex15_2_2",
+    "family": "lex15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Three people can sit on this ____ and watch TV.",
+    "options": [
+      "bed",
+      "sofa",
+      "wardrobe",
+      "desk",
+      "shelf"
+    ],
+    "correct": 1,
+    "explanation": "sofa: kanepe. Diğer seçenekler: bed: yatak; wardrobe: gardırop; desk: çalışma masası; shelf: raf."
+  },
+  {
+    "id": "wq150_nov26_lex15_2_3",
+    "family": "lex15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Hang your dresses in the ____ .",
+    "options": [
+      "bed",
+      "sofa",
+      "wardrobe",
+      "desk",
+      "shelf"
+    ],
+    "correct": 2,
+    "explanation": "wardrobe: gardırop. Diğer seçenekler: bed: yatak; sofa: kanepe; desk: çalışma masası; shelf: raf."
+  },
+  {
+    "id": "wq150_nov26_lex15_2_4",
+    "family": "lex15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She writes her homework at her ____ .",
+    "options": [
+      "bed",
+      "sofa",
+      "wardrobe",
+      "desk",
+      "shelf"
+    ],
+    "correct": 3,
+    "explanation": "desk: çalışma masası. Diğer seçenekler: bed: yatak; sofa: kanepe; wardrobe: gardırop; shelf: raf."
+  },
+  {
+    "id": "wq150_nov26_lex15_2_5",
+    "family": "lex15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Put the books on the top ____ of the bookcase.",
+    "options": [
+      "bed",
+      "sofa",
+      "wardrobe",
+      "desk",
+      "shelf"
+    ],
+    "correct": 4,
+    "explanation": "shelf: raf. Diğer seçenekler: bed: yatak; sofa: kanepe; wardrobe: gardırop; desk: çalışma masası."
+  },
+  {
+    "id": "wq150_nov26_lex15_3_1",
+    "family": "lex15_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I have ____ at seven, before school starts.",
+    "options": [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snack",
+      "dessert"
+    ],
+    "correct": 0,
+    "explanation": "breakfast: kahvaltı. Diğer seçenekler: lunch: öğle yemeği; dinner: akşam yemeği; snack: atıştırmalık; dessert: tatlı."
+  },
+  {
+    "id": "wq150_nov26_lex15_3_2",
+    "family": "lex15_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We stop work at noon to have ____ .",
+    "options": [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snack",
+      "dessert"
+    ],
+    "correct": 1,
+    "explanation": "lunch: öğle yemeği. Diğer seçenekler: breakfast: kahvaltı; dinner: akşam yemeği; snack: atıştırmalık; dessert: tatlı."
+  },
+  {
+    "id": "wq150_nov26_lex15_3_3",
+    "family": "lex15_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our family eats its main evening meal, ____ , at seven.",
+    "options": [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snack",
+      "dessert"
+    ],
+    "correct": 2,
+    "explanation": "dinner: akşam yemeği. Diğer seçenekler: breakfast: kahvaltı; lunch: öğle yemeği; snack: atıştırmalık; dessert: tatlı."
+  },
+  {
+    "id": "wq150_nov26_lex15_3_4",
+    "family": "lex15_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I eat a small ____ between meals when I'm hungry.",
+    "options": [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snack",
+      "dessert"
+    ],
+    "correct": 3,
+    "explanation": "snack: atıştırmalık. Diğer seçenekler: breakfast: kahvaltı; lunch: öğle yemeği; dinner: akşam yemeği; dessert: tatlı."
+  },
+  {
+    "id": "wq150_nov26_lex15_3_5",
+    "family": "lex15_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "After the main course, we order ice cream for ____ .",
+    "options": [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "snack",
+      "dessert"
+    ],
+    "correct": 4,
+    "explanation": "dessert: tatlı. Diğer seçenekler: breakfast: kahvaltı; lunch: öğle yemeği; dinner: akşam yemeği; snack: atıştırmalık."
+  },
+  {
+    "id": "wq150_nov26_lex15_4_1",
+    "family": "lex15_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The day immediately after Sunday is ____ .",
+    "options": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "correct": 0,
+    "explanation": "Monday: pazartesi. Diğer seçenekler: Wednesday: çarşamba; Friday: cuma; Saturday: cumartesi; Sunday: pazar."
+  },
+  {
+    "id": "wq150_nov26_lex15_4_2",
+    "family": "lex15_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The day between Tuesday and Thursday is ____ .",
+    "options": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "correct": 1,
+    "explanation": "Wednesday: çarşamba. Diğer seçenekler: Monday: pazartesi; Friday: cuma; Saturday: cumartesi; Sunday: pazar."
+  },
+  {
+    "id": "wq150_nov26_lex15_4_3",
+    "family": "lex15_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The day immediately before Saturday is ____ .",
+    "options": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "correct": 2,
+    "explanation": "Friday: cuma. Diğer seçenekler: Monday: pazartesi; Wednesday: çarşamba; Saturday: cumartesi; Sunday: pazar."
+  },
+  {
+    "id": "wq150_nov26_lex15_4_4",
+    "family": "lex15_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The first day of the weekend in the UK is ____ .",
+    "options": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "correct": 3,
+    "explanation": "Saturday: cumartesi. Diğer seçenekler: Monday: pazartesi; Wednesday: çarşamba; Friday: cuma; Sunday: pazar."
+  },
+  {
+    "id": "wq150_nov26_lex15_4_5",
+    "family": "lex15_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The day immediately before Monday is ____ .",
+    "options": [
+      "Monday",
+      "Wednesday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "correct": 4,
+    "explanation": "Sunday: pazar. Diğer seçenekler: Monday: pazartesi; Wednesday: çarşamba; Friday: cuma; Saturday: cumartesi."
+  },
+  {
+    "id": "wq150_nov26_lex15_5_1",
+    "family": "lex15_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My father's brother is my ____ .",
+    "options": [
+      "uncle",
+      "aunt",
+      "cousin",
+      "grandfather",
+      "grandmother"
+    ],
+    "correct": 0,
+    "explanation": "uncle: amca/dayı. Diğer seçenekler: aunt: hala/teyze; cousin: kuzen; grandfather: büyükbaba; grandmother: büyükanne."
+  },
+  {
+    "id": "wq150_nov26_lex15_5_2",
+    "family": "lex15_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My mother's sister is my ____ .",
+    "options": [
+      "uncle",
+      "aunt",
+      "cousin",
+      "grandfather",
+      "grandmother"
+    ],
+    "correct": 1,
+    "explanation": "aunt: hala/teyze. Diğer seçenekler: uncle: amca/dayı; cousin: kuzen; grandfather: büyükbaba; grandmother: büyükanne."
+  },
+  {
+    "id": "wq150_nov26_lex15_5_3",
+    "family": "lex15_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My aunt's daughter is my ____ .",
+    "options": [
+      "uncle",
+      "aunt",
+      "cousin",
+      "grandfather",
+      "grandmother"
+    ],
+    "correct": 2,
+    "explanation": "cousin: kuzen. Diğer seçenekler: uncle: amca/dayı; aunt: hala/teyze; grandfather: büyükbaba; grandmother: büyükanne."
+  },
+  {
+    "id": "wq150_nov26_lex15_5_4",
+    "family": "lex15_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My mother's father is my ____ .",
+    "options": [
+      "uncle",
+      "aunt",
+      "cousin",
+      "grandfather",
+      "grandmother"
+    ],
+    "correct": 3,
+    "explanation": "grandfather: büyükbaba. Diğer seçenekler: uncle: amca/dayı; aunt: hala/teyze; cousin: kuzen; grandmother: büyükanne."
+  },
+  {
+    "id": "wq150_nov26_lex15_5_5",
+    "family": "lex15_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My father's mother is my ____ .",
+    "options": [
+      "uncle",
+      "aunt",
+      "cousin",
+      "grandfather",
+      "grandmother"
+    ],
+    "correct": 4,
+    "explanation": "grandmother: büyükanne. Diğer seçenekler: uncle: amca/dayı; aunt: hala/teyze; cousin: kuzen; grandfather: büyükbaba."
+  },
+  {
+    "id": "wq150_nov26_lex15_6_1",
+    "family": "lex15_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The bus ____ stops to let passengers get on.",
+    "options": [
+      "driver",
+      "doctor",
+      "waiter",
+      "farmer",
+      "dentist"
+    ],
+    "correct": 0,
+    "explanation": "Bus driver otobüs sürücüsüdür."
+  },
+  {
+    "id": "wq150_nov26_lex15_6_2",
+    "family": "lex15_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A ____ examined my sore throat and prescribed medicine.",
+    "options": [
+      "driver",
+      "doctor",
+      "waiter",
+      "farmer",
+      "dentist"
+    ],
+    "correct": 1,
+    "explanation": "doctor: doktor. Diğer seçenekler: driver: sürücü; waiter: garson; farmer: çiftçi; dentist: diş hekimi."
+  },
+  {
+    "id": "wq150_nov26_lex15_6_3",
+    "family": "lex15_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ____ brings our food to the restaurant table.",
+    "options": [
+      "driver",
+      "doctor",
+      "waiter",
+      "farmer",
+      "dentist"
+    ],
+    "correct": 2,
+    "explanation": "waiter: garson. Diğer seçenekler: driver: sürücü; doctor: doktor; farmer: çiftçi; dentist: diş hekimi."
+  },
+  {
+    "id": "wq150_nov26_lex15_6_4",
+    "family": "lex15_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A ____ grows wheat and keeps cows on his land.",
+    "options": [
+      "driver",
+      "doctor",
+      "waiter",
+      "farmer",
+      "dentist"
+    ],
+    "correct": 3,
+    "explanation": "farmer: çiftçi. Diğer seçenekler: driver: sürücü; doctor: doktor; waiter: garson; dentist: diş hekimi."
+  },
+  {
+    "id": "wq150_nov26_lex15_6_5",
+    "family": "lex15_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A ____ checks my teeth twice a year.",
+    "options": [
+      "driver",
+      "doctor",
+      "waiter",
+      "farmer",
+      "dentist"
+    ],
+    "correct": 4,
+    "explanation": "dentist: diş hekimi. Diğer seçenekler: driver: sürücü; doctor: doktor; waiter: garson; farmer: çiftçi."
+  },
+  {
+    "id": "wq150_nov26_lex15_7_1",
+    "family": "lex15_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use soap and water to ____ your hands.",
+    "options": [
+      "wash",
+      "dry",
+      "open",
+      "close",
+      "lock"
+    ],
+    "correct": 0,
+    "explanation": "wash: yıkamak. Diğer seçenekler: dry: kurutmak; open: açmak; close: kapatmak; lock: kilitlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_7_2",
+    "family": "lex15_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use this towel to ____ your wet hands.",
+    "options": [
+      "wash",
+      "dry",
+      "open",
+      "close",
+      "lock"
+    ],
+    "correct": 1,
+    "explanation": "dry: kurutmak. Diğer seçenekler: wash: yıkamak; open: açmak; close: kapatmak; lock: kilitlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_7_3",
+    "family": "lex15_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Turn the handle and ____ the door so we can go inside.",
+    "options": [
+      "wash",
+      "dry",
+      "open",
+      "close",
+      "lock"
+    ],
+    "correct": 2,
+    "explanation": "open: açmak. Diğer seçenekler: wash: yıkamak; dry: kurutmak; close: kapatmak; lock: kilitlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_7_4",
+    "family": "lex15_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Please ____ the window; cold air is coming in.",
+    "options": [
+      "wash",
+      "dry",
+      "open",
+      "close",
+      "lock"
+    ],
+    "correct": 3,
+    "explanation": "close: kapatmak. Diğer seçenekler: wash: yıkamak; dry: kurutmak; open: açmak; lock: kilitlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_7_5",
+    "family": "lex15_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use the key to ____ the door before leaving the empty house.",
+    "options": [
+      "wash",
+      "dry",
+      "open",
+      "close",
+      "lock"
+    ],
+    "correct": 4,
+    "explanation": "lock: kilitlemek. Diğer seçenekler: wash: yıkamak; dry: kurutmak; open: açmak; close: kapatmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_8_1",
+    "family": "lex15_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The shop is ____ our house, only two minutes away on foot.",
+    "options": [
+      "near",
+      "far",
+      "inside",
+      "outside",
+      "upstairs"
+    ],
+    "correct": 0,
+    "explanation": "near: yakın. Diğer seçenekler: far: uzak; inside: içeride; outside: dışarıda; upstairs: üst katta."
+  },
+  {
+    "id": "wq150_nov26_lex15_8_2",
+    "family": "lex15_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The village is ____ from here, about 300 kilometres away.",
+    "options": [
+      "near",
+      "far",
+      "inside",
+      "outside",
+      "upstairs"
+    ],
+    "correct": 1,
+    "explanation": "far: uzak. Diğer seçenekler: near: yakın; inside: içeride; outside: dışarıda; upstairs: üst katta."
+  },
+  {
+    "id": "wq150_nov26_lex15_8_3",
+    "family": "lex15_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Come ____ the house; it is raining in the garden.",
+    "options": [
+      "near",
+      "far",
+      "inside",
+      "outside",
+      "upstairs"
+    ],
+    "correct": 2,
+    "explanation": "inside: içeride. Diğer seçenekler: near: yakın; far: uzak; outside: dışarıda; upstairs: üst katta."
+  },
+  {
+    "id": "wq150_nov26_lex15_8_4",
+    "family": "lex15_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The children are playing ____ in the garden, not in the house.",
+    "options": [
+      "near",
+      "far",
+      "inside",
+      "outside",
+      "upstairs"
+    ],
+    "correct": 3,
+    "explanation": "outside: dışarıda. Diğer seçenekler: near: yakın; far: uzak; inside: içeride; upstairs: üst katta."
+  },
+  {
+    "id": "wq150_nov26_lex15_8_5",
+    "family": "lex15_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My bedroom is ____ , on the floor above the kitchen.",
+    "options": [
+      "near",
+      "far",
+      "inside",
+      "outside",
+      "upstairs"
+    ],
+    "correct": 4,
+    "explanation": "upstairs: üst katta. Diğer seçenekler: near: yakın; far: uzak; inside: içeride; outside: dışarıda."
+  },
+  {
+    "id": "wq150_nov26_lex15_9_1",
+    "family": "lex15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I need an ____ with the dentist for a check-up.",
+    "options": [
+      "appointment",
+      "reservation",
+      "invitation",
+      "application",
+      "subscription"
+    ],
+    "correct": 0,
+    "explanation": "appointment: randevu. Diğer seçenekler: reservation: rezervasyon; invitation: davet; application: başvuru; subscription: abonelik."
+  },
+  {
+    "id": "wq150_nov26_lex15_9_2",
+    "family": "lex15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hotel confirmed our ____ for a double room next Friday.",
+    "options": [
+      "appointment",
+      "reservation",
+      "invitation",
+      "application",
+      "subscription"
+    ],
+    "correct": 1,
+    "explanation": "reservation: rezervasyon. Diğer seçenekler: appointment: randevu; invitation: davet; application: başvuru; subscription: abonelik."
+  },
+  {
+    "id": "wq150_nov26_lex15_9_3",
+    "family": "lex15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We received an ____ to our neighbour's wedding.",
+    "options": [
+      "appointment",
+      "reservation",
+      "invitation",
+      "application",
+      "subscription"
+    ],
+    "correct": 2,
+    "explanation": "invitation: davet. Diğer seçenekler: appointment: randevu; reservation: rezervasyon; application: başvuru; subscription: abonelik."
+  },
+  {
+    "id": "wq150_nov26_lex15_9_4",
+    "family": "lex15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The university requires an online ____ for admission.",
+    "options": [
+      "appointment",
+      "reservation",
+      "invitation",
+      "application",
+      "subscription"
+    ],
+    "correct": 3,
+    "explanation": "application: başvuru. Diğer seçenekler: appointment: randevu; reservation: rezervasyon; invitation: davet; subscription: abonelik."
+  },
+  {
+    "id": "wq150_nov26_lex15_9_5",
+    "family": "lex15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My monthly magazine ____ ends in December unless I renew it.",
+    "options": [
+      "appointment",
+      "reservation",
+      "invitation",
+      "application",
+      "subscription"
+    ],
+    "correct": 4,
+    "explanation": "subscription: abonelik. Diğer seçenekler: appointment: randevu; reservation: rezervasyon; invitation: davet; application: başvuru."
+  },
+  {
+    "id": "wq150_nov26_lex15_10_1",
+    "family": "lex15_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our flight's ____ time is 7:15, when it is due to leave.",
+    "options": [
+      "departure",
+      "arrival",
+      "delay",
+      "connection",
+      "destination"
+    ],
+    "correct": 0,
+    "explanation": "departure: kalkış. Diğer seçenekler: arrival: varış; delay: gecikme; connection: aktarma bağlantısı; destination: varış yeri."
+  },
+  {
+    "id": "wq150_nov26_lex15_10_2",
+    "family": "lex15_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The train's ____ at the station is expected at 18:40.",
+    "options": [
+      "departure",
+      "arrival",
+      "delay",
+      "connection",
+      "destination"
+    ],
+    "correct": 1,
+    "explanation": "arrival: varış. Diğer seçenekler: departure: kalkış; delay: gecikme; connection: aktarma bağlantısı; destination: varış yeri."
+  },
+  {
+    "id": "wq150_nov26_lex15_10_3",
+    "family": "lex15_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A signal fault caused a forty-minute ____ to the scheduled service.",
+    "options": [
+      "departure",
+      "arrival",
+      "delay",
+      "connection",
+      "destination"
+    ],
+    "correct": 2,
+    "explanation": "delay: gecikme. Diğer seçenekler: departure: kalkış; arrival: varış; connection: aktarma bağlantısı; destination: varış yeri."
+  },
+  {
+    "id": "wq150_nov26_lex15_10_4",
+    "family": "lex15_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We have only ten minutes to catch our ____ to the next train.",
+    "options": [
+      "departure",
+      "arrival",
+      "delay",
+      "connection",
+      "destination"
+    ],
+    "correct": 3,
+    "explanation": "connection: aktarma bağlantısı. Diğer seçenekler: departure: kalkış; arrival: varış; delay: gecikme; destination: varış yeri."
+  },
+  {
+    "id": "wq150_nov26_lex15_10_5",
+    "family": "lex15_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Rome is our final ____ , where our journey ends.",
+    "options": [
+      "departure",
+      "arrival",
+      "delay",
+      "connection",
+      "destination"
+    ],
+    "correct": 4,
+    "explanation": "destination: varış yeri. Diğer seçenekler: departure: kalkış; arrival: varış; delay: gecikme; connection: aktarma bağlantısı."
+  },
+  {
+    "id": "wq150_nov26_lex15_11_1",
+    "family": "lex15_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Buy your ticket at the main ____ before entering the museum.",
+    "options": [
+      "entrance",
+      "exit",
+      "reception",
+      "corridor",
+      "staircase"
+    ],
+    "correct": 0,
+    "explanation": "entrance: giriş. Diğer seçenekler: exit: çıkış; reception: resepsiyon; corridor: koridor; staircase: merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_11_2",
+    "family": "lex15_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Follow the emergency ____ sign to leave the building safely.",
+    "options": [
+      "entrance",
+      "exit",
+      "reception",
+      "corridor",
+      "staircase"
+    ],
+    "correct": 1,
+    "explanation": "exit: çıkış. Diğer seçenekler: entrance: giriş; reception: resepsiyon; corridor: koridor; staircase: merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_11_3",
+    "family": "lex15_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Collect your hotel room key at ____ .",
+    "options": [
+      "entrance",
+      "exit",
+      "reception",
+      "corridor",
+      "staircase"
+    ],
+    "correct": 2,
+    "explanation": "reception: resepsiyon. Diğer seçenekler: entrance: giriş; exit: çıkış; corridor: koridor; staircase: merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_11_4",
+    "family": "lex15_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Walk along the narrow ____ that connects the bedrooms.",
+    "options": [
+      "entrance",
+      "exit",
+      "reception",
+      "corridor",
+      "staircase"
+    ],
+    "correct": 3,
+    "explanation": "corridor: koridor. Diğer seçenekler: entrance: giriş; exit: çıkış; reception: resepsiyon; staircase: merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_11_5",
+    "family": "lex15_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use the ____ to climb from the ground floor to the first floor.",
+    "options": [
+      "entrance",
+      "exit",
+      "reception",
+      "corridor",
+      "staircase"
+    ],
+    "correct": 4,
+    "explanation": "staircase: merdiven. Diğer seçenekler: entrance: giriş; exit: çıkış; reception: resepsiyon; corridor: koridor."
+  },
+  {
+    "id": "wq150_nov26_lex15_12_1",
+    "family": "lex15_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ why the answer is wrong and show the steps?",
+    "options": [
+      "explain",
+      "describe",
+      "introduce",
+      "repeat",
+      "translate"
+    ],
+    "correct": 0,
+    "explanation": "explain: açıklamak. Diğer seçenekler: describe: betimlemek; introduce: tanıştırmak; repeat: tekrarlamak; translate: çevirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_12_2",
+    "family": "lex15_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Please ____ the missing bag's colour, shape and size.",
+    "options": [
+      "explain",
+      "describe",
+      "introduce",
+      "repeat",
+      "translate"
+    ],
+    "correct": 1,
+    "explanation": "describe: betimlemek. Diğer seçenekler: explain: açıklamak; introduce: tanıştırmak; repeat: tekrarlamak; translate: çevirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_12_3",
+    "family": "lex15_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Let me ____ you to my new colleague, David.",
+    "options": [
+      "explain",
+      "describe",
+      "introduce",
+      "repeat",
+      "translate"
+    ],
+    "correct": 2,
+    "explanation": "introduce: tanıştırmak. Diğer seçenekler: explain: açıklamak; describe: betimlemek; repeat: tekrarlamak; translate: çevirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_12_4",
+    "family": "lex15_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I didn't hear the number; could you ____ exactly what you said?",
+    "options": [
+      "explain",
+      "describe",
+      "introduce",
+      "repeat",
+      "translate"
+    ],
+    "correct": 3,
+    "explanation": "repeat: tekrarlamak. Diğer seçenekler: explain: açıklamak; describe: betimlemek; introduce: tanıştırmak; translate: çevirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_12_5",
+    "family": "lex15_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Can you ____ this French sentence into English?",
+    "options": [
+      "explain",
+      "describe",
+      "introduce",
+      "repeat",
+      "translate"
+    ],
+    "correct": 4,
+    "explanation": "translate: çevirmek. Diğer seçenekler: explain: açıklamak; describe: betimlemek; introduce: tanıştırmak; repeat: tekrarlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_13_1",
+    "family": "lex15_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We leave tomorrow, so I need to ____ my clothes into the suitcase.",
+    "options": [
+      "pack",
+      "unpack",
+      "wrap",
+      "unwrap",
+      "fold"
+    ],
+    "correct": 0,
+    "explanation": "pack: valize koymak. Diğer seçenekler: unpack: valizi boşaltmak; wrap: sarmak; unwrap: paketi açmak; fold: katlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_13_2",
+    "family": "lex15_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "After reaching the hotel, I'll ____ my suitcase and hang up my clothes.",
+    "options": [
+      "pack",
+      "unpack",
+      "wrap",
+      "unwrap",
+      "fold"
+    ],
+    "correct": 1,
+    "explanation": "unpack: valizi boşaltmak. Diğer seçenekler: pack: valize koymak; wrap: sarmak; unwrap: paketi açmak; fold: katlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_13_3",
+    "family": "lex15_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use coloured paper to ____ the birthday present.",
+    "options": [
+      "pack",
+      "unpack",
+      "wrap",
+      "unwrap",
+      "fold"
+    ],
+    "correct": 2,
+    "explanation": "wrap: sarmak. Diğer seçenekler: pack: valize koymak; unpack: valizi boşaltmak; unwrap: paketi açmak; fold: katlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_13_4",
+    "family": "lex15_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The child couldn't wait to ____ the gift and see what was inside.",
+    "options": [
+      "pack",
+      "unpack",
+      "wrap",
+      "unwrap",
+      "fold"
+    ],
+    "correct": 3,
+    "explanation": "unwrap: paketi açmak. Diğer seçenekler: pack: valize koymak; unpack: valizi boşaltmak; wrap: sarmak; fold: katlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_13_5",
+    "family": "lex15_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Please ____ the towel in half before putting it away.",
+    "options": [
+      "pack",
+      "unpack",
+      "wrap",
+      "unwrap",
+      "fold"
+    ],
+    "correct": 4,
+    "explanation": "fold: katlamak. Diğer seçenekler: pack: valize koymak; unpack: valizi boşaltmak; wrap: sarmak; unwrap: paketi açmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_14_1",
+    "family": "lex15_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We need to ____ a guide to show us around the city.",
+    "options": [
+      "hire",
+      "repair",
+      "replace",
+      "deliver",
+      "collect"
+    ],
+    "correct": 0,
+    "explanation": "hire: ücretle tutmak/kiralamak. Diğer seçenekler: repair: onarmak; replace: değiştirmek; deliver: teslim etmek; collect: gidip almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_14_2",
+    "family": "lex15_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A mechanic will ____ the bicycle's broken brakes.",
+    "options": [
+      "hire",
+      "repair",
+      "replace",
+      "deliver",
+      "collect"
+    ],
+    "correct": 1,
+    "explanation": "repair: onarmak. Diğer seçenekler: hire: ücretle tutmak/kiralamak; replace: değiştirmek; deliver: teslim etmek; collect: gidip almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_14_3",
+    "family": "lex15_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The battery cannot be repaired, so we must ____ it with a new one.",
+    "options": [
+      "hire",
+      "repair",
+      "replace",
+      "deliver",
+      "collect"
+    ],
+    "correct": 2,
+    "explanation": "replace: değiştirmek. Diğer seçenekler: hire: ücretle tutmak/kiralamak; repair: onarmak; deliver: teslim etmek; collect: gidip almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_14_4",
+    "family": "lex15_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The courier will ____ the parcel to your front door tomorrow.",
+    "options": [
+      "hire",
+      "repair",
+      "replace",
+      "deliver",
+      "collect"
+    ],
+    "correct": 3,
+    "explanation": "deliver: teslim etmek. Diğer seçenekler: hire: ücretle tutmak/kiralamak; repair: onarmak; replace: değiştirmek; collect: gidip almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_14_5",
+    "family": "lex15_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I'll ____ my repaired bicycle from the workshop after work.",
+    "options": [
+      "hire",
+      "repair",
+      "replace",
+      "deliver",
+      "collect"
+    ],
+    "correct": 4,
+    "explanation": "collect: gidip almak. Diğer seçenekler: hire: ücretle tutmak/kiralamak; repair: onarmak; replace: değiştirmek; deliver: teslim etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_15_1",
+    "family": "lex15_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "These bananas are yellow and ready to eat; they are ____ .",
+    "options": [
+      "ripe",
+      "raw",
+      "frozen",
+      "stale",
+      "burnt"
+    ],
+    "correct": 0,
+    "explanation": "ripe: olgun. Diğer seçenekler: raw: çiğ; frozen: donmuş; stale: bayat; burnt: yanmış."
+  },
+  {
+    "id": "wq150_nov26_lex15_15_2",
+    "family": "lex15_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Do not eat the chicken before cooking it; it is still ____ .",
+    "options": [
+      "ripe",
+      "raw",
+      "frozen",
+      "stale",
+      "burnt"
+    ],
+    "correct": 1,
+    "explanation": "raw: çiğ. Diğer seçenekler: ripe: olgun; frozen: donmuş; stale: bayat; burnt: yanmış."
+  },
+  {
+    "id": "wq150_nov26_lex15_15_3",
+    "family": "lex15_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The peas must stay below zero degrees because they are ____ .",
+    "options": [
+      "ripe",
+      "raw",
+      "frozen",
+      "stale",
+      "burnt"
+    ],
+    "correct": 2,
+    "explanation": "frozen: donmuş. Diğer seçenekler: ripe: olgun; raw: çiğ; stale: bayat; burnt: yanmış."
+  },
+  {
+    "id": "wq150_nov26_lex15_15_4",
+    "family": "lex15_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The bread is several days old and no longer fresh; it is ____ .",
+    "options": [
+      "ripe",
+      "raw",
+      "frozen",
+      "stale",
+      "burnt"
+    ],
+    "correct": 3,
+    "explanation": "stale: bayat. Diğer seçenekler: ripe: olgun; raw: çiğ; frozen: donmuş; burnt: yanmış."
+  },
+  {
+    "id": "wq150_nov26_lex15_15_5",
+    "family": "lex15_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I left the toast in too long, and it is now black and ____ .",
+    "options": [
+      "ripe",
+      "raw",
+      "frozen",
+      "stale",
+      "burnt"
+    ],
+    "correct": 4,
+    "explanation": "burnt: yanmış. Diğer seçenekler: ripe: olgun; raw: çiğ; frozen: donmuş; stale: bayat."
+  },
+  {
+    "id": "wq150_nov26_lex15_16_1",
+    "family": "lex15_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My large wheeled ____ contains all my holiday clothes.",
+    "options": [
+      "suitcase",
+      "backpack",
+      "wallet",
+      "purse",
+      "briefcase"
+    ],
+    "correct": 0,
+    "explanation": "suitcase: bavul. Diğer seçenekler: backpack: sırt çantası; wallet: cüzdan; purse: el çantası; briefcase: evrak çantası."
+  },
+  {
+    "id": "wq150_nov26_lex15_16_2",
+    "family": "lex15_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hiker carries food and water in a ____ on her shoulders.",
+    "options": [
+      "suitcase",
+      "backpack",
+      "wallet",
+      "purse",
+      "briefcase"
+    ],
+    "correct": 1,
+    "explanation": "backpack: sırt çantası. Diğer seçenekler: suitcase: bavul; wallet: cüzdan; purse: el çantası; briefcase: evrak çantası."
+  },
+  {
+    "id": "wq150_nov26_lex15_16_3",
+    "family": "lex15_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "He keeps banknotes and credit cards in a small leather ____ in his pocket.",
+    "options": [
+      "suitcase",
+      "backpack",
+      "wallet",
+      "purse",
+      "briefcase"
+    ],
+    "correct": 2,
+    "explanation": "wallet: cüzdan. Diğer seçenekler: suitcase: bavul; backpack: sırt çantası; purse: el çantası; briefcase: evrak çantası."
+  },
+  {
+    "id": "wq150_nov26_lex15_16_4",
+    "family": "lex15_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She carries her lipstick and keys in a small ____ with a shoulder strap.",
+    "options": [
+      "suitcase",
+      "backpack",
+      "wallet",
+      "purse",
+      "briefcase"
+    ],
+    "correct": 3,
+    "explanation": "purse: el çantası. Diğer seçenekler: suitcase: bavul; backpack: sırt çantası; wallet: cüzdan; briefcase: evrak çantası."
+  },
+  {
+    "id": "wq150_nov26_lex15_16_5",
+    "family": "lex15_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The lawyer carried contracts in a rectangular hard-sided ____ .",
+    "options": [
+      "suitcase",
+      "backpack",
+      "wallet",
+      "purse",
+      "briefcase"
+    ],
+    "correct": 4,
+    "explanation": "briefcase: evrak çantası. Diğer seçenekler: suitcase: bavul; backpack: sırt çantası; wallet: cüzdan; purse: el çantası."
+  },
+  {
+    "id": "wq150_nov26_lex15_17_1",
+    "family": "lex15_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The machine doesn't accept cards; you must pay in ____ .",
+    "options": [
+      "cash",
+      "change",
+      "price",
+      "bill",
+      "tip"
+    ],
+    "correct": 0,
+    "explanation": "cash: nakit. Diğer seçenekler: change: para üstü; price: fiyat; bill: hesap; tip: bahşiş."
+  },
+  {
+    "id": "wq150_nov26_lex15_17_2",
+    "family": "lex15_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I paid £10 for a £7 meal and received £3 in ____ .",
+    "options": [
+      "cash",
+      "change",
+      "price",
+      "bill",
+      "tip"
+    ],
+    "correct": 1,
+    "explanation": "change: para üstü. Diğer seçenekler: cash: nakit; price: fiyat; bill: hesap; tip: bahşiş."
+  },
+  {
+    "id": "wq150_nov26_lex15_17_3",
+    "family": "lex15_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ____ printed on the label is £25.",
+    "options": [
+      "cash",
+      "change",
+      "price",
+      "bill",
+      "tip"
+    ],
+    "correct": 2,
+    "explanation": "price: fiyat. Diğer seçenekler: cash: nakit; change: para üstü; bill: hesap; tip: bahşiş."
+  },
+  {
+    "id": "wq150_nov26_lex15_17_4",
+    "family": "lex15_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We've finished our meal; could we have the ____ , please?",
+    "options": [
+      "cash",
+      "change",
+      "price",
+      "bill",
+      "tip"
+    ],
+    "correct": 3,
+    "explanation": "bill: hesap. Diğer seçenekler: cash: nakit; change: para üstü; price: fiyat; tip: bahşiş."
+  },
+  {
+    "id": "wq150_nov26_lex15_17_5",
+    "family": "lex15_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We left the waiter an extra £3 as a ____ for good service.",
+    "options": [
+      "cash",
+      "change",
+      "price",
+      "bill",
+      "tip"
+    ],
+    "correct": 4,
+    "explanation": "tip: bahşiş. Diğer seçenekler: cash: nakit; change: para üstü; price: fiyat; bill: hesap."
+  },
+  {
+    "id": "wq150_nov26_lex15_18_1",
+    "family": "lex15_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Walk up the twenty stone ____ to the entrance.",
+    "options": [
+      "stairs",
+      "lift",
+      "escalator",
+      "ramp",
+      "ladder"
+    ],
+    "correct": 0,
+    "explanation": "stairs: merdiven basamakları. Diğer seçenekler: lift: asansör; escalator: yürüyen merdiven; ramp: rampa; ladder: seyyar merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_18_2",
+    "family": "lex15_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Press the button to take the ____ to the eighth floor.",
+    "options": [
+      "stairs",
+      "lift",
+      "escalator",
+      "ramp",
+      "ladder"
+    ],
+    "correct": 1,
+    "explanation": "lift: asansör. Diğer seçenekler: stairs: merdiven basamakları; escalator: yürüyen merdiven; ramp: rampa; ladder: seyyar merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_18_3",
+    "family": "lex15_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The moving ____ carries shoppers up to the next floor.",
+    "options": [
+      "stairs",
+      "lift",
+      "escalator",
+      "ramp",
+      "ladder"
+    ],
+    "correct": 2,
+    "explanation": "escalator: yürüyen merdiven. Diğer seçenekler: stairs: merdiven basamakları; lift: asansör; ramp: rampa; ladder: seyyar merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_18_4",
+    "family": "lex15_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Wheelchair users can enter via the sloping ____ .",
+    "options": [
+      "stairs",
+      "lift",
+      "escalator",
+      "ramp",
+      "ladder"
+    ],
+    "correct": 3,
+    "explanation": "ramp: rampa. Diğer seçenekler: stairs: merdiven basamakları; lift: asansör; escalator: yürüyen merdiven; ladder: seyyar merdiven."
+  },
+  {
+    "id": "wq150_nov26_lex15_18_5",
+    "family": "lex15_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use a portable ____ to reach the roof.",
+    "options": [
+      "stairs",
+      "lift",
+      "escalator",
+      "ramp",
+      "ladder"
+    ],
+    "correct": 4,
+    "explanation": "ladder: seyyar merdiven. Diğer seçenekler: stairs: merdiven basamakları; lift: asansör; escalator: yürüyen merdiven; ramp: rampa."
+  },
+  {
+    "id": "wq150_nov26_lex15_19_1",
+    "family": "lex15_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Join the ____ of people waiting in order at the ticket office.",
+    "options": [
+      "queue",
+      "crowd",
+      "audience",
+      "team",
+      "staff"
+    ],
+    "correct": 0,
+    "explanation": "queue: kuyruk. Diğer seçenekler: crowd: kalabalık; audience: izleyici topluluğu; team: takım; staff: personel."
+  },
+  {
+    "id": "wq150_nov26_lex15_19_2",
+    "family": "lex15_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A large ____ gathered in the square to watch the celebration.",
+    "options": [
+      "queue",
+      "crowd",
+      "audience",
+      "team",
+      "staff"
+    ],
+    "correct": 1,
+    "explanation": "crowd: kalabalık. Diğer seçenekler: queue: kuyruk; audience: izleyici topluluğu; team: takım; staff: personel."
+  },
+  {
+    "id": "wq150_nov26_lex15_19_3",
+    "family": "lex15_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The theatre ____ applauded at the end of the play.",
+    "options": [
+      "queue",
+      "crowd",
+      "audience",
+      "team",
+      "staff"
+    ],
+    "correct": 2,
+    "explanation": "audience: izleyici topluluğu. Diğer seçenekler: queue: kuyruk; crowd: kalabalık; team: takım; staff: personel."
+  },
+  {
+    "id": "wq150_nov26_lex15_19_4",
+    "family": "lex15_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our football ____ consists of eleven players on the pitch.",
+    "options": [
+      "queue",
+      "crowd",
+      "audience",
+      "team",
+      "staff"
+    ],
+    "correct": 3,
+    "explanation": "team: takım. Diğer seçenekler: queue: kuyruk; crowd: kalabalık; audience: izleyici topluluğu; staff: personel."
+  },
+  {
+    "id": "wq150_nov26_lex15_19_5",
+    "family": "lex15_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hospital ____ includes nurses, doctors and receptionists.",
+    "options": [
+      "queue",
+      "crowd",
+      "audience",
+      "team",
+      "staff"
+    ],
+    "correct": 4,
+    "explanation": "staff: personel. Diğer seçenekler: queue: kuyruk; crowd: kalabalık; audience: izleyici topluluğu; team: takım."
+  },
+  {
+    "id": "wq150_nov26_lex15_20_1",
+    "family": "lex15_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A library ____ must return the book on time.",
+    "options": [
+      "borrower",
+      "lender",
+      "seller",
+      "buyer",
+      "owner"
+    ],
+    "correct": 0,
+    "explanation": "borrower: ödünç alan. Diğer seçenekler: lender: ödünç veren; seller: satıcı; buyer: alıcı; owner: sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_20_2",
+    "family": "lex15_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The bank is the ____ that provides the loan.",
+    "options": [
+      "borrower",
+      "lender",
+      "seller",
+      "buyer",
+      "owner"
+    ],
+    "correct": 1,
+    "explanation": "lender: ödünç veren. Diğer seçenekler: borrower: ödünç alan; seller: satıcı; buyer: alıcı; owner: sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_20_3",
+    "family": "lex15_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ____ advertised the used bicycle for £80.",
+    "options": [
+      "borrower",
+      "lender",
+      "seller",
+      "buyer",
+      "owner"
+    ],
+    "correct": 2,
+    "explanation": "seller: satıcı. Diğer seçenekler: borrower: ödünç alan; lender: ödünç veren; buyer: alıcı; owner: sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_20_4",
+    "family": "lex15_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ____ paid £80 and took the bicycle home.",
+    "options": [
+      "borrower",
+      "lender",
+      "seller",
+      "buyer",
+      "owner"
+    ],
+    "correct": 3,
+    "explanation": "buyer: alıcı. Diğer seçenekler: borrower: ödünç alan; lender: ödünç veren; seller: satıcı; owner: sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_20_5",
+    "family": "lex15_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The legal ____ of the bicycle can prove that it belongs to her.",
+    "options": [
+      "borrower",
+      "lender",
+      "seller",
+      "buyer",
+      "owner"
+    ],
+    "correct": 4,
+    "explanation": "owner: sahip. Diğer seçenekler: borrower: ödünç alan; lender: ödünç veren; seller: satıcı; buyer: alıcı."
+  },
+  {
+    "id": "wq150_nov26_lex15_21_1",
+    "family": "lex15_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She lives in a second-floor ____ in an apartment building.",
+    "options": [
+      "flat",
+      "cottage",
+      "tent",
+      "hostel",
+      "hotel"
+    ],
+    "correct": 0,
+    "explanation": "flat: daire. Diğer seçenekler: cottage: küçük kır evi; tent: çadır; hostel: hostel; hotel: otel."
+  },
+  {
+    "id": "wq150_nov26_lex15_21_2",
+    "family": "lex15_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We rented a small stone ____ in the countryside.",
+    "options": [
+      "flat",
+      "cottage",
+      "tent",
+      "hostel",
+      "hotel"
+    ],
+    "correct": 1,
+    "explanation": "cottage: küçük kır evi. Diğer seçenekler: flat: daire; tent: çadır; hostel: hostel; hotel: otel."
+  },
+  {
+    "id": "wq150_nov26_lex15_21_3",
+    "family": "lex15_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We slept in a waterproof ____ at the campsite.",
+    "options": [
+      "flat",
+      "cottage",
+      "tent",
+      "hostel",
+      "hotel"
+    ],
+    "correct": 2,
+    "explanation": "tent: çadır. Diğer seçenekler: flat: daire; cottage: küçük kır evi; hostel: hostel; hotel: otel."
+  },
+  {
+    "id": "wq150_nov26_lex15_21_4",
+    "family": "lex15_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Backpackers share a dormitory with bunk beds in a cheap youth ____ .",
+    "options": [
+      "flat",
+      "cottage",
+      "tent",
+      "hostel",
+      "hotel"
+    ],
+    "correct": 3,
+    "explanation": "hostel: hostel. Diğer seçenekler: flat: daire; cottage: küçük kır evi; tent: çadır; hotel: otel."
+  },
+  {
+    "id": "wq150_nov26_lex15_21_5",
+    "family": "lex15_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We booked a private room with room service in a four-star ____ .",
+    "options": [
+      "flat",
+      "cottage",
+      "tent",
+      "hostel",
+      "hotel"
+    ],
+    "correct": 4,
+    "explanation": "hotel: otel. Diğer seçenekler: flat: daire; cottage: küçük kır evi; tent: çadır; hostel: hostel."
+  },
+  {
+    "id": "wq150_nov26_lex15_22_1",
+    "family": "lex15_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The court required reliable ____ to support the accusation.",
+    "options": [
+      "evidence",
+      "clue",
+      "rumour",
+      "opinion",
+      "fact"
+    ],
+    "correct": 0,
+    "explanation": "evidence: kanıt. Diğer seçenekler: clue: ipucu; rumour: söylenti; opinion: görüş; fact: olgu."
+  },
+  {
+    "id": "wq150_nov26_lex15_22_2",
+    "family": "lex15_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A muddy footprint gave detectives a ____ about where to search next.",
+    "options": [
+      "evidence",
+      "clue",
+      "rumour",
+      "opinion",
+      "fact"
+    ],
+    "correct": 1,
+    "explanation": "clue: ipucu. Diğer seçenekler: evidence: kanıt; rumour: söylenti; opinion: görüş; fact: olgu."
+  },
+  {
+    "id": "wq150_nov26_lex15_22_3",
+    "family": "lex15_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "An unconfirmed ____ about the closure spread through the office.",
+    "options": [
+      "evidence",
+      "clue",
+      "rumour",
+      "opinion",
+      "fact"
+    ],
+    "correct": 2,
+    "explanation": "rumour: söylenti. Diğer seçenekler: evidence: kanıt; clue: ipucu; opinion: görüş; fact: olgu."
+  },
+  {
+    "id": "wq150_nov26_lex15_22_4",
+    "family": "lex15_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "In my personal ____ , the new design looks better.",
+    "options": [
+      "evidence",
+      "clue",
+      "rumour",
+      "opinion",
+      "fact"
+    ],
+    "correct": 3,
+    "explanation": "opinion: görüş. Diğer seçenekler: evidence: kanıt; clue: ipucu; rumour: söylenti; fact: olgu."
+  },
+  {
+    "id": "wq150_nov26_lex15_22_5",
+    "family": "lex15_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "It is an established ____ that water freezes at zero degrees under standard conditions.",
+    "options": [
+      "evidence",
+      "clue",
+      "rumour",
+      "opinion",
+      "fact"
+    ],
+    "correct": 4,
+    "explanation": "fact: olgu. Diğer seçenekler: evidence: kanıt; clue: ipucu; rumour: söylenti; opinion: görüş."
+  },
+  {
+    "id": "wq150_nov26_lex15_23_1",
+    "family": "lex15_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Without exact figures, the builder gave a rough ____ of the repair cost.",
+    "options": [
+      "estimate",
+      "forecast",
+      "measurement",
+      "calculation",
+      "assessment"
+    ],
+    "correct": 0,
+    "explanation": "estimate: tahmin. Diğer seçenekler: forecast: geleceğe yönelik öngörü; measurement: ölçüm; calculation: hesaplama; assessment: değerlendirme."
+  },
+  {
+    "id": "wq150_nov26_lex15_23_2",
+    "family": "lex15_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The weather ____ predicts heavy rain tomorrow.",
+    "options": [
+      "estimate",
+      "forecast",
+      "measurement",
+      "calculation",
+      "assessment"
+    ],
+    "correct": 1,
+    "explanation": "forecast: geleceğe yönelik öngörü. Diğer seçenekler: estimate: tahmin; measurement: ölçüm; calculation: hesaplama; assessment: değerlendirme."
+  },
+  {
+    "id": "wq150_nov26_lex15_23_3",
+    "family": "lex15_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The engineer recorded a direct ____ of the pipe's diameter using a calliper.",
+    "options": [
+      "estimate",
+      "forecast",
+      "measurement",
+      "calculation",
+      "assessment"
+    ],
+    "correct": 2,
+    "explanation": "measurement: ölçüm. Diğer seçenekler: estimate: tahmin; forecast: geleceğe yönelik öngörü; calculation: hesaplama; assessment: değerlendirme."
+  },
+  {
+    "id": "wq150_nov26_lex15_23_4",
+    "family": "lex15_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Using the formula, she performed a ____ to determine the total cost.",
+    "options": [
+      "estimate",
+      "forecast",
+      "measurement",
+      "calculation",
+      "assessment"
+    ],
+    "correct": 3,
+    "explanation": "calculation: hesaplama. Diğer seçenekler: estimate: tahmin; forecast: geleceğe yönelik öngörü; measurement: ölçüm; assessment: değerlendirme."
+  },
+  {
+    "id": "wq150_nov26_lex15_23_5",
+    "family": "lex15_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The panel made an overall ____ of the candidate's suitability for the role.",
+    "options": [
+      "estimate",
+      "forecast",
+      "measurement",
+      "calculation",
+      "assessment"
+    ],
+    "correct": 4,
+    "explanation": "assessment: değerlendirme. Diğer seçenekler: estimate: tahmin; forecast: geleceğe yönelik öngörü; measurement: ölçüm; calculation: hesaplama."
+  },
+  {
+    "id": "wq150_nov26_lex15_24_1",
+    "family": "lex15_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The athlete worked hard to ____ her goal of running a marathon.",
+    "options": [
+      "achieve",
+      "attempt",
+      "avoid",
+      "admit",
+      "afford"
+    ],
+    "correct": 0,
+    "explanation": "achieve: başarmak. Diğer seçenekler: attempt: denemek; avoid: kaçınmak; admit: kabul etmek; afford: maddi gücü yetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_24_2",
+    "family": "lex15_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "We will ____ the difficult climb, even though we may not succeed.",
+    "options": [
+      "achieve",
+      "attempt",
+      "avoid",
+      "admit",
+      "afford"
+    ],
+    "correct": 1,
+    "explanation": "attempt: denemek. Diğer seçenekler: achieve: başarmak; avoid: kaçınmak; admit: kabul etmek; afford: maddi gücü yetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_24_3",
+    "family": "lex15_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Take the bypass to ____ getting stuck in city-centre traffic.",
+    "options": [
+      "achieve",
+      "attempt",
+      "avoid",
+      "admit",
+      "afford"
+    ],
+    "correct": 2,
+    "explanation": "avoid: kaçınmak. Diğer seçenekler: achieve: başarmak; attempt: denemek; admit: kabul etmek; afford: maddi gücü yetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_24_4",
+    "family": "lex15_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "He finally agreed to ____ that he had made a mistake.",
+    "options": [
+      "achieve",
+      "attempt",
+      "avoid",
+      "admit",
+      "afford"
+    ],
+    "correct": 3,
+    "explanation": "admit: kabul etmek. Diğer seçenekler: achieve: başarmak; attempt: denemek; avoid: kaçınmak; afford: maddi gücü yetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_24_5",
+    "family": "lex15_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "We cannot ____ to spend £2,000 on a holiday this year.",
+    "options": [
+      "achieve",
+      "attempt",
+      "avoid",
+      "admit",
+      "afford"
+    ],
+    "correct": 4,
+    "explanation": "afford: maddi gücü yetmek. Diğer seçenekler: achieve: başarmak; attempt: denemek; avoid: kaçınmak; admit: kabul etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_25_1",
+    "family": "lex15_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company needs to ____ money from the bank for six months.",
+    "options": [
+      "borrow",
+      "owe",
+      "repay",
+      "invest",
+      "donate"
+    ],
+    "correct": 0,
+    "explanation": "borrow: ödünç almak. Diğer seçenekler: owe: borçlu olmak; repay: geri ödemek; invest: yatırım yapmak; donate: bağışlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_25_2",
+    "family": "lex15_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "I still ____ my friend £50 from last week's loan.",
+    "options": [
+      "borrow",
+      "owe",
+      "repay",
+      "invest",
+      "donate"
+    ],
+    "correct": 1,
+    "explanation": "owe: borçlu olmak. Diğer seçenekler: borrow: ödünç almak; repay: geri ödemek; invest: yatırım yapmak; donate: bağışlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_25_3",
+    "family": "lex15_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The agreement requires us to ____ the entire loan by next June.",
+    "options": [
+      "borrow",
+      "owe",
+      "repay",
+      "invest",
+      "donate"
+    ],
+    "correct": 2,
+    "explanation": "repay: geri ödemek. Diğer seçenekler: borrow: ödünç almak; owe: borçlu olmak; invest: yatırım yapmak; donate: bağışlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_25_4",
+    "family": "lex15_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "They plan to ____ their savings in a long-term fund.",
+    "options": [
+      "borrow",
+      "owe",
+      "repay",
+      "invest",
+      "donate"
+    ],
+    "correct": 3,
+    "explanation": "invest: yatırım yapmak. Diğer seçenekler: borrow: ödünç almak; owe: borçlu olmak; repay: geri ödemek; donate: bağışlamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_25_5",
+    "family": "lex15_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Many residents chose to ____ money to the charity without expecting anything back.",
+    "options": [
+      "borrow",
+      "owe",
+      "repay",
+      "invest",
+      "donate"
+    ],
+    "correct": 4,
+    "explanation": "donate: bağışlamak. Diğer seçenekler: borrow: ödünç almak; owe: borçlu olmak; repay: geri ödemek; invest: yatırım yapmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_26_1",
+    "family": "lex15_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Teachers should ____ shy pupils to participate by praising their efforts.",
+    "options": [
+      "encourage",
+      "discourage",
+      "persuade",
+      "remind",
+      "warn"
+    ],
+    "correct": 0,
+    "explanation": "encourage: teşvik etmek. Diğer seçenekler: discourage: caydırmak; persuade: ikna etmek; remind: hatırlatmak; warn: uyarmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_26_2",
+    "family": "lex15_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "High parking charges are intended to ____ people from driving into the centre.",
+    "options": [
+      "encourage",
+      "discourage",
+      "persuade",
+      "remind",
+      "warn"
+    ],
+    "correct": 1,
+    "explanation": "discourage: caydırmak. Diğer seçenekler: encourage: teşvik etmek; persuade: ikna etmek; remind: hatırlatmak; warn: uyarmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_26_3",
+    "family": "lex15_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "After a long discussion, she managed to ____ him to change his mind.",
+    "options": [
+      "encourage",
+      "discourage",
+      "persuade",
+      "remind",
+      "warn"
+    ],
+    "correct": 2,
+    "explanation": "persuade: ikna etmek. Diğer seçenekler: encourage: teşvik etmek; discourage: caydırmak; remind: hatırlatmak; warn: uyarmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_26_4",
+    "family": "lex15_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ me to send the email at five? I might forget.",
+    "options": [
+      "encourage",
+      "discourage",
+      "persuade",
+      "remind",
+      "warn"
+    ],
+    "correct": 3,
+    "explanation": "remind: hatırlatmak. Diğer seçenekler: encourage: teşvik etmek; discourage: caydırmak; persuade: ikna etmek; warn: uyarmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_26_5",
+    "family": "lex15_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The sign will ____ drivers about the dangerous bend ahead.",
+    "options": [
+      "encourage",
+      "discourage",
+      "persuade",
+      "remind",
+      "warn"
+    ],
+    "correct": 4,
+    "explanation": "warn: uyarmak. Diğer seçenekler: encourage: teşvik etmek; discourage: caydırmak; persuade: ikna etmek; remind: hatırlatmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_27_1",
+    "family": "lex15_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A severe ____ of nurses left many positions unfilled.",
+    "options": [
+      "shortage",
+      "surplus",
+      "supply",
+      "demand",
+      "stock"
+    ],
+    "correct": 0,
+    "explanation": "shortage: kıtlık. Diğer seçenekler: surplus: fazlalık; supply: arz; demand: talep; stock: stok."
+  },
+  {
+    "id": "wq150_nov26_lex15_27_2",
+    "family": "lex15_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The farm produced more apples than it could sell, leaving a ____ .",
+    "options": [
+      "shortage",
+      "surplus",
+      "supply",
+      "demand",
+      "stock"
+    ],
+    "correct": 1,
+    "explanation": "surplus: fazlalık. Diğer seçenekler: shortage: kıtlık; supply: arz; demand: talep; stock: stok."
+  },
+  {
+    "id": "wq150_nov26_lex15_27_3",
+    "family": "lex15_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The city's water ____ was restored after the damaged pipe was repaired.",
+    "options": [
+      "shortage",
+      "surplus",
+      "supply",
+      "demand",
+      "stock"
+    ],
+    "correct": 2,
+    "explanation": "supply: arz. Diğer seçenekler: shortage: kıtlık; surplus: fazlalık; demand: talep; stock: stok."
+  },
+  {
+    "id": "wq150_nov26_lex15_27_4",
+    "family": "lex15_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "There is growing customer ____ for energy-efficient appliances.",
+    "options": [
+      "shortage",
+      "surplus",
+      "supply",
+      "demand",
+      "stock"
+    ],
+    "correct": 3,
+    "explanation": "demand: talep. Diğer seçenekler: shortage: kıtlık; surplus: fazlalık; supply: arz; stock: stok."
+  },
+  {
+    "id": "wq150_nov26_lex15_27_5",
+    "family": "lex15_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The store has twenty units in ____ , ready for immediate sale.",
+    "options": [
+      "shortage",
+      "surplus",
+      "supply",
+      "demand",
+      "stock"
+    ],
+    "correct": 4,
+    "explanation": "stock: stok. Diğer seçenekler: shortage: kıtlık; surplus: fazlalık; supply: arz; demand: talep."
+  },
+  {
+    "id": "wq150_nov26_lex15_28_1",
+    "family": "lex15_28",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "I have a dental ____ at three tomorrow.",
+    "options": [
+      "appointment",
+      "deadline",
+      "schedule",
+      "duration",
+      "interval"
+    ],
+    "correct": 0,
+    "explanation": "appointment: randevu. Diğer seçenekler: deadline: son tarih; schedule: program; duration: süre; interval: ara/aralık."
+  },
+  {
+    "id": "wq150_nov26_lex15_28_2",
+    "family": "lex15_28",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The submission ____ is Friday at midnight; late essays will not be accepted.",
+    "options": [
+      "appointment",
+      "deadline",
+      "schedule",
+      "duration",
+      "interval"
+    ],
+    "correct": 1,
+    "explanation": "deadline: son tarih. Diğer seçenekler: appointment: randevu; schedule: program; duration: süre; interval: ara/aralık."
+  },
+  {
+    "id": "wq150_nov26_lex15_28_3",
+    "family": "lex15_28",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The project ____ lists the dates of all the planned activities.",
+    "options": [
+      "appointment",
+      "deadline",
+      "schedule",
+      "duration",
+      "interval"
+    ],
+    "correct": 2,
+    "explanation": "schedule: program. Diğer seçenekler: appointment: randevu; deadline: son tarih; duration: süre; interval: ara/aralık."
+  },
+  {
+    "id": "wq150_nov26_lex15_28_4",
+    "family": "lex15_28",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The total ____ of the course is six weeks.",
+    "options": [
+      "appointment",
+      "deadline",
+      "schedule",
+      "duration",
+      "interval"
+    ],
+    "correct": 3,
+    "explanation": "duration: süre. Diğer seçenekler: appointment: randevu; deadline: son tarih; schedule: program; interval: ara/aralık."
+  },
+  {
+    "id": "wq150_nov26_lex15_28_5",
+    "family": "lex15_28",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "There is a ten-minute ____ between the two sessions.",
+    "options": [
+      "appointment",
+      "deadline",
+      "schedule",
+      "duration",
+      "interval"
+    ],
+    "correct": 4,
+    "explanation": "interval: ara/aralık. Diğer seçenekler: appointment: randevu; deadline: son tarih; schedule: program; duration: süre."
+  },
+  {
+    "id": "wq150_nov26_lex15_29_1",
+    "family": "lex15_29",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A road ____ involving two cars blocked the motorway.",
+    "options": [
+      "accident",
+      "incident",
+      "injury",
+      "damage",
+      "fault"
+    ],
+    "correct": 0,
+    "explanation": "accident: kaza. Diğer seçenekler: incident: olay; injury: yaralanma; damage: hasar; fault: arıza/kusur."
+  },
+  {
+    "id": "wq150_nov26_lex15_29_2",
+    "family": "lex15_29",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The security report recorded an unusual ____ : someone entered the building without permission.",
+    "options": [
+      "accident",
+      "incident",
+      "injury",
+      "damage",
+      "fault"
+    ],
+    "correct": 1,
+    "explanation": "incident: olay. Diğer seçenekler: accident: kaza; injury: yaralanma; damage: hasar; fault: arıza/kusur."
+  },
+  {
+    "id": "wq150_nov26_lex15_29_3",
+    "family": "lex15_29",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The player's knee ____ prevented him from competing.",
+    "options": [
+      "accident",
+      "incident",
+      "injury",
+      "damage",
+      "fault"
+    ],
+    "correct": 2,
+    "explanation": "injury: yaralanma. Diğer seçenekler: accident: kaza; incident: olay; damage: hasar; fault: arıza/kusur."
+  },
+  {
+    "id": "wq150_nov26_lex15_29_4",
+    "family": "lex15_29",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The storm caused serious ____ to the roof.",
+    "options": [
+      "accident",
+      "incident",
+      "injury",
+      "damage",
+      "fault"
+    ],
+    "correct": 3,
+    "explanation": "damage: hasar. Diğer seçenekler: accident: kaza; incident: olay; injury: yaralanma; fault: arıza/kusur."
+  },
+  {
+    "id": "wq150_nov26_lex15_29_5",
+    "family": "lex15_29",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "An electrical ____ in the wiring caused the lights to go out.",
+    "options": [
+      "accident",
+      "incident",
+      "injury",
+      "damage",
+      "fault"
+    ],
+    "correct": 4,
+    "explanation": "fault: arıza/kusur. Diğer seçenekler: accident: kaza; incident: olay; injury: yaralanma; damage: hasar."
+  },
+  {
+    "id": "wq150_nov26_lex15_30_1",
+    "family": "lex15_30",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "I asked my mentor for personal ____ about dealing with a difficult colleague.",
+    "options": [
+      "advice",
+      "instruction",
+      "permission",
+      "recommendation",
+      "requirement"
+    ],
+    "correct": 0,
+    "explanation": "advice: tavsiye. Diğer seçenekler: instruction: talimat; permission: izin; recommendation: öneri; requirement: gereklilik."
+  },
+  {
+    "id": "wq150_nov26_lex15_30_2",
+    "family": "lex15_30",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The first ____ on the form tells applicants to write their names in capitals.",
+    "options": [
+      "advice",
+      "instruction",
+      "permission",
+      "recommendation",
+      "requirement"
+    ],
+    "correct": 1,
+    "explanation": "instruction: talimat. Diğer seçenekler: advice: tavsiye; permission: izin; recommendation: öneri; requirement: gereklilik."
+  },
+  {
+    "id": "wq150_nov26_lex15_30_3",
+    "family": "lex15_30",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "You need written ____ from the owner before entering the property.",
+    "options": [
+      "advice",
+      "instruction",
+      "permission",
+      "recommendation",
+      "requirement"
+    ],
+    "correct": 2,
+    "explanation": "permission: izin. Diğer seçenekler: advice: tavsiye; instruction: talimat; recommendation: öneri; requirement: gereklilik."
+  },
+  {
+    "id": "wq150_nov26_lex15_30_4",
+    "family": "lex15_30",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The committee's formal ____ was to appoint an independent reviewer.",
+    "options": [
+      "advice",
+      "instruction",
+      "permission",
+      "recommendation",
+      "requirement"
+    ],
+    "correct": 3,
+    "explanation": "recommendation: öneri. Diğer seçenekler: advice: tavsiye; instruction: talimat; permission: izin; requirement: gereklilik."
+  },
+  {
+    "id": "wq150_nov26_lex15_30_5",
+    "family": "lex15_30",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A valid passport is a mandatory ____ for the application.",
+    "options": [
+      "advice",
+      "instruction",
+      "permission",
+      "recommendation",
+      "requirement"
+    ],
+    "correct": 4,
+    "explanation": "requirement: gereklilik. Diğer seçenekler: advice: tavsiye; instruction: talimat; permission: izin; recommendation: öneri."
+  },
+  {
+    "id": "wq150_nov26_lex15_31_1",
+    "family": "lex15_31",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The teacher will ____ the lesson to suit younger learners.",
+    "options": [
+      "adapt",
+      "adopt",
+      "adjust",
+      "attach",
+      "assemble"
+    ],
+    "correct": 0,
+    "explanation": "adapt: uyarlamak. Diğer seçenekler: adopt: benimsemek; adjust: ayarlamak; attach: eklemek; assemble: birleştirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_31_2",
+    "family": "lex15_31",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The organisation voted to ____ a new policy as its official approach.",
+    "options": [
+      "adapt",
+      "adopt",
+      "adjust",
+      "attach",
+      "assemble"
+    ],
+    "correct": 1,
+    "explanation": "adopt: benimsemek. Diğer seçenekler: adapt: uyarlamak; adjust: ayarlamak; attach: eklemek; assemble: birleştirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_31_3",
+    "family": "lex15_31",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Turn the dial to ____ the temperature by two degrees.",
+    "options": [
+      "adapt",
+      "adopt",
+      "adjust",
+      "attach",
+      "assemble"
+    ],
+    "correct": 2,
+    "explanation": "adjust: ayarlamak. Diğer seçenekler: adapt: uyarlamak; adopt: benimsemek; attach: eklemek; assemble: birleştirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_31_4",
+    "family": "lex15_31",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Please ____ the signed document to your email.",
+    "options": [
+      "adapt",
+      "adopt",
+      "adjust",
+      "attach",
+      "assemble"
+    ],
+    "correct": 3,
+    "explanation": "attach: eklemek. Diğer seçenekler: adapt: uyarlamak; adopt: benimsemek; adjust: ayarlamak; assemble: birleştirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_31_5",
+    "family": "lex15_31",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Follow the diagram to ____ the separate parts into a desk.",
+    "options": [
+      "adapt",
+      "adopt",
+      "adjust",
+      "attach",
+      "assemble"
+    ],
+    "correct": 4,
+    "explanation": "assemble: birleştirmek. Diğer seçenekler: adapt: uyarlamak; adopt: benimsemek; adjust: ayarlamak; attach: eklemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_32_1",
+    "family": "lex15_32",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A missing signature could ____ the application by several days.",
+    "options": [
+      "delay",
+      "avoid",
+      "prevent",
+      "permit",
+      "prohibit"
+    ],
+    "correct": 0,
+    "explanation": "delay: geciktirmek. Diğer seçenekler: avoid: kaçınmak; prevent: önlemek; permit: izin vermek; prohibit: yasaklamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_32_2",
+    "family": "lex15_32",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "He took a different route to ____ passing the construction site.",
+    "options": [
+      "delay",
+      "avoid",
+      "prevent",
+      "permit",
+      "prohibit"
+    ],
+    "correct": 1,
+    "explanation": "avoid: kaçınmak. Diğer seçenekler: delay: geciktirmek; prevent: önlemek; permit: izin vermek; prohibit: yasaklamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_32_3",
+    "family": "lex15_32",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The safety lock is intended to ____ children from opening the cabinet.",
+    "options": [
+      "delay",
+      "avoid",
+      "prevent",
+      "permit",
+      "prohibit"
+    ],
+    "correct": 2,
+    "explanation": "prevent: önlemek. Diğer seçenekler: delay: geciktirmek; avoid: kaçınmak; permit: izin vermek; prohibit: yasaklamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_32_4",
+    "family": "lex15_32",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The rules ____ visitors to take photographs without flash.",
+    "options": [
+      "delay",
+      "avoid",
+      "prevent",
+      "permit",
+      "prohibit"
+    ],
+    "correct": 3,
+    "explanation": "permit: izin vermek. Diğer seçenekler: delay: geciktirmek; avoid: kaçınmak; prevent: önlemek; prohibit: yasaklamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_32_5",
+    "family": "lex15_32",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The regulations explicitly ____ smoking anywhere inside the building.",
+    "options": [
+      "delay",
+      "avoid",
+      "prevent",
+      "permit",
+      "prohibit"
+    ],
+    "correct": 4,
+    "explanation": "prohibit: yasaklamak. Diğer seçenekler: delay: geciktirmek; avoid: kaçınmak; prevent: önlemek; permit: izin vermek."
+  },
+  {
+    "id": "wq150_nov26_lex15_33_1",
+    "family": "lex15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The editor revised the wording to ____ the clarity of the paragraph.",
+    "options": [
+      "improve",
+      "increase",
+      "expand",
+      "extend",
+      "restore"
+    ],
+    "correct": 0,
+    "explanation": "improve: iyileştirmek. Diğer seçenekler: increase: artırmak; expand: genişletmek; extend: uzatmak; restore: eski haline getirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_33_2",
+    "family": "lex15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company plans to ____ the price from £10 to £12.",
+    "options": [
+      "improve",
+      "increase",
+      "expand",
+      "extend",
+      "restore"
+    ],
+    "correct": 1,
+    "explanation": "increase: artırmak. Diğer seçenekler: improve: iyileştirmek; expand: genişletmek; extend: uzatmak; restore: eski haline getirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_33_3",
+    "family": "lex15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The business intends to ____ into three new international markets.",
+    "options": [
+      "improve",
+      "increase",
+      "expand",
+      "extend",
+      "restore"
+    ],
+    "correct": 2,
+    "explanation": "expand: genişletmek. Diğer seçenekler: improve: iyileştirmek; increase: artırmak; extend: uzatmak; restore: eski haline getirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_33_4",
+    "family": "lex15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The library will ____ its closing time from six to eight.",
+    "options": [
+      "improve",
+      "increase",
+      "expand",
+      "extend",
+      "restore"
+    ],
+    "correct": 3,
+    "explanation": "extend: uzatmak. Diğer seçenekler: improve: iyileştirmek; increase: artırmak; expand: genişletmek; restore: eski haline getirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_33_5",
+    "family": "lex15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Conservators worked to ____ the damaged painting to its original condition.",
+    "options": [
+      "improve",
+      "increase",
+      "expand",
+      "extend",
+      "restore"
+    ],
+    "correct": 4,
+    "explanation": "restore: eski haline getirmek. Diğer seçenekler: improve: iyileştirmek; increase: artırmak; expand: genişletmek; extend: uzatmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_34_1",
+    "family": "lex15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The owner offered a cash ____ to anyone who found the missing dog.",
+    "options": [
+      "reward",
+      "award",
+      "prize",
+      "salary",
+      "bonus"
+    ],
+    "correct": 0,
+    "explanation": "reward: ödül. Diğer seçenekler: award: ödül/ödüllendirme; prize: yarışma ödülü; salary: maaş; bonus: ek ödeme."
+  },
+  {
+    "id": "wq150_nov26_lex15_34_2",
+    "family": "lex15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The film received an international ____ recognising its artistic achievement.",
+    "options": [
+      "reward",
+      "award",
+      "prize",
+      "salary",
+      "bonus"
+    ],
+    "correct": 1,
+    "explanation": "award: ödül/ödüllendirme. Diğer seçenekler: reward: ödül; prize: yarışma ödülü; salary: maaş; bonus: ek ödeme."
+  },
+  {
+    "id": "wq150_nov26_lex15_34_3",
+    "family": "lex15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The winner of the quiz took home the first ____ of £500.",
+    "options": [
+      "reward",
+      "award",
+      "prize",
+      "salary",
+      "bonus"
+    ],
+    "correct": 2,
+    "explanation": "prize: yarışma ödülü. Diğer seçenekler: reward: ödül; award: ödül/ödüllendirme; salary: maaş; bonus: ek ödeme."
+  },
+  {
+    "id": "wq150_nov26_lex15_34_4",
+    "family": "lex15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Her annual ____ is paid in twelve monthly instalments.",
+    "options": [
+      "reward",
+      "award",
+      "prize",
+      "salary",
+      "bonus"
+    ],
+    "correct": 3,
+    "explanation": "salary: maaş. Diğer seçenekler: reward: ödül; award: ödül/ödüllendirme; prize: yarışma ödülü; bonus: ek ödeme."
+  },
+  {
+    "id": "wq150_nov26_lex15_34_5",
+    "family": "lex15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Employees received an extra performance ____ in addition to their normal pay.",
+    "options": [
+      "reward",
+      "award",
+      "prize",
+      "salary",
+      "bonus"
+    ],
+    "correct": 4,
+    "explanation": "bonus: ek ödeme. Diğer seçenekler: reward: ödül; award: ödül/ödüllendirme; prize: yarışma ödülü; salary: maaş."
+  },
+  {
+    "id": "wq150_nov26_lex15_35_1",
+    "family": "lex15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The clock is ____ ; it keeps the correct time day after day.",
+    "options": [
+      "reliable",
+      "available",
+      "accessible",
+      "affordable",
+      "suitable"
+    ],
+    "correct": 0,
+    "explanation": "reliable: güvenilir. Diğer seçenekler: available: mevcut; accessible: erişilebilir; affordable: karşılanabilir; suitable: uygun."
+  },
+  {
+    "id": "wq150_nov26_lex15_35_2",
+    "family": "lex15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "No rooms are ____ tonight because the hotel is fully booked.",
+    "options": [
+      "reliable",
+      "available",
+      "accessible",
+      "affordable",
+      "suitable"
+    ],
+    "correct": 1,
+    "explanation": "available: mevcut. Diğer seçenekler: reliable: güvenilir; accessible: erişilebilir; affordable: karşılanabilir; suitable: uygun."
+  },
+  {
+    "id": "wq150_nov26_lex15_35_3",
+    "family": "lex15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The new entrance is ____ to wheelchair users.",
+    "options": [
+      "reliable",
+      "available",
+      "accessible",
+      "affordable",
+      "suitable"
+    ],
+    "correct": 2,
+    "explanation": "accessible: erişilebilir. Diğer seçenekler: reliable: güvenilir; available: mevcut; affordable: karşılanabilir; suitable: uygun."
+  },
+  {
+    "id": "wq150_nov26_lex15_35_4",
+    "family": "lex15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The course is ____ even for students with a limited budget.",
+    "options": [
+      "reliable",
+      "available",
+      "accessible",
+      "affordable",
+      "suitable"
+    ],
+    "correct": 3,
+    "explanation": "affordable: karşılanabilir. Diğer seçenekler: reliable: güvenilir; available: mevcut; accessible: erişilebilir; suitable: uygun."
+  },
+  {
+    "id": "wq150_nov26_lex15_35_5",
+    "family": "lex15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "This lightweight jacket is ____ for mild spring weather but not for snow.",
+    "options": [
+      "reliable",
+      "available",
+      "accessible",
+      "affordable",
+      "suitable"
+    ],
+    "correct": 4,
+    "explanation": "suitable: uygun. Diğer seçenekler: reliable: güvenilir; available: mevcut; accessible: erişilebilir; affordable: karşılanabilir."
+  },
+  {
+    "id": "wq150_nov26_lex15_36_1",
+    "family": "lex15_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The instructions are ____ : they state the exact deadline and required format in direct terms.",
+    "options": [
+      "explicit",
+      "implicit",
+      "ambiguous",
+      "arbitrary",
+      "coherent"
+    ],
+    "correct": 0,
+    "explanation": "explicit: açıkça belirtilmiş. Diğer seçenekler: implicit: örtük; ambiguous: birden fazla yoruma açık; arbitrary: keyfî; coherent: mantıksal bütünlüğe sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_36_2",
+    "family": "lex15_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The speaker never stated her objection, but it was ____ in her choice of words.",
+    "options": [
+      "explicit",
+      "implicit",
+      "ambiguous",
+      "arbitrary",
+      "coherent"
+    ],
+    "correct": 1,
+    "explanation": "implicit: örtük. Diğer seçenekler: explicit: açıkça belirtilmiş; ambiguous: birden fazla yoruma açık; arbitrary: keyfî; coherent: mantıksal bütünlüğe sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_36_3",
+    "family": "lex15_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The phrase is ____ because it has two equally defensible interpretations.",
+    "options": [
+      "explicit",
+      "implicit",
+      "ambiguous",
+      "arbitrary",
+      "coherent"
+    ],
+    "correct": 2,
+    "explanation": "ambiguous: birden fazla yoruma açık. Diğer seçenekler: explicit: açıkça belirtilmiş; implicit: örtük; arbitrary: keyfî; coherent: mantıksal bütünlüğe sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_36_4",
+    "family": "lex15_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The cut-off was ____ , chosen without any relevant criterion or justification.",
+    "options": [
+      "explicit",
+      "implicit",
+      "ambiguous",
+      "arbitrary",
+      "coherent"
+    ],
+    "correct": 3,
+    "explanation": "arbitrary: keyfî. Diğer seçenekler: explicit: açıkça belirtilmiş; implicit: örtük; ambiguous: birden fazla yoruma açık; coherent: mantıksal bütünlüğe sahip."
+  },
+  {
+    "id": "wq150_nov26_lex15_36_5",
+    "family": "lex15_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The argument is ____ ; its successive claims fit together logically.",
+    "options": [
+      "explicit",
+      "implicit",
+      "ambiguous",
+      "arbitrary",
+      "coherent"
+    ],
+    "correct": 4,
+    "explanation": "coherent: mantıksal bütünlüğe sahip. Diğer seçenekler: explicit: açıkça belirtilmiş; implicit: örtük; ambiguous: birden fazla yoruma açık; arbitrary: keyfî."
+  },
+  {
+    "id": "wq150_nov26_lex15_37_1",
+    "family": "lex15_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The model rests on the untested ____ that prices will remain stable.",
+    "options": [
+      "assumption",
+      "hypothesis",
+      "theory",
+      "prediction",
+      "observation"
+    ],
+    "correct": 0,
+    "explanation": "assumption: varsayım. Diğer seçenekler: hypothesis: sınanabilir hipotez; theory: kuramsal açıklama; prediction: öngörü; observation: gözlem."
+  },
+  {
+    "id": "wq150_nov26_lex15_37_2",
+    "family": "lex15_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers formulated a testable ____ that light exposure affects growth.",
+    "options": [
+      "assumption",
+      "hypothesis",
+      "theory",
+      "prediction",
+      "observation"
+    ],
+    "correct": 1,
+    "explanation": "hypothesis: sınanabilir hipotez. Diğer seçenekler: assumption: varsayım; theory: kuramsal açıklama; prediction: öngörü; observation: gözlem."
+  },
+  {
+    "id": "wq150_nov26_lex15_37_3",
+    "family": "lex15_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The established scientific ____ explains a wide range of findings through a common framework.",
+    "options": [
+      "assumption",
+      "hypothesis",
+      "theory",
+      "prediction",
+      "observation"
+    ],
+    "correct": 2,
+    "explanation": "theory: kuramsal açıklama. Diğer seçenekler: assumption: varsayım; hypothesis: sınanabilir hipotez; prediction: öngörü; observation: gözlem."
+  },
+  {
+    "id": "wq150_nov26_lex15_37_4",
+    "family": "lex15_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The model generated a numerical ____ of next month's rainfall.",
+    "options": [
+      "assumption",
+      "hypothesis",
+      "theory",
+      "prediction",
+      "observation"
+    ],
+    "correct": 3,
+    "explanation": "prediction: öngörü. Diğer seçenekler: assumption: varsayım; hypothesis: sınanabilir hipotez; theory: kuramsal açıklama; observation: gözlem."
+  },
+  {
+    "id": "wq150_nov26_lex15_37_5",
+    "family": "lex15_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The scientist recorded a direct ____ of a bird feeding its young.",
+    "options": [
+      "assumption",
+      "hypothesis",
+      "theory",
+      "prediction",
+      "observation"
+    ],
+    "correct": 4,
+    "explanation": "observation: gözlem. Diğer seçenekler: assumption: varsayım; hypothesis: sınanabilir hipotez; theory: kuramsal açıklama; prediction: öngörü."
+  },
+  {
+    "id": "wq150_nov26_lex15_38_1",
+    "family": "lex15_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A positive ____ means that the two measured variables tend to increase together.",
+    "options": [
+      "correlation",
+      "causation",
+      "coincidence",
+      "confounding",
+      "mediation"
+    ],
+    "correct": 0,
+    "explanation": "correlation: korelasyon. Diğer seçenekler: causation: nedensellik; coincidence: tesadüf; confounding: karıştırıcı etki; mediation: aracılık."
+  },
+  {
+    "id": "wq150_nov26_lex15_38_2",
+    "family": "lex15_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Evidence of ____ would establish that changes in one variable produce changes in the other.",
+    "options": [
+      "correlation",
+      "causation",
+      "coincidence",
+      "confounding",
+      "mediation"
+    ],
+    "correct": 1,
+    "explanation": "causation: nedensellik. Diğer seçenekler: correlation: korelasyon; coincidence: tesadüf; confounding: karıştırıcı etki; mediation: aracılık."
+  },
+  {
+    "id": "wq150_nov26_lex15_38_3",
+    "family": "lex15_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The unrelated events occurred on the same day purely by ____ .",
+    "options": [
+      "correlation",
+      "causation",
+      "coincidence",
+      "confounding",
+      "mediation"
+    ],
+    "correct": 2,
+    "explanation": "coincidence: tesadüf. Diğer seçenekler: correlation: korelasyon; causation: nedensellik; confounding: karıştırıcı etki; mediation: aracılık."
+  },
+  {
+    "id": "wq150_nov26_lex15_38_4",
+    "family": "lex15_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers adjusted for ____ because age affected both exposure and outcome.",
+    "options": [
+      "correlation",
+      "causation",
+      "coincidence",
+      "confounding",
+      "mediation"
+    ],
+    "correct": 3,
+    "explanation": "confounding: karıştırıcı etki. Diğer seçenekler: correlation: korelasyon; causation: nedensellik; coincidence: tesadüf; mediation: aracılık."
+  },
+  {
+    "id": "wq150_nov26_lex15_38_5",
+    "family": "lex15_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The analysis investigated ____ : whether the effect operated through an intermediate variable.",
+    "options": [
+      "correlation",
+      "causation",
+      "coincidence",
+      "confounding",
+      "mediation"
+    ],
+    "correct": 4,
+    "explanation": "mediation: aracılık. Diğer seçenekler: correlation: korelasyon; causation: nedensellik; coincidence: tesadüf; confounding: karıştırıcı etki."
+  },
+  {
+    "id": "wq150_nov26_lex15_39_1",
+    "family": "lex15_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The finance director will ____ £10,000 specifically to equipment purchases.",
+    "options": [
+      "allocate",
+      "distribute",
+      "redistribute",
+      "retain",
+      "withhold"
+    ],
+    "correct": 0,
+    "explanation": "allocate: tahsis etmek. Diğer seçenekler: distribute: dağıtmak; redistribute: yeniden dağıtmak; retain: elde tutmak; withhold: alıkoymak."
+  },
+  {
+    "id": "wq150_nov26_lex15_39_2",
+    "family": "lex15_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Volunteers will ____ food parcels among the families at the collection point.",
+    "options": [
+      "allocate",
+      "distribute",
+      "redistribute",
+      "retain",
+      "withhold"
+    ],
+    "correct": 1,
+    "explanation": "distribute: dağıtmak. Diğer seçenekler: allocate: tahsis etmek; redistribute: yeniden dağıtmak; retain: elde tutmak; withhold: alıkoymak."
+  },
+  {
+    "id": "wq150_nov26_lex15_39_3",
+    "family": "lex15_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The policy aims to ____ income from higher earners towards lower-income households.",
+    "options": [
+      "allocate",
+      "distribute",
+      "redistribute",
+      "retain",
+      "withhold"
+    ],
+    "correct": 2,
+    "explanation": "redistribute: yeniden dağıtmak. Diğer seçenekler: allocate: tahsis etmek; distribute: dağıtmak; retain: elde tutmak; withhold: alıkoymak."
+  },
+  {
+    "id": "wq150_nov26_lex15_39_4",
+    "family": "lex15_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The archive will ____ its original documents after digitisation.",
+    "options": [
+      "allocate",
+      "distribute",
+      "redistribute",
+      "retain",
+      "withhold"
+    ],
+    "correct": 3,
+    "explanation": "retain: elde tutmak. Diğer seçenekler: allocate: tahsis etmek; distribute: dağıtmak; redistribute: yeniden dağıtmak; withhold: alıkoymak."
+  },
+  {
+    "id": "wq150_nov26_lex15_39_5",
+    "family": "lex15_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The authority may ____ confidential details rather than release them publicly.",
+    "options": [
+      "allocate",
+      "distribute",
+      "redistribute",
+      "retain",
+      "withhold"
+    ],
+    "correct": 4,
+    "explanation": "withhold: alıkoymak. Diğer seçenekler: allocate: tahsis etmek; distribute: dağıtmak; redistribute: yeniden dağıtmak; retain: elde tutmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_40_1",
+    "family": "lex15_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The law will ____ small charities from paying the new fee.",
+    "options": [
+      "exempt",
+      "exclude",
+      "restrict",
+      "prohibit",
+      "regulate"
+    ],
+    "correct": 0,
+    "explanation": "exempt: muaf tutmak. Diğer seçenekler: exclude: dışlamak; restrict: kısıtlamak; prohibit: yasaklamak; regulate: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_40_2",
+    "family": "lex15_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers had to ____ corrupted records from the dataset entirely.",
+    "options": [
+      "exempt",
+      "exclude",
+      "restrict",
+      "prohibit",
+      "regulate"
+    ],
+    "correct": 1,
+    "explanation": "exclude: dışlamak. Diğer seçenekler: exempt: muaf tutmak; restrict: kısıtlamak; prohibit: yasaklamak; regulate: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_40_3",
+    "family": "lex15_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The institution will ____ access to authorised users only.",
+    "options": [
+      "exempt",
+      "exclude",
+      "restrict",
+      "prohibit",
+      "regulate"
+    ],
+    "correct": 2,
+    "explanation": "restrict: kısıtlamak. Diğer seçenekler: exempt: muaf tutmak; exclude: dışlamak; prohibit: yasaklamak; regulate: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_40_4",
+    "family": "lex15_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The rules ____ all use of personal phones during the examination.",
+    "options": [
+      "exempt",
+      "exclude",
+      "restrict",
+      "prohibit",
+      "regulate"
+    ],
+    "correct": 3,
+    "explanation": "prohibit: yasaklamak. Diğer seçenekler: exempt: muaf tutmak; exclude: dışlamak; restrict: kısıtlamak; regulate: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_40_5",
+    "family": "lex15_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The agency was established to ____ the industry through enforceable standards.",
+    "options": [
+      "exempt",
+      "exclude",
+      "restrict",
+      "prohibit",
+      "regulate"
+    ],
+    "correct": 4,
+    "explanation": "regulate: düzenlemek. Diğer seçenekler: exempt: muaf tutmak; exclude: dışlamak; restrict: kısıtlamak; prohibit: yasaklamak."
+  },
+  {
+    "id": "wq150_nov26_lex15_41_1",
+    "family": "lex15_41",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The authors will ____ the manuscript in response to reviewers' comments.",
+    "options": [
+      "revise",
+      "reverse",
+      "revoke",
+      "reinstate",
+      "reinforce"
+    ],
+    "correct": 0,
+    "explanation": "revise: gözden geçirip değiştirmek. Diğer seçenekler: reverse: tersine çevirmek; revoke: resmen iptal etmek; reinstate: yeniden yürürlüğe koymak; reinforce: güçlendirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_41_2",
+    "family": "lex15_41",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The intervention aims to ____ the decline and return the trend to growth.",
+    "options": [
+      "revise",
+      "reverse",
+      "revoke",
+      "reinstate",
+      "reinforce"
+    ],
+    "correct": 1,
+    "explanation": "reverse: tersine çevirmek. Diğer seçenekler: revise: gözden geçirip değiştirmek; revoke: resmen iptal etmek; reinstate: yeniden yürürlüğe koymak; reinforce: güçlendirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_41_3",
+    "family": "lex15_41",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The authority decided to ____ the licence permanently after serious violations.",
+    "options": [
+      "revise",
+      "reverse",
+      "revoke",
+      "reinstate",
+      "reinforce"
+    ],
+    "correct": 2,
+    "explanation": "revoke: resmen iptal etmek. Diğer seçenekler: revise: gözden geçirip değiştirmek; reverse: tersine çevirmek; reinstate: yeniden yürürlüğe koymak; reinforce: güçlendirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_41_4",
+    "family": "lex15_41",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The court ordered the employer to ____ the employee in her former position.",
+    "options": [
+      "revise",
+      "reverse",
+      "revoke",
+      "reinstate",
+      "reinforce"
+    ],
+    "correct": 3,
+    "explanation": "reinstate: yeniden yürürlüğe koymak. Diğer seçenekler: revise: gözden geçirip değiştirmek; reverse: tersine çevirmek; revoke: resmen iptal etmek; reinforce: güçlendirmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_41_5",
+    "family": "lex15_41",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Additional steel beams were installed to ____ the weakened structure.",
+    "options": [
+      "revise",
+      "reverse",
+      "revoke",
+      "reinstate",
+      "reinforce"
+    ],
+    "correct": 4,
+    "explanation": "reinforce: güçlendirmek. Diğer seçenekler: revise: gözden geçirip değiştirmek; reverse: tersine çevirmek; revoke: resmen iptal etmek; reinstate: yeniden yürürlüğe koymak."
+  },
+  {
+    "id": "wq150_nov26_lex15_42_1",
+    "family": "lex15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The diagram helps to ____ the main message to readers without using text.",
+    "options": [
+      "convey",
+      "interpret",
+      "clarify",
+      "elaborate",
+      "summarise"
+    ],
+    "correct": 0,
+    "explanation": "convey: iletmek. Diğer seçenekler: interpret: yorumlamak; clarify: açıklığa kavuşturmak; elaborate: ayrıntılandırmak; summarise: özetlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_42_2",
+    "family": "lex15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Different readers may ____ the same metaphor in different ways.",
+    "options": [
+      "convey",
+      "interpret",
+      "clarify",
+      "elaborate",
+      "summarise"
+    ],
+    "correct": 1,
+    "explanation": "interpret: yorumlamak. Diğer seçenekler: convey: iletmek; clarify: açıklığa kavuşturmak; elaborate: ayrıntılandırmak; summarise: özetlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_42_3",
+    "family": "lex15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ whether the rule applies to temporary workers as well?",
+    "options": [
+      "convey",
+      "interpret",
+      "clarify",
+      "elaborate",
+      "summarise"
+    ],
+    "correct": 2,
+    "explanation": "clarify: açıklığa kavuşturmak. Diğer seçenekler: convey: iletmek; interpret: yorumlamak; elaborate: ayrıntılandırmak; summarise: özetlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_42_4",
+    "family": "lex15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The reviewer asked the author to ____ on the mechanism in a separate, more detailed section.",
+    "options": [
+      "convey",
+      "interpret",
+      "clarify",
+      "elaborate",
+      "summarise"
+    ],
+    "correct": 3,
+    "explanation": "elaborate: ayrıntılandırmak. Diğer seçenekler: convey: iletmek; interpret: yorumlamak; clarify: açıklığa kavuşturmak; summarise: özetlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_42_5",
+    "family": "lex15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Please ____ the entire report in no more than one hundred words.",
+    "options": [
+      "convey",
+      "interpret",
+      "clarify",
+      "elaborate",
+      "summarise"
+    ],
+    "correct": 4,
+    "explanation": "summarise: özetlemek. Diğer seçenekler: convey: iletmek; interpret: yorumlamak; clarify: açıklığa kavuşturmak; elaborate: ayrıntılandırmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_43_1",
+    "family": "lex15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "All businesses must ____ with the statutory reporting requirements.",
+    "options": [
+      "comply",
+      "conform",
+      "adhere",
+      "deviate",
+      "violate"
+    ],
+    "correct": 0,
+    "explanation": "comply: uyum göstermek. Diğer seçenekler: conform: biçimsel uyum sağlamak; adhere: sıkı bağlı kalmak; deviate: sapmak; violate: ihlal etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_43_2",
+    "family": "lex15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The replacement part must ____ to the precise dimensions specified in the technical drawing.",
+    "options": [
+      "comply",
+      "conform",
+      "adhere",
+      "deviate",
+      "violate"
+    ],
+    "correct": 1,
+    "explanation": "conform: biçimsel uyum sağlamak. Diğer seçenekler: comply: uyum göstermek; adhere: sıkı bağlı kalmak; deviate: sapmak; violate: ihlal etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_43_3",
+    "family": "lex15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Throughout the trial, researchers must ____ strictly to the approved protocol.",
+    "options": [
+      "comply",
+      "conform",
+      "adhere",
+      "deviate",
+      "violate"
+    ],
+    "correct": 2,
+    "explanation": "adhere: sıkı bağlı kalmak. Diğer seçenekler: comply: uyum göstermek; conform: biçimsel uyum sağlamak; deviate: sapmak; violate: ihlal etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_43_4",
+    "family": "lex15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The team had to ____ from the original route because a bridge was closed.",
+    "options": [
+      "comply",
+      "conform",
+      "adhere",
+      "deviate",
+      "violate"
+    ],
+    "correct": 3,
+    "explanation": "Deviate from: belirlenen yoldan sapmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_43_5",
+    "family": "lex15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Disclosing these names would ____ the confidentiality agreement.",
+    "options": [
+      "comply",
+      "conform",
+      "adhere",
+      "deviate",
+      "violate"
+    ],
+    "correct": 4,
+    "explanation": "violate: ihlal etmek. Diğer seçenekler: comply: uyum göstermek; conform: biçimsel uyum sağlamak; adhere: sıkı bağlı kalmak; deviate: sapmak."
+  },
+  {
+    "id": "wq150_nov26_lex15_44_1",
+    "family": "lex15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Despite the impact, the protective casing remained completely ____ , with no cracks or damage.",
+    "options": [
+      "intact",
+      "obsolete",
+      "redundant",
+      "defective",
+      "incompatible"
+    ],
+    "correct": 0,
+    "explanation": "intact: hasarsız. Diğer seçenekler: obsolete: eskimiş; redundant: gereksiz; defective: arızalı; incompatible: uyumsuz."
+  },
+  {
+    "id": "wq150_nov26_lex15_44_2",
+    "family": "lex15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The machine is ____ because its technology has been superseded and spare parts are no longer made.",
+    "options": [
+      "intact",
+      "obsolete",
+      "redundant",
+      "defective",
+      "incompatible"
+    ],
+    "correct": 1,
+    "explanation": "obsolete: eskimiş. Diğer seçenekler: intact: hasarsız; redundant: gereksiz; defective: arızalı; incompatible: uyumsuz."
+  },
+  {
+    "id": "wq150_nov26_lex15_44_3",
+    "family": "lex15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The duplicate check is now ____ because the same check is performed automatically elsewhere.",
+    "options": [
+      "intact",
+      "obsolete",
+      "redundant",
+      "defective",
+      "incompatible"
+    ],
+    "correct": 2,
+    "explanation": "redundant: gereksiz. Diğer seçenekler: intact: hasarsız; obsolete: eskimiş; defective: arızalı; incompatible: uyumsuz."
+  },
+  {
+    "id": "wq150_nov26_lex15_44_4",
+    "family": "lex15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The unit was returned because it was ____ and failed to operate as designed.",
+    "options": [
+      "intact",
+      "obsolete",
+      "redundant",
+      "defective",
+      "incompatible"
+    ],
+    "correct": 3,
+    "explanation": "defective: arızalı. Diğer seçenekler: intact: hasarsız; obsolete: eskimiş; redundant: gereksiz; incompatible: uyumsuz."
+  },
+  {
+    "id": "wq150_nov26_lex15_44_5",
+    "family": "lex15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The two file formats are ____ with each other; neither system can read the other's files.",
+    "options": [
+      "intact",
+      "obsolete",
+      "redundant",
+      "defective",
+      "incompatible"
+    ],
+    "correct": 4,
+    "explanation": "incompatible: uyumsuz. Diğer seçenekler: intact: hasarsız; obsolete: eskimiş; redundant: gereksiz; defective: arızalı."
+  },
+  {
+    "id": "wq150_nov26_lex15_45_1",
+    "family": "lex15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Participants must ____ the target score of 80 before progressing.",
+    "options": [
+      "attain",
+      "acquire",
+      "accumulate",
+      "attest",
+      "attribute"
+    ],
+    "correct": 0,
+    "explanation": "attain: ulaşmak. Diğer seçenekler: acquire: edinmek; accumulate: biriktirmek; attest: doğruluğuna tanıklık etmek; attribute: atfetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_45_2",
+    "family": "lex15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "New employees need to ____ practical skills through supervised experience.",
+    "options": [
+      "attain",
+      "acquire",
+      "accumulate",
+      "attest",
+      "attribute"
+    ],
+    "correct": 1,
+    "explanation": "acquire: edinmek. Diğer seçenekler: attain: ulaşmak; accumulate: biriktirmek; attest: doğruluğuna tanıklık etmek; attribute: atfetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_45_3",
+    "family": "lex15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Small amounts of dust may ____ on the sensor over months.",
+    "options": [
+      "attain",
+      "acquire",
+      "accumulate",
+      "attest",
+      "attribute"
+    ],
+    "correct": 2,
+    "explanation": "accumulate: biriktirmek. Diğer seçenekler: attain: ulaşmak; acquire: edinmek; attest: doğruluğuna tanıklık etmek; attribute: atfetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_45_4",
+    "family": "lex15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "These signed records ____ to the authenticity of the transaction.",
+    "options": [
+      "attain",
+      "acquire",
+      "accumulate",
+      "attest",
+      "attribute"
+    ],
+    "correct": 3,
+    "explanation": "attest: doğruluğuna tanıklık etmek. Diğer seçenekler: attain: ulaşmak; acquire: edinmek; accumulate: biriktirmek; attribute: atfetmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_45_5",
+    "family": "lex15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Researchers ____ the decline to changes in seasonal rainfall.",
+    "options": [
+      "attain",
+      "acquire",
+      "accumulate",
+      "attest",
+      "attribute"
+    ],
+    "correct": 4,
+    "explanation": "attribute: atfetmek. Diğer seçenekler: attain: ulaşmak; acquire: edinmek; accumulate: biriktirmek; attest: doğruluğuna tanıklık etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_46_1",
+    "family": "lex15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The manager wished to ____ customers that all orders would be honoured.",
+    "options": [
+      "assure",
+      "ensure",
+      "insure",
+      "secure",
+      "obtain"
+    ],
+    "correct": 0,
+    "explanation": "Assure someone that: birine güvence vermek."
+  },
+  {
+    "id": "wq150_nov26_lex15_46_2",
+    "family": "lex15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Use a checklist to ____ that every required document is included.",
+    "options": [
+      "assure",
+      "ensure",
+      "insure",
+      "reassure",
+      "secure"
+    ],
+    "correct": 1,
+    "explanation": "ensure: sağlamak. Diğer seçenekler: assure: güvence vermek; insure: sigortalamak; reassure: yeniden güven vermek; secure: temin etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_46_3",
+    "family": "lex15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The owner decided to ____ the building against fire damage.",
+    "options": [
+      "assure",
+      "ensure",
+      "insure",
+      "reassure",
+      "secure"
+    ],
+    "correct": 2,
+    "explanation": "insure: sigortalamak. Diğer seçenekler: assure: güvence vermek; ensure: sağlamak; reassure: yeniden güven vermek; secure: temin etmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_46_4",
+    "family": "lex15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "After the unexpected alarm, staff tried to ____ the frightened visitors that they were safe.",
+    "options": [
+      "ensure",
+      "insure",
+      "secure",
+      "reassure",
+      "obtain"
+    ],
+    "correct": 3,
+    "explanation": "Reassure: korku veya endişeyi gidererek yeniden güven vermek."
+  },
+  {
+    "id": "wq150_nov26_lex15_46_5",
+    "family": "lex15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The charity hopes to ____ sufficient funding through a competitive grant process.",
+    "options": [
+      "assure",
+      "ensure",
+      "insure",
+      "reassure",
+      "secure"
+    ],
+    "correct": 4,
+    "explanation": "secure: temin etmek. Diğer seçenekler: assure: güvence vermek; ensure: sağlamak; insure: sigortalamak; reassure: yeniden güven vermek."
+  },
+  {
+    "id": "wq150_nov26_lex15_47_1",
+    "family": "lex15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A brief introduction will ____ the main presentation.",
+    "options": [
+      "precede",
+      "proceed",
+      "exceed",
+      "recede",
+      "supersede"
+    ],
+    "correct": 0,
+    "explanation": "precede: önce gelmek. Diğer seçenekler: proceed: devam etmek; exceed: aşmak; recede: geri çekilmek; supersede: yerini almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_47_2",
+    "family": "lex15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Once approval is granted, the team can ____ with the installation.",
+    "options": [
+      "precede",
+      "proceed",
+      "exceed",
+      "recede",
+      "supersede"
+    ],
+    "correct": 1,
+    "explanation": "proceed: devam etmek. Diğer seçenekler: precede: önce gelmek; exceed: aşmak; recede: geri çekilmek; supersede: yerini almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_47_3",
+    "family": "lex15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The number of applications must not ____ the maximum of 500.",
+    "options": [
+      "precede",
+      "proceed",
+      "exceed",
+      "recede",
+      "supersede"
+    ],
+    "correct": 2,
+    "explanation": "exceed: aşmak. Diğer seçenekler: precede: önce gelmek; proceed: devam etmek; recede: geri çekilmek; supersede: yerini almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_47_4",
+    "family": "lex15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "As the floodwaters ____ , residents can begin cleaning their homes.",
+    "options": [
+      "precede",
+      "proceed",
+      "exceed",
+      "recede",
+      "supersede"
+    ],
+    "correct": 3,
+    "explanation": "recede: geri çekilmek. Diğer seçenekler: precede: önce gelmek; proceed: devam etmek; exceed: aşmak; supersede: yerini almak."
+  },
+  {
+    "id": "wq150_nov26_lex15_47_5",
+    "family": "lex15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The revised regulations will ____ the earlier rules, which will no longer apply.",
+    "options": [
+      "precede",
+      "proceed",
+      "exceed",
+      "recede",
+      "supersede"
+    ],
+    "correct": 4,
+    "explanation": "supersede: yerini almak. Diğer seçenekler: precede: önce gelmek; proceed: devam etmek; exceed: aşmak; recede: geri çekilmek."
+  },
+  {
+    "id": "wq150_nov26_lex15_48_1",
+    "family": "lex15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The sensor can ____ even minute changes in temperature.",
+    "options": [
+      "detect",
+      "diagnose",
+      "identify",
+      "monitor",
+      "screen"
+    ],
+    "correct": 0,
+    "explanation": "detect: saptamak. Diğer seçenekler: diagnose: teşhis etmek; identify: kimliğini belirlemek; monitor: izlemek; screen: taramak."
+  },
+  {
+    "id": "wq150_nov26_lex15_48_2",
+    "family": "lex15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The specialist used clinical tests to ____ the patient's specific condition.",
+    "options": [
+      "detect",
+      "diagnose",
+      "identify",
+      "monitor",
+      "screen"
+    ],
+    "correct": 1,
+    "explanation": "diagnose: teşhis etmek. Diğer seçenekler: detect: saptamak; identify: kimliğini belirlemek; monitor: izlemek; screen: taramak."
+  },
+  {
+    "id": "wq150_nov26_lex15_48_3",
+    "family": "lex15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The investigators used fingerprints to ____ the unknown person.",
+    "options": [
+      "detect",
+      "diagnose",
+      "identify",
+      "monitor",
+      "screen"
+    ],
+    "correct": 2,
+    "explanation": "identify: kimliğini belirlemek. Diğer seçenekler: detect: saptamak; diagnose: teşhis etmek; monitor: izlemek; screen: taramak."
+  },
+  {
+    "id": "wq150_nov26_lex15_48_4",
+    "family": "lex15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Staff will continuously ____ the patient's blood pressure throughout the procedure.",
+    "options": [
+      "detect",
+      "diagnose",
+      "identify",
+      "monitor",
+      "screen"
+    ],
+    "correct": 3,
+    "explanation": "monitor: izlemek. Diğer seçenekler: detect: saptamak; diagnose: teşhis etmek; identify: kimliğini belirlemek; screen: taramak."
+  },
+  {
+    "id": "wq150_nov26_lex15_48_5",
+    "family": "lex15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The programme will ____ apparently healthy adults for early signs of the condition.",
+    "options": [
+      "detect",
+      "diagnose",
+      "identify",
+      "monitor",
+      "screen"
+    ],
+    "correct": 4,
+    "explanation": "screen: taramak. Diğer seçenekler: detect: saptamak; diagnose: teşhis etmek; identify: kimliğini belirlemek; monitor: izlemek."
+  },
+  {
+    "id": "wq150_nov26_lex15_49_1",
+    "family": "lex15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The patient developed sudden ____ pain that required immediate assessment.",
+    "options": [
+      "acute",
+      "chronic",
+      "recurrent",
+      "persistent",
+      "intermittent"
+    ],
+    "correct": 0,
+    "explanation": "acute: akut. Diğer seçenekler: chronic: kronik; recurrent: tekrarlayan; persistent: sürekli; intermittent: aralıklı."
+  },
+  {
+    "id": "wq150_nov26_lex15_49_2",
+    "family": "lex15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The disease is classified as ____ because it lasts for years.",
+    "options": [
+      "acute",
+      "chronic",
+      "recurrent",
+      "persistent",
+      "intermittent"
+    ],
+    "correct": 1,
+    "explanation": "chronic: kronik. Diğer seçenekler: acute: akut; recurrent: tekrarlayan; persistent: sürekli; intermittent: aralıklı."
+  },
+  {
+    "id": "wq150_nov26_lex15_49_3",
+    "family": "lex15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The patient had ____ infections, each resolving completely before the next episode.",
+    "options": [
+      "acute",
+      "chronic",
+      "recurrent",
+      "persistent",
+      "intermittent"
+    ],
+    "correct": 2,
+    "explanation": "recurrent: tekrarlayan. Diğer seçenekler: acute: akut; chronic: kronik; persistent: sürekli; intermittent: aralıklı."
+  },
+  {
+    "id": "wq150_nov26_lex15_49_4",
+    "family": "lex15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A ____ cough continued without stopping for the entire month.",
+    "options": [
+      "acute",
+      "chronic",
+      "recurrent",
+      "persistent",
+      "intermittent"
+    ],
+    "correct": 3,
+    "explanation": "persistent: sürekli. Diğer seçenekler: acute: akut; chronic: kronik; recurrent: tekrarlayan; intermittent: aralıklı."
+  },
+  {
+    "id": "wq150_nov26_lex15_49_5",
+    "family": "lex15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The device suffers from ____ faults that appear briefly and then disappear unpredictably.",
+    "options": [
+      "acute",
+      "chronic",
+      "recurrent",
+      "persistent",
+      "intermittent"
+    ],
+    "correct": 4,
+    "explanation": "intermittent: aralıklı. Diğer seçenekler: acute: akut; chronic: kronik; recurrent: tekrarlayan; persistent: sürekli."
+  },
+  {
+    "id": "wq150_nov26_lex15_50_1",
+    "family": "lex15_50",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The valley has ____ water resources, far more than its inhabitants require.",
+    "options": [
+      "abundant",
+      "scarce",
+      "adequate",
+      "excessive",
+      "negligible"
+    ],
+    "correct": 0,
+    "explanation": "abundant: bol. Diğer seçenekler: scarce: kıt; adequate: yeterli; excessive: aşırı; negligible: ihmal edilebilir."
+  },
+  {
+    "id": "wq150_nov26_lex15_50_2",
+    "family": "lex15_50",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "During the drought, drinking water became ____ and difficult to obtain.",
+    "options": [
+      "abundant",
+      "scarce",
+      "adequate",
+      "excessive",
+      "negligible"
+    ],
+    "correct": 1,
+    "explanation": "scarce: kıt. Diğer seçenekler: abundant: bol; adequate: yeterli; excessive: aşırı; negligible: ihmal edilebilir."
+  },
+  {
+    "id": "wq150_nov26_lex15_50_3",
+    "family": "lex15_50",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The shelter provided ____ supplies to meet all the residents' basic needs, but no surplus.",
+    "options": [
+      "abundant",
+      "scarce",
+      "adequate",
+      "excessive",
+      "negligible"
+    ],
+    "correct": 2,
+    "explanation": "adequate: yeterli. Diğer seçenekler: abundant: bol; scarce: kıt; excessive: aşırı; negligible: ihmal edilebilir."
+  },
+  {
+    "id": "wq150_nov26_lex15_50_4",
+    "family": "lex15_50",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The machine's temperature became ____ , exceeding the safe upper limit by thirty degrees.",
+    "options": [
+      "abundant",
+      "scarce",
+      "adequate",
+      "excessive",
+      "negligible"
+    ],
+    "correct": 3,
+    "explanation": "excessive: aşırı. Diğer seçenekler: abundant: bol; scarce: kıt; adequate: yeterli; negligible: ihmal edilebilir."
+  },
+  {
+    "id": "wq150_nov26_lex15_50_5",
+    "family": "lex15_50",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The observed difference was ____ , too small to have any meaningful practical effect.",
+    "options": [
+      "abundant",
+      "scarce",
+      "adequate",
+      "excessive",
+      "negligible"
+    ],
+    "correct": 4,
+    "explanation": "negligible: ihmal edilebilir. Diğer seçenekler: abundant: bol; scarce: kıt; adequate: yeterli; excessive: aşırı."
+  },
+  {
+    "id": "wq150_nov26_lex15_51_1",
+    "family": "lex15_51",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The study estimated the ____ of households with internet access as a share of the total.",
+    "options": [
+      "proportion",
+      "ratio to another group",
+      "percentage point",
+      "remainder",
+      "total"
+    ],
+    "correct": 0,
+    "explanation": "Proportion: toplamın içindeki pay."
+  },
+  {
+    "id": "wq150_nov26_lex15_51_2",
+    "family": "lex15_51",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The ____ of teachers to students was expressed as 1:20.",
+    "options": [
+      "proportion",
+      "ratio",
+      "percentage",
+      "fraction",
+      "remainder"
+    ],
+    "correct": 1,
+    "explanation": "ratio: iki miktarın oranı. Diğer seçenekler: proportion: oran; percentage: yüzde; fraction: kesir; remainder: kalan."
+  },
+  {
+    "id": "wq150_nov26_lex15_51_3",
+    "family": "lex15_51",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The result was expressed as a ____ using the symbol % .",
+    "options": [
+      "proportion of",
+      "ratio to",
+      "percentage",
+      "fraction of",
+      "remainder"
+    ],
+    "correct": 2,
+    "explanation": "Percentage yüzde olarak ifade edilen değerdir."
+  },
+  {
+    "id": "wq150_nov26_lex15_51_4",
+    "family": "lex15_51",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "One third is written as the ____ 1/3.",
+    "options": [
+      "proportion",
+      "ratio",
+      "percentage",
+      "fraction",
+      "remainder"
+    ],
+    "correct": 3,
+    "explanation": "fraction: kesir. Diğer seçenekler: proportion: oran; ratio: iki miktarın oranı; percentage: yüzde; remainder: kalan."
+  },
+  {
+    "id": "wq150_nov26_lex15_51_5",
+    "family": "lex15_51",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "After allocating £70 of the £100 budget, the ____ was £30.",
+    "options": [
+      "proportion",
+      "ratio",
+      "percentage",
+      "fraction",
+      "remainder"
+    ],
+    "correct": 4,
+    "explanation": "remainder: kalan. Diğer seçenekler: proportion: oran; ratio: iki miktarın oranı; percentage: yüzde; fraction: kesir."
   }
 ];
