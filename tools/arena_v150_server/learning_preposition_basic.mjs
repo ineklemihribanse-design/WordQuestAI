@@ -7128,7 +7128,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Please keep your phone switched off ____ the lesson.",
+    "prompt": "Please keep your phone switched off throughout the entire lesson; do not use it ____ the lesson.",
     "options": [
       "since",
       "for",
@@ -7417,7 +7417,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The museum is a ten-minute walk ____ the station.",
+    "prompt": "Starting at the station, the museum is only a ten-minute walk ____ there.",
     "options": [
       "to",
       "about",
@@ -7519,7 +7519,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The students left the classroom ____ the lesson had ended.",
+    "prompt": "The teacher told the students to stay until the end, and they left the classroom only ____ the lesson had ended.",
     "options": [
       "before",
       "after",
@@ -7587,7 +7587,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The room was crowded ____ people waiting for the concert.",
+    "prompt": "The small room was crowded ____ people waiting for the concert to begin.",
     "options": [
       "to",
       "with",
@@ -8131,7 +8131,7 @@ export const prepositionBasicQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The committee agreed ____ a date that suited every member.",
+    "prompt": "After discussing several dates, the committee settled the matter and agreed ____ a specific date for the meeting.",
     "options": [
       "about",
       "on",
@@ -8271,7 +8271,7 @@ export const prepositionBasicQuestions = [
     "options": [
       "on",
       "at",
-      "by",
+      "for",
       "with",
       "from"
     ],
@@ -8749,7 +8749,7 @@ export const prepositionBasicQuestions = [
       "of",
       "to",
       "in",
-      "from"
+      "for"
     ],
     "correct": 1,
     "explanation": "Independent of bağımsızlık bildirir."
@@ -9052,7 +9052,7 @@ export const prepositionBasicQuestions = [
     "prompt": "The results were compared ____ those obtained under different conditions.",
     "options": [
       "on",
-      "to",
+      "at",
       "of",
       "with",
       "for"
