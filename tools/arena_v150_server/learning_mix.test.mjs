@@ -73,3 +73,6 @@ test('extended comprehension bank has distinct stems and five unique options',()
 
 import {foundationQuestions} from './learning_foundation.mjs';
 test('foundation questions add A1 A2 B1 contextual practice',()=>{assert.equal(foundationQuestions.length,206);assert.ok(['A1','A2','B1'].every(l=>foundationQuestions.filter(q=>q.level===l).length>=40));assert.ok(foundationQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.prompt.split('____').length===2));});
+
+import {advancedQuestions} from './learning_advanced.mjs';
+test('advanced contextual batch has distinct stems and five options',()=>{assert.equal(advancedQuestions.length,231);assert.equal(new Set(advancedQuestions.map(q=>q.prompt.toLowerCase())).size,advancedQuestions.length);assert.ok(advancedQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.prompt.split('____').length===2&&q.explanation.length>=20&&q.yds));assert.ok(['B2','C1','C2'].every(l=>advancedQuestions.some(q=>q.level===l)));assert.ok(allLearningQuestions.length>=2000);});
