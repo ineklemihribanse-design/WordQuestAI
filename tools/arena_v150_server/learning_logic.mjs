@@ -3822,7 +3822,7 @@ export const logicQuestions = [
       "I've just ordered a replacement."
     ],
     "correct": 2,
-    "explanation": "Ödev tamamlanmamış."
+    "explanation": "Henüz ödevini bitirmediği için tamamlanınca göndereceğini belirten yanıt uygundur."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_7_4",
@@ -5012,7 +5012,7 @@ export const logicQuestions = [
       "The new system is intended to reduce delays in future."
     ],
     "correct": 2,
-    "explanation": "Artış yönü korunur."
+    "explanation": "More often ve more frequent aynı artış anlamını korur."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_21_4",

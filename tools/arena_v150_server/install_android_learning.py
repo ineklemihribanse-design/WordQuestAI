@@ -57,7 +57,13 @@ def k(s):
  return json.dumps(s,ensure_ascii=False).replace('$','\\$')
 rows=[]
 for q in qs:
- opts=', '.join(k(o) for o in q['options'][:4])
+ # Keep the actual correct option even if it was originally fifth.
+ correct=q['correct']
+ assert isinstance(correct,int) and 0<=correct<len(q['options']), q['id']
+ answer=q['options'][correct]
+ selected=[answer]+[o for i,o in enumerate(q['options']) if i!=correct][:3]
+ assert len(selected)==4 and len({o.casefold() for o in selected})==4, q['id']
+ opts=', '.join(k(o) for o in selected)
  diff={'easy':'Easy','medium':'Medium','hard':'Hard'}[q['yds']]
  rows.append('        YdsQuestion('+', '.join([k(q['id']),'YdsTopic.'+q['topic'],'YdsDifficulty.'+diff,k(q['prompt']),'listOf('+opts+')','0',k(q['explanation'])])+')')
 chunks=['    private fun batch'+str(i//30)+'() = listOf(\n'+',\n'.join(rows[i:i+30])+'\n    )' for i in range(0,len(rows),30)]

@@ -7120,7 +7120,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 1,
-    "explanation": "For süre bildirir."
+    "explanation": "For three years üç yıllık süreyi bildirir; since başlangıç noktasını gösterir."
   },
   {
     "id": "wq150_nov26_prep12_8_3",
