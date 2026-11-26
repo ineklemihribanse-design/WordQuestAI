@@ -111,3 +111,12 @@ test('solved duel cells are public but pending answers stay private',()=>{
  s=matchCommand(s,actor,{id:'solve',revision:0,type:'submit',word:i,answer},1001);
  for(const p of ['a','b']){const v=matchView(s,p);assert.equal(v.game.resolved[i].answer,answer);assert.equal(v.game.words[i].answer,undefined);assert.equal(v.game.resolved[s.game.active],undefined);}
 });
+
+test('feedback counts are per authenticated player, not predicted from submissions',()=>{
+ let s=base();const p=s.game.turn,other=p==='a'?'b':'a',i=s.game.active;
+ assert.deepEqual(matchView(s,p).feedback,{correct:0,wrong:0});
+ s=matchCommand(s,p,{id:'feedback-correct',revision:0,type:'submit',word:i,answer:s.game.words[i].answer},1001);
+ assert.deepEqual(matchView(s,p).feedback,{correct:1,wrong:0});assert.deepEqual(matchView(s,other).feedback,{correct:0,wrong:0});
+ const j=s.game.active;s=matchCommand(s,other,{id:'feedback-wrong',revision:s.revision,type:'submit',word:j,answer:'ZZZZZ'},1002);
+ assert.deepEqual(matchView(s,other).feedback,{correct:0,wrong:1});
+});

@@ -237,6 +237,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val connection=view.optJSONObject("connection")
     val clock=if(paused)connection.number("pausedAt")?:now else now
     val remaining=deadline?.let{((it-clock+999L)/1000L).coerceAtLeast(0L)}
+    Wq150Audio(room,phase,if(eligible)remaining else null,deadline,view.optJSONObject("feedback"),session.preferences.correctSoundEnabled)
     val social=view.optJSONObject("social")?:JSONObject()
     val offer=social.optJSONObject("offer")
     val offerId=offer?.optString("id").orEmpty()
@@ -293,7 +294,11 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             Row(verticalAlignment=Alignment.CenterVertically){
                 TextButton(onClick={exit=true}){Text("‹ Geri",color=Wq122Gold)}
                 Text(Wq150ModeCatalog.kinds[kind].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f))
-                remaining?.let{Text("$it sn",color=Wq122Gold,fontWeight=FontWeight.Black)}
+                remaining?.let{
+                    val urgent=phase=="playing"&&it in 0L..10L
+                    Text("$it sn",color=if(urgent)Color(0xFFFFB4A8)else Wq122Gold,
+                        fontSize=if(urgent)24.sp else 15.sp,fontWeight=FontWeight.Black)
+                }
                 Box{
                     TextButton(enabled=canSocial&&now-lastEmoji>=1500L,onClick={emojiMenu=true}){Text("☺",color=Wq122Gold,fontSize=22.sp)}
                     DropdownMenu(expanded=emojiMenu,onDismissRequest={emojiMenu=false}){
@@ -552,6 +557,47 @@ private fun Wq150StatCard(name:String,stats:JSONObject?,winner:Boolean){
                         repeat(3-row.size){Spacer(Modifier.weight(1f))}
                     }
                 }
+        }
+    }
+}
+
+/** Count deltas rather than replaying a sound on every poll. */
+internal fun wq150Feedback(previous:Pair<Int,Int>?,current:Pair<Int,Int>?):Int{
+    if(previous==null||current==null)return 0
+    return when{
+        current.first>previous.first->1
+        current.second>previous.second->-1
+        else->0
+    }
+}
+@Composable
+private fun Wq150Audio(room:String,phase:String,remaining:Long?,deadline:Long?,feedback:JSONObject?,effects:Boolean){
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val ambient=Wq179ArenaSoundPrefs.ambient(context)
+    val clockEnabled=Wq179ArenaSoundPrefs.clock(context)
+    val clockTones=remember(room){Wq179ArenaTones()}
+    val feedbackTone=remember(room){runCatching{android.media.ToneGenerator(android.media.AudioManager.STREAM_MUSIC,50)}.getOrNull()}
+    DisposableEffect(clockTones,feedbackTone){onDispose{clockTones.close();feedbackTone?.release()}}
+    val current=feedback?.let{it.optInt("correct") to it.optInt("wrong")}
+    var previous by remember(room){mutableStateOf(current)}
+    var lastTick by remember(room){mutableStateOf<Pair<Long,Long>?>(null)}
+    LaunchedEffect(current,phase,effects){
+        val cue=wq150Feedback(previous,current)
+        if(current!=null)previous=current
+        if(effects&&phase!="paused"&&cue!=0)runCatching{
+            feedbackTone?.startTone(if(cue>0)android.media.ToneGenerator.TONE_PROP_ACK else android.media.ToneGenerator.TONE_PROP_NACK,if(cue>0)150 else 220)
+        }
+    }
+    LaunchedEffect(remaining,deadline,phase,effects,clockEnabled){
+        if(phase=="playing"&&remaining!=null&&deadline!=null&&remaining in 1L..10L){
+            val key=deadline to remaining
+            if(lastTick!=key){lastTick=key;if(effects&&clockEnabled)clockTones.tick(remaining.toInt())}
+        }
+    }
+    LaunchedEffect(phase,effects,ambient){
+        while(phase=="playing"&&effects&&ambient){
+            delay(12000L)
+            if(phase=="playing")clockTones.ambient()
         }
     }
 }

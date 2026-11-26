@@ -2,6 +2,9 @@ package com.kelimebulmacasi.a1
 import org.junit.Assert.*
 import org.junit.Test
 class Wq150ViewportTest {
+    @Test fun feedbackOnlyPlaysForNewConfirmedCounts(){
+        assertEquals(0,wq150Feedback(null,3 to 2));assertEquals(0,wq150Feedback(3 to 2,3 to 2));assertEquals(1,wq150Feedback(3 to 2,4 to 2));assertEquals(-1,wq150Feedback(3 to 2,3 to 3));assertEquals(0,wq150Feedback(3 to 2,null))
+    }
     @Test fun completeBoardFitsPhoneAndTablet(){
         for((w,h) in listOf(320f to 200f,1100f to 640f,320f to 70f)){
             val v=wq150Viewport(w,h,22,17,0,11f,8.5f)
