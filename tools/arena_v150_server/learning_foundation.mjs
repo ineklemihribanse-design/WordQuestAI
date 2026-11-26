@@ -13699,5 +13699,2725 @@ export const foundationQuestions = [
     ],
     "correct": 0,
     "explanation": "Offset dengeleyip avantajı azaltmak veya ortadan kaldırmak, may ise olasılıktır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_1_1",
+    "family": "wordform_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We usually ____ football after school.",
+    "options": [
+      "play",
+      "plays",
+      "playing",
+      "player",
+      "played"
+    ],
+    "correct": 0,
+    "explanation": "We ile geniş zamanda yalın play kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_1_2",
+    "family": "wordform_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My sister ____ the piano every evening.",
+    "options": [
+      "play",
+      "plays",
+      "playing",
+      "player",
+      "played"
+    ],
+    "correct": 1,
+    "explanation": "Üçüncü tekil kişi geniş zamanda plays alır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_1_3",
+    "family": "wordform_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Look! The children are ____ outside.",
+    "options": [
+      "play",
+      "plays",
+      "playing",
+      "player",
+      "played"
+    ],
+    "correct": 2,
+    "explanation": "Are + playing şu an süren eylemdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_1_4",
+    "family": "wordform_nov26_11_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our team has a new basketball ____ .",
+    "options": [
+      "play",
+      "plays",
+      "playing",
+      "player",
+      "played"
+    ],
+    "correct": 3,
+    "explanation": "A new basketball player yeni bir oyuncudur."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_2_1",
+    "family": "wordform_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "They ____ English at our school.",
+    "options": [
+      "teach",
+      "teaches",
+      "teaching",
+      "teacher",
+      "taught"
+    ],
+    "correct": 0,
+    "explanation": "They ile geniş zamanda teach kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_2_2",
+    "family": "wordform_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Mr Hill ____ maths every Monday.",
+    "options": [
+      "teach",
+      "teaches",
+      "teaching",
+      "teacher",
+      "taught"
+    ],
+    "correct": 1,
+    "explanation": "Tekil özne Mr Hill ile teaches gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_2_3",
+    "family": "wordform_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She is ____ a class right now.",
+    "options": [
+      "teach",
+      "teaches",
+      "teaching",
+      "teacher",
+      "taught"
+    ],
+    "correct": 2,
+    "explanation": "Is + teaching devam eden eylemi belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_2_4",
+    "family": "wordform_nov26_11_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our new English ____ is from Ireland.",
+    "options": [
+      "teach",
+      "teaches",
+      "teaching",
+      "teacher",
+      "taught"
+    ],
+    "correct": 3,
+    "explanation": "Kişiyi ifade eden isim teacher öğretmendir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_3_1",
+    "family": "wordform_nov26_11_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Can you ____ this song with me?",
+    "options": [
+      "sing",
+      "sings",
+      "singing",
+      "singer",
+      "sang"
+    ],
+    "correct": 0,
+    "explanation": "Can ardından yalın fiil gelir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_3_2",
+    "family": "wordform_nov26_11_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My brother ____ in the school choir every Friday.",
+    "options": [
+      "sing",
+      "sings",
+      "singing",
+      "singer",
+      "sang"
+    ],
+    "correct": 1,
+    "explanation": "Tekil özne ile sings gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_3_3",
+    "family": "wordform_nov26_11_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Listen! Someone is ____ in the next room.",
+    "options": [
+      "sing",
+      "sings",
+      "singing",
+      "singer",
+      "sang"
+    ],
+    "correct": 2,
+    "explanation": "Is + singing şimdiki zaman yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_3_4",
+    "family": "wordform_nov26_11_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The lead ____ is standing next to the microphone, ready to perform a song.",
+    "options": [
+      "sing",
+      "sings",
+      "singing",
+      "singer",
+      "sang"
+    ],
+    "correct": 3,
+    "explanation": "Şarkı söyleyen kişi singer ile adlandırılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_4_1",
+    "family": "wordform_nov26_11_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My parents ____ in a hospital.",
+    "options": [
+      "work",
+      "works",
+      "working",
+      "worker",
+      "worked"
+    ],
+    "correct": 0,
+    "explanation": "Çoğul özne ile yalın work kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_4_2",
+    "family": "wordform_nov26_11_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My uncle ____ at the airport every day.",
+    "options": [
+      "work",
+      "works",
+      "working",
+      "worker",
+      "worked"
+    ],
+    "correct": 1,
+    "explanation": "Üçüncü tekil kişi works alır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_4_3",
+    "family": "wordform_nov26_11_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I am ____ on my homework now.",
+    "options": [
+      "work",
+      "works",
+      "working",
+      "worker",
+      "worked"
+    ],
+    "correct": 2,
+    "explanation": "Am working şu anda çalışmak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_4_4",
+    "family": "wordform_nov26_11_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A factory ____ wears this uniform.",
+    "options": [
+      "work",
+      "works",
+      "working",
+      "worker",
+      "worked"
+    ],
+    "correct": 3,
+    "explanation": "A factory worker fabrikada çalışan kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_5_1",
+    "family": "wordform_nov26_11_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Do you ____ books before bed?",
+    "options": [
+      "read",
+      "reads",
+      "reading",
+      "reader",
+      "readable"
+    ],
+    "correct": 0,
+    "explanation": "Do yardımcı fiilinden sonra yalın read gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_5_2",
+    "family": "wordform_nov26_11_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Amy ____ a story to her son every night.",
+    "options": [
+      "read",
+      "reads",
+      "reading",
+      "reader",
+      "readable"
+    ],
+    "correct": 1,
+    "explanation": "Tekil özne ile reads kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_5_3",
+    "family": "wordform_nov26_11_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Dad is ____ a newspaper in the kitchen.",
+    "options": [
+      "read",
+      "reads",
+      "reading",
+      "reader",
+      "readable"
+    ],
+    "correct": 2,
+    "explanation": "Is reading şimdiki zaman yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_5_4",
+    "family": "wordform_nov26_11_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Each ____ gets a library card with their own name.",
+    "options": [
+      "read",
+      "reads",
+      "reading",
+      "reader",
+      "readable"
+    ],
+    "correct": 3,
+    "explanation": "Reader kitap okuyan kişiyi ifade eder."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_6_1",
+    "family": "wordform_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Be ____ when you cross this busy road.",
+    "options": [
+      "care",
+      "careful",
+      "carefully",
+      "careless",
+      "carelessly"
+    ],
+    "correct": 1,
+    "explanation": "Be sonrası sıfat careful; dikkatli olma uyarısıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_6_2",
+    "family": "wordform_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Please read each instruction ____ before you begin.",
+    "options": [
+      "care",
+      "careful",
+      "carefully",
+      "careless",
+      "carelessly"
+    ],
+    "correct": 2,
+    "explanation": "Read fiilini niteleyen zarf carefully gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_6_3",
+    "family": "wordform_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "It was ____ of me to leave the keys in the door overnight.",
+    "options": [
+      "care",
+      "careful",
+      "carefully",
+      "careless",
+      "carelessly"
+    ],
+    "correct": 3,
+    "explanation": "Careless dikkatsizlik bildiren sıfattır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_6_4",
+    "family": "wordform_nov26_11_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "He packed the glass ____ and several pieces broke.",
+    "options": [
+      "care",
+      "careful",
+      "carefully",
+      "careless",
+      "carelessly"
+    ],
+    "correct": 4,
+    "explanation": "Packed fiilini olumsuz biçimde niteleyen zarf carelessly kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_7_1",
+    "family": "wordform_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ me move this table?",
+    "options": [
+      "help",
+      "helper",
+      "helpful",
+      "helpless",
+      "helpfully"
+    ],
+    "correct": 0,
+    "explanation": "Could sonrası yalın fiil help gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_7_2",
+    "family": "wordform_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The teacher needs a ____ to hand out the books.",
+    "options": [
+      "help",
+      "helper",
+      "helpful",
+      "helpless",
+      "helpfully"
+    ],
+    "correct": 1,
+    "explanation": "A helper yardım eden kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_7_3",
+    "family": "wordform_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Your advice was very ____; it solved my problem.",
+    "options": [
+      "help",
+      "helper",
+      "helpful",
+      "helpless",
+      "helpfully"
+    ],
+    "correct": 2,
+    "explanation": "Was sonrasında yararlı anlamında helpful gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_7_4",
+    "family": "wordform_nov26_11_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Without the key or a phone, she felt ____ outside the locked house.",
+    "options": [
+      "help",
+      "helper",
+      "helpful",
+      "helpless",
+      "helpfully"
+    ],
+    "correct": 3,
+    "explanation": "Helpless yardım olmadan bir şey yapamayan demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_8_1",
+    "family": "wordform_nov26_11_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Regular exercise is good for your ____ .",
+    "options": [
+      "health",
+      "healthy",
+      "unhealthy",
+      "healthily",
+      "healthier"
+    ],
+    "correct": 0,
+    "explanation": "Your sonrası isim health sağlık anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_8_2",
+    "family": "wordform_nov26_11_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A doctor recommends fresh fruit as a ____ snack instead of sweets.",
+    "options": [
+      "health",
+      "healthy",
+      "unhealthy",
+      "healthily",
+      "healthier"
+    ],
+    "correct": 1,
+    "explanation": "Snack ismini niteleyen healthy sıfatıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_8_3",
+    "family": "wordform_nov26_11_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Eating nothing but sweets is an ____ habit.",
+    "options": [
+      "health",
+      "healthy",
+      "unhealthy",
+      "healthily",
+      "healthier"
+    ],
+    "correct": 2,
+    "explanation": "Unhealthy sağlıksız anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_8_4",
+    "family": "wordform_nov26_11_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "This meal contains less salt and more vegetables, so it is ____ than the other one.",
+    "options": [
+      "health",
+      "healthy",
+      "unhealthy",
+      "healthily",
+      "healthier"
+    ],
+    "correct": 4,
+    "explanation": "Than karşılaştırma sıfatı healthier gerektirir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_9_1",
+    "family": "wordform_nov26_11_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The children were ____ to hear that the trip was going ahead.",
+    "options": [
+      "happy",
+      "happily",
+      "happiness",
+      "unhappy",
+      "unhappily"
+    ],
+    "correct": 0,
+    "explanation": "Were happy to hear sevinçli olmayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_9_2",
+    "family": "wordform_nov26_11_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The children laughed and played ____ in the garden.",
+    "options": [
+      "happy",
+      "happily",
+      "happiness",
+      "unhappy",
+      "unhappily"
+    ],
+    "correct": 1,
+    "explanation": "Played fiilini niteleyen olumlu zarf happily kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_9_3",
+    "family": "wordform_nov26_11_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Money alone cannot guarantee ____ .",
+    "options": [
+      "happy",
+      "happily",
+      "happiness",
+      "unhappy",
+      "unhappily"
+    ],
+    "correct": 2,
+    "explanation": "Guarantee sonrası isim happiness mutluluk anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_9_4",
+    "family": "wordform_nov26_11_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The customer was ____ with the damaged product.",
+    "options": [
+      "happy",
+      "happily",
+      "happiness",
+      "unhappy",
+      "unhappily"
+    ],
+    "correct": 3,
+    "explanation": "Hasarlı üründen memnun olmamak unhappy ile anlatılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_10_1",
+    "family": "wordform_nov26_11_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Is it ____ to drink the tap water here?",
+    "options": [
+      "safe",
+      "safely",
+      "safety",
+      "unsafe",
+      "safer"
+    ],
+    "correct": 0,
+    "explanation": "It is safe to güvenli olup olmadığını sorar."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_10_2",
+    "family": "wordform_nov26_11_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The plane landed ____ despite the strong wind.",
+    "options": [
+      "safe",
+      "safely",
+      "safety",
+      "unsafe",
+      "safer"
+    ],
+    "correct": 1,
+    "explanation": "Landed fiilini niteleyen zarf safely gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_10_3",
+    "family": "wordform_nov26_11_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "For your own ____ , stand behind the yellow line.",
+    "options": [
+      "safe",
+      "safely",
+      "safety",
+      "unsafe",
+      "safer"
+    ],
+    "correct": 2,
+    "explanation": "Your own safety kişisel güvenlik demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_10_4",
+    "family": "wordform_nov26_11_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The stairs are ____ because several steps are broken.",
+    "options": [
+      "safe",
+      "safely",
+      "safety",
+      "unsafe",
+      "safer"
+    ],
+    "correct": 3,
+    "explanation": "Kırık basamaklar merdiveni güvensiz yapar."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_11_1",
+    "family": "wordform_nov26_11_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I heard a loud ____ outside my window.",
+    "options": [
+      "noise",
+      "noisy",
+      "noisily",
+      "noiseless",
+      "noiselessly"
+    ],
+    "correct": 0,
+    "explanation": "A loud noise yüksek bir ses demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_11_2",
+    "family": "wordform_nov26_11_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We couldn't sleep because the street was too ____ .",
+    "options": [
+      "noise",
+      "noisy",
+      "noisily",
+      "noiseless",
+      "noiselessly"
+    ],
+    "correct": 1,
+    "explanation": "Was too noisy fazla gürültülü demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_11_3",
+    "family": "wordform_nov26_11_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The old machine was running so ____ that people in the next room could hear it.",
+    "options": [
+      "noise",
+      "noisy",
+      "noisily",
+      "noiseless",
+      "noiselessly"
+    ],
+    "correct": 2,
+    "explanation": "Running fiilini niteleyen noisily gürültülü biçimde demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_11_4",
+    "family": "wordform_nov26_11_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She moved ____ across the room so that nobody heard her.",
+    "options": [
+      "noise",
+      "noisy",
+      "noisily",
+      "noiseless",
+      "noiselessly"
+    ],
+    "correct": 4,
+    "explanation": "Nobody heard sessizce hareket edildiğini gösterir; zarf gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_12_1",
+    "family": "wordform_nov26_11_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Visitors come to admire the natural ____ of the island.",
+    "options": [
+      "beauty",
+      "beautiful",
+      "beautifully",
+      "beautify",
+      "beautician"
+    ],
+    "correct": 0,
+    "explanation": "Natural beauty doğal güzellik demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_12_2",
+    "family": "wordform_nov26_11_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "They stayed in a ____ village by the sea.",
+    "options": [
+      "beauty",
+      "beautiful",
+      "beautifully",
+      "beautify",
+      "beautician"
+    ],
+    "correct": 1,
+    "explanation": "Village ismini niteleyen sıfat beautiful gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_12_3",
+    "family": "wordform_nov26_11_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The children sang ____ at the concert.",
+    "options": [
+      "beauty",
+      "beautiful",
+      "beautifully",
+      "beautify",
+      "beautician"
+    ],
+    "correct": 2,
+    "explanation": "Sang fiilini niteleyen beautifully zarfıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_12_4",
+    "family": "wordform_nov26_11_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The town plans to ____ its streets with flowers.",
+    "options": [
+      "beauty",
+      "beautiful",
+      "beautifully",
+      "beautify",
+      "beautician"
+    ],
+    "correct": 3,
+    "explanation": "To sonrası yalın fiil beautify güzelleştirmek demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_13_1",
+    "family": "wordform_nov26_11_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My best ____ lives in the house next door.",
+    "options": [
+      "friend",
+      "friendly",
+      "unfriendly",
+      "friendship",
+      "friendliness"
+    ],
+    "correct": 0,
+    "explanation": "Best friend en iyi arkadaş demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_13_2",
+    "family": "wordform_nov26_11_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hotel staff were very ____ and welcomed us warmly.",
+    "options": [
+      "friend",
+      "friendly",
+      "unfriendly",
+      "friendship",
+      "friendliness"
+    ],
+    "correct": 1,
+    "explanation": "Friendly cana yakın sıfatıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_13_3",
+    "family": "wordform_nov26_11_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "His reply sounded ____ ; he did not even say hello.",
+    "options": [
+      "friend",
+      "friendly",
+      "unfriendly",
+      "friendship",
+      "friendliness"
+    ],
+    "correct": 2,
+    "explanation": "Unfriendly soğuk, dostça olmayan demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_13_4",
+    "family": "wordform_nov26_11_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Their ____ began when they met at school and lasted many years.",
+    "options": [
+      "friend",
+      "friendly",
+      "unfriendly",
+      "friendship",
+      "friendliness"
+    ],
+    "correct": 3,
+    "explanation": "Friendship iki kişinin arkadaşlık ilişkisini anlatır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_14_1",
+    "family": "wordform_nov26_11_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We plan to ____ by train this summer.",
+    "options": [
+      "travel",
+      "travels",
+      "travelling",
+      "traveller",
+      "travelled"
+    ],
+    "correct": 0,
+    "explanation": "Plan to sonrası yalın travel gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_14_2",
+    "family": "wordform_nov26_11_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My aunt ____ abroad for work every month.",
+    "options": [
+      "travel",
+      "travels",
+      "travelling",
+      "traveller",
+      "travelled"
+    ],
+    "correct": 1,
+    "explanation": "Tekil özne ile travels kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_14_3",
+    "family": "wordform_nov26_11_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "They are ____ through Spain at the moment.",
+    "options": [
+      "travel",
+      "travels",
+      "travelling",
+      "traveller",
+      "travelled"
+    ],
+    "correct": 2,
+    "explanation": "Are + travelling şimdiki zaman yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_14_4",
+    "family": "wordform_nov26_11_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Every ____ must show a passport at the border.",
+    "options": [
+      "travel",
+      "travels",
+      "travelling",
+      "traveller",
+      "travelled"
+    ],
+    "correct": 3,
+    "explanation": "Traveller yolculuk eden kişi anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_15_1",
+    "family": "wordform_nov26_11_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She has a strong ____ in local history.",
+    "options": [
+      "interest",
+      "interested",
+      "interesting",
+      "uninterested",
+      "interestingly"
+    ],
+    "correct": 0,
+    "explanation": "A strong interest in büyük ilgi duymayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_15_2",
+    "family": "wordform_nov26_11_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I'm ____ in learning another language.",
+    "options": [
+      "interest",
+      "interested",
+      "interesting",
+      "uninterested",
+      "interestingly"
+    ],
+    "correct": 1,
+    "explanation": "Interested in kişinin ilgi duyduğu şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_15_3",
+    "family": "wordform_nov26_11_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The guide told us several ____ stories.",
+    "options": [
+      "interest",
+      "interested",
+      "interesting",
+      "uninterested",
+      "interestingly"
+    ],
+    "correct": 2,
+    "explanation": "Stories ismini niteleyen interesting ilgi çekici demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_15_4",
+    "family": "wordform_nov26_11_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Although the guide tried to engage him, he remained completely ____ in the topic.",
+    "options": [
+      "interest",
+      "interested",
+      "interesting",
+      "uninterested",
+      "interestingly"
+    ],
+    "correct": 3,
+    "explanation": "Completely uninterested hiç ilgi duymayan demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_16_1",
+    "family": "wordform_nov26_11_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "We need to ____ which supplier to use before Friday.",
+    "options": [
+      "decide",
+      "decision",
+      "decisive",
+      "indecisive",
+      "decisively"
+    ],
+    "correct": 0,
+    "explanation": "Need to + yalın fiil; decide karar vermektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_16_2",
+    "family": "wordform_nov26_11_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The final ____ will be announced after the meeting.",
+    "options": [
+      "decide",
+      "decision",
+      "decisive",
+      "indecisive",
+      "decisively"
+    ],
+    "correct": 1,
+    "explanation": "Final decision nihai karar anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_16_3",
+    "family": "wordform_nov26_11_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "He remained ____ , changing his mind every few minutes.",
+    "options": [
+      "decide",
+      "decision",
+      "decisive",
+      "indecisive",
+      "decisively"
+    ],
+    "correct": 3,
+    "explanation": "Indecisive karar vermekte zorlanan demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_16_4",
+    "family": "wordform_nov26_11_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The manager acted ____ and settled the dispute within minutes.",
+    "options": [
+      "decide",
+      "decision",
+      "decisive",
+      "indecisive",
+      "decisively"
+    ],
+    "correct": 4,
+    "explanation": "Acted fiilini niteleyen decisively kararlı biçimde demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_17_1",
+    "family": "wordform_nov26_11_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The success of the trip will ____ on whether the weather stays dry.",
+    "options": [
+      "depend",
+      "dependent",
+      "independent",
+      "dependence",
+      "independently"
+    ],
+    "correct": 0,
+    "explanation": "Will sonrası yalın depend on kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_17_2",
+    "family": "wordform_nov26_11_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The child is still financially ____ on her parents.",
+    "options": [
+      "depend",
+      "dependent",
+      "independent",
+      "dependence",
+      "independently"
+    ],
+    "correct": 1,
+    "explanation": "Dependent on birine bağlı olma durumudur."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_17_3",
+    "family": "wordform_nov26_11_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The village's ____ on a single water source creates difficulties during droughts.",
+    "options": [
+      "depend",
+      "dependent",
+      "independent",
+      "dependence",
+      "independently"
+    ],
+    "correct": 3,
+    "explanation": "Dependence bağımlılık, bağlılık anlamında isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_17_4",
+    "family": "wordform_nov26_11_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Each team completed the task ____ , without consulting the others.",
+    "options": [
+      "depend",
+      "dependent",
+      "independent",
+      "dependence",
+      "independently"
+    ],
+    "correct": 4,
+    "explanation": "Başkalarına danışmadan yapma biçimini independently zarfı belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_18_1",
+    "family": "wordform_nov26_11_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The new programme aims to ____ opportunities for local artists.",
+    "options": [
+      "create",
+      "creation",
+      "creative",
+      "creatively",
+      "creator"
+    ],
+    "correct": 0,
+    "explanation": "To + create, fırsatlar oluşturmayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_18_2",
+    "family": "wordform_nov26_11_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The ____ of the new park took several years.",
+    "options": [
+      "create",
+      "creation",
+      "creative",
+      "creatively",
+      "creator"
+    ],
+    "correct": 1,
+    "explanation": "The creation of oluşum veya oluşturulma sürecidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_18_3",
+    "family": "wordform_nov26_11_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "We need a ____ solution rather than repeating the old approach.",
+    "options": [
+      "create",
+      "creation",
+      "creative",
+      "creatively",
+      "creator"
+    ],
+    "correct": 2,
+    "explanation": "Creative sıfatı yeni ve yaratıcı çözümü niteler."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_18_4",
+    "family": "wordform_nov26_11_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The designer used recycled materials ____ to make unusual furniture.",
+    "options": [
+      "create",
+      "creation",
+      "creative",
+      "creatively",
+      "creator"
+    ],
+    "correct": 3,
+    "explanation": "Used fiilini niteleyen creatively yaratıcı biçimde demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_19_1",
+    "family": "wordform_nov26_11_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Regular feedback can ____ the quality of your writing.",
+    "options": [
+      "improve",
+      "improvement",
+      "improved",
+      "improving",
+      "improves"
+    ],
+    "correct": 0,
+    "explanation": "Can sonrası yalın improve kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_19_2",
+    "family": "wordform_nov26_11_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The teacher noticed a significant ____ in the student's pronunciation.",
+    "options": [
+      "improve",
+      "improvement",
+      "improved",
+      "improving",
+      "improves"
+    ],
+    "correct": 1,
+    "explanation": "A significant improvement belirgin gelişmedir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_19_3",
+    "family": "wordform_nov26_11_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company introduced an ____ version of the software last week.",
+    "options": [
+      "improve",
+      "improvement",
+      "improved",
+      "improving",
+      "improves"
+    ],
+    "correct": 2,
+    "explanation": "An improved version geliştirilmiş sürümdür."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_19_4",
+    "family": "wordform_nov26_11_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Her pronunciation is gradually ____ as she practises.",
+    "options": [
+      "improve",
+      "improvement",
+      "improved",
+      "improving",
+      "improves"
+    ],
+    "correct": 3,
+    "explanation": "Is improving devam eden gelişimi belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_20_1",
+    "family": "wordform_nov26_11_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ why the figures are different?",
+    "options": [
+      "explain",
+      "explanation",
+      "explanatory",
+      "explained",
+      "unexplained"
+    ],
+    "correct": 0,
+    "explanation": "Could + explain açıklama istemek için kullanılır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_20_2",
+    "family": "wordform_nov26_11_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The technician offered a clear ____ of the problem.",
+    "options": [
+      "explain",
+      "explanation",
+      "explanatory",
+      "explained",
+      "unexplained"
+    ],
+    "correct": 1,
+    "explanation": "A clear explanation açık bir açıklamadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_20_3",
+    "family": "wordform_nov26_11_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The report includes ____ notes specifically intended to clarify how to read the chart.",
+    "options": [
+      "explain",
+      "explanation",
+      "explanatory",
+      "explained",
+      "unexplained"
+    ],
+    "correct": 2,
+    "explanation": "Explanatory notes açıklayıcı notlardır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_20_4",
+    "family": "wordform_nov26_11_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The cause of the sudden failure remains ____ despite several investigations.",
+    "options": [
+      "explain",
+      "explanation",
+      "explanatory",
+      "explained",
+      "unexplained"
+    ],
+    "correct": 4,
+    "explanation": "Unexplained henüz açıklanmamış demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_21_1",
+    "family": "wordform_nov26_11_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Several companies will ____ for the same contract.",
+    "options": [
+      "compete",
+      "competition",
+      "competitive",
+      "competitor",
+      "competitively"
+    ],
+    "correct": 0,
+    "explanation": "Compete for bir şey için yarışmaktır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_21_2",
+    "family": "wordform_nov26_11_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The singing ____ attracted hundreds of applicants.",
+    "options": [
+      "compete",
+      "competition",
+      "competitive",
+      "competitor",
+      "competitively"
+    ],
+    "correct": 1,
+    "explanation": "Singing competition şarkı yarışmasıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_21_3",
+    "family": "wordform_nov26_11_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The store offers ____ prices to attract customers from other retailers.",
+    "options": [
+      "compete",
+      "competition",
+      "competitive",
+      "competitor",
+      "competitively"
+    ],
+    "correct": 2,
+    "explanation": "Competitive prices rekabetçi fiyatlar demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_21_4",
+    "family": "wordform_nov26_11_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Our closest ____ sells a similar product at a lower price.",
+    "options": [
+      "compete",
+      "competition",
+      "competitive",
+      "competitor",
+      "competitively"
+    ],
+    "correct": 3,
+    "explanation": "Competitor rakip kişi veya kurumdur."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_22_1",
+    "family": "wordform_nov26_11_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "With enough preparation, you can ____ in the exam.",
+    "options": [
+      "succeed",
+      "success",
+      "successful",
+      "successfully",
+      "unsuccessful"
+    ],
+    "correct": 0,
+    "explanation": "Succeed in başarılı olmak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_22_2",
+    "family": "wordform_nov26_11_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The event was a great ____ ; every ticket was sold.",
+    "options": [
+      "succeed",
+      "success",
+      "successful",
+      "successfully",
+      "unsuccessful"
+    ],
+    "correct": 1,
+    "explanation": "A great success büyük başarı anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_22_3",
+    "family": "wordform_nov26_11_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The technicians ____ repaired the damaged machine.",
+    "options": [
+      "succeed",
+      "success",
+      "successful",
+      "successfully",
+      "unsuccessful"
+    ],
+    "correct": 3,
+    "explanation": "Repaired fiilini niteleyen successfully başarıyla demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_22_4",
+    "family": "wordform_nov26_11_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The first attempt was ____ , so they tried again.",
+    "options": [
+      "succeed",
+      "success",
+      "successful",
+      "successfully",
+      "unsuccessful"
+    ],
+    "correct": 4,
+    "explanation": "Başarısız ilk deneme unsuccessful sıfatını gerektirir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_23_1",
+    "family": "wordform_nov26_11_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "We need to ____ a meeting for all the volunteers.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 0,
+    "explanation": "Need to + organise düzenlemek anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_23_2",
+    "family": "wordform_nov26_11_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The charity is an international ____ with offices in several countries.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 1,
+    "explanation": "An international organisation uluslararası kuruluştur."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_23_3",
+    "family": "wordform_nov26_11_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The event ____ asked us to arrive an hour early.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 2,
+    "explanation": "Organiser etkinliği düzenleyen kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_23_4",
+    "family": "wordform_nov26_11_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The files were so ____ that nobody could find the correct document.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 4,
+    "explanation": "Disorganised düzensiz demektir; dosya bulunamaması bunu gösterir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_24_1",
+    "family": "wordform_nov26_11_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Team members need to ____ clearly during the project.",
+    "options": [
+      "communicate",
+      "communication",
+      "communicative",
+      "communicator",
+      "communicated"
+    ],
+    "correct": 0,
+    "explanation": "Need to + communicate iletişim kurmak demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_24_2",
+    "family": "wordform_nov26_11_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Poor ____ between departments led to delays.",
+    "options": [
+      "communicate",
+      "communication",
+      "communicative",
+      "communicator",
+      "communicated"
+    ],
+    "correct": 1,
+    "explanation": "Communication iletişim anlamındaki isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_24_3",
+    "family": "wordform_nov26_11_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "She became more ____ after joining the discussion group and started sharing her ideas.",
+    "options": [
+      "communicate",
+      "communication",
+      "communicative",
+      "communicator",
+      "communicated"
+    ],
+    "correct": 2,
+    "explanation": "Communicative iletişime açık anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_24_4",
+    "family": "wordform_nov26_11_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A good ____ can explain complex ideas in simple terms.",
+    "options": [
+      "communicate",
+      "communication",
+      "communicative",
+      "communicator",
+      "communicated"
+    ],
+    "correct": 3,
+    "explanation": "Communicator iletişim kuran kişiyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_25_1",
+    "family": "wordform_nov26_11_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The students will ____ a short play tomorrow.",
+    "options": [
+      "perform",
+      "performance",
+      "performer",
+      "performed",
+      "performing"
+    ],
+    "correct": 0,
+    "explanation": "Will + perform sahnelemek demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_25_2",
+    "family": "wordform_nov26_11_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The audience applauded the excellent ____ at the end of the show.",
+    "options": [
+      "perform",
+      "performance",
+      "performer",
+      "performed",
+      "performing"
+    ],
+    "correct": 1,
+    "explanation": "Performance gösteri veya performans demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_25_3",
+    "family": "wordform_nov26_11_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Each ____ must arrive before the rehearsal begins.",
+    "options": [
+      "perform",
+      "performance",
+      "performer",
+      "performed",
+      "performing"
+    ],
+    "correct": 2,
+    "explanation": "Performer sahneye çıkan kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_25_4",
+    "family": "wordform_nov26_11_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The safety test was ____ by an independent engineer.",
+    "options": [
+      "perform",
+      "performance",
+      "performer",
+      "performed",
+      "performing"
+    ],
+    "correct": 3,
+    "explanation": "Was + performed edilgen geçmiş zaman yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_26_1",
+    "family": "wordform_nov26_11_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "You can ____ for the scholarship online.",
+    "options": [
+      "apply",
+      "application",
+      "applicant",
+      "applicable",
+      "applied"
+    ],
+    "correct": 0,
+    "explanation": "Apply for burs gibi bir şeye başvurmak demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_26_2",
+    "family": "wordform_nov26_11_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The university received my ____ yesterday.",
+    "options": [
+      "apply",
+      "application",
+      "applicant",
+      "applicable",
+      "applied"
+    ],
+    "correct": 1,
+    "explanation": "Application yapılan başvuru anlamındaki isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_26_3",
+    "family": "wordform_nov26_11_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Each ____ must provide two references.",
+    "options": [
+      "apply",
+      "application",
+      "applicant",
+      "applicable",
+      "applied"
+    ],
+    "correct": 2,
+    "explanation": "Applicant başvuran kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_26_4",
+    "family": "wordform_nov26_11_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The discount is not ____ to purchases made before Monday.",
+    "options": [
+      "apply",
+      "application",
+      "applicant",
+      "applicable",
+      "applied"
+    ],
+    "correct": 3,
+    "explanation": "Applicable to belirtilen durum için geçerli demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_27_1",
+    "family": "wordform_nov26_11_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Please ____ us of any changes to the schedule.",
+    "options": [
+      "inform",
+      "information",
+      "informative",
+      "informed",
+      "misinformed"
+    ],
+    "correct": 0,
+    "explanation": "Inform someone of something birini bilgilendirmektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_27_2",
+    "family": "wordform_nov26_11_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The website provides useful ____ about public transport.",
+    "options": [
+      "inform",
+      "information",
+      "informative",
+      "informed",
+      "misinformed"
+    ],
+    "correct": 1,
+    "explanation": "Information bilgi anlamındaki sayılamayan isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_27_3",
+    "family": "wordform_nov26_11_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The lecture was both interesting and ____ ; we learned a great deal.",
+    "options": [
+      "inform",
+      "information",
+      "informative",
+      "informed",
+      "misinformed"
+    ],
+    "correct": 2,
+    "explanation": "Informative bilgi verici demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_27_4",
+    "family": "wordform_nov26_11_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The customer had been ____ about the price: the advertised figure was incorrect and he had been told to expect a lower charge.",
+    "options": [
+      "inform",
+      "information",
+      "informative",
+      "informed",
+      "misinformed"
+    ],
+    "correct": 4,
+    "explanation": "Misinformed yanlış bilgilendirilmiş anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_28_1",
+    "family": "wordform_nov26_11_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers will ____ the samples using two independent methods.",
+    "options": [
+      "analyse",
+      "analysis",
+      "analytical",
+      "analyst",
+      "analytically"
+    ],
+    "correct": 0,
+    "explanation": "Will sonrası yalın analyse gerekir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_28_2",
+    "family": "wordform_nov26_11_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A detailed ____ of the data revealed several unexpected patterns.",
+    "options": [
+      "analyse",
+      "analysis",
+      "analytical",
+      "analyst",
+      "analytically"
+    ],
+    "correct": 1,
+    "explanation": "Analysis inceleme sürecini belirten isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_28_3",
+    "family": "wordform_nov26_11_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The position requires strong ____ skills and attention to detail.",
+    "options": [
+      "analyse",
+      "analysis",
+      "analytical",
+      "analyst",
+      "analytically"
+    ],
+    "correct": 2,
+    "explanation": "Analytical skills çözümleme becerileri anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_28_4",
+    "family": "wordform_nov26_11_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The financial ____ prepared a forecast for the next quarter.",
+    "options": [
+      "analyse",
+      "analysis",
+      "analytical",
+      "analyst",
+      "analytically"
+    ],
+    "correct": 3,
+    "explanation": "Analyst analiz yapan uzmanı belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_29_1",
+    "family": "wordform_nov26_11_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The committee must ____ the potential consequences before making a decision.",
+    "options": [
+      "assess",
+      "assessment",
+      "assessor",
+      "assessed",
+      "unassessed"
+    ],
+    "correct": 0,
+    "explanation": "Must + assess değerlendirmek demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_29_2",
+    "family": "wordform_nov26_11_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The initial risk ____ was completed before the work began.",
+    "options": [
+      "assess",
+      "assessment",
+      "assessor",
+      "assessed",
+      "unassessed"
+    ],
+    "correct": 1,
+    "explanation": "Risk assessment risk değerlendirmesidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_29_3",
+    "family": "wordform_nov26_11_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "An independent ____ reviewed the evidence before assigning a score.",
+    "options": [
+      "assess",
+      "assessment",
+      "assessor",
+      "assessed",
+      "unassessed"
+    ],
+    "correct": 2,
+    "explanation": "Assessor değerlendirmeyi yapan kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_29_4",
+    "family": "wordform_nov26_11_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The long-term impact remains ____ because no follow-up study has been conducted.",
+    "options": [
+      "assess",
+      "assessment",
+      "assessor",
+      "assessed",
+      "unassessed"
+    ],
+    "correct": 4,
+    "explanation": "Unassessed değerlendirilmemiş demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_30_1",
+    "family": "wordform_nov26_11_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Researchers can ____ an estimate from the available observations.",
+    "options": [
+      "derive",
+      "derived",
+      "derivation",
+      "derivative",
+      "deriving"
+    ],
+    "correct": 0,
+    "explanation": "Can + derive from veriden sonuç elde etmektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_30_2",
+    "family": "wordform_nov26_11_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The figures were ____ from official records rather than direct measurements.",
+    "options": [
+      "derive",
+      "derived",
+      "derivation",
+      "derivative",
+      "deriving"
+    ],
+    "correct": 1,
+    "explanation": "Were derived from türetilmiş edilgen yapıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_30_3",
+    "family": "wordform_nov26_11_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The appendix explains the mathematical ____ of the formula step by step.",
+    "options": [
+      "derive",
+      "derived",
+      "derivation",
+      "derivative",
+      "deriving"
+    ],
+    "correct": 2,
+    "explanation": "Derivation formülün türetilme sürecidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_30_4",
+    "family": "wordform_nov26_11_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The team is ____ a new estimate from the latest dataset.",
+    "options": [
+      "derive",
+      "derived",
+      "derivation",
+      "derivative",
+      "deriving"
+    ],
+    "correct": 4,
+    "explanation": "Is deriving devam eden türetme eylemini anlatır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_31_1",
+    "family": "wordform_nov26_11_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The investigation aims to ____ whether the equipment met the safety requirements.",
+    "options": [
+      "establish",
+      "establishment",
+      "established",
+      "establishing",
+      "establishes"
+    ],
+    "correct": 0,
+    "explanation": "Aims to establish bir olguyu ortaya koymayı amaçlar."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_31_2",
+    "family": "wordform_nov26_11_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The ____ of a new regulatory agency required parliamentary approval.",
+    "options": [
+      "establish",
+      "establishment",
+      "established",
+      "establishing",
+      "establishes"
+    ],
+    "correct": 1,
+    "explanation": "Establishment kuruluş sürecini ifade eder."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_31_3",
+    "family": "wordform_nov26_11_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The study builds on an ____ theory that has been tested for decades.",
+    "options": [
+      "establish",
+      "establishment",
+      "established",
+      "establishing",
+      "establishes"
+    ],
+    "correct": 2,
+    "explanation": "Established theory yerleşik teoridir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_31_4",
+    "family": "wordform_nov26_11_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers are ____ a baseline against which future changes can be measured.",
+    "options": [
+      "establish",
+      "establishment",
+      "established",
+      "establishing",
+      "establishes"
+    ],
+    "correct": 3,
+    "explanation": "Are establishing süren oluşturma eylemidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_32_1",
+    "family": "wordform_nov26_11_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The panel will ____ each proposal against the same criteria.",
+    "options": [
+      "evaluate",
+      "evaluation",
+      "evaluative",
+      "evaluator",
+      "evaluated"
+    ],
+    "correct": 0,
+    "explanation": "Will + evaluate değerlendirmek demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_32_2",
+    "family": "wordform_nov26_11_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "An independent ____ of the programme was commissioned after its first year.",
+    "options": [
+      "evaluate",
+      "evaluation",
+      "evaluative",
+      "evaluator",
+      "evaluated"
+    ],
+    "correct": 1,
+    "explanation": "Evaluation program değerlendirmesi anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_32_3",
+    "family": "wordform_nov26_11_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The external ____ examined the evidence without participating in the programme.",
+    "options": [
+      "evaluate",
+      "evaluation",
+      "evaluative",
+      "evaluator",
+      "evaluated"
+    ],
+    "correct": 3,
+    "explanation": "Evaluator değerlendirmeyi yapan uzmanı belirtir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_32_4",
+    "family": "wordform_nov26_11_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "All applications were ____ before any funding was awarded.",
+    "options": [
+      "evaluate",
+      "evaluation",
+      "evaluative",
+      "evaluator",
+      "evaluated"
+    ],
+    "correct": 4,
+    "explanation": "Were evaluated geçmişte tamamlanan edilgen eylemdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_33_1",
+    "family": "wordform_nov26_11_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Researchers must ____ these results in the context of the study's limitations.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpretative",
+      "interpreter",
+      "misinterpret"
+    ],
+    "correct": 0,
+    "explanation": "Must + interpret yorumlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_33_2",
+    "family": "wordform_nov26_11_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "An alternative ____ of the findings was proposed during the discussion.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpretative",
+      "interpreter",
+      "misinterpret"
+    ],
+    "correct": 1,
+    "explanation": "Interpretation bulguların yorumudur."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_33_3",
+    "family": "wordform_nov26_11_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "An ____ translated the witness's spoken statement during the hearing.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpretative",
+      "interpreter",
+      "misinterpret"
+    ],
+    "correct": 3,
+    "explanation": "Interpreter sözlü çeviri yapan kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_33_4",
+    "family": "wordform_nov26_11_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Readers may ____ the figures if the units are not clearly stated.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpretative",
+      "interpreter",
+      "misinterpret"
+    ],
+    "correct": 4,
+    "explanation": "Misinterpret yanlış yorumlamaktır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_34_1",
+    "family": "wordform_nov26_11_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Regular inspections help ____ the reliability of the machinery.",
+    "options": [
+      "maintain",
+      "maintenance",
+      "maintained",
+      "maintaining",
+      "maintains"
+    ],
+    "correct": 0,
+    "explanation": "Help + yalın maintain sürdürmek demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_34_2",
+    "family": "wordform_nov26_11_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The annual ____ costs of the building exceeded expectations.",
+    "options": [
+      "maintain",
+      "maintenance",
+      "maintained",
+      "maintaining",
+      "maintains"
+    ],
+    "correct": 1,
+    "explanation": "Maintenance costs bakım giderleridir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_34_3",
+    "family": "wordform_nov26_11_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The equipment was carefully ____ throughout the trial.",
+    "options": [
+      "maintain",
+      "maintenance",
+      "maintained",
+      "maintaining",
+      "maintains"
+    ],
+    "correct": 2,
+    "explanation": "Was maintained edilgen geçmiş yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_34_4",
+    "family": "wordform_nov26_11_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The organisation is ____ its existing services while developing new ones.",
+    "options": [
+      "maintain",
+      "maintenance",
+      "maintained",
+      "maintaining",
+      "maintains"
+    ],
+    "correct": 3,
+    "explanation": "Is maintaining sürdürülmekte olan eylemi anlatır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_35_1",
+    "family": "wordform_nov26_11_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The method cannot ____ exclusively on self-reported behaviour.",
+    "options": [
+      "rely",
+      "reliable",
+      "reliability",
+      "unreliable",
+      "reliably"
+    ],
+    "correct": 0,
+    "explanation": "Cannot + rely on dayanmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_35_2",
+    "family": "wordform_nov26_11_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The instrument produced consistent results and proved to be ____ under varied conditions.",
+    "options": [
+      "rely",
+      "reliable",
+      "reliability",
+      "unreliable",
+      "reliably"
+    ],
+    "correct": 1,
+    "explanation": "Reliable güvenilir anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_35_3",
+    "family": "wordform_nov26_11_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The ____ of the measurement was tested by repeating it several times.",
+    "options": [
+      "rely",
+      "reliable",
+      "reliability",
+      "unreliable",
+      "reliably"
+    ],
+    "correct": 2,
+    "explanation": "Reliability ölçümün güvenirliğini ifade eden isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_35_4",
+    "family": "wordform_nov26_11_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The sensor could not ____ detect small changes at very low temperatures.",
+    "options": [
+      "rely",
+      "reliable",
+      "reliability",
+      "unreliable",
+      "reliably"
+    ],
+    "correct": 4,
+    "explanation": "Detect fiilini niteleyen reliably güvenilir biçimde demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_36_1",
+    "family": "wordform_nov26_11_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The response to the treatment may ____ considerably from one person to another.",
+    "options": [
+      "vary",
+      "variation",
+      "variable",
+      "variability",
+      "varied"
+    ],
+    "correct": 0,
+    "explanation": "May vary değişkenlik gösterebilir demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_36_2",
+    "family": "wordform_nov26_11_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The seasonal ____ in rainfall was greater than anticipated.",
+    "options": [
+      "vary",
+      "variation",
+      "variable",
+      "variability",
+      "varied"
+    ],
+    "correct": 1,
+    "explanation": "Variation mevsimsel değişimi ifade eden isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_36_3",
+    "family": "wordform_nov26_11_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Age was included as an independent ____ in the statistical model.",
+    "options": [
+      "vary",
+      "variation",
+      "variable",
+      "variability",
+      "varied"
+    ],
+    "correct": 2,
+    "explanation": "Independent variable bağımsız değişken anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_36_4",
+    "family": "wordform_nov26_11_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The participants came from ____ professional backgrounds, including medicine, law and education.",
+    "options": [
+      "vary",
+      "variation",
+      "variable",
+      "variability",
+      "varied"
+    ],
+    "correct": 4,
+    "explanation": "Varied çeşitli, farklı demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_37_1",
+    "family": "wordform_nov26_11_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The evidence does not ____ such a broad conclusion.",
+    "options": [
+      "justify",
+      "justification",
+      "justified",
+      "unjustified",
+      "justifiably"
+    ],
+    "correct": 0,
+    "explanation": "Justify kanıtla haklı veya gerekçeli kılmak demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_37_2",
+    "family": "wordform_nov26_11_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The proposal must include a clear ____ for the requested expenditure.",
+    "options": [
+      "justify",
+      "justification",
+      "justified",
+      "unjustified",
+      "justifiably"
+    ],
+    "correct": 1,
+    "explanation": "Justification harcama gerekçesidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_37_3",
+    "family": "wordform_nov26_11_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The claim was described as ____ because it had no supporting evidence.",
+    "options": [
+      "justify",
+      "justification",
+      "justified",
+      "unjustified",
+      "justifiably"
+    ],
+    "correct": 3,
+    "explanation": "Unjustified gerekçesiz, temelsiz demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_37_4",
+    "family": "wordform_nov26_11_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The residents were ____ concerned after repeated safety warnings had been ignored.",
+    "options": [
+      "justify",
+      "justification",
+      "justified",
+      "unjustified",
+      "justifiably"
+    ],
+    "correct": 4,
+    "explanation": "Justifiably haklı olarak anlamındaki zarftır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_38_1",
+    "family": "wordform_nov26_11_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "We cannot ____ that all participants have the same prior knowledge.",
+    "options": [
+      "assume",
+      "assumption",
+      "assumed",
+      "assuming",
+      "assumptions"
+    ],
+    "correct": 0,
+    "explanation": "Cannot assume varsayamayız anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_38_2",
+    "family": "wordform_nov26_11_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The model rests on a single ____ about future demand.",
+    "options": [
+      "assume",
+      "assumption",
+      "assumed",
+      "assuming",
+      "assumptions"
+    ],
+    "correct": 1,
+    "explanation": "A single assumption tek varsayımdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_38_3",
+    "family": "wordform_nov26_11_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "It was initially ____ that the two groups were comparable.",
+    "options": [
+      "assume",
+      "assumption",
+      "assumed",
+      "assuming",
+      "assumptions"
+    ],
+    "correct": 2,
+    "explanation": "Was assumed başlangıçta varsayıldı anlamındaki edilgen yapıdır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_38_4",
+    "family": "wordform_nov26_11_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers tested three alternative ____ about consumer behaviour.",
+    "options": [
+      "assume",
+      "assumption",
+      "assumed",
+      "assuming",
+      "assumptions"
+    ],
+    "correct": 4,
+    "explanation": "Three alternative assumptions üç alternatif varsayım anlamında çoğul isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_39_1",
+    "family": "wordform_nov26_11_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Several environmental factors may ____ to the observed decline.",
+    "options": [
+      "contribute",
+      "contribution",
+      "contributor",
+      "contributed",
+      "contributing"
+    ],
+    "correct": 0,
+    "explanation": "Contribute to bir sonuca katkıda bulunmaktır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_39_2",
+    "family": "wordform_nov26_11_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The study makes a substantial ____ to the existing literature.",
+    "options": [
+      "contribute",
+      "contribution",
+      "contributor",
+      "contributed",
+      "contributing"
+    ],
+    "correct": 1,
+    "explanation": "Make a contribution to literatüre katkı sağlamaktır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_39_3",
+    "family": "wordform_nov26_11_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Each ____ to the edited volume was asked to submit a chapter.",
+    "options": [
+      "contribute",
+      "contribution",
+      "contributor",
+      "contributed",
+      "contributing"
+    ],
+    "correct": 2,
+    "explanation": "Contributor derlemeye katkı sunan kişidir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_39_4",
+    "family": "wordform_nov26_11_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The report examines whether these factors ____ to the decline during the previous year.",
+    "options": [
+      "contribute",
+      "contribution",
+      "contributor",
+      "contributed",
+      "contributing"
+    ],
+    "correct": 3,
+    "explanation": "Contributed geçmişteki katkıyı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_40_1",
+    "family": "wordform_nov26_11_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The proposed measures would ____ access to the sensitive records.",
+    "options": [
+      "restrict",
+      "restriction",
+      "restricted",
+      "restrictive",
+      "unrestricted"
+    ],
+    "correct": 0,
+    "explanation": "Would + restrict sınırlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_40_2",
+    "family": "wordform_nov26_11_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A temporary ____ on vehicle access was introduced during repairs.",
+    "options": [
+      "restrict",
+      "restriction",
+      "restricted",
+      "restrictive",
+      "unrestricted"
+    ],
+    "correct": 1,
+    "explanation": "Restriction on kısıtlama anlamındaki isimdir."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_40_3",
+    "family": "wordform_nov26_11_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The rules were considered too ____ because they prevented even routine activities.",
+    "options": [
+      "restrict",
+      "restriction",
+      "restricted",
+      "restrictive",
+      "unrestricted"
+    ],
+    "correct": 3,
+    "explanation": "Restrictive fazla kısıtlayıcı anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_wordfamily11_40_4",
+    "family": "wordform_nov26_11_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Researchers were granted ____ access to the public dataset, with no limits on downloads.",
+    "options": [
+      "restrict",
+      "restriction",
+      "restricted",
+      "restrictive",
+      "unrestricted"
+    ],
+    "correct": 4,
+    "explanation": "Unrestricted hiçbir kısıtlaması olmayan demektir."
   }
 ];
