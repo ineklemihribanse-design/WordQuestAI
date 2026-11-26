@@ -1,0 +1,61 @@
+name: WordQuest delta update proof of concept
+on:
+  push:
+    branches: [qa/delta-updates-v1]
+    paths:
+      - 'tools/delta_v1/**'
+      - '.github/workflows/qa-delta-updates-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Download two immutable published releases for internal comparison
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/wqd/old" "$RUNNER_TEMP/wqd/new" "$RUNNER_TEMP/wqd/classes"
+          gh release download v1.0.114 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$RUNNER_TEMP/wqd/old"
+          gh release download v1.0.115 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$RUNNER_TEMP/wqd/new"
+      - name: Generate delta and verify exact target reconstruction
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wqd"
+          python3 tools/delta_v1/make_delta.py "$D/old/WordQuestAI.apk" "$D/new/WordQuestAI.apk" "$D/old/update.json" "$D/new/update.json" "$D/patch"
+          javac -d "$D/classes" tools/delta_v1/WqDeltaApplier.java
+          python3 tools/delta_v1/test_delta.py "$D/classes" "$D"
+      - name: Verify reconstructed APK retains release signer
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wqd"
+          if [ ! -f "$D/reconstructed.apk" ]; then
+            echo 'No eligible patch; full APK fallback required'
+            exit 0
+          fi
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          if [ ! -s "$SIGNER" ]; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+          java -jar "$SIGNER" verify --verbose --print-certs "$D/reconstructed.apk" > "$D/patch/signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$D/patch/signature.txt"
+          cmp "$D/reconstructed.apk" "$D/new/WordQuestAI.apk"
+      - name: Inspect existing updater overlay for next integration
+        run: python3 tools/inspect_updater_protocol_1273.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Delta-V1-measurement
+          path: |
+            ${{ runner.temp }}/wqd/patch/delta-report.json
+            ${{ runner.temp }}/wqd/patch/signature.txt
+          if-no-files-found: error
+          retention-days: 7

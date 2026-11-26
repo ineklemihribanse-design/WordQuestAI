@@ -1,0 +1,24 @@
+// Use Maven Central's alternate official hostname only for rate-limited QA runs.
+import org.gradle.api.artifacts.repositories.MavenArtifactRepository
+def swapCentral = { repos ->
+    repos.withType(MavenArtifactRepository).configureEach { repo ->
+        def uri = repo.url
+        if (uri != null && uri.scheme == 'https' &&
+                uri.host == 'repo.maven.apache.org' &&
+                uri.path.replaceAll('/+$','') == '/maven2') {
+            repo.url = 'https://repo1.maven.org/maven2/'
+        }
+    }
+}
+gradle.beforeSettings { settings ->
+    swapCentral(settings.pluginManagement.repositories)
+    swapCentral(settings.dependencyResolutionManagement.repositories)
+}
+gradle.settingsEvaluated { settings ->
+    swapCentral(settings.pluginManagement.repositories)
+    swapCentral(settings.dependencyResolutionManagement.repositories)
+}
+gradle.beforeProject { project ->
+    swapCentral(project.buildscript.repositories)
+    swapCentral(project.repositories)
+}
