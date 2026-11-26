@@ -2,6 +2,7 @@
 // Authenticated caller, trusted clock, secure random seed and curated bank are supplied
 // by the hosting service. Room transactions keep state and command receipts together.
 import {createHash} from 'node:crypto';
+import {emptySocial,applySocial,expireSocial,socialTypes,socialView} from './social.mjs';
 import {createDuel,applyDuel,publicDuel} from './duel.mjs';
 import {createQuiz,applyQuiz,quizView} from './quiz.mjs';
 import {createCoop,applyCoop,coopView} from './coop.mjs';
@@ -68,9 +69,9 @@ export function createMatch({settings,bank,players,teams,epochs,seed,now}){
  if(kind==='team')game=createTeam({...common,kind:cfg.format,items:cfg.format==='quiz'?questions.map(q=>({...q,clue:q.prompt})):words});
  const connPlayers=ids.map(id=>({id,epoch:epochs[id],team:kind==='team'?teams.find(t=>t.members.includes(id)).id:undefined}));
  const connection=createConnectionState({kind,players:connPlayers,now});
- return {schema:150,kind,settings:cfg,game,connection,revision:0,now,receipts:{},pauseAt:null,result:null};
+ return {schema:150,kind,settings:cfg,game,connection,revision:0,now,receipts:{},pauseAt:null,result:null,social:emptySocial()};
 }
-function result(s){return s.connection.phase==='finished'?s.connection.result:s.game.phase==='finished'?s.game.result:null;}
+function result(s){return s.connection.phase==='finished'?s.connection.result:s.game.phase==='finished'?s.game.result:s.social?.result??null;}
 function phase(s){return result(s)!==null||s.game.phase==='finished'?'finished':s.connection.phase;}
 function advance(s,now){s.now=now;s.revision++;s.result=result(s);return s;}
 function shiftClocks(game,delta){
@@ -88,6 +89,11 @@ export function matchCommand(state,uid,cmd,now){
  const receipt=uid+':'+cmd.id;
  if(Object.hasOwn(state.receipts,receipt))return state;
  if(phase(state)!=='playing'||!gameplayAllowed(state.connection,uid))fail('Match not active');
+ if(socialTypes.has(cmd.type)){
+  const s=clone(state),eligible=s.connection.players.filter(p=>!p.removed&&p.connected).map(p=>p.id);
+  s.social=applySocial(s.social??emptySocial(),uid,cmd,now,eligible);
+  s.receipts[receipt]=s.revision+1;s.now=now;s.result=result(s);return s;
+ }
  const concurrentQuiz=state.kind==='quiz'&&['speed','simultaneous'].includes(state.game.mode)&&
   cmd.index===state.game.index&&Number.isInteger(cmd.revision)&&cmd.revision>=0&&cmd.revision<state.revision;
  if(cmd.revision!==state.revision&&!concurrentQuiz)fail('Stale match revision');
@@ -117,7 +123,9 @@ export function matchTransport(state,event,now){
  return advance(s,now);
 }
 export function matchTick(state,now){
- const after=matchTransport(state,{type:'tick'},now);
+ let after=matchTransport(state,{type:'tick'},now);
+ const expired=expireSocial(after.social??emptySocial(),now);
+ if(after.social&&expired!==after.social){after={...after,social:expired,now};}
  if(phase(after)!=='playing')return after;
  const s=clone(after),cmd={id:hash('tick',s.revision,now),type:'tick',revision:s.game.revision,index:s.game.index};
  const next=reducers[s.kind](s.game,cmd,now);
@@ -130,7 +138,7 @@ export function matchView(s,uid){
  // Never leak transport epochs, private bank, seed or other players' hint claims.
  return clone({schema:150,kind:s.kind,settings:s.settings,revision:s.revision,phase:phase(s),result:s.result,
   connection:{phase:s.connection.phase,pausedAt:s.pauseAt,players:s.connection.players.map(({id,connected,drops,until,removed,reason})=>({id,connected,drops,until,removed,reason}))},
-  game});
+  social:socialView(s.social??emptySocial(),s.now),game});
 }
 // The ref must point to a private Admin-only match record. No public projection
 // is ever written to the legacy room; return the caller's view after committing.

@@ -5,7 +5,7 @@ import {matchView,transactMatch,matchCommand,validateSettings} from './match_ser
 import {createLobby,lobbyView,transactLobby,transactStart} from './lobby.mjs';
 import {createHmac,randomBytes} from 'node:crypto';
 const matchId=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{6,64}$/.test(x)&&!['constructor','__proto__','prototype'].includes(x);
-const allowed=new Set(['submit','answer','pass','skip','choose','hint','eliminate','half','time']);
+const allowed=new Set(['submit','answer','pass','skip','choose','hint','eliminate','half','time','reaction','finish-offer','finish-accept','finish-reject','finish-withdraw']);
 const reply=(res,status,body)=>{res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','application/json; charset=utf-8');res.statusCode=status;res.end(JSON.stringify(body));};
 const problem=(res,status,code)=>reply(res,status,{ok:false,code});
 async function readBody(req){
@@ -17,7 +17,7 @@ async function readBody(req){
 function command(data){
  if(typeof data.id!=='string'||! /^[A-Za-z0-9_-]{1,100}$/.test(data.id)||!Number.isInteger(data.revision)||data.revision<0||!allowed.has(data.type))throw Error('invalid-command');
  // Never trust actor, time, points, answer keys, or raw state supplied by caller.
- if(Object.keys(data).some(k=>!['id','revision','type','word','index','item','answer','choice'].includes(k)))throw Error('unexpected-field');
+ if(Object.keys(data).some(k=>!['id','revision','type','word','index','item','answer','choice','symbol','offerId'].includes(k)))throw Error('unexpected-field');
  const out={id:data.id,revision:data.revision,type:data.type};
  for(const key of ['word','index','item','choice'])if(data[key]!==undefined){
   if(!Number.isInteger(data[key])||data[key]<0||data[key]>69)throw Error('invalid-index');out[key]=data[key];
@@ -26,6 +26,12 @@ function command(data){
   if(typeof data.answer!=='string'||data.answer.length>80)throw Error('invalid-answer');
   out.answer=data.answer;
  }
+ if(data.type==='reaction'){
+  if(typeof data.symbol!=='string'||data.symbol.length>8)throw Error('invalid-reaction');out.symbol=data.symbol;
+ }else if(data.symbol!==undefined)throw Error('unexpected-symbol');
+ if(['finish-accept','finish-reject','finish-withdraw'].includes(data.type)){
+  if(!requestId(data.offerId))throw Error('invalid-offer');out.offerId=data.offerId;
+ }else if(data.offerId!==undefined)throw Error('unexpected-offer');
  return out;
 }
 const requestId=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{1,100}$/.test(x)&&!['__proto__','constructor','prototype'].includes(x);
