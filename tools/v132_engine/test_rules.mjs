@@ -89,6 +89,24 @@ try {
  await new Promise(resolve=>setTimeout(resolve,700));
  await assertSucceeds(db.ref(emoji+uid).set(react('👏')));
  console.log('PASS v148 reaction authorization, bidirectional delivery, cooldown and legacy reactions');
+ // Server-owned connection state: never writable by participants; pause blocks
+ // existing gameplay paths without changing compatibility for legacy rooms.
+ const connPath=path+'/connectionV150';
+ await assertFails(db.ref(connPath).set({phase:'playing',revision:1}));
+ await assertFails(guest.ref(connPath).set({phase:'paused',revision:1}));
+ await assertFails(db.ref().update(premium(3,'PRM000003',{connectionV150:{phase:'playing',revision:1}})));
+ await env.withSecurityRulesDisabled(async c=>{await c.database().ref(connPath).set({phase:'paused',revision:1,payload:'server-only'});});
+ assert.equal((await db.ref(connPath).get()).val().phase,'paused');
+ await assertFails(db.ref(connPath+'/phase').set('playing'));
+ await assertFails(guest.ref(connPath).remove());
+ await assertFails(db.ref(path+'/turn').set({uid:other,until:Date.now()+30000}));
+ await assertFails(db.ref(path+'/solved/0').set(uid));
+ await assertFails(db.ref(path+'/unknown/0/'+uid).set(true));
+ await assertFails(db.ref(path+'/mistakes/0/'+uid).set(1));
+ await assertFails(db.ref(path+'/package6/finishVotes/'+uid).set(true));
+ await assertFails(db.ref(path+'/phase').set('finished'));
+ await env.withSecurityRulesDisabled(async c=>{await c.database().ref(connPath).remove();});
+ console.log('PASS v150 server-owned connection state, pause write barriers and legacy compatibility');
  // v150 finish offer: both identities, immutable ID, explicit response, cooldown, expiry.
  const offerPath=path+'/package6/finishOffer';
  const offerId='a'.repeat(32), t=Date.now();
