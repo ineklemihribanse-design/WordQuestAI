@@ -101,3 +101,6 @@ test('verbal expansion includes paired blanks and no exact previous stems',()=>{
 
 import {formExtension} from './learning_form_extension.mjs';
 test('word form extension records have unique stems and choices',()=>{assert.equal(formExtension.length,56);assert.ok(formExtension.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.correct===0&&q.prompt.split('____').length===2));const prior=new Set(allLearningQuestions.filter(q=>!q.id.startsWith('wq150_formextension_')).map(q=>q.prompt.toLowerCase()));assert.ok(formExtension.every(q=>!prior.has(q.prompt.toLowerCase())));});
+
+import {clozeExpansion} from './learning_cloze_expansion.mjs';
+test('cloze expansion has complete passage families and distinct stems',()=>{assert.equal(clozeExpansion.length,125);assert.equal(new Set(clozeExpansion.map(q=>q.prompt.toLowerCase())).size,clozeExpansion.length);assert.ok(clozeExpansion.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.correct===0&&q.family.startsWith('cloze_')&&q.yds&&q.explanation.length>=20&&q.prompt.split('____').length===2));const prior=new Set(allLearningQuestions.filter(q=>!q.id.startsWith('wq150_clozeexp_')).map(q=>q.prompt.toLowerCase()));assert.ok(clozeExpansion.every(q=>!prior.has(q.prompt.toLowerCase())));});

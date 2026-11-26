@@ -48,6 +48,8 @@ verbalnew=(root/'tools/arena_v150_server/learning_verbal_new.mjs').read_text('ut
 qs += json.loads(verbalnew.split('export const verbalNewQuestions = ',1)[1].rstrip().removesuffix(';'))
 formext=(root/'tools/arena_v150_server/learning_form_extension.mjs').read_text('utf-8')
 qs += json.loads(formext.split('export const formExtension = ',1)[1].rstrip().removesuffix(';'))
+cloze_exp=(root/'tools/arena_v150_server/learning_cloze_expansion.mjs').read_text('utf-8')
+qs += json.loads(cloze_exp.split('export const clozeExpansion = ',1)[1].rstrip().removesuffix(';'))
 # Existing YDS Academy has a strict four-choice contract; keep it unchanged.
 # Arena uses all five authored choices.
 qs=[q for q in qs if q['yds']]
