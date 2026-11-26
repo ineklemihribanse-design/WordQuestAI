@@ -41,6 +41,6 @@ export function applySocial(state,uid,cmd,now,eligible){
  s.revision++;return s;
 }
 export function socialView(state,now){
- return {revision:state.revision,reactions:Object.fromEntries(Object.entries(state.reactions).filter(([,v])=>now-v.at<1200)),
+ return {revision:state.revision,reactions:Object.fromEntries(Object.entries(state.reactions).filter(([,v])=>now-v.at<10000)),
  offer:state.offer,notice:state.notice,cooldownUntil:state.lastOfferAt===null?null:state.lastOfferAt+60000};
 }

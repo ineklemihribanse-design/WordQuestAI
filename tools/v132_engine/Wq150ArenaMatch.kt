@@ -157,6 +157,45 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val connection=view.optJSONObject("connection")
     val clock=if(paused)connection.number("pausedAt")?:now else now
     val remaining=deadline?.let{((it-clock+999L)/1000L).coerceAtLeast(0L)}
+    val social=view.optJSONObject("social")?:JSONObject()
+    val offer=social.optJSONObject("offer")
+    val offerId=offer?.optString("id").orEmpty()
+    val offerPending=offer?.optString("status")=="pending"&&(offer.number("expiresAt")?:0)>now
+    val offeredByMe=offer?.optString("from")==uid
+    val mustVote=offerPending&&!offeredByMe&&uid in offer.strings("required")&&uid !in offer.strings("accepted")
+    val canSocial=phase=="playing"&&!remote.busy&&remote.pending==null&&remote.error==null
+    var emojiMenu by remember(room){mutableStateOf(false)}
+    var lastEmoji by remember(room){mutableLongStateOf(0L)}
+    var reactionText by remember(room){mutableStateOf("")}
+    val seen=remember(room){mutableSetOf<String>()}
+    val incoming=social.optJSONObject("reactions")
+    val eventKey=incoming?.toString().orEmpty()
+    LaunchedEffect(eventKey){
+        val events=incoming?.keys()?.asSequence()?.mapNotNull{p->incoming.optJSONObject(p)?.let{p to it}}?.toList().orEmpty()
+        val latest=events.sortedByDescending{it.second.optLong("at")}.firstOrNull{(p,j)->p+":"+j.optString("id") !in seen}
+        events.forEach{(p,j)->seen.add(p+":"+j.optString("id"))}
+        if(latest!=null){
+            reactionText=latest.second.optString("symbol")
+            delay(1200L);reactionText=""
+        }
+    }
+    var noticeText by remember(room){mutableStateOf("")}
+    val notice=social.optJSONObject("notice")
+    LaunchedEffect(notice?.optString("id"),notice?.optString("kind")){
+        noticeText=when(notice?.optString("kind")){
+            "rejected"->"Maç bitirme teklifi reddedildi."
+            "withdrawn"->"Maç bitirme teklifi geri çekildi."
+            "expired"->"Maç bitirme teklifinin süresi doldu."
+            "accepted"->"Maç bitirme teklifi kabul edildi."
+            else->""
+        }
+        if(noticeText.isNotEmpty()){delay(3500L);noticeText=""}
+    }
+    fun sendSocial(type:String,symbol:String?=null,id:String?=null){
+        if(!canSocial)return
+        val command=Wq150Command(view.optLong("revision"),type,symbol=symbol,offerId=id)
+        if(command.valid())scope.launch{controller.submit(command)}
+    }
     fun send(type:String,answer:String?=null,choice:Int?=null){
         if(!enabled)return
         val command=Wq150Command(view.optLong("revision"),type,
@@ -175,6 +214,17 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 TextButton(onClick={exit=true}){Text("‹ Geri",color=Wq122Gold)}
                 Text(Wq150ModeCatalog.kinds[kind].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f))
                 remaining?.let{Text("$it sn",color=Wq122Gold,fontWeight=FontWeight.Black)}
+                Box{
+                    TextButton(enabled=canSocial&&now-lastEmoji>=1500L,onClick={emojiMenu=true}){Text("☺",color=Wq122Gold,fontSize=22.sp)}
+                    DropdownMenu(expanded=emojiMenu,onDismissRequest={emojiMenu=false}){
+                        listOf("👏","👍","😊","😄","😮","🔥","🎉","💪","🤔","😢","❤️","🏆").chunked(4).forEach{row->
+                            Row(Modifier.padding(horizontal=6.dp)){
+                                row.forEach{symbol->TextButton(onClick={emojiMenu=false;lastEmoji=now;sendSocial("reaction",symbol=symbol)}){Text(symbol,fontSize=22.sp)}}
+                            }
+                        }
+                    }
+                }
+                TextButton(enabled=canSocial&&!offerPending&&now>=(social.number("cooldownUntil")?:0),onClick={sendSocial("finish-offer")}){Text("Bitir",color=Wq122Gold)}
             }
             val scores=game.optJSONObject("scores")?:game.optJSONObject("stats")
             Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)){
@@ -182,7 +232,9 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 val groups=if(kind=="team")game.objects("teams").map{it.optString("id")}else ids
                 groups.forEachIndexed{i,id->
                     val value=scores?.optJSONObject(id)?.optInt("score")?:scores?.optInt(id)?:0
-                    Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.weight(1f)){
+                    val currentTurn=game.optString("turn")==id||mode in listOf("speed","simultaneous")
+                    Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.weight(1f),
+                        border=if(currentTurn&&phase=="playing")androidx.compose.foundation.BorderStroke(2.dp,Color(0xFFFFD56B))else null){
                         Column(Modifier.padding(8.dp),horizontalAlignment=Alignment.CenterHorizontally){
                             Text(if(id==uid)"Sen" else if(kind=="team")"Takım "+(i+1) else "Oyuncu "+(i+1),color=Wq122Ink)
                             Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontWeight=FontWeight.Black)
@@ -249,12 +301,23 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                     }
                     if(!eligible&&!paused)Text("Rakibin sırası veya cevap bekleniyor.",color=Wq122Ink)
                 }
+                if(offerPending&&offeredByMe)TextButton(enabled=canSocial,onClick={sendSocial("finish-withdraw",id=offerId)}){Text("Bitirme teklifini geri çek",color=Wq122Gold)}
                 if(remote.busy)LinearProgressIndicator(Modifier.fillMaxWidth())
                 remote.error?.let{Text(it,color=Color(0xFFFFB4B4))}
                 if(remote.pending!=null&&!remote.busy)TextButton(onClick={scope.launch{controller.retryPending()}}){Text("İşlemi tekrar dene")}
             }
         }
+        androidx.compose.animation.AnimatedVisibility(visible=reactionText.isNotEmpty(),modifier=Modifier.align(Alignment.CenterEnd).padding(16.dp)){
+            Surface(color=Color(0xDD251347),shape=MaterialTheme.shapes.large){Text(reactionText,Modifier.padding(10.dp),fontSize=36.sp)}
         }
+        if(noticeText.isNotBlank())Surface(modifier=Modifier.align(Alignment.TopCenter).padding(top=100.dp),color=Color(0xEE251347),shape=MaterialTheme.shapes.medium){
+            Text(noticeText,Modifier.padding(12.dp),color=Wq122Ink)
+        }
+        }
+        if(mustVote&&!paused&&!finished)AlertDialog(onDismissRequest={},title={Text("Maç bitirme teklifi")},
+            text={Text("Rakibin maçı karşılıklı anlaşmayla bitirmek istiyor. Kalan süre: "+(((offer.number("expiresAt")?:now)-now+999L)/1000L).coerceAtLeast(0L)+" sn")},
+            confirmButton={TextButton(enabled=canSocial,onClick={sendSocial("finish-accept",id=offerId)}){Text("Kabul et")}},
+            dismissButton={TextButton(enabled=canSocial,onClick={sendSocial("finish-reject",id=offerId)}){Text("Reddet")}})
         if(paused&&!finished)AlertDialog(onDismissRequest={},title={Text("Oyuncu bağlantısı kesildi")},
             text={Text("Maç duraklatıldı. Tahta, puanlar ve süre korunuyor.")},confirmButton={})
         if(exit)AlertDialog(onDismissRequest={exit=false},title={Text("Arena'dan ayrıl?")},

@@ -9,7 +9,7 @@ test('reactions do not change gameplay revision, are rate limited and expire',()
  let s=run(base(),'a','reaction',{symbol:'👏'});
  assert.equal(s.revision,0);assert.equal(matchView(s,'b').social.reactions.a.symbol,'👏');
  assert.throws(()=>run(s,'a','reaction',{symbol:'🔥'}));assert.throws(()=>run(s,'b','reaction',{symbol:'BAD'}));
- s=run(s,'b','reaction',{symbol:'👍'},2501);assert.equal(matchView(s,'b').social.reactions.a,undefined);
+ s=run(s,'b','reaction',{symbol:'👍'},11001);assert.equal(matchView(s,'b').social.reactions.a,undefined);
 });
 test('reject or withdraw notifies participants; cooldown applies',()=>{
  let s=run(base(),'a','finish-offer');const id=s.social.offer.id;

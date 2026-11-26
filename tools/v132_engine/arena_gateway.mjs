@@ -120,7 +120,7 @@ export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bank
    const snap=await ref.get(),state=snap.val();
    if(!state)return problem(res,404,'not-found');
    try{matchView(state,uid);}catch{return problem(res,404,'not-found');}
-   if(!write)return reply(res,200,{ok:true,view:matchView(state,uid)});
+   if(!write)return reply(res,200,{ok:true,view:matchView(state,uid,clock())});
    // Fixed server arrival timestamp reused across Firebase transaction retries.
    const now=clock();
    try{matchCommand(state,uid,cmd,now);}catch{return problem(res,409,'command-rejected');}

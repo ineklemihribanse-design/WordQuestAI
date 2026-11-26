@@ -42,11 +42,21 @@ internal class Wq150Endpoint(raw:String) {
 internal data class Wq150Command(
     val revision:Long,val type:String,val word:Int?=null,val index:Int?=null,
     val item:Int?=null,val answer:String?=null,val choice:Int?=null,
-    val id:String=UUID.randomUUID().toString()
+    val id:String=UUID.randomUUID().toString(),val symbol:String?=null,val offerId:String?=null
 ) {
+    val social:Boolean get()=type in setOf("reaction","finish-offer","finish-accept","finish-reject","finish-withdraw")
     fun valid():Boolean {
         if(revision<0||revision>9007199254740991L||!Regex("^[A-Za-z0-9_-]{1,100}$").matches(id)||
             id in listOf("constructor","prototype","__proto__"))return false
+        if(social){
+            if(listOf(word,index,item,answer,choice).any{it!=null})return false
+            return when(type){
+                "reaction" -> symbol in listOf("👏","👍","😊","😄","😮","🔥","🎉","💪","🤔","😢","❤️","🏆")&&offerId==null
+                "finish-offer" -> symbol==null&&offerId==null
+                else -> symbol==null&&offerId!=null&&Wq150LobbyCommand.validId(offerId)
+            }
+        }
+        if(symbol!=null||offerId!=null)return false
         if(type !in setOf("submit","answer","pass","skip","choose","hint","eliminate","half","time"))return false
         if(listOf(word,index,item).count{it!=null}!=1||listOfNotNull(word,index,item).any{it !in 0..69})return false
         if(choice!=null&&choice !in 0..4)return false
@@ -62,6 +72,7 @@ internal data class Wq150Command(
         return JSONObject().put("id",id).put("revision",revision).put("type",type).also{j->
             word?.let{j.put("word",it)};index?.let{j.put("index",it)}
             item?.let{j.put("item",it)};answer?.let{j.put("answer",it)};choice?.let{j.put("choice",it)}
+            symbol?.let{j.put("symbol",it)};offerId?.let{j.put("offerId",it)}
         }
     }
 }
@@ -181,7 +192,7 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
         val current=mutable.value
         if(current.pending!=null&&current.pending.id!=command.id)return@withLock
         if(current.pending==null&&(current.snapshot?.optString("phase")!="playing"||
-            current.snapshot?.optLong("revision")!=command.revision))return@withLock
+            (!command.social&&current.snapshot?.optLong("revision")!=command.revision)))return@withLock
         require(command.valid())
         mutable.value=current.copy(busy=true,pending=command,error=null)
         try{
@@ -189,9 +200,9 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
             mutable.value=mutable.value.copy(pending=null)
         }catch(e:CancellationException){throw e}
         catch(e:Wq150GatewayError){
-            // 409 is ambiguous: a network retry can follow a committed command.
-            // Keep the exact ID until a successful retry or explicit reconciliation.
-            mutable.value=mutable.value.copy(error="İşlem doğrulanamadı. Durumu yenile.")
+            // An explicit command rejection is final; transport ambiguity retains the ID.
+            val rejected=e.code=="command-rejected"||e.status in listOf(400,401,403,404,405,413)
+            mutable.value=mutable.value.copy(pending=if(rejected)null else command,error=if(rejected)"İşlem kabul edilmedi. Oyun durumu yenileniyor." else "İşlem doğrulanamadı. Durumu yenile.")
         }catch(e:Exception){
             mutable.value=mutable.value.copy(error="Bağlantı kesildi. Aynı işlem tekrar denenebilir.")
         }finally{mutable.value=mutable.value.copy(busy=false)}

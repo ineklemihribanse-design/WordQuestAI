@@ -132,13 +132,13 @@ export function matchTick(state,now){
  if(next===s.game)return after;
  s.game=next;return advance(s,now);
 }
-export function matchView(s,uid){
+export function matchView(s,uid,at=s.now){
  if(!roster(s.game).includes(uid))fail('Not a participant');
  const game=s.kind==='duel'?publicDuel(s.game,uid):s.kind==='coop'?coopView(s.game):s.kind==='quiz'?quizView(s.game,uid):teamView(s.game,uid);
  // Never leak transport epochs, private bank, seed or other players' hint claims.
  return clone({schema:150,kind:s.kind,settings:s.settings,revision:s.revision,phase:phase(s),result:s.result,
   connection:{phase:s.connection.phase,pausedAt:s.pauseAt,players:s.connection.players.map(({id,connected,drops,until,removed,reason})=>({id,connected,drops,until,removed,reason}))},
-  social:socialView(s.social??emptySocial(),s.now),game});
+  serverNow:at,social:socialView(s.social??emptySocial(),at),game});
 }
 // The ref must point to a private Admin-only match record. No public projection
 // is ever written to the legacy room; return the caller's view after committing.
