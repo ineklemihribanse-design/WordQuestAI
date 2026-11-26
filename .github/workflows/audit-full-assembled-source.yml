@@ -827,6 +827,54 @@ jobs:
           set -euo pipefail
           ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest' --tests 'com.kelimebulmacasi.a1.Wq150GatewayTest' --tests 'com.kelimebulmacasi.a1.Wq150LobbyClientTest' --tests 'com.kelimebulmacasi.a1.Wq150ViewportTest'
           test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest.xml
+      - name: Provision live free Arena origin for signed device-test candidate only
+        run: |
+          set -euo pipefail
+          printf '%s\n' 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev' > source/app/src/main/assets/wq150_arena_origin.txt
+      - name: Build unsigned v150 device-test candidate
+        working-directory: source
+        run: |
+          set -euo pipefail
+          ./gradlew --no-daemon --build-cache :app:assembleOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/candidate-build.log" 2>&1 || { tail -n 100 "$RUNNER_TEMP/wq-full-audit/candidate-build.log"; exit 1; }
+          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
+      - name: Sign and verify device-test candidate with existing certificate
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          umask 077
+          KEY="$RUNNER_TEMP/wq-v150-signing.p12"
+          trap 'rm -f "$KEY"' EXIT
+          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
+          OUT=source/app/build/outputs/apk/offline
+          APK="$OUT/WordQuestAI-v1.0.150-device-test.apk"
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          java -jar "$SIGNER" sign --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true --out "$APK" "$OUT/app-offline-unsigned.apk"
+          java -jar "$SIGNER" verify --verbose --print-certs "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "versionCode='164'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "versionName='1.0.150'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"; then exit 1; fi
+          unzip -tq "$APK"
+          test "$(unzip -p "$APK" assets/wq150_arena_origin.txt)" = 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev'
+          sha256sum "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate.sha256"
+      - name: Upload signed device-test APK only (not a GitHub release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.150-device-test
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.150-device-test.apk
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 7
       - name: Preserve full audit and exact audited source snapshot
         if: always()
         uses: actions/upload-artifact@v4
