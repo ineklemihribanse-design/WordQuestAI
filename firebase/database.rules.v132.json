@@ -401,7 +401,10 @@
     },
     "arenaV150Private": {
       ".read": false,
-      ".write": false
+      ".write": false,
+      ".indexOn": [
+        "active"
+      ]
     },
     "arenaV150Profiles": {
       ".read": false,
