@@ -2123,5 +2123,1705 @@ export const clozeExpansion = [
     "correct": 0,
     "explanation": "Senaryolu sunum modeldeki belirsizliği yansıtır.",
     "family": "cloze_expansion_25"
+  },
+  {
+    "id": "wq150_nov26_cloze3_1_1",
+    "family": "cloze_nov26_3_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local theatre ____ free workshops for teenagers last autumn. Participants learn how to prepare a short performance. At first, some students were reluctant to speak in front of others. The instructors encouraged them to practise in pairs until they felt more confident. The workshops have become so popular that the theatre plans to expand the programme.\n\nChoose the best option for the blank.",
+    "options": [
+      "introduced",
+      "introduces tomorrow",
+      "has introducing",
+      "was introduced",
+      "introducing"
+    ],
+    "correct": 0,
+    "explanation": "Last autumn belirli geçmiş zaman bildirir; introduced gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_1_2",
+    "family": "cloze_nov26_3_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local theatre introduced free workshops for teenagers last autumn. Participants learn ____ to prepare a short performance. At first, some students were reluctant to speak in front of others. The instructors encouraged them to practise in pairs until they felt more confident. The workshops have become so popular that the theatre plans to expand the programme.\n\nChoose the best option for the blank.",
+    "options": [
+      "how",
+      "which",
+      "whose",
+      "whom",
+      "what of"
+    ],
+    "correct": 0,
+    "explanation": "How to prepare, nasıl hazırlanacağını öğrenmek anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_1_3",
+    "family": "cloze_nov26_3_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local theatre introduced free workshops for teenagers last autumn. Participants learn how to prepare a short performance. At first, some students were reluctant ____ speak in front of others. The instructors encouraged them to practise in pairs until they felt more confident. The workshops have become so popular that the theatre plans to expand the programme.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "at",
+      "for",
+      "with",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Reluctant to do something, bir şeyi yapmaya isteksiz olmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_1_4",
+    "family": "cloze_nov26_3_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local theatre introduced free workshops for teenagers last autumn. Participants learn how to prepare a short performance. At first, some students were reluctant to speak in front of others. The instructors encouraged them to practise in pairs ____ they felt more confident. The workshops have become so popular that the theatre plans to expand the programme.\n\nChoose the best option for the blank.",
+    "options": [
+      "until",
+      "unless",
+      "despite",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "Until güven artana kadar süren çalışmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_1_5",
+    "family": "cloze_nov26_3_1",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A local theatre introduced free workshops for teenagers last autumn. Participants learn how to prepare a short performance. At first, some students were reluctant to speak in front of others. The instructors encouraged them to practise in pairs until they felt more confident. The workshops have become so popular that the theatre plans to ____ the programme.\n\nChoose the best option for the blank.",
+    "options": [
+      "expand",
+      "withdraw",
+      "ignore",
+      "damage",
+      "conceal"
+    ],
+    "correct": 0,
+    "explanation": "Popülerlik nedeniyle programı genişletmek anlamındaki expand uygundur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_2_1",
+    "family": "cloze_nov26_3_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "The town's oldest bridge ____ for repairs next Monday. Drivers who normally use it will need to take another route. The council has placed signs at the main junctions to guide traffic. Buses will continue to operate, although some journeys may take longer. The work is expected to be completed by the end of the month.\n\nChoose the best option for the blank.",
+    "options": [
+      "will be closed",
+      "was closing yesterday",
+      "has close",
+      "will have closing",
+      "is close"
+    ],
+    "correct": 0,
+    "explanation": "Next Monday gelecekteki edilgen kapatmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_2_2",
+    "family": "cloze_nov26_3_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "The town's oldest bridge will be closed for repairs next Monday. Drivers ____ normally use it will need to take another route. The council has placed signs at the main junctions to guide traffic. Buses will continue to operate, although some journeys may take longer. The work is expected to be completed by the end of the month.\n\nChoose the best option for the blank.",
+    "options": [
+      "who",
+      "which",
+      "whose",
+      "where",
+      "when"
+    ],
+    "correct": 0,
+    "explanation": "Drivers insan olduğu için özne görevindeki who kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_2_3",
+    "family": "cloze_nov26_3_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "The town's oldest bridge will be closed for repairs next Monday. Drivers who normally use it will need to take another route. The council has placed signs ____ the main junctions to guide traffic. Buses will continue to operate, although some journeys may take longer. The work is expected to be completed by the end of the month.\n\nChoose the best option for the blank.",
+    "options": [
+      "at",
+      "into",
+      "from",
+      "since",
+      "than"
+    ],
+    "correct": 0,
+    "explanation": "Kavşaklarda bulunan levhalar için at the junctions kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_2_4",
+    "family": "cloze_nov26_3_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "The town's oldest bridge will be closed for repairs next Monday. Drivers who normally use it will need to take another route. The council has placed signs at the main junctions to guide traffic. Buses will continue to operate, ____ some journeys may take longer. The work is expected to be completed by the end of the month.\n\nChoose the best option for the blank.",
+    "options": [
+      "although",
+      "because of",
+      "unless",
+      "so as to",
+      "provided that"
+    ],
+    "correct": 0,
+    "explanation": "Otobüslerin çalışması ile yolculuğun uzayabilmesi arasındaki karşıtlık although ile verilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_2_5",
+    "family": "cloze_nov26_3_2",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "The town's oldest bridge will be closed for repairs next Monday. Drivers who normally use it will need to take another route. The council has placed signs at the main junctions to guide traffic. Buses will continue to operate, although some journeys may take longer. The work is expected to be ____ by the end of the month.\n\nChoose the best option for the blank.",
+    "options": [
+      "completed",
+      "borrowed",
+      "repeated",
+      "postponed indefinitely",
+      "abandoned"
+    ],
+    "correct": 0,
+    "explanation": "Onarımın ay sonunda tamamlanması beklenir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_3_1",
+    "family": "cloze_nov26_3_3",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of residents decided ____ a walking club after a new park opened. The club meets twice a week, unless the weather is too severe. Members can choose between two routes of different lengths. Several people have reported that regular walks help them feel more energetic. New participants are welcome, and they do not need any special equipment.\n\nChoose the best option for the blank.",
+    "options": [
+      "to start",
+      "starting of",
+      "started",
+      "to starting",
+      "start of"
+    ],
+    "correct": 0,
+    "explanation": "Decide to + fiil yapısı kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_3_2",
+    "family": "cloze_nov26_3_3",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of residents decided to start a walking club after a new park opened. The club meets twice a week, ____ the weather is too severe. Members can choose between two routes of different lengths. Several people have reported that regular walks help them feel more energetic. New participants are welcome, and they do not need any special equipment.\n\nChoose the best option for the blank.",
+    "options": [
+      "unless",
+      "because of",
+      "despite",
+      "so that",
+      "even when always"
+    ],
+    "correct": 0,
+    "explanation": "Unless, hava çok kötü olmadığı sürece anlamı verir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_3_3",
+    "family": "cloze_nov26_3_3",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of residents decided to start a walking club after a new park opened. The club meets twice a week, unless the weather is too severe. Members can choose ____ two routes of different lengths. Several people have reported that regular walks help them feel more energetic. New participants are welcome, and they do not need any special equipment.\n\nChoose the best option for the blank.",
+    "options": [
+      "between",
+      "under",
+      "during",
+      "towards",
+      "since"
+    ],
+    "correct": 0,
+    "explanation": "İki rota arasında seçim choose between ile ifade edilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_3_4",
+    "family": "cloze_nov26_3_3",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of residents decided to start a walking club after a new park opened. The club meets twice a week, unless the weather is too severe. Members can choose between two routes of different lengths. Several people have reported that regular walks help them ____ more energetic. New participants are welcome, and they do not need any special equipment.\n\nChoose the best option for the blank.",
+    "options": [
+      "feel",
+      "felt",
+      "feeling of",
+      "feels",
+      "have felt yesterday"
+    ],
+    "correct": 0,
+    "explanation": "Help + nesne + yalın fiil biçimi uygundur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_3_5",
+    "family": "cloze_nov26_3_3",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "prompt": "A group of residents decided to start a walking club after a new park opened. The club meets twice a week, unless the weather is too severe. Members can choose between two routes of different lengths. Several people have reported that regular walks help them feel more energetic. New participants are welcome, and they do not need ____ special equipment.\n\nChoose the best option for the blank.",
+    "options": [
+      "any",
+      "many of",
+      "few of",
+      "an",
+      "a"
+    ],
+    "correct": 0,
+    "explanation": "Olumsuz cümlede sayılamayan equipment ile any kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_4_1",
+    "family": "cloze_nov26_3_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A municipal recycling scheme initially collected glass and paper in a single container. Officials found that broken glass frequently ____ the paper, making it unsuitable for processing. Separate containers were subsequently introduced in order to reduce this problem. Residents had been given clear instructions before the change took effect. The quantity of usable paper increased, although the overall amount collected remained broadly stable. This illustrates the importance of monitoring material quality rather than volume alone.\n\nChoose the best option for the blank.",
+    "options": [
+      "contaminated",
+      "preserved",
+      "purified",
+      "strengthened",
+      "protected"
+    ],
+    "correct": 0,
+    "explanation": "Cam kırıkları kâğıdı kirlettiği için contaminated uygundur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_4_2",
+    "family": "cloze_nov26_3_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A municipal recycling scheme initially collected glass and paper in a single container. Officials found that broken glass frequently contaminated the paper, making it unsuitable for processing. Separate containers were subsequently introduced ____ reduce this problem. Residents had been given clear instructions before the change took effect. The quantity of usable paper increased, although the overall amount collected remained broadly stable. This illustrates the importance of monitoring material quality rather than volume alone.\n\nChoose the best option for the blank.",
+    "options": [
+      "in order to",
+      "in spite of",
+      "as long as",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "In order to amaç bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_4_3",
+    "family": "cloze_nov26_3_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A municipal recycling scheme initially collected glass and paper in a single container. Officials found that broken glass frequently contaminated the paper, making it unsuitable for processing. Separate containers were subsequently introduced in order to reduce this problem. Residents ____ clear instructions before the change took effect. The quantity of usable paper increased, although the overall amount collected remained broadly stable. This illustrates the importance of monitoring material quality rather than volume alone.\n\nChoose the best option for the blank.",
+    "options": [
+      "had been given",
+      "had giving",
+      "have been gave",
+      "were give",
+      "had been giving themselves"
+    ],
+    "correct": 0,
+    "explanation": "Değişiklik öncesinde verilen talimatlar past perfect passive ile anlatılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_4_4",
+    "family": "cloze_nov26_3_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A municipal recycling scheme initially collected glass and paper in a single container. Officials found that broken glass frequently contaminated the paper, making it unsuitable for processing. Separate containers were subsequently introduced in order to reduce this problem. Residents had been given clear instructions before the change took effect. The quantity of usable paper increased, ____ the overall amount collected remained broadly stable. This illustrates the importance of monitoring material quality rather than volume alone.\n\nChoose the best option for the blank.",
+    "options": [
+      "although",
+      "unless",
+      "so that",
+      "because of",
+      "in case of"
+    ],
+    "correct": 0,
+    "explanation": "Kullanılabilir kâğıt artarken toplam miktar sabit; although karşıtlık kurar."
+  },
+  {
+    "id": "wq150_nov26_cloze3_4_5",
+    "family": "cloze_nov26_3_4",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A municipal recycling scheme initially collected glass and paper in a single container. Officials found that broken glass frequently contaminated the paper, making it unsuitable for processing. Separate containers were subsequently introduced in order to reduce this problem. Residents had been given clear instructions before the change took effect. The quantity of usable paper increased, although the overall amount collected remained broadly stable. This illustrates the importance of monitoring material quality ____ volume alone.\n\nChoose the best option for the blank.",
+    "options": [
+      "rather than",
+      "owing to",
+      "in addition",
+      "as a result",
+      "regardless"
+    ],
+    "correct": 0,
+    "explanation": "Rather than yalnızca miktara odaklanmak yerine kaliteyi izlemeyi anlatır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_5_1",
+    "family": "cloze_nov26_3_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal research station began using autonomous instruments to record water temperature. The devices could operate for months without ____ to shore. Engineers designed protective cases to prevent salt water from reaching the electronic components. Although the instruments were expensive, they reduced the need for frequent research voyages. Data were transmitted whenever the devices came within range of a receiving station. The project allowed scientists to obtain measurements that had previously been difficult to collect.\n\nChoose the best option for the blank.",
+    "options": [
+      "returning",
+      "return",
+      "returned",
+      "to return",
+      "having return"
+    ],
+    "correct": 0,
+    "explanation": "Without ardından -ing biçimi gelir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_5_2",
+    "family": "cloze_nov26_3_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal research station began using autonomous instruments to record water temperature. The devices could operate for months without returning to shore. Engineers designed protective cases ____ prevent salt water from reaching the electronic components. Although the instruments were expensive, they reduced the need for frequent research voyages. Data were transmitted whenever the devices came within range of a receiving station. The project allowed scientists to obtain measurements that had previously been difficult to collect.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "by",
+      "of",
+      "with",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "To prevent amaç bildiren mastardır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_5_3",
+    "family": "cloze_nov26_3_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal research station began using autonomous instruments to record water temperature. The devices could operate for months without returning to shore. Engineers designed protective cases to prevent salt water from reaching the electronic components. ____ the instruments were expensive, they reduced the need for frequent research voyages. Data were transmitted whenever the devices came within range of a receiving station. The project allowed scientists to obtain measurements that had previously been difficult to collect.\n\nChoose the best option for the blank.",
+    "options": [
+      "Although",
+      "Because of",
+      "Unless",
+      "So that",
+      "Provided that"
+    ],
+    "correct": 0,
+    "explanation": "Pahalı olmaları ile sefer gereksinimini azaltmaları karşıtlık oluşturur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_5_4",
+    "family": "cloze_nov26_3_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal research station began using autonomous instruments to record water temperature. The devices could operate for months without returning to shore. Engineers designed protective cases to prevent salt water from reaching the electronic components. Although the instruments were expensive, they reduced the need for frequent research voyages. Data were transmitted whenever the devices came ____ range of a receiving station. The project allowed scientists to obtain measurements that had previously been difficult to collect.\n\nChoose the best option for the blank.",
+    "options": [
+      "within",
+      "throughout of",
+      "despite",
+      "according",
+      "between of"
+    ],
+    "correct": 0,
+    "explanation": "Within range erişim menzili içinde demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_5_5",
+    "family": "cloze_nov26_3_5",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A coastal research station began using autonomous instruments to record water temperature. The devices could operate for months without returning to shore. Engineers designed protective cases to prevent salt water from reaching the electronic components. Although the instruments were expensive, they reduced the need for frequent research voyages. Data were transmitted whenever the devices came within range of a receiving station. The project allowed scientists to obtain measurements that ____ previously been difficult to collect.\n\nChoose the best option for the blank.",
+    "options": [
+      "had",
+      "will have",
+      "are",
+      "have being",
+      "were to have been"
+    ],
+    "correct": 0,
+    "explanation": "Önceki dönemdeki zorluk past perfect ile belirtilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_6_1",
+    "family": "cloze_nov26_3_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university introduced a system through which students could submit assignments anonymously. The aim was to reduce the influence of personal information ____ grading decisions. Lecturers received identification codes instead of names while the work was marked. Some assessment tasks, such as oral presentations, could not easily be assessed in this way. The university therefore applied the policy only where anonymity was practical. A subsequent review examined whether the system had changed patterns of assessment.\n\nChoose the best option for the blank.",
+    "options": [
+      "on",
+      "at",
+      "with",
+      "by",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Influence on bir şey üzerindeki etki kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_6_2",
+    "family": "cloze_nov26_3_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university introduced a system through which students could submit assignments anonymously. The aim was to reduce the influence of personal information on grading decisions. Lecturers received identification codes instead of names ____ the work was marked. Some assessment tasks, such as oral presentations, could not easily be assessed in this way. The university therefore applied the policy only where anonymity was practical. A subsequent review examined whether the system had changed patterns of assessment.\n\nChoose the best option for the blank.",
+    "options": [
+      "while",
+      "because of",
+      "despite",
+      "in order to",
+      "instead of"
+    ],
+    "correct": 0,
+    "explanation": "While the work was marked, değerlendirme sırasında demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_6_3",
+    "family": "cloze_nov26_3_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university introduced a system through which students could submit assignments anonymously. The aim was to reduce the influence of personal information on grading decisions. Lecturers received identification codes instead of names while the work was marked. Some assessment tasks, such as oral presentations, could not easily ____ in this way. The university therefore applied the policy only where anonymity was practical. A subsequent review examined whether the system had changed patterns of assessment.\n\nChoose the best option for the blank.",
+    "options": [
+      "be assessed",
+      "assessing",
+      "have assess",
+      "been assessing",
+      "to be assess"
+    ],
+    "correct": 0,
+    "explanation": "Modal could + edilgen be assessed gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_6_4",
+    "family": "cloze_nov26_3_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university introduced a system through which students could submit assignments anonymously. The aim was to reduce the influence of personal information on grading decisions. Lecturers received identification codes instead of names while the work was marked. Some assessment tasks, such as oral presentations, could not easily be assessed in this way. The university therefore applied the policy only ____ anonymity was practical. A subsequent review examined whether the system had changed patterns of assessment.\n\nChoose the best option for the blank.",
+    "options": [
+      "where",
+      "whose",
+      "whom",
+      "what of",
+      "whether or"
+    ],
+    "correct": 0,
+    "explanation": "Where burada uygun olduğu durumları belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_6_5",
+    "family": "cloze_nov26_3_6",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A university introduced a system through which students could submit assignments anonymously. The aim was to reduce the influence of personal information on grading decisions. Lecturers received identification codes instead of names while the work was marked. Some assessment tasks, such as oral presentations, could not easily be assessed in this way. The university therefore applied the policy only where anonymity was practical. A subsequent review examined ____ the system had changed patterns of assessment.\n\nChoose the best option for the blank.",
+    "options": [
+      "whether",
+      "whose",
+      "whom",
+      "what of",
+      "which of"
+    ],
+    "correct": 0,
+    "explanation": "Whether dolaylı evet-hayır sorusu kurar."
+  },
+  {
+    "id": "wq150_nov26_cloze3_7_1",
+    "family": "cloze_nov26_3_7",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An engineering firm introduced reusable shipping containers for delicate components. Each container was fitted ____ sensors that recorded sudden impacts during transport. When a component arrived damaged, staff could examine the records to determine when the impact occurred. The information was used to identify recurring weaknesses in the delivery process. Instead of merely replacing damaged products, the firm began working with carriers to prevent damage. Over time, complaints became less frequent.\n\nChoose the best option for the blank.",
+    "options": [
+      "with",
+      "of",
+      "from",
+      "by",
+      "about"
+    ],
+    "correct": 0,
+    "explanation": "Be fitted with, bir şeyle donatılmış olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_7_2",
+    "family": "cloze_nov26_3_7",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An engineering firm introduced reusable shipping containers for delicate components. Each container was fitted with sensors that recorded sudden impacts during transport. When a component arrived damaged, staff could examine the records ____ determine when the impact occurred. The information was used to identify recurring weaknesses in the delivery process. Instead of merely replacing damaged products, the firm began working with carriers to prevent damage. Over time, complaints became less frequent.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "despite",
+      "without of",
+      "unless",
+      "whereas"
+    ],
+    "correct": 0,
+    "explanation": "To determine, kayıtları incelemenin amacını belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_7_3",
+    "family": "cloze_nov26_3_7",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An engineering firm introduced reusable shipping containers for delicate components. Each container was fitted with sensors that recorded sudden impacts during transport. When a component arrived damaged, staff could examine the records to determine when the impact occurred. The information was used to ____ recurring weaknesses in the delivery process. Instead of merely replacing damaged products, the firm began working with carriers to prevent damage. Over time, complaints became less frequent.\n\nChoose the best option for the blank.",
+    "options": [
+      "identify",
+      "erase",
+      "conceal",
+      "invent",
+      "disregard"
+    ],
+    "correct": 0,
+    "explanation": "Tekrarlanan zayıflıkları tespit etmek için identify uygundur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_7_4",
+    "family": "cloze_nov26_3_7",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An engineering firm introduced reusable shipping containers for delicate components. Each container was fitted with sensors that recorded sudden impacts during transport. When a component arrived damaged, staff could examine the records to determine when the impact occurred. The information was used to identify recurring weaknesses in the delivery process. ____ replacing damaged products, the firm began working with carriers to prevent damage. Over time, complaints became less frequent.\n\nChoose the best option for the blank.",
+    "options": [
+      "Instead of merely",
+      "Because of merely",
+      "In case of merely",
+      "As a result of merely",
+      "Unless merely"
+    ],
+    "correct": 0,
+    "explanation": "Instead of merely replacing yalnızca değiştirmek yerine anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_7_5",
+    "family": "cloze_nov26_3_7",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "An engineering firm introduced reusable shipping containers for delicate components. Each container was fitted with sensors that recorded sudden impacts during transport. When a component arrived damaged, staff could examine the records to determine when the impact occurred. The information was used to identify recurring weaknesses in the delivery process. Instead of merely replacing damaged products, the firm began working with carriers to prevent damage. Over time, complaints became ____ frequent.\n\nChoose the best option for the blank.",
+    "options": [
+      "less",
+      "many",
+      "few of",
+      "least of",
+      "much of"
+    ],
+    "correct": 0,
+    "explanation": "Less frequent daha seyrek demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_8_1",
+    "family": "cloze_nov26_3_8",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public archive began photographing fragile maps before making them available online. The images were captured at high resolution ____ small handwritten details could be examined. Each image was linked to a catalogue entry that described the map's origin. Researchers were encouraged to consult these entries rather than rely solely on the visual material. Although digital access reduced handling of the originals, it did not eliminate the need for conservation. The archive continued to store the physical documents in controlled conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "so that",
+      "even though",
+      "unless",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "So that amaç ve mümkün kılınan sonucu belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_8_2",
+    "family": "cloze_nov26_3_8",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public archive began photographing fragile maps before making them available online. The images were captured at high resolution so that small handwritten details could be examined. Each image was linked to a catalogue entry ____ described the map's origin. Researchers were encouraged to consult these entries rather than rely solely on the visual material. Although digital access reduced handling of the originals, it did not eliminate the need for conservation. The archive continued to store the physical documents in controlled conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "that",
+      "whom",
+      "whose",
+      "where",
+      "when"
+    ],
+    "correct": 0,
+    "explanation": "Catalogue entry nesnesini niteleyen özne relative clause için that gerekir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_8_3",
+    "family": "cloze_nov26_3_8",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public archive began photographing fragile maps before making them available online. The images were captured at high resolution so that small handwritten details could be examined. Each image was linked to a catalogue entry that described the map's origin. Researchers were encouraged to consult these entries rather than ____ solely on the visual material. Although digital access reduced handling of the originals, it did not eliminate the need for conservation. The archive continued to store the physical documents in controlled conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "rely",
+      "relied",
+      "relying of",
+      "relies",
+      "to relying"
+    ],
+    "correct": 0,
+    "explanation": "Rather than ile burada paralel yalın fiil rely kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_8_4",
+    "family": "cloze_nov26_3_8",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public archive began photographing fragile maps before making them available online. The images were captured at high resolution so that small handwritten details could be examined. Each image was linked to a catalogue entry that described the map's origin. Researchers were encouraged to consult these entries rather than rely solely on the visual material. ____ digital access reduced handling of the originals, it did not eliminate the need for conservation. The archive continued to store the physical documents in controlled conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "Although",
+      "Unless",
+      "Because of",
+      "Provided that",
+      "In spite of"
+    ],
+    "correct": 0,
+    "explanation": "Dijital erişimin yararı ile koruma ihtiyacının sürmesi karşıtlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_8_5",
+    "family": "cloze_nov26_3_8",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "prompt": "A public archive began photographing fragile maps before making them available online. The images were captured at high resolution so that small handwritten details could be examined. Each image was linked to a catalogue entry that described the map's origin. Researchers were encouraged to consult these entries rather than rely solely on the visual material. Although digital access reduced handling of the originals, it did not eliminate the need for conservation. The archive continued to ____ the physical documents in controlled conditions.\n\nChoose the best option for the blank.",
+    "options": [
+      "store",
+      "scatter",
+      "destroy",
+      "discard",
+      "erase"
+    ],
+    "correct": 0,
+    "explanation": "Belgeleri kontrollü koşullarda saklamak store ile ifade edilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_9_1",
+    "family": "cloze_nov26_3_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In evaluating a programme to improve soil fertility, researchers measured yields before and after its implementation. They recognised, however, that yield differences could not automatically ____ to the programme. Weather conditions varied across seasons, as did the availability of irrigation water. A comparison group was therefore included to distinguish programme effects from broader changes. Even with this adjustment, the possibility of unmeasured differences could not be ruled out entirely. The conclusions were accordingly expressed in terms of estimated rather than certain effects.\n\nChoose the best option for the blank.",
+    "options": [
+      "be attributed",
+      "attribute",
+      "have attributing",
+      "be attributing",
+      "been attributed"
+    ],
+    "correct": 0,
+    "explanation": "Could not + edilgen be attributed, bir nedene bağlanamamak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_9_2",
+    "family": "cloze_nov26_3_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In evaluating a programme to improve soil fertility, researchers measured yields before and after its implementation. They recognised, however, that yield differences could not automatically be attributed to the programme. Weather conditions varied across seasons, ____ did the availability of irrigation water. A comparison group was therefore included to distinguish programme effects from broader changes. Even with this adjustment, the possibility of unmeasured differences could not be ruled out entirely. The conclusions were accordingly expressed in terms of estimated rather than certain effects.\n\nChoose the best option for the blank.",
+    "options": [
+      "as",
+      "than",
+      "unless",
+      "whether",
+      "despite"
+    ],
+    "correct": 0,
+    "explanation": "As did, önceki değişim ifadesine paralel olarak bir başka değişkeni ekler."
+  },
+  {
+    "id": "wq150_nov26_cloze3_9_3",
+    "family": "cloze_nov26_3_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In evaluating a programme to improve soil fertility, researchers measured yields before and after its implementation. They recognised, however, that yield differences could not automatically be attributed to the programme. Weather conditions varied across seasons, as did the availability of irrigation water. A comparison group was therefore included ____ distinguish programme effects from broader changes. Even with this adjustment, the possibility of unmeasured differences could not be ruled out entirely. The conclusions were accordingly expressed in terms of estimated rather than certain effects.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "for of",
+      "whereas",
+      "despite",
+      "unless"
+    ],
+    "correct": 0,
+    "explanation": "To distinguish amaç bildirir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_9_4",
+    "family": "cloze_nov26_3_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In evaluating a programme to improve soil fertility, researchers measured yields before and after its implementation. They recognised, however, that yield differences could not automatically be attributed to the programme. Weather conditions varied across seasons, as did the availability of irrigation water. A comparison group was therefore included to distinguish programme effects from broader changes. Even with this adjustment, the possibility of unmeasured differences could not be ____ entirely. The conclusions were accordingly expressed in terms of estimated rather than certain effects.\n\nChoose the best option for the blank.",
+    "options": [
+      "ruled out",
+      "carried on",
+      "brought about",
+      "taken up",
+      "set aside for later"
+    ],
+    "correct": 0,
+    "explanation": "Rule out, olasılığı dışlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_9_5",
+    "family": "cloze_nov26_3_9",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "In evaluating a programme to improve soil fertility, researchers measured yields before and after its implementation. They recognised, however, that yield differences could not automatically be attributed to the programme. Weather conditions varied across seasons, as did the availability of irrigation water. A comparison group was therefore included to distinguish programme effects from broader changes. Even with this adjustment, the possibility of unmeasured differences could not be ruled out entirely. The conclusions were accordingly expressed ____ terms of estimated rather than certain effects.\n\nChoose the best option for the blank.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "by",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "In terms of, bakımından veya cinsinden anlamında kalıptır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_10_1",
+    "family": "cloze_nov26_3_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores ____ historical records of operating conditions. Initially, the scores were treated as if they were precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. In response to this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful, provided that its output was interpreted in context. The experience underscored the need to validate a model before extending it to new settings.\n\nChoose the best option for the blank.",
+    "options": [
+      "derived from",
+      "contrary to",
+      "independent of",
+      "substituted for",
+      "concealed from"
+    ],
+    "correct": 0,
+    "explanation": "Risk puanları tarihsel kayıtlardan türetilmiştir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_10_2",
+    "family": "cloze_nov26_3_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores derived from historical records of operating conditions. Initially, the scores were treated as if they ____ precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. In response to this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful, provided that its output was interpreted in context. The experience underscored the need to validate a model before extending it to new settings.\n\nChoose the best option for the blank.",
+    "options": [
+      "were",
+      "will be",
+      "are being yesterday",
+      "had being",
+      "be"
+    ],
+    "correct": 0,
+    "explanation": "As if they were, gerçek olmayan karşılaştırmayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_cloze3_10_3",
+    "family": "cloze_nov26_3_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores derived from historical records of operating conditions. Initially, the scores were treated as if they were precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. ____ this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful, provided that its output was interpreted in context. The experience underscored the need to validate a model before extending it to new settings.\n\nChoose the best option for the blank.",
+    "options": [
+      "In response to",
+      "Regardless of",
+      "In contrast with",
+      "In place of",
+      "In the absence of"
+    ],
+    "correct": 0,
+    "explanation": "Kısıt fark edilince ek inceleme başlatılması bir tepkidir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_10_4",
+    "family": "cloze_nov26_3_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores derived from historical records of operating conditions. Initially, the scores were treated as if they were precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. In response to this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful, ____ its output was interpreted in context. The experience underscored the need to validate a model before extending it to new settings.\n\nChoose the best option for the blank.",
+    "options": [
+      "provided that",
+      "even though not",
+      "in spite of",
+      "so as to",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "Yazılımın yararlı kalması çıktının bağlam içinde yorumlanmasına bağlıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_10_5",
+    "family": "cloze_nov26_3_10",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores derived from historical records of operating conditions. Initially, the scores were treated as if they were precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. In response to this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful, provided that its output was interpreted in context. The experience underscored the need to ____ a model before extending it to new settings.\n\nChoose the best option for the blank.",
+    "options": [
+      "validate",
+      "discard",
+      "obscure",
+      "simplify blindly",
+      "exempt"
+    ],
+    "correct": 0,
+    "explanation": "Validate modelin geçerliliğini sınamak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_11_1",
+    "family": "cloze_nov26_3_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted ____ differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "options": [
+      "after",
+      "despite of",
+      "whereas not",
+      "instead of",
+      "without of"
+    ],
+    "correct": 0,
+    "explanation": "After, yapı yoğunluğu farkları hesaba katıldıktan sonra anlamını verir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_11_2",
+    "family": "cloze_nov26_3_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent ____ randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "options": [
+      "to",
+      "on",
+      "at",
+      "by",
+      "with regard"
+    ],
+    "correct": 0,
+    "explanation": "Equivalent to eşdeğer olmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_11_3",
+    "family": "cloze_nov26_3_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors ____ were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "options": [
+      "that",
+      "whom",
+      "where",
+      "when",
+      "whose of"
+    ],
+    "correct": 0,
+    "explanation": "Factors öznesini niteleyen relative clause için that uygundur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_11_4",
+    "family": "cloze_nov26_3_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, ____ changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "options": [
+      "so that",
+      "unless",
+      "even though",
+      "because of",
+      "rather than"
+    ],
+    "correct": 0,
+    "explanation": "İleriye dönük değerlendirme değişimleri baştan izleme amacı taşır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_11_5",
+    "family": "cloze_nov26_3_11",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than ____ , the existing observations.\n\nChoose the best option for the blank.",
+    "options": [
+      "replace",
+      "replacing of",
+      "replaced",
+      "replaces",
+      "being replaced"
+    ],
+    "correct": 0,
+    "explanation": "Complement, rather than replace, iki paralel yalın fiil içerir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_12_1",
+    "family": "cloze_nov26_3_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to ____ seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "options": [
+      "simulate",
+      "eliminate",
+      "conceal",
+      "prevent",
+      "ignore"
+    ],
+    "correct": 0,
+    "explanation": "Simulate mevsimsel koşulları taklit etmek anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_12_2",
+    "family": "cloze_nov26_3_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, ____ it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "options": [
+      "although",
+      "because of",
+      "unless",
+      "provided that",
+      "as a result of"
+    ],
+    "correct": 0,
+    "explanation": "Yararlı veri ile sınırlı temsil gücü arasındaki karşıtlık although ile verilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_12_3",
+    "family": "cloze_nov26_3_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results ____ measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "options": [
+      "with",
+      "at",
+      "into",
+      "from",
+      "under"
+    ],
+    "correct": 0,
+    "explanation": "Combine X with Y, X ile Y'yi birleştirmek demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_12_4",
+    "family": "cloze_nov26_3_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded ____ sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "options": [
+      "as",
+      "for of",
+      "with",
+      "from",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Regard as, olarak görmek kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_12_5",
+    "family": "cloze_nov26_3_12",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically ____ .\n\nChoose the best option for the blank.",
+    "options": [
+      "grounded",
+      "arbitrary",
+      "unsubstantiated",
+      "irrelevant",
+      "unfalsifiable"
+    ],
+    "correct": 0,
+    "explanation": "Empirically grounded, deneysel veya gözlemsel kanıta dayalı demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_13_1",
+    "family": "cloze_nov26_3_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An evaluation of an employment programme reported the proportion of participants who found work within six months. Critics observed that the indicator made no distinction ____ temporary and permanent employment. A revised assessment therefore examined contract duration as well as earnings and working hours. The broader set of measures revealed that improvements were concentrated in short-term jobs. Although the original indicator had increased, the quality of employment had not necessarily improved. The findings prompted a discussion of how programme objectives should be defined. In particular, the evaluation team sought to avoid confusing measurable outputs with substantive outcomes.\n\nChoose the best option for the blank.",
+    "options": [
+      "between",
+      "among of",
+      "from",
+      "towards",
+      "through"
+    ],
+    "correct": 0,
+    "explanation": "İki iş türü arasında distinction between kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_13_2",
+    "family": "cloze_nov26_3_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An evaluation of an employment programme reported the proportion of participants who found work within six months. Critics observed that the indicator made no distinction between temporary and permanent employment. A revised assessment therefore examined contract duration ____ earnings and working hours. The broader set of measures revealed that improvements were concentrated in short-term jobs. Although the original indicator had increased, the quality of employment had not necessarily improved. The findings prompted a discussion of how programme objectives should be defined. In particular, the evaluation team sought to avoid confusing measurable outputs with substantive outcomes.\n\nChoose the best option for the blank.",
+    "options": [
+      "as well as",
+      "rather of",
+      "in spite that",
+      "unless",
+      "even though"
+    ],
+    "correct": 0,
+    "explanation": "As well as ek göstergeleri dahil eder."
+  },
+  {
+    "id": "wq150_nov26_cloze3_13_3",
+    "family": "cloze_nov26_3_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An evaluation of an employment programme reported the proportion of participants who found work within six months. Critics observed that the indicator made no distinction between temporary and permanent employment. A revised assessment therefore examined contract duration as well as earnings and working hours. The broader set of measures revealed that improvements were concentrated in short-term jobs. ____ the original indicator had increased, the quality of employment had not necessarily improved. The findings prompted a discussion of how programme objectives should be defined. In particular, the evaluation team sought to avoid confusing measurable outputs with substantive outcomes.\n\nChoose the best option for the blank.",
+    "options": [
+      "Although",
+      "Because of",
+      "Provided that",
+      "So that",
+      "In order to"
+    ],
+    "correct": 0,
+    "explanation": "İlk göstergenin artışı ile iş niteliğinin artmaması karşıtlık kurar."
+  },
+  {
+    "id": "wq150_nov26_cloze3_13_4",
+    "family": "cloze_nov26_3_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An evaluation of an employment programme reported the proportion of participants who found work within six months. Critics observed that the indicator made no distinction between temporary and permanent employment. A revised assessment therefore examined contract duration as well as earnings and working hours. The broader set of measures revealed that improvements were concentrated in short-term jobs. Although the original indicator had increased, the quality of employment had not necessarily improved. The findings prompted a discussion of ____ programme objectives should be defined. In particular, the evaluation team sought to avoid confusing measurable outputs with substantive outcomes.\n\nChoose the best option for the blank.",
+    "options": [
+      "how",
+      "whose",
+      "whom",
+      "which of",
+      "where of"
+    ],
+    "correct": 0,
+    "explanation": "How objectives should be defined, hedeflerin nasıl tanımlanması gerektiğidir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_13_5",
+    "family": "cloze_nov26_3_13",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An evaluation of an employment programme reported the proportion of participants who found work within six months. Critics observed that the indicator made no distinction between temporary and permanent employment. A revised assessment therefore examined contract duration as well as earnings and working hours. The broader set of measures revealed that improvements were concentrated in short-term jobs. Although the original indicator had increased, the quality of employment had not necessarily improved. The findings prompted a discussion of how programme objectives should be defined. In particular, the evaluation team sought to avoid ____ measurable outputs with substantive outcomes.\n\nChoose the best option for the blank.",
+    "options": [
+      "confusing",
+      "confuse",
+      "to confuse",
+      "confused",
+      "confuses"
+    ],
+    "correct": 0,
+    "explanation": "Avoid ardından gerund gelir; confuse X with Y, karıştırmak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_14_1",
+    "family": "cloze_nov26_3_14",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A historical demography project assembled population records from several regions. The sources differed in ____ children and temporary residents were counted. Direct comparisons could therefore yield misleading results unless the definitions were harmonised. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates under alternative counting conventions. This approach made uncertainty explicit without claiming to recover information that was no longer available. The resulting dataset was accompanied by detailed notes on its construction.\n\nChoose the best option for the blank.",
+    "options": [
+      "how",
+      "whose",
+      "which of",
+      "whom",
+      "what of"
+    ],
+    "correct": 0,
+    "explanation": "How sayım yöntemindeki farklılığı belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_14_2",
+    "family": "cloze_nov26_3_14",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A historical demography project assembled population records from several regions. The sources differed in how children and temporary residents were counted. Direct comparisons could therefore yield misleading results ____ the definitions were harmonised. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates under alternative counting conventions. This approach made uncertainty explicit without claiming to recover information that was no longer available. The resulting dataset was accompanied by detailed notes on its construction.\n\nChoose the best option for the blank.",
+    "options": [
+      "unless",
+      "because of",
+      "even if always",
+      "in order to",
+      "despite of"
+    ],
+    "correct": 0,
+    "explanation": "Unless, tanımlar uyumlaştırılmadıkça karşılaştırmaların yanıltıcı olabileceğini söyler."
+  },
+  {
+    "id": "wq150_nov26_cloze3_14_3",
+    "family": "cloze_nov26_3_14",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A historical demography project assembled population records from several regions. The sources differed in how children and temporary residents were counted. Direct comparisons could therefore yield misleading results unless the definitions were harmonised. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates ____ alternative counting conventions. This approach made uncertainty explicit without claiming to recover information that was no longer available. The resulting dataset was accompanied by detailed notes on its construction.\n\nChoose the best option for the blank.",
+    "options": [
+      "under",
+      "away",
+      "beyond of",
+      "onto",
+      "since"
+    ],
+    "correct": 0,
+    "explanation": "Under alternative conventions, farklı sayım kuralları altında demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_14_4",
+    "family": "cloze_nov26_3_14",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A historical demography project assembled population records from several regions. The sources differed in how children and temporary residents were counted. Direct comparisons could therefore yield misleading results unless the definitions were harmonised. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates under alternative counting conventions. This approach made uncertainty explicit without ____ to recover information that was no longer available. The resulting dataset was accompanied by detailed notes on its construction.\n\nChoose the best option for the blank.",
+    "options": [
+      "claiming",
+      "claim",
+      "to claim",
+      "claimed",
+      "claims"
+    ],
+    "correct": 0,
+    "explanation": "Without sonrası -ing kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_14_5",
+    "family": "cloze_nov26_3_14",
+    "level": "C1",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A historical demography project assembled population records from several regions. The sources differed in how children and temporary residents were counted. Direct comparisons could therefore yield misleading results unless the definitions were harmonised. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates under alternative counting conventions. This approach made uncertainty explicit without claiming to recover information that was no longer available. The resulting dataset was accompanied ____ detailed notes on its construction.\n\nChoose the best option for the blank.",
+    "options": [
+      "by",
+      "from",
+      "to",
+      "at",
+      "on"
+    ],
+    "correct": 0,
+    "explanation": "Be accompanied by, yanında bir şey bulunmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_15_1",
+    "family": "cloze_nov26_3_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An account of institutional change attributed the persistence of a rule to the interests it served. Critics pointed out that the same rule could continue ____ the interests that initially supported it had diminished. Administrative routines and coordination costs might themselves generate incentives against revision. The revised account thus distinguished the conditions under which a rule emerged from those under which it persisted. This distinction did not negate the relevance of interests, but it limited the explanatory claims that could be made solely on that basis. The argument thereby avoided treating historical origins as sufficient explanations of present arrangements.\n\nChoose the best option for the blank.",
+    "options": [
+      "even after",
+      "in order that",
+      "as if of",
+      "because of",
+      "in spite of"
+    ],
+    "correct": 0,
+    "explanation": "Even after başlangıçtaki çıkarlar azaldıktan sonra bile anlamı verir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_15_2",
+    "family": "cloze_nov26_3_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An account of institutional change attributed the persistence of a rule to the interests it served. Critics pointed out that the same rule could continue even after the interests that initially supported it had diminished. Administrative routines and coordination costs might themselves ____ incentives against revision. The revised account thus distinguished the conditions under which a rule emerged from those under which it persisted. This distinction did not negate the relevance of interests, but it limited the explanatory claims that could be made solely on that basis. The argument thereby avoided treating historical origins as sufficient explanations of present arrangements.\n\nChoose the best option for the blank.",
+    "options": [
+      "generate",
+      "abolish",
+      "conceal",
+      "invalidate",
+      "preclude"
+    ],
+    "correct": 0,
+    "explanation": "Rutinler ve koordinasyon maliyetleri değişime karşı teşvik yaratabilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_15_3",
+    "family": "cloze_nov26_3_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An account of institutional change attributed the persistence of a rule to the interests it served. Critics pointed out that the same rule could continue even after the interests that initially supported it had diminished. Administrative routines and coordination costs might themselves generate incentives against revision. The revised account thus distinguished the conditions under which a rule emerged ____ those under which it persisted. This distinction did not negate the relevance of interests, but it limited the explanatory claims that could be made solely on that basis. The argument thereby avoided treating historical origins as sufficient explanations of present arrangements.\n\nChoose the best option for the blank.",
+    "options": [
+      "from",
+      "of",
+      "by",
+      "into",
+      "upon"
+    ],
+    "correct": 0,
+    "explanation": "Distinguish X from Y, X ile Y'yi ayırt etmektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_15_4",
+    "family": "cloze_nov26_3_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An account of institutional change attributed the persistence of a rule to the interests it served. Critics pointed out that the same rule could continue even after the interests that initially supported it had diminished. Administrative routines and coordination costs might themselves generate incentives against revision. The revised account thus distinguished the conditions under which a rule emerged from those under which it persisted. This distinction did not ____ the relevance of interests, but it limited the explanatory claims that could be made solely on that basis. The argument thereby avoided treating historical origins as sufficient explanations of present arrangements.\n\nChoose the best option for the blank.",
+    "options": [
+      "negate",
+      "establish conclusively",
+      "quantify precisely",
+      "amplify automatically",
+      "guarantee"
+    ],
+    "correct": 0,
+    "explanation": "Negate, geçersiz kılmak veya yok saymak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_15_5",
+    "family": "cloze_nov26_3_15",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An account of institutional change attributed the persistence of a rule to the interests it served. Critics pointed out that the same rule could continue even after the interests that initially supported it had diminished. Administrative routines and coordination costs might themselves generate incentives against revision. The revised account thus distinguished the conditions under which a rule emerged from those under which it persisted. This distinction did not negate the relevance of interests, but it limited the explanatory claims that could be made solely on that basis. The argument thereby avoided treating historical origins as ____ explanations of present arrangements.\n\nChoose the best option for the blank.",
+    "options": [
+      "sufficient",
+      "incidental",
+      "unrelated",
+      "inaccessible",
+      "contradictory"
+    ],
+    "correct": 0,
+    "explanation": "Eleştirilen varsayım, tarihsel kökenlerin mevcut düzeni tek başına açıklamaya yeterli olmasıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_16_1",
+    "family": "cloze_nov26_3_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A statistical model provided narrow confidence intervals for an estimated association. Its precision, however, depended ____ the assumption that the measurement errors were independent. If errors were correlated, the intervals might understate the actual uncertainty. The authors examined several plausible dependence structures, thereby widening their estimates of uncertainty in some scenarios. They regarded this exercise not as an attempt to identify the uniquely correct structure but as a means of evaluating robustness. The final report avoided equating the numerical precision of a conditional estimate with unconditional certainty.\n\nChoose the best option for the blank.",
+    "options": [
+      "on",
+      "at",
+      "of",
+      "into",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Depend on, bir şeye bağlı olmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_16_2",
+    "family": "cloze_nov26_3_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A statistical model provided narrow confidence intervals for an estimated association. Its precision, however, depended on the assumption that the measurement errors were independent. If errors were correlated, the intervals might ____ the actual uncertainty. The authors examined several plausible dependence structures, thereby widening their estimates of uncertainty in some scenarios. They regarded this exercise not as an attempt to identify the uniquely correct structure but as a means of evaluating robustness. The final report avoided equating the numerical precision of a conditional estimate with unconditional certainty.\n\nChoose the best option for the blank.",
+    "options": [
+      "understate",
+      "reproduce exactly",
+      "eliminate",
+      "ignore by definition",
+      "resolve conclusively"
+    ],
+    "correct": 0,
+    "explanation": "Bağımsızlık varsayımı bozulduğunda dar aralıklar gerçek belirsizliği olduğundan düşük gösterebilir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_16_3",
+    "family": "cloze_nov26_3_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A statistical model provided narrow confidence intervals for an estimated association. Its precision, however, depended on the assumption that the measurement errors were independent. If errors were correlated, the intervals might understate the actual uncertainty. The authors examined several plausible dependence structures, ____ widening their estimates of uncertainty in some scenarios. They regarded this exercise not as an attempt to identify the uniquely correct structure but as a means of evaluating robustness. The final report avoided equating the numerical precision of a conditional estimate with unconditional certainty.\n\nChoose the best option for the blank.",
+    "options": [
+      "thereby",
+      "nevertheless of",
+      "unless",
+      "despite",
+      "whereas"
+    ],
+    "correct": 0,
+    "explanation": "Thereby, yapılan incelemenin sonucu olarak aralıkların genişlemesini bağlar."
+  },
+  {
+    "id": "wq150_nov26_cloze3_16_4",
+    "family": "cloze_nov26_3_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A statistical model provided narrow confidence intervals for an estimated association. Its precision, however, depended on the assumption that the measurement errors were independent. If errors were correlated, the intervals might understate the actual uncertainty. The authors examined several plausible dependence structures, thereby widening their estimates of uncertainty in some scenarios. They regarded this exercise not as an attempt to identify the uniquely correct structure ____ as a means of evaluating robustness. The final report avoided equating the numerical precision of a conditional estimate with unconditional certainty.\n\nChoose the best option for the blank.",
+    "options": [
+      "but",
+      "nor",
+      "and not of",
+      "unless",
+      "whereas of"
+    ],
+    "correct": 0,
+    "explanation": "Not as X but as Y karşılaştırma yapısıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_16_5",
+    "family": "cloze_nov26_3_16",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A statistical model provided narrow confidence intervals for an estimated association. Its precision, however, depended on the assumption that the measurement errors were independent. If errors were correlated, the intervals might understate the actual uncertainty. The authors examined several plausible dependence structures, thereby widening their estimates of uncertainty in some scenarios. They regarded this exercise not as an attempt to identify the uniquely correct structure but as a means of evaluating robustness. The final report avoided ____ the numerical precision of a conditional estimate with unconditional certainty.\n\nChoose the best option for the blank.",
+    "options": [
+      "equating",
+      "equate",
+      "equated",
+      "to equate",
+      "equates"
+    ],
+    "correct": 0,
+    "explanation": "Avoid + gerund; equate X with Y eş tutmak demektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_17_1",
+    "family": "cloze_nov26_3_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions ____ the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "options": [
+      "depending on",
+      "in disregard of",
+      "independently from",
+      "in the absence of",
+      "contrary to all"
+    ],
+    "correct": 0,
+    "explanation": "Depending on, bağlama bağlı olarak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_17_2",
+    "family": "cloze_nov26_3_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations ____ the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "options": [
+      "undermined",
+      "confirmed unequivocally",
+      "presupposed",
+      "established",
+      "guaranteed"
+    ],
+    "correct": 0,
+    "explanation": "Çoklu eşleşmeler bire bir eşleme varsayımını zayıflatır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_17_3",
+    "family": "cloze_nov26_3_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; ____ , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "options": [
+      "rather",
+      "consequently not",
+      "otherwise",
+      "similarly",
+      "henceforth"
+    ],
+    "correct": 0,
+    "explanation": "Rather önceki olumsuz iddiayı düzeltip asıl görüşü belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_17_4",
+    "family": "cloze_nov26_3_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account ____ the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "options": [
+      "for",
+      "on",
+      "into",
+      "at",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Account for açıklamak, hesaba katmak anlamında kullanılır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_17_5",
+    "family": "cloze_nov26_3_17",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually ____ dimensions.\n\nChoose the best option for the blank.",
+    "options": [
+      "complementary",
+      "exclusive in every case",
+      "irrelevant",
+      "interchangeable by definition",
+      "contradictory by necessity"
+    ],
+    "correct": 0,
+    "explanation": "Yapı ve bağlam birbirini tamamlayan boyutlardır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_18_1",
+    "family": "cloze_nov26_3_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former ____ leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "options": [
+      "while",
+      "because of",
+      "in order to",
+      "unless of",
+      "despite of"
+    ],
+    "correct": 0,
+    "explanation": "While eş zamanlı farklı etkileri karşılaştırır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_18_2",
+    "family": "cloze_nov26_3_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence ____ the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "options": [
+      "whether",
+      "whom",
+      "whose",
+      "which of",
+      "what of"
+    ],
+    "correct": 0,
+    "explanation": "Whether dolaylı bir evet-hayır sorusu oluşturur."
+  },
+  {
+    "id": "wq150_nov26_cloze3_18_3",
+    "family": "cloze_nov26_3_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely ____ the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "options": [
+      "in terms of",
+      "in opposition to",
+      "in spite that",
+      "in place that",
+      "unless"
+    ],
+    "correct": 0,
+    "explanation": "In terms of, dağıtılan cihaz sayısı bakımından anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_18_4",
+    "family": "cloze_nov26_3_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes ____ . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "options": [
+      "as well",
+      "instead of which",
+      "regardless of",
+      "owing to",
+      "so far as to"
+    ],
+    "correct": 0,
+    "explanation": "As well, önceki ölçüte ek olarak başka ölçümleri dahil eder."
+  },
+  {
+    "id": "wq150_nov26_cloze3_18_5",
+    "family": "cloze_nov26_3_18",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated ____ practical capability.\n\nChoose the best option for the blank.",
+    "options": [
+      "into",
+      "from",
+      "with",
+      "upon",
+      "against"
+    ],
+    "correct": 0,
+    "explanation": "Translate into, bir sonucu başka bir biçime dönüştürmek anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_19_1",
+    "family": "cloze_nov26_3_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not ____ conceptual incompatibility. Before pooling the estimates, they examined how well each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, because their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to interpret in substantive terms. The procedure privileged interpretability over apparent precision.\n\nChoose the best option for the blank.",
+    "options": [
+      "resolve",
+      "measure numerically",
+      "document",
+      "reveal",
+      "acknowledge"
+    ],
+    "correct": 0,
+    "explanation": "İstatistiksel birleştirme kavramsal uyumsuzluğu tek başına çözemez."
+  },
+  {
+    "id": "wq150_nov26_cloze3_19_2",
+    "family": "cloze_nov26_3_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not resolve conceptual incompatibility. Before pooling the estimates, they examined ____ each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, because their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to interpret in substantive terms. The procedure privileged interpretability over apparent precision.\n\nChoose the best option for the blank.",
+    "options": [
+      "how well",
+      "whose",
+      "whom",
+      "where of",
+      "what of"
+    ],
+    "correct": 0,
+    "explanation": "How well tanımın kavramı ne ölçüde yakaladığını sorgular."
+  },
+  {
+    "id": "wq150_nov26_cloze3_19_3",
+    "family": "cloze_nov26_3_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not resolve conceptual incompatibility. Before pooling the estimates, they examined how well each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, ____ their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to interpret in substantive terms. The procedure privileged interpretability over apparent precision.\n\nChoose the best option for the blank.",
+    "options": [
+      "because",
+      "despite of",
+      "unless",
+      "in order to",
+      "so that"
+    ],
+    "correct": 0,
+    "explanation": "Daha az karşılaştırılabilir ölçüler duyarlılık analizine alınma nedenidir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_19_4",
+    "family": "cloze_nov26_3_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not resolve conceptual incompatibility. Before pooling the estimates, they examined how well each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, because their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to ____ in substantive terms. The procedure privileged interpretability over apparent precision.\n\nChoose the best option for the blank.",
+    "options": [
+      "interpret",
+      "obscure",
+      "misrepresent",
+      "disregard",
+      "conceal"
+    ],
+    "correct": 0,
+    "explanation": "Substantive terms bağlamında sonuçları yorumlama vurgulanıyor."
+  },
+  {
+    "id": "wq150_nov26_cloze3_19_5",
+    "family": "cloze_nov26_3_19",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not resolve conceptual incompatibility. Before pooling the estimates, they examined how well each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, because their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to interpret in substantive terms. The procedure privileged interpretability ____ apparent precision.\n\nChoose the best option for the blank.",
+    "options": [
+      "over",
+      "into",
+      "from",
+      "throughout",
+      "alongside of"
+    ],
+    "correct": 0,
+    "explanation": "Privilege X over Y, X'e Y'den daha fazla önem vermektir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_20_1",
+    "family": "cloze_nov26_3_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation ____ accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "options": [
+      "without",
+      "by",
+      "upon",
+      "before of",
+      "in order of"
+    ],
+    "correct": 0,
+    "explanation": "Without + -ing, her özelliği doğru betimlemeden hesabı kolaylaştırma anlamını verir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_20_2",
+    "family": "cloze_nov26_3_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished ____ merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "options": [
+      "from",
+      "by",
+      "at",
+      "into",
+      "on"
+    ],
+    "correct": 0,
+    "explanation": "Distinguish from, birbirinden ayırmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_cloze3_20_3",
+    "family": "cloze_nov26_3_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to ____ the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "options": [
+      "deny",
+      "quantify precisely",
+      "establish conclusively",
+      "demonstrate empirically",
+      "guarantee"
+    ],
+    "correct": 0,
+    "explanation": "Eleştiri başarılı tahminin kanıt değerini inkâr etmeyi amaçlamaz."
+  },
+  {
+    "id": "wq150_nov26_cloze3_20_4",
+    "family": "cloze_nov26_3_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. ____ , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "options": [
+      "Accordingly",
+      "Nevertheless of",
+      "For example of",
+      "Otherwise not",
+      "Similarly to"
+    ],
+    "correct": 0,
+    "explanation": "Accordingly, önceki gerekçeden çıkarılan sonucu belirtir."
+  },
+  {
+    "id": "wq150_nov26_cloze3_20_5",
+    "family": "cloze_nov26_3_20",
+    "level": "C2",
+    "yds": "hard",
+    "topic": "Paragraph",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on ____ could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "options": [
+      "what",
+      "which of",
+      "whose",
+      "whom",
+      "where of"
+    ],
+    "correct": 0,
+    "explanation": "What could be inferred, neyin çıkarılabileceği anlamında isim cümleciğidir."
   }
 ];
