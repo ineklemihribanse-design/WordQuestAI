@@ -4,12 +4,13 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/prune-actions-artifacts.yml'
+      - 'tools/maintenance/prune_actions_artifacts.py'
   workflow_dispatch:
   schedule:
     - cron: '45 2 * * *'
 permissions:
   contents: read
-  actions: write
+  actions: read
 concurrency:
   group: wordquest-artifact-storage-prune
   cancel-in-progress: false
@@ -24,7 +25,7 @@ jobs:
           python-version: '3.11'
       - name: Test cleanup safety before deleting anything
         run: python3 -m unittest discover -s tools/maintenance -p 'test_prune_actions_artifacts.py' -v
-      - name: Remove old duplicate test artifacts, protect latest samples and main builds
+      - name: Report old duplicate test artifacts without deleting anything
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 tools/maintenance/prune_actions_artifacts.py
+        run: python3 tools/maintenance/prune_actions_artifacts.py --dry-run
