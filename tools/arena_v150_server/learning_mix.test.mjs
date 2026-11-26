@@ -76,3 +76,6 @@ test('foundation questions add A1 A2 B1 contextual practice',()=>{assert.equal(f
 
 import {advancedQuestions} from './learning_advanced.mjs';
 test('advanced contextual batch has distinct stems and five options',()=>{assert.equal(advancedQuestions.length,231);assert.equal(new Set(advancedQuestions.map(q=>q.prompt.toLowerCase())).size,advancedQuestions.length);assert.ok(advancedQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.prompt.split('____').length===2&&q.explanation.length>=20&&q.yds));assert.ok(['B2','C1','C2'].every(l=>advancedQuestions.some(q=>q.level===l)));assert.ok(allLearningQuestions.length>=2000);});
+
+import {logicQuestions} from './learning_logic.mjs';
+test('discourse practice uses five unique options and explicit families',()=>{assert.equal(logicQuestions.length,192);assert.ok(logicQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.correct===0&&q.explanation.length>=20&&q.family&&q.yds));assert.equal(new Set(logicQuestions.map(q=>q.prompt.toLowerCase())).size,logicQuestions.length);assert.ok(logicQuestions.filter(q=>q.topic==='Completion').every(q=>q.prompt.includes('____')));});
