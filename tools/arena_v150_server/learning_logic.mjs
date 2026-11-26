@@ -3262,5 +3262,2810 @@ export const logicQuestions = [
     "correct": 0,
     "explanation": "Dar veri aralığındaki uyum dış koşullara güvenilir genellemeyi kanıtlamaz.",
     "family": "discourse_completion_24"
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_1_1",
+    "family": "dialogue_logic_nov26_14_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is there a café near the railway station? B: ____ A: Great, we can go there before our train.",
+    "options": [
+      "Yes, it's next to the station.",
+      "No, it's closed today.",
+      "It opens at nine.",
+      "It's two pounds.",
+      "It's on the second floor."
+    ],
+    "correct": 0,
+    "explanation": "Next to the station yakınlık sorusunu yanıtlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_1_2",
+    "family": "dialogue_logic_nov26_14_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can we visit the library today? B: ____ A: Oh, then let's go tomorrow.",
+    "options": [
+      "Yes, it's next to the station.",
+      "No, it's closed today.",
+      "It opens at nine.",
+      "It's two pounds.",
+      "It's on the second floor."
+    ],
+    "correct": 1,
+    "explanation": "Bugün kapalı olduğu için ziyaret erteleniyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_1_3",
+    "family": "dialogue_logic_nov26_14_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What time does the shop open? B: ____ A: OK, I'll be there at nine thirty.",
+    "options": [
+      "Yes, it's next to the station.",
+      "No, it's closed today.",
+      "It opens at nine.",
+      "It's two pounds.",
+      "It's on the second floor."
+    ],
+    "correct": 2,
+    "explanation": "Açılış saati soruluyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_1_4",
+    "family": "dialogue_logic_nov26_14_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How much is this notebook? B: ____ A: Here's two pounds.",
+    "options": [
+      "Yes, it's next to the station.",
+      "No, it's closed today.",
+      "It opens at nine.",
+      "It's two pounds.",
+      "It's on the second floor."
+    ],
+    "correct": 3,
+    "explanation": "How much fiyat sorar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_1_5",
+    "family": "dialogue_logic_nov26_14_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Which floor is the doctor's office on? B: ____ A: I'll take the stairs up two floors.",
+    "options": [
+      "Yes, it's next to the station.",
+      "No, it's closed today.",
+      "It opens at nine.",
+      "It's two pounds.",
+      "It's on the second floor."
+    ],
+    "correct": 4,
+    "explanation": "İkinci kat bilgisi iki kat çıkma ile uyumludur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_2_1",
+    "family": "dialogue_logic_nov26_14_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What time do you have breakfast? B: ____ A: I eat at eight, a little later than you.",
+    "options": [
+      "At half past seven.",
+      "On Tuesday.",
+      "By bicycle.",
+      "With my brother.",
+      "For two hours."
+    ],
+    "correct": 0,
+    "explanation": "Saat yedi buçuk ifadesi sekizden erkendir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_2_2",
+    "family": "dialogue_logic_nov26_14_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Which day is your music lesson? B: ____ A: Mine is on Wednesday.",
+    "options": [
+      "At half past seven.",
+      "On Tuesday.",
+      "By bicycle.",
+      "With my brother.",
+      "For two hours."
+    ],
+    "correct": 1,
+    "explanation": "Gün sorusunun karşılığı salıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_2_3",
+    "family": "dialogue_logic_nov26_14_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How do you get to the park? B: ____ A: Do you have a helmet?",
+    "options": [
+      "At half past seven.",
+      "On Tuesday.",
+      "By bicycle.",
+      "With my brother.",
+      "For two hours."
+    ],
+    "correct": 2,
+    "explanation": "Bisikletle ulaşım kask sorusuyla uyumludur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_2_4",
+    "family": "dialogue_logic_nov26_14_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Who are you going to the cinema with? B: ____ A: Is he older than you?",
+    "options": [
+      "At half past seven.",
+      "On Tuesday.",
+      "By bicycle.",
+      "With my brother.",
+      "For two hours."
+    ],
+    "correct": 3,
+    "explanation": "Who with birlikte gidilen kişiyi sorar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_2_5",
+    "family": "dialogue_logic_nov26_14_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How long did you study yesterday? B: ____ A: That's a long time!",
+    "options": [
+      "At half past seven.",
+      "On Tuesday.",
+      "By bicycle.",
+      "With my brother.",
+      "For two hours."
+    ],
+    "correct": 4,
+    "explanation": "How long süre sorusudur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_3_1",
+    "family": "dialogue_logic_nov26_14_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Could I have a glass of water? B: ____ A: Thanks, I was very thirsty.",
+    "options": [
+      "Here you are.",
+      "No, thanks.",
+      "You're welcome.",
+      "I'm sorry.",
+      "See you tomorrow."
+    ],
+    "correct": 0,
+    "explanation": "Bir şeyi verirken here you are kullanılır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_3_2",
+    "family": "dialogue_logic_nov26_14_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Would you like some more cake? B: ____ A: All right, I won't give you any more.",
+    "options": [
+      "Here you are.",
+      "No, thanks.",
+      "You're welcome.",
+      "I'm sorry.",
+      "See you tomorrow."
+    ],
+    "correct": 1,
+    "explanation": "No thanks nazik ret bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_3_3",
+    "family": "dialogue_logic_nov26_14_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Thank you for helping me with my bag. B: ____ A: That was very kind of you.",
+    "options": [
+      "Here you are.",
+      "No, thanks.",
+      "You're welcome.",
+      "I'm sorry.",
+      "See you tomorrow."
+    ],
+    "correct": 2,
+    "explanation": "Teşekküre you're welcome ile cevap verilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_3_4",
+    "family": "dialogue_logic_nov26_14_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: You stepped on my foot! B: ____ A: That's OK, it doesn't hurt much.",
+    "options": [
+      "Here you are.",
+      "No, thanks.",
+      "You're welcome.",
+      "I'm sorry.",
+      "See you tomorrow."
+    ],
+    "correct": 3,
+    "explanation": "Özür dileniyor ve kabul ediliyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_3_5",
+    "family": "dialogue_logic_nov26_14_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: I'm going home now. B: ____ A: Yes, our class is at ten tomorrow.",
+    "options": [
+      "Here you are.",
+      "No, thanks.",
+      "You're welcome.",
+      "I'm sorry.",
+      "See you tomorrow."
+    ],
+    "correct": 4,
+    "explanation": "Ertesi gün tekrar görüşme vedasıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_4_1",
+    "family": "dialogue_logic_nov26_14_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where's the milk? B: ____ A: I'll put it back there after breakfast.",
+    "options": [
+      "It's in the fridge.",
+      "It's behind the door.",
+      "They're on the desk.",
+      "They're under the bed.",
+      "It's in my school bag."
+    ],
+    "correct": 0,
+    "explanation": "Süt buzdolabında saklanır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_4_2",
+    "family": "dialogue_logic_nov26_14_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where's my coat? B: ____ A: I couldn't see it until I moved the door.",
+    "options": [
+      "It's in the fridge.",
+      "It's behind the door.",
+      "They're on the desk.",
+      "They're under the bed.",
+      "It's in my school bag."
+    ],
+    "correct": 1,
+    "explanation": "Kapının arkasındaki konum açıklanıyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_4_3",
+    "family": "dialogue_logic_nov26_14_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where are my pens? B: ____ A: I see them next to my notebook on the table.",
+    "options": [
+      "It's in the fridge.",
+      "It's behind the door.",
+      "They're on the desk.",
+      "They're under the bed.",
+      "It's in my school bag."
+    ],
+    "correct": 2,
+    "explanation": "Masa üzerindeki kalemlere gönderme var."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_4_4",
+    "family": "dialogue_logic_nov26_14_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where are the shoes? B: ____ A: I'll look down there near the floor.",
+    "options": [
+      "It's in the fridge.",
+      "It's behind the door.",
+      "They're on the desk.",
+      "They're under the bed.",
+      "It's in my school bag."
+    ],
+    "correct": 3,
+    "explanation": "Ayakkabılar yatağın altındadır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_4_5",
+    "family": "dialogue_logic_nov26_14_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where's the book you borrowed? B: ____ A: Please take it out of your bag.",
+    "options": [
+      "It's in the fridge.",
+      "It's behind the door.",
+      "They're on the desk.",
+      "They're under the bed.",
+      "It's in my school bag."
+    ],
+    "correct": 4,
+    "explanation": "Kitabın okul çantasında olduğu anlaşılıyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_5_1",
+    "family": "dialogue_logic_nov26_14_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: This item is damaged. We can replace it or give you your money back. B: ____ A: Certainly, I'll return the amount you paid.",
+    "options": [
+      "I'd like a refund, please.",
+      "Could I try the next size up?",
+      "Could you tell me the delivery date?",
+      "Is there a discount for students?",
+      "Could I pay by card?"
+    ],
+    "correct": 0,
+    "explanation": "Refund ödenen paranın iadesidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_5_2",
+    "family": "dialogue_logic_nov26_14_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: That jacket looks a little tight. B: ____ A: Of course. I'll bring a larger one.",
+    "options": [
+      "I'd like a refund, please.",
+      "Could I try the next size up?",
+      "Could you tell me the delivery date?",
+      "Is there a discount for students?",
+      "Could I pay by card?"
+    ],
+    "correct": 1,
+    "explanation": "Next size up daha büyük bedendir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_5_3",
+    "family": "dialogue_logic_nov26_14_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Your furniture is available to order online. B: ____ A: It should arrive next Thursday.",
+    "options": [
+      "I'd like a refund, please.",
+      "Could I try the next size up?",
+      "Could you tell me the delivery date?",
+      "Is there a discount for students?",
+      "Could I pay by card?"
+    ],
+    "correct": 2,
+    "explanation": "Delivery date teslim tarihidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_5_4",
+    "family": "dialogue_logic_nov26_14_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: The normal ticket price is £15. B: ____ A: Yes, show your student card and you'll pay £10.",
+    "options": [
+      "I'd like a refund, please.",
+      "Could I try the next size up?",
+      "Could you tell me the delivery date?",
+      "Is there a discount for students?",
+      "Could I pay by card?"
+    ],
+    "correct": 3,
+    "explanation": "Öğrenci indirimi soruluyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_5_5",
+    "family": "dialogue_logic_nov26_14_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: That's £28 altogether. B: ____ A: Certainly, insert your card here.",
+    "options": [
+      "I'd like a refund, please.",
+      "Could I try the next size up?",
+      "Could you tell me the delivery date?",
+      "Is there a discount for students?",
+      "Could I pay by card?"
+    ],
+    "correct": 4,
+    "explanation": "Kartla ödeme soruluyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_6_1",
+    "family": "dialogue_logic_nov26_14_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: The later train arrives after your interview begins. B: ____ A: Good, that should give you time to get there.",
+    "options": [
+      "I'll take the earlier train.",
+      "I'll book a room near the venue.",
+      "I'll send you the new address.",
+      "I'll bring an umbrella.",
+      "I'll ask for a vegetarian meal."
+    ],
+    "correct": 0,
+    "explanation": "Erken trene binmek geç kalmayı önler."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_6_2",
+    "family": "dialogue_logic_nov26_14_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: The conference starts at eight each morning. B: ____ A: That will save you a long journey every day.",
+    "options": [
+      "I'll take the earlier train.",
+      "I'll book a room near the venue.",
+      "I'll send you the new address.",
+      "I'll bring an umbrella.",
+      "I'll ask for a vegetarian meal."
+    ],
+    "correct": 1,
+    "explanation": "Yakında oda ayırmak yolculuğu kısaltır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_6_3",
+    "family": "dialogue_logic_nov26_14_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: You've moved house, haven't you? B: ____ A: Thanks, I'll use it for your parcel.",
+    "options": [
+      "I'll take the earlier train.",
+      "I'll book a room near the venue.",
+      "I'll send you the new address.",
+      "I'll bring an umbrella.",
+      "I'll ask for a vegetarian meal."
+    ],
+    "correct": 2,
+    "explanation": "Yeni adres kargo için gereklidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_6_4",
+    "family": "dialogue_logic_nov26_14_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: The forecast says it may rain during the walk. B: ____ A: Good idea, you won't get wet.",
+    "options": [
+      "I'll take the earlier train.",
+      "I'll book a room near the venue.",
+      "I'll send you the new address.",
+      "I'll bring an umbrella.",
+      "I'll ask for a vegetarian meal."
+    ],
+    "correct": 3,
+    "explanation": "Şemsiye yağmura karşı önlemdir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_6_5",
+    "family": "dialogue_logic_nov26_14_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: The menu contains several meat-free dishes. B: ____ A: I'll let the waiter know your preference.",
+    "options": [
+      "I'll take the earlier train.",
+      "I'll book a room near the venue.",
+      "I'll send you the new address.",
+      "I'll bring an umbrella.",
+      "I'll ask for a vegetarian meal."
+    ],
+    "correct": 4,
+    "explanation": "Et içermeyen yemek seçeneği isteniyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_7_1",
+    "family": "dialogue_logic_nov26_14_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Have you got your passport with you? B: ____ A: Then we'll have to go back and collect it.",
+    "options": [
+      "I've left it at home.",
+      "I've already returned it.",
+      "I haven't finished it yet.",
+      "I'm waiting for it to arrive.",
+      "I've just ordered a replacement."
+    ],
+    "correct": 0,
+    "explanation": "Pasaport evde unutulmuş."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_7_2",
+    "family": "dialogue_logic_nov26_14_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can I borrow the library book after you? B: ____ A: Then I'll check whether it's available at the library.",
+    "options": [
+      "I've left it at home.",
+      "I've already returned it.",
+      "I haven't finished it yet.",
+      "I'm waiting for it to arrive.",
+      "I've just ordered a replacement."
+    ],
+    "correct": 1,
+    "explanation": "Kitap kütüphaneye geri verilmiş."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_7_3",
+    "family": "dialogue_logic_nov26_14_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can you send me your homework? B: ____ A: That's fine, send it when it's complete.",
+    "options": [
+      "I've left it at home.",
+      "I've already returned it.",
+      "I haven't finished it yet.",
+      "I'm waiting for it to arrive.",
+      "I've just ordered a replacement."
+    ],
+    "correct": 2,
+    "explanation": "Ödev tamamlanmamış."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_7_4",
+    "family": "dialogue_logic_nov26_14_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Have you received the parcel? B: ____ A: I hope the courier comes soon.",
+    "options": [
+      "I've left it at home.",
+      "I've already returned it.",
+      "I haven't finished it yet.",
+      "I'm waiting for it to arrive.",
+      "I've just ordered a replacement."
+    ],
+    "correct": 3,
+    "explanation": "Kargo henüz ulaşmamış."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_7_5",
+    "family": "dialogue_logic_nov26_14_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Your old charger stopped working, didn't it? B: ____ A: I hope the new one is compatible with your phone.",
+    "options": [
+      "I've left it at home.",
+      "I've already returned it.",
+      "I haven't finished it yet.",
+      "I'm waiting for it to arrive.",
+      "I've just ordered a replacement."
+    ],
+    "correct": 4,
+    "explanation": "Yeni bir şarj cihazı sipariş edilmiş."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_8_1",
+    "family": "dialogue_logic_nov26_14_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is this a direct train to the coast? B: ____ A: How long do I have for the connection there?",
+    "options": [
+      "You need to change at York.",
+      "You can use the same ticket.",
+      "The service has been cancelled.",
+      "The platform has changed to number four.",
+      "The train is running twenty minutes late."
+    ],
+    "correct": 0,
+    "explanation": "York'ta aktarma gerektiğini belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_8_2",
+    "family": "dialogue_logic_nov26_14_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Do I have to buy another ticket for the replacement bus? B: ____ A: Great, I don't need to pay again.",
+    "options": [
+      "You need to change at York.",
+      "You can use the same ticket.",
+      "The service has been cancelled.",
+      "The platform has changed to number four.",
+      "The train is running twenty minutes late."
+    ],
+    "correct": 1,
+    "explanation": "Aynı bilet geçerlidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_8_3",
+    "family": "dialogue_logic_nov26_14_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is the nine o'clock train still coming? B: ____ A: Then I'll have to find another service.",
+    "options": [
+      "You need to change at York.",
+      "You can use the same ticket.",
+      "The service has been cancelled.",
+      "The platform has changed to number four.",
+      "The train is running twenty minutes late."
+    ],
+    "correct": 2,
+    "explanation": "İptal nedeniyle başka sefer aranıyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_8_4",
+    "family": "dialogue_logic_nov26_14_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Should I wait on platform two? B: ____ A: Thanks, I'll go straight to platform four.",
+    "options": [
+      "You need to change at York.",
+      "You can use the same ticket.",
+      "The service has been cancelled.",
+      "The platform has changed to number four.",
+      "The train is running twenty minutes late."
+    ],
+    "correct": 3,
+    "explanation": "Peron değişikliği belirtiliyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_8_5",
+    "family": "dialogue_logic_nov26_14_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Why hasn't the train arrived at its scheduled time? B: ____ A: So it should be here at ten twenty instead of ten.",
+    "options": [
+      "You need to change at York.",
+      "You can use the same ticket.",
+      "The service has been cancelled.",
+      "The platform has changed to number four.",
+      "The train is running twenty minutes late."
+    ],
+    "correct": 4,
+    "explanation": "Yirmi dakika gecikme söz konusudur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_9_1",
+    "family": "dialogue_logic_nov26_14_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe shop is open between 9 a.m. and 5 p.m.",
+    "options": [
+      "The shop opens at nine and closes at five.",
+      "The shop stays open until nine.",
+      "The shop does not open before five.",
+      "The shop is closed all day.",
+      "The shop opens again at five."
+    ],
+    "correct": 0,
+    "explanation": "Between iki çalışma saati arasını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_9_2",
+    "family": "dialogue_logic_nov26_14_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nCustomers can enter the shop up to nine in the evening.",
+    "options": [
+      "The shop opens at nine and closes at five.",
+      "The shop stays open until nine.",
+      "The shop does not open before five.",
+      "The shop is closed all day.",
+      "The shop opens again at five."
+    ],
+    "correct": 1,
+    "explanation": "Up to nine kapanışa kadar olan süreyi ifade eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_9_3",
+    "family": "dialogue_logic_nov26_14_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nFive is the earliest time at which the shop opens.",
+    "options": [
+      "The shop opens at nine and closes at five.",
+      "The shop stays open until nine.",
+      "The shop does not open before five.",
+      "The shop is closed all day.",
+      "The shop opens again at five."
+    ],
+    "correct": 2,
+    "explanation": "Earliest başlangıç için alt sınırdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_9_4",
+    "family": "dialogue_logic_nov26_14_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe shop is not open at any time today.",
+    "options": [
+      "The shop opens at nine and closes at five.",
+      "The shop stays open until nine.",
+      "The shop does not open before five.",
+      "The shop is closed all day.",
+      "The shop opens again at five."
+    ],
+    "correct": 3,
+    "explanation": "Not at any time bütün gün kapalı demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_9_5",
+    "family": "dialogue_logic_nov26_14_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe shop reopens at five after being closed for a while.",
+    "options": [
+      "The shop opens at nine and closes at five.",
+      "The shop stays open until nine.",
+      "The shop does not open before five.",
+      "The shop is closed all day.",
+      "The shop opens again at five."
+    ],
+    "correct": 4,
+    "explanation": "Reopen yeniden açılmaktır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_10_1",
+    "family": "dialogue_logic_nov26_14_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIt is compulsory to reserve a place before attending.",
+    "options": [
+      "You must book in advance.",
+      "Booking is not necessary.",
+      "You must not book online.",
+      "You may book online if you want to.",
+      "You can book only after six."
+    ],
+    "correct": 0,
+    "explanation": "Compulsory zorunluluk, in advance önceden demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_10_2",
+    "family": "dialogue_logic_nov26_14_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThere is no need to make a reservation.",
+    "options": [
+      "You must book in advance.",
+      "Booking is not necessary.",
+      "You must not book online.",
+      "You may book online if you want to.",
+      "You can book only after six."
+    ],
+    "correct": 1,
+    "explanation": "No need zorunluluk olmadığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_10_3",
+    "family": "dialogue_logic_nov26_14_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nOnline reservations are prohibited.",
+    "options": [
+      "You must book in advance.",
+      "Booking is not necessary.",
+      "You must not book online.",
+      "You may book online if you want to.",
+      "You can book only after six."
+    ],
+    "correct": 2,
+    "explanation": "Prohibited yasak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_10_4",
+    "family": "dialogue_logic_nov26_14_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nMaking a reservation on the website is optional.",
+    "options": [
+      "You must book in advance.",
+      "Booking is not necessary.",
+      "You must not book online.",
+      "You may book online if you want to.",
+      "You can book only after six."
+    ],
+    "correct": 3,
+    "explanation": "Optional isteğe bağlıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_10_5",
+    "family": "dialogue_logic_nov26_14_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nReservations cannot be made before six.",
+    "options": [
+      "You must book in advance.",
+      "Booking is not necessary.",
+      "You must not book online.",
+      "You may book online if you want to.",
+      "You can book only after six."
+    ],
+    "correct": 4,
+    "explanation": "Only after six zaman sınırlamasını korur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_11_1",
+    "family": "dialogue_logic_nov26_14_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nShe has worked here since 2022.",
+    "options": [
+      "She started working here in 2022 and still works here.",
+      "She worked here in 2022 but no longer does.",
+      "She will start working here in 2022.",
+      "She has worked here for two months.",
+      "She worked here twice in 2022."
+    ],
+    "correct": 0,
+    "explanation": "Since 2022 geçmiş başlangıçtan bugüne devamı belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_11_2",
+    "family": "dialogue_logic_nov26_14_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nShe used to work here in 2022, but she has left the job.",
+    "options": [
+      "She started working here in 2022 and still works here.",
+      "She worked here in 2022 but no longer does.",
+      "She will start working here in 2022.",
+      "She has worked here for two months.",
+      "She worked here twice in 2022."
+    ],
+    "correct": 1,
+    "explanation": "Used to ve has left artık çalışmadığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_11_3",
+    "family": "dialogue_logic_nov26_14_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nSpeaking in 2021, she said she was due to begin working here the following year.",
+    "options": [
+      "She started working here in 2022 and still works here.",
+      "She worked here in 2022 but no longer does.",
+      "She will start working here in 2022.",
+      "She has worked here for two months.",
+      "She worked here twice in 2022."
+    ],
+    "correct": 2,
+    "explanation": "2021 bakış açısından gelecek başlangıç 2022'dir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_11_4",
+    "family": "dialogue_logic_nov26_14_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nShe joined this workplace two months ago and remains employed here.",
+    "options": [
+      "She started working here in 2022 and still works here.",
+      "She worked here in 2022 but no longer does.",
+      "She will start working here in 2022.",
+      "She has worked here for two months.",
+      "She worked here twice in 2022."
+    ],
+    "correct": 3,
+    "explanation": "For two months süreyi ifade eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_11_5",
+    "family": "dialogue_logic_nov26_14_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIn 2022, she worked here on two separate occasions.",
+    "options": [
+      "She started working here in 2022 and still works here.",
+      "She worked here in 2022 but no longer does.",
+      "She will start working here in 2022.",
+      "She has worked here for two months.",
+      "She worked here twice in 2022."
+    ],
+    "correct": 4,
+    "explanation": "Twice iki ayrı kez demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_12_1",
+    "family": "dialogue_logic_nov26_14_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe train costs more than the bus.",
+    "options": [
+      "The bus is cheaper than the train.",
+      "The bus costs the same as the train.",
+      "The bus is more expensive than the train.",
+      "The bus is too expensive for me.",
+      "The bus is the cheapest of all the options."
+    ],
+    "correct": 0,
+    "explanation": "Karşılaştırma yönü ters çevrilse de otobüs daha ucuzdur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_12_2",
+    "family": "dialogue_logic_nov26_14_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThere is no difference in price between the two services.",
+    "options": [
+      "The bus is cheaper than the train.",
+      "The bus costs the same as the train.",
+      "The bus is more expensive than the train.",
+      "The bus is too expensive for me.",
+      "The bus is the cheapest of all the options."
+    ],
+    "correct": 1,
+    "explanation": "No difference eşit fiyat demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_12_3",
+    "family": "dialogue_logic_nov26_14_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe train costs less than the bus.",
+    "options": [
+      "The bus is cheaper than the train.",
+      "The bus costs the same as the train.",
+      "The bus is more expensive than the train.",
+      "The bus is too expensive for me.",
+      "The bus is the cheapest of all the options."
+    ],
+    "correct": 2,
+    "explanation": "Otobüsün daha pahalı olduğu anlamı korunur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_12_4",
+    "family": "dialogue_logic_nov26_14_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nI cannot afford the bus fare.",
+    "options": [
+      "The bus is cheaper than the train.",
+      "The bus costs the same as the train.",
+      "The bus is more expensive than the train.",
+      "The bus is too expensive for me.",
+      "The bus is the cheapest of all the options."
+    ],
+    "correct": 3,
+    "explanation": "Cannot afford bütçenin yetmediğini belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_12_5",
+    "family": "dialogue_logic_nov26_14_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nNo other available transport option costs less than the bus.",
+    "options": [
+      "The bus is cheaper than the train.",
+      "The bus costs the same as the train.",
+      "The bus is more expensive than the train.",
+      "The bus is too expensive for me.",
+      "The bus is the cheapest of all the options."
+    ],
+    "correct": 4,
+    "explanation": "No other less en düşük fiyatı belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_13_1",
+    "family": "dialogue_logic_nov26_14_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nHe does not often eat meat, although he sometimes does.",
+    "options": [
+      "He rarely eats meat.",
+      "He never eats meat.",
+      "He eats meat every day.",
+      "He is eating meat now.",
+      "He used to eat meat."
+    ],
+    "correct": 0,
+    "explanation": "Rarely seyrek demektir, hiç değil."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_13_2",
+    "family": "dialogue_logic_nov26_14_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nHe does not eat meat at any time.",
+    "options": [
+      "He rarely eats meat.",
+      "He never eats meat.",
+      "He eats meat every day.",
+      "He is eating meat now.",
+      "He used to eat meat."
+    ],
+    "correct": 1,
+    "explanation": "Never hiçbir zaman demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_13_3",
+    "family": "dialogue_logic_nov26_14_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nEating meat is part of his daily routine.",
+    "options": [
+      "He rarely eats meat.",
+      "He never eats meat.",
+      "He eats meat every day.",
+      "He is eating meat now.",
+      "He used to eat meat."
+    ],
+    "correct": 2,
+    "explanation": "Daily routine her gün gerçekleşen alışkanlıktır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_13_4",
+    "family": "dialogue_logic_nov26_14_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nAt the moment, he is having a meal containing meat.",
+    "options": [
+      "He rarely eats meat.",
+      "He never eats meat.",
+      "He eats meat every day.",
+      "He is eating meat now.",
+      "He used to eat meat."
+    ],
+    "correct": 3,
+    "explanation": "At the moment şimdiki zaman bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_13_5",
+    "family": "dialogue_logic_nov26_14_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIn the past, he regularly ate meat, but he no longer does.",
+    "options": [
+      "He rarely eats meat.",
+      "He never eats meat.",
+      "He eats meat every day.",
+      "He is eating meat now.",
+      "He used to eat meat."
+    ],
+    "correct": 4,
+    "explanation": "Used to artık sürmeyen geçmiş alışkanlıktır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_14_1",
+    "family": "dialogue_logic_nov26_14_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: This supplier charges less, but delivery and installation are extra. B: ____ A: Agreed. The initial price alone could be misleading.",
+    "options": [
+      "We should compare the total costs first.",
+      "We should ask for a written confirmation.",
+      "We should examine the cause of the delay.",
+      "We should check whether the data are up to date.",
+      "We should reserve a temporary replacement."
+    ],
+    "correct": 0,
+    "explanation": "Ek ücretler toplam maliyet karşılaştırması gerektirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_14_2",
+    "family": "dialogue_logic_nov26_14_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The hotel promised by phone to hold our rooms. B: ____ A: Yes, an email would give us a record of the promise.",
+    "options": [
+      "We should compare the total costs first.",
+      "We should ask for a written confirmation.",
+      "We should examine the cause of the delay.",
+      "We should check whether the data are up to date.",
+      "We should reserve a temporary replacement."
+    ],
+    "correct": 1,
+    "explanation": "Yazılı doğrulama sözlü söze ilişkin kayıt sağlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_14_3",
+    "family": "dialogue_logic_nov26_14_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: This is the third time our shipment has arrived late. B: ____ A: We can then decide how to prevent it happening again.",
+    "options": [
+      "We should compare the total costs first.",
+      "We should ask for a written confirmation.",
+      "We should examine the cause of the delay.",
+      "We should check whether the data are up to date.",
+      "We should reserve a temporary replacement."
+    ],
+    "correct": 2,
+    "explanation": "Tekrarlanan gecikme için neden araştırılır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_14_4",
+    "family": "dialogue_logic_nov26_14_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The report uses statistics collected three years ago. B: ____ A: I'll contact the department for the latest figures.",
+    "options": [
+      "We should compare the total costs first.",
+      "We should ask for a written confirmation.",
+      "We should examine the cause of the delay.",
+      "We should check whether the data are up to date.",
+      "We should reserve a temporary replacement."
+    ],
+    "correct": 3,
+    "explanation": "Güncel veri kontrolü gerekiyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_14_5",
+    "family": "dialogue_logic_nov26_14_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The printer will be out of service for a month. B: ____ A: I'll find out whether we can borrow one in the meantime.",
+    "options": [
+      "We should compare the total costs first.",
+      "We should ask for a written confirmation.",
+      "We should examine the cause of the delay.",
+      "We should check whether the data are up to date.",
+      "We should reserve a temporary replacement."
+    ],
+    "correct": 4,
+    "explanation": "Geçici ikame ihtiyacı var."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_15_1",
+    "family": "dialogue_logic_nov26_14_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The supplier says the parts won't arrive until after Friday. B: ____ A: I'll ask the client whether next Wednesday is acceptable.",
+    "options": [
+      "Can we extend the deadline?",
+      "Can we divide the work into smaller tasks?",
+      "Can we ask for clarification?",
+      "Can we arrange an online meeting?",
+      "Can we obtain permission to use the material?"
+    ],
+    "correct": 0,
+    "explanation": "Son tarihin uzatılması öneriliyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_15_2",
+    "family": "dialogue_logic_nov26_14_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The assignment seems too large for us to manage all at once. B: ____ A: Yes, each person could take responsibility for a different section.",
+    "options": [
+      "Can we extend the deadline?",
+      "Can we divide the work into smaller tasks?",
+      "Can we ask for clarification?",
+      "Can we arrange an online meeting?",
+      "Can we obtain permission to use the material?"
+    ],
+    "correct": 1,
+    "explanation": "İşi parçalara bölmek çözüm sağlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_15_3",
+    "family": "dialogue_logic_nov26_14_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The instructions seem to contradict each other. B: ____ A: I'll ask the teacher what the second instruction actually means.",
+    "options": [
+      "Can we extend the deadline?",
+      "Can we divide the work into smaller tasks?",
+      "Can we ask for clarification?",
+      "Can we arrange an online meeting?",
+      "Can we obtain permission to use the material?"
+    ],
+    "correct": 2,
+    "explanation": "Clarification açıklığa kavuşturma demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_15_4",
+    "family": "dialogue_logic_nov26_14_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Two members are working in another city this week. B: ____ A: Good idea. I'll send them a video-call link.",
+    "options": [
+      "Can we extend the deadline?",
+      "Can we divide the work into smaller tasks?",
+      "Can we ask for clarification?",
+      "Can we arrange an online meeting?",
+      "Can we obtain permission to use the material?"
+    ],
+    "correct": 3,
+    "explanation": "Çevrim içi toplantı farklı şehirdekileri birleştirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_15_5",
+    "family": "dialogue_logic_nov26_14_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The photographs are owned by another organisation. B: ____ A: Yes, we shouldn't publish them without the owner's consent.",
+    "options": [
+      "Can we extend the deadline?",
+      "Can we divide the work into smaller tasks?",
+      "Can we ask for clarification?",
+      "Can we arrange an online meeting?",
+      "Can we obtain permission to use the material?"
+    ],
+    "correct": 4,
+    "explanation": "Telif sahibinin izni isteniyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_16_1",
+    "family": "dialogue_logic_nov26_14_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Is the workshop still on Wednesday? B: ____ A: Fine, I'll change the date in my calendar to Friday.",
+    "options": [
+      "It has been postponed until Friday.",
+      "It has been cancelled altogether.",
+      "It will take place at the original time.",
+      "It has been moved to a different building.",
+      "It will be held entirely online."
+    ],
+    "correct": 0,
+    "explanation": "Postpone until Friday cuma gününe ertelenmek demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_16_2",
+    "family": "dialogue_logic_nov26_14_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Are we still attending the concert next week? B: ____ A: Then I'll apply for a refund rather than a new date.",
+    "options": [
+      "It has been postponed until Friday.",
+      "It has been cancelled altogether.",
+      "It will take place at the original time.",
+      "It has been moved to a different building.",
+      "It will be held entirely online."
+    ],
+    "correct": 1,
+    "explanation": "Tamamen iptal edilmiştir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_16_3",
+    "family": "dialogue_logic_nov26_14_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Has tomorrow's interview been delayed? B: ____ A: Good, I'll arrive at nine as planned.",
+    "options": [
+      "It has been postponed until Friday.",
+      "It has been cancelled altogether.",
+      "It will take place at the original time.",
+      "It has been moved to a different building.",
+      "It will be held entirely online."
+    ],
+    "correct": 2,
+    "explanation": "Başlangıç zamanı değişmemiştir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_16_4",
+    "family": "dialogue_logic_nov26_14_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Shall we meet at the main office for training? B: ____ A: Could you send me the new building's address?",
+    "options": [
+      "It has been postponed until Friday.",
+      "It has been cancelled altogether.",
+      "It will take place at the original time.",
+      "It has been moved to a different building.",
+      "It will be held entirely online."
+    ],
+    "correct": 3,
+    "explanation": "Toplantı yeri değişmiş."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_16_5",
+    "family": "dialogue_logic_nov26_14_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Do I need to travel to the conference centre? B: ____ A: That's convenient; I can join from home.",
+    "options": [
+      "It has been postponed until Friday.",
+      "It has been cancelled altogether.",
+      "It will take place at the original time.",
+      "It has been moved to a different building.",
+      "It will be held entirely online."
+    ],
+    "correct": 4,
+    "explanation": "Entirely online evden katılıma olanak sağlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_17_1",
+    "family": "dialogue_logic_nov26_14_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The replacement product is also faulty, and the customer wants her money back. B: ____ A: Yes, I'll process the repayment now.",
+    "options": [
+      "We should offer a refund.",
+      "We should provide clearer instructions.",
+      "We should increase the number of available places.",
+      "We should allow more time for the task.",
+      "We should provide a step-free entrance."
+    ],
+    "correct": 0,
+    "explanation": "Refund para iadesidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_17_2",
+    "family": "dialogue_logic_nov26_14_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Several users have made the same mistake because the guide is confusing. B: ____ A: I'll rewrite the relevant section in simpler language.",
+    "options": [
+      "We should offer a refund.",
+      "We should provide clearer instructions.",
+      "We should increase the number of available places.",
+      "We should allow more time for the task.",
+      "We should provide a step-free entrance."
+    ],
+    "correct": 1,
+    "explanation": "Daha açık talimatlar gerekli."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_17_3",
+    "family": "dialogue_logic_nov26_14_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: All the courses are full and the waiting list keeps growing. B: ____ A: I'll see whether we can open another group.",
+    "options": [
+      "We should offer a refund.",
+      "We should provide clearer instructions.",
+      "We should increase the number of available places.",
+      "We should allow more time for the task.",
+      "We should provide a step-free entrance."
+    ],
+    "correct": 2,
+    "explanation": "Kontenjan artırmak bekleme listesini azaltabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_17_4",
+    "family": "dialogue_logic_nov26_14_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Most students understood the exercise but couldn't finish before the bell. B: ____ A: I'll add fifteen minutes to the next session.",
+    "options": [
+      "We should offer a refund.",
+      "We should provide clearer instructions.",
+      "We should increase the number of available places.",
+      "We should allow more time for the task.",
+      "We should provide a step-free entrance."
+    ],
+    "correct": 3,
+    "explanation": "Anlama değil süre sorununa çözüm öneriliyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_17_5",
+    "family": "dialogue_logic_nov26_14_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Visitors who use wheelchairs cannot enter because of the stairs. B: ____ A: We'll ask an architect to design a ramp.",
+    "options": [
+      "We should offer a refund.",
+      "We should provide clearer instructions.",
+      "We should increase the number of available places.",
+      "We should allow more time for the task.",
+      "We should provide a step-free entrance."
+    ],
+    "correct": 4,
+    "explanation": "Basamaksız giriş erişimi artırır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_18_1",
+    "family": "dialogue_logic_nov26_14_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nOnly a small minority of the applicants satisfied the necessary conditions.",
+    "options": [
+      "Few applicants met the requirements.",
+      "Most applicants met the requirements.",
+      "None of the applicants met the requirements.",
+      "All applicants met the requirements.",
+      "Exactly half the applicants met the requirements."
+    ],
+    "correct": 0,
+    "explanation": "Few küçük azınlığı belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_18_2",
+    "family": "dialogue_logic_nov26_14_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nMore than half the applicants satisfied the necessary conditions.",
+    "options": [
+      "Few applicants met the requirements.",
+      "Most applicants met the requirements.",
+      "None of the applicants met the requirements.",
+      "All applicants met the requirements.",
+      "Exactly half the applicants met the requirements."
+    ],
+    "correct": 1,
+    "explanation": "Most çoğunluğu ifade eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_18_3",
+    "family": "dialogue_logic_nov26_14_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nNot a single applicant satisfied the necessary conditions.",
+    "options": [
+      "Few applicants met the requirements.",
+      "Most applicants met the requirements.",
+      "None of the applicants met the requirements.",
+      "All applicants met the requirements.",
+      "Exactly half the applicants met the requirements."
+    ],
+    "correct": 2,
+    "explanation": "None hiçbirini ifade eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_18_4",
+    "family": "dialogue_logic_nov26_14_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nEvery applicant satisfied the necessary conditions.",
+    "options": [
+      "Few applicants met the requirements.",
+      "Most applicants met the requirements.",
+      "None of the applicants met the requirements.",
+      "All applicants met the requirements.",
+      "Exactly half the applicants met the requirements."
+    ],
+    "correct": 3,
+    "explanation": "All her birini kapsar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_18_5",
+    "family": "dialogue_logic_nov26_14_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nFifty percent of the applicants satisfied the necessary conditions.",
+    "options": [
+      "Few applicants met the requirements.",
+      "Most applicants met the requirements.",
+      "None of the applicants met the requirements.",
+      "All applicants met the requirements.",
+      "Exactly half the applicants met the requirements."
+    ],
+    "correct": 4,
+    "explanation": "Exactly half yüzde ellidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_19_1",
+    "family": "dialogue_logic_nov26_14_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIt is possible that she did not catch the train.",
+    "options": [
+      "She may have missed the train.",
+      "She must have missed the train.",
+      "She cannot have missed the train.",
+      "She should have taken the train.",
+      "She needn't have taken the train."
+    ],
+    "correct": 0,
+    "explanation": "May have geçmiş olasılığıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_19_2",
+    "family": "dialogue_logic_nov26_14_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe evidence strongly suggests that she failed to catch the train.",
+    "options": [
+      "She may have missed the train.",
+      "She must have missed the train.",
+      "She cannot have missed the train.",
+      "She should have taken the train.",
+      "She needn't have taken the train."
+    ],
+    "correct": 1,
+    "explanation": "Must have güçlü çıkarım bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_19_3",
+    "family": "dialogue_logic_nov26_14_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThere is no possibility that she failed to catch the train.",
+    "options": [
+      "She may have missed the train.",
+      "She must have missed the train.",
+      "She cannot have missed the train.",
+      "She should have taken the train.",
+      "She needn't have taken the train."
+    ],
+    "correct": 2,
+    "explanation": "Cannot have geçmişe ilişkin imkânsızlık çıkarımıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_19_4",
+    "family": "dialogue_logic_nov26_14_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIt would have been better if she had travelled by train.",
+    "options": [
+      "She may have missed the train.",
+      "She must have missed the train.",
+      "She cannot have missed the train.",
+      "She should have taken the train.",
+      "She needn't have taken the train."
+    ],
+    "correct": 3,
+    "explanation": "Should have gerçekleşmemiş geçmiş tavsiyesidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_19_5",
+    "family": "dialogue_logic_nov26_14_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nShe travelled by train even though doing so was unnecessary.",
+    "options": [
+      "She may have missed the train.",
+      "She must have missed the train.",
+      "She cannot have missed the train.",
+      "She should have taken the train.",
+      "She needn't have taken the train."
+    ],
+    "correct": 4,
+    "explanation": "Needn't have gereksiz gerçekleşen eylemdir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_20_1",
+    "family": "dialogue_logic_nov26_14_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe strike caused the organisers to call off the meeting.",
+    "options": [
+      "The meeting was cancelled because of the strike.",
+      "The meeting took place despite the strike.",
+      "The meeting will be cancelled if there is a strike.",
+      "The meeting was postponed until the strike ended.",
+      "The strike began after the meeting ended."
+    ],
+    "correct": 0,
+    "explanation": "Call off iptal, because of neden belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_20_2",
+    "family": "dialogue_logic_nov26_14_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nAlthough there was a strike, the meeting went ahead.",
+    "options": [
+      "The meeting was cancelled because of the strike.",
+      "The meeting took place despite the strike.",
+      "The meeting will be cancelled if there is a strike.",
+      "The meeting was postponed until the strike ended.",
+      "The strike began after the meeting ended."
+    ],
+    "correct": 1,
+    "explanation": "Despite karşıtlığa rağmen gerçekleşen toplantıyı anlatır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_20_3",
+    "family": "dialogue_logic_nov26_14_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIn the event of a strike, the organisers will call off the meeting.",
+    "options": [
+      "The meeting was cancelled because of the strike.",
+      "The meeting took place despite the strike.",
+      "The meeting will be cancelled if there is a strike.",
+      "The meeting was postponed until the strike ended.",
+      "The strike began after the meeting ended."
+    ],
+    "correct": 2,
+    "explanation": "If gelecek koşuludur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_20_4",
+    "family": "dialogue_logic_nov26_14_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe organisers delayed the meeting until the strike was over.",
+    "options": [
+      "The meeting was cancelled because of the strike.",
+      "The meeting took place despite the strike.",
+      "The meeting will be cancelled if there is a strike.",
+      "The meeting was postponed until the strike ended.",
+      "The strike began after the meeting ended."
+    ],
+    "correct": 3,
+    "explanation": "Postpone until bir olayın sonuna kadar ertelemektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_20_5",
+    "family": "dialogue_logic_nov26_14_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe meeting had already finished when the strike started.",
+    "options": [
+      "The meeting was cancelled because of the strike.",
+      "The meeting took place despite the strike.",
+      "The meeting will be cancelled if there is a strike.",
+      "The meeting was postponed until the strike ended.",
+      "The strike began after the meeting ended."
+    ],
+    "correct": 4,
+    "explanation": "Past perfect önce gerçekleşen olayın toplantı bitişi olduğunu gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_21_1",
+    "family": "dialogue_logic_nov26_14_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nDelays occur less often now, although they have not disappeared completely.",
+    "options": [
+      "The new system has reduced delays but not removed them.",
+      "The new system has eliminated delays entirely.",
+      "The new system has made delays more frequent.",
+      "The new system has had no effect on delays.",
+      "The new system is intended to reduce delays in future."
+    ],
+    "correct": 0,
+    "explanation": "Azalma ve devam eden sorun birlikte korunur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_21_2",
+    "family": "dialogue_logic_nov26_14_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nNo delays remain since the new system was introduced.",
+    "options": [
+      "The new system has reduced delays but not removed them.",
+      "The new system has eliminated delays entirely.",
+      "The new system has made delays more frequent.",
+      "The new system has had no effect on delays.",
+      "The new system is intended to reduce delays in future."
+    ],
+    "correct": 1,
+    "explanation": "Eliminate entirely tamamen ortadan kaldırmaktır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_21_3",
+    "family": "dialogue_logic_nov26_14_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nDelays occur more often since the new system was introduced.",
+    "options": [
+      "The new system has reduced delays but not removed them.",
+      "The new system has eliminated delays entirely.",
+      "The new system has made delays more frequent.",
+      "The new system has had no effect on delays.",
+      "The new system is intended to reduce delays in future."
+    ],
+    "correct": 2,
+    "explanation": "Artış yönü korunur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_21_4",
+    "family": "dialogue_logic_nov26_14_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe frequency of delays has remained unchanged under the new system.",
+    "options": [
+      "The new system has reduced delays but not removed them.",
+      "The new system has eliminated delays entirely.",
+      "The new system has made delays more frequent.",
+      "The new system has had no effect on delays.",
+      "The new system is intended to reduce delays in future."
+    ],
+    "correct": 3,
+    "explanation": "No effect değişim olmadığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_21_5",
+    "family": "dialogue_logic_nov26_14_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe aim of the new system is to cut delays in the coming years.",
+    "options": [
+      "The new system has reduced delays but not removed them.",
+      "The new system has eliminated delays entirely.",
+      "The new system has made delays more frequent.",
+      "The new system has had no effect on delays.",
+      "The new system is intended to reduce delays in future."
+    ],
+    "correct": 4,
+    "explanation": "Intended to amaç, gelecek sonucu ise henüz doğrulanmamıştır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_22_1",
+    "family": "dialogue_logic_nov26_14_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe team finished the report ahead of schedule.",
+    "options": [
+      "The report was completed before the deadline.",
+      "The report was completed after the deadline.",
+      "The report was completed exactly on the deadline.",
+      "The report has not yet been completed.",
+      "The deadline was extended before the report was completed."
+    ],
+    "correct": 0,
+    "explanation": "Ahead of schedule planlanandan önce demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_22_2",
+    "family": "dialogue_logic_nov26_14_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe team finished the report later than the required submission time.",
+    "options": [
+      "The report was completed before the deadline.",
+      "The report was completed after the deadline.",
+      "The report was completed exactly on the deadline.",
+      "The report has not yet been completed.",
+      "The deadline was extended before the report was completed."
+    ],
+    "correct": 1,
+    "explanation": "After the deadline son teslimi geçmektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_22_3",
+    "family": "dialogue_logic_nov26_14_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe team finished the report at the precise time it was due.",
+    "options": [
+      "The report was completed before the deadline.",
+      "The report was completed after the deadline.",
+      "The report was completed exactly on the deadline.",
+      "The report has not yet been completed.",
+      "The deadline was extended before the report was completed."
+    ],
+    "correct": 2,
+    "explanation": "Exactly kesin eşit zaman bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_22_4",
+    "family": "dialogue_logic_nov26_14_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe team is still working on the report and has not finished it.",
+    "options": [
+      "The report was completed before the deadline.",
+      "The report was completed after the deadline.",
+      "The report was completed exactly on the deadline.",
+      "The report has not yet been completed.",
+      "The deadline was extended before the report was completed."
+    ],
+    "correct": 3,
+    "explanation": "Not yet henüz tamamlanmadığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_22_5",
+    "family": "dialogue_logic_nov26_14_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe submission date was moved to a later date while the report was still unfinished.",
+    "options": [
+      "The report was completed before the deadline.",
+      "The report was completed after the deadline.",
+      "The report was completed exactly on the deadline.",
+      "The report has not yet been completed.",
+      "The deadline was extended before the report was completed."
+    ],
+    "correct": 4,
+    "explanation": "Deadline extended son tarihin ileri alınmasıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_23_1",
+    "family": "dialogue_logic_nov26_14_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe available findings do not justify concluding that one variable causes the other.",
+    "options": [
+      "The evidence is insufficient to establish a causal link.",
+      "The evidence establishes that no causal link exists.",
+      "The evidence conclusively establishes a causal link.",
+      "The evidence suggests a possible link but does not establish its direction.",
+      "The evidence was excluded before any analysis of causality."
+    ],
+    "correct": 0,
+    "explanation": "Yetersiz nedensellik kanıtı ilişkinin yokluğu anlamına gelmez."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_23_2",
+    "family": "dialogue_logic_nov26_14_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe findings demonstrate that neither variable causes changes in the other.",
+    "options": [
+      "The evidence is insufficient to establish a causal link.",
+      "The evidence establishes that no causal link exists.",
+      "The evidence conclusively establishes a causal link.",
+      "The evidence suggests a possible link but does not establish its direction.",
+      "The evidence was excluded before any analysis of causality."
+    ],
+    "correct": 1,
+    "explanation": "Nedensel ilişkinin yokluğu kanıtlanmış."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_23_3",
+    "family": "dialogue_logic_nov26_14_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe findings demonstrate beyond reasonable doubt that one variable causes the other.",
+    "options": [
+      "The evidence is insufficient to establish a causal link.",
+      "The evidence establishes that no causal link exists.",
+      "The evidence conclusively establishes a causal link.",
+      "The evidence suggests a possible link but does not establish its direction.",
+      "The evidence was excluded before any analysis of causality."
+    ],
+    "correct": 2,
+    "explanation": "Conclusive kesin kanıtı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_23_4",
+    "family": "dialogue_logic_nov26_14_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe findings indicate that the variables may be causally connected, but it is unclear which influences which.",
+    "options": [
+      "The evidence is insufficient to establish a causal link.",
+      "The evidence establishes that no causal link exists.",
+      "The evidence conclusively establishes a causal link.",
+      "The evidence suggests a possible link but does not establish its direction.",
+      "The evidence was excluded before any analysis of causality."
+    ],
+    "correct": 3,
+    "explanation": "Olası ilişkinin yönü belirlenmemiş."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_23_5",
+    "family": "dialogue_logic_nov26_14_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe researchers removed the data from consideration before examining possible causal relationships.",
+    "options": [
+      "The evidence is insufficient to establish a causal link.",
+      "The evidence establishes that no causal link exists.",
+      "The evidence conclusively establishes a causal link.",
+      "The evidence suggests a possible link but does not establish its direction.",
+      "The evidence was excluded before any analysis of causality."
+    ],
+    "correct": 4,
+    "explanation": "Veri nedensellik analizi öncesinde dışlanmıştır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_24_1",
+    "family": "dialogue_logic_nov26_14_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe measure will probably not achieve its aims unless sufficient resources are provided.",
+    "options": [
+      "The policy is unlikely to succeed without adequate funding.",
+      "Adequate funding is sufficient to guarantee the policy's success.",
+      "The policy is unlikely to succeed even with adequate funding.",
+      "The policy has already succeeded despite inadequate funding.",
+      "The success of the policy is independent of its funding."
+    ],
+    "correct": 0,
+    "explanation": "Unless gerekli koşulu belirtir, garanti vermez."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_24_2",
+    "family": "dialogue_logic_nov26_14_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nProviding enough resources will ensure that the measure achieves its aims.",
+    "options": [
+      "The policy is unlikely to succeed without adequate funding.",
+      "Adequate funding is sufficient to guarantee the policy's success.",
+      "The policy is unlikely to succeed even with adequate funding.",
+      "The policy has already succeeded despite inadequate funding.",
+      "The success of the policy is independent of its funding."
+    ],
+    "correct": 1,
+    "explanation": "Sufficient to guarantee yeterli koşuldur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_24_3",
+    "family": "dialogue_logic_nov26_14_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nEven if enough resources are provided, the measure will probably fail.",
+    "options": [
+      "The policy is unlikely to succeed without adequate funding.",
+      "Adequate funding is sufficient to guarantee the policy's success.",
+      "The policy is unlikely to succeed even with adequate funding.",
+      "The policy has already succeeded despite inadequate funding.",
+      "The success of the policy is independent of its funding."
+    ],
+    "correct": 2,
+    "explanation": "Even with funding olası başarısızlık korunur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_24_4",
+    "family": "dialogue_logic_nov26_14_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nAlthough the resources provided were insufficient, the measure has achieved its aims.",
+    "options": [
+      "The policy is unlikely to succeed without adequate funding.",
+      "Adequate funding is sufficient to guarantee the policy's success.",
+      "The policy is unlikely to succeed even with adequate funding.",
+      "The policy has already succeeded despite inadequate funding.",
+      "The success of the policy is independent of its funding."
+    ],
+    "correct": 3,
+    "explanation": "Gerçekleşmiş başarı ve yetersiz kaynak birlikte belirtilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_24_5",
+    "family": "dialogue_logic_nov26_14_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe amount of money allocated to the measure does not affect whether it achieves its aims.",
+    "options": [
+      "The policy is unlikely to succeed without adequate funding.",
+      "Adequate funding is sufficient to guarantee the policy's success.",
+      "The policy is unlikely to succeed even with adequate funding.",
+      "The policy has already succeeded despite inadequate funding.",
+      "The success of the policy is independent of its funding."
+    ],
+    "correct": 4,
+    "explanation": "Independent of finansmandan bağımsızlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_25_1",
+    "family": "dialogue_logic_nov26_14_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe policy explains part of the recorded variation, but not all of it.",
+    "options": [
+      "Only some of the observed changes can be attributed to the policy.",
+      "All of the observed changes can be attributed to the policy.",
+      "None of the observed changes can be attributed to the policy.",
+      "The policy may have caused changes that were not observed.",
+      "The observed changes occurred before the policy was introduced."
+    ],
+    "correct": 0,
+    "explanation": "Part but not all kapsamı sınırlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_25_2",
+    "family": "dialogue_logic_nov26_14_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nEvery change recorded can be explained by the policy.",
+    "options": [
+      "Only some of the observed changes can be attributed to the policy.",
+      "All of the observed changes can be attributed to the policy.",
+      "None of the observed changes can be attributed to the policy.",
+      "The policy may have caused changes that were not observed.",
+      "The observed changes occurred before the policy was introduced."
+    ],
+    "correct": 1,
+    "explanation": "Every tüm değişiklikleri kapsar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_25_3",
+    "family": "dialogue_logic_nov26_14_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe policy cannot explain any of the changes recorded.",
+    "options": [
+      "Only some of the observed changes can be attributed to the policy.",
+      "All of the observed changes can be attributed to the policy.",
+      "None of the observed changes can be attributed to the policy.",
+      "The policy may have caused changes that were not observed.",
+      "The observed changes occurred before the policy was introduced."
+    ],
+    "correct": 2,
+    "explanation": "Cannot any hiçbir değişikliği açıklamaz."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_25_4",
+    "family": "dialogue_logic_nov26_14_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIt is possible that the policy produced additional effects that the assessment did not detect.",
+    "options": [
+      "Only some of the observed changes can be attributed to the policy.",
+      "All of the observed changes can be attributed to the policy.",
+      "None of the observed changes can be attributed to the policy.",
+      "The policy may have caused changes that were not observed.",
+      "The observed changes occurred before the policy was introduced."
+    ],
+    "correct": 3,
+    "explanation": "May have ölçülmeyen olası etkiyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_25_5",
+    "family": "dialogue_logic_nov26_14_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe recorded changes had already taken place when the policy came into force.",
+    "options": [
+      "Only some of the observed changes can be attributed to the policy.",
+      "All of the observed changes can be attributed to the policy.",
+      "None of the observed changes can be attributed to the policy.",
+      "The policy may have caused changes that were not observed.",
+      "The observed changes occurred before the policy was introduced."
+    ],
+    "correct": 4,
+    "explanation": "Had already taken place politikanın öncesini gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_26_1",
+    "family": "dialogue_logic_nov26_14_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe updated figure is marginally lower than the initial one.",
+    "options": [
+      "The revised estimate is slightly below the original figure.",
+      "The revised estimate is substantially below the original figure.",
+      "The revised estimate is slightly above the original figure.",
+      "The revised estimate is identical to the original figure.",
+      "The original estimate was withdrawn without being replaced."
+    ],
+    "correct": 0,
+    "explanation": "Marginally slightly derecesini ve düşüş yönünü korur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_26_2",
+    "family": "dialogue_logic_nov26_14_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe updated figure is considerably lower than the initial one.",
+    "options": [
+      "The revised estimate is slightly below the original figure.",
+      "The revised estimate is substantially below the original figure.",
+      "The revised estimate is slightly above the original figure.",
+      "The revised estimate is identical to the original figure.",
+      "The original estimate was withdrawn without being replaced."
+    ],
+    "correct": 1,
+    "explanation": "Considerably önemli ölçüde düşüktür."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_26_3",
+    "family": "dialogue_logic_nov26_14_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe updated figure is a little higher than the initial one.",
+    "options": [
+      "The revised estimate is slightly below the original figure.",
+      "The revised estimate is substantially below the original figure.",
+      "The revised estimate is slightly above the original figure.",
+      "The revised estimate is identical to the original figure.",
+      "The original estimate was withdrawn without being replaced."
+    ],
+    "correct": 2,
+    "explanation": "A little higher küçük artış bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_26_4",
+    "family": "dialogue_logic_nov26_14_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe updated and initial figures are exactly the same.",
+    "options": [
+      "The revised estimate is slightly below the original figure.",
+      "The revised estimate is substantially below the original figure.",
+      "The revised estimate is slightly above the original figure.",
+      "The revised estimate is identical to the original figure.",
+      "The original estimate was withdrawn without being replaced."
+    ],
+    "correct": 3,
+    "explanation": "Identical tamamen aynı demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_26_5",
+    "family": "dialogue_logic_nov26_14_26",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe initial figure was retracted and no new figure was issued.",
+    "options": [
+      "The revised estimate is slightly below the original figure.",
+      "The revised estimate is substantially below the original figure.",
+      "The revised estimate is slightly above the original figure.",
+      "The revised estimate is identical to the original figure.",
+      "The original estimate was withdrawn without being replaced."
+    ],
+    "correct": 4,
+    "explanation": "Withdrawn without replacement geri çekilip yenilenmemiştir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_27_1",
+    "family": "dialogue_logic_nov26_14_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe researchers recognised that their conclusions might not apply in every setting.",
+    "options": [
+      "The authors acknowledged possible limitations to generalisation.",
+      "The authors rejected all attempts to generalise the findings.",
+      "The authors claimed the findings were universally applicable.",
+      "The authors established that the findings applied to another population.",
+      "The authors did not discuss whether the findings could be generalised."
+    ],
+    "correct": 0,
+    "explanation": "Might not olası genelleme sınırını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_27_2",
+    "family": "dialogue_logic_nov26_14_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe researchers insisted that the results should never be extended beyond the original sample.",
+    "options": [
+      "The authors acknowledged possible limitations to generalisation.",
+      "The authors rejected all attempts to generalise the findings.",
+      "The authors claimed the findings were universally applicable.",
+      "The authors established that the findings applied to another population.",
+      "The authors did not discuss whether the findings could be generalised."
+    ],
+    "correct": 1,
+    "explanation": "Never kesin genelleme reddidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_27_3",
+    "family": "dialogue_logic_nov26_14_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe researchers maintained that the conclusions applied in all settings.",
+    "options": [
+      "The authors acknowledged possible limitations to generalisation.",
+      "The authors rejected all attempts to generalise the findings.",
+      "The authors claimed the findings were universally applicable.",
+      "The authors established that the findings applied to another population.",
+      "The authors did not discuss whether the findings could be generalised."
+    ],
+    "correct": 2,
+    "explanation": "Universally tüm ortamları kapsar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_27_4",
+    "family": "dialogue_logic_nov26_14_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe researchers demonstrated applicability to a separate group of people.",
+    "options": [
+      "The authors acknowledged possible limitations to generalisation.",
+      "The authors rejected all attempts to generalise the findings.",
+      "The authors claimed the findings were universally applicable.",
+      "The authors established that the findings applied to another population.",
+      "The authors did not discuss whether the findings could be generalised."
+    ],
+    "correct": 3,
+    "explanation": "Established başka gruba uygulanabilirlik kanıtıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_27_5",
+    "family": "dialogue_logic_nov26_14_27",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe researchers left the question of generalisability entirely unaddressed.",
+    "options": [
+      "The authors acknowledged possible limitations to generalisation.",
+      "The authors rejected all attempts to generalise the findings.",
+      "The authors claimed the findings were universally applicable.",
+      "The authors established that the findings applied to another population.",
+      "The authors did not discuss whether the findings could be generalised."
+    ],
+    "correct": 4,
+    "explanation": "Unaddressed konunun tartışılmadığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_28_1",
+    "family": "dialogue_logic_nov26_14_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nA decision requires considering the benefits together with the expenses involved.",
+    "options": [
+      "The advantages must be weighed against the costs.",
+      "The advantages clearly outweigh the costs.",
+      "The costs clearly outweigh the advantages.",
+      "The costs are unrelated to the advantages.",
+      "The costs cannot be estimated before implementation."
+    ],
+    "correct": 0,
+    "explanation": "Weigh against henüz karar vermeden iki tarafı değerlendirmektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_28_2",
+    "family": "dialogue_logic_nov26_14_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe benefits are demonstrably greater than the expenses incurred.",
+    "options": [
+      "The advantages must be weighed against the costs.",
+      "The advantages clearly outweigh the costs.",
+      "The costs clearly outweigh the advantages.",
+      "The costs are unrelated to the advantages.",
+      "The costs cannot be estimated before implementation."
+    ],
+    "correct": 1,
+    "explanation": "Outweigh faydanın ağır basmasıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_28_3",
+    "family": "dialogue_logic_nov26_14_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe expenses are demonstrably greater than the benefits obtained.",
+    "options": [
+      "The advantages must be weighed against the costs.",
+      "The advantages clearly outweigh the costs.",
+      "The costs clearly outweigh the advantages.",
+      "The costs are unrelated to the advantages.",
+      "The costs cannot be estimated before implementation."
+    ],
+    "correct": 2,
+    "explanation": "Ağır basan taraf maliyettir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_28_4",
+    "family": "dialogue_logic_nov26_14_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe expenses incurred have no connection with the benefits achieved.",
+    "options": [
+      "The advantages must be weighed against the costs.",
+      "The advantages clearly outweigh the costs.",
+      "The costs clearly outweigh the advantages.",
+      "The costs are unrelated to the advantages.",
+      "The costs cannot be estimated before implementation."
+    ],
+    "correct": 3,
+    "explanation": "Unrelated ilişkisizlik bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_28_5",
+    "family": "dialogue_logic_nov26_14_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nIt is impossible to calculate the expenses in advance of putting the measure into practice.",
+    "options": [
+      "The advantages must be weighed against the costs.",
+      "The advantages clearly outweigh the costs.",
+      "The costs clearly outweigh the advantages.",
+      "The costs are unrelated to the advantages.",
+      "The costs cannot be estimated before implementation."
+    ],
+    "correct": 4,
+    "explanation": "Before implementation uygulama öncesi hesap imkânsızlığıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_29_1",
+    "family": "dialogue_logic_nov26_14_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The average waiting time has fallen, but some patients wait much longer. B: ____ A: Exactly, we need to see the spread of individual waiting times.",
+    "options": [
+      "We should examine the distribution, not merely the average.",
+      "We should compare the data with an independent dataset.",
+      "We should distinguish association from causation.",
+      "We should assess long-term as well as initial outcomes.",
+      "We should investigate whether the measurement has changed."
+    ],
+    "correct": 0,
+    "explanation": "Ortalama dağılımı gizleyebilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_29_2",
+    "family": "dialogue_logic_nov26_14_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The model performs well on the observations used to develop it. B: ____ A: Yes, let's test it on observations it has never encountered.",
+    "options": [
+      "We should examine the distribution, not merely the average.",
+      "We should compare the data with an independent dataset.",
+      "We should distinguish association from causation.",
+      "We should assess long-term as well as initial outcomes.",
+      "We should investigate whether the measurement has changed."
+    ],
+    "correct": 1,
+    "explanation": "Bağımsız veri genelleme başarısını ölçer."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_29_3",
+    "family": "dialogue_logic_nov26_14_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The variables move together, so one must cause the other. B: ____ A: You're right; a third factor could affect both.",
+    "options": [
+      "We should examine the distribution, not merely the average.",
+      "We should compare the data with an independent dataset.",
+      "We should distinguish association from causation.",
+      "We should assess long-term as well as initial outcomes.",
+      "We should investigate whether the measurement has changed."
+    ],
+    "correct": 2,
+    "explanation": "İlişki nedensellik kanıtı değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_29_4",
+    "family": "dialogue_logic_nov26_14_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: Students improved immediately after the course. B: ____ A: We should retest them in three months to see whether they retain the skills.",
+    "options": [
+      "We should examine the distribution, not merely the average.",
+      "We should compare the data with an independent dataset.",
+      "We should distinguish association from causation.",
+      "We should assess long-term as well as initial outcomes.",
+      "We should investigate whether the measurement has changed."
+    ],
+    "correct": 3,
+    "explanation": "Gecikmeli test kalıcılığı ölçer."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_29_5",
+    "family": "dialogue_logic_nov26_14_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The reported rate increased when the organisation introduced a new definition. B: ____ A: Agreed, we need comparable definitions before interpreting the increase.",
+    "options": [
+      "We should examine the distribution, not merely the average.",
+      "We should compare the data with an independent dataset.",
+      "We should distinguish association from causation.",
+      "We should assess long-term as well as initial outcomes.",
+      "We should investigate whether the measurement has changed."
+    ],
+    "correct": 4,
+    "explanation": "Ölçüm tanımı değişikliği görünür artışa neden olabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_30_1",
+    "family": "dialogue_logic_nov26_14_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The programme distributed ten thousand seedlings, but we do not know how many survived. B: ____ A: Exactly, distribution figures are not evidence of established trees.",
+    "options": [
+      "We should distinguish output from outcomes.",
+      "We should account for changes in the population size.",
+      "We should include the costs incurred after purchase.",
+      "We should test the procedure under real operating conditions.",
+      "We should consult groups that are underrepresented in the survey."
+    ],
+    "correct": 0,
+    "explanation": "Dağıtım çıktı, yaşayan ağaç sonuçtur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_30_2",
+    "family": "dialogue_logic_nov26_14_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The number of cases rose, but the town also grew substantially. B: ____ A: Let's calculate rates per thousand residents.",
+    "options": [
+      "We should distinguish output from outcomes.",
+      "We should account for changes in the population size.",
+      "We should include the costs incurred after purchase.",
+      "We should test the procedure under real operating conditions.",
+      "We should consult groups that are underrepresented in the survey."
+    ],
+    "correct": 1,
+    "explanation": "Nüfus artışı payda değişikliğini gerektirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_30_3",
+    "family": "dialogue_logic_nov26_14_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: This machine has the lowest initial price of all the models. B: ____ A: Yes, maintenance expenses might make it more costly over its lifetime.",
+    "options": [
+      "We should distinguish output from outcomes.",
+      "We should account for changes in the population size.",
+      "We should include the costs incurred after purchase.",
+      "We should test the procedure under real operating conditions.",
+      "We should consult groups that are underrepresented in the survey."
+    ],
+    "correct": 2,
+    "explanation": "Satın alma sonrası maliyetler dikkate alınmalıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_30_4",
+    "family": "dialogue_logic_nov26_14_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The prototype passed every laboratory test. B: ____ A: We'll observe how it performs in an ordinary factory.",
+    "options": [
+      "We should distinguish output from outcomes.",
+      "We should account for changes in the population size.",
+      "We should include the costs incurred after purchase.",
+      "We should test the procedure under real operating conditions.",
+      "We should consult groups that are underrepresented in the survey."
+    ],
+    "correct": 3,
+    "explanation": "Laboratuvar dışı işletme koşullarında test gerekir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_30_5",
+    "family": "dialogue_logic_nov26_14_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: Nearly all respondents were from the city centre. B: ____ A: I'll arrange interviews in the outlying districts.",
+    "options": [
+      "We should distinguish output from outcomes.",
+      "We should account for changes in the population size.",
+      "We should include the costs incurred after purchase.",
+      "We should test the procedure under real operating conditions.",
+      "We should consult groups that are underrepresented in the survey."
+    ],
+    "correct": 4,
+    "explanation": "Eksik temsil edilen gruplar örnekleme dahil edilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_31_1",
+    "family": "dialogue_logic_nov26_14_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The volunteers performed better, but they chose to enrol themselves. B: ____ A: Yes, they may have been more motivated before the programme began.",
+    "options": [
+      "We should investigate possible selection bias.",
+      "We should clarify the meaning of the technical terms.",
+      "We should report uncertainty around the estimates.",
+      "We should examine the unintended consequences.",
+      "We should preserve access to the original records."
+    ],
+    "correct": 0,
+    "explanation": "Gönüllü seçilim başlangıç farklılıklarına yol açabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_31_2",
+    "family": "dialogue_logic_nov26_14_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: Reviewers seem to interpret the same key phrase differently. B: ____ A: Let's add explicit definitions to the document.",
+    "options": [
+      "We should investigate possible selection bias.",
+      "We should clarify the meaning of the technical terms.",
+      "We should report uncertainty around the estimates.",
+      "We should examine the unintended consequences.",
+      "We should preserve access to the original records."
+    ],
+    "correct": 1,
+    "explanation": "Teknik terimler tanımlanmalıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_31_3",
+    "family": "dialogue_logic_nov26_14_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The forecast gives a single precise figure despite limited data. B: ____ A: A range would communicate how much the result might vary.",
+    "options": [
+      "We should investigate possible selection bias.",
+      "We should clarify the meaning of the technical terms.",
+      "We should report uncertainty around the estimates.",
+      "We should examine the unintended consequences.",
+      "We should preserve access to the original records."
+    ],
+    "correct": 2,
+    "explanation": "Belirsizlik aralığı tek sayıdan daha bilgilendiricidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_31_4",
+    "family": "dialogue_logic_nov26_14_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The new parking rule reduced traffic on the main road but increased it on side streets. B: ____ A: We shouldn't assess the main road in isolation.",
+    "options": [
+      "We should investigate possible selection bias.",
+      "We should clarify the meaning of the technical terms.",
+      "We should report uncertainty around the estimates.",
+      "We should examine the unintended consequences.",
+      "We should preserve access to the original records."
+    ],
+    "correct": 3,
+    "explanation": "Yan etkiler değerlendirmeye dahil edilmelidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_31_5",
+    "family": "dialogue_logic_nov26_14_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The software has transcribed the documents automatically. B: ____ A: Users will then be able to verify questionable readings against the images.",
+    "options": [
+      "We should investigate possible selection bias.",
+      "We should clarify the meaning of the technical terms.",
+      "We should report uncertainty around the estimates.",
+      "We should examine the unintended consequences.",
+      "We should preserve access to the original records."
+    ],
+    "correct": 4,
+    "explanation": "Orijinal kayıt doğrulama olanağı sağlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_32_1",
+    "family": "dialogue_logic_nov26_14_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: Without a licence the service cannot operate, so obtaining one guarantees success. B: ____ A: Right, a licence does not by itself provide staff or funding.",
+    "options": [
+      "We should distinguish necessary from sufficient conditions.",
+      "We should investigate whether the effect differs between groups.",
+      "We should examine the order in which the events occurred.",
+      "We should consider alternative explanations for the same evidence.",
+      "We should verify the units used in the two calculations."
+    ],
+    "correct": 0,
+    "explanation": "Gerekli koşul yeterli koşul değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_32_2",
+    "family": "dialogue_logic_nov26_14_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The treatment produced a positive average result. B: ____ A: Some patients may benefit much more than others.",
+    "options": [
+      "We should distinguish necessary from sufficient conditions.",
+      "We should investigate whether the effect differs between groups.",
+      "We should examine the order in which the events occurred.",
+      "We should consider alternative explanations for the same evidence.",
+      "We should verify the units used in the two calculations."
+    ],
+    "correct": 1,
+    "explanation": "Alt gruplarda farklı etki incelenmelidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_32_3",
+    "family": "dialogue_logic_nov26_14_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The price rise and the fall in demand occurred during the same year. B: ____ A: We need to know which happened first.",
+    "options": [
+      "We should distinguish necessary from sufficient conditions.",
+      "We should investigate whether the effect differs between groups.",
+      "We should examine the order in which the events occurred.",
+      "We should consider alternative explanations for the same evidence.",
+      "We should verify the units used in the two calculations."
+    ],
+    "correct": 2,
+    "explanation": "Zaman sırası nedensel yorum için önemlidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_32_4",
+    "family": "dialogue_logic_nov26_14_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: These observations fit our hypothesis perfectly. B: ____ A: Another mechanism may produce the same pattern.",
+    "options": [
+      "We should distinguish necessary from sufficient conditions.",
+      "We should investigate whether the effect differs between groups.",
+      "We should examine the order in which the events occurred.",
+      "We should consider alternative explanations for the same evidence.",
+      "We should verify the units used in the two calculations."
+    ],
+    "correct": 3,
+    "explanation": "Bir gözlem birden çok açıklamayla uyumlu olabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_32_5",
+    "family": "dialogue_logic_nov26_14_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The two reports give different numerical estimates of the same distance. B: ____ A: One may be in kilometres and the other in miles.",
+    "options": [
+      "We should distinguish necessary from sufficient conditions.",
+      "We should investigate whether the effect differs between groups.",
+      "We should examine the order in which the events occurred.",
+      "We should consider alternative explanations for the same evidence.",
+      "We should verify the units used in the two calculations."
+    ],
+    "correct": 4,
+    "explanation": "Ölçü birimi farkı sayıların karşılaştırılmasını etkiler."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_33_1",
+    "family": "dialogue_logic_nov26_14_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe revised method could account for some of the observed gains.",
+    "options": [
+      "The procedure may partly explain the improvement.",
+      "The procedure entirely explains the improvement.",
+      "The procedure cannot explain any of the improvement.",
+      "The improvement caused the procedure to be introduced.",
+      "The improvement was predicted before the procedure was introduced."
+    ],
+    "correct": 0,
+    "explanation": "May partly olası kısmi katkıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_33_2",
+    "family": "dialogue_logic_nov26_14_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nAll the observed gains are explained by the revised method.",
+    "options": [
+      "The procedure may partly explain the improvement.",
+      "The procedure entirely explains the improvement.",
+      "The procedure cannot explain any of the improvement.",
+      "The improvement caused the procedure to be introduced.",
+      "The improvement was predicted before the procedure was introduced."
+    ],
+    "correct": 1,
+    "explanation": "Entirely tümünü açıklar."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_33_3",
+    "family": "dialogue_logic_nov26_14_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe revised method is incapable of accounting for even a fraction of the gains.",
+    "options": [
+      "The procedure may partly explain the improvement.",
+      "The procedure entirely explains the improvement.",
+      "The procedure cannot explain any of the improvement.",
+      "The improvement caused the procedure to be introduced.",
+      "The improvement was predicted before the procedure was introduced."
+    ],
+    "correct": 2,
+    "explanation": "Cannot any hiçbir katkıyı açıklamaz."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_33_4",
+    "family": "dialogue_logic_nov26_14_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe gains were the reason the revised method was adopted.",
+    "options": [
+      "The procedure may partly explain the improvement.",
+      "The procedure entirely explains the improvement.",
+      "The procedure cannot explain any of the improvement.",
+      "The improvement caused the procedure to be introduced.",
+      "The improvement was predicted before the procedure was introduced."
+    ],
+    "correct": 3,
+    "explanation": "Nedenselliğin yönü kazanımdan yönteme doğrudur."
+  },
+  {
+    "id": "wq150_nov26_dialogue_logic14_33_5",
+    "family": "dialogue_logic_nov26_14_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning:\n\nThe expected gains had been forecast before the revised method was adopted.",
+    "options": [
+      "The procedure may partly explain the improvement.",
+      "The procedure entirely explains the improvement.",
+      "The procedure cannot explain any of the improvement.",
+      "The improvement caused the procedure to be introduced.",
+      "The improvement was predicted before the procedure was introduced."
+    ],
+    "correct": 4,
+    "explanation": "Predicted before uygulama öncesi tahmindir."
   }
 ];
