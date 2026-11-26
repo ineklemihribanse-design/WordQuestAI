@@ -190,9 +190,9 @@ export const ab1250Direct = [
     "options": [
       "some",
       "any",
-      "many",
       "much",
-      "a little"
+      "a little",
+      "one"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: some. Some ve any belirsiz miktarı; many sayılabilir, much sayılamayan miktarı; a little az miktarı gösterir."
@@ -2364,7 +2364,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Nobody is using the fan; ____ it to save electricity.",
+    "prompt": "Nobody is using the electric fan; please ____ the fan to save electricity.",
     "options": [
       "turn on",
       "turn off",
@@ -2436,7 +2436,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Please ____ your wet shoes before stepping on the carpet.",
+    "prompt": "Before entering the dance studio, please ____ your outdoor shoes and leave them on the rack.",
     "options": [
       "take off",
       "put on",
@@ -2760,7 +2760,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "Would you like a glass of milk ____ a cup of tea?",
+    "prompt": "The café serves two drinks. Which would you prefer: a glass of milk ____ a cup of tea?",
     "options": [
       "because",
       "but",
@@ -2796,16 +2796,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "You may use the garden ____ it is not raining.",
+    "prompt": "Check the recipient's address ____ you send the parcel, not afterwards.",
     "options": [
-      "if",
-      "unless",
-      "although",
-      "because",
-      "so that"
+      "before",
+      "after",
+      "while",
+      "when",
+      "until"
     ],
     "correct": 0,
-    "explanation": "If koşulu, yağmur yağmaması durumunda bahçenin kullanılabileceğini ifade eder."
+    "explanation": "Before, bir işin diğerinden önce tamamlanması gerektiğini anlatır."
   },
   {
     "id": "wq150_ab1250_direct_a2_32_2",
@@ -2814,12 +2814,12 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "We had dessert ____ everyone had finished the main course.",
+    "prompt": "We ordered dessert ____ everyone had finished the main course.",
     "options": [
       "before",
       "after",
       "while",
-      "when",
+      "since",
       "until"
     ],
     "correct": 1,
@@ -2832,12 +2832,12 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "Don't use your phone ____ you are crossing the road.",
+    "prompt": "Keep both hands free ____ you are crossing this busy road.",
     "options": [
       "before",
       "after",
       "while",
-      "when",
+      "since",
       "until"
     ],
     "correct": 2,
@@ -2850,7 +2850,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The dog barked loudly ____ the doorbell rang.",
+    "prompt": "The dog barked at the exact moment ____ the doorbell rang.",
     "options": [
       "before",
       "after",
@@ -2886,7 +2886,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "Take your umbrella ____ it starts raining later.",
+    "prompt": "You may use the garden ____ it is not raining; otherwise, stay indoors.",
     "options": [
       "if",
       "unless",
@@ -2895,7 +2895,7 @@ export const ab1250Direct = [
       "so that"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: if. Koşul, olumsuz koşul, karşıtlık, neden ve amaç farklı bağlaçlarla kurulur."
+    "explanation": "If koşul bildirir; yağmur yağmaması bahçeyi kullanmanın koşuludur."
   },
   {
     "id": "wq150_ab1250_direct_a2_33_2",
@@ -4920,13 +4920,13 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "The lift ____ next Monday according to the published schedule.",
+    "prompt": "According to the maintenance schedule, the lift ____ next Monday.",
     "options": [
-      "is being repaired",
+      "is being repaired now",
       "has been repaired",
       "was repaired",
       "will be repaired",
-      "is repaired"
+      "is repaired daily"
     ],
     "correct": 3,
     "explanation": "Doğru seçenek: will be repaired. Edilgen cümlede zaman ve süreç göstergeleri doğru yapıyı belirler."
@@ -4992,7 +4992,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "I ____ never tried this recipe before today.",
+    "prompt": "I ____ never tried this recipe in my life, and I am still curious about it.",
     "options": [
       "had",
       "has",
@@ -5946,7 +5946,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The new machine uses less electricity and finishes the same work faster; it is more ____.",
+    "prompt": "The new machine uses less electricity per unit produced. Which adjective specifically describes its improved use of resources?",
     "options": [
       "efficient",
       "effective",
