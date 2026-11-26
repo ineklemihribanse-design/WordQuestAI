@@ -3500,5 +3500,2645 @@ export const foundationQuestions = [
     ],
     "correct": 0,
     "explanation": "Set up bir kurum, sistem veya etkinlik kurmaktır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Good morning! How are you? B: ____",
+    "options": [
+      "I'm fine, thanks.",
+      "I'm twelve years old.",
+      "It's on the table.",
+      "She's my sister.",
+      "At seven o'clock."
+    ],
+    "correct": 0,
+    "explanation": "How are you? kişinin nasıl olduğunu sorar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What's your name? B: ____",
+    "options": [
+      "My name is Alex.",
+      "I'm from Spain.",
+      "It's Monday.",
+      "I'm at home.",
+      "I like apples."
+    ],
+    "correct": 0,
+    "explanation": "What's your name? isim sormak için kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where are you from? B: ____",
+    "options": [
+      "I'm from Türkiye.",
+      "I'm a student.",
+      "I'm very tired.",
+      "I'm ten.",
+      "It's my bag."
+    ],
+    "correct": 0,
+    "explanation": "Where are you from? kişinin nereli olduğunu sorar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can I have a glass of water, please? B: ____",
+    "options": [
+      "Of course. Here you are.",
+      "It's ten past two.",
+      "I live near here.",
+      "I'm your teacher.",
+      "Water is blue."
+    ],
+    "correct": 0,
+    "explanation": "Here you are, bir şeyi uzatırken kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Thank you for your help. B: ____",
+    "options": [
+      "You're welcome.",
+      "Good morning.",
+      "Happy birthday.",
+      "I'm sorry to hear that.",
+      "See you on Monday."
+    ],
+    "correct": 0,
+    "explanation": "Teşekküre You're welcome ile karşılık verilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What time is it? B: ____",
+    "options": [
+      "It's half past three.",
+      "It's a blue clock.",
+      "It's next to the door.",
+      "It's my watch.",
+      "It's Friday."
+    ],
+    "correct": 0,
+    "explanation": "Half past three saat üç buçuk demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How much is this notebook? B: ____",
+    "options": [
+      "It's five pounds.",
+      "It's very small.",
+      "It's on the desk.",
+      "It's mine.",
+      "It's a notebook."
+    ],
+    "correct": 0,
+    "explanation": "How much fiyat sorar; para miktarıyla yanıtlanır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is this your coat? B: No, ____ .",
+    "options": [
+      "it's my brother's",
+      "I am not",
+      "they aren't",
+      "she doesn't",
+      "we haven't"
+    ],
+    "correct": 0,
+    "explanation": "Tekil coat için it, sahiplik için brother's kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_9",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What would you like for breakfast? B: ____",
+    "options": [
+      "Some eggs, please.",
+      "At eight o'clock.",
+      "In the kitchen.",
+      "With my brother.",
+      "It's sunny."
+    ],
+    "correct": 0,
+    "explanation": "What would you like yiyecek ya da içecek tercihini sorar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_10",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: I'm sorry I'm late. B: ____",
+    "options": [
+      "That's OK. Please sit down.",
+      "Happy New Year!",
+      "I'm twenty.",
+      "It's next to the bank.",
+      "It's a red pen."
+    ],
+    "correct": 0,
+    "explanation": "Özre That's OK ile karşılık verilebilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_11",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The swimming pool is open from 9 a.m. to 5 p.m. It is closed on Sundays. When is the pool closed?",
+    "options": [
+      "On Sundays",
+      "On Mondays",
+      "Every morning",
+      "At noon",
+      "On Saturdays"
+    ],
+    "correct": 0,
+    "explanation": "Duyuru pazar günleri kapalı olduğunu belirtiyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_12",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Message: Hi Tom, your lunch is in the fridge. Your keys are on the kitchen table. Mum. Where are Tom's keys?",
+    "options": [
+      "On the kitchen table",
+      "In the fridge",
+      "In his lunch bag",
+      "Under the bed",
+      "At school"
+    ],
+    "correct": 0,
+    "explanation": "Mesajda anahtarların mutfak masasında olduğu yazıyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_13",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Sign: Please leave your bags at the entrance. What should visitors do?",
+    "options": [
+      "Put their bags near the entrance.",
+      "Open all the windows.",
+      "Buy a new bag.",
+      "Take photographs.",
+      "Leave the building immediately."
+    ],
+    "correct": 0,
+    "explanation": "Leave your bags at the entrance, çantaları girişte bırakın demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_14",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Emma has two brothers and one sister. Her sister is six years old. How many brothers does Emma have?",
+    "options": [
+      "Two",
+      "One",
+      "Three",
+      "Four",
+      "Six"
+    ],
+    "correct": 0,
+    "explanation": "Emma'nın iki erkek kardeşi var."
+  },
+  {
+    "id": "wq150_nov26_foundation4_15",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "The train leaves at 10:15. Jack arrives at the station at 10:00. Is he at the station before the train leaves?",
+    "options": [
+      "Yes, he is.",
+      "No, he isn't.",
+      "He is on the train.",
+      "He arrives at noon.",
+      "The train leaves at nine."
+    ],
+    "correct": 0,
+    "explanation": "Jack trenin kalkışından 15 dakika önce istasyondadır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_16",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Menu: Soup £3, salad £4, sandwich £5, juice £2. Which item costs four pounds?",
+    "options": [
+      "Salad",
+      "Soup",
+      "Sandwich",
+      "Juice",
+      "Tea"
+    ],
+    "correct": 0,
+    "explanation": "Menüde salatanın fiyatı dört sterlindir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_17",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Leo usually walks to school, but today it is raining, so he takes the bus. How does Leo go to school today?",
+    "options": [
+      "By bus",
+      "On foot",
+      "By train",
+      "By car",
+      "By bike"
+    ],
+    "correct": 0,
+    "explanation": "Today için metinde otobüsle gittiği söyleniyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_18",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "The shop is next to the bank and opposite the park. What is opposite the shop?",
+    "options": [
+      "The park",
+      "The bank",
+      "The school",
+      "The station",
+      "The hospital"
+    ],
+    "correct": 0,
+    "explanation": "Opposite karşısında demektir; dükkân parkın karşısındadır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_19",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Nina likes apples and bananas, but she doesn't like oranges. Which fruit doesn't she like?",
+    "options": [
+      "Oranges",
+      "Apples",
+      "Bananas",
+      "Pears",
+      "Grapes"
+    ],
+    "correct": 0,
+    "explanation": "Olumsuz tercih oranges için verilmiştir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_20",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: Quiet, please. Students are taking an exam. What should you do?",
+    "options": [
+      "Speak quietly or remain silent.",
+      "Play loud music.",
+      "Run around the room.",
+      "Start a phone call.",
+      "Sing a song."
+    ],
+    "correct": 0,
+    "explanation": "Quiet, please sessiz olun demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_21",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My parents ____ at work now.",
+    "options": [
+      "are",
+      "is",
+      "am",
+      "be",
+      "was"
+    ],
+    "correct": 0,
+    "explanation": "Çoğul özne my parents ile are kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_22",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "There ____ a lamp next to the bed.",
+    "options": [
+      "is",
+      "are",
+      "am",
+      "be",
+      "were"
+    ],
+    "correct": 0,
+    "explanation": "Tekil a lamp ile there is kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_23",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Sam ____ breakfast at seven every day.",
+    "options": [
+      "has",
+      "have",
+      "having",
+      "to have",
+      "is have"
+    ],
+    "correct": 0,
+    "explanation": "Üçüncü tekil kişi geniş zamanda has kullanır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_24",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Look! The children ____ in the garden.",
+    "options": [
+      "are playing",
+      "plays",
+      "is playing",
+      "play yesterday",
+      "playing"
+    ],
+    "correct": 0,
+    "explanation": "Look! şu anda gerçekleşen eylemi gösterir; çoğul özne are playing alır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_25",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I don't have ____ milk in my tea.",
+    "options": [
+      "any",
+      "many",
+      "a",
+      "an",
+      "few"
+    ],
+    "correct": 0,
+    "explanation": "Olumsuz cümlede sayılamayan milk ile any kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_26",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "This is Anna. ____ bag is green.",
+    "options": [
+      "Her",
+      "His",
+      "Their",
+      "Our",
+      "Its"
+    ],
+    "correct": 0,
+    "explanation": "Anna'nın çantası için her iyelik sıfatı kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_27",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My birthday is ____ July.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "to",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Ay adlarından önce in kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_28",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Please give me ____ orange from the bowl.",
+    "options": [
+      "an",
+      "a",
+      "many",
+      "these",
+      "those"
+    ],
+    "correct": 0,
+    "explanation": "Orange sesli sesle başladığı için an gerekir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_29",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "____ your brother like pizza?",
+    "options": [
+      "Does",
+      "Do",
+      "Is",
+      "Are",
+      "Has"
+    ],
+    "correct": 0,
+    "explanation": "Üçüncü tekil kişi geniş zaman soru yardımcı fiili does alır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_30",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We ____ go to school on Sundays. It's closed.",
+    "options": [
+      "don't",
+      "doesn't",
+      "aren't",
+      "isn't",
+      "haven't"
+    ],
+    "correct": 0,
+    "explanation": "We ile geniş zaman olumsuzu don't + fiildir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Would you like to come to the cinema on Friday? B: I'd love to, but ____ .",
+    "options": [
+      "I have to work that evening",
+      "I went there last week",
+      "the cinema has two doors",
+      "Friday comes after Thursday",
+      "I like popcorn"
+    ],
+    "correct": 0,
+    "explanation": "But sonrasında daveti kabul edememe nedeni beklenir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Excuse me, how can I get to the station? B: ____",
+    "options": [
+      "Go straight and turn left at the bank.",
+      "The train is very comfortable.",
+      "I bought a ticket yesterday.",
+      "The station was built long ago.",
+      "I usually travel by bus."
+    ],
+    "correct": 0,
+    "explanation": "Yön sorusuna yol tarifi verilmelidir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_33",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: I can't find my phone. B: ____",
+    "options": [
+      "Have you looked in your bag?",
+      "Do you want to buy a sandwich?",
+      "How much was your lunch?",
+      "When did the film end?",
+      "Is your sister a doctor?"
+    ],
+    "correct": 0,
+    "explanation": "Telefonu arayan kişiye bakabileceği yer öneriliyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_34",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Could I try these shoes on? B: ____",
+    "options": [
+      "Certainly. The fitting area is over there.",
+      "I walk to school every day.",
+      "These are my keys.",
+      "The shop opened last year.",
+      "I have two brothers."
+    ],
+    "correct": 0,
+    "explanation": "Try on kıyafet veya ayakkabıyı denemek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_35",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How was your holiday? B: ____",
+    "options": [
+      "It was great, but the weather was a bit cold.",
+      "I'm going there next year.",
+      "I have to buy a suitcase.",
+      "The airport is nearby.",
+      "I travel twice a month."
+    ],
+    "correct": 0,
+    "explanation": "Geçmiş tatilin nasıl geçtiği soruluyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_36",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: I'm afraid I can't meet you at six. B: ____",
+    "options": [
+      "No problem. Shall we meet at seven instead?",
+      "Yes, six is a number.",
+      "I met her yesterday.",
+      "The bus is red.",
+      "I haven't eaten breakfast."
+    ],
+    "correct": 0,
+    "explanation": "Uygun tepki alternatif buluşma saati önermektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_37",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What's the matter? B: ____",
+    "options": [
+      "I've got a headache.",
+      "I bought a new desk.",
+      "I live in a flat.",
+      "My favourite colour is blue.",
+      "The library opens at nine."
+    ],
+    "correct": 0,
+    "explanation": "What's the matter? sorunu veya rahatsızlığı sorar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_38",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Do you mind if I open the window? B: ____",
+    "options": [
+      "Not at all. It's quite warm in here.",
+      "I don't have a window at home.",
+      "It was made of wood.",
+      "There are three chairs.",
+      "I closed the shop yesterday."
+    ],
+    "correct": 0,
+    "explanation": "Not at all izin veren yanıttır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_39",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Would you prefer tea or coffee? B: ____",
+    "options": [
+      "Coffee, please.",
+      "At the café.",
+      "With my cousin.",
+      "Every morning.",
+      "It's very hot outside."
+    ],
+    "correct": 0,
+    "explanation": "Would you prefer iki seçenek arasında tercih sorar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_40",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: I've passed my driving test! B: ____",
+    "options": [
+      "Congratulations!",
+      "Never mind.",
+      "I'm afraid not.",
+      "You're welcome.",
+      "Excuse me."
+    ],
+    "correct": 0,
+    "explanation": "Başarı haberine Congratulations ile karşılık verilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_41",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We ____ our grandparents last weekend.",
+    "options": [
+      "visited",
+      "visit",
+      "have visit",
+      "visiting",
+      "are visiting now"
+    ],
+    "correct": 0,
+    "explanation": "Last weekend tamamlanmış geçmiş zamandır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_42",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Listen! Someone ____ at the door.",
+    "options": [
+      "is knocking",
+      "knock",
+      "knocks yesterday",
+      "are knocking",
+      "was knock"
+    ],
+    "correct": 0,
+    "explanation": "Listen! şu anda süren eyleme işaret eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_43",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I've known Maria ____ 2021.",
+    "options": [
+      "since",
+      "for",
+      "during of",
+      "until of",
+      "by of"
+    ],
+    "correct": 0,
+    "explanation": "Başlangıç yılı için since kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_44",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "This suitcase is ____ than mine.",
+    "options": [
+      "heavier",
+      "heaviest",
+      "more heavy than",
+      "heavy",
+      "as heavier"
+    ],
+    "correct": 0,
+    "explanation": "Than ile karşılaştırmada heavier kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_45",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "You ____ wear a helmet when you ride a motorbike. It's the law.",
+    "options": [
+      "must",
+      "might",
+      "could",
+      "would",
+      "may not"
+    ],
+    "correct": 0,
+    "explanation": "Yasal zorunluluğu must ifade eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_46",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We don't have ____ chairs for all the guests.",
+    "options": [
+      "enough",
+      "too",
+      "much",
+      "little",
+      "any of"
+    ],
+    "correct": 0,
+    "explanation": "Yeterli sayıyı enough chairs ifade eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_47",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I was cooking when the lights ____ out.",
+    "options": [
+      "went",
+      "go",
+      "were go",
+      "have going",
+      "going"
+    ],
+    "correct": 0,
+    "explanation": "Süren geçmiş eylemi kesen olay past simple alır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_48",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "She's going to the market ____ some vegetables.",
+    "options": [
+      "to buy",
+      "buying of",
+      "bought",
+      "buys",
+      "to buying"
+    ],
+    "correct": 0,
+    "explanation": "Amaç için to + fiil kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_49",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "If it rains tomorrow, we ____ at home.",
+    "options": [
+      "will stay",
+      "stayed",
+      "had stayed",
+      "would have stayed",
+      "have staying"
+    ],
+    "correct": 0,
+    "explanation": "Gerçekleşebilir gelecek koşulunda will + fiil kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_50",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "This is the woman ____ teaches us English.",
+    "options": [
+      "who",
+      "which",
+      "where",
+      "when",
+      "whose"
+    ],
+    "correct": 0,
+    "explanation": "İnsan için özne görevinde who kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_51",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "There isn't ____ sugar left in the jar.",
+    "options": [
+      "much",
+      "many",
+      "a few",
+      "several",
+      "a number of"
+    ],
+    "correct": 0,
+    "explanation": "Sayılamayan sugar ile much kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_52",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "You ____ bring your own towel; the hotel provides one.",
+    "options": [
+      "don't have to",
+      "must",
+      "should always",
+      "need to",
+      "have to"
+    ],
+    "correct": 0,
+    "explanation": "Zorunluluk olmadığını don't have to anlatır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_53",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I'd like ____ a table for two, please.",
+    "options": [
+      "to book",
+      "booking of",
+      "booked",
+      "books",
+      "to booking"
+    ],
+    "correct": 0,
+    "explanation": "Would like ardından to + fiil kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_54",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The children enjoyed ____ in the sea.",
+    "options": [
+      "swimming",
+      "swim",
+      "to swimming",
+      "swam",
+      "swims"
+    ],
+    "correct": 0,
+    "explanation": "Enjoy ardından gerund (-ing) gelir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_55",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The new library ____ opened yet.",
+    "options": [
+      "hasn't been",
+      "didn't been",
+      "isn't be",
+      "hasn't being",
+      "wasn't be"
+    ],
+    "correct": 0,
+    "explanation": "Yet ile present perfect passive gerekir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_56",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A notice says: The café is closed for repairs on Tuesday. On Wednesday, it will open at its usual time, 8 a.m. When can customers next visit after Monday?",
+    "options": [
+      "Wednesday morning",
+      "Tuesday morning",
+      "Tuesday afternoon",
+      "Monday night",
+      "Thursday evening only"
+    ],
+    "correct": 0,
+    "explanation": "Salı kapalı; çarşamba sabahı normal saatinde açılıyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_57",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Oliver bought a jacket online. It arrived yesterday, but the sleeves were too long. He plans to return it and order a smaller size. Why is Oliver returning the jacket?",
+    "options": [
+      "It doesn't fit him properly.",
+      "He dislikes the colour.",
+      "It hasn't arrived.",
+      "It was too expensive.",
+      "He ordered two jackets."
+    ],
+    "correct": 0,
+    "explanation": "Kolların uzun olması beden uyumsuzluğunu gösterir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_58",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A train announcement says: The 14:20 train to Bristol is delayed by 30 minutes. Passengers should wait on platform four. What has changed?",
+    "options": [
+      "The departure time",
+      "The destination",
+      "The platform number stated in the notice",
+      "The ticket price",
+      "The number of passengers"
+    ],
+    "correct": 0,
+    "explanation": "Duyuru trenin 30 dakika geciktiğini söylüyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_59",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Maya usually goes to the gym after work. This week her gym is closed, so she goes jogging in the park instead. What does Maya do differently this week?",
+    "options": [
+      "She exercises outdoors.",
+      "She stops exercising.",
+      "She works in the gym.",
+      "She goes swimming.",
+      "She takes a week off work."
+    ],
+    "correct": 0,
+    "explanation": "Spor salonu kapalı olduğu için parkta koşuyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_60",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A hotel email says: Breakfast is included in your room price. Dinner is available at an extra charge. Which meal can guests have without paying more?",
+    "options": [
+      "Breakfast",
+      "Dinner",
+      "Both breakfast and dinner",
+      "Neither meal",
+      "Lunch"
+    ],
+    "correct": 0,
+    "explanation": "Breakfast is included kahvaltının ücrete dahil olduğunu belirtir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_61",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Daniel wanted to learn to cook, so he joined a weekend class. He can now make several simple dishes without help. What has Daniel gained?",
+    "options": [
+      "A practical skill",
+      "A new job at a restaurant",
+      "A larger kitchen",
+      "A free holiday",
+      "A collection of cookbooks"
+    ],
+    "correct": 0,
+    "explanation": "Artık yardım almadan yemek yapabilmesi pratik beceri kazandığını gösterir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_62",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Sophie cycled to work until her bicycle broke. She is taking the bus while it is being repaired. Why is she using the bus?",
+    "options": [
+      "Her bicycle needs repairing.",
+      "She has moved to another city.",
+      "She dislikes cycling.",
+      "Her bus ticket is free.",
+      "The weather is always bad."
+    ],
+    "correct": 0,
+    "explanation": "Bisiklet onarımdayken otobüse biniyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_63",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "A school message says: Bring a packed lunch for the trip. Drinks will be provided. What must students bring?",
+    "options": [
+      "Their own lunch",
+      "Their own drinks",
+      "A school uniform",
+      "A bus ticket",
+      "A cooking pot"
+    ],
+    "correct": 0,
+    "explanation": "Packed lunch yanlarında getirmeleri gereken öğle yemeğidir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_64",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Ben booked a room near the beach. When he arrived, he found that the hotel was ten minutes away on foot. What does the message tell us about the hotel?",
+    "options": [
+      "It is within walking distance of the beach.",
+      "It is on a different island.",
+      "It has no rooms left.",
+      "It is directly on the beach.",
+      "It is ten minutes from the airport."
+    ],
+    "correct": 0,
+    "explanation": "On foot yürüyerek; plaja yürüme mesafesinde."
+  },
+  {
+    "id": "wq150_nov26_foundation4_65",
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Lucy left home early because she had an appointment. The bus was slow, but she arrived five minutes before the appointment. What happened?",
+    "options": [
+      "She arrived on time despite the slow bus.",
+      "She missed her appointment.",
+      "The appointment was cancelled.",
+      "She travelled by taxi.",
+      "She arrived a day early."
+    ],
+    "correct": 0,
+    "explanation": "Otobüs yavaş olsa da randevudan beş dakika önce vardı."
+  },
+  {
+    "id": "wq150_nov26_foundation4_66",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "You can ____ your library book for another week if nobody else needs it.",
+    "options": [
+      "renew",
+      "repair",
+      "remove",
+      "refuse",
+      "replace"
+    ],
+    "correct": 0,
+    "explanation": "Renew ödünç süresini uzatmak anlamında kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_67",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The shop will give you a ____ if you return the unused item with its receipt.",
+    "options": [
+      "refund",
+      "receipt",
+      "discount code",
+      "delivery",
+      "bill"
+    ],
+    "correct": 0,
+    "explanation": "Refund ödenen paranın geri verilmesidir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_68",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Please ____ your seat belt before the car starts moving.",
+    "options": [
+      "fasten",
+      "fold",
+      "hide",
+      "borrow",
+      "pour"
+    ],
+    "correct": 0,
+    "explanation": "Fasten your seat belt emniyet kemerini bağlamak demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_69",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The doctor told me to ____ for a few days because I was exhausted.",
+    "options": [
+      "rest",
+      "rush",
+      "compete",
+      "exercise heavily",
+      "argue"
+    ],
+    "correct": 0,
+    "explanation": "Rest dinlenmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_70",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hotel is very ____ to the airport; it takes only five minutes to get there.",
+    "options": [
+      "close",
+      "empty",
+      "late",
+      "crowded",
+      "expensive"
+    ],
+    "correct": 0,
+    "explanation": "Close to yakın anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_71",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Don't forget to ____ your phone before we leave. The battery is almost empty.",
+    "options": [
+      "charge",
+      "print",
+      "wash",
+      "post",
+      "lend"
+    ],
+    "correct": 0,
+    "explanation": "Charge a phone telefonun pilini şarj etmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_72",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The floor is wet. Be ____ when you walk across it.",
+    "options": [
+      "careful",
+      "hungry",
+      "noisy",
+      "certain",
+      "proud"
+    ],
+    "correct": 0,
+    "explanation": "Islak zeminde dikkatli olmak gerekir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_73",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We need to ____ a room before the hotel becomes full.",
+    "options": [
+      "book",
+      "pack",
+      "lend",
+      "return",
+      "fix"
+    ],
+    "correct": 0,
+    "explanation": "Book a room oda rezervasyonu yapmaktır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_74",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I missed the bus because I ____ too late this morning.",
+    "options": [
+      "woke up",
+      "sat down",
+      "went out",
+      "turned off",
+      "looked up"
+    ],
+    "correct": 0,
+    "explanation": "Wake up uyanmak anlamındadır; geç uyanmak otobüsü kaçırmaya neden olur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_75",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The museum offers free ____ to children under twelve.",
+    "options": [
+      "entry",
+      "luggage",
+      "traffic",
+      "weather",
+      "furniture"
+    ],
+    "correct": 0,
+    "explanation": "Free entry ücretsiz giriş demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_76",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Why did you leave the meeting early? B: ____",
+    "options": [
+      "I had another appointment that I couldn't cancel.",
+      "I attend meetings every month.",
+      "The meeting room has new chairs.",
+      "I usually prefer tea to coffee.",
+      "The agenda was printed in blue."
+    ],
+    "correct": 0,
+    "explanation": "Why geçmişteki ayrılma nedenini sorar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_77",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: I'm thinking of buying a second-hand laptop. B: ____",
+    "options": [
+      "You should check its battery before you decide.",
+      "I bought some fruit this morning.",
+      "Laptops are usually rectangular.",
+      "The shop has a glass door.",
+      "I never use a bicycle."
+    ],
+    "correct": 0,
+    "explanation": "Kullanılmış cihaz için pil durumunu kontrol etme önerisi uygundur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_78",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: I missed the first part of the lecture. B: ____",
+    "options": [
+      "I can send you my notes if you like.",
+      "The lecturer has a new office.",
+      "I haven't decided what to eat.",
+      "The building is across the road.",
+      "The weather was fine yesterday."
+    ],
+    "correct": 0,
+    "explanation": "Kaçırılan ders için not paylaşma teklifi uygundur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_79",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The internet has been down all morning. B: ____",
+    "options": [
+      "Have you contacted the service provider?",
+      "Do you want to buy some flowers?",
+      "I used to live in another town.",
+      "The film starts at nine.",
+      "My desk is made of wood."
+    ],
+    "correct": 0,
+    "explanation": "İnternet kesintisine uygun ilk adım servis sağlayıcıyla iletişimdir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_80",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Why are you taking an evening course? B: ____",
+    "options": [
+      "I'd like to improve my skills without leaving my job.",
+      "I finished work at five yesterday.",
+      "The classroom has twelve desks.",
+      "I prefer summer to winter.",
+      "My colleague travels by train."
+    ],
+    "correct": 0,
+    "explanation": "Kursun amacı açıklanıyor."
+  },
+  {
+    "id": "wq150_nov26_foundation4_81",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: I'm not sure whether to accept the offer. B: ____",
+    "options": [
+      "It might help to compare the benefits and drawbacks.",
+      "The envelope was made of paper.",
+      "I accepted a parcel last week.",
+      "I don't have any coffee left.",
+      "The bus arrives every hour."
+    ],
+    "correct": 0,
+    "explanation": "Kararsız kişiye artı ve eksileri karşılaştırma önerilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_82",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Sorry, could you speak a little more slowly? B: ____",
+    "options": [
+      "Of course. I'll repeat the last part.",
+      "I have never been there.",
+      "The door is locked.",
+      "Yes, I bought it yesterday.",
+      "I'm twenty-five years old."
+    ],
+    "correct": 0,
+    "explanation": "Yavaş konuşma isteğine tekrar etme teklifi uygundur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_83",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The restaurant is fully booked tonight. B: ____",
+    "options": [
+      "Then let's see if another place has a table.",
+      "I have a recipe for soup.",
+      "The menu is printed on paper.",
+      "I usually eat at noon.",
+      "The restaurant opened in May."
+    ],
+    "correct": 0,
+    "explanation": "Rezervasyon doluysa alternatif yer aramak mantıklıdır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_84",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: I've been trying to contact Mark all day. B: ____",
+    "options": [
+      "He may be in an area with no signal.",
+      "He's taller than his brother.",
+      "He has three books on his desk.",
+      "His shoes are black.",
+      "He usually drinks tea."
+    ],
+    "correct": 0,
+    "explanation": "May be ulaşılamamasına olası açıklama sunar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_85",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The project is taking longer than we expected. B: ____",
+    "options": [
+      "We should revise the schedule before promising a new deadline.",
+      "The office has large windows.",
+      "I visited the library last month.",
+      "The project title is short.",
+      "The printer uses black ink."
+    ],
+    "correct": 0,
+    "explanation": "Gecikme nedeniyle planı yeniden değerlendirme önerisi uygundur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_86",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "By the time we reached the cinema, the film ____ .",
+    "options": [
+      "had already started",
+      "has already started",
+      "will already start",
+      "is already starting",
+      "starts tomorrow"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişte başka bir olaydan önce tamamlanan eylem past perfect alır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_87",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "I wish I ____ more free time during the week.",
+    "options": [
+      "had",
+      "have had tomorrow",
+      "will have",
+      "am having yesterday",
+      "have to"
+    ],
+    "correct": 0,
+    "explanation": "Şimdiki durumla ilgili dilekte wish + past simple kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_88",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The invitations ____ to all the guests yesterday.",
+    "options": [
+      "were sent",
+      "sent",
+      "have send",
+      "are sending",
+      "were send"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişte yapılan edilgen eylem were sent ile ifade edilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_89",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "If I ____ you, I'd ask for more information.",
+    "options": [
+      "were",
+      "am",
+      "will be",
+      "have been",
+      "had being"
+    ],
+    "correct": 0,
+    "explanation": "Tavsiye amaçlı ikinci koşul If I were you kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_90",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "She asked me where I ____ the previous day.",
+    "options": [
+      "had been",
+      "am",
+      "will be",
+      "have been tomorrow",
+      "were being tomorrow"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişteki dolaylı soru previous day ile past perfect gerektirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_91",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "He suggested ____ the meeting until everyone was available.",
+    "options": [
+      "postponing",
+      "postpone",
+      "to postponing",
+      "postponed",
+      "postpones"
+    ],
+    "correct": 0,
+    "explanation": "Suggest ardından -ing gelir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_92",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The book ____ I borrowed from the library was excellent.",
+    "options": [
+      "which",
+      "who",
+      "whose",
+      "where",
+      "when"
+    ],
+    "correct": 0,
+    "explanation": "Kitabı niteleyen nesne görevindeki relative pronoun which uygundur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_93",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The computer needs ____ before we can use it again.",
+    "options": [
+      "repairing",
+      "repair",
+      "repaired",
+      "to repairing",
+      "repairs"
+    ],
+    "correct": 0,
+    "explanation": "Need + -ing edilgen gereklilik anlamı verir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_94",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "We ____ for over an hour when the bus finally arrived.",
+    "options": [
+      "had been waiting",
+      "have waited",
+      "will wait",
+      "are waiting",
+      "were wait"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişte bir noktaya kadar süren eylem past perfect continuous ile anlatılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_95",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "You ____ have told me earlier; I could have helped.",
+    "options": [
+      "should",
+      "can",
+      "may not",
+      "will",
+      "must not"
+    ],
+    "correct": 0,
+    "explanation": "Should have + V3 yapılması gereken ama yapılmamış eylemi ifade eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_96",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "I'm used to ____ early because of my job.",
+    "options": [
+      "getting up",
+      "get up",
+      "got up",
+      "to get up",
+      "gets up"
+    ],
+    "correct": 0,
+    "explanation": "Be used to ardından isim veya gerund gelir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_97",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "Neither of the two answers ____ correct.",
+    "options": [
+      "is",
+      "are being yesterday",
+      "am",
+      "be",
+      "have being"
+    ],
+    "correct": 0,
+    "explanation": "Neither of ile standart tekil uyum is olur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_98",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The new bridge is expected ____ next year.",
+    "options": [
+      "to open",
+      "opening of",
+      "opens",
+      "opened",
+      "to opening"
+    ],
+    "correct": 0,
+    "explanation": "Be expected to + fiil beklenti bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_99",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "She has difficulty ____ in noisy places.",
+    "options": [
+      "concentrating",
+      "concentrate",
+      "to concentrating",
+      "concentrates",
+      "concentrated"
+    ],
+    "correct": 0,
+    "explanation": "Have difficulty + -ing, bir şeyi yapmakta zorlanmak demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_100",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The package hasn't arrived. It ____ have been sent to the wrong address.",
+    "options": [
+      "might",
+      "ought not",
+      "will",
+      "can to",
+      "must to"
+    ],
+    "correct": 0,
+    "explanation": "Might have been sent geçmişe ilişkin olasılığı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_101",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The weather forecast was poor. ____ , we decided to go ahead with the picnic.",
+    "options": [
+      "Nevertheless",
+      "Therefore",
+      "For example",
+      "Similarly",
+      "As a result"
+    ],
+    "correct": 0,
+    "explanation": "Olumsuz tahmine rağmen piknik yapılıyor; nevertheless karşıtlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_102",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The library has extended its opening hours ____ students can study after work.",
+    "options": [
+      "so that",
+      "even though",
+      "unless",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "So that amaç bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_103",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "You won't be able to enter ____ you show your ticket.",
+    "options": [
+      "unless",
+      "although",
+      "because of",
+      "whereas",
+      "despite"
+    ],
+    "correct": 0,
+    "explanation": "Unless bilet gösterilmediği sürece giriş yapılamayacağını anlatır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_104",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The machine stopped working ____ a power cut.",
+    "options": [
+      "because of",
+      "although",
+      "so that",
+      "whereas",
+      "even if"
+    ],
+    "correct": 0,
+    "explanation": "Because of ardından isim öbeği gelir ve neden bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_105",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "____ being tired, she finished the report before leaving.",
+    "options": [
+      "Despite",
+      "Because",
+      "Although",
+      "Unless",
+      "So that"
+    ],
+    "correct": 0,
+    "explanation": "Despite ardından -ing veya isim gelir ve karşıtlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_106",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The first course focuses on speaking, ____ the second concentrates on writing.",
+    "options": [
+      "whereas",
+      "because of",
+      "unless",
+      "so that",
+      "in order to"
+    ],
+    "correct": 0,
+    "explanation": "Whereas iki unsur arasındaki farkı gösterir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_107",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "Take a map with you ____ you lose your way.",
+    "options": [
+      "in case",
+      "although",
+      "because of",
+      "as a result of",
+      "whereas"
+    ],
+    "correct": 0,
+    "explanation": "In case olası bir duruma karşı önlem bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_108",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The road was icy; ____ , the school bus arrived late.",
+    "options": [
+      "as a result",
+      "however",
+      "for instance",
+      "in contrast",
+      "similarly"
+    ],
+    "correct": 0,
+    "explanation": "Gecikme buzlu yolun sonucudur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_109",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The shop accepts cash ____ credit cards.",
+    "options": [
+      "as well as",
+      "despite",
+      "unless",
+      "whereas",
+      "because of"
+    ],
+    "correct": 0,
+    "explanation": "As well as her iki ödeme yöntemini de dahil eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_110",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "____ the course was challenging, most students completed it successfully.",
+    "options": [
+      "Although",
+      "Because of",
+      "In spite of",
+      "Unless",
+      "So as to"
+    ],
+    "correct": 0,
+    "explanation": "Although yan cümle alarak zıtlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_111",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The organisers had to ____ the outdoor concert because of the storm.",
+    "options": [
+      "call off",
+      "look after",
+      "take up",
+      "come across",
+      "bring back"
+    ],
+    "correct": 0,
+    "explanation": "Call off iptal etmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_112",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "I need to ____ how much the tickets cost before booking them.",
+    "options": [
+      "find out",
+      "turn down",
+      "give away",
+      "put off",
+      "take after"
+    ],
+    "correct": 0,
+    "explanation": "Find out bilgi edinmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_113",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The car ____ on the motorway, so we called for assistance.",
+    "options": [
+      "broke down",
+      "turned up",
+      "took off",
+      "gave in",
+      "looked out"
+    ],
+    "correct": 0,
+    "explanation": "Break down araç veya makinenin arızalanmasıdır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_114",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Please ____ this form before your appointment.",
+    "options": [
+      "fill in",
+      "give up",
+      "turn over",
+      "look after",
+      "set off"
+    ],
+    "correct": 0,
+    "explanation": "Fill in a form form doldurmaktır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_115",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "We have ____ milk, so I'll buy some on my way home.",
+    "options": [
+      "run out of",
+      "looked forward to",
+      "taken care of",
+      "got along with",
+      "come up with"
+    ],
+    "correct": 0,
+    "explanation": "Run out of bir şeyin tükenmesidir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_116",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "She decided to ____ the job offer because the salary was too low.",
+    "options": [
+      "turn down",
+      "set up",
+      "take over",
+      "carry on",
+      "bring up"
+    ],
+    "correct": 0,
+    "explanation": "Turn down reddetmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_117",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "I'll ____ your cat while you're away.",
+    "options": [
+      "look after",
+      "look up",
+      "turn into",
+      "run over",
+      "take off"
+    ],
+    "correct": 0,
+    "explanation": "Look after bakımını üstlenmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_118",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The plane is due to ____ at half past six.",
+    "options": [
+      "take off",
+      "give away",
+      "break into",
+      "look after",
+      "put out"
+    ],
+    "correct": 0,
+    "explanation": "Take off uçağın havalanmasıdır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_119",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "After checking the instructions, we were able to ____ with the experiment.",
+    "options": [
+      "carry on",
+      "give in",
+      "turn down",
+      "run out",
+      "break down"
+    ],
+    "correct": 0,
+    "explanation": "Carry on devam etmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_120",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "I ____ an old photograph while I was cleaning the cupboard.",
+    "options": [
+      "came across",
+      "looked after",
+      "set off",
+      "ran out of",
+      "put up with"
+    ],
+    "correct": 0,
+    "explanation": "Come across tesadüfen karşılaşmak veya bulmak demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_121",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "Had we checked the weather forecast, we ____ a different route.",
+    "options": [
+      "would have chosen",
+      "will choose",
+      "would choose tomorrow",
+      "had chosen tomorrow",
+      "have choosing"
+    ],
+    "correct": 0,
+    "explanation": "Geçmişe aykırı koşul had + V3, would have + V3 ile kurulur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_122",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The report is believed ____ several important details.",
+    "options": [
+      "to have omitted",
+      "having omitted",
+      "omit",
+      "to omitting",
+      "has omitted"
+    ],
+    "correct": 0,
+    "explanation": "Be believed to have + V3 geçmiş eylem için kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_123",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The equipment must ____ before it can be used safely.",
+    "options": [
+      "be tested",
+      "have testing",
+      "test",
+      "be testing",
+      "been tested"
+    ],
+    "correct": 0,
+    "explanation": "Modal must + be + V3 edilgen zorunluluk bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_124",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "No sooner had the presentation started ____ the projector stopped working.",
+    "options": [
+      "than",
+      "when of",
+      "while",
+      "until",
+      "since"
+    ],
+    "correct": 0,
+    "explanation": "No sooner ... than sabit kalıptır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_125",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The company regrets ____ customers about the delay sooner.",
+    "options": [
+      "not informing",
+      "not inform",
+      "not to informing",
+      "did not inform",
+      "not informed"
+    ],
+    "correct": 0,
+    "explanation": "Regret + gerund geçmişteki eylemden pişmanlığı anlatır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_126",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The samples, ____ at different temperatures, produced contrasting results.",
+    "options": [
+      "stored",
+      "storing them",
+      "were stored",
+      "had stored them",
+      "which storing"
+    ],
+    "correct": 0,
+    "explanation": "Stored kısaltılmış edilgen relative clause biçimidir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_127",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "If only I ____ the instructions before assembling the desk yesterday.",
+    "options": [
+      "had read",
+      "read tomorrow",
+      "have read",
+      "will read",
+      "am reading"
+    ],
+    "correct": 0,
+    "explanation": "Geçmiş pişmanlığında if only + past perfect kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_128",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The manager insisted that the figures ____ checked again.",
+    "options": [
+      "be",
+      "being",
+      "are being yesterday",
+      "have",
+      "to be"
+    ],
+    "correct": 0,
+    "explanation": "Insist that sonrası yalın subjunctive be kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_129",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The results were less consistent than the team ____ anticipated.",
+    "options": [
+      "had",
+      "has tomorrow",
+      "will be",
+      "is",
+      "having"
+    ],
+    "correct": 0,
+    "explanation": "Önceki beklenti geçmişteki sonuçlardan daha önce oluştuğundan past perfect uygundur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_130",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "Not only ____ the deadline, but she also completed the extra tasks.",
+    "options": [
+      "did she meet",
+      "she met",
+      "had she meeting",
+      "she did met",
+      "was she meet"
+    ],
+    "correct": 0,
+    "explanation": "Not only başta kullanıldığında devrik yapı gerekir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_131",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The proposal is worth ____ even if its initial cost is high.",
+    "options": [
+      "considering",
+      "consider",
+      "to considering",
+      "considered",
+      "considers"
+    ],
+    "correct": 0,
+    "explanation": "Be worth + gerund kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_132",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The problem could ____ if the maintenance checks had been carried out.",
+    "options": [
+      "have been avoided",
+      "be avoiding yesterday",
+      "have avoided",
+      "had been avoided",
+      "been avoiding"
+    ],
+    "correct": 0,
+    "explanation": "Could have been avoided geçmişte gerçekleşmemiş edilgen olasılığı anlatır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_133",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The team continued working despite ____ several unexpected difficulties.",
+    "options": [
+      "encountering",
+      "encounter",
+      "to encounter",
+      "encountered",
+      "encounters"
+    ],
+    "correct": 0,
+    "explanation": "Despite ardından gerund kullanılabilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_134",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "I'd rather you ____ the final decision until we receive the test results.",
+    "options": [
+      "postponed",
+      "postpone tomorrow by yourself",
+      "will postpone",
+      "have postponed",
+      "are postpone"
+    ],
+    "correct": 0,
+    "explanation": "Would rather + farklı özne + past simple tercih bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_135",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "Only when the data were examined in detail ____ the cause of the discrepancy.",
+    "options": [
+      "did we discover",
+      "we discovered",
+      "had we discovering",
+      "we did discovered",
+      "were we discover"
+    ],
+    "correct": 0,
+    "explanation": "Only when başta olduğunda ana cümlede devrik yapı kullanılır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_136",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The trial was conducted under controlled conditions; ____ , its findings may not apply to everyday settings.",
+    "options": [
+      "therefore",
+      "nevertheless not",
+      "for example",
+      "similarly",
+      "in other words"
+    ],
+    "correct": 0,
+    "explanation": "Kontrollü koşullar genellenebilirliğin sınırlı olmasının nedenidir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_137",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The device is inexpensive to manufacture. ____ , maintaining it over time may be costly.",
+    "options": [
+      "However",
+      "Consequently",
+      "Similarly",
+      "For example",
+      "Therefore"
+    ],
+    "correct": 0,
+    "explanation": "Üretim ucuzken bakım pahalı olabilir; however karşıtlık kurar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_138",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The research team collected additional samples ____ the reliability of its estimates.",
+    "options": [
+      "in order to improve",
+      "despite improving of",
+      "unless improving",
+      "whereas improving",
+      "in spite of improve"
+    ],
+    "correct": 0,
+    "explanation": "In order to amaç bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_139",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The policy may remain effective ____ sufficient resources are available to implement it.",
+    "options": [
+      "provided that",
+      "even though no",
+      "because of",
+      "in spite of",
+      "rather than"
+    ],
+    "correct": 0,
+    "explanation": "Provided that bir koşula bağlılık bildirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_140",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The report covers short-term effects ____ the possible long-term consequences.",
+    "options": [
+      "as well as",
+      "unless",
+      "rather of",
+      "despite of",
+      "owing"
+    ],
+    "correct": 0,
+    "explanation": "As well as iki kapsamı birlikte içerir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_141",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "Some species adapt rapidly to changes in temperature, ____ others require several generations.",
+    "options": [
+      "whereas",
+      "so that",
+      "because of",
+      "unless",
+      "in case"
+    ],
+    "correct": 0,
+    "explanation": "Whereas iki grubun farklı tepkilerini karşılaştırır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_142",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The company introduced a verification step ____ prevent duplicate payments.",
+    "options": [
+      "so as to",
+      "in spite of",
+      "whereas",
+      "even though",
+      "as a result of"
+    ],
+    "correct": 0,
+    "explanation": "So as to amaç bildiren mastar kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_143",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The samples were stored incorrectly; ____ , the measurements could not be considered reliable.",
+    "options": [
+      "consequently",
+      "nevertheless",
+      "similarly",
+      "for example",
+      "in contrast"
+    ],
+    "correct": 0,
+    "explanation": "Yanlış saklama, ölçümlerin güvenilmezliğine neden olmuştur."
+  },
+  {
+    "id": "wq150_nov26_foundation4_144",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The method remains useful ____ its limitations are clearly acknowledged.",
+    "options": [
+      "as long as",
+      "because of",
+      "despite of",
+      "in order to",
+      "rather than"
+    ],
+    "correct": 0,
+    "explanation": "As long as belirtilen koşul sağlandığı sürece anlamı verir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_145",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Connectors",
+    "prompt": "The two datasets cannot be compared directly ____ differences in their definitions.",
+    "options": [
+      "owing to",
+      "although",
+      "whereas",
+      "unless",
+      "so that"
+    ],
+    "correct": 0,
+    "explanation": "Owing to ardından isim öbeği gelir ve neden belirtir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_146",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The measures were introduced to 'mitigate' the environmental impact. Which expression is closest in meaning?",
+    "options": [
+      "reduce the severity of",
+      "measure the exact size of",
+      "ignore the existence of",
+      "increase the likelihood of",
+      "transfer responsibility for"
+    ],
+    "correct": 0,
+    "explanation": "Mitigate olumsuz etkinin şiddetini azaltmak demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_147",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The findings were 'consistent with' the earlier research. What does this mean?",
+    "options": [
+      "They were in agreement with it.",
+      "They completely contradicted it.",
+      "They were obtained before it.",
+      "They made it unnecessary to read.",
+      "They contained no related information."
+    ],
+    "correct": 0,
+    "explanation": "Consistent with önceki araştırmayla uyumlu demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_148",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The organisation aims to 'facilitate' access to training. What is its aim?",
+    "options": [
+      "Make access easier.",
+      "Restrict access further.",
+      "Measure access once.",
+      "Eliminate all training.",
+      "Make training compulsory."
+    ],
+    "correct": 0,
+    "explanation": "Facilitate kolaylaştırmak demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_149",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The author describes the change as 'gradual'. What does gradual mean?",
+    "options": [
+      "Happening slowly over time",
+      "Occurring without any warning",
+      "Lasting only a few seconds",
+      "Being completely impossible",
+      "Affecting everyone equally"
+    ],
+    "correct": 0,
+    "explanation": "Gradual aşamalı ve yavaş gerçekleşen değişimdir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_150",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The results were 'inadequate' for drawing firm conclusions. Which meaning fits best?",
+    "options": [
+      "Not sufficient",
+      "Unexpectedly precise",
+      "Widely accepted",
+      "Completely unrelated",
+      "Extremely expensive"
+    ],
+    "correct": 0,
+    "explanation": "Inadequate yetersiz demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_151",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The committee decided to 'defer' its decision. What did it do?",
+    "options": [
+      "Postpone the decision.",
+      "Make the decision immediately.",
+      "Reject every proposal.",
+      "Publish the decision twice.",
+      "Cancel the entire committee."
+    ],
+    "correct": 0,
+    "explanation": "Defer bir kararı ertelemek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_152",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The new system is intended to 'streamline' the application process. What does streamline mean?",
+    "options": [
+      "Make the process simpler and more efficient.",
+      "Increase the number of unnecessary steps.",
+      "Prevent every applicant from proceeding.",
+      "Hide the rules from applicants.",
+      "Replace applications with interviews only."
+    ],
+    "correct": 0,
+    "explanation": "Streamline bir süreci daha yalın ve verimli hale getirmektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_153",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The company remained 'resilient' despite economic difficulties. What does this suggest?",
+    "options": [
+      "It was able to withstand and recover from difficulties.",
+      "It avoided every possible difficulty.",
+      "It was unaffected by all market changes.",
+      "It was unable to continue operating.",
+      "It refused to change any procedure."
+    ],
+    "correct": 0,
+    "explanation": "Resilient zorluklara dayanıp toparlanabilen demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_154",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The researchers sought to 'verify' the measurements. What did they want to do?",
+    "options": [
+      "Check whether the measurements were accurate.",
+      "Remove all numerical results.",
+      "Make the measurements larger.",
+      "Keep the measurements secret.",
+      "Replace measurements with opinions."
+    ],
+    "correct": 0,
+    "explanation": "Verify doğruluğunu kontrol etmek demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_155",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "The proposal was 'feasible' within the available budget. What does feasible mean?",
+    "options": [
+      "Possible to carry out",
+      "Already completed",
+      "Certain to fail",
+      "Legally forbidden",
+      "Unrelated to costs"
+    ],
+    "correct": 0,
+    "explanation": "Feasible yapılabilir veya uygulanabilir demektir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_156",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Although the survey included a large number of respondents, ____ .",
+    "options": [
+      "its findings may still be biased if some groups were underrepresented",
+      "the results must represent every possible population",
+      "the sample size makes all errors impossible",
+      "the questions cannot influence the responses",
+      "no further analysis could ever be useful"
+    ],
+    "correct": 0,
+    "explanation": "Örneklem büyük olsa da temsil sorunu bulunabilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_157",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "As the demand for electricity tends to rise during heatwaves, ____ .",
+    "options": [
+      "energy providers need to prepare for unusually high consumption",
+      "households necessarily use less electricity",
+      "power stations can ignore seasonal changes",
+      "the price of every appliance must decrease",
+      "heatwaves have no effect on energy planning"
+    ],
+    "correct": 0,
+    "explanation": "Artan talep enerji sağlayıcıların hazırlık yapmasını gerektirir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_158",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Unless the instructions are made clearer, ____ .",
+    "options": [
+      "users may continue to make the same mistakes",
+      "all users will automatically understand the process",
+      "the revised instructions will already have solved the problem",
+      "the number of errors must fall to zero",
+      "further guidance will necessarily be irrelevant"
+    ],
+    "correct": 0,
+    "explanation": "Unless açıklık sağlanmadığı sürece hataların devam edebileceğini ifade eder."
+  },
+  {
+    "id": "wq150_nov26_foundation4_159",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Even though digital archives make documents easier to access, ____ .",
+    "options": [
+      "the original materials may still require careful preservation",
+      "all original documents can safely be destroyed",
+      "historical research no longer requires interpretation",
+      "digital records are guaranteed to contain no errors",
+      "every document has already been digitised"
+    ],
+    "correct": 0,
+    "explanation": "Dijital erişim fiziksel koruma ihtiyacını ortadan kaldırmaz."
+  },
+  {
+    "id": "wq150_nov26_foundation4_160",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Because the study did not include a comparison group, ____ .",
+    "options": [
+      "it is difficult to separate the intervention's effects from other changes",
+      "the intervention has definitely caused all observed improvements",
+      "the researchers can exclude every alternative explanation",
+      "the results are necessarily false",
+      "no observations were made during the study"
+    ],
+    "correct": 0,
+    "explanation": "Karşılaştırma grubu yoksa nedensel etkiyi ayırmak güçleşir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_161",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "While online courses offer flexibility, ____ .",
+    "options": [
+      "some learners may need additional support to manage their time",
+      "they eliminate the need for all forms of practice",
+      "they are identical to every classroom course",
+      "students never experience any difficulty",
+      "time management becomes irrelevant"
+    ],
+    "correct": 0,
+    "explanation": "While burada esneklik ile olası destek ihtiyacını karşılaştırır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_162",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Given that the old system cannot handle current traffic levels, ____ .",
+    "options": [
+      "the organisation is considering an upgrade to increase capacity",
+      "there is no reason to examine its performance",
+      "the system necessarily has unlimited capacity",
+      "the organisation has decided that traffic does not exist",
+      "the current system must be faster than every alternative"
+    ],
+    "correct": 0,
+    "explanation": "Mevcut kapasitenin yetmemesi yükseltme ihtiyacını açıklar."
+  },
+  {
+    "id": "wq150_nov26_foundation4_163",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "If the data had been backed up regularly, ____ .",
+    "options": [
+      "the team could have recovered more of its work after the failure",
+      "the failure will happen tomorrow",
+      "the team must lose all future records",
+      "the data would never have existed",
+      "the backup system cannot be evaluated"
+    ],
+    "correct": 0,
+    "explanation": "Üçüncü koşul geçmişte gerçekleşmemiş bir olasılığı anlatır."
+  },
+  {
+    "id": "wq150_nov26_foundation4_164",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Since the treatment may affect different groups in different ways, ____ .",
+    "options": [
+      "the researchers should examine outcomes separately for relevant groups",
+      "the average result proves that every person benefits equally",
+      "the differences between groups must be ignored",
+      "no clinical information should be collected",
+      "the treatment cannot possibly have any effect"
+    ],
+    "correct": 0,
+    "explanation": "Farklı etkiler alt grup incelemesini gerektirebilir."
+  },
+  {
+    "id": "wq150_nov26_foundation4_165",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "Despite considerable investment in the new transport network, ____ .",
+    "options": [
+      "some outlying areas still lack reliable connections",
+      "the network has automatically reached every household",
+      "no further improvements could possibly be required",
+      "all transport problems have necessarily disappeared",
+      "the investment has never taken place"
+    ],
+    "correct": 0,
+    "explanation": "Yatırıma rağmen bazı bölgelerde erişim sorunu devam edebilir."
   }
 ];
