@@ -10899,5 +10899,1365 @@ export const foundationQuestions = [
     ],
     "correct": 0,
     "explanation": "Isolate dış etkenlerin etkisini ayırmak anlamında kullanılır."
+  },
+  {
+    "id": "wq150_nov26_quality8_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Notice: The shop opens at 9 on weekdays and at 10 on Saturdays. It is closed on Sundays. You want to visit at 9:30. Which day can you go?",
+    "options": [
+      "Friday",
+      "Saturday",
+      "Sunday",
+      "Saturday or Sunday",
+      "No day"
+    ],
+    "correct": 0,
+    "explanation": "Cuma hafta içidir ve 9.30'da açık; cumartesi 10'da açılır, pazar kapalıdır."
+  },
+  {
+    "id": "wq150_nov26_quality8_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Message: Sam, don't buy milk. We have two bottles. Please get bread and cheese. What does Sam need to buy?",
+    "options": [
+      "Bread and cheese",
+      "Milk and bread",
+      "Milk and cheese",
+      "Only cheese",
+      "Only bread"
+    ],
+    "correct": 0,
+    "explanation": "Mesaj süt alınmamasını, hem ekmek hem peynir alınmasını istiyor."
+  },
+  {
+    "id": "wq150_nov26_quality8_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Tim has lunch at school from Monday to Thursday. On Friday he goes home for lunch. Where does he eat on Friday?",
+    "options": [
+      "At home",
+      "At school",
+      "At a restaurant",
+      "At school and at home",
+      "At a friend's house"
+    ],
+    "correct": 0,
+    "explanation": "Cuma için evde yediği açıkça belirtiliyor."
+  },
+  {
+    "id": "wq150_nov26_quality8_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Tickets: Children £3, adults £6. Mia is an adult and buys a ticket for herself and one child. How much does she pay?",
+    "options": [
+      "£9",
+      "£6",
+      "£3",
+      "£12",
+      "£15"
+    ],
+    "correct": 0,
+    "explanation": "Bir yetişkin ve bir çocuk bileti toplam 9 sterlin."
+  },
+  {
+    "id": "wq150_nov26_quality8_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "prompt": "Eva has a small dog. Her brother has two cats. They all live in the same house. How many pets live in the house?",
+    "options": [
+      "Three",
+      "Two",
+      "One",
+      "Four",
+      "Five"
+    ],
+    "correct": 0,
+    "explanation": "Bir köpek ve iki kedi toplam üç evcil hayvandır."
+  },
+  {
+    "id": "wq150_nov26_quality8_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Does your sister work on Saturdays? B: ____ She works from Monday to Friday.",
+    "options": [
+      "No, she doesn't.",
+      "Yes, she does.",
+      "No, I don't.",
+      "Yes, they do.",
+      "No, she isn't."
+    ],
+    "correct": 0,
+    "explanation": "Hafta içi çalıştığı için yanıt olumsuzdur; does sorusuna doesn't ile karşılık verilir."
+  },
+  {
+    "id": "wq150_nov26_quality8_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Would you like some tea? B: ____ I'd like a glass of water instead.",
+    "options": [
+      "No, thanks.",
+      "Yes, please.",
+      "Here you are.",
+      "You're welcome.",
+      "Yes, I do."
+    ],
+    "correct": 0,
+    "explanation": "Instead başka tercih gösterir; nazik ret No, thanks olur."
+  },
+  {
+    "id": "wq150_nov26_quality8_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is the blue bag yours? B: ____ Mine is black.",
+    "options": [
+      "No, it isn't.",
+      "Yes, it is.",
+      "No, they aren't.",
+      "Yes, I am.",
+      "No, I don't."
+    ],
+    "correct": 0,
+    "explanation": "Kendi çantası siyah olduğundan mavi çanta ona ait değil; tekil it kullanılır."
+  },
+  {
+    "id": "wq150_nov26_quality8_9",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What time do you finish school? B: ____ Then I go home.",
+    "options": [
+      "At three o'clock.",
+      "For three hours.",
+      "Three times a week.",
+      "On the third floor.",
+      "With three friends."
+    ],
+    "correct": 0,
+    "explanation": "What time saat sorar; at three uygundur."
+  },
+  {
+    "id": "wq150_nov26_quality8_10",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How do you get to work? B: ____ It's only five minutes from my house.",
+    "options": [
+      "On foot.",
+      "At nine.",
+      "Every day.",
+      "For five days.",
+      "In an office."
+    ],
+    "correct": 0,
+    "explanation": "How ulaşım biçimini sorar; on foot yürüyerek demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: I have worked here for two years.",
+    "options": [
+      "I started working here two years ago and still work here.",
+      "I worked here for two years and then left.",
+      "I will start working here in two years.",
+      "I have worked here twice this year.",
+      "I stopped working here two years ago."
+    ],
+    "correct": 0,
+    "explanation": "Present perfect ve for devam eden süreyi gösterir; ayrılma veya gelecek anlamı yoktur."
+  },
+  {
+    "id": "wq150_nov26_quality8_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: You don't have to bring a dictionary.",
+    "options": [
+      "Bringing a dictionary is not necessary.",
+      "You are not allowed to bring a dictionary.",
+      "You should bring a dictionary.",
+      "You must leave your dictionary at home.",
+      "You can only bring one dictionary."
+    ],
+    "correct": 0,
+    "explanation": "Don't have to zorunluluk olmadığını belirtir, yasak değildir."
+  },
+  {
+    "id": "wq150_nov26_quality8_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: The bus is cheaper than the train.",
+    "options": [
+      "The train costs more than the bus.",
+      "The train costs less than the bus.",
+      "The bus and train cost the same.",
+      "The bus is faster than the train.",
+      "The train is cheaper on some days."
+    ],
+    "correct": 0,
+    "explanation": "Karşılaştırmanın yönü korunur: tren daha pahalıdır."
+  },
+  {
+    "id": "wq150_nov26_quality8_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: I rarely eat out.",
+    "options": [
+      "I don't often eat at restaurants.",
+      "I never eat at restaurants.",
+      "I eat at restaurants most days.",
+      "I usually eat out at weekends.",
+      "I eat at restaurants more than at home."
+    ],
+    "correct": 0,
+    "explanation": "Rarely seyrek demektir, never gibi hiçbir zaman değildir."
+  },
+  {
+    "id": "wq150_nov26_quality8_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: The jacket was too expensive for me to buy.",
+    "options": [
+      "I couldn't afford the jacket.",
+      "I bought the jacket at a low price.",
+      "I didn't like the jacket's design.",
+      "I could afford it but chose another.",
+      "I bought it although it was expensive."
+    ],
+    "correct": 0,
+    "explanation": "Too expensive for me to buy, bütçesinin yetmediğini anlatır."
+  },
+  {
+    "id": "wq150_nov26_quality8_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: We missed the train because we left home late.",
+    "options": [
+      "Leaving home late caused us to miss the train.",
+      "We left home late because the train was cancelled.",
+      "We caught the train despite leaving late.",
+      "The train was late, so we stayed at home.",
+      "We missed the train although we left early."
+    ],
+    "correct": 0,
+    "explanation": "Sebep evden geç çıkmak, sonuç treni kaçırmaktır."
+  },
+  {
+    "id": "wq150_nov26_quality8_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: Anna is not as tall as Beth.",
+    "options": [
+      "Beth is taller than Anna.",
+      "Anna is taller than Beth.",
+      "Both girls are the same height.",
+      "Neither girl is tall.",
+      "Anna used to be taller than Beth."
+    ],
+    "correct": 0,
+    "explanation": "Not as tall as ifadesi Anna'nın daha kısa olduğunu gösterir."
+  },
+  {
+    "id": "wq150_nov26_quality8_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: It may rain this afternoon.",
+    "options": [
+      "There is a possibility of rain this afternoon.",
+      "It will definitely rain this afternoon.",
+      "It rained earlier this afternoon.",
+      "It cannot rain this afternoon.",
+      "It usually rains every afternoon."
+    ],
+    "correct": 0,
+    "explanation": "May olasılık bildirir, kesinlik veya alışkanlık değil."
+  },
+  {
+    "id": "wq150_nov26_quality8_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: I haven't finished the book yet.",
+    "options": [
+      "I am still reading the book or have not completed it.",
+      "I have just finished the whole book.",
+      "I finished the book a long time ago.",
+      "I will never read the book.",
+      "I have already read it twice."
+    ],
+    "correct": 0,
+    "explanation": "Yet ile olumsuz present perfect, tamamlanmanın henüz gerçekleşmediğini gösterir."
+  },
+  {
+    "id": "wq150_nov26_quality8_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: Unless you hurry, you'll miss the bus.",
+    "options": [
+      "If you don't hurry, you'll miss the bus.",
+      "If you hurry, you'll miss the bus.",
+      "Even if you hurry, you'll miss the bus.",
+      "You'll miss the bus because you hurried.",
+      "You missed the bus before you hurried."
+    ],
+    "correct": 0,
+    "explanation": "Unless you hurry, if you don't hurry ile eşdeğerdir."
+  },
+  {
+    "id": "wq150_nov26_quality8_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The office is closed today, but it will ____ at nine tomorrow.",
+    "options": [
+      "reopen",
+      "close",
+      "move",
+      "remain",
+      "arrive"
+    ],
+    "correct": 0,
+    "explanation": "Reopen yeniden açılmaktır; bugün kapalı olan ofis yarın açılıyor."
+  },
+  {
+    "id": "wq150_nov26_quality8_22",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I left my umbrella on the bus. I hope someone will ____ it to the driver.",
+    "options": [
+      "hand",
+      "borrow",
+      "receive",
+      "collect",
+      "keep"
+    ],
+    "correct": 0,
+    "explanation": "Hand something to someone bir şeyi birine teslim etmektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_23",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hotel has no rooms available for our dates, so we need to find ____ accommodation for the same dates.",
+    "options": [
+      "alternative",
+      "additional",
+      "original",
+      "permanent",
+      "identical"
+    ],
+    "correct": 0,
+    "explanation": "Alternative mevcut seçeneğin yerine geçecek başka bir konaklamadır."
+  },
+  {
+    "id": "wq150_nov26_quality8_24",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I knew how to write the word, but I didn't ____ it correctly when I spoke, so the listener heard a different word.",
+    "options": [
+      "pronounce",
+      "translate",
+      "remember",
+      "spell",
+      "recognise"
+    ],
+    "correct": 0,
+    "explanation": "Dinleyici yanlış sözcük duyduğundan sorun telaffuzla ilgilidir."
+  },
+  {
+    "id": "wq150_nov26_quality8_25",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The teacher asked us to ____ the two pictures and describe their differences.",
+    "options": [
+      "compare",
+      "copy",
+      "complete",
+      "collect",
+      "correct"
+    ],
+    "correct": 0,
+    "explanation": "Compare iki şeyi karşılaştırmak, farklılıklarını değerlendirmektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ticket is ____ for one journey only; you cannot use it again.",
+    "options": [
+      "valid",
+      "available",
+      "suitable",
+      "ordinary",
+      "convenient"
+    ],
+    "correct": 0,
+    "explanation": "Valid bir biletin geçerli olduğu kullanım koşulunu ifade eder."
+  },
+  {
+    "id": "wq150_nov26_quality8_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We need to ____ a decision before the shop closes.",
+    "options": [
+      "make",
+      "do",
+      "give",
+      "take part in",
+      "put"
+    ],
+    "correct": 0,
+    "explanation": "Make a decision karar vermek için yaygın kalıptır."
+  },
+  {
+    "id": "wq150_nov26_quality8_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My new flat is within walking ____ of my office.",
+    "options": [
+      "distance",
+      "direction",
+      "route",
+      "length",
+      "journey"
+    ],
+    "correct": 0,
+    "explanation": "Within walking distance yürüme mesafesinde demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "He didn't have enough cash, so he ____ some money from his sister.",
+    "options": [
+      "borrowed",
+      "lent",
+      "owed",
+      "saved",
+      "earned"
+    ],
+    "correct": 0,
+    "explanation": "Borrow from birinden ödünç almaktır; lend ödünç vermektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The shop assistant asked whether I wanted to ____ the damaged cup or get my money back.",
+    "options": [
+      "exchange",
+      "borrow",
+      "reserve",
+      "order",
+      "collect"
+    ],
+    "correct": 0,
+    "explanation": "Exchange ürün değişimi, money back ise para iadesidir."
+  },
+  {
+    "id": "wq150_nov26_quality8_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The children have been at the park ____ lunchtime.",
+    "options": [
+      "since",
+      "for",
+      "during",
+      "within",
+      "until"
+    ],
+    "correct": 0,
+    "explanation": "Since başlangıç noktası olan öğle saatinden bu yana anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_quality8_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I will phone you as soon as I ____ home tonight.",
+    "options": [
+      "get",
+      "will get",
+      "got",
+      "have got yesterday",
+      "would get"
+    ],
+    "correct": 0,
+    "explanation": "As soon as ile gelecek zaman yan cümlesinde present simple kullanılır."
+  },
+  {
+    "id": "wq150_nov26_quality8_33",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My brother is old enough ____ to school alone.",
+    "options": [
+      "to walk",
+      "walking",
+      "walks",
+      "walked",
+      "walk"
+    ],
+    "correct": 0,
+    "explanation": "Enough + to infinitive yeterliliği ifade eder."
+  },
+  {
+    "id": "wq150_nov26_quality8_34",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I bought two jackets, but ____ of them fits me.",
+    "options": [
+      "neither",
+      "both",
+      "each",
+      "all",
+      "every"
+    ],
+    "correct": 0,
+    "explanation": "İki ceketin hiçbirinin uymadığını neither of tekil fits ile ifade eder."
+  },
+  {
+    "id": "wq150_nov26_quality8_35",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We haven't decided ____ to stay at a hotel or rent an apartment.",
+    "options": [
+      "whether",
+      "that",
+      "where",
+      "which",
+      "what"
+    ],
+    "correct": 0,
+    "explanation": "Whether ... or iki seçenek arasında kararsızlığı bildirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The concert was cancelled because too few tickets had been sold.",
+    "options": [
+      "Insufficient ticket sales led to the cancellation of the concert.",
+      "The cancellation caused ticket sales to fall.",
+      "The concert went ahead despite low ticket sales.",
+      "The organisers cancelled the concert after selling all the tickets.",
+      "The concert was postponed until more tickets could be printed."
+    ],
+    "correct": 0,
+    "explanation": "Doğru seçenek sebebi ve iptal sonucunu korur; erteleme veya nedenselliğin ters çevrilmesi anlamı değiştirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Although the task was difficult, everyone completed it on time.",
+    "options": [
+      "Despite the difficulty of the task, all participants finished it before or by the deadline.",
+      "Most participants needed extra time because the task was difficult.",
+      "Everyone finished the task early because it was easy.",
+      "Only those who found the task easy finished it on time.",
+      "The task was completed on time by some participants despite its difficulty."
+    ],
+    "correct": 0,
+    "explanation": "Everyone kapsamı ve although karşıtlığı birlikte korunur."
+  },
+  {
+    "id": "wq150_nov26_quality8_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The manager advised us not to make a decision until we had checked the figures.",
+    "options": [
+      "The manager recommended checking the figures before deciding.",
+      "The manager told us to decide before checking the figures.",
+      "The manager said the figures did not need checking.",
+      "The manager had already decided to check the figures later.",
+      "The manager refused to let us make any decision."
+    ],
+    "correct": 0,
+    "explanation": "Not ... until eylem sırasını belirler; önce kontrol, sonra karar."
+  },
+  {
+    "id": "wq150_nov26_quality8_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: It is possible that the parcel was delivered to the wrong address.",
+    "options": [
+      "The parcel may have been delivered to an incorrect address.",
+      "The parcel must have been delivered to an incorrect address.",
+      "The parcel will be delivered to an incorrect address.",
+      "The parcel cannot have been delivered to an incorrect address.",
+      "The parcel was definitely delivered to the correct address."
+    ],
+    "correct": 0,
+    "explanation": "May have been olası geçmiş edilgen eylemi ifade eder; must kesin çıkarımdır."
+  },
+  {
+    "id": "wq150_nov26_quality8_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The new system has reduced waiting times, but it has not eliminated delays.",
+    "options": [
+      "Waiting times are shorter under the new system, although delays still occur.",
+      "The new system has removed every delay by reducing waiting times.",
+      "Delays have increased since the new system was introduced.",
+      "Waiting times have remained unchanged despite the new system.",
+      "The system reduced waiting times before it was introduced."
+    ],
+    "correct": 0,
+    "explanation": "İyileşme ve devam eden sorun aynı anda korunmalıdır."
+  },
+  {
+    "id": "wq150_nov26_quality8_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: I would have attended the workshop if I had known it was free.",
+    "options": [
+      "I did not attend the workshop because I did not know there was no charge.",
+      "I attended the workshop after learning it was free.",
+      "I knew it was free but decided not to attend.",
+      "I will attend the workshop if it becomes free.",
+      "I did not attend because the workshop was too expensive."
+    ],
+    "correct": 0,
+    "explanation": "Üçüncü koşul gerçekleşmemiş geçmiş durumu ifade eder; ücretsiz olduğunu bilmiyordu."
+  },
+  {
+    "id": "wq150_nov26_quality8_42",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Few of the applicants had the experience required for the position.",
+    "options": [
+      "Not many applicants had the necessary experience.",
+      "A few applicants had more experience than required.",
+      "Most applicants had the required experience.",
+      "None of the applicants had any experience.",
+      "Every experienced applicant was offered the position."
+    ],
+    "correct": 0,
+    "explanation": "Few çok az sayıda anlamındadır; none sıfır, most çoğunluk demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_43",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The number of visitors nearly doubled last year.",
+    "options": [
+      "The number of visitors rose to almost twice its previous level.",
+      "The number of visitors rose by exactly twice its previous level.",
+      "The number of visitors fell by almost half.",
+      "The number of visitors increased slightly last year.",
+      "The number of visitors tripled last year."
+    ],
+    "correct": 0,
+    "explanation": "Nearly doubled önceki sayının yaklaşık iki katına ulaştığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_quality8_44",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: You should have told me about the change before the meeting.",
+    "options": [
+      "It would have been better if you had informed me earlier.",
+      "You must have informed me before the meeting.",
+      "You should inform me after the next meeting.",
+      "I was glad that you informed me earlier.",
+      "There was no reason to inform me about the change."
+    ],
+    "correct": 0,
+    "explanation": "Should have + V3 gerçekleşmemiş geçmiş tavsiye veya eleştiridir."
+  },
+  {
+    "id": "wq150_nov26_quality8_45",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The repairs are expected to take at least a week.",
+    "options": [
+      "The repairs will probably take a week or longer.",
+      "The repairs will certainly be completed within a week.",
+      "The repairs are expected to take exactly a week.",
+      "The repairs took less than a week.",
+      "The repairs cannot begin for another week."
+    ],
+    "correct": 0,
+    "explanation": "At least en az, expected ise beklenti bildirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_46",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The committee decided to ____ the original deadline by two weeks to give applicants more time.",
+    "options": [
+      "extend",
+      "maintain",
+      "advance",
+      "confirm",
+      "meet"
+    ],
+    "correct": 0,
+    "explanation": "Extend son tarihi ileriye uzatarak ek süre sağlar."
+  },
+  {
+    "id": "wq150_nov26_quality8_47",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The two witnesses used vague expressions, so the officer asked them to ____ what they meant by those expressions.",
+    "options": [
+      "clarify",
+      "withdraw",
+      "publish",
+      "memorise",
+      "approve"
+    ],
+    "correct": 0,
+    "explanation": "Clarify ifadeyi açıklığa kavuşturmaktır."
+  },
+  {
+    "id": "wq150_nov26_quality8_48",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company promised to ____ customers of any changes to their bookings.",
+    "options": [
+      "inform",
+      "remind",
+      "persuade",
+      "warn against",
+      "accuse"
+    ],
+    "correct": 0,
+    "explanation": "Inform someone of something birini bir konuda bilgilendirmek kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_quality8_49",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The new road will ____ the village with the nearest town.",
+    "options": [
+      "connect",
+      "compare",
+      "combine",
+      "associate",
+      "separate"
+    ],
+    "correct": 0,
+    "explanation": "Connect fiziksel ulaşım bağlantısı kurmak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_quality8_50",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "We were unable to ____ the final cost because the supplier had not provided a price list.",
+    "options": [
+      "calculate",
+      "reduce",
+      "cover",
+      "pay",
+      "increase"
+    ],
+    "correct": 0,
+    "explanation": "Fiyat bilgisi eksik olduğunda toplam maliyet hesaplanamaz."
+  },
+  {
+    "id": "wq150_nov26_quality8_51",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The organisers have ____ enough money to provide free meals for all the volunteers.",
+    "options": [
+      "raised",
+      "borrowed from",
+      "spent on",
+      "charged for",
+      "paid for"
+    ],
+    "correct": 0,
+    "explanation": "Raise money belirli amaç için para toplamak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_quality8_52",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The museum has taken steps to ____ rare documents from damage.",
+    "options": [
+      "protect",
+      "prevent",
+      "prohibit",
+      "exclude",
+      "separate"
+    ],
+    "correct": 0,
+    "explanation": "Protect X from damage nesneyi hasardan korumaktır."
+  },
+  {
+    "id": "wq150_nov26_quality8_53",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "I couldn't ____ the difference between the two recordings until I used headphones.",
+    "options": [
+      "hear",
+      "listen",
+      "speak",
+      "sound",
+      "pronounce"
+    ],
+    "correct": 0,
+    "explanation": "Hear the difference bir farkı işitmek demektir; listen to dikkatle dinleme eylemidir."
+  },
+  {
+    "id": "wq150_nov26_quality8_54",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The factory was forced to ____ production temporarily while the equipment was repaired.",
+    "options": [
+      "suspend",
+      "expand",
+      "resume",
+      "maintain",
+      "launch"
+    ],
+    "correct": 0,
+    "explanation": "Suspend geçici olarak durdurmaktır; resume yeniden başlatmaktır."
+  },
+  {
+    "id": "wq150_nov26_quality8_55",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company offered a training course to help new staff ____ the skills required for their jobs.",
+    "options": [
+      "acquire",
+      "require",
+      "inquire",
+      "assess",
+      "request"
+    ],
+    "correct": 0,
+    "explanation": "Acquire skills yeni beceriler edinmek demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_56",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The equipment is expensive to purchase; ____ , its running costs are relatively low.",
+    "options": [
+      "however",
+      "therefore",
+      "consequently",
+      "for this reason",
+      "as a result"
+    ],
+    "correct": 0,
+    "explanation": "Yüksek satın alma maliyeti ve düşük işletme maliyeti karşıtlık oluşturur; diğerleri sonuç bildirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_57",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The road will remain closed ____ engineers have confirmed that it is safe.",
+    "options": [
+      "until",
+      "while",
+      "since",
+      "as",
+      "because"
+    ],
+    "correct": 0,
+    "explanation": "Until güvenlik doğrulamasına kadar süren kapanışı anlatır."
+  },
+  {
+    "id": "wq150_nov26_quality8_58",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "She brought a spare battery ____ her camera ran out of power during the trip.",
+    "options": [
+      "in case",
+      "as though",
+      "even though",
+      "now that",
+      "as soon as"
+    ],
+    "correct": 0,
+    "explanation": "In case olası bir soruna önceden hazırlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_59",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "____ the two products have a similar appearance, they are made from different materials.",
+    "options": [
+      "Although",
+      "Because",
+      "Since",
+      "Provided that",
+      "Now that"
+    ],
+    "correct": 0,
+    "explanation": "Benzer görünüm ile farklı malzeme karşıtlık ilişkisi kurar."
+  },
+  {
+    "id": "wq150_nov26_quality8_60",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Connectors",
+    "prompt": "The library has extended its hours; ____ , students who work during the day have more opportunities to study there.",
+    "options": [
+      "as a result",
+      "in contrast",
+      "nevertheless",
+      "on the other hand",
+      "despite this"
+    ],
+    "correct": 0,
+    "explanation": "İkinci cümle ilk değişimin sonucunu belirtir."
+  },
+  {
+    "id": "wq150_nov26_quality8_61",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The evidence is not sufficient to establish that the policy caused the observed decline.",
+    "options": [
+      "The available evidence does not justify attributing the decline to the policy.",
+      "The evidence establishes that the policy had no effect on the decline.",
+      "The policy caused the decline despite the lack of evidence.",
+      "The evidence shows that the decline occurred before the policy was introduced.",
+      "The policy could not have caused any decline under any circumstances."
+    ],
+    "correct": 0,
+    "explanation": "Yetersiz nedensellik kanıtı, etkinin yokluğunu kanıtlamak değildir."
+  },
+  {
+    "id": "wq150_nov26_quality8_62",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The measure is unlikely to be effective unless it is accompanied by adequate funding.",
+    "options": [
+      "Without sufficient funding, the measure is not likely to succeed.",
+      "Adequate funding guarantees the success of the measure.",
+      "The measure is unlikely to succeed even if it receives adequate funding.",
+      "The measure is effective because it has already received adequate funding.",
+      "The measure will succeed regardless of the amount of funding."
+    ],
+    "correct": 0,
+    "explanation": "Unless gerekli koşulu belirtir; fon başarının garantisi değildir."
+  },
+  {
+    "id": "wq150_nov26_quality8_63",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Although the difference was statistically significant, its practical importance remained unclear.",
+    "options": [
+      "The statistical finding did not necessarily establish the real-world importance of the difference.",
+      "The difference was practically important but statistically insignificant.",
+      "Statistical significance proved that the difference had major practical consequences.",
+      "The practical importance of the difference was clear despite statistical uncertainty.",
+      "The researchers found no measurable difference between the groups."
+    ],
+    "correct": 0,
+    "explanation": "İstatistiksel anlamlılık pratik önemi tek başına göstermez."
+  },
+  {
+    "id": "wq150_nov26_quality8_64",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The revised estimate was slightly lower than the figure initially reported.",
+    "options": [
+      "The updated figure was a little below the original estimate.",
+      "The initial estimate was slightly below the revised figure.",
+      "The revised figure was considerably lower than expected.",
+      "The estimate was revised because no original figure existed.",
+      "The revised figure was almost identical to zero."
+    ],
+    "correct": 0,
+    "explanation": "Yön ve derece korunur: yeni tahmin biraz daha düşüktür."
+  },
+  {
+    "id": "wq150_nov26_quality8_65",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The researchers found no convincing evidence that the two variables were unrelated.",
+    "options": [
+      "The researchers could not convincingly establish the absence of a relationship between the variables.",
+      "The researchers established that the variables were strongly related.",
+      "The researchers proved that there was no relationship between the variables.",
+      "The researchers found that both variables were impossible to measure.",
+      "The researchers showed that one variable caused changes in the other."
+    ],
+    "correct": 0,
+    "explanation": "İlişkisizliği kanıtlayamamak ilişkinin kesin varlığını veya nedenselliği kanıtlamaz."
+  },
+  {
+    "id": "wq150_nov26_quality8_66",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The proposal was rejected not because it was impractical, but because its costs were underestimated.",
+    "options": [
+      "The rejection was due to an inaccurate assessment of costs rather than impracticality.",
+      "The proposal was rejected because it was both impractical and too costly.",
+      "The proposal was accepted after its costs were underestimated.",
+      "The proposal was impractical because its costs had been correctly estimated.",
+      "The proposal was rejected despite an accurate estimate of its costs."
+    ],
+    "correct": 0,
+    "explanation": "Not because X but because Y reddin gerçek nedenini ve dışlanan nedeni ayırır."
+  },
+  {
+    "id": "wq150_nov26_quality8_67",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The findings should be interpreted cautiously, given the limited size of the sample.",
+    "options": [
+      "The small sample warrants caution in interpreting the results.",
+      "The small sample makes the findings necessarily invalid.",
+      "The findings are reliable because the sample was limited.",
+      "The sample should be reduced to improve interpretation.",
+      "The results should be interpreted cautiously only if the sample is enlarged."
+    ],
+    "correct": 0,
+    "explanation": "Caution temkin gerektirir, kesin geçersizlik anlamına gelmez."
+  },
+  {
+    "id": "wq150_nov26_quality8_68",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Not until the additional records were examined did the discrepancy become apparent.",
+    "options": [
+      "The discrepancy was recognised only after the extra records had been examined.",
+      "The discrepancy was recognised before the additional records were examined.",
+      "The additional records were examined because the discrepancy had already been recognised.",
+      "The discrepancy disappeared when the extra records were examined.",
+      "The additional records were never examined despite the discrepancy."
+    ],
+    "correct": 0,
+    "explanation": "Not until zaman sırasını vurgular; fark ancak incelemeden sonra belirginleşti."
+  },
+  {
+    "id": "wq150_nov26_quality8_69",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The new technology may complement existing methods rather than replace them.",
+    "options": [
+      "The technology could be used alongside current methods instead of taking their place.",
+      "The technology will certainly replace all current methods.",
+      "The technology cannot be used together with existing methods.",
+      "The existing methods have already been replaced by the technology.",
+      "The technology is useful only after all current methods are abandoned."
+    ],
+    "correct": 0,
+    "explanation": "May olasılık, complement tamamlayıcı kullanım bildirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_70",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The authors acknowledged that their conclusions might not apply beyond the population studied.",
+    "options": [
+      "The authors recognised possible limits to the generalisability of their conclusions.",
+      "The authors claimed that their conclusions applied to every population.",
+      "The authors proved that their findings were invalid even for the study population.",
+      "The authors refused to discuss the limitations of their study.",
+      "The authors found that studying other populations would produce identical results."
+    ],
+    "correct": 0,
+    "explanation": "Might not olası genelleme sınırını ifade eder; kesin geçersizlik değildir."
+  },
+  {
+    "id": "wq150_nov26_quality8_71",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The findings are interesting, but further evidence is needed to ____ the claim that the change caused the improvement.",
+    "options": [
+      "substantiate",
+      "formulate",
+      "summarise",
+      "qualify",
+      "revise"
+    ],
+    "correct": 0,
+    "explanation": "Substantiate iddiayı yeterli kanıtla desteklemektir; diğer fiiller iddiayla ilgili olsa da kanıtlama işlevi taşımaz."
+  },
+  {
+    "id": "wq150_nov26_quality8_72",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The agreement allows either party to ____ from the arrangement by giving thirty days' notice.",
+    "options": [
+      "withdraw",
+      "depart",
+      "remove",
+      "exclude",
+      "dismiss"
+    ],
+    "correct": 0,
+    "explanation": "Withdraw from bir anlaşmadan çekilmek için yerleşik kullanımdır."
+  },
+  {
+    "id": "wq150_nov26_quality8_73",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A second independent assessment is needed to ____ whether the initial results were affected by measurement errors.",
+    "options": [
+      "ascertain",
+      "assume",
+      "anticipate",
+      "presume",
+      "speculate"
+    ],
+    "correct": 0,
+    "explanation": "Ascertain kesin bilgiye ulaşmak için araştırmayı ifade eder; assume ve presume varsayım, anticipate beklenti bildirir."
+  },
+  {
+    "id": "wq150_nov26_quality8_74",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers attempted to ____ between the long-term trend and the short-term fluctuations.",
+    "options": [
+      "distinguish",
+      "derive",
+      "extract",
+      "infer",
+      "deduce"
+    ],
+    "correct": 0,
+    "explanation": "Distinguish between X and Y, iki olguyu birbirinden ayırt etmek demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_75",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The report identifies several factors that may ____ to the persistence of regional inequalities.",
+    "options": [
+      "contribute",
+      "attribute",
+      "distribute",
+      "allocate",
+      "devote"
+    ],
+    "correct": 0,
+    "explanation": "Contribute to bir sonucun oluşmasına katkıda bulunmak; attribute X to Y ise bir sonucu nedene bağlamaktır."
+  },
+  {
+    "id": "wq150_nov26_quality8_76",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The new procedure aims to ____ the risk of errors by making those errors less likely, rather than merely measuring the risk.",
+    "options": [
+      "mitigate",
+      "calculate",
+      "monitor",
+      "identify",
+      "classify"
+    ],
+    "correct": 0,
+    "explanation": "Mitigate risk azaltır; calculate, monitor ve identify riski ölçebilir veya belirleyebilir ancak azaltmayı ifade etmez."
+  },
+  {
+    "id": "wq150_nov26_quality8_77",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers were careful not to ____ a causal relationship from a simple statistical association.",
+    "options": [
+      "infer",
+      "assess",
+      "observe",
+      "measure",
+      "describe"
+    ],
+    "correct": 0,
+    "explanation": "Infer from bir veriden sonuç çıkarmak demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_78",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The equipment was ____ because a fault in its control system prevented it from operating correctly.",
+    "options": [
+      "defective",
+      "obsolete",
+      "redundant",
+      "incompatible",
+      "inefficient"
+    ],
+    "correct": 0,
+    "explanation": "Defective arızalı veya kusurludur; eski, gereksiz, uyumsuz veya verimsiz olması şart değildir."
+  },
+  {
+    "id": "wq150_nov26_quality8_79",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The proposal received only ____ support: several members agreed in principle but insisted on major changes.",
+    "options": [
+      "qualified",
+      "unanimous",
+      "unconditional",
+      "overwhelming",
+      "unreserved"
+    ],
+    "correct": 0,
+    "explanation": "Qualified support koşullu veya çekinceli destektir; değişiklik şartı bu anlamı belirler."
+  },
+  {
+    "id": "wq150_nov26_quality8_80",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The two sets of findings are not directly ____ because the studies used different definitions of the outcome.",
+    "options": [
+      "comparable",
+      "predictable",
+      "reproducible",
+      "accessible",
+      "quantifiable"
+    ],
+    "correct": 0,
+    "explanation": "Comparable karşılaştırılabilir olmak demektir; farklı ölçüm tanımları karşılaştırma sorununa yol açar."
+  },
+  {
+    "id": "wq150_nov26_quality8_81",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The investigators decided to ____ the earlier report in detail before conducting additional interviews.",
+    "options": [
+      "go over",
+      "go through with",
+      "go ahead with",
+      "go back on",
+      "go along with"
+    ],
+    "correct": 0,
+    "explanation": "Go over ayrıntılı biçimde gözden geçirmek; go through with bir planı gerçekleştirmek demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_82",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The revised rules are intended to ____ unnecessary delays in the approval process.",
+    "options": [
+      "cut down on",
+      "make up for",
+      "catch up with",
+      "put up with",
+      "keep up with"
+    ],
+    "correct": 0,
+    "explanation": "Cut down on azaltmayı, make up for telafi etmeyi ifade eder."
+  },
+  {
+    "id": "wq150_nov26_quality8_83",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The company plans to ____ its older product line gradually as the new models become available.",
+    "options": [
+      "phase out",
+      "roll out",
+      "bring out",
+      "set up",
+      "take on"
+    ],
+    "correct": 0,
+    "explanation": "Phase out aşamalı kaldırmak, roll out aşamalı sunmaktır."
+  },
+  {
+    "id": "wq150_nov26_quality8_84",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The figures were adjusted to ____ changes in the size of the population.",
+    "options": [
+      "allow for",
+      "call for",
+      "apply for",
+      "stand for",
+      "ask for"
+    ],
+    "correct": 0,
+    "explanation": "Allow for bir etkeni hesaba katmak demektir."
+  },
+  {
+    "id": "wq150_nov26_quality8_85",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The reviewer asked the authors to ____ the distinction between temporary and permanent effects more clearly.",
+    "options": [
+      "spell out",
+      "rule out",
+      "leave out",
+      "carry out",
+      "work out"
+    ],
+    "correct": 0,
+    "explanation": "Spell out açıkça ifade etmektir; diğer seçenekler dışlamak, çıkarmak veya gerçekleştirmek gibi farklı işlevler taşır."
   }
 ];
