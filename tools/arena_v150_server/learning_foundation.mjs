@@ -16419,5 +16419,2963 @@ export const foundationQuestions = [
     ],
     "correct": 4,
     "explanation": "Unrestricted hiçbir kısıtlaması olmayan demektir."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_1_1",
+    "family": "mixed_nov26_13a_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We need to boil water for tea. Fill the ____ with water.",
+    "options": [
+      "kettle",
+      "fridge",
+      "oven",
+      "toaster",
+      "sink"
+    ],
+    "correct": 0,
+    "explanation": "kettle: su ısıtıcısı. Diğer seçenekler: fridge: buzdolabı; oven: fırın; toaster: ekmek kızartma makinesi; sink: lavabo."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_1_2",
+    "family": "mixed_nov26_13a_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Keep the milk cold by putting it in the ____ .",
+    "options": [
+      "kettle",
+      "fridge",
+      "oven",
+      "toaster",
+      "sink"
+    ],
+    "correct": 1,
+    "explanation": "fridge: buzdolabı. Diğer seçenekler: kettle: su ısıtıcısı; oven: fırın; toaster: ekmek kızartma makinesi; sink: lavabo."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_1_3",
+    "family": "mixed_nov26_13a_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The cake needs to bake at 180 degrees. Put it in the ____ .",
+    "options": [
+      "kettle",
+      "fridge",
+      "oven",
+      "toaster",
+      "sink"
+    ],
+    "correct": 2,
+    "explanation": "oven: fırın. Diğer seçenekler: kettle: su ısıtıcısı; fridge: buzdolabı; toaster: ekmek kızartma makinesi; sink: lavabo."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_1_4",
+    "family": "mixed_nov26_13a_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I want toast for breakfast. Put the bread in the ____ .",
+    "options": [
+      "kettle",
+      "fridge",
+      "oven",
+      "toaster",
+      "sink"
+    ],
+    "correct": 3,
+    "explanation": "toaster: ekmek kızartma makinesi. Diğer seçenekler: kettle: su ısıtıcısı; fridge: buzdolabı; oven: fırın; sink: lavabo."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_1_5",
+    "family": "mixed_nov26_13a_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Wash these dirty plates in the ____ .",
+    "options": [
+      "kettle",
+      "fridge",
+      "oven",
+      "toaster",
+      "sink"
+    ],
+    "correct": 4,
+    "explanation": "sink: lavabo. Diğer seçenekler: kettle: su ısıtıcısı; fridge: buzdolabı; oven: fırın; toaster: ekmek kızartma makinesi."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_2_1",
+    "family": "mixed_nov26_13a_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I have a prescription. I'll collect the medicine at the ____ .",
+    "options": [
+      "chemist's",
+      "bakery",
+      "library",
+      "post office",
+      "station"
+    ],
+    "correct": 0,
+    "explanation": "chemist's: eczane. Diğer seçenekler: bakery: fırın; library: kütüphane; post office: postane; station: istasyon."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_2_2",
+    "family": "mixed_nov26_13a_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We buy freshly baked bread at the ____ .",
+    "options": [
+      "chemist's",
+      "bakery",
+      "library",
+      "post office",
+      "station"
+    ],
+    "correct": 1,
+    "explanation": "bakery: fırın. Diğer seçenekler: chemist's: eczane; library: kütüphane; post office: postane; station: istasyon."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_2_3",
+    "family": "mixed_nov26_13a_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I can borrow this novel from the ____ .",
+    "options": [
+      "chemist's",
+      "bakery",
+      "library",
+      "post office",
+      "station"
+    ],
+    "correct": 2,
+    "explanation": "library: kütüphane. Diğer seçenekler: chemist's: eczane; bakery: fırın; post office: postane; station: istasyon."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_2_4",
+    "family": "mixed_nov26_13a_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I need to mail a parcel. I'll go to the ____ .",
+    "options": [
+      "chemist's",
+      "bakery",
+      "library",
+      "post office",
+      "station"
+    ],
+    "correct": 3,
+    "explanation": "post office: postane. Diğer seçenekler: chemist's: eczane; bakery: fırın; library: kütüphane; station: istasyon."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_2_5",
+    "family": "mixed_nov26_13a_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our train leaves at nine. Meet me at the ____ .",
+    "options": [
+      "chemist's",
+      "bakery",
+      "library",
+      "post office",
+      "station"
+    ],
+    "correct": 4,
+    "explanation": "station: istasyon. Diğer seçenekler: chemist's: eczane; bakery: fırın; library: kütüphane; post office: postane."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_3_1",
+    "family": "mixed_nov26_13a_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use a ____ with four points to pick up pieces of salad.",
+    "options": [
+      "fork",
+      "spoon",
+      "knife",
+      "cup",
+      "plate"
+    ],
+    "correct": 0,
+    "explanation": "fork: çatal. Diğer seçenekler: spoon: kaşık; knife: bıçak; cup: fincan; plate: tabak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_3_2",
+    "family": "mixed_nov26_13a_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Eat your soup with a ____ .",
+    "options": [
+      "fork",
+      "spoon",
+      "knife",
+      "cup",
+      "plate"
+    ],
+    "correct": 1,
+    "explanation": "spoon: kaşık. Diğer seçenekler: fork: çatal; knife: bıçak; cup: fincan; plate: tabak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_3_3",
+    "family": "mixed_nov26_13a_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Cut the apple in half with a sharp ____ .",
+    "options": [
+      "fork",
+      "spoon",
+      "knife",
+      "cup",
+      "plate"
+    ],
+    "correct": 2,
+    "explanation": "knife: bıçak. Diğer seçenekler: fork: çatal; spoon: kaşık; cup: fincan; plate: tabak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_3_4",
+    "family": "mixed_nov26_13a_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I'd like a ____ of coffee with milk.",
+    "options": [
+      "fork",
+      "spoon",
+      "knife",
+      "cup",
+      "plate"
+    ],
+    "correct": 3,
+    "explanation": "cup: fincan. Diğer seçenekler: fork: çatal; spoon: kaşık; knife: bıçak; plate: tabak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_3_5",
+    "family": "mixed_nov26_13a_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Put the cheese on a large flat ____ .",
+    "options": [
+      "fork",
+      "spoon",
+      "knife",
+      "cup",
+      "plate"
+    ],
+    "correct": 4,
+    "explanation": "plate: tabak. Diğer seçenekler: fork: çatal; spoon: kaşık; knife: bıçak; cup: fincan."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_4_1",
+    "family": "mixed_nov26_13a_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I ____ in the kitchen right now.",
+    "options": [
+      "am",
+      "is",
+      "are",
+      "was",
+      "were"
+    ],
+    "correct": 0,
+    "explanation": "am: I ile şimdiki zaman be. Diğer seçenekler: is: tekil şimdiki zaman be; are: çoğul şimdiki zaman be; was: tekil geçmiş be; were: çoğul geçmiş be."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_4_2",
+    "family": "mixed_nov26_13a_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The front door ____ open at the moment.",
+    "options": [
+      "am",
+      "is",
+      "are",
+      "was",
+      "were"
+    ],
+    "correct": 1,
+    "explanation": "is: tekil şimdiki zaman be. Diğer seçenekler: am: I ile şimdiki zaman be; are: çoğul şimdiki zaman be; was: tekil geçmiş be; were: çoğul geçmiş be."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_4_3",
+    "family": "mixed_nov26_13a_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My cousins ____ at school today.",
+    "options": [
+      "am",
+      "is",
+      "are",
+      "was",
+      "were"
+    ],
+    "correct": 2,
+    "explanation": "are: çoğul şimdiki zaman be. Diğer seçenekler: am: I ile şimdiki zaman be; is: tekil şimdiki zaman be; was: tekil geçmiş be; were: çoğul geçmiş be."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_4_4",
+    "family": "mixed_nov26_13a_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Yesterday the weather ____ cold, but today it is warm.",
+    "options": [
+      "am",
+      "is",
+      "are",
+      "was",
+      "were"
+    ],
+    "correct": 3,
+    "explanation": "was: tekil geçmiş be. Diğer seçenekler: am: I ile şimdiki zaman be; is: tekil şimdiki zaman be; are: çoğul şimdiki zaman be; were: çoğul geçmiş be."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_4_5",
+    "family": "mixed_nov26_13a_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We ____ at a concert last night.",
+    "options": [
+      "am",
+      "is",
+      "are",
+      "was",
+      "were"
+    ],
+    "correct": 4,
+    "explanation": "were: çoğul geçmiş be. Diğer seçenekler: am: I ile şimdiki zaman be; is: tekil şimdiki zaman be; are: çoğul şimdiki zaman be; was: tekil geçmiş be."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_5_1",
+    "family": "mixed_nov26_13a_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I bought a watch. This is ____ watch.",
+    "options": [
+      "my",
+      "your",
+      "his",
+      "her",
+      "their"
+    ],
+    "correct": 0,
+    "explanation": "my: benim. Diğer seçenekler: your: senin; his: onun (erkek); her: onun (kadın); their: onların."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_5_2",
+    "family": "mixed_nov26_13a_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "You bought a green bag. Is this ____ bag?",
+    "options": [
+      "my",
+      "your",
+      "his",
+      "her",
+      "their"
+    ],
+    "correct": 1,
+    "explanation": "your: senin. Diğer seçenekler: my: benim; his: onun (erkek); her: onun (kadın); their: onların."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_5_3",
+    "family": "mixed_nov26_13a_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Jack has a bicycle. That is ____ bicycle.",
+    "options": [
+      "my",
+      "your",
+      "his",
+      "her",
+      "their"
+    ],
+    "correct": 2,
+    "explanation": "his: onun (erkek). Diğer seçenekler: my: benim; your: senin; her: onun (kadın); their: onların."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_5_4",
+    "family": "mixed_nov26_13a_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Anna has a puppy. This is ____ puppy.",
+    "options": [
+      "my",
+      "your",
+      "his",
+      "her",
+      "their"
+    ],
+    "correct": 3,
+    "explanation": "her: onun (kadın). Diğer seçenekler: my: benim; your: senin; his: onun (erkek); their: onların."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_5_5",
+    "family": "mixed_nov26_13a_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The twins own a cat. This is ____ cat.",
+    "options": [
+      "my",
+      "your",
+      "his",
+      "her",
+      "their"
+    ],
+    "correct": 4,
+    "explanation": "their: onların. Diğer seçenekler: my: benim; your: senin; his: onun (erkek); her: onun (kadın)."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_6_1",
+    "family": "mixed_nov26_13a_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The lesson starts at nine, but I arrive at eight thirty. I am ____ .",
+    "options": [
+      "early",
+      "late",
+      "empty",
+      "full",
+      "closed"
+    ],
+    "correct": 0,
+    "explanation": "early: erken. Diğer seçenekler: late: geç; empty: boş; full: dolu; closed: kapalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_6_2",
+    "family": "mixed_nov26_13a_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The bus left at eight. I arrived at eight ten. I was ____ .",
+    "options": [
+      "early",
+      "late",
+      "empty",
+      "full",
+      "closed"
+    ],
+    "correct": 1,
+    "explanation": "late: geç. Diğer seçenekler: early: erken; empty: boş; full: dolu; closed: kapalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_6_3",
+    "family": "mixed_nov26_13a_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "There is nothing in the bottle. It is ____ .",
+    "options": [
+      "early",
+      "late",
+      "empty",
+      "full",
+      "closed"
+    ],
+    "correct": 2,
+    "explanation": "empty: boş. Diğer seçenekler: early: erken; late: geç; full: dolu; closed: kapalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_6_4",
+    "family": "mixed_nov26_13a_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "No more books fit in this box. It is ____ .",
+    "options": [
+      "early",
+      "late",
+      "empty",
+      "full",
+      "closed"
+    ],
+    "correct": 3,
+    "explanation": "full: dolu. Diğer seçenekler: early: erken; late: geç; empty: boş; closed: kapalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_6_5",
+    "family": "mixed_nov26_13a_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The shop opens from nine to five. It is seven now, so it is ____ .",
+    "options": [
+      "early",
+      "late",
+      "empty",
+      "full",
+      "closed"
+    ],
+    "correct": 4,
+    "explanation": "closed: kapalı. Diğer seçenekler: early: erken; late: geç; empty: boş; full: dolu."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_7_1",
+    "family": "mixed_nov26_13a_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "____ is the woman talking to your mother? — My aunt.",
+    "options": [
+      "who",
+      "where",
+      "when",
+      "what",
+      "whose"
+    ],
+    "correct": 0,
+    "explanation": "who: kim. Diğer seçenekler: where: nerede; when: ne zaman; what: ne; whose: kimin."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_7_2",
+    "family": "mixed_nov26_13a_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "____ is your pencil? — Under the chair.",
+    "options": [
+      "who",
+      "where",
+      "when",
+      "what",
+      "whose"
+    ],
+    "correct": 1,
+    "explanation": "where: nerede. Diğer seçenekler: who: kim; when: ne zaman; what: ne; whose: kimin."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_7_3",
+    "family": "mixed_nov26_13a_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "____ is your birthday? — On 12 May.",
+    "options": [
+      "who",
+      "where",
+      "when",
+      "what",
+      "whose"
+    ],
+    "correct": 2,
+    "explanation": "when: ne zaman. Diğer seçenekler: who: kim; where: nerede; what: ne; whose: kimin."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_7_4",
+    "family": "mixed_nov26_13a_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "____ is in that bag? — Some apples.",
+    "options": [
+      "who",
+      "where",
+      "when",
+      "what",
+      "whose"
+    ],
+    "correct": 3,
+    "explanation": "what: ne. Diğer seçenekler: who: kim; where: nerede; when: ne zaman; whose: kimin."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_7_5",
+    "family": "mixed_nov26_13a_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "____ bag is this? — It belongs to Tom.",
+    "options": [
+      "who",
+      "where",
+      "when",
+      "what",
+      "whose"
+    ],
+    "correct": 4,
+    "explanation": "whose: kimin. Diğer seçenekler: who: kim; where: nerede; when: ne zaman; what: ne."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_8_1",
+    "family": "mixed_nov26_13a_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Could I ____ your umbrella until tomorrow? I will give it back.",
+    "options": [
+      "borrow",
+      "lend",
+      "rent",
+      "own",
+      "return"
+    ],
+    "correct": 0,
+    "explanation": "borrow: ödünç almak. Diğer seçenekler: lend: ödünç vermek; rent: kiralamak; own: sahibi olmak; return: iade etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_8_2",
+    "family": "mixed_nov26_13a_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ me your umbrella until tomorrow?",
+    "options": [
+      "borrow",
+      "lend",
+      "rent",
+      "own",
+      "return"
+    ],
+    "correct": 1,
+    "explanation": "lend: ödünç vermek. Diğer seçenekler: borrow: ödünç almak; rent: kiralamak; own: sahibi olmak; return: iade etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_8_3",
+    "family": "mixed_nov26_13a_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We need a car for three days. We'll ____ one for £30 a day.",
+    "options": [
+      "borrow",
+      "lend",
+      "rent",
+      "own",
+      "return"
+    ],
+    "correct": 2,
+    "explanation": "rent: kiralamak. Diğer seçenekler: borrow: ödünç almak; lend: ödünç vermek; own: sahibi olmak; return: iade etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_8_4",
+    "family": "mixed_nov26_13a_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "They bought the flat last year and now ____ it.",
+    "options": [
+      "borrow",
+      "lend",
+      "rent",
+      "own",
+      "return"
+    ],
+    "correct": 3,
+    "explanation": "own: sahibi olmak. Diğer seçenekler: borrow: ödünç almak; lend: ödünç vermek; rent: kiralamak; return: iade etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_8_5",
+    "family": "mixed_nov26_13a_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "You must ____ the library books by Friday.",
+    "options": [
+      "borrow",
+      "lend",
+      "rent",
+      "own",
+      "return"
+    ],
+    "correct": 4,
+    "explanation": "return: iade etmek. Diğer seçenekler: borrow: ödünç almak; lend: ödünç vermek; rent: kiralamak; own: sahibi olmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_9_1",
+    "family": "mixed_nov26_13a_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Keep your ____ as proof that you paid for the shoes.",
+    "options": [
+      "receipt",
+      "invoice",
+      "menu",
+      "timetable",
+      "prescription"
+    ],
+    "correct": 0,
+    "explanation": "receipt: fiş. Diğer seçenekler: invoice: ödeme talep eden fatura; menu: menü; timetable: çizelge; prescription: reçete."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_9_2",
+    "family": "mixed_nov26_13a_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The supplier sent an ____ asking the company to pay within thirty days.",
+    "options": [
+      "receipt",
+      "invoice",
+      "menu",
+      "timetable",
+      "prescription"
+    ],
+    "correct": 1,
+    "explanation": "invoice: ödeme talep eden fatura. Diğer seçenekler: receipt: fiş; menu: menü; timetable: çizelge; prescription: reçete."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_9_3",
+    "family": "mixed_nov26_13a_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Let's look at the ____ and choose our meals.",
+    "options": [
+      "receipt",
+      "invoice",
+      "menu",
+      "timetable",
+      "prescription"
+    ],
+    "correct": 2,
+    "explanation": "menu: menü. Diğer seçenekler: receipt: fiş; invoice: ödeme talep eden fatura; timetable: çizelge; prescription: reçete."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_9_4",
+    "family": "mixed_nov26_13a_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Check the bus ____ for departure times.",
+    "options": [
+      "receipt",
+      "invoice",
+      "menu",
+      "timetable",
+      "prescription"
+    ],
+    "correct": 3,
+    "explanation": "timetable: çizelge. Diğer seçenekler: receipt: fiş; invoice: ödeme talep eden fatura; menu: menü; prescription: reçete."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_9_5",
+    "family": "mixed_nov26_13a_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The doctor wrote a ____ for the medicine.",
+    "options": [
+      "receipt",
+      "invoice",
+      "menu",
+      "timetable",
+      "prescription"
+    ],
+    "correct": 4,
+    "explanation": "prescription: reçete. Diğer seçenekler: receipt: fiş; invoice: ödeme talep eden fatura; menu: menü; timetable: çizelge."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_10_1",
+    "family": "mixed_nov26_13a_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "It's too dark to read. Could you ____ the lamp?",
+    "options": [
+      "turn on",
+      "turn off",
+      "turn down",
+      "turn up",
+      "turn over"
+    ],
+    "correct": 0,
+    "explanation": "turn on: açmak. Diğer seçenekler: turn off: kapatmak; turn down: azaltmak; turn up: artırmak; turn over: ters çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_10_2",
+    "family": "mixed_nov26_13a_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "Nobody is watching. Please ____ the television before you leave.",
+    "options": [
+      "turn on",
+      "turn off",
+      "turn down",
+      "turn up",
+      "turn over"
+    ],
+    "correct": 1,
+    "explanation": "turn off: kapatmak. Diğer seçenekler: turn on: açmak; turn down: azaltmak; turn up: artırmak; turn over: ters çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_10_3",
+    "family": "mixed_nov26_13a_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "The music is too loud; please ____ the volume a little.",
+    "options": [
+      "turn on",
+      "turn off",
+      "turn down",
+      "turn up",
+      "turn over"
+    ],
+    "correct": 2,
+    "explanation": "turn down: azaltmak. Diğer seçenekler: turn on: açmak; turn off: kapatmak; turn up: artırmak; turn over: ters çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_10_4",
+    "family": "mixed_nov26_13a_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "I can hardly hear the radio. Could you ____ the volume?",
+    "options": [
+      "turn on",
+      "turn off",
+      "turn down",
+      "turn up",
+      "turn over"
+    ],
+    "correct": 3,
+    "explanation": "turn up: artırmak. Diğer seçenekler: turn on: açmak; turn off: kapatmak; turn down: azaltmak; turn over: ters çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_10_5",
+    "family": "mixed_nov26_13a_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "Read the front of this card and then ____ the card to see the back.",
+    "options": [
+      "turn on",
+      "turn off",
+      "turn down",
+      "turn up",
+      "turn over"
+    ],
+    "correct": 4,
+    "explanation": "turn over: ters çevirmek. Diğer seçenekler: turn on: açmak; turn off: kapatmak; turn down: azaltmak; turn up: artırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_11_1",
+    "family": "mixed_nov26_13a_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "If we don't leave now, we'll ____ the last bus.",
+    "options": [
+      "miss",
+      "catch",
+      "board",
+      "change",
+      "cancel"
+    ],
+    "correct": 0,
+    "explanation": "miss: kaçırmak. Diğer seçenekler: catch: yetişmek; board: binmek; change: aktarma yapmak; cancel: iptal etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_11_2",
+    "family": "mixed_nov26_13a_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Run! We may still ____ the train before it leaves.",
+    "options": [
+      "miss",
+      "catch",
+      "board",
+      "change",
+      "cancel"
+    ],
+    "correct": 1,
+    "explanation": "catch: yetişmek. Diğer seçenekler: miss: kaçırmak; board: binmek; change: aktarma yapmak; cancel: iptal etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_11_3",
+    "family": "mixed_nov26_13a_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Passengers in rows 1 to 10 may now ____ the aircraft.",
+    "options": [
+      "miss",
+      "catch up with",
+      "board",
+      "change",
+      "cancel"
+    ],
+    "correct": 2,
+    "explanation": "board: binmek. Diğer seçenekler: miss: kaçırmak; catch: yetişmek; change: aktarma yapmak; cancel: iptal etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_11_4",
+    "family": "mixed_nov26_13a_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "There is no direct service. We have to ____ trains at York.",
+    "options": [
+      "miss",
+      "catch",
+      "board",
+      "change",
+      "cancel"
+    ],
+    "correct": 3,
+    "explanation": "change: aktarma yapmak. Diğer seçenekler: miss: kaçırmak; catch: yetişmek; board: binmek; cancel: iptal etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_11_5",
+    "family": "mixed_nov26_13a_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The airline may ____ the flight if the airport closes.",
+    "options": [
+      "miss",
+      "catch",
+      "board",
+      "change",
+      "cancel"
+    ],
+    "correct": 4,
+    "explanation": "cancel: iptal etmek. Diğer seçenekler: miss: kaçırmak; catch: yetişmek; board: binmek; change: aktarma yapmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_12_1",
+    "family": "mixed_nov26_13a_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I've paid already. Could you give me a ____ showing the amount paid?",
+    "options": [
+      "receipt",
+      "refund",
+      "discount",
+      "deposit",
+      "fee"
+    ],
+    "correct": 0,
+    "explanation": "receipt: fiş. Diğer seçenekler: refund: iade edilen para; discount: indirim; deposit: depozito; fee: hizmet ücreti."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_12_2",
+    "family": "mixed_nov26_13a_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The shop gave me a full ____ when I returned the faulty item.",
+    "options": [
+      "receipt",
+      "refund",
+      "discount",
+      "deposit",
+      "fee"
+    ],
+    "correct": 1,
+    "explanation": "refund: iade edilen para. Diğer seçenekler: receipt: fiş; discount: indirim; deposit: depozito; fee: hizmet ücreti."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_12_3",
+    "family": "mixed_nov26_13a_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Students receive a ten-percent ____ on normal ticket prices.",
+    "options": [
+      "receipt",
+      "refund",
+      "discount",
+      "deposit",
+      "fee"
+    ],
+    "correct": 2,
+    "explanation": "discount: indirim. Diğer seçenekler: receipt: fiş; refund: iade edilen para; deposit: depozito; fee: hizmet ücreti."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_12_4",
+    "family": "mixed_nov26_13a_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The hotel asks for a £50 refundable ____ to reserve a room.",
+    "options": [
+      "receipt",
+      "refund",
+      "discount",
+      "deposit",
+      "fee"
+    ],
+    "correct": 3,
+    "explanation": "deposit: depozito. Diğer seçenekler: receipt: fiş; refund: iade edilen para; discount: indirim; fee: hizmet ücreti."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_12_5",
+    "family": "mixed_nov26_13a_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The club charges an annual membership ____ of £20.",
+    "options": [
+      "receipt",
+      "refund",
+      "discount",
+      "deposit",
+      "fee"
+    ],
+    "correct": 4,
+    "explanation": "fee: hizmet ücreti. Diğer seçenekler: receipt: fiş; refund: iade edilen para; discount: indirim; deposit: depozito."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_13_1",
+    "family": "mixed_nov26_13a_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I'd like ____ orange juice, please.",
+    "options": [
+      "some",
+      "any",
+      "much",
+      "many",
+      "a few"
+    ],
+    "correct": 0,
+    "explanation": "some: bir miktar. Diğer seçenekler: any: hiç/herhangi; much: çok miktar (sayılamayan); many: çok sayıda; a few: birkaç."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_13_2",
+    "family": "mixed_nov26_13a_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "There isn't ____ bread left at all.",
+    "options": [
+      "some",
+      "any",
+      "much",
+      "many",
+      "a few"
+    ],
+    "correct": 1,
+    "explanation": "any: hiç/herhangi. Diğer seçenekler: some: bir miktar; much: çok miktar (sayılamayan); many: çok sayıda; a few: birkaç."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_13_3",
+    "family": "mixed_nov26_13a_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "How ____ water do you drink daily?",
+    "options": [
+      "some",
+      "any",
+      "much",
+      "many",
+      "a few"
+    ],
+    "correct": 2,
+    "explanation": "much: çok miktar (sayılamayan). Diğer seçenekler: some: bir miktar; any: hiç/herhangi; many: çok sayıda; a few: birkaç."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_13_4",
+    "family": "mixed_nov26_13a_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "How ____ students attend your course?",
+    "options": [
+      "some",
+      "any",
+      "much",
+      "many",
+      "a few"
+    ],
+    "correct": 3,
+    "explanation": "many: çok sayıda. Diğer seçenekler: some: bir miktar; any: hiç/herhangi; much: çok miktar (sayılamayan); a few: birkaç."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_13_5",
+    "family": "mixed_nov26_13a_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Only ____ people came to the meeting, but at least three were there.",
+    "options": [
+      "some of",
+      "any",
+      "much",
+      "many of",
+      "a few"
+    ],
+    "correct": 4,
+    "explanation": "a few: birkaç. Diğer seçenekler: some: bir miktar; any: hiç/herhangi; much: çok miktar (sayılamayan); many: çok sayıda."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_14_1",
+    "family": "mixed_nov26_13a_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My daily ____ to work takes forty minutes by train.",
+    "options": [
+      "commute",
+      "trip",
+      "tour",
+      "flight",
+      "voyage"
+    ],
+    "correct": 0,
+    "explanation": "commute: işe düzenli gidiş geliş. Diğer seçenekler: trip: kısa gezi; tour: tur; flight: uçuş; voyage: uzun deniz yolculuğu."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_14_2",
+    "family": "mixed_nov26_13a_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We went on a school ____ to the zoo and returned the same day.",
+    "options": [
+      "commute",
+      "trip",
+      "tour",
+      "flight",
+      "voyage"
+    ],
+    "correct": 1,
+    "explanation": "trip: kısa gezi. Diğer seçenekler: commute: işe düzenli gidiş geliş; tour: tur; flight: uçuş; voyage: uzun deniz yolculuğu."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_14_3",
+    "family": "mixed_nov26_13a_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A guide led a walking ____ with stops at six landmarks.",
+    "options": [
+      "commute",
+      "trip",
+      "tour",
+      "flight",
+      "voyage"
+    ],
+    "correct": 2,
+    "explanation": "tour: tur. Diğer seçenekler: commute: işe düzenli gidiş geliş; trip: kısa gezi; flight: uçuş; voyage: uzun deniz yolculuğu."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_14_4",
+    "family": "mixed_nov26_13a_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Our ____ from London to Madrid was delayed at the airport.",
+    "options": [
+      "commute",
+      "trip",
+      "tour",
+      "flight",
+      "voyage"
+    ],
+    "correct": 3,
+    "explanation": "flight: uçuş. Diğer seçenekler: commute: işe düzenli gidiş geliş; trip: kısa gezi; tour: tur; voyage: uzun deniz yolculuğu."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_14_5",
+    "family": "mixed_nov26_13a_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ship's two-month ____ across the Atlantic was recorded in a diary.",
+    "options": [
+      "commute",
+      "trip",
+      "tour",
+      "flight",
+      "voyage"
+    ],
+    "correct": 4,
+    "explanation": "voyage: uzun deniz yolculuğu. Diğer seçenekler: commute: işe düzenli gidiş geliş; trip: kısa gezi; tour: tur; flight: uçuş."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_15_1",
+    "family": "mixed_nov26_13a_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Choose a ____ place to study, away from noise.",
+    "options": [
+      "quiet",
+      "crowded",
+      "comfortable",
+      "convenient",
+      "expensive"
+    ],
+    "correct": 0,
+    "explanation": "quiet: sessiz. Diğer seçenekler: crowded: kalabalık; comfortable: rahat; convenient: uygun; expensive: pahalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_15_2",
+    "family": "mixed_nov26_13a_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The underground carriage was extremely ____ , with passengers standing shoulder to shoulder.",
+    "options": [
+      "quiet",
+      "crowded",
+      "comfortable",
+      "convenient",
+      "expensive"
+    ],
+    "correct": 1,
+    "explanation": "crowded: kalabalık. Diğer seçenekler: quiet: sessiz; comfortable: rahat; convenient: uygun; expensive: pahalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_15_3",
+    "family": "mixed_nov26_13a_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "This chair is very ____ ; I can sit for hours without back pain.",
+    "options": [
+      "quiet",
+      "crowded",
+      "comfortable",
+      "convenient",
+      "expensive"
+    ],
+    "correct": 2,
+    "explanation": "comfortable: rahat. Diğer seçenekler: quiet: sessiz; crowded: kalabalık; convenient: uygun; expensive: pahalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_15_4",
+    "family": "mixed_nov26_13a_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The station is next to my office, making its location very ____ for commuting.",
+    "options": [
+      "quiet",
+      "crowded",
+      "comfortable",
+      "convenient",
+      "expensive"
+    ],
+    "correct": 3,
+    "explanation": "convenient: uygun. Diğer seçenekler: quiet: sessiz; crowded: kalabalık; comfortable: rahat; expensive: pahalı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_15_5",
+    "family": "mixed_nov26_13a_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I liked the coat, but it was too ____ for my budget.",
+    "options": [
+      "quiet",
+      "crowded",
+      "comfortable",
+      "convenient",
+      "expensive"
+    ],
+    "correct": 4,
+    "explanation": "expensive: pahalı. Diğer seçenekler: quiet: sessiz; crowded: kalabalık; comfortable: rahat; convenient: uygun."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_16_1",
+    "family": "mixed_nov26_13a_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "It's freezing. ____ your warm coat before leaving.",
+    "options": [
+      "put on",
+      "take off",
+      "try on",
+      "give away",
+      "put away"
+    ],
+    "correct": 0,
+    "explanation": "put on: giymek. Diğer seçenekler: take off: çıkarmak; try on: denemek; give away: ücretsiz vermek; put away: yerine kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_16_2",
+    "family": "mixed_nov26_13a_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "Please ____ your wet shoes before stepping on the carpet.",
+    "options": [
+      "put on",
+      "take off",
+      "try on",
+      "give away",
+      "put away"
+    ],
+    "correct": 1,
+    "explanation": "take off: çıkarmak. Diğer seçenekler: put on: giymek; try on: denemek; give away: ücretsiz vermek; put away: yerine kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_16_3",
+    "family": "mixed_nov26_13a_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "May I ____ these trousers in the fitting room to check the size?",
+    "options": [
+      "put on",
+      "take off",
+      "try on",
+      "give away",
+      "put away"
+    ],
+    "correct": 2,
+    "explanation": "try on: denemek. Diğer seçenekler: put on: giymek; take off: çıkarmak; give away: ücretsiz vermek; put away: yerine kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_16_4",
+    "family": "mixed_nov26_13a_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "I don't need these old clothes. I'll ____ them to charity for free.",
+    "options": [
+      "put on",
+      "take off",
+      "try on",
+      "give away",
+      "put away"
+    ],
+    "correct": 3,
+    "explanation": "give away: ücretsiz vermek. Diğer seçenekler: put on: giymek; take off: çıkarmak; try on: denemek; put away: yerine kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_16_5",
+    "family": "mixed_nov26_13a_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Phrasals",
+    "prompt": "After washing the dishes, ____ them in the cupboard.",
+    "options": [
+      "put on",
+      "take off",
+      "try on",
+      "give away",
+      "put away"
+    ],
+    "correct": 4,
+    "explanation": "put away: yerine kaldırmak. Diğer seçenekler: put on: giymek; take off: çıkarmak; try on: denemek; give away: ücretsiz vermek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_17_1",
+    "family": "mixed_nov26_13a_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I paid for this notebook. It is ____ .",
+    "options": [
+      "mine",
+      "yours",
+      "his",
+      "hers",
+      "theirs"
+    ],
+    "correct": 0,
+    "explanation": "mine: benimki. Diğer seçenekler: yours: seninki; his: onunki (erkek); hers: onunki (kadın); theirs: onlarınki."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_17_2",
+    "family": "mixed_nov26_13a_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "You bought this pen, didn't you? Is it ____ ?",
+    "options": [
+      "mine",
+      "yours",
+      "his",
+      "hers",
+      "theirs"
+    ],
+    "correct": 1,
+    "explanation": "yours: seninki. Diğer seçenekler: mine: benimki; his: onunki (erkek); hers: onunki (kadın); theirs: onlarınki."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_17_3",
+    "family": "mixed_nov26_13a_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "That jacket belongs to David. It is ____ .",
+    "options": [
+      "mine",
+      "yours",
+      "his",
+      "hers",
+      "theirs"
+    ],
+    "correct": 2,
+    "explanation": "his: onunki (erkek). Diğer seçenekler: mine: benimki; yours: seninki; hers: onunki (kadın); theirs: onlarınki."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_17_4",
+    "family": "mixed_nov26_13a_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The blue bike belongs to Emma. It is ____ .",
+    "options": [
+      "mine",
+      "yours",
+      "his",
+      "hers",
+      "theirs"
+    ],
+    "correct": 3,
+    "explanation": "hers: onunki (kadın). Diğer seçenekler: mine: benimki; yours: seninki; his: onunki (erkek); theirs: onlarınki."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_17_5",
+    "family": "mixed_nov26_13a_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Those suitcases belong to the two travellers. They are ____ .",
+    "options": [
+      "mine",
+      "yours",
+      "his",
+      "hers",
+      "theirs"
+    ],
+    "correct": 4,
+    "explanation": "theirs: onlarınki. Diğer seçenekler: mine: benimki; yours: seninki; his: onunki (erkek); hers: onunki (kadın)."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_18_1",
+    "family": "mixed_nov26_13a_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Heat the water until bubbles rise rapidly. You need to ____ it.",
+    "options": [
+      "boil",
+      "fry",
+      "bake",
+      "grill",
+      "slice"
+    ],
+    "correct": 0,
+    "explanation": "boil: kaynatmak. Diğer seçenekler: fry: yağda kızartmak; bake: fırında pişirmek; grill: ızgara yapmak; slice: dilimlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_18_2",
+    "family": "mixed_nov26_13a_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Add oil to the pan and ____ the onions.",
+    "options": [
+      "boil",
+      "fry",
+      "bake",
+      "grill",
+      "slice"
+    ],
+    "correct": 1,
+    "explanation": "fry: yağda kızartmak. Diğer seçenekler: boil: kaynatmak; bake: fırında pişirmek; grill: ızgara yapmak; slice: dilimlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_18_3",
+    "family": "mixed_nov26_13a_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Put the cake mixture in the oven and ____ it for thirty minutes.",
+    "options": [
+      "boil",
+      "fry",
+      "bake",
+      "grill",
+      "slice"
+    ],
+    "correct": 2,
+    "explanation": "bake: fırında pişirmek. Diğer seçenekler: boil: kaynatmak; fry: yağda kızartmak; grill: ızgara yapmak; slice: dilimlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_18_4",
+    "family": "mixed_nov26_13a_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Place the fish directly under the hot grill to ____ it.",
+    "options": [
+      "boil",
+      "fry",
+      "bake",
+      "grill",
+      "slice"
+    ],
+    "correct": 3,
+    "explanation": "grill: ızgara yapmak. Diğer seçenekler: boil: kaynatmak; fry: yağda kızartmak; bake: fırında pişirmek; slice: dilimlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_18_5",
+    "family": "mixed_nov26_13a_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Use a sharp knife to ____ the bread into thin pieces.",
+    "options": [
+      "boil",
+      "fry",
+      "bake",
+      "grill",
+      "slice"
+    ],
+    "correct": 4,
+    "explanation": "slice: dilimlemek. Diğer seçenekler: boil: kaynatmak; fry: yağda kızartmak; bake: fırında pişirmek; grill: ızgara yapmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_19_1",
+    "family": "mixed_nov26_13a_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The sign says NO ENTRY. You ____ go through this door.",
+    "options": [
+      "mustn't",
+      "don't have to",
+      "should",
+      "can",
+      "couldn't"
+    ],
+    "correct": 0,
+    "explanation": "mustn't: yasak. Diğer seçenekler: don't have to: zorunlu değil; should: tavsiye; can: izin/yetenek; couldn't: geçmişte yapamadı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_19_2",
+    "family": "mixed_nov26_13a_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The hotel provides towels, so you ____ bring your own.",
+    "options": [
+      "mustn't",
+      "don't have to",
+      "should",
+      "can",
+      "couldn't"
+    ],
+    "correct": 1,
+    "explanation": "don't have to: zorunlu değil. Diğer seçenekler: mustn't: yasak; should: tavsiye; can: izin/yetenek; couldn't: geçmişte yapamadı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_19_3",
+    "family": "mixed_nov26_13a_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "You've studied for hours. You ____ take a break; it would be a good idea.",
+    "options": [
+      "mustn't",
+      "don't have to",
+      "should",
+      "can",
+      "couldn't"
+    ],
+    "correct": 2,
+    "explanation": "should: tavsiye. Diğer seçenekler: mustn't: yasak; don't have to: zorunlu değil; can: izin/yetenek; couldn't: geçmişte yapamadı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_19_4",
+    "family": "mixed_nov26_13a_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Visitors ____ use the free Wi-Fi; no special permission is needed.",
+    "options": [
+      "mustn't",
+      "don't have to",
+      "should",
+      "can",
+      "couldn't"
+    ],
+    "correct": 3,
+    "explanation": "can: izin/yetenek. Diğer seçenekler: mustn't: yasak; don't have to: zorunlu değil; should: tavsiye; couldn't: geçmişte yapamadı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_19_5",
+    "family": "mixed_nov26_13a_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I tried to unlock the door yesterday, but I ____ do it.",
+    "options": [
+      "mustn't",
+      "don't have to",
+      "should",
+      "can",
+      "couldn't"
+    ],
+    "correct": 4,
+    "explanation": "couldn't: geçmişte yapamadı. Diğer seçenekler: mustn't: yasak; don't have to: zorunlu değil; should: tavsiye; can: izin/yetenek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_20_1",
+    "family": "mixed_nov26_13a_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Could you ____ my plants while I'm away and water them every day?",
+    "options": [
+      "look after",
+      "look into",
+      "look up",
+      "look forward to",
+      "look out for"
+    ],
+    "correct": 0,
+    "explanation": "look after: bakmak. Diğer seçenekler: look into: araştırmak; look up: bilgi aramak; look forward to: dört gözle beklemek; look out for: dikkat etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_20_2",
+    "family": "mixed_nov26_13a_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The council promised to ____ the complaints before making a decision.",
+    "options": [
+      "look after",
+      "look into",
+      "look up",
+      "look forward to",
+      "look out for"
+    ],
+    "correct": 1,
+    "explanation": "look into: araştırmak. Diğer seçenekler: look after: bakmak; look up: bilgi aramak; look forward to: dört gözle beklemek; look out for: dikkat etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_20_3",
+    "family": "mixed_nov26_13a_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "I didn't recognise the abbreviation, so I decided to ____ its meaning in a dictionary.",
+    "options": [
+      "look after",
+      "look into",
+      "look up",
+      "look forward to",
+      "look out for"
+    ],
+    "correct": 2,
+    "explanation": "look up: bilgi aramak. Diğer seçenekler: look after: bakmak; look into: araştırmak; look forward to: dört gözle beklemek; look out for: dikkat etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_20_4",
+    "family": "mixed_nov26_13a_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "I really ____ meeting the team next week.",
+    "options": [
+      "look after",
+      "look into",
+      "look up",
+      "look forward to",
+      "look out for"
+    ],
+    "correct": 3,
+    "explanation": "look forward to: dört gözle beklemek. Diğer seçenekler: look after: bakmak; look into: araştırmak; look up: bilgi aramak; look out for: dikkat etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_20_5",
+    "family": "mixed_nov26_13a_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "While driving here, ____ cyclists emerging from side streets.",
+    "options": [
+      "look after",
+      "look into",
+      "look up",
+      "look forward to",
+      "look out for"
+    ],
+    "correct": 4,
+    "explanation": "look out for: dikkat etmek. Diğer seçenekler: look after: bakmak; look into: araştırmak; look up: bilgi aramak; look forward to: dört gözle beklemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_21_1",
+    "family": "mixed_nov26_13a_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The council plans to ____ parking charges next month.",
+    "options": [
+      "raise",
+      "rise",
+      "arise",
+      "arouse",
+      "lift"
+    ],
+    "correct": 0,
+    "explanation": "raise: artırmak (geçişli). Diğer seçenekler: rise: yükselmek (geçişsiz); arise: ortaya çıkmak; arouse: uyandırmak; lift: fiziksel kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_21_2",
+    "family": "mixed_nov26_13a_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "If demand increases, prices may ____ without a change in policy.",
+    "options": [
+      "raise",
+      "rise",
+      "arise",
+      "arouse",
+      "lift"
+    ],
+    "correct": 1,
+    "explanation": "rise: yükselmek (geçişsiz). Diğer seçenekler: raise: artırmak (geçişli); arise: ortaya çıkmak; arouse: uyandırmak; lift: fiziksel kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_21_3",
+    "family": "mixed_nov26_13a_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Unexpected difficulties may ____ during installation.",
+    "options": [
+      "raise",
+      "rise",
+      "arise",
+      "arouse",
+      "lift"
+    ],
+    "correct": 2,
+    "explanation": "arise: ortaya çıkmak. Diğer seçenekler: raise: artırmak (geçişli); rise: yükselmek (geçişsiz); arouse: uyandırmak; lift: fiziksel kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_21_4",
+    "family": "mixed_nov26_13a_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The strange findings may ____ curiosity among researchers.",
+    "options": [
+      "raise",
+      "rise",
+      "arise",
+      "arouse",
+      "lift"
+    ],
+    "correct": 3,
+    "explanation": "arouse: uyandırmak. Diğer seçenekler: raise: artırmak (geçişli); rise: yükselmek (geçişsiz); arise: ortaya çıkmak; lift: fiziksel kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_21_5",
+    "family": "mixed_nov26_13a_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Use both hands to ____ the heavy box off the floor.",
+    "options": [
+      "raise",
+      "rise",
+      "arise",
+      "arouse",
+      "lift"
+    ],
+    "correct": 4,
+    "explanation": "lift: fiziksel kaldırmak. Diğer seçenekler: raise: artırmak (geçişli); rise: yükselmek (geçişsiz); arise: ortaya çıkmak; arouse: uyandırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_22_1",
+    "family": "mixed_nov26_13a_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Every employee is expected to ____ the annual safety meeting.",
+    "options": [
+      "attend",
+      "assist",
+      "participate",
+      "observe",
+      "organise"
+    ],
+    "correct": 0,
+    "explanation": "attend: katılmak. Diğer seçenekler: assist: yardım etmek; participate: katılım göstermek; observe: gözlemlemek; organise: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_22_2",
+    "family": "mixed_nov26_13a_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A technician will ____ you with installing the printer.",
+    "options": [
+      "attend",
+      "assist",
+      "participate",
+      "observe",
+      "organise"
+    ],
+    "correct": 1,
+    "explanation": "assist: yardım etmek. Diğer seçenekler: attend: katılmak; participate: katılım göstermek; observe: gözlemlemek; organise: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_22_3",
+    "family": "mixed_nov26_13a_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Students were invited to ____ in a voluntary project.",
+    "options": [
+      "attend",
+      "assist",
+      "participate",
+      "observe",
+      "organise"
+    ],
+    "correct": 2,
+    "explanation": "participate: katılım göstermek. Diğer seçenekler: attend: katılmak; assist: yardım etmek; observe: gözlemlemek; organise: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_22_4",
+    "family": "mixed_nov26_13a_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Scientists used a telescope to ____ a distant planet.",
+    "options": [
+      "attend",
+      "assist",
+      "participate",
+      "observe",
+      "organise"
+    ],
+    "correct": 3,
+    "explanation": "observe: gözlemlemek. Diğer seçenekler: attend: katılmak; assist: yardım etmek; participate: katılım göstermek; organise: düzenlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_22_5",
+    "family": "mixed_nov26_13a_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ the event, including the venue and invitations?",
+    "options": [
+      "attend",
+      "assist",
+      "participate",
+      "observe",
+      "organise"
+    ],
+    "correct": 4,
+    "explanation": "organise: düzenlemek. Diğer seçenekler: attend: katılmak; assist: yardım etmek; participate: katılım göstermek; observe: gözlemlemek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_23_1",
+    "family": "mixed_nov26_13a_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A customer submitted a formal ____ about poor service and asked for an investigation.",
+    "options": [
+      "complaint",
+      "claim",
+      "request",
+      "suggestion",
+      "warning"
+    ],
+    "correct": 0,
+    "explanation": "complaint: şikâyet. Diğer seçenekler: claim: iddia; request: istek; suggestion: öneri; warning: uyarı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_23_2",
+    "family": "mixed_nov26_13a_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The newspaper published a ____ that the figures were false, but gave no evidence.",
+    "options": [
+      "complaint",
+      "claim",
+      "request",
+      "suggestion",
+      "warning"
+    ],
+    "correct": 1,
+    "explanation": "claim: iddia. Diğer seçenekler: complaint: şikâyet; request: istek; suggestion: öneri; warning: uyarı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_23_3",
+    "family": "mixed_nov26_13a_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The employee made a written ____ for two days of annual leave.",
+    "options": [
+      "complaint",
+      "claim",
+      "request",
+      "suggestion",
+      "warning"
+    ],
+    "correct": 2,
+    "explanation": "request: istek. Diğer seçenekler: complaint: şikâyet; claim: iddia; suggestion: öneri; warning: uyarı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_23_4",
+    "family": "mixed_nov26_13a_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Her ____ to move the meeting online was accepted as a useful idea.",
+    "options": [
+      "complaint",
+      "claim",
+      "request",
+      "suggestion",
+      "warning"
+    ],
+    "correct": 3,
+    "explanation": "suggestion: öneri. Diğer seçenekler: complaint: şikâyet; claim: iddia; request: istek; warning: uyarı."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_23_5",
+    "family": "mixed_nov26_13a_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The authorities issued a ____ about dangerous road conditions.",
+    "options": [
+      "complaint",
+      "claim",
+      "request",
+      "suggestion",
+      "warning"
+    ],
+    "correct": 4,
+    "explanation": "warning: uyarı. Diğer seçenekler: complaint: şikâyet; claim: iddia; request: istek; suggestion: öneri."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_24_1",
+    "family": "mixed_nov26_13a_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Volunteers plan to ____ a community centre in an empty building.",
+    "options": [
+      "set up",
+      "set off",
+      "set aside",
+      "set out",
+      "set back"
+    ],
+    "correct": 0,
+    "explanation": "set up: kurmak. Diğer seçenekler: set off: yola çıkmak; set aside: ayırmak; set out: ayrıntılı açıklamak; set back: geciktirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_24_2",
+    "family": "mixed_nov26_13a_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "We should ____ at dawn to reach the coast before lunch.",
+    "options": [
+      "set up",
+      "set off",
+      "set aside",
+      "set out",
+      "set back"
+    ],
+    "correct": 1,
+    "explanation": "set off: yola çıkmak. Diğer seçenekler: set up: kurmak; set aside: ayırmak; set out: ayrıntılı açıklamak; set back: geciktirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_24_3",
+    "family": "mixed_nov26_13a_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Try to ____ money each month for emergencies.",
+    "options": [
+      "set up",
+      "set off",
+      "set aside",
+      "set out",
+      "set back"
+    ],
+    "correct": 2,
+    "explanation": "set aside: ayırmak. Diğer seçenekler: set up: kurmak; set off: yola çıkmak; set out: ayrıntılı açıklamak; set back: geciktirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_24_4",
+    "family": "mixed_nov26_13a_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The introduction will ____ the main aims of the report in detail.",
+    "options": [
+      "set up",
+      "set off",
+      "set aside",
+      "set out",
+      "set back"
+    ],
+    "correct": 3,
+    "explanation": "set out: ayrıntılı açıklamak. Diğer seçenekler: set up: kurmak; set off: yola çıkmak; set aside: ayırmak; set back: geciktirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_24_5",
+    "family": "mixed_nov26_13a_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "A shortage of materials could ____ construction by several weeks.",
+    "options": [
+      "set up",
+      "set off",
+      "set aside",
+      "set out",
+      "set back"
+    ],
+    "correct": 4,
+    "explanation": "set back: geciktirmek. Diğer seçenekler: set up: kurmak; set off: yola çıkmak; set aside: ayırmak; set out: ayrıntılı açıklamak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_25_1",
+    "family": "mixed_nov26_13a_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The treatment proved ____ in relieving symptoms, achieving its intended medical result.",
+    "options": [
+      "effective",
+      "efficient",
+      "accurate",
+      "reliable",
+      "appropriate"
+    ],
+    "correct": 0,
+    "explanation": "effective: etkili. Diğer seçenekler: efficient: verimli; accurate: doğru; reliable: güvenilir; appropriate: uygun."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_25_2",
+    "family": "mixed_nov26_13a_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The new machine is more ____ because it uses less electricity for the same output.",
+    "options": [
+      "effective",
+      "efficient",
+      "accurate",
+      "reliable",
+      "appropriate"
+    ],
+    "correct": 1,
+    "explanation": "efficient: verimli. Diğer seçenekler: effective: etkili; accurate: doğru; reliable: güvenilir; appropriate: uygun."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_25_3",
+    "family": "mixed_nov26_13a_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The map was ____ ; every distance matched the actual measurement.",
+    "options": [
+      "effective",
+      "efficient",
+      "accurate",
+      "reliable",
+      "appropriate"
+    ],
+    "correct": 2,
+    "explanation": "accurate: doğru. Diğer seçenekler: effective: etkili; efficient: verimli; reliable: güvenilir; appropriate: uygun."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_25_4",
+    "family": "mixed_nov26_13a_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The bus service is ____ and arrives at the promised time every day.",
+    "options": [
+      "effective",
+      "efficient",
+      "accurate",
+      "reliable",
+      "appropriate"
+    ],
+    "correct": 3,
+    "explanation": "reliable: güvenilir. Diğer seçenekler: effective: etkili; efficient: verimli; accurate: doğru; appropriate: uygun."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_25_5",
+    "family": "mixed_nov26_13a_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Formal clothing is more ____ for an interview than a beach outfit.",
+    "options": [
+      "effective",
+      "efficient",
+      "accurate",
+      "reliable",
+      "appropriate"
+    ],
+    "correct": 4,
+    "explanation": "appropriate: uygun. Diğer seçenekler: effective: etkili; efficient: verimli; accurate: doğru; reliable: güvenilir."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_26_1",
+    "family": "mixed_nov26_13a_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The nurse ____ helped me was extremely kind.",
+    "options": [
+      "who",
+      "whom",
+      "whose",
+      "which",
+      "where"
+    ],
+    "correct": 0,
+    "explanation": "who: insan özne. Diğer seçenekler: whom: edat sonrası insan nesne; whose: sahiplik; which: nesne veya olay; where: yer."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_26_2",
+    "family": "mixed_nov26_13a_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The consultant to ____ the email was addressed has retired.",
+    "options": [
+      "who",
+      "whom",
+      "whose",
+      "which",
+      "where"
+    ],
+    "correct": 1,
+    "explanation": "whom: edat sonrası insan nesne. Diğer seçenekler: who: insan özne; whose: sahiplik; which: nesne veya olay; where: yer."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_26_4",
+    "family": "mixed_nov26_13a_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The device, ____ was made in Germany, has a guarantee.",
+    "options": [
+      "who",
+      "whom",
+      "whose",
+      "which",
+      "where"
+    ],
+    "correct": 3,
+    "explanation": "which: nesne veya olay. Diğer seçenekler: who: insan özne; whom: edat sonrası insan nesne; whose: sahiplik; where: yer."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_26_5",
+    "family": "mixed_nov26_13a_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The village ____ my grandparents live is near the sea.",
+    "options": [
+      "who",
+      "whom",
+      "whose",
+      "which",
+      "where"
+    ],
+    "correct": 4,
+    "explanation": "where: yer. Diğer seçenekler: who: insan özne; whom: edat sonrası insan nesne; whose: sahiplik; which: nesne veya olay."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_27_1",
+    "family": "mixed_nov26_13a_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "The organisers decided to ____ the meeting until next Wednesday.",
+    "options": [
+      "put off",
+      "put out",
+      "put up with",
+      "put together",
+      "put forward"
+    ],
+    "correct": 0,
+    "explanation": "put off: ertelemek. Diğer seçenekler: put out: söndürmek; put up with: katlanmak; put together: birleştirmek; put forward: öne sürmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_27_2",
+    "family": "mixed_nov26_13a_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Firefighters managed to ____ the fire before it reached the roof.",
+    "options": [
+      "put off",
+      "put out",
+      "put up with",
+      "put together",
+      "put forward"
+    ],
+    "correct": 1,
+    "explanation": "put out: söndürmek. Diğer seçenekler: put off: ertelemek; put up with: katlanmak; put together: birleştirmek; put forward: öne sürmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_27_3",
+    "family": "mixed_nov26_13a_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "I don't know how residents ____ that constant noise every night.",
+    "options": [
+      "put off",
+      "put out",
+      "put up with",
+      "put together",
+      "put forward"
+    ],
+    "correct": 2,
+    "explanation": "put up with: katlanmak. Diğer seçenekler: put off: ertelemek; put out: söndürmek; put together: birleştirmek; put forward: öne sürmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_27_4",
+    "family": "mixed_nov26_13a_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Follow the instructions to ____ the pieces of the desk.",
+    "options": [
+      "put off",
+      "put out",
+      "put up with",
+      "put together",
+      "put forward"
+    ],
+    "correct": 3,
+    "explanation": "put together: birleştirmek. Diğer seçenekler: put off: ertelemek; put out: söndürmek; put up with: katlanmak; put forward: öne sürmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_27_5",
+    "family": "mixed_nov26_13a_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Phrasals",
+    "prompt": "Several members plan to ____ a proposal for discussion.",
+    "options": [
+      "put off",
+      "put out",
+      "put up with",
+      "put together",
+      "put forward"
+    ],
+    "correct": 4,
+    "explanation": "put forward: öne sürmek. Diğer seçenekler: put off: ertelemek; put out: söndürmek; put up with: katlanmak; put together: birleştirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_28_1",
+    "family": "mixed_nov26_13a_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "From the premises and logical rules, we can ____ the conclusion.",
+    "options": [
+      "deduce",
+      "induce",
+      "reduce",
+      "introduce",
+      "reproduce"
+    ],
+    "correct": 0,
+    "explanation": "deduce: çıkarım yapmak. Diğer seçenekler: induce: neden olmak; reduce: azaltmak; introduce: uygulamaya koymak; reproduce: yeniden üretmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_28_2",
+    "family": "mixed_nov26_13a_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The substance can ____ sleepiness in people who were previously alert.",
+    "options": [
+      "deduce",
+      "induce",
+      "reduce",
+      "introduce",
+      "reproduce"
+    ],
+    "correct": 1,
+    "explanation": "induce: neden olmak. Diğer seçenekler: deduce: çıkarım yapmak; reduce: azaltmak; introduce: uygulamaya koymak; reproduce: yeniden üretmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_28_3",
+    "family": "mixed_nov26_13a_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The company aims to ____ waste by using less raw material.",
+    "options": [
+      "deduce",
+      "induce",
+      "reduce",
+      "introduce",
+      "reproduce"
+    ],
+    "correct": 2,
+    "explanation": "reduce: azaltmak. Diğer seçenekler: deduce: çıkarım yapmak; induce: neden olmak; introduce: uygulamaya koymak; reproduce: yeniden üretmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_28_4",
+    "family": "mixed_nov26_13a_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The university will ____ a new admission procedure next year.",
+    "options": [
+      "deduce",
+      "induce",
+      "reduce",
+      "introduce",
+      "reproduce"
+    ],
+    "correct": 3,
+    "explanation": "introduce: uygulamaya koymak. Diğer seçenekler: deduce: çıkarım yapmak; induce: neden olmak; reduce: azaltmak; reproduce: yeniden üretmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_28_5",
+    "family": "mixed_nov26_13a_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Independent researchers tried to ____ the original experimental results under identical conditions.",
+    "options": [
+      "deduce",
+      "induce",
+      "reduce",
+      "introduce",
+      "reproduce"
+    ],
+    "correct": 4,
+    "explanation": "reproduce: yeniden üretmek. Diğer seçenekler: deduce: çıkarım yapmak; induce: neden olmak; reduce: azaltmak; introduce: uygulamaya koymak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_29_1",
+    "family": "mixed_nov26_13a_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The panel will ____ proposal quality against published criteria.",
+    "options": [
+      "assess",
+      "address",
+      "access",
+      "assert",
+      "assign"
+    ],
+    "correct": 0,
+    "explanation": "assess: değerlendirmek. Diğer seçenekler: address: ele almak; access: erişmek; assert: iddia etmek; assign: atamak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_29_2",
+    "family": "mixed_nov26_13a_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The policy was designed to ____ the underlying cause of the problem.",
+    "options": [
+      "assess",
+      "address",
+      "access",
+      "assert",
+      "assign"
+    ],
+    "correct": 1,
+    "explanation": "address: ele almak. Diğer seçenekler: assess: değerlendirmek; access: erişmek; assert: iddia etmek; assign: atamak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_29_3",
+    "family": "mixed_nov26_13a_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Only authorised staff can ____ the confidential database.",
+    "options": [
+      "assess",
+      "address",
+      "access",
+      "assert",
+      "assign"
+    ],
+    "correct": 2,
+    "explanation": "access: erişmek. Diğer seçenekler: assess: değerlendirmek; address: ele almak; assert: iddia etmek; assign: atamak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_29_4",
+    "family": "mixed_nov26_13a_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The authors ____ that their method is superior, although the evidence is limited.",
+    "options": [
+      "assess",
+      "address",
+      "access",
+      "assert",
+      "assign"
+    ],
+    "correct": 3,
+    "explanation": "assert: iddia etmek. Diğer seçenekler: assess: değerlendirmek; address: ele almak; access: erişmek; assign: atamak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_29_5",
+    "family": "mixed_nov26_13a_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The manager will ____ specific duties to each team member.",
+    "options": [
+      "assess",
+      "address",
+      "access",
+      "assert",
+      "assign"
+    ],
+    "correct": 4,
+    "explanation": "assign: atamak. Diğer seçenekler: assess: değerlendirmek; address: ele almak; access: erişmek; assert: iddia etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_30_1",
+    "family": "mixed_nov26_13a_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The council must ____ a fixed amount of money to each department.",
+    "options": [
+      "allocate",
+      "accumulate",
+      "accommodate",
+      "acknowledge",
+      "anticipate"
+    ],
+    "correct": 0,
+    "explanation": "allocate: tahsis etmek. Diğer seçenekler: accumulate: birikmek; accommodate: yer sağlamak; acknowledge: kabul etmek; anticipate: öngörmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_30_2",
+    "family": "mixed_nov26_13a_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Small deposits can ____ into a substantial sum over many years.",
+    "options": [
+      "allocate",
+      "accumulate",
+      "accommodate",
+      "acknowledge",
+      "anticipate"
+    ],
+    "correct": 1,
+    "explanation": "accumulate: birikmek. Diğer seçenekler: allocate: tahsis etmek; accommodate: yer sağlamak; acknowledge: kabul etmek; anticipate: öngörmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_30_3",
+    "family": "mixed_nov26_13a_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The hall was designed to ____ up to 800 people.",
+    "options": [
+      "allocate",
+      "accumulate",
+      "accommodate",
+      "acknowledge",
+      "anticipate"
+    ],
+    "correct": 2,
+    "explanation": "accommodate: yer sağlamak. Diğer seçenekler: allocate: tahsis etmek; accumulate: birikmek; acknowledge: kabul etmek; anticipate: öngörmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_30_4",
+    "family": "mixed_nov26_13a_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The authors ____ that their sample was too small for generalisation.",
+    "options": [
+      "allocate",
+      "accumulate",
+      "accommodate",
+      "acknowledge",
+      "anticipate"
+    ],
+    "correct": 3,
+    "explanation": "acknowledge: kabul etmek. Diğer seçenekler: allocate: tahsis etmek; accumulate: birikmek; accommodate: yer sağlamak; anticipate: öngörmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_30_5",
+    "family": "mixed_nov26_13a_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The company attempts to ____ demand before deciding how much stock to order.",
+    "options": [
+      "allocate",
+      "accumulate",
+      "accommodate",
+      "acknowledge",
+      "anticipate"
+    ],
+    "correct": 4,
+    "explanation": "anticipate: öngörmek. Diğer seçenekler: allocate: tahsis etmek; accumulate: birikmek; accommodate: yer sağlamak; acknowledge: kabul etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_31_1",
+    "family": "mixed_nov26_13a_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The tests are insufficient to ____ the possibility of contamination.",
+    "options": [
+      "rule out",
+      "point out",
+      "carry out",
+      "work out",
+      "phase out"
+    ],
+    "correct": 0,
+    "explanation": "rule out: dışlamak. Diğer seçenekler: point out: dikkat çekmek; carry out: gerçekleştirmek; work out: hesaplamak; phase out: aşamalı kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_31_2",
+    "family": "mixed_nov26_13a_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "I'd like to ____ a limitation not mentioned in the discussion.",
+    "options": [
+      "rule out",
+      "point out",
+      "carry out",
+      "work out",
+      "phase out"
+    ],
+    "correct": 1,
+    "explanation": "point out: dikkat çekmek. Diğer seçenekler: rule out: dışlamak; carry out: gerçekleştirmek; work out: hesaplamak; phase out: aşamalı kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_31_3",
+    "family": "mixed_nov26_13a_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "An independent team will ____ the inspection next month.",
+    "options": [
+      "rule out",
+      "point out",
+      "carry out",
+      "work out",
+      "phase out"
+    ],
+    "correct": 2,
+    "explanation": "carry out: gerçekleştirmek. Diğer seçenekler: rule out: dışlamak; point out: dikkat çekmek; work out: hesaplamak; phase out: aşamalı kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_31_4",
+    "family": "mixed_nov26_13a_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "We need to ____ the total cost from these figures.",
+    "options": [
+      "rule out",
+      "point out",
+      "carry out",
+      "work out",
+      "phase out"
+    ],
+    "correct": 3,
+    "explanation": "work out: hesaplamak. Diğer seçenekler: rule out: dışlamak; point out: dikkat çekmek; carry out: gerçekleştirmek; phase out: aşamalı kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_31_5",
+    "family": "mixed_nov26_13a_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The manufacturer plans to ____ the older model gradually over three years.",
+    "options": [
+      "rule out",
+      "point out",
+      "carry out",
+      "work out",
+      "phase out"
+    ],
+    "correct": 4,
+    "explanation": "phase out: aşamalı kaldırmak. Diğer seçenekler: rule out: dışlamak; point out: dikkat çekmek; carry out: gerçekleştirmek; work out: hesaplamak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_32_1",
+    "family": "mixed_nov26_13a_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Independent records corroborated her testimony, making her a ____ witness.",
+    "options": [
+      "credible",
+      "plausible",
+      "feasible",
+      "viable",
+      "legitimate"
+    ],
+    "correct": 0,
+    "explanation": "credible: inandırıcı. Diğer seçenekler: plausible: makul; feasible: uygulanabilir; viable: sürdürülebilir; legitimate: meşru."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_32_2",
+    "family": "mixed_nov26_13a_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The untested explanation is logically ____ , although evidence is still lacking.",
+    "options": [
+      "credible as a witness",
+      "plausible",
+      "feasible to construct",
+      "viable as a business",
+      "legitimate under law"
+    ],
+    "correct": 1,
+    "explanation": "plausible: makul. Diğer seçenekler: credible: inandırıcı; feasible: uygulanabilir; viable: sürdürülebilir; legitimate: meşru."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_32_3",
+    "family": "mixed_nov26_13a_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The engineers examined whether construction was technically ____ with available equipment.",
+    "options": [
+      "credible",
+      "plausible as an explanation",
+      "feasible",
+      "viable as a business",
+      "legitimate under law"
+    ],
+    "correct": 2,
+    "explanation": "feasible: uygulanabilir. Diğer seçenekler: credible: inandırıcı; plausible: makul; viable: sürdürülebilir; legitimate: meşru."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_32_4",
+    "family": "mixed_nov26_13a_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The plan must show that the enterprise can remain financially ____ over five years.",
+    "options": [
+      "credible",
+      "plausible",
+      "feasible to construct",
+      "viable",
+      "legitimate"
+    ],
+    "correct": 3,
+    "explanation": "viable: sürdürülebilir. Diğer seçenekler: credible: inandırıcı; plausible: makul; feasible: uygulanabilir; legitimate: meşru."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_32_5",
+    "family": "mixed_nov26_13a_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The court recognised the organisation's ____ right to challenge the decision under existing law.",
+    "options": [
+      "credible",
+      "plausible",
+      "feasible",
+      "viable",
+      "legitimate"
+    ],
+    "correct": 4,
+    "explanation": "legitimate: meşru. Diğer seçenekler: credible: inandırıcı; plausible: makul; feasible: uygulanabilir; viable: sürdürülebilir."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_33_1",
+    "family": "mixed_nov26_13a_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The medication may have ____ effects on some patients.",
+    "options": [
+      "adverse",
+      "averse",
+      "diverse",
+      "inverse",
+      "reverse"
+    ],
+    "correct": 0,
+    "explanation": "adverse: olumsuz. Diğer seçenekler: averse: karşı/isteksiz; diverse: çeşitli; inverse: ters; reverse: tersine çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_33_2",
+    "family": "mixed_nov26_13a_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The committee is not ____ to change, but insists on careful evaluation.",
+    "options": [
+      "adverse",
+      "averse",
+      "diverse",
+      "inverse",
+      "reverse"
+    ],
+    "correct": 1,
+    "explanation": "averse: karşı/isteksiz. Diğer seçenekler: adverse: olumsuz; diverse: çeşitli; inverse: ters; reverse: tersine çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_33_3",
+    "family": "mixed_nov26_13a_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The conference attracted people from ____ professional backgrounds.",
+    "options": [
+      "adverse",
+      "averse",
+      "diverse",
+      "inverse",
+      "reverse"
+    ],
+    "correct": 2,
+    "explanation": "diverse: çeşitli. Diğer seçenekler: adverse: olumsuz; averse: karşı/isteksiz; inverse: ters; reverse: tersine çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_33_4",
+    "family": "mixed_nov26_13a_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The graph shows an ____ relationship: as one variable rises, the other falls.",
+    "options": [
+      "adverse",
+      "averse",
+      "diverse",
+      "inverse",
+      "reverse"
+    ],
+    "correct": 3,
+    "explanation": "inverse: ters. Diğer seçenekler: adverse: olumsuz; averse: karşı/isteksiz; diverse: çeşitli; reverse: tersine çevirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_33_5",
+    "family": "mixed_nov26_13a_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The organisation hopes to ____ the recent decline in membership.",
+    "options": [
+      "adverse",
+      "averse",
+      "diverse",
+      "inverse",
+      "reverse"
+    ],
+    "correct": 4,
+    "explanation": "reverse: tersine çevirmek. Diğer seçenekler: adverse: olumsuz; averse: karşı/isteksiz; diverse: çeşitli; inverse: ters."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_34_1",
+    "family": "mixed_nov26_13a_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Limited funding may ____ the scope of the investigation.",
+    "options": [
+      "constrain",
+      "retain",
+      "sustain",
+      "attain",
+      "obtain"
+    ],
+    "correct": 0,
+    "explanation": "constrain: kısıtlamak. Diğer seçenekler: retain: korumak; sustain: sürdürmek; attain: ulaşmak; obtain: elde etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_34_2",
+    "family": "mixed_nov26_13a_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The organisation decided to ____ the originals rather than destroy them after digitisation.",
+    "options": [
+      "constrain",
+      "retain",
+      "sustain",
+      "attain",
+      "obtain"
+    ],
+    "correct": 1,
+    "explanation": "retain: korumak. Diğer seçenekler: constrain: kısıtlamak; sustain: sürdürmek; attain: ulaşmak; obtain: elde etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_34_3",
+    "family": "mixed_nov26_13a_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The project needs ongoing support to ____ its activities for several years.",
+    "options": [
+      "constrain",
+      "retain",
+      "sustain",
+      "attain",
+      "obtain"
+    ],
+    "correct": 2,
+    "explanation": "sustain: sürdürmek. Diğer seçenekler: constrain: kısıtlamak; retain: korumak; attain: ulaşmak; obtain: elde etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_34_4",
+    "family": "mixed_nov26_13a_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Students must ____ the required proficiency level before graduation.",
+    "options": [
+      "constrain",
+      "retain",
+      "sustain",
+      "attain",
+      "obtain"
+    ],
+    "correct": 3,
+    "explanation": "attain: ulaşmak. Diğer seçenekler: constrain: kısıtlamak; retain: korumak; sustain: sürdürmek; obtain: elde etmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_34_5",
+    "family": "mixed_nov26_13a_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Researchers must ____ written permission before accessing confidential records.",
+    "options": [
+      "constrain",
+      "retain",
+      "sustain",
+      "attain",
+      "obtain"
+    ],
+    "correct": 4,
+    "explanation": "obtain: elde etmek. Diğer seçenekler: constrain: kısıtlamak; retain: korumak; sustain: sürdürmek; attain: ulaşmak."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_35_1",
+    "family": "mixed_nov26_13a_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The investment could ____ significant changes in the regional economy.",
+    "options": [
+      "bring about",
+      "bring forward",
+      "bring up",
+      "bring in",
+      "bring back"
+    ],
+    "correct": 0,
+    "explanation": "bring about: yol açmak. Diğer seçenekler: bring forward: öne almak; bring up: konuyu açmak; bring in: getirmek; bring back: geri getirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_35_2",
+    "family": "mixed_nov26_13a_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The committee decided to ____ the meeting from Friday to Wednesday.",
+    "options": [
+      "bring about",
+      "bring forward",
+      "bring up",
+      "bring in",
+      "bring back"
+    ],
+    "correct": 1,
+    "explanation": "bring forward: öne almak. Diğer seçenekler: bring about: yol açmak; bring up: konuyu açmak; bring in: getirmek; bring back: geri getirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_35_3",
+    "family": "mixed_nov26_13a_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "I didn't want to ____ the sensitive issue during the interview.",
+    "options": [
+      "bring about",
+      "bring forward",
+      "bring up",
+      "bring in",
+      "bring back"
+    ],
+    "correct": 2,
+    "explanation": "bring up: konuyu açmak. Diğer seçenekler: bring about: yol açmak; bring forward: öne almak; bring in: getirmek; bring back: geri getirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_35_4",
+    "family": "mixed_nov26_13a_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The government plans to ____ new regulations on data protection.",
+    "options": [
+      "bring about",
+      "bring forward",
+      "bring up",
+      "bring in",
+      "bring back"
+    ],
+    "correct": 3,
+    "explanation": "bring in: getirmek. Diğer seçenekler: bring about: yol açmak; bring forward: öne almak; bring up: konuyu açmak; bring back: geri getirmek."
+  },
+  {
+    "id": "wq150_nov26_mixed13a_35_5",
+    "family": "mixed_nov26_13a_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Phrasals",
+    "prompt": "The museum hopes to ____ a collection loaned to another institution last year.",
+    "options": [
+      "bring about",
+      "bring forward",
+      "bring up",
+      "bring in",
+      "bring back"
+    ],
+    "correct": 4,
+    "explanation": "bring back: geri getirmek. Diğer seçenekler: bring about: yol açmak; bring forward: öne almak; bring up: konuyu açmak; bring in: getirmek."
   }
 ];
