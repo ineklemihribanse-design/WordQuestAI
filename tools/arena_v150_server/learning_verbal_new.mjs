@@ -3346,7 +3346,7 @@ export const verbalNewQuestions = [
       "after"
     ],
     "correct": 0,
-    "explanation": "because: neden. Diğer seçenekler: although: karşıtlık; unless: olumsuz koşul; before: öncelik; after: sonralık."
+    "explanation": "Because, evde kalma nedenini açıklar."
   },
   {
     "id": "wq150_nov26_mixed13b_5_2",
@@ -3677,7 +3677,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The only key was in his pocket and the door was locked from outside. He ____ locked it.",
+    "prompt": "The only key was in his pocket and the security camera shows him turning it. He ____ locked the door.",
     "options": [
       "must have",
       "might have",
@@ -3686,7 +3686,7 @@ export const verbalNewQuestions = [
       "needn't have"
     ],
     "correct": 0,
-    "explanation": "must have: geçmiş güçlü çıkarım. Diğer seçenekler: might have: geçmiş olasılık; can't have: geçmiş imkânsızlık çıkarımı; should have: geçmiş yapılması gereken; needn't have: gereksiz gerçekleşmiş eylem."
+    "explanation": "Must have geçmişe ilişkin güçlü çıkarım bildirir."
   },
   {
     "id": "wq150_nov26_mixed13b_9_2",
@@ -3696,14 +3696,14 @@ export const verbalNewQuestions = [
     "topic": "Grammar",
     "prompt": "I'm not sure where I put my wallet. I ____ left it in the car.",
     "options": [
-      "must have",
+      "must have definitely",
       "might have",
       "can't have",
       "should have",
       "needn't have"
     ],
     "correct": 1,
-    "explanation": "might have: geçmiş olasılık. Diğer seçenekler: must have: geçmiş güçlü çıkarım; can't have: geçmiş imkânsızlık çıkarımı; should have: geçmiş yapılması gereken; needn't have: gereksiz gerçekleşmiş eylem."
+    "explanation": "Might have geçmişteki belirsiz olasılığı bildirir."
   },
   {
     "id": "wq150_nov26_mixed13b_9_3",
@@ -4553,7 +4553,7 @@ export const verbalNewQuestions = [
       "affected"
     ],
     "correct": 1,
-    "explanation": "Effect isim olarak etki demektir; affect genellikle fiildir."
+    "explanation": "Effect isim olarak etki demektir."
   },
   {
     "id": "wq150_nov26_mixed13b_19_3",
@@ -4978,7 +4978,7 @@ export const verbalNewQuestions = [
       "will complete"
     ],
     "correct": 1,
-    "explanation": "Having been completed önceden tamamlanmış edilgen eylemi belirtir."
+    "explanation": "Having been completed: önce tamamlanmış edilgen eylem."
   },
   {
     "id": "wq150_nov26_mixed13b_24_3",
@@ -5097,7 +5097,7 @@ export const verbalNewQuestions = [
       "as if it were"
     ],
     "correct": 3,
-    "explanation": "even if it were: olsa bile. Diğer seçenekler: had it not been: olmasaydı; were it not: şimdi olmasa; should it become: olursa; as if it were: sanki öyleymiş gibi."
+    "explanation": "Even if it were: daha ucuz olsa bile, varsayımsal ödünleme."
   },
   {
     "id": "wq150_nov26_mixed13b_25_5",
@@ -5233,7 +5233,7 @@ export const verbalNewQuestions = [
       "in lieu of"
     ],
     "correct": 1,
-    "explanation": "Provided that gerekli koşulu bildirir."
+    "explanation": "Provided that: belirtilen koşul sağlandığı takdirde."
   },
   {
     "id": "wq150_nov26_mixed13b_27_3",
@@ -5736,14 +5736,14 @@ export const verbalNewQuestions = [
     "topic": "Vocabulary",
     "prompt": "The benefits may ____ the disadvantages if the long-term savings are substantial.",
     "options": [
-      "offset",
+      "offset the cost of",
       "outweigh",
       "undermine",
       "overlook",
       "overstate"
     ],
     "correct": 1,
-    "explanation": "Outweigh, avantajların dezavantajlardan daha ağır basmasını ifade eder."
+    "explanation": "Outweigh: faydaların dezavantajlardan daha ağır basması."
   },
   {
     "id": "wq150_nov26_mixed13b_33_3",
