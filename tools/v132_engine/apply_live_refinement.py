@@ -60,6 +60,27 @@ s=once(s,"    if(LocalWq140BoundedBoard.current && !compact) {","""    if(online
                 hintIndex,hintChar,hintLetters,onSelect)
         }
     } else if(LocalWq140BoundedBoard.current && !compact) {""")
+# Online draft contains only missing letters. Offline input is unchanged.
+s=once(s,"    val placed=crosswordFullWordPreview(crosswordFixedPattern(puzzle,solved,selected),typed)", """    val fixed=crosswordFixedPattern(puzzle,solved,selected)
+    val known=LocalWq148ArenaHints.current
+    val word=puzzle.words.getOrNull(selected)
+    val pattern=fixed.mapIndexed { index, ch ->
+        if(ch!='.')ch else word?.cells?.getOrNull(index)?.let{known[it]}
+            ?: hintLetters[index] ?: (if(index==hintIndex)hintChar else null) ?: '.'
+    }.joinToString("")
+    val placed=if(LocalWq148OnlineBoard.current)fillCrosswordGaps(pattern,typed)
+        else crosswordFullWordPreview(fixed,typed)""")
+s += """
+
+/** Keep the draft letters at their original cells when a hint or crossing becomes fixed. */
+internal fun wq150RebaseDraft(before:String, after:String, typed:String):String {
+    if(before.length!=after.length ||
+        before.indices.any{before[it]!='.' && after[it]!=before[it]})return ""
+    val positioned=fillCrosswordGaps(before,typed)
+    return after.indices.filter{after[it]=='.'}.map{positioned[it]}
+        .takeWhile{it!='.'}.joinToString("")
+}
+"""
 out["ArenaCrosswordTyping.kt"]=s
 
 # Keep one hint network/budget for keyboard and non-keyboard.
@@ -86,6 +107,18 @@ s=once(s,"                val myTurn = match.cooperative || match.turnUid == myU
                 val hintPattern=word.cells.mapIndexed { i,cell ->
                     retainedHints[cell] ?: (if(i==revealedIndex)revealedChar else null) ?: fixedPattern.getOrElse(i){'.'}
                 }.joinToString("")
+                var draftPattern by remember(match.code,selected){mutableStateOf(hintPattern)}
+                LaunchedEffect(match.code,selected,hintPattern) {
+                    if(draftPattern!=hintPattern){
+                        setAnswerText(wq150RebaseDraft(draftPattern,hintPattern,answerText))
+                        draftPattern=hintPattern
+                    }
+                }
+                val missingLetters=hintPattern.count{it=='.'}
+                val completedDraft=fillCrosswordGaps(hintPattern,answerText)
+                val draftReady=draftPattern==hintPattern &&
+                    englishLetters(answerText).length==missingLetters &&
+                    completedDraft.isNotEmpty() && !completedDraft.contains('.')
                 val hintBudget=Wq186ArenaFairPlay.hintsLeft(claimedHints.size,client.package6Rules.hints)
                 var hintPending by remember(match.code){mutableStateOf(false)}
                 val myTurn = match.cooperative || match.turnUid == myUid""")
@@ -142,14 +175,12 @@ solved=part[:state_start]
 assert solved.endswith("                    } else {\n")
 status=part[state_end:part.index("                        fun submitAnswer()")]
 submit=part[part.index("                        fun submitAnswer()"):part.index("                        OutlinedTextField(")]
-field='''                        Text(word.number.toString()+" · "+
-                            (if(word.direction==Direction.Across)"Yatay" else "Dikey")+" · "+
-                            word.entry.letters.length+" harf",color=OnlineGold,fontSize=12.sp)
-                        Text(word.entry.clue,color=OnlineCream,fontSize=14.sp)
-                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
+submit=once(submit,"!crosswordFullWordReady(word.entry.letters.length, answerText)","!draftReady || hintPending")
+submit=once(submit,"crosswordFullWordMatches(fixedPattern, answerText, word.entry.letters)","crosswordFullWordMatches(hintPattern, completedDraft, word.entry.letters)")
+field='''                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
                             horizontalArrangement=Arrangement.spacedBy(5.dp)) {
-                            OutlinedTextField(answerText, { if(canAnswer)setAnswerText(englishLetters(it).take(word.entry.letters.length)) },
-                                Modifier.weight(1f),label={Text(if(myTurn)"Kelimeyi yaz" else "Rakibin sırası")},
+                            OutlinedTextField(answerText, { if(canAnswer && !hintPending && draftPattern==hintPattern)setAnswerText(englishLetters(it).take(missingLetters)) },
+                                Modifier.weight(1f),label={Text(if(!myTurn)"Rakibin sırası" else if(missingLetters==0)"Tüm harfler açık" else "Eksik $missingLetters harfi yaz")},
                                 singleLine=true,
                                 keyboardOptions=KeyboardOptions(capitalization=KeyboardCapitalization.Characters,
                                     imeAction=ImeAction.Go),
@@ -164,12 +195,34 @@ field='''                        Text(word.number.toString()+" · "+
                             "${it.key+1}. ${it.value}"
                         },color=OnlineGold,fontSize=11.sp)
                         ArenaGoldButton("✓  CEVABI GÖNDER", { submitAnswer() },
-                            enabled = crosswordFullWordReady(word.entry.letters.length, answerText) && canAnswer)
+                            enabled = draftReady && canAnswer && !hintPending)
                         if(selected !in solved) {
 '''
 # The retained opening brace replaces the original unsolved-only controls scope.
 s=s[:a]+state+solved+messages+status+"                    }\n"+submit+field+s[b:]
 out["PremiumOnlineScreen.kt"]=s
+
+# Exercise hint-completed answers and draft retention without changing solo tests.
+test_path=main.parent/"test/java/com/kelimebulmacasi/a1/Wq150ArenaHintDraftTest.kt"
+test_path.parent.mkdir(parents=True,exist_ok=True)
+test_path.write_text("""package com.kelimebulmacasi.a1
+import org.junit.Assert.*
+import org.junit.Test
+class Wq150ArenaHintDraftTest {
+    @Test fun onlyMissingLettersAreTyped() {
+        assertEquals("PRICE",fillCrosswordGaps("P.I.E","RC"))
+        assertTrue(crosswordFullWordMatches("P.I.E","PRICE","PRICE"))
+        assertEquals("PRICE",fillCrosswordGaps("PRICE",""))
+        assertEquals("P.I.E",fillCrosswordGaps("P.I.E",""))
+    }
+    @Test fun newlyLockedCellDoesNotShiftTheDraft() {
+        assertEquals("RCE",wq150RebaseDraft(".....","P.I..","PRICE"))
+        assertEquals("PR",wq150RebaseDraft(".....","..I..","PRI"))
+        assertEquals("PIE",wq150RebaseDraft(".....",".R.C.","PRICE"))
+        assertEquals("",wq150RebaseDraft("P....",".....","RICE"))
+    }
+}
+""",encoding="utf-8")
 
 # Persistent mascot independent of disclosure state. Only the live scoreboard
 # uses this private player-card function; all entry, lobby and settings are untouched.
