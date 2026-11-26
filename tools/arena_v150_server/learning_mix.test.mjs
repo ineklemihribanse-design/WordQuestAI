@@ -43,3 +43,6 @@ test('reading bank contains distinct passages with paired comprehension items an
 
 import {coherenceQuestions} from './learning_coherence.mjs';
 test('cloze sets are distinct and all have one answer with five options',()=>{const cloze=coherenceQuestions.filter(q=>q.family?.startsWith('cloze_'));assert.equal(cloze.length,36);assert.equal(new Set(cloze.map(q=>q.family)).size,12);assert.ok(cloze.every(q=>q.prompt.split('____').length===2));assert.ok(coherenceQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.explanation.length>=20));});
+
+import {wordFormWords,wordFormQuestions} from './learning_wordforms.mjs';
+test('word formation practice uses distinct families and five forms',()=>{assert.equal(wordFormQuestions.length,140);assert.equal(new Set(wordFormQuestions.map(q=>q.family)).size,35);assert.ok(wordFormQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.prompt.split('____').length===2&&q.correct===0));assert.ok(wordFormWords.every(w=>/^[A-Z]{2,22}$/.test(w.answer)&&['İsimler','Fiiller','Sıfatlar','Zarflar'].includes(w.wordType)));});
