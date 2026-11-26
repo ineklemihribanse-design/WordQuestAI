@@ -262,6 +262,141 @@ s=once(s,'    if (match.phase == "playing" || match.phase == "lobby") {', '''   
     }
     if (match.phase == "playing" || match.phase == "lobby") {''')
 s=once(s,"        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,\n            horizontalArrangement=Arrangement.spacedBy(7.dp)) {","        if(cardSocial==null || match.phase!=\"playing\") Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,\n            horizontalArrangement=Arrangement.spacedBy(7.dp)) {")
+# Versioned finish-offer UI uses a single immutable proposal identity. Old vote UI
+# is retained only for callers without the new live scoreboard.
+s=once(s,'''            card.finishLabel=if(myUid in votes)"Teklifi geri çek" else "Bitirme teklifi"
+            card.finish={
+                if(myUid in votes)extra?.child("finishVotes")?.child(myUid)?.removeValue()
+                else askFinish=true
+            }
+''',"")
+s=once(s,'    if (match.phase=="playing" && opponentUid in votes && myUid !in votes) {',
+'    if (cardSocial==null && match.phase=="playing" && opponentUid in votes && myUid !in votes) {')
+s=once(s,'        if (myUid in votes && opponentUid !in votes && match.phase=="playing")',
+'        if (cardSocial==null && myUid in votes && opponentUid !in votes && match.phase=="playing")')
+s=once(s,'    if (askFinish) AlertDialog(','''    if(cardSocial!=null && room!=null && extra!=null) Wq150FinishOfferDialog(
+        room,extra,myUid,opponentUid,match.phase,isHost,hostName,guestName,hostScore,guestScore,cardSocial)
+    if (askFinish && cardSocial==null) AlertDialog(''')
+s += """
+
+private data class Wq150Offer(val id:String,val from:String,val to:String,
+    val status:String,val createdAt:Long,val updatedAt:Long) {
+    fun transition(next:String):Map<String,Any> = mapOf(
+        "id" to id,"from" to from,"to" to to,"status" to next,
+        "createdAt" to createdAt,"updatedAt" to ServerValue.TIMESTAMP)
+}
+@Composable
+private fun Wq150FinishOfferDialog(
+    room:DatabaseReference,extra:DatabaseReference,myUid:String,opponentUid:String,
+    phase:String,isHost:Boolean,hostName:String,guestName:String,hostScore:Int,guestScore:Int,
+    social:Wq148LiveSocial
+) {
+    val ref=remember(extra){extra.child("finishOffer")}
+    var offer by remember(ref){mutableStateOf<Wq150Offer?>(null)}
+    var loaded by remember(ref){mutableStateOf(false)}
+    var offset by remember(ref){mutableLongStateOf(0L)}
+    var clock by remember(ref){mutableLongStateOf(System.currentTimeMillis())}
+    var ask by remember(ref){mutableStateOf(false)}
+    var busy by remember(ref){mutableStateOf(false)}
+    var notice by remember(ref){mutableStateOf("")}
+    DisposableEffect(ref) {
+        val listener=object:ValueEventListener {
+            override fun onDataChange(snapshot:DataSnapshot) {
+                val id=snapshot.child("id").getValue(String::class.java)
+                val from=snapshot.child("from").getValue(String::class.java)
+                val to=snapshot.child("to").getValue(String::class.java)
+                val status=snapshot.child("status").getValue(String::class.java)
+                val created=(snapshot.child("createdAt").value as? Number)?.toLong()
+                val updated=(snapshot.child("updatedAt").value as? Number)?.toLong()
+                offer=if(id!=null && from!=null && to!=null && status!=null && created!=null && updated!=null)
+                    Wq150Offer(id,from,to,status,created,updated) else null
+                loaded=true
+            }
+            override fun onCancelled(error:DatabaseError){loaded=false;notice="Teklif bağlantısı kurulamadı."}
+        }
+        val offsetRef=room.root.child(".info/serverTimeOffset")
+        val offsetListener=object:ValueEventListener {
+            override fun onDataChange(snapshot:DataSnapshot){offset=(snapshot.value as? Number)?.toLong()?:0L}
+            override fun onCancelled(error:DatabaseError){}
+        }
+        ref.addValueEventListener(listener);offsetRef.addValueEventListener(offsetListener)
+        onDispose{ref.removeEventListener(listener);offsetRef.removeEventListener(offsetListener)}
+    }
+    LaunchedEffect(phase) {
+        while(phase=="playing"){clock=System.currentTimeMillis();delay(1000)}
+    }
+    val now=clock+offset
+    val current=offer
+    fun respond(item:Wq150Offer,status:String) {
+        if(busy || phase!="playing")return
+        busy=true
+        ref.setValue(item.transition(status)).addOnCompleteListener{
+            busy=false
+            if(!it.isSuccessful)notice="Teklif işlemi tamamlanamadı."
+        }
+    }
+    val pending=current?.status=="pending"
+    val remaining=if(current!=null)((current.createdAt+30000L-now+999L)/1000L).coerceAtLeast(0L) else 0L
+    val cooldown=if(current!=null)((current.createdAt+60000L-now+999L)/1000L).coerceAtLeast(0L) else 0L
+    LaunchedEffect(current?.id,current?.status,remaining,phase) {
+        if(current!=null && pending && remaining==0L && phase=="playing")respond(current,"expired")
+    }
+    LaunchedEffect(current?.id,current?.status,phase,isHost) {
+        if(current?.status=="accepted" && isHost && phase=="playing")
+            room.child("phase").setValue("finished").addOnFailureListener{notice="Maç sonucu kaydedilemedi."}
+        if(current!=null && current.status!="pending" &&
+            (System.currentTimeMillis()+offset-current.updatedAt) in 0L..6000L) {
+            notice=when(current.status){
+                "accepted"->"Bitirme teklifi kabul edildi."
+                "rejected"->if(current.from==myUid)"Rakibin bitirme teklifini reddetti." else "Bitirme teklifini reddettin."
+                "withdrawn"->if(current.from==myUid)"Teklif geri çekildi." else "Rakibin teklifini geri çekti."
+                "expired"->"Bitirme teklifinin süresi doldu."
+                else->""
+            }
+        }
+    }
+    LaunchedEffect(notice){if(notice.isNotBlank()){delay(3000);notice=""}}
+    SideEffect {
+        social.finishLabel=when{
+            pending && current?.from==myUid->"Teklifi geri çek"
+            pending->"Bitirme teklifi"
+            cooldown>0L->"Teklif · "+cooldown+" sn"
+            else->"Bitirme teklifi"
+        }
+        social.finish={
+            if(!loaded || phase!="playing" || opponentUid.isBlank() || busy)Unit
+            else if(current!=null && pending && current.from==myUid && remaining>0L)respond(current,"withdrawn")
+            else if(!pending && cooldown==0L && current?.status!="accepted")ask=true
+        }
+    }
+    if(ask && phase=="playing") AlertDialog(
+        onDismissRequest={ask=false},title={Text("Maçı birlikte bitir")},
+        text={Text("İki oyuncu kabul ederse maç mevcut puanlarla tamamlanır.")},
+        confirmButton={TextButton(onClick={
+            ask=false
+            if(!busy && loaded && !pending && cooldown==0L && opponentUid.isNotBlank()){
+                busy=true
+                val id=java.util.UUID.randomUUID().toString().replace("-","")
+                ref.setValue(mapOf("id" to id,"from" to myUid,"to" to opponentUid,
+                    "status" to "pending","createdAt" to ServerValue.TIMESTAMP,"updatedAt" to ServerValue.TIMESTAMP))
+                    .addOnCompleteListener{busy=false;if(!it.isSuccessful)notice="Bitirme teklifi gönderilemedi."}
+            }
+        }){Text("Teklifi gönder")}},
+        dismissButton={TextButton(onClick={ask=false}){Text("Devam et")}})
+    if(phase=="playing" && current!=null && pending && current.to==myUid && remaining>0L)
+        AlertDialog(onDismissRequest={},title={Text("Maç bitirme teklifi")},
+            text={Text("Rakibin maçı mevcut puanlarla tamamlamak istiyor.\\n"+
+                hostName+": "+hostScore+" puan · "+guestName+": "+guestScore+" puan\\nKalan süre: "+remaining+" sn")},
+            confirmButton={TextButton(enabled=!busy,onClick={respond(current,"accepted")}){Text("Kabul Et")}},
+            dismissButton={TextButton(enabled=!busy,onClick={respond(current,"rejected")}){Text("Reddet")}})
+    if(notice.isNotBlank()) androidx.compose.ui.window.Popup(alignment=Alignment.TopCenter) {
+        Surface(shape=RoundedCornerShape(14.dp),color=Color(0xFF302049),
+            modifier=Modifier.padding(12.dp)) {
+            Text(notice,color=Color.White,modifier=Modifier.padding(12.dp),fontSize=13.sp)
+        }
+    }
+}
+"""
 out["Wq186ArenaSocialHud.kt"]=s
 
 s=out["PremiumOnlineScreen.kt"]
