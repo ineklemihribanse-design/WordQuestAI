@@ -3989,10 +3989,10 @@ export const foundationQuestions = [
     "prompt": "A: Would you like to come to the cinema on Friday? B: I'd love to, but ____ .",
     "options": [
       "I have to work that evening",
-      "I went there last week",
-      "the cinema has two doors",
-      "Friday comes after Thursday",
-      "I like popcorn"
+      "I would like to see that film",
+      "Friday is perfect for me",
+      "I can meet you outside at seven",
+      "I've already bought our tickets"
     ],
     "correct": 0,
     "explanation": "But sonrasında daveti kabul edememe nedeni beklenir."
@@ -4037,10 +4037,10 @@ export const foundationQuestions = [
     "prompt": "A: Could I try these shoes on? B: ____",
     "options": [
       "Certainly. The fitting area is over there.",
-      "I walk to school every day.",
-      "These are my keys.",
-      "The shop opened last year.",
-      "I have two brothers."
+      "They come in three different colours.",
+      "They cost forty pounds.",
+      "We also sell socks.",
+      "They arrived this morning."
     ],
     "correct": 0,
     "explanation": "Try on kıyafet veya ayakkabıyı denemek demektir."
@@ -4054,9 +4054,9 @@ export const foundationQuestions = [
     "options": [
       "It was great, but the weather was a bit cold.",
       "I'm going there next year.",
-      "I have to buy a suitcase.",
-      "The airport is nearby.",
-      "I travel twice a month."
+      "It lasts for two weeks.",
+      "I'm still looking for a hotel.",
+      "I hope to go abroad."
     ],
     "correct": 0,
     "explanation": "Geçmiş tatilin nasıl geçtiği soruluyor."
@@ -4085,10 +4085,10 @@ export const foundationQuestions = [
     "prompt": "A: What's the matter? B: ____",
     "options": [
       "I've got a headache.",
-      "I bought a new desk.",
-      "I live in a flat.",
-      "My favourite colour is blue.",
-      "The library opens at nine."
+      "I'm looking forward to the weekend.",
+      "I'm going to the station.",
+      "I'm having lunch at noon.",
+      "I've just finished my homework."
     ],
     "correct": 0,
     "explanation": "What's the matter? sorunu veya rahatsızlığı sorar."
@@ -4117,10 +4117,10 @@ export const foundationQuestions = [
     "prompt": "A: Would you prefer tea or coffee? B: ____",
     "options": [
       "Coffee, please.",
-      "At the café.",
-      "With my cousin.",
-      "Every morning.",
-      "It's very hot outside."
+      "Yes, I have already paid.",
+      "No, I don't need a spoon.",
+      "It's on the kitchen table.",
+      "I bought some yesterday."
     ],
     "correct": 0,
     "explanation": "Would you prefer iki seçenek arasında tercih sorar."
@@ -4373,10 +4373,10 @@ export const foundationQuestions = [
     "prompt": "The new library ____ opened yet.",
     "options": [
       "hasn't been",
-      "didn't been",
-      "isn't be",
+      "didn't",
       "hasn't being",
-      "wasn't be"
+      "isn't be",
+      "wasn't been"
     ],
     "correct": 0,
     "explanation": "Yet ile present perfect passive gerekir."
@@ -4789,10 +4789,10 @@ export const foundationQuestions = [
     "prompt": "A: I'm not sure whether to accept the offer. B: ____",
     "options": [
       "It might help to compare the benefits and drawbacks.",
-      "The envelope was made of paper.",
-      "I accepted a parcel last week.",
-      "I don't have any coffee left.",
-      "The bus arrives every hour."
+      "I'm glad you've already made your final decision.",
+      "You should have received the offer last week.",
+      "I didn't know you'd turned it down.",
+      "It's good that you've signed the contract."
     ],
     "correct": 0,
     "explanation": "Kararsız kişiye artı ve eksileri karşılaştırma önerilir."
@@ -4853,10 +4853,10 @@ export const foundationQuestions = [
     "prompt": "A: The project is taking longer than we expected. B: ____",
     "options": [
       "We should revise the schedule before promising a new deadline.",
-      "The office has large windows.",
-      "I visited the library last month.",
-      "The project title is short.",
-      "The printer uses black ink."
+      "The original schedule was completed ahead of time.",
+      "We've already finished all the remaining tasks.",
+      "There is no need to discuss the delay with anyone.",
+      "Let's tell them the work was completed yesterday."
     ],
     "correct": 0,
     "explanation": "Gecikme nedeniyle planı yeniden değerlendirme önerisi uygundur."
@@ -5013,10 +5013,10 @@ export const foundationQuestions = [
     "prompt": "You ____ have told me earlier; I could have helped.",
     "options": [
       "should",
-      "can",
-      "may not",
-      "will",
-      "must not"
+      "can to",
+      "will to",
+      "may to",
+      "ought"
     ],
     "correct": 0,
     "explanation": "Should have + V3 yapılması gereken ama yapılmamış eylemi ifade eder."
@@ -5045,10 +5045,10 @@ export const foundationQuestions = [
     "prompt": "Neither of the two answers ____ correct.",
     "options": [
       "is",
-      "are being yesterday",
       "am",
       "be",
-      "have being"
+      "have",
+      "were to have"
     ],
     "correct": 0,
     "explanation": "Neither of ile standart tekil uyum is olur."
@@ -5637,10 +5637,10 @@ export const foundationQuestions = [
     "prompt": "I'd rather you ____ the final decision until we receive the test results.",
     "options": [
       "postponed",
-      "postpone tomorrow by yourself",
+      "had postponing",
       "will postpone",
-      "have postponed",
-      "are postpone"
+      "have postponing",
+      "are postponed"
     ],
     "correct": 0,
     "explanation": "Would rather + farklı özne + past simple tercih bildirir."
@@ -5669,10 +5669,10 @@ export const foundationQuestions = [
     "prompt": "The trial was conducted under controlled conditions; ____ , its findings may not apply to everyday settings.",
     "options": [
       "therefore",
-      "nevertheless not",
-      "for example",
-      "similarly",
-      "in other words"
+      "however much",
+      "otherwise",
+      "for instance",
+      "similarly"
     ],
     "correct": 0,
     "explanation": "Kontrollü koşullar genellenebilirliğin sınırlı olmasının nedenidir."
