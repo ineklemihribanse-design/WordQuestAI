@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Test trusted connection state transitions
+        run: node --test tools/v132_engine/connection.test.mjs
       - run: |
           printf '{"database":{"rules":"firebase/database.rules.v132.json"},"emulators":{"database":{"host":"127.0.0.1","port":9000},"ui":{"enabled":false}}}\n' > firebase.json
           npm init -y
