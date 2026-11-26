@@ -1,0 +1,3 @@
+# A1/A2 1,000-item expansion
+
+500 A1 and 500 A2 records, all CEFR-only (no YDS label). 500 cloze vocabulary/grammar items in 50 question families (25 families per level), and 500 comprehension items from 100 short reading scenarios (50 per level, 5 questions each). Reading scenarios use structured passage frames; distractors are drawn from comparable details in other scenarios. These are not 1,000 independent concepts. Preserve existing IDs; same family cannot be picked twice in a diversified Arena match. Five choices and Turkish rationale for every record. No publisher content copied. Editorial level/distractor validation is not a substitute for independent human review. No release or live deployment in this commit.

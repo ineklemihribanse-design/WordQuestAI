@@ -104,3 +104,14 @@ test('word form extension records have unique stems and choices',()=>{assert.equ
 
 import {clozeExpansion} from './learning_cloze_expansion.mjs';
 test('cloze expansion has complete passage families and distinct stems',()=>{assert.ok(clozeExpansion.length>=470);assert.equal(new Set(clozeExpansion.map(q=>q.prompt.toLowerCase())).size,clozeExpansion.length);assert.ok(clozeExpansion.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.correct===0&&q.family.startsWith('cloze_')&&q.explanation.length>=20&&q.prompt.split('____').length===2));const prior=new Set(allLearningQuestions.filter(q=>!clozeExpansion.includes(q)).map(q=>q.prompt.toLowerCase()));assert.ok(clozeExpansion.every(q=>!prior.has(q.prompt.toLowerCase())));});
+
+import {a12ThousandQuestions} from './learning_a12_thousand.mjs';
+test('A1/A2 thousand-question pack has five distinct options, level balance, and stable families',()=>{
+ assert.equal(a12ThousandQuestions.length,1000);
+ for(const level of ['A1','A2']){const levelItems=a12ThousandQuestions.filter(q=>q.level===level);assert.equal(levelItems.length,500);assert.equal(levelItems.filter(q=>q.topic==='Paragraph').length,250);assert.equal(levelItems.filter(q=>q.topic!=='Paragraph').length,250);}
+ assert.ok(a12ThousandQuestions.every(q=>q.yds===null&&q.family&&q.options.length===5&&Number.isInteger(q.correct)&&q.correct>=0&&q.correct<5&&q.explanation.length>=20));
+ assert.equal(new Set(a12ThousandQuestions.map(q=>q.family)).size,150);
+ assert.ok(a12ThousandQuestions.every(q=>allLearningQuestions.includes(q)));
+ const old=new Set(allLearningQuestions.filter(q=>!a12ThousandQuestions.includes(q)).map(q=>q.prompt.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase()));
+ assert.deepEqual(a12ThousandQuestions.filter(q=>old.has(q.prompt.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase())).map(q=>q.id),[],'New pack must not repeat prior questions');
+});
