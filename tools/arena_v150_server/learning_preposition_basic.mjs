@@ -6611,5 +6611,2725 @@ export const prepositionBasicQuestions = [
     ],
     "correct": 0,
     "explanation": "Priority diğerlerinden önce ele alınması gereken konudur."
+  },
+  {
+    "id": "wq150_nov26_prep12_1_1",
+    "family": "prepbulk_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The film starts ____ exactly seven thirty.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "to",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Saatlerden önce at kullanılır."
+  },
+  {
+    "id": "wq150_nov26_prep12_1_2",
+    "family": "prepbulk_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We have our music lesson ____ Wednesday.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "to",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Gün adından önce on kullanılır."
+  },
+  {
+    "id": "wq150_nov26_prep12_1_3",
+    "family": "prepbulk_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My brother's birthday is ____ October.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "to",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Ay adından önce in kullanılır."
+  },
+  {
+    "id": "wq150_nov26_prep12_1_4",
+    "family": "prepbulk_nov26_12_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The shop is open ____ Monday to Friday.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "to",
+      "from"
+    ],
+    "correct": 4,
+    "explanation": "From ... to başlangıç ve bitiş bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_2_1",
+    "family": "prepbulk_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The shoes are on the floor directly ____ the bed, not on top of it.",
+    "options": [
+      "under",
+      "above",
+      "between",
+      "behind",
+      "inside"
+    ],
+    "correct": 0,
+    "explanation": "Under bir nesnenin altında demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_2_2",
+    "family": "prepbulk_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The picture hangs on the wall ____ the fireplace, not below it.",
+    "options": [
+      "under",
+      "above",
+      "between",
+      "behind",
+      "inside"
+    ],
+    "correct": 1,
+    "explanation": "Above yukarısında demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_2_3",
+    "family": "prepbulk_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The number 5 is ____ 4 and 6.",
+    "options": [
+      "under",
+      "above",
+      "between",
+      "behind",
+      "inside"
+    ],
+    "correct": 2,
+    "explanation": "Between iki öğenin arasında demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_2_4",
+    "family": "prepbulk_nov26_12_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The keys are ____ the closed box; you need to open it to get them.",
+    "options": [
+      "under",
+      "above",
+      "between",
+      "behind",
+      "inside"
+    ],
+    "correct": 4,
+    "explanation": "Inside kapalı kutunun içini belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_3_1",
+    "family": "prepbulk_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Please give this letter ____ your teacher.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "for",
+      "about"
+    ],
+    "correct": 0,
+    "explanation": "Give something to someone, birine bir şey vermektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_3_2",
+    "family": "prepbulk_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I received a postcard ____ my cousin in Rome.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "for",
+      "about"
+    ],
+    "correct": 1,
+    "explanation": "From gönderen kişiyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_3_3",
+    "family": "prepbulk_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I usually eat lunch ____ my classmates at the same table.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "for",
+      "about"
+    ],
+    "correct": 2,
+    "explanation": "With birlikte olmayı bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_3_4",
+    "family": "prepbulk_nov26_12_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "This book is ____ animals that live in the sea.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "for",
+      "about"
+    ],
+    "correct": 4,
+    "explanation": "About konu içeriğini bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_4_1",
+    "family": "prepbulk_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "There are twelve months ____ a year.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "by",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "In a year bir yıl içinde demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_4_2",
+    "family": "prepbulk_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The book is lying flat ____ the top of the desk.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "by",
+      "of"
+    ],
+    "correct": 1,
+    "explanation": "On yüzey üzerinde olmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_4_3",
+    "family": "prepbulk_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Let's meet ____ the main entrance at noon.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "by",
+      "of"
+    ],
+    "correct": 2,
+    "explanation": "At belirli bir buluşma noktasını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_4_4",
+    "family": "prepbulk_nov26_12_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Can I have a cup ____ tea, please?",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "by",
+      "of"
+    ],
+    "correct": 4,
+    "explanation": "A cup of tea bir fincan çay demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_5_1",
+    "family": "prepbulk_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Walk ____ the stairs to the second floor.",
+    "options": [
+      "up",
+      "down",
+      "into",
+      "out of",
+      "across"
+    ],
+    "correct": 0,
+    "explanation": "Up yukarı yönü belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_5_2",
+    "family": "prepbulk_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Go ____ the stairs from the second floor to the ground floor.",
+    "options": [
+      "up",
+      "down",
+      "into",
+      "out of",
+      "across"
+    ],
+    "correct": 1,
+    "explanation": "Down aşağı yönü bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_5_3",
+    "family": "prepbulk_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The cat jumped ____ the empty box and stayed inside.",
+    "options": [
+      "up",
+      "down",
+      "into",
+      "out of",
+      "across"
+    ],
+    "correct": 2,
+    "explanation": "Into dışarıdan içeri hareketi bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_5_4",
+    "family": "prepbulk_nov26_12_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Take the milk ____ the fridge and put it on the table.",
+    "options": [
+      "up",
+      "down",
+      "into",
+      "out of",
+      "across"
+    ],
+    "correct": 3,
+    "explanation": "Out of içten dışa hareketi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_6_1",
+    "family": "prepbulk_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Maya is very good ____ repairing bicycles.",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "for",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Good at beceri belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_6_2",
+    "family": "prepbulk_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Are you interested ____ joining our photography club?",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "for",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Interested in ilgi duyulan etkinliği belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_6_3",
+    "family": "prepbulk_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We can depend ____ our neighbours if we need help.",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "for",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Depend on güvenmek veya bağlı olmak kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_6_4",
+    "family": "prepbulk_nov26_12_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Thank you ____ helping us carry the boxes.",
+    "options": [
+      "at",
+      "in",
+      "on",
+      "for",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Thank someone for bir davranış için teşekkür etmektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_7_1",
+    "family": "prepbulk_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "This suitcase belongs ____ the passenger in seat 12.",
+    "options": [
+      "to",
+      "for",
+      "of",
+      "with",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Belong to ait olmayı bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_7_2",
+    "family": "prepbulk_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "How much did you pay ____ the return ticket?",
+    "options": [
+      "to",
+      "for",
+      "of",
+      "with",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Pay for bir şeyin bedelini ödemektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_7_3",
+    "family": "prepbulk_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My little brother is afraid ____ large dogs.",
+    "options": [
+      "to",
+      "for",
+      "of",
+      "with",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Afraid of korkulan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_7_4",
+    "family": "prepbulk_nov26_12_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The bottle is filled ____ cold water.",
+    "options": [
+      "to",
+      "for",
+      "of",
+      "with",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Filled with içeriği belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_8_1",
+    "family": "prepbulk_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We have lived here ____ the beginning of April.",
+    "options": [
+      "since",
+      "for",
+      "during",
+      "until",
+      "by"
+    ],
+    "correct": 0,
+    "explanation": "Since başlangıç anıyla kullanılır."
+  },
+  {
+    "id": "wq150_nov26_prep12_8_2",
+    "family": "prepbulk_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "She has been studying French ____ three years.",
+    "options": [
+      "since",
+      "for",
+      "during",
+      "until",
+      "by"
+    ],
+    "correct": 1,
+    "explanation": "For süre bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_8_3",
+    "family": "prepbulk_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Please keep your phone switched off ____ the lesson.",
+    "options": [
+      "since",
+      "for",
+      "during",
+      "until",
+      "by"
+    ],
+    "correct": 2,
+    "explanation": "During bir etkinlik sırasında demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_8_4",
+    "family": "prepbulk_nov26_12_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The shop remains open ____ eight tonight, when it closes.",
+    "options": [
+      "since",
+      "for",
+      "during",
+      "until",
+      "by"
+    ],
+    "correct": 3,
+    "explanation": "Until eylemin sürdüğü son noktayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_9_1",
+    "family": "prepbulk_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The package was sent ____ post, not delivered in person.",
+    "options": [
+      "by",
+      "with",
+      "on",
+      "at",
+      "to"
+    ],
+    "correct": 0,
+    "explanation": "By post gönderim yöntemidir."
+  },
+  {
+    "id": "wq150_nov26_prep12_9_2",
+    "family": "prepbulk_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Cut the paper ____ a pair of scissors.",
+    "options": [
+      "by",
+      "with",
+      "on",
+      "at",
+      "to"
+    ],
+    "correct": 1,
+    "explanation": "With kullanılan aracı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_9_3",
+    "family": "prepbulk_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We watched the match ____ television rather than at the stadium.",
+    "options": [
+      "by",
+      "with",
+      "on",
+      "at",
+      "to"
+    ],
+    "correct": 2,
+    "explanation": "On television yayın aracını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_9_4",
+    "family": "prepbulk_nov26_12_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We arrived ____ the airport an hour before departure.",
+    "options": [
+      "by",
+      "with",
+      "on",
+      "at",
+      "to"
+    ],
+    "correct": 3,
+    "explanation": "Arrive at belirli noktaya varmayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_prep12_10_1",
+    "family": "prepbulk_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "She is worried ____ tomorrow's interview.",
+    "options": [
+      "about",
+      "for",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Worried about endişe duyulan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_10_2",
+    "family": "prepbulk_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I am looking ____ my glasses; have you seen them?",
+    "options": [
+      "about",
+      "for",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 1,
+    "explanation": "Look for aramak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_10_3",
+    "family": "prepbulk_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The train travels ____ Leeds to York.",
+    "options": [
+      "about",
+      "for",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 2,
+    "explanation": "From ... to hareketin başlangıç ve bitişini belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_10_4",
+    "family": "prepbulk_nov26_12_10",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Please listen ____ the announcement before you board.",
+    "options": [
+      "about",
+      "for",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 3,
+    "explanation": "Listen to bir şeyi dinlemek kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_11_1",
+    "family": "prepbulk_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I'm quite pleased ____ the service at this hotel.",
+    "options": [
+      "with",
+      "at",
+      "of",
+      "for",
+      "on"
+    ],
+    "correct": 0,
+    "explanation": "Pleased with bir şeyden memnun olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_11_2",
+    "family": "prepbulk_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "He laughed ____ the joke his sister told him.",
+    "options": [
+      "with",
+      "at",
+      "of",
+      "for",
+      "on"
+    ],
+    "correct": 1,
+    "explanation": "Laugh at bir şeye gülmek kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_11_3",
+    "family": "prepbulk_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The town is proud ____ its local football team.",
+    "options": [
+      "with",
+      "at",
+      "of",
+      "for",
+      "on"
+    ],
+    "correct": 2,
+    "explanation": "Proud of gurur duyulan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_11_4",
+    "family": "prepbulk_nov26_12_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "This small village is famous ____ its handmade pottery.",
+    "options": [
+      "with",
+      "at",
+      "of",
+      "for",
+      "on"
+    ],
+    "correct": 3,
+    "explanation": "Famous for neyle tanındığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_12_1",
+    "family": "prepbulk_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "My new flat is close ____ the train station.",
+    "options": [
+      "to",
+      "about",
+      "for",
+      "from",
+      "in"
+    ],
+    "correct": 0,
+    "explanation": "Close to yakınlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_12_2",
+    "family": "prepbulk_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "We talked ____ our plans for the summer.",
+    "options": [
+      "to",
+      "about",
+      "for",
+      "from",
+      "in"
+    ],
+    "correct": 1,
+    "explanation": "Talk about konuşmanın konusunu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_12_3",
+    "family": "prepbulk_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "She is waiting ____ a reply from the hotel.",
+    "options": [
+      "to",
+      "about",
+      "for",
+      "from",
+      "in"
+    ],
+    "correct": 2,
+    "explanation": "Wait for bir şeyi beklemektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_12_4",
+    "family": "prepbulk_nov26_12_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The museum is a ten-minute walk ____ the station.",
+    "options": [
+      "to",
+      "about",
+      "for",
+      "from",
+      "in"
+    ],
+    "correct": 3,
+    "explanation": "A walk from başlangıç yerini belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_13_1",
+    "family": "prepbulk_nov26_12_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "He is excellent ____ remembering people's names.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "of",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Excellent at beceri belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_13_2",
+    "family": "prepbulk_nov26_12_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "She spends most of her pocket money ____ books.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "of",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Spend money on paranın harcandığı şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_13_3",
+    "family": "prepbulk_nov26_12_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The children took part ____ the school play.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "of",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Take part in bir etkinliğe katılmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_13_4",
+    "family": "prepbulk_nov26_12_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The glass is full ____ orange juice.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "of",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Full of içeriği belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_14_1",
+    "family": "prepbulk_nov26_12_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Wash your hands ____ you start preparing the food.",
+    "options": [
+      "before",
+      "after",
+      "until",
+      "during",
+      "since"
+    ],
+    "correct": 0,
+    "explanation": "Before öncelik bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_14_2",
+    "family": "prepbulk_nov26_12_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The students left the classroom ____ the lesson had ended.",
+    "options": [
+      "before",
+      "after",
+      "until",
+      "during",
+      "since"
+    ],
+    "correct": 1,
+    "explanation": "After sonralık bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_14_3",
+    "family": "prepbulk_nov26_12_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "Stay here ____ the doctor calls your name.",
+    "options": [
+      "before",
+      "after",
+      "until",
+      "during",
+      "since"
+    ],
+    "correct": 2,
+    "explanation": "Until bekleyişin bitişini gösterir."
+  },
+  {
+    "id": "wq150_nov26_prep12_14_4",
+    "family": "prepbulk_nov26_12_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "He took several photographs ____ the school trip.",
+    "options": [
+      "before",
+      "after",
+      "until",
+      "during",
+      "since"
+    ],
+    "correct": 3,
+    "explanation": "During etkinlik süresince demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_15_1",
+    "family": "prepbulk_nov26_12_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I prefer tea ____ coffee.",
+    "options": [
+      "to",
+      "with",
+      "for",
+      "about",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Prefer X to Y iki seçenek arasında tercih bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_15_2",
+    "family": "prepbulk_nov26_12_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "The room was crowded ____ people waiting for the concert.",
+    "options": [
+      "to",
+      "with",
+      "for",
+      "about",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Crowded with neyle dolu olduğunu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_15_3",
+    "family": "prepbulk_nov26_12_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "She asked ____ a glass of water because she was thirsty.",
+    "options": [
+      "to",
+      "with",
+      "for",
+      "about",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Ask for istemek demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_15_4",
+    "family": "prepbulk_nov26_12_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Grammar",
+    "prompt": "I'm excited ____ our holiday next week.",
+    "options": [
+      "to",
+      "with",
+      "for",
+      "about",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Excited about yaklaşan olay için heyecan duymaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_16_1",
+    "family": "prepbulk_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The success of the outdoor event depends ____ the weather.",
+    "options": [
+      "on",
+      "in",
+      "for",
+      "to",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Depend on bağlı olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_16_2",
+    "family": "prepbulk_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The students succeeded ____ completing the task before the deadline.",
+    "options": [
+      "on",
+      "in",
+      "for",
+      "to",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Succeed in ardından gerund alır."
+  },
+  {
+    "id": "wq150_nov26_prep12_16_3",
+    "family": "prepbulk_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The manager is responsible ____ checking all applications.",
+    "options": [
+      "on",
+      "in",
+      "for",
+      "to",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Responsible for sorumluluk bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_16_4",
+    "family": "prepbulk_nov26_12_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The decision will apply ____ all employees, including new recruits.",
+    "options": [
+      "on",
+      "in",
+      "for",
+      "to",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Apply to bir kuralın kimlere uygulandığını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_17_1",
+    "family": "prepbulk_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The new barrier prevents children ____ entering the construction site.",
+    "options": [
+      "from",
+      "of",
+      "to",
+      "in",
+      "at"
+    ],
+    "correct": 0,
+    "explanation": "Prevent someone from doing something engel olmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_17_2",
+    "family": "prepbulk_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The committee consists ____ six elected members.",
+    "options": [
+      "from",
+      "of",
+      "to",
+      "in",
+      "at"
+    ],
+    "correct": 1,
+    "explanation": "Consist of bileşenleri belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_17_3",
+    "family": "prepbulk_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "She apologised directly ____ the customer who had been inconvenienced.",
+    "options": [
+      "from",
+      "of",
+      "to",
+      "in",
+      "at"
+    ],
+    "correct": 2,
+    "explanation": "Apologise to özür dilenen kişiyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_17_4",
+    "family": "prepbulk_nov26_12_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The company specialises ____ designing energy-efficient homes.",
+    "options": [
+      "from",
+      "of",
+      "to",
+      "in",
+      "at"
+    ],
+    "correct": 3,
+    "explanation": "Specialise in uzmanlık alanını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_18_1",
+    "family": "prepbulk_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The driver was criticised ____ ignoring the warning signs.",
+    "options": [
+      "for",
+      "of",
+      "on",
+      "with",
+      "at"
+    ],
+    "correct": 0,
+    "explanation": "Criticise someone for davranış nedeniyle eleştirmektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_18_2",
+    "family": "prepbulk_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The employee was accused ____ sharing confidential information.",
+    "options": [
+      "for",
+      "of",
+      "on",
+      "with",
+      "at"
+    ],
+    "correct": 1,
+    "explanation": "Accuse someone of suçlamanın içeriğini belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_18_3",
+    "family": "prepbulk_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The team congratulated her ____ winning the competition.",
+    "options": [
+      "for",
+      "of",
+      "on",
+      "with",
+      "at"
+    ],
+    "correct": 2,
+    "explanation": "Congratulate someone on başarı için kutlamaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_18_4",
+    "family": "prepbulk_nov26_12_18",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The new software is compatible ____ older devices.",
+    "options": [
+      "for",
+      "of",
+      "on",
+      "with",
+      "at"
+    ],
+    "correct": 3,
+    "explanation": "Compatible with uyumlu olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_19_1",
+    "family": "prepbulk_nov26_12_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The technician explained the procedure ____ the new employees.",
+    "options": [
+      "to",
+      "for",
+      "with",
+      "of",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Explain something to someone birine açıklamak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_19_2",
+    "family": "prepbulk_nov26_12_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The company compensated customers ____ the inconvenience caused by the delay.",
+    "options": [
+      "to",
+      "for",
+      "with",
+      "of",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Compensate for telafi edilen zararı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_19_3",
+    "family": "prepbulk_nov26_12_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The manager provided every participant ____ a copy of the instructions.",
+    "options": [
+      "to",
+      "for",
+      "with",
+      "of",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Provide someone with birine bir şey sağlamaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_19_4",
+    "family": "prepbulk_nov26_12_19",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The notice reminds visitors ____ the rules that apply inside the museum.",
+    "options": [
+      "to",
+      "for",
+      "with",
+      "of",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Remind someone of bir şeyi hatırlatmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_20_1",
+    "family": "prepbulk_nov26_12_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The recent rise ____ fuel prices has affected transport costs.",
+    "options": [
+      "in",
+      "on",
+      "of",
+      "to",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Rise in artan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_20_2",
+    "family": "prepbulk_nov26_12_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The report focuses ____ the experiences of first-time users.",
+    "options": [
+      "in",
+      "on",
+      "of",
+      "to",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Focus on odaklanılan konuyu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_20_3",
+    "family": "prepbulk_nov26_12_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "A lack ____ reliable information made planning difficult.",
+    "options": [
+      "in",
+      "on",
+      "of",
+      "to",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Lack of eksikliği belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_20_4",
+    "family": "prepbulk_nov26_12_20",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "We need to find a solution ____ this recurring problem.",
+    "options": [
+      "in",
+      "on",
+      "of",
+      "to",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Solution to çözüm aranan sorunu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_21_1",
+    "family": "prepbulk_nov26_12_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The trees provide protection ____ strong winds.",
+    "options": [
+      "from",
+      "for",
+      "with",
+      "on",
+      "in"
+    ],
+    "correct": 0,
+    "explanation": "Protection from korunulan etkendir."
+  },
+  {
+    "id": "wq150_nov26_prep12_21_2",
+    "family": "prepbulk_nov26_12_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The applicants must meet the requirements ____ admission.",
+    "options": [
+      "from",
+      "for",
+      "with",
+      "on",
+      "in"
+    ],
+    "correct": 1,
+    "explanation": "Requirements for bir amaç için gerekli koşullardır."
+  },
+  {
+    "id": "wq150_nov26_prep12_21_3",
+    "family": "prepbulk_nov26_12_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The teacher was dissatisfied ____ the quality of the submitted work.",
+    "options": [
+      "from",
+      "for",
+      "with",
+      "on",
+      "in"
+    ],
+    "correct": 2,
+    "explanation": "Dissatisfied with memnun olunmayan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_21_4",
+    "family": "prepbulk_nov26_12_21",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "Regular practice resulted ____ a noticeable improvement.",
+    "options": [
+      "from",
+      "for",
+      "with",
+      "on",
+      "in"
+    ],
+    "correct": 4,
+    "explanation": "Result in ortaya çıkan sonucu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_22_1",
+    "family": "prepbulk_nov26_12_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The training session is aimed ____ people with little previous experience.",
+    "options": [
+      "at",
+      "in",
+      "of",
+      "to",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Aim at hedef kitleyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_22_2",
+    "family": "prepbulk_nov26_12_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "There has been a decline ____ the number of complaints.",
+    "options": [
+      "at",
+      "in",
+      "of",
+      "to",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Decline in azalan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_22_3",
+    "family": "prepbulk_nov26_12_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "We were unaware ____ the change in the schedule.",
+    "options": [
+      "at",
+      "in",
+      "of",
+      "to",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Unaware of haberdar olmamayı ifade eder."
+  },
+  {
+    "id": "wq150_nov26_prep12_22_4",
+    "family": "prepbulk_nov26_12_22",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "Access ____ the laboratory is restricted to authorised staff.",
+    "options": [
+      "at",
+      "in",
+      "of",
+      "to",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Access to erişilen yeri belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_23_1",
+    "family": "prepbulk_nov26_12_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The residents complained ____ the noise from the building site.",
+    "options": [
+      "about",
+      "on",
+      "for",
+      "from",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Complain about şikâyetin konusunu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_23_2",
+    "family": "prepbulk_nov26_12_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The committee agreed ____ a date that suited every member.",
+    "options": [
+      "about",
+      "on",
+      "for",
+      "from",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Agree on üzerinde uzlaşılan konuyu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_23_3",
+    "family": "prepbulk_nov26_12_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The company is searching ____ a suitable location for its new office.",
+    "options": [
+      "about",
+      "on",
+      "for",
+      "from",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Search for aranılan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_23_4",
+    "family": "prepbulk_nov26_12_23",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The instructions were supplied ____ the equipment in the same package.",
+    "options": [
+      "about",
+      "on",
+      "for",
+      "from",
+      "with"
+    ],
+    "correct": 4,
+    "explanation": "Supplied with ekipmanla birlikte verilmiş anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_prep12_24_1",
+    "family": "prepbulk_nov26_12_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The new bridge provides an alternative ____ the busy main road.",
+    "options": [
+      "to",
+      "in",
+      "with",
+      "of",
+      "for"
+    ],
+    "correct": 0,
+    "explanation": "Alternative to bir şeyin alternatifi demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_24_2",
+    "family": "prepbulk_nov26_12_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The organisation invests ____ training its staff.",
+    "options": [
+      "to",
+      "in",
+      "with",
+      "of",
+      "for"
+    ],
+    "correct": 1,
+    "explanation": "Invest in yatırım yapılan alanı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_24_3",
+    "family": "prepbulk_nov26_12_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "We had difficulty coping ____ the unexpected increase in demand.",
+    "options": [
+      "to",
+      "in",
+      "with",
+      "of",
+      "for"
+    ],
+    "correct": 2,
+    "explanation": "Cope with zor durumla başa çıkmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_24_4",
+    "family": "prepbulk_nov26_12_24",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The staff were capable ____ dealing with the problem without assistance.",
+    "options": [
+      "to",
+      "in",
+      "with",
+      "of",
+      "for"
+    ],
+    "correct": 3,
+    "explanation": "Capable of bir şeyi yapabilmek anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_prep12_25_1",
+    "family": "prepbulk_nov26_12_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The decision was based ____ the results of the latest survey.",
+    "options": [
+      "on",
+      "at",
+      "by",
+      "with",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Based on dayandığı bilgiyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_25_2",
+    "family": "prepbulk_nov26_12_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The audience was surprised ____ the sudden change in the programme.",
+    "options": [
+      "on",
+      "at",
+      "by",
+      "with",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Surprised at şaşırılan durumu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_25_3",
+    "family": "prepbulk_nov26_12_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The building was damaged ____ a severe storm.",
+    "options": [
+      "on",
+      "at",
+      "by",
+      "with",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "By edilgen yapıda hasara neden olan etkeni gösterir."
+  },
+  {
+    "id": "wq150_nov26_prep12_25_4",
+    "family": "prepbulk_nov26_12_25",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The company benefits ____ lower operating costs.",
+    "options": [
+      "on",
+      "at",
+      "by",
+      "with",
+      "from"
+    ],
+    "correct": 4,
+    "explanation": "Benefit from fayda sağlanan kaynağı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_26_1",
+    "family": "prepbulk_nov26_12_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The research team is looking ____ volunteers to take part in the trial.",
+    "options": [
+      "for",
+      "of",
+      "to",
+      "in",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Look for aramak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_prep12_26_2",
+    "family": "prepbulk_nov26_12_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The new recruits were informed ____ the changes to their duties.",
+    "options": [
+      "for",
+      "of",
+      "to",
+      "in",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Inform someone of bilgi verilen konuyu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_26_3",
+    "family": "prepbulk_nov26_12_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The additional costs are due ____ rising energy prices.",
+    "options": [
+      "for",
+      "of",
+      "to",
+      "in",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Due to neden belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_26_4",
+    "family": "prepbulk_nov26_12_26",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The guide was experienced ____ dealing with large groups of visitors.",
+    "options": [
+      "for",
+      "of",
+      "to",
+      "in",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Experienced in deneyim alanını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_27_1",
+    "family": "prepbulk_nov26_12_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The old files were replaced ____ updated versions.",
+    "options": [
+      "with",
+      "from",
+      "to",
+      "on",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Replace X with Y değiştirme kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_27_2",
+    "family": "prepbulk_nov26_12_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The organisation recovered ____ the financial difficulties it faced last year.",
+    "options": [
+      "with",
+      "from",
+      "to",
+      "on",
+      "of"
+    ],
+    "correct": 1,
+    "explanation": "Recover from toparlanılan olumsuz durumu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_27_3",
+    "family": "prepbulk_nov26_12_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The findings are relevant ____ the question under discussion.",
+    "options": [
+      "with",
+      "from",
+      "to",
+      "on",
+      "of"
+    ],
+    "correct": 2,
+    "explanation": "Relevant to ilgililik belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_27_4",
+    "family": "prepbulk_nov26_12_27",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Grammar",
+    "prompt": "The course places particular emphasis ____ practical skills.",
+    "options": [
+      "with",
+      "from",
+      "to",
+      "on",
+      "of"
+    ],
+    "correct": 3,
+    "explanation": "Emphasis on vurgu yapılan alanı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_28_1",
+    "family": "prepbulk_nov26_12_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The researchers attributed the unexpected variation ____ differences in sampling methods.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "on",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Attribute X to Y bir sonucu nedene bağlar."
+  },
+  {
+    "id": "wq150_nov26_prep12_28_2",
+    "family": "prepbulk_nov26_12_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The new approach differs ____ the previous one in two important respects.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "on",
+      "of"
+    ],
+    "correct": 1,
+    "explanation": "Differ from farklılık karşılaştırmasıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_28_3",
+    "family": "prepbulk_nov26_12_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The observations are consistent ____ the proposed explanation.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "on",
+      "of"
+    ],
+    "correct": 2,
+    "explanation": "Consistent with uyumluluk belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_28_4",
+    "family": "prepbulk_nov26_12_28",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The estimate relies heavily ____ assumptions about future demand.",
+    "options": [
+      "to",
+      "from",
+      "with",
+      "on",
+      "of"
+    ],
+    "correct": 3,
+    "explanation": "Rely on dayanak belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_29_1",
+    "family": "prepbulk_nov26_12_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The results are indicative ____ a broader change in consumer behaviour.",
+    "options": [
+      "of",
+      "to",
+      "for",
+      "in",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Indicative of belirti olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_29_2",
+    "family": "prepbulk_nov26_12_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The system is susceptible ____ interference from nearby equipment.",
+    "options": [
+      "of",
+      "to",
+      "for",
+      "in",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Susceptible to olumsuz etkene açık olmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_29_3",
+    "family": "prepbulk_nov26_12_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The model accounts ____ most of the observed variation.",
+    "options": [
+      "of",
+      "to",
+      "for",
+      "in",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Account for açıklamak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_29_4",
+    "family": "prepbulk_nov26_12_29",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The two procedures are similar ____ terms of their operating costs.",
+    "options": [
+      "of",
+      "to",
+      "for",
+      "in",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "In terms of bakımından anlamında kalıptır."
+  },
+  {
+    "id": "wq150_nov26_prep12_30_1",
+    "family": "prepbulk_nov26_12_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The research team refrained ____ making causal claims on the basis of observational data alone.",
+    "options": [
+      "from",
+      "of",
+      "on",
+      "to",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Refrain from bir eylemden kaçınmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_30_2",
+    "family": "prepbulk_nov26_12_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The committee was sceptical ____ claims that lacked supporting evidence.",
+    "options": [
+      "from",
+      "of",
+      "on",
+      "to",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Sceptical of kuşkuyla yaklaşılan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_30_3",
+    "family": "prepbulk_nov26_12_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The final recommendation was contingent ____ the availability of additional funding.",
+    "options": [
+      "from",
+      "of",
+      "on",
+      "to",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Contingent on bir koşula bağlıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_30_4",
+    "family": "prepbulk_nov26_12_30",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The proposed amendment is subject ____ approval by the relevant authority.",
+    "options": [
+      "from",
+      "of",
+      "on",
+      "to",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Subject to onay veya koşula tabi olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_31_1",
+    "family": "prepbulk_nov26_12_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The existing findings cannot readily be reconciled ____ the results of the new investigation.",
+    "options": [
+      "with",
+      "to",
+      "for",
+      "of",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Reconcile X with Y iki şeyi uzlaştırmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_31_2",
+    "family": "prepbulk_nov26_12_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The new regulation is applicable ____ both public and private institutions.",
+    "options": [
+      "with",
+      "to",
+      "for",
+      "of",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Applicable to uygulama kapsamını belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_31_3",
+    "family": "prepbulk_nov26_12_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The researchers adjusted their estimates to allow ____ seasonal variation.",
+    "options": [
+      "with",
+      "to",
+      "for",
+      "of",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Allow for bir etkeni hesaba katmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_31_4",
+    "family": "prepbulk_nov26_12_31",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The sample was not representative ____ the population as a whole.",
+    "options": [
+      "with",
+      "to",
+      "for",
+      "of",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Representative of temsil edilen grubu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_32_1",
+    "family": "prepbulk_nov26_12_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The study sheds light ____ the mechanisms underlying the observed association.",
+    "options": [
+      "on",
+      "of",
+      "to",
+      "in",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "Shed light on açıklığa kavuşturmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_32_2",
+    "family": "prepbulk_nov26_12_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The conclusion is independent ____ the assumptions used in the earlier model.",
+    "options": [
+      "on",
+      "of",
+      "to",
+      "in",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Independent of bağımsızlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_32_3",
+    "family": "prepbulk_nov26_12_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The researchers had limited access ____ records from the first phase of the project.",
+    "options": [
+      "on",
+      "of",
+      "to",
+      "in",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Access to erişilen kaynağı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_32_4",
+    "family": "prepbulk_nov26_12_32",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The study revealed a discrepancy ____ the reported figures.",
+    "options": [
+      "on",
+      "of",
+      "to",
+      "in",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Discrepancy in verilerdeki tutarsızlığı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_33_1",
+    "family": "prepbulk_nov26_12_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The proposed mechanism fails to account ____ the differences between the two groups.",
+    "options": [
+      "for",
+      "with",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 0,
+    "explanation": "Account for açıklama getirmektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_33_2",
+    "family": "prepbulk_nov26_12_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The new policy must comply ____ existing legal requirements.",
+    "options": [
+      "for",
+      "with",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 1,
+    "explanation": "Comply with kurallara uygun davranmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_33_3",
+    "family": "prepbulk_nov26_12_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The estimates were derived ____ a series of independent observations.",
+    "options": [
+      "for",
+      "with",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 2,
+    "explanation": "Derive from türetildiği kaynağı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_33_4",
+    "family": "prepbulk_nov26_12_33",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The revised framework is intended to contribute ____ a more coherent interpretation of the findings.",
+    "options": [
+      "for",
+      "with",
+      "from",
+      "to",
+      "of"
+    ],
+    "correct": 3,
+    "explanation": "Contribute to katkı sağlanan şeyi belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_34_1",
+    "family": "prepbulk_nov26_12_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The argument is flawed ____ several important respects.",
+    "options": [
+      "in",
+      "of",
+      "to",
+      "on",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "In several respects çeşitli bakımlardan demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_34_2",
+    "family": "prepbulk_nov26_12_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The authors were conscious ____ the limitations of their approach.",
+    "options": [
+      "in",
+      "of",
+      "to",
+      "on",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Conscious of farkında olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_34_3",
+    "family": "prepbulk_nov26_12_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The assessment was conducted prior ____ the implementation of the new policy.",
+    "options": [
+      "in",
+      "of",
+      "to",
+      "on",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "Prior to öncesinde demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_34_4",
+    "family": "prepbulk_nov26_12_34",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The outcome hinges ____ whether adequate resources can be secured.",
+    "options": [
+      "in",
+      "of",
+      "to",
+      "on",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Hinge on bir koşula bağlı olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_35_1",
+    "family": "prepbulk_nov26_12_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The estimates were calculated in accordance ____ internationally accepted guidelines.",
+    "options": [
+      "with",
+      "in",
+      "of",
+      "from",
+      "to"
+    ],
+    "correct": 0,
+    "explanation": "In accordance with uygun olarak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_35_2",
+    "family": "prepbulk_nov26_12_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The changes were implemented ____ response to repeated complaints.",
+    "options": [
+      "with",
+      "in",
+      "of",
+      "from",
+      "to"
+    ],
+    "correct": 1,
+    "explanation": "In response to tepki olarak anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_prep12_35_3",
+    "family": "prepbulk_nov26_12_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The intervention was introduced in the absence ____ convincing evidence of its effectiveness.",
+    "options": [
+      "with",
+      "in",
+      "of",
+      "from",
+      "to"
+    ],
+    "correct": 2,
+    "explanation": "In the absence of yokluğunda anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_prep12_35_4",
+    "family": "prepbulk_nov26_12_35",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The new procedure differs substantially ____ the method used in the initial trial.",
+    "options": [
+      "with",
+      "in",
+      "of",
+      "from",
+      "to"
+    ],
+    "correct": 3,
+    "explanation": "Differ from farklılık bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_36_1",
+    "family": "prepbulk_nov26_12_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The policy places considerable emphasis ____ long-term outcomes rather than short-term indicators.",
+    "options": [
+      "on",
+      "to",
+      "of",
+      "with",
+      "for"
+    ],
+    "correct": 0,
+    "explanation": "Emphasis on vurgu yapılan konuyu belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_36_2",
+    "family": "prepbulk_nov26_12_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The additional evidence lends support ____ the alternative explanation.",
+    "options": [
+      "on",
+      "to",
+      "of",
+      "with",
+      "for"
+    ],
+    "correct": 1,
+    "explanation": "Lend support to bir görüşü desteklemektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_36_3",
+    "family": "prepbulk_nov26_12_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The findings are open to a wide range ____ interpretations.",
+    "options": [
+      "on",
+      "to",
+      "of",
+      "with",
+      "for"
+    ],
+    "correct": 2,
+    "explanation": "A range of çeşitli anlamında kalıptır."
+  },
+  {
+    "id": "wq150_nov26_prep12_36_4",
+    "family": "prepbulk_nov26_12_36",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The results were compared ____ those obtained under different conditions.",
+    "options": [
+      "on",
+      "to",
+      "of",
+      "with",
+      "for"
+    ],
+    "correct": 3,
+    "explanation": "Compare with karşılaştırma kalıbıdır."
+  },
+  {
+    "id": "wq150_nov26_prep12_37_1",
+    "family": "prepbulk_nov26_12_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The authors warned ____ extrapolating the findings to populations not represented in the sample.",
+    "options": [
+      "against",
+      "for",
+      "to",
+      "from",
+      "on"
+    ],
+    "correct": 0,
+    "explanation": "Warn against bir eyleme karşı uyarmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_37_2",
+    "family": "prepbulk_nov26_12_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The organisation has made provision ____ unexpected maintenance expenses.",
+    "options": [
+      "against",
+      "for",
+      "to",
+      "from",
+      "on"
+    ],
+    "correct": 1,
+    "explanation": "Provision for gelecekteki ihtiyaç için hazırlıktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_37_3",
+    "family": "prepbulk_nov26_12_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The research team was reluctant to commit ____ a specific interpretation before collecting more evidence.",
+    "options": [
+      "against",
+      "for",
+      "to",
+      "from",
+      "on"
+    ],
+    "correct": 2,
+    "explanation": "Commit to bir görüşe veya karara bağlanmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_37_4",
+    "family": "prepbulk_nov26_12_37",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The measurements were excluded ____ the final analysis because of a calibration error.",
+    "options": [
+      "against",
+      "for",
+      "to",
+      "from",
+      "on"
+    ],
+    "correct": 3,
+    "explanation": "Exclude from kapsam dışı bırakmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_38_1",
+    "family": "prepbulk_nov26_12_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The argument rests on a set ____ assumptions that have not been independently verified.",
+    "options": [
+      "of",
+      "with",
+      "to",
+      "on",
+      "from"
+    ],
+    "correct": 0,
+    "explanation": "A set of bir dizi anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_prep12_38_2",
+    "family": "prepbulk_nov26_12_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The findings are incompatible ____ the predictions of the original model.",
+    "options": [
+      "of",
+      "with",
+      "to",
+      "on",
+      "from"
+    ],
+    "correct": 1,
+    "explanation": "Incompatible with uyumsuzluk bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_38_3",
+    "family": "prepbulk_nov26_12_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The conclusions were confined ____ the population actually studied.",
+    "options": [
+      "of",
+      "with",
+      "to",
+      "on",
+      "from"
+    ],
+    "correct": 2,
+    "explanation": "Confined to belirli kapsamla sınırlı olmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_38_4",
+    "family": "prepbulk_nov26_12_38",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The analysis draws ____ evidence from several disciplines.",
+    "options": [
+      "of",
+      "with",
+      "to",
+      "on",
+      "from"
+    ],
+    "correct": 3,
+    "explanation": "Draw on bir kaynaktan yararlanmak demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_39_1",
+    "family": "prepbulk_nov26_12_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The revised estimate makes allowance ____ differences in the age structure of the populations.",
+    "options": [
+      "for",
+      "to",
+      "of",
+      "with",
+      "in"
+    ],
+    "correct": 0,
+    "explanation": "Make allowance for hesaba katmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_39_2",
+    "family": "prepbulk_nov26_12_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The proposal was rejected owing ____ concerns about its financial viability.",
+    "options": [
+      "for",
+      "to",
+      "of",
+      "with",
+      "in"
+    ],
+    "correct": 1,
+    "explanation": "Owing to neden bildirir."
+  },
+  {
+    "id": "wq150_nov26_prep12_39_3",
+    "family": "prepbulk_nov26_12_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The report is devoid ____ any explanation for the unexpected results.",
+    "options": [
+      "for",
+      "to",
+      "of",
+      "with",
+      "in"
+    ],
+    "correct": 2,
+    "explanation": "Devoid of bir şeyden yoksun demektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_39_4",
+    "family": "prepbulk_nov26_12_39",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The investigators were confronted ____ conflicting accounts of the same event.",
+    "options": [
+      "for",
+      "to",
+      "of",
+      "with",
+      "in"
+    ],
+    "correct": 3,
+    "explanation": "Confronted with bir sorunla karşılaşmayı belirtir."
+  },
+  {
+    "id": "wq150_nov26_prep12_40_1",
+    "family": "prepbulk_nov26_12_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The conclusions must be distinguished ____ the assumptions on which they are based.",
+    "options": [
+      "from",
+      "to",
+      "on",
+      "of",
+      "with"
+    ],
+    "correct": 0,
+    "explanation": "Distinguish X from Y iki şeyi ayırt etmektir."
+  },
+  {
+    "id": "wq150_nov26_prep12_40_2",
+    "family": "prepbulk_nov26_12_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The researchers were alert ____ the possibility of selection bias.",
+    "options": [
+      "from",
+      "to",
+      "on",
+      "of",
+      "with"
+    ],
+    "correct": 1,
+    "explanation": "Alert to bir olasılığa karşı dikkatli olmaktır."
+  },
+  {
+    "id": "wq150_nov26_prep12_40_3",
+    "family": "prepbulk_nov26_12_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The assessment was carried out ____ behalf of an independent regulatory body.",
+    "options": [
+      "from",
+      "to",
+      "on",
+      "of",
+      "with"
+    ],
+    "correct": 2,
+    "explanation": "On behalf of adına anlamında kalıptır."
+  },
+  {
+    "id": "wq150_nov26_prep12_40_4",
+    "family": "prepbulk_nov26_12_40",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Grammar",
+    "prompt": "The new framework takes account ____ differences in institutional capacity.",
+    "options": [
+      "from",
+      "to",
+      "on",
+      "of",
+      "with"
+    ],
+    "correct": 3,
+    "explanation": "Take account of hesaba katmak demektir."
   }
 ];
