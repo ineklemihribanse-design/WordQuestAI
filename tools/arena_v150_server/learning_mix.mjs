@@ -6,14 +6,15 @@ import {readingQuestions} from './learning_reading.mjs';
 import {coherenceQuestions} from './learning_coherence.mjs';
 import {wordFormWords,wordFormQuestions} from './learning_wordforms.mjs';
 import {lexicalRelationWords,lexicalRelationQuestions} from './learning_relations.mjs';
-export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions];
+import {domainWords,domainQuestions} from './learning_domains.mjs';
+export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions];
 const hash=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // Keep every existing record and only append distinct new headwords. An
 // explicit YDS sense may coexist with a previously untagged CEFR entry.
 export function appendLearningWords(input,licensed=[]){
  const seen=new Set(input.map(w=>[w.level,String(w.answer).toUpperCase(),w.yds??''].join('|')));
  const out=[...input];
- for(const w of [...authoredWords,...academicWords,...wordFormWords,...lexicalRelationWords,...licensed]){
+ for(const w of [...authoredWords,...academicWords,...wordFormWords,...lexicalRelationWords,...domainWords,...licensed]){
   const key=[w.level,w.answer,w.yds??''].join('|');
   if(!seen.has(key)){seen.add(key);out.push(w);}
  }

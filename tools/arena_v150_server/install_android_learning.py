@@ -21,6 +21,9 @@ qs += json.loads(wordforms.split('export const wordFormQuestions = ',1)[1].rstri
 relations=(root/'tools/arena_v150_server/learning_relations.mjs').read_text('utf-8')
 words += json.loads(relations.split('export const lexicalRelationWords = ',1)[1].split(';\nexport const lexicalRelationQuestions = ',1)[0])
 qs += json.loads(relations.split('export const lexicalRelationQuestions = ',1)[1].rstrip().removesuffix(';'))
+domains=(root/'tools/arena_v150_server/learning_domains.mjs').read_text('utf-8')
+words += json.loads(domains.split('export const domainWords = ',1)[1].split(';\nexport const domainQuestions = ',1)[0])
+qs += json.loads(domains.split('export const domainQuestions = ',1)[1].rstrip().removesuffix(';'))
 # Existing YDS Academy has a strict four-choice contract; keep it unchanged.
 # Arena uses all five authored choices.
 qs=[q for q in qs if q['yds']]

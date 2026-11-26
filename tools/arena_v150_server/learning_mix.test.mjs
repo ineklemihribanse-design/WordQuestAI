@@ -61,3 +61,6 @@ test('unfiltered mixed match balances question families, including word forms an
 
 import {lexicalRelationWords,lexicalRelationQuestions} from './learning_relations.mjs';
 test('lexical relations and phrasal verbs are complete and grouped',()=>{const relations=lexicalRelationQuestions.filter(q=>q.topic==='Synonym');assert.equal(relations.length,128);assert.equal(new Set(relations.map(q=>q.family)).size,64);assert.equal(lexicalRelationQuestions.filter(q=>q.topic==='Phrasals').length,32);assert.ok(lexicalRelationQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.explanation.length>=20));assert.ok(lexicalRelationWords.every(w=>/^[A-Z]{2,22}$/.test(w.answer)&&w.meaning));});
+
+import {domainWords,domainQuestions} from './learning_domains.mjs';
+test('academic domains contain complete contextual items and explicit level metadata',()=>{assert.equal(domainWords.length,320);assert.equal(domainQuestions.length,71);assert.equal(new Set(domainWords.map(w=>w.level+'|'+w.answer)).size,domainWords.length);assert.equal(new Set(domainWords.map(w=>w.category)).size,6);assert.ok(domainWords.every(w=>/^[A-Z]{2,22}$/.test(w.answer)&&w.meaning.trim()&&w.wordType==='İsimler'));assert.ok(domainQuestions.every(q=>q.options.length===5&&new Set(q.options).size===5&&q.correct===0&&q.explanation.length>=20));assert.ok(domainQuestions.some(q=>q.level==='C2'));});
