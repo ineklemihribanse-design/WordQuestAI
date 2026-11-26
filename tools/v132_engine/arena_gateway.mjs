@@ -5,6 +5,7 @@ import {matchView,transactMatch,matchCommand,validateSettings} from './match_ser
 import {createLobby,lobbyView,transactLobby,transactStart} from './lobby.mjs';
 import {createHmac,randomBytes} from 'node:crypto';
 import {profileMembers,validatePortrait,readProfiles} from './profiles.mjs';
+import {transactPresence,sweepRoom} from './presence.mjs';
 const matchId=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{6,64}$/.test(x)&&!['constructor','__proto__','prototype'].includes(x);
 const allowed=new Set(['submit','answer','pass','skip','choose','hint','eliminate','half','time','reaction','finish-offer','finish-accept','finish-reject','finish-withdraw']);
 const reply=(res,status,body)=>{res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','application/json; charset=utf-8');res.statusCode=status;res.end(JSON.stringify(body));};
@@ -55,16 +56,17 @@ function lobbyCommand(data){
 }
 // An optional bankBuilder enables lobby creation; it must be trusted and provide
 // a validated, server-generated crossword or curated five-choice question pool.
-export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bankBuilder=null,roomSecret=null}){
+export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bankBuilder=null,roomSecret=null,presenceEnabled=false}){
  if(!auth||typeof auth.verifyIdToken!=='function'||!database||typeof database.ref!=='function')throw Error('Missing trusted dependencies');
  return async function handle(req,res){
   const path=new URL(req.url,'http://localhost').pathname;
   const match=/^\/v150\/matches\/([A-Za-z0-9_-]+)(\/commands)?$/.exec(path);
+  const presence=/^\/v150\/presence\/([A-Za-z0-9_-]+)$/.exec(path);
   const portrait=/^\/v150\/profiles\/([A-Za-z0-9_-]+)$/.exec(path);
   const create=path==='/v150/lobbies';
   const lobby=/^\/v150\/lobbies\/([A-Za-z0-9_-]+)(\/commands)?$/.exec(path);
-  if(!create&&!(portrait&&matchId(portrait[1]))&&!(lobby&&matchId(lobby[1]))&&!(match&&matchId(match[1])))return problem(res,404,'not-found');
-  const write=create||Boolean((lobby??match)?.[2]);
+  if(!create&&!(presence&&matchId(presence[1]))&&!(portrait&&matchId(portrait[1]))&&!(lobby&&matchId(lobby[1]))&&!(match&&matchId(match[1])))return problem(res,404,'not-found');
+  const write=create||Boolean(presence)||Boolean((lobby??match)?.[2]);
   if(portrait?!['GET','POST'].includes(req.method):req.method!==(write?'POST':'GET'))return problem(res,405,'method-not-allowed');
   const bearer=/^Bearer ([^\s]+)$/.exec(req.headers.authorization??'');
   if(!bearer)return problem(res,401,'unauthenticated');
@@ -72,6 +74,18 @@ export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bank
   try{identity=await auth.verifyIdToken(bearer[1],true);}catch{return problem(res,401,'unauthenticated');}
   if(typeof identity?.uid!=='string'||!identity.uid)return problem(res,401,'unauthenticated');
   const uid=identity.uid;
+  if(presence){
+   if(!presenceEnabled)return problem(res,503,'presence-unavailable');
+   const ref=database.ref('arenaV150Private/'+presence[1]);
+   try{
+    const state=(await ref.get()).val();
+    try{matchView(state,uid);}catch{return problem(res,404,'not-found');}
+    const data=await readBody(req);
+    if(Object.keys(data).some(k=>!['type','session'].includes(k))||!['heartbeat','leave'].includes(data.type)||
+     typeof data.session!=='string'||! /^[A-Za-z0-9_-]{16,100}$/.test(data.session))return problem(res,400,'invalid-presence');
+    return reply(res,200,{ok:true,view:await transactPresence(ref,uid,data,clock)});
+   }catch(e){log('arena-presence-request-failed',String(e?.name??'Error'));return problem(res,409,'refresh-required');}
+  }
   if(portrait){
    const room=portrait[1];
    try{
@@ -137,8 +151,12 @@ export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bank
   let cmd;
   if(write){try{cmd=command(await readBody(req));}catch(e){return problem(res,e.message==='body-too-large'?413:400,'invalid-command');}}
   try{
-   const snap=await ref.get(),state=snap.val();
+   const snap=await ref.get();let state=snap.val();
    if(!state)return problem(res,404,'not-found');
+   if(presenceEnabled&&state.game){
+    try{matchView(state,uid);}catch{return problem(res,404,'not-found');}
+    const swept=await sweepRoom(ref,clock);state=swept.snapshot.val();
+   }
    try{matchView(state,uid);}catch{return problem(res,404,'not-found');}
    if(!write)return reply(res,200,{ok:true,view:matchView(state,uid,clock())});
    // Fixed server arrival timestamp reused across Firebase transaction retries.

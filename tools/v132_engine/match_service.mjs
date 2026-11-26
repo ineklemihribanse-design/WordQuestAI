@@ -69,7 +69,8 @@ export function createMatch({settings,bank,players,teams,epochs,seed,now}){
  if(kind==='team')game=createTeam({...common,kind:cfg.format,items:cfg.format==='quiz'?questions.map(q=>({...q,clue:q.prompt})):words});
  const connPlayers=ids.map(id=>({id,epoch:epochs[id],team:kind==='team'?teams.find(t=>t.members.includes(id)).id:undefined}));
  const connection=createConnectionState({kind,players:connPlayers,now});
- return {schema:150,kind,settings:cfg,game,connection,revision:0,now,receipts:{},pauseAt:null,result:null,social:emptySocial()};
+ return {schema:150,kind,settings:cfg,game,connection,revision:0,now,receipts:{},pauseAt:null,result:null,social:emptySocial(),
+  presence:Object.fromEntries(ids.map(id=>[id,{session:null,until:now+12000}]))};
 }
 function result(s){return s.connection.phase==='finished'?s.connection.result:s.game.phase==='finished'?s.game.result:s.social?.result??null;}
 function phase(s){return result(s)!==null||s.game.phase==='finished'?'finished':s.connection.phase;}
