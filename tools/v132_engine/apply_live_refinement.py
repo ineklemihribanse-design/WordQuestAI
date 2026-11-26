@@ -175,7 +175,153 @@ s=once(s,"""        if(expanded) ArenaMascotV2(avatar,Modifier.size(
 s=once(s,".heightIn(min=if(expanded) { if(tablet)90.dp else 78.dp } else 48.dp)",".heightIn(min=if(expanded) { if(tablet)116.dp else 86.dp } else if(tablet)104.dp else 64.dp)")
 out["ArenaReferenceComponents.kt"]=s
 
+
+# Move reaction/profile actions to the opposing card and reuse existing
+# room-scoped Firebase messages. Do not modify security rules or permissions.
+s=read("Wq186ArenaSocialHud.kt")
+s=once(s,"    guestScore: Int\n) {","    guestScore: Int,\n    cardSocial: Wq148LiveSocial? = null\n) {")
+s=once(s,'    if (match.phase == "playing" || match.phase == "lobby") {', '''    SideEffect {
+        cardSocial?.let { card ->
+            card.events=emoji
+            card.send={ symbol ->
+                if(myUid.isNotBlank() && match.phase=="playing" &&
+                    Wq186ArenaFairPlay.validEmoji(symbol)) {
+                    extra?.child("emoji")?.child(myUid)?.setValue(
+                        mapOf("symbol" to symbol,"sentAt" to ServerValue.TIMESTAMP))
+                        ?.addOnFailureListener { notice="Emoji gönderilemedi." }
+                }
+            }
+            card.profile={profileOpen=opponentUid}
+            card.finishLabel=if(myUid in votes)"Teklifi geri çek" else "Bitirme teklifi"
+            card.finish={
+                if(myUid in votes)extra?.child("finishVotes")?.child(myUid)?.removeValue()
+                else askFinish=true
+            }
+        }
+    }
+    if (match.phase == "playing" || match.phase == "lobby") {''')
+s=once(s,"        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,\n            horizontalArrangement=Arrangement.spacedBy(7.dp)) {","        if(cardSocial==null || match.phase!=\"playing\") Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,\n            horizontalArrangement=Arrangement.spacedBy(7.dp)) {")
+out["Wq186ArenaSocialHud.kt"]=s
+
+s=out["PremiumOnlineScreen.kt"]
+s=once(s,'    if (match.phase != "lobby") {\n    Wq186ArenaSocialHud(','''    val cardSocial=remember(match.code,myUid,match.hostUid,match.guestUid) {
+        Wq148LiveSocial(myUid,match.hostUid,match.guestUid)
+    }
+    if (match.phase != "lobby") {
+    Wq186ArenaSocialHud(''')
+s=once(s,'hostScore=arenaScore(match.hostUid),guestScore=arenaScore(match.guestUid)\n    )','hostScore=arenaScore(match.hostUid),guestScore=arenaScore(match.guestUid),\n        cardSocial=cardSocial\n    )')
+s=once(s,'        Box {\n            TextButton(onClick = { optionsOpen = true }) {','''        if(match.phase=="playing") TextButton(onClick={cardSocial.finish()},
+            contentPadding=PaddingValues(horizontal=5.dp,vertical=0.dp)) {
+            Text(cardSocial.finishLabel,color=Color(0xFFFFDF9B),fontSize=11.sp)
+        }
+        Box {
+            TextButton(onClick = { optionsOpen = true }) {''')
+s=once(s,'own.size,questions.size,true,match.hostAvatar,match.guestAvatar)','own.size,questions.size,true,match.hostAvatar,match.guestAvatar,cardSocial)')
+s=once(s,'match.hostAvatar,match.guestAvatar)\n                if (!match.cooperative)','match.hostAvatar,match.guestAvatar,cardSocial)\n                if (!match.cooperative)')
+out["PremiumOnlineScreen.kt"]=s
+
+s=read("ArenaV2Visuals.kt")
+s=once(s,'hostAvatar: String = "robot", guestAvatar: String = "fox"\n) {','hostAvatar: String = "robot", guestAvatar: String = "fox",\n    social: Wq148LiveSocial? = null\n) {')
+s=once(s,'countdown,completed,total,cooperative,hostAvatar,guestAvatar)','countdown,completed,total,cooperative,hostAvatar,guestAvatar,social)')
+out["ArenaV2Visuals.kt"]=s
+
+s=out["ArenaReferenceComponents.kt"]
+s=once(s,"import androidx.compose.ui.unit.dp","""import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInWindow
+import androidx.compose.ui.platform.LocalDensity
+import kotlin.math.roundToInt""")
+s=once(s,"@Composable\nprivate fun Arena172ScorePlayer(","""internal class Wq148LiveSocial(val myUid:String,val hostUid:String,val guestUid:String) {
+    var events by mutableStateOf<Map<String,Pair<String,Long>>>(emptyMap())
+    var send:(String)->Unit={}
+    var profile:()->Unit={}
+    var finish:()->Unit={}
+    var finishLabel by mutableStateOf("Bitirme teklifi")
+}
+
+@Composable
+private fun Wq148EmojiFlight(event:Pair<String,Long>?,from:Offset?,to:Offset?,origin:Offset) {
+    val progress=remember{Animatable(1f)}
+    var displayed by remember {mutableStateOf("")}
+    var last by remember {mutableLongStateOf(0L)}
+    val density=LocalDensity.current
+    LaunchedEffect(event) {
+        val next=event ?: return@LaunchedEffect
+        val age=System.currentTimeMillis()-next.second
+        if(age !in -1500L..8000L || next.second<=last) return@LaunchedEffect
+        // Firebase may replace a local server timestamp estimate. Avoid replaying
+        // the same event twice, while still allowing repeated reactions.
+        if(next.first==displayed && next.second-last<350L)return@LaunchedEffect
+        last=next.second
+        displayed=next.first
+        progress.snapTo(0f)
+        progress.animateTo(1f,tween(950,easing=FastOutSlowInEasing))
+    }
+    if(progress.value<1f && from!=null && to!=null && displayed.isNotBlank()) {
+        val t=progress.value
+        val arc=with(density){34.dp.toPx()}*kotlin.math.sin(Math.PI*t).toFloat()
+        val center=with(density){16.dp.toPx()}
+        Text(displayed,Modifier.offset{
+            IntOffset((from.x+(to.x-from.x)*t-origin.x-center).roundToInt(),
+                (from.y+(to.y-from.y)*t-origin.y-arc-center).roundToInt())
+        },fontSize=28.sp)
+    }
+}
+
+@Composable
+private fun Arena172ScorePlayer(""")
+s=once(s,'    name:String,points:Int,avatar:String,active:Boolean,modifier:Modifier\n) {','''    name:String,points:Int,avatar:String,active:Boolean,modifier:Modifier,
+    onMascotPosition:(Offset)->Unit={},onEmoji:((String)->Unit)?=null,onProfile:(()->Unit)?=null
+) {''')
+s=once(s,"        ArenaMascotV2(avatar,Modifier.size(\n            if(tablet)104.dp else 64.dp))","""        ArenaMascotV2(avatar,Modifier.size(
+            if(tablet)104.dp else 64.dp).onGloballyPositioned {
+                onMascotPosition(it.positionInWindow()+Offset(it.size.width/2f,it.size.height/2f))
+            })""")
+s=once(s,'            if(active && expanded) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)','''            if(active && expanded) Text("● SIRA ONDA",color=Wq172Gold,fontSize=8.sp)
+            if(onEmoji!=null) {
+                var menu by remember { mutableStateOf(false) }
+                Box {
+                    Text("☺",Modifier.clickable(onClickLabel="Emoji gönder"){menu=true},
+                        color=Wq172Gold,fontSize=19.sp,fontWeight=FontWeight.Bold)
+                    DropdownMenu(expanded=menu,onDismissRequest={menu=false}) {
+                        Row(Modifier.horizontalScroll(rememberScrollState()).padding(4.dp)) {
+                            Wq186ArenaFairPlay.allowedEmojis.forEach { reaction ->
+                                TextButton(onClick={menu=false;onEmoji(reaction)}) {
+                                    Text(reaction,fontSize=22.sp)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if(expanded && onProfile!=null) Text("Profil",Modifier.clickable(onClick=onProfile),
+                color=Color(0xFFE4D4FF),fontSize=10.sp)''')
+s=once(s,'    hostAvatar:String,guestAvatar:String\n) {','    hostAvatar:String,guestAvatar:String,social:Wq148LiveSocial?=null\n) {')
+a=s.index('    Row(Modifier.fillMaxWidth(),',s.index("internal fun Arena172LiveScoreboard("))
+s=s[:a]+'''    var origin by remember{mutableStateOf(Offset.Zero)}
+    var hostPosition by remember{mutableStateOf<Offset?>(null)}
+    var guestPosition by remember{mutableStateOf<Offset?>(null)}
+    Box(Modifier.fillMaxWidth().onGloballyPositioned{origin=it.positionInWindow()}) {
+'''+s[a:]
+s=once(s,'Arena172ScorePlayer(hostName,hostScore,hostAvatar,!cooperative&&isHostTurn,\n            Modifier.weight(1f))','''Arena172ScorePlayer(hostName,hostScore,hostAvatar,!cooperative&&isHostTurn,
+            Modifier.weight(1f),onMascotPosition={hostPosition=it},
+            onEmoji=if(social!=null && social.myUid!=social.hostUid) social.send else null,
+            onProfile=if(social!=null && social.myUid!=social.hostUid) social.profile else null)''')
+s=once(s,'Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!isHostTurn,\n            Modifier.weight(1f))\n    }\n}','''Arena172ScorePlayer(guestName,guestScore,guestAvatar,!cooperative&&!isHostTurn,
+            Modifier.weight(1f),onMascotPosition={guestPosition=it},
+            onEmoji=if(social!=null && social.myUid!=social.guestUid) social.send else null,
+            onProfile=if(social!=null && social.myUid!=social.guestUid) social.profile else null)
+    }
+    if(social!=null) {
+        Wq148EmojiFlight(social.events[social.hostUid],hostPosition,guestPosition,origin)
+        Wq148EmojiFlight(social.events[social.guestUid],guestPosition,hostPosition,origin)
+    }
+    }
+}''')
+out["ArenaReferenceComponents.kt"]=s
+
 assert set(out)<=names
 for n,s in out.items(): (p/n).write_text(s)
 assert all(hashlib.sha256(f.read_bytes()).digest()==h for f,h in protected.items())
-print("PASS: staged live-only profile, retained hints, fitted board, fullscreen and stable IME input. No unrelated source or artwork changed.")
+print("PASS: staged live-only profile, emoji flight, retained hints, fitted board, fullscreen and stable IME input. No unrelated source or artwork changed.")
