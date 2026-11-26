@@ -2786,5 +2786,1297 @@ export const cohesionExpansion = [
     "correct": 0,
     "explanation": "Conversely önceki ilişkiye ters yönde karşılaştırma ekler.",
     "family": "cohesion_grammar_36"
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_1",
+    "id": "wq150_cohesion_fill_nov26_9_1",
+    "prompt": "Emma is making breakfast. ____ When they are ready, she puts butter on them. Then she eats them with a cup of tea.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "She puts two slices of bread in the toaster.",
+      "She pours milk into a bowl.",
+      "She cuts an apple into small pieces.",
+      "She takes two eggs out of the fridge.",
+      "She washes a cup in the sink."
+    ],
+    "correct": 0,
+    "explanation": "They/them sonraki iki cümlede ekmek dilimlerine gönderme yapar; diğer nesneler kızartılıp yağlanan ekmek değildir."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_1",
+    "id": "wq150_cohesion_odd_nov26_9_1",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Emma is making breakfast. (II) She bought a new kettle last month. (III) She puts two slices of bread in the toaster. (IV) When they are ready, she puts butter on them. (V) Then she eats them with a cup of tea.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Yeni su ısıtıcısı bilgisi kahvaltının o andaki hazırlanış sırasına katkı sağlamaz."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_2",
+    "id": "wq150_cohesion_fill_nov26_9_2",
+    "prompt": "Ben is going to the park. ____ He takes it out when he meets his friends. They play a game together.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "He puts his football in his bag.",
+      "He puts his lunch in his bag.",
+      "He puts a book in his bag.",
+      "He puts his phone in his bag.",
+      "He puts a bottle of water in his bag."
+    ],
+    "correct": 0,
+    "explanation": "It ve play a game birlikte football seçeneğini destekler."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_2",
+    "id": "wq150_cohesion_odd_nov26_9_2",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Ben is going to the park. (II) He puts his football in his bag. (III) The park has a small pond. (IV) He takes it out when he meets his friends. (V) They play a game together.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Gölet bilgisi Ben'in arkadaşlarıyla futbol oynama akışından ayrılır."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_3",
+    "id": "wq150_cohesion_fill_nov26_9_3",
+    "prompt": "Lucy is getting ready for school. ____ She looks under the bed and finds both of them there. Now she can put them on and leave.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "She cannot find her shoes.",
+      "She cannot find her pencil.",
+      "She cannot find her bag.",
+      "She cannot find her hat.",
+      "She cannot find her homework."
+    ],
+    "correct": 0,
+    "explanation": "Both of them ve put them on ayakkabı çiftine gönderme yapar."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_3",
+    "id": "wq150_cohesion_odd_nov26_9_3",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Lucy is getting ready for school. (II) She cannot find her shoes. (III) She looks under the bed and finds both of them there. (IV) Her school has a large library. (V) Now she can put them on and leave.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Okulun kütüphanesi evde kayıp ayakkabıları bulma olayına ilişkin değildir."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_4",
+    "id": "wq150_cohesion_fill_nov26_9_4",
+    "prompt": "Tom wants to call his friend. ____ He plugs it in and waits for it to charge. A few minutes later, he can make the call.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "His phone battery is empty.",
+      "His phone is in his bag.",
+      "His friend's number is on a piece of paper.",
+      "His phone is new.",
+      "His friend is at home."
+    ],
+    "correct": 0,
+    "explanation": "Charge için boş pil bilgisi gerekli neden bağlantısını kurar."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_4",
+    "id": "wq150_cohesion_odd_nov26_9_4",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Tom wants to call his friend. (II) His friend has a blue bicycle. (III) His phone battery is empty. (IV) He plugs it in and waits for it to charge. (V) A few minutes later, he can make the call.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Arkadaşının bisikleti telefon görüşmesine hazırlanma zincirine bağlanmaz."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_5",
+    "id": "wq150_cohesion_fill_nov26_9_5",
+    "prompt": "Mia is buying a birthday present. ____ The shop assistant puts it in a paper bag. Mia takes the book home and wraps it.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "She chooses a book for her sister.",
+      "She chooses a scarf for her sister.",
+      "She chooses a toy for her brother.",
+      "She buys a birthday card.",
+      "She buys a box of chocolates."
+    ],
+    "correct": 0,
+    "explanation": "Son cümledeki the book doğru seçenekte tanıtılan kitaba gönderme yapar."
+  },
+  {
+    "level": "A1",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_5",
+    "id": "wq150_cohesion_odd_nov26_9_5",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Mia is buying a birthday present. (II) She chooses a book for her sister. (III) The shop is next to a bus stop. (IV) The shop assistant puts it in a paper bag. (V) Mia takes the book home and wraps it.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Dükkânın konumu hediye seçme ve paketleme sürecinin parçası değildir."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_6",
+    "id": "wq150_cohesion_fill_nov26_9_6",
+    "prompt": "A café has changed the way customers order lunch. ____ This helps staff bring the food to the correct table. Customers no longer need to stand near the counter waiting for their meals.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Customers now write their table number on the order slip.",
+      "Customers now pay before choosing their food.",
+      "Customers now collect their own cutlery.",
+      "Customers now receive a copy of the menu.",
+      "Customers now choose a drink when they arrive."
+    ],
+    "correct": 0,
+    "explanation": "This ifadesi masa numarası yazmanın doğru masaya teslimatı kolaylaştırmasına gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_6",
+    "id": "wq150_cohesion_odd_nov26_9_6",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A café has changed the way customers order lunch. (II) Customers now write their table number on the order slip. (III) This helps staff bring the food to the correct table. (IV) The café sells coffee beans from Colombia. (V) Customers no longer need to stand near the counter waiting for their meals.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Kahve çekirdeklerinin kaynağı yeni öğle yemeği sipariş sistemini açıklamaz."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_7",
+    "id": "wq150_cohesion_fill_nov26_9_7",
+    "prompt": "A train station has introduced electronic tickets. ____ They show the screen to staff instead of carrying a printed ticket. This is useful for travellers who book at the last minute.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Passengers can keep their tickets on their phones.",
+      "Passengers can choose a window seat online.",
+      "Passengers can pay for parking online.",
+      "Passengers can view the train timetable on their phones.",
+      "Passengers can request a receipt by email."
+    ],
+    "correct": 0,
+    "explanation": "Show the screen ve instead of a printed ticket, telefon üzerinde saklanan bilete gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_7",
+    "id": "wq150_cohesion_odd_nov26_9_7",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A train station has introduced electronic tickets. (II) The station's clock was repaired last winter. (III) Passengers can keep their tickets on their phones. (IV) They show the screen to staff instead of carrying a printed ticket. (V) This is useful for travellers who book at the last minute.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Saatin geçmişte onarılması elektronik bilet kullanım zincirinin dışında kalır."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_8",
+    "id": "wq150_cohesion_fill_nov26_9_8",
+    "prompt": "A hotel wants to make it easier for guests to explore the town. ____ Guests can ride them to the market and the beach. They must return them to reception before the evening.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It lends bicycles to guests free of charge.",
+      "It provides free maps of the town.",
+      "It sells tickets for local museums.",
+      "It recommends nearby restaurants.",
+      "It arranges guided walking tours."
+    ],
+    "correct": 0,
+    "explanation": "Ride them ve return them ifadeleri ödünç verilen bisikletlere gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_8",
+    "id": "wq150_cohesion_odd_nov26_9_8",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A hotel wants to make it easier for guests to explore the town. (II) It lends bicycles to guests free of charge. (III) The hotel serves breakfast until ten. (IV) Guests can ride them to the market and the beach. (V) They must return them to reception before the evening.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Kahvaltı saati bisiklet ödünç alma ve iade sürecini açıklamaz."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_9",
+    "id": "wq150_cohesion_fill_nov26_9_9",
+    "prompt": "A school has started a clothes exchange. ____ Other students can take these uniforms home without paying. The exchange helps families spend less on school clothing.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Students bring uniforms that no longer fit them.",
+      "Students buy new uniforms from the school shop.",
+      "Students wear sports clothes on Fridays.",
+      "Students bring their own bags to school.",
+      "Students choose different uniforms for each season."
+    ],
+    "correct": 0,
+    "explanation": "These uniforms ücretsiz alınabilen, getirilen eski üniformalardır."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_9",
+    "id": "wq150_cohesion_odd_nov26_9_9",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A school has started a clothes exchange. (II) Students bring uniforms that no longer fit them. (III) Other students can take these uniforms home without paying. (IV) The school has painted its sports hall. (V) The exchange helps families spend less on school clothing.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Spor salonunun boyanması üniforma değişiminden bağımsızdır."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_10",
+    "id": "wq150_cohesion_fill_nov26_9_10",
+    "prompt": "A family is preparing for a camping trip. ____ It says that the nights will be cold. They therefore add warm blankets to their bags.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "They check the weather forecast before packing.",
+      "They check the opening hours of the campsite.",
+      "They check the price of the campsite.",
+      "They check the directions to the campsite.",
+      "They check the list of local shops."
+    ],
+    "correct": 0,
+    "explanation": "It, soğuk gece bilgisi veren hava tahminine gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_10",
+    "id": "wq150_cohesion_odd_nov26_9_10",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A family is preparing for a camping trip. (II) Their car was bought two years ago. (III) They check the weather forecast before packing. (IV) It says that the nights will be cold. (V) They therefore add warm blankets to their bags.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Arabanın satın alınma tarihi soğuk gecelere hazırlık zincirini desteklemez."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_11",
+    "id": "wq150_cohesion_fill_nov26_9_11",
+    "prompt": "A library wants readers to return books on time. ____ Readers receive the message while they still have time to return the book. The number of late returns has fallen.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It sends a reminder two days before each book is due.",
+      "It sends readers a list of popular books every month.",
+      "It asks readers to rate the books they borrow.",
+      "It sends a receipt when a book is returned.",
+      "It announces new books on its website."
+    ],
+    "correct": 0,
+    "explanation": "Son tarihten önce hatırlatma, zamanında iade için doğrudan gerekçe sağlar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_11",
+    "id": "wq150_cohesion_odd_nov26_9_11",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A library wants readers to return books on time. (II) It sends a reminder two days before each book is due. (III) The library has a collection of old maps. (IV) Readers receive the message while they still have time to return the book. (V) The number of late returns has fallen.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Eski harita koleksiyonu gecikmeleri önleyen hatırlatma sistemine bağlanmaz."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_12",
+    "id": "wq150_cohesion_fill_nov26_9_12",
+    "prompt": "A bakery has opened a new branch near a university. ____ To receive the lower price, customers must show a student card. The offer is especially popular with students who have early classes.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It offers a student discount before ten in the morning.",
+      "It opens earlier than the original branch.",
+      "It offers a larger selection of bread.",
+      "It has installed more tables outside.",
+      "It accepts payment by card."
+    ],
+    "correct": 0,
+    "explanation": "The lower price ve student card, öğrenci indirimine gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_12",
+    "id": "wq150_cohesion_odd_nov26_9_12",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A bakery has opened a new branch near a university. (II) It offers a student discount before ten in the morning. (III) To receive the lower price, customers must show a student card. (IV) The bakery also makes wedding cakes to order. (V) The offer is especially popular with students who have early classes.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Düğün pastası siparişleri sabah öğrenci indiriminin işleyişinden bağımsızdır."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_13",
+    "id": "wq150_cohesion_fill_nov26_9_13",
+    "prompt": "A swimming centre has changed its booking system. ____ The email contains a code that must be shown at the entrance. Staff use the code to check the reservation quickly.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Each person now receives a confirmation email after booking.",
+      "Each person can choose a different swimming instructor.",
+      "Each person now pays at the entrance.",
+      "Each person can read reviews before booking.",
+      "Each person must bring their own towel."
+    ],
+    "correct": 0,
+    "explanation": "The email, hemen önce tanıtılan onay e-postasına gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_13",
+    "id": "wq150_cohesion_odd_nov26_9_13",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A swimming centre has changed its booking system. (II) The centre's largest pool is twenty-five metres long. (III) Each person now receives a confirmation email after booking. (IV) The email contains a code that must be shown at the entrance. (V) Staff use the code to check the reservation quickly.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Havuz uzunluğu rezervasyon koduyla giriş sürecini açıklamaz."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_14",
+    "id": "wq150_cohesion_fill_nov26_9_14",
+    "prompt": "A shop wants to reduce the number of plastic bags it uses. ____ Those who forget can buy a reusable bag at the checkout. Many customers now keep one in their car.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It asks customers to bring their own shopping bags.",
+      "It asks customers to pay by card.",
+      "It offers free delivery to nearby homes.",
+      "It displays prices on electronic screens.",
+      "It sells fresh fruit near the entrance."
+    ],
+    "correct": 0,
+    "explanation": "Those who forget kendi çantasını getirmeyi unutanlara gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_14",
+    "id": "wq150_cohesion_odd_nov26_9_14",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A shop wants to reduce the number of plastic bags it uses. (II) It asks customers to bring their own shopping bags. (III) The shop has extended its opening hours. (IV) Those who forget can buy a reusable bag at the checkout. (V) Many customers now keep one in their car.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Çalışma saatleri alışveriş çantası kullanımına yönelik uygulamayı desteklemez."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_15",
+    "id": "wq150_cohesion_fill_nov26_9_15",
+    "prompt": "A student has difficulty remembering new words. ____ She tests herself by looking at only one side at a time. She repeats the difficult cards more often.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "She writes each word on one side of a card and its meaning on the other.",
+      "She writes all the words in alphabetical order in a notebook.",
+      "She listens to a recorded story every evening.",
+      "She copies the definitions into a single list.",
+      "She underlines new words in her textbook."
+    ],
+    "correct": 0,
+    "explanation": "One side ve difficult cards iki yüzlü kelime kartlarına gönderme yapar."
+  },
+  {
+    "level": "A2",
+    "yds": null,
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_15",
+    "id": "wq150_cohesion_odd_nov26_9_15",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A student has difficulty remembering new words. (II) She writes each word on one side of a card and its meaning on the other. (III) She tests herself by looking at only one side at a time. (IV) Her English class meets in room twelve. (V) She repeats the difficult cards more often.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Dersin oda numarası kelime kartlarıyla çalışma yönteminin parçası değildir."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_16",
+    "id": "wq150_cohesion_fill_nov26_9_16",
+    "prompt": "A town introduced free bus travel for older residents. ____ They show this card when boarding rather than paying for each journey. The arrangement reduces the need to carry cash.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Eligible passengers apply once for a special travel card.",
+      "Eligible passengers receive a printed timetable each month.",
+      "Eligible passengers can request a seat in advance.",
+      "Eligible passengers are offered advice on planning routes.",
+      "Eligible passengers can register complaints online."
+    ],
+    "correct": 0,
+    "explanation": "This card yalnızca özel seyahat kartını tanıtan cümleye gönderme yapar."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_16",
+    "id": "wq150_cohesion_odd_nov26_9_16",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A town introduced free bus travel for older residents. (II) Several bus routes pass through the historic town centre. (III) Eligible passengers apply once for a special travel card. (IV) They show this card when boarding rather than paying for each journey. (V) The arrangement reduces the need to carry cash.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Güzergâhların tarihî merkezden geçmesi ücretsiz ulaşım kartının işleyişini açıklamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_17",
+    "id": "wq150_cohesion_fill_nov26_9_17",
+    "prompt": "A community workshop teaches people to repair household appliances. ____ With this information, volunteers can identify the model and look up suitable spare parts. This reduces the time spent searching for technical details.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Visitors are asked to bring the instruction manual if they still have it.",
+      "Visitors are asked to bring a photo of the room where the appliance is used.",
+      "Visitors are asked to bring the original shopping bag.",
+      "Visitors are asked to bring a list of their other appliances.",
+      "Visitors are asked to bring proof of their home address."
+    ],
+    "correct": 0,
+    "explanation": "Model ve teknik detaylara erişim kullanım kılavuzundaki bilgilerle ilişkilidir."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_17",
+    "id": "wq150_cohesion_odd_nov26_9_17",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A community workshop teaches people to repair household appliances. (II) Visitors are asked to bring the instruction manual if they still have it. (III) The workshop is located in a former post office. (IV) With this information, volunteers can identify the model and look up suitable spare parts. (V) This reduces the time spent searching for technical details.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Binanın eski kullanım amacı arıza tespiti sürecine katkı sağlamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_18",
+    "id": "wq150_cohesion_fill_nov26_9_18",
+    "prompt": "A hospital introduced a reminder system to reduce missed appointments. ____ When a patient cancels early, the available slot can be offered to someone else. The system has therefore helped the hospital make better use of its schedule.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Patients receive a message containing a link to cancel or change their booking.",
+      "Patients receive a message with directions to the hospital.",
+      "Patients receive a message asking them to rate their previous visit.",
+      "Patients receive a message explaining the hospital's visiting hours.",
+      "Patients receive a message listing the departments in the building."
+    ],
+    "correct": 0,
+    "explanation": "Erken iptali mümkün kılan bağlantı, boş randevunun başkasına verilmesini açıklar."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_18",
+    "id": "wq150_cohesion_odd_nov26_9_18",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A hospital introduced a reminder system to reduce missed appointments. (II) Patients receive a message containing a link to cancel or change their booking. (III) When a patient cancels early, the available slot can be offered to someone else. (IV) The hospital recently replaced the furniture in its waiting area. (V) The system has therefore helped the hospital make better use of its schedule.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Bekleme alanındaki mobilyalar randevu hatırlatma ve iptal mekanizmasından bağımsızdır."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_19",
+    "id": "wq150_cohesion_fill_nov26_9_19",
+    "prompt": "A company began allowing employees to choose when to start work. ____ This shared period gives teams a predictable time for meetings. Outside those hours, staff have greater flexibility.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "However, everyone is required to be available between ten and three.",
+      "However, every employee receives the same number of annual holidays.",
+      "However, employees must submit their expenses by Friday.",
+      "However, everyone is allowed to work from home twice a month.",
+      "However, all employees receive access to the company gym."
+    ],
+    "correct": 0,
+    "explanation": "This shared period ortak zorunlu saat aralığına gönderme yapar."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_19",
+    "id": "wq150_cohesion_odd_nov26_9_19",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A company began allowing employees to choose when to start work. (II) The company employs people from several different countries. (III) However, everyone is required to be available between ten and three. (IV) This shared period gives teams a predictable time for meetings. (V) Outside those hours, staff have greater flexibility.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Çalışanların ülkeleri esnek çalışma ve ortak toplantı saatini açıklamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_20",
+    "id": "wq150_cohesion_fill_nov26_9_20",
+    "prompt": "A local council has introduced a garden waste collection service. ____ The contents are then taken to a facility where they are turned into compost. The compost can later be used to improve the soil in public parks.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Residents must put branches and leaves in a separate container.",
+      "Residents must request permission before planting trees on public land.",
+      "Residents must pay an annual fee for parking permits.",
+      "Residents must report damage to park benches.",
+      "Residents must collect new household recycling calendars."
+    ],
+    "correct": 0,
+    "explanation": "The contents, ayrı kapta toplanan dal ve yaprakları ifade eder."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_20",
+    "id": "wq150_cohesion_odd_nov26_9_20",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A local council has introduced a garden waste collection service. (II) Residents must put branches and leaves in a separate container. (III) The council also organises an annual flower show. (IV) The contents are then taken to a facility where they are turned into compost. (V) The compost can later be used to improve the soil in public parks.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Yıllık çiçek gösterisi bahçe atıklarının komposta dönüştürülme sürecinden ayrılır."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_21",
+    "id": "wq150_cohesion_fill_nov26_9_21",
+    "prompt": "An online course includes short practice quizzes after each lesson. ____ Learners can therefore identify which concepts they need to review. They are encouraged to attempt the quiz again after studying those sections.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Incorrect answers are accompanied by explanations and links to the relevant material.",
+      "Correct answers are displayed without any additional information.",
+      "Each quiz is limited to five minutes regardless of the topic.",
+      "The quizzes are available only after the final examination.",
+      "All learners receive the same score for completing a quiz."
+    ],
+    "correct": 0,
+    "explanation": "Yanlış cevap açıklamaları ve ilgili bağlantılar gözden geçirilecek kavramları belirlemeyi sağlar."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_21",
+    "id": "wq150_cohesion_odd_nov26_9_21",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) An online course includes short practice quizzes after each lesson. (II) Incorrect answers are accompanied by explanations and links to the relevant material. (III) Learners can therefore identify which concepts they need to review. (IV) The course website has a dark mode setting. (V) They are encouraged to attempt the quiz again after studying those sections.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Karanlık mod ayarı geri bildirim ve tekrar döngüsünü açıklamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_22",
+    "id": "wq150_cohesion_fill_nov26_9_22",
+    "prompt": "A community centre was struggling to attract participants to its morning classes. ____ In response, the centre moved several classes to the evening. Attendance increased, particularly among people with full-time jobs.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "A survey revealed that many interested residents were at work during those hours.",
+      "A survey revealed that many residents preferred shorter courses.",
+      "A survey revealed that residents wanted different course topics.",
+      "A survey revealed that some classrooms lacked equipment.",
+      "A survey revealed that most learners liked the existing timetable."
+    ],
+    "correct": 0,
+    "explanation": "In response akşam saatlerine geçişi açıklayan iş saatleri engeline bağlanır."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_22",
+    "id": "wq150_cohesion_odd_nov26_9_22",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A community centre was struggling to attract participants to its morning classes. (II) The building's entrance was renovated three years ago. (III) A survey revealed that many interested residents were at work during those hours. (IV) In response, the centre moved several classes to the evening. (V) Attendance increased, particularly among people with full-time jobs.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Girişin yenilenmesi ders saatleri ve katılım ilişkisine katkı sağlamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_23",
+    "id": "wq150_cohesion_fill_nov26_9_23",
+    "prompt": "A manufacturer received complaints about parcels arriving with damaged contents. ____ The records revealed that most incidents occurred during one particular stage of transport. The company could then focus its investigation on that stage.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It began recording which delivery routes were associated with each complaint.",
+      "It began offering customers a choice of packaging colours.",
+      "It began recording the number of products sold each week.",
+      "It began printing a larger logo on each parcel.",
+      "It began asking customers to review its website."
+    ],
+    "correct": 0,
+    "explanation": "The records, hasarı taşıma aşamalarıyla ilişkilendiren kayıtlardır."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_23",
+    "id": "wq150_cohesion_odd_nov26_9_23",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A manufacturer received complaints about parcels arriving with damaged contents. (II) It began recording which delivery routes were associated with each complaint. (III) The manufacturer exports products to several countries. (IV) The records revealed that most incidents occurred during one particular stage of transport. (V) The company could then focus its investigation on that stage.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: İhracat yapılan ülke sayısı hasarın belirli taşıma aşamasına bağlanmasını açıklamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_24",
+    "id": "wq150_cohesion_fill_nov26_9_24",
+    "prompt": "A museum introduced an audio guide for visitors who preferred to explore independently. ____ Visitors enter the number to hear information about the object in front of them. They can choose the order in which they listen to the recordings.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Each exhibit has a number that corresponds to a recording.",
+      "Each exhibit has been photographed for the museum catalogue.",
+      "Each exhibit is protected by a glass display case.",
+      "Each exhibit is cleaned on a regular schedule.",
+      "Each exhibit is assigned an insurance value."
+    ],
+    "correct": 0,
+    "explanation": "The number ve recording ifadeleri ses kaydına eşlenen sergi numarasını gerektirir."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_24",
+    "id": "wq150_cohesion_odd_nov26_9_24",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A museum introduced an audio guide for visitors who preferred to explore independently. (II) Each exhibit has a number that corresponds to a recording. (III) Visitors enter the number to hear information about the object in front of them. (IV) The museum shop sells postcards of several exhibits. (V) They can choose the order in which they listen to the recordings.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Kartpostal satışı sesli rehberin çalışma biçimini açıklamaz."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_25",
+    "id": "wq150_cohesion_fill_nov26_9_25",
+    "prompt": "A restaurant wanted to reduce food waste without limiting its menu. ____ The measurements showed that customers frequently left part of certain side dishes. The restaurant adjusted those portions while keeping the main courses unchanged.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It began measuring how much of each dish was left uneaten.",
+      "It began measuring the time needed to prepare each dish.",
+      "It began recording how many tables were reserved each evening.",
+      "It began counting the number of menus printed each week.",
+      "It began measuring the temperature of the dining room."
+    ],
+    "correct": 0,
+    "explanation": "Porsiyon azaltma kararı yenmeyen yiyecek miktarının ölçülmesine dayanır."
+  },
+  {
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_25",
+    "id": "wq150_cohesion_odd_nov26_9_25",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A restaurant wanted to reduce food waste without limiting its menu. (II) The restaurant uses wooden tables made locally. (III) It began measuring how much of each dish was left uneaten. (IV) The measurements showed that customers frequently left part of certain side dishes. (V) The restaurant adjusted those portions while keeping the main courses unchanged.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Masaların malzemesi porsiyon kaynaklı israfı ölçme sürecini desteklemez."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_26",
+    "id": "wq150_cohesion_fill_nov26_9_26",
+    "prompt": "A study examined whether a newly introduced tax affected household energy consumption. ____ This comparison helped them distinguish the effect of the tax from seasonal changes affecting both groups. However, it could not remove every possible source of bias.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "The researchers compared changes in taxed households with those in a similar untaxed group.",
+      "The researchers compared electricity prices across different suppliers.",
+      "The researchers calculated the average age of household appliances.",
+      "The researchers compared the administrative costs of different taxes.",
+      "The researchers examined household energy use in the taxed group alone."
+    ],
+    "correct": 0,
+    "explanation": "This comparison iki grupta zaman içindeki değişimlerin karşılaştırılmasıdır; ortak mevsimsel etkileri ayırmayı amaçlar."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_26",
+    "id": "wq150_cohesion_odd_nov26_9_26",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A study examined whether a newly introduced tax affected household energy consumption. (II) The researchers compared changes in taxed households with those in a similar untaxed group. (III) The authors published a separate appendix describing the history of electricity generation. (IV) This comparison helped them distinguish the effect of the tax from seasonal changes affecting both groups. (V) However, it could not remove every possible source of bias.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Elektrik üretimi tarihinin ayrı eki vergi etkisini değerlendiren yöntem zincirinden ayrılır."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_27",
+    "id": "wq150_cohesion_fill_nov26_9_27",
+    "prompt": "A hospital evaluated a screening procedure using both sensitivity and specificity. ____ The latter measures its ability to correctly classify people who do not have it. Considering both measures helps assess the trade-off between missed cases and false alarms.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "The former describes how well the procedure identifies people who have the condition.",
+      "The former describes the proportion of positive results that are correct.",
+      "The former describes the cost of performing the procedure.",
+      "The former describes the proportion of negative results that are correct.",
+      "The former describes how common the condition is in the population."
+    ],
+    "correct": 0,
+    "explanation": "Sensitivity hastalığı olanları doğru belirleme oranıdır; diğer seçenekler farklı ölçütlerdir."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_27",
+    "id": "wq150_cohesion_odd_nov26_9_27",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A hospital evaluated a screening procedure using both sensitivity and specificity. (II) The former describes how well the procedure identifies people who have the condition. (III) The latter measures its ability to correctly classify people who do not have it. (IV) The hospital's laboratory is situated on the second floor. (V) Considering both measures helps assess the trade-off between missed cases and false alarms.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Laboratuvarın katı iki tanısal performans ölçütünün ilişkisini açıklamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_28",
+    "id": "wq150_cohesion_fill_nov26_9_28",
+    "prompt": "An urban planning team investigated the effect of a new pedestrian route on local businesses. ____ This second measure allowed the researchers to examine whether the route had altered patterns of foot traffic. The combination of measures offered a more detailed picture of the intervention.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Rather than relying only on sales figures, the team also recorded changes in pedestrian movement.",
+      "Rather than relying only on sales figures, the team also recorded changes in rental prices.",
+      "Rather than relying only on sales figures, the team also recorded changes in shop opening hours.",
+      "Rather than relying only on sales figures, the team also recorded changes in inventory costs.",
+      "Rather than relying only on sales figures, the team also recorded changes in business ownership."
+    ],
+    "correct": 0,
+    "explanation": "This second measure doğrudan yaya hareketlerini ölçmelidir."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_28",
+    "id": "wq150_cohesion_odd_nov26_9_28",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) An urban planning team investigated the effect of a new pedestrian route on local businesses. (II) The town's oldest pedestrian bridge is constructed from stone. (III) Rather than relying only on sales figures, the team also recorded changes in pedestrian movement. (IV) This second measure allowed the researchers to examine whether the route had altered patterns of foot traffic. (V) The combination of measures offered a more detailed picture of the intervention.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Eski köprünün yapı malzemesi yeni güzergâhın ticari etkisini ölçme sürecini açıklamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_29",
+    "id": "wq150_cohesion_fill_nov26_9_29",
+    "prompt": "Researchers comparing educational programmes noticed that the groups differed in prior achievement. ____ This adjustment reduced the apparent difference between the groups. Nevertheless, the possibility of unmeasured differences remained.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "They therefore adjusted their analysis using test scores collected before the programmes began.",
+      "They therefore adjusted their analysis using test scores collected only after the programmes ended.",
+      "They therefore excluded information about previous academic performance.",
+      "They therefore replaced achievement scores with classroom size.",
+      "They therefore calculated the average cost of both programmes."
+    ],
+    "correct": 0,
+    "explanation": "Başlangıç başarısı farkını azaltmak için uygulama öncesi puanlar kullanılır; subsequent adjustment buna gönderme yapar."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_29",
+    "id": "wq150_cohesion_odd_nov26_9_29",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Researchers comparing educational programmes noticed that the groups differed in prior achievement. (II) They therefore adjusted their analysis using test scores collected before the programmes began. (III) The educational institutions were founded in different decades. (IV) This adjustment reduced the apparent difference between the groups. (V) Nevertheless, the possibility of unmeasured differences remained.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Kurumların kuruluş tarihleri başlangıç başarısı için yapılan istatistiksel düzeltmeyi açıklamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_30",
+    "id": "wq150_cohesion_fill_nov26_9_30",
+    "prompt": "A conservation agency monitored the recovery of a forest after a wildfire. ____ The second measure revealed that rapid increases in plant cover did not necessarily reflect the return of native species. The agency therefore distinguished vegetation recovery from ecological restoration.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "It recorded both the total area covered by vegetation and the composition of the returning plant species.",
+      "It recorded both the total area covered by vegetation and the height of the visitor centre.",
+      "It recorded both the total area covered by vegetation and the cost of replacing fences.",
+      "It recorded both the total area covered by vegetation and the number of days since the fire.",
+      "It recorded both the total area covered by vegetation and the average temperature at the site."
+    ],
+    "correct": 0,
+    "explanation": "İkinci ölçüt tür bileşimi olmalıdır; yerli türlerin dönüp dönmediğini o gösterir."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_30",
+    "id": "wq150_cohesion_odd_nov26_9_30",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A conservation agency monitored the recovery of a forest after a wildfire. (II) It recorded both the total area covered by vegetation and the composition of the returning plant species. (III) The second measure revealed that rapid increases in plant cover did not necessarily reflect the return of native species. (IV) The forest's visitor centre was designed by a regional architect. (V) The agency therefore distinguished vegetation recovery from ecological restoration.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Ziyaretçi merkezinin mimarı ekolojik toparlanma ölçütlerinden bağımsızdır."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_31",
+    "id": "wq150_cohesion_fill_nov26_9_31",
+    "prompt": "A company evaluated two approaches to reducing delivery delays. ____ The former reduced travel distances without requiring additional vehicles. The latter increased carrying capacity but involved higher operating costs.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "One approach improved route planning, while the other increased the number of vehicles.",
+      "One approach increased the number of vehicles, while the other improved route planning.",
+      "One approach introduced new packaging, while the other increased the number of vehicles.",
+      "One approach improved route planning, while the other shortened customer service hours.",
+      "One approach increased driver training, while the other changed the design of delivery boxes."
+    ],
+    "correct": 0,
+    "explanation": "Former ilk yaklaşım, latter ikinci yaklaşım olduğundan sıralama ve içerik korunmalıdır."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_31",
+    "id": "wq150_cohesion_odd_nov26_9_31",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A company evaluated two approaches to reducing delivery delays. (II) The company uses a distinctive shade of blue in its logo. (III) One approach improved route planning, while the other increased the number of vehicles. (IV) The former reduced travel distances without requiring additional vehicles. (V) The latter increased carrying capacity but involved higher operating costs.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Logonun rengi iki lojistik yaklaşımın maliyet ve kapasite karşılaştırmasına bağlanmaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_32",
+    "id": "wq150_cohesion_fill_nov26_9_32",
+    "prompt": "A survey asked employees whether they were satisfied with their working conditions. ____ As a result, individual answers could not be linked to particular employees. This protected privacy but prevented researchers from following the same individuals over time.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "To encourage honest answers, responses were collected anonymously.",
+      "To encourage honest answers, responses were collected during individual interviews with managers.",
+      "To encourage honest answers, responses were collected using employee identification numbers.",
+      "To encourage honest answers, responses were collected through signed forms.",
+      "To encourage honest answers, responses were collected alongside employees' names."
+    ],
+    "correct": 0,
+    "explanation": "Bireysel cevapların çalışanlarla ilişkilendirilememesi anonim veri toplamadan kaynaklanır."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_32",
+    "id": "wq150_cohesion_odd_nov26_9_32",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A survey asked employees whether they were satisfied with their working conditions. (II) To encourage honest answers, responses were collected anonymously. (III) The company introduced a new uniform several years earlier. (IV) As a result, individual answers could not be linked to particular employees. (V) This protected privacy but prevented researchers from following the same individuals over time.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Üniforma geçmişi anketin anonimliği ve boylamsal takip sınırına katkı sağlamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_33",
+    "id": "wq150_cohesion_fill_nov26_9_33",
+    "prompt": "A regional authority subsidised home insulation to reduce energy consumption. ____ Consequently, actual energy reductions were smaller than engineering estimates had predicted. The evaluation was revised to account for changes in household behaviour.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Some households used part of the resulting savings to maintain higher indoor temperatures.",
+      "Some households replaced their heating systems before the programme began.",
+      "Some households reported difficulty understanding the application form.",
+      "Some households chose insulation materials produced locally.",
+      "Some households received their subsidy payments by bank transfer."
+    ],
+    "correct": 0,
+    "explanation": "Tasarrufun bir kısmının daha yüksek sıcaklık için kullanılması öngörülenden küçük enerji azalmasını açıklar."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_33",
+    "id": "wq150_cohesion_odd_nov26_9_33",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A regional authority subsidised home insulation to reduce energy consumption. (II) Some households used part of the resulting savings to maintain higher indoor temperatures. (III) Consequently, actual energy reductions were smaller than engineering estimates had predicted. (IV) The authority's offices were moved to another building during the previous year. (V) The evaluation was revised to account for changes in household behaviour.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: İdari ofisin taşınması enerji tasarrufu ve davranış ilişkisini açıklamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_34",
+    "id": "wq150_cohesion_fill_nov26_9_34",
+    "prompt": "A research team used archived photographs to investigate changes in a coastline. ____ The apparent position of the waterline therefore varied even when the physical coastline had not changed. The team restricted its comparisons to images captured under similar tidal conditions.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "However, many images had been taken at different stages of the tidal cycle.",
+      "However, many images had been stored in albums of different sizes.",
+      "However, many images had been printed on different types of paper.",
+      "However, many images had been catalogued by different institutions.",
+      "However, many images had been donated by local residents."
+    ],
+    "correct": 0,
+    "explanation": "Gelgit aşaması su çizgisini gerçek kıyı değişiminden bağımsız etkiler."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_34",
+    "id": "wq150_cohesion_odd_nov26_9_34",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A research team used archived photographs to investigate changes in a coastline. (II) The archive also contains portraits of the region's early photographers. (III) However, many images had been taken at different stages of the tidal cycle. (IV) The apparent position of the waterline therefore varied even when the physical coastline had not changed. (V) The team restricted its comparisons to images captured under similar tidal conditions.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Fotoğrafçı portreleri kıyı çizgisi karşılaştırmasının yöntemsel sorununu açıklamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_35",
+    "id": "wq150_cohesion_fill_nov26_9_35",
+    "prompt": "A city evaluated the accessibility of its public buildings. ____ A follow-up assessment examined whether visitors could also reach the services offered inside. The distinction was important because an accessible entrance did not guarantee access to every facility.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "The initial survey recorded whether each building had a wheelchair-accessible entrance.",
+      "A follow-up assessment examined the age of each entrance door.",
+      "A follow-up assessment examined the number of visitors arriving by car.",
+      "A follow-up assessment examined the cost of exterior decoration.",
+      "A follow-up assessment examined the opening dates of the buildings."
+    ],
+    "correct": 0,
+    "explanation": "Giriş erişimi ile bina içindeki hizmetlere erişim karşılaştırılmaktadır."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_35",
+    "id": "wq150_cohesion_odd_nov26_9_35",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A city evaluated the accessibility of its public buildings. (II) The initial survey recorded whether each building had a wheelchair-accessible entrance. (III) The city's administrative buildings have similar exterior colours. (IV) A follow-up assessment examined whether visitors could also reach the services offered inside. (V) The distinction was important because an accessible entrance did not guarantee access to every facility.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Dış cephe renkleri erişilebilirlik değerlendirmesinin iki boyutuna bağlanmaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_36",
+    "id": "wq150_cohesion_fill_nov26_9_36",
+    "prompt": "An economist examined the effect of a training scheme on participants' earnings. ____ This made it possible to identify whether higher total earnings reflected better pay or simply longer working hours. The distinction was essential when assessing improvements in job quality.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "The assessment distinguished the increase in hourly pay from changes in the number of hours worked.",
+      "The assessment distinguished participants according to their preferred training location.",
+      "The assessment distinguished participants according to the month in which they applied.",
+      "The assessment distinguished the cost of training from the cost of advertising.",
+      "The assessment distinguished the number of instructors from the number of classrooms."
+    ],
+    "correct": 0,
+    "explanation": "Saatlik ücret ve çalışma süresinin ayrılması toplam kazanç artışının kaynağını belirler."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_36",
+    "id": "wq150_cohesion_odd_nov26_9_36",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) An economist examined the effect of a training scheme on participants' earnings. (II) The assessment distinguished the increase in hourly pay from changes in the number of hours worked. (III) This made it possible to identify whether higher total earnings reflected better pay or simply longer working hours. (IV) The training provider moved to a larger office during the study. (V) The distinction was essential when assessing improvements in job quality.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 3,
+    "explanation": "IV. cümle: Eğitim sağlayıcısının ofisi iş niteliğini ölçen ücret-süre ayrımına katkı sağlamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_37",
+    "id": "wq150_cohesion_fill_nov26_9_37",
+    "prompt": "A manufacturer introduced a more durable packaging material. ____ An assessment based solely on damage rates would therefore overlook part of the environmental cost. The manufacturer began examining the entire life cycle of both packaging materials.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "The new packaging reduced damage during transport, but its production required more energy.",
+      "The new packaging was available in a wider range of colours.",
+      "The new packaging could be printed with larger labels.",
+      "The new packaging was introduced to customers through an advertising campaign.",
+      "The new packaging was stored in a separate warehouse."
+    ],
+    "correct": 0,
+    "explanation": "Daha fazla üretim enerjisi, yalnızca hasar oranına bakmanın kaçıracağı çevresel maliyettir."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_37",
+    "id": "wq150_cohesion_odd_nov26_9_37",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A manufacturer introduced a more durable packaging material. (II) The company's packaging carries a logo introduced in the 1990s. (III) The new packaging reduced damage during transport, but its production required more energy. (IV) An assessment based solely on damage rates would therefore overlook part of the environmental cost. (V) The manufacturer began examining the entire life cycle of both packaging materials.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 1,
+    "explanation": "II. cümle: Logo tarihi paketlemenin yaşam döngüsü ve enerji maliyetini açıklamaz."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_38",
+    "id": "wq150_cohesion_fill_nov26_9_38",
+    "prompt": "A university introduced a new method for providing feedback on written assignments. ____ This additional outcome indicated whether students could apply the feedback to unfamiliar assignments. The evaluation thus distinguished positive reactions from actual improvements in learning.\n\nChoose the sentence that best completes the paragraph.",
+    "options": [
+      "Instead of examining satisfaction alone, the researchers also assessed students' performance on a later writing task.",
+      "Instead of examining satisfaction alone, the researchers also recorded the length of each feedback message.",
+      "Instead of examining satisfaction alone, the researchers also counted the number of teachers using the system.",
+      "Instead of examining satisfaction alone, the researchers also measured the cost of printing assignments.",
+      "Instead of examining satisfaction alone, the researchers also compared classroom schedules."
+    ],
+    "correct": 0,
+    "explanation": "Sonraki yazma görevi geri bildirimin yeni göreve aktarılmasını doğrudan ölçer."
+  },
+  {
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Paragraph",
+    "family": "cohesion_nov26_9_38",
+    "id": "wq150_cohesion_odd_nov26_9_38",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A university introduced a new method for providing feedback on written assignments. (II) Instead of examining satisfaction alone, the researchers also assessed students' performance on a later writing task. (III) The university's main library is open until midnight. (IV) This additional outcome indicated whether students could apply the feedback to unfamiliar assignments. (V) The evaluation thus distinguished positive reactions from actual improvements in learning.",
+    "options": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "correct": 2,
+    "explanation": "III. cümle: Kütüphane saatleri geri bildirim ve öğrenme performansı değerlendirmesinden ayrıdır."
   }
 ];
