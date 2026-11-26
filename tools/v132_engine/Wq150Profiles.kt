@@ -54,8 +54,9 @@ internal fun rememberWq150Profiles(room:String,session:AppSession,gateway:Wq150G
 internal fun Wq150Portrait(profile:JSONObject?,ownAvatar:String?,modifier:Modifier=Modifier,victory:Boolean=false){
     val id=profile?.optString("avatar","piko")?:"piko"
     val preview=profile?.optString("preview")?.takeIf{it.isNotBlank()&&it!="null"}
-    val bitmap by produceState<Bitmap?>(null,id,preview){
-        value=withContext(Dispatchers.Default){Wq128RoomHd.decode(id,preview)}
+    var bitmap by remember(id,preview){mutableStateOf<Bitmap?>(null)}
+    LaunchedEffect(id,preview){
+        bitmap=withContext(Dispatchers.Default){Wq128RoomHd.decode(id,preview)}
     }
     val image=bitmap
     if(ownAvatar!=null)Wq2DPortrait(ownAvatar,modifier,victory)
