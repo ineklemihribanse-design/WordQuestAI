@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {authoredWords,authoredQuestions} from './learning_content.mjs';
 import {academicWords,collocationQuestions} from './learning_academic.mjs';
+import {readingQuestions} from './learning_reading.mjs';
 import {appendLearningWords,diversifyQuiz,allLearningQuestions} from './learning_mix.mjs';
 import {createVocabularyBank} from './vocabulary_bank.mjs';
 import {LEVELS} from '../v132_engine/engine.mjs';
@@ -35,3 +36,5 @@ test('curated question generation preserves filters, levels and count',async()=>
 test('larger mixed pool has unique questions and five options',()=>{assert.ok(allLearningQuestions.length>=600);assert.equal(new Set(allLearningQuestions.map(q=>q.id)).size,allLearningQuestions.length);assert.equal(new Set(allLearningQuestions.map(q=>q.prompt.toLowerCase())).size,allLearningQuestions.length);assert.ok(allLearningQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5));});
 
 test('academic expansion has explicit YDS metadata and complete five-choice questions',()=>{assert.ok(academicWords.length>=300);assert.equal(new Set(academicWords.map(w=>w.level+'|'+w.answer)).size,academicWords.length);assert.ok(academicWords.every(w=>/^[A-Z]{2,22}$/.test(w.answer)&&w.meaning.trim()&&['easy','medium','hard'].includes(w.yds)));assert.ok(collocationQuestions.length>=60);assert.ok(collocationQuestions.every(q=>q.options.length===5&&new Set(q.options.map(o=>o.toLowerCase())).size===5&&q.explanation.length>=20));});
+
+test('reading bank contains distinct passages with paired comprehension items and basic-tier questions',()=>{const reading=readingQuestions.filter(q=>q.topic==='Paragraph');assert.equal(reading.length,40);assert.equal(new Set(reading.map(q=>q.family)).size,20);assert.equal(readingQuestions.filter(q=>q.level==='A1'||q.level==='A2').length,32);assert.ok(readingQuestions.every(q=>q.options.length===5&&new Set(q.options.map(x=>x.toLowerCase())).size===5&&q.explanation.length>=20));});
