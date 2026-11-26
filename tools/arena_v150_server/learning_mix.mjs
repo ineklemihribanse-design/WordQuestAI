@@ -15,7 +15,8 @@ import {logicQuestions} from './learning_logic.mjs';
 import {researchQuestions} from './learning_research.mjs';
 import {cohesionExpansion} from './learning_cohesion_expansion.mjs';
 import {lexicalFastQuestions} from './learning_lexical_fast.mjs';
-export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions];
+import {bulkPhraseQuestions} from './learning_bulk_phrases.mjs';
+export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions];
 const hash=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // Keep every existing record and only append distinct new headwords. An
 // explicit YDS sense may coexist with a previously untagged CEFR entry.
