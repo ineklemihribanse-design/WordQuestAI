@@ -1,25 +1,27 @@
 name: WordQuest AI 1.0.150 Arena development audit (no publication)
 on:
-  push:
-    branches: [feature/v150-arena-nextgen]
+  pull_request:
+    branches: [fix/v190-tablet-board-and-visible-icons]
     paths:
       - '.github/workflows/audit-full-assembled-source.yml'
       - 'tools/full_source_audit/**'
       - 'tools/v132_engine/**'
-  workflow_dispatch:
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 permissions:
   contents: read
   actions: read
 jobs:
   audit:
-    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
+    if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
