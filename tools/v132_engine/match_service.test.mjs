@@ -95,3 +95,19 @@ test('duel hints use shared service but do not leak to opponent',()=>{
  assert.equal(matchView(s,p).game.hintsLeft,1);assert.equal(Object.keys(matchView(s,p).game.myHints[0]).length,1);
  assert.deepEqual(matchView(s,other).game.myHints[0],{});assert.equal(matchView(s,other).game.claims,undefined);
 });
+
+test('terminal summary covers forfeits and early mutual finish without exposing unplayed answers',()=>{
+ for(const [kind,mode,format] of [['duel','classic'],['quiz','classic'],['coop','free'],['team','classic','crossword']]){
+  let s=base(cfg(kind,mode,{format}));assert.equal(matchView(s,'a').summary,undefined);
+  if(kind==='team'){s=matchTransport(s,{type:'leave',id:'a',epoch:1},1001);s=matchTransport(s,{type:'leave',id:'b',epoch:1},1002);}
+  else s=matchTransport(s,{type:'leave',id:'a',epoch:1},1001);
+  const v=matchView(s,kind==='team'?'c':'b');assert.equal(v.phase,'finished');assert.equal(v.summary.total,10);assert.equal(v.summary.players.a.correct,0);
+  assert.equal(v.summary.solved,0);assert.equal(JSON.stringify(v).includes('APPLE'),false);
+  if(kind==='team')assert.equal(v.summary.teams.red.score,0);
+ }
+});
+test('solved duel cells are public but pending answers stay private',()=>{
+ let s=base();const actor=s.game.turn,i=s.game.active,answer=s.game.words[i].answer;
+ s=matchCommand(s,actor,{id:'solve',revision:0,type:'submit',word:i,answer},1001);
+ for(const p of ['a','b']){const v=matchView(s,p);assert.equal(v.game.resolved[i].answer,answer);assert.equal(v.game.words[i].answer,undefined);assert.equal(v.game.resolved[s.game.active],undefined);}
+});

@@ -2,6 +2,9 @@ package com.kelimebulmacasi.a1
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -342,17 +345,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             Column(Modifier.fillMaxWidth().then(if(quiz||finished)Modifier.weight(1f)else Modifier.heightIn(max=320.dp))
                 .verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
                 if(finished){
-                    val result=view.optJSONObject("result")
-                    Text("Maç tamamlandı",color=Wq122Gold,style=MaterialTheme.typography.headlineSmall)
-                    val winner=result?.optString("winner").orEmpty()
-                    Text(when{
-                        result?.optString("kind")=="incomplete"->"Ortak bulmaca tamamlanmadı."
-                        result?.optString("kind")=="forfeit"->if(winner==uid||winner==team)"Hükmen kazandın." else "Hükmen sonuçlandı."
-                        winner.isNotBlank()&&winner!="null"->if(winner==uid||winner==team)"Kazandın!" else "Maç sona erdi."
-                        kind=="coop"->"Ortak ilerleme: "+game.optJSONObject("solved")?.length()
-                        else->"Maç sonucu"
-                    },color=Wq122Ink)
-                    Button(onClick=onBack){Text("Arena'ya dön")}
+                    Wq150ResultPanel(view,uid,team,profiles,ownAvatar,session.profileName,onBack)
                 }else{
                     Text(if(choose)"Çözeceğin kelimeyi seç" else prompt,color=Wq122Ink,fontWeight=FontWeight.Bold)
                     if(choose||free){
@@ -479,5 +472,86 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
         }
     }else Wq150ArenaEntry(session,endpoint,back,account,legacy){r,v->
         if(uid.isNotBlank()&&wq150ValidRoom(r)){prefs.edit().putString(uid,r).apply();room=r;initial=v}
+    }
+}
+
+@Composable
+private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSONObject,ownAvatar:String,ownName:String,onBack:()->Unit){
+    val kind=view.optString("kind")
+    val result=view.optJSONObject("result")
+    val game=view.optJSONObject("game")?:JSONObject()
+    val reason=result?.optString("kind").orEmpty()
+    val winner=result?.optString("winner").orEmpty().takeUnless{it=="null"}.orEmpty()
+    val won=winner.isNotBlank()&&(winner==uid||winner==team)
+    val complete=kind=="coop"&&result?.optBoolean("completed")==true
+    val title=when{
+        reason=="mutual-finish"->"Karşılıklı anlaşmayla bitti"
+        reason=="no-contest"->"Maç sonuçlanamadı"
+        reason=="incomplete"->"Ortak bulmaca tamamlanmadı"
+        complete->"Birlikte başardınız!"
+        reason=="forfeit"->if(won)"Hükmen kazandın!" else "Hükmen sonuçlandı"
+        won->"Kazandın!"
+        winner.isNotBlank()->"Maç sona erdi"
+        kind=="coop"->"Ortak bulmaca sona erdi"
+        else->"Berabere"
+    }
+    val ids=view.optJSONObject("connection").objects("players").map{it.optString("id")}
+    val winners=if(kind=="team")game.objects("teams").firstOrNull{it.optString("id")==winner}.strings("members") else listOf(winner).filter{it.isNotBlank()}
+    val hero=if(complete)uid else winners.firstOrNull{it==uid}?:winners.firstOrNull()
+    val summary=view.optJSONObject("summary")
+    val playerStats=summary?.optJSONObject("players")?:if(kind=="team")game.optJSONObject("stats")?.optJSONObject("players") else game.optJSONObject("stats")
+    val teamStats=summary?.optJSONObject("teams")?:game.optJSONObject("stats")?.optJSONObject("teams")
+    fun name(id:String)=profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}?:if(id==uid)ownName else "Oyuncu "+(ids.indexOf(id)+1)
+    var entered by remember{mutableStateOf(false)}
+    LaunchedEffect(Unit){entered=true}
+    val scale by animateFloatAsState(if(entered)1f else .72f,animationSpec=spring(dampingRatio=.55f,stiffness=180f),label="arena-victory")
+    Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.large,modifier=Modifier.fillMaxWidth(),
+        border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold)){
+        Column(Modifier.padding(16.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(6.dp)){
+            Text("MAÇ SONUCU",color=Wq122Gold,fontSize=12.sp,fontWeight=FontWeight.Bold)
+            if(hero!=null){
+                Wq150Portrait(profiles.optJSONObject(hero),ownAvatar.takeIf{hero==uid},
+                    Modifier.fillMaxWidth().height(180.dp).graphicsLayer{scaleX=scale;scaleY=scale},victory=true)
+                Text(name(hero),color=Wq122Gold,fontWeight=FontWeight.Bold)
+            }
+            Text(title,color=Wq122Gold,style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Black,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+            val done=summary?.optInt("solved",-1)?:-1
+            val total=summary?.optInt("total",0)?:0
+            if(done>=0&&total>0){
+                Text((if(kind=="quiz")"Tamamlanan soru" else "Çözülen kelime")+": "+done+"/"+total,color=Wq122Ink)
+                LinearProgressIndicator(progress={ (done.toFloat()/total).coerceIn(0f,1f) },modifier=Modifier.fillMaxWidth(),color=Wq122Gold)
+            }
+        }
+    }
+    if(kind=="team")game.objects("teams").forEachIndexed{i,t->
+        val id=t.optString("id")
+        Wq150StatCard("Takım "+(i+1),teamStats?.optJSONObject(id),id==winner)
+    }
+    ids.forEach{id->Wq150StatCard(name(id),playerStats?.optJSONObject(id),id in winners)}
+    Button(onClick=onBack,modifier=Modifier.fillMaxWidth()){Text("Arena'ya dön")}
+}
+@Composable
+private fun Wq150StatCard(name:String,stats:JSONObject?,winner:Boolean){
+    Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth(),
+        border=if(winner)androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold)else null){
+        Column(Modifier.padding(12.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){
+            Row(verticalAlignment=Alignment.CenterVertically){
+                Text(name,color=Wq122Ink,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f))
+                if(stats?.has("score")==true)Text(stats.optInt("score").toString()+" puan",color=Wq122Gold,fontWeight=FontWeight.Black)
+            }
+            if(stats==null)Text("İstatistik henüz alınamadı.",color=Wq122Ink,fontSize=12.sp)
+            else listOf("correct" to "Doğru","wrong" to "Yanlış","pass" to "Pas","timeout" to "Süre doldu","skip" to "Geçilen","hints" to "İpucu","spent" to "Takım ipucu")
+                .filter{stats.has(it.first)}.chunked(3).forEach{row->
+                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)){
+                        row.forEach{(key,label)->
+                            Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
+                                Text(stats.optInt(key).toString(),color=if(key=="correct")Color(0xFF91E8AA)else if(key=="wrong")Color(0xFFFFB4B4)else Wq122Gold,fontWeight=FontWeight.Bold)
+                                Text(label,color=Wq122Ink,fontSize=12.sp)
+                            }
+                        }
+                        repeat(3-row.size){Spacer(Modifier.weight(1f))}
+                    }
+                }
+        }
     }
 }

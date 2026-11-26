@@ -136,8 +136,16 @@ export function matchTick(state,now){
 export function matchView(s,uid,at=s.now){
  if(!roster(s.game).includes(uid))fail('Not a participant');
  const game=s.kind==='duel'?publicDuel(s.game,uid):s.kind==='coop'?coopView(s.game):s.kind==='quiz'?quizView(s.game,uid):teamView(s.game,uid);
+ // Expose only resolved words and terminal aggregate statistics. No answers
+ // to unplayed questions, even after a mutually agreed or forfeited finish.
+ if(s.kind==='duel')game.resolved=Object.fromEntries(Object.entries(s.game.resolved).map(([i,r])=>[i,{...r,answer:s.game.words[Number(i)].answer}]));
+ const final=phase(s)==='finished';
+ const summary=final?{players:s.kind==='team'?s.game.playerStats:s.game.stats,
+  teams:s.kind==='team'?s.game.teamStats:undefined,
+  solved:s.kind==='coop'?Object.keys(s.game.solved).length:s.kind==='quiz'?s.game.history.length:Object.keys(s.game.resolved).filter(i=>s.game.resolved[i].kind==='solved').length,
+  total:s.settings.count}:undefined;
  // Never leak transport epochs, private bank, seed or other players' hint claims.
- return clone({schema:150,kind:s.kind,settings:s.settings,revision:s.revision,phase:phase(s),result:s.result,
+ return clone({schema:150,kind:s.kind,settings:s.settings,revision:s.revision,phase:phase(s),result:s.result,summary,
   connection:{phase:s.connection.phase,pausedAt:s.pauseAt,players:s.connection.players.map(({id,connected,drops,until,removed,reason})=>({id,connected,drops,until,removed,reason}))},
   serverNow:at,social:socialView(s.social??emptySocial(),at),game});
 }
