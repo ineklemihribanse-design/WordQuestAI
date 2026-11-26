@@ -12259,5 +12259,1445 @@ export const foundationQuestions = [
     ],
     "correct": 0,
     "explanation": "Spell out açıkça ifade etmektir; diğer seçenekler dışlamak, çıkarmak veya gerçekleştirmek gibi farklı işlevler taşır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is the bread fresh? B: ____ A: Great! I'll take two loaves.",
+    "options": [
+      "Yes, it was baked this morning.",
+      "No, it was baked last week.",
+      "Yes, the milk is fresh.",
+      "No, we don't sell bread.",
+      "The bread costs two pounds."
+    ],
+    "correct": 0,
+    "explanation": "Sonraki olumlu tepki taze ekmek bilgisini destekler."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can I sit here? B: ____ A: Thanks. I'll put my bag on the floor.",
+    "options": [
+      "Yes, this seat is free.",
+      "Sorry, my friend is sitting here.",
+      "No, the seat is broken.",
+      "Please wait outside.",
+      "The next bus leaves at five."
+    ],
+    "correct": 0,
+    "explanation": "Oturma izni verildiği için teşekkür edip çantasını yere koyuyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_3",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Where's my hat? B: ____ A: Oh yes, I can see it on the chair.",
+    "options": [
+      "It's on the chair by the window.",
+      "It's under your bed.",
+      "It's in your school bag.",
+      "It's behind the door.",
+      "It's in the car."
+    ],
+    "correct": 0,
+    "explanation": "Son cümle şapkanın sandalyede olduğunu doğrular."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_4",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Do you have any apples? B: ____ A: OK, I'll buy oranges instead.",
+    "options": [
+      "Sorry, we've sold all the apples.",
+      "Yes, we have red and green apples.",
+      "Yes, apples are on sale today.",
+      "We have a kilo of apples here.",
+      "You can have these apples for free."
+    ],
+    "correct": 0,
+    "explanation": "Instead başka meyveye geçişi, elma bulunmadığını gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_5",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is the film at six or seven? B: ____ A: Then let's meet at half past six.",
+    "options": [
+      "It starts at seven.",
+      "It starts at six.",
+      "It starts at half past five.",
+      "It starts at five.",
+      "It starts at a quarter past six."
+    ],
+    "correct": 0,
+    "explanation": "Altı buçukta buluşmak için verilen seçeneklerden yalnızca yedi, film başlamadan önce buluşmaya olanak sağlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_6",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Are you going to school by bus today? B: ____ A: OK, I'll walk with you.",
+    "options": [
+      "No, I'm walking today.",
+      "Yes, I'm taking the bus.",
+      "No, my dad is driving me.",
+      "Yes, the bus is here.",
+      "No, I'm staying at home."
+    ],
+    "correct": 0,
+    "explanation": "Walk with you yürüyerek gidileceğini doğrular."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_7",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can I have a small pizza, please? B: ____ A: That's fine. I'll have a large one.",
+    "options": [
+      "Sorry, we only have large pizzas left.",
+      "Yes, here's your small pizza.",
+      "Sorry, we have no pizzas at all.",
+      "We only have small pizzas today.",
+      "A small pizza is cheaper than a large one."
+    ],
+    "correct": 0,
+    "explanation": "Büyük pizza tercihine geçmesi küçük boyun kalmadığını gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_8",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is this your first day at school? B: ____ A: Welcome! Let me show you the classroom.",
+    "options": [
+      "Yes, I'm new here.",
+      "No, I've been here for two years.",
+      "No, I teach here every day.",
+      "No, today is my last day.",
+      "I come to this classroom every morning."
+    ],
+    "correct": 0,
+    "explanation": "Welcome ve sınıfı gösterme, yeni öğrenciye verilen tepkidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_9",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How many tickets do you need? B: ____ A: Here are your three tickets.",
+    "options": [
+      "Two for adults and one for a child.",
+      "Two for adults.",
+      "One for an adult and one for a child.",
+      "Three for adults and one for a child.",
+      "One for a child."
+    ],
+    "correct": 0,
+    "explanation": "İki yetişkin ve bir çocuk toplam üç bilet eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_10",
+    "level": "A1",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Is the library open on Sunday? B: ____ A: Then I'll go on Monday.",
+    "options": [
+      "No, it's closed on Sundays.",
+      "Yes, it's open all day Sunday.",
+      "Yes, it opens at nine on Sunday.",
+      "No, it's closed on Sunday and Monday.",
+      "It's open only on Sundays."
+    ],
+    "correct": 0,
+    "explanation": "Pazartesiye bırakma pazar günü kapalı olmasıyla uyumludur."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_11",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Did you manage to book a table for tonight? B: ____ A: Perfect. We can have dinner there at eight.",
+    "options": [
+      "Yes, they have a table available at eight.",
+      "No, the restaurant is fully booked tonight.",
+      "Yes, but our reservation is for tomorrow.",
+      "They can only offer us a table at lunchtime.",
+      "They don't accept reservations in the evening."
+    ],
+    "correct": 0,
+    "explanation": "Yanıt bu akşam saat sekizde rezervasyon bulunduğunu göstermelidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_12",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: I'd like to exchange this jacket. B: ____ A: No, I'd prefer the same colour in a bigger size.",
+    "options": [
+      "Would you like a different colour?",
+      "Would you like a bigger size in the same colour?",
+      "Would you like to keep this jacket?",
+      "Would you prefer a smaller size?",
+      "Would you like the same jacket again?"
+    ],
+    "correct": 0,
+    "explanation": "No ve same colour, farklı renk önerisinin reddedildiğini gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_13",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Have you found somewhere to stay? B: ____ A: That's a good idea. We won't need a taxi every morning.",
+    "options": [
+      "Yes, I've booked a hotel next to the conference centre.",
+      "Yes, I've booked a hotel outside the city.",
+      "No, I'm still looking for a hotel.",
+      "Yes, I've booked a hotel near the airport, far from the conference.",
+      "No, I'll travel from home each day."
+    ],
+    "correct": 0,
+    "explanation": "Her sabah taksiye ihtiyaç olmaması konferans merkezine yakın konaklamayı destekler."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_14",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Why are you taking the earlier train? B: ____ A: Oh, I see. You need extra time for your connection.",
+    "options": [
+      "I have to change trains at an unfamiliar station.",
+      "The earlier train goes directly to my destination.",
+      "My destination is the final stop, so there is no connection.",
+      "The later train offers a direct service at a higher price.",
+      "I prefer travelling when the train is quiet."
+    ],
+    "correct": 0,
+    "explanation": "Connection aktarma anlamındadır; yabancı istasyonda tren değiştirmek ek süre gerektirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_15",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Did you finish the book I lent you? B: ____ A: No problem. You can keep it until next Friday.",
+    "options": [
+      "Not yet. I've still got two chapters to read.",
+      "Yes, I finished it last week and returned it.",
+      "Yes, but I left it at your house.",
+      "I haven't borrowed a book from you.",
+      "I finished it and bought my own copy."
+    ],
+    "correct": 0,
+    "explanation": "Ek süre verilmesi kitabın henüz bitmediğini gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_16",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Could you collect my parcel this afternoon? B: ____ A: That's fine. The collection point stays open until seven.",
+    "options": [
+      "I can go at six, after work.",
+      "I collected it yesterday.",
+      "I won't be in town at all today.",
+      "I can go tomorrow morning.",
+      "I can't go there before eight."
+    ],
+    "correct": 0,
+    "explanation": "Altıda gitmek yedide kapanan noktaya yetişir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_17",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How was your first driving lesson? B: ____ A: Don't worry. You'll feel more confident with practice.",
+    "options": [
+      "I was nervous, especially when I had to turn at a junction.",
+      "I felt completely confident from the beginning.",
+      "The instructor said I was ready for the final test.",
+      "The lesson was cancelled before it began.",
+      "I enjoyed it so much that I booked another immediately."
+    ],
+    "correct": 0,
+    "explanation": "Daha fazla güven kazanma tavsiyesi ilk derste yaşanan gerginliğe karşılık gelir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_18",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Are we allowed to take photos inside the museum? B: ____ A: All right. I'll turn the flash off.",
+    "options": [
+      "Yes, but we mustn't use the flash.",
+      "No, photography is completely forbidden.",
+      "Yes, flash photography is required.",
+      "We can only take photos outside.",
+      "We need a special permit for any photo."
+    ],
+    "correct": 0,
+    "explanation": "Flaş kapatmak, flaşsız fotoğraf izniyle uyumludur."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_19",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Why did you send the shoes back? B: ____ A: Did you ask for the next size up?",
+    "options": [
+      "They were too tight across my feet.",
+      "They were too loose across my feet.",
+      "They were the wrong colour.",
+      "They arrived later than expected.",
+      "One of the shoes was missing."
+    ],
+    "correct": 0,
+    "explanation": "Daha büyük numara önerisi ayakkabıların sıkmasıyla ilişkilidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_20",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What happened to the cake you made? B: ____ A: Next time, try setting a timer.",
+    "options": [
+      "I left it in the oven too long and it burnt.",
+      "I forgot to buy the ingredients.",
+      "I dropped it while carrying it to the table.",
+      "I used salt instead of sugar.",
+      "I gave it to my neighbour."
+    ],
+    "correct": 0,
+    "explanation": "Zamanlayıcı önerisi fırında fazla bekletip yakma sorununa uygundur."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_21",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Can we use your car this weekend? B: ____ A: No problem. I'll return it on Sunday evening.",
+    "options": [
+      "Yes, as long as I have it back before Monday.",
+      "No, I'm using it all weekend.",
+      "Yes, but I need it back on Saturday morning.",
+      "It's being repaired until next Tuesday.",
+      "I sold it last month."
+    ],
+    "correct": 0,
+    "explanation": "Pazar akşamı iade pazartesiden önce koşulunu karşılar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_22",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Why don't we go swimming this afternoon? B: ____ A: Then let's go for a walk instead.",
+    "options": [
+      "The pool is closed for maintenance today.",
+      "The pool is open until eight.",
+      "I've brought my swimming costume.",
+      "There's a discount on swimming tickets today.",
+      "I booked two places for us earlier."
+    ],
+    "correct": 0,
+    "explanation": "Yüzme havuzu kapalı olduğu için yürüyüş alternatifi öneriliyor."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_23",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: What do I need to do before the appointment? B: ____ A: OK, I'll complete it online tonight.",
+    "options": [
+      "Fill in the registration form on our website.",
+      "Bring your passport to the appointment.",
+      "Arrive ten minutes before your appointment.",
+      "Call reception when you arrive.",
+      "Sign the form at the reception desk tomorrow."
+    ],
+    "correct": 0,
+    "explanation": "Complete it online tonight, çevrim içi forma gönderme yapar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_24",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: How did you get home after the concert? B: ____ A: That was lucky. The last bus had already left.",
+    "options": [
+      "A friend offered me a lift.",
+      "I caught the last bus after the concert.",
+      "I waited for the last bus and took it.",
+      "I took the bus before the concert ended.",
+      "I stayed at the concert hall all night."
+    ],
+    "correct": 0,
+    "explanation": "Son otobüsün kaçırıldığı durumda arkadaşın arabasıyla dönmek şanslı bir çözümdür."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_25",
+    "level": "A2",
+    "yds": null,
+    "topic": "Completion",
+    "prompt": "A: Have you seen my glasses? B: ____ A: You're right. They're on top of my head!",
+    "options": [
+      "Aren't you wearing them?",
+      "Have you checked the kitchen table?",
+      "Did you leave them at work?",
+      "Are they in your jacket pocket?",
+      "Perhaps you left them in the car."
+    ],
+    "correct": 0,
+    "explanation": "Gözlüğün kişinin üzerinde olduğu yönündeki öneri son cümleyle uyumludur."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: The shop will not open until ten tomorrow.",
+    "options": [
+      "The shop will open no earlier than ten tomorrow.",
+      "The shop will close at ten tomorrow.",
+      "The shop will be open only until ten tomorrow.",
+      "The shop will open before ten tomorrow.",
+      "The shop will remain closed all day tomorrow."
+    ],
+    "correct": 0,
+    "explanation": "Not until başlangıcın ondan önce olmayacağını belirtir; kapanış saati değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: I was able to finish the report without any help.",
+    "options": [
+      "I managed to complete the report on my own.",
+      "I needed some help to complete the report.",
+      "I could not finish the report on my own.",
+      "I offered to help someone finish the report.",
+      "I was allowed to finish the report later."
+    ],
+    "correct": 0,
+    "explanation": "Was able to gerçekleşen başarıyı, without help bağımsızlığı bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: You can borrow my bike provided that you return it by six.",
+    "options": [
+      "You may use my bike if you bring it back no later than six.",
+      "You can borrow my bike only after six.",
+      "You may keep my bike until tomorrow morning.",
+      "You must borrow my bike and return it exactly at six.",
+      "You can use my bike even if you return it late."
+    ],
+    "correct": 0,
+    "explanation": "Provided that koşul, by six en geç altı demektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: There is hardly any bread left.",
+    "options": [
+      "Very little bread remains.",
+      "There is plenty of bread left.",
+      "There is exactly one loaf left.",
+      "All the bread has been eaten.",
+      "Nobody has eaten the bread yet."
+    ],
+    "correct": 0,
+    "explanation": "Hardly any çok az miktar demektir; kesin sıfır değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: Tom used to cycle to work.",
+    "options": [
+      "Tom cycled to work regularly in the past.",
+      "Tom is cycling to work right now.",
+      "Tom has just started cycling to work.",
+      "Tom is getting used to cycling to work.",
+      "Tom has never cycled to work."
+    ],
+    "correct": 0,
+    "explanation": "Used to geçmiş alışkanlığı ifade eder, alışma süreci değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: We have been waiting for the bus since nine.",
+    "options": [
+      "We started waiting at nine and are still waiting.",
+      "We waited until nine and then left.",
+      "We will start waiting at nine tomorrow.",
+      "We have waited for nine hours.",
+      "We caught the bus at nine."
+    ],
+    "correct": 0,
+    "explanation": "Since başlangıç anı, present perfect continuous süren eylem bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: Neither of the two rooms has a balcony.",
+    "options": [
+      "Both rooms lack a balcony.",
+      "Only one room has a balcony.",
+      "Both rooms have balconies.",
+      "At least one room has a balcony.",
+      "One room has a larger balcony."
+    ],
+    "correct": 0,
+    "explanation": "Neither iki seçenekten hiçbirini belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_33",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: I prefer walking to taking the bus.",
+    "options": [
+      "I like walking more than travelling by bus.",
+      "I like travelling by bus more than walking.",
+      "I always walk because there are no buses.",
+      "I enjoy both activities equally.",
+      "I prefer to walk to the bus stop and then take the bus."
+    ],
+    "correct": 0,
+    "explanation": "Prefer X to Y tercih yönünü korur, zorunluluk bildirmez."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_34",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: The package is light enough for a child to carry.",
+    "options": [
+      "A child can carry the package because it is not too heavy.",
+      "The package is too heavy for a child to carry.",
+      "A child must carry the package alone.",
+      "The package is lighter than every other package.",
+      "Only children are allowed to carry the package."
+    ],
+    "correct": 0,
+    "explanation": "Enough yeterliliği belirtir; zorunluluk veya özel izin değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_35",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the sentence closest in meaning: The café is closed due to a water leak.",
+    "options": [
+      "A water leak is the reason the café is closed.",
+      "The café closed before the water leak occurred.",
+      "The café is open despite a water leak.",
+      "The café will close if a water leak occurs.",
+      "The café caused a water leak by closing."
+    ],
+    "correct": 0,
+    "explanation": "Due to gerçek sebebi bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The customer says the replacement item arrived damaged too. B: ____ A: Agreed. Sending another one without checking the packaging could repeat the problem.",
+    "options": [
+      "We should find out what caused the damage before arranging another replacement.",
+      "Let's send another item immediately using exactly the same packaging.",
+      "We should ask whether the customer wants to order a different product next year.",
+      "The first item was delivered sooner than expected.",
+      "We can offer a discount on an unrelated product."
+    ],
+    "correct": 0,
+    "explanation": "Sonraki cümle yeni gönderimden önce hasar nedeninin incelenmesini destekler."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The report is ready, but one section still contains figures from last year. B: ____ A: I'll contact the finance team for the latest data.",
+    "options": [
+      "We need to update those figures before circulating it.",
+      "Let's send it now and remove all the figures later.",
+      "Last year's figures should be used for every section.",
+      "We need to change the design of the title page first.",
+      "The report should be circulated only after next year's figures arrive."
+    ],
+    "correct": 0,
+    "explanation": "Güncel veri istemek geçen yılın rakamlarını güncelleme amacına bağlanır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: I'm thinking of accepting a job in another city. B: ____ A: Good point. I hadn't considered the cost of moving.",
+    "options": [
+      "Have you included relocation expenses in your calculations?",
+      "Have you already signed the employment contract?",
+      "Do you know what time the interview starts?",
+      "Will you be working in the same department?",
+      "Have you compared the length of the two interviews?"
+    ],
+    "correct": 0,
+    "explanation": "Taşınma maliyeti hakkındaki sonraki tepki relocation expenses sorusunu doğrular."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: We've received fewer registrations than expected. B: ____ A: Yes, we can contact those who started the form but never submitted it.",
+    "options": [
+      "Perhaps we should check whether applicants are having difficulty completing the form.",
+      "We should remove the registration form immediately.",
+      "Let's invite only people who have already registered.",
+      "We could increase the fee for those who have completed the form.",
+      "Perhaps we should make the venue smaller without investigating the cause."
+    ],
+    "correct": 0,
+    "explanation": "Başlayıp tamamlamayanlarla iletişim kurmak formdaki olası sorunları araştırmaya yöneliktir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The delivery is scheduled for tomorrow, but the office will be empty. B: ____ A: Good idea. I'll ask reception whether they can accept it on our behalf.",
+    "options": [
+      "Could someone in another department receive it for us?",
+      "Can we confirm that our office will be open all day?",
+      "Should we ask the supplier to leave it inside our locked office?",
+      "Could we collect the package before it has been sent?",
+      "Should we tell the supplier that nobody will ever be available?"
+    ],
+    "correct": 0,
+    "explanation": "Resepsiyonun teslim alması başka bir görevlinin paketi kabul etmesi önerisini karşılar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: I keep forgetting the words I learn in class. B: ____ A: I'll try reviewing them a little each day instead of all at once.",
+    "options": [
+      "Have you tried spacing your vocabulary reviews over several days?",
+      "Why don't you write all the words once before the final exam?",
+      "Have you tried learning twice as many new words every evening?",
+      "Perhaps you should stop reviewing words you find difficult.",
+      "Would you prefer to study the entire list in one long session?"
+    ],
+    "correct": 0,
+    "explanation": "Aralıklı tekrar önerisi her gün az miktarda çalışma planına bağlanır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_42",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The hotel has offered us a cheaper room, but it doesn't include breakfast. B: ____ A: You're right. The total cost might actually be higher.",
+    "options": [
+      "We should add the cost of breakfast before comparing the two offers.",
+      "We should assume the cheaper room is always the better choice.",
+      "Let's compare only the size of the rooms.",
+      "We should ask whether the hotel has a swimming pool.",
+      "Let's choose the room with breakfast without checking its price."
+    ],
+    "correct": 0,
+    "explanation": "Toplam maliyetin değişebilmesi kahvaltı maliyetini karşılaştırmaya katmayı gerektirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_43",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The new timetable seems convenient for most staff. B: ____ A: That's true. We should check with those who rely on public transport.",
+    "options": [
+      "Have we considered employees whose journeys depend on early or late bus services?",
+      "Have we printed enough copies of the timetable for the staff room?",
+      "Should we change the names of the shifts?",
+      "Do we know which employees prefer to work from home?",
+      "Have we compared the cost of printing the old and new schedules?"
+    ],
+    "correct": 0,
+    "explanation": "Toplu taşımaya bağımlı çalışanların durumu doğrudan servis saatleriyle ilişkilidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_44",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The survey results look encouraging. B: ____ A: I agree. We should find out why so few people replied before drawing conclusions.",
+    "options": [
+      "But could the low response rate have affected the findings?",
+      "So shall we publish the results without any further checks?",
+      "Do you think we should use a different colour for the charts?",
+      "Should we exclude people who answered all the questions?",
+      "Can we assume that non-respondents agreed with the majority?"
+    ],
+    "correct": 0,
+    "explanation": "Düşük yanıt oranı bulguların temsil gücünü etkileyebilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_45",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The repair shop says it could take three weeks to fix my laptop. B: ____ A: I'll ask whether they have a machine I can use in the meantime.",
+    "options": [
+      "Can they lend you a temporary replacement?",
+      "Have they explained why the original laptop was expensive?",
+      "Could you wait until the repair is complete without using a computer?",
+      "Can they guarantee that you will never need another repair?",
+      "Did they offer to replace the laptop's charger last year?"
+    ],
+    "correct": 0,
+    "explanation": "Geçici kullanabileceği cihaz istemek ödünç bilgisayar önerisine karşılıktır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_46",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: We have booked the hall, but the speaker hasn't confirmed the date. B: ____ A: Yes, I'll hold off on publishing the invitations for now.",
+    "options": [
+      "Perhaps we should wait for confirmation before announcing the event.",
+      "Let's publish the invitations before contacting the speaker again.",
+      "We should assume the speaker is available because the hall is booked.",
+      "Let's send the invitations with a date chosen at random.",
+      "We should cancel the hall without checking the speaker's availability."
+    ],
+    "correct": 0,
+    "explanation": "Hold off publishing duyurunun doğrulama gelene kadar ertelenmesidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_47",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: Our team has completed the task ahead of schedule. B: ____ A: Good point. We can use the spare time to test it carefully.",
+    "options": [
+      "Shall we check the results for errors before handing them over?",
+      "Shall we submit it now without examining the results?",
+      "Should we extend the deadline even though the work is finished?",
+      "Can we begin the task again from the beginning?",
+      "Should we tell the client that we have missed the deadline?"
+    ],
+    "correct": 0,
+    "explanation": "Kalan zamanın test için kullanılması hataları önceden kontrol etme önerisini destekler."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_48",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The course is affordable, but it takes place during my working hours. B: ____ A: I'll ask whether they record the sessions.",
+    "options": [
+      "Is there a way to access the lessons at a different time?",
+      "Have you asked for a discount on the course fee?",
+      "Could you choose a more expensive textbook?",
+      "Do you know how many students attend the lessons?",
+      "Have you checked whether the classroom has enough seats?"
+    ],
+    "correct": 0,
+    "explanation": "Ders kayıtları zaman çakışmasını aşmak için alternatif erişim sağlar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_49",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The road is closed because of repairs. B: ____ A: I'll check whether that route is suitable for heavy vehicles.",
+    "options": [
+      "Could we use the alternative road through the industrial area?",
+      "Could we continue along the closed road?",
+      "Should we wait for all repairs to end before planning anything?",
+      "Can we ask why the road was originally built?",
+      "Should we change the date of the next vehicle inspection?"
+    ],
+    "correct": 0,
+    "explanation": "That route alternatif güzergâha gönderme yapar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_50",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Completion",
+    "prompt": "A: The old machine works, but it's expensive to maintain. B: ____ A: We should calculate both before deciding whether to replace it.",
+    "options": [
+      "Have we compared future repair costs with the price of a replacement?",
+      "Have we counted how many machines are painted the same colour?",
+      "Should we replace it without checking the budget?",
+      "Can we ignore maintenance costs since the machine still works?",
+      "Do we know who first purchased the machine?"
+    ],
+    "correct": 0,
+    "explanation": "Both bakım ve değiştirme maliyetlerini ifade eder."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_51",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: We were unable to finish the work because the materials arrived later than expected.",
+    "options": [
+      "The late arrival of the materials prevented us from completing the work.",
+      "We delayed the arrival of the materials because the work was unfinished.",
+      "We finished the work even though the materials arrived late.",
+      "The materials arrived late because we completed the work early.",
+      "We had finished the work before the materials arrived."
+    ],
+    "correct": 0,
+    "explanation": "Sebep malzemenin geç gelmesi, sonuç işin tamamlanamamasıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_52",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The company has not yet decided whether to extend the trial period.",
+    "options": [
+      "A decision about extending the trial period is still pending.",
+      "The company has decided not to extend the trial period.",
+      "The company has already extended the trial period.",
+      "The trial period has ended because the company made a decision.",
+      "The company has decided to extend the trial without reviewing it."
+    ],
+    "correct": 0,
+    "explanation": "Kararın henüz alınmaması, olumsuz karar alındığı anlamına gelmez."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_53",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Only employees who have completed the training may operate the machine.",
+    "options": [
+      "Operating the machine is permitted exclusively for employees who have finished the training.",
+      "All employees who complete the training must operate the machine.",
+      "Employees may operate the machine before completing the training.",
+      "The training is available only to employees who already operate the machine.",
+      "Employees who have completed the training are prohibited from operating the machine."
+    ],
+    "correct": 0,
+    "explanation": "Only ve may birlikte izin için gerekli koşulu belirtir, zorunluluk değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_54",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The journey took twice as long as we had anticipated.",
+    "options": [
+      "The actual journey lasted double the expected time.",
+      "The journey lasted half the expected time.",
+      "We expected the journey to take twice its actual duration.",
+      "The journey lasted two hours longer than expected.",
+      "The journey lasted nearly the same time as expected."
+    ],
+    "correct": 0,
+    "explanation": "Twice as long beklenen sürenin iki katıdır; iki saat eklenmesi değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_55",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Hardly anyone attended the meeting despite the reminders.",
+    "options": [
+      "Very few people came to the meeting although reminders had been sent.",
+      "Nobody received any reminders about the meeting.",
+      "Everyone attended after receiving a reminder.",
+      "The meeting was cancelled before the reminders were sent.",
+      "Many people attended because of the reminders."
+    ],
+    "correct": 0,
+    "explanation": "Hardly anyone çok az kişi, despite ise karşıtlık bildirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_56",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Had we booked earlier, we could have obtained cheaper tickets.",
+    "options": [
+      "Booking earlier might have allowed us to buy cheaper tickets.",
+      "We booked early and obtained cheaper tickets.",
+      "We could have booked earlier if the tickets had been cheaper.",
+      "We will obtain cheaper tickets if we book tomorrow.",
+      "Booking earlier would necessarily have made the tickets more expensive."
+    ],
+    "correct": 0,
+    "explanation": "Üçüncü koşul gerçekleşmemiş geçmiş olasılığı anlatır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_57",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The manager suggested that we reconsider the proposal rather than reject it immediately.",
+    "options": [
+      "The manager recommended reviewing the proposal again instead of dismissing it at once.",
+      "The manager instructed us to reject the proposal after reviewing it.",
+      "The manager rejected the proposal because we did not reconsider it.",
+      "The manager recommended accepting the proposal without further examination.",
+      "The manager insisted that the proposal should never be reconsidered."
+    ],
+    "correct": 0,
+    "explanation": "Reconsider yeniden değerlendirmek, rather than ise diğer eylemin yerine tercih bildirmektir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_58",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The number of complaints fell considerably after the service was improved.",
+    "options": [
+      "There was a substantial decrease in complaints following the service improvements.",
+      "Complaints fell slightly before the service was improved.",
+      "Service quality fell because complaints increased.",
+      "The number of complaints remained unchanged after the improvements.",
+      "The service was improved only after all complaints disappeared."
+    ],
+    "correct": 0,
+    "explanation": "Zaman sırası, düşüş yönü ve considerably derecesi korunur."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_59",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: We cannot afford to replace all the equipment at once.",
+    "options": [
+      "Our budget does not allow us to replace every item simultaneously.",
+      "We cannot afford to replace any equipment at all.",
+      "We have enough money to replace every item immediately.",
+      "We are unwilling to replace equipment even though we can afford it.",
+      "We have already replaced all the equipment in stages."
+    ],
+    "correct": 0,
+    "explanation": "All at once sınırlaması tek seferde tüm ekipmana bütçenin yetmediğini gösterir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_60",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: It was unnecessary for you to send another copy, but you did.",
+    "options": [
+      "You needn't have sent another copy.",
+      "You didn't need to send another copy and did not do so.",
+      "You should have sent another copy.",
+      "You must have forgotten to send another copy.",
+      "You weren't allowed to send another copy."
+    ],
+    "correct": 0,
+    "explanation": "Needn't have + V3 gereksiz olmasına rağmen gerçekleşmiş eylemi belirtir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_61",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The intervention group improved more than the comparison group. B: ____ A: Exactly. Their initial scores were substantially different.",
+    "options": [
+      "Did the analysis account for differences that existed before the intervention?",
+      "Were both groups tested after the intervention?",
+      "Did the researchers publish the average score for each group?",
+      "Was the comparison group given the intervention after the study?",
+      "Did the researchers use the same font for both questionnaires?"
+    ],
+    "correct": 0,
+    "explanation": "Initial scores başlangıç farklarını gösterir; bunların analizde dikkate alınıp alınmadığı sorulmalıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_62",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The organisation has reduced the average time needed to process applications. B: ____ A: That's a concern. Some applicants may still be waiting much longer than others.",
+    "options": [
+      "Have we examined the distribution of waiting times rather than just the mean?",
+      "Have we checked whether the mean is lower than it was last year?",
+      "Should we report only the average processing time?",
+      "Do we know the total number of applications received?",
+      "Have we measured the time needed to design the application form?"
+    ],
+    "correct": 0,
+    "explanation": "Ortalama, bekleme sürelerinin dağılımını ve uzun bekleyenleri gizleyebilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_63",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The new equipment consumes less energy per item produced. B: ____ A: True. Production has increased since the equipment was installed.",
+    "options": [
+      "Has total energy consumption fallen as well?",
+      "Has energy use per item been measured accurately?",
+      "Has the price of each item remained stable?",
+      "Were the old machines manufactured locally?",
+      "Have we compared the dimensions of the old and new machines?"
+    ],
+    "correct": 0,
+    "explanation": "Üretim artışı birim başına tasarrufun toplam tüketimi azaltıp azaltmadığını etkiler."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_64",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The research team found a significant association between two variables. B: ____ A: I agree. The relationship could be explained by a factor that affects both.",
+    "options": [
+      "We should consider possible confounding variables before making a causal claim.",
+      "We should treat the association as proof of direct causation.",
+      "We should conclude that the variables are unrelated.",
+      "We should assume that no other variable affects either outcome.",
+      "We should interpret the association as evidence that all relevant factors were measured."
+    ],
+    "correct": 0,
+    "explanation": "Her iki değişkeni etkileyen karıştırıcı faktörler nedensellik yorumunu sınırlayabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_65",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The pilot scheme has been successful in a small urban district. B: ____ A: Yes. Rural areas may face very different practical constraints.",
+    "options": [
+      "We need to establish whether the findings are transferable to other settings.",
+      "We should repeat the trial in exactly the same district without changing anything.",
+      "The small district is necessarily representative of every region.",
+      "We should assume that rural implementation will be cheaper.",
+      "The positive findings show that further evaluation is unnecessary."
+    ],
+    "correct": 0,
+    "explanation": "Kırsal koşulların farklı olması sonuçların başka ortamlara aktarılabilirliğini sorgulatır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_66",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The survey was anonymous, which encouraged honest responses. B: ____ A: That's right. We cannot link an individual's answers across the two surveys.",
+    "options": [
+      "But anonymity may limit our ability to track changes at the individual level.",
+      "So we can easily identify which employees changed their opinions.",
+      "The anonymity of responses proves that every answer is accurate.",
+      "We should publish the names of participants alongside their responses.",
+      "Anonymity makes it impossible to compare group averages."
+    ],
+    "correct": 0,
+    "explanation": "Anonim cevapların birey düzeyinde zaman içinde eşleştirilmesi mümkün olmayabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_67",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The policy has been criticised for its high initial cost. B: ____ A: Good point. The savings may take several years to become apparent.",
+    "options": [
+      "Shouldn't we consider the long-term financial effects as well?",
+      "Shouldn't we assess the initial cost without looking beyond the first month?",
+      "Can we conclude that any costly policy must be ineffective?",
+      "Should we assume that the initial expense will be recovered immediately?",
+      "Can we compare the policies without estimating their future costs?"
+    ],
+    "correct": 0,
+    "explanation": "Tasarrufların yıllar sonra görülmesi uzun vadeli değerlendirmeyi gerektirir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_68",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: Both translation systems received almost identical overall scores. B: ____ A: Exactly. One may be much better suited to technical documents.",
+    "options": [
+      "We should compare the types of errors each system makes.",
+      "We can assume their performance is identical for every kind of text.",
+      "The difference between their overall scores should be ignored in all contexts.",
+      "We should choose the system with more training data without inspecting its output.",
+      "We should use only the number of documents translated to compare quality."
+    ],
+    "correct": 0,
+    "explanation": "Toplam puanlar benzer olsa da teknik terminoloji gibi farklı hata profilleri olabilir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_69",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The new policy has increased the number of applications from disadvantaged groups. B: ____ A: You're right. We need to know whether they actually obtained places.",
+    "options": [
+      "Have we measured successful admissions as well as applications?",
+      "Have we checked whether the application form has more pages?",
+      "Should we assume that all additional applicants were admitted?",
+      "Do we know the total number of places advertised last year?",
+      "Have we counted the number of people who visited the website?"
+    ],
+    "correct": 0,
+    "explanation": "Başvuru artışı ile kabul edilme sonucu ayrı ölçütlerdir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_70",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The revised test produces results that are highly consistent. B: ____ A: True. A test can repeatedly measure the wrong thing.",
+    "options": [
+      "Consistency alone does not establish that the test measures what it is intended to measure.",
+      "A consistent test is necessarily valid for every intended purpose.",
+      "If the results are consistent, the measurement error must be exactly zero.",
+      "The consistency of the test makes its intended purpose irrelevant.",
+      "A test that measures the intended construct can never produce varying results."
+    ],
+    "correct": 0,
+    "explanation": "Güvenirlik ve geçerlik farklıdır; tutarlı ölçüm doğru kavramı ölçmeyi garanti etmez."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_71",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The model performed well on the data used for its development. B: ____ A: I agree. We should reserve an independent dataset for that purpose.",
+    "options": [
+      "Its predictive performance still needs to be evaluated on unseen observations.",
+      "We should evaluate it exclusively on the same data again.",
+      "We can assume that its future predictions will be equally accurate.",
+      "The development data should be discarded before we record its performance.",
+      "An independent dataset would be useful only for increasing the training sample."
+    ],
+    "correct": 0,
+    "explanation": "Bağımsız veri görülmemiş örneklerde tahmin başarısını değerlendirmeye yarar."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_72",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The conservation project has met its target for the area placed under protection. B: ____ A: Yes. Legal designation does not necessarily improve habitat quality.",
+    "options": [
+      "We should examine ecological outcomes rather than treating designation as proof of recovery.",
+      "Meeting the target guarantees the recovery of every species.",
+      "Habitat condition should be excluded because the legal target has been met.",
+      "The area of protected land cannot be measured reliably.",
+      "We should count the number of laws passed instead of assessing the habitat."
+    ],
+    "correct": 0,
+    "explanation": "Yasal koruma ilanı gerçek ekolojik iyileşme ile aynı değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_73",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The report recommends replacing the current system with a fully automated one. B: ____ A: I agree. Some unusual cases may still require human judgement.",
+    "options": [
+      "We should examine how the new system handles exceptions before removing human review.",
+      "We should automate every task before identifying the types of cases involved.",
+      "Human review is unnecessary whenever software processes routine cases efficiently.",
+      "We should assess the system only on the number of transactions it completes.",
+      "We should reject any form of automation because exceptions exist."
+    ],
+    "correct": 0,
+    "explanation": "İstisnai vakalar insan denetimi gerektirebilir; otomasyonun sınırı değerlendirilmelidir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_74",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The average income in the region has increased. B: ____ A: That's a fair point. The improvement may be concentrated among high earners.",
+    "options": [
+      "Do we know how the gains are distributed across income groups?",
+      "Has the average been calculated using the same currency?",
+      "Has every household received exactly the same increase?",
+      "Should we assume that lower-income households have benefited equally?",
+      "Do we know the number of people who moved into the region last month?"
+    ],
+    "correct": 0,
+    "explanation": "Ortalama gelir artışı dağılım bilgisi olmadan eşit iyileşme göstermez."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_75",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Completion",
+    "prompt": "A: The findings contradict those of an earlier study. B: ____ A: We should compare how each study defined and measured the outcome.",
+    "options": [
+      "Could differences in methodology explain the apparently inconsistent results?",
+      "Should we automatically reject the study published first?",
+      "Does the contradiction prove that neither study collected valid data?",
+      "Can we assume both studies measured precisely the same construct?",
+      "Should the studies be combined without examining their definitions?"
+    ],
+    "correct": 0,
+    "explanation": "Ölçüm tanımları yöntem farklarını açıklamak için karşılaştırılmalıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_76",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The benefits of the intervention were confined largely to participants who completed all the sessions.",
+    "options": [
+      "Most of the observed benefits occurred among participants who attended every session.",
+      "All participants benefited equally regardless of attendance.",
+      "Only participants who missed sessions experienced substantial benefits.",
+      "Completing all sessions was shown to guarantee every possible benefit.",
+      "The intervention produced no benefits among any of its participants."
+    ],
+    "correct": 0,
+    "explanation": "Largely ağırlıklı olarak, yalnızca veya garanti anlamında değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_77",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The decline cannot be attributed exclusively to changes in consumer demand.",
+    "options": [
+      "Changes in consumer demand alone cannot fully explain the decline.",
+      "Changes in consumer demand had no influence on the decline.",
+      "The decline was caused solely by changes in consumer demand.",
+      "The decline necessarily caused consumer demand to change.",
+      "Consumer demand was the only factor examined in the study."
+    ],
+    "correct": 0,
+    "explanation": "Exclusively reddedildiğinde tek neden olması reddedilir, katkı olasılığı değil."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_78",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: It is doubtful whether the proposed measures will be sufficient to address the underlying problem.",
+    "options": [
+      "There is uncertainty about whether the proposed actions will adequately deal with the root problem.",
+      "The proposed measures are certain to solve the underlying problem.",
+      "The proposed measures have already failed to address the problem.",
+      "There is no doubt that the measures are inadequate.",
+      "The underlying problem has been solved without the proposed measures."
+    ],
+    "correct": 0,
+    "explanation": "Doubtful whether yeterlilik konusunda belirsizlik bildirir, kesin başarısızlık değil."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_79",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The results lend some support to the hypothesis but fall short of confirming it.",
+    "options": [
+      "The findings offer partial evidence in favour of the hypothesis without establishing it conclusively.",
+      "The findings conclusively prove the hypothesis despite minor limitations.",
+      "The results contradict the hypothesis in every respect.",
+      "The results provide no evidence relevant to the hypothesis.",
+      "The hypothesis was confirmed before the results were obtained."
+    ],
+    "correct": 0,
+    "explanation": "Some support kısmi destek, fall short of yetersiz kalma anlamındadır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_80",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The new method is no less reliable than the one it is intended to replace.",
+    "options": [
+      "The new method is at least as reliable as the existing one.",
+      "The new method is necessarily more reliable than the existing one.",
+      "The new method is less reliable than the existing one.",
+      "Both methods have been demonstrated to be equally unreliable.",
+      "The existing method is at least as reliable as the new one."
+    ],
+    "correct": 0,
+    "explanation": "No less than en az onun kadar demektir; kesin üstünlük bildirmez."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_81",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Had the initial assumptions been more realistic, the model might have produced more accurate forecasts.",
+    "options": [
+      "More realistic initial assumptions could have improved the model's past predictions.",
+      "The model produced accurate forecasts because its assumptions were realistic.",
+      "More realistic assumptions will certainly improve every future prediction.",
+      "The assumptions were revised because the forecasts were already accurate.",
+      "The model could not have benefited from more realistic assumptions."
+    ],
+    "correct": 0,
+    "explanation": "Had ... been ve might have gerçekleşmemiş geçmiş olasılığıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_82",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The authors stopped short of recommending that the existing regulations be abolished.",
+    "options": [
+      "The authors did not go as far as advising the removal of the current regulations.",
+      "The authors explicitly recommended abolishing all existing regulations.",
+      "The authors recommended that the regulations never be amended.",
+      "The existing regulations were abolished before the authors made recommendations.",
+      "The authors refused to discuss the regulations at all."
+    ],
+    "correct": 0,
+    "explanation": "Stop short of bir eyleme kadar gitmemek demektir, tüm değişiklikleri reddetmek değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_83",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The apparent improvement may partly reflect a change in how the outcome was measured.",
+    "options": [
+      "A change in measurement could account for some of the improvement that appears in the results.",
+      "The improvement was entirely caused by a change in measurement.",
+      "The outcome improved independently of every measurement change.",
+      "The method of measurement changed because the improvement had already been proven.",
+      "The apparent improvement is necessarily a measurement error."
+    ],
+    "correct": 0,
+    "explanation": "May partly olası kısmi katkıdır; tüm nedenin ölçüm olduğunu iddia etmez."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_84",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The findings are relevant insofar as the conditions under which they were obtained resemble those of the intended application.",
+    "options": [
+      "The relevance of the findings depends on the extent to which the original conditions resemble the intended setting.",
+      "The findings are equally relevant regardless of differences between the two settings.",
+      "The findings are relevant only when the conditions are completely identical in every detail.",
+      "The intended application has already been evaluated under the original conditions.",
+      "The similarity of conditions necessarily proves that the findings are accurate."
+    ],
+    "correct": 0,
+    "explanation": "Insofar as benzerlik ölçüsünde koşullu ilgililik bildirir; tam özdeşlik zorunlu değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_85",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The policy was intended to prevent further delays, not to compensate applicants for those that had already occurred.",
+    "options": [
+      "The aim was to avoid future delays rather than reimburse applicants for past ones.",
+      "The policy sought to compensate applicants for past delays and prevent all future ones.",
+      "The policy was introduced because applicants had already received compensation.",
+      "The aim was to compensate for previous delays instead of preventing new ones.",
+      "The policy guaranteed that all delayed applications would receive compensation."
+    ],
+    "correct": 0,
+    "explanation": "Amaç gelecekteki gecikmeleri önlemek, geçmiş gecikmeleri tazmin etmek değil."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_86",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The advantages of the approach must be weighed against the additional demands it places on staff.",
+    "options": [
+      "The approach's benefits need to be considered together with the extra burden on employees.",
+      "The approach should be rejected whenever it creates additional work.",
+      "The additional demands on staff prove that the approach has no advantages.",
+      "The approach's benefits should be evaluated independently of staff workload.",
+      "Staff must accept additional work regardless of the approach's benefits."
+    ],
+    "correct": 0,
+    "explanation": "Weigh against fayda ve maliyeti birlikte tartmayı ifade eder, kesin karar değildir."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_87",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The absence of a measurable effect does not necessarily imply that the intervention was ineffective.",
+    "options": [
+      "Failure to detect an effect does not by itself establish that the intervention failed.",
+      "The intervention was definitely effective because no effect was measured.",
+      "The absence of an effect conclusively proves the intervention was ineffective.",
+      "An effective intervention can never produce a measurable effect.",
+      "The intervention was ineffective because no measurements were taken."
+    ],
+    "correct": 0,
+    "explanation": "Ölçülebilir etki saptanmaması etkisizliği tek başına kanıtlamaz."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_88",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: Not all of the changes observed during the trial can be explained by the revised procedure.",
+    "options": [
+      "The revised procedure cannot account for every change recorded during the trial.",
+      "None of the changes recorded during the trial can be explained by the procedure.",
+      "Every observed change was a consequence of the revised procedure.",
+      "The revised procedure explained changes that occurred only before the trial.",
+      "No changes were observed after the procedure was revised."
+    ],
+    "correct": 0,
+    "explanation": "Not all tümünü reddeder, none gibi hiçbirini değil."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_89",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The researchers were reluctant to generalise from a sample that included only experienced users.",
+    "options": [
+      "The researchers were hesitant to extend the findings beyond a sample restricted to experienced users.",
+      "The researchers were eager to apply the findings to all users.",
+      "The researchers refused to analyse experienced users' responses.",
+      "The researchers concluded that inexperienced users would obtain identical results.",
+      "The researchers had already generalised the findings before collecting data."
+    ],
+    "correct": 0,
+    "explanation": "Reluctant isteksiz veya tereddütlü, sample restriction kapsam sınırlamasıdır."
+  },
+  {
+    "id": "wq150_nov26_dialogue10_90",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the closest meaning: The lower purchase price may be offset by higher maintenance costs over the equipment's lifetime.",
+    "options": [
+      "Higher upkeep expenses could cancel out the advantage of the cheaper initial price.",
+      "The equipment's lower purchase price guarantees lower lifetime costs.",
+      "Higher maintenance costs will necessarily exceed all possible savings.",
+      "The equipment is more expensive to buy but cheaper to maintain.",
+      "The purchase price and maintenance costs are unrelated to lifetime expenditure."
+    ],
+    "correct": 0,
+    "explanation": "Offset dengeleyip avantajı azaltmak veya ortadan kaldırmak, may ise olasılıktır."
   }
 ];
