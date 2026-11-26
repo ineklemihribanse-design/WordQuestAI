@@ -19377,5 +19377,4170 @@ export const foundationQuestions = [
     ],
     "correct": 4,
     "explanation": "bring back: geri getirmek. Diğer seçenekler: bring about: yol açmak; bring forward: öne almak; bring up: konuyu açmak; bring in: getirmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_1_1",
+    "family": "forms15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'dirty' when describing a shirt.",
+    "options": [
+      "clean",
+      "dirty",
+      "wet",
+      "dry",
+      "broken"
+    ],
+    "correct": 0,
+    "explanation": "clean: temiz. Diğer seçenekler: dirty: kirli; wet: ıslak; dry: kuru; broken: kırık."
+  },
+  {
+    "id": "wq150_nov26_forms15_1_2",
+    "family": "forms15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'clean' when describing a floor.",
+    "options": [
+      "clean",
+      "dirty",
+      "wet",
+      "dry",
+      "broken"
+    ],
+    "correct": 1,
+    "explanation": "dirty: kirli. Diğer seçenekler: clean: temiz; wet: ıslak; dry: kuru; broken: kırık."
+  },
+  {
+    "id": "wq150_nov26_forms15_1_3",
+    "family": "forms15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'dry' when describing a towel.",
+    "options": [
+      "clean",
+      "dirty",
+      "wet",
+      "dry",
+      "broken"
+    ],
+    "correct": 2,
+    "explanation": "wet: ıslak. Diğer seçenekler: clean: temiz; dirty: kirli; dry: kuru; broken: kırık."
+  },
+  {
+    "id": "wq150_nov26_forms15_1_4",
+    "family": "forms15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'wet' when describing clothes.",
+    "options": [
+      "clean",
+      "dirty",
+      "wet",
+      "dry",
+      "broken"
+    ],
+    "correct": 3,
+    "explanation": "dry: kuru. Diğer seçenekler: clean: temiz; dirty: kirli; wet: ıslak; broken: kırık."
+  },
+  {
+    "id": "wq150_nov26_forms15_1_5",
+    "family": "forms15_1",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'undamaged' when describing a toy.",
+    "options": [
+      "clean",
+      "dirty",
+      "wet",
+      "dry",
+      "broken"
+    ],
+    "correct": 4,
+    "explanation": "broken: kırık. Diğer seçenekler: clean: temiz; dirty: kirli; wet: ıslak; dry: kuru."
+  },
+  {
+    "id": "wq150_nov26_forms15_2_1",
+    "family": "forms15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'narrow' when describing a road.",
+    "options": [
+      "wide",
+      "narrow",
+      "high",
+      "low",
+      "deep"
+    ],
+    "correct": 0,
+    "explanation": "wide: geniş. Diğer seçenekler: narrow: dar; high: yüksek; low: alçak; deep: derin."
+  },
+  {
+    "id": "wq150_nov26_forms15_2_2",
+    "family": "forms15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'wide' when describing a path.",
+    "options": [
+      "wide",
+      "narrow",
+      "high",
+      "low",
+      "deep"
+    ],
+    "correct": 1,
+    "explanation": "narrow: dar. Diğer seçenekler: wide: geniş; high: yüksek; low: alçak; deep: derin."
+  },
+  {
+    "id": "wq150_nov26_forms15_2_3",
+    "family": "forms15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'low' when describing a wall.",
+    "options": [
+      "wide",
+      "narrow",
+      "high",
+      "low",
+      "deep"
+    ],
+    "correct": 2,
+    "explanation": "high: yüksek. Diğer seçenekler: wide: geniş; narrow: dar; low: alçak; deep: derin."
+  },
+  {
+    "id": "wq150_nov26_forms15_2_4",
+    "family": "forms15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'high' when describing a shelf.",
+    "options": [
+      "wide",
+      "narrow",
+      "high",
+      "low",
+      "deep"
+    ],
+    "correct": 3,
+    "explanation": "low: alçak. Diğer seçenekler: wide: geniş; narrow: dar; high: yüksek; deep: derin."
+  },
+  {
+    "id": "wq150_nov26_forms15_2_5",
+    "family": "forms15_2",
+    "level": "A1",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'shallow' when describing a pool.",
+    "options": [
+      "wide",
+      "narrow",
+      "high",
+      "low",
+      "deep"
+    ],
+    "correct": 4,
+    "explanation": "deep: derin. Diğer seçenekler: wide: geniş; narrow: dar; high: yüksek; low: alçak."
+  },
+  {
+    "id": "wq150_nov26_forms15_3_1",
+    "family": "forms15_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nWilling to share money or possessions with others.",
+    "options": [
+      "generous",
+      "selfish",
+      "patient",
+      "impatient",
+      "honest"
+    ],
+    "correct": 0,
+    "explanation": "generous: cömert. Diğer seçenekler: selfish: bencil; patient: sabırlı; impatient: sabırsız; honest: dürüst."
+  },
+  {
+    "id": "wq150_nov26_forms15_3_2",
+    "family": "forms15_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nThinking only about your own needs, not those of others.",
+    "options": [
+      "generous",
+      "selfish",
+      "patient",
+      "impatient",
+      "honest"
+    ],
+    "correct": 1,
+    "explanation": "selfish: bencil. Diğer seçenekler: generous: cömert; patient: sabırlı; impatient: sabırsız; honest: dürüst."
+  },
+  {
+    "id": "wq150_nov26_forms15_3_3",
+    "family": "forms15_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAble to wait calmly without becoming annoyed.",
+    "options": [
+      "generous",
+      "selfish",
+      "patient",
+      "impatient",
+      "honest"
+    ],
+    "correct": 2,
+    "explanation": "patient: sabırlı. Diğer seçenekler: generous: cömert; selfish: bencil; impatient: sabırsız; honest: dürüst."
+  },
+  {
+    "id": "wq150_nov26_forms15_3_4",
+    "family": "forms15_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nEasily annoyed when something takes a long time.",
+    "options": [
+      "generous",
+      "selfish",
+      "patient",
+      "impatient",
+      "honest"
+    ],
+    "correct": 3,
+    "explanation": "impatient: sabırsız. Diğer seçenekler: generous: cömert; selfish: bencil; patient: sabırlı; honest: dürüst."
+  },
+  {
+    "id": "wq150_nov26_forms15_3_5",
+    "family": "forms15_3",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nTelling the truth rather than deliberately lying.",
+    "options": [
+      "generous",
+      "selfish",
+      "patient",
+      "impatient",
+      "honest"
+    ],
+    "correct": 4,
+    "explanation": "honest: dürüst. Diğer seçenekler: generous: cömert; selfish: bencil; patient: sabırlı; impatient: sabırsız."
+  },
+  {
+    "id": "wq150_nov26_forms15_4_1",
+    "family": "forms15_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nShowing good manners when speaking to strangers.",
+    "options": [
+      "polite",
+      "rude",
+      "brave",
+      "shy",
+      "calm"
+    ],
+    "correct": 0,
+    "explanation": "polite: nazik. Diğer seçenekler: rude: kaba; brave: cesur; shy: utangaç; calm: sakin."
+  },
+  {
+    "id": "wq150_nov26_forms15_4_2",
+    "family": "forms15_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nShowing a lack of respect through bad manners.",
+    "options": [
+      "polite",
+      "rude",
+      "brave",
+      "shy",
+      "calm"
+    ],
+    "correct": 1,
+    "explanation": "rude: kaba. Diğer seçenekler: polite: nazik; brave: cesur; shy: utangaç; calm: sakin."
+  },
+  {
+    "id": "wq150_nov26_forms15_4_3",
+    "family": "forms15_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nWilling to face danger despite feeling afraid.",
+    "options": [
+      "polite",
+      "rude",
+      "brave",
+      "shy",
+      "calm"
+    ],
+    "correct": 2,
+    "explanation": "brave: cesur. Diğer seçenekler: polite: nazik; rude: kaba; shy: utangaç; calm: sakin."
+  },
+  {
+    "id": "wq150_nov26_forms15_4_4",
+    "family": "forms15_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNervous about speaking to unfamiliar people.",
+    "options": [
+      "polite",
+      "rude",
+      "brave",
+      "shy",
+      "calm"
+    ],
+    "correct": 3,
+    "explanation": "shy: utangaç. Diğer seçenekler: polite: nazik; rude: kaba; brave: cesur; calm: sakin."
+  },
+  {
+    "id": "wq150_nov26_forms15_4_5",
+    "family": "forms15_4",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot becoming upset or excited in a stressful situation.",
+    "options": [
+      "polite",
+      "rude",
+      "brave",
+      "shy",
+      "calm"
+    ],
+    "correct": 4,
+    "explanation": "calm: sakin. Diğer seçenekler: polite: nazik; rude: kaba; brave: cesur; shy: utangaç."
+  },
+  {
+    "id": "wq150_nov26_forms15_5_1",
+    "family": "forms15_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNormal and not especially remarkable.",
+    "options": [
+      "ordinary",
+      "unusual",
+      "similar",
+      "different",
+      "identical"
+    ],
+    "correct": 0,
+    "explanation": "ordinary: sıradan. Diğer seçenekler: unusual: alışılmadık; similar: benzer; different: farklı; identical: özdeş."
+  },
+  {
+    "id": "wq150_nov26_forms15_5_2",
+    "family": "forms15_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot often seen or experienced.",
+    "options": [
+      "ordinary",
+      "unusual",
+      "similar",
+      "different",
+      "identical"
+    ],
+    "correct": 1,
+    "explanation": "unusual: alışılmadık. Diğer seçenekler: ordinary: sıradan; similar: benzer; different: farklı; identical: özdeş."
+  },
+  {
+    "id": "wq150_nov26_forms15_5_3",
+    "family": "forms15_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHaving many features in common, but not necessarily the same.",
+    "options": [
+      "ordinary",
+      "unusual",
+      "similar",
+      "different",
+      "identical"
+    ],
+    "correct": 2,
+    "explanation": "similar: benzer. Diğer seçenekler: ordinary: sıradan; unusual: alışılmadık; different: farklı; identical: özdeş."
+  },
+  {
+    "id": "wq150_nov26_forms15_5_4",
+    "family": "forms15_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot the same as another thing.",
+    "options": [
+      "ordinary",
+      "unusual",
+      "similar",
+      "different",
+      "identical"
+    ],
+    "correct": 3,
+    "explanation": "different: farklı. Diğer seçenekler: ordinary: sıradan; unusual: alışılmadık; similar: benzer; identical: özdeş."
+  },
+  {
+    "id": "wq150_nov26_forms15_5_5",
+    "family": "forms15_5",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nExactly the same in every relevant detail.",
+    "options": [
+      "ordinary",
+      "unusual",
+      "similar",
+      "different",
+      "identical"
+    ],
+    "correct": 4,
+    "explanation": "identical: özdeş. Diğer seçenekler: ordinary: sıradan; unusual: alışılmadık; similar: benzer; different: farklı."
+  },
+  {
+    "id": "wq150_nov26_forms15_6_1",
+    "family": "forms15_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'reduce' when discussing a price.",
+    "options": [
+      "increase",
+      "decrease",
+      "maintain",
+      "remove",
+      "add"
+    ],
+    "correct": 0,
+    "explanation": "increase: artırmak. Diğer seçenekler: decrease: azaltmak; maintain: sürdürmek; remove: kaldırmak; add: eklemek."
+  },
+  {
+    "id": "wq150_nov26_forms15_6_2",
+    "family": "forms15_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'increase' when discussing consumption.",
+    "options": [
+      "increase",
+      "decrease",
+      "maintain",
+      "remove",
+      "add"
+    ],
+    "correct": 1,
+    "explanation": "decrease: azaltmak. Diğer seçenekler: increase: artırmak; maintain: sürdürmek; remove: kaldırmak; add: eklemek."
+  },
+  {
+    "id": "wq150_nov26_forms15_6_3",
+    "family": "forms15_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nKeep something at its existing level.",
+    "options": [
+      "increase",
+      "decrease",
+      "maintain",
+      "remove",
+      "add"
+    ],
+    "correct": 2,
+    "explanation": "maintain: sürdürmek. Diğer seçenekler: increase: artırmak; decrease: azaltmak; remove: kaldırmak; add: eklemek."
+  },
+  {
+    "id": "wq150_nov26_forms15_6_4",
+    "family": "forms15_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nTake something away from its current location.",
+    "options": [
+      "increase",
+      "decrease",
+      "maintain",
+      "remove",
+      "add"
+    ],
+    "correct": 3,
+    "explanation": "remove: kaldırmak. Diğer seçenekler: increase: artırmak; decrease: azaltmak; maintain: sürdürmek; add: eklemek."
+  },
+  {
+    "id": "wq150_nov26_forms15_6_5",
+    "family": "forms15_6",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nPut an extra item into an existing collection.",
+    "options": [
+      "increase",
+      "decrease",
+      "maintain",
+      "remove",
+      "add"
+    ],
+    "correct": 4,
+    "explanation": "add: eklemek. Diğer seçenekler: increase: artırmak; decrease: azaltmak; maintain: sürdürmek; remove: kaldırmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_7_1",
+    "family": "forms15_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'refuse' when responding to an invitation.",
+    "options": [
+      "accept",
+      "reject",
+      "arrive",
+      "depart",
+      "remain"
+    ],
+    "correct": 0,
+    "explanation": "accept: kabul etmek. Diğer seçenekler: reject: reddetmek; arrive: varmak; depart: ayrılmak; remain: kalmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_7_2",
+    "family": "forms15_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the correct opposite:\n\nThe opposite of 'accept' when considering an offer.",
+    "options": [
+      "accept",
+      "reject",
+      "arrive",
+      "depart",
+      "remain"
+    ],
+    "correct": 1,
+    "explanation": "reject: reddetmek. Diğer seçenekler: accept: kabul etmek; arrive: varmak; depart: ayrılmak; remain: kalmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_7_3",
+    "family": "forms15_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nReach the place you have travelled to.",
+    "options": [
+      "accept",
+      "reject",
+      "arrive",
+      "depart",
+      "remain"
+    ],
+    "correct": 2,
+    "explanation": "arrive: varmak. Diğer seçenekler: accept: kabul etmek; reject: reddetmek; depart: ayrılmak; remain: kalmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_7_4",
+    "family": "forms15_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nLeave a place to begin a journey.",
+    "options": [
+      "accept",
+      "reject",
+      "arrive",
+      "depart",
+      "remain"
+    ],
+    "correct": 3,
+    "explanation": "depart: ayrılmak. Diğer seçenekler: accept: kabul etmek; reject: reddetmek; arrive: varmak; remain: kalmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_7_5",
+    "family": "forms15_7",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nContinue to stay in the same place.",
+    "options": [
+      "accept",
+      "reject",
+      "arrive",
+      "depart",
+      "remain"
+    ],
+    "correct": 4,
+    "explanation": "remain: kalmak. Diğer seçenekler: accept: kabul etmek; reject: reddetmek; arrive: varmak; depart: ayrılmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_8_1",
+    "family": "forms15_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nDefinitely true, with no doubt about it.",
+    "options": [
+      "certain",
+      "possible",
+      "impossible",
+      "likely",
+      "unlikely"
+    ],
+    "correct": 0,
+    "explanation": "certain: kesin. Diğer seçenekler: possible: mümkün; impossible: imkânsız; likely: muhtemel; unlikely: düşük ihtimalli."
+  },
+  {
+    "id": "wq150_nov26_forms15_8_2",
+    "family": "forms15_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAble to happen, although not necessarily probable.",
+    "options": [
+      "certain",
+      "possible",
+      "impossible",
+      "likely",
+      "unlikely"
+    ],
+    "correct": 1,
+    "explanation": "possible: mümkün. Diğer seçenekler: certain: kesin; impossible: imkânsız; likely: muhtemel; unlikely: düşük ihtimalli."
+  },
+  {
+    "id": "wq150_nov26_forms15_8_3",
+    "family": "forms15_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nUnable to happen under the stated conditions.",
+    "options": [
+      "certain",
+      "possible",
+      "impossible",
+      "likely",
+      "unlikely"
+    ],
+    "correct": 2,
+    "explanation": "impossible: imkânsız. Diğer seçenekler: certain: kesin; possible: mümkün; likely: muhtemel; unlikely: düşük ihtimalli."
+  },
+  {
+    "id": "wq150_nov26_forms15_8_4",
+    "family": "forms15_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nExpected to happen because there is a good chance.",
+    "options": [
+      "certain",
+      "possible",
+      "impossible",
+      "likely",
+      "unlikely"
+    ],
+    "correct": 3,
+    "explanation": "likely: muhtemel. Diğer seçenekler: certain: kesin; possible: mümkün; impossible: imkânsız; unlikely: düşük ihtimalli."
+  },
+  {
+    "id": "wq150_nov26_forms15_8_5",
+    "family": "forms15_8",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot expected to happen because the chance is low.",
+    "options": [
+      "certain",
+      "possible",
+      "impossible",
+      "likely",
+      "unlikely"
+    ],
+    "correct": 4,
+    "explanation": "unlikely: düşük ihtimalli. Diğer seçenekler: certain: kesin; possible: mümkün; impossible: imkânsız; likely: muhtemel."
+  },
+  {
+    "id": "wq150_nov26_forms15_9_1",
+    "family": "forms15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nLasting only for a limited period.",
+    "options": [
+      "temporary",
+      "permanent",
+      "regular",
+      "occasional",
+      "immediate"
+    ],
+    "correct": 0,
+    "explanation": "temporary: geçici. Diğer seçenekler: permanent: kalıcı; regular: düzenli; occasional: ara sıra; immediate: hemen gerçekleşen."
+  },
+  {
+    "id": "wq150_nov26_forms15_9_2",
+    "family": "forms15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nIntended to last indefinitely rather than for a short time.",
+    "options": [
+      "temporary",
+      "permanent",
+      "regular",
+      "occasional",
+      "immediate"
+    ],
+    "correct": 1,
+    "explanation": "permanent: kalıcı. Diğer seçenekler: temporary: geçici; regular: düzenli; occasional: ara sıra; immediate: hemen gerçekleşen."
+  },
+  {
+    "id": "wq150_nov26_forms15_9_3",
+    "family": "forms15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHappening at fixed or predictable intervals.",
+    "options": [
+      "temporary",
+      "permanent",
+      "regular",
+      "occasional",
+      "immediate"
+    ],
+    "correct": 2,
+    "explanation": "regular: düzenli. Diğer seçenekler: temporary: geçici; permanent: kalıcı; occasional: ara sıra; immediate: hemen gerçekleşen."
+  },
+  {
+    "id": "wq150_nov26_forms15_9_4",
+    "family": "forms15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHappening from time to time, but not regularly.",
+    "options": [
+      "temporary",
+      "permanent",
+      "regular",
+      "occasional",
+      "immediate"
+    ],
+    "correct": 3,
+    "explanation": "occasional: ara sıra. Diğer seçenekler: temporary: geçici; permanent: kalıcı; regular: düzenli; immediate: hemen gerçekleşen."
+  },
+  {
+    "id": "wq150_nov26_forms15_9_5",
+    "family": "forms15_9",
+    "level": "A2",
+    "yds": null,
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHappening without any delay.",
+    "options": [
+      "temporary",
+      "permanent",
+      "regular",
+      "occasional",
+      "immediate"
+    ],
+    "correct": 4,
+    "explanation": "immediate: hemen gerçekleşen. Diğer seçenekler: temporary: geçici; permanent: kalıcı; regular: düzenli; occasional: ara sıra."
+  },
+  {
+    "id": "wq150_nov26_forms15_10_1",
+    "family": "forms15_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nMatching the true value rather than containing an error.",
+    "options": [
+      "accurate",
+      "approximate",
+      "precise",
+      "incorrect",
+      "vague"
+    ],
+    "correct": 0,
+    "explanation": "accurate: doğru. Diğer seçenekler: approximate: yaklaşık; precise: hassas; incorrect: yanlış; vague: belirsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_10_2",
+    "family": "forms15_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nClose to the exact value but not exact.",
+    "options": [
+      "accurate",
+      "approximate",
+      "precise",
+      "incorrect",
+      "vague"
+    ],
+    "correct": 1,
+    "explanation": "approximate: yaklaşık. Diğer seçenekler: accurate: doğru; precise: hassas; incorrect: yanlış; vague: belirsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_10_3",
+    "family": "forms15_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nSpecified in very fine detail, for example to six decimal places.",
+    "options": [
+      "accurate",
+      "approximate",
+      "precise",
+      "incorrect",
+      "vague"
+    ],
+    "correct": 2,
+    "explanation": "precise: hassas. Diğer seçenekler: accurate: doğru; approximate: yaklaşık; incorrect: yanlış; vague: belirsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_10_4",
+    "family": "forms15_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot correct according to the available facts.",
+    "options": [
+      "accurate",
+      "approximate",
+      "precise",
+      "incorrect",
+      "vague"
+    ],
+    "correct": 3,
+    "explanation": "incorrect: yanlış. Diğer seçenekler: accurate: doğru; approximate: yaklaşık; precise: hassas; vague: belirsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_10_5",
+    "family": "forms15_10",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot expressed clearly enough to establish exactly what is meant.",
+    "options": [
+      "accurate",
+      "approximate",
+      "precise",
+      "incorrect",
+      "vague"
+    ],
+    "correct": 4,
+    "explanation": "vague: belirsiz. Diğer seçenekler: accurate: doğru; approximate: yaklaşık; precise: hassas; incorrect: yanlış."
+  },
+  {
+    "id": "wq150_nov26_forms15_11_1",
+    "family": "forms15_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRequired by an official rule, whether you want to do it or not.",
+    "options": [
+      "mandatory",
+      "optional",
+      "voluntary",
+      "prohibited",
+      "permitted"
+    ],
+    "correct": 0,
+    "explanation": "mandatory: zorunlu. Diğer seçenekler: optional: isteğe bağlı; voluntary: gönüllü; prohibited: yasak; permitted: izin verilen."
+  },
+  {
+    "id": "wq150_nov26_forms15_11_2",
+    "family": "forms15_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAvailable as a choice but not required.",
+    "options": [
+      "mandatory",
+      "optional",
+      "voluntary",
+      "prohibited",
+      "permitted"
+    ],
+    "correct": 1,
+    "explanation": "optional: isteğe bağlı. Diğer seçenekler: mandatory: zorunlu; voluntary: gönüllü; prohibited: yasak; permitted: izin verilen."
+  },
+  {
+    "id": "wq150_nov26_forms15_11_3",
+    "family": "forms15_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nDone freely by one's own choice rather than under pressure.",
+    "options": [
+      "mandatory",
+      "optional",
+      "voluntary",
+      "prohibited",
+      "permitted"
+    ],
+    "correct": 2,
+    "explanation": "voluntary: gönüllü. Diğer seçenekler: mandatory: zorunlu; optional: isteğe bağlı; prohibited: yasak; permitted: izin verilen."
+  },
+  {
+    "id": "wq150_nov26_forms15_11_4",
+    "family": "forms15_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot allowed under the rules.",
+    "options": [
+      "mandatory",
+      "optional",
+      "voluntary",
+      "prohibited",
+      "permitted"
+    ],
+    "correct": 3,
+    "explanation": "prohibited: yasak. Diğer seçenekler: mandatory: zorunlu; optional: isteğe bağlı; voluntary: gönüllü; permitted: izin verilen."
+  },
+  {
+    "id": "wq150_nov26_forms15_11_5",
+    "family": "forms15_11",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAllowed under the rules.",
+    "options": [
+      "mandatory",
+      "optional",
+      "voluntary",
+      "prohibited",
+      "permitted"
+    ],
+    "correct": 4,
+    "explanation": "permitted: izin verilen. Diğer seçenekler: mandatory: zorunlu; optional: isteğe bağlı; voluntary: gönüllü; prohibited: yasak."
+  },
+  {
+    "id": "wq150_nov26_forms15_12_1",
+    "family": "forms15_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nCan be depended on to work correctly over time.",
+    "options": [
+      "reliable",
+      "unreliable",
+      "durable",
+      "fragile",
+      "flexible"
+    ],
+    "correct": 0,
+    "explanation": "reliable: güvenilir. Diğer seçenekler: unreliable: güvenilmez; durable: dayanıklı; fragile: kırılgan; flexible: esnek."
+  },
+  {
+    "id": "wq150_nov26_forms15_12_2",
+    "family": "forms15_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nCannot be depended on to work when needed.",
+    "options": [
+      "reliable",
+      "unreliable",
+      "durable",
+      "fragile",
+      "flexible"
+    ],
+    "correct": 1,
+    "explanation": "unreliable: güvenilmez. Diğer seçenekler: reliable: güvenilir; durable: dayanıklı; fragile: kırılgan; flexible: esnek."
+  },
+  {
+    "id": "wq150_nov26_forms15_12_3",
+    "family": "forms15_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAble to withstand wear over a long period.",
+    "options": [
+      "reliable",
+      "unreliable",
+      "durable",
+      "fragile",
+      "flexible"
+    ],
+    "correct": 2,
+    "explanation": "durable: dayanıklı. Diğer seçenekler: reliable: güvenilir; unreliable: güvenilmez; fragile: kırılgan; flexible: esnek."
+  },
+  {
+    "id": "wq150_nov26_forms15_12_4",
+    "family": "forms15_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nEasily broken or damaged.",
+    "options": [
+      "reliable",
+      "unreliable",
+      "durable",
+      "fragile",
+      "flexible"
+    ],
+    "correct": 3,
+    "explanation": "fragile: kırılgan. Diğer seçenekler: reliable: güvenilir; unreliable: güvenilmez; durable: dayanıklı; flexible: esnek."
+  },
+  {
+    "id": "wq150_nov26_forms15_12_5",
+    "family": "forms15_12",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAble to bend without breaking.",
+    "options": [
+      "reliable",
+      "unreliable",
+      "durable",
+      "fragile",
+      "flexible"
+    ],
+    "correct": 4,
+    "explanation": "flexible: esnek. Diğer seçenekler: reliable: güvenilir; unreliable: güvenilmez; durable: dayanıklı; fragile: kırılgan."
+  },
+  {
+    "id": "wq150_nov26_forms15_13_1",
+    "family": "forms15_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nBecome larger in size or extent.",
+    "options": [
+      "expand",
+      "contract",
+      "stabilise",
+      "fluctuate",
+      "collapse"
+    ],
+    "correct": 0,
+    "explanation": "expand: genişlemek. Diğer seçenekler: contract: büzülmek; stabilise: istikrara kavuşmak; fluctuate: dalgalanmak; collapse: çökmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_13_2",
+    "family": "forms15_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nBecome smaller in physical size.",
+    "options": [
+      "expand",
+      "contract",
+      "stabilise",
+      "fluctuate",
+      "collapse"
+    ],
+    "correct": 1,
+    "explanation": "contract: büzülmek. Diğer seçenekler: expand: genişlemek; stabilise: istikrara kavuşmak; fluctuate: dalgalanmak; collapse: çökmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_13_3",
+    "family": "forms15_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nBecome steady after a period of change.",
+    "options": [
+      "expand",
+      "contract",
+      "stabilise",
+      "fluctuate",
+      "collapse"
+    ],
+    "correct": 2,
+    "explanation": "stabilise: istikrara kavuşmak. Diğer seçenekler: expand: genişlemek; contract: büzülmek; fluctuate: dalgalanmak; collapse: çökmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_13_4",
+    "family": "forms15_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRepeatedly rise and fall rather than stay at one level.",
+    "options": [
+      "expand",
+      "contract",
+      "stabilise",
+      "fluctuate",
+      "collapse"
+    ],
+    "correct": 3,
+    "explanation": "fluctuate: dalgalanmak. Diğer seçenekler: expand: genişlemek; contract: büzülmek; stabilise: istikrara kavuşmak; collapse: çökmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_13_5",
+    "family": "forms15_13",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nSuddenly fall down or fail completely.",
+    "options": [
+      "expand",
+      "contract",
+      "stabilise",
+      "fluctuate",
+      "collapse"
+    ],
+    "correct": 4,
+    "explanation": "collapse: çökmek. Diğer seçenekler: expand: genişlemek; contract: büzülmek; stabilise: istikrara kavuşmak; fluctuate: dalgalanmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_14_1",
+    "family": "forms15_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAble to be seen with the eyes.",
+    "options": [
+      "visible",
+      "invisible",
+      "transparent",
+      "opaque",
+      "translucent"
+    ],
+    "correct": 0,
+    "explanation": "visible: görünür. Diğer seçenekler: invisible: görünmez; transparent: şeffaf; opaque: opak; translucent: yarı saydam."
+  },
+  {
+    "id": "wq150_nov26_forms15_14_2",
+    "family": "forms15_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nUnable to be seen with the eyes.",
+    "options": [
+      "visible",
+      "invisible",
+      "transparent",
+      "opaque",
+      "translucent"
+    ],
+    "correct": 1,
+    "explanation": "invisible: görünmez. Diğer seçenekler: visible: görünür; transparent: şeffaf; opaque: opak; translucent: yarı saydam."
+  },
+  {
+    "id": "wq150_nov26_forms15_14_3",
+    "family": "forms15_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAllowing objects behind it to be seen clearly.",
+    "options": [
+      "visible",
+      "invisible",
+      "transparent",
+      "opaque",
+      "translucent"
+    ],
+    "correct": 2,
+    "explanation": "transparent: şeffaf. Diğer seçenekler: visible: görünür; invisible: görünmez; opaque: opak; translucent: yarı saydam."
+  },
+  {
+    "id": "wq150_nov26_forms15_14_4",
+    "family": "forms15_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot allowing light to pass through.",
+    "options": [
+      "visible",
+      "invisible",
+      "transparent",
+      "opaque",
+      "translucent"
+    ],
+    "correct": 3,
+    "explanation": "opaque: opak. Diğer seçenekler: visible: görünür; invisible: görünmez; transparent: şeffaf; translucent: yarı saydam."
+  },
+  {
+    "id": "wq150_nov26_forms15_14_5",
+    "family": "forms15_14",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAllowing light through but not a clear image.",
+    "options": [
+      "visible",
+      "invisible",
+      "transparent",
+      "opaque",
+      "translucent"
+    ],
+    "correct": 4,
+    "explanation": "translucent: yarı saydam. Diğer seçenekler: visible: görünür; invisible: görünmez; transparent: şeffaf; opaque: opak."
+  },
+  {
+    "id": "wq150_nov26_forms15_15_1",
+    "family": "forms15_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nWithin one country rather than across national borders.",
+    "options": [
+      "domestic",
+      "international",
+      "local",
+      "regional",
+      "global"
+    ],
+    "correct": 0,
+    "explanation": "domestic: ülke içi. Diğer seçenekler: international: uluslararası; local: yerel; regional: bölgesel; global: küresel."
+  },
+  {
+    "id": "wq150_nov26_forms15_15_2",
+    "family": "forms15_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nInvolving relations between two or more countries.",
+    "options": [
+      "domestic",
+      "international",
+      "local",
+      "regional",
+      "global"
+    ],
+    "correct": 1,
+    "explanation": "international: uluslararası. Diğer seçenekler: domestic: ülke içi; local: yerel; regional: bölgesel; global: küresel."
+  },
+  {
+    "id": "wq150_nov26_forms15_15_3",
+    "family": "forms15_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nLimited to a particular town or neighbourhood.",
+    "options": [
+      "domestic",
+      "international",
+      "local",
+      "regional",
+      "global"
+    ],
+    "correct": 2,
+    "explanation": "local: yerel. Diğer seçenekler: domestic: ülke içi; international: uluslararası; regional: bölgesel; global: küresel."
+  },
+  {
+    "id": "wq150_nov26_forms15_15_4",
+    "family": "forms15_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRelating to a larger area within a country, such as an entire province.",
+    "options": [
+      "domestic",
+      "international",
+      "local",
+      "regional",
+      "global"
+    ],
+    "correct": 3,
+    "explanation": "regional: bölgesel. Diğer seçenekler: domestic: ülke içi; international: uluslararası; local: yerel; global: küresel."
+  },
+  {
+    "id": "wq150_nov26_forms15_15_5",
+    "family": "forms15_15",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRelating to the entire world.",
+    "options": [
+      "domestic",
+      "international",
+      "local",
+      "regional",
+      "global"
+    ],
+    "correct": 4,
+    "explanation": "global: küresel. Diğer seçenekler: domestic: ülke içi; international: uluslararası; local: yerel; regional: bölgesel."
+  },
+  {
+    "id": "wq150_nov26_forms15_16_1",
+    "family": "forms15_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nTaking place through a series of small changes over time.",
+    "options": [
+      "gradual",
+      "sudden",
+      "steady",
+      "rapid",
+      "slight"
+    ],
+    "correct": 0,
+    "explanation": "gradual: aşamalı. Diğer seçenekler: sudden: ani; steady: istikrarlı; rapid: hızlı; slight: hafif."
+  },
+  {
+    "id": "wq150_nov26_forms15_16_2",
+    "family": "forms15_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHappening unexpectedly without warning.",
+    "options": [
+      "gradual",
+      "sudden",
+      "steady",
+      "rapid",
+      "slight"
+    ],
+    "correct": 1,
+    "explanation": "sudden: ani. Diğer seçenekler: gradual: aşamalı; steady: istikrarlı; rapid: hızlı; slight: hafif."
+  },
+  {
+    "id": "wq150_nov26_forms15_16_3",
+    "family": "forms15_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nContinuing at a consistent rate without significant variation.",
+    "options": [
+      "gradual",
+      "sudden",
+      "steady",
+      "rapid",
+      "slight"
+    ],
+    "correct": 2,
+    "explanation": "steady: istikrarlı. Diğer seçenekler: gradual: aşamalı; sudden: ani; rapid: hızlı; slight: hafif."
+  },
+  {
+    "id": "wq150_nov26_forms15_16_4",
+    "family": "forms15_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nTaking place in a very short time.",
+    "options": [
+      "gradual",
+      "sudden",
+      "steady",
+      "rapid",
+      "slight"
+    ],
+    "correct": 3,
+    "explanation": "rapid: hızlı. Diğer seçenekler: gradual: aşamalı; sudden: ani; steady: istikrarlı; slight: hafif."
+  },
+  {
+    "id": "wq150_nov26_forms15_16_5",
+    "family": "forms15_16",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nSmall in degree or amount.",
+    "options": [
+      "gradual",
+      "sudden",
+      "steady",
+      "rapid",
+      "slight"
+    ],
+    "correct": 4,
+    "explanation": "slight: hafif. Diğer seçenekler: gradual: aşamalı; sudden: ani; steady: istikrarlı; rapid: hızlı."
+  },
+  {
+    "id": "wq150_nov26_forms15_17_1",
+    "family": "forms15_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAuthentic rather than falsely presented as real.",
+    "options": [
+      "genuine",
+      "artificial",
+      "original",
+      "duplicate",
+      "counterfeit"
+    ],
+    "correct": 0,
+    "explanation": "genuine: gerçek. Diğer seçenekler: artificial: yapay; original: orijinal; duplicate: kopya; counterfeit: sahte."
+  },
+  {
+    "id": "wq150_nov26_forms15_17_2",
+    "family": "forms15_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nMade by people rather than occurring naturally.",
+    "options": [
+      "genuine",
+      "artificial",
+      "original",
+      "duplicate",
+      "counterfeit"
+    ],
+    "correct": 1,
+    "explanation": "artificial: yapay. Diğer seçenekler: genuine: gerçek; original: orijinal; duplicate: kopya; counterfeit: sahte."
+  },
+  {
+    "id": "wq150_nov26_forms15_17_3",
+    "family": "forms15_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nThe first version from which later copies were made.",
+    "options": [
+      "genuine",
+      "artificial",
+      "original",
+      "duplicate",
+      "counterfeit"
+    ],
+    "correct": 2,
+    "explanation": "original: orijinal. Diğer seçenekler: genuine: gerçek; artificial: yapay; duplicate: kopya; counterfeit: sahte."
+  },
+  {
+    "id": "wq150_nov26_forms15_17_4",
+    "family": "forms15_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAn additional exact copy of an existing item.",
+    "options": [
+      "genuine",
+      "artificial",
+      "original",
+      "duplicate",
+      "counterfeit"
+    ],
+    "correct": 3,
+    "explanation": "duplicate: kopya. Diğer seçenekler: genuine: gerçek; artificial: yapay; original: orijinal; counterfeit: sahte."
+  },
+  {
+    "id": "wq150_nov26_forms15_17_5",
+    "family": "forms15_17",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nMade to deceive people into thinking it is an authentic product.",
+    "options": [
+      "genuine",
+      "artificial",
+      "original",
+      "duplicate",
+      "counterfeit"
+    ],
+    "correct": 4,
+    "explanation": "counterfeit: sahte. Diğer seçenekler: genuine: gerçek; artificial: yapay; original: orijinal; duplicate: kopya."
+  },
+  {
+    "id": "wq150_nov26_forms15_18_1",
+    "family": "forms15_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nChoose not to vote in an election despite having the right to do so.",
+    "options": [
+      "abstain",
+      "refrain",
+      "resist",
+      "withstand",
+      "endure"
+    ],
+    "correct": 0,
+    "explanation": "abstain: kaçınmak. Diğer seçenekler: refrain: kendini tutmak; resist: direnmek; withstand: dayanmak; endure: katlanmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_18_2",
+    "family": "forms15_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nDeliberately stop yourself from making a comment that would be inappropriate.",
+    "options": [
+      "abstain",
+      "refrain",
+      "resist",
+      "withstand",
+      "endure"
+    ],
+    "correct": 1,
+    "explanation": "refrain: kendini tutmak. Diğer seçenekler: abstain: kaçınmak; resist: direnmek; withstand: dayanmak; endure: katlanmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_18_3",
+    "family": "forms15_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nOppose an attempt to impose a change on you.",
+    "options": [
+      "abstain",
+      "refrain",
+      "resist",
+      "withstand",
+      "endure"
+    ],
+    "correct": 2,
+    "explanation": "resist: direnmek. Diğer seçenekler: abstain: kaçınmak; refrain: kendini tutmak; withstand: dayanmak; endure: katlanmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_18_4",
+    "family": "forms15_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRemain structurally undamaged under external pressure.",
+    "options": [
+      "abstain",
+      "refrain",
+      "resist",
+      "withstand",
+      "endure"
+    ],
+    "correct": 3,
+    "explanation": "withstand: dayanmak. Diğer seçenekler: abstain: kaçınmak; refrain: kendini tutmak; resist: direnmek; endure: katlanmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_18_5",
+    "family": "forms15_18",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nExperience prolonged hardship without giving up.",
+    "options": [
+      "abstain",
+      "refrain",
+      "resist",
+      "withstand",
+      "endure"
+    ],
+    "correct": 4,
+    "explanation": "endure: katlanmak. Diğer seçenekler: abstain: kaçınmak; refrain: kendini tutmak; resist: direnmek; withstand: dayanmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_19_1",
+    "family": "forms15_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nState a proposition confidently as true.",
+    "options": [
+      "assert",
+      "concede",
+      "dispute",
+      "endorse",
+      "retract"
+    ],
+    "correct": 0,
+    "explanation": "assert: iddia etmek. Diğer seçenekler: concede: kabul etmek; dispute: itiraz etmek; endorse: desteklemek; retract: geri çekmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_19_2",
+    "family": "forms15_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAdmit a point in an argument reluctantly.",
+    "options": [
+      "assert",
+      "concede",
+      "dispute",
+      "endorse",
+      "retract"
+    ],
+    "correct": 1,
+    "explanation": "concede: kabul etmek. Diğer seçenekler: assert: iddia etmek; dispute: itiraz etmek; endorse: desteklemek; retract: geri çekmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_19_3",
+    "family": "forms15_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nChallenge the truth of another person's claim.",
+    "options": [
+      "assert",
+      "concede",
+      "dispute",
+      "endorse",
+      "retract"
+    ],
+    "correct": 2,
+    "explanation": "dispute: itiraz etmek. Diğer seçenekler: assert: iddia etmek; concede: kabul etmek; endorse: desteklemek; retract: geri çekmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_19_4",
+    "family": "forms15_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nPublicly express approval of a proposal.",
+    "options": [
+      "assert",
+      "concede",
+      "dispute",
+      "endorse",
+      "retract"
+    ],
+    "correct": 3,
+    "explanation": "endorse: desteklemek. Diğer seçenekler: assert: iddia etmek; concede: kabul etmek; dispute: itiraz etmek; retract: geri çekmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_19_5",
+    "family": "forms15_19",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nFormally withdraw a statement you previously made.",
+    "options": [
+      "assert",
+      "concede",
+      "dispute",
+      "endorse",
+      "retract"
+    ],
+    "correct": 4,
+    "explanation": "retract: geri çekmek. Diğer seçenekler: assert: iddia etmek; concede: kabul etmek; dispute: itiraz etmek; endorse: desteklemek."
+  },
+  {
+    "id": "wq150_nov26_forms15_20_1",
+    "family": "forms15_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nDifficult to understand because its meaning is not clear.",
+    "options": [
+      "obscure",
+      "lucid",
+      "ambivalent",
+      "equivocal",
+      "unequivocal"
+    ],
+    "correct": 0,
+    "explanation": "obscure: anlaşılmaz. Diğer seçenekler: lucid: açık anlaşılır; ambivalent: kararsız duygulu; equivocal: iki anlamlı; unequivocal: kesin açık."
+  },
+  {
+    "id": "wq150_nov26_forms15_20_2",
+    "family": "forms15_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nExpressed in a way that is easy to follow and understand.",
+    "options": [
+      "obscure",
+      "lucid",
+      "ambivalent",
+      "equivocal",
+      "unequivocal"
+    ],
+    "correct": 1,
+    "explanation": "lucid: açık anlaşılır. Diğer seçenekler: obscure: anlaşılmaz; ambivalent: kararsız duygulu; equivocal: iki anlamlı; unequivocal: kesin açık."
+  },
+  {
+    "id": "wq150_nov26_forms15_20_3",
+    "family": "forms15_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHaving conflicting feelings about the same decision.",
+    "options": [
+      "obscure",
+      "lucid",
+      "ambivalent",
+      "equivocal",
+      "unequivocal"
+    ],
+    "correct": 2,
+    "explanation": "ambivalent: kararsız duygulu. Diğer seçenekler: obscure: anlaşılmaz; lucid: açık anlaşılır; equivocal: iki anlamlı; unequivocal: kesin açık."
+  },
+  {
+    "id": "wq150_nov26_forms15_20_4",
+    "family": "forms15_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nOpen to different interpretations, often avoiding a clear commitment.",
+    "options": [
+      "obscure",
+      "lucid",
+      "ambivalent",
+      "equivocal",
+      "unequivocal"
+    ],
+    "correct": 3,
+    "explanation": "equivocal: iki anlamlı. Diğer seçenekler: obscure: anlaşılmaz; lucid: açık anlaşılır; ambivalent: kararsız duygulu; unequivocal: kesin açık."
+  },
+  {
+    "id": "wq150_nov26_forms15_20_5",
+    "family": "forms15_20",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nExpressing a position so clearly that no doubt remains.",
+    "options": [
+      "obscure",
+      "lucid",
+      "ambivalent",
+      "equivocal",
+      "unequivocal"
+    ],
+    "correct": 4,
+    "explanation": "unequivocal: kesin açık. Diğer seçenekler: obscure: anlaşılmaz; lucid: açık anlaşılır; ambivalent: kararsız duygulu; equivocal: iki anlamlı."
+  },
+  {
+    "id": "wq150_nov26_forms15_21_1",
+    "family": "forms15_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nStanding out as particularly noticeable or important.",
+    "options": [
+      "salient",
+      "marginal",
+      "negligible",
+      "substantial",
+      "peripheral"
+    ],
+    "correct": 0,
+    "explanation": "salient: öne çıkan. Diğer seçenekler: marginal: sınırlı; negligible: ihmal edilebilir; substantial: önemli büyüklükte; peripheral: ikincil."
+  },
+  {
+    "id": "wq150_nov26_forms15_21_2",
+    "family": "forms15_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nHaving only a small effect at the edge of significance.",
+    "options": [
+      "salient",
+      "marginal",
+      "negligible",
+      "substantial",
+      "peripheral"
+    ],
+    "correct": 1,
+    "explanation": "marginal: sınırlı. Diğer seçenekler: salient: öne çıkan; negligible: ihmal edilebilir; substantial: önemli büyüklükte; peripheral: ikincil."
+  },
+  {
+    "id": "wq150_nov26_forms15_21_3",
+    "family": "forms15_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nSo small that it can be ignored for practical purposes.",
+    "options": [
+      "salient",
+      "marginal",
+      "negligible",
+      "substantial",
+      "peripheral"
+    ],
+    "correct": 2,
+    "explanation": "negligible: ihmal edilebilir. Diğer seçenekler: salient: öne çıkan; marginal: sınırlı; substantial: önemli büyüklükte; peripheral: ikincil."
+  },
+  {
+    "id": "wq150_nov26_forms15_21_4",
+    "family": "forms15_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nConsiderable in amount or importance.",
+    "options": [
+      "salient",
+      "marginal",
+      "negligible",
+      "substantial",
+      "peripheral"
+    ],
+    "correct": 3,
+    "explanation": "substantial: önemli büyüklükte. Diğer seçenekler: salient: öne çıkan; marginal: sınırlı; negligible: ihmal edilebilir; peripheral: ikincil."
+  },
+  {
+    "id": "wq150_nov26_forms15_21_5",
+    "family": "forms15_21",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot central to the main issue under discussion.",
+    "options": [
+      "salient",
+      "marginal",
+      "negligible",
+      "substantial",
+      "peripheral"
+    ],
+    "correct": 4,
+    "explanation": "peripheral: ikincil. Diğer seçenekler: salient: öne çıkan; marginal: sınırlı; negligible: ihmal edilebilir; substantial: önemli büyüklükte."
+  },
+  {
+    "id": "wq150_nov26_forms15_22_1",
+    "family": "forms15_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nLasting for only a short period before disappearing.",
+    "options": [
+      "transient",
+      "persistent",
+      "sporadic",
+      "periodic",
+      "continuous"
+    ],
+    "correct": 0,
+    "explanation": "transient: geçici. Diğer seçenekler: persistent: kalıcı süren; sporadic: seyrek düzensiz; periodic: düzenli aralıklı; continuous: kesintisiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_22_2",
+    "family": "forms15_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nContinuing to exist despite attempts to remove it.",
+    "options": [
+      "transient",
+      "persistent",
+      "sporadic",
+      "periodic",
+      "continuous"
+    ],
+    "correct": 1,
+    "explanation": "persistent: kalıcı süren. Diğer seçenekler: transient: geçici; sporadic: seyrek düzensiz; periodic: düzenli aralıklı; continuous: kesintisiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_22_3",
+    "family": "forms15_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nOccurring occasionally at unpredictable intervals.",
+    "options": [
+      "transient",
+      "persistent",
+      "sporadic",
+      "periodic",
+      "continuous"
+    ],
+    "correct": 2,
+    "explanation": "sporadic: seyrek düzensiz. Diğer seçenekler: transient: geçici; persistent: kalıcı süren; periodic: düzenli aralıklı; continuous: kesintisiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_22_4",
+    "family": "forms15_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRecurring at regular intervals.",
+    "options": [
+      "transient",
+      "persistent",
+      "sporadic",
+      "periodic",
+      "continuous"
+    ],
+    "correct": 3,
+    "explanation": "periodic: düzenli aralıklı. Diğer seçenekler: transient: geçici; persistent: kalıcı süren; sporadic: seyrek düzensiz; continuous: kesintisiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_22_5",
+    "family": "forms15_22",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nProceeding without interruption.",
+    "options": [
+      "transient",
+      "persistent",
+      "sporadic",
+      "periodic",
+      "continuous"
+    ],
+    "correct": 4,
+    "explanation": "continuous: kesintisiz. Diğer seçenekler: transient: geçici; persistent: kalıcı süren; sporadic: seyrek düzensiz; periodic: düzenli aralıklı."
+  },
+  {
+    "id": "wq150_nov26_forms15_23_1",
+    "family": "forms15_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAbsolutely necessary for a process to function.",
+    "options": [
+      "indispensable",
+      "dispensable",
+      "redundant",
+      "supplementary",
+      "subordinate"
+    ],
+    "correct": 0,
+    "explanation": "indispensable: vazgeçilmez. Diğer seçenekler: dispensable: vazgeçilebilir; redundant: gereksiz tekrar; supplementary: ek; subordinate: ikincil/bağlı."
+  },
+  {
+    "id": "wq150_nov26_forms15_23_2",
+    "family": "forms15_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNot essential and able to be omitted without serious harm.",
+    "options": [
+      "indispensable",
+      "dispensable",
+      "redundant",
+      "supplementary",
+      "subordinate"
+    ],
+    "correct": 1,
+    "explanation": "dispensable: vazgeçilebilir. Diğer seçenekler: indispensable: vazgeçilmez; redundant: gereksiz tekrar; supplementary: ek; subordinate: ikincil/bağlı."
+  },
+  {
+    "id": "wq150_nov26_forms15_23_3",
+    "family": "forms15_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nNo longer needed because its function is already performed elsewhere.",
+    "options": [
+      "indispensable",
+      "dispensable",
+      "redundant",
+      "supplementary",
+      "subordinate"
+    ],
+    "correct": 2,
+    "explanation": "redundant: gereksiz tekrar. Diğer seçenekler: indispensable: vazgeçilmez; dispensable: vazgeçilebilir; supplementary: ek; subordinate: ikincil/bağlı."
+  },
+  {
+    "id": "wq150_nov26_forms15_23_4",
+    "family": "forms15_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nAdded to provide extra information beyond the main material.",
+    "options": [
+      "indispensable",
+      "dispensable",
+      "redundant",
+      "supplementary",
+      "subordinate"
+    ],
+    "correct": 3,
+    "explanation": "supplementary: ek. Diğer seçenekler: indispensable: vazgeçilmez; dispensable: vazgeçilebilir; redundant: gereksiz tekrar; subordinate: ikincil/bağlı."
+  },
+  {
+    "id": "wq150_nov26_forms15_23_5",
+    "family": "forms15_23",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nLower in authority or rank than another element.",
+    "options": [
+      "indispensable",
+      "dispensable",
+      "redundant",
+      "supplementary",
+      "subordinate"
+    ],
+    "correct": 4,
+    "explanation": "subordinate: ikincil/bağlı. Diğer seçenekler: indispensable: vazgeçilmez; dispensable: vazgeçilebilir; redundant: gereksiz tekrar; supplementary: ek."
+  },
+  {
+    "id": "wq150_nov26_forms15_24_1",
+    "family": "forms15_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nMove towards the same point from different directions.",
+    "options": [
+      "converge",
+      "diverge",
+      "intersect",
+      "coincide",
+      "parallel"
+    ],
+    "correct": 0,
+    "explanation": "converge: yakınsamak. Diğer seçenekler: diverge: ayrışmak; intersect: kesişmek; coincide: çakışmak; parallel: paralel olmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_24_2",
+    "family": "forms15_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nMove apart from a common point into different directions.",
+    "options": [
+      "converge",
+      "diverge",
+      "intersect",
+      "coincide",
+      "parallel"
+    ],
+    "correct": 1,
+    "explanation": "diverge: ayrışmak. Diğer seçenekler: converge: yakınsamak; intersect: kesişmek; coincide: çakışmak; parallel: paralel olmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_24_3",
+    "family": "forms15_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nCross at a point without necessarily sharing a direction.",
+    "options": [
+      "converge",
+      "diverge",
+      "intersect",
+      "coincide",
+      "parallel"
+    ],
+    "correct": 2,
+    "explanation": "intersect: kesişmek. Diğer seçenekler: converge: yakınsamak; diverge: ayrışmak; coincide: çakışmak; parallel: paralel olmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_24_4",
+    "family": "forms15_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nOccur at exactly the same time.",
+    "options": [
+      "converge",
+      "diverge",
+      "intersect",
+      "coincide",
+      "parallel"
+    ],
+    "correct": 3,
+    "explanation": "coincide: çakışmak. Diğer seçenekler: converge: yakınsamak; diverge: ayrışmak; intersect: kesişmek; parallel: paralel olmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_24_5",
+    "family": "forms15_24",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRun alongside another line while remaining the same distance away.",
+    "options": [
+      "converge",
+      "diverge",
+      "intersect",
+      "coincide",
+      "parallel"
+    ],
+    "correct": 4,
+    "explanation": "parallel: paralel olmak. Diğer seçenekler: converge: yakınsamak; diverge: ayrışmak; intersect: kesişmek; coincide: çakışmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_25_1",
+    "family": "forms15_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nProvide enough evidence to establish that a claim has a sound basis.",
+    "options": [
+      "substantiate",
+      "corroborate",
+      "falsify",
+      "invalidate",
+      "replicate"
+    ],
+    "correct": 0,
+    "explanation": "substantiate: kanıtla desteklemek. Diğer seçenekler: corroborate: bağımsız kanıtla doğrulamak; falsify: sahte hale getirmek; invalidate: geçersiz kılmak; replicate: tekrarlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_25_2",
+    "family": "forms15_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nProvide independent evidence confirming someone else's account.",
+    "options": [
+      "substantiate",
+      "corroborate",
+      "falsify",
+      "invalidate",
+      "replicate"
+    ],
+    "correct": 1,
+    "explanation": "corroborate: bağımsız kanıtla doğrulamak. Diğer seçenekler: substantiate: kanıtla desteklemek; falsify: sahte hale getirmek; invalidate: geçersiz kılmak; replicate: tekrarlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_25_3",
+    "family": "forms15_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nDeliberately alter records to create a false impression.",
+    "options": [
+      "substantiate",
+      "corroborate",
+      "falsify",
+      "invalidate",
+      "replicate"
+    ],
+    "correct": 2,
+    "explanation": "falsify: sahte hale getirmek. Diğer seçenekler: substantiate: kanıtla desteklemek; corroborate: bağımsız kanıtla doğrulamak; invalidate: geçersiz kılmak; replicate: tekrarlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_25_4",
+    "family": "forms15_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nShow that a conclusion or procedure is no longer valid.",
+    "options": [
+      "substantiate",
+      "corroborate",
+      "falsify",
+      "invalidate",
+      "replicate"
+    ],
+    "correct": 3,
+    "explanation": "invalidate: geçersiz kılmak. Diğer seçenekler: substantiate: kanıtla desteklemek; corroborate: bağımsız kanıtla doğrulamak; falsify: sahte hale getirmek; replicate: tekrarlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_25_5",
+    "family": "forms15_25",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Synonym",
+    "prompt": "Choose the word that best matches this meaning:\n\nRepeat an experiment using the same procedure to check its results.",
+    "options": [
+      "substantiate",
+      "corroborate",
+      "falsify",
+      "invalidate",
+      "replicate"
+    ],
+    "correct": 4,
+    "explanation": "replicate: tekrarlamak. Diğer seçenekler: substantiate: kanıtla desteklemek; corroborate: bağımsız kanıtla doğrulamak; falsify: sahte hale getirmek; invalidate: geçersiz kılmak."
+  },
+  {
+    "id": "wq150_nov26_forms15_26_1",
+    "family": "forms15_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Could you ____ your classmates to the party?",
+    "options": [
+      "invite",
+      "invitation",
+      "invited",
+      "inviting",
+      "invites"
+    ],
+    "correct": 0,
+    "explanation": "invite: davet etmek. Diğer seçenekler: invitation: davet; invited: davet edilmiş; inviting: davetkâr; invites: davet eder."
+  },
+  {
+    "id": "wq150_nov26_forms15_26_2",
+    "family": "forms15_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We received an ____ to the wedding.",
+    "options": [
+      "invite",
+      "invitation",
+      "invited",
+      "inviting",
+      "invites"
+    ],
+    "correct": 1,
+    "explanation": "invitation: davet. Diğer seçenekler: invite: davet etmek; invited: davet edilmiş; inviting: davetkâr; invites: davet eder."
+  },
+  {
+    "id": "wq150_nov26_forms15_26_3",
+    "family": "forms15_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Only guests who were ____ by the host may enter.",
+    "options": [
+      "invite",
+      "invitation",
+      "invited",
+      "inviting",
+      "invites"
+    ],
+    "correct": 2,
+    "explanation": "invited: davet edilmiş. Diğer seçenekler: invite: davet etmek; invitation: davet; inviting: davetkâr; invites: davet eder."
+  },
+  {
+    "id": "wq150_nov26_forms15_26_4",
+    "family": "forms15_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The warm lights made the room look ____ .",
+    "options": [
+      "invite",
+      "invitation",
+      "invited",
+      "inviting",
+      "invites"
+    ],
+    "correct": 3,
+    "explanation": "inviting: davetkâr. Diğer seçenekler: invite: davet etmek; invitation: davet; invited: davet edilmiş; invites: davet eder."
+  },
+  {
+    "id": "wq150_nov26_forms15_26_5",
+    "family": "forms15_26",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The club ____ a guest speaker every month.",
+    "options": [
+      "invite",
+      "invitation",
+      "invited",
+      "inviting",
+      "invites"
+    ],
+    "correct": 4,
+    "explanation": "invites: davet eder. Diğer seçenekler: invite: davet etmek; invitation: davet; invited: davet edilmiş; inviting: davetkâr."
+  },
+  {
+    "id": "wq150_nov26_forms15_27_1",
+    "family": "forms15_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We plan to ____ the kitchen walls white.",
+    "options": [
+      "paint",
+      "painting",
+      "painter",
+      "painted",
+      "paints"
+    ],
+    "correct": 0,
+    "explanation": "paint: boyamak. Diğer seçenekler: painting: tablo; painter: ressam; painted: boyanmış; paints: boyar."
+  },
+  {
+    "id": "wq150_nov26_forms15_27_2",
+    "family": "forms15_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The museum bought a valuable oil ____ .",
+    "options": [
+      "paint",
+      "painting",
+      "painter",
+      "painted",
+      "paints"
+    ],
+    "correct": 1,
+    "explanation": "painting: tablo. Diğer seçenekler: paint: boyamak; painter: ressam; painted: boyanmış; paints: boyar."
+  },
+  {
+    "id": "wq150_nov26_forms15_27_3",
+    "family": "forms15_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The ____ signed her name at the bottom of the picture.",
+    "options": [
+      "paint",
+      "painting",
+      "painter",
+      "painted",
+      "paints"
+    ],
+    "correct": 2,
+    "explanation": "painter: ressam. Diğer seçenekler: paint: boyamak; painting: tablo; painted: boyanmış; paints: boyar."
+  },
+  {
+    "id": "wq150_nov26_forms15_27_4",
+    "family": "forms15_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The doors were ____ blue yesterday.",
+    "options": [
+      "paint",
+      "painting",
+      "painter",
+      "painted",
+      "paints"
+    ],
+    "correct": 3,
+    "explanation": "painted: boyanmış. Diğer seçenekler: paint: boyamak; painting: tablo; painter: ressam; paints: boyar."
+  },
+  {
+    "id": "wq150_nov26_forms15_27_5",
+    "family": "forms15_27",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "My uncle ____ landscapes every weekend.",
+    "options": [
+      "paint",
+      "painting",
+      "painter",
+      "painted",
+      "paints"
+    ],
+    "correct": 4,
+    "explanation": "paints: boyar. Diğer seçenekler: paint: boyamak; painting: tablo; painter: ressam; painted: boyanmış."
+  },
+  {
+    "id": "wq150_nov26_forms15_28_1",
+    "family": "forms15_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Can you ____ rice for dinner?",
+    "options": [
+      "cook",
+      "cooker",
+      "cooking",
+      "cooked",
+      "uncooked"
+    ],
+    "correct": 0,
+    "explanation": "cook: pişirmek. Diğer seçenekler: cooker: ocak; cooking: yemek pişirme; cooked: pişmiş; uncooked: pişmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_28_2",
+    "family": "forms15_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The electric ____ has four hotplates.",
+    "options": [
+      "cook",
+      "cooker",
+      "cooking",
+      "cooked",
+      "uncooked"
+    ],
+    "correct": 1,
+    "explanation": "cooker: ocak. Diğer seçenekler: cook: pişirmek; cooking: yemek pişirme; cooked: pişmiş; uncooked: pişmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_28_3",
+    "family": "forms15_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "She enjoys ____ meals for her friends.",
+    "options": [
+      "cook",
+      "cooker",
+      "cooking",
+      "cooked",
+      "uncooked"
+    ],
+    "correct": 2,
+    "explanation": "cooking: yemek pişirme. Diğer seçenekler: cook: pişirmek; cooker: ocak; cooked: pişmiş; uncooked: pişmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_28_4",
+    "family": "forms15_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The potatoes are fully ____ and ready to serve.",
+    "options": [
+      "cook",
+      "cooker",
+      "cooking",
+      "cooked",
+      "uncooked"
+    ],
+    "correct": 3,
+    "explanation": "cooked: pişmiş. Diğer seçenekler: cook: pişirmek; cooker: ocak; cooking: yemek pişirme; uncooked: pişmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_28_5",
+    "family": "forms15_28",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The recipe requires 200 grams of ____ rice, weighed before boiling.",
+    "options": [
+      "cook",
+      "cooker",
+      "cooking",
+      "cooked",
+      "uncooked"
+    ],
+    "correct": 4,
+    "explanation": "uncooked: pişmemiş. Diğer seçenekler: cook: pişirmek; cooker: ocak; cooking: yemek pişirme; cooked: pişmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_29_1",
+    "family": "forms15_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Please ____ the vegetables before eating them.",
+    "options": [
+      "wash",
+      "washer",
+      "washing",
+      "washed",
+      "washable"
+    ],
+    "correct": 0,
+    "explanation": "wash: yıkamak. Diğer seçenekler: washer: yıkama cihazı; washing: yıkama; washed: yıkanmış; washable: yıkanabilir."
+  },
+  {
+    "id": "wq150_nov26_forms15_29_2",
+    "family": "forms15_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A pressure ____ uses a strong jet of water to clean the driveway.",
+    "options": [
+      "wash",
+      "washer",
+      "washing",
+      "washed",
+      "washable"
+    ],
+    "correct": 1,
+    "explanation": "washer: yıkama cihazı. Diğer seçenekler: wash: yıkamak; washing: yıkama; washed: yıkanmış; washable: yıkanabilir."
+  },
+  {
+    "id": "wq150_nov26_forms15_29_3",
+    "family": "forms15_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I dislike ____ dishes by hand.",
+    "options": [
+      "wash",
+      "washer",
+      "washing",
+      "washed",
+      "washable"
+    ],
+    "correct": 2,
+    "explanation": "washing: yıkama. Diğer seçenekler: wash: yıkamak; washer: yıkama cihazı; washed: yıkanmış; washable: yıkanabilir."
+  },
+  {
+    "id": "wq150_nov26_forms15_29_4",
+    "family": "forms15_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The towels were ____ at sixty degrees yesterday.",
+    "options": [
+      "wash",
+      "washer",
+      "washing",
+      "washed",
+      "washable"
+    ],
+    "correct": 3,
+    "explanation": "washed: yıkanmış. Diğer seçenekler: wash: yıkamak; washer: yıkama cihazı; washing: yıkama; washable: yıkanabilir."
+  },
+  {
+    "id": "wq150_nov26_forms15_29_5",
+    "family": "forms15_29",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The label says the jacket is machine ____ .",
+    "options": [
+      "wash",
+      "washer",
+      "washing",
+      "washed",
+      "washable"
+    ],
+    "correct": 4,
+    "explanation": "washable: yıkanabilir. Diğer seçenekler: wash: yıkamak; washer: yıkama cihazı; washing: yıkama; washed: yıkanmış."
+  },
+  {
+    "id": "wq150_nov26_forms15_30_1",
+    "family": "forms15_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Heavy ____ flooded the streets last night.",
+    "options": [
+      "rain",
+      "rainy",
+      "rains",
+      "raining",
+      "rained"
+    ],
+    "correct": 0,
+    "explanation": "rain: yağmur. Diğer seçenekler: rainy: yağmurlu; rains: yağar; raining: yağmakta; rained: yağdı."
+  },
+  {
+    "id": "wq150_nov26_forms15_30_2",
+    "family": "forms15_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We stayed indoors on a ____ afternoon.",
+    "options": [
+      "rain",
+      "rainy",
+      "rains",
+      "raining",
+      "rained"
+    ],
+    "correct": 1,
+    "explanation": "rainy: yağmurlu. Diğer seçenekler: rain: yağmur; rains: yağar; raining: yağmakta; rained: yağdı."
+  },
+  {
+    "id": "wq150_nov26_forms15_30_3",
+    "family": "forms15_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "It often ____ here in November.",
+    "options": [
+      "rain",
+      "rainy",
+      "rains",
+      "raining",
+      "rained"
+    ],
+    "correct": 2,
+    "explanation": "rains: yağar. Diğer seçenekler: rain: yağmur; rainy: yağmurlu; raining: yağmakta; rained: yağdı."
+  },
+  {
+    "id": "wq150_nov26_forms15_30_4",
+    "family": "forms15_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Look outside! It is ____ now.",
+    "options": [
+      "rain",
+      "rainy",
+      "rains",
+      "raining",
+      "rained"
+    ],
+    "correct": 3,
+    "explanation": "raining: yağmakta. Diğer seçenekler: rain: yağmur; rainy: yağmurlu; rains: yağar; rained: yağdı."
+  },
+  {
+    "id": "wq150_nov26_forms15_30_5",
+    "family": "forms15_30",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "It ____ all day yesterday, but today is sunny.",
+    "options": [
+      "rain",
+      "rainy",
+      "rains",
+      "raining",
+      "rained"
+    ],
+    "correct": 4,
+    "explanation": "rained: yağdı. Diğer seçenekler: rain: yağmur; rainy: yağmurlu; rains: yağar; raining: yağmakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_31_1",
+    "family": "forms15_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "I listen to ____ while doing homework.",
+    "options": [
+      "music",
+      "musical",
+      "musician",
+      "musically",
+      "musicians"
+    ],
+    "correct": 0,
+    "explanation": "music: müzik. Diğer seçenekler: musical: müzikal/müziğe ilişkin; musician: müzisyen; musically: müzikal açıdan; musicians: müzisyenler."
+  },
+  {
+    "id": "wq150_nov26_forms15_31_2",
+    "family": "forms15_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The school bought several ____ instruments.",
+    "options": [
+      "music",
+      "musical",
+      "musician",
+      "musically",
+      "musicians"
+    ],
+    "correct": 1,
+    "explanation": "musical: müzikal/müziğe ilişkin. Diğer seçenekler: music: müzik; musician: müzisyen; musically: müzikal açıdan; musicians: müzisyenler."
+  },
+  {
+    "id": "wq150_nov26_forms15_31_3",
+    "family": "forms15_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "A professional ____ played the violin at the wedding.",
+    "options": [
+      "music",
+      "musical",
+      "musician",
+      "musically",
+      "musicians"
+    ],
+    "correct": 2,
+    "explanation": "musician: müzisyen. Diğer seçenekler: music: müzik; musical: müzikal/müziğe ilişkin; musically: müzikal açıdan; musicians: müzisyenler."
+  },
+  {
+    "id": "wq150_nov26_forms15_31_4",
+    "family": "forms15_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The two performances were very different ____ , despite having the same costumes.",
+    "options": [
+      "music",
+      "musical",
+      "musician",
+      "musically",
+      "musicians"
+    ],
+    "correct": 3,
+    "explanation": "musically: müzikal açıdan. Diğer seçenekler: music: müzik; musical: müzikal/müziğe ilişkin; musician: müzisyen; musicians: müzisyenler."
+  },
+  {
+    "id": "wq150_nov26_forms15_31_5",
+    "family": "forms15_31",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "Three ____ played together on the stage.",
+    "options": [
+      "music",
+      "musical",
+      "musician",
+      "musically",
+      "musicians"
+    ],
+    "correct": 4,
+    "explanation": "musicians: müzisyenler. Diğer seçenekler: music: müzik; musical: müzikal/müziğe ilişkin; musician: müzisyen; musically: müzikal açıdan."
+  },
+  {
+    "id": "wq150_nov26_forms15_32_1",
+    "family": "forms15_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "You can ____ my phone to make a call.",
+    "options": [
+      "use",
+      "useful",
+      "useless",
+      "used",
+      "unused"
+    ],
+    "correct": 0,
+    "explanation": "use: kullanmak. Diğer seçenekler: useful: yararlı; useless: işe yaramaz; used: kullanılmış; unused: kullanılmamış."
+  },
+  {
+    "id": "wq150_nov26_forms15_32_2",
+    "family": "forms15_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The map was very ____ because it showed every bus stop.",
+    "options": [
+      "use",
+      "useful",
+      "useless",
+      "used",
+      "unused"
+    ],
+    "correct": 1,
+    "explanation": "useful: yararlı. Diğer seçenekler: use: kullanmak; useless: işe yaramaz; used: kullanılmış; unused: kullanılmamış."
+  },
+  {
+    "id": "wq150_nov26_forms15_32_3",
+    "family": "forms15_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The broken compass is ____ for navigation because it points in random directions.",
+    "options": [
+      "use",
+      "useful",
+      "useless",
+      "used",
+      "unused"
+    ],
+    "correct": 2,
+    "explanation": "useless: işe yaramaz. Diğer seçenekler: use: kullanmak; useful: yararlı; used: kullanılmış; unused: kullanılmamış."
+  },
+  {
+    "id": "wq150_nov26_forms15_32_4",
+    "family": "forms15_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "We bought a ____ bicycle that belonged to another family before us.",
+    "options": [
+      "use",
+      "useful",
+      "useless",
+      "used",
+      "unused"
+    ],
+    "correct": 3,
+    "explanation": "used: kullanılmış. Diğer seçenekler: use: kullanmak; useful: yararlı; useless: işe yaramaz; unused: kullanılmamış."
+  },
+  {
+    "id": "wq150_nov26_forms15_32_5",
+    "family": "forms15_32",
+    "level": "A2",
+    "yds": null,
+    "topic": "Vocabulary",
+    "prompt": "The shop will accept only ____ items in their original packaging.",
+    "options": [
+      "use",
+      "useful",
+      "useless",
+      "used",
+      "unused"
+    ],
+    "correct": 4,
+    "explanation": "unused: kullanılmamış. Diğer seçenekler: use: kullanmak; useful: yararlı; useless: işe yaramaz; used: kullanılmış."
+  },
+  {
+    "id": "wq150_nov26_forms15_33_1",
+    "family": "forms15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The programme aims to ____ people about recycling.",
+    "options": [
+      "educate",
+      "education",
+      "educational",
+      "educator",
+      "educated"
+    ],
+    "correct": 0,
+    "explanation": "educate: eğitmek. Diğer seçenekler: education: eğitim; educational: eğitici; educator: eğitimci; educated: eğitim görmüş."
+  },
+  {
+    "id": "wq150_nov26_forms15_33_2",
+    "family": "forms15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Access to basic ____ is important for every child.",
+    "options": [
+      "educate",
+      "education",
+      "educational",
+      "educator",
+      "educated"
+    ],
+    "correct": 1,
+    "explanation": "education: eğitim. Diğer seçenekler: educate: eğitmek; educational: eğitici; educator: eğitimci; educated: eğitim görmüş."
+  },
+  {
+    "id": "wq150_nov26_forms15_33_3",
+    "family": "forms15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The museum offers ____ activities designed for schoolchildren.",
+    "options": [
+      "educate",
+      "education",
+      "educational",
+      "educator",
+      "educated"
+    ],
+    "correct": 2,
+    "explanation": "educational: eğitici. Diğer seçenekler: educate: eğitmek; education: eğitim; educator: eğitimci; educated: eğitim görmüş."
+  },
+  {
+    "id": "wq150_nov26_forms15_33_4",
+    "family": "forms15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "An experienced ____ led the teacher-training seminar.",
+    "options": [
+      "educate",
+      "education",
+      "educational",
+      "educator",
+      "educated"
+    ],
+    "correct": 3,
+    "explanation": "educator: eğitimci. Diğer seçenekler: educate: eğitmek; education: eğitim; educational: eğitici; educated: eğitim görmüş."
+  },
+  {
+    "id": "wq150_nov26_forms15_33_5",
+    "family": "forms15_33",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "She was ____ at a university in Edinburgh.",
+    "options": [
+      "educate",
+      "education",
+      "educational",
+      "educator",
+      "educated"
+    ],
+    "correct": 4,
+    "explanation": "educated: eğitim görmüş. Diğer seçenekler: educate: eğitmek; education: eğitim; educational: eğitici; educator: eğitimci."
+  },
+  {
+    "id": "wq150_nov26_forms15_34_1",
+    "family": "forms15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The students were asked to ____ a device that solves an everyday problem.",
+    "options": [
+      "invent",
+      "invention",
+      "inventor",
+      "inventive",
+      "invented"
+    ],
+    "correct": 0,
+    "explanation": "invent: icat etmek. Diğer seçenekler: invention: icat; inventor: mucit; inventive: yaratıcı; invented: icat edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_34_2",
+    "family": "forms15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The telephone was an important technological ____ .",
+    "options": [
+      "invent",
+      "invention",
+      "inventor",
+      "inventive",
+      "invented"
+    ],
+    "correct": 1,
+    "explanation": "invention: icat. Diğer seçenekler: invent: icat etmek; inventor: mucit; inventive: yaratıcı; invented: icat edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_34_3",
+    "family": "forms15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The ____ registered a patent for her new device.",
+    "options": [
+      "invent",
+      "invention",
+      "inventor",
+      "inventive",
+      "invented"
+    ],
+    "correct": 2,
+    "explanation": "inventor: mucit. Diğer seçenekler: invent: icat etmek; invention: icat; inventive: yaratıcı; invented: icat edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_34_4",
+    "family": "forms15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The designers found an ____ way to reuse discarded materials.",
+    "options": [
+      "invent",
+      "invention",
+      "inventor",
+      "inventive",
+      "invented"
+    ],
+    "correct": 3,
+    "explanation": "inventive: yaratıcı. Diğer seçenekler: invent: icat etmek; invention: icat; inventor: mucit; invented: icat edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_34_5",
+    "family": "forms15_34",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The device was ____ in the nineteenth century.",
+    "options": [
+      "invent",
+      "invention",
+      "inventor",
+      "inventive",
+      "invented"
+    ],
+    "correct": 4,
+    "explanation": "invented: icat edilmiş. Diğer seçenekler: invent: icat etmek; invention: icat; inventor: mucit; inventive: yaratıcı."
+  },
+  {
+    "id": "wq150_nov26_forms15_35_1",
+    "family": "forms15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company plans to ____ twenty more people next year.",
+    "options": [
+      "employ",
+      "employment",
+      "employer",
+      "employee",
+      "unemployed"
+    ],
+    "correct": 0,
+    "explanation": "employ: istihdam etmek. Diğer seçenekler: employment: istihdam; employer: işveren; employee: çalışan; unemployed: işsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_35_2",
+    "family": "forms15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The policy aims to increase ____ among young adults.",
+    "options": [
+      "employ",
+      "employment",
+      "employer",
+      "employee",
+      "unemployed"
+    ],
+    "correct": 1,
+    "explanation": "employment: istihdam. Diğer seçenekler: employ: istihdam etmek; employer: işveren; employee: çalışan; unemployed: işsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_35_3",
+    "family": "forms15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "My ____ pays my salary and provides training.",
+    "options": [
+      "employ",
+      "employment",
+      "employer",
+      "employee",
+      "unemployed"
+    ],
+    "correct": 2,
+    "explanation": "employer: işveren. Diğer seçenekler: employ: istihdam etmek; employment: istihdam; employee: çalışan; unemployed: işsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_35_4",
+    "family": "forms15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Each ____ receives an identification card from the company.",
+    "options": [
+      "employ",
+      "employment",
+      "employer",
+      "employee",
+      "unemployed"
+    ],
+    "correct": 3,
+    "explanation": "employee: çalışan. Diğer seçenekler: employ: istihdam etmek; employment: istihdam; employer: işveren; unemployed: işsiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_35_5",
+    "family": "forms15_35",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "He has been ____ since losing his job in March.",
+    "options": [
+      "employ",
+      "employment",
+      "employer",
+      "employee",
+      "unemployed"
+    ],
+    "correct": 4,
+    "explanation": "unemployed: işsiz. Diğer seçenekler: employ: istihdam etmek; employment: istihdam; employer: işveren; employee: çalışan."
+  },
+  {
+    "id": "wq150_nov26_forms15_36_1",
+    "family": "forms15_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The roof must ____ the equipment from the rain.",
+    "options": [
+      "protect",
+      "protection",
+      "protective",
+      "protected",
+      "unprotected"
+    ],
+    "correct": 0,
+    "explanation": "protect: korumak. Diğer seçenekler: protection: koruma; protective: koruyucu; protected: korunmuş; unprotected: korumasız."
+  },
+  {
+    "id": "wq150_nov26_forms15_36_2",
+    "family": "forms15_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The shelter provides ____ from strong winds.",
+    "options": [
+      "protect",
+      "protection",
+      "protective",
+      "protected",
+      "unprotected"
+    ],
+    "correct": 1,
+    "explanation": "protection: koruma. Diğer seçenekler: protect: korumak; protective: koruyucu; protected: korunmuş; unprotected: korumasız."
+  },
+  {
+    "id": "wq150_nov26_forms15_36_3",
+    "family": "forms15_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Wear ____ glasses to prevent injury to your eyes.",
+    "options": [
+      "protect",
+      "protection",
+      "protective",
+      "protected",
+      "unprotected"
+    ],
+    "correct": 2,
+    "explanation": "protective: koruyucu. Diğer seçenekler: protect: korumak; protection: koruma; protected: korunmuş; unprotected: korumasız."
+  },
+  {
+    "id": "wq150_nov26_forms15_36_4",
+    "family": "forms15_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The historic building is legally ____ against demolition.",
+    "options": [
+      "protect",
+      "protection",
+      "protective",
+      "protected",
+      "unprotected"
+    ],
+    "correct": 3,
+    "explanation": "protected: korunmuş. Diğer seçenekler: protect: korumak; protection: koruma; protective: koruyucu; unprotected: korumasız."
+  },
+  {
+    "id": "wq150_nov26_forms15_36_5",
+    "family": "forms15_36",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The exposed wires remained ____ , with no cover or insulation.",
+    "options": [
+      "protect",
+      "protection",
+      "protective",
+      "protected",
+      "unprotected"
+    ],
+    "correct": 4,
+    "explanation": "unprotected: korumasız. Diğer seçenekler: protect: korumak; protection: koruma; protective: koruyucu; protected: korunmuş."
+  },
+  {
+    "id": "wq150_nov26_forms15_37_1",
+    "family": "forms15_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The team plans to ____ a new learning application.",
+    "options": [
+      "develop",
+      "development",
+      "developer",
+      "developed",
+      "developing"
+    ],
+    "correct": 0,
+    "explanation": "develop: geliştirmek. Diğer seçenekler: development: gelişim; developer: geliştirici; developed: geliştirilmiş; developing: gelişen."
+  },
+  {
+    "id": "wq150_nov26_forms15_37_2",
+    "family": "forms15_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The ____ of the new system took eighteen months.",
+    "options": [
+      "develop",
+      "development",
+      "developer",
+      "developed",
+      "developing"
+    ],
+    "correct": 1,
+    "explanation": "development: gelişim. Diğer seçenekler: develop: geliştirmek; developer: geliştirici; developed: geliştirilmiş; developing: gelişen."
+  },
+  {
+    "id": "wq150_nov26_forms15_37_3",
+    "family": "forms15_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A software ____ wrote the code for the mobile app.",
+    "options": [
+      "develop",
+      "development",
+      "developer",
+      "developed",
+      "developing"
+    ],
+    "correct": 2,
+    "explanation": "developer: geliştirici. Diğer seçenekler: develop: geliştirmek; development: gelişim; developed: geliştirilmiş; developing: gelişen."
+  },
+  {
+    "id": "wq150_nov26_forms15_37_4",
+    "family": "forms15_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The technique was ____ by a team of engineers in 2015.",
+    "options": [
+      "develop",
+      "development",
+      "developer",
+      "developed",
+      "developing"
+    ],
+    "correct": 3,
+    "explanation": "developed: geliştirilmiş. Diğer seçenekler: develop: geliştirmek; development: gelişim; developer: geliştirici; developing: gelişen."
+  },
+  {
+    "id": "wq150_nov26_forms15_37_5",
+    "family": "forms15_37",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company is currently ____ a simpler version of the tool.",
+    "options": [
+      "develop",
+      "development",
+      "developer",
+      "developed",
+      "developing"
+    ],
+    "correct": 4,
+    "explanation": "developing: gelişen. Diğer seçenekler: develop: geliştirmek; development: gelişim; developer: geliştirici; developed: geliştirilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_38_1",
+    "family": "forms15_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The company will ____ its products on local radio.",
+    "options": [
+      "advertise",
+      "advertisement",
+      "advertiser",
+      "advertising",
+      "advertised"
+    ],
+    "correct": 0,
+    "explanation": "advertise: reklam yapmak. Diğer seçenekler: advertisement: reklam; advertiser: reklam veren; advertising: reklamcılık; advertised: ilan edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_38_2",
+    "family": "forms15_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "I saw an ____ for a language course in the newspaper.",
+    "options": [
+      "advertise",
+      "advertisement",
+      "advertiser",
+      "advertising",
+      "advertised"
+    ],
+    "correct": 1,
+    "explanation": "advertisement: reklam. Diğer seçenekler: advertise: reklam yapmak; advertiser: reklam veren; advertising: reklamcılık; advertised: ilan edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_38_3",
+    "family": "forms15_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The ____ paid the publisher to display its banner.",
+    "options": [
+      "advertise",
+      "advertisement",
+      "advertiser",
+      "advertising",
+      "advertised"
+    ],
+    "correct": 2,
+    "explanation": "advertiser: reklam veren. Diğer seçenekler: advertise: reklam yapmak; advertisement: reklam; advertising: reklamcılık; advertised: ilan edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_38_4",
+    "family": "forms15_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "She works in ____ , creating campaigns for different brands.",
+    "options": [
+      "advertise",
+      "advertisement",
+      "advertiser",
+      "advertising",
+      "advertised"
+    ],
+    "correct": 3,
+    "explanation": "advertising: reklamcılık. Diğer seçenekler: advertise: reklam yapmak; advertisement: reklam; advertiser: reklam veren; advertised: ilan edilmiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_38_5",
+    "family": "forms15_38",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The room was ____ as having a sea view.",
+    "options": [
+      "advertise",
+      "advertisement",
+      "advertiser",
+      "advertising",
+      "advertised"
+    ],
+    "correct": 4,
+    "explanation": "advertised: ilan edilmiş. Diğer seçenekler: advertise: reklam yapmak; advertisement: reklam; advertiser: reklam veren; advertising: reklamcılık."
+  },
+  {
+    "id": "wq150_nov26_forms15_39_1",
+    "family": "forms15_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The factory can ____ two hundred chairs per day.",
+    "options": [
+      "produce",
+      "production",
+      "producer",
+      "productive",
+      "productively"
+    ],
+    "correct": 0,
+    "explanation": "produce: üretmek. Diğer seçenekler: production: üretim; producer: üretici; productive: verimli; productively: verimli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_39_2",
+    "family": "forms15_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The ____ of the new model began in April.",
+    "options": [
+      "produce",
+      "production",
+      "producer",
+      "productive",
+      "productively"
+    ],
+    "correct": 1,
+    "explanation": "production: üretim. Diğer seçenekler: produce: üretmek; producer: üretici; productive: verimli; productively: verimli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_39_3",
+    "family": "forms15_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The country's largest tea ____ exports to several markets.",
+    "options": [
+      "produce",
+      "production",
+      "producer",
+      "productive",
+      "productively"
+    ],
+    "correct": 2,
+    "explanation": "producer: üretici. Diğer seçenekler: produce: üretmek; production: üretim; productive: verimli; productively: verimli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_39_4",
+    "family": "forms15_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "It was a ____ meeting; we completed all the planned tasks.",
+    "options": [
+      "produce",
+      "production",
+      "producer",
+      "productive",
+      "productively"
+    ],
+    "correct": 3,
+    "explanation": "productive: verimli. Diğer seçenekler: produce: üretmek; production: üretim; producer: üretici; productively: verimli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_39_5",
+    "family": "forms15_39",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The team used the extra hour ____ and finished the report.",
+    "options": [
+      "produce",
+      "production",
+      "producer",
+      "productive",
+      "productively"
+    ],
+    "correct": 4,
+    "explanation": "productively: verimli biçimde. Diğer seçenekler: produce: üretmek; production: üretim; producer: üretici; productive: verimli."
+  },
+  {
+    "id": "wq150_nov26_forms15_40_1",
+    "family": "forms15_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "All members are expected to ____ the annual meeting.",
+    "options": [
+      "attend",
+      "attendance",
+      "attendant",
+      "attended",
+      "attending"
+    ],
+    "correct": 0,
+    "explanation": "attend: katılmak. Diğer seçenekler: attendance: katılım; attendant: görevli; attended: katıldı; attending: katılmakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_40_2",
+    "family": "forms15_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Average ____ at the evening class has increased.",
+    "options": [
+      "attend",
+      "attendance",
+      "attendant",
+      "attended",
+      "attending"
+    ],
+    "correct": 1,
+    "explanation": "attendance: katılım. Diğer seçenekler: attend: katılmak; attendant: görevli; attended: katıldı; attending: katılmakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_40_3",
+    "family": "forms15_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "A flight ____ helped us find our seats.",
+    "options": [
+      "attend",
+      "attendance",
+      "attendant",
+      "attended",
+      "attending"
+    ],
+    "correct": 2,
+    "explanation": "attendant: görevli. Diğer seçenekler: attend: katılmak; attendance: katılım; attended: katıldı; attending: katılmakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_40_4",
+    "family": "forms15_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "She ____ the conference last Friday.",
+    "options": [
+      "attend",
+      "attendance",
+      "attendant",
+      "attended",
+      "attending"
+    ],
+    "correct": 3,
+    "explanation": "attended: katıldı. Diğer seçenekler: attend: katılmak; attendance: katılım; attendant: görevli; attending: katılmakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_40_5",
+    "family": "forms15_40",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "He is currently ____ a training course in another city.",
+    "options": [
+      "attend",
+      "attendance",
+      "attendant",
+      "attended",
+      "attending"
+    ],
+    "correct": 4,
+    "explanation": "attending: katılmakta. Diğer seçenekler: attend: katılmak; attendance: katılım; attendant: görevli; attended: katıldı."
+  },
+  {
+    "id": "wq150_nov26_forms15_41_1",
+    "family": "forms15_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The volunteers will ____ a fundraising event in June.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 0,
+    "explanation": "organise: düzenlemek. Diğer seçenekler: organisation: kuruluş; organiser: düzenleyici; organised: düzenli; disorganised: düzensiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_41_2",
+    "family": "forms15_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The World Health Organization is an international ____ .",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 1,
+    "explanation": "organisation: kuruluş. Diğer seçenekler: organise: düzenlemek; organiser: düzenleyici; organised: düzenli; disorganised: düzensiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_41_3",
+    "family": "forms15_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The event ____ was responsible for sending invitations.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 2,
+    "explanation": "organiser: düzenleyici. Diğer seçenekler: organise: düzenlemek; organisation: kuruluş; organised: düzenli; disorganised: düzensiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_41_4",
+    "family": "forms15_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "Her files are well ____ , with each document in the correct folder.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 3,
+    "explanation": "organised: düzenli. Diğer seçenekler: organise: düzenlemek; organisation: kuruluş; organiser: düzenleyici; disorganised: düzensiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_41_5",
+    "family": "forms15_41",
+    "level": "B1",
+    "yds": "easy",
+    "topic": "Vocabulary",
+    "prompt": "The timetable was so ____ that participants did not know which room to use.",
+    "options": [
+      "organise",
+      "organisation",
+      "organiser",
+      "organised",
+      "disorganised"
+    ],
+    "correct": 4,
+    "explanation": "disorganised: düzensiz. Diğer seçenekler: organise: düzenlemek; organisation: kuruluş; organiser: düzenleyici; organised: düzenli."
+  },
+  {
+    "id": "wq150_nov26_forms15_42_1",
+    "family": "forms15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The ticket is ____ until the end of the month.",
+    "options": [
+      "valid",
+      "validity",
+      "validate",
+      "invalid",
+      "validly"
+    ],
+    "correct": 0,
+    "explanation": "valid: geçerli. Diğer seçenekler: validity: geçerlilik; validate: doğrulamak; invalid: geçersiz; validly: geçerli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_42_2",
+    "family": "forms15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The study examines the ____ of the test as a measure of comprehension.",
+    "options": [
+      "valid",
+      "validity",
+      "validate",
+      "invalid",
+      "validly"
+    ],
+    "correct": 1,
+    "explanation": "validity: geçerlilik. Diğer seçenekler: valid: geçerli; validate: doğrulamak; invalid: geçersiz; validly: geçerli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_42_3",
+    "family": "forms15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "An independent sample was used to ____ the model's predictions.",
+    "options": [
+      "valid",
+      "validity",
+      "validate",
+      "invalid",
+      "validly"
+    ],
+    "correct": 2,
+    "explanation": "validate: doğrulamak. Diğer seçenekler: valid: geçerli; validity: geçerlilik; invalid: geçersiz; validly: geçerli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_42_4",
+    "family": "forms15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The contract was declared ____ because a required signature was missing.",
+    "options": [
+      "valid",
+      "validity",
+      "validate",
+      "invalid",
+      "validly"
+    ],
+    "correct": 3,
+    "explanation": "invalid: geçersiz. Diğer seçenekler: valid: geçerli; validity: geçerlilik; validate: doğrulamak; validly: geçerli biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_42_5",
+    "family": "forms15_42",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The conclusion can be ____ deduced from the stated premises.",
+    "options": [
+      "valid",
+      "validity",
+      "validate",
+      "invalid",
+      "validly"
+    ],
+    "correct": 4,
+    "explanation": "validly: geçerli biçimde. Diğer seçenekler: valid: geçerli; validity: geçerlilik; validate: doğrulamak; invalid: geçersiz."
+  },
+  {
+    "id": "wq150_nov26_forms15_43_1",
+    "family": "forms15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The team will ____ the expression from basic principles.",
+    "options": [
+      "derive",
+      "derivation",
+      "derived",
+      "deriving",
+      "derivative"
+    ],
+    "correct": 0,
+    "explanation": "derive: türetmek. Diğer seçenekler: derivation: türetim; derived: türetilmiş; deriving: türetmekte; derivative: türev."
+  },
+  {
+    "id": "wq150_nov26_forms15_43_2",
+    "family": "forms15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The appendix provides a detailed ____ of the formula.",
+    "options": [
+      "derive",
+      "derivation",
+      "derived",
+      "deriving",
+      "derivative"
+    ],
+    "correct": 1,
+    "explanation": "derivation: türetim. Diğer seçenekler: derive: türetmek; derived: türetilmiş; deriving: türetmekte; derivative: türev."
+  },
+  {
+    "id": "wq150_nov26_forms15_43_3",
+    "family": "forms15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The estimate was ____ from official statistics.",
+    "options": [
+      "derive",
+      "derivation",
+      "derived",
+      "deriving",
+      "derivative"
+    ],
+    "correct": 2,
+    "explanation": "derived: türetilmiş. Diğer seçenekler: derive: türetmek; derivation: türetim; deriving: türetmekte; derivative: türev."
+  },
+  {
+    "id": "wq150_nov26_forms15_43_4",
+    "family": "forms15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The researchers are currently ____ a new expression from their model.",
+    "options": [
+      "derive",
+      "derivation",
+      "derived",
+      "deriving",
+      "derivative"
+    ],
+    "correct": 3,
+    "explanation": "deriving: türetmekte. Diğer seçenekler: derive: türetmek; derivation: türetim; derived: türetilmiş; derivative: türev."
+  },
+  {
+    "id": "wq150_nov26_forms15_43_5",
+    "family": "forms15_43",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The first ____ of the function gives its instantaneous rate of change.",
+    "options": [
+      "derive",
+      "derivation",
+      "derived",
+      "deriving",
+      "derivative"
+    ],
+    "correct": 4,
+    "explanation": "derivative: türev. Diğer seçenekler: derive: türetmek; derivation: türetim; derived: türetilmiş; deriving: türetmekte."
+  },
+  {
+    "id": "wq150_nov26_forms15_44_1",
+    "family": "forms15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The project aims to ____ native plant species.",
+    "options": [
+      "conserve",
+      "conservation",
+      "conservationist",
+      "conserved",
+      "conserving"
+    ],
+    "correct": 0,
+    "explanation": "conserve: korumak. Diğer seçenekler: conservation: koruma; conservationist: doğa korumacı; conserved: korunmuş; conserving: korumakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_44_2",
+    "family": "forms15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Wildlife ____ requires long-term management of habitats.",
+    "options": [
+      "conserve",
+      "conservation",
+      "conservationist",
+      "conserved",
+      "conserving"
+    ],
+    "correct": 1,
+    "explanation": "conservation: koruma. Diğer seçenekler: conserve: korumak; conservationist: doğa korumacı; conserved: korunmuş; conserving: korumakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_44_3",
+    "family": "forms15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A ____ led the campaign to protect the wetland.",
+    "options": [
+      "conserve",
+      "conservation",
+      "conservationist",
+      "conserved",
+      "conserving"
+    ],
+    "correct": 2,
+    "explanation": "conservationist: doğa korumacı. Diğer seçenekler: conserve: korumak; conservation: koruma; conserved: korunmuş; conserving: korumakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_44_4",
+    "family": "forms15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "In an isolated system, total energy is ____ .",
+    "options": [
+      "conserve",
+      "conservation",
+      "conservationist",
+      "conserved",
+      "conserving"
+    ],
+    "correct": 3,
+    "explanation": "conserved: korunmuş. Diğer seçenekler: conserve: korumak; conservation: koruma; conservationist: doğa korumacı; conserving: korumakta."
+  },
+  {
+    "id": "wq150_nov26_forms15_44_5",
+    "family": "forms15_44",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The organisation is actively ____ water by recycling its industrial wastewater.",
+    "options": [
+      "conserve",
+      "conservation",
+      "conservationist",
+      "conserved",
+      "conserving"
+    ],
+    "correct": 4,
+    "explanation": "conserving: korumakta. Diğer seçenekler: conserve: korumak; conservation: koruma; conservationist: doğa korumacı; conserved: korunmuş."
+  },
+  {
+    "id": "wq150_nov26_forms15_45_1",
+    "family": "forms15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The agency was created to ____ the financial sector.",
+    "options": [
+      "regulate",
+      "regulation",
+      "regulator",
+      "regulated",
+      "unregulated"
+    ],
+    "correct": 0,
+    "explanation": "regulate: düzenlemek. Diğer seçenekler: regulation: yönetmelik; regulator: düzenleyici kurum; regulated: düzenlenen; unregulated: düzenlenmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_45_2",
+    "family": "forms15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "A new ____ requires firms to report their emissions.",
+    "options": [
+      "regulate",
+      "regulation",
+      "regulator",
+      "regulated",
+      "unregulated"
+    ],
+    "correct": 1,
+    "explanation": "regulation: yönetmelik. Diğer seçenekler: regulate: düzenlemek; regulator: düzenleyici kurum; regulated: düzenlenen; unregulated: düzenlenmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_45_3",
+    "family": "forms15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The independent ____ imposed a penalty for non-compliance.",
+    "options": [
+      "regulate",
+      "regulation",
+      "regulator",
+      "regulated",
+      "unregulated"
+    ],
+    "correct": 2,
+    "explanation": "regulator: düzenleyici kurum. Diğer seçenekler: regulate: düzenlemek; regulation: yönetmelik; regulated: düzenlenen; unregulated: düzenlenmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_45_4",
+    "family": "forms15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The industry is strictly ____ by government authorities.",
+    "options": [
+      "regulate",
+      "regulation",
+      "regulator",
+      "regulated",
+      "unregulated"
+    ],
+    "correct": 3,
+    "explanation": "regulated: düzenlenen. Diğer seçenekler: regulate: düzenlemek; regulation: yönetmelik; regulator: düzenleyici kurum; unregulated: düzenlenmemiş."
+  },
+  {
+    "id": "wq150_nov26_forms15_45_5",
+    "family": "forms15_45",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The market remained ____ , with no official rules or supervision.",
+    "options": [
+      "regulate",
+      "regulation",
+      "regulator",
+      "regulated",
+      "unregulated"
+    ],
+    "correct": 4,
+    "explanation": "unregulated: düzenlenmemiş. Diğer seçenekler: regulate: düzenlemek; regulation: yönetmelik; regulator: düzenleyici kurum; regulated: düzenlenen."
+  },
+  {
+    "id": "wq150_nov26_forms15_46_1",
+    "family": "forms15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The committee must ____ funds to each department.",
+    "options": [
+      "allocate",
+      "allocation",
+      "allocated",
+      "allocating",
+      "reallocate"
+    ],
+    "correct": 0,
+    "explanation": "allocate: tahsis etmek. Diğer seçenekler: allocation: tahsis; allocated: tahsis edilmiş; allocating: tahsis etmekte; reallocate: yeniden tahsis etmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_46_2",
+    "family": "forms15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The annual budget ____ for research was reduced.",
+    "options": [
+      "allocate",
+      "allocation",
+      "allocated",
+      "allocating",
+      "reallocate"
+    ],
+    "correct": 1,
+    "explanation": "allocation: tahsis. Diğer seçenekler: allocate: tahsis etmek; allocated: tahsis edilmiş; allocating: tahsis etmekte; reallocate: yeniden tahsis etmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_46_3",
+    "family": "forms15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The money was ____ to the project in March.",
+    "options": [
+      "allocate",
+      "allocation",
+      "allocated",
+      "allocating",
+      "reallocate"
+    ],
+    "correct": 2,
+    "explanation": "allocated: tahsis edilmiş. Diğer seçenekler: allocate: tahsis etmek; allocation: tahsis; allocating: tahsis etmekte; reallocate: yeniden tahsis etmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_46_4",
+    "family": "forms15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The board is currently ____ resources to the new departments.",
+    "options": [
+      "allocate",
+      "allocation",
+      "allocated",
+      "allocating",
+      "reallocate"
+    ],
+    "correct": 3,
+    "explanation": "allocating: tahsis etmekte. Diğer seçenekler: allocate: tahsis etmek; allocation: tahsis; allocated: tahsis edilmiş; reallocate: yeniden tahsis etmek."
+  },
+  {
+    "id": "wq150_nov26_forms15_46_5",
+    "family": "forms15_46",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "If priorities change, the board may ____ money from one department to another.",
+    "options": [
+      "allocate",
+      "allocation",
+      "allocated",
+      "allocating",
+      "reallocate"
+    ],
+    "correct": 4,
+    "explanation": "reallocate: yeniden tahsis etmek. Diğer seçenekler: allocate: tahsis etmek; allocation: tahsis; allocated: tahsis edilmiş; allocating: tahsis etmekte."
+  },
+  {
+    "id": "wq150_nov26_forms15_47_1",
+    "family": "forms15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Researchers must ____ the results in their proper context.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpreter",
+      "interpreted",
+      "misinterpret"
+    ],
+    "correct": 0,
+    "explanation": "interpret: yorumlamak. Diğer seçenekler: interpretation: yorum; interpreter: sözlü çevirmen; interpreted: yorumlanmış; misinterpret: yanlış yorumlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_47_2",
+    "family": "forms15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The report offers an alternative ____ of the observed pattern.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpreter",
+      "interpreted",
+      "misinterpret"
+    ],
+    "correct": 1,
+    "explanation": "interpretation: yorum. Diğer seçenekler: interpret: yorumlamak; interpreter: sözlü çevirmen; interpreted: yorumlanmış; misinterpret: yanlış yorumlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_47_3",
+    "family": "forms15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "An ____ translated the speaker's words into French during the meeting.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpreter",
+      "interpreted",
+      "misinterpret"
+    ],
+    "correct": 2,
+    "explanation": "interpreter: sözlü çevirmen. Diğer seçenekler: interpret: yorumlamak; interpretation: yorum; interpreted: yorumlanmış; misinterpret: yanlış yorumlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_47_4",
+    "family": "forms15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The data were ____ by two independent reviewers.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpreter",
+      "interpreted",
+      "misinterpret"
+    ],
+    "correct": 3,
+    "explanation": "interpreted: yorumlanmış. Diğer seçenekler: interpret: yorumlamak; interpretation: yorum; interpreter: sözlü çevirmen; misinterpret: yanlış yorumlamak."
+  },
+  {
+    "id": "wq150_nov26_forms15_47_5",
+    "family": "forms15_47",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "Readers may ____ the figures if they confuse percentages with absolute numbers.",
+    "options": [
+      "interpret",
+      "interpretation",
+      "interpreter",
+      "interpreted",
+      "misinterpret"
+    ],
+    "correct": 4,
+    "explanation": "misinterpret: yanlış yorumlamak. Diğer seçenekler: interpret: yorumlamak; interpretation: yorum; interpreter: sözlü çevirmen; interpreted: yorumlanmış."
+  },
+  {
+    "id": "wq150_nov26_forms15_48_1",
+    "family": "forms15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The instrument can ____ the thickness of the coating.",
+    "options": [
+      "measure",
+      "measurement",
+      "measurable",
+      "measured",
+      "immeasurable"
+    ],
+    "correct": 0,
+    "explanation": "measure: ölçmek. Diğer seçenekler: measurement: ölçüm; measurable: ölçülebilir; measured: ölçülmüş; immeasurable: ölçülemeyecek kadar büyük."
+  },
+  {
+    "id": "wq150_nov26_forms15_48_2",
+    "family": "forms15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The first ____ of the sample's length was recorded at noon.",
+    "options": [
+      "measure",
+      "measurement",
+      "measurable",
+      "measured",
+      "immeasurable"
+    ],
+    "correct": 1,
+    "explanation": "measurement: ölçüm. Diğer seçenekler: measure: ölçmek; measurable: ölçülebilir; measured: ölçülmüş; immeasurable: ölçülemeyecek kadar büyük."
+  },
+  {
+    "id": "wq150_nov26_forms15_48_3",
+    "family": "forms15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The intervention produced a ____ improvement that could be quantified in seconds.",
+    "options": [
+      "measure",
+      "measurement",
+      "measurable",
+      "measured",
+      "immeasurable"
+    ],
+    "correct": 2,
+    "explanation": "measurable: ölçülebilir. Diğer seçenekler: measure: ölçmek; measurement: ölçüm; measured: ölçülmüş; immeasurable: ölçülemeyecek kadar büyük."
+  },
+  {
+    "id": "wq150_nov26_forms15_48_4",
+    "family": "forms15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The distance was ____ using a laser device.",
+    "options": [
+      "measure",
+      "measurement",
+      "measurable",
+      "measured",
+      "immeasurable"
+    ],
+    "correct": 3,
+    "explanation": "measured: ölçülmüş. Diğer seçenekler: measure: ölçmek; measurement: ölçüm; measurable: ölçülebilir; immeasurable: ölçülemeyecek kadar büyük."
+  },
+  {
+    "id": "wq150_nov26_forms15_48_5",
+    "family": "forms15_48",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The disaster caused ____ grief that could not be adequately expressed in numbers.",
+    "options": [
+      "measure",
+      "measurement",
+      "measurable",
+      "measured",
+      "immeasurable"
+    ],
+    "correct": 4,
+    "explanation": "immeasurable: ölçülemeyecek kadar büyük. Diğer seçenekler: measure: ölçmek; measurement: ölçüm; measurable: ölçülebilir; measured: ölçülmüş."
+  },
+  {
+    "id": "wq150_nov26_forms15_49_1",
+    "family": "forms15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The campaign seeks to ____ residents to use public transport.",
+    "options": [
+      "persuade",
+      "persuasion",
+      "persuasive",
+      "persuaded",
+      "persuasively"
+    ],
+    "correct": 0,
+    "explanation": "persuade: ikna etmek. Diğer seçenekler: persuasion: ikna; persuasive: ikna edici; persuaded: ikna olmuş; persuasively: ikna edici biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_49_2",
+    "family": "forms15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The negotiator relied on ____ rather than threats.",
+    "options": [
+      "persuade",
+      "persuasion",
+      "persuasive",
+      "persuaded",
+      "persuasively"
+    ],
+    "correct": 1,
+    "explanation": "persuasion: ikna. Diğer seçenekler: persuade: ikna etmek; persuasive: ikna edici; persuaded: ikna olmuş; persuasively: ikna edici biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_49_3",
+    "family": "forms15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The report presents a ____ argument supported by strong evidence.",
+    "options": [
+      "persuade",
+      "persuasion",
+      "persuasive",
+      "persuaded",
+      "persuasively"
+    ],
+    "correct": 2,
+    "explanation": "persuasive: ikna edici. Diğer seçenekler: persuade: ikna etmek; persuasion: ikna; persuaded: ikna olmuş; persuasively: ikna edici biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_49_4",
+    "family": "forms15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The board was ____ to reconsider its earlier decision.",
+    "options": [
+      "persuade",
+      "persuasion",
+      "persuasive",
+      "persuaded",
+      "persuasively"
+    ],
+    "correct": 3,
+    "explanation": "persuaded: ikna olmuş. Diğer seçenekler: persuade: ikna etmek; persuasion: ikna; persuasive: ikna edici; persuasively: ikna edici biçimde."
+  },
+  {
+    "id": "wq150_nov26_forms15_49_5",
+    "family": "forms15_49",
+    "level": "B2",
+    "yds": "medium",
+    "topic": "Vocabulary",
+    "prompt": "The lawyer argued ____ , addressing every objection with relevant evidence.",
+    "options": [
+      "persuade",
+      "persuasion",
+      "persuasive",
+      "persuaded",
+      "persuasively"
+    ],
+    "correct": 4,
+    "explanation": "persuasively: ikna edici biçimde. Diğer seçenekler: persuade: ikna etmek; persuasion: ikna; persuasive: ikna edici; persuaded: ikna olmuş."
   }
 ];
