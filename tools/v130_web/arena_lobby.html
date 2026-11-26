@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WordQuest AI · Oda Lobisi</title>
+<style>
+:root{color-scheme:dark;--gold:#ffdc7e;--light:#fdf6ff;--muted:#e1d1ff;--edge:#ac83e5;--gap:8px;--player-height:clamp(250px,44vh,460px)}
+*{box-sizing:border-box}body{margin:0;background:transparent;color:var(--light);font:14px system-ui,sans-serif;overflow-x:hidden}
+main{display:grid;gap:var(--gap);padding:4px}
+header,.panel,.player{border:1px solid var(--edge);border-radius:18px;background:linear-gradient(165deg,#49317cee,#21123df2);padding:9px;min-width:0}
+header,.room,.settings-head{display:flex;align-items:center;gap:8px}
+header h1{font-size:22px;margin:0}small{color:var(--muted)}.grow{flex:1;min-width:0}
+.code{font-size:19px;font-weight:900;color:var(--gold);overflow-wrap:anywhere}
+a.action{color:var(--light);background:linear-gradient(#8c38cb,#452185);border:1px solid var(--edge);border-radius:13px;min-height:44px;padding:7px;text-decoration:none;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
+a.gold{background:linear-gradient(#ffe7a1,#ffba39);color:#321746;border-color:var(--gold)}
+a.ready{background:linear-gradient(#267a42,#15512c);color:#c8f8bd}
+a[aria-disabled="true"]{opacity:.58;pointer-events:none;cursor:default}
+.chips{display:grid;grid-template-columns:1fr .7fr 1fr 1.2fr;gap:4px;margin-top:5px}.chips span{border:1px solid #8865c4;border-radius:10px;text-align:center;padding:7px 3px;overflow-wrap:anywhere;font-size:12px}
+.players{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.player{height:var(--player-height);display:flex;flex-direction:column;gap:4px;padding:6px}.player.host{border:2px solid var(--gold)}
+.portrait{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;border-radius:13px;overflow:hidden;background:radial-gradient(ellipse at center,#8155b750,transparent 75%)}
+.portrait:after{content:"";position:absolute;bottom:3px;left:10%;right:10%;height:12px;border:1px solid #d7a5fa;border-radius:50%;box-shadow:0 0 12px #d7a5fa;pointer-events:none}
+.portrait img{position:relative;width:100%;height:100%;object-fit:contain;z-index:1;padding-bottom:7px}.tag{position:absolute;top:2px;left:2px;z-index:2;background:#29164de8;padding:3px 6px;border-radius:8px;font-size:10px;color:var(--gold)}
+.name{font-size:15px;font-weight:800;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plus{width:100%;height:100%;display:grid;place-items:center;color:var(--gold);font-size:48px;text-decoration:none}
+.status{text-align:center;color:var(--muted);font-size:12px}.start{font-size:18px;min-height:56px!important}.error{color:#ffbfc0;white-space:pre-wrap}
+[hidden]{display:none!important}
+@media(min-width:650px){main{padding:8px;--player-height:clamp(300px,49vh,550px)}header h1{font-size:26px}.name{font-size:17px}}
+</style></head><body><main>
+<header><div class="grow"><small>WORDQUEST AI · ARENA</small><h1>Oda Lobisi</h1></div><a class="action" id="friends" href="https://wq-local.invalid/action/invite">Arkadaşlar</a><a class="action" href="https://wq-local.invalid/action/info" aria-label="Maç kuralları">ⓘ</a></header>
+<section class="panel room"><div class="grow"><small>Oda kodu</small><div id="code" class="code">—</div></div><a class="action" href="https://wq-local.invalid/action/copy">Kopyala</a><a class="action" href="https://wq-local.invalid/action/share">Paylaş</a></section>
+<section class="panel"><div class="settings-head"><b class="grow">Maç Ayarları</b><a class="action" id="edit" href="https://wq-local.invalid/action/edit">Düzenle</a></div><div class="chips"><span id="mode"></span><span id="level"></span><span id="time"></span><span id="count"></span></div></section>
+<section class="players">
+<article class="player host"><div class="portrait"><span class="tag">Oda sahibi</span><img id="hostImg" alt="" hidden></div><div class="name" id="hostName"></div><a class="action" id="hostReady" href="https://wq-local.invalid/action/ready">Hazırım</a></article>
+<article class="player"><div class="portrait"><img id="guestImg" alt="" hidden><a class="plus" id="plus" href="https://wq-local.invalid/action/invite" aria-label="Arkadaş davet et">+</a></div><div class="name" id="guestName"></div><a class="action" id="guestReady" href="https://wq-local.invalid/action/ready">Hazırım</a><a class="action gold" id="invite" href="https://wq-local.invalid/action/invite">Arkadaş Davet Et</a></article></section>
+<div id="status" class="panel status"></div><a id="start" class="action gold start" href="https://wq-local.invalid/action/start">Yarışmayı Başlat</a><div id="error" class="error" role="status"></div>
+</main><script>
+'use strict';
+const el=id=>document.getElementById(id);
+const text=(id,value)=>{el(id).textContent=String(value??'')};
+const show=(id,yes)=>{el(id).hidden=!yes};
+function button(id,label,enabled,ready=false){text(id,label);el(id).setAttribute('aria-disabled',String(!enabled));el(id).classList.toggle('ready',ready)}
+function image(id,src){const e=el(id);const ok=typeof src==='string'&&src.startsWith('data:image/webp;base64,');e.hidden=!ok;if(ok&&e.getAttribute('src')!==src)e.src=src;else if(!ok)e.removeAttribute('src')}
+window.wqSetState=function(raw){
+ const s=JSON.parse(raw);
+ for(const k of ['code','mode','level','time','count','hostName','guestName','status','error'])text(k,s[k]);
+ image('hostImg',s.hostImage);image('guestImg',s.guestImage);
+ show('friends',s.isHost);show('edit',s.isHost);show('start',s.isHost);
+ show('plus',!s.guestPresent&&s.isHost);show('invite',!s.guestPresent&&s.isHost);show('guestReady',s.guestPresent);
+ button('hostReady',s.hostReady?'✓ Hazır':s.isHost?'Hazırım':'Hazır değil',s.isHost&&!s.busy,s.hostReady);
+ button('guestReady',s.guestReady?'✓ Hazır':!s.isHost?'Hazırım':'Hazır değil',s.guestPresent&&!s.isHost&&!s.busy,s.guestReady);
+ button('start','Yarışmayı Başlat',s.isHost&&s.hostReady&&s.guestReady&&!s.busy);
+};
+document.addEventListener('click',e=>{const a=e.target.closest('a');if(a&&a.getAttribute('aria-disabled')==='true')e.preventDefault()});
+</script></body></html>
