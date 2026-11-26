@@ -2046,7 +2046,7 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nProvided that the replacement parts arrive by Thursday, the repairs can be completed this week.",
     "options": [
-      "Completion this week is possible if the parts arrive by Thursday.",
+      "The repairs may be completed this week if the replacement parts arrive by Thursday.",
       "The parts must arrive after the repairs are finished.",
       "Repairs will necessarily finish regardless of delivery.",
       "Delivery can occur only once repairs are complete.",
@@ -2114,7 +2114,7 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nProvided that the application includes proof of eligibility, the applicant can receive the reduced fee.",
     "options": [
-      "Providing proof is required for the applicant to receive the reduced fee.",
+      "The applicant may receive the reduced fee if proof of eligibility is included.",
       "The applicant receives the fee reduction without proof.",
       "The fee reduction is available only after eligibility is disproved.",
       "Proof of eligibility is prohibited for discounted applicants.",
@@ -2148,7 +2148,7 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nProvided that the equipment is regularly inspected, its continued use can be authorised.",
     "options": [
-      "Regular inspection is required for continued authorisation.",
+      "Continued use may be authorised if the equipment is regularly inspected.",
       "Continued use can be authorised without inspection.",
       "Inspection is allowed only after authorisation expires.",
       "The equipment is permanently prohibited after inspection.",
