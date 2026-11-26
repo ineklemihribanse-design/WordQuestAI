@@ -29,10 +29,13 @@ internal class Wq150Endpoint(raw:String) {
             it.rawQuery==null&&it.rawFragment==null&&it.port in listOf(-1,443)&&
             (it.rawPath.isNullOrEmpty()||it.rawPath=="/")){"Geçersiz Arena sunucusu"}
     }
-    fun matchUrl(id:String,commands:Boolean=false):URI {
+    private fun roomUrl(path:String,id:String,commands:Boolean):URI {
         require(Regex("^[A-Za-z0-9_-]{6,64}$").matches(id)&&id !in listOf("constructor","prototype","__proto__"))
-        return origin.resolve("/v150/matches/"+id+(if(commands)"/commands" else ""))
+        return origin.resolve("/v150/"+path+"/"+id+(if(commands)"/commands" else ""))
     }
+    fun matchUrl(id:String,commands:Boolean=false):URI=roomUrl("matches",id,commands)
+    fun lobbyUrl(id:String,commands:Boolean=false):URI=roomUrl("lobbies",id,commands)
+    fun createUrl():URI=origin.resolve("/v150/lobbies")
 }
 
 /** Stable request ID for safe retry. Never include a client actor or clock. */
@@ -81,12 +84,42 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
             }
         }
     }
-    suspend fun view(room:String):JSONObject=request(room,null)
-    suspend fun send(room:String,command:Wq150Command):JSONObject=request(room,command)
-    private suspend fun request(room:String,command:Wq150Command?):JSONObject {
-        val url=endpoint.matchUrl(room,command!=null).toURL()
+    suspend fun view(room:String):JSONObject=matchView(request(endpoint.matchUrl(room),null))
+    suspend fun send(room:String,command:Wq150Command):JSONObject=
+        matchView(request(endpoint.matchUrl(room,true),command.json()))
+    suspend fun createLobby(settings:Wq150Settings,id:String):Wq150LobbyResponse {
+        require(Wq150LobbyCommand.validId(id))
+        return lobbyResponse(request(endpoint.createUrl(),JSONObject().put("id",id).put("settings",settings.json())))
+    }
+    suspend fun lobby(room:String):Wq150LobbyResponse=lobbyResponse(request(endpoint.lobbyUrl(room),null),room)
+    suspend fun lobbyAction(room:String,command:Wq150LobbyCommand):Wq150LobbyResponse=
+        lobbyResponse(request(endpoint.lobbyUrl(room,true),command.json()),room,command.type=="leave")
+    private fun matchView(response:JSONObject):JSONObject {
+        val view=response.optJSONObject("view")?:throw IOException("Eksik Arena durumu")
+        if(view.optInt("schema")!=150||view.optLong("revision",-1)<0||
+            view.optString("phase") !in setOf("playing","paused","finished"))
+            throw IOException("Geçersiz Arena durumu")
+        return view
+    }
+    private fun lobbyResponse(response:JSONObject,expected:String?=null,allowEmpty:Boolean=false):Wq150LobbyResponse {
+        val id=response.optString("id")
+        if(!Regex("^[A-Za-z0-9_-]{6,64}$").matches(id)||expected!=null&&expected!=id)
+            throw IOException("Geçersiz oda kodu")
+        val view=response.optJSONObject("view")
+        if(view==null&&!allowEmpty)throw IOException("Eksik oda durumu")
+        if(view!=null){
+            if(view.optString("phase")=="lobby"){
+                if(view.optInt("schema")!=150||view.optLong("revision",-1)<0||
+                    view.optLong("configRevision",-1)<0||view.optJSONArray("members")==null||
+                    view.optInt("capacity") !in listOf(2,4))throw IOException("Geçersiz oda durumu")
+            }else matchView(response)
+        }
+        return Wq150LobbyResponse(id,view)
+    }
+    private suspend fun request(uri:URI,json:JSONObject?):JSONObject {
+        val url=uri.toURL()
         val bearer=token()
-        val body=command?.json()?.toString()?.toByteArray(Charsets.UTF_8)
+        val body=json?.toString()?.toByteArray(Charsets.UTF_8)
         return withContext(Dispatchers.IO){
             val conn=url.openConnection() as HttpURLConnection
             try{
@@ -116,11 +149,7 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
                 val response=runCatching{JSONObject(text)}.getOrElse{JSONObject()}
                 if(status !in 200..299||!response.optBoolean("ok"))
                     throw Wq150GatewayError(status,response.optString("code","refresh-required").take(80))
-                val view=response.optJSONObject("view")?:throw IOException("Eksik Arena durumu")
-                if(view.optInt("schema")!=150||view.optLong("revision",-1)<0||
-                    view.optString("phase") !in setOf("playing","paused","finished"))
-                    throw IOException("Geçersiz Arena durumu")
-                view
+                response
             }finally{conn.disconnect()}
         }
     }
