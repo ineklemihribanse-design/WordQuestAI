@@ -1,0 +1,248 @@
+name: Publish verified WordQuest AI 1.0.148 live Arena update
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-v148-verified.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: wordquest-public-release
+  cancel-in-progress: false
+env:
+  WQ_VERSION: '1.0.148'
+  WQ_BASE_VERSION: '1.0.146'
+  WQ_TARGET_CODE: '163'
+  WQ_BASE_CODE: '162'
+  WQ_SOURCE_SHA: 'd4b57cd7c745ac2f21f39df59568ecb2e803ff32'
+  WQ_NOTES: 'Arena canlı maç ekranı: büyük maskotlar, profil kartları, emoji hareketi, kalıcı ipuçları, tam ekran tahta ve klavye düzenlemeleri. Telefon/tablet emülatör ve veri koruma testleri başarılı. Gerçek iki cihazlı maç ve canlı Firebase kalp/şaşırma izinleri henüz doğrulanmadı; mevcut Firebase kuralları otomatik değiştirilmez.'
+jobs:
+  publish:
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI'
+    env:
+      WQ_BASE_SHA: 'cedc490c4b735eaa45fd33b7a762059979a9f9a03cb3d7d52ed4175ea4d6637f'
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Verify immutable completed upgrade proof
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45781631659" | jq -e '.head_sha=="357c0a04189b92b2d94924ff66b8636a4066f0a4" and .head_branch=="main" and .status=="completed" and .conclusion=="success"'
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15099326392" | jq -e '.expired==false and .workflow_run.id==45781631659 and .digest=="sha256:913bbc1e49c9001e385f73e401b21e2d3f66bff6d7966ead673c8fa721dbd1df"'
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/v1.0.146" | jq -e --arg digest "sha256:$WQ_BASE_SHA" '.draft==false and any(.assets[]; .name=="WordQuestAI.apk" and .digest==$digest)'
+      - uses: actions/download-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.148-verified-upgrade-only
+          run-id: 45781631659
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/verified
+      - name: Validate final signed bytes, draft, upload and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/verified"
+          export D
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          d=Path(os.environ['D']); out=d/'dist'; m=json.loads((out/'update.json').read_text()); p=m['deltas'][0]
+          def sha(f):
+              with f.open('rb') as s:return hashlib.file_digest(s,'sha256').hexdigest()
+          assert m['versionName']==os.environ['WQ_VERSION'] and m['versionCode']==int(os.environ['WQ_TARGET_CODE'])
+          assert p['fromVersionCode']==int(os.environ['WQ_BASE_CODE']) and p['baseSha256']==os.environ['WQ_BASE_SHA']
+          assert sha(out/'WordQuestAI.apk')==m['sha256']==p['targetSha256']==(d/'upgrade-proof.sha256').read_text().split()[0]
+          assert sha(out/p['file'])==p['sha256'] and (out/p['file']).stat().st_size==p['sizeBytes']
+          assert {f.name for f in out.iterdir()}=={'WordQuestAI.apk','update.json',p['file']}
+          PY
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          TAG="v$WQ_VERSION"
+          if [ "$latest" != "$TAG" ] && [ "$latest" != "v$WQ_BASE_VERSION" ]; then
+            echo "::error::Production base changed; refusing outdated publication"
+            exit 1
+          fi
+          # Create draft separately from large asset uploads; recover transient 502s.
+          ID=""
+          for attempt in $(seq 1 5); do
+            ID=$(gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json databaseId --jq .databaseId 2>/dev/null || true)
+            if [ -n "$ID" ]; then break; fi
+            test "$latest" = "v$WQ_BASE_VERSION"
+            gh release create "$TAG" -R "$GITHUB_REPOSITORY" --target "$WQ_SOURCE_SHA" --draft --title "WordQuest AI $WQ_VERSION" --notes "$WQ_NOTES" || true
+            sleep 5
+          done
+          ID=$(gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json databaseId --jq .databaseId)
+          gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/uploaded.json"
+          jq -e --arg sha "$WQ_SOURCE_SHA" --arg tag "$TAG" '.target_commitish==$sha and .tag_name==$tag and .prerelease==false' "$D/uploaded.json"
+          for file in "$D/dist/"*; do
+            name=$(basename "$file")
+            digest="sha256:$(sha256sum "$file" | cut -d' ' -f1)"
+            size=$(stat -c '%s' "$file")
+            for attempt in $(seq 1 4); do
+              gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/uploaded.json"
+              if jq -e --arg n "$name" --arg d "$digest" --argjson z "$size" '.assets|any(.name==$n and .state=="uploaded" and .digest==$d and .size==$z)' "$D/uploaded.json" >/dev/null; then break; fi
+              jq -e '.draft==true' "$D/uploaded.json"
+              # Never overwrite a pre-existing asset or publish an unverified draft.
+              jq -e --arg n "$name" 'all(.assets[]; .name!=$n)' "$D/uploaded.json"
+              gh release upload "$TAG" "$file" -R "$GITHUB_REPOSITORY" || true
+              sleep 4
+            done
+            gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/uploaded.json"
+            jq -e --arg n "$name" --arg d "$digest" --argjson z "$size" '.assets|any(.name==$n and .state=="uploaded" and .digest==$d and .size==$z)' "$D/uploaded.json"
+          done
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          d=Path(os.environ['D']);r=json.loads((d/'uploaded.json').read_text())
+          assert r['tag_name']=='v'+os.environ['WQ_VERSION'] and not r['prerelease']
+          assert r['target_commitish']==os.environ['WQ_SOURCE_SHA']
+          files={f.name:f for f in (d/'dist').iterdir()}
+          assert len(r['assets'])==3 and set(files)=={a['name'] for a in r['assets']}
+          for a in r['assets']:
+              f=files[a['name']]
+              with f.open('rb') as s: digest=hashlib.file_digest(s,'sha256').hexdigest()
+              assert a['state']=='uploaded' and a['size']==f.stat().st_size and a['digest']=='sha256:'+digest
+          print('PASS: uploaded assets equal emulator-tested bytes')
+          PY
+          # The server may accept PATCH but return an empty or truncated JSON body.
+          # Do not parse the write response. Read back the release and latest endpoint instead.
+          for attempt in $(seq 1 18); do
+            if gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/state.json" && jq -e --arg tag "$TAG" '.tag_name==$tag and .draft==false and .prerelease==false' "$D/state.json" >/dev/null 2>&1; then
+              if gh api "repos/$GITHUB_REPOSITORY/releases/latest" > "$D/latest.json" && jq -e --arg tag "$TAG" --argjson id "$ID" '.tag_name==$tag and .id==$id and .draft==false' "$D/latest.json" >/dev/null 2>&1; then
+                echo "PASS: $TAG is live on installed-app update channel"
+                exit 0
+              fi
+              echo "Release is public; waiting for latest endpoint"
+            elif jq -e --arg tag "$TAG" '.tag_name==$tag and .draft==true and .prerelease==false' "$D/state.json" >/dev/null 2>&1; then
+              if gh api "repos/$GITHUB_REPOSITORY/releases/latest" > "$D/latest.json" && jq -e --arg base "v$WQ_BASE_VERSION" '.tag_name==$base' "$D/latest.json" >/dev/null 2>&1; then
+                echo "Finalizing verified draft (attempt $attempt)"
+                gh api --method PATCH --silent "repos/$GITHUB_REPOSITORY/releases/$ID" -F draft=false -f make_latest=true || echo "Publish response failed; checking server state before retry"
+              fi
+            else
+              echo "Release status response not available; retrying read"
+            fi
+            sleep 10
+          done
+          echo "::error::Public release not confirmed after bounded retries; verified draft preserved"
+          exit 1
+
+  content:
+    needs: publish
+    if: needs.publish.result == 'success'
+    permissions:
+      contents: write
+      actions: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CORE_TAG: v1.0.148
+      CORE_CODE: '163'
+      CONTENT_VERSION: '1.0.149'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: d4b57cd7c745ac2f21f39df59568ecb2e803ff32
+          path: verified-source
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/download-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.148-verified-upgrade-only
+          run-id: 45781631659
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/verified-content
+      - name: Assemble and validate cumulative signed web and design content
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$CORE_TAG"
+          mkdir -p "$RUNNER_TEMP/content-base" "$RUNNER_TEMP/content-out/objects"
+          cp "$RUNNER_TEMP/verified-content/dist/WordQuestAI.apk" "$RUNNER_TEMP/verified-content/dist/update.json" "$RUNNER_TEMP/content-base/"
+          CORE_SHA="$(cut -d" " -f1 "$RUNNER_TEMP/verified-content/upgrade-proof.sha256")"
+          export CORE_SHA
+          echo "$CORE_SHA  $RUNNER_TEMP/content-base/WordQuestAI.apk" | sha256sum -c -
+          python3 - <<'PY'
+          import hashlib,json,os,sys,zipfile
+          from pathlib import Path
+          base=Path(os.environ['RUNNER_TEMP'])
+          src=Path('verified-source')
+          sys.path.insert(0,str(src/'tools/content_updates'))
+          from web_bundle import validate as validate_web
+          from lobby_design import validate as validate_design
+          from engine_bundle import validate as validate_engine
+          out=base/'content-out'
+          m=json.loads((base/'content-base/update.json').read_text())
+          assert m['versionCode']==int(os.environ['CORE_CODE']) and m['sha256']==os.environ['CORE_SHA']
+          files={'web/arena_lobby.html':((src/'tools/v130_web/content131/web/arena_lobby.html').read_bytes(),validate_web),
+                 'design/arena_lobby.json':((src/'tools/v128_lobby/content129/design/arena_lobby.json').read_bytes(),validate_design)}
+          entries=[]
+          with zipfile.ZipFile(base/'content-base/WordQuestAI.apk') as z:
+              files['web/arena_engine.html']=(z.read('assets/web/arena_engine.html'),validate_engine)
+              for name,(data,validator) in sorted(files.items()):
+                  validator(data)
+                  if name!='web/arena_engine.html': assert z.read('assets/'+name)!=data,name
+                  h=hashlib.sha256(data).hexdigest()
+                  (out/'objects'/(h+Path(name).suffix)).write_bytes(data)
+                  entries.append(dict(path=name,sha256=h,size=len(data)))
+          payload=dict(schema=1,packageName=m['packageName'],coreCode=m['versionCode'],version=os.environ['CONTENT_VERSION'],sequence=1,files=entries)
+          (base/'content-payload.json').write_bytes(json.dumps(payload,separators=(',',':'),sort_keys=True).encode())
+          print('PASS: cumulative signed lobby, design and tested engine baseline;',sum(e['size'] for e in entries),'bytes')
+          PY
+      - name: Sign manifest using existing APK signing certificate
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS" && test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          umask 077
+          key="$RUNNER_TEMP/content-signing.p12"
+          trap 'rm -f "$key"' EXIT
+          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$key"
+          java tools/content_channel/SignContent.java "$key" "$RUNNER_TEMP/content-payload.json" "$RUNNER_TEMP/content-out/index.json"
+      - name: Publish immutable content files and manifest after verified Android publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$CORE_TAG"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch --no-tags origin refs/heads/content-channel:refs/remotes/origin/content-channel
+          git switch --detach refs/remotes/origin/content-channel
+          python3 - <<'PY'
+          import base64,hashlib,json,os,shutil
+          from pathlib import Path
+          here=Path('.')
+          out=Path(os.environ['RUNNER_TEMP'])/'content-out'
+          old=json.loads(base64.b64decode(json.loads((here/'index.json').read_text())['payload']))
+          new=json.loads(base64.b64decode(json.loads((out/'index.json').read_text())['payload']))
+          assert new['coreCode']==163 and new['version']=='1.0.149' and new['schema']==1
+          if old!=new:
+              assert old['coreCode']==162 and old['version']=='1.0.147','Unexpected content channel'
+              for obj in (out/'objects').iterdir():
+                  assert obj.suffix in ('.html','.json')
+                  assert obj.name==hashlib.sha256(obj.read_bytes()).hexdigest()+obj.suffix
+                  dest=here/'objects'/obj.name
+                  if dest.exists(): assert dest.read_bytes()==obj.read_bytes()
+                  else: shutil.copyfile(obj,dest)
+              shutil.copyfile(out/'index.json',here/'index.json')
+          PY
+          git add -- index.json objects
+          if ! git diff --cached --quiet; then
+            git commit -m "Signed hybrid web and design content 1.0.149 for core 163"
+            git push origin HEAD:refs/heads/content-channel
+          fi
+          echo "Content 1.0.149 published for Android core 163; no APK installation." >> "$GITHUB_STEP_SUMMARY"
