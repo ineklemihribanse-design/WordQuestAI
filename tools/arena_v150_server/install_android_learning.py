@@ -8,6 +8,9 @@ words=json.loads(data.split('export const authoredWords = ',1)[1].split(';\nexpo
 qs=json.loads(data.split('export const authoredQuestions = ',1)[1].rstrip().removesuffix(';'))
 more=(root/'tools/arena_v150_server/learning_more.mjs').read_text('utf-8')
 qs += json.loads(more.split('export const extraQuestions = ',1)[1].split(';\nexport const grammarVariants = ',1)[0])
+academic=(root/'tools/arena_v150_server/learning_academic.mjs').read_text('utf-8')
+words += json.loads(academic.split('export const academicWords = ',1)[1].split(';\nexport const collocationQuestions = ',1)[0])
+qs += json.loads(academic.split('export const collocationQuestions = ',1)[1].rstrip().removesuffix(';'))
 # Existing YDS Academy has a strict four-choice contract; keep it unchanged.
 # Arena uses all five authored choices.
 qs=[q for q in qs if q['yds']]
@@ -47,3 +50,20 @@ for w in words:
  seen.add(key);new.append('\t'.join([w['level'],w['category'],w['wordType'],w['answer'],w['meaning']]))
 asset.write_text(old.rstrip('\n')+'\n'+'\n'.join(new)+'\n','utf-8')
 print('Wq150 learning: added Academy questions:',len(qs),'additional CEFR rows:',len(new))
+
+# Local YDS crosswords previously read only the old GameMode.Yds boards.
+# Add explicit academic records to this pool; general CEFR words are not
+# automatically reclassified as YDS. Keep all existing games and senses.
+levels={'easy':'Kolay','medium':'Orta','hard':'Zor'}
+lex=[]
+for w in words:
+ lex.append('        WordSense(Entry('+k(w['answer'])+', '+k(w['meaning'])+'), '+k(levels[w['yds']])+', '+k(w['category'])+', '+k(w['wordType'])+')')
+parts=['    private fun group'+str(i//60)+'() = listOf(\n'+',\n'.join(lex[i:i+60])+'\n    )' for i in range(0,len(lex),60)]
+join=' + '.join('group'+str(i)+'()' for i in range(len(parts)))
+(java/'Wq150AcademicWords.kt').write_text('package com.kelimebulmacasi.a1\n\ninternal object Wq150AcademicWords {\n'+'\n'.join(parts)+'\n    val senses by lazy { ('+join+').groupBy(WordSense::level) }\n}\n','utf-8')
+bank=java/'VocabularyBank.kt'
+original=bank.read_text('utf-8')
+anchor='private fun senses(level: String) = levelBanks[level] ?: ydsBanks[level].orEmpty()'
+assert original.count(anchor)==1, 'Unexpected VocabularyBank contract'
+bank.write_text(original.replace(anchor,'private fun senses(level: String) = levelBanks[level] ?: (ydsBanks[level].orEmpty() + Wq150AcademicWords.senses[level].orEmpty()).distinct()',1),'utf-8')
+print('Wq150 local YDS academic words:',len(words))
