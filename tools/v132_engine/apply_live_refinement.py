@@ -270,8 +270,8 @@ s=once(s,'''            card.finishLabel=if(myUid in votes)"Teklifi geri çek" e
                 else askFinish=true
             }
 ''',"")
-s=once(s,'    if (match.phase=="playing" && opponentUid in votes && myUid !in votes) {',
-'    if (cardSocial==null && match.phase=="playing" && opponentUid in votes && myUid !in votes) {')
+s=once(s,'        if (match.phase=="playing" && opponentUid in votes && myUid !in votes) {',
+'        if (cardSocial==null && match.phase=="playing" && opponentUid in votes && myUid !in votes) {')
 s=once(s,'        if (myUid in votes && opponentUid !in votes && match.phase=="playing")',
 '        if (cardSocial==null && myUid in votes && opponentUid !in votes && match.phase=="playing")')
 s=once(s,'    if (askFinish) AlertDialog(','''    if(cardSocial!=null && room!=null && extra!=null) Wq150FinishOfferDialog(
