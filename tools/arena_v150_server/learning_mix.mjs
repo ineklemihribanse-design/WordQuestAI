@@ -23,7 +23,10 @@ import {clozeExpansion} from './learning_cloze_expansion.mjs';
 import {a12ThousandQuestions} from './learning_a12_thousand.mjs';
 import {ab1250Direct} from './learning_ab1250_direct.mjs';
 import {ab1250Scenes} from './learning_ab1250_scenes.mjs';
-export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions,...prepositionBasicQuestions,...verbalNewQuestions,...formExtension,...clozeExpansion,...a12ThousandQuestions,...ab1250Direct,...ab1250Scenes];
+import {b121500Direct} from './learning_b121500_direct.mjs';
+import {b121500Phrasals} from './learning_b121500_phrasals.mjs';
+import {b121500Grammar} from './learning_b121500_grammar.mjs';
+export const allLearningQuestions=[...authoredQuestions,...extraQuestions,...grammarVariants,...collocationQuestions,...readingQuestions,...coherenceQuestions,...wordFormQuestions,...lexicalRelationQuestions,...domainQuestions,...contextQuestions,...deepReadingQuestions,...foundationQuestions,...advancedQuestions,...logicQuestions,...researchQuestions,...cohesionExpansion,...lexicalFastQuestions,...bulkPhraseQuestions,...prepositionBasicQuestions,...verbalNewQuestions,...formExtension,...clozeExpansion,...a12ThousandQuestions,...ab1250Direct,...ab1250Scenes,...b121500Direct,...b121500Phrasals,...b121500Grammar];
 const hash=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // Keep every existing record and only append distinct new headwords. An
 // explicit YDS sense may coexist with a previously untagged CEFR entry.

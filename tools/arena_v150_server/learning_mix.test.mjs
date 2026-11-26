@@ -127,3 +127,15 @@ test('A2/B1 1250 pack is complete, level balanced, and covers all authored test 
  const old=new Set(allLearningQuestions.filter(q=>!pack.includes(q)).map(q=>norm(q.prompt)));
  assert.deepEqual(pack.filter(q=>old.has(norm(q.prompt))).map(q=>q.id),[]);
 });
+
+import {b121500Direct} from './learning_b121500_direct.mjs';
+import {b121500Phrasals} from './learning_b121500_phrasals.mjs';
+import {b121500Grammar} from './learning_b121500_grammar.mjs';
+test('B1/B2 1500 pack covers level-specific tense, phrasal verbs and varied grammar',()=>{
+ const pack=[...b121500Direct,...b121500Phrasals,...b121500Grammar];assert.equal(pack.length,1500);
+ for(const level of ['B1','B2']){const rows=pack.filter(q=>q.level===level);assert.equal(rows.length,750);assert.equal(rows.filter(q=>q.kind==='Tense').length,150);assert.equal(rows.filter(q=>q.kind==='Phrasal').length,120);assert.ok(new Set(rows.map(q=>q.kind)).size>=16);}
+ assert.ok(pack.every(q=>q.yds===null&&q.kind&&q.family&&allLearningQuestions.includes(q)));
+ const norm=s=>s.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
+ const old=new Set(allLearningQuestions.filter(q=>!pack.includes(q)).map(q=>norm(q.prompt)));
+ assert.deepEqual(pack.filter(q=>old.has(norm(q.prompt))).map(q=>q.id),[]);
+});
