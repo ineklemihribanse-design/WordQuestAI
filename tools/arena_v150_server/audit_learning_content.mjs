@@ -22,6 +22,22 @@ for(const q of rows){
  if(typeof q.explanation!=='string'||q.explanation.trim().length<20)fail('missing explanation');
  else if(q.explanation.startsWith('Doğru seçenek:')&&!q.explanation.startsWith('Doğru seçenek: '+q.options?.[q.correct]+'.'))fail('answer/explanation mismatch');
 }
+// CEFR and YDS are distinct scales. The mapping below is the editorial
+// convention of the existing corpus, not an official exam equivalence.
+// Do not turn CEFR-only questions into YDS questions automatically.
+const expectedYdsTier={B1:'easy',B2:'medium',C1:'hard',C2:'hard'};
+const tierMatrix=Object.fromEntries(levels.map(level=>[level,
+ Object.fromEntries(['none','easy','medium','hard'].map(tier=>[tier,
+ rows.filter(q=>q.level===level&&(q.yds??'none')===tier).length]))]));
+const topicMatrix=Object.fromEntries(levels.map(level=>[level,counts(rows.filter(q=>q.level===level),q=>q.kind??q.topic)]));
+const taggedTierCandidates=rows.filter(q=>q.yds!=null&&expectedYdsTier[q.level]!==q.yds).map(q=>({id:q.id,level:q.level,yds:q.yds}));
+const basicTechnicalCandidates=rows.filter(q=>['A1','A2','B1'].includes(q.level)&&/\b(?:heterogeneity|epistemic|endogeneity|counterfactual|falsifiability|heteroscedasticity|stoichiometry|epistemology)\b/i.test([q.prompt,...q.options].join(' '))).map(q=>({id:q.id,level:q.level}));
+console.log('TIER_QUALITY_AUDIT',JSON.stringify({total:rows.length,tierMatrix,topicMatrix,
+ taggedTierCandidates,basicTechnicalCandidates,
+ ydsTagged:rows.filter(q=>q.yds!=null).length,cefrOnly:rows.filter(q=>q.yds==null).length,
+ limitation:'Source metadata and limited vocabulary screening only; not an official CEFR certification or psychometric difficulty measurement.'}));
+assert.ok(levels.every(l=>rows.some(q=>q.level===l)),'A CEFR tier is missing');
+assert.ok(['easy','medium','hard'].every(t=>rows.some(q=>q.yds===t)),'A YDS tier is missing');
 const duplicateIds=duplicates(rows,q=>q.id),duplicatePrompts=duplicates(rows,q=>norm(q.prompt));
 const near=duplicates(rows,q=>norm(q.prompt).replace(/\b\d+(?:[.,:]\d+)*\b/g,'#').replace(/[.!?]+$/,''));
 const report={total:rows.length,uniqueIds:new Set(rows.map(q=>q.id)).size,uniquePrompts:new Set(rows.map(q=>norm(q.prompt))).size,levels:counts(rows,q=>q.level),yds:counts(rows,q=>q.yds??'none'),positions:counts(rows,q=>q.correct),families:group(rows.filter(q=>q.family),q=>q.family).size,issues,duplicateIds,duplicatePrompts,editorialCandidates:{nearDuplicateGroups:near,largestFamilies:[...group(rows.filter(q=>q.family),q=>q.family)].sort((a,b)=>b[1].length-a[1].length).slice(0,15).map(([family,v])=>({family,count:v.length})),longBasic:rows.filter(q=>['A1','A2'].includes(q.level)&&q.prompt.length>400).map(q=>q.id)}};
