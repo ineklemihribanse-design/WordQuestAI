@@ -378,7 +378,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The farmers plan to ____ a previously unused field and grow vegetables there.",
+    "prompt": "The farmers plan to ____ a previously unused field by preparing the soil and growing vegetables there.",
     "options": [
       "cultivate",
       "extract",
@@ -387,7 +387,7 @@ export const researchQuestions = [
       "transport"
     ],
     "correct": 0,
-    "explanation": "Cultivate canlıları yetiştirmek veya bir ilgiyi geliştirmek anlamındadır.",
+    "explanation": "Cultivate, toprağı işlemek ve ürün yetiştirmek demektir; harvest yetişmiş ürünü hasat etmektir.",
     "family": "researchverb_cultivate"
   },
   {
@@ -1075,7 +1075,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The forecasts begin to ____ substantially after the first few months.",
+    "prompt": "Initially similar, the forecasts begin to ____ substantially after the first few months, with one predicting growth and the other a decline.",
     "options": [
       "diverge",
       "converge",
@@ -1084,7 +1084,7 @@ export const researchQuestions = [
       "overlap"
     ],
     "correct": 0,
-    "explanation": "Diverge ortak bir noktadan uzaklaşmak veya farklılaşmaktır.",
+    "explanation": "Diverge, başlangıçta benzer olan tahminlerin giderek birbirinden uzaklaşmasıdır; converge ise yakınlaşmaktır.",
     "family": "researchverb_diverge"
   },
   {
@@ -1313,7 +1313,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The fallen branches may ____ the flow of water through the narrow channel.",
+    "prompt": "The fallen branches may ____ the flow of water through the narrow channel by physically blocking its entrance.",
     "options": [
       "obstruct",
       "facilitate",
@@ -1322,7 +1322,7 @@ export const researchQuestions = [
       "measure"
     ],
     "correct": 0,
-    "explanation": "Obstruct fiziksel bir geçişi veya akışı engellemektir.",
+    "explanation": "Obstruct, fiziksel bir engel oluşturarak akışı zorlaştırmak veya kesmektir.",
     "family": "researchverb_obstruct"
   },
   {
@@ -1330,7 +1330,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Large buildings can ____ the transmission of signals between the two antennas.",
+    "prompt": "Large buildings can ____ the transmission of signals between the two antennas, weakening or blocking reception.",
     "options": [
       "obstruct",
       "facilitate",
@@ -1339,7 +1339,7 @@ export const researchQuestions = [
       "measure"
     ],
     "correct": 0,
-    "explanation": "Obstruct fiziksel bir geçişi veya akışı engellemektir.",
+    "explanation": "Obstruct, sinyalin iletimini engellemek anlamındadır; facilitate iletimi kolaylaştırır.",
     "family": "researchverb_obstruct"
   },
   {
@@ -1347,7 +1347,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The damaged valve may ____ the passage of air through the pipe.",
+    "prompt": "The damaged valve may ____ the passage of air through the pipe if it becomes stuck in the closed position.",
     "options": [
       "obstruct",
       "facilitate",
@@ -1356,7 +1356,7 @@ export const researchQuestions = [
       "measure"
     ],
     "correct": 0,
-    "explanation": "Obstruct fiziksel bir geçişi veya akışı engellemektir.",
+    "explanation": "Obstruct, burada hava akışını fiziksel olarak engellemek demektir.",
     "family": "researchverb_obstruct"
   },
   {
