@@ -141,7 +141,7 @@ export const prepositionBasicQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The school holiday begins ____ July.",
+    "prompt": "The school holiday begins ____ July, not in June or August.",
     "options": [
       "in",
       "on",
@@ -150,7 +150,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'in'. Kullanım: in + ay veya mevsim."
+    "explanation": "In + ay adı, olayın hangi ayda gerçekleştiğini belirtir; by July ise en geç temmuza kadar anlamındadır."
   },
   {
     "id": "wq150_prepbulk_3_2",
@@ -277,7 +277,7 @@ export const prepositionBasicQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "This letter is ____ my aunt in Canada.",
+    "prompt": "My aunt in Canada sent me this letter. It is ____ her.",
     "options": [
       "from",
       "to",
@@ -286,7 +286,7 @@ export const prepositionBasicQuestions = [
       "into"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'from'. Kullanım: from + kaynak veya başlangıç noktası."
+    "explanation": "From, mektubun gönderenini belirtir; to ise alıcıyı gösterir."
   },
   {
     "id": "wq150_prepbulk_5_2",
@@ -549,7 +549,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The library has been closed ____ Monday.",
+    "prompt": "The library has been closed ____ Monday and is still closed today.",
     "options": [
       "since",
       "for",
@@ -558,7 +558,7 @@ export const prepositionBasicQuestions = [
       "into"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'since'. Kullanım: since + başlangıç zamanı."
+    "explanation": "Since, geçmişteki başlangıç noktasından bugüne süren durumu bildirir; until bitiş zamanını gösterir."
   },
   {
     "id": "wq150_prepbulk_9_3",
@@ -583,7 +583,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The shop has been open ____ eight o'clock this morning.",
+    "prompt": "The shop has been open ____ eight o'clock this morning and is still serving customers.",
     "options": [
       "since",
       "for",
@@ -592,7 +592,7 @@ export const prepositionBasicQuestions = [
       "into"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'since'. Kullanım: since + başlangıç zamanı."
+    "explanation": "Since + başlangıç zamanı, geçmişten bugüne devam eden durumu belirtir."
   },
   {
     "id": "wq150_prepbulk_10_1",
@@ -668,7 +668,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The meeting is scheduled ____ two and three o'clock.",
+    "prompt": "The meeting is scheduled to take place ____ two and three o'clock.",
     "options": [
       "between",
       "during",
@@ -677,7 +677,7 @@ export const prepositionBasicQuestions = [
       "through"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'between'. Kullanım: between A and B."
+    "explanation": "Between A and B, iki zaman noktası arasındaki aralığı belirtir."
   },
   {
     "id": "wq150_prepbulk_11_2",
@@ -838,7 +838,7 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The passengers climbed ____ the bus and stood on the pavement.",
+    "prompt": "The passengers climbed ____ the minibus and stood on the pavement.",
     "options": [
       "out of",
       "into",
@@ -847,7 +847,7 @@ export const prepositionBasicQuestions = [
       "along"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'out of'. Kullanım: out of + dışarı çıkma."
+    "explanation": "Out of, bir aracın içinden dışarı çıkmayı belirtir. Büyük otobüslerde get off da yaygın kullanılır."
   },
   {
     "id": "wq150_prepbulk_13_4",
@@ -2861,7 +2861,7 @@ export const prepositionBasicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The error may result ____ inaccurate estimates.",
+    "prompt": "The error may result ____ inaccurate estimates; that is, the estimates may become inaccurate because of the error.",
     "options": [
       "in",
       "at",
@@ -2870,7 +2870,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'in'. Kullanım: result in + sonuç."
+    "explanation": "Result in + sonuç, bir şeye yol açmak demektir; result from + neden ise bir şeyden kaynaklanmaktır."
   },
   {
     "id": "wq150_prepbulk_44_1",
