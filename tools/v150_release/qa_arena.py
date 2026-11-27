@@ -84,7 +84,11 @@ def viewport(name,w,h,density,wide):
     tap(exact_levels()[1])
     time.sleep(0.6)
     assert not any("a1 + a2" in label(n) for n in nodes()),"A2 deselection missing from match summary"
-    get("Maçı Başlat");capture(name+"-settings")
+    start=get("Oyunu Başlat")
+    x,y,X,Y=bounds(start)
+    assert start.get("enabled")=="true" and start.get("clickable")=="true",start.attrib
+    assert 0<=x<X<=W and 0<=y<Y<=H,("Start button outside display",start.attrib)
+    capture(name+"-settings")
     adb("shell","input","keyevent","KEYCODE_BACK");get("Klasik Bulmaca")
     print("PASS: Arena mode tabs, footer, single-row levels and solo settings",name,flush=True)
 try:
