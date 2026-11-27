@@ -837,7 +837,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "Researchers examined the acoustic performance of different building materials. Each sample was tested under identical laboratory conditions. The material with the greatest sound reduction was also the heaviest, thereby limiting its use in some structures. Engineers must take weight into consideration when selecting materials. A lighter alternative performed slightly less well but was easier to install. The preferred option will depend on the intended application rather than ____ alone.\n\nChoose the best option for the blank.",
+    "prompt": "Researchers examined the acoustic performance of different building materials. Each sample was tested under identical laboratory conditions. The material with the greatest sound reduction was also the heaviest, thereby limiting its use in some structures. Engineers must take weight into consideration when selecting materials. A lighter alternative performed slightly less well but was easier to install. The preferred option will depend on the intended application rather than acoustic ____ alone.\n\nChoose the best option for the blank.",
     "options": [
       "performance",
       "cost",
@@ -846,7 +846,7 @@ export const deepReadingQuestions = [
       "age"
     ],
     "correct": 0,
-    "explanation": "Metin yalnızca ses azaltma performansına bakmanın yeterli olmadığını açıklar.",
+    "explanation": "Paragraf ses azaltma performansı ile ağırlık ve uygulama koşulları arasındaki dengeyi anlatır; acoustic performance tek uygun seçenektir.",
     "family": "cloze_deep_10"
   },
   {
@@ -956,7 +956,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly by testing whether it captures the intended construct in different settings, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "validate",
       "standardise",
@@ -965,7 +965,7 @@ export const deepReadingQuestions = [
       "recalibrate"
     ],
     "correct": 0,
-    "explanation": "Farklı sektörlerden örneklem alınması ölçme aracının daha geniş bir bağlamda geçerliliğini sınamaya yöneliktir (validate); metin aracın yeniden ayarlandığını ya da değiştirildiğini söylemez.",
+    "explanation": "Validate bir ölçüm aracının amaçlanan yapıyı ölçüp ölçmediğini sınamak, geçerliliğini değerlendirmektir.",
     "family": "cloze_deep_12"
   },
   {
@@ -2758,14 +2758,14 @@ export const deepReadingQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence best restates: 'The clinic does not accept walk-in patients after noon'?",
     "options": [
-      "Patients arriving without appointments cannot be seen after midday.",
+      "The clinic does not accept patients who arrive without an appointment after midday.",
       "All appointments are cancelled at noon.",
       "Patients without appointments are accepted only after midday.",
       "The clinic refuses every morning patient.",
       "Appointments are never required."
     ],
     "correct": 0,
-    "explanation": "Walk-in randevusuz başvuran kişi anlamındadır."
+    "explanation": "Walk-in patient, randevu almadan gelen hastadır; after noon öğleden sonra anlamına gelir."
   },
   {
     "id": "wq150_deepdiscourse_4",
@@ -2806,14 +2806,14 @@ export const deepReadingQuestions = [
     "topic": "Synonym",
     "prompt": "Which option best restates: 'Only employees with valid passes may enter the building'?",
     "options": [
-      "Employees cannot enter unless they have valid passes.",
+      "No one may enter the building unless they are an employee with a valid pass.",
       "Every employee can enter without a pass.",
       "Visitors are allowed to enter with expired passes.",
       "Valid passes are required only outside the building.",
       "No employee can enter even with a pass."
     ],
     "correct": 0,
-    "explanation": "Only geçerli kartın giriş için gerekli olduğunu bildirir."
+    "explanation": "Only employees with valid passes ifadesi hem çalışan olma hem geçerli giriş kartına sahip olma koşulunu belirtir."
   },
   {
     "id": "wq150_deepdiscourse_7",
@@ -3158,14 +3158,14 @@ export const deepReadingQuestions = [
     "topic": "Synonym",
     "prompt": "Which option best restates: 'The proposed mechanism is not incompatible with the evidence'?",
     "options": [
-      "The evidence does not necessarily conflict with the mechanism.",
+      "The evidence is compatible with the proposed mechanism.",
       "The mechanism is definitively established.",
       "The evidence conclusively excludes the mechanism.",
       "All alternative mechanisms conflict with the evidence.",
       "The mechanism is impossible to investigate."
     ],
     "correct": 0,
-    "explanation": "Çifte olumsuzluk uyumsuzluğun bulunmadığını ifade eder."
+    "explanation": "Not incompatible, uyumsuz olmadığı yani mevcut kanıtla bağdaşabildiği anlamına gelir; mekanizmanın doğrulandığını göstermez."
   },
   {
     "id": "wq150_deepdiscourse_29",
