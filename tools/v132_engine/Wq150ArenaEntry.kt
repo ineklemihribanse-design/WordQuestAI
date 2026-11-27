@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
@@ -48,15 +49,36 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     val controller=remember(gateway){gateway?.let{Wq150LobbyController(it)}}
     val ownAvatar by rememberWq2DSelection(session.profileKey)
     if(controller==null||gateway==null||uid.isBlank()){
-        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(20.dp)){
-            Text("Arena · yeni oyun sistemi",style=MaterialTheme.typography.titleLarge)
-            Text("Arkadaşlarınla oynamak için giriş yap.")
-            Button(onClick=account){Text("Giriş yap")}
-            TextButton(onClick=legacy){Text("Mevcut Arena / tek başına")}
-            TextButton(onClick=back){Text("Geri")}
+        BackHandler(onBack=back)
+        MaterialTheme(colorScheme=Wq122Scheme){
+            Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+                Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
+                Column(Modifier.align(Alignment.TopCenter).widthIn(max=700.dp).fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing).verticalScroll(rememberScrollState()).padding(12.dp),
+                    horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(10.dp)){
+                    TextButton(onClick=back,modifier=Modifier.align(Alignment.Start)){Text("‹ Geri",color=Wq122Gold)}
+                    Row(Modifier.fillMaxWidth().height(156.dp),verticalAlignment=Alignment.CenterVertically){
+                        Wq150ApprovedArt("crest",Modifier.weight(1f).fillMaxHeight())
+                        Wq2DPortrait(ownAvatar,Modifier.weight(1f).fillMaxHeight(),victory=false)
+                    }
+                    Text("Oyun Modları",color=Wq122Gold,style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Black)
+                    listOf("duel","coop","quiz","team").chunked(2).forEach{row->
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                            row.forEach{kind->Wq150PremiumModeCard(kind,false,true,Modifier.weight(1f),account)}
+                        }
+                    }
+                    Wq150PremiumPanel{
+                        Text("Arkadaşlarınla çevrim içi oynamak için giriş yap.",color=Wq122Ink)
+                        Wq122Primary("Giriş yap",true,account)
+                        Wq122Choice("Tek Başına Oyna",false,Modifier.fillMaxWidth(),"solo",legacy)
+                    }
+                }
+            }
         }
         return
     }
+    val config=LocalConfiguration.current
+    val landscape=config.screenWidthDp>=700 && config.screenWidthDp>config.screenHeightDp
     val state by controller.state.collectAsState()
     val scope=rememberCoroutineScope()
     var settings by remember {mutableStateOf(Wq150Settings())}
@@ -99,8 +121,10 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                         Wq2DPortrait(ownAvatar,Modifier.weight(1f).fillMaxHeight(),victory=false)
                     }
                     val enabled=!state.busy&&!state.pending
+                    Text("Oyun Modları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=17.sp)
+                    val modeGrid: @Composable ()->Unit = {
                     BoxWithConstraints(Modifier.fillMaxWidth()){
-                        val wide=maxWidth>=600.dp
+                        val wide=landscape||maxWidth>=600.dp
                         val columns=if(maxWidth>=330.dp)2 else 1
                         val kinds=listOf("duel","coop","quiz","team")
                         Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
@@ -115,6 +139,8 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                             }
                         }
                     }
+                    }
+                    val roomPanel: @Composable ()->Unit = {
                     Wq150PremiumPanel {
                         Text("Davet kodu",color=Wq122Gold,fontWeight=FontWeight.Bold)
                         val valid=wq150ValidRoom(roomCode)
@@ -138,21 +164,28 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                             controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
                         }
                     }
-                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                        Wq122Choice("Tek Başına",false,Modifier.weight(1f),"solo"){if(enabled)legacy()}
-                        Wq122Choice("Arkadaşlarım",false,Modifier.weight(1f),"friends"){panel="Arkadaşlarım"}
                     }
-                    val shortcuts=listOf("ranking" to "Sıralama","history" to "Son Maçlarım","settings" to "Ayarlar","info" to "Bilgi")
-                    shortcuts.chunked(2).forEach{row->
-                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                            row.forEach{(icon,title)->
-                                Surface(onClick={panel=title},color=Color(0xD92C145B),
-                                    shape=RoundedCornerShape(12.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),
-                                    modifier=Modifier.weight(1f)){
-                                    Row(Modifier.padding(6.dp),verticalAlignment=Alignment.CenterVertically){
-                                        Wq150ApprovedArt(icon,Modifier.size(30.dp))
-                                        Text(title,Modifier.weight(1f),color=Wq122Ink,fontSize=12.sp,textAlign=TextAlign.Center)
-                                    }
+                    if(landscape){
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(12.dp),
+                            verticalAlignment=Alignment.Top){
+                            Column(Modifier.weight(1.55f)){modeGrid()}
+                            Column(Modifier.weight(1f)){roomPanel()}
+                        }
+                    }else{
+                        modeGrid()
+                        roomPanel()
+                    }
+                    Wq122Choice("Tek Başına Oyna",false,Modifier.fillMaxWidth(),"solo"){if(enabled)legacy()}
+                    val shortcuts=listOf("ranking" to "Sıralama","friends" to "Arkadaşlarım","history" to "Son Maçlarım","settings" to "Ayarlar","info" to "Bilgi")
+                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
+                        shortcuts.forEach{(icon,title)->
+                            Surface(onClick={panel=title},color=Color(0xD92C145B),
+                                shape=RoundedCornerShape(12.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),
+                                modifier=Modifier.weight(1f)){
+                                Column(Modifier.padding(horizontal=2.dp,vertical=6.dp),
+                                    horizontalAlignment=Alignment.CenterHorizontally){
+                                    Wq150ApprovedArt(icon,Modifier.size(if(landscape)32.dp else 25.dp))
+                                    Text(title,color=Wq122Ink,fontSize=if(landscape)12.sp else 10.sp,textAlign=TextAlign.Center)
                                 }
                             }
                         }
@@ -167,6 +200,18 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                     val mode=cfg.optString("mode")
                     Text(Wq150ModeCatalog.kinds[kind].orEmpty(),style=MaterialTheme.typography.headlineSmall,color=Wq122Ink,fontWeight=FontWeight.Black)
                     Text(Wq150ModeCatalog.modes(kind)[mode].orEmpty()+" · "+count+"/"+capacity+" oyuncu",color=Wq122Gold)
+                    Wq150PremiumPanel{
+                        val levels=cfg.optJSONArray("levels")
+                        val levelText=if(levels==null)"" else (0 until levels.length()).joinToString(" · "){
+                            when(val v=levels.optString(it)){"easy"->"Kolay";"medium"->"Orta";"hard"->"Zor";else->v}
+                        }
+                        Text("Seçilen maç ayarları",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        Text(listOf(levelText, cfg.optInt("count").toString()+" "+if(cfg.optString("format")=="quiz")"soru" else "kelime",
+                            if(cfg.optInt("seconds")==0)"Süresiz" else cfg.optInt("seconds").toString()+" sn",
+                            cfg.optInt("hints").toString()+" ipucu").filter{it.isNotBlank()}.joinToString(" · "),color=Wq122Ink)
+                        Text(if(state.error!=null)"Oda bağlantısı doğrulanamadı" else if(state.busy)"Oda işlemi sürüyor" else "Oda durumu alındı",
+                            color=if(state.error!=null)Color(0xFFFFB4B4)else Wq122Ink,fontSize=12.sp)
+                    }
                     Surface(color=Color(0xDD251347),shape=MaterialTheme.shapes.large,modifier=Modifier.fillMaxWidth()){
                         Column(Modifier.padding(12.dp)){
                             Text("Davet kodu",color=Wq122Gold)
@@ -237,7 +282,12 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                         }
                         TextButton(onClick={panel="";legacy()}){Text("Arkadaş yönetimi",color=Wq122Gold)}
                     }
-                    else->Wq121ArenaRecords(context,session.profileKey,panel=="Sıralama")
+                    else->{
+                        Wq150Records(context,session.profileKey,panel=="Sıralama")
+                        HorizontalDivider()
+                        Text("Önceki Arena kayıtları",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        Wq121ArenaRecords(context,session.profileKey,panel=="Sıralama")
+                    }
                 }
             }},confirmButton={TextButton(onClick={panel=""}){Text("Kapat")}})
         if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending,
@@ -254,14 +304,22 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
 
 /** The approved v120 icon/card assets are decoded off the UI thread.
  * Only the decorative empty plate is stretched; the 3D icon keeps its ratio. */
+private object Wq150ArtCache{
+    private val cache=object:android.util.LruCache<String,ImageBitmap>(24*1024*1024){
+        override fun sizeOf(key:String,value:ImageBitmap):Int=(value.width.toLong()*value.height*4L)
+            .coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
+    }
+    fun get(name:String)=cache.get(name)
+    fun put(name:String,art:ImageBitmap){cache.put(name,art)}
+}
 @Composable
 private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
     val context=LocalContext.current.applicationContext
-    val art by produceState<ImageBitmap?>(null,context,name){
-        value=withContext(Dispatchers.IO){
+    val art by produceState<ImageBitmap?>(Wq150ArtCache.get(name),context,name){
+        value=Wq150ArtCache.get(name)?:withContext(Dispatchers.IO){
             runCatching{context.assets.open("arena_v120/$name.webp").use{
                 android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
-            }}.getOrNull()
+            }}.getOrNull()?.also{Wq150ArtCache.put(name,it)}
         }
     }
     art?.let{Image(it,null,modifier,contentScale=scale)}

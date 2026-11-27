@@ -7,6 +7,11 @@ assert 'Wq150ModeCatalog.kinds.forEach' not in entry, "Legacy yellow mode button
 assert 'Wq150PremiumPanel {' in entry
 assert 'Wq150ApprovedArt("crest"' in entry
 assert 'rememberWq150Profiles(room,session,gateway)' in entry
+assert 'val landscape=config.screenWidthDp>=700' in entry
+assert 'Wq150ArtCache.get(name)' in entry
+assert 'Wq150Records(context,session.profileKey' in entry
+match=(pack/"Wq150ArenaMatch.kt").read_text(encoding="utf-8")
+assert 'if(finished)Wq150History.record' in match
 settings=(pack/"Wq150MatchSettings.kt").read_text(encoding="utf-8")
 assert 'DialogProperties(usePlatformDefaultWidth=false)' in settings
 p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt")

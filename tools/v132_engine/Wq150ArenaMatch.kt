@@ -165,6 +165,11 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val settings=view.optJSONObject("settings")?:JSONObject()
     val kind=view.optString("kind");val mode=settings.optString("mode")
     val phase=view.optString("phase");val paused=phase=="paused";val finished=phase=="finished"
+    // Save only final server-provided results. A later profile refresh may fill names;
+    // the room ID makes the write idempotent, including four-player matches.
+    LaunchedEffect(room,finished,view.optJSONObject("summary")?.toString(),profiles){
+        if(finished)Wq150History.record(context,session.profileKey,room,view,profiles,uid,session.profileName)
+    }
     val quiz=kind=="quiz"||(kind=="team"&&settings.optString("format")=="quiz")
     val team=game.objects("teams").firstOrNull{uid in it.strings("members")}?.optString("id").orEmpty()
     val mine=game.optJSONObject("mine")
@@ -620,5 +625,69 @@ private fun Wq150Audio(room:String,phase:String,remaining:Long?,deadline:Long?,f
             val seconds=latestRemaining
             if(seconds==null||seconds>10)player.play(pack,"ambient")
         }
+    }
+}
+
+/** Separate v150 local archive; never reinterpret a four-player result as a v121 duel. */
+internal object Wq150History{
+    private fun prefs(context:android.content.Context)=context.getSharedPreferences("wq_arena_finished_v150",android.content.Context.MODE_PRIVATE)
+    fun read(context:android.content.Context,profile:String):List<JSONObject>{
+        val a=runCatching{JSONArray(prefs(context).getString(profile,"[]")?:"[]")}.getOrElse{JSONArray()}
+        return (0 until a.length()).mapNotNull{a.optJSONObject(it)}
+    }
+    fun entry(room:String,view:JSONObject,profiles:JSONObject,uid:String,ownName:String):JSONObject?{
+        if(room.isBlank()||view.optString("phase")!="finished")return null
+        val summary=view.optJSONObject("summary")?:return null
+        val stats=summary.optJSONObject("players")?:return null
+        val ids=view.optJSONObject("connection").objects("players").map{it.optString("id")}.filter{it.isNotBlank()}.distinct()
+        if(uid !in ids||ids.size !in 2..4)return null
+        val players=JSONArray()
+        ids.forEach{id->
+            val name=if(id==uid)ownName else profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}?:"Oyuncu"
+            val player=JSONObject().put("id",id).put("name",name)
+            stats.optJSONObject(id)?.let{s->
+                if(s.has("score")&&!s.isNull("score"))player.put("score",s.optInt("score"))
+            }
+            players.put(player)
+        }
+        return JSONObject().put("room",room).put("kind",view.optString("kind")).put("players",players)
+            .put("at",view.optLong("serverNow",System.currentTimeMillis()))
+    }
+    fun record(context:android.content.Context,profile:String,room:String,view:JSONObject,profiles:JSONObject,uid:String,ownName:String){
+        val entry=entry(room,view,profiles,uid,ownName)?:return
+        val old=read(context,profile)
+        val previous=old.firstOrNull{it.optString("room")==room}
+        if(previous!=null){
+            entry.put("at",previous.optLong("at"))
+            // Do not replace a previously fetched name with a temporary placeholder.
+            val known=previous.objects("players").associate{it.optString("id") to it.optString("name")}
+            entry.objects("players").forEach{p->
+                if(p.optString("name")=="Oyuncu")known[p.optString("id")]?.let{p.put("name",it)}
+            }
+            if(entry.toString()==previous.toString())return
+        }
+        val updated=JSONArray()
+        (listOf(entry)+old.filterNot{it.optString("room")==room}).sortedByDescending{it.optLong("at")}.take(100).forEach{updated.put(it)}
+        prefs(context).edit().putString(profile,updated.toString()).apply()
+    }
+}
+@Composable
+internal fun Wq150Records(context:android.content.Context,profile:String,ranking:Boolean){
+    val records=remember(context,profile){Wq150History.read(context,profile)}
+    Text(if(ranking)"Yeni Arena · bu cihazda kayıtlı puanlar (genel sıralama değil)" else "Yeni Arena · tamamlanan maçlar",color=Wq122Gold,fontWeight=FontWeight.Bold)
+    if(records.isEmpty())Text("Henüz yeni Arena maç kaydı yok.",color=Wq122Ink)
+    else if(ranking){
+        val totals=mutableMapOf<String,Pair<String,Int>>()
+        records.asReversed().forEach{r->r.objects("players").filter{it.has("score")}.forEach{p->
+            val id=p.optString("id")
+            totals[id]=p.optString("name") to ((totals[id]?.second?:0)+p.optInt("score"))
+        }}
+        if(totals.isEmpty())Text("Puanı olan maç kaydı yok.",color=Wq122Ink)
+        totals.values.sortedByDescending{it.second}.forEachIndexed{index,p->Text("${index+1}. ${p.first} — ${p.second} puan",color=Wq122Ink)}
+    }else records.forEach{r->
+        Text(Wq150ModeCatalog.kinds[r.optString("kind")].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold)
+        r.objects("players").forEach{p->Text(p.optString("name")+if(p.has("score"))" · "+p.optInt("score")+" puan" else "",color=Wq122Ink)}
+        Text(java.text.DateFormat.getDateTimeInstance().format(java.util.Date(r.optLong("at"))),color=Wq122Ink,fontSize=12.sp)
+        HorizontalDivider()
     }
 }
