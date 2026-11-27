@@ -42,7 +42,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Please ____ your work instead of chatting in the corridor; you can finish it later.",
+    "prompt": "Please ____ your work now instead of chatting in the corridor; continue from where you stopped.",
     "options": [
       "get away",
       "get together",
@@ -114,7 +114,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The manager promised to ____ the complaints about missing deliveries.",
+    "prompt": "The manager promised to ____ the complaints about missing deliveries by investigating what had happened.",
     "options": [
       "look up",
       "look forward to",
@@ -582,7 +582,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "You can ____ a friend to the open evening if you like.",
+    "prompt": "You can ____ a friend to the open evening if you like; they can accompany you throughout the event.",
     "options": [
       "bring down",
       "bring up",
@@ -708,7 +708,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "After a long argument, he finally decided to ____ and accept their request.",
+    "prompt": "After a long argument, he finally decided to ____ to their pressure and accept their request.",
     "options": [
       "give back",
       "give out",
@@ -798,13 +798,13 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The owner will ____ a plumber from outside the company to repair the leaking pipe.",
+    "prompt": "The owner will ____ a plumber from outside the company to repair the leaking pipe on site.",
     "options": [
       "call at",
       "call in",
       "call back",
       "call off",
-      "call up"
+      "call after"
     ],
     "correct": 1,
     "explanation": "Doğru seçenek: call in. Bir uzmandan gelip yardım etmesini istemek."
@@ -924,7 +924,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Please ____ the jacket you like best from the five on display.",
+    "prompt": "Please ____ the jacket you like best from the five on display; choose just one, without trying it on yet.",
     "options": [
       "put away",
       "work out",
@@ -942,12 +942,12 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "I'd like to ____ a missing word in the second sentence.",
+    "prompt": "I'd like to ____ an omission in the second sentence so that you notice the error.",
     "options": [
       "work out",
       "find out",
       "pick up",
-      "pick out",
+      "pick on",
       "point out"
     ],
     "correct": 4,
@@ -1014,10 +1014,10 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Please ____ before dinner; we will be waiting for you to return.",
+    "prompt": "Please ____ to the place you left this morning before dinner; we will be waiting for your return.",
     "options": [
       "come out",
-      "come round",
+      "come apart",
       "come across",
       "come back",
       "come in"
@@ -1122,12 +1122,12 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The neighbour promised to ____ the elderly resident during the cold weather.",
+    "prompt": "The neighbour promised to ____ the elderly resident during the cold weather to make sure she was safe and well.",
     "options": [
       "check in",
       "check out",
       "check up on",
-      "check over",
+      "check into",
       "check off"
     ],
     "correct": 2,
@@ -2652,13 +2652,13 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The negotiator refused to ____ demands that were outside the agreed terms, even under intense pressure.",
+    "prompt": "The negotiator refused to ____ demands that were outside the agreed terms, even under intense pressure; the issue was whether to surrender to that pressure.",
     "options": [
       "give in to",
       "go against",
       "go back on",
       "give rise to",
-      "go along with"
+      "go over"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: give in to. Give in to, baskı veya talep karşısında boyun eğmek demektir. Give way to da bazı bağlamlarda benzer anlam taşıyabilir; bu nedenle seçenekten çıkarıldı."
@@ -2724,9 +2724,9 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "An incomplete approval form may ____ the entire application process.",
+    "prompt": "An incomplete approval form may ____ the entire application process by delaying its completion.",
     "options": [
-      "hold off",
+      "hold on",
       "hold on to",
       "hold out for",
       "hold together",
@@ -2814,7 +2814,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The contractor is expected to ____ the agreed specifications.",
+    "prompt": "The contractor is expected to ____ the agreed specifications without deviating from them.",
     "options": [
       "keep up with",
       "keep away from",
@@ -3210,7 +3210,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The organisation will ____ the new reporting system over six months.",
+    "prompt": "The organisation will ____ the new reporting system over six months, introducing it in successive stages.",
     "options": [
       "phase out",
       "opt for",
@@ -3228,7 +3228,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The manufacturer intends to ____ the older models gradually.",
+    "prompt": "The manufacturer intends to ____ the older models gradually until none are produced.",
     "options": [
       "opt for",
       "pass on",
@@ -3588,7 +3588,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Several reviewers are likely to ____ the unsupported conclusion in the final paragraph.",
+    "prompt": "Several reviewers are likely to ____ the unsupported conclusion in the final paragraph by explicitly expressing disagreement with it.",
     "options": [
       "take issue with",
       "take on",
