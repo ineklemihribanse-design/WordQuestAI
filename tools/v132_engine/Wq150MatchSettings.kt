@@ -165,6 +165,12 @@ internal fun Wq150ArenaBars(){
         val lightStatus=ctrl?.isAppearanceLightStatusBars
         val lightNav=ctrl?.isAppearanceLightNavigationBars
         val contrast=if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced else null
+        // Full-screen Compose dialogs must not animate a transparent window
+        // over the previous Arena screen while their first frame is rendered.
+        if(view.parent is DialogWindowProvider){
+            window?.setWindowAnimations(0)
+            window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(0xFF150B3E.toInt()))
+        }
         window?.statusBarColor=android.graphics.Color.TRANSPARENT
         window?.navigationBarColor=android.graphics.Color.TRANSPARENT
         if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced=false
@@ -242,7 +248,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
         Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
             Wq150ArenaBars()
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-                Wq122SettingsBackdrop(Modifier.matchParentSize())
+                Wq150SettingsBackdrop(Modifier.matchParentSize())
                 Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
                     .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=6.dp),
                     verticalArrangement=Arrangement.spacedBy(6.dp)){

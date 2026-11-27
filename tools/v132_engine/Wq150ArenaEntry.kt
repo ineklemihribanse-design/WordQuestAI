@@ -288,6 +288,22 @@ private object Wq150ArtCache{
     }
     fun get(name:String)=cache.get(name)
     fun put(name:String,art:ImageBitmap){cache.put(name,art)}
+    // Called only on Dispatchers.IO. Serialize misses to avoid decoding the same
+    // WebP in parallel when several Arena cards use a common decorative plate.
+    @Synchronized fun load(context:android.content.Context,name:String):ImageBitmap?{
+        get(name)?.let{return it}
+        return runCatching{
+            val asset=if('/' in name)name else "arena_v120/$name.webp"
+            val background=name.substringAfterLast('/').substringBeforeLast('.') in listOf("phone","tablet")
+            val limit=if(background)maxOf(context.resources.displayMetrics.widthPixels,context.resources.displayMetrics.heightPixels,1600) else if(name.contains("plate")||name.contains("_card_"))1024 else 512
+            val bounds=android.graphics.BitmapFactory.Options().apply{inJustDecodeBounds=true}
+            context.assets.open(asset).use{android.graphics.BitmapFactory.decodeStream(it,null,bounds)}
+            var sample=1
+            while(maxOf(bounds.outWidth,bounds.outHeight)/sample>=limit*2)sample*=2
+            val options=android.graphics.BitmapFactory.Options().apply{inSampleSize=sample}
+            context.assets.open(asset).use{android.graphics.BitmapFactory.decodeStream(it,null,options)?.asImageBitmap()}
+        }.getOrNull()?.also{put(name,it)}
+    }
 }
 @Composable
 private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
@@ -299,23 +315,19 @@ private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=Co
         if(cached!=null){
             art=cached
         }else{
-            val decoded=withContext(Dispatchers.IO){
-                runCatching{
-                    val asset=if('/' in name)name else "arena_v120/$name.webp"
-                    val background=name.substringAfterLast('/').substringBeforeLast('.') in listOf("phone","tablet")
-                    val limit=if(background)maxOf(context.resources.displayMetrics.widthPixels,context.resources.displayMetrics.heightPixels,1600) else if(name.contains("plate")||name.contains("_card_"))1024 else 512
-                    val bounds=android.graphics.BitmapFactory.Options().apply{inJustDecodeBounds=true}
-                    context.assets.open(asset).use{android.graphics.BitmapFactory.decodeStream(it,null,bounds)}
-                    var sample=1
-                    while(maxOf(bounds.outWidth,bounds.outHeight)/sample>=limit*2)sample*=2
-                    val options=android.graphics.BitmapFactory.Options().apply{inSampleSize=sample}
-                    context.assets.open(asset).use{android.graphics.BitmapFactory.decodeStream(it,null,options)?.asImageBitmap()}
-                }.getOrNull()?.also{Wq150ArtCache.put(name,it)}
-            }
+            val decoded=withContext(Dispatchers.IO){Wq150ArtCache.load(context,name)}
             art=decoded
         }
     }
     art?.let{Image(it,null,modifier,contentScale=scale)}
+}
+/** Share the same cache with both full-screen settings routes. */
+@Composable
+internal fun Wq150SettingsBackdrop(modifier:Modifier){
+    val c=LocalConfiguration.current
+    val tablet=c.screenWidthDp>c.screenHeightDp&&c.screenWidthDp>=600
+    Wq150ApprovedArt(if(tablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp",
+        modifier,ContentScale.Crop)
 }
 @Composable
 private fun Wq150PremiumPanel(content:@Composable ColumnScope.()->Unit){
@@ -454,12 +466,36 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
         val metrics=Wq150HomeLayout.measure(available.value,wide)
         val h=metrics.height.dp
         val fullH=h+top+bottom
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
+        val context=LocalContext.current.applicationContext
+        val background=if(wide)"tablet" else "phone"
+        val backgroundKey=if(newArt)"arena_v150_premium/$background.webp" else background
+        // Do not compose the decorative hero piecemeal. The background and
+        // crest are prepared together and retained as long as this viewport lives.
+        var heroReady by remember(context,backgroundKey){
+            mutableStateOf(Wq150ArtCache.get(backgroundKey)!=null&&Wq150ArtCache.get("crest")!=null)
+        }
+        LaunchedEffect(context,backgroundKey){
+            withContext(Dispatchers.IO){
+                Wq150ArtCache.load(context,backgroundKey)
+                Wq150ArtCache.load(context,"crest")
+                Wq150ArtCache.load(context,"book")
+                Wq150ArtCache.load(context,"back")
+            }
+            heroReady=true
+            withContext(Dispatchers.IO){
+                val tablet=config.screenWidthDp>config.screenHeightDp&&config.screenWidthDp>=600
+                Wq150ArtCache.load(context,if(tablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp")
+            }
+        }
+        if(!heroReady){
+            Box(Modifier.fillMaxSize().background(Color(0xFF150B3E)),contentAlignment=Alignment.Center){
+                CircularProgressIndicator(color=Wq122Gold)
+            }
+        }else Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
             Box(Modifier.fillMaxWidth().height(fullH)){
                 // Never use the v183 floating-trophy lobby art here: its podium is at another height.
                 // The old approved v120 art is an exact-coordinate fallback until the new ZIP is staged.
-                val background=if(wide)"tablet" else "phone"
-                Wq150ApprovedArt(if(newArt)"arena_v150_premium/$background.webp" else background,
+                Wq150ApprovedArt(backgroundKey,
                     Modifier.matchParentSize(),ContentScale.Crop)
                 val pos=Wq150Podium.anchor(fullW.value,fullH.value,wide,newArt)
                 Box(Modifier.fillMaxSize().padding(safe)){
@@ -583,7 +619,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
     Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
         Wq150ArenaBars()
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-            Wq122SettingsBackdrop(Modifier.matchParentSize())
+            Wq150SettingsBackdrop(Modifier.matchParentSize())
             Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=6.dp),
                 verticalArrangement=Arrangement.spacedBy(6.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
