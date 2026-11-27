@@ -1053,7 +1053,7 @@ export const wordFormQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Her first attempt was ____.",
+    "prompt": "Her first attempt was remarkably ____.",
     "options": [
       "successful",
       "success",
@@ -1818,7 +1818,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The report approaches the findings ____, judging their strengths and weaknesses.",
+    "prompt": "Rather than simply listing the findings, the author discusses them ____, assessing their strengths and weaknesses.",
     "options": [
       "evaluatively",
       "evaluation",
@@ -2294,7 +2294,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The two artefacts are ____ different in their construction.",
+    "prompt": "The two artefacts differ in construction in ways that specialists can detect. They are ____ different.",
     "options": [
       "identifiably",
       "identification",
@@ -2944,7 +2944,7 @@ export const wordFormQuestions = [
     "options": [
       "legitimise",
       "legitimacy",
-      "legitimate",
+      "illegitimate",
       "legitimately",
       "legitimises"
     ],
