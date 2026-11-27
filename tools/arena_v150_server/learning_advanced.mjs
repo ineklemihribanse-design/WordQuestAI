@@ -1331,7 +1331,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Access to the confidential archive is permitted only ____ researchers sign the required agreement.",
+    "prompt": "Access to the confidential archive is permitted ____ researchers sign the required agreement; unsigned applications are refused.",
     "options": [
       "provided that",
       "whereas",
@@ -1340,7 +1340,7 @@ export const advancedQuestions = [
       "rather than"
     ],
     "correct": 0,
-    "explanation": "Provided that gerçekleşme için yeterli koşulu belirtir."
+    "explanation": "Provided that, belirtilen koşulun sağlanması şartıyla anlamındadır. Burada izin verilmesi için bu koşulun sağlanması gerekir; başka koşulların bulunmadığı ileri sürülmez."
   },
   {
     "id": "wq150_advanced_33_2",
@@ -1348,7 +1348,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The project may proceed only ____ its safety plan receives approval.",
+    "prompt": "The project may proceed ____ its safety plan receives approval; without that approval, work cannot begin.",
     "options": [
       "provided that",
       "whereas",
@@ -1357,7 +1357,7 @@ export const advancedQuestions = [
       "rather than"
     ],
     "correct": 0,
-    "explanation": "Provided that gerçekleşme için yeterli koşulu belirtir."
+    "explanation": "Provided that, belirtilen koşulun sağlanması şartıyla anlamındadır. Burada izin verilmesi için bu koşulun sağlanması gerekir; başka koşulların bulunmadığı ileri sürülmez."
   },
   {
     "id": "wq150_advanced_33_3",
@@ -1365,7 +1365,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The equipment can be used overnight only ____ a qualified supervisor remains present.",
+    "prompt": "The equipment can be used overnight ____ a qualified supervisor remains present; unsupervised operation is prohibited.",
     "options": [
       "provided that",
       "whereas",
@@ -1374,7 +1374,7 @@ export const advancedQuestions = [
       "rather than"
     ],
     "correct": 0,
-    "explanation": "Provided that gerçekleşme için yeterli koşulu belirtir."
+    "explanation": "Provided that, belirtilen koşulun sağlanması şartıyla anlamındadır. Burada izin verilmesi için bu koşulun sağlanması gerekir; başka koşulların bulunmadığı ileri sürülmez."
   },
   {
     "id": "wq150_advanced_34_1",
@@ -1592,10 +1592,10 @@ export const advancedQuestions = [
       "unless",
       "whereas",
       "as though",
-      "as soon as"
+      "even though"
     ],
     "correct": 0,
-    "explanation": "Insofar as bir iddianın geçerli olduğu ölçüyü veya kapsamı sınırlar."
+    "explanation": "Insofar as, bir iddianın geçerliliğini belirtilen ölçüyle sınırlar; even though ödünleme, unless olumsuz koşul, whereas karşıtlık ve as though benzetme bildirir."
   },
   {
     "id": "wq150_advanced_38_2",
@@ -1609,10 +1609,10 @@ export const advancedQuestions = [
       "unless",
       "whereas",
       "as though",
-      "as soon as"
+      "even though"
     ],
     "correct": 0,
-    "explanation": "Insofar as bir iddianın geçerli olduğu ölçüyü veya kapsamı sınırlar."
+    "explanation": "Insofar as, bir iddianın geçerliliğini belirtilen ölçüyle sınırlar; even though ödünleme, unless olumsuz koşul, whereas karşıtlık ve as though benzetme bildirir."
   },
   {
     "id": "wq150_advanced_38_3",
@@ -1626,10 +1626,10 @@ export const advancedQuestions = [
       "unless",
       "whereas",
       "as though",
-      "as soon as"
+      "even though"
     ],
     "correct": 0,
-    "explanation": "Insofar as bir iddianın geçerli olduğu ölçüyü veya kapsamı sınırlar."
+    "explanation": "Insofar as, bir iddianın geçerliliğini belirtilen ölçüyle sınırlar; even though ödünleme, unless olumsuz koşul, whereas karşıtlık ve as though benzetme bildirir."
   },
   {
     "id": "wq150_advanced_39_1",
@@ -2096,7 +2096,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The museum will ____ ownership of the artefact after lending it to another institution.",
+    "prompt": "The museum will ____ ownership of the artefact after lending it to another institution; the loan does not transfer ownership.",
     "options": [
       "retain",
       "relinquish",
@@ -2105,7 +2105,7 @@ export const advancedQuestions = [
       "forfeit"
     ],
     "correct": 0,
-    "explanation": "Retain bir hakkı, kaynağı veya özelliği elinde tutmaktır."
+    "explanation": "Retain, mevcut bir hakkı, erişim yetkisini veya nesneyi elinde tutmayı sürdürmektir. Relinquish, surrender ve forfeit bunlardan vazgeçme ya da kaybetme anlamları taşır."
   },
   {
     "id": "wq150_advanced_50_2",
@@ -2113,7 +2113,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The employee will ____ access to the system during the temporary assignment.",
+    "prompt": "The employee will ____ access to the system during the temporary assignment; their existing permissions will remain active.",
     "options": [
       "retain",
       "relinquish",
@@ -2122,7 +2122,7 @@ export const advancedQuestions = [
       "forfeit"
     ],
     "correct": 0,
-    "explanation": "Retain bir hakkı, kaynağı veya özelliği elinde tutmaktır."
+    "explanation": "Retain, mevcut bir hakkı, erişim yetkisini veya nesneyi elinde tutmayı sürdürmektir. Relinquish, surrender ve forfeit bunlardan vazgeçme ya da kaybetme anlamları taşır."
   },
   {
     "id": "wq150_advanced_50_3",
@@ -2130,7 +2130,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The archive must ____ original documents even after creating digital copies.",
+    "prompt": "The archive must ____ original documents even after creating digital copies; the originals must remain in its custody.",
     "options": [
       "retain",
       "relinquish",
@@ -2139,7 +2139,7 @@ export const advancedQuestions = [
       "forfeit"
     ],
     "correct": 0,
-    "explanation": "Retain bir hakkı, kaynağı veya özelliği elinde tutmaktır."
+    "explanation": "Retain, mevcut bir hakkı, erişim yetkisini veya nesneyi elinde tutmayı sürdürmektir. Relinquish, surrender ve forfeit bunlardan vazgeçme ya da kaybetme anlamları taşır."
   },
   {
     "id": "wq150_advanced_51_1",
@@ -2164,7 +2164,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The chef can ____ olive oil for butter when preparing the dish.",
+    "prompt": "The chef can ____ olive oil for butter when preparing the dish, using oil instead of butter.",
     "options": [
       "substitute",
       "supplement",
@@ -2300,7 +2300,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The alarm activates only when pressure exceeds a predefined ____.",
+    "prompt": "The alarm activates only when pressure exceeds a predefined ____ of 120 kPa.",
     "options": [
       "threshold",
       "average",
@@ -2309,7 +2309,7 @@ export const advancedQuestions = [
       "distribution"
     ],
     "correct": 0,
-    "explanation": "Threshold bir sürecin başlaması veya ölçütün sağlanması için gereken eşiktir."
+    "explanation": "Threshold, bir olayın başlaması veya bir şartın sağlanması için aşılması gereken belirli eşik değerdir; average ortalama, median ortanca, range aralık ve distribution dağılımdır."
   },
   {
     "id": "wq150_advanced_54_2",
@@ -2334,7 +2334,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The chemical reaction begins once the temperature crosses a critical ____.",
+    "prompt": "The chemical reaction begins once the temperature crosses a critical ____ of 80°C.",
     "options": [
       "threshold",
       "average",
@@ -2343,7 +2343,7 @@ export const advancedQuestions = [
       "distribution"
     ],
     "correct": 0,
-    "explanation": "Threshold bir sürecin başlaması veya ölçütün sağlanması için gereken eşiktir."
+    "explanation": "Threshold, bir olayın başlaması veya bir şartın sağlanması için aşılması gereken belirli eşik değerdir; average ortalama, median ortanca, range aralık ve distribution dağılımdır."
   },
   {
     "id": "wq150_advanced_55_1",
