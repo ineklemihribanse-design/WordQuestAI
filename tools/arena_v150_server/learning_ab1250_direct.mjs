@@ -924,7 +924,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Walk on the ____ beside the road, not in the traffic.",
+    "prompt": "In British English, what do we call the raised strip beside a road where people walk? Walk on the ____ instead of in the traffic.",
     "options": [
       "path",
       "pavement",
@@ -933,7 +933,7 @@ export const ab1250Direct = [
       "entrance"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: pavement. Yol ve yön bildiren isimlerin işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: pavement. Pavement, Britanya İngilizcesinde yol kenarındaki yaya kaldırımıdır; Amerikan İngilizcesinde sidewalk kullanılır."
   },
   {
     "id": "wq150_ab1250_direct_a2_11_3",
@@ -960,7 +960,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Use the marked pedestrian ____ to get to the other side.",
+    "prompt": "Use the marked pedestrian ____ across the road where drivers stop to let people pass.",
     "options": [
       "path",
       "pavement",
@@ -969,7 +969,7 @@ export const ab1250Direct = [
       "entrance"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: crossing. Yol ve yön bildiren isimlerin işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: crossing. Pedestrian crossing, yayaların yolun karşı tarafına geçmesi için ayrılmış yaya geçididir."
   },
   {
     "id": "wq150_ab1250_direct_a2_11_5",
@@ -996,16 +996,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "He keeps banknotes and cards in a flat leather ____.",
+    "prompt": "He keeps banknotes and cards in a flat leather ____ that folds in half and fits in his trouser pocket.",
     "options": [
       "wallet",
-      "purse",
+      "luggage tag",
       "backpack",
       "suitcase",
       "pocket"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: wallet. Eşyaları taşıma biçimi ve kullanım amacı ipucu verir."
+    "explanation": "Doğru seçenek: wallet. Wallet, kâğıt para ve kart taşımak için kullanılan cüzdandır."
   },
   {
     "id": "wq150_ab1250_direct_a2_12_2",
@@ -1212,7 +1212,7 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The hall was completely ____ after all the visitors left.",
+    "prompt": "The hall was completely ____ after all the visitors left; not a single person remained inside.",
     "options": [
       "quiet",
       "crowded",
@@ -1221,7 +1221,7 @@ export const ab1250Direct = [
       "spacious"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: empty. Ortamın kalabalığı, ses düzeyi ve alanı sıfatı belirler."
+    "explanation": "Doğru seçenek: empty. Empty, boş demektir; burada salonda hiç kimsenin kalmadığı belirtilir."
   },
   {
     "id": "wq150_ab1250_direct_a2_14_4",
