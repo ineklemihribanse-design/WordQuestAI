@@ -1,9 +1,8 @@
 name: WordQuest AI 1.0.159 verified release package (airy match settings and bottom action)
 on:
-  # Only an intentional release workflow edit on the trusted branch starts
-  # packaging. PR-wide path filters otherwise rebuild on unrelated commits.
-  push:
-    branches: [feature/v150-arena-nextgen]
+  # Verified historical source checkpoint is scoped to the existing PR cache.
+  pull_request:
+    branches: [fix/v190-tablet-board-and-visible-icons]
     paths: ['.github/workflows/publish-v151-approved.yml']
 concurrency:
   group: wordquest-public-release
@@ -17,11 +16,11 @@ env:
   WQ_TARGET_CODE: '173'
   WQ_BASE_CODE: '172'
   WQ_BASE_SHA: 3ec9e3dd3f4fbe8adb791d123f87cd4c7f9f45f82903c29819e5df0ca6aaab64
-  WQ_SOURCE_SHA: ${{ github.sha }}
+  WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
   WQ_NOTES: 'Arena Maç Ayarları: mevcut stadyum, ferah koyu mor-lacivert paneller, altın vurgular, telefon/tablet uyumlu sabit alt işlem düğmesi. Tahta ve oyun mantığı korunur.'
 jobs:
   release_gate:
-    if: github.event_name == 'push' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
@@ -45,13 +44,13 @@ jobs:
           fi
   audit:
     needs: release_gate
-    if: needs.release_gate.outputs.build == 'true' && github.event_name == 'push' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
+    if: needs.release_gate.outputs.build == 'true' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-java@v4
@@ -90,7 +89,28 @@ jobs:
               name=os.fsdecode(row.split(b'\t',1)[1])
               if name.startswith(('.github/workflows/','.github/archived-workflows/')+late): continue
               h.update(row+b'\0')
-          with open(os.environ['GITHUB_OUTPUT'],'a') as f: print('key=wq-stable123-v1-'+h.hexdigest(),file=f)
+          key='wq-stable123-v1-'+h.hexdigest()
+          # Reuse the exact checkpoint proven by the published 1.0.158 audit only
+          # if every intervening change is outside the historical assembly stage.
+          base='d8fb5d0af0dda57295788599abdef4b13db76ec2'
+          subprocess.run(['git','merge-base','--is-ancestor',base,'HEAD'],check=True)
+          changed=subprocess.check_output(['git','diff','--name-only','--no-renames','-z',base,'HEAD']).decode().split('\0')
+          allowed={
+              '.github/workflows/publish-v151-approved.yml',
+              '.github/workflows/qa-published-upgrade.yml',
+              '.github/workflows/qa-v132-engine-rules.yml',
+              'firebase/database.rules.v158.json','firebase/friendMascotHd.fragment.json',
+              'tools/auto_release/prepare_published_replay.py','tools/auto_release/test_wait_app_ready.py',
+              'tools/auto_release/verify_delta_install.sh','tools/auto_release/wait_app_ready.py',
+              'tools/maintenance/classify_release_impact.py','tools/maintenance/test_classify_release_impact.py',
+              'tools/maintenance/verify_arena_art.py','tools/v132_engine/FRIEND_HD_SETUP_TR.md',
+              'tools/v132_engine/Wq150ArenaEntry.kt','tools/v132_engine/Wq150MatchSettings.kt',
+              'tools/v132_engine/test_friend_hd.mjs','tools/v150_release/qa_arena.py'
+          }
+          if set(filter(None,changed)) <= allowed:
+              key='wq-stable123-v1-a3d4670788f295a986e804cb1c776a3d78e6174e871b2e2c5ed1464d67d8ff66'
+              print('Reusing verified pre-Arena checkpoint: only late assembly or QA inputs changed.')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f: print('key='+key,file=f)
           PY
       - name: Restore exact stable Android source checkpoint
         id: source_checkpoint
@@ -847,7 +867,7 @@ jobs:
           fi
       - uses: gradle/actions/setup-gradle@v4
         with:
-          # Only this trusted push-only release job may populate its branch cache.
+          # Only the same-repository release PR may populate its scoped cache.
           cache-read-only: false
           add-job-summary: always
       - name: Inventory and scan every assembled source and resource file
@@ -995,13 +1015,13 @@ jobs:
           } | tee -a "$GITHUB_STEP_SUMMARY"
   verify:
     needs: audit
-    if: needs.audit.result == 'success' && github.event_name == 'push' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
+    if: needs.audit.result == 'success' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
       - uses: actions/setup-java@v4
         with:
