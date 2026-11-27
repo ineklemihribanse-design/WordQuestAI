@@ -7929,7 +7929,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I'm looking for a ____ job that allows me to work only in the mornings.",
+    "prompt": "I'm looking for a ____ job of twenty hours a week rather than the usual forty.",
     "options": [
       "part-time",
       "full-time",
@@ -7938,7 +7938,7 @@ export const foundationQuestions = [
       "overnight"
     ],
     "correct": 0,
-    "explanation": "Part-time yarı zamanlı iş anlamındadır."
+    "explanation": "Part-time, tam zamanlı çalışmaya göre daha az çalışma saati olan yarı zamanlı işi ifade eder."
   },
   {
     "id": "wq150_nov26_foundation6_21",
@@ -8797,12 +8797,12 @@ export const foundationQuestions = [
     "options": [
       "in",
       "on",
-      "at",
+      "from",
       "for",
       "with"
     ],
     "correct": 0,
-    "explanation": "Succeed in + gerund, bir işi başarmak demektir."
+    "explanation": "Succeed in + -ing: bir işi başarmak. Burada daha ucuz bir seçenek bulmayı başarmak anlatılır."
   },
   {
     "id": "wq150_nov26_foundation6_75",
@@ -8825,7 +8825,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The investigators found no evidence to ____ the accusation that records had been deliberately altered.",
+    "prompt": "The investigators found no evidence to ____ the accusation, so they could not substantiate it.",
     "options": [
       "support",
       "disprove",
@@ -8834,7 +8834,7 @@ export const foundationQuestions = [
       "conceal"
     ],
     "correct": 0,
-    "explanation": "Support an accusation, suçlamayı kanıtla desteklemektir."
+    "explanation": "Support an accusation: suçlamayı kanıtlarla desteklemek."
   },
   {
     "id": "wq150_nov26_foundation6_77",
@@ -9100,13 +9100,13 @@ export const foundationQuestions = [
     "prompt": "The organisation agreed to ____ a review of its recruitment procedures.",
     "options": [
       "carry out",
-      "carry on with",
+      "put up with",
       "back out of",
       "get away with",
       "run out of"
     ],
     "correct": 0,
-    "explanation": "Carry out a review bir incelemeyi gerçekleştirmektir."
+    "explanation": "Carry out a review: bir incelemeyi gerçekleştirmek."
   },
   {
     "id": "wq150_nov26_foundation6_94",
@@ -9897,7 +9897,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The swimming pool is very busy, so we should go at a less ____ time.",
+    "prompt": "The swimming pool is full of people now, so we should go at a less ____ time when there are fewer swimmers.",
     "options": [
       "crowded",
       "quiet",
@@ -9906,7 +9906,7 @@ export const foundationQuestions = [
       "empty"
     ],
     "correct": 0,
-    "explanation": "Less crowded daha az kalabalık demektir."
+    "explanation": "Crowded: kalabalık. Less crowded daha az kalabalık anlamına gelir."
   },
   {
     "id": "wq150_nov26_foundation7_39",
@@ -10204,13 +10204,13 @@ export const foundationQuestions = [
     "prompt": "____ the heavy traffic, we arrived before the lecture began.",
     "options": [
       "Despite",
-      "Because",
+      "Whereas",
       "Although",
       "Unless",
       "So that"
     ],
     "correct": 0,
-    "explanation": "Despite ardından isim öbeği gelir ve zıtlık kurar."
+    "explanation": "Despite + isim, -e rağmen anlamına gelir. Burada ağır trafiğe rağmen zamanında varılmıştır."
   },
   {
     "id": "wq150_nov26_foundation7_58",
@@ -11049,7 +11049,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: How do you get to work? B: ____ It's only five minutes from my house.",
+    "prompt": "A: How do you get to work? B: ____ I walk there in five minutes.",
     "options": [
       "On foot.",
       "At nine.",
@@ -11058,7 +11058,7 @@ export const foundationQuestions = [
       "In an office."
     ],
     "correct": 0,
-    "explanation": "How ulaşım biçimini sorar; on foot yürüyerek demektir."
+    "explanation": "On foot yürüyerek, yaya olarak demektir."
   },
   {
     "id": "wq150_nov26_quality8_11",
@@ -11195,14 +11195,14 @@ export const foundationQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the sentence closest in meaning: I haven't finished the book yet.",
     "options": [
-      "I am still reading the book or have not completed it.",
+      "I have not completed the book so far.",
       "I have just finished the whole book.",
       "I finished the book a long time ago.",
       "I will never read the book.",
       "I have already read it twice."
     ],
     "correct": 0,
-    "explanation": "Yet ile olumsuz present perfect, tamamlanmanın henüz gerçekleşmediğini gösterir."
+    "explanation": "Yet olumsuz cümlede henüz anlamındadır. Kitabın şu ana kadar tamamlanmadığını belirtir."
   },
   {
     "id": "wq150_nov26_quality8_20",
@@ -11660,13 +11660,13 @@ export const foundationQuestions = [
     "prompt": "The company promised to ____ customers of any changes to their bookings.",
     "options": [
       "inform",
-      "remind",
+      "invite",
       "persuade",
       "warn against",
       "accuse"
     ],
     "correct": 0,
-    "explanation": "Inform someone of something birini bir konuda bilgilendirmek kalıbıdır."
+    "explanation": "Inform someone of something: bir kişiyi bir konuda bilgilendirmek."
   },
   {
     "id": "wq150_nov26_quality8_49",
@@ -11947,14 +11947,14 @@ export const foundationQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the closest meaning: The proposal was rejected not because it was impractical, but because its costs were underestimated.",
     "options": [
-      "The rejection was due to an inaccurate assessment of costs rather than impracticality.",
+      "The rejection was due to costs being estimated too low, not to impracticality.",
       "The proposal was rejected because it was both impractical and too costly.",
       "The proposal was accepted after its costs were underestimated.",
       "The proposal was impractical because its costs had been correctly estimated.",
       "The proposal was rejected despite an accurate estimate of its costs."
     ],
     "correct": 0,
-    "explanation": "Not because X but because Y reddin gerçek nedenini ve dışlanan nedeni ayırır."
+    "explanation": "Underestimate maliyeti olduğundan düşük tahmin etmektir. Ret nedeni uygulanamazlık değil, düşük maliyet tahminidir."
   },
   {
     "id": "wq150_nov26_quality8_67",
@@ -12025,7 +12025,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The findings are interesting, but further evidence is needed to ____ the claim that the change caused the improvement.",
+    "prompt": "The findings are interesting, but further evidence is needed to ____ the existing claim and demonstrate that it is well founded.",
     "options": [
       "substantiate",
       "formulate",
@@ -12034,7 +12034,7 @@ export const foundationQuestions = [
       "revise"
     ],
     "correct": 0,
-    "explanation": "Substantiate iddiayı yeterli kanıtla desteklemektir; diğer fiiller iddiayla ilgili olsa da kanıtlama işlevi taşımaz."
+    "explanation": "Substantiate: bir iddiayı yeterli kanıtla desteklemek."
   },
   {
     "id": "wq150_nov26_quality8_72",
@@ -12044,13 +12044,13 @@ export const foundationQuestions = [
     "prompt": "The agreement allows either party to ____ from the arrangement by giving thirty days' notice.",
     "options": [
       "withdraw",
-      "depart",
+      "join",
       "remove",
       "exclude",
       "dismiss"
     ],
     "correct": 0,
-    "explanation": "Withdraw from bir anlaşmadan çekilmek için yerleşik kullanımdır."
+    "explanation": "Withdraw from an arrangement: bir anlaşmadan çekilmek."
   },
   {
     "id": "wq150_nov26_quality8_73",
@@ -12441,7 +12441,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: I'd like to exchange this jacket. B: ____ A: No, I'd prefer the same colour in a bigger size.",
+    "prompt": "A: I'd like to exchange this jacket. B: ____ A: No, I'd prefer to keep this colour and exchange it for a bigger size.",
     "options": [
       "Would you like a different colour?",
       "Would you like a bigger size in the same colour?",
@@ -12450,7 +12450,7 @@ export const foundationQuestions = [
       "Would you like the same jacket again?"
     ],
     "correct": 0,
-    "explanation": "No ve same colour, farklı renk önerisinin reddedildiğini gösterir."
+    "explanation": "Son yanıtta aynı rengin korunmak istendiği açıkça belirtildiği için farklı renk önerisi uygun sorudur."
   },
   {
     "id": "wq150_nov26_dialogue10_13",
@@ -12731,14 +12731,14 @@ export const foundationQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the sentence closest in meaning: Tom used to cycle to work.",
     "options": [
-      "Tom cycled to work regularly in the past.",
+      "Tom cycled to work regularly in the past but no longer does.",
       "Tom is cycling to work right now.",
       "Tom has just started cycling to work.",
       "Tom is getting used to cycling to work.",
       "Tom has never cycled to work."
     ],
     "correct": 0,
-    "explanation": "Used to geçmiş alışkanlığı ifade eder, alışma süreci değildir."
+    "explanation": "Used to + fiil, geçmişte düzenli olan ancak artık sürmeyen alışkanlığı anlatır."
   },
   {
     "id": "wq150_nov26_dialogue10_31",
@@ -14046,7 +14046,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Be ____ when you cross this busy road.",
+    "prompt": "Be ____ when you cross this busy road; look both ways and pay attention.",
     "options": [
       "care",
       "careful",
@@ -14055,7 +14055,7 @@ export const foundationQuestions = [
       "carelessly"
     ],
     "correct": 1,
-    "explanation": "Be sonrası sıfat careful; dikkatli olma uyarısıdır."
+    "explanation": "Be careful: dikkatli ol. Be fiilinden sonra sıfat kullanılır."
   },
   {
     "id": "wq150_nov26_wordfamily11_6_2",
@@ -14267,7 +14267,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The children laughed and played ____ in the garden.",
+    "prompt": "The children laughed and played ____ in the garden, clearly enjoying themselves.",
     "options": [
       "happy",
       "happily",
@@ -14276,7 +14276,7 @@ export const foundationQuestions = [
       "unhappily"
     ],
     "correct": 1,
-    "explanation": "Played fiilini niteleyen olumlu zarf happily kullanılır."
+    "explanation": "Happily, mutlu bir şekilde anlamında bir zarftır."
   },
   {
     "id": "wq150_nov26_wordfamily11_9_3",
@@ -14675,7 +14675,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I'm ____ in learning another language.",
+    "prompt": "I'm ____ in learning another language and have already signed up for a course.",
     "options": [
       "interest",
       "interested",
@@ -14684,7 +14684,7 @@ export const foundationQuestions = [
       "interestingly"
     ],
     "correct": 1,
-    "explanation": "Interested in kişinin ilgi duyduğu şeyi belirtir."
+    "explanation": "Interested in: bir şeye ilgi duyan. Uninterested ilgisiz anlamındadır."
   },
   {
     "id": "wq150_nov26_wordfamily11_15_3",
@@ -15049,7 +15049,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The cause of the sudden failure remains ____ despite several investigations.",
+    "prompt": "The cause of the sudden failure remains ____; no investigation has yet found a reason for it.",
     "options": [
       "explain",
       "explanation",
@@ -15058,7 +15058,7 @@ export const foundationQuestions = [
       "unexplained"
     ],
     "correct": 4,
-    "explanation": "Unexplained henüz açıklanmamış demektir."
+    "explanation": "Unexplained: açıklanamamış, nedeni henüz belirlenmemiş."
   },
   {
     "id": "wq150_nov26_wordfamily11_21_1",
@@ -15882,7 +15882,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Researchers must ____ these results in the context of the study's limitations.",
+    "prompt": "Researchers must ____ these results accurately, taking the study's limitations into account.",
     "options": [
       "interpret",
       "interpretation",
@@ -15891,7 +15891,7 @@ export const foundationQuestions = [
       "misinterpret"
     ],
     "correct": 0,
-    "explanation": "Must + interpret yorumlamak demektir."
+    "explanation": "Interpret: yorumlamak. Misinterpret yanlış yorumlamak demektir."
   },
   {
     "id": "wq150_nov26_wordfamily11_33_2",
@@ -16072,13 +16072,13 @@ export const foundationQuestions = [
     "prompt": "The sensor could not ____ detect small changes at very low temperatures.",
     "options": [
       "rely",
-      "reliable",
+      "unreliability",
       "reliability",
       "unreliable",
       "reliably"
     ],
     "correct": 4,
-    "explanation": "Detect fiilini niteleyen reliably güvenilir biçimde demektir."
+    "explanation": "Reliably bir fiili niteleyen, güvenilir biçimde anlamındaki zarftır."
   },
   {
     "id": "wq150_nov26_wordfamily11_36_1",
@@ -16715,7 +16715,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "My cousins ____ at school today.",
+    "prompt": "Look at the live video: my cousins ____ at school right now.",
     "options": [
       "am",
       "is",
@@ -16724,7 +16724,7 @@ export const foundationQuestions = [
       "were"
     ],
     "correct": 2,
-    "explanation": "are: çoğul şimdiki zaman be. Diğer seçenekler: am: I ile şimdiki zaman be; is: tekil şimdiki zaman be; was: tekil geçmiş be; were: çoğul geçmiş be."
+    "explanation": "Çoğul özne my cousins ve şimdiki zaman için are kullanılır."
   },
   {
     "id": "wq150_nov26_mixed13a_4_4",
@@ -17042,12 +17042,12 @@ export const foundationQuestions = [
     "options": [
       "borrow",
       "lend",
-      "rent",
+      "sell",
       "own",
       "return"
     ],
     "correct": 1,
-    "explanation": "lend: ödünç vermek. Diğer seçenekler: borrow: ödünç almak; rent: kiralamak; own: sahibi olmak; return: iade etmek."
+    "explanation": "Lend someone something: birine bir şeyi ödünç vermek."
   },
   {
     "id": "wq150_nov26_mixed13a_8_3",
@@ -17191,7 +17191,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Phrasals",
-    "prompt": "It's too dark to read. Could you ____ the lamp?",
+    "prompt": "The lamp is switched off, and it's too dark to read. Could you ____ the lamp?",
     "options": [
       "turn on",
       "turn off",
@@ -17200,7 +17200,7 @@ export const foundationQuestions = [
       "turn over"
     ],
     "correct": 0,
-    "explanation": "turn on: açmak. Diğer seçenekler: turn off: kapatmak; turn down: azaltmak; turn up: artırmak; turn over: ters çevirmek."
+    "explanation": "Turn on: cihazı açmak. Turn up ses veya güç düzeyini artırmaktır."
   },
   {
     "id": "wq150_nov26_mixed13a_10_2",
@@ -17534,13 +17534,13 @@ export const foundationQuestions = [
     "prompt": "My daily ____ to work takes forty minutes by train.",
     "options": [
       "commute",
-      "trip",
+      "holiday",
       "tour",
       "flight",
       "voyage"
     ],
     "correct": 0,
-    "explanation": "commute: işe düzenli gidiş geliş. Diğer seçenekler: trip: kısa gezi; tour: tur; flight: uçuş; voyage: uzun deniz yolculuğu."
+    "explanation": "Commute: ev ile iş yeri arasındaki düzenli gidiş geliş."
   },
   {
     "id": "wq150_nov26_mixed13a_14_2",
@@ -17602,13 +17602,13 @@ export const foundationQuestions = [
     "prompt": "The ship's two-month ____ across the Atlantic was recorded in a diary.",
     "options": [
       "commute",
-      "trip",
+      "drive",
       "tour",
       "flight",
       "voyage"
     ],
     "correct": 4,
-    "explanation": "voyage: uzun deniz yolculuğu. Diğer seçenekler: commute: işe düzenli gidiş geliş; trip: kısa gezi; tour: tur; flight: uçuş."
+    "explanation": "Voyage: özellikle gemiyle yapılan uzun yolculuk."
   },
   {
     "id": "wq150_nov26_mixed13a_15_1",
@@ -17737,14 +17737,14 @@ export const foundationQuestions = [
     "topic": "Phrasals",
     "prompt": "May I ____ these trousers in the fitting room to check the size?",
     "options": [
-      "put on",
+      "put off",
       "take off",
       "try on",
       "give away",
       "put away"
     ],
     "correct": 2,
-    "explanation": "try on: denemek. Diğer seçenekler: put on: giymek; take off: çıkarmak; give away: ücretsiz vermek; put away: yerine kaldırmak."
+    "explanation": "Try on: bir kıyafeti uygun olup olmadığını görmek için denemek."
   },
   {
     "id": "wq150_nov26_mixed13a_16_4",
@@ -17961,11 +17961,11 @@ export const foundationQuestions = [
       "mustn't",
       "don't have to",
       "should",
-      "can",
+      "didn't",
       "couldn't"
     ],
     "correct": 0,
-    "explanation": "mustn't: yasak. Diğer seçenekler: don't have to: zorunlu değil; should: tavsiye; can: izin/yetenek; couldn't: geçmişte yapamadı."
+    "explanation": "Mustn't: yasak bildirir. No entry işareti girişin yasak olduğunu belirtir."
   },
   {
     "id": "wq150_nov26_mixed13a_19_2",
@@ -17995,11 +17995,11 @@ export const foundationQuestions = [
       "mustn't",
       "don't have to",
       "should",
-      "can",
+      "couldn't have",
       "couldn't"
     ],
     "correct": 2,
-    "explanation": "should: tavsiye. Diğer seçenekler: mustn't: yasak; don't have to: zorunlu değil; can: izin/yetenek; couldn't: geçmişte yapamadı."
+    "explanation": "Should: tavsiye veya öneri bildirir. Mola vermek iyi bir fikir olarak sunuluyor."
   },
   {
     "id": "wq150_nov26_mixed13a_19_4",
@@ -18132,10 +18132,10 @@ export const foundationQuestions = [
       "rise",
       "arise",
       "arouse",
-      "lift"
+      "fall"
     ],
     "correct": 0,
-    "explanation": "raise: artırmak (geçişli). Diğer seçenekler: rise: yükselmek (geçişsiz); arise: ortaya çıkmak; arouse: uyandırmak; lift: fiziksel kaldırmak."
+    "explanation": "Raise parking charges: park ücretlerini artırmak. Rise geçişsizdir."
   },
   {
     "id": "wq150_nov26_mixed13a_21_2",
@@ -18179,14 +18179,14 @@ export const foundationQuestions = [
     "topic": "Vocabulary",
     "prompt": "The strange findings may ____ curiosity among researchers.",
     "options": [
-      "raise",
+      "lower",
       "rise",
       "arise",
       "arouse",
       "lift"
     ],
     "correct": 3,
-    "explanation": "arouse: uyandırmak. Diğer seçenekler: raise: artırmak (geçişli); rise: yükselmek (geçişsiz); arise: ortaya çıkmak; lift: fiziksel kaldırmak."
+    "explanation": "Arouse curiosity: merak uyandırmak."
   },
   {
     "id": "wq150_nov26_mixed13a_21_5",
@@ -18403,11 +18403,11 @@ export const foundationQuestions = [
       "set up",
       "set off",
       "set aside",
-      "set out",
+      "set down",
       "set back"
     ],
     "correct": 1,
-    "explanation": "set off: yola çıkmak. Diğer seçenekler: set up: kurmak; set aside: ayırmak; set out: ayrıntılı açıklamak; set back: geciktirmek."
+    "explanation": "Set off: yola çıkmak. Set out da yola çıkmak anlamında kullanılabildiğinden bu soruda yer almamalıdır."
   },
   {
     "id": "wq150_nov26_mixed13a_24_3",
@@ -18687,7 +18687,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Several members plan to ____ a proposal for discussion.",
+    "prompt": "Several members plan to ____ a completed proposal at the meeting for others to consider.",
     "options": [
       "put off",
       "put out",
@@ -18696,7 +18696,7 @@ export const foundationQuestions = [
       "put forward"
     ],
     "correct": 4,
-    "explanation": "put forward: öne sürmek. Diğer seçenekler: put off: ertelemek; put out: söndürmek; put up with: katlanmak; put together: birleştirmek."
+    "explanation": "Put forward a proposal: bir öneriyi değerlendirilmek üzere sunmak."
   },
   {
     "id": "wq150_nov26_mixed13a_28_1",
@@ -20255,12 +20255,12 @@ export const foundationQuestions = [
     "options": [
       "mandatory",
       "optional",
-      "voluntary",
+      "required",
       "prohibited",
       "permitted"
     ],
     "correct": 1,
-    "explanation": "optional: isteğe bağlı. Diğer seçenekler: mandatory: zorunlu; voluntary: gönüllü; prohibited: yasak; permitted: izin verilen."
+    "explanation": "Optional: zorunlu olmayan, seçime bağlı."
   },
   {
     "id": "wq150_nov26_forms15_11_3",
@@ -20271,13 +20271,13 @@ export const foundationQuestions = [
     "prompt": "Choose the word that best matches this meaning:\n\nDone freely by one's own choice rather than under pressure.",
     "options": [
       "mandatory",
-      "optional",
+      "compelled",
       "voluntary",
       "prohibited",
       "permitted"
     ],
     "correct": 2,
-    "explanation": "voluntary: gönüllü. Diğer seçenekler: mandatory: zorunlu; optional: isteğe bağlı; prohibited: yasak; permitted: izin verilen."
+    "explanation": "Voluntary: baskı veya zorlama olmadan gönüllü yapılan."
   },
   {
     "id": "wq150_nov26_forms15_11_4",
@@ -20848,14 +20848,14 @@ export const foundationQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the word that best matches this meaning:\n\nDeliberately stop yourself from making a comment that would be inappropriate.",
     "options": [
-      "abstain",
+      "insist",
       "refrain",
       "resist",
       "withstand",
       "endure"
     ],
     "correct": 1,
-    "explanation": "refrain: kendini tutmak. Diğer seçenekler: abstain: kaçınmak; resist: direnmek; withstand: dayanmak; endure: katlanmak."
+    "explanation": "Refrain from doing something: bir şeyi yapmaktan bilinçli olarak kaçınmak."
   },
   {
     "id": "wq150_nov26_forms15_18_3",
@@ -21004,11 +21004,11 @@ export const foundationQuestions = [
       "obscure",
       "lucid",
       "ambivalent",
-      "equivocal",
+      "explicit",
       "unequivocal"
     ],
     "correct": 0,
-    "explanation": "obscure: anlaşılmaz. Diğer seçenekler: lucid: açık anlaşılır; ambivalent: kararsız duygulu; equivocal: iki anlamlı; unequivocal: kesin açık."
+    "explanation": "Obscure: anlaşılması güç, anlamı açık olmayan."
   },
   {
     "id": "wq150_nov26_forms15_20_2",
@@ -21105,12 +21105,12 @@ export const foundationQuestions = [
     "options": [
       "salient",
       "marginal",
-      "negligible",
+      "dominant",
       "substantial",
       "peripheral"
     ],
     "correct": 1,
-    "explanation": "marginal: sınırlı. Diğer seçenekler: salient: öne çıkan; negligible: ihmal edilebilir; substantial: önemli büyüklükte; peripheral: ikincil."
+    "explanation": "Marginal: sınırlı düzeyde, küçük etkili."
   },
   {
     "id": "wq150_nov26_forms15_21_3",
@@ -21275,12 +21275,12 @@ export const foundationQuestions = [
     "options": [
       "indispensable",
       "dispensable",
-      "redundant",
+      "mandatory",
       "supplementary",
       "subordinate"
     ],
     "correct": 1,
-    "explanation": "dispensable: vazgeçilebilir. Diğer seçenekler: indispensable: vazgeçilmez; redundant: gereksiz tekrar; supplementary: ek; subordinate: ikincil/bağlı."
+    "explanation": "Dispensable: vazgeçilebilir, zorunlu olmayan."
   },
   {
     "id": "wq150_nov26_forms15_23_3",
@@ -21427,13 +21427,13 @@ export const foundationQuestions = [
     "prompt": "Choose the word that best matches this meaning:\n\nProvide enough evidence to establish that a claim has a sound basis.",
     "options": [
       "substantiate",
-      "corroborate",
+      "contradict",
       "falsify",
       "invalidate",
       "replicate"
     ],
     "correct": 0,
-    "explanation": "substantiate: kanıtla desteklemek. Diğer seçenekler: corroborate: bağımsız kanıtla doğrulamak; falsify: sahte hale getirmek; invalidate: geçersiz kılmak; replicate: tekrarlamak."
+    "explanation": "Substantiate: bir iddianın sağlam bir temeli olduğunu yeterli kanıtla göstermek."
   },
   {
     "id": "wq150_nov26_forms15_25_2",
@@ -22059,10 +22059,10 @@ export const foundationQuestions = [
       "useful",
       "useless",
       "used",
-      "unused"
+      "functional"
     ],
     "correct": 2,
-    "explanation": "useless: işe yaramaz. Diğer seçenekler: use: kullanmak; useful: yararlı; used: kullanılmış; unused: kullanılmamış."
+    "explanation": "Useless: işe yaramayan. Pusulanın rastgele yön göstermesi onu navigasyon için işlevsiz kılar."
   },
   {
     "id": "wq150_nov26_forms15_32_4",
@@ -23279,14 +23279,14 @@ export const foundationQuestions = [
     "topic": "Vocabulary",
     "prompt": "If priorities change, the board may ____ money from one department to another.",
     "options": [
-      "allocate",
+      "retain",
       "allocation",
       "allocated",
       "allocating",
       "reallocate"
     ],
     "correct": 4,
-    "explanation": "reallocate: yeniden tahsis etmek. Diğer seçenekler: allocate: tahsis etmek; allocation: tahsis; allocated: tahsis edilmiş; allocating: tahsis etmekte."
+    "explanation": "Reallocate: daha önce tahsis edilmiş kaynağı yeniden tahsis etmek."
   },
   {
     "id": "wq150_nov26_forms15_47_1",
