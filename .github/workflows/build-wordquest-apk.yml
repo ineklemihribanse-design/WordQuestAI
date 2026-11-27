@@ -1,8 +1,6 @@
 name: Build WordQuest AI v0.8.0 APK
 on:
   workflow_dispatch:
-  release:
-    types: [published]
 permissions:
   contents: read
 jobs:
