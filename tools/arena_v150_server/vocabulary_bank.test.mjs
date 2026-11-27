@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog} from './vocabulary_bank.mjs';
+import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog,vocabularyRejectionReason,crosswordEligible} from './vocabulary_bank.mjs';
 import {LEVELS,normalizeSettings} from '../v132_engine/engine.mjs';
 const answers=['APPLE','PLANE','LEMON','MELON','PEACH','GRAPE','PEAR','PAPER','PENCIL','CHAIR','TABLE','WATER','RIVER','GREEN','BREAD','CLOUD','FLOWER','GARDEN','WINDOW','HOUSE'];
 const records=LEVELS.flatMap((level,i)=>answers.map((answer,j)=>({level,answer,meaning:level+' clue '+j,category:'food',kind:'noun',...(i===0?{yds:'easy'}:{})})));
@@ -36,4 +36,16 @@ test('catalog reports real filters and safe stable identifiers without answers',
  assert.equal(c.topics[0].counts.cefr.A1.crossword,20);assert.equal(c.all.yds.hard.quiz,0);
  assert.ok(!JSON.stringify(c).includes('APPLE'));
  const q=await createVocabularyBank(input)({kind:'quiz',mode:'classic',levels:['A1'],count:5,topic:c.topics[0].id},'private');assert.ok(q.every(x=>x.topic===c.topics[0].id));
+});
+
+
+test('audit and loader agree on quiz-only phrases and invalid inputs',()=>{
+ const phrase={level:'B2',answer:'RUSH HOUR',meaning:'yoğun trafik saati',quizOnly:true};
+ const markedWord={level:'B2',answer:'SINCE',meaning:'-den beri',quizOnly:true};
+ const entries=[phrase,markedWord,{...phrase,quizOnly:false},{...phrase,answer:'A'.repeat(81)},{...phrase,meaning:''},{...phrase,level:'Z9'},phrase];
+ assert.deepEqual(entries.map(vocabularyRejectionReason),[null,null,'unsupportedAnswer','unsupportedAnswer','emptyAnswerOrMeaning','invalidLevel',null]);
+ const loaded=loadVocabulary([...records,...entries]);
+ assert.equal(loaded.length,records.length+2);
+ assert.ok(loaded.filter(w=>w.quizOnly).every(w=>!crosswordEligible(w)));
+ assert.equal(loaded.filter(w=>w.answer==='RUSH HOUR').length,1);
 });
