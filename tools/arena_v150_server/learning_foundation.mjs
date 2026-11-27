@@ -3700,14 +3700,14 @@ export const foundationQuestions = [
     "topic": "Paragraph",
     "prompt": "Sign: Please leave your bags at the entrance. What should visitors do?",
     "options": [
-      "Put their bags near the entrance.",
+      "Leave their bags at the entrance.",
       "Open all the windows.",
       "Buy a new bag.",
       "Take photographs.",
       "Leave the building immediately."
     ],
     "correct": 0,
-    "explanation": "Leave your bags at the entrance, çantaları girişte bırakın demektir."
+    "explanation": "At the entrance girişte anlamına gelir; ziyaretçiler çantalarını girişte bırakmalıdır."
   },
   {
     "id": "wq150_nov26_foundation4_14",
@@ -4981,13 +4981,13 @@ export const foundationQuestions = [
     "prompt": "The computer needs ____ by a technician before we can use it again.",
     "options": [
       "repairing",
-      "repair",
+      "to repair",
       "repaired",
       "to repairing",
-      "repairs"
+      "having repaired"
     ],
     "correct": 0,
-    "explanation": "Need + -ing edilgen gereklilik anlamı verir."
+    "explanation": "Need + -ing burada edilgen anlam taşır: bilgisayarın onarılması gerekiyor. Eşdeğer yapı needs to be repaired biçimindedir."
   },
   {
     "id": "wq150_nov26_foundation4_94",
@@ -5666,7 +5666,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The trial was conducted under controlled conditions; ____, its findings may not apply to everyday settings.",
+    "prompt": "The trial was conducted under highly artificial conditions that differ from everyday settings; ____, its findings may not apply to everyday settings.",
     "options": [
       "therefore",
       "nevertheless",
