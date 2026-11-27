@@ -1,12 +1,9 @@
 name: WordQuest AI 1.0.150 Arena development audit (no publication)
 on:
+  workflow_dispatch:
   pull_request:
+    types: [labeled]
     branches: [fix/v190-tablet-board-and-visible-icons]
-    paths:
-      - '.github/workflows/audit-full-assembled-source.yml'
-      - 'tools/full_source_audit/**'
-      - 'tools/arena_v150_server/**'
-      - 'tools/v132_engine/**'
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -15,13 +12,13 @@ permissions:
   actions: read
 jobs:
   audit:
-    if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && ((github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/feature/v150-arena-nextgen') || (github.event_name == 'pull_request' && github.event.label.name == 'full-audit' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository))
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - uses: actions/setup-java@v4
         with:
@@ -51,7 +48,7 @@ jobs:
           for row in entries:
               if not row: continue
               name=os.fsdecode(row.split(b'\t',1)[1])
-              if name.startswith(('.github/workflows/',)+late): continue
+              if name.startswith(('.github/workflows/','.github/archived-workflows/')+late): continue
               h.update(row+b'\0')
           with open(os.environ['GITHUB_OUTPUT'],'a') as f: print('key=wq-stable123-v1-'+h.hexdigest(),file=f)
           PY

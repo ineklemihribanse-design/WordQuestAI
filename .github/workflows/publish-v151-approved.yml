@@ -55,7 +55,7 @@ jobs:
           for row in entries:
               if not row: continue
               name=os.fsdecode(row.split(b'\t',1)[1])
-              if name.startswith(('.github/workflows/',)+late): continue
+              if name.startswith(('.github/workflows/','.github/archived-workflows/')+late): continue
               h.update(row+b'\0')
           with open(os.environ['GITHUB_OUTPUT'],'a') as f: print('key=wq-stable123-v1-'+h.hexdigest(),file=f)
           PY
