@@ -4315,7 +4315,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'in'. Kullanım: vest authority in."
+    "explanation": "Vest authority, responsibility or power in someone, yetkiyi veya sorumluluğu bir kişi ya da kuruma vermek demektir."
   },
   {
     "id": "wq150_prepbulk_65_2",
@@ -4332,7 +4332,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'in'. Kullanım: vest authority in."
+    "explanation": "Vest authority, responsibility or power in someone, yetkiyi veya sorumluluğu bir kişi ya da kuruma vermek demektir."
   },
   {
     "id": "wq150_prepbulk_65_3",
@@ -4349,7 +4349,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'in'. Kullanım: vest authority in."
+    "explanation": "Vest authority, responsibility or power in someone, yetkiyi veya sorumluluğu bir kişi ya da kuruma vermek demektir."
   },
   {
     "id": "wq150_prepbulk_65_4",
@@ -4366,7 +4366,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'in'. Kullanım: vest authority in."
+    "explanation": "Vest authority, responsibility or power in someone, yetkiyi veya sorumluluğu bir kişi ya da kuruma vermek demektir."
   },
   {
     "id": "wq150_prepbulk_66_1",
@@ -4655,7 +4655,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'with'. Kullanım: conform with."
+    "explanation": "Conform with, bir kural veya standarda uygun olmak demektir. Conform to da aynı anlamda kullanılabilir."
   },
   {
     "id": "wq150_prepbulk_70_2",
@@ -4672,7 +4672,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'with'. Kullanım: conform with."
+    "explanation": "Conform with, bir kural veya standarda uygun olmak demektir. Conform to da aynı anlamda kullanılabilir."
   },
   {
     "id": "wq150_prepbulk_70_3",
@@ -4689,7 +4689,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'with'. Kullanım: conform with."
+    "explanation": "Conform with, bir kural veya standarda uygun olmak demektir. Conform to da aynı anlamda kullanılabilir."
   },
   {
     "id": "wq150_prepbulk_70_4",
@@ -4706,7 +4706,7 @@ export const prepositionBasicQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'with'. Kullanım: conform with."
+    "explanation": "Conform with, bir kural veya standarda uygun olmak demektir. Conform to da aynı anlamda kullanılabilir."
   },
   {
     "id": "wq150_prepbulk_71_1",
@@ -4723,7 +4723,7 @@ export const prepositionBasicQuestions = [
       "from"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'upon'. Kullanım: incumbent upon."
+    "explanation": "It is incumbent upon someone to do something, bir kişinin veya kurumun bir şeyi yapma yükümlülüğü olduğunu belirtir. Incumbent on biçimi de geçerlidir."
   },
   {
     "id": "wq150_prepbulk_71_2",
@@ -4740,7 +4740,7 @@ export const prepositionBasicQuestions = [
       "from"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'upon'. Kullanım: incumbent upon."
+    "explanation": "It is incumbent upon someone to do something, bir kişinin veya kurumun bir şeyi yapma yükümlülüğü olduğunu belirtir. Incumbent on biçimi de geçerlidir."
   },
   {
     "id": "wq150_prepbulk_71_3",
@@ -4757,7 +4757,7 @@ export const prepositionBasicQuestions = [
       "from"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'upon'. Kullanım: incumbent upon."
+    "explanation": "It is incumbent upon someone to do something, bir kişinin veya kurumun bir şeyi yapma yükümlülüğü olduğunu belirtir. Incumbent on biçimi de geçerlidir."
   },
   {
     "id": "wq150_prepbulk_71_4",
@@ -4774,7 +4774,7 @@ export const prepositionBasicQuestions = [
       "from"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'upon'. Kullanım: incumbent upon."
+    "explanation": "It is incumbent upon someone to do something, bir kişinin veya kurumun bir şeyi yapma yükümlülüğü olduğunu belirtir. Incumbent on biçimi de geçerlidir."
   },
   {
     "id": "wq150_prepbulk_72_1",
@@ -5194,12 +5194,12 @@ export const prepositionBasicQuestions = [
     "options": [
       "to",
       "at",
-      "of",
+      "from",
       "into",
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'to'. Kullanım: corollary to."
+    "explanation": "Corollary to, bir ilkeden veya teoremden çıkan doğal sonucu belirtir. Corollary of da geçerli olduğundan çeldirici olarak kullanılmaz."
   },
   {
     "id": "wq150_prepbulk_78_2",
@@ -5211,12 +5211,12 @@ export const prepositionBasicQuestions = [
     "options": [
       "to",
       "at",
-      "of",
+      "from",
       "into",
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'to'. Kullanım: corollary to."
+    "explanation": "Corollary to, bir ilkeden veya teoremden çıkan doğal sonucu belirtir. Corollary of da geçerli olduğundan çeldirici olarak kullanılmaz."
   },
   {
     "id": "wq150_prepbulk_78_3",
@@ -5228,12 +5228,12 @@ export const prepositionBasicQuestions = [
     "options": [
       "to",
       "at",
-      "of",
+      "from",
       "into",
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'to'. Kullanım: corollary to."
+    "explanation": "Corollary to, bir ilkeden veya teoremden çıkan doğal sonucu belirtir. Corollary of da geçerli olduğundan çeldirici olarak kullanılmaz."
   },
   {
     "id": "wq150_prepbulk_78_4",
@@ -5245,12 +5245,12 @@ export const prepositionBasicQuestions = [
     "options": [
       "to",
       "at",
-      "of",
+      "from",
       "into",
       "by"
     ],
     "correct": 0,
-    "explanation": "Doğru cevap 'to'. Kullanım: corollary to."
+    "explanation": "Corollary to, bir ilkeden veya teoremden çıkan doğal sonucu belirtir. Corollary of da geçerli olduğundan çeldirici olarak kullanılmaz."
   },
   {
     "id": "wq150_basicmeaning_1_1",
@@ -8133,14 +8133,14 @@ export const prepositionBasicQuestions = [
     "topic": "Grammar",
     "prompt": "After discussing several dates, the committee reached a joint decision and agreed ____ a specific date for the meeting.",
     "options": [
-      "about",
+      "with",
       "on",
       "for",
       "from",
       "into"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: on. Agree on ortaklaşa bir konu veya tarih üzerinde anlaşmaktır."
+    "explanation": "Agree on, bir tarih veya karar üzerinde ortaklaşa anlaşmak demektir. Agree about da bazı konu bağlamlarında mümkündür."
   },
   {
     "id": "wq150_nov26_prep12_23_3",
