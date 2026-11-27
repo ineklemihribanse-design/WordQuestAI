@@ -19,6 +19,16 @@ class Wq150HomeModesTest{
         assertEquals(780f,Wq150HomeLayout.measure(780f,false).height,0.001f)
         assertEquals(800f,Wq150HomeLayout.measure(800f,true).height,0.001f)
     }
+    @Test fun podiumCoordinatesMatchEachAsset(){
+        val phone=Wq150Podium.anchor(1080f,2340f,false,true)
+        assertEquals(540f,phone.first,.01f)
+        assertEquals(807.3f,phone.second,.1f)
+        val tablet=Wq150Podium.anchor(2560f,1600f,true,true)
+        assertEquals(1280f,tablet.first,.01f)
+        assertEquals(808f,tablet.second,.1f)
+        val fallback=Wq150Podium.anchor(1080f,2340f,false,false)
+        assertEquals(788.4f,fallback.first,.1f)
+    }
     @Test fun localRulesUseRealSupportedModes(){
         assertEquals("quiz",Wq150HomeModes.localEngine("test"))
         assertEquals("duel",Wq150HomeModes.localEngine("classic"))

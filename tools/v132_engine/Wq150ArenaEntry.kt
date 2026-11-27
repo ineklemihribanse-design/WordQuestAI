@@ -316,7 +316,7 @@ internal object Wq150HomeLayout {
         var h=available.coerceAtLeast(if(wide)460f else 640f)
         repeat(100){
             val gap=if(wide)8f else 5f
-            val top=h*(if(wide).58f else .425f)
+            val top=h*(if(wide).62f else .425f)
             val tab=(h*.065f).coerceIn(40f,54f)
             val heading=if(wide)30f else 42f
             val footer=(h*.075f).coerceIn(46f,66f)
@@ -328,12 +328,27 @@ internal object Wq150HomeLayout {
         error("Arena viewport is invalid")
     }
 }
+/** Coordinates measured on the actual shipped art. The crop transform used
+ * here is exactly the one used by the backdrop image, not a screen guess. */
+internal object Wq150Podium {
+    fun anchor(w:Float,h:Float,wide:Boolean,newArt:Boolean):Pair<Float,Float> =
+        Wq121ArenaLayout.project(w,h,wide,
+            if(wide||newArt).50f else .73f,
+            if(newArt){if(wide).505f else .345f}else{if(wide).505f else .385f})
+}
+@Composable
+private fun rememberWq150NewArt():Boolean{
+    val context=LocalContext.current
+    return remember(context.applicationContext){
+        runCatching{context.assets.open("arena_v150_premium/manifest.json").use{true}}.getOrDefault(false)
+    }
+}
 private data class Wq150CardSpec(val title:String,val detail:String,val icon:String,val plate:String,val top:Long,val bottom:Long)
 private fun wq150Card(kind:String)=when(kind){
     "duel"->Wq150CardSpec("Bulmaca Düellosu","Rakibinle kelime yarışına gir.","duel","duel",0xFF7921BC,0xFF38116C)
     "coop"->Wq150CardSpec("Ortak Bulmaca","Birlikte çöz, birlikte kazan.","team","team",0xFF0078B9,0xFF064274)
     "quiz"->Wq150CardSpec("5 Şıklı Düello","Bilgini ve hızını göster.","quiz","quiz",0xFFBD2A13,0xFF7B1B08)
-    "team"->Wq150CardSpec("Takım Oyunu","Takımınla birlikte mücadele et.","wq175_icons/arena_team.webp","",0xFF137D48,0xFF06402F)
+    "team"->Wq150CardSpec("Takım Oyunu","Takımınla birlikte mücadele et.","friends","",0xFF137D48,0xFF06402F)
     "classic"->Wq150CardSpec("Klasik Bulmaca","Kendi hızında, keyifle oyna.","wq175_icons/puzzle.webp","duel",0xFF7921BC,0xFF38116C)
     "timed"->Wq150CardSpec("Zamana Karşı","Süreli kelime yarışında puan topla.","wq175_icons/timer.webp","team",0xFF0078B9,0xFF064274)
     "test"->Wq150CardSpec("5 Şıklı Test","Bilgini ölç, seviyeni gör.","quiz","quiz",0xFFBD2A13,0xFF7B1B08)
@@ -347,6 +362,9 @@ private fun Wq150HomeTab(label:String,local:Boolean,selected:Boolean,enabled:Boo
         listOf(Color(0xFF0093DD),Color(0xFF084080)) else listOf(Color(0xFF9723CF),Color(0xFF3D126F))))
         .border(if(selected)2.dp else 1.dp,if(selected)Wq122Gold else Color(0xFF9A70D7),shape)
         .clickable(enabled=enabled,onClick=onClick),contentAlignment=Alignment.Center){
+        Wq150ApprovedArt(if(local)"phone_card_team" else "phone_card_duel",Modifier.matchParentSize(),ContentScale.FillBounds)
+        // The selected outline is drawn above the plate so the state stays visible.
+        if(selected)Box(Modifier.matchParentSize().border(2.dp,Wq122Gold,shape))
         Row(Modifier.padding(horizontal=6.dp,vertical=3.dp),verticalAlignment=Alignment.CenterVertically,
             horizontalArrangement=Arrangement.Center){
             Wq150ApprovedArt(if(local)"arena_v122/solo.webp" else "friends",Modifier.size(28.dp))
@@ -360,13 +378,17 @@ private fun Wq150HomeTab(label:String,local:Boolean,selected:Boolean,enabled:Boo
 @Composable
 private fun Wq150HomeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modifier,onClick:()->Unit){
     val spec=wq150Card(kind);val shape=RoundedCornerShape(16.dp)
+    val newArt=rememberWq150NewArt()
+    val plate=when(kind){"classic"->"duel";"timed"->"coop";"test"->"quiz";"obstacle"->"team";else->kind}
+    val icon=if(newArt&&kind=="team")"arena_v150_premium/team_crest.webp" else spec.icon
     Box(modifier.clip(shape).background(Brush.verticalGradient(listOf(Color(spec.top),Color(spec.bottom))))
         .border(1.5.dp,Wq122Gold,shape).clickable(enabled=enabled,onClick=onClick)){
-        if(spec.plate.isNotEmpty())Wq150ApprovedArt((if(wide)"tablet" else "phone")+"_card_"+spec.plate,
+        if(newArt)Wq150ApprovedArt("arena_v150_premium/${plate}_plate.webp",Modifier.matchParentSize(),ContentScale.FillBounds)
+        else if(spec.plate.isNotEmpty())Wq150ApprovedArt((if(wide)"tablet" else "phone")+"_card_"+spec.plate,
             Modifier.matchParentSize(),ContentScale.FillBounds)
         Row(Modifier.fillMaxSize().padding(horizontal=if(wide)6.dp else 9.dp,vertical=4.dp),
             verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(5.dp)){
-            Wq150ApprovedArt(spec.icon,Modifier.fillMaxWidth(if(wide).31f else .23f).fillMaxHeight())
+            Wq150ApprovedArt(icon,Modifier.fillMaxWidth(if(wide).34f else .27f).fillMaxHeight())
             Column(Modifier.weight(1f)){
                 Text(spec.title,color=Color.White,fontWeight=FontWeight.ExtraBold,fontSize=if(wide)15.sp else 16.sp,
                     maxLines=2,overflow=TextOverflow.Ellipsis,lineHeight=18.sp)
@@ -383,6 +405,7 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
     val context=LocalContext.current
     var picker by rememberSaveable{mutableStateOf(false)}
     var builtin by rememberSaveable{mutableStateOf(false)}
+    val newArt=rememberWq150NewArt()
     val config=LocalConfiguration.current
     BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)){
         val w=maxWidth
@@ -391,14 +414,17 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
         val h=metrics.height.dp
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
             Box(Modifier.fillMaxWidth().height(h)){
-                Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
-                // Coordinates refer to the actual user-supplied phone/tablet stadium assets.
-                val pos=Wq121ArenaLayout.project(w.value,h.value,wide,if(wide).50f else .655f,if(wide).485f else .34f)
+                // Never use the v183 floating-trophy lobby art here: its podium is at another height.
+                // The old approved v120 art is an exact-coordinate fallback until the new ZIP is staged.
+                val background=if(wide)"tablet" else "phone"
+                Wq150ApprovedArt(if(newArt)"arena_v150_premium/$background.webp" else background,
+                    Modifier.matchParentSize(),ContentScale.Crop)
+                val pos=Wq150Podium.anchor(w.value,h.value,wide,newArt)
                 val feet=pos.second.dp
                 val avatarW=w*(if(wide).34f else .54f)
                 val avatarH=(feet-h*.075f).coerceAtLeast(40.dp)
-                val crestW=w*(if(wide).26f else .48f)
-                val crestH=(h*(if(wide).32f else .21f))
+                val crestW=w*(if(wide).26f else if(newArt).34f else .48f)
+                val crestH=(h*(if(wide).32f else if(newArt).17f else .21f))
                 val headerH=(h*.065f).coerceIn(40.dp,60.dp)
                 Row(Modifier.fillMaxWidth().height(headerH).padding(horizontal=8.dp),verticalAlignment=Alignment.CenterVertically){
                     TextButton(onClick=back,contentPadding=PaddingValues(4.dp)){Wq150ApprovedArt("back",Modifier.size(22.dp));Text("Geri",color=Wq122Gold,fontSize=12.sp)}
@@ -415,7 +441,7 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
                 }
                 Wq150ApprovedArt("crest",Modifier.offset(x=w*.035f,y=headerH).width(crestW).height(crestH))
                 Column(Modifier.offset(x=if(wide)w*.68f else w*.025f,y=if(wide)h*.16f else headerH+crestH)
-                    .width(if(wide)w*.28f else w*.46f),horizontalAlignment=Alignment.CenterHorizontally){
+                    .width(if(wide)w*.28f else if(newArt)w*.34f else w*.46f),horizontalAlignment=Alignment.CenterHorizontally){
                     Text("Arena’ya Hoş Geldin",color=Wq122Gold,fontWeight=FontWeight.Black,
                         fontSize=if(wide)20.sp else 13.sp,textAlign=TextAlign.Center,maxLines=2)
                     Text("Oyun modunu seç ve kelime arenasında mücadeleye başla!",color=Color.White,
