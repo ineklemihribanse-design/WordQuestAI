@@ -1806,7 +1806,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Changes in the sample size may ____ the apparent difference in the results.",
+    "prompt": "Changes in the sample size may ____ the apparent difference in the results by explaining why the two estimates differ.",
     "options": [
       "add up to",
       "amount to",
@@ -1815,7 +1815,7 @@ export const b121500Phrasals = [
       "account for"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: account for. Örneklem büyüklüğündeki değişiklik, sonuçlardaki farkı açıklayabilir. Adhere to bir kurala uymak demektir."
+    "explanation": "Doğru seçenek: account for. Account for burada bir farkın nedenini açıklamak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_1_2",
@@ -1932,7 +1932,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The supplier threatened to ____ the agreement before signing it.",
+    "prompt": "The supplier threatened to ____ the agreement it had already committed to, rather than fulfil its obligations.",
     "options": [
       "bear with",
       "back down",
@@ -1941,7 +1941,7 @@ export const b121500Phrasals = [
       "bank on"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: back out of. Geri adım, destekleme, vazgeçme, güvenme ve sabır isteme ayrılır."
+    "explanation": "Doğru seçenek: back out of. Back out of, önceden kabul edilen anlaşma veya taahhütten vazgeçmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_2_4",
@@ -2652,16 +2652,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The negotiator refused to ____ demands that were outside the agreed terms.",
+    "prompt": "The negotiator refused to ____ demands that were outside the agreed terms, even under intense pressure.",
     "options": [
       "give in to",
       "go against",
       "go back on",
       "give rise to",
-      "give way to"
+      "go along with"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: give in to. Give in to baskı veya taleplere boyun eğmek demektir; go back on bir sözden dönmek anlamındadır."
+    "explanation": "Doğru seçenek: give in to. Give in to, baskı veya talep karşısında boyun eğmek demektir. Give way to da bazı bağlamlarda benzer anlam taşıyabilir; bu nedenle seçenekten çıkarıldı."
   },
   {
     "id": "wq150_b121500_ph_b2_10_4",
@@ -2688,16 +2688,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Although she had reservations, she agreed to ____ the majority decision.",
+    "prompt": "Although she had reservations, she voluntarily agreed to ____ the majority decision, without being pressured.",
     "options": [
       "go along with",
       "give rise to",
       "give way to",
-      "give in to",
+      "go back on",
       "go against"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: go along with. Yol açma, yerini bırakma, boyun eğme, karşı gelme ve kabul etme ayrılır."
+    "explanation": "Doğru seçenek: go along with. Go along with, bir görüşü veya kararı kabul edip desteklemek demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_11_1",
@@ -3030,16 +3030,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Could you ____ these documents and mark the sections requiring revision?",
+    "prompt": "Could you ____ these documents page by page and mark the sections requiring revision?",
     "options": [
       "look to",
       "look through",
       "look beyond",
       "look back on",
-      "look into"
+      "look down on"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: look through. Geçmişi değerlendirme, araştırma, başvurma, inceleme ve ötesini düşünme ayrılır."
+    "explanation": "Doğru seçenek: look through. Look through, belgeleri gözden geçirmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_14_5",
@@ -3264,7 +3264,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Several independent findings ____ a fault in the original measurement system.",
+    "prompt": "Several independent findings ____ a fault in the original measurement system, suggesting it as a possible cause.",
     "options": [
       "put down",
       "put aside",
@@ -3273,7 +3273,7 @@ export const b121500Phrasals = [
       "put forward"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: point to. Kesinleştirme, işaret etme, önerme, nedenine bağlama ve ayırma farklıdır."
+    "explanation": "Doğru seçenek: point to. Point to, bir olasılığa veya sonuca işaret etmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_17_3",
