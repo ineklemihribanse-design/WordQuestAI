@@ -1,3 +1,8 @@
+import { authoredWords } from './learning_content.mjs';
+import { academicWords } from './learning_academic.mjs';
+import { wordFormWords } from './learning_wordforms.mjs';
+import { lexicalRelationWords } from './learning_relations.mjs';
+import { domainWords } from './learning_domains.mjs';
 import { allLearningQuestions as rows } from './learning_mix.mjs';
 import assert from 'node:assert/strict';
 const norm = s => String(s ?? '').normalize('NFKC').toLowerCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g,' ').trim();
@@ -24,3 +29,17 @@ assert.deepEqual(issues,[],'Invalid question records');
 assert.deepEqual(duplicateIds,[],'Duplicate question IDs');
 assert.deepEqual(duplicatePrompts,[],'Duplicate normalized prompts');
 // Editorial flags are not proof of incorrect answers; they need human review.
+
+// The authored addendum is checked separately from the licensed and legacy dictionaries.
+// Same headword in different tiers or domains can be legitimate, but runtime keys must be unique.
+const words=[...authoredWords,...academicWords,...wordFormWords,...lexicalRelationWords,...domainWords];
+const wordKey=w=>[w.level,w.answer,w.yds??''].join('|');
+const wordIssues=words.filter(w=>!(/^[A-Z]{2,24}$/.test(w.answer))||
+ !levels.includes(w.level)||!['easy','medium','hard'].includes(w.yds)||
+ !['Fiiller','İsimler','Sıfatlar','Zarflar'].includes(w.wordType)||
+ !norm(w.category)||!norm(w.meaning)||/[\t\r\n]/.test(w.meaning));
+const wordKeyCollisions=[...group(words,wordKey)].filter(([,v])=>v.length>1).map(([key])=>key);
+console.log(JSON.stringify({authoredVocabulary:{total:words.length,uniqueHeadwords:new Set(words.map(w=>w.answer)).size,uniqueRuntimeKeys:new Set(words.map(wordKey)).size,invalid:wordIssues.map(w=>w.answer),duplicateKeys:wordKeyCollisions,multipleTierHeadwords:[...group(words,w=>w.answer)].filter(([,v])=>v.length>1).length}},null,2));
+assert.deepEqual(wordIssues,[],'Invalid authored vocabulary records');
+assert.deepEqual(wordKeyCollisions,[],'Duplicate authored vocabulary runtime keys');
+assert.equal(words.length,1231,'Unexpected authored vocabulary count');
