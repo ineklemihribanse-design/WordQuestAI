@@ -37,7 +37,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "SUBSTRATE",
-    "meaning": "alt tabaka"
+    "meaning": "alt tabaka; enzim tepkimesinde enzimin etki ettiği madde"
   },
   {
     "level": "B2",
@@ -61,7 +61,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "DIFFUSION",
-    "meaning": "yayınım"
+    "meaning": "difüzyon; yoğunluk farkına bağlı yayılma"
   },
   {
     "level": "B2",
@@ -93,7 +93,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "VISCOSITY",
-    "meaning": "akışkanlık direnci"
+    "meaning": "viskozite; akmaya karşı direnç"
   },
   {
     "level": "B2",
@@ -229,7 +229,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "PREDATION",
-    "meaning": "avcılık"
+    "meaning": "avcılık; bir canlının başka bir canlıyı avlayarak beslenmesi"
   },
   {
     "level": "B2",
@@ -253,7 +253,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "COVARIATE",
-    "meaning": "ortak değişken"
+    "meaning": "kovaryat; istatistiksel modelde yer alan açıklayıcı veya kontrol değişkeni"
   },
   {
     "level": "C1",
@@ -285,7 +285,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "COLLINEARITY",
-    "meaning": "doğrusallık ilişkisi"
+    "meaning": "doğrusal bağımlılık; açıklayıcı değişkenler arasındaki doğrusal ilişki"
   },
   {
     "level": "C1",
@@ -469,7 +469,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "PHYLOGENY",
-    "meaning": "evrimsel akrabalık"
+    "meaning": "filogeni; canlıların evrimsel geçmişi ve akrabalık ilişkileri"
   },
   {
     "level": "B2",
@@ -541,7 +541,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "OUTBREAK",
-    "meaning": "salgın başlangıcı"
+    "meaning": "ani hastalık artışı; yerel salgın"
   },
   {
     "level": "B2",
@@ -581,7 +581,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "DOSAGE",
-    "meaning": "doz miktarı"
+    "meaning": "dozaj; doz miktarı ve uygulama düzeni"
   },
   {
     "level": "B2",
@@ -733,7 +733,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "INCIDENCE",
-    "meaning": "yeni vaka görülme sıklığı"
+    "meaning": "insidans; belirli sürede ortaya çıkan yeni vakaların sıklığı"
   },
   {
     "level": "C1",
@@ -741,7 +741,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "PREVALENCE",
-    "meaning": "mevcut vaka yaygınlığı"
+    "meaning": "prevalans; belirli zamanda veya dönemde mevcut vakaların oranı"
   },
   {
     "level": "C1",
@@ -773,7 +773,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "CONTRAINDICATION",
-    "meaning": "uygulanmama gerekçesi"
+    "meaning": "kontrendikasyon; bir tedavinin uygulanmaması gereken durum"
   },
   {
     "level": "C1",
@@ -1589,7 +1589,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "DETENTION",
-    "meaning": "tutulma"
+    "meaning": "alıkoyma; gözaltında veya tutuklu bulundurma"
   },
   {
     "level": "B2",
@@ -1829,7 +1829,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "PERJURY",
-    "meaning": "yalan yere yemin"
+    "meaning": "yemin altında bilerek yalan beyanda bulunma"
   },
   {
     "level": "C1",
@@ -2125,7 +2125,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "IDEMPOTENCE",
-    "meaning": "idempotans"
+    "meaning": "idempotentlik; bir işlemin tekrarlanmasının ilk uygulamadan sonra sonucu değiştirmemesi"
   },
   {
     "level": "C1",
@@ -2165,7 +2165,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "DESERIALIZATION",
-    "meaning": "seriden geri oluşturma"
+    "meaning": "serileştirilmiş veriyi yeniden nesne veya veri yapısına dönüştürme"
   },
   {
     "level": "C1",
@@ -2317,7 +2317,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "NONREPUDIATION",
-    "meaning": "inkâr edememe"
+    "meaning": "inkâr edilemezlik; işlemin yapıldığının sonradan inkârını önleme"
   },
   {
     "level": "C2",
@@ -2517,7 +2517,7 @@ export const domainWords = [
     "category": "İleri Akademik İngilizce",
     "wordType": "İsimler",
     "answer": "TRACTABILITY",
-    "meaning": "işlenebilirlik"
+    "meaning": "çözülebilirlik; hesaplama bakımından yönetilebilirlik"
   },
   {
     "level": "C2",
@@ -2781,7 +2781,7 @@ export const domainWords = [
     "category": "Çevre ve Ekoloji",
     "wordType": "İsimler",
     "answer": "EUTROPHICATION",
-    "meaning": "besin zenginleşmesi"
+    "meaning": "ötrofikasyon; suların aşırı besin maddesiyle zenginleşmesi"
   },
   {
     "level": "C1",
@@ -3287,7 +3287,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The slow movement of molecules from a region of high concentration to one of lower concentration is known as ____ .",
+    "prompt": "The net movement of particles from a region of higher concentration to one of lower concentration due to their random motion is known as ____.",
     "options": [
       "diffusion",
       "condensation",
@@ -3296,7 +3296,7 @@ export const domainQuestions = [
       "erosion"
     ],
     "correct": 0,
-    "explanation": "Diffusion moleküllerin derişim farkına bağlı yayılmasıdır."
+    "explanation": "Doğru seçenek: diffusion. Diffusion (difüzyon), parçacıkların rastgele hareketi sonucu yoğunluk farkına bağlı net yayılmadır; süreç her zaman yavaş olmak zorunda değildir."
   },
   {
     "id": "wq150_domain_4",

@@ -629,7 +629,7 @@ export const wordFormWords = [
     "wordType": "Sıfatlar",
     "category": "İleri Akademik İngilizce",
     "answer": "DIFFERENTIAL",
-    "meaning": "farklılık gösteren"
+    "meaning": "farka dayalı; farklılık gösteren"
   },
   {
     "level": "C1",
@@ -669,7 +669,7 @@ export const wordFormWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "IMPLICATION",
-    "meaning": "çıkarım"
+    "meaning": "ima edilen anlam; olası sonuç veya çıkarım"
   },
   {
     "level": "C1",
@@ -693,7 +693,7 @@ export const wordFormWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "SPECULATION",
-    "meaning": "varsayım yürütme"
+    "meaning": "kesin kanıt olmadan tahmin yürütme"
   },
   {
     "level": "C1",
@@ -789,7 +789,7 @@ export const wordFormWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "SIGNIFICANCE",
-    "meaning": "önem"
+    "meaning": "önem; istatistiksel bağlamda anlamlılık"
   },
   {
     "level": "C1",
@@ -925,7 +925,7 @@ export const wordFormWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "VALIDATE",
-    "meaning": "geçerliliğini sınamak"
+    "meaning": "geçerliliğini doğrulamak; geçerli kılmak"
   },
   {
     "level": "C1",

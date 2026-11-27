@@ -469,7 +469,7 @@ export const authoredWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "CREDIBLE",
-    "meaning": "inanılır"
+    "meaning": "inandırıcı; güvenilir"
   },
   {
     "level": "B1",
@@ -981,7 +981,7 @@ export const authoredWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "IMPLICATION",
-    "meaning": "olası sonuç"
+    "meaning": "ima edilen anlam; olası sonuç"
   },
   {
     "level": "B2",

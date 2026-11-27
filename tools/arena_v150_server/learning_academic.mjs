@@ -725,7 +725,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "DISCERN",
-    "meaning": "seçebilmek"
+    "meaning": "ayırt etmek; farkına varmak"
   },
   {
     "level": "B2",
@@ -1093,7 +1093,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "EMPIRICAL",
-    "meaning": "deneysel bulguya dayalı"
+    "meaning": "gözlem veya deneyle elde edilen kanıta dayalı"
   },
   {
     "level": "B2",
@@ -1165,7 +1165,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "PERSISTENT",
-    "meaning": "kalıcı"
+    "meaning": "ısrarcı; uzun süre devam eden"
   },
   {
     "level": "B2",
@@ -1181,7 +1181,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "PRECISE",
-    "meaning": "kesin"
+    "meaning": "hassas; ayrıntılı ve kesin biçimde belirtilmiş"
   },
   {
     "level": "B2",
@@ -1237,7 +1237,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "ROBUST",
-    "meaning": "sağlam"
+    "meaning": "sağlam; değişen koşullara karşı dayanıklı"
   },
   {
     "level": "B2",
@@ -1285,7 +1285,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "VIABLE",
-    "meaning": "uygulanabilir"
+    "meaning": "uygulanabilir; sürdürülebilir veya yaşayabilir"
   },
   {
     "level": "B2",
@@ -1301,7 +1301,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "ADHERENCE",
-    "meaning": "bağlılık"
+    "meaning": "bağlılık; kurala veya tedaviye uyum"
   },
   {
     "level": "B2",
@@ -1317,7 +1317,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "ANALOGY",
-    "meaning": "benzetim"
+    "meaning": "benzerlik ilişkisi; benzetme"
   },
   {
     "level": "B2",
@@ -1501,7 +1501,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "PARADIGM",
-    "meaning": "örnek düşünce modeli"
+    "meaning": "paradigma; düşünce veya araştırma modeli"
   },
   {
     "level": "B2",
@@ -1637,7 +1637,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "CIRCUMVENT",
-    "meaning": "etrafından dolaşarak aşmak"
+    "meaning": "bir kuralı veya engeli dolanarak aşmak"
   },
   {
     "level": "C1",
@@ -1709,7 +1709,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "DEPRECATE",
-    "meaning": "hoş karşılamamak"
+    "meaning": "hoş karşılamamak; kullanımını artık önermemek"
   },
   {
     "level": "C1",
@@ -1717,7 +1717,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "DEROGATE",
-    "meaning": "değerini azaltmak"
+    "meaning": "değerini veya yetkisini azaltmak; bir kuraldan istisna yoluyla ayrılmak"
   },
   {
     "level": "C1",
@@ -1813,7 +1813,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "IMPLICATE",
-    "meaning": "ilişkilendirmek"
+    "meaning": "bir suç veya olumsuz durumla ilişkisini göstermek"
   },
   {
     "level": "C1",
@@ -1829,7 +1829,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "INCUR",
-    "meaning": "maruz kalmak"
+    "meaning": "borç, maliyet veya zarara maruz kalmak"
   },
   {
     "level": "C1",
@@ -1957,7 +1957,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "SANCTION",
-    "meaning": "onaylamak"
+    "meaning": "resmen onaylamak; yaptırım uygulamak"
   },
   {
     "level": "C1",
@@ -2093,7 +2093,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "İleri Akademik İngilizce",
     "answer": "COMPLACENT",
-    "meaning": "kendinden aşırı memnun"
+    "meaning": "kendinden aşırı memnun olup riskleri önemsemeyen"
   },
   {
     "level": "C1",
@@ -2173,7 +2173,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "İleri Akademik İngilizce",
     "answer": "ELUSIVE",
-    "meaning": "yakalanması güç"
+    "meaning": "bulunması, yakalanması veya anlaşılması güç"
   },
   {
     "level": "C1",
@@ -2509,7 +2509,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "ATTRITION",
-    "meaning": "aşınma"
+    "meaning": "aşamalı azalma; yıpranma veya aşınma"
   },
   {
     "level": "C1",
@@ -2525,7 +2525,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "COMPLACENCY",
-    "meaning": "kendini yeterli görme"
+    "meaning": "aşırı öz güven nedeniyle riskleri göz ardı etme"
   },
   {
     "level": "C1",
@@ -2765,7 +2765,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "REPERCUSSION",
-    "meaning": "dolaylı sonuç"
+    "meaning": "özellikle olumsuz dolaylı sonuç; yankı"
   },
   {
     "level": "C1",
@@ -3094,7 +3094,7 @@ export const collocationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "The rescue team managed to ____ the small fire before it spread.",
+    "prompt": "The rescue team extinguished the flames before they spread. In other words, they managed to ____ the small fire.",
     "options": [
       "put out",
       "put off",
@@ -3103,7 +3103,7 @@ export const collocationQuestions = [
       "bring up"
     ],
     "correct": 0,
-    "explanation": "Put out bir yangını söndürmek demektir."
+    "explanation": "Doğru seçenek: put out. Put out bir ateşi söndürmek anlamına gelir; extinguish bu anlamı açıkça belirtir."
   },
   {
     "id": "wq150_colloc_012",
@@ -3574,7 +3574,7 @@ export const collocationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Without adequate maintenance, the building will ____ over time.",
+    "prompt": "Without adequate maintenance, the building will gradually ____ over time as cracks widen and the roof begins to leak.",
     "options": [
       "deteriorate",
       "flourish",
@@ -3583,7 +3583,7 @@ export const collocationQuestions = [
       "improve"
     ],
     "correct": 0,
-    "explanation": "Deteriorate zamanla kötüleşmek demektir."
+    "explanation": "Doğru seçenek: deteriorate. Deteriorate durumun zamanla kötüleşmesi anlamındadır; genişleyen çatlaklar ve sızıntı bunu gösterir."
   },
   {
     "id": "wq150_colloc_042",

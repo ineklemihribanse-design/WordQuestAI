@@ -29,7 +29,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "ACCURATE",
-    "meaning": "doğru ve kesin"
+    "meaning": "doğru; gerçeğe veya gerçek değere uygun"
   },
   {
     "level": "B1",
@@ -37,7 +37,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "PRECISE",
-    "meaning": "hassas ve kesin"
+    "meaning": "hassas; ayrıntılı ve kesin"
   },
   {
     "level": "B1",
@@ -485,7 +485,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "PROGRESSIVE",
-    "meaning": "aşama aşama gerçekleşen"
+    "meaning": "aşamalı olarak gelişen; ilerlemeci"
   },
   {
     "level": "B2",
@@ -733,7 +733,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "INTENSIFY",
-    "meaning": "şiddetlendirmek"
+    "meaning": "şiddetlenmek; şiddetini veya yoğunluğunu artırmak"
   },
   {
     "level": "B2",
@@ -1077,7 +1077,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "INTENSIFY",
-    "meaning": "şiddetlenmek"
+    "meaning": "şiddetlenmek; şiddetini veya yoğunluğunu artırmak"
   }
 ];
 export const lexicalRelationQuestions = [
@@ -1123,14 +1123,14 @@ export const lexicalRelationQuestions = [
     "family": "lexrel_accurate",
     "prompt": "In the sentence \"The thermometer provides accurate readings.\", which option is closest in meaning to 'accurate'?",
     "options": [
-      "precise",
+      "correct",
       "inaccurate",
       "ordinary",
       "flexible",
       "temporary"
     ],
     "correct": 0,
-    "explanation": "'accurate' bu bağlamda 'doğru ve kesin' anlamındadır. 'precise' (hassas ve kesin) yakın anlamlıdır."
+    "explanation": "Doğru seçenek: correct. Accurate gerçeğe veya gerçek değere uygun demektir. Correct bu bağlamda en yakın anlamdır; precise ile teknik anlamda aynı olmak zorunda değildir."
   },
   {
     "id": "wq150_ant_accurate",
@@ -3433,7 +3433,7 @@ export const lexicalRelationQuestions = [
     "yds": "easy",
     "topic": "Phrasals",
     "family": "pv_show_around",
-    "prompt": "The manager will ____ the new staff during their first week.",
+    "prompt": "The manager will ____ the new staff during their first week, taking them through the building and introducing the different departments.",
     "options": [
       "show around",
       "put out",
@@ -3442,7 +3442,7 @@ export const lexicalRelationQuestions = [
       "run out of"
     ],
     "correct": 0,
-    "explanation": "Show around yeni gelenlere bir yeri gezdirip tanıtmaktır."
+    "explanation": "Doğru seçenek: show around. Show around birine bir yeri gezdirip tanıtmak anlamına gelir."
   },
   {
     "id": "wq150_pv_12",
