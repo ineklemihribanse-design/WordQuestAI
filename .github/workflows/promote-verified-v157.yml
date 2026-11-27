@@ -1,5 +1,8 @@
 name: Promote verified WordQuest AI 1.0.157
 on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/promote-verified-v157.yml']
   workflow_run:
     workflows: ['WordQuest AI 1.0.157 verified release package (compact Arena friends and CI)']
     types: [completed]
@@ -13,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == '7aae0c1d71fe0cf50dfd602439fcdfd3d7498753'))
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == '7aae0c1d71fe0cf50dfd602439fcdfd3d7498753'))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
