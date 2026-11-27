@@ -84,10 +84,24 @@ def viewport(name,w,h,density,wide):
     tap(exact_levels()[1])
     time.sleep(0.6)
     assert not any("a1 + a2" in label(n) for n in nodes()),"A2 deselection missing from match summary"
-    start=get("Oyunu Başlat")
+    get("Oyunu Başlat")
+    # Compose exposes Button and its Text as separate accessibility nodes.
+    # Follow the actual label's ancestry; never accept an unrelated button.
+    root=ET.fromstring(adb("exec-out","cat","/sdcard/wq150.xml"))
+    parents={child:parent for parent in root.iter() for child in parent}
+    matches=[n for n in root.iter("node") if n.get("text","").strip()=="Oyunu Başlat"]
+    assert len(matches)==1,("Start label count",len(matches))
+    title=matches[0]
+    start=title
+    while start is not None and start.get("clickable")!="true":
+        start=parents.get(start)
+    assert start is not None,("Start label has no clickable ancestor",title.attrib)
+    assert start.get("enabled")=="true" and title.get("enabled")=="true",start.attrib
     x,y,X,Y=bounds(start)
-    assert start.get("enabled")=="true" and start.get("clickable")=="true",start.attrib
-    assert 0<=x<X<=W and 0<=y<Y<=H,("Start button outside display",start.attrib)
+    tx,ty,TX,TY=bounds(title)
+    assert 0<=x<=tx<TX<=X<=W and 0<=y<=ty<TY<=Y<=H,("Start button outside display",start.attrib,title.attrib)
+    assert Y-y>=int(44*density/160),("Start touch target too small",start.attrib)
+    print("PASS: visible enabled start button and its text",name,start.attrib,flush=True)
     capture(name+"-settings")
     adb("shell","input","keyevent","KEYCODE_BACK");get("Klasik Bulmaca")
     print("PASS: Arena mode tabs, footer, single-row levels and solo settings",name,flush=True)
