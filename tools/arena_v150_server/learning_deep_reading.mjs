@@ -1707,10 +1707,10 @@ export const deepReadingQuestions = [
     "prompt": "A municipal authority replaced several conventional bus shelters with structures incorporating vegetation. The project aimed to make waiting areas more comfortable during summer, rather than substantially altering temperatures throughout the city. Monitoring showed that the shelters were cooler than nearby exposed pavement at midday. However, maintenance demands varied depending on plant selection and water availability. The authority concluded that the design could be useful at selected locations, but universal installation would require additional evidence.\n\nWhat was the primary objective?",
     "options": [
       "To improve local comfort for passengers.",
-      "To reduce average temperatures throughout the city.",
-      "To eliminate conventional public transport.",
-      "To compare transport fares.",
-      "To reduce all municipal water consumption."
+      "To lower average temperatures across the entire city.",
+      "To identify the cheapest material for building shelters.",
+      "To investigate whether passengers would switch to public transport.",
+      "To reduce the maintenance costs of existing bus shelters."
     ],
     "correct": 0,
     "explanation": "Amaç bekleme alanlarında yerel konforu artırmaktır.",
@@ -1758,10 +1758,10 @@ export const deepReadingQuestions = [
     "prompt": "A regional archive made high-resolution images of fragile maps available online. Researchers welcomed the increased access, especially those unable to travel to the archive. Yet some features, including the thickness of the paper and traces of earlier repairs, remained difficult to evaluate through photographs alone. The archive therefore established a procedure for supervised examination of selected originals. Digitisation was treated as a means of widening access rather than a substitute for preservation.\n\nWhy did researchers welcome digitisation?",
     "options": [
       "They could examine images remotely.",
-      "It made originals impossible to damage.",
-      "It precisely measured paper thickness.",
-      "It removed every restriction on originals.",
-      "It replaced historical research."
+      "They could inspect the exact thickness of paper without handling it.",
+      "They could access the physical originals without supervision.",
+      "They could study newly discovered maps that had not been catalogued.",
+      "They could obtain independent assessments of earlier repairs."
     ],
     "correct": 0,
     "explanation": "Dijital koleksiyon uzaktaki araştırmacılara erişim sağlar.",
@@ -1945,10 +1945,10 @@ export const deepReadingQuestions = [
     "prompt": "A review of workplace training found that participants frequently reported greater confidence immediately after completion. Few studies examined whether acquired skills were used months later. Some relied on self-assessments rather than independently observed performance. The reviewers argued that confidence was valuable but should not substitute for evidence of sustained behavioural change. They recommended follow-up measures distinguishing perceived from demonstrated competence.\n\nWhat would best address the concern?",
     "options": [
       "Independent performance assessment several months later.",
-      "Repeating only the immediate questionnaire.",
-      "Excluding less confident participants.",
-      "Replacing observations with attendance.",
-      "Adding only self-assessment items."
+      "A larger confidence survey immediately after training.",
+      "A comparison of attendance rates across training courses.",
+      "A follow-up questionnaire about participants' satisfaction with instructors.",
+      "A detailed review of the course materials before training begins."
     ],
     "correct": 0,
     "explanation": "Bağımsız ve gecikmeli ölçüm sürdürülebilir beceriyi sınar.",
@@ -2302,10 +2302,10 @@ export const deepReadingQuestions = [
     "prompt": "A conservation programme assessed success by counting the number of trees planted during each year. Independent monitoring later found that survival varied considerably between sites. Some plantings had occurred where soil and water conditions were unsuitable. The programme subsequently introduced survival monitoring and site assessments. It recognised that planting targets were useful for tracking effort but not sufficient for demonstrating the restoration of woodland.\n\nWhat general lesson follows?",
     "options": [
       "Activity indicators can differ from outcome indicators.",
-      "Counting effort always proves success.",
-      "Survival is independent of conditions.",
-      "Planting targets are inherently useless.",
-      "Outcome measures need no monitoring."
+      "The most useful indicator is the one that is easiest to collect.",
+      "An increase in planting is sufficient evidence of improved survival.",
+      "Monitoring should concentrate on initial targets rather than later conditions.",
+      "Sites with similar planting totals necessarily achieve similar restoration outcomes."
     ],
     "correct": 0,
     "explanation": "Faaliyet göstergeleri elde edilen sonucu doğrudan ölçmeyebilir.",
