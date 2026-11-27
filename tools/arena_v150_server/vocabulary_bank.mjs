@@ -1,7 +1,7 @@
 // Reuse the shipped Arena vocabulary and its existing connected-board generator.
 // No client can supply vocabulary or select a seed. Missing metadata fails closed.
 import {createHash} from 'node:crypto';
-import {crossword,quiz,LEVELS} from '../v132_engine/engine.mjs';
+import {crossword,quiz,quizSpellingKey,LEVELS} from '../v132_engine/engine.mjs';
 import {validateSettings,selectBank} from '../v132_engine/match_service.mjs';
 import {diversifyQuiz} from './learning_mix.mjs';
 const fail=m=>{throw Error(m)};
@@ -53,8 +53,10 @@ export function vocabularyCatalog(rows){
  const summarize=pool=>Object.fromEntries(Object.entries(scales).map(([scale,levels])=>[scale,
   Object.fromEntries(levels.map(level=>{
    const selected=pool.filter(w=>(scale==='cefr'?w.level:w.yds)===level);
+   const quizRows=scale==='cefr'?preferCefrRecords(selected):selected;
    return [level,{crossword:new Set(selected.filter(crosswordEligible).map(w=>w.answer.toUpperCase())).size,
-    quiz:new Set(selected.map(w=>w.meaning.toLowerCase())).size}];
+    quiz:Math.min(new Set(quizRows.map(w=>w.meaning.trim().toLowerCase())).size,
+     new Set(quizRows.map(w=>quizSpellingKey(w.answer))).size)}];
   }))]));
  const groups=(key,label)=>[...new Map(rows.filter(w=>w[key]).map(w=>[w[key],w[label]])).entries()]
   .sort((a,b)=>a[1].localeCompare(b[1],'tr')).map(([id,name])=>({id,name,counts:summarize(rows.filter(w=>w[key]===id))}));
@@ -86,7 +88,7 @@ export function createVocabularyBank(input,{curated=false}={}){
   };
   let result;
   if(cfg.format==='quiz'){
-   result=quiz(records,settings,n,true).map(q=>({...meta(q.level,q.answer,q.prompt),
+   result=quiz(records,settings,n,true,rows).map(q=>({...meta(q.level,q.answer,q.prompt),
     prompt:q.prompt,options:q.options,correct:q.correct,letterCount:Math.max(2,Math.min(24,q.answer.replace(/[^A-Za-z]/g,'').length))}));
   }else{
    result=crossword(records,settings,n,true).words.map(([answer,meaning,level,r,c,d])=>({...meta(level,answer,meaning),
