@@ -2079,7 +2079,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Eat your soup with a ____.",
+    "prompt": "Stir your tea with a small ____.",
     "options": [
       "knife",
       "fork",
@@ -2088,7 +2088,7 @@ export const a12ThousandQuestions = [
       "cup"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: spoon. Mutfak eşyası, kullanım amacına göre seçilir."
+    "explanation": "Spoon kaşık demektir. Çayı karıştırmak için küçük bir kaşık kullanılır."
   },
   {
     "id": "wq150_a12_1000_0124",
