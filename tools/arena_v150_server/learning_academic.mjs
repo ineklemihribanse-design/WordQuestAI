@@ -5,7 +5,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "ALLOCATE",
-    "meaning": "paylaştırmak"
+    "meaning": "paylaştırmak; belirli bir amaç için ayırmak"
   },
   {
     "level": "B1",
@@ -469,7 +469,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "MECHANISM",
-    "meaning": "işleyiş"
+    "meaning": "mekanizma; işleyiş biçimi"
   },
   {
     "level": "B1",
@@ -533,7 +533,7 @@ export const academicWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "VARIATION",
-    "meaning": "değişkenlik"
+    "meaning": "değişim; farklılık"
   },
   {
     "level": "B2",
@@ -773,7 +773,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "ENFORCE",
-    "meaning": "yürürlüğünü sağlamak"
+    "meaning": "yasa veya kuralın uygulanmasını sağlamak"
   },
   {
     "level": "B2",
@@ -797,7 +797,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "EXERT",
-    "meaning": "uygulamak"
+    "meaning": "güç, baskı veya etki uygulamak"
   },
   {
     "level": "B2",
@@ -805,7 +805,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "EXPLOIT",
-    "meaning": "yararlanmak"
+    "meaning": "yararlanmak; sömürmek"
   },
   {
     "level": "B2",
@@ -925,7 +925,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "RENDER",
-    "meaning": "hâle getirmek"
+    "meaning": "bir duruma veya hâle getirmek"
   },
   {
     "level": "B2",
@@ -1181,7 +1181,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "PRECISE",
-    "meaning": "hassas; ayrıntılı ve kesin biçimde belirtilmiş"
+    "meaning": "kesin; ayrıntıları tam olarak belirlenmiş"
   },
   {
     "level": "B2",
@@ -1653,7 +1653,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "CONFLATE",
-    "meaning": "birbirine karıştırmak"
+    "meaning": "ayrı kavramları yanlış biçimde birleştirmek"
   },
   {
     "level": "C1",
@@ -1733,7 +1733,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "DISAVOW",
-    "meaning": "reddetmek"
+    "meaning": "sorumluluğunu veya bağlantısını reddetmek"
   },
   {
     "level": "C1",
@@ -1797,7 +1797,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "HARNESS",
-    "meaning": "yararlanmak"
+    "meaning": "bir gücü veya kaynağı kullanıma almak"
   },
   {
     "level": "C1",
@@ -1869,7 +1869,7 @@ export const academicWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "PERPETUATE",
-    "meaning": "sürdürmek"
+    "meaning": "bir durumun sürmesine neden olmak"
   },
   {
     "level": "C1",
@@ -2229,7 +2229,7 @@ export const academicWords = [
     "wordType": "Sıfatlar",
     "category": "İleri Akademik İngilizce",
     "answer": "FUTILE",
-    "meaning": "boşuna"
+    "meaning": "sonuçsuz; boşuna olan"
   },
   {
     "level": "C1",
@@ -2837,7 +2837,7 @@ export const academicWords = [
     "wordType": "Zarflar",
     "category": "İleri Akademik İngilizce",
     "answer": "ASSIDUOUSLY",
-    "meaning": "özenle"
+    "meaning": "gayretle ve özenle"
   },
   {
     "level": "C1",
