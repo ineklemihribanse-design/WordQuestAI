@@ -5,7 +5,10 @@ entry=(pack/"Wq150ArenaEntry.kt").read_text(encoding="utf-8")
 assert 'Wq150HomeModes.visible(local)' in entry
 assert 'Wq150HomeCard(kind,true,enabled' in entry
 assert 'Wq150HomeCard(kind,false,enabled' in entry
-assert 'Wq150Podium.anchor(w.value,h.value,wide,newArt)' in entry
+assert 'Wq150Podium.anchor(fullW.value,fullH.value,wide,newArt)' in entry
+assert 'Box(Modifier.fillMaxSize().padding(safe))' in entry
+assert 'Kişisel maskot' not in entry and 'if(picker)AlertDialog' not in entry
+assert 'Wq150LevelRow(Wq150ModeCatalog.cefr,levels)' in entry
 assert 'arena_v150_premium/$background.webp' in entry
 assert 'Wq132WebEngine.generate(context,engine' in entry
 assert 'Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)' in entry
@@ -14,7 +17,7 @@ assert 'Wq150PremiumPanel {' in entry
 assert 'Wq150ApprovedArt("crest"' in entry
 assert 'rememberWq150Profiles(room,session,gateway)' in entry
 assert 'if(!wide&&!local)' in entry
-assert 'Wq150HomeLayout.measure(maxHeight.value,wide)' in entry
+assert 'Wq150HomeLayout.measure(available.value,wide)' in entry
 assert 'imageAlignment=Alignment.BottomCenter' in entry
 assets=Path("source/app/src/main/assets")
 required=[
@@ -98,7 +101,18 @@ assert 'Wq150Records(context,session.profileKey' in entry
 match=(pack/"Wq150ArenaMatch.kt").read_text(encoding="utf-8")
 assert 'if(finished)Wq150History.record' in match
 settings=(pack/"Wq150MatchSettings.kt").read_text(encoding="utf-8")
-assert 'DialogProperties(usePlatformDefaultWidth=false)' in settings
+assert 'DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)' in settings
+assert 'Wq150LevelRow(levels,s.levels)' in settings
+assert 'Wq150SettingValue("İpucu hakkı"' in settings
+assert 'Wq150SettingValue("Kelimeyi geçme hakkı"' in settings
+assert 'window?.navigationBarColor=android.graphics.Color.TRANSPARENT' in settings
+# Audio settings are shared with legacy light surfaces: honor the active theme.
+audio=Path("source/app/src/main/java/com/kelimebulmacasi/a1/Wq179ArenaExtras.kt")
+audio_text=audio.read_text()
+a=audio_text.index("internal fun Wq179ArenaAudioSettings()")
+b=audio_text.index("/** Stage backdrop",a)
+segment=audio_text[a:b].replace("Color(0xFF3C3258)","MaterialTheme.colorScheme.onSurface").replace("Color(0xFF77708B)","MaterialTheme.colorScheme.onSurfaceVariant")
+audio.write_text(audio_text[:a]+segment+audio_text[b:])
 p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt")
 s=p.read_text()
 old='''    var soloLaunch by remember { mutableStateOf<WqArenaSoloLaunch?>(null) }

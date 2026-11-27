@@ -60,7 +60,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 onMode={if(soloSelected)soloMode=it else account()},
                 onPanel={if(it=="Hızlı Oda Katılımı"||it=="Arkadaşlarım")account() else guestPanel=it},
                 status=null,onRetry=null)
-            if(guestPanel.isNotBlank())AlertDialog(onDismissRequest={guestPanel=""},title={Text(guestPanel)},
+            if(guestPanel.isNotBlank())AlertDialog(onDismissRequest={guestPanel=""},containerColor=Color(0xFF251347),title={Text(guestPanel,color=Wq122Gold)},
                 text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState())){
                     when(guestPanel){
                         "Ayarlar"->Wq179ArenaAudioSettings()
@@ -193,7 +193,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
-        if(panel.isNotBlank())AlertDialog(onDismissRequest={panel=""},title={Text(panel,color=Wq122Gold)},
+        if(panel.isNotBlank())AlertDialog(onDismissRequest={panel=""},containerColor=Color(0xFF251347),title={Text(panel,color=Wq122Gold)},
             text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
                 when(panel){
                     "Hızlı Oda Katılımı"->{
@@ -402,53 +402,64 @@ private fun Wq150HomeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modi
 @Composable
 private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:(Boolean)->Unit,enabled:Boolean,
     back:()->Unit,onMode:(String)->Unit,onPanel:(String)->Unit,status:String?,onRetry:(()->Unit)?){
-    val context=LocalContext.current
-    var picker by rememberSaveable{mutableStateOf(false)}
-    var builtin by rememberSaveable{mutableStateOf(false)}
+    Wq150ArenaBars()
     val newArt=rememberWq150NewArt()
     val config=LocalConfiguration.current
-    BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)){
-        val w=maxWidth
-        val wide=Wq121ArenaLayout.wide(w.value,maxHeight.value,config.smallestScreenWidthDp)
-        val metrics=Wq150HomeLayout.measure(maxHeight.value,wide)
+    BoxWithConstraints(Modifier.fillMaxSize()){
+        val fullW=maxWidth
+        val safe=WindowInsets.safeDrawing.asPaddingValues()
+        val direction=androidx.compose.ui.platform.LocalLayoutDirection.current
+        val left=safe.calculateLeftPadding(direction)
+        val right=safe.calculateRightPadding(direction)
+        val top=safe.calculateTopPadding()
+        val bottom=safe.calculateBottomPadding()
+        val w=(fullW-left-right).coerceAtLeast(1.dp)
+        val available=(maxHeight-top-bottom).coerceAtLeast(1.dp)
+        val wide=Wq121ArenaLayout.wide(w.value,available.value,config.smallestScreenWidthDp)
+        val metrics=Wq150HomeLayout.measure(available.value,wide)
         val h=metrics.height.dp
+        val fullH=h+top+bottom
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
-            Box(Modifier.fillMaxWidth().height(h)){
+            Box(Modifier.fillMaxWidth().height(fullH)){
                 // Never use the v183 floating-trophy lobby art here: its podium is at another height.
                 // The old approved v120 art is an exact-coordinate fallback until the new ZIP is staged.
                 val background=if(wide)"tablet" else "phone"
                 Wq150ApprovedArt(if(newArt)"arena_v150_premium/$background.webp" else background,
                     Modifier.matchParentSize(),ContentScale.Crop)
-                val pos=Wq150Podium.anchor(w.value,h.value,wide,newArt)
-                val feet=pos.second.dp
+                val pos=Wq150Podium.anchor(fullW.value,fullH.value,wide,newArt)
+                Box(Modifier.fillMaxSize().padding(safe)){
+                val feet=pos.second.dp-top
                 val avatarW=w*(if(wide).34f else .54f)
                 val avatarH=(feet-h*.075f).coerceAtLeast(40.dp)
                 val crestW=w*(if(wide).26f else if(newArt).34f else .48f)
                 val crestH=(h*(if(wide).32f else if(newArt).17f else .21f))
                 val headerH=(h*.065f).coerceIn(40.dp,60.dp)
-                Row(Modifier.fillMaxWidth().height(headerH).padding(horizontal=8.dp),verticalAlignment=Alignment.CenterVertically){
-                    TextButton(onClick=back,contentPadding=PaddingValues(4.dp)){Wq150ApprovedArt("back",Modifier.size(22.dp));Text("Geri",color=Wq122Gold,fontSize=12.sp)}
-                    Row(Modifier.weight(1f),horizontalArrangement=Arrangement.Center,verticalAlignment=Alignment.CenterVertically){
-                        Wq150ApprovedArt("book",Modifier.size(if(wide)32.dp else 22.dp))
-                        Text("WordQuest AI",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=if(wide)24.sp else 15.sp,maxLines=1,overflow=TextOverflow.Ellipsis)
+                Box(Modifier.fillMaxWidth().height(headerH).padding(horizontal=8.dp)){
+                    Surface(Modifier.align(Alignment.Center),color=Color(0xB51B1046),shape=RoundedCornerShape(18.dp)){
+                        Row(Modifier.padding(horizontal=10.dp,vertical=4.dp),verticalAlignment=Alignment.CenterVertically){
+                            Wq150ApprovedArt("book",Modifier.size(if(wide)32.dp else 24.dp))
+                            Text("WordQuest AI",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=if(wide)24.sp else 17.sp,maxLines=1)
+                        }
                     }
-                    Surface(onClick={picker=true},color=Color(0xCC2D165C),shape=RoundedCornerShape(20.dp)){
-                        Row(Modifier.padding(5.dp),verticalAlignment=Alignment.CenterVertically){
-                            Wq2DPortrait(avatar,Modifier.size(27.dp))
-                            Text("Kişisel maskot",color=Color.White,fontSize=if(wide)12.sp else 10.sp)
+                    Surface(Modifier.align(Alignment.CenterStart),color=Color(0xC91B1046),shape=RoundedCornerShape(18.dp)){
+                        TextButton(onClick=back,contentPadding=PaddingValues(horizontal=6.dp)){
+                            Wq150ApprovedArt("back",Modifier.size(22.dp))
+                            Text("Geri",color=Wq122Gold,fontSize=12.sp)
                         }
                     }
                 }
                 Wq150ApprovedArt("crest",Modifier.offset(x=w*.035f,y=headerH).width(crestW).height(crestH))
                 Column(Modifier.offset(x=if(wide)w*.68f else w*.025f,y=if(wide)h*.16f else headerH+crestH)
-                    .width(if(wide)w*.28f else if(newArt)w*.34f else w*.46f),horizontalAlignment=Alignment.CenterHorizontally){
+                    .width(if(wide)w*.28f else if(newArt)w*.34f else w*.46f)
+                    .clip(RoundedCornerShape(12.dp)).background(Color(0xD21A103D)).padding(6.dp),
+                    horizontalAlignment=Alignment.CenterHorizontally){
                     Text("Arena’ya Hoş Geldin",color=Wq122Gold,fontWeight=FontWeight.Black,
                         fontSize=if(wide)20.sp else 13.sp,textAlign=TextAlign.Center,maxLines=2)
                     Text("Oyun modunu seç ve kelime arenasında mücadeleye başla!",color=Color.White,
                         fontSize=if(wide)14.sp else 10.sp,lineHeight=if(wide)17.sp else 12.sp,textAlign=TextAlign.Center)
                     if(wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")}){Text("Hızlı Oda Katılımı",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)}
                 }
-                Wq2DPortrait(avatar,Modifier.offset(x=pos.first.dp-avatarW/2,y=feet-avatarH)
+                Wq2DPortrait(avatar,Modifier.offset(x=pos.first.dp-left-avatarW/2,y=feet-avatarH)
                     .width(avatarW).height(avatarH),victory=false,imageAlignment=Alignment.BottomCenter)
                 val tabTop=metrics.tabTop.dp
                 val tabH=metrics.tabHeight.dp
@@ -505,13 +516,7 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
             }
         }
     }
-    if(picker)AlertDialog(onDismissRequest={picker=false},title={Text("Kişisel Maskot")},
-        text={Column(Modifier.verticalScroll(rememberScrollState())){
-            Wq2DPortrait(avatar,Modifier.fillMaxWidth().height(160.dp))
-            TextButton(onClick={picker=false;builtin=true}){Text("Hazır karakterler")}
-            Wq183MascotManager(session.profileKey,avatar,{Wq2DMascots.choose(context,session.profileKey,it)},session.accounts.uid.orEmpty().isNotBlank(),session.accounts.socialAuth())
-        }},confirmButton={TextButton(onClick={picker=false}){Text("Kapat")}})
-    if(builtin)Wq2DCharacterPicker(avatar,{Wq2DMascots.choose(context,session.profileKey,it)},{builtin=false})
+    }
 }
 @Composable
 private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,onStart:(WqArenaSoloLaunch)->Unit){
@@ -538,11 +543,12 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
         topics=result
         if(topic !in topics)topic=PremiumArenaRules.allTopics
     }
-    Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false)){
+    Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
+        Wq150ArenaBars()
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
             Wq122SettingsBackdrop(Modifier.matchParentSize())
-            Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(12.dp),
-                verticalArrangement=Arrangement.spacedBy(8.dp)){
+            Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(8.dp),
+                verticalArrangement=Arrangement.spacedBy(6.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
                     Wq122Art("settings",Modifier.size(32.dp))
@@ -552,11 +558,9 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                     Wq150PremiumPanel{
                         Text(wq150Card(kind).title+" · Tek Başına",color=Wq122Gold,fontWeight=FontWeight.Bold)
                         Wq122Section("level","CEFR seviyeleri","Birden fazla seviye seçebilirsin.")
-                        Wq150ModeCatalog.cefr.chunked(3).forEach{row->Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)){
-                            row.forEach{level->Wq122Choice(level,level in levels,Modifier.weight(1f)){
-                                if(!busy)levels=if(level in levels){if(levels.size>1)levels-level else levels}else Wq150ModeCatalog.cefr.filter{it in levels+level}
-                            }}
-                        }}
+                        Wq150LevelRow(Wq150ModeCatalog.cefr,levels){level->
+                            if(!busy)levels=if(level in levels){if(levels.size>1)levels-level else levels}else Wq150ModeCatalog.cefr.filter{it in levels+level}
+                        }
                         if(engine!="quiz"){
                             Wq122Section("topic","Konu")
                             Box{OutlinedButton(enabled=!busy,onClick={expanded=true},modifier=Modifier.fillMaxWidth()){Text(topic)}
@@ -605,8 +609,5 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
 }
 @Composable
 private fun Wq150SoloNumbers(values:List<Int>,selected:Int,label:(Int)->String,onPick:(Int)->Unit){
-    values.chunked(3).forEach{row->Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)){
-        row.forEach{v->Wq122Choice(label(v),selected==v,Modifier.weight(1f)){onPick(v)}}
-        repeat(3-row.size){Spacer(Modifier.weight(1f))}
-    }}
+    Wq150CompactPicker(values.associate{it.toString() to label(it)},selected.toString()){onPick(it.toInt())}
 }

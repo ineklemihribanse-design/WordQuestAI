@@ -2,6 +2,17 @@ package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.window.DialogWindowProvider
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.style.TextAlign
+import androidx.core.view.WindowCompat
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -126,63 +137,165 @@ internal data class Wq150Catalog(val data:JSONObject){
         }.getOrNull()
     }
 }
+/** Scope system bar appearance to Arena and restore it when leaving.
+ * MainActivity already enables edge-to-edge. Fullscreen dialogs opt in separately. */
+@Suppress("DEPRECATION")
+@Composable
+internal fun Wq150ArenaBars(){
+    val view=LocalView.current
+    val context=view.context
+    val window=remember(view){
+        (view.parent as? DialogWindowProvider)?.window ?: run {
+            var c:android.content.Context=context
+            while(c is android.content.ContextWrapper && c !is android.app.Activity)c=c.baseContext
+            (c as? android.app.Activity)?.window
+        }
+    }
+    DisposableEffect(window){
+        val ctrl=window?.let{WindowCompat.getInsetsController(it,it.decorView)}
+        val status=window?.statusBarColor
+        val nav=window?.navigationBarColor
+        val lightStatus=ctrl?.isAppearanceLightStatusBars
+        val lightNav=ctrl?.isAppearanceLightNavigationBars
+        val contrast=if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced else null
+        window?.statusBarColor=android.graphics.Color.TRANSPARENT
+        window?.navigationBarColor=android.graphics.Color.TRANSPARENT
+        if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced=false
+        ctrl?.isAppearanceLightStatusBars=false
+        ctrl?.isAppearanceLightNavigationBars=false
+        onDispose{
+            if(status!=null)window?.statusBarColor=status
+            if(nav!=null)window?.navigationBarColor=nav
+            if(lightStatus!=null)ctrl?.isAppearanceLightStatusBars=lightStatus
+            if(lightNav!=null)ctrl?.isAppearanceLightNavigationBars=lightNav
+            if(android.os.Build.VERSION.SDK_INT>=29 && contrast!=null)window?.isNavigationBarContrastEnforced=contrast
+        }
+    }
+}
+@Composable
+private fun Wq150SettingPanel(content:@Composable ColumnScope.()->Unit){
+    val shape=RoundedCornerShape(15.dp)
+    Column(Modifier.fillMaxWidth().clip(shape)
+        .background(Brush.verticalGradient(listOf(Color(0xF044196D),Color(0xF01C103E))))
+        .border(1.dp,Wq122Gold,shape).padding(8.dp),
+        verticalArrangement=Arrangement.spacedBy(4.dp),content=content)
+}
+@Composable
+internal fun Wq150LevelRow(values:List<String>,selected:List<String>,onPick:(String)->Unit){
+    BoxWithConstraints(Modifier.fillMaxWidth()){
+        val gap=3.dp
+        val cell=((maxWidth-gap*(values.size-1))/values.size).coerceAtLeast(44.dp)
+        Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(gap)){
+            values.forEach{level->
+                val active=level in selected
+                val shape=RoundedCornerShape(10.dp)
+                Box(Modifier.width(cell).height(44.dp).clip(shape)
+                    .background(Brush.verticalGradient(if(active)listOf(Color(0xFFA22CE9),Color(0xFF5410AB)) else listOf(Color(0xFF392765),Color(0xFF20163F))))
+                    .border(if(active)2.dp else 1.dp,if(active)Wq122Gold else Wq122Border,shape)
+                    .clickable{onPick(level)},contentAlignment=Alignment.Center){
+                    Text(when(level){"easy"->"Kolay";"medium"->"Orta";"hard"->"Zor";else->level},
+                        color=Color.White,fontWeight=FontWeight.Bold,fontSize=13.sp,maxLines=1)
+                    if(active)Text("✓",Modifier.align(Alignment.TopEnd).padding(end=3.dp),color=Wq122Gold,fontSize=10.sp)
+                }
+            }
+        }
+    }
+}
+@Composable
+internal fun Wq150CompactPicker(values:Map<String,String>,selected:String,onPick:(String)->Unit){
+    var open by remember{mutableStateOf(false)}
+    Box(Modifier.fillMaxWidth()){
+        OutlinedButton(onClick={open=true},modifier=Modifier.fillMaxWidth().heightIn(min=44.dp),
+            contentPadding=PaddingValues(horizontal=10.dp,vertical=4.dp)){
+            Text(values[selected]?:selected,Modifier.weight(1f),color=Wq122Ink,fontWeight=FontWeight.Bold,fontSize=13.sp)
+            Text("⌄",color=Wq122Gold)
+        }
+        DropdownMenu(expanded=open,onDismissRequest={open=false},modifier=Modifier.heightIn(max=320.dp)){
+            values.forEach{(id,label)->DropdownMenuItem(text={Text(label+if(id==selected)" ✓" else "",color=Wq122Ink)},
+                onClick={onPick(id);open=false})}
+        }
+    }
+}
 @Composable
 internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,String>,wordTypes:Map<String,String>,
     available:Boolean,onDismiss:()->Unit,onApply:(Wq150Settings)->Unit,catalog:Wq150Catalog?=null) {
     var s by remember(initial){mutableStateOf(initial)}
+    val timed=s.kind=="coop"&&s.mode=="timed"
+    val levels=Wq150ModeCatalog.levels(s.scale)
+    val scales=if(catalog==null||catalog.hasYds())mapOf("cefr" to "CEFR","yds" to "YDS")else mapOf("cefr" to "CEFR")
+    val valid=available&&s.valid()&&(catalog?.supports(s)!=false)
+    val timeLabel:(Int)->String={if(it==0)"Süresiz" else if(timed)"${it/60} dk" else "$it sn"}
     MaterialTheme(colorScheme=Wq122Scheme) {
-        Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false)){
+        Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
+            Wq150ArenaBars()
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
                 Wq122SettingsBackdrop(Modifier.matchParentSize())
-                Column(Modifier.align(Alignment.TopCenter).widthIn(max=1000.dp).fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(12.dp),
-                    verticalArrangement=Arrangement.spacedBy(8.dp)){
-                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
-                        TextButton(onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
-                        Wq122Art("settings",Modifier.size(36.dp))
-                        Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,
-                            style=MaterialTheme.typography.headlineSmall)
+                Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=4.dp),
+                    verticalArrangement=Arrangement.spacedBy(6.dp)){
+                    Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xE2251347)),
+                        verticalAlignment=Alignment.CenterVertically){
+                        TextButton(onClick=onDismiss,contentPadding=PaddingValues(horizontal=6.dp)){Text("‹ Geri",color=Wq122Gold)}
+                        Wq122Art("settings",Modifier.size(28.dp))
+                        Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=19.sp)
                     }
-                    Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
-                        verticalArrangement=Arrangement.spacedBy(8.dp)){
-                Wq122Section("mode","Seçilen mod · "+Wq150ModeCatalog.kinds[s.kind].orEmpty())
-                Wq150Choices("Oyun biçimi",Wq150ModeCatalog.modes(s.kind),s.mode){s=s.changeMode(it)}
-                if(s.kind=="team")Wq150Choices("2'ye 2 · içerik",mapOf("crossword" to "Bulmaca","quiz" to "5 Şıklı"),s.format){s=s.changeFormat(it)}
-                if(s.mode=="limited")Wq150Choices("Seri sınırı",listOf(2,3,5).associate{it.toString() to "$it doğru"},s.limit.toString()){s=s.copy(limit=it.toInt())}
-                if(s.kind=="coop"&&s.mode=="perfect")Wq150Choices("Ortak yanlış hakkı",listOf(1,2,3,5).associate{it.toString() to it.toString()},s.maxMistakes.toString()){s=s.copy(maxMistakes=it.toInt())}
-                val scales=if(catalog==null||catalog.hasYds())mapOf("cefr" to "CEFR","yds" to "YDS")else mapOf("cefr" to "CEFR")
-                Wq150Choices("Seviye sistemi",scales,s.scale){s=s.changeScale(it)}
-                if(catalog!=null&&!catalog.hasYds())Text("YDS içerikleri henüz aktarılmadı.",color=Color(0xFFFFD6A1))
-                Text("Seviyeler · birden fazla seçilebilir",color=Wq122Gold,fontWeight=FontWeight.Bold)
-                Wq150ModeCatalog.levels(s.scale).chunked(3).forEach{row->
-                    Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){
-                        row.forEach{level->Wq122Choice(when(level){"easy"->"Kolay";"medium"->"Orta";"hard"->"Zor";else->level},
-                            level in s.levels,Modifier.weight(1f)){s=s.toggleLevel(level)}}
-                    }
-                }
-                Wq150Filter("Konu",mapOf("all" to "Tüm konular")+topics,s.topic?:"all"){s=s.copy(topic=it.takeUnless{x->x=="all"},wordType=null)}
-                if(wordTypes.isNotEmpty()||catalog==null)
-                    Wq150Filter("Kelime türü",mapOf("all" to "Tüm kelime türleri")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
-                else Text("Kelime türü etiketleri henüz aktarılmadı.",color=Color(0xFFFFD6A1))
-                Wq150Choices(if(s.format=="quiz")"Soru sayısı" else "Kelime sayısı",
-                    Wq150ModeCatalog.sizes(s.format).associate{it.toString() to it.toString()},s.count.toString()){s=s.copy(count=it.toInt())}
-                val timed=s.kind=="coop"&&s.mode=="timed"
-                Wq150Choices(if(timed)"Ortak maç süresi" else "Soru süresi",
-                    (if(timed)listOf(180,300,600,900)else listOf(0,20,30,45,60)).associate{it.toString() to if(it==0)"Süresiz" else if(timed)"${it/60} dk" else "$it sn"},s.seconds.toString()){s=s.copy(seconds=it.toInt())}
-                Wq150Choices("İpucu hakkı",listOf(0,3,5,8,12,20).associate{it.toString() to it.toString()},s.hints.toString()){s=s.copy(hints=it.toInt())}
-                if(s.kind=="duel"){
-                    Wq150Choices("Tekrar hakkı",(0..3).associate{it.toString() to it.toString()},s.retries.toString()){s=s.copy(retries=it.toInt())}
-                    Wq150Choices("Kelimeyi geçme hakkı",(0..5).associate{it.toString() to it.toString()},s.skipLimit.toString()){s=s.copy(skipLimit=it.toInt())}
-                }
-                if(catalog!=null&&!catalog.supports(s))Text("Seçilen seviyeler ve filtre için yeterli içerik yok. Soru sayısını azalt veya filtreyi değiştir.",color=Color(0xFFFFD6A1))
-                if(!available)Text("İşlem sürüyor veya yeniden denenmesi gerekiyor.",color=Color(0xFFFFD6A1))
-                    }
-                    Surface(color=Color(0xEC251347),shape=MaterialTheme.shapes.large,modifier=Modifier.fillMaxWidth()){
-                        Column(Modifier.padding(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){
-                            Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold)
-                            Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+(if(s.seconds==0)"Süresiz" else "${s.seconds} sn")+" · ${s.hints} ipucu",color=Wq122Ink)
-                            Wq122Primary("Ayarları uygula",available&&s.valid()&&(catalog?.supports(s)!=false),{onApply(s)})
+                    Wq150SettingPanel{Wq122Section("mode","Seçilen mod · "+Wq150ModeCatalog.kinds[s.kind].orEmpty())}
+                    BoxWithConstraints(Modifier.weight(1f).fillMaxWidth()){
+                        val wide=maxWidth>=650.dp
+                        val basic:@Composable ()->Unit={
+                            Wq150SettingPanel{
+                                Wq122Section("mode","Oyun biçimi")
+                                Wq150ModeCatalog.modes(s.kind).entries.toList().chunked(3).forEach{row->
+                                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
+                                        row.forEach{(id,label)->Wq122Choice(label,id==s.mode,Modifier.weight(1f)){s=s.changeMode(id)}}
+                                    }
+                                }
+                                if(s.kind=="team")Wq150SettingValue("2'ye 2 · içerik",mapOf("crossword" to "Bulmaca","quiz" to "5 Şıklı"),s.format){s=s.changeFormat(it)}
+                            }
+                            Wq150SettingPanel{
+                                Wq122Section("level","Seviye sistemi")
+                                Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
+                                    scales.forEach{(id,label)->Wq122Choice(label,id==s.scale,Modifier.weight(1f)){s=s.changeScale(id)}}
+                                }
+                                if(catalog!=null&&!catalog.hasYds())Text("YDS içerikleri henüz aktarılmadı.",color=Color(0xFFFFD6A1),fontSize=12.sp)
+                                Wq122Section("level","Seviyeler","Birden fazla seviye seçebilirsin.")
+                                Wq150LevelRow(levels,s.levels){s=s.toggleLevel(it)}
+                            }
+                            Wq150SettingPanel{
+                                Wq150Filter("Konu",mapOf("all" to "Tüm konular")+topics,s.topic?:"all"){s=s.copy(topic=it.takeUnless{x->x=="all"},wordType=null)}
+                                if(wordTypes.isNotEmpty()||catalog==null)
+                                    Wq150Filter("Kelime türü",mapOf("all" to "Tüm kelime türleri")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
+                                else Text("Kelime türü etiketleri henüz aktarılmadı.",color=Color(0xFFFFD6A1),fontSize=12.sp)
+                            }
                         }
+                        val rules:@Composable ()->Unit={
+                            Wq150SettingPanel{
+                                Wq122Section("count","Maç kuralları")
+                                Wq150SettingValue(if(s.format=="quiz")"Soru sayısı" else "Kelime sayısı",Wq150ModeCatalog.sizes(s.format).associate{it.toString() to it.toString()},s.count.toString()){s=s.copy(count=it.toInt())}
+                                Wq150SettingValue(if(timed)"Ortak maç süresi" else "Soru süresi",
+                                    (if(timed)listOf(180,300,600,900)else listOf(0,20,30,45,60)).associate{it.toString() to timeLabel(it)},s.seconds.toString()){s=s.copy(seconds=it.toInt())}
+                                Wq150SettingValue("İpucu hakkı",listOf(0,3,5,8,12,20).associate{it.toString() to it.toString()},s.hints.toString()){s=s.copy(hints=it.toInt())}
+                                if(s.kind=="duel"){
+                                    Wq150SettingValue("Tekrar hakkı",(0..3).associate{it.toString() to it.toString()},s.retries.toString()){s=s.copy(retries=it.toInt())}
+                                    Wq150SettingValue("Kelimeyi geçme hakkı",(0..5).associate{it.toString() to it.toString()},s.skipLimit.toString()){s=s.copy(skipLimit=it.toInt())}
+                                }
+                                if(s.mode=="limited")Wq150SettingValue("Seri sınırı",listOf(2,3,5).associate{it.toString() to "$it doğru"},s.limit.toString()){s=s.copy(limit=it.toInt())}
+                                if(s.kind=="coop"&&s.mode=="perfect")Wq150SettingValue("Ortak yanlış hakkı",listOf(1,2,3,5).associate{it.toString() to it.toString()},s.maxMistakes.toString()){s=s.copy(maxMistakes=it.toInt())}
+                            }
+                        }
+                        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
+                            if(wide)Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)){basic()}
+                                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)){rules()}
+                            }else{basic();rules()}
+                            if(catalog!=null&&!catalog.supports(s))Text("Seçilen seviyeler ve filtre için yeterli içerik yok. Soru sayısını azalt veya filtreyi değiştir.",color=Color(0xFFFFD6A1),modifier=Modifier.background(Color(0xE2251347)).padding(6.dp))
+                            if(!available)Text("İşlem sürüyor veya yeniden denenmesi gerekiyor.",color=Color(0xFFFFD6A1))
+                        }
+                    }
+                    Wq150SettingPanel{
+                        Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=15.sp)
+                        Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Wq122Ink,fontSize=13.sp)
+                        Wq122Primary("Ayarları Uygula",valid,{onApply(s)})
                     }
                 }
             }
@@ -190,12 +303,11 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
     }
 }
 @Composable
-private fun Wq150Choices(title:String,values:Map<String,String>,selected:String,onPick:(String)->Unit){
-    Text(title,color=Wq122Gold,fontWeight=FontWeight.Bold)
-    values.entries.chunked(2).forEach{row->Row(horizontalArrangement=Arrangement.spacedBy(5.dp)){
-        row.forEach{(key,label)->Wq122Choice(label,key==selected,Modifier.weight(1f)){onPick(key)}}
-        if(row.size==1)Spacer(Modifier.weight(1f))
-    }}
+private fun Wq150SettingValue(title:String,values:Map<String,String>,selected:String,onPick:(String)->Unit){
+    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
+        Text(title,Modifier.weight(1f),color=Wq122Ink,fontSize=13.sp,fontWeight=FontWeight.Bold)
+        Box(Modifier.weight(1f)){Wq150CompactPicker(values,selected,onPick)}
+    }
 }
 
 @Composable
@@ -209,7 +321,7 @@ private fun Wq150Filter(title:String,values:Map<String,String>,selected:String,o
             Text("⌄",color=Wq122Gold)
         }
     }
-    if(open)AlertDialog(onDismissRequest={open=false},title={Text(title)},text={
+    if(open)AlertDialog(onDismissRequest={open=false},containerColor=Color(0xFF251347),title={Text(title,color=Wq122Gold)},text={
         Column(Modifier.heightIn(max=420.dp)){
             OutlinedTextField(query,{query=it},label={Text("Ara")},singleLine=true,modifier=Modifier.fillMaxWidth())
             Column(Modifier.weight(1f,fill=false).verticalScroll(rememberScrollState())){

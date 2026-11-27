@@ -105,7 +105,7 @@ internal fun Wq150SoundPackSettings(){
     var selected by remember(context){mutableStateOf(Wq150SoundPacks.selected(context))}
     val player=remember(context){Wq150SoundPlayer(context)}
     DisposableEffect(player){onDispose{player.close()}}
-    Text("Arena ses paketi",fontSize=14.sp,color=Color(0xFF3C3258))
+    Text("Arena ses paketi",fontSize=14.sp,color=MaterialTheme.colorScheme.onSurface)
     Wq150SoundPacks.names.entries.toList().chunked(2).forEach{row->
         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)){
             row.forEach{(id,label)->
@@ -117,9 +117,9 @@ internal fun Wq150SoundPackSettings(){
             if(row.size==1)Spacer(Modifier.weight(1f))
         }
     }
-    Text(Wq150SoundPacks.descriptions[selected].orEmpty(),fontSize=12.sp,color=Color(0xFF77708B))
+    Text(Wq150SoundPacks.descriptions[selected].orEmpty(),fontSize=12.sp,color=MaterialTheme.colorScheme.onSurfaceVariant)
     if(selected!="silent"){
-        Text("Ön dinleme",fontSize=12.sp,color=Color(0xFF3C3258))
+        Text("Ön dinleme",fontSize=12.sp,color=MaterialTheme.colorScheme.onSurface)
         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
             listOf("correct" to "Doğru","wrong" to "Yanlış","tick" to "Saat").forEach{(event,label)->
                 TextButton(onClick={player.stop();player.play(selected,event)},modifier=Modifier.weight(1f),contentPadding=PaddingValues(4.dp)){Text(label,fontSize=12.sp)}
