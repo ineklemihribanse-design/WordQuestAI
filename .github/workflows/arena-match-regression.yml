@@ -4,6 +4,7 @@ on:
     branches: ['feature/v150-arena-nextgen']
     paths:
       - 'tools/v132_engine/**'
+      - 'tools/arena_v150_server/free_room_adapter*.mjs'
       - '.github/workflows/arena-match-regression.yml'
   workflow_dispatch:
 permissions:
@@ -18,4 +19,4 @@ jobs:
         with:
           node-version: '22'
       - name: Test authoritative match, reconnection and social actions
-        run: node --test tools/v132_engine/match_service.test.mjs tools/v132_engine/connection.test.mjs tools/v132_engine/social.test.mjs
+        run: node --test tools/v132_engine/match_service.test.mjs tools/v132_engine/connection.test.mjs tools/v132_engine/social.test.mjs tools/v132_engine/profiles.test.mjs tools/v132_engine/arena_gateway.test.mjs tools/arena_v150_server/free_room_adapter.test.mjs
