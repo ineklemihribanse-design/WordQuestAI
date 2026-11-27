@@ -906,7 +906,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The train's ____ from platform six is scheduled for 14:40.",
+    "prompt": "The train's ____ from platform six is scheduled for 14:40; that is when it leaves the station.",
     "options": [
       "departure",
       "arrival",
@@ -915,7 +915,7 @@ export const b121500Direct = [
       "delay"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: departure. Seyahat terimlerini kullanım amaçlarına göre ayır."
+    "explanation": "Doğru seçenek: departure. Departure, trenin istasyondan ayrılışı veya hareketidir; arrival ise varıştır."
   },
   {
     "id": "wq150_b12_1500_direct_b1_11_2",
@@ -1032,7 +1032,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Those thin summer shoes are not ____ for walking on ice.",
+    "prompt": "Those thin summer shoes are not ____ for walking on ice because their smooth soles offer no grip.",
     "options": [
       "reliable",
       "available",
@@ -1041,7 +1041,7 @@ export const b121500Direct = [
       "comfortable"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: suitable. Güvenilirlik, müsaitlik, uygunluk, fiyat ve rahatlık kavramları farklıdır."
+    "explanation": "Doğru seçenek: suitable. Suitable, belirli bir amaç için elverişli veya uygun demektir; burada kaygan zeminde güvenli kullanıma uygunluk sorgulanır."
   },
   {
     "id": "wq150_b12_1500_direct_b1_12_4",
@@ -1086,7 +1086,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Can you ____ the cracked handle rather than buy a new one?",
+    "prompt": "Can you ____ the cracked handle by joining the broken pieces, rather than fitting a new handle?",
     "options": [
       "repair",
       "replace",
@@ -1095,7 +1095,7 @@ export const b121500Direct = [
       "maintain"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: repair. Onarım, değişim, ayar, inceleme ve bakım eylemlerini ayırt et."
+    "explanation": "Doğru seçenek: repair. Repair, hasarlı bir şeyi onarmak demektir; replace ise yenisiyle değiştirmektir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_13_2",
@@ -1176,7 +1176,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "You need written ____ before using the school's video equipment.",
+    "prompt": "You need written ____ from the head teacher allowing you to use the school's video equipment.",
     "options": [
       "permission",
       "advice",
@@ -1185,7 +1185,7 @@ export const b121500Direct = [
       "warning"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: permission. İletişimin amacına uygun isim seçilir."
+    "explanation": "Doğru seçenek: permission. Permission, bir şeyi yapmaya verilen izin demektir; advice tavsiye, instruction talimat anlamına gelir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_14_2",
@@ -1194,7 +1194,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The tutor gave me useful ____ about preparing for interviews.",
+    "prompt": "The tutor gave me useful ____ about preparing for interviews, suggesting ways to practise without telling me what I must do.",
     "options": [
       "permission",
       "advice",
@@ -1203,7 +1203,7 @@ export const b121500Direct = [
       "warning"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: advice. İletişimin amacına uygun isim seçilir."
+    "explanation": "Doğru seçenek: advice. Advice, tavsiye demektir ve sayılamayan isimdir; burada zorunlu talimat değil, öneri söz konusudur."
   },
   {
     "id": "wq150_b12_1500_direct_b1_14_3",
@@ -1266,7 +1266,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The ____ listened quietly to the lecture from their seats.",
+    "prompt": "The ____ consisted of fifty people who sat quietly and listened to the lecturer.",
     "options": [
       "audience",
       "participant",
@@ -1275,7 +1275,7 @@ export const b121500Direct = [
       "speaker"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: audience. Etkinlikteki görev ve katılım türleri farklıdır."
+    "explanation": "Doğru seçenek: audience. Audience, bir konuşmayı veya gösteriyi dinleyen ya da izleyen topluluktur."
   },
   {
     "id": "wq150_b12_1500_direct_b1_15_2",
@@ -1284,7 +1284,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Each ____ in the competition receives a number to wear.",
+    "prompt": "Each registered ____ who takes part in the competition receives a number, unlike people who only watch or help run the event.",
     "options": [
       "audience",
       "participant",
@@ -1293,7 +1293,7 @@ export const b121500Direct = [
       "speaker"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: participant. Etkinlikteki görev ve katılım türleri farklıdır."
+    "explanation": "Doğru seçenek: participant. Participant, bir etkinliğe katılan kişi demektir; burada yarışan kişiler kastedilir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_15_3",
