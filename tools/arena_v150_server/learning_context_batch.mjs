@@ -4731,16 +4731,16 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "These bananas are yellow and ready to eat; they are ____.",
+    "prompt": "These bananas have become yellow, soft and sweet as they matured; they are now ____.",
     "options": [
       "ripe",
-      "raw",
+      "unripe",
       "frozen",
       "stale",
       "burnt"
     ],
     "correct": 0,
-    "explanation": "ripe: olgun. Diğer seçenekler: raw: çiğ; frozen: donmuş; stale: bayat; burnt: yanmış."
+    "explanation": "ripe: olgun. Diğer seçenekler: unripe: olgunlaşmamış; frozen: donmuş; stale: bayat; burnt: yanmış."
   },
   {
     "id": "wq150_nov26_lex15_15_2",
@@ -4748,16 +4748,16 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Do not eat the chicken before cooking it; it is still ____.",
+    "prompt": "The chicken has not been cooked at all; it is still ____.",
     "options": [
       "ripe",
       "raw",
-      "frozen",
+      "grilled",
       "stale",
       "burnt"
     ],
     "correct": 1,
-    "explanation": "raw: çiğ. Diğer seçenekler: ripe: olgun; frozen: donmuş; stale: bayat; burnt: yanmış."
+    "explanation": "raw: çiğ. Diğer seçenekler: ripe: olgun; grilled: ızgarada pişirilmiş; stale: bayat; burnt: yanmış."
   },
   {
     "id": "wq150_nov26_lex15_15_3",
@@ -4867,7 +4867,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "She carries her lipstick and keys in a small ____ with a shoulder strap.",
+    "prompt": "In American English, a woman's small handbag for carrying keys and lipstick is often called a ____.",
     "options": [
       "suitcase",
       "backpack",
@@ -4876,7 +4876,7 @@ export const contextQuestions = [
       "briefcase"
     ],
     "correct": 3,
-    "explanation": "purse: el çantası. Diğer seçenekler: suitcase: bavul; backpack: sırt çantası; wallet: cüzdan; briefcase: evrak çantası."
+    "explanation": "Purse Amerikan İngilizcesinde el çantası; Britanya İngilizcesinde genellikle küçük para cüzdanıdır."
   },
   {
     "id": "wq150_nov26_lex15_16_5",
@@ -4918,7 +4918,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I paid £10 for a £7 meal and received £3 in ____.",
+    "prompt": "The cashier returned £3 as my ____ after I paid £10 for a £7 meal.",
     "options": [
       "cash",
       "change",
@@ -4986,7 +4986,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Walk up the twenty stone ____ to the entrance.",
+    "prompt": "Walk up the stone ____ to the entrance; there are twenty steps.",
     "options": [
       "stairs",
       "lift",
@@ -4995,7 +4995,7 @@ export const contextQuestions = [
       "ladder"
     ],
     "correct": 0,
-    "explanation": "stairs: merdiven basamakları. Diğer seçenekler: lift: asansör; escalator: yürüyen merdiven; ramp: rampa; ladder: seyyar merdiven."
+    "explanation": "Stairs: merdiven; steps: tek tek basamaklar. Lift: asansör; escalator: yürüyen merdiven; ramp: rampa; ladder: seyyar merdiven."
   },
   {
     "id": "wq150_nov26_lex15_18_2",
@@ -5020,7 +5020,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The moving ____ carries shoppers up to the next floor.",
+    "prompt": "The moving ____ has steps that carry shoppers up to the next floor.",
     "options": [
       "stairs",
       "lift",
@@ -5092,12 +5092,12 @@ export const contextQuestions = [
     "options": [
       "queue",
       "crowd",
-      "audience",
+      "committee",
       "team",
       "staff"
     ],
     "correct": 1,
-    "explanation": "crowd: kalabalık. Diğer seçenekler: queue: kuyruk; audience: izleyici topluluğu; team: takım; staff: personel."
+    "explanation": "crowd: kalabalık. Diğer seçenekler: queue: kuyruk; committee: komite; team: takım; staff: personel."
   },
   {
     "id": "wq150_nov26_lex15_19_3",
@@ -5108,13 +5108,13 @@ export const contextQuestions = [
     "prompt": "The theatre ____ applauded at the end of the play.",
     "options": [
       "queue",
-      "crowd",
+      "cast",
       "audience",
       "team",
       "staff"
     ],
     "correct": 2,
-    "explanation": "audience: izleyici topluluğu. Diğer seçenekler: queue: kuyruk; crowd: kalabalık; team: takım; staff: personel."
+    "explanation": "audience: izleyici topluluğu. Diğer seçenekler: queue: kuyruk; cast: oyuncu kadrosu; team: takım; staff: personel."
   },
   {
     "id": "wq150_nov26_lex15_19_4",
@@ -5190,16 +5190,16 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The ____ advertised the used bicycle for £80.",
+    "prompt": "The ____ offered the used bicycle for £80 in a sale to a customer.",
     "options": [
       "borrower",
       "lender",
       "seller",
       "buyer",
-      "owner"
+      "renter"
     ],
     "correct": 2,
-    "explanation": "seller: satıcı. Diğer seçenekler: borrower: ödünç alan; lender: ödünç veren; buyer: alıcı; owner: sahip."
+    "explanation": "seller: satıcı. Diğer seçenekler: borrower: ödünç alan; lender: ödünç veren; buyer: alıcı; renter: kiracı."
   },
   {
     "id": "wq150_nov26_lex15_20_4",
@@ -5301,7 +5301,7 @@ export const contextQuestions = [
       "hotel"
     ],
     "correct": 3,
-    "explanation": "hostel: hostel. Diğer seçenekler: flat: daire; cottage: küçük kır evi; tent: çadır; hotel: otel."
+    "explanation": "Youth hostel: özellikle gezginlere ortak yatakhanelerde uygun fiyatlı konaklama sunan gençlik hosteli."
   },
   {
     "id": "wq150_nov26_lex15_21_5",
@@ -5417,10 +5417,10 @@ export const contextQuestions = [
       "forecast",
       "measurement",
       "calculation",
-      "assessment"
+      "invoice"
     ],
     "correct": 0,
-    "explanation": "estimate: tahmin. Diğer seçenekler: forecast: geleceğe yönelik öngörü; measurement: ölçüm; calculation: hesaplama; assessment: değerlendirme."
+    "explanation": "estimate: tahmin. Diğer seçenekler: forecast: geleceğe yönelik öngörü; measurement: ölçüm; calculation: hesaplama; invoice: fatura."
   },
   {
     "id": "wq150_nov26_lex15_23_2",
@@ -5481,14 +5481,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "The panel made an overall ____ of the candidate's suitability for the role.",
     "options": [
-      "estimate",
+      "receipt",
       "forecast",
       "measurement",
       "calculation",
       "assessment"
     ],
     "correct": 4,
-    "explanation": "assessment: değerlendirme. Diğer seçenekler: estimate: tahmin; forecast: geleceğe yönelik öngörü; measurement: ölçüm; calculation: hesaplama."
+    "explanation": "assessment: değerlendirme. Diğer seçenekler: receipt: makbuz; forecast: geleceğe yönelik öngörü; measurement: ölçüm; calculation: hesaplama."
   },
   {
     "id": "wq150_nov26_lex15_24_1",
@@ -5670,12 +5670,12 @@ export const contextQuestions = [
     "options": [
       "encourage",
       "discourage",
-      "persuade",
+      "ignore",
       "remind",
       "warn"
     ],
     "correct": 0,
-    "explanation": "encourage: teşvik etmek. Diğer seçenekler: discourage: caydırmak; persuade: ikna etmek; remind: hatırlatmak; warn: uyarmak."
+    "explanation": "encourage: teşvik etmek. Diğer seçenekler: discourage: caydırmak; ignore: görmezden gelmek; remind: hatırlatmak; warn: uyarmak."
   },
   {
     "id": "wq150_nov26_lex15_26_2",
@@ -5702,14 +5702,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "After a long discussion, she managed to ____ him to change his mind.",
     "options": [
-      "encourage",
+      "confuse",
       "discourage",
       "persuade",
       "remind",
       "warn"
     ],
     "correct": 2,
-    "explanation": "persuade: ikna etmek. Diğer seçenekler: encourage: teşvik etmek; discourage: caydırmak; remind: hatırlatmak; warn: uyarmak."
+    "explanation": "persuade: ikna etmek. Diğer seçenekler: confuse: kafasını karıştırmak; discourage: caydırmak; remind: hatırlatmak; warn: uyarmak."
   },
   {
     "id": "wq150_nov26_lex15_26_4",
@@ -5739,11 +5739,11 @@ export const contextQuestions = [
       "encourage",
       "discourage",
       "persuade",
-      "remind",
+      "welcome",
       "warn"
     ],
     "correct": 4,
-    "explanation": "warn: uyarmak. Diğer seçenekler: encourage: teşvik etmek; discourage: caydırmak; persuade: ikna etmek; remind: hatırlatmak."
+    "explanation": "warn: uyarmak. Diğer seçenekler: encourage: teşvik etmek; discourage: caydırmak; persuade: ikna etmek; welcome: karşılamak."
   },
   {
     "id": "wq150_nov26_lex15_27_1",
@@ -5774,10 +5774,10 @@ export const contextQuestions = [
       "surplus",
       "supply",
       "demand",
-      "stock"
+      "deficit"
     ],
     "correct": 1,
-    "explanation": "surplus: fazlalık. Diğer seçenekler: shortage: kıtlık; supply: arz; demand: talep; stock: stok."
+    "explanation": "surplus: fazlalık. Diğer seçenekler: shortage: kıtlık; supply: arz; demand: talep; deficit: açık/eksiklik."
   },
   {
     "id": "wq150_nov26_lex15_27_3",
@@ -5994,11 +5994,11 @@ export const contextQuestions = [
       "accident",
       "incident",
       "injury",
-      "damage",
+      "inspection",
       "fault"
     ],
     "correct": 4,
-    "explanation": "fault: arıza/kusur. Diğer seçenekler: accident: kaza; incident: olay; injury: yaralanma; damage: hasar."
+    "explanation": "fault: arıza/kusur. Diğer seçenekler: accident: kaza; incident: olay; injury: yaralanma; inspection: inceleme."
   },
   {
     "id": "wq150_nov26_lex15_30_1",
@@ -6060,13 +6060,13 @@ export const contextQuestions = [
     "prompt": "The committee's formal ____ was to appoint an independent reviewer.",
     "options": [
       "advice",
-      "instruction",
+      "observation",
       "permission",
       "recommendation",
       "requirement"
     ],
     "correct": 3,
-    "explanation": "recommendation: öneri. Diğer seçenekler: advice: tavsiye; instruction: talimat; permission: izin; requirement: gereklilik."
+    "explanation": "recommendation: öneri. Diğer seçenekler: advice: tavsiye; observation: gözlem; permission: izin; requirement: gereklilik."
   },
   {
     "id": "wq150_nov26_lex15_30_5",
@@ -6095,12 +6095,12 @@ export const contextQuestions = [
     "options": [
       "adapt",
       "adopt",
-      "adjust",
+      "record",
       "attach",
       "assemble"
     ],
     "correct": 0,
-    "explanation": "adapt: uyarlamak. Diğer seçenekler: adopt: benimsemek; adjust: ayarlamak; attach: eklemek; assemble: birleştirmek."
+    "explanation": "adapt: uyarlamak. Diğer seçenekler: adopt: benimsemek; record: kaydetmek; attach: eklemek; assemble: birleştirmek."
   },
   {
     "id": "wq150_nov26_lex15_31_2",
@@ -6264,13 +6264,13 @@ export const contextQuestions = [
     "prompt": "The editor revised the wording to ____ the clarity of the paragraph.",
     "options": [
       "improve",
-      "increase",
+      "reduce",
       "expand",
       "extend",
       "restore"
     ],
     "correct": 0,
-    "explanation": "improve: iyileştirmek. Diğer seçenekler: increase: artırmak; expand: genişletmek; extend: uzatmak; restore: eski haline getirmek."
+    "explanation": "improve: iyileştirmek. Diğer seçenekler: reduce: azaltmak; expand: genişletmek; extend: uzatmak; restore: eski haline getirmek."
   },
   {
     "id": "wq150_nov26_lex15_33_2",
@@ -6312,16 +6312,16 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The library will ____ its closing time from six to eight.",
+    "prompt": "The library will ____ its opening hours by two hours so that it closes at eight rather than six.",
     "options": [
       "improve",
-      "increase",
+      "shorten",
       "expand",
       "extend",
       "restore"
     ],
     "correct": 3,
-    "explanation": "extend: uzatmak. Diğer seçenekler: improve: iyileştirmek; increase: artırmak; expand: genişletmek; restore: eski haline getirmek."
+    "explanation": "extend: uzatmak. Diğer seçenekler: improve: iyileştirmek; shorten: kısaltmak; expand: genişletmek; restore: eski haline getirmek."
   },
   {
     "id": "wq150_nov26_lex15_33_5",
@@ -6367,12 +6367,12 @@ export const contextQuestions = [
     "options": [
       "reward",
       "award",
-      "prize",
+      "fee",
       "salary",
       "bonus"
     ],
     "correct": 1,
-    "explanation": "award: ödül/ödüllendirme. Diğer seçenekler: reward: ödül; prize: yarışma ödülü; salary: maaş; bonus: ek ödeme."
+    "explanation": "award: ödül/ödüllendirme. Diğer seçenekler: reward: ödül; fee: ücret; salary: maaş; bonus: ek ödeme."
   },
   {
     "id": "wq150_nov26_lex15_34_3",
@@ -6383,13 +6383,13 @@ export const contextQuestions = [
     "prompt": "The winner of the quiz took home the first ____ of £500.",
     "options": [
       "reward",
-      "award",
+      "fee",
       "prize",
       "salary",
       "bonus"
     ],
     "correct": 2,
-    "explanation": "prize: yarışma ödülü. Diğer seçenekler: reward: ödül; award: ödül/ödüllendirme; salary: maaş; bonus: ek ödeme."
+    "explanation": "prize: yarışma ödülü. Diğer seçenekler: reward: ödül; fee: ücret; salary: maaş; bonus: ek ödeme."
   },
   {
     "id": "wq150_nov26_lex15_34_4",
@@ -6601,16 +6601,16 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The model rests on the untested ____ that prices will remain stable.",
+    "prompt": "For simplicity, the model takes stable prices as a starting ____ without attempting to test that premise.",
     "options": [
       "assumption",
-      "hypothesis",
+      "measurement",
       "theory",
       "prediction",
       "observation"
     ],
     "correct": 0,
-    "explanation": "assumption: varsayım. Diğer seçenekler: hypothesis: sınanabilir hipotez; theory: kuramsal açıklama; prediction: öngörü; observation: gözlem."
+    "explanation": "assumption: varsayım. Diğer seçenekler: measurement: ölçüm; theory: kuramsal açıklama; prediction: öngörü; observation: gözlem."
   },
   {
     "id": "wq150_nov26_lex15_37_2",
@@ -6790,14 +6790,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "Volunteers will ____ food parcels among the families at the collection point.",
     "options": [
-      "allocate",
+      "collect",
       "distribute",
       "redistribute",
       "retain",
       "withhold"
     ],
     "correct": 1,
-    "explanation": "distribute: dağıtmak. Diğer seçenekler: allocate: tahsis etmek; redistribute: yeniden dağıtmak; retain: elde tutmak; withhold: alıkoymak."
+    "explanation": "distribute: dağıtmak. Diğer seçenekler: collect: toplamak; redistribute: yeniden dağıtmak; retain: elde tutmak; withhold: alıkoymak."
   },
   {
     "id": "wq150_nov26_lex15_39_3",
@@ -6844,11 +6844,11 @@ export const contextQuestions = [
       "allocate",
       "distribute",
       "redistribute",
-      "retain",
+      "publish",
       "withhold"
     ],
     "correct": 4,
-    "explanation": "withhold: alıkoymak. Diğer seçenekler: allocate: tahsis etmek; distribute: dağıtmak; redistribute: yeniden dağıtmak; retain: elde tutmak."
+    "explanation": "withhold: alıkoymak. Diğer seçenekler: allocate: tahsis etmek; distribute: dağıtmak; redistribute: yeniden dağıtmak; publish: yayımlamak."
   },
   {
     "id": "wq150_nov26_lex15_40_1",
@@ -6911,12 +6911,12 @@ export const contextQuestions = [
     "options": [
       "exempt",
       "exclude",
-      "restrict",
+      "encourage",
       "prohibit",
       "regulate"
     ],
     "correct": 3,
-    "explanation": "prohibit: yasaklamak. Diğer seçenekler: exempt: muaf tutmak; exclude: dışlamak; restrict: kısıtlamak; regulate: düzenlemek."
+    "explanation": "prohibit: yasaklamak. Diğer seçenekler: exempt: muaf tutmak; exclude: dışlamak; encourage: teşvik etmek; regulate: düzenlemek."
   },
   {
     "id": "wq150_nov26_lex15_40_5",
@@ -7001,7 +7001,7 @@ export const contextQuestions = [
       "reinforce"
     ],
     "correct": 3,
-    "explanation": "reinstate: yeniden yürürlüğe koymak. Diğer seçenekler: revise: gözden geçirip değiştirmek; reverse: tersine çevirmek; revoke: resmen iptal etmek; reinforce: güçlendirmek."
+    "explanation": "Reinstate an employee: bir çalışanı önceki görevine iade etmek."
   },
   {
     "id": "wq150_nov26_lex15_41_5",
@@ -7030,12 +7030,12 @@ export const contextQuestions = [
     "options": [
       "convey",
       "interpret",
-      "clarify",
+      "misrepresent",
       "elaborate",
       "summarise"
     ],
     "correct": 0,
-    "explanation": "convey: iletmek. Diğer seçenekler: interpret: yorumlamak; clarify: açıklığa kavuşturmak; elaborate: ayrıntılandırmak; summarise: özetlemek."
+    "explanation": "convey: iletmek. Diğer seçenekler: interpret: yorumlamak; misrepresent: yanlış aktarmak; elaborate: ayrıntılandırmak; summarise: özetlemek."
   },
   {
     "id": "wq150_nov26_lex15_42_2",
@@ -7114,13 +7114,13 @@ export const contextQuestions = [
     "prompt": "All businesses must ____ with the statutory reporting requirements.",
     "options": [
       "comply",
-      "conform",
+      "disregard",
       "adhere",
       "deviate",
       "violate"
     ],
     "correct": 0,
-    "explanation": "comply: uyum göstermek. Diğer seçenekler: conform: biçimsel uyum sağlamak; adhere: sıkı bağlı kalmak; deviate: sapmak; violate: ihlal etmek."
+    "explanation": "comply: uyum göstermek. Diğer seçenekler: disregard: dikkate almamak; adhere: sıkı bağlı kalmak; deviate: sapmak; violate: ihlal etmek."
   },
   {
     "id": "wq150_nov26_lex15_43_2",
@@ -7148,13 +7148,13 @@ export const contextQuestions = [
     "prompt": "Throughout the trial, researchers must ____ strictly to the approved protocol.",
     "options": [
       "comply",
-      "conform",
+      "abandon",
       "adhere",
       "deviate",
       "violate"
     ],
     "correct": 2,
-    "explanation": "adhere: sıkı bağlı kalmak. Diğer seçenekler: comply: uyum göstermek; conform: biçimsel uyum sağlamak; deviate: sapmak; violate: ihlal etmek."
+    "explanation": "adhere: sıkı bağlı kalmak. Diğer seçenekler: comply: uyum göstermek; abandon: terk etmek; deviate: sapmak; violate: ihlal etmek."
   },
   {
     "id": "wq150_nov26_lex15_43_4",
@@ -7217,12 +7217,12 @@ export const contextQuestions = [
     "options": [
       "intact",
       "obsolete",
-      "redundant",
+      "portable",
       "defective",
       "incompatible"
     ],
     "correct": 1,
-    "explanation": "obsolete: eskimiş. Diğer seçenekler: intact: hasarsız; redundant: gereksiz; defective: arızalı; incompatible: uyumsuz."
+    "explanation": "obsolete: eskimiş. Diğer seçenekler: intact: hasarsız; portable: taşınabilir; defective: arızalı; incompatible: uyumsuz."
   },
   {
     "id": "wq150_nov26_lex15_44_3",
@@ -7324,7 +7324,7 @@ export const contextQuestions = [
       "attribute"
     ],
     "correct": 2,
-    "explanation": "accumulate: biriktirmek. Diğer seçenekler: attain: ulaşmak; acquire: edinmek; attest: doğruluğuna tanıklık etmek; attribute: atfetmek."
+    "explanation": "Accumulate burada geçişsiz fiil olarak birikmek anlamındadır; toz sensörün üzerinde zamanla birikir."
   },
   {
     "id": "wq150_nov26_lex15_45_4",
@@ -7387,12 +7387,12 @@ export const contextQuestions = [
     "options": [
       "assure",
       "ensure",
-      "insure",
+      "obtain",
       "reassure",
       "secure"
     ],
     "correct": 1,
-    "explanation": "ensure: sağlamak. Diğer seçenekler: assure: güvence vermek; insure: sigortalamak; reassure: yeniden güven vermek; secure: temin etmek."
+    "explanation": "ensure: sağlamak. Diğer seçenekler: assure: güvence vermek; obtain: elde etmek; reassure: yeniden güven vermek; secure: temin etmek."
   },
   {
     "id": "wq150_nov26_lex15_46_3",
@@ -7437,13 +7437,13 @@ export const contextQuestions = [
     "prompt": "The charity hopes to ____ sufficient funding through a competitive grant process.",
     "options": [
       "assure",
-      "ensure",
+      "withdraw",
       "insure",
       "reassure",
       "secure"
     ],
     "correct": 4,
-    "explanation": "secure: temin etmek. Diğer seçenekler: assure: güvence vermek; ensure: sağlamak; insure: sigortalamak; reassure: yeniden güven vermek."
+    "explanation": "secure: temin etmek. Diğer seçenekler: assure: güvence vermek; withdraw: geri çekmek; insure: sigortalamak; reassure: yeniden güven vermek."
   },
   {
     "id": "wq150_nov26_lex15_47_1",
@@ -7540,12 +7540,12 @@ export const contextQuestions = [
     "options": [
       "detect",
       "diagnose",
-      "identify",
+      "ignore",
       "monitor",
       "screen"
     ],
     "correct": 0,
-    "explanation": "detect: saptamak. Diğer seçenekler: diagnose: teşhis etmek; identify: kimliğini belirlemek; monitor: izlemek; screen: taramak."
+    "explanation": "detect: saptamak. Diğer seçenekler: diagnose: teşhis etmek; ignore: görmezden gelmek; monitor: izlemek; screen: taramak."
   },
   {
     "id": "wq150_nov26_lex15_48_2",
@@ -7557,12 +7557,12 @@ export const contextQuestions = [
     "options": [
       "detect",
       "diagnose",
-      "identify",
+      "treat",
       "monitor",
       "screen"
     ],
     "correct": 1,
-    "explanation": "diagnose: teşhis etmek. Diğer seçenekler: detect: saptamak; identify: kimliğini belirlemek; monitor: izlemek; screen: taramak."
+    "explanation": "diagnose: teşhis etmek. Diğer seçenekler: detect: saptamak; treat: tedavi etmek; monitor: izlemek; screen: taramak."
   },
   {
     "id": "wq150_nov26_lex15_48_3",
@@ -7643,11 +7643,11 @@ export const contextQuestions = [
       "acute",
       "chronic",
       "recurrent",
-      "persistent",
+      "temporary",
       "intermittent"
     ],
     "correct": 1,
-    "explanation": "chronic: kronik. Diğer seçenekler: acute: akut; recurrent: tekrarlayan; persistent: sürekli; intermittent: aralıklı."
+    "explanation": "chronic: kronik. Diğer seçenekler: acute: akut; recurrent: tekrarlayan; temporary: geçici; intermittent: aralıklı."
   },
   {
     "id": "wq150_nov26_lex15_49_3",
@@ -7657,14 +7657,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "The patient had ____ infections: three separate episodes with complete recovery between them.",
     "options": [
-      "acute",
+      "isolated",
       "chronic",
       "recurrent",
       "persistent",
       "continuous"
     ],
     "correct": 2,
-    "explanation": "Recurrent ayrı dönemler halinde tekrar eden demektir."
+    "explanation": "Recurrent ayrı dönemler halinde tekrar eden demektir. Yeni çeldirici: isolated: tekil."
   },
   {
     "id": "wq150_nov26_lex15_49_4",
@@ -7711,11 +7711,11 @@ export const contextQuestions = [
       "abundant",
       "scarce",
       "adequate",
-      "excessive",
+      "limited",
       "negligible"
     ],
     "correct": 0,
-    "explanation": "abundant: bol. Diğer seçenekler: scarce: kıt; adequate: yeterli; excessive: aşırı; negligible: ihmal edilebilir."
+    "explanation": "abundant: bol. Diğer seçenekler: scarce: kıt; adequate: yeterli; limited: sınırlı; negligible: ihmal edilebilir."
   },
   {
     "id": "wq150_nov26_lex15_50_2",
@@ -7845,13 +7845,13 @@ export const contextQuestions = [
     "prompt": "One third is written as the ____ 1/3.",
     "options": [
       "proportion",
-      "ratio",
+      "decimal",
       "percentage",
       "fraction",
       "remainder"
     ],
     "correct": 3,
-    "explanation": "fraction: kesir. Diğer seçenekler: proportion: oran; ratio: iki miktarın oranı; percentage: yüzde; remainder: kalan."
+    "explanation": "fraction: kesir. Diğer seçenekler: proportion: oran; decimal: ondalık sayı; percentage: yüzde; remainder: kalan."
   },
   {
     "id": "wq150_nov26_lex15_51_5",
