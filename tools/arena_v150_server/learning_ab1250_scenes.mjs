@@ -62,10 +62,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Maya planned to attend a pottery class at the community centre on Tuesday evening. Her usual bus was cancelled. She asked her neighbour for a lift. She arrived before the class started.\n\nWhat difficulty occurred?",
     "options": [
-      "His shoes were too tight",
+      "Her shoes were too tight",
       "The main entrance was closed",
       "Her usual bus was cancelled",
-      "He had left his guitar at home",
+      "She had left her guitar at home",
       "Her ticket was missing"
     ],
     "correct": 2,
@@ -186,7 +186,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Maya deal with the problem at the community centre?\nB: Her usual bus was cancelled. ____\nA: She arrived before the class started.",
+    "prompt": "A: How did Maya deal with the problem at the community centre?\nB: Her usual bus was cancelled. ____.\nA: And what happened as a result?\nB: She arrived before the class started.",
     "options": [
       "She checked the timetable for the following day",
       "She offered a neighbour a lift home",
@@ -258,7 +258,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Maya managed ____ complete the plan for a pottery class at the community centre after solving the difficulty.",
+    "prompt": "Maya decided ____ attend a pottery class at the community centre.",
     "options": [
       "for",
       "of",
@@ -267,7 +267,7 @@ export const ab1250Scenes = [
       "to"
     ],
     "correct": 4,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Decide + to + fiilin yalın hâli, karar verilen eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0016",
@@ -334,9 +334,9 @@ export const ab1250Scenes = [
     "options": [
       "His shoes were too tight",
       "The main entrance was closed",
-      "Her usual bus was cancelled",
+      "His usual bus was cancelled",
       "He had left his guitar at home",
-      "Her ticket was missing"
+      "His ticket was missing"
     ],
     "correct": 3,
     "explanation": "Metne göre doğru bilgi \"He had left his guitar at home\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -456,7 +456,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Owen deal with the problem at the music school?\nB: He had left his guitar at home. ____\nA: He was able to practise with the group.",
+    "prompt": "A: How did Owen deal with the problem at the music school?\nB: He had left his guitar at home. ____.\nA: And what happened as a result?\nB: He was able to practise with the group.",
     "options": [
       "He asked the teacher to explain guitar chords",
       "He bought a new set of guitar strings",
@@ -528,7 +528,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Owen managed ____ complete the plan for a guitar lesson at the music school after solving the difficulty.",
+    "prompt": "Owen was hoping ____ attend a guitar lesson at the music school.",
     "options": [
       "of",
       "with",
@@ -537,7 +537,7 @@ export const ab1250Scenes = [
       "for"
     ],
     "correct": 3,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Hope + to + fiilin yalın hâli, gerçekleşmesi umulan eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0031",
@@ -602,10 +602,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Holly planned to attend a school play at the theatre hall on Friday evening. Her ticket was missing. She showed her booking email at the door. The staff found her name on their list.\n\nWhat difficulty occurred?",
     "options": [
-      "His shoes were too tight",
+      "Her shoes were too tight",
       "The main entrance was closed",
       "Her usual bus was cancelled",
-      "He had left his guitar at home",
+      "She had left her guitar at home",
       "Her ticket was missing"
     ],
     "correct": 4,
@@ -726,7 +726,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Holly deal with the problem at the theatre hall?\nB: Her ticket was missing. ____\nA: The staff found her name on their list.",
+    "prompt": "A: How did Holly deal with the problem at the theatre hall?\nB: Her ticket was missing. ____.\nA: And what happened as a result?\nB: The staff found her name on their list.",
     "options": [
       "She asked for a refund at the box office",
       "She showed a ticket for a different performance",
@@ -798,7 +798,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Holly managed ____ complete the plan for a school play at the theatre hall after solving the difficulty.",
+    "prompt": "Holly made an effort ____ attend a school play at the theatre hall.",
     "options": [
       "with",
       "at",
@@ -807,7 +807,7 @@ export const ab1250Scenes = [
       "of"
     ],
     "correct": 2,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Make an effort + to + fiilin yalın hâli, bir eylem için çaba göstermeyi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0046",
@@ -874,9 +874,9 @@ export const ab1250Scenes = [
     "options": [
       "His shoes were too tight",
       "The main entrance was closed",
-      "Her usual bus was cancelled",
+      "His usual bus was cancelled",
       "He had left his guitar at home",
-      "Her ticket was missing"
+      "His ticket was missing"
     ],
     "correct": 0,
     "explanation": "Metne göre doğru bilgi \"His shoes were too tight\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -996,7 +996,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Felix deal with the problem at the youth club?\nB: His shoes were too tight. ____\nA: He could dance without pain.",
+    "prompt": "A: How did Felix deal with the problem at the youth club?\nB: His shoes were too tight. ____.\nA: And what happened as a result?\nB: He could dance without pain.",
     "options": [
       "He asked for a shorter dance routine",
       "He tightened the laces on the same shoes",
@@ -1068,7 +1068,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Felix managed ____ complete the plan for a dance workshop at the youth club after solving the difficulty.",
+    "prompt": "Felix was determined ____ attend a dance workshop at the youth club.",
     "options": [
       "at",
       "to",
@@ -1077,7 +1077,7 @@ export const ab1250Scenes = [
       "with"
     ],
     "correct": 1,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Be determined + to + fiilin yalın hâli, bir şeyi yapmaya kararlı olmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0061",
@@ -1142,10 +1142,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Nora planned to attend a painting exhibition at the town gallery on Sunday afternoon. The main entrance was closed. She followed signs to the side entrance. She entered the building easily.\n\nWhat difficulty occurred?",
     "options": [
-      "His shoes were too tight",
+      "Her shoes were too tight",
       "The main entrance was closed",
       "Her usual bus was cancelled",
-      "He had left his guitar at home",
+      "She had left her guitar at home",
       "Her ticket was missing"
     ],
     "correct": 1,
@@ -1266,7 +1266,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Nora deal with the problem at the town gallery?\nB: The main entrance was closed. ____\nA: She entered the building easily.",
+    "prompt": "A: How did Nora deal with the problem at the town gallery?\nB: The main entrance was closed. ____.\nA: And what happened as a result?\nB: She entered the building easily.",
     "options": [
       "She waited outside the closed entrance",
       "She asked when the gallery would reopen",
@@ -1338,7 +1338,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Nora managed ____ complete the plan for a painting exhibition at the town gallery after solving the difficulty.",
+    "prompt": "Nora managed ____ attend a painting exhibition at the town gallery.",
     "options": [
       "to",
       "for",
@@ -1347,7 +1347,7 @@ export const ab1250Scenes = [
       "at"
     ],
     "correct": 0,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Manage + to + fiilin yalın hâli, bir eylemi zorluğa rağmen başarmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0076",
@@ -1536,7 +1536,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Leo deal with the problem at the clothing shop?\nB: The first pair was too long. ____\nA: The second pair fitted him properly.",
+    "prompt": "A: How did Leo deal with the problem at the clothing shop?\nB: The first pair was too long. ____.\nA: And what happened as a result?\nB: The second pair fitted him properly.",
     "options": [
       "He asked for a longer pair in the same size",
       "He chose a different colour in the same length",
@@ -1608,7 +1608,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Leo managed ____ complete the plan for a pair of school trousers at the clothing shop after solving the difficulty.",
+    "prompt": "Leo decided ____ buy a pair of school trousers at the clothing shop.",
     "options": [
       "for",
       "of",
@@ -1617,7 +1617,7 @@ export const ab1250Scenes = [
       "to"
     ],
     "correct": 4,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Decide + to + fiilin yalın hâli, karar verilen eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0091",
@@ -1806,7 +1806,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Isla deal with the problem at the electrical shop?\nB: The display lamp did not work. ____\nA: The replacement lamp worked perfectly.",
+    "prompt": "A: How did Isla deal with the problem at the electrical shop?\nB: The display lamp did not work. ____.\nA: And what happened as a result?\nB: The replacement lamp worked perfectly.",
     "options": [
       "She asked for the price of a replacement bulb",
       "She looked at the display lamp's colour",
@@ -1878,7 +1878,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Isla managed ____ complete the plan for a desk lamp at the electrical shop after solving the difficulty.",
+    "prompt": "Isla was hoping ____ buy a desk lamp at the electrical shop.",
     "options": [
       "of",
       "with",
@@ -1887,7 +1887,7 @@ export const ab1250Scenes = [
       "for"
     ],
     "correct": 3,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Hope + to + fiilin yalın hâli, gerçekleşmesi umulan eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0106",
@@ -2076,7 +2076,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Jack deal with the problem at the supermarket?\nB: The bag had a hole in it. ____\nA: No flour spilled into his shopping bag.",
+    "prompt": "A: How did Jack deal with the problem at the supermarket?\nB: The bag had a hole in it. ____.\nA: And what happened as a result?\nB: No flour spilled into his shopping bag.",
     "options": [
       "He asked the assistant to weigh the damaged bag",
       "He put the damaged bag in the basket",
@@ -2148,7 +2148,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Jack managed ____ complete the plan for a bag of flour at the supermarket after solving the difficulty.",
+    "prompt": "Jack made an effort ____ buy a bag of flour at the supermarket.",
     "options": [
       "with",
       "at",
@@ -2157,7 +2157,7 @@ export const ab1250Scenes = [
       "of"
     ],
     "correct": 2,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Make an effort + to + fiilin yalın hâli, bir eylem için çaba göstermeyi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0121",
@@ -2346,7 +2346,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Eva deal with the problem at the stationery store?\nB: The blue notebooks were sold out. ____\nA: She had a notebook for her afternoon lesson.",
+    "prompt": "A: How did Eva deal with the problem at the stationery store?\nB: The blue notebooks were sold out. ____.\nA: And what happened as a result?\nB: She had a notebook for her afternoon lesson.",
     "options": [
       "She asked when the blue notebooks would return",
       "She bought a green pen instead of a notebook",
@@ -2418,7 +2418,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Eva managed ____ complete the plan for a notebook at the stationery store after solving the difficulty.",
+    "prompt": "Eva was determined ____ buy a notebook at the stationery store.",
     "options": [
       "at",
       "to",
@@ -2427,7 +2427,7 @@ export const ab1250Scenes = [
       "with"
     ],
     "correct": 1,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Be determined + to + fiilin yalın hâli, bir şeyi yapmaya kararlı olmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0136",
@@ -2616,7 +2616,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Adam deal with the problem at the bakery?\nB: The largest cake cost too much. ____\nA: He stayed within his budget.",
+    "prompt": "A: How did Adam deal with the problem at the bakery?\nB: The largest cake cost too much. ____.\nA: And what happened as a result?\nB: He stayed within his budget.",
     "options": [
       "He asked how many candles the large cake held",
       "He ordered an extra cake at full price",
@@ -2688,7 +2688,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Adam managed ____ complete the plan for a birthday cake at the bakery after solving the difficulty.",
+    "prompt": "Adam managed ____ buy a birthday cake at the bakery.",
     "options": [
       "to",
       "for",
@@ -2697,7 +2697,7 @@ export const ab1250Scenes = [
       "at"
     ],
     "correct": 0,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Manage + to + fiilin yalın hâli, bir eylemi zorluğa rağmen başarmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0151",
@@ -2762,10 +2762,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Rosa planned to attend an eye test at the local clinic on Monday morning. She was unsure which room to visit. She asked the receptionist for directions. She found the correct room immediately.\n\nWhat difficulty occurred?",
     "options": [
-      "His instructor was running late",
+      "Her instructor was running late",
       "She could not find her appointment letter",
       "She was unsure which room to visit",
-      "His appointment card showed the wrong date",
+      "Her appointment card showed the wrong date",
       "She had forgotten her swimming cap"
     ],
     "correct": 2,
@@ -2886,7 +2886,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Rosa deal with the problem at the local clinic?\nB: She was unsure which room to visit. ____\nA: She found the correct room immediately.",
+    "prompt": "A: How did Rosa deal with the problem at the local clinic?\nB: She was unsure which room to visit. ____.\nA: And what happened as a result?\nB: She found the correct room immediately.",
     "options": [
       "She asked the receptionist how much the test cost",
       "She read an eye-care leaflet in the waiting area",
@@ -2958,7 +2958,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Rosa managed ____ complete the plan for an eye test at the local clinic after solving the difficulty.",
+    "prompt": "Rosa decided ____ attend an eye test at the local clinic.",
     "options": [
       "for",
       "of",
@@ -2967,7 +2967,7 @@ export const ab1250Scenes = [
       "to"
     ],
     "correct": 4,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Decide + to + fiilin yalın hâli, karar verilen eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0166",
@@ -3033,10 +3033,10 @@ export const ab1250Scenes = [
     "prompt": "Theo planned to attend a dental check-up at the dental practice on Tuesday afternoon. His appointment card showed the wrong date. He phoned the practice to check the booking. The assistant confirmed the correct date.\n\nWhat difficulty occurred?",
     "options": [
       "His instructor was running late",
-      "She could not find her appointment letter",
-      "She was unsure which room to visit",
+      "He could not find his appointment letter",
+      "He was unsure which room to visit",
       "His appointment card showed the wrong date",
-      "She had forgotten her swimming cap"
+      "He had forgotten his swimming cap"
     ],
     "correct": 3,
     "explanation": "Metne göre doğru bilgi \"His appointment card showed the wrong date\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -3156,7 +3156,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Theo deal with the problem at the dental practice?\nB: His appointment card showed the wrong date. ____\nA: The assistant confirmed the correct date.",
+    "prompt": "A: How did Theo deal with the problem at the dental practice?\nB: His appointment card showed the wrong date. ____.\nA: And what happened as a result?\nB: The assistant confirmed the correct date.",
     "options": [
       "He asked about the cost of dental treatment",
       "He changed the appointment card without checking",
@@ -3228,7 +3228,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Theo managed ____ complete the plan for a dental check-up at the dental practice after solving the difficulty.",
+    "prompt": "Theo was hoping ____ attend a dental check-up at the dental practice.",
     "options": [
       "of",
       "with",
@@ -3237,7 +3237,7 @@ export const ab1250Scenes = [
       "for"
     ],
     "correct": 3,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Hope + to + fiilin yalın hâli, gerçekleşmesi umulan eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0181",
@@ -3302,10 +3302,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Lily planned to attend a swimming assessment at the indoor pool on Wednesday morning. She had forgotten her swimming cap. She bought a cap at the reception desk. She was allowed to enter the pool.\n\nWhat difficulty occurred?",
     "options": [
-      "His instructor was running late",
+      "Her instructor was running late",
       "She could not find her appointment letter",
       "She was unsure which room to visit",
-      "His appointment card showed the wrong date",
+      "Her appointment card showed the wrong date",
       "She had forgotten her swimming cap"
     ],
     "correct": 4,
@@ -3426,7 +3426,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Lily deal with the problem at the indoor pool?\nB: She had forgotten her swimming cap. ____\nA: She was allowed to enter the pool.",
+    "prompt": "A: How did Lily deal with the problem at the indoor pool?\nB: She had forgotten her swimming cap. ____.\nA: And what happened as a result?\nB: She was allowed to enter the pool.",
     "options": [
       "She bought swimming goggles instead of a cap",
       "She asked when the next session would begin",
@@ -3498,7 +3498,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Lily managed ____ complete the plan for a swimming assessment at the indoor pool after solving the difficulty.",
+    "prompt": "Lily made an effort ____ attend a swimming assessment at the indoor pool.",
     "options": [
       "with",
       "at",
@@ -3507,7 +3507,7 @@ export const ab1250Scenes = [
       "of"
     ],
     "correct": 2,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Make an effort + to + fiilin yalın hâli, bir eylem için çaba göstermeyi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0196",
@@ -3573,10 +3573,10 @@ export const ab1250Scenes = [
     "prompt": "Amir planned to attend a driving lesson at the training centre on Thursday afternoon. His instructor was running late. He waited in the seating area. The instructor arrived fifteen minutes later.\n\nWhat difficulty occurred?",
     "options": [
       "His instructor was running late",
-      "She could not find her appointment letter",
-      "She was unsure which room to visit",
+      "He could not find his appointment letter",
+      "He was unsure which room to visit",
       "His appointment card showed the wrong date",
-      "She had forgotten her swimming cap"
+      "He had forgotten his swimming cap"
     ],
     "correct": 0,
     "explanation": "Metne göre doğru bilgi \"His instructor was running late\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -3696,7 +3696,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Amir deal with the problem at the training centre?\nB: His instructor was running late. ____\nA: The instructor arrived fifteen minutes later.",
+    "prompt": "A: How did Amir deal with the problem at the training centre?\nB: His instructor was running late. ____.\nA: And what happened as a result?\nB: The instructor arrived fifteen minutes later.",
     "options": [
       "He asked for a refund and went home",
       "He left before the instructor arrived",
@@ -3768,7 +3768,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Amir managed ____ complete the plan for a driving lesson at the training centre after solving the difficulty.",
+    "prompt": "Amir was determined ____ attend a driving lesson at the training centre.",
     "options": [
       "at",
       "to",
@@ -3777,7 +3777,7 @@ export const ab1250Scenes = [
       "with"
     ],
     "correct": 1,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Be determined + to + fiilin yalın hâli, bir şeyi yapmaya kararlı olmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0211",
@@ -3842,10 +3842,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Grace planned to attend a hearing test at the medical centre on Friday morning. She could not find her appointment letter. She opened the confirmation message on her phone. The nurse checked her booking details.\n\nWhat difficulty occurred?",
     "options": [
-      "His instructor was running late",
+      "Her instructor was running late",
       "She could not find her appointment letter",
       "She was unsure which room to visit",
-      "His appointment card showed the wrong date",
+      "Her appointment card showed the wrong date",
       "She had forgotten her swimming cap"
     ],
     "correct": 1,
@@ -3966,7 +3966,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Grace deal with the problem at the medical centre?\nB: She could not find her appointment letter. ____\nA: The nurse checked her booking details.",
+    "prompt": "A: How did Grace deal with the problem at the medical centre?\nB: She could not find her appointment letter. ____.\nA: And what happened as a result?\nB: The nurse checked her booking details.",
     "options": [
       "She looked at an old message from another clinic",
       "She asked for general hearing-care advice",
@@ -4038,7 +4038,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Grace managed ____ complete the plan for a hearing test at the medical centre after solving the difficulty.",
+    "prompt": "Grace managed ____ attend a hearing test at the medical centre.",
     "options": [
       "to",
       "for",
@@ -4047,7 +4047,7 @@ export const ab1250Scenes = [
       "at"
     ],
     "correct": 0,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Manage + to + fiilin yalın hâli, bir eylemi zorluğa rağmen başarmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0226",
@@ -4236,7 +4236,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ben deal with the problem at the post office?\nB: He had brought the wrong collection code. ____\nA: The clerk gave him the parcel.",
+    "prompt": "A: How did Ben deal with the problem at the post office?\nB: He had brought the wrong collection code. ____.\nA: And what happened as a result?\nB: The clerk gave him the parcel.",
     "options": [
       "He read the delivery company's advertising leaflet",
       "He gave the clerk the incorrect code again",
@@ -4308,7 +4308,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Ben managed ____ complete the plan for a parcel collection at the post office after solving the difficulty.",
+    "prompt": "Ben decided ____ complete a parcel collection at the post office.",
     "options": [
       "for",
       "of",
@@ -4317,7 +4317,7 @@ export const ab1250Scenes = [
       "to"
     ],
     "correct": 4,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Decide + to + fiilin yalın hâli, karar verilen eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0241",
@@ -4384,9 +4384,9 @@ export const ab1250Scenes = [
     "options": [
       "She had lost her paper receipt",
       "The first copy did not fit the lock",
-      "He had brought the wrong collection code",
+      "She had brought the wrong collection code",
       "The return desk was already closed",
-      "His front tyre had a small hole"
+      "Her front tyre had a small hole"
     ],
     "correct": 3,
     "explanation": "Metne göre doğru bilgi \"The return desk was already closed\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -4506,7 +4506,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Zoe deal with the problem at the library?\nB: The return desk was already closed. ____\nA: The book was returned before its due date.",
+    "prompt": "A: How did Zoe deal with the problem at the library?\nB: The return desk was already closed. ____.\nA: And what happened as a result?\nB: The book was returned before its due date.",
     "options": [
       "She looked at the library's opening hours",
       "She took the book home until next week",
@@ -4578,7 +4578,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Zoe managed ____ complete the plan for a book return at the library after solving the difficulty.",
+    "prompt": "Zoe was hoping ____ complete a book return at the library.",
     "options": [
       "of",
       "with",
@@ -4587,7 +4587,7 @@ export const ab1250Scenes = [
       "for"
     ],
     "correct": 3,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Hope + to + fiilin yalın hâli, gerçekleşmesi umulan eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0256",
@@ -4652,7 +4652,7 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Miles planned to complete a bicycle repair at the cycle shop on Wednesday morning. His front tyre had a small hole. He asked the mechanic to fix the tyre. He could cycle home safely.\n\nWhat difficulty occurred?",
     "options": [
-      "She had lost her paper receipt",
+      "He had lost his paper receipt",
       "The first copy did not fit the lock",
       "He had brought the wrong collection code",
       "The return desk was already closed",
@@ -4776,7 +4776,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Miles deal with the problem at the cycle shop?\nB: His front tyre had a small hole. ____\nA: He could cycle home safely.",
+    "prompt": "A: How did Miles deal with the problem at the cycle shop?\nB: His front tyre had a small hole. ____.\nA: And what happened as a result?\nB: He could cycle home safely.",
     "options": [
       "He asked about the price of a new saddle",
       "He cleaned the bicycle frame",
@@ -4848,7 +4848,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Miles managed ____ complete the plan for a bicycle repair at the cycle shop after solving the difficulty.",
+    "prompt": "Miles made an effort ____ complete a bicycle repair at the cycle shop.",
     "options": [
       "with",
       "at",
@@ -4857,7 +4857,7 @@ export const ab1250Scenes = [
       "of"
     ],
     "correct": 2,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Make an effort + to + fiilin yalın hâli, bir eylem için çaba göstermeyi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0271",
@@ -5046,7 +5046,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Nina deal with the problem at the repair shop?\nB: She had lost her paper receipt. ____\nA: The worker located her repaired shoes.",
+    "prompt": "A: How did Nina deal with the problem at the repair shop?\nB: She had lost her paper receipt. ____.\nA: And what happened as a result?\nB: The worker located her repaired shoes.",
     "options": [
       "She asked how much a future repair would cost",
       "She showed a receipt for a different purchase",
@@ -5118,7 +5118,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Nina managed ____ complete the plan for a shoe collection at the repair shop after solving the difficulty.",
+    "prompt": "Nina was determined ____ complete a shoe collection at the repair shop.",
     "options": [
       "at",
       "to",
@@ -5127,7 +5127,7 @@ export const ab1250Scenes = [
       "with"
     ],
     "correct": 1,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Be determined + to + fiilin yalın hâli, bir şeyi yapmaya kararlı olmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0286",
@@ -5192,7 +5192,7 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Oscar planned to complete a key copy order at the hardware store on Saturday morning. The first copy did not fit the lock. He returned with the original key. The worker made a copy that opened the lock.\n\nWhat difficulty occurred?",
     "options": [
-      "She had lost her paper receipt",
+      "He had lost his paper receipt",
       "The first copy did not fit the lock",
       "He had brought the wrong collection code",
       "The return desk was already closed",
@@ -5316,7 +5316,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Oscar deal with the problem at the hardware store?\nB: The first copy did not fit the lock. ____\nA: The worker made a copy that opened the lock.",
+    "prompt": "A: How did Oscar deal with the problem at the hardware store?\nB: The first copy did not fit the lock. ____.\nA: And what happened as a result?\nB: The worker made a copy that opened the lock.",
     "options": [
       "He asked for a larger key ring",
       "He ordered another copy from the faulty copy",
@@ -5388,7 +5388,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Oscar managed ____ complete the plan for a key copy order at the hardware store after solving the difficulty.",
+    "prompt": "Oscar managed ____ complete a key copy order at the hardware store.",
     "options": [
       "to",
       "for",
@@ -5397,7 +5397,7 @@ export const ab1250Scenes = [
       "at"
     ],
     "correct": 0,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Manage + to + fiilin yalın hâli, bir eylemi zorluğa rağmen başarmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0301",
@@ -5462,10 +5462,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Freya planned to join a nature walk at the woodland gate on Monday morning. The path was muddy after the rain. She put on her waterproof boots. Her feet stayed dry throughout the walk.\n\nWhat difficulty occurred?",
     "options": [
-      "His camera battery was almost empty",
+      "Her camera battery was almost empty",
       "Her bag for litter had torn",
       "The path was muddy after the rain",
-      "His water bottle was empty",
+      "Her water bottle was empty",
       "The sun was too strong near the river"
     ],
     "correct": 2,
@@ -5586,7 +5586,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Freya deal with the problem at the woodland gate?\nB: The path was muddy after the rain. ____\nA: Her feet stayed dry throughout the walk.",
+    "prompt": "A: How did Freya deal with the problem at the woodland gate?\nB: The path was muddy after the rain. ____.\nA: And what happened as a result?\nB: Her feet stayed dry throughout the walk.",
     "options": [
       "She put on a thicker jumper",
       "She checked the weather forecast again",
@@ -5658,7 +5658,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Freya managed ____ complete the plan for a nature walk at the woodland gate after solving the difficulty.",
+    "prompt": "Freya decided ____ join a nature walk at the woodland gate.",
     "options": [
       "for",
       "of",
@@ -5667,7 +5667,7 @@ export const ab1250Scenes = [
       "to"
     ],
     "correct": 4,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Decide + to + fiilin yalın hâli, karar verilen eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0316",
@@ -5733,7 +5733,7 @@ export const ab1250Scenes = [
     "prompt": "Louis planned to join a basketball session at the sports hall on Tuesday evening. His water bottle was empty. He filled it at the drinking fountain. He had enough water during the session.\n\nWhat difficulty occurred?",
     "options": [
       "His camera battery was almost empty",
-      "Her bag for litter had torn",
+      "His bag for litter had torn",
       "The path was muddy after the rain",
       "His water bottle was empty",
       "The sun was too strong near the river"
@@ -5856,7 +5856,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Louis deal with the problem at the sports hall?\nB: His water bottle was empty. ____\nA: He had enough water during the session.",
+    "prompt": "A: How did Louis deal with the problem at the sports hall?\nB: His water bottle was empty. ____.\nA: And what happened as a result?\nB: He had enough water during the session.",
     "options": [
       "He bought a new basketball",
       "He left the empty bottle in the changing room",
@@ -5928,7 +5928,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Louis managed ____ complete the plan for a basketball session at the sports hall after solving the difficulty.",
+    "prompt": "Louis was hoping ____ join a basketball session at the sports hall.",
     "options": [
       "of",
       "with",
@@ -5937,7 +5937,7 @@ export const ab1250Scenes = [
       "for"
     ],
     "correct": 3,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Hope + to + fiilin yalın hâli, gerçekleşmesi umulan eylemi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0331",
@@ -6002,10 +6002,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Emily planned to join a picnic at the riverside garden on Wednesday afternoon. The sun was too strong near the river. She moved the picnic blanket under a tree. The group could eat in the shade.\n\nWhat difficulty occurred?",
     "options": [
-      "His camera battery was almost empty",
+      "Her camera battery was almost empty",
       "Her bag for litter had torn",
       "The path was muddy after the rain",
-      "His water bottle was empty",
+      "Her water bottle was empty",
       "The sun was too strong near the river"
     ],
     "correct": 4,
@@ -6126,7 +6126,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Emily deal with the problem at the riverside garden?\nB: The sun was too strong near the river. ____\nA: The group could eat in the shade.",
+    "prompt": "A: How did Emily deal with the problem at the riverside garden?\nB: The sun was too strong near the river. ____.\nA: And what happened as a result?\nB: The group could eat in the shade.",
     "options": [
       "She opened the picnic basket in the full sun",
       "She moved the blanket to a sunnier spot",
@@ -6198,7 +6198,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Emily managed ____ complete the plan for a picnic at the riverside garden after solving the difficulty.",
+    "prompt": "Emily made an effort ____ join a picnic at the riverside garden.",
     "options": [
       "with",
       "at",
@@ -6207,7 +6207,7 @@ export const ab1250Scenes = [
       "of"
     ],
     "correct": 2,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Make an effort + to + fiilin yalın hâli, bir eylem için çaba göstermeyi ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0346",
@@ -6273,7 +6273,7 @@ export const ab1250Scenes = [
     "prompt": "Hugo planned to join a photography walk at the old town square on Thursday morning. His camera battery was almost empty. He replaced it with a charged battery. He could take photos for the whole walk.\n\nWhat difficulty occurred?",
     "options": [
       "His camera battery was almost empty",
-      "Her bag for litter had torn",
+      "His bag for litter had torn",
       "The path was muddy after the rain",
       "His water bottle was empty",
       "The sun was too strong near the river"
@@ -6396,7 +6396,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Hugo deal with the problem at the old town square?\nB: His camera battery was almost empty. ____\nA: He could take photos for the whole walk.",
+    "prompt": "A: How did Hugo deal with the problem at the old town square?\nB: His camera battery was almost empty. ____.\nA: And what happened as a result?\nB: He could take photos for the whole walk.",
     "options": [
       "He adjusted the camera strap",
       "He deleted a few old photographs",
@@ -6468,7 +6468,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Hugo managed ____ complete the plan for a photography walk at the old town square after solving the difficulty.",
+    "prompt": "Hugo was determined ____ join a photography walk at the old town square.",
     "options": [
       "at",
       "to",
@@ -6477,7 +6477,7 @@ export const ab1250Scenes = [
       "with"
     ],
     "correct": 1,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Be determined + to + fiilin yalın hâli, bir şeyi yapmaya kararlı olmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0361",
@@ -6542,10 +6542,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Ruby planned to join a beach clean-up at the coast car park on Saturday afternoon. Her bag for litter had torn. She collected a stronger bag from the organiser. She collected litter without spilling it.\n\nWhat difficulty occurred?",
     "options": [
-      "His camera battery was almost empty",
+      "Her camera battery was almost empty",
       "Her bag for litter had torn",
       "The path was muddy after the rain",
-      "His water bottle was empty",
+      "Her water bottle was empty",
       "The sun was too strong near the river"
     ],
     "correct": 1,
@@ -6666,7 +6666,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ruby deal with the problem at the coast car park?\nB: Her bag for litter had torn. ____\nA: She collected litter without spilling it.",
+    "prompt": "A: How did Ruby deal with the problem at the coast car park?\nB: Her bag for litter had torn. ____.\nA: And what happened as a result?\nB: She collected litter without spilling it.",
     "options": [
       "She tied the torn bag to the fence",
       "She left the damaged bag on the sand",
@@ -6738,7 +6738,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "SentenceCompletion",
-    "prompt": "Ruby managed ____ complete the plan for a beach clean-up at the coast car park after solving the difficulty.",
+    "prompt": "Ruby managed ____ join a beach clean-up at the coast car park.",
     "options": [
       "to",
       "for",
@@ -6747,7 +6747,7 @@ export const ab1250Scenes = [
       "at"
     ],
     "correct": 0,
-    "explanation": "Manage to + yalın fiil, bir işi başarmayı ifade eder."
+    "explanation": "Manage + to + fiilin yalın hâli, bir eylemi zorluğa rağmen başarmayı ifade eder."
   },
   {
     "id": "wq150_ab1250_scene_0376",
@@ -6936,7 +6936,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Clara deal with the problem at the conference room?\nB: The projector could not display her slides. ____\nA: The audience could see the figures clearly.",
+    "prompt": "A: How did Clara deal with the problem at the conference room?\nB: The projector could not display her slides. ____.\nA: And what happened as a result?\nB: The audience could see the figures clearly.",
     "options": [
       "She changed the order of the slides",
       "She printed a copy of the opening title",
@@ -7084,7 +7084,7 @@ export const ab1250Scenes = [
     "options": [
       "One calculation appeared to be inaccurate",
       "The candidate could not reach the building on time",
-      "The projector could not display her slides",
+      "The projector could not display his slides",
       "Several boxes had incorrect labels",
       "The printed instructions were out of date"
     ],
@@ -7206,7 +7206,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Henry deal with the problem at the storage warehouse?\nB: Several boxes had incorrect labels. ____\nA: The inventory figures were corrected.",
+    "prompt": "A: How did Henry deal with the problem at the storage warehouse?\nB: Several boxes had incorrect labels. ____.\nA: And what happened as a result?\nB: The inventory figures were corrected.",
     "options": [
       "He counted only the boxes with correct labels",
       "He ordered additional empty boxes",
@@ -7476,7 +7476,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Amelia deal with the problem at the meeting room?\nB: The printed instructions were out of date. ____\nA: All the trainees followed the current procedure.",
+    "prompt": "A: How did Amelia deal with the problem at the meeting room?\nB: The printed instructions were out of date. ____.\nA: And what happened as a result?\nB: All the trainees followed the current procedure.",
     "options": [
       "She printed more copies of the outdated instructions",
       "She asked trainees to ignore all written instructions",
@@ -7624,7 +7624,7 @@ export const ab1250Scenes = [
     "options": [
       "One calculation appeared to be inaccurate",
       "The candidate could not reach the building on time",
-      "The projector could not display her slides",
+      "The projector could not display his slides",
       "Several boxes had incorrect labels",
       "The printed instructions were out of date"
     ],
@@ -7746,7 +7746,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ryan deal with the problem at the finance office?\nB: One calculation appeared to be inaccurate. ____\nA: The final report contained the correct total.",
+    "prompt": "A: How did Ryan deal with the problem at the finance office?\nB: One calculation appeared to be inaccurate. ____.\nA: And what happened as a result?\nB: The final report contained the correct total.",
     "options": [
       "He changed the report's title",
       "He rounded the incorrect total without checking",
@@ -8016,7 +8016,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Sofia deal with the problem at the company reception?\nB: The candidate could not reach the building on time. ____\nA: The candidate was interviewed without travelling.",
+    "prompt": "A: How did Sofia deal with the problem at the company reception?\nB: The candidate could not reach the building on time. ____.\nA: And what happened as a result?\nB: The candidate was interviewed without travelling.",
     "options": [
       "She cancelled the interview without offering another time",
       "She asked the candidate to travel the same route again",
@@ -8286,7 +8286,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Dylan deal with the problem at the bridge entrance?\nB: The water level was too high for the usual route. ____\nA: The team collected data without entering the water.",
+    "prompt": "A: How did Dylan deal with the problem at the bridge entrance?\nB: The water level was too high for the usual route. ____.\nA: And what happened as a result?\nB: The team collected data without entering the water.",
     "options": [
       "He asked the team to enter the deeper water",
       "He postponed collecting any data",
@@ -8556,7 +8556,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Megan deal with the problem at the town market?\nB: People were putting glass into the paper containers. ____\nA: More waste was sorted correctly.",
+    "prompt": "A: How did Megan deal with the problem at the town market?\nB: People were putting glass into the paper containers. ____.\nA: And what happened as a result?\nB: More waste was sorted correctly.",
     "options": [
       "She put more glass into the paper containers",
       "She removed every label from the bins",
@@ -8826,7 +8826,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Arthur deal with the problem at the school grounds?\nB: The soil was too dry for the young trees. ____\nA: The soil became suitable for planting.",
+    "prompt": "A: How did Arthur deal with the problem at the school grounds?\nB: The soil was too dry for the young trees. ____.\nA: And what happened as a result?\nB: The soil became suitable for planting.",
     "options": [
       "He ordered more trees without preparing the soil",
       "He added labels to the planting area",
@@ -9096,7 +9096,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Leah deal with the problem at the nature reserve?\nB: Loud visitors were frightening the birds away. ____\nA: The birds returned to the feeding area.",
+    "prompt": "A: How did Leah deal with the problem at the nature reserve?\nB: Loud visitors were frightening the birds away. ____.\nA: And what happened as a result?\nB: The birds returned to the feeding area.",
     "options": [
       "She asked visitors to move closer to the birds",
       "She placed signs advertising the reserve",
@@ -9366,7 +9366,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Victor deal with the problem at the public library?\nB: Several lights were left on in unused rooms. ____\nA: Staff began switching off unnecessary lights.",
+    "prompt": "A: How did Victor deal with the problem at the public library?\nB: Several lights were left on in unused rooms. ____.\nA: And what happened as a result?\nB: Staff began switching off unnecessary lights.",
     "options": [
       "He ordered brighter bulbs for unused rooms",
       "He asked staff to leave every light switched on",
@@ -9636,7 +9636,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ivy deal with the problem at the housing office?\nB: The maintenance team had not received the original message. ____\nA: The repair was scheduled for the following day.",
+    "prompt": "A: How did Ivy deal with the problem at the housing office?\nB: The maintenance team had not received the original message. ____.\nA: And what happened as a result?\nB: The repair was scheduled for the following day.",
     "options": [
       "She sent an unrelated message about rent",
       "She deleted the original repair request",
@@ -9783,7 +9783,7 @@ export const ab1250Scenes = [
     "prompt": "Liam planned to handle a lost property report at the station office on Tuesday morning. The bag description was too general. He provided the exact colour and brand of the bag. The employee matched the report to a found bag.\n\nWhat difficulty occurred?",
     "options": [
       "The parcel had been left at the wrong building",
-      "Her booking included an incorrect departure date",
+      "His booking included an incorrect departure date",
       "The maintenance team had not received the original message",
       "The bag description was too general",
       "The form lacked proof of address"
@@ -9906,7 +9906,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Liam deal with the problem at the station office?\nB: The bag description was too general. ____\nA: The employee matched the report to a found bag.",
+    "prompt": "A: How did Liam deal with the problem at the station office?\nB: The bag description was too general. ____.\nA: And what happened as a result?\nB: The employee matched the report to a found bag.",
     "options": [
       "He described the bag only as an ordinary bag",
       "He asked when the station would close",
@@ -10176,7 +10176,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Nora deal with the problem at the sports association?\nB: The form lacked proof of address. ____\nA: The application was accepted as complete.",
+    "prompt": "A: How did Nora deal with the problem at the sports association?\nB: The form lacked proof of address. ____.\nA: And what happened as a result?\nB: The application was accepted as complete.",
     "options": [
       "She submitted a blank form again",
       "She uploaded a photograph of the sports hall",
@@ -10323,7 +10323,7 @@ export const ab1250Scenes = [
     "prompt": "Oliver planned to handle a delivery complaint at the courier office on Thursday morning. The parcel had been left at the wrong building. He sent a photograph of the correct entrance. The courier delivered the parcel to the right address.\n\nWhat difficulty occurred?",
     "options": [
       "The parcel had been left at the wrong building",
-      "Her booking included an incorrect departure date",
+      "His booking included an incorrect departure date",
       "The maintenance team had not received the original message",
       "The bag description was too general",
       "The form lacked proof of address"
@@ -10446,7 +10446,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Oliver deal with the problem at the courier office?\nB: The parcel had been left at the wrong building. ____\nA: The courier delivered the parcel to the right address.",
+    "prompt": "A: How did Oliver deal with the problem at the courier office?\nB: The parcel had been left at the wrong building. ____.\nA: And what happened as a result?\nB: The courier delivered the parcel to the right address.",
     "options": [
       "He confirmed the address of the wrong building",
       "He asked for a tracking number without correcting the address",
@@ -10716,7 +10716,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Hannah deal with the problem at the travel agency?\nB: Her booking included an incorrect departure date. ____\nA: The updated ticket showed the correct day.",
+    "prompt": "A: How did Hannah deal with the problem at the travel agency?\nB: Her booking included an incorrect departure date. ____.\nA: And what happened as a result?\nB: The updated ticket showed the correct day.",
     "options": [
       "She requested a different seat on the same incorrect date",
       "She checked the price of a hotel",
@@ -10986,7 +10986,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did James deal with the problem at the college laboratory?\nB: Two measurements were inconsistent. ____\nA: The new measurements were consistent.",
+    "prompt": "A: How did James deal with the problem at the college laboratory?\nB: Two measurements were inconsistent. ____.\nA: And what happened as a result?\nB: The new measurements were consistent.",
     "options": [
       "He averaged the two values without taking another measurement",
       "He changed the experiment and used unrelated results",
@@ -11256,7 +11256,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Poppy deal with the problem at the college library?\nB: One online source gave an uncertain date. ____\nA: The presentation included a verified date.",
+    "prompt": "A: How did Poppy deal with the problem at the college library?\nB: One online source gave an uncertain date. ____.\nA: And what happened as a result?\nB: The presentation included a verified date.",
     "options": [
       "She chose a date without consulting any sources",
       "She changed the presentation's title",
@@ -11526,7 +11526,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Alfie deal with the problem at the media room?\nB: The recording contained loud background noise. ____\nA: The teacher could understand every word.",
+    "prompt": "A: How did Alfie deal with the problem at the media room?\nB: The recording contained loud background noise. ____.\nA: And what happened as a result?\nB: The teacher could understand every word.",
     "options": [
       "He increased the volume of the noisy recording",
       "He changed the name of the audio file",
@@ -11796,7 +11796,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Alice deal with the problem at the study centre?\nB: The map legend was difficult to read. ____\nA: Visitors could identify the map features easily.",
+    "prompt": "A: How did Alice deal with the problem at the study centre?\nB: The map legend was difficult to read. ____.\nA: And what happened as a result?\nB: Visitors could identify the map features easily.",
     "options": [
       "She made the map symbols even smaller",
       "She changed the poster's title font",
@@ -12066,7 +12066,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Charlie deal with the problem at the seminar room?\nB: One team member had missed the planning meeting. ____\nA: Everyone knew their responsibilities.",
+    "prompt": "A: How did Charlie deal with the problem at the seminar room?\nB: One team member had missed the planning meeting. ____.\nA: And what happened as a result?\nB: Everyone knew their responsibilities.",
     "options": [
       "He shared an invitation to a meeting that had already finished",
       "He asked the absent member to guess the tasks",
@@ -12336,7 +12336,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Florence deal with the problem at the village hall?\nB: The prices were not visible on many books. ____\nA: Buyers could check prices without asking.",
+    "prompt": "A: How did Florence deal with the problem at the village hall?\nB: The prices were not visible on many books. ____.\nA: And what happened as a result?\nB: Buyers could check prices without asking.",
     "options": [
       "She placed a sign with the opening hours at the door",
       "She arranged the books by colour alone",
@@ -12606,7 +12606,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Sebastian deal with the problem at the park entrance?\nB: Several riders were unfamiliar with the route. ____\nA: The riders followed the intended course.",
+    "prompt": "A: How did Sebastian deal with the problem at the park entrance?\nB: Several riders were unfamiliar with the route. ____.\nA: And what happened as a result?\nB: The riders followed the intended course.",
     "options": [
       "He distributed a list of riders' names",
       "He announced the starting time again",
@@ -12876,7 +12876,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Laura deal with the problem at the community hall?\nB: Some residents could not hear the speaker. ____\nA: Everyone could follow the discussion.",
+    "prompt": "A: How did Laura deal with the problem at the community hall?\nB: Some residents could not hear the speaker. ____.\nA: And what happened as a result?\nB: Everyone could follow the discussion.",
     "options": [
       "She moved the meeting notice to the entrance",
       "She asked the speaker to talk more quietly",
@@ -13146,7 +13146,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did George deal with the problem at the youth centre?\nB: The collection boxes were too small for the donations. ____\nA: There was enough space for all the donated food.",
+    "prompt": "A: How did George deal with the problem at the youth centre?\nB: The collection boxes were too small for the donations. ____.\nA: And what happened as a result?\nB: There was enough space for all the donated food.",
     "options": [
       "He removed some empty boxes without replacing them",
       "He printed labels for the same small boxes",
@@ -13416,7 +13416,7 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Daisy deal with the problem at the town square?\nB: Strong wind was moving the exhibition boards. ____\nA: The display remained stable throughout the event.",
+    "prompt": "A: How did Daisy deal with the problem at the town square?\nB: Strong wind was moving the exhibition boards. ____.\nA: And what happened as a result?\nB: The display remained stable throughout the event.",
     "options": [
       "She attached paper labels to the moving boards",
       "She moved the display into a windier area",
