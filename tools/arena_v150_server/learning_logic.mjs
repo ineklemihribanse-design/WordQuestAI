@@ -414,14 +414,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nAlthough the factory reduced the amount of packaging per item, total packaging waste rose as production expanded.",
     "options": [
-      "Less packaging per item did not guarantee less waste overall.",
+      "Packaging per item decreased, but total packaging waste increased as production expanded.",
       "Overall packaging waste declined in direct proportion to individual packaging.",
       "The factory ceased production.",
       "Production remained constant while total waste fell.",
       "Each item required more packaging than before."
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Parça başına ambalaj azalırken üretim artışıyla toplam ambalaj atığı yükselmiştir; iki ölçünün değişim yönü farklıdır.",
     "family": "discourse_contrast_9"
   },
   {
@@ -669,14 +669,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nAlthough the company reduced delivery distances, the number of separate journeys increased.",
     "options": [
-      "Shorter delivery routes were accompanied by more individual journeys.",
+      "Delivery distances fell, while the number of separate journeys rose.",
       "The company eliminated all delivery journeys.",
       "Each route became considerably longer.",
       "The number of journeys fell to zero.",
       "Shorter distances guaranteed fewer journeys."
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Cümle teslimat mesafelerindeki azalmayı ve ayrı yolculuk sayısındaki artışı birlikte bildirir.",
     "family": "discourse_contrast_14"
   },
   {
@@ -720,14 +720,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nAlthough the survey received more responses than expected, few responses came from remote villages.",
     "options": [
-      "A large response count did not ensure adequate rural representation.",
+      "The survey exceeded its expected response count, but received few responses from remote villages.",
       "Remote villages supplied most responses.",
       "The survey received fewer responses than planned.",
       "Every village supplied an equal number of responses.",
       "The response count alone established complete representation."
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Beklenenden çok yanıt alınması, uzak köylerden yeterli sayıda yanıt geldiğini göstermez.",
     "family": "discourse_contrast_15"
   },
   {
@@ -873,14 +873,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nAlthough the model reproduced the historical trend accurately, its predictions deteriorated outside the calibration range.",
     "options": [
-      "Historical fit did not guarantee reliable extrapolation.",
+      "The model fitted historical trends accurately, but predicted less accurately outside the calibration range.",
       "Prediction accuracy was identical at all unobserved values.",
       "The model could not reproduce the historical trend.",
       "Independent testing proved universal validity.",
       "Extrapolation was more reliable than interpolation in every case."
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Geçmiş gözlemlere iyi uyum, kalibrasyon aralığı dışında aynı tahmin başarısını sağlamamıştır.",
     "family": "discourse_contrast_18"
   },
   {
@@ -1179,14 +1179,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Which sentence is closest in meaning to the following?\n\nAlthough the programme improved access for users already familiar with digital tools, its impact on less experienced users was limited.",
     "options": [
-      "The gains were concentrated among digitally experienced users.",
+      "The programme improved access for experienced digital users, but had only a limited impact on less experienced users.",
       "The greatest gains occurred among those with no digital experience.",
       "All groups gained equally regardless of experience.",
       "The programme produced no benefit for experienced users.",
       "Digital familiarity had no relationship to programme outcomes."
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Erişimdeki gelişme deneyimli kullanıcılar için belirginken daha az deneyimli kullanıcılar için sınırlı kalmıştır.",
     "family": "discourse_contrast_24"
   },
   {
@@ -4971,14 +4971,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the sentence closest in meaning:\n\nDelays occur less often now, although they have not disappeared completely.",
     "options": [
-      "The new system has reduced delays but not removed them.",
+      "Delays are less frequent than before, but some still occur.",
       "The new system has eliminated delays entirely.",
       "The new system has made delays more frequent.",
       "The new system has had no effect on delays.",
       "The new system is intended to reduce delays in future."
     ],
     "correct": 0,
-    "explanation": "Azalma ve devam eden sorun birlikte korunur."
+    "explanation": "Cümle gecikmelerin sıklığının azaldığını ancak tamamen ortadan kalkmadığını belirtir. Bunun nedeni hakkında bilgi vermez."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_21_2",
@@ -5226,14 +5226,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the sentence closest in meaning:\n\nThe measure will probably not achieve its aims unless sufficient resources are provided.",
     "options": [
-      "The policy is unlikely to succeed without adequate funding.",
+      "The measure is unlikely to succeed without sufficient resources.",
       "Adequate funding is sufficient to guarantee the policy's success.",
       "The policy is unlikely to succeed even with adequate funding.",
       "The policy has already succeeded despite inadequate funding.",
       "The success of the policy is independent of its funding."
     ],
     "correct": 0,
-    "explanation": "Unless gerekli koşulu belirtir, garanti vermez."
+    "explanation": "Unless bir koşul belirtir; yeterli kaynak olmadan başarı olası değildir. Resources yalnızca finansmanla sınırlı değildir."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_24_2",
@@ -5311,14 +5311,14 @@ export const logicQuestions = [
     "topic": "Synonym",
     "prompt": "Choose the sentence closest in meaning:\n\nThe policy explains part of the recorded variation, but not all of it.",
     "options": [
-      "Only some of the observed changes can be attributed to the policy.",
+      "The policy accounts for some, but not all, of the observed variation.",
       "All of the observed changes can be attributed to the policy.",
       "None of the observed changes can be attributed to the policy.",
       "The policy may have caused changes that were not observed.",
       "The observed changes occurred before the policy was introduced."
     ],
     "correct": 0,
-    "explanation": "Part but not all kapsamı sınırlar."
+    "explanation": "Part of ... but not all: gözlenen değişkenliğin bir kısmı açıklanır, tamamı değil."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_25_2",
