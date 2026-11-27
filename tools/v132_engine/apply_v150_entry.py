@@ -1,4 +1,14 @@
 from pathlib import Path
+# Guard the actual v150 overlay, not the legacy branch it bypasses.
+pack=Path(__file__).resolve().parent
+entry=(pack/"Wq150ArenaEntry.kt").read_text(encoding="utf-8")
+assert 'Wq150PremiumModeCard(kind,wide,enabled' in entry
+assert 'Wq150ModeCatalog.kinds.forEach' not in entry, "Legacy yellow mode buttons reintroduced"
+assert 'Wq150PremiumPanel {' in entry
+assert 'Wq150ApprovedArt("crest"' in entry
+assert 'rememberWq150Profiles(room,session,gateway)' in entry
+settings=(pack/"Wq150MatchSettings.kt").read_text(encoding="utf-8")
+assert 'DialogProperties(usePlatformDefaultWidth=false)' in settings
 p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PremiumArenaScreen.kt")
 s=p.read_text()
 old='''    var soloLaunch by remember { mutableStateOf<WqArenaSoloLaunch?>(null) }

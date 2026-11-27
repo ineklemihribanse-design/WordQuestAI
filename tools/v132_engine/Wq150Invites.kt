@@ -34,6 +34,7 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
         val inbox=db?.child(uid)
         val listener=object:ValueEventListener{
             override fun onDataChange(snapshot:DataSnapshot){
+                message=""
                 invites=snapshot.children.mapNotNull{child->
                     val sender=child.key?:return@mapNotNull null
                     val id=child.child("room").getValue(String::class.java)?:return@mapNotNull null
@@ -41,8 +42,16 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
                     if(!Regex("^[a-f0-9]{20}$").matches(id))null else Wq150Invite(sender,id,sent)
                 }.sortedByDescending{it.sentAt}
             }
-            override fun onCancelled(error:DatabaseError){invites=emptyList();message="Arena davetleri henüz erişilebilir değil."}
+            override fun onCancelled(error:DatabaseError){
+                invites=emptyList()
+                message=when(error.code){
+                    DatabaseError.PERMISSION_DENIED->"Arena davet izni yok. Sunucudaki davet güvenlik kuralları doğrulanmalı."
+                    DatabaseError.DISCONNECTED,DatabaseError.NETWORK_ERROR->"Arena davet bağlantısı kesildi."
+                    else->"Arena davetleri okunamadı (hata ${error.code})."
+                }
+            }
         }
+        if(inbox==null)message="Arena davet bağlantısı yapılandırılamadı."
         inbox?.addValueEventListener(listener)
         onDispose{inbox?.removeEventListener(listener)}
     }

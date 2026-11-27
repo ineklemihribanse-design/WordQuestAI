@@ -2,6 +2,19 @@ package com.kelimebulmacasi.a1
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.style.TextAlign
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -31,8 +44,10 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     val catalog=remember(context){Wq150Catalog.read(context)}
     val auth=session.accounts.socialAuth()
     val uid=session.accounts.uid.orEmpty()
-    val controller=remember(endpoint,auth,uid){auth?.let{Wq150LobbyController(Wq150Gateway(endpoint,it))}}
-    if(controller==null||uid.isBlank()){
+    val gateway=remember(endpoint,auth,uid){auth?.let{Wq150Gateway(endpoint,it)}}
+    val controller=remember(gateway){gateway?.let{Wq150LobbyController(it)}}
+    val ownAvatar by rememberWq2DSelection(session.profileKey)
+    if(controller==null||gateway==null||uid.isBlank()){
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(20.dp)){
             Text("Arena · yeni oyun sistemi",style=MaterialTheme.typography.titleLarge)
             Text("Arkadaşlarınla oynamak için giriş yap.")
@@ -48,6 +63,8 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     var edit by rememberSaveable {mutableStateOf(false)}
     var roomCode by rememberSaveable {mutableStateOf("")}
     var exit by rememberSaveable {mutableStateOf(false)}
+    var codeTouched by rememberSaveable {mutableStateOf(false)}
+    var panel by rememberSaveable {mutableStateOf("")}
     val snapshot=state.view
     val room=state.room
     val lobby=snapshot?.optString("phase")=="lobby"&&!state.left
@@ -64,28 +81,82 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     MaterialTheme(colorScheme=Wq122Scheme){
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
             Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
-            Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding()
-                .verticalScroll(rememberScrollState()).padding(16.dp),verticalArrangement=Arrangement.spacedBy(12.dp)){
+            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1000.dp).fillMaxSize()
+                .windowInsetsPadding(WindowInsets.safeDrawing).imePadding()
+                .verticalScroll(rememberScrollState()).padding(horizontal=12.dp,vertical=8.dp),
+                verticalArrangement=Arrangement.spacedBy(8.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(onClick={if(lobby||active)exit=true else back()}){Text("‹ Geri",color=Wq122Gold)}
                     Spacer(Modifier.weight(1f));Text("WORDQUEST · ARENA",color=Wq122Gold,fontWeight=FontWeight.Bold)
                 }
                 if(!lobby&&!active){
-                    Text("Arkadaşınla oyna",style=MaterialTheme.typography.headlineSmall,color=Wq122Ink,fontWeight=FontWeight.Black)
-                    Wq150ModeCatalog.kinds.forEach{(kind,label)->
-                        Wq122Primary(label,!state.busy&&!state.pending,{
-                            settings=settings.changeKind(kind);edit=true
-                        },green=false)
+                    Row(Modifier.fillMaxWidth().height(132.dp),verticalAlignment=Alignment.CenterVertically,
+                        horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                        Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
+                            Wq150ApprovedArt("crest",Modifier.height(96.dp).fillMaxWidth())
+                            Text("Arkadaşınla Oyna",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=16.sp)
+                        }
+                        Wq2DPortrait(ownAvatar,Modifier.weight(1f).fillMaxHeight(),victory=false)
                     }
-                    OutlinedTextField(value=roomCode,onValueChange={roomCode=it.trim().take(64)},singleLine=true,
-                        label={Text("Davet kodu")},modifier=Modifier.fillMaxWidth(),enabled=!state.busy&&!state.pending)
-                    Wq122Primary("Odaya katıl",roomCode.matches(Regex("^[A-Za-z0-9_-]{6,64}$"))&&!state.busy&&!state.pending,{
-                        scope.launch{controller.join(roomCode)}
-                    },green=false)
-                    if(auth!=null)Wq150Invites(session,auth,uid,null,false,!state.busy&&!state.pending,null){id->
-                        controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
+                    val enabled=!state.busy&&!state.pending
+                    BoxWithConstraints(Modifier.fillMaxWidth()){
+                        val wide=maxWidth>=600.dp
+                        val columns=if(maxWidth>=330.dp)2 else 1
+                        val kinds=listOf("duel","coop","quiz","team")
+                        Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+                            kinds.chunked(columns).forEach{row->
+                                Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                                    row.forEach{kind->
+                                        Wq150PremiumModeCard(kind,wide,enabled,Modifier.weight(1f)){
+                                            settings=settings.changeKind(kind);edit=true
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    TextButton(onClick=legacy,enabled=!state.busy&&!state.pending){Text("Mevcut Arena / tek başına",color=Wq122Gold)}
+                    Wq150PremiumPanel {
+                        Text("Davet kodu",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        val valid=wq150ValidRoom(roomCode)
+                        OutlinedTextField(value=roomCode,onValueChange={roomCode=it.trim().take(64);codeTouched=true},
+                            singleLine=true,label={Text("Oda kodu")},modifier=Modifier.fillMaxWidth(),
+                            enabled=enabled,isError=codeTouched&&roomCode.isNotEmpty()&&!valid)
+                        if(codeTouched&&roomCode.isNotEmpty()&&!valid)
+                            Text("Geçerli bir oda kodu gir.",color=Color(0xFFFFB4B4),fontSize=12.sp)
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                            OutlinedButton(enabled=enabled,modifier=Modifier.weight(1f),onClick={
+                                val clipboard=context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                                roomCode=clipboard.primaryClip?.getItemAt(0)?.coerceToText(context)?.toString()?.trim()?.take(64).orEmpty()
+                                codeTouched=true
+                            }){Text("Yapıştır")}
+                            Button(enabled=valid&&enabled,modifier=Modifier.weight(1f),onClick={
+                                scope.launch{controller.join(roomCode)}
+                            }){Text("Odaya katıl")}
+                        }
+                        if(state.busy)LinearProgressIndicator(Modifier.fillMaxWidth())
+                        if(auth!=null)Wq150Invites(session,auth,uid,null,false,enabled,null){id->
+                            controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
+                        }
+                    }
+                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                        Wq122Choice("Tek Başına",false,Modifier.weight(1f),"solo"){if(enabled)legacy()}
+                        Wq122Choice("Arkadaşlarım",false,Modifier.weight(1f),"friends"){panel="Arkadaşlarım"}
+                    }
+                    val shortcuts=listOf("ranking" to "Sıralama","history" to "Son Maçlarım","settings" to "Ayarlar","info" to "Bilgi")
+                    shortcuts.chunked(2).forEach{row->
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                            row.forEach{(icon,title)->
+                                Surface(onClick={panel=title},color=Color(0xD92C145B),
+                                    shape=RoundedCornerShape(12.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),
+                                    modifier=Modifier.weight(1f)){
+                                    Row(Modifier.padding(6.dp),verticalAlignment=Alignment.CenterVertically){
+                                        Wq150ApprovedArt(icon,Modifier.size(30.dp))
+                                        Text(title,Modifier.weight(1f),color=Wq122Ink,fontSize=12.sp,textAlign=TextAlign.Center)
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }else if(lobby&&snapshot!=null&&room!=null){
                     val host=snapshot.optString("host")==uid
                     val members=snapshot.optJSONArray("members")
@@ -107,6 +178,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                             }){Text("Kopyala",color=Wq122Gold)}
                         }
                     }
+                    val profiles=rememberWq150Profiles(room,session,gateway)
                     var myReady=false
                     for(i in 0 until capacity){
                         val player=members?.optJSONObject(i)
@@ -115,8 +187,14 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                         if(id==uid)myReady=ready
                         Surface(color=Color(0xDD251347),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth()){
                             Row(Modifier.padding(14.dp),verticalAlignment=Alignment.CenterVertically){
-                                Text(if(id==uid)"Sen" else if(player==null)"Oyuncu bekleniyor" else "Oyuncu "+(i+1),color=Wq122Ink,
-                                    modifier=Modifier.weight(1f),fontWeight=FontWeight.Bold)
+                                if(player!=null){
+                                    Wq150Portrait(profiles.optJSONObject(id),ownAvatar.takeIf{id==uid},Modifier.size(72.dp))
+                                    Spacer(Modifier.width(8.dp))
+                                }
+                                val name=if(id==uid)session.profileName else if(player==null)"Oyuncu bekleniyor"
+                                    else profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}
+                                        ?:session.social.friends.firstOrNull{it.uid==id}?.name?:"Oyuncu "+(i+1)
+                                Text(name,color=Wq122Ink,modifier=Modifier.weight(1f),fontWeight=FontWeight.Bold)
                                 Text(if(player==null)"—" else if(ready)"Hazır" else "Bekliyor",color=if(ready)Color(0xFF91E8AA)else Wq122Gold)
                             }
                         }
@@ -146,6 +224,22 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
+        if(panel.isNotBlank())AlertDialog(onDismissRequest={panel=""},title={Text(panel,color=Wq122Gold)},
+            text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
+                when(panel){
+                    "Ayarlar"->Wq179ArenaAudioSettings()
+                    "Bilgi"->Text("Bulmaca Düellosu: rakibinle yarış. Ortak Bulmaca: aynı tahtayı birlikte çöz. 5 Şıklı Düello: bilgini ve hızını göster. Takım Oyunu: 2'ye 2 mücadele et.",color=Wq122Ink)
+                    "Arkadaşlarım"->{
+                        if(session.social.friends.isEmpty())Text("Henüz arkadaş eklenmedi.",color=Wq122Ink)
+                        session.social.friends.forEach{friend->
+                            Text(friend.name,color=Wq122Ink,fontWeight=FontWeight.Bold)
+                            Text(Wq180FriendActivity.label(friend.lastActiveAt),color=Wq122Ink)
+                        }
+                        TextButton(onClick={panel="";legacy()}){Text("Arkadaş yönetimi",color=Wq122Gold)}
+                    }
+                    else->Wq121ArenaRecords(context,session.profileKey,panel=="Sıralama")
+                }
+            }},confirmButton={TextButton(onClick={panel=""}){Text("Kapat")}})
         if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending,
             onDismiss={edit=false},onApply={next->
                 settings=next;edit=false
@@ -155,5 +249,57 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
             text={Text(if(active)"Aktif maçın durumu korunur. Bu ekrandan ayrılmak maçtan hükmen çıkış değildir." else "Odadan ayrılmak istediğine emin misin?")},
             confirmButton={TextButton(onClick={exit=false;if(lobby)scope.launch{controller.action("leave")} else back()}){Text("Ayrıl")}},
             dismissButton={TextButton(onClick={exit=false}){Text("Vazgeç")}})
+    }
+}
+
+/** The approved v120 icon/card assets are decoded off the UI thread.
+ * Only the decorative empty plate is stretched; the 3D icon keeps its ratio. */
+@Composable
+private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
+    val context=LocalContext.current.applicationContext
+    val art by produceState<ImageBitmap?>(null,context,name){
+        value=withContext(Dispatchers.IO){
+            runCatching{context.assets.open("arena_v120/$name.webp").use{
+                android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
+            }}.getOrNull()
+        }
+    }
+    art?.let{Image(it,null,modifier,contentScale=scale)}
+}
+@Composable
+private fun Wq150PremiumModeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modifier,onClick:()->Unit){
+    val shape=RoundedCornerShape(16.dp)
+    val art=if(kind=="coop")"team" else if(kind=="team")"friends" else kind
+    val colors=when(kind){
+        "coop"->listOf(Color(0xFF254A8E),Color(0xFF102653))
+        "quiz"->listOf(Color(0xFF8B2948),Color(0xFF47152E))
+        "team"->listOf(Color(0xFF176B55),Color(0xFF0C352D))
+        else->listOf(Color(0xFF683C9E),Color(0xFF301450))
+    }
+    val description=when(kind){
+        "coop"->"Birlikte çöz, birlikte kazan."
+        "quiz"->"Bilgini ve hızını göster."
+        "team"->"Takımınla birlikte mücadele et."
+        else->"Rakibinle kelime yarışına gir."
+    }
+    Box(modifier.heightIn(min=if(wide)112.dp else 112.dp).clip(shape)
+        .background(Brush.verticalGradient(colors)).border(1.dp,Wq122Gold,shape)
+        .clickable(enabled=enabled,onClick=onClick)){
+        if(kind!="team")Wq150ApprovedArt((if(wide)"tablet" else "phone")+"_card_"+art,
+            Modifier.matchParentSize(),ContentScale.FillBounds)
+        Column(Modifier.fillMaxWidth().padding(horizontal=8.dp,vertical=8.dp),
+            horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(3.dp)){
+            Wq150ApprovedArt(art,Modifier.size(if(wide)58.dp else 44.dp))
+            Text(Wq150ModeCatalog.kinds.getValue(kind),color=Color.White,fontWeight=FontWeight.ExtraBold,
+                fontSize=if(wide)17.sp else 14.sp,textAlign=TextAlign.Center)
+            Text(description,color=Color(0xFFF6E9FF),fontSize=if(wide)13.sp else 11.sp,textAlign=TextAlign.Center)
+        }
+    }
+}
+@Composable
+private fun Wq150PremiumPanel(content:@Composable ColumnScope.()->Unit){
+    Surface(color=Color(0xE6251347),shape=RoundedCornerShape(18.dp),
+        border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),modifier=Modifier.fillMaxWidth()){
+        Column(Modifier.padding(12.dp),verticalArrangement=Arrangement.spacedBy(8.dp),content=content)
     }
 }

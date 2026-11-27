@@ -1,6 +1,10 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
@@ -126,12 +130,21 @@ internal data class Wq150Catalog(val data:JSONObject){
 internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,String>,wordTypes:Map<String,String>,
     available:Boolean,onDismiss:()->Unit,onApply:(Wq150Settings)->Unit,catalog:Wq150Catalog?=null) {
     var s by remember(initial){mutableStateOf(initial)}
-    val config=LocalConfiguration.current
     MaterialTheme(colorScheme=Wq122Scheme) {
-        AlertDialog(onDismissRequest=onDismiss,containerColor=Color(0xFF251347),
-            title={Text("Maç ayarları",color=Wq122Gold,fontWeight=FontWeight.Black)},
-            text={Column(Modifier.heightIn(max=(config.screenHeightDp*.65f).dp).verticalScroll(rememberScrollState()),
-                verticalArrangement=Arrangement.spacedBy(8.dp)){
+        Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false)){
+            Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+                Wq122SettingsBackdrop(Modifier.matchParentSize())
+                Column(Modifier.align(Alignment.TopCenter).widthIn(max=1000.dp).fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(12.dp),
+                    verticalArrangement=Arrangement.spacedBy(8.dp)){
+                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
+                        TextButton(onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
+                        Wq122Art("settings",Modifier.size(36.dp))
+                        Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,
+                            style=MaterialTheme.typography.headlineSmall)
+                    }
+                    Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
+                        verticalArrangement=Arrangement.spacedBy(8.dp)){
                 Wq150Choices("Oyun türü",Wq150ModeCatalog.kinds,s.kind){s=s.changeKind(it)}
                 Wq150Choices("Oyun biçimi",Wq150ModeCatalog.modes(s.kind),s.mode){s=s.changeMode(it)}
                 if(s.kind=="team")Wq150Choices("2'ye 2 · içerik",mapOf("crossword" to "Bulmaca","quiz" to "5 Şıklı"),s.format){s=s.changeFormat(it)}
@@ -162,10 +175,12 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                     Wq150Choices("Kelimeyi geçme hakkı",(0..5).associate{it.toString() to it.toString()},s.skipLimit.toString()){s=s.copy(skipLimit=it.toInt())}
                 }
                 if(catalog!=null&&!catalog.supports(s))Text("Seçilen seviyeler ve filtre için yeterli içerik yok. Soru sayısını azalt veya filtreyi değiştir.",color=Color(0xFFFFD6A1))
-                if(!available)Text("Yeni maç sunucusu henüz etkin değil. Bu ayarlar mevcut maça uygulanmaz.",color=Color(0xFFFFD6A1))
-            }},
-            confirmButton={TextButton(enabled=available&&s.valid()&&(catalog?.supports(s)!=false),onClick={onApply(s)}){Text("Kaydet",color=Wq122Gold)}},
-            dismissButton={TextButton(onClick=onDismiss){Text("Vazgeç",color=Wq122Ink)}})
+                if(!available)Text("İşlem sürüyor veya yeniden denenmesi gerekiyor.",color=Color(0xFFFFD6A1))
+                    }
+                    Wq122Primary("Ayarları uygula",available&&s.valid()&&(catalog?.supports(s)!=false),{onApply(s)})
+                }
+            }
+        }
     }
 }
 @Composable
