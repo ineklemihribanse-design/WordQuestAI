@@ -42,16 +42,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "The new pupil ____ her password again, so she cannot log in now.",
+    "prompt": "The new pupil cannot log in now because she ____ her password again; the problem remains unresolved.",
     "options": [
       "had forgotten",
-      "forgot",
+      "had been forgetting",
       "has forgotten",
       "forgets",
       "was forgetting"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: has forgotten. Zaman sırası ve zaman belirteci fiilin biçimini belirler."
+    "explanation": "Doğru seçenek: has forgotten. Şu anda devam eden sonuç present perfect ile ifade edilir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_1_4",
@@ -150,16 +150,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "At precisely 9:15 yesterday, I ____ on a maths exercise.",
+    "prompt": "At precisely 9:15 yesterday, I ____ on a maths exercise; I was halfway through it when the bell rang.",
     "options": [
       "has been working",
-      "had been working",
+      "will be working",
       "is working",
       "was working",
       "works"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: was working. Devam eden eylemin başlangıcına ve referans zamanına bak."
+    "explanation": "Doğru seçenek: was working. Geçmişte belirli anda devam eden eylem past continuous ile anlatılır."
   },
   {
     "id": "wq150_b12_1500_direct_b1_2_5",
@@ -186,16 +186,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "The museum rules state that you ____ touch any of the paintings.",
+    "prompt": "The museum rules explicitly prohibit touching the paintings: visitors ____ touch them under any circumstances.",
     "options": [
       "mustn't",
       "needn't",
-      "shouldn't",
+      "may",
       "couldn't",
-      "wouldn't"
+      "can"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: mustn't. Yasak, gereksizlik, tavsiye, geçmiş yetersizlik ve koşullu tercih ayrılır."
+    "explanation": "Doğru seçenek: mustn't. Mustn't kesin yasak bildirir; can ve may izin ifade eder."
   },
   {
     "id": "wq150_b12_1500_direct_b1_3_2",
@@ -204,16 +204,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "You ____ bring a towel; the hotel provides one free of charge.",
+    "prompt": "Bringing a towel is entirely optional because the hotel provides one free of charge. You ____ bring your own.",
     "options": [
       "mustn't",
       "needn't",
-      "shouldn't",
+      "must",
       "couldn't",
-      "wouldn't"
+      "have to"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: needn't. Yasak, gereksizlik, tavsiye, geçmiş yetersizlik ve koşullu tercih ayrılır."
+    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını, mustn't ise yasak olduğunu bildirir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_3_3",
@@ -420,16 +420,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "The cycle path ____ next year, according to the council's announcement.",
+    "prompt": "The council has just announced that construction has not started. The cycle path ____ next year after the funding arrives.",
     "options": [
       "was built",
-      "is being built",
+      "was being built",
       "has been built",
       "will be built",
-      "is built"
+      "had been built"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: will be built. Edilgende zaman ve süreç göstergelerine dikkat et."
+    "explanation": "Doğru seçenek: will be built. Gelecekte yapılacak edilgen eylem will be built ile ifade edilir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_5_5",
@@ -642,10 +642,10 @@ export const b121500Direct = [
       "either",
       "both",
       "each",
-      "none"
+      "all"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: neither. İki öğe ile daha büyük bir grubun miktar ve seçim ilişkilerini ayır."
+    "explanation": "Doğru seçenek: neither. Neither iki seçenekten hiçbirinin uygun olmadığını belirtir."
   },
   {
     "id": "wq150_b12_1500_direct_b1_8_2",
@@ -780,16 +780,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Grammar",
-    "prompt": "The engineer ____ the wiring already; the machine is safe to use now.",
+    "prompt": "So far today, the engineer ____ the wiring, and the machine is now safe to use.",
     "options": [
       "had checked",
-      "checked",
+      "was checking",
       "checks",
       "has checked",
       "will check"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: has checked. Zaman referansına göre check fiilinin doğru biçimi seçilir."
+    "explanation": "Doğru seçenek: has checked. So far today bitmemiş zaman dilimini ve mevcut sonucu vurgular; present perfect kullanılır."
   },
   {
     "id": "wq150_b12_1500_direct_b1_9_5",
@@ -5064,16 +5064,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The chemicals may have ____ effects on local wildlife.",
+    "prompt": "The chemicals may have ____ effects on local wildlife, such as illness and reduced breeding success.",
     "options": [
       "viable",
       "adverse",
-      "substantial",
+      "beneficial",
       "gradual",
       "temporary"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: adverse. Sürdürülebilirlik, olumsuzluk, büyüklük, aşamalılık ve geçicilik anlamlarını ayır."
+    "explanation": "Doğru seçenek: adverse. Adverse olumsuz, zararlı etkileri belirtir."
   },
   {
     "id": "wq150_b12_1500_direct_b2_17_3",
@@ -5082,16 +5082,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "A ____ increase in costs forced the company to revise its budget.",
+    "prompt": "A ____ increase in costs of nearly 80 percent, rather than a minor one, forced the company to revise its budget.",
     "options": [
       "viable",
-      "adverse",
+      "negligible",
       "substantial",
-      "gradual",
-      "temporary"
+      "slight",
+      "stable"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: substantial. Sürdürülebilirlik, olumsuzluk, büyüklük, aşamalılık ve geçicilik anlamlarını ayır."
+    "explanation": "Doğru seçenek: substantial. Substantial büyük ve önemli bir artış demektir; yüzde 80 ve minor karşıtlığı büyüklüğü vurgular."
   },
   {
     "id": "wq150_b12_1500_direct_b2_17_4",
@@ -5352,16 +5352,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Preposition",
-    "prompt": "The union voted ____ the proposed reduction in holiday entitlement.",
+    "prompt": "The union voted ____ the proposed reduction in holiday entitlement and formally rejected it.",
     "options": [
-      "on",
+      "for",
       "in",
       "against",
-      "about",
+      "towards",
       "by"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: against. Fiil ve sıfatların edat tamamlayıcısı doğru anlamı sağlar."
+    "explanation": "Doğru seçenek: against. Vote against bir öneriye karşı oy vermektir; önerinin reddedilmesi bu anlamı doğrular."
   },
   {
     "id": "wq150_b12_1500_direct_b2_20_4",
@@ -5376,10 +5376,10 @@ export const b121500Direct = [
       "in",
       "against",
       "about",
-      "by"
+      "from"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: about. Fiil ve sıfatların edat tamamlayıcısı doğru anlamı sağlar."
+    "explanation": "Doğru seçenek: about. Concerned about bir durum hakkında kaygı duymak anlamına gelir."
   },
   {
     "id": "wq150_b12_1500_direct_b2_20_5",
@@ -5478,16 +5478,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Preposition",
-    "prompt": "____ your request for a refund, we need the original receipt.",
+    "prompt": "____ your request for a refund, the following information concerns the documents we require. No decision has been made yet.",
     "options": [
       "regardless of",
       "in accordance with",
-      "in response to",
+      "in contrast to",
       "as opposed to",
       "with regard to"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: with regard to. Edat öbekleri koşulsuzluk, uyum, tepki, karşılaştırma ve konu bildirir."
+    "explanation": "Doğru seçenek: with regard to. With regard to bir konuya ilişkin açıklamaya giriş yapar."
   },
   {
     "id": "wq150_b12_1500_direct_b2_22_1",

@@ -78,16 +78,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "There are twenty messages to answer; I must ____ them before lunch.",
+    "prompt": "There are twenty messages to answer; I must ____ all of them before lunch, leaving none unanswered.",
     "options": [
       "get over",
       "get by",
-      "get on with",
+      "get together",
       "get away",
       "get through"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get through. İyileşme, geçinme, işe devam etme, uzaklaşma ve tamamlama ayrılır."
+    "explanation": "Doğru seçenek: get through. Get through burada bir dizi işi sonuna kadar tamamlamaktır."
   },
   {
     "id": "wq150_b121500_ph_b1_2_1",
@@ -96,16 +96,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Can you ____ my rabbit while I attend the course?",
+    "prompt": "Can you ____ my rabbit while I attend the course, feeding it and changing its water every day?",
     "options": [
-      "look out for",
+      "look around",
       "look up",
       "look forward to",
       "look after",
       "look into"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: look after. Look öbeklerini bağlamdaki işlevinden ayır."
+    "explanation": "Doğru seçenek: look after. Look after bakımını üstlenmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_2_2",
@@ -312,16 +312,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Remember to ____ the heater before you leave the building.",
+    "prompt": "Remember to ____ the heater completely so that it stops running before you leave the building.",
     "options": [
       "turn up",
       "turn off",
       "turn into",
       "turn over",
-      "turn down"
+      "turn around"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: turn off. Ret, ortaya çıkma, kapatma, dönüşme ve çevirme işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: turn off. Turn off cihazı tamamen kapatmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_4_4",
@@ -456,7 +456,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Our van may ____ if we ignore the warning light.",
+    "prompt": "Our van may ____ on the motorway and stop running if we ignore the engine warning light.",
     "options": [
       "break into",
       "break out",
@@ -465,7 +465,7 @@ export const b121500Phrasals = [
       "break down"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break down. Arıza, zorla giriş, patlak verme, dağılma ve kesme anlamları farklıdır."
+    "explanation": "Doğru seçenek: break down. Break down araç veya makinenin arızalanıp çalışmayı durdurmasıdır."
   },
   {
     "id": "wq150_b121500_ph_b1_6_2",
@@ -564,16 +564,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Could you ____ the library book when you visit tomorrow?",
+    "prompt": "You borrowed my library book last week. Could you ____ it to me when you visit tomorrow?",
     "options": [
       "bring out",
       "bring down",
       "bring up",
       "bring back",
-      "bring along"
+      "bring in"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: bring back. Konu açmak, geri getirmek, yanında getirmek, yayımlamak ve azaltmak ayrılır."
+    "explanation": "Doğru seçenek: bring back. Bring back ödünç alınan bir şeyi geri getirmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_7_3",
@@ -690,16 +690,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The teacher asked two pupils to ____ the worksheets to everyone.",
+    "prompt": "The teacher asked two pupils to ____ one worksheet to each classmate, for use during the lesson.",
     "options": [
-      "give away",
+      "give off",
       "give back",
       "give out",
       "give in",
       "give up"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: give out. Vazgeçme, bağışlama, geri verme, dağıtma ve boyun eğme farklıdır."
+    "explanation": "Doğru seçenek: give out. Give out bir grup insana materyal dağıtmak anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_8_5",
@@ -798,16 +798,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The owner will ____ a plumber to repair the leaking pipe.",
+    "prompt": "The owner will ____ a plumber from outside the company to repair the leaking pipe.",
     "options": [
-      "call on",
+      "call out",
       "call in",
       "call back",
       "call off",
-      "call for"
+      "call up"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call in. Geri arama, iptal, gerektirme, söz verme ve uzman çağırma anlamları ayrılır."
+    "explanation": "Doğru seçenek: call in. Call in bir uzmanı yardım için çağırmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_10_1",
@@ -852,7 +852,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Be careful when reversing so you do not ____ the small plant pots.",
+    "prompt": "Be careful when reversing so you do not ____ the small plant pots and crush them beneath the tyres.",
     "options": [
       "run over",
       "run through",
@@ -861,7 +861,7 @@ export const b121500Phrasals = [
       "run into"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run over. Tükenme, rastlama, üzerinden geçme, gözden geçirme ve kaçma farklıdır."
+    "explanation": "Doğru seçenek: run over. Run over araçla bir nesnenin üzerinden geçmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_10_4",
@@ -960,16 +960,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "We must ____ the total cost from these figures before booking the holiday.",
+    "prompt": "We must ____ the total cost ourselves by adding the figures in this table.",
     "options": [
-      "find out",
+      "look after",
       "pick up",
       "pick out",
       "point out",
       "work out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: work out. Alma, seçme, belirtme, hesaplama ve öğrenme anlamları farklıdır."
+    "explanation": "Doğru seçenek: work out. Work out hesaplayarak bir sonuca ulaşmaktır."
   },
   {
     "id": "wq150_b121500_ph_b1_11_5",
@@ -1068,16 +1068,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Would you like to ____ to our house for tea on Saturday?",
+    "prompt": "You have never visited us before. Would you like to ____ to our house for tea on Saturday?",
     "options": [
-      "come back",
+      "come apart",
       "come in",
       "come out",
       "come round",
       "come across"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: come round. Rastlama, geri dönme, içeri girme, yayımlanma ve uğrama ayrılır."
+    "explanation": "Doğru seçenek: come round. Come round birinin evine ziyarete gelmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_13_1",
@@ -1140,16 +1140,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Please ____ the document for errors before printing it.",
+    "prompt": "Please ____ the document line by line for spelling errors before printing it.",
     "options": [
-      "check out",
+      "check in with",
       "check up on",
       "check over",
       "check off",
       "check in"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: check over. Kayıt, çıkış, durum kontrolü, inceleme ve işaretleme işlevleri vardır."
+    "explanation": "Doğru seçenek: check over. Check over bir şeyi hata olup olmadığını görmek için dikkatle incelemektir."
   },
   {
     "id": "wq150_b121500_ph_b1_13_5",

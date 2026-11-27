@@ -150,7 +150,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The librarian said yesterday, \"I am working at the reading room now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The librarian said yesterday, \"I am working at the reading room now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "have been",
       "would have been",
@@ -474,16 +474,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The mechanic ____ bring personal equipment tomorrow; the garage will provide everything required.",
+    "prompt": "The mechanic ____ bring personal equipment tomorrow; the garage will provide everything required. Bringing one's own equipment is optional.",
     "options": [
       "must",
       "has to",
-      "cannot possibly",
-      "will certainly",
+      "should",
+      "mustn't",
       "needn't"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0028",
@@ -690,7 +690,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The receptionist said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The receptionist said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "had",
       "would",
@@ -960,7 +960,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The baker said yesterday, \"I am working at the kitchen now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The baker said yesterday, \"I am working at the kitchen now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "will be",
       "have been",
@@ -1284,16 +1284,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The gardener ____ bring personal equipment tomorrow; the garden centre will provide everything required.",
+    "prompt": "The gardener ____ bring personal equipment tomorrow; the garden centre will provide everything required. Bringing one's own equipment is optional.",
     "options": [
       "needn't",
       "must",
       "has to",
-      "cannot possibly",
-      "will certainly"
+      "should",
+      "mustn't"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0073",
@@ -1500,7 +1500,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The photographer said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The photographer said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "must have",
       "had",
@@ -1770,7 +1770,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The tutor said yesterday, \"I am working at the classroom now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The tutor said yesterday, \"I am working at the classroom now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "are",
       "will be",
@@ -2094,16 +2094,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The volunteer ____ bring personal equipment tomorrow; the charity shop will provide everything required.",
+    "prompt": "The volunteer ____ bring personal equipment tomorrow; the charity shop will provide everything required. Bringing one's own equipment is optional.",
     "options": [
-      "will certainly",
+      "mustn't",
       "needn't",
       "must",
       "has to",
-      "cannot possibly"
+      "should"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0118",
@@ -2310,7 +2310,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The shop assistant said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The shop assistant said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "can",
       "must have",
@@ -2580,7 +2580,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The cook said yesterday, \"I am working at the staff kitchen now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The cook said yesterday, \"I am working at the staff kitchen now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "were",
       "are",
@@ -2904,16 +2904,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The electrician ____ bring personal equipment tomorrow; the repair company will provide everything required.",
+    "prompt": "The electrician ____ bring personal equipment tomorrow; the repair company will provide everything required. Bringing one's own equipment is optional.",
     "options": [
-      "cannot possibly",
-      "will certainly",
+      "should",
+      "mustn't",
       "needn't",
       "must",
       "has to"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0163",
@@ -3120,7 +3120,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The caretaker said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The caretaker said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "will",
       "can",
@@ -3390,7 +3390,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The cyclist said yesterday, \"I am working at the cycle shed now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The cyclist said yesterday, \"I am working at the cycle shed now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "would have been",
       "were",
@@ -3714,16 +3714,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The artist ____ bring personal equipment tomorrow; the youth centre will provide everything required.",
+    "prompt": "The artist ____ bring personal equipment tomorrow; the youth centre will provide everything required. Bringing one's own equipment is optional.",
     "options": [
       "has to",
-      "cannot possibly",
-      "will certainly",
+      "should",
+      "mustn't",
       "needn't",
       "must"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0208",
@@ -3930,7 +3930,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The cashier said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The cashier said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "would",
       "will",
@@ -4200,7 +4200,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The driver said yesterday, \"I am working at the coach park now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The driver said yesterday, \"I am working at the coach park now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "have been",
       "would have been",
@@ -4524,16 +4524,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The nurse ____ bring personal equipment tomorrow; the clinic will provide everything required.",
+    "prompt": "The nurse ____ bring personal equipment tomorrow; the clinic will provide everything required. Bringing one's own equipment is optional.",
     "options": [
       "must",
       "has to",
-      "cannot possibly",
-      "will certainly",
+      "should",
+      "mustn't",
       "needn't"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0253",
@@ -4740,7 +4740,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The student said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The student said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "had",
       "would",
@@ -5010,7 +5010,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The trainer said yesterday, \"I am working at the sports hall now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The trainer said yesterday, \"I am working at the sports hall now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "will be",
       "have been",
@@ -5334,16 +5334,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The assistant ____ bring personal equipment tomorrow; the community centre will provide everything required.",
+    "prompt": "The assistant ____ bring personal equipment tomorrow; the community centre will provide everything required. Bringing one's own equipment is optional.",
     "options": [
       "needn't",
       "must",
       "has to",
-      "cannot possibly",
-      "will certainly"
+      "should",
+      "mustn't"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0298",
@@ -5550,7 +5550,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The carpenter said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The carpenter said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "must have",
       "had",
@@ -5820,7 +5820,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The secretary said yesterday, \"I am working at the reception area now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The secretary said yesterday, \"I am working at the reception area now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "are",
       "will be",
@@ -6144,16 +6144,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The technician ____ bring personal equipment tomorrow; the museum will provide everything required.",
+    "prompt": "The technician ____ bring personal equipment tomorrow; the museum will provide everything required. Bringing one's own equipment is optional.",
     "options": [
-      "will certainly",
+      "mustn't",
       "needn't",
       "must",
       "has to",
-      "cannot possibly"
+      "should"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0343",
@@ -6360,7 +6360,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The farmer said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The farmer said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "can",
       "must have",
@@ -6630,7 +6630,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The designer said yesterday, \"I am working at the design room now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The designer said yesterday, \"I am working at the design room now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "were",
       "are",
@@ -6954,16 +6954,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The coach ____ bring personal equipment tomorrow; the football club will provide everything required.",
+    "prompt": "The coach ____ bring personal equipment tomorrow; the football club will provide everything required. Bringing one's own equipment is optional.",
     "options": [
-      "cannot possibly",
-      "will certainly",
+      "should",
+      "mustn't",
       "needn't",
       "must",
       "has to"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0388",
@@ -7170,7 +7170,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The courier said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The courier said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "will",
       "can",
@@ -7440,7 +7440,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The editor said yesterday, \"I am working at the publishing office now.\" In reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The editor said yesterday, \"I am working at the publishing office now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "would have been",
       "were",
@@ -7764,16 +7764,16 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The tailor ____ bring personal equipment tomorrow; the fabric shop will provide everything required.",
+    "prompt": "The tailor ____ bring personal equipment tomorrow; the fabric shop will provide everything required. Bringing one's own equipment is optional.",
     "options": [
       "has to",
-      "cannot possibly",
-      "will certainly",
+      "should",
+      "mustn't",
       "needn't",
       "must"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: needn't. Needn't zorunluluk olmadığını belirtir."
+    "explanation": "Doğru seçenek: needn't. Optional, zorunluluğun olmadığını gösterir. Mustn't yasak; must ve has to zorunluluk bildirir."
   },
   {
     "id": "wq150_b121500_grammar_0433",
@@ -7980,7 +7980,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The guide said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day.",
+    "prompt": "The guide said yesterday, \"I will return tomorrow.\" The speaker said they ____ return the following day. (Use standard tense backshift.)",
     "options": [
       "would",
       "will",
@@ -8304,7 +8304,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the analyst abroad all day yesterday. They ____ have been working at the research office at the same time.",
+    "prompt": "Verified travel records place the analyst abroad all day yesterday. They ____ have been physically present at the research office at the same time.",
     "options": [
       "may",
       "needn't",
@@ -8313,7 +8313,7 @@ export const b121500Grammar = [
       "should"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0463",
@@ -9114,7 +9114,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the architect abroad all day yesterday. They ____ have been working at the design studio at the same time.",
+    "prompt": "Verified travel records place the architect abroad all day yesterday. They ____ have been physically present at the design studio at the same time.",
     "options": [
       "should",
       "may",
@@ -9123,7 +9123,7 @@ export const b121500Grammar = [
       "must"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0508",
@@ -9924,7 +9924,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the investigator abroad all day yesterday. They ____ have been working at the records room at the same time.",
+    "prompt": "Verified travel records place the investigator abroad all day yesterday. They ____ have been physically present at the records room at the same time.",
     "options": [
       "must",
       "should",
@@ -9933,7 +9933,7 @@ export const b121500Grammar = [
       "can't"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0553",
@@ -10734,7 +10734,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the researcher abroad all day yesterday. They ____ have been working at the science laboratory at the same time.",
+    "prompt": "Verified travel records place the researcher abroad all day yesterday. They ____ have been physically present at the science laboratory at the same time.",
     "options": [
       "can't",
       "must",
@@ -10743,7 +10743,7 @@ export const b121500Grammar = [
       "needn't"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0598",
@@ -11544,7 +11544,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the economist abroad all day yesterday. They ____ have been working at the policy unit at the same time.",
+    "prompt": "Verified travel records place the economist abroad all day yesterday. They ____ have been physically present at the policy unit at the same time.",
     "options": [
       "needn't",
       "can't",
@@ -11553,7 +11553,7 @@ export const b121500Grammar = [
       "may"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0643",
@@ -12354,7 +12354,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the biologist abroad all day yesterday. They ____ have been working at the botanical laboratory at the same time.",
+    "prompt": "Verified travel records place the biologist abroad all day yesterday. They ____ have been physically present at the botanical laboratory at the same time.",
     "options": [
       "may",
       "needn't",
@@ -12363,7 +12363,7 @@ export const b121500Grammar = [
       "should"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0688",
@@ -13164,7 +13164,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the editor abroad all day yesterday. They ____ have been working at the editorial office at the same time.",
+    "prompt": "Verified travel records place the editor abroad all day yesterday. They ____ have been physically present at the editorial office at the same time.",
     "options": [
       "should",
       "may",
@@ -13173,7 +13173,7 @@ export const b121500Grammar = [
       "must"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0733",
@@ -13974,7 +13974,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the geologist abroad all day yesterday. They ____ have been working at the field station at the same time.",
+    "prompt": "Verified travel records place the geologist abroad all day yesterday. They ____ have been physically present at the field station at the same time.",
     "options": [
       "must",
       "should",
@@ -13983,7 +13983,7 @@ export const b121500Grammar = [
       "can't"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0778",
@@ -14784,7 +14784,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the instructor abroad all day yesterday. They ____ have been working at the training studio at the same time.",
+    "prompt": "Verified travel records place the instructor abroad all day yesterday. They ____ have been physically present at the training studio at the same time.",
     "options": [
       "can't",
       "must",
@@ -14793,7 +14793,7 @@ export const b121500Grammar = [
       "needn't"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0823",
@@ -15594,7 +15594,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "Verified travel records place the quality officer abroad all day yesterday. They ____ have been working at the quality laboratory at the same time.",
+    "prompt": "Verified travel records place the quality officer abroad all day yesterday. They ____ have been physically present at the quality laboratory at the same time.",
     "options": [
       "needn't",
       "can't",
@@ -15603,7 +15603,7 @@ export const b121500Grammar = [
       "may"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: can't. Can't have + V3, kanıta dayalı imkânsızlık çıkarımıdır."
+    "explanation": "Doğru seçenek: can't. Fiziksel olarak başka ülkede bulunduğu kanıtlanan kişinin aynı anda bu iş yerinde bulunması mümkün değildir."
   },
   {
     "id": "wq150_b121500_grammar_0868",
