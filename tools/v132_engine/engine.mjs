@@ -37,12 +37,59 @@ export function mixedPool(records,input,seed,trustedServer=false) {
   }
   return result;
 }
+// Conservative, explicit spelling equivalents: never offer them as wrong answers.
+// Do not infer equivalents from arbitrary suffix replacements.
+const spellingPairs=[
+ ["color","colour"],["colors","colours"],["colored","coloured"],["colorful","colourful"],
+ ["favor","favour"],["favorite","favourite"],["favorites","favourites"],["favorable","favourable"],
+ ["honor","honour"],["humor","humour"],["labor","labour"],["neighbor","neighbour"],["neighborhood","neighbourhood"],
+ ["behavior","behaviour"],["harbor","harbour"],["odor","odour"],["vapor","vapour"],
+ ["center","centre"],["theater","theatre"],["meter","metre"],["liter","litre"],
+ ["traveling","travelling"],["traveled","travelled"],["traveler","traveller"],
+ ["canceled","cancelled"],["canceling","cancelling"],["labeled","labelled"],["labeling","labelling"],
+ ["analyze","analyse"],["analyzed","analysed"],["analyzing","analysing"],
+ ["organize","organise"],["organized","organised"],["organization","organisation"],
+ ["recognize","recognise"],["realize","realise"],["specialize","specialise"],
+ ["standardize","standardise"],["normalize","normalise"],["randomize","randomise"],["randomization","randomisation"],
+ ["serialization","serialisation"],["deserialization","deserialisation"],["amortization","amortisation"],
+ ["salinization","salinisation"],["authorization","authorisation"],["polarization","polarisation"],
+ ["digitize","digitise"],["apologize","apologise"],["catalog","catalogue"],["dialog","dialogue"],
+ ["defense","defence"],["offense","offence"],["license","licence"],["practice","practise"],
+ ["jewelry","jewellery"],["gray","grey"],["tire","tyre"],["pajamas","pyjamas"],
+ ["airplane","aeroplane"],["aluminum","aluminium"],["esthetic","aesthetic"],["anemia","anaemia"],
+ ["edema","oedema"],["ischemia","ischaemia"],["etiology","aetiology"],["fetus","foetus"],
+ ["check","cheque"]
+];
+const spellingGroup=new Map(spellingPairs.flatMap(([a,b])=>[[a,a],[b,a]]));
+export const quizSpellingKey=answer=>spellingGroup.get(key(answer))??key(answer);
+const glossKey=s=>String(s).normalize("NFC").toLocaleLowerCase("tr").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim().replace(/[.!?]+$/,"");
+// Individual comma/semicolon-delimited glosses are compared, not just the first.
+// Parenthesized domain qualifiers are ignored conservatively for distractor filtering.
+export function quizGlossKeys(meaning){
+ const clean=String(meaning).replace(/\([^)]*\)/g," ");
+ return [...new Set([glossKey(clean),...clean.split(/[,;/]/).map(x=>glossKey(x.replace(/^\s*(isim|fiil|sıfat|zarf|edat|bağlaç)\s*:\s*/i,"")))].filter(Boolean))];
+}
 export function quiz(records,input,seed,trustedServer=false) {
   const s=normalizeSettings(input,trustedServer);if(s.mode!=="quiz")throw new Error("Quiz modu gerekli");
   const targets=mixedPool(records,s,seed,trustedServer),rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
   const candidates=records.filter(w=>w&&s.levels.includes(w.level)&&typeof w.answer==="string"&&w.answer.trim()&&typeof w.meaning==="string").sort((a,b)=>{const x=JSON.stringify([a.answer,a.meaning]),y=JSON.stringify([b.answer,b.meaning]);return x<y?-1:x>y?1:0});
+  const glossesByAnswer=new Map();
+  // Use every available sense, even if a word's other sense lies outside the selected level.
+  for(const w of records){
+    if(!w||typeof w.answer!=="string"||typeof w.meaning!=="string")continue;
+    const k=quizSpellingKey(w.answer);if(!glossesByAnswer.has(k))glossesByAnswer.set(k,new Set());
+    for(const g of quizGlossKeys(w.meaning))glossesByAnswer.get(k).add(g);
+  }
   return targets.map(t=>{
-    const distractors=shuffle(candidates.filter(a=>key(a.answer)!==key(t.answer)&&key(a.meaning)!==key(t.meaning)&&key(a.meaning.split(",")[0])!==key(t.meaning.split(",")[0])).map(a=>a.answer.trim()),rng).filter((a,i,arr)=>arr.findIndex(b=>key(b)===key(a))===i).slice(0,4);
+    const targetKey=quizSpellingKey(t.answer),targetGlosses=new Set(quizGlossKeys(t.meaning));
+    const eligible=candidates.filter(a=>{
+      const k=quizSpellingKey(a.answer);
+      return k!==targetKey&&![...(glossesByAnswer.get(k)??[])].some(g=>targetGlosses.has(g));
+    });
+    const seen=new Set();
+    const distractors=shuffle(eligible.map(a=>a.answer.trim()),rng).filter(a=>{
+      const k=quizSpellingKey(a);if(seen.has(k))return false;seen.add(k);return true;
+    }).slice(0,4);
     if(distractors.length!==4)throw new Error("Beş seçenek için yeterli farklı kelime yok");
     const options=shuffle([t.answer,...distractors],rng);
     return {prompt:t.meaning,options,correct:options.indexOf(t.answer),answer:t.answer,level:t.level};

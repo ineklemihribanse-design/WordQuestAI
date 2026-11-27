@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {normalizeSettings,mixedPool,quiz,crossword,LEVELS} from './engine.mjs';
+import {normalizeSettings,mixedPool,quiz,crossword,LEVELS,quizGlossKeys,quizSpellingKey} from './engine.mjs';
 const records=LEVELS.flatMap(l=>Array.from({length:20},(_,i)=>({level:l,answer:l.toLowerCase()+'word'+i,meaning:l+' anlam '+i,topic:'all'})));
 const s={mode:'quiz',levels:['B1','A1','A2'],size:15,seconds:30,hints:3,retries:1,topic:'all'};
 test('all selected levels actually present, balanced and deterministic across devices',()=>{
@@ -45,3 +45,30 @@ test('connected mixed crossword has exact count, valid crossings and determinist
 });
 
 test("reject too few questions for selected levels",()=>assert.throws(()=>mixedPool(records,{...s,levels:LEVELS,size:5},12),/Seviye|seviye/));
+
+test('quiz excludes spelling variants and overlapping translations across all senses',()=>{
+ const items=[
+  {answer:'COLOR',meaning:'renk',level:'A1'},
+  {answer:'COLOUR',meaning:'ton',level:'A1'},
+  {answer:'HUE',meaning:'renk tonu; renk',level:'A1'},
+  {answer:'SHADE',meaning:'gölge',level:'A1'},
+  {answer:'SHADE',meaning:'renk (ton)',level:'B1'},
+  {answer:'APPLE',meaning:'elma',level:'A1'},
+  {answer:'BREAD',meaning:'ekmek',level:'A1'},
+  {answer:'HOUSE',meaning:'ev',level:'A1'},
+  {answer:'RIVER',meaning:'nehir',level:'A1'},
+  {answer:'CHAIR',meaning:'sandalye',level:'A1'},
+  {answer:'BOOK',meaning:'kitap',level:'A1'},
+  {answer:'WATER',meaning:'su',level:'A1'}
+ ];
+ assert.equal(quizSpellingKey('COLOR'),quizSpellingKey('colour'));
+ assert.ok(quizGlossKeys('İsim: gölge; RENK (ton)').includes('renk'));
+ const cfg={...s,levels:['A1'],size:10};
+ for(const seed of [1,2,3,4,5]){
+   const qs=quiz(items,cfg,seed);
+   const q=qs.find(x=>x.answer==='COLOR');
+   if(q)assert.ok(['COLOUR','HUE','SHADE'].every(w=>!q.options.includes(w)));
+   for(const x of qs){assert.equal(x.options.length,5);assert.equal(new Set(x.options.map(quizSpellingKey)).size,5);assert.equal(x.options[x.correct],x.answer);}
+   assert.deepEqual(qs,quiz([...items].reverse(),cfg,seed));
+ }
+});
