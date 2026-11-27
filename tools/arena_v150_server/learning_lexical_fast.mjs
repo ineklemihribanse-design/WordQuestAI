@@ -3034,7 +3034,7 @@ export const lexicalFastQuestions = [
     "options": [
       "temperate",
       "indulgent",
-      "ascetic in appearance",
+      "contemplative",
       "ritualistic",
       "reclusive"
     ],
@@ -3051,7 +3051,7 @@ export const lexicalFastQuestions = [
     "options": [
       "indulgent",
       "temperate",
-      "ascetic in appearance",
+      "contemplative",
       "ritualistic",
       "reclusive"
     ],
@@ -5824,7 +5824,7 @@ export const lexicalFastQuestions = [
       "pessimistic",
       "resolute",
       "complacent",
-      "apprehensive"
+      "detached"
     ],
     "correct": 0,
     "explanation": "'sanguine' bu bağlamda 'iyimser' anlamındadır. 'optimistic' bu kullanıma en yakın seçenektir.",
@@ -5841,7 +5841,7 @@ export const lexicalFastQuestions = [
       "optimistic",
       "resolute",
       "complacent",
-      "apprehensive"
+      "detached"
     ],
     "correct": 0,
     "explanation": "'sanguine' bu bağlamda 'iyimser' anlamındadır. 'pessimistic' bu anlamın karşıtıdır.",
