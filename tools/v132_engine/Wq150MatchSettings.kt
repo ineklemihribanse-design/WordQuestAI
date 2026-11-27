@@ -74,11 +74,18 @@ internal data class Wq150Settings(
     }
     fun changeScale(value:String):Wq150Settings {
         require(value=="cefr"||value=="yds")
+        if(scale==value)return this
         return copy(scale=value,levels=listOf(Wq150ModeCatalog.levels(value).first()),topic=null,wordType=null)
     }
     fun changeMode(value:String):Wq150Settings {
         require(value in Wq150ModeCatalog.modes(kind))
-        return copy(mode=value,seconds=if(kind=="coop"&&value=="timed"&&seconds==0)300 else seconds)
+        val wasTimed=kind=="coop"&&mode=="timed"
+        val willBeTimed=kind=="coop"&&value=="timed"
+        return copy(mode=value,seconds=when{
+            willBeTimed&&!wasTimed -> 300
+            wasTimed&&!willBeTimed -> 30
+            else -> seconds
+        })
     }
     fun changeFormat(value:String):Wq150Settings {
         require(kind=="team"&&value in listOf("quiz","crossword"))
@@ -184,7 +191,7 @@ private fun Wq150SettingPanel(content:@Composable ColumnScope.()->Unit){
 internal fun Wq150LevelRow(values:List<String>,selected:List<String>,onPick:(String)->Unit){
     BoxWithConstraints(Modifier.fillMaxWidth()){
         val gap=3.dp
-        val cell=((maxWidth-gap*(values.size-1))/values.size).coerceAtLeast(44.dp)
+        val cell=((maxWidth-gap*(values.size-1))/values.size).coerceAtLeast(36.dp)
         Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(gap)){
             values.forEach{level->
                 val active=level in selected
@@ -210,8 +217,8 @@ internal fun Wq150CompactPicker(values:Map<String,String>,selected:String,onPick
             Text(values[selected]?:selected,Modifier.weight(1f),color=Wq122Ink,fontWeight=FontWeight.Bold,fontSize=13.sp)
             Text("⌄",color=Wq122Gold)
         }
-        DropdownMenu(expanded=open,onDismissRequest={open=false},modifier=Modifier.heightIn(max=320.dp)){
-            values.forEach{(id,label)->DropdownMenuItem(text={Text(label+if(id==selected)" ✓" else "",color=Wq122Ink)},
+        DropdownMenu(expanded=open,onDismissRequest={open=false},modifier=Modifier.heightIn(max=320.dp).background(Color(0xFF251347))){
+            values.forEach{(id,label)->DropdownMenuItem(text={Text(label+if(id==selected)" ✓" else "",color=Color.White,fontSize=16.sp,fontWeight=if(id==selected)FontWeight.Bold else FontWeight.Normal)},
                 onClick={onPick(id);open=false})}
         }
     }
@@ -231,16 +238,15 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
                 Wq122SettingsBackdrop(Modifier.matchParentSize())
                 Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=4.dp),
+                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().verticalScroll(rememberScrollState()).padding(horizontal=8.dp,vertical=8.dp),
                     verticalArrangement=Arrangement.spacedBy(6.dp)){
                     Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xE2251347)),
                         verticalAlignment=Alignment.CenterVertically){
                         TextButton(onClick=onDismiss,contentPadding=PaddingValues(horizontal=6.dp)){Text("‹ Geri",color=Wq122Gold)}
-                        Wq122Art("settings",Modifier.size(28.dp))
                         Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=19.sp)
                     }
                     Wq150SettingPanel{Wq122Section("mode","Seçilen mod · "+Wq150ModeCatalog.kinds[s.kind].orEmpty())}
-                    BoxWithConstraints(Modifier.weight(1f).fillMaxWidth()){
+                    BoxWithConstraints(Modifier.fillMaxWidth()){
                         val wide=maxWidth>=650.dp
                         val basic:@Composable ()->Unit={
                             Wq150SettingPanel{
@@ -262,9 +268,9 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                                 Wq150LevelRow(levels,s.levels){s=s.toggleLevel(it)}
                             }
                             Wq150SettingPanel{
-                                Wq150Filter("Konu",mapOf("all" to "Tüm konular")+topics,s.topic?:"all"){s=s.copy(topic=it.takeUnless{x->x=="all"},wordType=null)}
+                                Wq150Filter("Konu",mapOf("all" to "Tüm konular")+topics,s.topic?:"all"){s=if(it=="all")s.copy(topic=null) else s.copy(topic=it,wordType=null)}
                                 if(wordTypes.isNotEmpty()||catalog==null)
-                                    Wq150Filter("Kelime türü",mapOf("all" to "Tüm kelime türleri")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
+                                    Wq150Filter("Kelime türü",mapOf("all" to "Tüm kelime türleri")+wordTypes,s.wordType?:"all"){s=if(it=="all")s.copy(wordType=null) else s.copy(wordType=it,topic=null)}
                                 else Text("Kelime türü etiketleri henüz aktarılmadı.",color=Color(0xFFFFD6A1),fontSize=12.sp)
                             }
                         }
@@ -283,7 +289,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                                 if(s.kind=="coop"&&s.mode=="perfect")Wq150SettingValue("Ortak yanlış hakkı",listOf(1,2,3,5).associate{it.toString() to it.toString()},s.maxMistakes.toString()){s=s.copy(maxMistakes=it.toInt())}
                             }
                         }
-                        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
+                        Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(6.dp)){
                             if(wide)Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
                                 Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)){basic()}
                                 Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)){rules()}
@@ -311,26 +317,28 @@ private fun Wq150SettingValue(title:String,values:Map<String,String>,selected:St
 }
 
 @Composable
-private fun Wq150Filter(title:String,values:Map<String,String>,selected:String,onPick:(String)->Unit){
+internal fun Wq150Filter(title:String,values:Map<String,String>,selected:String,onPick:(String)->Unit){
     var open by remember{mutableStateOf(false)}
     var query by remember{mutableStateOf("")}
     Wq122Section("topic",title)
-    Surface(onClick={open=true},color=Color(0xF0251347),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth()){
+    Surface(onClick={query="";open=true},color=Color(0xF0251347),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth()){
         Row(Modifier.padding(12.dp),verticalAlignment=Alignment.CenterVertically){
-            Text(values[selected].orEmpty(),Modifier.weight(1f),color=Wq122Ink)
+            Text(values[selected].orEmpty(),Modifier.weight(1f),color=Color.White,fontSize=15.sp)
             Text("⌄",color=Wq122Gold)
         }
     }
-    if(open)AlertDialog(onDismissRequest={open=false},containerColor=Color(0xFF251347),title={Text(title,color=Wq122Gold)},text={
+    if(open)AlertDialog(onDismissRequest={open=false;query=""},containerColor=Color(0xFF251347),title={Text(title,color=Wq122Gold)},text={
         Column(Modifier.heightIn(max=420.dp)){
-            OutlinedTextField(query,{query=it},label={Text("Ara")},singleLine=true,modifier=Modifier.fillMaxWidth())
+            OutlinedTextField(query,{query=it},label={Text("Ara",color=Color.White)},singleLine=true,modifier=Modifier.fillMaxWidth(),colors=OutlinedTextFieldDefaults.colors(focusedTextColor=Color.White,unfocusedTextColor=Color.White,focusedBorderColor=Wq122Gold,unfocusedBorderColor=Color(0xFF9675C8),cursorColor=Wq122Gold))
             Column(Modifier.weight(1f,fill=false).verticalScroll(rememberScrollState())){
-                values.filterValues{it.contains(query,ignoreCase=true)}.forEach{(id,name)->
-                    TextButton(onClick={onPick(id);open=false;query=""},modifier=Modifier.fillMaxWidth()){
-                        Text(name+if(id==selected)" ✓" else "",color=Wq122Ink)
+                val filtered=values.filterValues{it.contains(query,ignoreCase=true)}
+                if(filtered.isEmpty())Text("Sonuç bulunamadı.",color=Color.White,modifier=Modifier.padding(12.dp))
+                filtered.forEach{(id,name)->
+                    TextButton(onClick={onPick(id);open=false;query=""},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp)){
+                        Text(name+if(id==selected)" ✓" else "",color=Color.White,fontSize=15.sp,fontWeight=if(id==selected)FontWeight.Bold else FontWeight.Normal,modifier=Modifier.fillMaxWidth())
                     }
                 }
             }
         }
-    },confirmButton={TextButton(onClick={open=false}){Text("Kapat")}})
+    },confirmButton={TextButton(onClick={open=false;query=""}){Text("Kapat",color=Wq122Gold)}})
 }
