@@ -185,37 +185,42 @@ internal fun Wq150ArenaBars(){
         }
     }
 }
+// Match-settings-only surfaces. Keep the stadium artwork unchanged.
 @Composable
 internal fun Wq150SettingPanel(tone:String="purple",content:@Composable ColumnScope.()->Unit){
-    val colors=when(tone){
-        "blue" -> listOf(Color(0xF0245484),Color(0xF010294F),Color(0xFF63C6FF))
-        "green" -> listOf(Color(0xF0216859),Color(0xF010393C),Color(0xFF79E2B0))
-        "amber" -> listOf(Color(0xF07A4827),Color(0xF03C2334),Color(0xFFFFC778))
-        else -> listOf(Color(0xF05D2991),Color(0xF025144C),Color(0xFFC7A2FF))
-    }
-    val shape=RoundedCornerShape(15.dp)
+    val shape=RoundedCornerShape(17.dp)
     Column(Modifier.fillMaxWidth().clip(shape)
-        .background(Brush.verticalGradient(colors.take(2)))
-        .border(1.dp,colors[2],shape).padding(8.dp),
-        verticalArrangement=Arrangement.spacedBy(4.dp),content=content)
+        .background(Brush.verticalGradient(listOf(Color(0xCF29204D),Color(0xDD18152F))))
+        .border(1.dp,Color(0x72D8BD82),shape).padding(horizontal=10.dp,vertical=8.dp),
+        verticalArrangement=Arrangement.spacedBy(5.dp),content=content)
+}
+@Composable
+internal fun Wq159SettingsChoice(label:String,selected:Boolean,modifier:Modifier=Modifier,onClick:()->Unit){
+    val shape=RoundedCornerShape(11.dp)
+    Box(modifier.heightIn(min=44.dp).clip(shape)
+        .background(Brush.verticalGradient(if(selected)listOf(Color(0xFF7240B0),Color(0xFF452475))
+            else listOf(Color(0xB8342A56),Color(0xBC231C3D))))
+        .border(if(selected)1.5.dp else 1.dp,if(selected)Color(0xFFFFD98B) else Color(0x627F739D),shape)
+        .clickable(onClick=onClick).padding(horizontal=4.dp,vertical=5.dp),
+        contentAlignment=Alignment.Center){
+        Text(label+(if(selected)" ✓" else ""),color=Color(0xFFFFF4E3),fontWeight=FontWeight.SemiBold,
+            fontSize=13.sp,textAlign=TextAlign.Center,maxLines=2)
+    }
 }
 @Composable
 internal fun Wq150LevelRow(values:List<String>,selected:List<String>,onPick:(String)->Unit){
-    BoxWithConstraints(Modifier.fillMaxWidth()){
-        val gap=3.dp
-        val cell=((maxWidth-gap*(values.size-1))/values.size).coerceAtLeast(36.dp)
-        Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(gap)){
-            values.forEach{level->
-                val active=level in selected
-                val shape=RoundedCornerShape(10.dp)
-                Box(Modifier.width(cell).height(44.dp).clip(shape)
-                    .background(Brush.verticalGradient(if(active)listOf(Color(0xFFA22CE9),Color(0xFF5410AB)) else listOf(Color(0xFF392765),Color(0xFF20163F))))
-                    .border(if(active)2.dp else 1.dp,if(active)Wq122Gold else Wq122Border,shape)
-                    .clickable{onPick(level)},contentAlignment=Alignment.Center){
-                    Text(when(level){"easy"->"Kolay";"medium"->"Orta";"hard"->"Zor";else->level},
-                        color=Color.White,fontWeight=FontWeight.Bold,fontSize=13.sp,maxLines=1)
-                    if(active)Text("✓",Modifier.align(Alignment.TopEnd).padding(end=3.dp),color=Wq122Gold,fontSize=10.sp)
-                }
+    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(3.dp)){
+        values.forEach{level->
+            val active=level in selected
+            val shape=RoundedCornerShape(10.dp)
+            Box(Modifier.weight(1f).heightIn(min=44.dp).clip(shape)
+                .background(Brush.verticalGradient(if(active)listOf(Color(0xFF7240B0),Color(0xFF452475))
+                    else listOf(Color(0xB8342A56),Color(0xBC231C3D))))
+                .border(if(active)1.5.dp else 1.dp,if(active)Color(0xFFFFD98B) else Color(0x627F739D),shape)
+                .clickable{onPick(level)},contentAlignment=Alignment.Center){
+                Text(when(level){"easy"->"Kolay";"medium"->"Orta";"hard"->"Zor";else->level},
+                    color=Color(0xFFFFF4E3),fontWeight=FontWeight.Bold,fontSize=13.sp,maxLines=1)
+                if(active)Text("✓",Modifier.align(Alignment.TopEnd).padding(end=2.dp),color=Wq122Gold,fontSize=9.sp)
             }
         }
     }
@@ -225,6 +230,8 @@ internal fun Wq150CompactPicker(values:Map<String,String>,selected:String,onPick
     var open by remember{mutableStateOf(false)}
     Box(Modifier.fillMaxWidth()){
         OutlinedButton(onClick={open=true},modifier=Modifier.fillMaxWidth().heightIn(min=44.dp),
+            border=androidx.compose.foundation.BorderStroke(1.dp,Color(0x728F80AC)),
+            colors=ButtonDefaults.outlinedButtonColors(containerColor=Color(0x95231C3D)),
             contentPadding=PaddingValues(horizontal=10.dp,vertical=4.dp)){
             Text(values[selected]?:selected,Modifier.weight(1f),color=Wq122Ink,fontWeight=FontWeight.Bold,fontSize=13.sp)
             Text("⌄",color=Wq122Gold)
@@ -251,30 +258,18 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                 Wq150SettingsBackdrop(Modifier.matchParentSize())
                 Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
                     .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=6.dp),
-                    verticalArrangement=Arrangement.spacedBy(6.dp)){
-                    Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xE2251347)),
+                    verticalArrangement=Arrangement.spacedBy(8.dp)){
+                    Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xB8241B41)),
                         verticalAlignment=Alignment.CenterVertically){
                         TextButton(onClick=onDismiss,contentPadding=PaddingValues(horizontal=6.dp)){Text("‹ Geri",color=Wq122Gold)}
                         Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=19.sp)
                     }
-                    Wq150SettingPanel("green"){
-                        BoxWithConstraints(Modifier.fillMaxWidth()){
-                            val details:@Composable ()->Unit={
-                                Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)
-                                Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Wq122Ink,fontSize=13.sp)
-                                if(!valid)Text(if(!available)"İçerik veya bağlantı hazırlanıyor…" else "Seçimleri kontrol et.",color=Color(0xFFFFD6A1),fontSize=12.sp)
-                            }
-                            if(maxWidth>=650.dp)Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)){
-                                Column(Modifier.weight(1f)){details()}
-                                Box(Modifier.widthIn(min=210.dp,max=280.dp)){Wq150StartButton("Ayarları Uygula",valid){onApply(s)}}
-                            }else Column(verticalArrangement=Arrangement.spacedBy(4.dp)){
-                                details()
-                                Wq150StartButton("Ayarları Uygula",valid){onApply(s)}
-                            }
-                        }
+                    Wq150SettingPanel{
+                        Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=12.sp)
+                        Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Color(0xFFFFF4E3),fontSize=13.sp)
+                        if(!valid)Text(if(!available)"İçerik veya bağlantı hazırlanıyor…" else "Seçimleri kontrol et.",color=Color(0xFFFFD6A1),fontSize=12.sp)
                     }
-                    Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
-                    Wq150SettingPanel("purple"){Wq122Section("mode","Seçilen mod · "+Wq150ModeCatalog.kinds[s.kind].orEmpty())}
+                    Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(9.dp)){
                     BoxWithConstraints(Modifier.fillMaxWidth()){
                         val wide=maxWidth>=650.dp
                         val basic:@Composable ()->Unit={
@@ -282,7 +277,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                                 Wq122Section("mode","Oyun biçimi")
                                 Wq150ModeCatalog.modes(s.kind).entries.toList().chunked(3).forEach{row->
                                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
-                                        row.forEach{(id,label)->Wq122Choice(label,id==s.mode,Modifier.weight(1f)){s=s.changeMode(id)}}
+                                        row.forEach{(id,label)->Wq159SettingsChoice(label,id==s.mode,Modifier.weight(1f)){s=s.changeMode(id)}}
                                     }
                                 }
                                 if(s.kind=="team")Wq150SettingValue("2'ye 2 · içerik",mapOf("crossword" to "Bulmaca","quiz" to "5 Şıklı"),s.format){s=s.changeFormat(it)}
@@ -290,7 +285,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                             Wq150SettingPanel("blue"){
                                 Wq122Section("level","Seviye sistemi")
                                 Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
-                                    scales.forEach{(id,label)->Wq122Choice(label,id==s.scale,Modifier.weight(1f)){s=s.changeScale(id)}}
+                                    scales.forEach{(id,label)->Wq159SettingsChoice(label,id==s.scale,Modifier.weight(1f)){s=s.changeScale(id)}}
                                 }
                                 if(catalog!=null&&!catalog.hasYds())Text("YDS içerikleri henüz aktarılmadı.",color=Color(0xFFFFD6A1),fontSize=12.sp)
                                 Wq122Section("level","Seviyeler","Birden fazla seviye seçebilirsin.")
@@ -320,16 +315,31 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                         }
                         Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(6.dp)){
                             if(wide)Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)){basic()}
-                                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(6.dp)){rules()}
+                                Column(Modifier.weight(1.08f),verticalArrangement=Arrangement.spacedBy(9.dp)){basic()}
+                                Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(9.dp)){rules()}
                             }else{basic();rules()}
                             if(catalog!=null&&!catalog.supports(s))Text("Seçilen seviyeler ve filtre için yeterli içerik yok. Soru sayısını azalt veya filtreyi değiştir.",color=Color(0xFFFFD6A1),modifier=Modifier.background(Color(0xE2251347)).padding(6.dp))
                             if(!available)Text("İşlem sürüyor veya yeniden denenmesi gerekiyor.",color=Color(0xFFFFD6A1))
                         }
                     }
                     }
-
+                    // Footer lives outside the scrolling content and inside safeDrawing insets.
+                    Wq159SettingsFooter("Ayarları Uygula",valid){onApply(s)}
                 }
+            }
+        }
+    }
+}
+@Composable
+internal fun Wq159SettingsFooter(label:String,enabled:Boolean,onClick:()->Unit){
+    Box(Modifier.fillMaxWidth(),contentAlignment=Alignment.Center){
+        Box(Modifier.widthIn(max=420.dp).fillMaxWidth()){
+            Button(onClick=onClick,enabled=enabled,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
+                shape=RoundedCornerShape(15.dp),colors=ButtonDefaults.buttonColors(
+                    containerColor=Color(0xFFFFD68A),contentColor=Color(0xFF2A1842),
+                    disabledContainerColor=Color(0xE03B3451),disabledContentColor=Color(0xFFD1C6DC)),
+                contentPadding=PaddingValues(horizontal=14.dp,vertical=9.dp)){
+                Text(label,fontWeight=FontWeight.Black,fontSize=16.sp,textAlign=TextAlign.Center)
             }
         }
     }
@@ -355,8 +365,8 @@ internal fun Wq150Filter(title:String,values:Map<String,String>,selected:String,
     var open by remember{mutableStateOf(false)}
     var query by remember{mutableStateOf("")}
     Wq122Section("topic",title)
-    Surface(onClick={query="";open=true},color=Color(0xF0251347),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth()){
-        Row(Modifier.padding(12.dp),verticalAlignment=Alignment.CenterVertically){
+    Surface(onClick={query="";open=true},color=Color(0xA5231C3D),shape=RoundedCornerShape(12.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Color(0x728F80AC)),modifier=Modifier.fillMaxWidth()){
+        Row(Modifier.heightIn(min=44.dp).padding(horizontal=10.dp,vertical=7.dp),verticalAlignment=Alignment.CenterVertically){
             Text(values[selected].orEmpty(),Modifier.weight(1f),color=Color.White,fontSize=15.sp)
             Text("⌄",color=Wq122Gold)
         }

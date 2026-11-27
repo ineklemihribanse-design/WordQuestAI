@@ -125,7 +125,11 @@ def viewport(name,w,h,density,wide):
     tx,ty,TX,TY=bounds(title)
     assert 0<=x<=tx<TX<=X<=W and 0<=y<=ty<TY<=Y<=H,("Start button outside display",start.attrib,title.attrib)
     assert Y-y>=int(44*density/160),("Start touch target too small",start.attrib)
-    assert Y<=min(a[1] for a in levels),("Start must remain above scrollable level controls",start.attrib,levels)
+    if int(os.environ.get("WQ_TARGET_CODE","173"))>=173:
+        assert y>=max(a[3] for a in levels),("Start must remain below scrollable level controls",start.attrib,levels)
+        assert H-Y<=int(100*density/160),("Start too far from safe bottom edge",start.attrib,H)
+    else:
+        assert Y<=min(a[1] for a in levels),("Historical Start position changed",start.attrib,levels)
     print("PASS: visible enabled start button and its text",name,start.attrib,flush=True)
     capture(name+"-settings")
     adb("shell","input","keyevent","KEYCODE_BACK");get("Klasik Bulmaca")
