@@ -129,7 +129,7 @@ def main():
     # Existing valid recordings/IPA remain untouched, except the known short
     # words whose standalone lexical pronunciation is explicitly corrected.
     todo = [w for w in all_words if w not in old_words or w not in old_entries
-            or w in old_unresolved or w in SHORT or any(
+            or w in old_unresolved or (w in SHORT and os.environ.get("WQ_PRESERVE_EXISTING_AUDIO") != "1") or any(
                 not (BASE/r/(words[w]+".ogg")).is_file() for r in REGIONS)]
     def both(w):
         us, hu = render(w, words[w], "en-us")

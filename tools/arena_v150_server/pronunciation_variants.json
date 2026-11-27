@@ -1,0 +1,254 @@
+{
+  "read": [
+    [
+      "okumak",
+      "riːd",
+      "riːd"
+    ],
+    [
+      "okudu / okunmuş",
+      "red",
+      "red"
+    ]
+  ],
+  "lead": [
+    [
+      "önderlik etmek",
+      "liːd",
+      "liːd"
+    ],
+    [
+      "kurşun",
+      "led",
+      "led"
+    ]
+  ],
+  "live": [
+    [
+      "yaşamak",
+      "lɪv",
+      "lɪv"
+    ],
+    [
+      "canlı",
+      "laɪv",
+      "laɪv"
+    ]
+  ],
+  "wind": [
+    [
+      "rüzgâr",
+      "wɪnd",
+      "wɪnd"
+    ],
+    [
+      "sarmak",
+      "waɪnd",
+      "waɪnd"
+    ]
+  ],
+  "tear": [
+    [
+      "gözyaşı",
+      "tɪr",
+      "tɪə"
+    ],
+    [
+      "yırtmak",
+      "ter",
+      "teə"
+    ]
+  ],
+  "bow": [
+    [
+      "yay / fiyonk",
+      "boʊ",
+      "bəʊ"
+    ],
+    [
+      "eğilmek",
+      "baʊ",
+      "baʊ"
+    ]
+  ],
+  "close": [
+    [
+      "yakın",
+      "kloʊs",
+      "kləʊs"
+    ],
+    [
+      "kapatmak",
+      "kloʊz",
+      "kləʊz"
+    ]
+  ],
+  "record": [
+    [
+      "kayıt (isim)",
+      "ˈrekərd",
+      "ˈrekɔːd"
+    ],
+    [
+      "kaydetmek (fiil)",
+      "rɪˈkɔːrd",
+      "rɪˈkɔːd"
+    ]
+  ],
+  "present": [
+    [
+      "hediye / mevcut",
+      "ˈprezənt",
+      "ˈprezənt"
+    ],
+    [
+      "sunmak",
+      "prɪˈzent",
+      "prɪˈzent"
+    ]
+  ],
+  "object": [
+    [
+      "nesne",
+      "ˈɑːbdʒekt",
+      "ˈɒbdʒekt"
+    ],
+    [
+      "itiraz etmek",
+      "əbˈdʒekt",
+      "əbˈdʒekt"
+    ]
+  ],
+  "minute": [
+    [
+      "dakika",
+      "ˈmɪnɪt",
+      "ˈmɪnɪt"
+    ],
+    [
+      "çok küçük",
+      "maɪˈnuːt",
+      "maɪˈnjuːt"
+    ]
+  ],
+  "refuse": [
+    [
+      "reddetmek",
+      "rɪˈfjuːz",
+      "rɪˈfjuːz"
+    ],
+    [
+      "atık / çöp",
+      "ˈrefjuːs",
+      "ˈrefjuːs"
+    ]
+  ],
+  "produce": [
+    [
+      "üretmek",
+      "prəˈduːs",
+      "prəˈdjuːs"
+    ],
+    [
+      "tarımsal ürün",
+      "ˈproʊduːs",
+      "ˈprɒdjuːs"
+    ]
+  ],
+  "conduct": [
+    [
+      "davranış (isim)",
+      "ˈkɑːndʌkt",
+      "ˈkɒndʌkt"
+    ],
+    [
+      "yürütmek (fiil)",
+      "kənˈdʌkt",
+      "kənˈdʌkt"
+    ]
+  ],
+  "content": [
+    [
+      "içerik",
+      "ˈkɑːntent",
+      "ˈkɒntent"
+    ],
+    [
+      "memnun",
+      "kənˈtent",
+      "kənˈtent"
+    ]
+  ],
+  "desert": [
+    [
+      "çöl",
+      "ˈdezərt",
+      "ˈdezət"
+    ],
+    [
+      "terk etmek",
+      "dɪˈzɜːrt",
+      "dɪˈzɜːt"
+    ]
+  ],
+  "invalid": [
+    [
+      "geçersiz",
+      "ɪnˈvælɪd",
+      "ɪnˈvælɪd"
+    ],
+    [
+      "hasta kişi (eski kullanım)",
+      "ˈɪnvəlɪd",
+      "ˈɪnvəlɪd"
+    ]
+  ],
+  "wound": [
+    [
+      "yara",
+      "wuːnd",
+      "wuːnd"
+    ],
+    [
+      "sardı (wind geçmiş zaman)",
+      "waʊnd",
+      "waʊnd"
+    ]
+  ],
+  "does": [
+    [
+      "yapar",
+      "dʌz",
+      "dʌz"
+    ],
+    [
+      "dişi geyikler",
+      "doʊz",
+      "dəʊz"
+    ]
+  ],
+  "bass": [
+    [
+      "bas ses",
+      "beɪs",
+      "beɪs"
+    ],
+    [
+      "levrek",
+      "bæs",
+      "bæs"
+    ]
+  ],
+  "use": [
+    [
+      "kullanım",
+      "juːs",
+      "juːs"
+    ],
+    [
+      "kullanmak",
+      "juːz",
+      "juːz"
+    ]
+  ]
+}

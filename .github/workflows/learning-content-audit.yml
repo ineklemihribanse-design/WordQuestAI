@@ -5,6 +5,7 @@ on:
     paths:
       - 'tools/arena_v150_server/learning_*.mjs'
       - 'tools/arena_v150_server/audit_learning_content.mjs'
+      - 'tools/arena_v150_server/*learning*.py'
       - 'tools/v132_engine/engine*.mjs'
       - 'tools/v175/content/*.tsv'
       - 'tools/arena_v150_server/*vocabulary*.mjs'
@@ -37,3 +38,5 @@ jobs:
           mkdir -p "$RUNNER_TEMP/wq-vocabulary-audit"
           node real_vocabulary_smoke.mjs arena-vocabulary-v1.json "$RUNNER_TEMP/wq-vocabulary-audit"
           cat "$RUNNER_TEMP/wq-vocabulary-audit/expanded-report.json"
+      - name: Verify Android content generation and preserve existing IDs
+        run: python3 tools/arena_v150_server/test_android_learning_import.py

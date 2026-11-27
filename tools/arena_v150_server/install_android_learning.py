@@ -3,6 +3,12 @@ import json,re,hashlib
 root=Path(__file__).resolve().parents[2]
 src=root/'source/app/src/main'
 java=src/'java/com/kelimebulmacasi/a1'
+# Fail before writing anything if a previous assembly already applied this pack.
+# The generated content IDs must not be duplicated on a repeated installation.
+assert not (java/'Wq150LearningQuestions.kt').exists(), 'Learning package already installed'
+assert not (java/'Wq150AcademicWords.kt').exists(), 'Academic words already installed'
+assert 'Wq150LearningQuestions.questions' not in (java/'YdsContent.kt').read_text('utf-8'), 'YDS learning package already linked'
+
 # Read the named JSON array independently of whitespace between JS exports.
 # Reject malformed arrays, duplicate declarations and unexpected trailing data.
 def read_array(source, name):

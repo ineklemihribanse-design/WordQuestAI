@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/audit-full-assembled-source.yml'
       - 'tools/full_source_audit/**'
+      - 'tools/arena_v150_server/**'
       - 'tools/v132_engine/**'
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
@@ -767,6 +768,8 @@ jobs:
           python3 tools/arena_v150_server/install_android_learning.py
           mkdir -p "$RUNNER_TEMP/wq150-bank-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           node tools/arena_v150_server/real_vocabulary_smoke.mjs source/app/src/main/assets/arena-vocabulary-v1.json "$RUNNER_TEMP/wq150-bank-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 tools/arena_v150_server/prepare_learning_audio.py "$RUNNER_TEMP/wq150-bank-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/arena-learning-expanded.json"
+          (cd source && python3 tools/verify_audio_ipa.py)
           install -m 644 "$RUNNER_TEMP/wq150-bank-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/catalog.json" source/app/src/main/assets/wq150_arena_catalog.json
           python3 tools/v132_engine/apply_engine.py
           python3 tools/v132_engine/apply_online.py
