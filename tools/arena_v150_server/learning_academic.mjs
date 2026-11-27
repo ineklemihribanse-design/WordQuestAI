@@ -2954,7 +2954,7 @@ export const collocationQuestions = [
     "options": [
       "in",
       "on",
-      "at",
+      "to",
       "of",
       "with"
     ],
@@ -3846,7 +3846,7 @@ export const collocationQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "The new evidence prompted the authors to ____ their earlier claim.",
+    "prompt": "The new evidence contradicted the authors' earlier claim, prompting them to ____ it rather than continue defending it.",
     "options": [
       "back away from",
       "look up to",
@@ -3862,7 +3862,7 @@ export const collocationQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The new approach offers a way to ____ the adverse effects of the existing policy.",
+    "prompt": "The new approach offers a way to ____ the adverse effects of the existing policy, reducing its overall harm without abandoning it.",
     "options": [
       "offset",
       "intensify",
