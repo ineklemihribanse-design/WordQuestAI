@@ -1781,7 +1781,7 @@ export const cohesionExpansion = [
       "had begun the trial by"
     ],
     "correct": 0,
-    "explanation": "No sooner, hardly ve scarcely başta past perfect devrikliği gerektirir.",
+    "explanation": "No sooner ... than ve hardly/scarcely ... when kalıplarında olumsuz veya kısıtlayıcı ifade başa geldiğinde özne-yardımcı fiil devrikliği kullanılır. Burada geçmişteki ilk olay için had + özne + V3 doğrudur; başka bağlamlarda farklı zamanlar da mümkündür.",
     "family": "cohesion_grammar_17"
   },
   {
@@ -1798,7 +1798,7 @@ export const cohesionExpansion = [
       "had begun the trial by"
     ],
     "correct": 0,
-    "explanation": "No sooner, hardly ve scarcely başta past perfect devrikliği gerektirir.",
+    "explanation": "No sooner ... than ve hardly/scarcely ... when kalıplarında olumsuz veya kısıtlayıcı ifade başa geldiğinde özne-yardımcı fiil devrikliği kullanılır. Burada geçmişteki ilk olay için had + özne + V3 doğrudur; başka bağlamlarda farklı zamanlar da mümkündür.",
     "family": "cohesion_grammar_17"
   },
   {
@@ -1815,7 +1815,7 @@ export const cohesionExpansion = [
       "had begun the trial by"
     ],
     "correct": 0,
-    "explanation": "No sooner, hardly ve scarcely başta past perfect devrikliği gerektirir.",
+    "explanation": "No sooner ... than ve hardly/scarcely ... when kalıplarında olumsuz veya kısıtlayıcı ifade başa geldiğinde özne-yardımcı fiil devrikliği kullanılır. Burada geçmişteki ilk olay için had + özne + V3 doğrudur; başka bağlamlarda farklı zamanlar da mümkündür.",
     "family": "cohesion_grammar_17"
   },
   {
@@ -1832,7 +1832,7 @@ export const cohesionExpansion = [
       "the data had being"
     ],
     "correct": 0,
-    "explanation": "Olumsuz zaman ifadesi başta olduğunda devrik edilgen yapı kurulur.",
+    "explanation": "Never before, at no earlier stage ve rarely başa geldiğinde yardımcı fiil özneden önce gelir. Burada önceki geçmiş zaman dilimine ait edilgen eylem için had + özne + been + V3 kullanılır.",
     "family": "cohesion_grammar_18"
   },
   {
@@ -1849,7 +1849,7 @@ export const cohesionExpansion = [
       "the data had being"
     ],
     "correct": 0,
-    "explanation": "Olumsuz zaman ifadesi başta olduğunda devrik edilgen yapı kurulur.",
+    "explanation": "Never before, at no earlier stage ve rarely başa geldiğinde yardımcı fiil özneden önce gelir. Burada önceki geçmiş zaman dilimine ait edilgen eylem için had + özne + been + V3 kullanılır.",
     "family": "cohesion_grammar_18"
   },
   {
@@ -1866,7 +1866,7 @@ export const cohesionExpansion = [
       "the data had being"
     ],
     "correct": 0,
-    "explanation": "Olumsuz zaman ifadesi başta olduğunda devrik edilgen yapı kurulur.",
+    "explanation": "Never before, at no earlier stage ve rarely başa geldiğinde yardımcı fiil özneden önce gelir. Burada önceki geçmiş zaman dilimine ait edilgen eylem için had + özne + been + V3 kullanılır.",
     "family": "cohesion_grammar_18"
   },
   {
@@ -4638,7 +4638,7 @@ export const cohesionExpansion = [
       "The evaluation recorded the cost of printing the timetable."
     ],
     "correct": 0,
-    "explanation": "Önceki ulaşım biçiminin ayrımı, hangi emisyonun ortadan kalktığını gösterir."
+    "explanation": "Paragrafın çevresel fayda çıkarımı, yolcuların daha önce kullandığı ulaşım biçimine bağlıdır. Yolcu sayısı tek başına önlenen emisyon miktarını göstermez."
   },
   {
     "level": "B2",
@@ -4672,7 +4672,7 @@ export const cohesionExpansion = [
       "A subsequent assessment measured the number of bins purchased by the council."
     ],
     "correct": 0,
-    "explanation": "İki ölçüm tutum ve gerçek davranıştır; aralarındaki fark uygulama engellerini araştırmayı gerektirir."
+    "explanation": "İlk ölçüm geri dönüşüme yönelik tutumu, ikinci ölçüm gerçek atık ayırma davranışını gösterir. Aradaki fark olası uygulama engellerinin araştırılmasını destekler; bu engellerin varlığını tek başına kanıtlamaz."
   },
   {
     "level": "B2",
