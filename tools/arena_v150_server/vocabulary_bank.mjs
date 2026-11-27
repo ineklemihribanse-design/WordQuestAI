@@ -7,6 +7,20 @@ import {diversifyQuiz} from './learning_mix.mjs';
 const fail=m=>{throw Error(m)};
 const canonical=x=>typeof x==='string'?x.trim().normalize('NFC'):'';
 const code=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
+// The board retains its original alphabet and length limits. Expanded lexical
+// entries with spaces, punctuation, or unsupported board categories are quiz-only.
+export const crosswordEligible=w=>w.quizOnly!==true&&/^[A-Za-z]{2,24}$/.test(w.answer);
+const quizAnswerEligible=s=>s.length<=80&&/^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(s);
+// Resolve CEFR/YDS overlap after applying mode and metadata filters, not by
+// deleting either sense from the dictionary. CEFR prefers its untagged entry.
+export function preferCefrRecords(rows){
+ const preferred=new Map();
+ for(const w of rows){
+  const k=w.level+'|'+w.answer.toUpperCase(),old=preferred.get(k);
+  if(!old||(old.yds!=null&&w.yds==null))preferred.set(k,w);
+ }
+ return [...preferred.values()];
+}
 const ydsMap={easy:'A1',medium:'A2',hard:'B1'};
 // Preserve established safe IDs; map labels containing spaces or non-ASCII
 // characters to deterministic IDs accepted by the existing settings validator.
@@ -16,12 +30,13 @@ export function loadVocabulary(input){
  const rows=input.flatMap(w=>{
   if(!w||!LEVELS.includes(w.level)||!canonical(w.answer)||!canonical(w.meaning))return [];
   const answer=canonical(w.answer),meaning=canonical(w.meaning);
-  if(!/^[A-Za-z]{2,24}$/.test(answer))return [];
+  const quizOnly=w.quizOnly===true;
+  if(quizOnly?!quizAnswerEligible(answer):!crosswordEligible({answer}))return [];
   const topicLabel=canonical(w.category??w.topic)||null,wordTypeLabel=canonical(w.wordType??w.kind)||null;
   const topic=filterId(topicLabel),wordType=filterId(wordTypeLabel);
   const yds=Object.hasOwn(ydsMap,w.yds)?w.yds:null;
   return [{id:code(w.level,answer.toLowerCase(),meaning,topic,wordType,yds).slice(0,32),
-   answer,meaning,level:w.level,topic,wordType,yds,topicLabel,wordTypeLabel}];
+   answer,meaning,level:w.level,topic,wordType,yds,topicLabel,wordTypeLabel,...(quizOnly?{quizOnly:true}:{})}];
  });
  if(!rows.length||LEVELS.some(l=>!rows.some(w=>w.level===l)))fail('Incomplete CEFR vocabulary');
  return [...new Map(rows.map(w=>[w.id,w])).values()];
@@ -38,7 +53,7 @@ export function vocabularyCatalog(rows){
  const summarize=pool=>Object.fromEntries(Object.entries(scales).map(([scale,levels])=>[scale,
   Object.fromEntries(levels.map(level=>{
    const selected=pool.filter(w=>(scale==='cefr'?w.level:w.yds)===level);
-   return [level,{crossword:new Set(selected.map(w=>w.answer.toUpperCase())).size,
+   return [level,{crossword:new Set(selected.filter(crosswordEligible).map(w=>w.answer.toUpperCase())).size,
     quiz:new Set(selected.map(w=>w.meaning.toLowerCase())).size}];
   }))]));
  const groups=(key,label)=>[...new Map(rows.filter(w=>w[key]).map(w=>[w[key],w[label]])).entries()]
@@ -49,8 +64,10 @@ export function createVocabularyBank(input,{curated=false}={}){
  const rows=loadVocabulary(input);
  return async(raw,seed)=>{
   const cfg=validateSettings(raw),isYds=cfg.scale==='yds';
-  const pool=rows.filter(w=>cfg.levels.includes(isYds?w.yds:w.level)&&
+  const eligible=rows.filter(w=>cfg.levels.includes(isYds?w.yds:w.level)&&
+   (cfg.format==='quiz'||crosswordEligible(w))&&
    (cfg.topic===null||cfg.topic===w.topic)&&(cfg.wordType===null||cfg.wordType===w.wordType));
+  const pool=isYds?eligible:preferCefrRecords(eligible);
   const levels=isYds?cfg.levels.map(x=>ydsMap[x]):cfg.levels;
   const records=pool.map(w=>({...w,level:isYds?ydsMap[w.yds]:w.level}));
   const byAnswer=new Map();
@@ -70,7 +87,7 @@ export function createVocabularyBank(input,{curated=false}={}){
   let result;
   if(cfg.format==='quiz'){
    result=quiz(records,settings,n,true).map(q=>({...meta(q.level,q.answer,q.prompt),
-    prompt:q.prompt,options:q.options,correct:q.correct,letterCount:q.answer.length}));
+    prompt:q.prompt,options:q.options,correct:q.correct,letterCount:Math.max(2,Math.min(24,q.answer.replace(/[^A-Za-z]/g,'').length))}));
   }else{
    result=crossword(records,settings,n,true).words.map(([answer,meaning,level,r,c,d])=>({...meta(level,answer,meaning),
     answer,clue:meaning,cells:Array.from({length:answer.length},(_,i)=>(r+(d==='D'?i:0))+','+(c+(d==='A'?i:0)))}));
