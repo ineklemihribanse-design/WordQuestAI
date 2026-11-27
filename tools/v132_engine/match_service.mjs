@@ -110,6 +110,14 @@ export function matchCommand(state,uid,cmd,now){
 export function matchTransport(state,event,now){
  if(!Number.isSafeInteger(now)||now<state.now)fail('Invalid server time');
  if(phase(state)==='finished')return state;
+ // Process overdue disconnect boundaries separately so gameplay resumes at
+ // the actual grace deadline, not when a delayed scheduler finally runs.
+ const due=state.connection.players.filter(p=>!p.removed&&!p.connected&&Number.isSafeInteger(p.until)&&p.until<now&&p.until>state.now).map(p=>p.until);
+ if(due.length){
+  const boundary=Math.min(...due);
+  const settled=matchTransport(state,{type:'tick'},boundary);
+  return matchTransport(settled,event,now);
+ }
  const connection=connectionTransition(state.connection,event,now);
  if(connection===state.connection)return state;
  const s=clone(state);s.connection=connection;
@@ -120,6 +128,14 @@ export function matchTransport(state,event,now){
  if(s.kind==='team'){
   // Departed team members must be removed in the gameplay reducer as well.
   for(const p of connection.players)if(p.removed&&!s.game.removed.includes(p.id))s.game.removed.push(p.id);
+  // A pending unanimous vote cannot be completed by a removed participant.
+  // Invalidate the old offer instead of silently counting a missing vote.
+  const offer=s.social?.offer;
+  if(offer?.status==='pending'&&connection.players.some(p=>p.removed&&offer.required.includes(p.id))){
+   offer.status='expired';
+   s.social.notice={id:offer.id,kind:'expired',actor:null,at:now};
+   s.social.revision++;
+  }
  }
  return advance(s,now);
 }
