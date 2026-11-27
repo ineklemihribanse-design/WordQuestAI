@@ -242,7 +242,7 @@ export const clozeExpansion = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A small museum decided to make its collection available to people who could not visit in person. Staff photographed each object and wrote a description of it. The photographs were uploaded to a public website. Visitors can search the collection by entering a keyword in the search box. The website is updated ____ whenever new objects are added.\n\nChoose the best option for the blank.",
+    "prompt": "A small museum decided to make its collection available to people who could not visit in person. Staff photographed each object and wrote a description of it. The photographs were uploaded to a public website. Visitors can search the collection by entering a keyword in the search box. The website is updated ____; new objects are added to the online collection every Friday.\n\nChoose the best option for the blank.",
     "options": [
       "regularly",
       "never",
@@ -251,7 +251,7 @@ export const clozeExpansion = [
       "rarely"
     ],
     "correct": 0,
-    "explanation": "Yeni nesneler eklendikçe düzenli güncelleme yapılır.",
+    "explanation": "Regularly düzenli aralıklarla demektir. Her cuma yeni nesnelerin eklenmesi düzenli güncelleme yapıldığını gösterir.",
     "family": "cloze_expansion_3"
   },
   {
@@ -327,7 +327,7 @@ export const clozeExpansion = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A school began offering free breakfast to students who arrived early. Meals are prepared before the first lesson begins. The teachers noticed that fewer pupils complained of hunger during morning classes. Parents were invited to offer suggestions about the menu. The school plans to continue the programme ____ it can obtain sufficient funding.\n\nChoose the best option for the blank.",
+    "prompt": "A school began offering free breakfast to students who arrived early. Meals are prepared before the first lesson begins. The teachers noticed that fewer pupils complained of hunger during morning classes. Parents were invited to offer suggestions about the menu. The school plans to continue the programme ____ it can obtain sufficient funding; without the funding, it will have to stop.\n\nChoose the best option for the blank.",
     "options": [
       "provided that",
       "whereas",
@@ -336,7 +336,7 @@ export const clozeExpansion = [
       "in spite of"
     ],
     "correct": 0,
-    "explanation": "Provided that koşul bildirir.",
+    "explanation": "Provided that, programın devamı için gereken koşulu bildirir. Finansman sağlanmadığında programın duracağı açıkça belirtilir.",
     "family": "cloze_expansion_4"
   },
   {
@@ -463,7 +463,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "Researchers placed sensors along a river to examine changes in water quality. The instruments were calibrated prior to installation. Each sensor recorded measurements at regular intervals. Data from faulty instruments ____ from the final analysis. The team compared the remaining readings with samples collected manually in order to verify their reliability. The resulting dataset was made available to other researchers.\n\nChoose the best option for the blank.",
+    "prompt": "Researchers placed sensors along a river to examine changes in water quality. The instruments were calibrated prior to installation. Each sensor recorded measurements at regular intervals. Individual readings from faulty instruments ____ from the final analysis. The team compared the remaining readings with samples collected manually in order to verify their reliability. The resulting dataset was made available to other researchers.\n\nChoose the best option for the blank.",
     "options": [
       "were excluded",
       "excluded",
@@ -472,7 +472,7 @@ export const clozeExpansion = [
       "had excluding"
     ],
     "correct": 0,
-    "explanation": "Çoğul data için bağlama uygun geçmiş edilgen yapı.",
+    "explanation": "Readings çoğul özne olduğu ve çıkarma işlemi geçmişte yapıldığı için were excluded kullanılır. Data sözcüğü kimi İngilizce kullanımlarda tekil de değerlendirilebildiğinden özne readings olarak açıklaştırılmıştır.",
     "family": "cloze_expansion_6"
   },
   {
@@ -667,16 +667,16 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A transport agency tested a new bus route in a suburban district. Passenger numbers increased during the first three months. However, some passengers had previously travelled on existing routes, so the increase did not necessarily represent new public transport users. The agency carried out a survey to find whether passengers had changed their travel habits. The survey results were analysed alongside ticket records. A decision about permanent operation will be made ____ the evaluation is complete.\n\nChoose the best option for the blank.",
+    "prompt": "A transport agency tested a new bus route in a suburban district. Passenger numbers increased during the first three months. However, some passengers had previously travelled on existing routes, so the increase did not necessarily represent new public transport users. The agency carried out a survey to find whether passengers had changed their travel habits. The survey results were analysed alongside ticket records. A decision about permanent operation will be made ____ the evaluation is complete, not before.\n\nChoose the best option for the blank.",
     "options": [
       "once",
-      "in spite of",
-      "owing to",
-      "whereas of",
-      "except for"
+      "unless",
+      "even though",
+      "whereas",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Once tamamlandığında anlamında zaman bağlacıdır.",
+    "explanation": "Once, değerlendirmenin tamamlanmasının ardından karar verileceğini belirtir; diğer seçenekler bu zaman ilişkisini kurmaz.",
     "family": "cloze_expansion_8"
   },
   {
@@ -718,16 +718,16 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A factory replaced conventional lighting with more efficient lamps. Electricity use declined, but production hours had also decreased during the same period. The engineers recognised that part of the reduction might be attributable to the shorter operating schedule. They compared electricity consumption per hour ____ total monthly consumption alone. This allowed them to assess changes in efficiency independently of changes in operating time. The findings were interpreted with caution.\n\nChoose the best option for the blank.",
+    "prompt": "A factory replaced conventional lighting with more efficient lamps. Electricity use declined, but production hours had also decreased during the same period. The engineers recognised that part of the reduction might be attributable to the shorter operating schedule. They used electricity consumption per hour ____ relying solely on total monthly consumption. This allowed them to assess changes in efficiency independently of changes in operating time. The findings were interpreted with caution.\n\nChoose the best option for the blank.",
     "options": [
       "rather than",
+      "in addition to",
       "because of",
-      "despite",
       "in accordance with",
-      "in addition of"
+      "regardless of"
     ],
     "correct": 0,
-    "explanation": "Rather than alternatif ölçütü tercih etmeyi bildirir.",
+    "explanation": "Rather than, aylık toplam tüketime tek başına dayanmak yerine saatlik tüketimin kullanılmasını anlatır.",
     "family": "cloze_expansion_9"
   },
   {
