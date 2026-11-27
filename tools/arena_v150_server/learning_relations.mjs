@@ -1393,16 +1393,16 @@ export const lexicalRelationQuestions = [
     "yds": "easy",
     "topic": "Synonym",
     "family": "lexrel_permanent",
-    "prompt": "In the sentence \"The council intends to establish a permanent shelter.\", which option is closest in meaning to 'permanent'?",
+    "prompt": "In the sentence \"The council intends to establish a permanent shelter that will remain in operation indefinitely.\", which option is closest in meaning to 'permanent'?",
     "options": [
       "lasting",
       "temporary",
-      "costly",
-      "public",
-      "formal"
+      "seasonal",
+      "portable",
+      "public"
     ],
     "correct": 0,
-    "explanation": "'permanent' bu bağlamda 'kalıcı' anlamındadır. 'lasting' (kalıcı) yakın anlamlıdır."
+    "explanation": "'permanent' bu bağlamda 'kalıcı' anlamındadır. 'lasting' (kalıcı) yakın anlamlıdır. Permanent, belirli bir bitiş tarihi olmadan kalıcı olması amaçlanan demektir; temporary ise geçicidir."
   },
   {
     "id": "wq150_ant_permanent",
@@ -1410,16 +1410,16 @@ export const lexicalRelationQuestions = [
     "yds": "easy",
     "topic": "Synonym",
     "family": "lexrel_permanent",
-    "prompt": "In the sentence \"The council intends to establish a permanent shelter.\", which option is most nearly opposite in meaning to 'permanent'?",
+    "prompt": "In the sentence \"The council intends to establish a permanent shelter that will remain in operation indefinitely.\", which option is most nearly opposite in meaning to 'permanent'?",
     "options": [
       "temporary",
       "lasting",
-      "costly",
-      "public",
-      "formal"
+      "seasonal",
+      "portable",
+      "public"
     ],
     "correct": 0,
-    "explanation": "'permanent' (kalıcı) ile 'temporary' (geçici) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'permanent' (kalıcı) ile 'temporary' (geçici) bu bağlamda karşıt anlamlıdır. Permanent, belirli bir bitiş tarihi olmadan kalıcı olması amaçlanan demektir; temporary ise geçicidir."
   },
   {
     "id": "wq150_syn_rapid",
@@ -1699,16 +1699,16 @@ export const lexicalRelationQuestions = [
     "yds": "medium",
     "topic": "Synonym",
     "family": "lexrel_ambiguous",
-    "prompt": "In the sentence \"The wording of the instruction was ambiguous.\", which option is closest in meaning to 'ambiguous'?",
+    "prompt": "In the sentence \"The wording of the instruction was ambiguous: readers could interpret it in two different ways.\", which option is closest in meaning to 'ambiguous'?",
     "options": [
       "unclear",
       "unambiguous",
-      "lengthy",
-      "technical",
-      "grammatical"
+      "incomplete",
+      "inaccurate",
+      "overly technical"
     ],
     "correct": 0,
-    "explanation": "'ambiguous' bu bağlamda 'birden çok yoruma açık' anlamındadır. 'unclear' (belirsiz) yakın anlamlıdır."
+    "explanation": "'ambiguous' bu bağlamda 'birden çok yoruma açık' anlamındadır. 'unclear' (belirsiz) yakın anlamlıdır. Ambiguous, birden fazla yoruma açık olduğu için anlamı kesin olmayan demektir; incomplete eksik, inaccurate gerçeğe aykırı, overly technical aşırı teknik anlamındadır."
   },
   {
     "id": "wq150_ant_ambiguous",
@@ -1716,16 +1716,16 @@ export const lexicalRelationQuestions = [
     "yds": "medium",
     "topic": "Synonym",
     "family": "lexrel_ambiguous",
-    "prompt": "In the sentence \"The wording of the instruction was ambiguous.\", which option is most nearly opposite in meaning to 'ambiguous'?",
+    "prompt": "In the sentence \"The wording of the instruction was ambiguous: readers could interpret it in two different ways.\", which option is most nearly opposite in meaning to 'ambiguous'?",
     "options": [
       "unambiguous",
       "unclear",
-      "lengthy",
-      "technical",
-      "grammatical"
+      "incomplete",
+      "inaccurate",
+      "overly technical"
     ],
     "correct": 0,
-    "explanation": "'ambiguous' (birden çok yoruma açık) ile 'unambiguous' (tek anlamlı) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'ambiguous' (birden çok yoruma açık) ile 'unambiguous' (tek anlamlı) bu bağlamda karşıt anlamlıdır. Ambiguous, birden fazla yoruma açık olduğu için anlamı kesin olmayan demektir; incomplete eksik, inaccurate gerçeğe aykırı, overly technical aşırı teknik anlamındadır."
   },
   {
     "id": "wq150_syn_coherent",
@@ -1733,16 +1733,16 @@ export const lexicalRelationQuestions = [
     "yds": "medium",
     "topic": "Synonym",
     "family": "lexrel_coherent",
-    "prompt": "In the sentence \"The author presented a coherent argument.\", which option is closest in meaning to 'coherent'?",
+    "prompt": "In the sentence \"The author presented a coherent argument in which each claim followed logically from the previous one.\", which option is closest in meaning to 'coherent'?",
     "options": [
       "logical",
       "incoherent",
       "detailed",
-      "complex",
-      "brief"
+      "persuasive",
+      "concise"
     ],
     "correct": 0,
-    "explanation": "'coherent' bu bağlamda 'tutarlı' anlamındadır. 'logical' (mantıksal bütünlüğe sahip) yakın anlamlıdır."
+    "explanation": "'coherent' bu bağlamda 'tutarlı' anlamındadır. 'logical' (mantıksal bütünlüğe sahip) yakın anlamlıdır. Coherent, parçaları mantıksal bütünlük oluşturan, tutarlı demektir. Ayrıntılı, ikna edici veya kısa olmak tek başına tutarlılık göstermez."
   },
   {
     "id": "wq150_ant_coherent",
@@ -1750,16 +1750,16 @@ export const lexicalRelationQuestions = [
     "yds": "medium",
     "topic": "Synonym",
     "family": "lexrel_coherent",
-    "prompt": "In the sentence \"The author presented a coherent argument.\", which option is most nearly opposite in meaning to 'coherent'?",
+    "prompt": "In the sentence \"The author presented a coherent argument in which each claim followed logically from the previous one.\", which option is most nearly opposite in meaning to 'coherent'?",
     "options": [
       "incoherent",
       "logical",
       "detailed",
-      "complex",
-      "brief"
+      "persuasive",
+      "concise"
     ],
     "correct": 0,
-    "explanation": "'coherent' (tutarlı) ile 'incoherent' (tutarsız) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'coherent' (tutarlı) ile 'incoherent' (tutarsız) bu bağlamda karşıt anlamlıdır. Coherent, parçaları mantıksal bütünlük oluşturan, tutarlı demektir. Ayrıntılı, ikna edici veya kısa olmak tek başına tutarlılık göstermez."
   },
   {
     "id": "wq150_syn_compatible",
@@ -2651,16 +2651,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_ephemeral",
-    "prompt": "In the sentence \"The apparent improvement proved ephemeral.\", which option is closest in meaning to 'ephemeral'?",
+    "prompt": "In the sentence \"The apparent improvement proved ephemeral, disappearing within a few days.\", which option is closest in meaning to 'ephemeral'?",
     "options": [
       "fleeting",
       "enduring",
-      "visible",
-      "unexpected",
-      "widespread"
+      "gradual",
+      "partial",
+      "unexpected"
     ],
     "correct": 0,
-    "explanation": "'ephemeral' bu bağlamda 'çok kısa ömürlü' anlamındadır. 'fleeting' (geçici) yakın anlamlıdır."
+    "explanation": "'ephemeral' bu bağlamda 'çok kısa ömürlü' anlamındadır. 'fleeting' (geçici) yakın anlamlıdır. Ephemeral, çok kısa süreli demektir; fleeting yakın, enduring karşıt anlamlıdır. Gradual değişim hızını, partial kapsamı, unexpected beklentiyi belirtir."
   },
   {
     "id": "wq150_ant_ephemeral",
@@ -2668,16 +2668,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_ephemeral",
-    "prompt": "In the sentence \"The apparent improvement proved ephemeral.\", which option is most nearly opposite in meaning to 'ephemeral'?",
+    "prompt": "In the sentence \"The apparent improvement proved ephemeral, disappearing within a few days.\", which option is most nearly opposite in meaning to 'ephemeral'?",
     "options": [
       "enduring",
       "fleeting",
-      "visible",
-      "unexpected",
-      "widespread"
+      "gradual",
+      "partial",
+      "unexpected"
     ],
     "correct": 0,
-    "explanation": "'ephemeral' (çok kısa ömürlü) ile 'enduring' (kalıcı) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'ephemeral' (çok kısa ömürlü) ile 'enduring' (kalıcı) bu bağlamda karşıt anlamlıdır. Ephemeral, çok kısa süreli demektir; fleeting yakın, enduring karşıt anlamlıdır. Gradual değişim hızını, partial kapsamı, unexpected beklentiyi belirtir."
   },
   {
     "id": "wq150_syn_futile",
@@ -2787,16 +2787,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_incessant",
-    "prompt": "In the sentence \"Incessant noise made concentration difficult.\", which option is closest in meaning to 'incessant'?",
+    "prompt": "In the sentence \"Incessant noise made concentration difficult because it continued without a break.\", which option is closest in meaning to 'incessant'?",
     "options": [
       "unremitting",
       "intermittent",
       "intense",
-      "audible",
-      "distant"
+      "rhythmic",
+      "audible"
     ],
     "correct": 0,
-    "explanation": "'incessant' bu bağlamda 'kesintisiz' anlamındadır. 'unremitting' (durmaksızın süren) yakın anlamlıdır."
+    "explanation": "'incessant' bu bağlamda 'kesintisiz' anlamındadır. 'unremitting' (durmaksızın süren) yakın anlamlıdır. Incessant, kesintiye uğramadan süren demektir. Sesin şiddeti, ritmi veya duyulabilirliği süreklilikten farklıdır."
   },
   {
     "id": "wq150_ant_incessant",
@@ -2804,16 +2804,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_incessant",
-    "prompt": "In the sentence \"Incessant noise made concentration difficult.\", which option is most nearly opposite in meaning to 'incessant'?",
+    "prompt": "In the sentence \"Incessant noise made concentration difficult because it continued without a break.\", which option is most nearly opposite in meaning to 'incessant'?",
     "options": [
       "intermittent",
       "unremitting",
       "intense",
-      "audible",
-      "distant"
+      "rhythmic",
+      "audible"
     ],
     "correct": 0,
-    "explanation": "'incessant' (kesintisiz) ile 'intermittent' (aralıklı) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'incessant' (kesintisiz) ile 'intermittent' (aralıklı) bu bağlamda karşıt anlamlıdır. Incessant, kesintiye uğramadan süren demektir. Sesin şiddeti, ritmi veya duyulabilirliği süreklilikten farklıdır."
   },
   {
     "id": "wq150_syn_meticulous",
@@ -2821,16 +2821,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_meticulous",
-    "prompt": "In the sentence \"Meticulous record-keeping enabled the audit.\", which option is closest in meaning to 'meticulous'?",
+    "prompt": "In the sentence \"Meticulous record-keeping, including checks of even the smallest details, enabled the audit.\", which option is closest in meaning to 'meticulous'?",
     "options": [
       "scrupulous",
       "careless",
-      "rapid",
+      "systematic",
       "independent",
       "specialised"
     ],
     "correct": 0,
-    "explanation": "'meticulous' bu bağlamda 'çok titiz' anlamındadır. 'scrupulous' (son derece dikkatli) yakın anlamlıdır."
+    "explanation": "'meticulous' bu bağlamda 'çok titiz' anlamındadır. 'scrupulous' (son derece dikkatli) yakın anlamlıdır. Meticulous, en küçük ayrıntılara dahi titizlikle dikkat eden demektir. Systematic düzenli bir yöntemi, independent bağımsızlığı, specialised uzmanlaşmayı ifade eder."
   },
   {
     "id": "wq150_ant_meticulous",
@@ -2838,16 +2838,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_meticulous",
-    "prompt": "In the sentence \"Meticulous record-keeping enabled the audit.\", which option is most nearly opposite in meaning to 'meticulous'?",
+    "prompt": "In the sentence \"Meticulous record-keeping, including checks of even the smallest details, enabled the audit.\", which option is most nearly opposite in meaning to 'meticulous'?",
     "options": [
       "careless",
       "scrupulous",
-      "rapid",
+      "systematic",
       "independent",
       "specialised"
     ],
     "correct": 0,
-    "explanation": "'meticulous' (çok titiz) ile 'careless' (özensiz) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'meticulous' (çok titiz) ile 'careless' (özensiz) bu bağlamda karşıt anlamlıdır. Meticulous, en küçük ayrıntılara dahi titizlikle dikkat eden demektir. Systematic düzenli bir yöntemi, independent bağımsızlığı, specialised uzmanlaşmayı ifade eder."
   },
   {
     "id": "wq150_syn_perfunctory",
@@ -2957,16 +2957,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_tenuous",
-    "prompt": "In the sentence \"The claim rested on a tenuous connection between the two observations.\", which option is closest in meaning to 'tenuous'?",
+    "prompt": "In the sentence \"The claim rested on a tenuous connection between the two observations, with little evidence linking them.\", which option is closest in meaning to 'tenuous'?",
     "options": [
       "flimsy",
       "strong",
+      "indirect",
       "complex",
-      "novel",
-      "indirect"
+      "unexpected"
     ],
     "correct": 0,
-    "explanation": "'tenuous' bu bağlamda 'zayıf dayanaklı' anlamındadır. 'flimsy' (dayanıksız ve zayıf) yakın anlamlıdır."
+    "explanation": "'tenuous' bu bağlamda 'zayıf dayanaklı' anlamındadır. 'flimsy' (dayanıksız ve zayıf) yakın anlamlıdır. Tenuous, kanıtı veya dayanağı zayıf olan demektir. Indirect dolaylı, complex karmaşık, unexpected beklenmedik demektir."
   },
   {
     "id": "wq150_ant_tenuous",
@@ -2974,16 +2974,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_tenuous",
-    "prompt": "In the sentence \"The claim rested on a tenuous connection between the two observations.\", which option is most nearly opposite in meaning to 'tenuous'?",
+    "prompt": "In the sentence \"The claim rested on a tenuous connection between the two observations, with little evidence linking them.\", which option is most nearly opposite in meaning to 'tenuous'?",
     "options": [
       "strong",
       "flimsy",
+      "indirect",
       "complex",
-      "novel",
-      "indirect"
+      "unexpected"
     ],
     "correct": 0,
-    "explanation": "'tenuous' (zayıf dayanaklı) ile 'strong' (güçlü) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'tenuous' (zayıf dayanaklı) ile 'strong' (güçlü) bu bağlamda karşıt anlamlıdır. Tenuous, kanıtı veya dayanağı zayıf olan demektir. Indirect dolaylı, complex karmaşık, unexpected beklenmedik demektir."
   },
   {
     "id": "wq150_syn_transient",
@@ -3127,16 +3127,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_obviate",
-    "prompt": "In the sentence \"The automated process may obviate further manual checks.\", which option is closest in meaning to 'obviate'?",
+    "prompt": "In the sentence \"The automated process may obviate further manual checks by making them unnecessary.\", which option is closest in meaning to 'obviate'?",
     "options": [
       "remove the need for",
       "necessitate",
+      "postpone",
       "evaluate",
-      "describe",
-      "investigate"
+      "reduce"
     ],
     "correct": 0,
-    "explanation": "'obviate' bu bağlamda 'gereksiz kılmak' anlamındadır. 'remove the need for' (ihtiyacı ortadan kaldırmak) yakın anlamlıdır."
+    "explanation": "'obviate' bu bağlamda 'gereksiz kılmak' anlamındadır. 'remove the need for' (ihtiyacı ortadan kaldırmak) yakın anlamlıdır. Obviate, bir şeye duyulan ihtiyacı ortadan kaldırmak demektir. Postpone ertelemek, evaluate değerlendirmek, reduce azaltmaktır; bunlar gerekliliğin tamamen ortadan kalktığını göstermez."
   },
   {
     "id": "wq150_ant_obviate",
@@ -3144,16 +3144,16 @@ export const lexicalRelationQuestions = [
     "yds": "hard",
     "topic": "Synonym",
     "family": "lexrel_obviate",
-    "prompt": "In the sentence \"The automated process may obviate further manual checks.\", which option is most nearly opposite in meaning to 'obviate'?",
+    "prompt": "In the sentence \"The automated process may obviate further manual checks by making them unnecessary.\", which option is most nearly opposite in meaning to 'obviate'?",
     "options": [
       "necessitate",
       "remove the need for",
+      "postpone",
       "evaluate",
-      "describe",
-      "investigate"
+      "reduce"
     ],
     "correct": 0,
-    "explanation": "'obviate' (gereksiz kılmak) ile 'necessitate' (gerekli kılmak) bu bağlamda karşıt anlamlıdır."
+    "explanation": "'obviate' (gereksiz kılmak) ile 'necessitate' (gerekli kılmak) bu bağlamda karşıt anlamlıdır. Obviate, bir şeye duyulan ihtiyacı ortadan kaldırmak demektir. Postpone ertelemek, evaluate değerlendirmek, reduce azaltmaktır; bunlar gerekliliğin tamamen ortadan kalktığını göstermez."
   },
   {
     "id": "wq150_syn_repudiate",
