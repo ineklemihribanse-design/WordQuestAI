@@ -5635,13 +5635,13 @@ export const verbalNewQuestions = [
     "prompt": "The paragraphs form a ____ argument, with each point following logically from the previous one.",
     "options": [
       "coherent",
-      "consistent",
+      "contradictory",
       "comprehensive",
       "concise",
       "conclusive"
     ],
     "correct": 0,
-    "explanation": "coherent: tutarlı bütünlük. Diğer seçenekler: consistent: uyumlu/tutarlı; comprehensive: kapsamlı; concise: kısa ve öz; conclusive: kesin sonuca götüren."
+    "explanation": "Coherent bir bütün olarak mantıksal bağlantıları güçlü ve anlaşılır demektir. Her düşüncenin öncekinin devamı olması bunu gösterir; kapsam, kısalık veya kesin sonuç hakkında bilgi verilmemiştir."
   },
   {
     "id": "wq150_nov26_mixed13b_32_2",
