@@ -2266,7 +2266,7 @@ export const clozeExpansion = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "The town's oldest bridge will be closed for repairs next Monday. Drivers who normally use it will need to take another route. The council has placed signs at the main junctions to guide traffic. Buses will continue to operate, ____ some journeys may take longer. The work is expected to be completed by the end of the month.\n\nChoose the best option for the blank.",
+    "prompt": "The town's oldest bridge will be closed for repairs next Monday. Drivers who normally use it will need to take another route. The council has placed signs at the main junctions to guide traffic. Buses will continue to operate, ____ some journeys may take longer than usual because of the diversion. The work is expected to be completed by the end of the month.\n\nChoose the best option for the blank.",
     "options": [
       "although",
       "because of",
@@ -2275,7 +2275,7 @@ export const clozeExpansion = [
       "provided that"
     ],
     "correct": 0,
-    "explanation": "Otobüslerin çalışması ile yolculuğun uzayabilmesi arasındaki karşıtlık although ile verilir."
+    "explanation": "Although, otobüslerin çalışmaya devam edeceğini ancak bazı yolculukların uzayabileceğini belirten ödünleme bağlacıdır."
   },
   {
     "id": "wq150_nov26_cloze3_2_5",
@@ -2317,16 +2317,16 @@ export const clozeExpansion = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A group of residents decided to start a walking club after a new park opened. The club meets twice a week, ____ the weather is too severe. Members can choose between two routes of different lengths. Several people have reported that regular walks help them feel more energetic. New participants are welcome, and they do not need any special equipment.\n\nChoose the best option for the blank.",
+    "prompt": "A group of residents decided to start a walking club after a new park opened. The club meets twice a week, ____ the weather is too severe for safe outdoor activity; in that case, meetings are cancelled. Members can choose between two routes of different lengths. Several people have reported that regular walks help them feel more energetic. New participants are welcome, and they do not need any special equipment.\n\nChoose the best option for the blank.",
     "options": [
       "unless",
-      "because of",
-      "despite",
+      "because",
+      "even though",
       "so that",
-      "even when always"
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Unless, hava çok kötü olmadığı sürece anlamı verir."
+    "explanation": "Unless, if not anlamında olumsuz koşul bildirir. Hava koşulları güvenli etkinliğe izin vermediğinde toplantılar iptal edilir."
   },
   {
     "id": "wq150_nov26_cloze3_3_3",
@@ -2946,16 +2946,16 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores derived from historical records of operating conditions. Initially, the scores were treated as if they were precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. In response to this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful, ____ its output was interpreted in context. The experience underscored the need to validate a model before extending it to new settings.\n\nChoose the best option for the blank.",
+    "prompt": "A manufacturer adopted predictive maintenance software to detect early signs of equipment failure. The system generated risk scores derived from historical records of operating conditions. Initially, the scores were treated as if they were precise forecasts of failure dates. Engineers later discovered that the predictions were less reliable for machines operating outside the training conditions. In response to this limitation, the firm introduced additional inspections for unfamiliar operating regimes. The software remained useful ____ its output was interpreted in context; without contextual interpretation, it was unreliable. The experience underscored the need to validate a model before extending it to new settings.\n\nChoose the best option for the blank.",
     "options": [
       "provided that",
-      "even though not",
-      "in spite of",
-      "so as to",
-      "because of"
+      "even if",
+      "whereas",
+      "as though",
+      "although"
     ],
     "correct": 0,
-    "explanation": "Yazılımın yararlı kalması çıktının bağlam içinde yorumlanmasına bağlıdır."
+    "explanation": "Provided that, bir sonucun geçerliliğini belirtilen koşula bağlar. Yazılım ancak çıktısı bağlam içinde yorumlandığında yararlıdır."
   },
   {
     "id": "wq150_nov26_cloze3_10_5",
@@ -3252,16 +3252,16 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A historical demography project assembled population records from several regions. The sources differed in how children and temporary residents were counted. Direct comparisons could therefore yield misleading results ____ the definitions were harmonised. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates under alternative counting conventions. This approach made uncertainty explicit without claiming to recover information that was no longer available. The resulting dataset was accompanied by detailed notes on its construction.\n\nChoose the best option for the blank.",
+    "prompt": "A historical demography project assembled population records from several regions. The sources differed in how children and temporary residents were counted. Direct comparisons could therefore yield misleading results ____ the definitions were harmonised first. Rather than excluding all imperfect records, the researchers documented their limitations and produced estimates under alternative counting conventions. This approach made uncertainty explicit without claiming to recover information that was no longer available. The resulting dataset was accompanied by detailed notes on its construction.\n\nChoose the best option for the blank.",
     "options": [
       "unless",
-      "because of",
-      "even if always",
-      "in order to",
-      "despite of"
+      "once",
+      "provided that",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Unless, tanımlar uyumlaştırılmadıkça karşılaştırmaların yanıltıcı olabileceğini söyler."
+    "explanation": "Unless, tanımlar uyumlu hâle getirilmezse karşılaştırmaların yanıltıcı olabileceğini belirtir. Provided that koşulun yönünü tersine çevirir."
   },
   {
     "id": "wq150_nov26_cloze3_14_3",
