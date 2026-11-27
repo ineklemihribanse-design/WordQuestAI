@@ -69,8 +69,14 @@ def viewport(name,w,h,density,wide):
     adb("shell","am","force-stop",PKG);adb("shell","am","start","-n",PKG+"/com.kelimebulmacasi.a1.MainActivity");time.sleep(8)
     enter(w,h)
     assert not any("kişisel maskot" in label(n) for n in nodes())
-    cards=[bounds(get(t)) for t in ("Bulmaca Düellosu","Ortak Bulmaca","5 Şıklı Düello","Takım Oyunu")]
-    footer=[bounds(get(t)) for t in ("Sıralama","Arkadaşlarım","Son Maçlarım","Ayarlar","Bilgi")]
+    # One stable accessibility snapshot instead of nine expensive UIAutomator dumps.
+    initial=nodes()
+    def initial_bounds(token):
+        matches=[n for n in initial if token.casefold() in label(n)]
+        if not matches:return bounds(get(token))
+        return bounds(next((n for n in matches if n.get("clickable")=="true"),matches[-1]))
+    cards=[initial_bounds(t) for t in ("Bulmaca Düellosu","Ortak Bulmaca","5 Şıklı Düello","Takım Oyunu")]
+    footer=[initial_bounds(t) for t in ("Sıralama","Arkadaşlarım","Son Maçlarım","Ayarlar","Bilgi")]
     print("Arena card and footer coordinates",name,cards,footer,flush=True)
     W,H=capture(name+"-online")
     assert (W>H)==wide

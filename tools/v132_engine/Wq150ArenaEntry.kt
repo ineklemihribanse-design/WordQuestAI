@@ -207,24 +207,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
-        if(panel=="Arkadaşlarım"){
-            Dialog(onDismissRequest={panel=""},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
-                Wq150ArenaBars()
-                Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-                    Wq150SettingsBackdrop(Modifier.matchParentSize())
-                    Column(Modifier.align(Alignment.TopCenter).widthIn(max=760.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(10.dp),
-                        verticalArrangement=Arrangement.spacedBy(8.dp)){
-                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
-                            TextButton(onClick={panel=""}){Text("‹ Geri",color=Wq122Gold)}
-                            Text("Arkadaşlarım",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=20.sp)
-                        }
-                        Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())){
-                            FriendsPanel(session.social)
-                        }
-                    }
-                }
-            }
-        }
+        if(panel=="Arkadaşlarım")Wq157ArenaFriends(session.social){panel=""}
         if(panel.isNotBlank()&&panel!="Arkadaşlarım")AlertDialog(onDismissRequest={panel=""},containerColor=Color(0xFF251347),title={Text(panel,color=Wq122Gold)},
             text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
                 when(panel){
@@ -494,7 +477,7 @@ internal object Wq150HomeArtPlan {
 
 /** Start the same bounded local preparation from the root home composition. */
 @Composable
-internal fun Wq150WarmArenaArt(){
+internal fun Wq150WarmArenaArt(session:AppSession){
     val context=LocalContext.current.applicationContext
     val config=LocalConfiguration.current
     val newArt=rememberWq150NewArt()
@@ -506,9 +489,12 @@ internal fun Wq150WarmArenaArt(){
     val keys=remember(background,settingsKey,wide,newArt){
         Wq150HomeArtPlan.keys(background,settingsKey,wide,newArt)
     }
-    LaunchedEffect(context,keys){
-        if(Wq150ArtCache.frame(keys)==null)withContext(Dispatchers.IO){
+    val avatar by rememberWq2DSelection(session.profileKey)
+    val portraitKey=Wq157OwnPortrait.key(context,session.profileKey,avatar)
+    LaunchedEffect(context,keys,portraitKey){
+        withContext(Dispatchers.IO){
             Wq150ArtCache.prepare(context,keys)
+            Wq157OwnPortrait.load(context,portraitKey,avatar)
         }
     }
 }
@@ -541,21 +527,19 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
         val keys=remember(backgroundKey,settingsKey,wide,newArt){
             Wq150HomeArtPlan.keys(backgroundKey,settingsKey,wide,newArt)
         }
-        var prepared by remember(context,keys){
-            mutableStateOf(Wq150ArtCache.frame(keys))
-        }
-        LaunchedEffect(context,keys){
-            if(prepared==null){
-                val frame=withContext(Dispatchers.IO){
-                    Wq150ArtCache.prepare(context,keys)
-                }
-                // Publish all decoded images in one snapshot, never one card at a time.
-                // Missing assets keep the existing fixed fallback instead of retrying per frame.
-                prepared=frame
+        val portraitKey=Wq157OwnPortrait.key(context,session.profileKey,avatar)
+        var prepared by remember(context,keys){mutableStateOf(Wq150ArtCache.frame(keys))}
+        var portrait by remember(context,portraitKey){mutableStateOf(Wq157OwnPortrait.get(portraitKey))}
+        LaunchedEffect(context,keys,portraitKey){
+            val result=withContext(Dispatchers.IO){
+                Wq150ArtCache.prepare(context,keys) to Wq157OwnPortrait.load(context,portraitKey,avatar)
             }
+            portrait=result.second
+            prepared=result.first
         }
         val frame=prepared
-        if(frame==null){
+        val face=portrait
+        if(frame==null||face==null){
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E)),contentAlignment=Alignment.Center){
                 CircularProgressIndicator(color=Wq122Gold)
             }
@@ -602,8 +586,12 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
                         fontSize=if(wide)14.sp else 10.sp,lineHeight=if(wide)17.sp else 12.sp,textAlign=TextAlign.Center)
                     if(wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")}){Text("Hızlı Oda Katılımı",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)}
                 }
-                Wq2DPortrait(avatar,Modifier.offset(x=pos.first.dp-left-avatarW/2,y=feet-avatarH)
-                    .width(avatarW).height(avatarH),victory=false,imageAlignment=Alignment.BottomCenter)
+                val portraitModifier=Modifier.offset(x=pos.first.dp-left-avatarW/2,y=feet-avatarH)
+                    .width(avatarW).height(avatarH)
+                if(face.image!=null)Image(face.image,Wq2DMascots.label(avatar),portraitModifier,
+                    alignment=Alignment.BottomCenter,contentScale=ContentScale.Fit,
+                    filterQuality=androidx.compose.ui.graphics.FilterQuality.High)
+                else Wq2DPortrait(avatar,portraitModifier,victory=false,imageAlignment=Alignment.BottomCenter)
                 val tabTop=metrics.tabTop.dp
                 val tabH=metrics.tabHeight.dp
                 val footerH=metrics.footerHeight.dp
@@ -759,4 +747,160 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
 @Composable
 private fun Wq150SoloNumbers(values:List<Int>,selected:Int,label:(Int)->String,onPick:(Int)->Unit){
     Wq150CompactPicker(values.associate{it.toString() to label(it)},selected.toString()){onPick(it.toInt())}
+}
+
+// One local portrait per profile/selection/revision, never the remote room bitmap.
+// Keep only a small, bounded number of decoded portraits.
+private object Wq157OwnPortrait {
+    data class Frame(val image:ImageBitmap?)
+    private val cache=android.util.LruCache<String,Frame>(2)
+    fun key(context:android.content.Context,profile:String,avatar:String):String{
+        val rev=context.getSharedPreferences("wq_2d_selected_173",android.content.Context.MODE_PRIVATE).getInt("art_revision",0)
+        return "$profile:$avatar:$rev"
+    }
+    fun get(key:String)=cache.get(key)
+    @Synchronized fun load(context:android.content.Context,key:String,avatar:String):Frame{
+        get(key)?.let{return it}
+        val bmp=runCatching{
+            if(Wq183MascotStore.isCustomId(avatar))Wq183MascotStore.picture(context,avatar,false)
+            else Wq2DMascots.picture(context,avatar,false)?.let{Wq184BitmapTrim.crop(it)}
+        }.getOrNull()
+        return Frame(bmp?.asImageBitmap()).also{cache.put(key,it)}
+    }
+}
+private val Wq157Panel=Color(0xFF251347)
+private val Wq157Tile=Color(0xFF34205B)
+private val Wq157Muted=Color(0xFFD6C7EC)
+private object Wq157FriendImages{
+    private val cache=object:android.util.LruCache<String,ImageBitmap>(12*1024*1024){
+        override fun sizeOf(key:String,value:ImageBitmap)=(value.width.toLong()*value.height*4L).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
+    }
+    fun key(entry:FriendEntry):String{
+        val digest=java.security.MessageDigest.getInstance("SHA-256").digest(entry.avatarPreview.orEmpty().toByteArray(Charsets.UTF_8))
+            .joinToString(""){"%02x".format(it)}
+        return entry.uid+":"+entry.avatarId+":"+digest
+    }
+    fun get(key:String)=cache.get(key)
+    @Synchronized fun load(key:String,entry:FriendEntry):ImageBitmap?{
+        get(key)?.let{return it}
+        return Wq185FriendMascot.decode(entry.avatarPreview)?.asImageBitmap()?.also{cache.put(key,it)}
+    }
+}
+@Composable
+private fun Wq157FriendFace(entry:FriendEntry,modifier:Modifier){
+    val key=remember(entry.uid,entry.avatarId,entry.avatarPreview){Wq157FriendImages.key(entry)}
+    var image by remember(key){mutableStateOf(Wq157FriendImages.get(key))}
+    LaunchedEffect(key){
+        if(image==null)image=withContext(Dispatchers.IO){Wq157FriendImages.load(key,entry)}
+    }
+    Box(modifier.clip(RoundedCornerShape(14.dp)).background(Color(0xFF1B1238)),
+        contentAlignment=Alignment.Center){
+        val art=image
+        if(art!=null)Image(art,null,Modifier.fillMaxSize().padding(3.dp),contentScale=ContentScale.Fit,
+            filterQuality=androidx.compose.ui.graphics.FilterQuality.High)
+        else if(Wq2DMascots.valid(entry.avatarId)&&!Wq183MascotStore.isCustomId(entry.avatarId.orEmpty()))
+            Wq2DPortrait(entry.avatarId!!,Modifier.fillMaxSize().padding(3.dp))
+        else Text(entry.name.take(1).uppercase(),color=Wq122Gold,fontSize=24.sp,fontWeight=FontWeight.Bold)
+    }
+}
+@Composable
+private fun Wq157ArenaFriends(hub:FriendsHub,onDismiss:()->Unit){
+    var lookup by remember{mutableStateOf("")}
+    var selected by remember{mutableStateOf<String?>(null)}
+    var remove by remember{mutableStateOf<String?>(null)}
+    val entry=hub.friends.firstOrNull{it.uid==selected}
+    val removing=hub.friends.firstOrNull{it.uid==remove}
+    val cfg=LocalConfiguration.current
+    val tablet=cfg.screenWidthDp>=600
+    val maxHeight=(cfg.screenHeightDp*0.76f).coerceIn(220f,620f).dp
+    Dialog(onDismissRequest={if(removing!=null)remove=null else if(selected!=null)selected=null else onDismiss()},
+        properties=DialogProperties(usePlatformDefaultWidth=false)){
+        Surface(Modifier.padding(horizontal=18.dp,vertical=12.dp).widthIn(max=if(tablet)620.dp else 420.dp)
+            .fillMaxWidth().heightIn(max=maxHeight),
+            color=Wq157Panel,shape=RoundedCornerShape(24.dp),
+            border=androidx.compose.foundation.BorderStroke(1.dp,Color(0xFF8862B2))){
+            Column(Modifier.padding(14.dp),verticalArrangement=Arrangement.spacedBy(8.dp)){
+                Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
+                    Wq150ApprovedArt("friends",Modifier.size(30.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(if(entry!=null)"Arkadaş profili" else "Arkadaşların",Modifier.weight(1f),
+                        color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=20.sp)
+                    TextButton(onClick={if(selected!=null)selected=null else onDismiss()}){Text(if(selected!=null)"Geri" else "Kapat",color=Wq122Gold)}
+                }
+                if(entry!=null){
+                    Column(Modifier.weight(1f,fill=false).fillMaxWidth().verticalScroll(rememberScrollState()),
+                        horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)){
+                        Wq157FriendFace(entry,Modifier.width(if(tablet)220.dp else 180.dp).height(if(tablet)250.dp else 210.dp))
+                        Text(entry.name,color=Color.White,fontSize=23.sp,fontWeight=FontWeight.Black)
+                        Text(Wq180FriendActivity.label(entry.lastActiveAt),color=Wq157Muted,fontSize=13.sp)
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                            listOf("Toplam puan" to entry.points,"Tamamlanan oyun" to entry.completedGames).forEach{(label,value)->
+                                Surface(Modifier.weight(1f),shape=RoundedCornerShape(12.dp),color=Wq157Tile,
+                                    border=androidx.compose.foundation.BorderStroke(1.dp,Color(0xFF8862B2))){
+                                    Column(Modifier.padding(10.dp),horizontalAlignment=Alignment.CenterHorizontally){
+                                        Text(label,color=Wq157Muted,fontSize=12.sp)
+                                        Text(value?.toString()?:"—",color=Wq122Gold,fontSize=22.sp,fontWeight=FontWeight.Bold)
+                                    }
+                                }
+                            }
+                        }
+                        Text("Yalnızca paylaşılan profil bilgileri gösterilir.",color=Wq157Muted,fontSize=11.sp)
+                    }
+                }else{
+                    Text("${hub.friends.size} arkadaş",color=Wq157Muted,fontSize=13.sp)
+                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
+                        OutlinedTextField(lookup,{lookup=it.take(ArenaNickname.maximumLength)},Modifier.weight(1f),singleLine=true,
+                            label={Text("Kullanıcı adıyla ara")})
+                        TextButton(enabled=ArenaNickname.isValid(lookup)&&hub.nickname.isNotBlank(),onClick={hub.searchName(lookup)}){Text("Ara")}
+                    }
+                    Column(Modifier.weight(1f,fill=false).fillMaxWidth().verticalScroll(rememberScrollState()),
+                        verticalArrangement=Arrangement.spacedBy(8.dp)){
+                        if(hub.found.isNotEmpty())Text("Arama sonuçları",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        hub.found.forEach{p->Wq157FriendRow(p,"Oyuncu profili","İstek gönder",{hub.requestFriend(p.uid)},null,null,
+                            enabled=hub.friends.none{it.uid==p.uid})}
+                        if(hub.requests.isNotEmpty())Text("Gelen istekler",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        hub.requests.forEach{p->Wq157FriendRow(p,"Arkadaşlık isteği","Kabul et",{hub.acceptFriend(p.uid)},"Reddet",{hub.rejectFriend(p.uid)})}
+                        if(hub.friends.isNotEmpty())Text("Arkadaş kartları",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        hub.friends.forEach{p->Wq157FriendRow(p,Wq180FriendActivity.label(p.lastActiveAt),"Profili incele",{selected=p.uid},"Arkadaşı çıkar",{remove=p.uid})}
+                        if(hub.invites.isNotEmpty())Text("Gelen Arena davetleri",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        hub.invites.forEach{inv->
+                            val sender=hub.friends.firstOrNull{it.uid==inv.uid}?:FriendEntry(inv.uid,inv.name)
+                            Wq157FriendRow(sender,"Arena daveti",null,null,"Sil",{hub.dismissInvite(inv.uid)})
+                        }
+                        if(hub.friends.isEmpty()&&hub.found.isEmpty()&&hub.requests.isEmpty())Text("Henüz arkadaşın yok. Kullanıcı adıyla ara.",color=Wq157Muted)
+                        if(hub.status.isNotBlank())Text(hub.status,color=Wq157Muted,fontSize=12.sp)
+                    }
+                }
+            }
+        }
+    }
+    if(removing!=null)AlertDialog(onDismissRequest={remove=null},containerColor=Wq157Panel,
+        title={Text("Arkadaşı çıkar?",color=Wq122Gold)},
+        text={Text("${removing.name} arkadaş listenden çıkarılsın mı?",color=Color.White)},
+        confirmButton={TextButton(onClick={hub.removeFriend(removing.uid);remove=null}){Text("Çıkar",color=Color(0xFFFFB4B4))}},
+        dismissButton={TextButton(onClick={remove=null}){Text("Vazgeç",color=Wq122Gold)}})
+}
+@Composable
+private fun Wq157FriendRow(entry:FriendEntry,description:String,primary:String?,onPrimary:(()->Unit)?,secondary:String?,onSecondary:(()->Unit)?,enabled:Boolean=true){
+    Surface(Modifier.fillMaxWidth(),shape=RoundedCornerShape(16.dp),color=Wq157Tile,
+        border=androidx.compose.foundation.BorderStroke(1.dp,Color(0xFF8862B2))){
+        Row(Modifier.padding(8.dp),horizontalArrangement=Arrangement.spacedBy(9.dp),verticalAlignment=Alignment.CenterVertically){
+            Wq157FriendFace(entry,Modifier.width(64.dp).height(82.dp))
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(3.dp)){
+                Text(entry.name,color=Color.White,fontWeight=FontWeight.Bold,fontSize=16.sp,maxLines=1,overflow=TextOverflow.Ellipsis)
+                Text(description,color=Wq157Muted,fontSize=12.sp)
+                val stats=listOfNotNull(entry.points?.let{"$it puan"},entry.completedGames?.let{"$it oyun"})
+                if(stats.isNotEmpty())Text(stats.joinToString(" · "),color=Wq122Gold,fontSize=12.sp)
+                // Stack on narrow phones; never cut off either action.
+                BoxWithConstraints(Modifier.fillMaxWidth()){
+                    val actions:@Composable ()->Unit={
+                        if(primary!=null&&onPrimary!=null)TextButton(enabled=enabled,onClick=onPrimary,contentPadding=PaddingValues(horizontal=4.dp)){Text(primary,color=Wq122Gold,fontSize=12.sp)}
+                        if(secondary!=null&&onSecondary!=null)TextButton(onClick=onSecondary,contentPadding=PaddingValues(horizontal=4.dp)){Text(secondary,color=Color(0xFFFFB4B4),fontSize=12.sp)}
+                    }
+                    if(maxWidth>=245.dp)Row(horizontalArrangement=Arrangement.spacedBy(4.dp)){actions()}
+                    else Column{actions()}
+                }
+            }
+        }
+    }
 }

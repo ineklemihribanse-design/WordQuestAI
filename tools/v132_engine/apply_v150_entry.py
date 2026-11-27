@@ -138,4 +138,4 @@ home=Path("source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt")
 hs=home.read_text("utf-8")
 anchor="    val appContext = LocalContext.current\n    // Warm the immutable local vocabulary while the user is on the home page."
 assert hs.count(anchor)==1, "Unexpected root warmup anchor"
-home.write_text(hs.replace(anchor,"    val appContext = LocalContext.current\n    Wq150WarmArenaArt()\n    // Warm the immutable local vocabulary while the user is on the home page.",1),"utf-8")
+home.write_text(hs.replace(anchor,"    val appContext = LocalContext.current\n    Wq150WarmArenaArt(session)\n    // Warm the immutable local vocabulary while the user is on the home page.",1),"utf-8")

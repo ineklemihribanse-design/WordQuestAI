@@ -1,4 +1,4 @@
-name: WordQuest AI 1.0.156 verified release package (retained Arena entry)
+name: WordQuest AI 1.0.157 verified release package (compact Arena friends and CI)
 on:
   pull_request:
     branches: [fix/v190-tablet-board-and-visible-icons]
@@ -10,13 +10,13 @@ permissions:
   contents: read
   actions: read
 env:
-  WQ_VERSION: '1.0.156'
-  WQ_BASE_VERSION: '1.0.155'
-  WQ_TARGET_CODE: '170'
-  WQ_BASE_CODE: '169'
-  WQ_BASE_SHA: c83d8c40c74ca847e3f604f162899173739228f05461c1589c853f89cb0c350e
+  WQ_VERSION: '1.0.157'
+  WQ_BASE_VERSION: '1.0.156'
+  WQ_TARGET_CODE: '171'
+  WQ_BASE_CODE: '170'
+  WQ_BASE_SHA: 6253eed7391c40c5b122a4694664201ea60b9e34b3df15bb84ae526a7610c5a2
   WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
-  WQ_NOTES: 'Arena görselleri ana menüde hazırlanır, ekranlar arası geçişte aynı görsel paketi korunur ve Arkadaşlarım arka planı Arena ile uyumlu olur. Mevcut tasarım, imza ve kullanıcı verileri korunur.'
+  WQ_NOTES: 'Arena arkadaş listesi ve profil pencereleri kompakt koyu temada; maskot ve görsel önbelleği iyileştirildi. Mevcut imza ve kullanıcı verileri korunur.'
 jobs:
   audit:
     if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
@@ -802,7 +802,7 @@ jobs:
           p=Path("source/app/build.gradle.kts")
           s=p.read_text()
           assert s.count("versionCode = 149")==1 and s.count('versionName = "1.0.123"')==1
-          p.write_text(s.replace("versionCode = 149","versionCode = 170").replace('versionName = "1.0.123"','versionName = "1.0.156"'))
+          p.write_text(s.replace("versionCode = 149","versionCode = 171").replace('versionName = "1.0.123"','versionName = "1.0.157"'))
           PY
       - name: Verify Android SDK and Gradle
         run: |
@@ -830,7 +830,7 @@ jobs:
           set -euo pipefail
           chmod +x gradlew
           set +e
-          ./gradlew --no-daemon --build-cache :app:lintOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/android-lint.log" 2>&1
+          ./gradlew --daemon --build-cache :app:lintOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/android-lint.log" 2>&1
           code=$?
           set -e
           echo "$code" > "$RUNNER_TEMP/wq-full-audit/lint-exit-code.txt"
@@ -840,19 +840,18 @@ jobs:
           fi
           tail -n 50 "$RUNNER_TEMP/wq-full-audit/android-lint.log"
           exit "$code"
-      - name: Run Arena v150 revealed-letter and draft regression tests
+      - name: Run Arena, Lena and delta unit tests together
         working-directory: source
         run: |
           set -euo pipefail
-          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest' --tests 'com.kelimebulmacasi.a1.Wq150GatewayTest' --tests 'com.kelimebulmacasi.a1.Wq150LobbyClientTest' --tests 'com.kelimebulmacasi.a1.Wq150ViewportTest' --tests 'com.kelimebulmacasi.a1.Wq150HistoryTest' --tests 'com.kelimebulmacasi.a1.Wq150HomeModesTest'
+          ./gradlew --daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest' --tests 'com.kelimebulmacasi.a1.Wq150SettingsTest' --tests 'com.kelimebulmacasi.a1.Wq150GatewayTest' --tests 'com.kelimebulmacasi.a1.Wq150LobbyClientTest' --tests 'com.kelimebulmacasi.a1.Wq150ViewportTest' --tests 'com.kelimebulmacasi.a1.Wq150HistoryTest' --tests 'com.kelimebulmacasi.a1.Wq150HomeModesTest' --tests 'com.kelimebulmacasi.a1.Wq207LenaRequestTest' --tests 'com.kelimebulmacasi.a1.Wq208ProviderFailureTest' --tests 'com.kelimebulmacasi.a1.Wq209LenaModelRouteTest' --tests 'com.kelimebulmacasi.a1.Wq210LenaRouterTest' --tests 'com.kelimebulmacasi.a1.Wq117LenaMotionTest' --tests 'com.kelimebulmacasi.a1.Wq118LenaBlendTest' --tests 'com.kelimebulmacasi.a1.Wq119LenaFaceTest' --tests 'com.kelimebulmacasi.a1.WqDeltaMetadataTest'
           test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150ArenaHintDraftTest.xml
           test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150HistoryTest.xml
           test -s app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.Wq150HomeModesTest.xml
-      - name: Run Lena connection, motion and delta updater regressions before signing
+      - name: Check Lena and delta regression reports before signing
         working-directory: source
         run: |
           set -euo pipefail
-          ./gradlew --no-daemon --build-cache :app:testOfflineUnitTest --tests 'com.kelimebulmacasi.a1.Wq207LenaRequestTest' --tests 'com.kelimebulmacasi.a1.Wq208ProviderFailureTest' --tests 'com.kelimebulmacasi.a1.Wq209LenaModelRouteTest' --tests 'com.kelimebulmacasi.a1.Wq210LenaRouterTest' --tests 'com.kelimebulmacasi.a1.Wq117LenaMotionTest' --tests 'com.kelimebulmacasi.a1.Wq118LenaBlendTest' --tests 'com.kelimebulmacasi.a1.Wq119LenaFaceTest' --tests 'com.kelimebulmacasi.a1.WqDeltaMetadataTest'
           for suite in Wq207LenaRequestTest Wq208ProviderFailureTest Wq209LenaModelRouteTest Wq210LenaRouterTest Wq117LenaMotionTest Wq118LenaBlendTest Wq119LenaFaceTest WqDeltaMetadataTest; do
             test -s "app/build/test-results/testOfflineUnitTest/TEST-com.kelimebulmacasi.a1.$suite.xml"
           done
@@ -868,7 +867,7 @@ jobs:
         working-directory: source
         run: |
           set -euo pipefail
-          ./gradlew --no-daemon --build-cache :app:assembleOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/candidate-build.log" 2>&1 || { tail -n 100 "$RUNNER_TEMP/wq-full-audit/candidate-build.log"; exit 1; }
+          ./gradlew --daemon --build-cache :app:assembleOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/candidate-build.log" 2>&1 || { tail -n 100 "$RUNNER_TEMP/wq-full-audit/candidate-build.log"; exit 1; }
           test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
       - name: Sign and verify device-test candidate with existing certificate
         env:
@@ -885,7 +884,7 @@ jobs:
           trap 'rm -f "$KEY"' EXIT
           printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
           OUT=source/app/build/outputs/apk/offline
-          APK="$OUT/WordQuestAI-v1.0.156-device-test.apk"
+          APK="$OUT/WordQuestAI-v1.0.157-device-test.apk"
           SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           java -jar "$SIGNER" sign --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true --out "$APK" "$OUT/app-offline-unsigned.apk"
           java -jar "$SIGNER" verify --verbose --print-certs "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
@@ -894,8 +893,8 @@ jobs:
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
-          grep -Fq "versionCode='170'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
-          grep -Fq "versionName='1.0.156'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "versionCode='171'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "versionName='1.0.157'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"; then exit 1; fi
           unzip -tq "$APK"
           test "$(unzip -p "$APK" assets/wq150_arena_origin.txt)" = 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev'
@@ -922,8 +921,8 @@ jobs:
       - name: Upload signed device-test APK only (not a GitHub release)
         uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.156-device-test
-          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.156-device-test.apk
+          name: WordQuestAI-v1.0.157-device-test
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.157-device-test.apk
           compression-level: 0
           if-no-files-found: error
           retention-days: 7
@@ -976,7 +975,7 @@ jobs:
           python-version: '3.11'
       - uses: actions/download-artifact@v4
         with:
-          name: WordQuestAI-v1.0.156-device-test
+          name: WordQuestAI-v1.0.157-device-test
           path: ${{ runner.temp }}/wq154-release/signed
       - uses: actions/download-artifact@v4
         with:
@@ -990,18 +989,18 @@ jobs:
           D="$RUNNER_TEMP/wq154-release"
           echo "WQ_RELEASE_DIR=$D" >> "$GITHUB_ENV"
           mkdir -p "$D"/{base,delta,classes}
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.155
-          gh release download v1.0.155 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$D/base"
-          mv "$D/signed/WordQuestAI-v1.0.156-device-test.apk" "$D/signed/WordQuestAI-v1.0.156-signed-qa.apk"
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.156
+          gh release download v1.0.156 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$D/base"
+          mv "$D/signed/WordQuestAI-v1.0.157-device-test.apk" "$D/signed/WordQuestAI-v1.0.157-signed-qa.apk"
           proof="$(find "$D/audit" -name candidate.sha256 -type f)"
           test -s "$proof"
-          test "$(cut -d' ' -f1 "$proof")" = "$(sha256sum "$D/signed/WordQuestAI-v1.0.156-signed-qa.apk" | cut -d' ' -f1)"
+          test "$(cut -d' ' -f1 "$proof")" = "$(sha256sum "$D/signed/WordQuestAI-v1.0.157-signed-qa.apk" | cut -d' ' -f1)"
           echo "$WQ_BASE_SHA  $D/base/WordQuestAI.apk" | sha256sum -c -
       - name: Generate update metadata and lossless delta without rebuilding
         run: |
           set -euo pipefail
           D="$WQ_RELEASE_DIR"
-          APK="$D/signed/WordQuestAI-v1.0.156-signed-qa.apk"
+          APK="$D/signed/WordQuestAI-v1.0.157-signed-qa.apk"
           if [ ! -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" ]; then
             SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
             "$SDKM" --install 'build-tools;35.0.0'
@@ -1012,19 +1011,19 @@ jobs:
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$D/signature.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" > "$D/badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$D/badging.txt"
-          grep -Fq "versionCode='170'" "$D/badging.txt"
-          grep -Fq "versionName='1.0.156'" "$D/badging.txt"
+          grep -Fq "versionCode='171'" "$D/badging.txt"
+          grep -Fq "versionName='1.0.157'" "$D/badging.txt"
           if grep -Fq 'application-debuggable' "$D/badging.txt"; then exit 1; fi
           python3 - <<'PY'
           import hashlib,json,os
           from pathlib import Path
           d=Path(os.environ['WQ_RELEASE_DIR'])
           old=json.loads((d/'base/update.json').read_text())
-          assert old['versionCode']==169 and old['versionName']=='1.0.155'
+          assert old['versionCode']==170 and old['versionName']=='1.0.156'
           assert old['sha256']==os.environ['WQ_BASE_SHA']
-          p=d/'signed/WordQuestAI-v1.0.156-signed-qa.apk'
+          p=d/'signed/WordQuestAI-v1.0.157-signed-qa.apk'
           with p.open('rb') as f: digest=hashlib.file_digest(f,'sha256').hexdigest()
-          m=dict(schemaVersion=1,tag='v1.0.156',versionCode=170,versionName='1.0.156',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=digest,notes=os.environ['WQ_NOTES'])
+          m=dict(schemaVersion=1,tag='v1.0.157',versionCode=171,versionName='1.0.157',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=digest,notes=os.environ['WQ_NOTES'])
           (d/'signed/update.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
           PY
           python3 tools/delta_v1/make_delta.py "$D/base/WordQuestAI.apk" "$APK" "$D/base/update.json" "$D/signed/update.json" "$D/delta"
@@ -1033,6 +1032,13 @@ jobs:
           javac -d "$D/classes" tools/delta_android/WqDeltaApplier.java
           test -e /dev/kvm
           sudo chmod 666 /dev/kvm
+      - name: Resolve emulator SDK cache path
+        id: emulator_sdk
+        run: echo "image=$ANDROID_HOME/system-images/android-30/google_apis/x86_64" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.emulator_sdk.outputs.image }}
+          key: wq-emulator-android30-googleapis-x86_64-v1
       - name: Verify in-place installation and capture Arena on phone and tablet
         timeout-minutes: 28
         run: |
@@ -1043,7 +1049,7 @@ jobs:
           cp "$RUNNER_TEMP/wq206-upgrade-passed.sha256" "$WQ_RELEASE_DIR/upgrade-proof.sha256"
       - uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.156-verified-release
+          name: WordQuestAI-v1.0.157-verified-release
           path: |
             ${{ runner.temp }}/wq154-release/dist
             ${{ runner.temp }}/wq154-release/upgrade-proof.sha256
@@ -1052,7 +1058,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: WordQuestAI-v1.0.156-release-diagnostics
+          name: WordQuestAI-v1.0.157-release-diagnostics
           path: |
             ${{ runner.temp }}/wq154-release/arena-*.png
             ${{ runner.temp }}/wq154-release/arena-*.xml

@@ -32,7 +32,9 @@ test "$(command -v adb)" = "$ADB"
 adb version
 echo "PASS: ADB is on PATH for all upgrade test subprocesses"
 # GitHub runner licenses are normally accepted already. Limit SDK setup.
-timeout --kill-after=15s 480s "$SDKM" --install emulator "$IMAGE" --channel=0
+if [ ! -x "$EMU" ] || [ ! -s "$ANDROID_HOME/system-images/android-30/google_apis/x86_64/system.img" ] || [ ! -s "$ANDROID_HOME/system-images/android-30/google_apis/x86_64/package.xml" ]; then
+    timeout --kill-after=15s 480s "$SDKM" --install emulator "$IMAGE" --channel=0
+fi
 test -x "$EMU"
 printf 'no\n' | timeout --kill-after=5s 60s "$AVDM" create avd --force -n "$AVD" --package "$IMAGE" --device pixel_4 --path "$ANDROID_AVD_HOME/$AVD.avd"
 # The previous avdmanager invocation returned zero without a discoverable INI.
