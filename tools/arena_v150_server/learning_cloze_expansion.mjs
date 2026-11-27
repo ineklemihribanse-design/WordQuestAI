@@ -429,7 +429,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "Researchers placed sensors along a river to examine changes in water quality. Before the sensors were placed in the river, their calibration had already been completed. The instruments were therefore calibrated ____ installation. Each sensor recorded measurements at regular intervals. Data from faulty instruments were excluded from the final analysis. The team compared the remaining readings with samples collected manually in order to verify their reliability. The resulting dataset was made available to other researchers.\n\nChoose the best option for the blank.",
+    "prompt": "Researchers placed sensors along a river to examine changes in water quality. The instruments were calibrated ____ installation, so they could begin recording as soon as they were put in place. Each sensor recorded measurements at regular intervals. Data from faulty instruments were excluded from the final analysis. The team compared the remaining readings with samples collected manually in order to verify their reliability. The resulting dataset was made available to other researchers.\n\nChoose the best option for the blank.",
     "options": [
       "prior to",
       "because of",
@@ -7403,7 +7403,7 @@ export const clozeExpansion = [
     "prompt": "A survey sought to estimate the proportion of residents satisfied with public transport. Online distribution was intended to reach as many residents as possible, ____ people without reliable internet access were less likely to participate. The researchers acknowledged that this might lead to a biased estimate. To address the limitation, they offered paper questionnaires at several public facilities. Responses collected through both channels were compared to determine whether the samples differed substantially. Although the revised approach improved coverage, it could not guarantee that all groups were equally represented. The report therefore advised against interpreting the figures as an exact measure of public opinion and recommended that further evidence be collected.\n\nChoose the best option for the blank.",
     "options": [
       "but",
-      "although",
+      "as long as",
       "unless",
       "because",
       "provided that"
