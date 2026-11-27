@@ -800,14 +800,14 @@ export const b121500Phrasals = [
     "kind": "Phrasal",
     "prompt": "The owner will ____ a plumber from outside the company to repair the leaking pipe.",
     "options": [
-      "call on",
+      "call at",
       "call in",
       "call back",
       "call off",
       "call up"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call in. call in bir uzmanı yardım amacıyla çağırmaktır; call back geri aramak, call off iptal etmek, call up telefon etmek anlamına gelir."
+    "explanation": "Doğru seçenek: call in. Call in bir uzmanı yardım için çağırmak; call at bir yere uğramak anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_10_1",
@@ -929,11 +929,11 @@ export const b121500Phrasals = [
       "put away",
       "work out",
       "find out",
-      "pick up",
+      "put on",
       "pick out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: pick out. Pick out, seçenekler arasından seçmek demektir. Point to işaret etmek anlamına gelir."
+    "explanation": "Doğru seçenek: pick out. Pick out birkaç seçenek arasından tercih ettiğini seçmek demektir; put on giymek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_11_3",
@@ -1374,7 +1374,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The volunteers plan to ____ a table for visitors near the gate.",
+    "prompt": "The volunteers plan to ____ a folding table near the gate by unfolding its legs and locking them in place.",
     "options": [
       "set aside",
       "set about",
@@ -1383,7 +1383,7 @@ export const b121500Phrasals = [
       "set up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set up. Set up burada ziyaretçilerin kullanacağı masayı hazırlayıp kurmak demektir."
+    "explanation": "Doğru seçenek: set up. Set up katlanır masayı açıp kullanıma hazır hâle getirmek anlamındadır; set aside bir şeyi ayırmaktır."
   },
   {
     "id": "wq150_b121500_ph_b1_16_3",
@@ -2202,7 +2202,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Small businesses often ____ strict technical requirements when applying for grants.",
+    "prompt": "Small businesses often ____ unexpected technical obstacles that prevent them from submitting grant applications.",
     "options": [
       "come up against",
       "come up with",
@@ -2211,7 +2211,7 @@ export const b121500Phrasals = [
       "come down to"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: come up against. Come up against, zorluk veya engelle karşılaşmak demektir."
+    "explanation": "Doğru seçenek: come up against. Come up against, bir engel ya da zorlukla karşılaşmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_5_4",
