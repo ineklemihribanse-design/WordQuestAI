@@ -4,7 +4,7 @@ No warning suppression, library version changes, signing changes or data migrati
 from pathlib import Path
 import hashlib
 p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
-names={"LenaAttachmentReader.kt","PuzzleScreen.kt","UpdateUi.kt","Wq128PremiumRoomLobby.kt","NewGameScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt","ArenaBoardV2.kt","Wq140SoloUi.kt","WqDriveMascot.kt"}
+names={"LenaAttachmentReader.kt","PuzzleScreen.kt","UpdateUi.kt","Wq128PremiumRoomLobby.kt","NewGameScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt","ArenaBoardV2.kt","Wq140SoloUi.kt","WqDriveMascot.kt","AiSession.kt","AppUpdater.kt","PremiumOnlineRoom.kt"}
 protected={f:hashlib.sha256(f.read_bytes()).digest() for f in p.rglob("*") if f.is_file() and f.name not in names}
 def edit(name,changes):
     f=p/name;s=f.read_text()
@@ -217,5 +217,27 @@ drive.write_text(ds)
 assert "operation.isActive && sameOwner(attempt)" in ds
 assert "WqDriveMascot.sync(context,attempt.profile,attempt.uid,token,attempt.restore,::stillOwner)" in ds
 print("PASS: Drive consent is bound to original profile and operation; cancellation checks before restore/import")
+# Avoid boxing primitive Compose state; preserve values, saveability and geometry.
+edit("AiSession.kt",[
+ ('import androidx.compose.runtime.mutableStateOf','import androidx.compose.runtime.mutableStateOf\nimport androidx.compose.runtime.mutableIntStateOf'),
+ ('private var lenaRevision by mutableStateOf(0)','private var lenaRevision by mutableIntStateOf(0)')
+])
+edit("AppUpdater.kt",[
+ ('import androidx.compose.runtime.mutableStateOf','import androidx.compose.runtime.mutableStateOf\nimport androidx.compose.runtime.mutableIntStateOf\nimport androidx.compose.runtime.mutableLongStateOf'),
+ ('var lastChecked by mutableStateOf(prefs.getLong("last_success", 0L))','var lastChecked by mutableLongStateOf(prefs.getLong("last_success", 0L))'),
+ ('var progress by mutableStateOf(0); private set','var progress by mutableIntStateOf(0); private set')
+])
+edit("PremiumOnlineRoom.kt",[
+ ('import androidx.compose.runtime.mutableLongStateOf','import androidx.compose.runtime.mutableLongStateOf\nimport androidx.compose.runtime.mutableIntStateOf'),
+ ('var usedToday by mutableStateOf(0)','var usedToday by mutableIntStateOf(0)')
+])
+edit("ArenaCrosswordTyping.kt",[
+ ('var onlineZoom by rememberSaveable(puzzle.hashCode()) { mutableStateOf(0) }','var onlineZoom by rememberSaveable(puzzle.hashCode()) { mutableIntStateOf(0) }')
+])
+edit("PuzzleScreen.kt",[
+ ('var measuredBoardWidth by remember { mutableStateOf(0) }','var measuredBoardWidth by remember { mutableIntStateOf(0) }'),
+ ('var measuredBoardHeight by remember { mutableStateOf(0) }','var measuredBoardHeight by remember { mutableIntStateOf(0) }')
+])
+print("PASS: seven primitive Compose states avoid boxing; no board geometry, account data or persistence changes")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
 print("PASS: five audited lint errors corrected; measured safe-area landscape board; unrelated sources unchanged")
