@@ -429,7 +429,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "Researchers placed sensors along a river to examine changes in water quality. The instruments were calibrated ____ installation. Each sensor recorded measurements at regular intervals. Data from faulty instruments were excluded from the final analysis. The team compared the remaining readings with samples collected manually in order to verify their reliability. The resulting dataset was made available to other researchers.\n\nChoose the best option for the blank.",
+    "prompt": "Researchers placed sensors along a river to examine changes in water quality. Before the sensors were placed in the river, their calibration had already been completed. The instruments were therefore calibrated ____ installation. Each sensor recorded measurements at regular intervals. Data from faulty instruments were excluded from the final analysis. The team compared the remaining readings with samples collected manually in order to verify their reliability. The resulting dataset was made available to other researchers.\n\nChoose the best option for the blank.",
     "options": [
       "prior to",
       "because of",
@@ -774,8 +774,8 @@ export const clozeExpansion = [
       "were subjected",
       "was subjected",
       "subjecting",
-      "have subjecting",
-      "are subject"
+      "were subjecting",
+      "had subjected"
     ],
     "correct": 0,
     "explanation": "Numuneler döngülere maruz bırakıldı; edilgen yapı.",
@@ -3660,13 +3660,13 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not ____ conceptual incompatibility. Before pooling the estimates, they examined how well each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, because their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to interpret in substantive terms. The procedure privileged interpretability over apparent precision.\n\nChoose the best option for the blank.",
+    "prompt": "A research consortium attempted to combine findings from studies that had used different definitions of the same outcome. The investigators acknowledged that statistical aggregation could not, by itself, ____ conceptual incompatibility and make the definitions equivalent. Before pooling the estimates, they examined how well each operational definition captured the underlying construct. Some studies were included only in a sensitivity analysis, because their measures were less directly comparable. The resulting estimates were more qualified than an indiscriminate synthesis would have been, but they were also easier to interpret in substantive terms. The procedure privileged interpretability over apparent precision.\n\nChoose the best option for the blank.",
     "options": [
       "resolve",
-      "measure numerically",
-      "document",
-      "reveal",
-      "acknowledge"
+      "eliminate uncertainty about",
+      "establish",
+      "confirm",
+      "demonstrate"
     ],
     "correct": 0,
     "explanation": "İstatistiksel birleştirme kavramsal uyumsuzluğu tek başına çözemez."
@@ -4884,11 +4884,11 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. ____, the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. ____, this general pattern was not uniform: the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
     "options": [
       "However",
       "Therefore",
-      "For instance",
+      "In the same way",
       "Similarly",
       "Consequently"
     ],
@@ -7400,13 +7400,13 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A survey sought to estimate the proportion of residents satisfied with public transport. Invitations were distributed online, ____ people without reliable internet access were less likely to participate. The researchers acknowledged that this might lead to a biased estimate. To address the limitation, they offered paper questionnaires at several public facilities. Responses collected through both channels were compared to determine whether the samples differed substantially. Although the revised approach improved coverage, it could not guarantee that all groups were equally represented. The report therefore advised against interpreting the figures as an exact measure of public opinion and recommended that further evidence be collected.\n\nChoose the best option for the blank.",
+    "prompt": "A survey sought to estimate the proportion of residents satisfied with public transport. Online distribution was intended to reach as many residents as possible, ____ people without reliable internet access were less likely to participate. The researchers acknowledged that this might lead to a biased estimate. To address the limitation, they offered paper questionnaires at several public facilities. Responses collected through both channels were compared to determine whether the samples differed substantially. Although the revised approach improved coverage, it could not guarantee that all groups were equally represented. The report therefore advised against interpreting the figures as an exact measure of public opinion and recommended that further evidence be collected.\n\nChoose the best option for the blank.",
     "options": [
       "but",
-      "whereas not",
+      "although",
       "unless",
       "because",
-      "so that"
+      "provided that"
     ],
     "correct": 0,
     "explanation": "But çevrim içi dağıtımın oluşturduğu kapsama sorununa dikkat çeker."
