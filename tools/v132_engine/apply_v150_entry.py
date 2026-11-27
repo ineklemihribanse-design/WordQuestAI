@@ -139,3 +139,63 @@ hs=home.read_text("utf-8")
 anchor="    val appContext = LocalContext.current\n    // Warm the immutable local vocabulary while the user is on the home page."
 assert hs.count(anchor)==1, "Unexpected root warmup anchor"
 home.write_text(hs.replace(anchor,"    val appContext = LocalContext.current\n    Wq150WarmArenaArt(session)\n    // Warm the immutable local vocabulary while the user is on the home page.",1),"utf-8")
+
+# v158: optional HD detail path, with independent writes so old rules/clients remain usable.
+from shutil import copyfile
+pkg=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+copyfile(pack/"Wq158FriendHd.kt",pkg/"Wq158FriendHd.kt")
+hub= pkg/"FriendsHub.kt"
+hs=hub.read_text("utf-8")
+anchor="    fun searchName(input: String) {"
+assert hs.count(anchor)==1
+hs=hs.replace(anchor,'''    // Separate node: old friendProfiles validation is untouched.
+    fun publishFriendHd(preview:String?,hd:String?,done:()->Unit){
+        val root=db?.reference?:return
+        if(!enabled||nickname.isBlank())return
+        val ref=root.child("friendMascotHd").child(uid)
+        val task=if(preview!=null&&hd!=null&&hd.length<=Wq158FriendHd.MAX_TEXT&&
+            hd.startsWith(preview.substringBefore(':')+":"))
+            ref.setValue(mapOf("preview" to preview,"hd" to hd))
+        else ref.removeValue()
+        task.addOnSuccessListener{done()}
+        // Older live rules can reject this optional path; never fail normal overview.
+    }
+    fun observeFriendHd(member:String,expected:String,callback:(String?)->Unit):()->Unit{
+        val root=db?.reference
+        if(root==null||!enabled||member !in friendIds){callback(null);return {}}
+        val ref=root.child("friendMascotHd").child(member)
+        var active=true
+        val listener=object:ValueEventListener{
+            override fun onDataChange(snapshot:DataSnapshot){
+                if(!active)return
+                val binding=snapshot.child("preview").getValue(String::class.java)
+                val payload=snapshot.child("hd").getValue(String::class.java)
+                callback(payload?.takeIf{enabled&&member in friendIds&&binding==expected&&
+                    it.length<=Wq158FriendHd.MAX_TEXT&&it.startsWith(expected.substringBefore(':')+":")})
+            }
+            override fun onCancelled(error:DatabaseError){if(active)callback(null)}
+        }
+        ref.addValueEventListener(listener)
+        return {active=false;ref.removeEventListener(listener)}
+    }
+
+'''+anchor,1)
+hub.write_text(hs,"utf-8")
+publisher=pkg/"Wq185FriendMascot.kt"
+ps=publisher.read_text("utf-8")
+start=ps.index("        while (session.accountName != null && session.social.enabled) {")
+end=ps.index("            delay(120000L)",start)
+ps=ps[:start]+'''        // Encode once per selected immutable custom pack / consent change.
+        val detail=withContext(Dispatchers.Default){
+            if(consent)Wq158FriendHd.prepare(context,session.profileKey,selected)
+            else Wq158FriendHd.Pairing(null,null)
+        }
+        var hdPublished=false
+        while (session.accountName != null && session.social.enabled) {
+            session.social.publishOverview(
+                selected, session.totalPoints, session.finishedCount, detail.preview)
+            if(!hdPublished)session.social.publishFriendHd(detail.preview,detail.hd){hdPublished=true}
+'''+ps[end:]
+ps=ps.replace("Yalnızca karşılıklı arkadaşların küçük bir önizleme görür. ","Yalnızca karşılıklı arkadaşların maskot önizlemeni görür. ")
+publisher.write_text(ps,"utf-8")
+print("PASS: optional bounded HD friend detail; existing consent and low preview retained")

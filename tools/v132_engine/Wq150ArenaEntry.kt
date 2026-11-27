@@ -787,7 +787,7 @@ private object Wq157FriendImages{
     }
 }
 @Composable
-private fun Wq157FriendFace(entry:FriendEntry,modifier:Modifier){
+private fun Wq157FriendFace(entry:FriendEntry,modifier:Modifier,hd:ImageBitmap?=null){
     val key=remember(entry.uid,entry.avatarId,entry.avatarPreview){Wq157FriendImages.key(entry)}
     var image by remember(key){mutableStateOf(Wq157FriendImages.get(key))}
     LaunchedEffect(key){
@@ -795,7 +795,7 @@ private fun Wq157FriendFace(entry:FriendEntry,modifier:Modifier){
     }
     Box(modifier.clip(RoundedCornerShape(14.dp)).background(Color(0xFF1B1238)),
         contentAlignment=Alignment.Center){
-        val art=image
+        val art=hd?:image
         if(art!=null)Image(art,null,Modifier.fillMaxSize().padding(3.dp),contentScale=ContentScale.Fit,
             filterQuality=androidx.compose.ui.graphics.FilterQuality.High)
         else if(Wq2DMascots.valid(entry.avatarId)&&!Wq183MascotStore.isCustomId(entry.avatarId.orEmpty()))
@@ -830,7 +830,8 @@ private fun Wq157ArenaFriends(hub:FriendsHub,onDismiss:()->Unit){
                 if(entry!=null){
                     Column(Modifier.weight(1f,fill=false).fillMaxWidth().verticalScroll(rememberScrollState()),
                         horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)){
-                        Wq157FriendFace(entry,Modifier.width(if(tablet)220.dp else 180.dp).height(if(tablet)250.dp else 210.dp))
+                        val hd=Wq158RememberFriendHd(hub,entry)
+                        Wq157FriendFace(entry,Modifier.width(if(tablet)220.dp else 180.dp).height(if(tablet)250.dp else 210.dp),hd)
                         Text(entry.name,color=Color.White,fontSize=23.sp,fontWeight=FontWeight.Black)
                         Text(Wq180FriendActivity.label(entry.lastActiveAt),color=Wq157Muted,fontSize=13.sp)
                         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
