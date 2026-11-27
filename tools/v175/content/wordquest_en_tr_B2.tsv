@@ -2176,12 +2176,12 @@ B2	Genel İngilizce	Zarflar	UNCLEARLY	belirsiz bir şekilde, anlaşılmaz şekil
 B2	Genel İngilizce	Zarflar	UNCOMFORTABLY	rahatsız bir şekilde, rahatsız edici derecede
 B2	Genel İngilizce	Sıfatlar	UNCOMMON	nadir, yaygın olmayan, alışılmadık
 B2	Genel İngilizce	Sıfatlar	UNCONCERNED	kaygısız, ilgisiz, umursamaz
-B2	Genel İngilizce	Sıfatlar	UNCONSCIOUS	bilinçsiz, baygın, farkında olmayan
+B2	Genel İngilizce	Sıfatlar	UNCONSCIOUS	bilinci kapalı, baygın; farkında olmayan, bilinç dışı
 B2	Genel İngilizce	Fiiller	UNDERESTIMATE	hafife almak, küçümsemek, olduğundan az tahmin etmek
-B2	Genel İngilizce	İsimler	UNDERGRADUATE	lisans öğrencisi, üniversite öğrencisi
-B2	Genel İngilizce	Sıfatlar	UNDERGROUND	sıfat: yer altı, gizli (yasa dışı); zarf: yer altında, gizlice
+B2	Genel İngilizce	İsimler	UNDERGRADUATE	henüz lisans derecesini almamış üniversite öğrencisi
+B2	Genel İngilizce	Sıfatlar	UNDERGROUND	sıfat: yer altındaki, gizli; zarf: yer altında, gizlice; isim: (İng.) metro
 B2	Genel İngilizce	Zarflar	UNDERNEATH	edat: altında, altına; zarf: altta, alttan
-B2	Genel İngilizce	Sıfatlar	UNDERSEA	deniz altındaki, sualtı
+B2	Genel İngilizce	Sıfatlar	UNDERSEA	deniz altındaki, denizin altında bulunan
 B2	Genel İngilizce	Sıfatlar	UNDERSTANDABLE	anlaşılır, anlaşılabilir
 B2	Genel İngilizce	İsimler	UNDERSTANDING	isim: anlayış, kavrayış, anlaşma; sıfat: anlayışlı
 B2	Genel İngilizce	İsimler	UNDERWEAR	iç çamaşırı
@@ -2194,7 +2194,7 @@ B2	Genel İngilizce	Sıfatlar	UNENTHUSIASTIC	isteksiz, hevessiz
 B2	Genel İngilizce	Sıfatlar	UNEVEN	engebeli, düzensiz, eşit olmayan
 B2	Genel İngilizce	Sıfatlar	UNFAMILIAR	yabancı, tanıdık olmayan, alışık olmayan
 B2	Genel İngilizce	Sıfatlar	UNFASHIONABLE	modası geçmiş, demode
-B2	Genel İngilizce	Sıfatlar	UNFORESEEN	beklenmedik, öngörülemeyen
+B2	Genel İngilizce	Sıfatlar	UNFORESEEN	önceden öngörülmemiş, beklenmedik
 B2	Genel İngilizce	Sıfatlar	UNGODLY	dinsiz, günahkâr, (saat) uygunsuz
 B2	Genel İngilizce	İsimler	UNHAPPINESS	mutsuzluk
 B2	Genel İngilizce	Sıfatlar	UNHELPFUL	yardımcı olmayan, yararsız
@@ -2203,7 +2203,7 @@ B2	Genel İngilizce	Zarflar	UNIMAGINABLY	hayal edilemeyecek kadar, inanılmaz de
 B2	Genel İngilizce	Sıfatlar	UNITED	birleşik, birleşmiş, birlik içinde
 B2	Genel İngilizce	Sıfatlar	UNIVERSAL	evrensel, genel
 B2	Genel İngilizce	Zarflar	UNJUSTLY	haksız yere, haksızca
-B2	Genel İngilizce	Sıfatlar	UNKIND	kaba, zalim, düşüncesiz
+B2	Genel İngilizce	Sıfatlar	UNKIND	nazik olmayan, kırıcı, düşüncesiz
 B2	Genel İngilizce	Sıfatlar	UNLIMITED	sınırsız
 B2	Genel İngilizce	Fiiller	UNLOAD	boşaltmak, yük indirmek
 B2	Genel İngilizce	Fiiller	UNLOCK	kilidini açmak, açmak
@@ -2231,35 +2231,35 @@ B2	Genel İngilizce	Sıfatlar	UNTREATED	tedavi edilmemiş, işlenmemiş, arıtı
 B2	Genel İngilizce	Sıfatlar	UNTRIMMED	kesilmemiş, budanmamış, süssüz
 B2	Genel İngilizce	İsimler	UNUSUALNESS	olağandışılık, alışılmadıklık
 B2	Genel İngilizce	Sıfatlar	UNWILLING	isteksiz, gönülsüz
-B2	Genel İngilizce	Sıfatlar	UNWISE	akılsızca, akıllıca olmayan, düşüncesiz
+B2	Genel İngilizce	Sıfatlar	UNWISE	akıllıca olmayan, sağduyudan yoksun
 B2	Genel İngilizce	Sıfatlar	UNWORLDLY	saf, dünya işlerine yabancı, uhrevi
 B2	Genel İngilizce	İsimler	UPBRINGING	yetiştirilme, terbiye
-B2	Genel İngilizce	İsimler	UPDATE	fiil: güncellemek; isim: güncelleme, son bilgi
-B2	Genel İngilizce	İsimler	UPGRADE	fiil: yükseltmek, iyileştirmek; isim: yükseltme, iyileştirme
+B2	Genel İngilizce	Fiiller	UPDATE	fiil: güncellemek; isim: güncelleme, son bilgi
+B2	Genel İngilizce	Fiiller	UPGRADE	fiil: yükseltmek, iyileştirmek; isim: yükseltme, iyileştirme
 B2	Genel İngilizce	Sıfatlar	UPRIGHT	sıfat: dik, dürüst; zarf: dik, dimdik
-B2	Genel İngilizce	Sıfatlar	UPSIDE DOWN	baş aşağı, ters, altüst
+B2	Genel İngilizce	Zarflar	UPSIDE DOWN	baş aşağı, tersine dönmüş biçimde
 B2	Genel İngilizce	Sıfatlar	URBAN	kentsel
 B2	Genel İngilizce	Zarflar	URGENTLY	acilen, ivedilikle
 B2	Genel İngilizce	İsimler	USER	kullanıcı
 B2	Genel İngilizce	İsimler	USHER	isim: yer gösterici, teşrifatçı; fiil: (yol göstererek) götürmek, buyur etmek, (usher in) başlatmak
-B2	Genel İngilizce	İsimler	UTILITY	fayda, kamu hizmeti (elektrik, su, gaz), yardımcı program
+B2	Genel İngilizce	İsimler	UTILITY	yarar, fayda; elektrik ve su gibi kamu hizmeti; yardımcı bilgisayar programı
 B2	Genel İngilizce	Fiiller	UTILIZE	kullanmak, yararlanmak
-B2	Genel İngilizce	Fiiller	UTTER	söylemek, ağzından çıkarmak, (ses) çıkarmak
+B2	Genel İngilizce	Fiiller	UTTER	fiil: söylemek, ses çıkarmak; sıfat: tam, mutlak
 B2	Genel İngilizce	Zarflar	UTTERLY	tamamen, büsbütün, son derece
-B2	Genel İngilizce	Sıfatlar	VACANT	boş, münhal, dalgın (bakış)
+B2	Genel İngilizce	Sıfatlar	VACANT	boş, kullanılmayan; (görev) henüz doldurulmamış; ifadesiz
 B2	Genel İngilizce	İsimler	VACCINE	aşı
-B2	Genel İngilizce	İsimler	VALENTINE	sevgililer günü kartı, sevgili
+B2	Genel İngilizce	İsimler	VALENTINE	Sevgililer Günü kartı veya o gün sevgi gösterilen kişi
 B2	Genel İngilizce	Fiiller	VANISH	yok olmak, kaybolmak, ortadan kaybolmak
 B2	Genel İngilizce	İsimler	VANITY	kibir, kendini beğenmişlik, makyaj masası
 B2	Genel İngilizce	İsimler	VARIATION	değişim, farklılık, çeşitleme
 B2	Genel İngilizce	İsimler	VENUE	mekân, etkinlik yeri, buluşma yeri
-B2	Genel İngilizce	Sıfatlar	VERBAL	sözlü, sözel, fiilimsi
+B2	Genel İngilizce	Sıfatlar	VERBAL	sözel, sözcüklerle ilgili; sözlü; dil bilgisinde fiile ilişkin
 B2	Genel İngilizce	Zarflar	VERBALLY	sözlü olarak
-B2	Genel İngilizce	İsimler	VERSE	isim: dize, kıta, nazım; fiil: (bir konuda) bilgi edinmek, aşina olmak
+B2	Genel İngilizce	İsimler	VERSE	dize, nazım; şiir kıtası; kutsal metinlerde ayet
 B2	Genel İngilizce	İsimler	VERSION	sürüm, versiyon, biçim
 B2	Genel İngilizce	Edatlar	VERSUS	karşı, -e karşı
-B2	Genel İngilizce	Sıfatlar	VERY	zarf: çok, pek; sıfat: tam, ta kendisi, en
-B2	Genel İngilizce	İsimler	VETERAN	gazi, kıdemli, emektar
+B2	Genel İngilizce	Zarflar	VERY	zarf: çok, pek; sıfat: tam, ta kendisi, en
+B2	Genel İngilizce	İsimler	VETERAN	eski asker; bir alanda uzun deneyimi olan kişi, kıdemli
 B2	Genel İngilizce	Fiiller	VIBRATE	titreşmek, titremek
 B2	Genel İngilizce	İsimler	VIBRATION	titreşim, titreme
 B2	Genel İngilizce	İsimler	VIEWER	izleyici, seyirci, görüntüleyici
@@ -2278,35 +2278,35 @@ B2	Genel İngilizce	Sıfatlar	VITAL	hayati, çok önemli, yaşamsal
 B2	Genel İngilizce	İsimler	VITAMIN	vitamin
 B2	Genel İngilizce	İsimler	VOCALIST	vokalist, şarkıcı
 B2	Genel İngilizce	İsimler	VOLUNTEER	isim: gönüllü; fiil: gönüllü olmak, kendiliğinden teklif etmek
-B2	Genel İngilizce	İsimler	VOMIT	kusmuk
+B2	Genel İngilizce	Fiiller	VOMIT	fiil: kusmak; isim: kusmuk
 B2	Genel İngilizce	İsimler	VOTER	seçmen
-B2	Genel İngilizce	İsimler	VOW	yemin, ant, adak
+B2	Genel İngilizce	İsimler	VOW	isim: kesin söz, yemin, adak; fiil: yemin etmek, söz vermek
 B2	Genel İngilizce	İsimler	WAIST	bel
 B2	Genel İngilizce	İsimler	WAISTCOAT	yelek
-B2	Genel İngilizce	İsimler	WAIT	fiil: beklemek; isim: bekleme, bekleyiş
+B2	Genel İngilizce	Fiiller	WAIT	fiil: beklemek; isim: bekleme, bekleyiş
 B2	Genel İngilizce	İsimler	WALKABOUT	(ünlülerin) halk arasında yürüyüşü, uzun yürüyüş
-B2	Genel İngilizce	İsimler	WALKER	yürüyüşçü, yürüteç
+B2	Genel İngilizce	İsimler	WALKER	yürüyen kişi, yürüyüşçü; yürüteç
 B2	Genel İngilizce	İsimler	WALLBOARD	alçı pano, duvar panosu
 B2	Genel İngilizce	İsimler	WALNUT	ceviz
-B2	Genel İngilizce	İsimler	WANT	fiil: istemek; isim: istek, ihtiyaç, yokluk
+B2	Genel İngilizce	Fiiller	WANT	fiil: istemek; isim: istek, ihtiyaç, yokluk
 B2	Genel İngilizce	İsimler	WARSHIP	savaş gemisi
 B2	Genel İngilizce	İsimler	WARTIME	savaş zamanı
-B2	Genel İngilizce	İsimler	WASP	eşek arısı, yaban arısı
+B2	Genel İngilizce	İsimler	WASP	yaban arısı
 B2	Genel İngilizce	Sıfatlar	WATERPROOF	su geçirmez
 B2	Genel İngilizce	Fiiller	WEAKEN	zayıflatmak, zayıflamak
 B2	Genel İngilizce	Zarflar	WEAKLY	güçsüzce, zayıf bir şekilde
 B2	Genel İngilizce	Sıfatlar	WEALTHY	zengin, varlıklı
 B2	Genel İngilizce	Sıfatlar	WEARISOME	yorucu, bıktırıcı, sıkıcı
 B2	Genel İngilizce	Sıfatlar	WEARY	yorgun, bıkkın, bitkin
-B2	Genel İngilizce	İsimler	WEAVE	dokuma, örgü
+B2	Genel İngilizce	Fiiller	WEAVE	fiil: dokumak, örmek; kıvrılarak ilerlemek; isim: dokuma biçimi
 B2	Genel İngilizce	Fiiller	WED	evlenmek, nikâhlamak
 B2	Genel İngilizce	İsimler	WEED	yabani ot, ot, (argo) esrar
-B2	Genel İngilizce	İsimler	WELFARE	refah, sosyal yardım, esenlik
+B2	Genel İngilizce	İsimler	WELFARE	esenlik, refah; sosyal yardım
 B2	Genel İngilizce	Sıfatlar	WELL-BALANCED	dengeli
 B2	Genel İngilizce	Sıfatlar	WELL-BUILT	iri yarı, yapılı, sağlam yapılmış
 B2	Genel İngilizce	Sıfatlar	WELL-ORGANIZED	iyi organize edilmiş, düzenli
 B2	Genel İngilizce	Sıfatlar	WELL-PAID	iyi maaşlı, iyi para kazandıran
-B2	Genel İngilizce	Sıfatlar	WESTERN	batı, batılı
+B2	Genel İngilizce	Sıfatlar	WESTERN	batıdaki, batıya ait; Batı dünyasına ilişkin
 B2	Genel İngilizce	İsimler	WHEAT	buğday
 B2	Genel İngilizce	Fiiller	WHIP	kırbaçlamak, (krema) çırpmak, hızla çekmek
 B2	Genel İngilizce	İsimler	WHISKEY	viski
@@ -2315,42 +2315,42 @@ B2	Genel İngilizce	İsimler	WIDOW	dul kadın
 B2	Genel İngilizce	İsimler	WIDTH	genişlik, en
 B2	Genel İngilizce	İsimler	WILDERNESS	vahşi doğa, ıssız yer, el değmemiş bölge
 B2	Genel İngilizce	Zarflar	WILLINGLY	isteyerek, gönüllü olarak, seve seve
-B2	Genel İngilizce	İsimler	WIN	fiil: kazanmak, yenmek; isim: galibiyet, zafer
+B2	Genel İngilizce	Fiiller	WIN	fiil: kazanmak, yenmek; isim: galibiyet, zafer
 B2	Genel İngilizce	Sıfatlar	WINDING	dolambaçlı, virajlı, kıvrımlı
 B2	Genel İngilizce	İsimler	WINDSHIELD	ön cam
-B2	Genel İngilizce	İsimler	WINK	göz kırpma
+B2	Genel İngilizce	Fiiller	WINK	fiil: göz kırpmak; isim: göz kırpma
 B2	Genel İngilizce	Fiiller	WIPE	silmek, kurulamak, silip temizlemek
 B2	Genel İngilizce	İsimler	WIT	nükte, espri yeteneği, akıl
 B2	Genel İngilizce	Fiiller	WITHDRAW	(para) çekmek, geri çekilmek, geri almak
-B2	Genel İngilizce	İsimler	WITHDRAWAL	para çekme, geri çekilme, yoksunluk
+B2	Genel İngilizce	İsimler	WITHDRAWAL	geri çekilme, geri alma; hesaptan para çekme; yoksunluk belirtileri
 B2	Genel İngilizce	İsimler	WITNESS	isim: tanık, şahit; fiil: tanık olmak, şahit olmak
 B2	Genel İngilizce	Sıfatlar	WITTY	esprili, nükteli, hazırcevap
 B2	Genel İngilizce	İsimler	WOLF	kurt
 B2	Genel İngilizce	Sıfatlar	WONDROUS	harika, şaşırtıcı, muhteşem
 B2	Genel İngilizce	İsimler	WOODCARVING	ahşap oymacılığı, ağaç oyma
 B2	Genel İngilizce	Zarflar	WORDLESSLY	tek kelime etmeden, sessizce
-B2	Genel İngilizce	Sıfatlar	WORKAHOLIC	işkolik
+B2	Genel İngilizce	İsimler	WORKAHOLIC	işkolik, çalışmaya aşırı düşkün kişi
 B2	Genel İngilizce	İsimler	WORKBENCH	çalışma tezgâhı, tezgâh
 B2	Genel İngilizce	İsimler	WORKMAN	işçi, usta
 B2	Genel İngilizce	İsimler	WORKTABLE	çalışma masası
 B2	Genel İngilizce	Sıfatlar	WORLDLY	dünyevi, görmüş geçirmiş
 B2	Genel İngilizce	İsimler	WORLDVIEW	dünya görüşü
 B2	Genel İngilizce	Sıfatlar	WORLDWIDE	dünya çapında, tüm dünyada
-B2	Genel İngilizce	İsimler	WORM	solucan, kurt
-B2	Genel İngilizce	Sıfatlar	WORNOUT	yıpranmış, eskimiş, bitkin
+B2	Genel İngilizce	İsimler	WORM	solucan; bazı böceklerin kurtçuk biçimindeki larvaları; bilgisayar solucanı
+B2	Genel İngilizce	Sıfatlar	WORNOUT	yıpranmış, eskimiş, bitkin (yaygın yazımı worn-out veya worn out)
 B2	Genel İngilizce	Sıfatlar	WORRYING	endişe verici, kaygı verici
 B2	Genel İngilizce	Fiiller	WORSEN	kötüleşmek, kötüleştirmek
-B2	Genel İngilizce	İsimler	WORSHIP	ibadet, tapınma
+B2	Genel İngilizce	İsimler	WORSHIP	isim: ibadet, tapınma; fiil: ibadet etmek, tapmak
 B2	Genel İngilizce	Sıfatlar	WORTHLESS	değersiz, işe yaramaz
-B2	Genel İngilizce	İsimler	WRECK	enkaz, batık gemi, hurda
+B2	Genel İngilizce	İsimler	WRECK	isim: enkaz, batık, hurda; fiil: harap etmek, mahvetmek
 B2	Genel İngilizce	Zarflar	WRONGLY	yanlış bir şekilde, haksız yere, hatalı olarak
-B2	Genel İngilizce	İsimler	X-RAY	röntgen, X ışını, röntgen filmi
+B2	Genel İngilizce	İsimler	X-RAY	X ışını; röntgen görüntüsü veya çekimi
 B2	Genel İngilizce	İsimler	YACHT	yat
-B2	Genel İngilizce	İsimler	YAWN	fiil: esnemek; isim: esneme
+B2	Genel İngilizce	Fiiller	YAWN	fiil: esnemek; isim: esneme
 B2	Genel İngilizce	Fiiller	YEARN	özlemek, hasret çekmek, can atmak
-B2	Genel İngilizce	Fiiller	YIELD	(sonuç/ürün) vermek, sağlamak, yol vermek
+B2	Genel İngilizce	Fiiller	YIELD	ürün veya sonuç vermek; teslim olmak, boyun eğmek, yol vermek; isim: verim, getiri
 B2	Genel İngilizce	Sıfatlar	YOUTHFUL	genç görünümlü, gençlere özgü, dinç
 B2	Genel İngilizce	Sıfatlar	YUMMY	lezzetli, nefis
 B2	Genel İngilizce	İsimler	ZEBRA	zebra
-B2	Genel İngilizce	İsimler	ZIP	fermuar, enerji
-B2	Genel İngilizce	İsimler	ZOOM	zum, yakınlaştırma
+B2	Genel İngilizce	İsimler	ZIP	isim: fermuar; enerji; fiil: fermuarı kapatmak, hızla hareket etmek
+B2	Genel İngilizce	İsimler	ZOOM	isim: yakınlaştırma; fiil: yakınlaştırmak veya hızla hareket etmek
