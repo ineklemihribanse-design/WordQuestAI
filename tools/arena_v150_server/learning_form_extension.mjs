@@ -14,7 +14,7 @@ export const formExtension = [
       "clarifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'clarity'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: clarity. Boşlukta isim biçimi gerekir. clarity, bu bağlamda “açıklık, anlaşılırlık” anlamındadır."
   },
   {
     "id": "wq150_formextension_1_2",
@@ -26,12 +26,12 @@ export const formExtension = [
     "options": [
       "clarify",
       "clarity",
-      "clear",
+      "clearness",
       "clearly",
       "clarifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'clarify'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: clarify. Boşlukta yalın fiil biçimi gerekir. clarify, bu bağlamda “açıklığa kavuşturmak” anlamındadır."
   },
   {
     "id": "wq150_formextension_1_3",
@@ -48,7 +48,7 @@ export const formExtension = [
       "clarifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'clear'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: clear. Boşlukta sıfat biçimi gerekir. clear, bu bağlamda “açık, anlaşılır” anlamındadır."
   },
   {
     "id": "wq150_formextension_1_4",
@@ -65,7 +65,7 @@ export const formExtension = [
       "clarifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'clearly'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: clearly. Boşlukta zarf biçimi gerekir. clearly, bu bağlamda “açıkça” anlamındadır."
   },
   {
     "id": "wq150_formextension_2_1",
@@ -82,7 +82,7 @@ export const formExtension = [
       "attracts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'attraction'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: attraction. Boşlukta isim biçimi gerekir. attraction, bu bağlamda “ilgi çeken yer veya şey; burada turistik cazibe merkezi” anlamındadır."
   },
   {
     "id": "wq150_formextension_2_2",
@@ -99,7 +99,7 @@ export const formExtension = [
       "attracts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'attract'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: attract. Boşlukta yalın fiil biçimi gerekir. attract, bu bağlamda “ilgisini çekmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_2_3",
@@ -116,7 +116,7 @@ export const formExtension = [
       "attracts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'attractive'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: attractive. Boşlukta sıfat biçimi gerekir. attractive, bu bağlamda “cazip, çekici” anlamındadır."
   },
   {
     "id": "wq150_formextension_2_4",
@@ -133,7 +133,7 @@ export const formExtension = [
       "attracts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'attractively'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: attractively. Boşlukta zarf biçimi gerekir. attractively, bu bağlamda “çekici biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_3_1",
@@ -150,7 +150,7 @@ export const formExtension = [
       "consists"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'consistency'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: consistency. Boşlukta isim biçimi gerekir. consistency, bu bağlamda “tutarlılık” anlamındadır."
   },
   {
     "id": "wq150_formextension_3_2",
@@ -167,7 +167,7 @@ export const formExtension = [
       "consists"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'consist'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: consist. Boşlukta yalın fiil biçimi gerekir. consist, bu bağlamda “-den oluşmak” anlamındadır."
   },
   {
     "id": "wq150_formextension_3_3",
@@ -184,7 +184,7 @@ export const formExtension = [
       "consists"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'consistent'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: consistent. Boşlukta sıfat biçimi gerekir. consistent, bu bağlamda “tutarlı” anlamındadır."
   },
   {
     "id": "wq150_formextension_3_4",
@@ -201,7 +201,7 @@ export const formExtension = [
       "consists"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'consistently'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: consistently. Boşlukta zarf biçimi gerekir. consistently, bu bağlamda “tutarlı biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_4_1",
@@ -218,7 +218,7 @@ export const formExtension = [
       "necessitates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'necessity'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: necessity. Boşlukta isim biçimi gerekir. necessity, bu bağlamda “gereklilik” anlamındadır."
   },
   {
     "id": "wq150_formextension_4_2",
@@ -235,7 +235,7 @@ export const formExtension = [
       "necessitates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'necessitate'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: necessitate. Boşlukta yalın fiil biçimi gerekir. necessitate, bu bağlamda “gerekli kılmak” anlamındadır."
   },
   {
     "id": "wq150_formextension_4_3",
@@ -252,7 +252,7 @@ export const formExtension = [
       "necessitates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'necessary'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: necessary. Boşlukta sıfat biçimi gerekir. necessary, bu bağlamda “gerekli” anlamındadır."
   },
   {
     "id": "wq150_formextension_4_4",
@@ -269,7 +269,7 @@ export const formExtension = [
       "necessitates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'necessarily'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: necessarily. Boşlukta zarf biçimi gerekir. necessarily, bu bağlamda “zorunlu olarak; not necessarily: mutlaka değil” anlamındadır."
   },
   {
     "id": "wq150_formextension_5_1",
@@ -286,7 +286,7 @@ export const formExtension = [
       "produces"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'production'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: production. Boşlukta isim biçimi gerekir. production, bu bağlamda “üretim” anlamındadır."
   },
   {
     "id": "wq150_formextension_5_2",
@@ -303,7 +303,7 @@ export const formExtension = [
       "produces"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'produce'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: produce. Boşlukta yalın fiil biçimi gerekir. produce, bu bağlamda “üretmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_5_3",
@@ -320,7 +320,7 @@ export const formExtension = [
       "produces"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'productive'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: productive. Boşlukta sıfat biçimi gerekir. productive, bu bağlamda “verimli” anlamındadır."
   },
   {
     "id": "wq150_formextension_5_4",
@@ -337,7 +337,7 @@ export const formExtension = [
       "produces"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'productively'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: productively. Boşlukta zarf biçimi gerekir. productively, bu bağlamda “verimli biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_6_1",
@@ -354,7 +354,7 @@ export const formExtension = [
       "selects"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'selection'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: selection. Boşlukta isim biçimi gerekir. selection, bu bağlamda “seçim, seçme” anlamındadır."
   },
   {
     "id": "wq150_formextension_6_2",
@@ -371,7 +371,7 @@ export const formExtension = [
       "selects"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'select'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: select. Boşlukta yalın fiil biçimi gerekir. select, bu bağlamda “seçmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_6_3",
@@ -388,7 +388,7 @@ export const formExtension = [
       "selects"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'selective'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: selective. Boşlukta sıfat biçimi gerekir. selective, bu bağlamda “seçici” anlamındadır."
   },
   {
     "id": "wq150_formextension_6_4",
@@ -405,7 +405,7 @@ export const formExtension = [
       "selects"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'selectively'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: selectively. Boşlukta zarf biçimi gerekir. selectively, bu bağlamda “seçici biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_7_1",
@@ -422,7 +422,7 @@ export const formExtension = [
       "intensifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'intensity'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: intensity. Boşlukta isim biçimi gerekir. intensity, bu bağlamda “yoğunluk, şiddet” anlamındadır."
   },
   {
     "id": "wq150_formextension_7_2",
@@ -439,7 +439,7 @@ export const formExtension = [
       "intensifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'intensify'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: intensify. Boşlukta yalın fiil biçimi gerekir. intensify, bu bağlamda “şiddetlenmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_7_3",
@@ -456,7 +456,7 @@ export const formExtension = [
       "intensifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'intense'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: intense. Boşlukta sıfat biçimi gerekir. intense, bu bağlamda “yoğun, şiddetli” anlamındadır."
   },
   {
     "id": "wq150_formextension_7_4",
@@ -473,7 +473,7 @@ export const formExtension = [
       "intensifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'intensely'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: intensely. Boşlukta zarf biçimi gerekir. intensely, bu bağlamda “yoğun biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_8_1",
@@ -490,7 +490,7 @@ export const formExtension = [
       "simplifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'simplicity'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: simplicity. Boşlukta isim biçimi gerekir. simplicity, bu bağlamda “basitlik, sadelik” anlamındadır."
   },
   {
     "id": "wq150_formextension_8_2",
@@ -507,7 +507,7 @@ export const formExtension = [
       "simplifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'simplify'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: simplify. Boşlukta yalın fiil biçimi gerekir. simplify, bu bağlamda “basitleştirmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_8_3",
@@ -524,7 +524,7 @@ export const formExtension = [
       "simplifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'simple'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: simple. Boşlukta sıfat biçimi gerekir. simple, bu bağlamda “basit, sade” anlamındadır."
   },
   {
     "id": "wq150_formextension_8_4",
@@ -541,7 +541,7 @@ export const formExtension = [
       "simplifies"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'simply'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: simply. Boşlukta zarf biçimi gerekir. simply, bu bağlamda “basit biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_9_1",
@@ -558,7 +558,7 @@ export const formExtension = [
       "equalises"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'equality'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: equality. Boşlukta isim biçimi gerekir. equality, bu bağlamda “eşitlik” anlamındadır."
   },
   {
     "id": "wq150_formextension_9_2",
@@ -575,7 +575,7 @@ export const formExtension = [
       "equalises"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'equalise'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: equalise. Boşlukta yalın fiil biçimi gerekir. equalise, bu bağlamda “eşitlemek” anlamındadır."
   },
   {
     "id": "wq150_formextension_9_3",
@@ -592,7 +592,7 @@ export const formExtension = [
       "equalises"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'equal'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: equal. Boşlukta sıfat biçimi gerekir. equal, bu bağlamda “eşit” anlamındadır."
   },
   {
     "id": "wq150_formextension_9_4",
@@ -609,7 +609,7 @@ export const formExtension = [
       "equalises"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'equally'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: equally. Boşlukta zarf biçimi gerekir. equally, bu bağlamda “eşit biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_10_1",
@@ -626,7 +626,7 @@ export const formExtension = [
       "constructs"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'construction'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: construction. Boşlukta isim biçimi gerekir. construction, bu bağlamda “inşaat, yapım” anlamındadır."
   },
   {
     "id": "wq150_formextension_10_2",
@@ -643,7 +643,7 @@ export const formExtension = [
       "constructs"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'construct'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: construct. Boşlukta yalın fiil biçimi gerekir. construct, bu bağlamda “inşa etmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_10_3",
@@ -660,7 +660,7 @@ export const formExtension = [
       "constructs"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'constructive'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: constructive. Boşlukta sıfat biçimi gerekir. constructive, bu bağlamda “yapıcı” anlamındadır."
   },
   {
     "id": "wq150_formextension_10_4",
@@ -677,7 +677,7 @@ export const formExtension = [
       "constructs"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'constructively'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: constructively. Boşlukta zarf biçimi gerekir. constructively, bu bağlamda “yapıcı biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_11_1",
@@ -694,7 +694,7 @@ export const formExtension = [
       "restricts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'restriction'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: restriction. Boşlukta isim biçimi gerekir. restriction, bu bağlamda “kısıtlama” anlamındadır."
   },
   {
     "id": "wq150_formextension_11_2",
@@ -711,7 +711,7 @@ export const formExtension = [
       "restricts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'restrict'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: restrict. Boşlukta yalın fiil biçimi gerekir. restrict, bu bağlamda “kısıtlamak” anlamındadır."
   },
   {
     "id": "wq150_formextension_11_3",
@@ -728,7 +728,7 @@ export const formExtension = [
       "restricts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'restrictive'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: restrictive. Boşlukta sıfat biçimi gerekir. restrictive, bu bağlamda “kısıtlayıcı” anlamındadır."
   },
   {
     "id": "wq150_formextension_11_4",
@@ -745,7 +745,7 @@ export const formExtension = [
       "restricts"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'restrictively'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: restrictively. Boşlukta zarf biçimi gerekir. restrictively, bu bağlamda “kısıtlayıcı biçimde” anlamındadır."
   },
   {
     "id": "wq150_formextension_13_1",
@@ -762,7 +762,7 @@ export const formExtension = [
       "deliberates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'deliberation'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: deliberation. Boşlukta isim biçimi gerekir. deliberation, bu bağlamda “etraflıca düşünme, müzakere” anlamındadır."
   },
   {
     "id": "wq150_formextension_13_2",
@@ -779,7 +779,7 @@ export const formExtension = [
       "deliberates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'deliberate'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: deliberate. Boşlukta yalın fiil biçimi gerekir. deliberate, bu bağlamda “etraflıca görüşmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_13_3",
@@ -796,7 +796,7 @@ export const formExtension = [
       "deliberates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'deliberative'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: deliberative. Boşlukta sıfat biçimi gerekir. deliberative, bu bağlamda “müzakereye dayalı” anlamındadır."
   },
   {
     "id": "wq150_formextension_13_4",
@@ -813,7 +813,7 @@ export const formExtension = [
       "deliberates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'deliberately'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: deliberately. Boşlukta zarf biçimi gerekir. deliberately, bu bağlamda “kasıtlı olarak” anlamındadır."
   },
   {
     "id": "wq150_formextension_15_1",
@@ -830,7 +830,7 @@ export const formExtension = [
       "operates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'operation'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: operation. Boşlukta isim biçimi gerekir. operation, bu bağlamda “faaliyet, çalışma” anlamındadır."
   },
   {
     "id": "wq150_formextension_15_2",
@@ -847,7 +847,7 @@ export const formExtension = [
       "operates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'operate'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: operate. Boşlukta yalın fiil biçimi gerekir. operate, bu bağlamda “çalıştırmak” anlamındadır."
   },
   {
     "id": "wq150_formextension_15_3",
@@ -864,7 +864,7 @@ export const formExtension = [
       "operates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'operational'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: operational. Boşlukta sıfat biçimi gerekir. operational, bu bağlamda “çalışır durumda” anlamındadır."
   },
   {
     "id": "wq150_formextension_15_4",
@@ -881,7 +881,7 @@ export const formExtension = [
       "operates"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'operationally'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: operationally. Boşlukta zarf biçimi gerekir. operationally, bu bağlamda “işleyiş bakımından” anlamındadır."
   },
   {
     "id": "wq150_formextension_16_1",
@@ -898,7 +898,7 @@ export const formExtension = [
       "expands"
     ],
     "correct": 0,
-    "explanation": "Boşlukta isim biçimi gerekir: 'expansion'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: expansion. Boşlukta isim biçimi gerekir. expansion, bu bağlamda “genişleme” anlamındadır."
   },
   {
     "id": "wq150_formextension_16_2",
@@ -915,7 +915,7 @@ export const formExtension = [
       "expands"
     ],
     "correct": 0,
-    "explanation": "Boşlukta yalın fiil biçimi gerekir: 'expand'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: expand. Boşlukta yalın fiil biçimi gerekir. expand, bu bağlamda “genişletmek” anlamındadır."
   },
   {
     "id": "wq150_formextension_16_3",
@@ -932,7 +932,7 @@ export const formExtension = [
       "expands"
     ],
     "correct": 0,
-    "explanation": "Boşlukta sıfat biçimi gerekir: 'expansive'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: expansive. Boşlukta sıfat biçimi gerekir. expansive, bu bağlamda “geniş, ferah” anlamındadır."
   },
   {
     "id": "wq150_formextension_16_4",
@@ -949,6 +949,6 @@ export const formExtension = [
       "expands"
     ],
     "correct": 0,
-    "explanation": "Boşlukta zarf biçimi gerekir: 'expansively'. Diğer seçenekler bu bağlamdaki dil bilgisi görevine uygun değildir."
+    "explanation": "Doğru seçenek: expansively. Boşlukta zarf biçimi gerekir. expansively, bu bağlamda “geniş biçimde, ayrıntılı olarak” anlamındadır."
   }
 ];
