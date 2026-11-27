@@ -1397,8 +1397,8 @@ export const lexicalRelationQuestions = [
     "options": [
       "lasting",
       "temporary",
-      "seasonal",
-      "portable",
+      "municipal",
+      "accessible",
       "public"
     ],
     "correct": 0,
@@ -1414,8 +1414,8 @@ export const lexicalRelationQuestions = [
     "options": [
       "temporary",
       "lasting",
-      "seasonal",
-      "portable",
+      "municipal",
+      "accessible",
       "public"
     ],
     "correct": 0,
