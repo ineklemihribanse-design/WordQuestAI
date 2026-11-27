@@ -2725,7 +2725,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The researchers avoided ____ a conclusion before all the available evidence ____ .",
+    "prompt": "The researchers avoided ____ a conclusion before all the available evidence ____.",
     "options": [
       "drawing / had been examined",
       "to draw / examined",
@@ -2776,7 +2776,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The committee postponed ____ the proposal until the missing records could ____ .",
+    "prompt": "The committee postponed ____ the proposal until the missing records could ____.",
     "options": [
       "discussing / be retrieved",
       "to discuss / retrieve",
@@ -2810,7 +2810,7 @@ export const verbalNewQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The discrepancy is believed ____ during data entry, although the exact cause has yet ____ .",
+    "prompt": "The discrepancy is believed ____ during data entry, although the exact cause has yet ____.",
     "options": [
       "to have arisen / to be established",
       "having arisen / establishing",
@@ -2844,7 +2844,7 @@ export const verbalNewQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The reviewers insisted that the disputed claim ____ before the manuscript could ____ .",
+    "prompt": "The reviewers insisted that the disputed claim ____ before the manuscript could ____.",
     "options": [
       "be withdrawn / be accepted",
       "was withdrawing / accept",
@@ -2878,7 +2878,7 @@ export const verbalNewQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The instrument appears ____ inappropriately, making its readings difficult ____ .",
+    "prompt": "The instrument appears ____ inappropriately, making its readings difficult ____.",
     "options": [
       "to have been calibrated / to interpret",
       "to calibrate / interpreting",
@@ -3439,7 +3439,7 @@ export const verbalNewQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Of the five coats, the £150 one is ____ .",
+    "prompt": "Of the five coats, the £150 one is ____.",
     "options": [
       "more expensive",
       "the most expensive",
@@ -3881,7 +3881,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The machine ____ ; you can use it again now.",
+    "prompt": "The machine ____; you can use it again now.",
     "options": [
       "was repaired",
       "is being repaired",
@@ -4102,7 +4102,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The apartment is small; ____ , it is surprisingly comfortable.",
+    "prompt": "The apartment is small; ____, it is surprisingly comfortable.",
     "options": [
       "however",
       "therefore",
@@ -4119,7 +4119,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The lift is out of order; ____ , visitors must use the stairs.",
+    "prompt": "The lift is out of order; ____, visitors must use the stairs.",
     "options": [
       "however",
       "therefore",
@@ -4136,7 +4136,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The course is affordable. ____ , it includes all the learning materials at no extra charge.",
+    "prompt": "The course is affordable. ____, it includes all the learning materials at no extra charge.",
     "options": [
       "however",
       "therefore",
@@ -4153,7 +4153,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "Please renew your pass today; ____ , you will not be allowed in tomorrow.",
+    "prompt": "Please renew your pass today; ____, you will not be allowed in tomorrow.",
     "options": [
       "however",
       "therefore",
@@ -4170,7 +4170,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "Several forms of transport are available. ____ , visitors can hire bicycles.",
+    "prompt": "Several forms of transport are available. ____, visitors can hire bicycles.",
     "options": [
       "however",
       "therefore",
@@ -5122,7 +5122,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The sample was relatively small; ____ , the findings were informative enough to justify further research.",
+    "prompt": "The sample was relatively small; ____, the findings were informative enough to justify further research.",
     "options": [
       "nevertheless",
       "consequently",
@@ -5139,7 +5139,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The equipment was incorrectly calibrated; ____ , the measurements had to be discarded.",
+    "prompt": "The equipment was incorrectly calibrated; ____, the measurements had to be discarded.",
     "options": [
       "nevertheless",
       "consequently",
@@ -5156,7 +5156,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Increasing the supply tends to lower prices; ____ , restricting supply can raise them.",
+    "prompt": "Increasing the supply tends to lower prices; ____, restricting supply can raise them.",
     "options": [
       "nevertheless",
       "consequently",
@@ -5173,7 +5173,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The northern region experienced a fall in demand. ____ , the southern region recorded a similar decline.",
+    "prompt": "The northern region experienced a fall in demand. ____, the southern region recorded a similar decline.",
     "options": [
       "nevertheless",
       "consequently",
@@ -5666,7 +5666,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The review is ____ , covering every major aspect of the subject.",
+    "prompt": "The review is ____, covering every major aspect of the subject.",
     "options": [
       "coherent",
       "consistent",
@@ -5700,7 +5700,7 @@ export const verbalNewQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The evidence is not yet ____ ; further investigation is required before reaching a definitive verdict.",
+    "prompt": "The evidence is not yet ____; further investigation is required before reaching a definitive verdict.",
     "options": [
       "coherent",
       "consistent",

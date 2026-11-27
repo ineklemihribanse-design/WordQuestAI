@@ -957,7 +957,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I need some water because I am ____ .",
+    "prompt": "I need some water because I am ____.",
     "options": [
       "thirsty",
       "hungry",
@@ -974,7 +974,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "After running without drinking, I feel ____ .",
+    "prompt": "After running without drinking, I feel ____.",
     "options": [
       "thirsty",
       "hungry",
@@ -991,7 +991,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I have not eaten all day. I am ____ .",
+    "prompt": "I have not eaten all day. I am ____.",
     "options": [
       "hungry",
       "thirsty",
@@ -1008,7 +1008,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "He wants a sandwich because he is ____ .",
+    "prompt": "He wants a sandwich because he is ____.",
     "options": [
       "hungry",
       "thirsty",
@@ -1025,7 +1025,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "There is nothing inside this box. It is ____ .",
+    "prompt": "There is nothing inside this box. It is ____.",
     "options": [
       "empty",
       "full",
@@ -1042,7 +1042,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The glass contains no water. It is ____ .",
+    "prompt": "The glass contains no water. It is ____.",
     "options": [
       "empty",
       "full",
@@ -1059,7 +1059,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Ice is very ____ .",
+    "prompt": "Ice is very ____.",
     "options": [
       "cold",
       "hot",
@@ -1076,7 +1076,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The water in the fridge feels ____ .",
+    "prompt": "The water in the fridge feels ____.",
     "options": [
       "cold",
       "hot",
@@ -1297,7 +1297,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Of the five buildings, this one is ____ .",
+    "prompt": "Of the five buildings, this one is ____.",
     "options": [
       "the tallest",
       "taller",
@@ -2215,7 +2215,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The flight was two hours late because of a ____ .",
+    "prompt": "The flight was two hours late because of a ____.",
     "options": [
       "delay",
       "arrival",
@@ -2895,7 +2895,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The journey was expensive; ____ , it was worth the cost.",
+    "prompt": "The journey was expensive; ____, it was worth the cost.",
     "options": [
       "however",
       "therefore",
@@ -2912,7 +2912,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The task was difficult; ____ , the team completed it on time.",
+    "prompt": "The task was difficult; ____, the team completed it on time.",
     "options": [
       "however",
       "therefore",
@@ -3167,7 +3167,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Fresh water is a valuable natural ____ .",
+    "prompt": "Fresh water is a valuable natural ____.",
     "options": [
       "resource",
       "penalty",
@@ -3618,7 +3618,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Is this your coat? B: No, ____ .",
+    "prompt": "A: Is this your coat? B: No, ____.",
     "options": [
       "it's my brother's",
       "I am not",
@@ -3986,7 +3986,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Would you like to come to the cinema on Friday? B: I'd love to, but ____ .",
+    "prompt": "A: Would you like to come to the cinema on Friday? B: I'd love to, but ____.",
     "options": [
       "I have to work that evening",
       "I would like to see that film",
@@ -4866,7 +4866,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "By the time we reached the cinema, the film ____ .",
+    "prompt": "By the time we reached the cinema, the film ____.",
     "options": [
       "had already started",
       "has already started",
@@ -5106,7 +5106,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The weather forecast was poor. ____ , we decided to go ahead with the picnic.",
+    "prompt": "The weather forecast was poor. ____, we decided to go ahead with the picnic.",
     "options": [
       "Nevertheless",
       "Therefore",
@@ -5218,7 +5218,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The road was icy; ____ , the school bus arrived late.",
+    "prompt": "The road was icy; ____, the school bus arrived late.",
     "options": [
       "as a result",
       "however",
@@ -5666,7 +5666,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The trial was conducted under controlled conditions; ____ , its findings may not apply to everyday settings.",
+    "prompt": "The trial was conducted under controlled conditions; ____, its findings may not apply to everyday settings.",
     "options": [
       "therefore",
       "however much",
@@ -5682,7 +5682,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The device is inexpensive to manufacture. ____ , maintaining it over time may be costly.",
+    "prompt": "The device is inexpensive to manufacture. ____, maintaining it over time may be costly.",
     "options": [
       "However",
       "Consequently",
@@ -5778,7 +5778,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The samples were stored incorrectly; ____ , the measurements could not be considered reliable.",
+    "prompt": "The samples were stored incorrectly; ____, the measurements could not be considered reliable.",
     "options": [
       "consequently",
       "nevertheless",
@@ -5986,7 +5986,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Although the survey included a large number of respondents, ____ .",
+    "prompt": "Although the survey included a large number of respondents, ____.",
     "options": [
       "its findings may still be biased if some groups were underrepresented",
       "the results must represent every possible population",
@@ -6002,7 +6002,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "As the demand for electricity tends to rise during heatwaves, ____ .",
+    "prompt": "As the demand for electricity tends to rise during heatwaves, ____.",
     "options": [
       "energy providers need to prepare for unusually high consumption",
       "households necessarily use less electricity",
@@ -6018,7 +6018,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Unless the instructions are made clearer, ____ .",
+    "prompt": "Unless the instructions are made clearer, ____.",
     "options": [
       "users may continue to make the same mistakes",
       "all users will automatically understand the process",
@@ -6034,7 +6034,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Even though digital archives make documents easier to access, ____ .",
+    "prompt": "Even though digital archives make documents easier to access, ____.",
     "options": [
       "the original materials may still require careful preservation",
       "all original documents can safely be destroyed",
@@ -6050,7 +6050,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Because the study did not include a comparison group, ____ .",
+    "prompt": "Because the study did not include a comparison group, ____.",
     "options": [
       "it is difficult to separate the intervention's effects from other changes",
       "the intervention has definitely caused all observed improvements",
@@ -6066,7 +6066,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "While online courses offer flexibility, ____ .",
+    "prompt": "While online courses offer flexibility, ____.",
     "options": [
       "some learners may need additional support to manage their time",
       "they eliminate the need for all forms of practice",
@@ -6082,7 +6082,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Given that the old system cannot handle current traffic levels, ____ .",
+    "prompt": "Given that the old system cannot handle current traffic levels, ____.",
     "options": [
       "the organisation is considering an upgrade to increase capacity",
       "there is no reason to examine its performance",
@@ -6098,7 +6098,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "If the data had been backed up regularly, ____ .",
+    "prompt": "If the data had been backed up regularly, ____.",
     "options": [
       "the team could have recovered more of its work after the failure",
       "the failure will happen tomorrow",
@@ -6114,7 +6114,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Since the treatment may affect different groups in different ways, ____ .",
+    "prompt": "Since the treatment may affect different groups in different ways, ____.",
     "options": [
       "the researchers should examine outcomes separately for relevant groups",
       "the average result proves that every person benefits equally",
@@ -6130,7 +6130,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Despite considerable investment in the new transport network, ____ .",
+    "prompt": "Despite considerable investment in the new transport network, ____.",
     "options": [
       "some outlying areas still lack reliable connections",
       "the network has automatically reached every household",
@@ -7657,7 +7657,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The room is dark. Please turn on the ____ .",
+    "prompt": "The room is dark. Please turn on the ____.",
     "options": [
       "light",
       "tap",
@@ -7689,7 +7689,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I can't carry this box alone. It's too ____ .",
+    "prompt": "I can't carry this box alone. It's too ____.",
     "options": [
       "heavy",
       "quiet",
@@ -7737,7 +7737,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Is the supermarket open now? B: No, ____ .",
+    "prompt": "A: Is the supermarket open now? B: No, ____.",
     "options": [
       "it's closed",
       "it's next to the bank",
@@ -7769,7 +7769,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Can you swim? B: No, but ____ .",
+    "prompt": "A: Can you swim? B: No, but ____.",
     "options": [
       "I can ride a bike",
       "I am swimming now",
@@ -7977,7 +7977,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The lift is out of order. Please use the ____ .",
+    "prompt": "The lift is out of order. Please use the ____.",
     "options": [
       "stairs",
       "ceiling",
@@ -8201,7 +8201,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Phrasals",
-    "prompt": "Don't leave your clothes on the floor. Please ____ them ____ .",
+    "prompt": "Don't leave your clothes on the floor. Please ____ them ____.",
     "options": [
       "pick / up",
       "put / off",
@@ -9449,7 +9449,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Are these your keys? B: Yes, ____ .",
+    "prompt": "A: Are these your keys? B: Yes, ____.",
     "options": [
       "they are",
       "it is",
@@ -9865,7 +9865,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The bread is no longer fresh; it has become ____ .",
+    "prompt": "The bread is no longer fresh; it has become ____.",
     "options": [
       "stale",
       "raw",
@@ -9881,7 +9881,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "A person who repairs water pipes is a ____ .",
+    "prompt": "A person who repairs water pipes is a ____.",
     "options": [
       "plumber",
       "carpenter",
@@ -10169,7 +10169,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "I'd prefer to travel by train rather than ____ .",
+    "prompt": "I'd prefer to travel by train rather than ____.",
     "options": [
       "drive",
       "driving of",
@@ -10185,7 +10185,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The museum is free to enter; ____ , visitors must pay for the special exhibition.",
+    "prompt": "The museum is free to enter; ____, visitors must pay for the special exhibition.",
     "options": [
       "however",
       "therefore",
@@ -10249,7 +10249,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The first task was relatively easy; ____ , the final one required considerable effort.",
+    "prompt": "The first task was relatively easy; ____, the final one required considerable effort.",
     "options": [
       "by contrast",
       "as a result",
@@ -10505,7 +10505,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The new material is highly durable; ____ , its production requires substantial amounts of energy.",
+    "prompt": "The new material is highly durable; ____, its production requires substantial amounts of energy.",
     "options": [
       "nevertheless",
       "consequently",
@@ -10665,7 +10665,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Even though the two devices produced similar results in the laboratory, ____ .",
+    "prompt": "Even though the two devices produced similar results in the laboratory, ____.",
     "options": [
       "their reliability under different field conditions remains uncertain",
       "their performance must be identical in every environment",
@@ -10681,7 +10681,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Rather than relying exclusively on self-reported behaviour, ____ .",
+    "prompt": "Rather than relying exclusively on self-reported behaviour, ____.",
     "options": [
       "the researchers also collected independent observations",
       "the researchers discarded every objective measurement",
@@ -10697,7 +10697,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Since the new rules are intended to reduce administrative delays, ____ .",
+    "prompt": "Since the new rules are intended to reduce administrative delays, ____.",
     "options": [
       "their effectiveness should be assessed by examining processing times",
       "processing times should be excluded from the evaluation",
@@ -10713,7 +10713,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Although a rise in average income may indicate economic improvement, ____ .",
+    "prompt": "Although a rise in average income may indicate economic improvement, ____.",
     "options": [
       "it does not necessarily show how the gains are distributed",
       "it proves that every household earns exactly the same amount",
@@ -10729,7 +10729,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Given the limited lifespan of the batteries, ____ .",
+    "prompt": "Given the limited lifespan of the batteries, ____.",
     "options": [
       "the maintenance schedule should include regular replacement",
       "the batteries can be expected to operate indefinitely",
@@ -10745,7 +10745,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "If public transport were more reliable in rural areas, ____ .",
+    "prompt": "If public transport were more reliable in rural areas, ____.",
     "options": [
       "some residents might become less dependent on private cars",
       "all rural residents would have stopped travelling last year",
@@ -10761,7 +10761,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Despite the apparent simplicity of the measurement procedure, ____ .",
+    "prompt": "Despite the apparent simplicity of the measurement procedure, ____.",
     "options": [
       "small differences in technique can influence the results",
       "the measurements can never contain any error",
@@ -10777,7 +10777,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "As the original documents are too fragile to handle frequently, ____ .",
+    "prompt": "As the original documents are too fragile to handle frequently, ____.",
     "options": [
       "the archive provides digital copies for routine consultation",
       "visitors are encouraged to examine the originals every day",
@@ -10793,7 +10793,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Unless the reasons for customers' complaints are investigated, ____ .",
+    "prompt": "Unless the reasons for customers' complaints are investigated, ____.",
     "options": [
       "the company may introduce changes that fail to address the actual problem",
       "every complaint will automatically be resolved",
@@ -10809,7 +10809,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "While the pilot programme provides encouraging initial evidence, ____ .",
+    "prompt": "While the pilot programme provides encouraging initial evidence, ____.",
     "options": [
       "a larger evaluation is needed before conclusions can be generalised",
       "the results already establish universal effectiveness",
@@ -11785,7 +11785,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The equipment is expensive to purchase; ____ , its running costs are relatively low.",
+    "prompt": "The equipment is expensive to purchase; ____, its running costs are relatively low.",
     "options": [
       "however",
       "therefore",
@@ -11849,7 +11849,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The library has extended its hours; ____ , students who work during the day have more opportunities to study there.",
+    "prompt": "The library has extended its hours; ____, students who work during the day have more opportunities to study there.",
     "options": [
       "as a result",
       "in contrast",
@@ -13757,7 +13757,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Our team has a new basketball ____ .",
+    "prompt": "Our team has a new basketball ____.",
     "options": [
       "play",
       "plays",
@@ -14182,7 +14182,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Regular exercise is good for your ____ .",
+    "prompt": "Regular exercise is good for your ____.",
     "options": [
       "health",
       "healthy",
@@ -14284,7 +14284,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Money alone cannot guarantee ____ .",
+    "prompt": "Money alone cannot guarantee ____.",
     "options": [
       "happy",
       "happily",
@@ -14352,7 +14352,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "For your own ____ , stand behind the yellow line.",
+    "prompt": "For your own ____, stand behind the yellow line.",
     "options": [
       "safe",
       "safely",
@@ -14403,7 +14403,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We couldn't sleep because the street was too ____ .",
+    "prompt": "We couldn't sleep because the street was too ____.",
     "options": [
       "noise",
       "noisy",
@@ -14556,7 +14556,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "His reply sounded ____ ; he did not even say hello.",
+    "prompt": "His reply sounded ____; he did not even say hello.",
     "options": [
       "friend",
       "friendly",
@@ -14760,7 +14760,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "He remained ____ , changing his mind every few minutes.",
+    "prompt": "He remained ____, changing his mind every few minutes.",
     "options": [
       "decide",
       "decision",
@@ -14845,7 +14845,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Each team completed the task ____ , without consulting the others.",
+    "prompt": "Each team completed the task ____, without consulting the others.",
     "options": [
       "depend",
       "dependent",
@@ -15151,7 +15151,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The event was a great ____ ; every ticket was sold.",
+    "prompt": "The event was a great ____; every ticket was sold.",
     "options": [
       "succeed",
       "success",
@@ -15185,7 +15185,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The first attempt was ____ , so they tried again.",
+    "prompt": "The first attempt was ____, so they tried again.",
     "options": [
       "succeed",
       "success",
@@ -15508,7 +15508,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The lecture was both interesting and ____ ; we learned a great deal.",
+    "prompt": "The lecture was both interesting and ____; we learned a great deal.",
     "options": [
       "inform",
       "information",
@@ -16443,7 +16443,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Keep the milk cold by putting it in the ____ .",
+    "prompt": "Keep the milk cold by putting it in the ____.",
     "options": [
       "kettle",
       "fridge",
@@ -16460,7 +16460,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The cake needs to bake at 180 degrees. Put it in the ____ .",
+    "prompt": "The cake needs to bake at 180 degrees. Put it in the ____.",
     "options": [
       "kettle",
       "fridge",
@@ -16477,7 +16477,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I want toast for breakfast. Put the bread in the ____ .",
+    "prompt": "I want toast for breakfast. Put the bread in the ____.",
     "options": [
       "kettle",
       "fridge",
@@ -16494,7 +16494,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Wash these dirty plates in the ____ .",
+    "prompt": "Wash these dirty plates in the ____.",
     "options": [
       "kettle",
       "fridge",
@@ -16511,7 +16511,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I have a prescription. I'll collect the medicine at the ____ .",
+    "prompt": "I have a prescription. I'll collect the medicine at the ____.",
     "options": [
       "chemist's",
       "bakery",
@@ -16528,7 +16528,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We buy freshly baked bread at the ____ .",
+    "prompt": "We buy freshly baked bread at the ____.",
     "options": [
       "chemist's",
       "bakery",
@@ -16545,7 +16545,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I can borrow this novel from the ____ .",
+    "prompt": "I can borrow this novel from the ____.",
     "options": [
       "chemist's",
       "bakery",
@@ -16562,7 +16562,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I need to mail a parcel. I'll go to the ____ .",
+    "prompt": "I need to mail a parcel. I'll go to the ____.",
     "options": [
       "chemist's",
       "bakery",
@@ -16579,7 +16579,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Our train leaves at nine. Meet me at the ____ .",
+    "prompt": "Our train leaves at nine. Meet me at the ____.",
     "options": [
       "chemist's",
       "bakery",
@@ -16613,7 +16613,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Eat your soup with a ____ .",
+    "prompt": "Eat your soup with a ____.",
     "options": [
       "fork",
       "spoon",
@@ -16630,7 +16630,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Cut the apple in half with a sharp ____ .",
+    "prompt": "Cut the apple in half with a sharp ____.",
     "options": [
       "fork",
       "spoon",
@@ -16664,7 +16664,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Put the cheese on a large flat ____ .",
+    "prompt": "Put the cheese on a large flat ____.",
     "options": [
       "fork",
       "spoon",
@@ -16851,7 +16851,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The lesson starts at nine, but I arrive at eight thirty. I am ____ .",
+    "prompt": "The lesson starts at nine, but I arrive at eight thirty. I am ____.",
     "options": [
       "early",
       "late",
@@ -16868,7 +16868,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The bus left at eight. I arrived at eight ten. I was ____ .",
+    "prompt": "The bus left at eight. I arrived at eight ten. I was ____.",
     "options": [
       "early",
       "late",
@@ -16885,7 +16885,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "There is nothing in the bottle. It is ____ .",
+    "prompt": "There is nothing in the bottle. It is ____.",
     "options": [
       "early",
       "late",
@@ -16902,7 +16902,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "No more books fit in this box. It is ____ .",
+    "prompt": "No more books fit in this box. It is ____.",
     "options": [
       "early",
       "late",
@@ -16919,7 +16919,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The shop opens from nine to five. It is seven now, so it is ____ .",
+    "prompt": "The shop opens from nine to five. It is seven now, so it is ____.",
     "options": [
       "early",
       "late",
@@ -17633,7 +17633,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The underground carriage was extremely ____ , with passengers standing shoulder to shoulder.",
+    "prompt": "The underground carriage was extremely ____, with passengers standing shoulder to shoulder.",
     "options": [
       "quiet",
       "crowded",
@@ -17650,7 +17650,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "This chair is very ____ ; I can sit for hours without back pain.",
+    "prompt": "This chair is very ____; I can sit for hours without back pain.",
     "options": [
       "quiet",
       "crowded",
@@ -17786,7 +17786,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "I paid for this notebook. It is ____ .",
+    "prompt": "I paid for this notebook. It is ____.",
     "options": [
       "mine",
       "yours",
@@ -17803,7 +17803,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "You bought this pen, didn't you? Is it ____ ?",
+    "prompt": "You bought this pen, didn't you? Is it ____?",
     "options": [
       "mine",
       "yours",
@@ -17820,7 +17820,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "That jacket belongs to David. It is ____ .",
+    "prompt": "That jacket belongs to David. It is ____.",
     "options": [
       "mine",
       "yours",
@@ -17837,7 +17837,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The blue bike belongs to Emma. It is ____ .",
+    "prompt": "The blue bike belongs to Emma. It is ____.",
     "options": [
       "mine",
       "yours",
@@ -17854,7 +17854,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Those suitcases belong to the two travellers. They are ____ .",
+    "prompt": "Those suitcases belong to the two travellers. They are ____.",
     "options": [
       "mine",
       "yours",
@@ -18500,7 +18500,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The map was ____ ; every distance matched the actual measurement.",
+    "prompt": "The map was ____; every distance matched the actual measurement.",
     "options": [
       "effective",
       "efficient",
@@ -19061,7 +19061,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The untested explanation is logically ____ , although evidence is still lacking.",
+    "prompt": "The untested explanation is logically ____, although evidence is still lacking.",
     "options": [
       "definitive",
       "plausible",
@@ -21611,7 +21611,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The museum bought a valuable oil ____ .",
+    "prompt": "The museum bought a valuable oil ____.",
     "options": [
       "paint",
       "painting",
@@ -21832,7 +21832,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The label says the jacket is machine ____ .",
+    "prompt": "The label says the jacket is machine ____.",
     "options": [
       "wash",
       "washer",
@@ -21985,7 +21985,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The two performances were very different ____ , despite having the same costumes.",
+    "prompt": "The two performances were very different ____, despite having the same costumes.",
     "options": [
       "music",
       "musical",
@@ -22087,7 +22087,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The shop accepts returns only if the items have never been worn or operated. They must be ____ .",
+    "prompt": "The shop accepts returns only if the items have never been worn or operated. They must be ____.",
     "options": [
       "use",
       "useful",
@@ -22206,7 +22206,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The telephone was an important technological ____ .",
+    "prompt": "The telephone was an important technological ____.",
     "options": [
       "invent",
       "invention",
@@ -22427,7 +22427,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The exposed wires remained ____ , with no cover or insulation.",
+    "prompt": "The exposed wires remained ____, with no cover or insulation.",
     "options": [
       "protect",
       "protection",
@@ -22580,7 +22580,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "She works in ____ , creating campaigns for different brands.",
+    "prompt": "She works in ____, creating campaigns for different brands.",
     "options": [
       "advertise",
       "advertisement",
@@ -22801,7 +22801,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The World Health Organization is an international ____ .",
+    "prompt": "The World Health Organization is an international ____.",
     "options": [
       "organise",
       "organisation",
@@ -22835,7 +22835,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Her files are well ____ , with each document in the correct folder.",
+    "prompt": "Her files are well ____, with each document in the correct folder.",
     "options": [
       "organise",
       "organisation",
@@ -23090,7 +23090,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "In an isolated system, total energy is ____ .",
+    "prompt": "In an isolated system, total energy is ____.",
     "options": [
       "conserve",
       "conservation",
@@ -23192,7 +23192,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The market remained ____ , with no official rules or supervision.",
+    "prompt": "The market remained ____, with no official rules or supervision.",
     "options": [
       "regulate",
       "regulation",
@@ -23532,7 +23532,7 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The lawyer argued ____ , addressing every objection with relevant evidence.",
+    "prompt": "The lawyer argued ____, addressing every objection with relevant evidence.",
     "options": [
       "persuade",
       "persuasion",

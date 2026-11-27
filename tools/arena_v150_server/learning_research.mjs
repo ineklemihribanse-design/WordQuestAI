@@ -1092,7 +1092,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Although their initial views were similar, their opinions gradually ____ .",
+    "prompt": "Although their initial views were similar, their opinions gradually ____.",
     "options": [
       "diverge",
       "converge",
@@ -4067,7 +4067,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The red and blue samples weighed ten and fifteen grams, ____ .",
+    "prompt": "The red and blue samples weighed ten and fifteen grams, ____.",
     "options": [
       "respectively",
       "collectively",
@@ -4084,7 +4084,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The first and second groups contained twenty and thirty participants, ____ .",
+    "prompt": "The first and second groups contained twenty and thirty participants, ____.",
     "options": [
       "respectively",
       "collectively",
@@ -4101,7 +4101,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The north and south stations recorded twelve and eight degrees, ____ .",
+    "prompt": "The north and south stations recorded twelve and eight degrees, ____.",
     "options": [
       "respectively",
       "collectively",
@@ -4186,7 +4186,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The plant flowers ____ , sometimes several years apart.",
+    "prompt": "The plant flowers ____, sometimes several years apart.",
     "options": [
       "sporadically",
       "continuously",
@@ -4577,7 +4577,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The economic model predicts that a higher price reduces demand, ____ , meaning that all other relevant conditions are held constant.",
+    "prompt": "The economic model predicts that a higher price reduces demand, ____, meaning that all other relevant conditions are held constant.",
     "options": [
       "ceteris paribus",
       "mutatis mutandis",
@@ -4594,7 +4594,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The projected relationship holds ____ , with other explanatory factors assumed unchanged.",
+    "prompt": "The projected relationship holds ____, with other explanatory factors assumed unchanged.",
     "options": [
       "ceteris paribus",
       "mutatis mutandis",
@@ -4611,7 +4611,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The analysis isolates the effect of one variable ____ , explicitly fixing all the others.",
+    "prompt": "The analysis isolates the effect of one variable ____, explicitly fixing all the others.",
     "options": [
       "ceteris paribus",
       "mutatis mutandis",
@@ -4628,7 +4628,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The same reasoning applies to the second case, ____ , with the necessary changes made to account for its different circumstances.",
+    "prompt": "The same reasoning applies to the second case, ____, with the necessary changes made to account for its different circumstances.",
     "options": [
       "mutatis mutandis",
       "ceteris paribus",
@@ -4645,7 +4645,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The procedure can be transferred to another jurisdiction ____ , after adapting the relevant legal details.",
+    "prompt": "The procedure can be transferred to another jurisdiction ____, after adapting the relevant legal details.",
     "options": [
       "mutatis mutandis",
       "ceteris paribus",
@@ -4662,7 +4662,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The argument holds for the alternative model ____ , once the corresponding substitutions have been made.",
+    "prompt": "The argument holds for the alternative model ____, once the corresponding substitutions have been made.",
     "options": [
       "mutatis mutandis",
       "ceteris paribus",
@@ -4849,7 +4849,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The curve approached the horizontal line ____ , drawing arbitrarily close without reaching it at any finite input.",
+    "prompt": "The curve approached the horizontal line ____, drawing arbitrarily close without reaching it at any finite input.",
     "options": [
       "asymptotically",
       "instantaneously",
@@ -4883,7 +4883,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The researcher repeated the measurement using a second instrument to check whether the original reading was ____ .",
+    "prompt": "The researcher repeated the measurement using a second instrument to check whether the original reading was ____.",
     "options": [
       "accurate",
       "portable",
@@ -4934,7 +4934,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "A material that allows light to pass through but scatters it so that objects cannot be seen clearly is described as ____ .",
+    "prompt": "A material that allows light to pass through but scatters it so that objects cannot be seen clearly is described as ____.",
     "options": [
       "translucent",
       "opaque",
@@ -5070,7 +5070,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The proof established that the proposed condition was necessary for the result but did not show that it was ____ .",
+    "prompt": "The proof established that the proposed condition was necessary for the result but did not show that it was ____.",
     "options": [
       "sufficient",
       "observable",

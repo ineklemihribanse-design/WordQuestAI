@@ -1686,7 +1686,7 @@ export const authoredQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "It is cold outside, so ____ .",
+    "prompt": "It is cold outside, so ____.",
     "options": [
       "wear your coat",
       "open the freezer",
@@ -1798,7 +1798,7 @@ export const authoredQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "A person who repairs cars is a ____ .",
+    "prompt": "A person who repairs cars is a ____.",
     "options": [
       "mechanic",
       "pilot",
@@ -1862,7 +1862,7 @@ export const authoredQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "By the time we reached the office, the meeting ____ .",
+    "prompt": "By the time we reached the office, the meeting ____.",
     "options": [
       "had ended",
       "ends",
@@ -1958,7 +1958,7 @@ export const authoredQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Completion",
-    "prompt": "Unless the library extends its opening hours, ____ .",
+    "prompt": "Unless the library extends its opening hours, ____.",
     "options": [
       "some students will have difficulty studying there",
       "all students will automatically pass their exams",
@@ -2038,7 +2038,7 @@ export const authoredQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The treatment improved symptoms; ____ , its long-term effects are still unknown.",
+    "prompt": "The treatment improved symptoms; ____, its long-term effects are still unknown.",
     "options": [
       "however",
       "therefore",
@@ -2070,7 +2070,7 @@ export const authoredQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "The findings were preliminary, meaning that they were ____ .",
+    "prompt": "The findings were preliminary, meaning that they were ____.",
     "options": [
       "not yet final",
       "entirely fabricated",
@@ -2102,7 +2102,7 @@ export const authoredQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "While solar panels generate electricity without burning fuel, ____ .",
+    "prompt": "While solar panels generate electricity without burning fuel, ____.",
     "options": [
       "their output varies with sunlight",
       "they require no sunlight at any time",
@@ -2134,7 +2134,7 @@ export const authoredQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The sudden decline in available housing made affordable accommodation increasingly ____ .",
+    "prompt": "The sudden decline in available housing made affordable accommodation increasingly ____.",
     "options": [
       "scarce",
       "abundant",
@@ -2246,7 +2246,7 @@ export const authoredQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The sample was relatively small; ____ , the findings cannot be generalized without further research.",
+    "prompt": "The sample was relatively small; ____, the findings cannot be generalized without further research.",
     "options": [
       "consequently",
       "nevertheless",
@@ -2326,7 +2326,7 @@ export const authoredQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Even if the initial findings are promising, ____ .",
+    "prompt": "Even if the initial findings are promising, ____.",
     "options": [
       "larger trials are necessary to establish reliability",
       "no further evidence can ever be collected",
@@ -2438,7 +2438,7 @@ export const authoredQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The explanation is internally coherent; ____ , coherence alone does not establish empirical validity.",
+    "prompt": "The explanation is internally coherent; ____, coherence alone does not establish empirical validity.",
     "options": [
       "nevertheless",
       "hence",
@@ -2486,7 +2486,7 @@ export const authoredQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Insofar as the observed association may reflect unmeasured factors, ____ .",
+    "prompt": "Insofar as the observed association may reflect unmeasured factors, ____.",
     "options": [
       "causal claims should remain provisional",
       "the association establishes causation beyond doubt",

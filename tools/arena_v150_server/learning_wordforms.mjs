@@ -1053,7 +1053,7 @@ export const wordFormQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Her first attempt was ____ .",
+    "prompt": "Her first attempt was ____.",
     "options": [
       "successful",
       "success",
@@ -1070,7 +1070,7 @@ export const wordFormQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The students completed the task ____ .",
+    "prompt": "The students completed the task ____.",
     "options": [
       "successfully",
       "success",
@@ -1121,7 +1121,7 @@ export const wordFormQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The view from the hill was ____ .",
+    "prompt": "The view from the hill was ____.",
     "options": [
       "beautiful",
       "beauty",
@@ -1257,7 +1257,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The designer is highly ____ .",
+    "prompt": "The designer is highly ____.",
     "options": [
       "creative",
       "creation",
@@ -1274,7 +1274,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The pupils solved the problem ____ .",
+    "prompt": "The pupils solved the problem ____.",
     "options": [
       "creatively",
       "creation",
@@ -1342,7 +1342,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The writer presented the landscape ____ , focusing on colours and shapes.",
+    "prompt": "The writer presented the landscape ____, focusing on colours and shapes.",
     "options": [
       "descriptively",
       "description",
@@ -1393,7 +1393,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The trip was both enjoyable and ____ .",
+    "prompt": "The trip was both enjoyable and ____.",
     "options": [
       "educational",
       "education",
@@ -1461,7 +1461,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The outer layer is ____ .",
+    "prompt": "The outer layer is ____.",
     "options": [
       "protective",
       "protection",
@@ -1529,7 +1529,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The market has become increasingly ____ .",
+    "prompt": "The market has become increasingly ____.",
     "options": [
       "competitive",
       "competition",
@@ -1665,7 +1665,7 @@ export const wordFormQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The second approach is quite ____ .",
+    "prompt": "The second approach is quite ____.",
     "options": [
       "different",
       "difference",
@@ -1733,7 +1733,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "Her approach was systematic and ____ .",
+    "prompt": "Her approach was systematic and ____.",
     "options": [
       "analytical",
       "analysis",
@@ -1818,7 +1818,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The report approaches the findings ____ , judging their strengths and weaknesses.",
+    "prompt": "The report approaches the findings ____, judging their strengths and weaknesses.",
     "options": [
       "evaluatively",
       "evaluation",
@@ -1869,7 +1869,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The argument was coherent and ____ .",
+    "prompt": "The argument was coherent and ____.",
     "options": [
       "persuasive",
       "persuasion",
@@ -1937,7 +1937,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The new method is particularly ____ .",
+    "prompt": "The new method is particularly ____.",
     "options": [
       "innovative",
       "innovation",
@@ -1954,7 +1954,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The engineers approached the problem ____ .",
+    "prompt": "The engineers approached the problem ____.",
     "options": [
       "innovatively",
       "innovation",
@@ -1971,7 +1971,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The data allow more than one ____ .",
+    "prompt": "The data allow more than one ____.",
     "options": [
       "interpretation",
       "interpret",
@@ -2073,7 +2073,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The participants were friendly and ____ .",
+    "prompt": "The participants were friendly and ____.",
     "options": [
       "cooperative",
       "cooperation",
@@ -2141,7 +2141,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The seasonal pattern is fairly ____ .",
+    "prompt": "The seasonal pattern is fairly ____.",
     "options": [
       "predictable",
       "prediction",
@@ -2209,7 +2209,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The claimed advantage must be empirically ____ .",
+    "prompt": "The claimed advantage must be empirically ____.",
     "options": [
       "demonstrable",
       "demonstration",
@@ -2277,7 +2277,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The markings are readily ____ .",
+    "prompt": "The markings are readily ____.",
     "options": [
       "identifiable",
       "identification",
@@ -2311,7 +2311,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The proposal lacks an adequate ____ .",
+    "prompt": "The proposal lacks an adequate ____.",
     "options": [
       "justification",
       "justify",
@@ -2413,7 +2413,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The current rate of resource use is not ____ .",
+    "prompt": "The current rate of resource use is not ____.",
     "options": [
       "sustainable",
       "sustainability",
@@ -2430,7 +2430,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The forests should be managed ____ .",
+    "prompt": "The forests should be managed ____.",
     "options": [
       "sustainably",
       "sustainability",
@@ -2481,7 +2481,7 @@ export const wordFormQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The new sensor proved more ____ .",
+    "prompt": "The new sensor proved more ____.",
     "options": [
       "reliable",
       "reliability",
@@ -2685,7 +2685,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The theoretical account is internally ____ .",
+    "prompt": "The theoretical account is internally ____.",
     "options": [
       "coherent",
       "coherence",
@@ -2702,7 +2702,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The author presented the argument ____ .",
+    "prompt": "The author presented the argument ____.",
     "options": [
       "coherently",
       "coherence",
@@ -2753,7 +2753,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The underlying assumption remains ____ .",
+    "prompt": "The underlying assumption remains ____.",
     "options": [
       "implicit",
       "implication",
@@ -2787,7 +2787,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The claim remains a matter of ____ .",
+    "prompt": "The claim remains a matter of ____.",
     "options": [
       "speculation",
       "speculate",
@@ -2821,7 +2821,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The proposed account is largely ____ .",
+    "prompt": "The proposed account is largely ____.",
     "options": [
       "speculative",
       "speculation",
@@ -2889,7 +2889,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The assertion is empirically ____ .",
+    "prompt": "The assertion is empirically ____.",
     "options": [
       "verifiable",
       "verification",
@@ -2957,7 +2957,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The concerns raised by residents are ____ .",
+    "prompt": "The concerns raised by residents are ____.",
     "options": [
       "legitimate",
       "legitimacy",
@@ -3025,7 +3025,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The difference is statistically ____ .",
+    "prompt": "The difference is statistically ____.",
     "options": [
       "significant",
       "significance",
@@ -3161,7 +3161,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The new framework is more ____ .",
+    "prompt": "The new framework is more ____.",
     "options": [
       "inclusive",
       "inclusion",
@@ -3297,7 +3297,7 @@ export const wordFormQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "The inference is logically ____ .",
+    "prompt": "The inference is logically ____.",
     "options": [
       "valid",
       "validity",

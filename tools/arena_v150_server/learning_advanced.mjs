@@ -770,7 +770,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Were the assumption to prove false, an entirely different analytical approach ____ .",
+    "prompt": "Were the assumption to prove false, an entirely different analytical approach ____.",
     "options": [
       "would be required",
       "will have required",
@@ -787,7 +787,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Were the initial estimate to be revised substantially, additional funding ____ .",
+    "prompt": "Were the initial estimate to be revised substantially, additional funding ____.",
     "options": [
       "would be required",
       "will have required",
@@ -804,7 +804,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Were the existing equipment to fail, a temporary replacement ____ .",
+    "prompt": "Were the existing equipment to fail, a temporary replacement ____.",
     "options": [
       "would be required",
       "will have required",
@@ -1739,7 +1739,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Greater flexibility may improve adaptability; ____ , excessive rigidity can limit it.",
+    "prompt": "Greater flexibility may improve adaptability; ____, excessive rigidity can limit it.",
     "options": [
       "conversely",
       "accordingly",
@@ -1756,7 +1756,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "High liquidity enables rapid transactions; ____ , illiquidity makes them difficult.",
+    "prompt": "High liquidity enables rapid transactions; ____, illiquidity makes them difficult.",
     "options": [
       "conversely",
       "accordingly",
@@ -1773,7 +1773,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "A rise in demand may increase prices; ____ , a fall in demand may exert downward pressure.",
+    "prompt": "A rise in demand may increase prices; ____, a fall in demand may exert downward pressure.",
     "options": [
       "conversely",
       "accordingly",
@@ -1790,7 +1790,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The inference is logically consistent; ____ , the premises may be empirically unsound.",
+    "prompt": "The inference is logically consistent; ____, the premises may be empirically unsound.",
     "options": [
       "all the same",
       "as a consequence",
@@ -1807,7 +1807,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The design is elegant; ____ , its implementation poses serious practical difficulties.",
+    "prompt": "The design is elegant; ____, its implementation poses serious practical difficulties.",
     "options": [
       "all the same",
       "as a consequence",
@@ -1824,7 +1824,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The estimate is precise; ____ , its underlying assumptions remain questionable.",
+    "prompt": "The estimate is precise; ____, its underlying assumptions remain questionable.",
     "options": [
       "all the same",
       "as a consequence",
@@ -2300,7 +2300,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The alarm activates only when pressure exceeds a predefined ____ .",
+    "prompt": "The alarm activates only when pressure exceeds a predefined ____.",
     "options": [
       "threshold",
       "average",
@@ -2334,7 +2334,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The chemical reaction begins once the temperature crosses a critical ____ .",
+    "prompt": "The chemical reaction begins once the temperature crosses a critical ____.",
     "options": [
       "threshold",
       "average",
@@ -3116,7 +3116,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The argument was ____ , appearing convincing at first despite relying on a false premise.",
+    "prompt": "The argument was ____, appearing convincing at first despite relying on a false premise.",
     "options": [
       "specious",
       "sound",
@@ -3320,7 +3320,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Treating a statistical construct as an independently existing concrete object exemplifies ____ .",
+    "prompt": "Treating a statistical construct as an independently existing concrete object exemplifies ____.",
     "options": [
       "reification",
       "abstraction",
@@ -3371,7 +3371,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The argument relied on ____ , shifting the meaning of a central term between its premises and conclusion.",
+    "prompt": "The argument relied on ____, shifting the meaning of a central term between its premises and conclusion.",
     "options": [
       "equivocation",
       "precision",
@@ -3473,7 +3473,7 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The inference was ____ , remaining acceptable only until relevant counterevidence emerged.",
+    "prompt": "The inference was ____, remaining acceptable only until relevant counterevidence emerged.",
     "options": [
       "defeasible",
       "irrevocable",

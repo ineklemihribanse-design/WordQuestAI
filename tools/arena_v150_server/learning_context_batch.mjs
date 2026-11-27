@@ -209,7 +209,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Without regular maintenance, the quality of the service may ____ .",
+    "prompt": "Without regular maintenance, the quality of the service may ____.",
     "options": [
       "decline",
       "emerge",
@@ -396,7 +396,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The patient's recovery was ____ , with small improvements each week.",
+    "prompt": "The patient's recovery was ____, with small improvements each week.",
     "options": [
       "gradual",
       "abrupt",
@@ -464,7 +464,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The equipment must be checked ____ , at least three times a day.",
+    "prompt": "The equipment must be checked ____, at least three times a day.",
     "options": [
       "frequently",
       "rarely",
@@ -1229,7 +1229,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Measurements from the two devices were ____ , despite the use of identical samples.",
+    "prompt": "Measurements from the two devices were ____, despite the use of identical samples.",
     "options": [
       "inconsistent",
       "uniform",
@@ -1297,7 +1297,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The new process reduced energy consumption ____ , by almost half.",
+    "prompt": "The new process reduced energy consumption ____, by almost half.",
     "options": [
       "substantially",
       "marginally",
@@ -1790,7 +1790,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The inspection was merely ____ , taking only a few minutes despite the complexity of the machinery.",
+    "prompt": "The inspection was merely ____, taking only a few minutes despite the complexity of the machinery.",
     "options": [
       "perfunctory",
       "meticulous",
@@ -1858,7 +1858,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The once unusual technology is now ____ , appearing in virtually every household.",
+    "prompt": "The once unusual technology is now ____, appearing in virtually every household.",
     "options": [
       "ubiquitous",
       "rare",
@@ -1909,7 +1909,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The evidence was ____ , supporting more than one interpretation.",
+    "prompt": "The evidence was ____, supporting more than one interpretation.",
     "options": [
       "equivocal",
       "unambiguous",
@@ -2045,7 +2045,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "By the time we arrived at the station yesterday, the last train ____ .",
+    "prompt": "By the time we arrived at the station yesterday, the last train ____.",
     "options": [
       "had left",
       "leaves",
@@ -2062,7 +2062,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "When I reached the office yesterday evening, everyone ____ .",
+    "prompt": "When I reached the office yesterday evening, everyone ____.",
     "options": [
       "had left",
       "leaves",
@@ -2861,7 +2861,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The samples were contaminated; ____ , the results could not be used.",
+    "prompt": "The samples were contaminated; ____, the results could not be used.",
     "options": [
       "therefore",
       "nevertheless",
@@ -2878,7 +2878,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The only available route was blocked; ____ , deliveries had to be postponed.",
+    "prompt": "The only available route was blocked; ____, deliveries had to be postponed.",
     "options": [
       "therefore",
       "nevertheless",
@@ -2895,7 +2895,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The method was expensive; ____ , the organisation decided to adopt it.",
+    "prompt": "The method was expensive; ____, the organisation decided to adopt it.",
     "options": [
       "nevertheless",
       "consequently",
@@ -2912,7 +2912,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The initial trial showed promising results; ____ , important safety concerns remained.",
+    "prompt": "The initial trial showed promising results; ____, important safety concerns remained.",
     "options": [
       "nevertheless",
       "consequently",
@@ -3575,7 +3575,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My hands are cold; I need a pair of ____ .",
+    "prompt": "My hands are cold; I need a pair of ____.",
     "options": [
       "shirt",
       "skirt",
@@ -3660,7 +3660,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Hang your dresses in the ____ .",
+    "prompt": "Hang your dresses in the ____.",
     "options": [
       "bed",
       "sofa",
@@ -3677,7 +3677,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "She writes her homework at her ____ .",
+    "prompt": "She writes her homework at her ____.",
     "options": [
       "bed",
       "sofa",
@@ -3728,7 +3728,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We stop work at noon to have ____ .",
+    "prompt": "We stop work at noon to have ____.",
     "options": [
       "breakfast",
       "lunch",
@@ -3745,7 +3745,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Our family eats its main evening meal, ____ , at seven.",
+    "prompt": "Our family eats its main evening meal, ____, at seven.",
     "options": [
       "breakfast",
       "lunch",
@@ -3779,7 +3779,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "After the main course, we order ice cream for ____ .",
+    "prompt": "After the main course, we order ice cream for ____.",
     "options": [
       "breakfast",
       "lunch",
@@ -3796,7 +3796,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The day immediately after Sunday is ____ .",
+    "prompt": "The day immediately after Sunday is ____.",
     "options": [
       "Monday",
       "Wednesday",
@@ -3813,7 +3813,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The day between Tuesday and Thursday is ____ .",
+    "prompt": "The day between Tuesday and Thursday is ____.",
     "options": [
       "Monday",
       "Wednesday",
@@ -3830,7 +3830,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The day immediately before Saturday is ____ .",
+    "prompt": "The day immediately before Saturday is ____.",
     "options": [
       "Monday",
       "Wednesday",
@@ -3847,7 +3847,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The first day of the weekend in the UK is ____ .",
+    "prompt": "The first day of the weekend in the UK is ____.",
     "options": [
       "Monday",
       "Wednesday",
@@ -3864,7 +3864,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The day immediately before Monday is ____ .",
+    "prompt": "The day immediately before Monday is ____.",
     "options": [
       "Monday",
       "Wednesday",
@@ -3881,7 +3881,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My father's brother is my ____ .",
+    "prompt": "My father's brother is my ____.",
     "options": [
       "uncle",
       "aunt",
@@ -3898,7 +3898,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My mother's sister is my ____ .",
+    "prompt": "My mother's sister is my ____.",
     "options": [
       "uncle",
       "aunt",
@@ -3915,7 +3915,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My aunt's daughter is my ____ .",
+    "prompt": "My aunt's daughter is my ____.",
     "options": [
       "uncle",
       "aunt",
@@ -3932,7 +3932,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My mother's father is my ____ .",
+    "prompt": "My mother's father is my ____.",
     "options": [
       "uncle",
       "aunt",
@@ -3949,7 +3949,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My father's mother is my ____ .",
+    "prompt": "My father's mother is my ____.",
     "options": [
       "uncle",
       "aunt",
@@ -4204,7 +4204,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "My bedroom is ____ , on the floor above the kitchen.",
+    "prompt": "My bedroom is ____, on the floor above the kitchen.",
     "options": [
       "near",
       "far",
@@ -4374,7 +4374,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Rome is our final ____ , where our journey ends.",
+    "prompt": "Rome is our final ____, where our journey ends.",
     "options": [
       "departure",
       "arrival",
@@ -4425,7 +4425,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Collect your hotel room key at ____ .",
+    "prompt": "Collect your hotel room key at ____.",
     "options": [
       "entrance",
       "exit",
@@ -4731,7 +4731,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "These bananas are yellow and ready to eat; they are ____ .",
+    "prompt": "These bananas are yellow and ready to eat; they are ____.",
     "options": [
       "ripe",
       "raw",
@@ -4748,7 +4748,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Do not eat the chicken before cooking it; it is still ____ .",
+    "prompt": "Do not eat the chicken before cooking it; it is still ____.",
     "options": [
       "ripe",
       "raw",
@@ -4765,7 +4765,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The peas must stay below zero degrees because they are ____ .",
+    "prompt": "The peas must stay below zero degrees because they are ____.",
     "options": [
       "ripe",
       "raw",
@@ -4782,7 +4782,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The bread is several days old and no longer fresh; it is ____ .",
+    "prompt": "The bread is several days old and no longer fresh; it is ____.",
     "options": [
       "ripe",
       "raw",
@@ -4799,7 +4799,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I left the toast in too long, and it is now black and ____ .",
+    "prompt": "I left the toast in too long, and it is now black and ____.",
     "options": [
       "ripe",
       "raw",
@@ -4884,7 +4884,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The lawyer carried contracts in a rectangular hard-sided ____ .",
+    "prompt": "The lawyer carried contracts in a rectangular hard-sided ____.",
     "options": [
       "suitcase",
       "backpack",
@@ -4901,7 +4901,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The machine doesn't accept cards; you must pay in ____ .",
+    "prompt": "The machine doesn't accept cards; you must pay in ____.",
     "options": [
       "cash",
       "change",
@@ -4918,7 +4918,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I paid £10 for a £7 meal and received £3 in ____ .",
+    "prompt": "I paid £10 for a £7 meal and received £3 in ____.",
     "options": [
       "cash",
       "change",
@@ -4952,7 +4952,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We've finished our meal; could we have the ____ , please?",
+    "prompt": "We've finished our meal; could we have the ____, please?",
     "options": [
       "cash",
       "change",
@@ -5037,7 +5037,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Wheelchair users can enter via the sloping ____ .",
+    "prompt": "Wheelchair users can enter via the sloping ____.",
     "options": [
       "stairs",
       "lift",
@@ -5292,7 +5292,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Backpackers share a dormitory with bunk beds in a cheap youth ____ .",
+    "prompt": "Backpackers share a dormitory with bunk beds in a cheap youth ____.",
     "options": [
       "flat",
       "cottage",
@@ -5309,7 +5309,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We booked a private room with room service in a four-star ____ .",
+    "prompt": "We booked a private room with room service in a four-star ____.",
     "options": [
       "flat",
       "cottage",
@@ -5377,7 +5377,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "In my personal ____ , the new design looks better.",
+    "prompt": "In my personal ____, the new design looks better.",
     "options": [
       "evidence",
       "clue",
@@ -5768,7 +5768,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The farm produced more apples than it could sell, leaving a ____ .",
+    "prompt": "The farm produced more apples than it could sell, leaving a ____.",
     "options": [
       "shortage",
       "surplus",
@@ -5819,7 +5819,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The store has twenty units in ____ , ready for immediate sale.",
+    "prompt": "The store has twenty units in ____, ready for immediate sale.",
     "options": [
       "shortage",
       "surplus",
@@ -5938,7 +5938,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The security report recorded an unusual ____ : someone entered the building without permission.",
+    "prompt": "The security report recorded an unusual ____: someone entered the building without permission.",
     "options": [
       "accident",
       "incident",
@@ -6431,7 +6431,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The clock is ____ ; it keeps the correct time day after day.",
+    "prompt": "The clock is ____; it keeps the correct time day after day.",
     "options": [
       "reliable",
       "available",
@@ -6516,7 +6516,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The instructions are ____ : they state the exact deadline and required format in direct terms.",
+    "prompt": "The instructions are ____: they state the exact deadline and required format in direct terms.",
     "options": [
       "explicit",
       "implicit",
@@ -6567,7 +6567,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The cut-off was ____ , chosen without any relevant criterion or justification.",
+    "prompt": "The cut-off was ____, chosen without any relevant criterion or justification.",
     "options": [
       "explicit",
       "implicit",
@@ -6584,7 +6584,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The argument is ____ ; its successive claims fit together logically.",
+    "prompt": "The argument is ____; its successive claims fit together logically.",
     "options": [
       "explicit",
       "implicit",
@@ -6720,7 +6720,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The unrelated events occurred on the same day purely by ____ .",
+    "prompt": "The unrelated events occurred on the same day purely by ____.",
     "options": [
       "correlation",
       "causation",
@@ -6754,7 +6754,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The analysis investigated ____ : whether the effect operated through an intermediate variable.",
+    "prompt": "The analysis investigated ____: whether the effect operated through an intermediate variable.",
     "options": [
       "correlation",
       "causation",
@@ -7196,7 +7196,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Despite the impact, the protective casing remained completely ____ , with no cracks or damage.",
+    "prompt": "Despite the impact, the protective casing remained completely ____, with no cracks or damage.",
     "options": [
       "intact",
       "obsolete",
@@ -7502,7 +7502,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "As the floodwaters ____ , residents can begin cleaning their homes.",
+    "prompt": "As the floodwaters ____, residents can begin cleaning their homes.",
     "options": [
       "precede",
       "proceed",
@@ -7757,7 +7757,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The machine's temperature became ____ , exceeding the safe upper limit by thirty degrees.",
+    "prompt": "The machine's temperature became ____, exceeding the safe upper limit by thirty degrees.",
     "options": [
       "abundant",
       "scarce",
@@ -7774,7 +7774,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The observed difference was ____ , too small to have any meaningful practical effect.",
+    "prompt": "The observed difference was ____, too small to have any meaningful practical effect.",
     "options": [
       "abundant",
       "scarce",

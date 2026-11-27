@@ -5,7 +5,7 @@ export const formExtension = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The lecturer explained the distinction with great ____ .",
+    "prompt": "The lecturer explained the distinction with great ____.",
     "options": [
       "clarity",
       "clarify",
@@ -56,7 +56,7 @@ export const formExtension = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The teacher explained the procedure ____ .",
+    "prompt": "The teacher explained the procedure ____.",
     "options": [
       "clearly",
       "clarity",
@@ -73,7 +73,7 @@ export const formExtension = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The castle is the town's principal tourist ____ .",
+    "prompt": "The castle is the town's principal tourist ____.",
     "options": [
       "attraction",
       "attract",
@@ -328,7 +328,7 @@ export const formExtension = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The team used its limited time ____ .",
+    "prompt": "The team used its limited time ____.",
     "options": [
       "productively",
       "production",
@@ -447,7 +447,7 @@ export const formExtension = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The competition became increasingly ____ .",
+    "prompt": "The competition became increasingly ____.",
     "options": [
       "intense",
       "intensity",
@@ -481,7 +481,7 @@ export const formExtension = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The chief advantage of the method is its ____ .",
+    "prompt": "The chief advantage of the method is its ____.",
     "options": [
       "simplicity",
       "simplify",
@@ -753,7 +753,7 @@ export const formExtension = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "After careful ____ , the panel reached a decision.",
+    "prompt": "After careful ____, the panel reached a decision.",
     "options": [
       "deliberation",
       "deliberate",

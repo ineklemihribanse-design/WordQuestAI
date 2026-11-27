@@ -1024,7 +1024,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, ____ participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences had been taken into account , the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, ____ participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences had been taken into account, the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
     "options": [
       "meaning that",
       "whereby of",
@@ -1041,7 +1041,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics ____ the training began. Even after these differences had been taken into account , the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics ____ the training began. Even after these differences had been taken into account, the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
     "options": [
       "before",
       "in spite of",
@@ -1058,7 +1058,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences ____ , the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences ____, the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
     "options": [
       "had been taken into account",
       "had taking into account",
@@ -1075,7 +1075,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences had been taken into account , the possibility of unmeasured influences remained. The authors described their findings as suggestive ____ conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences had been taken into account, the possibility of unmeasured influences remained. The authors described their findings as suggestive ____ conclusive evidence of an effect. They recommended a design capable of addressing selection bias more effectively.\n\nChoose the best option for the blank.",
     "options": [
       "rather than",
       "because of",
@@ -1092,7 +1092,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences had been taken into account , the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of ____ selection bias more effectively.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a training scheme initially suggested that participants earned more after completion. The researchers noted that enrolment was voluntary, so that of participants might differ systematically from non-participants. They therefore examined characteristics before the training began. Even after these differences had been taken into account, the possibility of unmeasured influences remained. The authors described their findings as suggestive rather than conclusive evidence of an effect. They recommended a design capable of ____ selection bias more effectively.\n\nChoose the best option for the blank.",
     "options": [
       "addressing",
       "address",
@@ -1449,7 +1449,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, ____ people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, ____ people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional.\n\nChoose the best option for the blank.",
     "options": [
       "meaning that",
       "whereas of",
@@ -1466,7 +1466,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative ____ the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative ____ the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional.\n\nChoose the best option for the blank.",
     "options": [
       "of",
       "into",
@@ -1483,7 +1483,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels ____ reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels ____ reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional.\n\nChoose the best option for the blank.",
     "options": [
       "in order to",
       "owing to",
@@ -1500,7 +1500,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent ____ which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent ____ which access difficulties influenced participation itself. The initial conclusions were therefore presented as provisional.\n\nChoose the best option for the blank.",
     "options": [
       "to",
       "at",
@@ -1517,7 +1517,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as ____ .\n\nChoose the best option for the blank.",
+    "prompt": "A team conducted interviews about access to healthcare services. Participants were recruited through existing clinics, meaning that people who never attended clinics were less likely to be included. The researchers acknowledged that their sample might not be representative of the wider population. They proposed recruiting participants through additional channels in order to reach underrepresented groups. The revised sampling strategy was intended to reduce the extent to which access difficulties influenced participation itself. The initial conclusions were therefore presented as ____.\n\nChoose the best option for the blank.",
     "options": [
       "provisional",
       "irrefutable",
@@ -1619,7 +1619,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions ____ had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would diverge . The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
+    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions ____ had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would diverge. The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
     "options": [
       "that",
       "whose",
@@ -1636,7 +1636,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, ____ itself, discriminate between them. They therefore sought conditions under which the predictions would diverge . The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
+    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, ____ itself, discriminate between them. They therefore sought conditions under which the predictions would diverge. The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
     "options": [
       "by",
       "into",
@@ -1653,7 +1653,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would ____ . The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
+    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would ____. The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
     "options": [
       "diverge",
       "coincide perfectly",
@@ -1670,7 +1670,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would diverge . The proposed tests were intended to identify evidence bearing ____ the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
+    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would diverge. The proposed tests were intended to identify evidence bearing ____ the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained underdetermined by the observations.\n\nChoose the best option for the blank.",
     "options": [
       "on",
       "into",
@@ -1687,7 +1687,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would diverge . The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained ____ by the observations.\n\nChoose the best option for the blank.",
+    "prompt": "A theoretical framework distinguished mechanisms by reference to their observable consequences. Two mechanisms, however, generated indistinguishable predictions under the conditions that had been studied. The authors recognised that evidence compatible with both mechanisms could not, by itself, discriminate between them. They therefore sought conditions under which the predictions would diverge. The proposed tests were intended to identify evidence bearing on the distinction rather than merely confirm a shared consequence. Until such evidence was obtained, the competing interpretations remained ____ by the observations.\n\nChoose the best option for the blank.",
     "options": [
       "underdetermined",
       "uniquely established",
@@ -2980,7 +2980,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted ____ differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted ____ differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace, the existing observations.\n\nChoose the best option for the blank.",
     "options": [
       "after",
       "despite of",
@@ -2997,7 +2997,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent ____ randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent ____ randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace, the existing observations.\n\nChoose the best option for the blank.",
     "options": [
       "to",
       "on",
@@ -3014,7 +3014,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors ____ were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors ____ were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than replace, the existing observations.\n\nChoose the best option for the blank.",
     "options": [
       "that",
       "whom",
@@ -3031,7 +3031,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, ____ changes could be tracked from the outset. Such evidence would complement, rather than replace , the existing observations.\n\nChoose the best option for the blank.",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, ____ changes could be tracked from the outset. Such evidence would complement, rather than replace, the existing observations.\n\nChoose the best option for the blank.",
     "options": [
       "so that",
       "unless",
@@ -3048,7 +3048,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than ____ , the existing observations.\n\nChoose the best option for the blank.",
+    "prompt": "A study of urban tree cover found that neighbourhoods with more trees tended to have lower daytime temperatures. The association persisted after differences in building density were taken into account. Nevertheless, the authors emphasised that observational comparisons were not equivalent to randomised experiments. Tree planting decisions may themselves have been influenced by economic factors that were not fully captured in the available data. The researchers recommended evaluating future planting schemes prospectively, so that changes could be tracked from the outset. Such evidence would complement, rather than ____, the existing observations.\n\nChoose the best option for the blank.",
     "options": [
       "replace",
       "replacing of",
@@ -3065,7 +3065,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to ____ seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to ____ seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded.\n\nChoose the best option for the blank.",
     "options": [
       "simulate",
       "eliminate",
@@ -3082,7 +3082,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, ____ it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, ____ it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded.\n\nChoose the best option for the blank.",
     "options": [
       "although",
       "because of",
@@ -3099,7 +3099,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results ____ measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results ____ measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded.\n\nChoose the best option for the blank.",
     "options": [
       "with",
       "at",
@@ -3116,7 +3116,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded ____ sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded .\n\nChoose the best option for the blank.",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded ____ sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically grounded.\n\nChoose the best option for the blank.",
     "options": [
       "as",
       "for of",
@@ -3133,7 +3133,7 @@ export const clozeExpansion = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically ____ .\n\nChoose the best option for the blank.",
+    "prompt": "Researchers examining the durability of a new building material subjected samples to repeated cycles of heating and cooling. The conditions were intended to simulate seasonal temperature changes within a shorter period. The accelerated procedure produced useful comparative data, although it could not reproduce every feature of long-term outdoor exposure. The team therefore combined laboratory results with measurements from a small field trial. Neither source was regarded as sufficient on its own. The aim was to arrive at an assessment that was both timely and empirically ____.\n\nChoose the best option for the blank.",
     "options": [
       "grounded",
       "arbitrary",
@@ -3490,7 +3490,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions ____ the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions ____ the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather, they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
     "options": [
       "depending on",
       "in disregard of",
@@ -3507,7 +3507,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations ____ the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations ____ the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather, they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
     "options": [
       "undermined",
       "confirmed unequivocally",
@@ -3524,7 +3524,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; ____ , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; ____, they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
     "options": [
       "rather",
       "consequently not",
@@ -3541,7 +3541,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account ____ the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather, they argued that its interpretation was mediated by contextual information. Their proposal was intended to account ____ the variability without abandoning systematic analysis. It therefore treated structure and context as mutually complementary dimensions.\n\nChoose the best option for the blank.",
     "options": [
       "for",
       "on",
@@ -3558,7 +3558,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather , they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually ____ dimensions.\n\nChoose the best option for the blank.",
+    "prompt": "A linguistic analysis examined whether grammatical distinctions corresponded to stable conceptual categories. The researchers found that a single expression could perform different functions depending on the context in which it appeared. Conversely, similar functions could be realised through structurally different expressions. These observations undermined the assumption of a straightforward one-to-one mapping. The authors did not claim that grammatical structure was irrelevant; rather, they argued that its interpretation was mediated by contextual information. Their proposal was intended to account for the variability without abandoning systematic analysis. It therefore treated structure and context as mutually ____ dimensions.\n\nChoose the best option for the blank.",
     "options": [
       "complementary",
       "exclusive in every case",
@@ -3575,7 +3575,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former ____ leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former ____ leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well. This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
     "options": [
       "while",
       "because of",
@@ -3592,7 +3592,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence ____ the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence ____ the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well. This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
     "options": [
       "whether",
       "whom",
@@ -3609,7 +3609,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely ____ the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely ____ the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well. This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
     "options": [
       "in terms of",
       "in opposition to",
@@ -3626,7 +3626,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes ____ . This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes ____. This would help determine whether resource provision had been translated into practical capability.\n\nChoose the best option for the blank.",
     "options": [
       "as well",
       "instead of which",
@@ -3643,7 +3643,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well . This would help determine whether resource provision had been translated ____ practical capability.\n\nChoose the best option for the blank.",
+    "prompt": "An analysis of technological adoption distinguished barriers to acquiring equipment from barriers to using it effectively. Reducing the purchase price might address the former while leaving the latter largely unchanged. Training, maintenance and organisational routines could all influence whether the equipment produced the expected benefits. The authors cautioned against evaluating access initiatives solely in terms of the number of devices distributed. They proposed tracking sustained use and changes in relevant outcomes as well. This would help determine whether resource provision had been translated ____ practical capability.\n\nChoose the best option for the blank.",
     "options": [
       "into",
       "from",
@@ -3745,7 +3745,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation ____ accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation ____ accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly, the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
     "options": [
       "without",
       "by",
@@ -3762,7 +3762,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished ____ merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished ____ merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly, the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
     "options": [
       "from",
       "by",
@@ -3779,7 +3779,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to ____ the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to ____ the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly, the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
     "options": [
       "deny",
       "quantify precisely",
@@ -3796,7 +3796,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. ____ , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. ____, the assessment of theoretical commitments required additional argument. The critique therefore placed limits on what could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
     "options": [
       "Accordingly",
       "Nevertheless of",
@@ -3813,7 +3813,7 @@ export const clozeExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly , the assessment of theoretical commitments required additional argument. The critique therefore placed limits on ____ could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
+    "prompt": "A philosophical critique questioned the inference from the predictive success of a theory to the literal truth of all its assumptions. Some idealised assumptions may facilitate calculation without accurately describing every feature of the system. The critic argued that explanatory commitments should be distinguished from merely instrumental simplifications. This was not intended to deny the evidential significance of successful prediction. Rather, it challenged the claim that such success necessarily vindicated every element of the model. Accordingly, the assessment of theoretical commitments required additional argument. The critique therefore placed limits on ____ could legitimately be inferred from predictive performance.\n\nChoose the best option for the blank.",
     "options": [
       "what",
       "which of",
@@ -4850,7 +4850,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, ____ the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, ____ the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However, the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
     "options": [
       "and",
       "because of",
@@ -4867,7 +4867,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused ____ familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused ____ familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However, the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
     "options": [
       "by",
       "from of",
@@ -4884,7 +4884,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. ____ , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. ____, the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
     "options": [
       "However",
       "Therefore",
@@ -4901,7 +4901,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against ____ the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However, the effect varied depending on the complexity of the task. The authors warned against ____ the results to all working environments without further testing. They recommended additional research under real-world conditions.\n\nChoose the best option for the blank.",
     "options": [
       "generalising",
       "generalise",
@@ -4918,7 +4918,7 @@ export const clozeExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However , the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research ____ real-world conditions.\n\nChoose the best option for the blank.",
+    "prompt": "A study examined the influence of noise on concentration. Participants were asked to complete identical tasks under different sound conditions, and the order of conditions was varied between participants. This was intended to prevent performance changes caused by familiarity with the task from being mistaken for noise effects. Researchers found that sudden changes in sound were more disruptive than steady background noise. However, the effect varied depending on the complexity of the task. The authors warned against generalising the results to all working environments without further testing. They recommended additional research ____ real-world conditions.\n\nChoose the best option for the blank.",
     "options": [
       "under",
       "onto",

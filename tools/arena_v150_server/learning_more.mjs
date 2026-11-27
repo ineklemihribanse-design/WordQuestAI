@@ -4,7 +4,7 @@ export const extraQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "To protect the original document, the archivist made a digital ____ .",
+    "prompt": "To protect the original document, the archivist made a digital ____.",
     "options": [
       "copy",
       "deadline",
@@ -116,7 +116,7 @@ export const extraQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The roads were flooded. ____ , the school remained closed.",
+    "prompt": "The roads were flooded. ____, the school remained closed.",
     "options": [
       "Therefore",
       "However",
@@ -196,7 +196,7 @@ export const extraQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Completion",
-    "prompt": "Because the road was blocked by fallen trees, ____ .",
+    "prompt": "Because the road was blocked by fallen trees, ____.",
     "options": [
       "the bus had to take a different route",
       "the road was completely clear",
@@ -308,7 +308,7 @@ export const extraQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The investigator interviewed each participant ____ , without the others being present.",
+    "prompt": "The investigator interviewed each participant ____, without the others being present.",
     "options": [
       "individually",
       "collectively",
@@ -468,7 +468,7 @@ export const extraQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Although the treatment was effective in the short term, ____ .",
+    "prompt": "Although the treatment was effective in the short term, ____.",
     "options": [
       "its long-term benefits have yet to be established",
       "it had no measurable short-term effect",
@@ -500,7 +500,7 @@ export const extraQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In 'The findings were consistent with earlier research', consistent means ____ .",
+    "prompt": "In 'The findings were consistent with earlier research', consistent means ____.",
     "options": [
       "in agreement",
       "in conflict",
@@ -612,7 +612,7 @@ export const extraQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The review deliberately excluded anecdotal reports in order to minimise methodological ____ .",
+    "prompt": "The review deliberately excluded anecdotal reports in order to minimise methodological ____.",
     "options": [
       "bias",
       "rigour",
@@ -628,7 +628,7 @@ export const extraQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The authors explicitly acknowledged the limitations rather than presenting their conclusions ____ .",
+    "prompt": "The authors explicitly acknowledged the limitations rather than presenting their conclusions ____.",
     "options": [
       "categorically",
       "tentatively",
@@ -676,7 +676,7 @@ export const extraQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The intervention appears cost-effective in the pilot study; ____ , its feasibility on a national scale remains uncertain.",
+    "prompt": "The intervention appears cost-effective in the pilot study; ____, its feasibility on a national scale remains uncertain.",
     "options": [
       "nevertheless",
       "consequently",
@@ -788,7 +788,7 @@ export const extraQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In 'The new regulation may inadvertently disadvantage smaller firms', inadvertently means ____ .",
+    "prompt": "In 'The new regulation may inadvertently disadvantage smaller firms', inadvertently means ____.",
     "options": [
       "unintentionally",
       "deliberately",
@@ -804,7 +804,7 @@ export const extraQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Given that the sample was drawn exclusively from one region, ____ .",
+    "prompt": "Given that the sample was drawn exclusively from one region, ____.",
     "options": [
       "the findings should not be generalised without further evidence",
       "the sample represents every region equally",
@@ -916,7 +916,7 @@ export const extraQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The theory explains the observed pattern; ____ , it does not specify the mechanism responsible for it.",
+    "prompt": "The theory explains the observed pattern; ____, it does not specify the mechanism responsible for it.",
     "options": [
       "all the same",
       "as a result",
@@ -964,7 +964,7 @@ export const extraQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The inference would be warranted only if ____ .",
+    "prompt": "The inference would be warranted only if ____.",
     "options": [
       "plausible alternative explanations were adequately ruled out",
       "all evidence were deliberately ignored",

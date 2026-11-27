@@ -1721,7 +1721,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The service became ____ , operating at unpredictable intervals.",
+    "prompt": "The service became ____, operating at unpredictable intervals.",
     "options": [
       "erratic",
       "regular",
@@ -1755,7 +1755,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'erratic'?\n\nThe service became erratic , operating at unpredictable intervals.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'erratic'?\n\nThe service became erratic, operating at unpredictable intervals.",
     "options": [
       "regular",
       "irregular",
@@ -2044,7 +2044,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Despite the flood, the sealed collection remained ____ .",
+    "prompt": "Despite the flood, the sealed collection remained ____.",
     "options": [
       "intact",
       "damaged",
@@ -2061,7 +2061,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The archaeologists recovered a vessel that was completely ____ , without a single crack.",
+    "prompt": "The archaeologists recovered a vessel that was completely ____, without a single crack.",
     "options": [
       "intact",
       "damaged",
@@ -2078,7 +2078,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'intact'?\n\nDespite the flood, the sealed collection remained intact .",
+    "prompt": "In the following sentence, which option is closest in meaning to 'intact'?\n\nDespite the flood, the sealed collection remained intact.",
     "options": [
       "undamaged",
       "damaged",
@@ -2095,7 +2095,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'intact'?\n\nThe archaeologists recovered a vessel that was completely intact , without a single crack.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'intact'?\n\nThe archaeologists recovered a vessel that was completely intact, without a single crack.",
     "options": [
       "damaged",
       "undamaged",
@@ -2469,7 +2469,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The research collaboration proved ____ , resulting in numerous published findings.",
+    "prompt": "The research collaboration proved ____, resulting in numerous published findings.",
     "options": [
       "productive",
       "unproductive",
@@ -2503,7 +2503,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'productive'?\n\nThe research collaboration proved productive , resulting in numerous published findings.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'productive'?\n\nThe research collaboration proved productive, resulting in numerous published findings.",
     "options": [
       "unproductive",
       "fruitful",
@@ -2928,7 +2928,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Participation in the survey was entirely ____ , with no obligation to respond.",
+    "prompt": "Participation in the survey was entirely ____, with no obligation to respond.",
     "options": [
       "voluntary",
       "compulsory",
@@ -2962,7 +2962,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'voluntary'?\n\nParticipation in the survey was entirely voluntary , with no obligation to respond.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'voluntary'?\n\nParticipation in the survey was entirely voluntary, with no obligation to respond.",
     "options": [
       "optional",
       "compulsory",
@@ -2996,7 +2996,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The historian described the monk as ____ , consuming very little food or drink.",
+    "prompt": "The historian described the monk as ____, consuming very little food or drink.",
     "options": [
       "abstemious",
       "indulgent",
@@ -3030,7 +3030,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'abstemious'?\n\nThe historian described the monk as abstemious , consuming very little food or drink.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'abstemious'?\n\nThe historian described the monk as abstemious, consuming very little food or drink.",
     "options": [
       "temperate",
       "indulgent",
@@ -3064,7 +3064,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The negotiations became ____ , with both parties exchanging angry accusations.",
+    "prompt": "The negotiations became ____, with both parties exchanging angry accusations.",
     "options": [
       "acrimonious",
       "amicable",
@@ -3098,7 +3098,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'acrimonious'?\n\nThe negotiations became acrimonious , with both parties exchanging angry accusations.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'acrimonious'?\n\nThe negotiations became acrimonious, with both parties exchanging angry accusations.",
     "options": [
       "bitter",
       "amicable",
@@ -3404,7 +3404,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The monastery's interior was ____ , with plain walls and almost no decoration.",
+    "prompt": "The monastery's interior was ____, with plain walls and almost no decoration.",
     "options": [
       "austere",
       "ornate",
@@ -3438,7 +3438,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'austere'?\n\nThe monastery's interior was austere , with plain walls and almost no decoration.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'austere'?\n\nThe monastery's interior was austere, with plain walls and almost no decoration.",
     "options": [
       "unadorned",
       "ornate",
@@ -3965,7 +3965,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The animal proved ____ , repeatedly disappearing before observers could photograph it.",
+    "prompt": "The animal proved ____, repeatedly disappearing before observers could photograph it.",
     "options": [
       "elusive",
       "readily obtainable",
@@ -3999,7 +3999,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'elusive'?\n\nThe animal proved elusive , repeatedly disappearing before observers could photograph it.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'elusive'?\n\nThe animal proved elusive, repeatedly disappearing before observers could photograph it.",
     "options": [
       "readily obtainable",
       "hard to find",
@@ -4220,7 +4220,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The family was ____ , avoiding unnecessary purchases and carefully managing its income.",
+    "prompt": "The family was ____, avoiding unnecessary purchases and carefully managing its income.",
     "options": [
       "frugal",
       "extravagant",
@@ -4254,7 +4254,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'frugal'?\n\nThe family was frugal , avoiding unnecessary purchases and carefully managing its income.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'frugal'?\n\nThe family was frugal, avoiding unnecessary purchases and carefully managing its income.",
     "options": [
       "thrifty",
       "extravagant",
@@ -4288,7 +4288,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Attempts to restore the irretrievably destroyed records proved ____ .",
+    "prompt": "Attempts to restore the irretrievably destroyed records proved ____.",
     "options": [
       "futile",
       "effective",
@@ -4322,7 +4322,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'futile'?\n\nAttempts to restore the irretrievably destroyed records proved futile .",
+    "prompt": "In the following sentence, which option is closest in meaning to 'futile'?\n\nAttempts to restore the irretrievably destroyed records proved futile.",
     "options": [
       "fruitless",
       "effective",
@@ -4645,7 +4645,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The diners described the sauce as ____ , lacking any distinctive flavour.",
+    "prompt": "The diners described the sauce as ____, lacking any distinctive flavour.",
     "options": [
       "insipid",
       "flavourful",
@@ -4679,7 +4679,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'insipid'?\n\nThe diners described the sauce as insipid , lacking any distinctive flavour.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'insipid'?\n\nThe diners described the sauce as insipid, lacking any distinctive flavour.",
     "options": [
       "flavourful",
       "bland",
@@ -4917,7 +4917,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The patient appeared ____ , moving slowly and showing little energy.",
+    "prompt": "The patient appeared ____, moving slowly and showing little energy.",
     "options": [
       "lethargic",
       "energetic",
@@ -4951,7 +4951,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'lethargic'?\n\nThe patient appeared lethargic , moving slowly and showing little energy.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'lethargic'?\n\nThe patient appeared lethargic, moving slowly and showing little energy.",
     "options": [
       "energetic",
       "sluggish",
@@ -5444,7 +5444,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The lake was ____ , with almost no movement on its surface.",
+    "prompt": "The lake was ____, with almost no movement on its surface.",
     "options": [
       "placid",
       "turbulent",
@@ -5478,7 +5478,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'placid'?\n\nThe lake was placid , with almost no movement on its surface.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'placid'?\n\nThe lake was placid, with almost no movement on its surface.",
     "options": [
       "tranquil",
       "turbulent",
@@ -5733,7 +5733,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The experience proved ____ , prompting the organisation to correct its longstanding weaknesses.",
+    "prompt": "The experience proved ____, prompting the organisation to correct its longstanding weaknesses.",
     "options": [
       "salutary",
       "harmful",
@@ -5767,7 +5767,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'salutary'?\n\nThe experience proved salutary , prompting the organisation to correct its longstanding weaknesses.",
+    "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'salutary'?\n\nThe experience proved salutary, prompting the organisation to correct its longstanding weaknesses.",
     "options": [
       "harmful",
       "beneficial",
@@ -6192,7 +6192,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The market was highly ____ , with prices changing sharply from one day to the next.",
+    "prompt": "The market was highly ____, with prices changing sharply from one day to the next.",
     "options": [
       "volatile",
       "stable",
@@ -6226,7 +6226,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'volatile'?\n\nThe market was highly volatile , with prices changing sharply from one day to the next.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'volatile'?\n\nThe market was highly volatile, with prices changing sharply from one day to the next.",
     "options": [
       "unstable",
       "stable",

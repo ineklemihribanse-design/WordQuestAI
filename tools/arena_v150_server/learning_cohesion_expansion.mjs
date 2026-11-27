@@ -2741,7 +2741,7 @@ export const cohesionExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Greater heterogeneity complicates pooling; ____ , comparable populations may facilitate it.",
+    "prompt": "Greater heterogeneity complicates pooling; ____, comparable populations may facilitate it.",
     "options": [
       "conversely",
       "accordingly",
@@ -2758,7 +2758,7 @@ export const cohesionExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Stronger evidence may justify confidence; ____ , weaker evidence warrants caution.",
+    "prompt": "Stronger evidence may justify confidence; ____, weaker evidence warrants caution.",
     "options": [
       "conversely",
       "accordingly",
@@ -2775,7 +2775,7 @@ export const cohesionExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "More independent observations may distinguish models; ____ , restricting observations may preserve ambiguity.",
+    "prompt": "More independent observations may distinguish models; ____, restricting observations may preserve ambiguity.",
     "options": [
       "conversely",
       "accordingly",

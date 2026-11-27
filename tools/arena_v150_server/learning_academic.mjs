@@ -3174,7 +3174,7 @@ export const collocationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Since the reservoir is almost empty, residents must use water ____ .",
+    "prompt": "Since the reservoir is almost empty, residents must use water ____.",
     "options": [
       "sparingly",
       "freely",
@@ -3590,7 +3590,7 @@ export const collocationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In 'The government allocated additional funds', allocated most nearly means ____ .",
+    "prompt": "In 'The government allocated additional funds', allocated most nearly means ____.",
     "options": [
       "assigned",
       "withheld",
@@ -3606,7 +3606,7 @@ export const collocationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In 'The method proved feasible', feasible most nearly means ____ .",
+    "prompt": "In 'The method proved feasible', feasible most nearly means ____.",
     "options": [
       "practicable",
       "unworkable",
@@ -3894,7 +3894,7 @@ export const collocationQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In 'The evidence was compelling', compelling most nearly means ____ .",
+    "prompt": "In 'The evidence was compelling', compelling most nearly means ____.",
     "options": [
       "convincing",
       "negligible",
@@ -3910,7 +3910,7 @@ export const collocationQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In 'The policy was implemented piecemeal', piecemeal most nearly means ____ .",
+    "prompt": "In 'The policy was implemented piecemeal', piecemeal most nearly means ____.",
     "options": [
       "in separate stages",
       "all at once",
@@ -4006,7 +4006,7 @@ export const collocationQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Synonym",
-    "prompt": "In 'The author deliberately equivocated', equivocated most nearly means ____ .",
+    "prompt": "In 'The author deliberately equivocated', equivocated most nearly means ____.",
     "options": [
       "used deliberately ambiguous language",
       "gave a precise definition",

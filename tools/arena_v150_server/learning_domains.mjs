@@ -3255,7 +3255,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The researchers adjusted the instrument against a known reference before taking measurements. This process is called ____ .",
+    "prompt": "The researchers adjusted the instrument against a known reference before taking measurements. This process is called ____.",
     "options": [
       "calibration",
       "diffusion",
@@ -3271,7 +3271,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The liquid used to dissolve the solid substance acted as a ____ .",
+    "prompt": "The liquid used to dissolve the solid substance acted as a ____.",
     "options": [
       "solvent",
       "substrate",
@@ -3335,7 +3335,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "A substance that speeds up a chemical reaction without being consumed overall is a ____ .",
+    "prompt": "A substance that speeds up a chemical reaction without being consumed overall is a ____.",
     "options": [
       "catalyst",
       "solvent",
@@ -3351,7 +3351,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The visible characteristics of an organism, resulting from genes and environment, constitute its ____ .",
+    "prompt": "The visible characteristics of an organism, resulting from genes and environment, constitute its ____.",
     "options": [
       "phenotype",
       "genotype",
@@ -3367,7 +3367,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The gradual replacement of one ecological community by another is called ____ .",
+    "prompt": "The gradual replacement of one ecological community by another is called ____.",
     "options": [
       "succession",
       "predation",
@@ -3383,7 +3383,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The association between coffee intake and the outcome disappeared after adjustment for smoking, a potential ____ .",
+    "prompt": "The association between coffee intake and the outcome disappeared after adjustment for smoking, a potential ____.",
     "options": [
       "confounder",
       "endpoint",
@@ -3399,7 +3399,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Estimating the value of a function between two observed data points is an example of ____ .",
+    "prompt": "Estimating the value of a function between two observed data points is an example of ____.",
     "options": [
       "interpolation",
       "extrapolation",
@@ -3415,7 +3415,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The investigators warned that predictions outside the observed temperature range involved uncertain ____ .",
+    "prompt": "The investigators warned that predictions outside the observed temperature range involved uncertain ____.",
     "options": [
       "extrapolation",
       "interpolation",
@@ -3431,7 +3431,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "When the same input produces different responses depending on the system's previous state, the phenomenon is termed ____ .",
+    "prompt": "When the same input produces different responses depending on the system's previous state, the phenomenon is termed ____.",
     "options": [
       "hysteresis",
       "isotropy",
@@ -3447,7 +3447,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A material whose physical properties vary with the direction of measurement exhibits ____ .",
+    "prompt": "A material whose physical properties vary with the direction of measurement exhibits ____.",
     "options": [
       "anisotropy",
       "isotropy",
@@ -3479,7 +3479,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The study could not be challenged by any conceivable observation, raising concerns about its scientific ____ .",
+    "prompt": "The study could not be challenged by any conceivable observation, raising concerns about its scientific ____.",
     "options": [
       "falsifiability",
       "granularity",
@@ -3495,7 +3495,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The doctor ordered additional tests to establish the cause of the symptoms and make an accurate ____ .",
+    "prompt": "The doctor ordered additional tests to establish the cause of the symptoms and make an accurate ____.",
     "options": [
       "diagnosis",
       "dosage",
@@ -3575,7 +3575,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The clinician discussed the patient's ____ , explaining the likely course of recovery.",
+    "prompt": "The clinician discussed the patient's ____, explaining the likely course of recovery.",
     "options": [
       "prognosis",
       "symptom",
@@ -3591,7 +3591,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The number of newly diagnosed cases during a specified period is used to calculate disease ____ .",
+    "prompt": "The number of newly diagnosed cases during a specified period is used to calculate disease ____.",
     "options": [
       "incidence",
       "prevalence",
@@ -3607,7 +3607,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A survey counted all existing cases in a population on a particular date to estimate ____ .",
+    "prompt": "A survey counted all existing cases in a population on a particular date to estimate ____.",
     "options": [
       "prevalence",
       "incidence",
@@ -3623,7 +3623,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The presence of diabetes alongside the primary condition was recorded as a ____ .",
+    "prompt": "The presence of diabetes alongside the primary condition was recorded as a ____.",
     "options": [
       "comorbidity",
       "contraindication",
@@ -3639,7 +3639,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The proportion of an administered drug that reaches systemic circulation unchanged is its ____ .",
+    "prompt": "The proportion of an administered drug that reaches systemic circulation unchanged is its ____.",
     "options": [
       "bioavailability",
       "immunogenicity",
@@ -3655,7 +3655,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The researchers studied how the body absorbed, distributed and eliminated the drug, focusing on ____ .",
+    "prompt": "The researchers studied how the body absorbed, distributed and eliminated the drug, focusing on ____.",
     "options": [
       "pharmacokinetics",
       "histology",
@@ -3671,7 +3671,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A small tissue sample was removed for microscopic examination in a procedure known as a ____ .",
+    "prompt": "A small tissue sample was removed for microscopic examination in a procedure known as a ____.",
     "options": [
       "biopsy",
       "referral",
@@ -3687,7 +3687,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The medication's ability to achieve the intended effect under controlled trial conditions is its ____ .",
+    "prompt": "The medication's ability to achieve the intended effect under controlled trial conditions is its ____.",
     "options": [
       "efficacy",
       "prevalence",
@@ -3703,7 +3703,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "When government spending exceeds government revenue, the budget records a ____ .",
+    "prompt": "When government spending exceeds government revenue, the budget records a ____.",
     "options": [
       "deficit",
       "surplus",
@@ -3735,7 +3735,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The firm struggled to convert its assets into cash quickly, revealing a problem with ____ .",
+    "prompt": "The firm struggled to convert its assets into cash quickly, revealing a problem with ____.",
     "options": [
       "liquidity",
       "inflation",
@@ -3767,7 +3767,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Shareholders received a portion of the company's profits in the form of a ____ .",
+    "prompt": "Shareholders received a portion of the company's profits in the form of a ____.",
     "options": [
       "dividend",
       "tariff",
@@ -3783,7 +3783,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The decline in the machine's recorded value over its useful life is called ____ .",
+    "prompt": "The decline in the machine's recorded value over its useful life is called ____.",
     "options": [
       "depreciation",
       "appreciation",
@@ -3799,7 +3799,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A market dominated by only a few large sellers is characterised as an ____ .",
+    "prompt": "A market dominated by only a few large sellers is characterised as an ____.",
     "options": [
       "oligopoly",
       "monopsony",
@@ -3815,7 +3815,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Buying an asset in one market and simultaneously selling an equivalent asset at a higher price in another illustrates ____ .",
+    "prompt": "Buying an asset in one market and simultaneously selling an equivalent asset at a higher price in another illustrates ____.",
     "options": [
       "arbitrage",
       "amortisation",
@@ -3831,7 +3831,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The economic cost of pollution borne by people outside the transaction is a negative ____ .",
+    "prompt": "The economic cost of pollution borne by people outside the transaction is a negative ____.",
     "options": [
       "externality",
       "dividend",
@@ -3847,7 +3847,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "High inflation combined with stagnant economic output is often described as ____ .",
+    "prompt": "High inflation combined with stagnant economic output is often described as ____.",
     "options": [
       "stagflation",
       "disinflation",
@@ -3863,7 +3863,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The annual inflation rate fell from eight percent to four percent, although prices continued to rise. This is an example of ____ .",
+    "prompt": "The annual inflation rate fell from eight percent to four percent, although prices continued to rise. This is an example of ____.",
     "options": [
       "disinflation",
       "deflation",
@@ -3879,7 +3879,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A company spread its investments across unrelated sectors to reduce exposure to a single market. This is ____ .",
+    "prompt": "A company spread its investments across unrelated sectors to reduce exposure to a single market. This is ____.",
     "options": [
       "diversification",
       "securitisation",
@@ -3911,7 +3911,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The court heard a statement from a person who had directly observed the incident. The person was a ____ .",
+    "prompt": "The court heard a statement from a person who had directly observed the incident. The person was a ____.",
     "options": [
       "witness",
       "plaintiff",
@@ -3927,7 +3927,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The new law allowed certain small organisations to avoid the requirement through an ____ .",
+    "prompt": "The new law allowed certain small organisations to avoid the requirement through an ____.",
     "options": [
       "exemption",
       "offence",
@@ -3943,7 +3943,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The company obtained exclusive rights to an invention through a ____ .",
+    "prompt": "The company obtained exclusive rights to an invention through a ____.",
     "options": [
       "patent",
       "trademark",
@@ -4007,7 +4007,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "An independent third party issued a binding decision after hearing both sides under an agreed private procedure known as ____ .",
+    "prompt": "An independent third party issued a binding decision after hearing both sides under an agreed private procedure known as ____.",
     "options": [
       "arbitration",
       "mediation",
@@ -4023,7 +4023,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The legislature voted to remove the existing law from the statute book, formally approving its ____ .",
+    "prompt": "The legislature voted to remove the existing law from the statute book, formally approving its ____.",
     "options": [
       "repeal",
       "enactment",
@@ -4039,7 +4039,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The judge withdrew from the case because of a possible conflict of interest; this was a ____ .",
+    "prompt": "The judge withdrew from the case because of a possible conflict of interest; this was a ____.",
     "options": [
       "recusal",
       "conviction",
@@ -4055,7 +4055,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The defendant was found not guilty, resulting in an ____ .",
+    "prompt": "The defendant was found not guilty, resulting in an ____.",
     "options": [
       "acquittal",
       "conviction",
@@ -4071,7 +4071,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The time taken for a network request to receive a response is its ____ .",
+    "prompt": "The time taken for a network request to receive a response is its ____.",
     "options": [
       "latency",
       "bandwidth",
@@ -4087,7 +4087,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The system verified the user's identity before deciding which resources the account could access. The first step was ____ .",
+    "prompt": "The system verified the user's identity before deciding which resources the account could access. The first step was ____.",
     "options": [
       "authentication",
       "authorisation",
@@ -4103,7 +4103,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The application converted sensitive information into a form unreadable without the appropriate key using ____ .",
+    "prompt": "The application converted sensitive information into a form unreadable without the appropriate key using ____.",
     "options": [
       "encryption",
       "compression",
@@ -4119,7 +4119,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The download was checked against a calculated value to detect accidental corruption. This value was a ____ .",
+    "prompt": "The download was checked against a calculated value to detect accidental corruption. This value was a ____.",
     "options": [
       "checksum",
       "credential",
@@ -4135,7 +4135,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "When the main server stopped responding, the standby server automatically took over through ____ .",
+    "prompt": "When the main server stopped responding, the standby server automatically took over through ____.",
     "options": [
       "failover",
       "compression",
@@ -4151,7 +4151,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The browser stored a local copy of frequently requested resources in its ____ .",
+    "prompt": "The browser stored a local copy of frequently requested resources in its ____.",
     "options": [
       "cache",
       "protocol",
@@ -4167,7 +4167,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The application continued to serve more users after additional computing resources were added, demonstrating ____ .",
+    "prompt": "The application continued to serve more users after additional computing resources were added, demonstrating ____.",
     "options": [
       "scalability",
       "confidentiality",
@@ -4183,7 +4183,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The service returned the same effective result when an identical request was repeated, without repeating its side effect. This property is ____ .",
+    "prompt": "The service returned the same effective result when an identical request was repeated, without repeating its side effect. This property is ____.",
     "options": [
       "idempotence",
       "concurrency",
@@ -4199,7 +4199,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The database distributed different subsets of its records across separate servers using ____ .",
+    "prompt": "The database distributed different subsets of its records across separate servers using ____.",
     "options": [
       "sharding",
       "replication",
@@ -4215,7 +4215,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The system deliberately restricted incoming requests to protect its resources during traffic peaks; this is known as ____ .",
+    "prompt": "The system deliberately restricted incoming requests to protect its resources during traffic peaks; this is known as ____.",
     "options": [
       "throttling",
       "rendering",
@@ -4231,7 +4231,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Two independently developed systems could exchange data and use it correctly, demonstrating ____ .",
+    "prompt": "Two independently developed systems could exchange data and use it correctly, demonstrating ____.",
     "options": [
       "interoperability",
       "obfuscation",
@@ -4247,7 +4247,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Repeated copies of the same record were identified and removed during ____ .",
+    "prompt": "Repeated copies of the same record were identified and removed during ____.",
     "options": [
       "deduplication",
       "replication",
@@ -4263,7 +4263,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The philosopher examined what qualifies a belief as knowledge, an issue central to ____ .",
+    "prompt": "The philosopher examined what qualifies a belief as knowledge, an issue central to ____.",
     "options": [
       "epistemology",
       "ontology",
@@ -4279,7 +4279,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The debate concerned which kinds of entities actually exist, a question of ____ .",
+    "prompt": "The debate concerned which kinds of entities actually exist, a question of ____.",
     "options": [
       "ontology",
       "epidemiology",
@@ -4311,7 +4311,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Different initial conditions and developmental pathways led to the same final outcome, demonstrating ____ .",
+    "prompt": "Different initial conditions and developmental pathways led to the same final outcome, demonstrating ____.",
     "options": [
       "equifinality",
       "anisotropy",
@@ -4327,7 +4327,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Treating an abstract statistical construct as if it were a concrete entity is an example of ____ .",
+    "prompt": "Treating an abstract statistical construct as if it were a concrete entity is an example of ____.",
     "options": [
       "reification",
       "interpolation",
@@ -4359,7 +4359,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The two algebraic structures were related by a bijection preserving their operations, establishing an ____ .",
+    "prompt": "The two algebraic structures were related by a bijection preserving their operations, establishing an ____.",
     "options": [
       "isomorphism",
       "asymptote",
@@ -4375,7 +4375,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A continuous bijection with a continuous inverse between two topological spaces is called a ____ .",
+    "prompt": "A continuous bijection with a continuous inverse between two topological spaces is called a ____.",
     "options": [
       "homeomorphism",
       "discontinuity",
@@ -4391,7 +4391,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The wetland became increasingly unsuitable for freshwater species as irrigation caused soil ____ .",
+    "prompt": "The wetland became increasingly unsuitable for freshwater species as irrigation caused soil ____.",
     "options": [
       "salinization",
       "sedimentation",
@@ -4423,7 +4423,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A decline in the inflation rate from 8% to 3%, while prices continue rising, is an example of ____ .",
+    "prompt": "A decline in the inflation rate from 8% to 3%, while prices continue rising, is an example of ____.",
     "options": [
       "disinflation",
       "deflation",
@@ -4439,7 +4439,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A fishing method that unintentionally captures turtles creates a significant problem of ____ .",
+    "prompt": "A fishing method that unintentionally captures turtles creates a significant problem of ____.",
     "options": [
       "bycatch",
       "upwelling",
@@ -4487,7 +4487,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The reasoning initially appeared convincing, but its central premise was false; the argument was therefore ____ .",
+    "prompt": "The reasoning initially appeared convincing, but its central premise was false; the argument was therefore ____.",
     "options": [
       "specious",
       "irrefutable",
@@ -4519,7 +4519,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The organisation was criticised for appointing relatives rather than selecting candidates on merit; the practice is known as ____ .",
+    "prompt": "The organisation was criticised for appointing relatives rather than selecting candidates on merit; the practice is known as ____.",
     "options": [
       "nepotism",
       "pluralism",
@@ -4535,7 +4535,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "After flooding destroyed their farmland, many families lost their primary ____ .",
+    "prompt": "After flooding destroyed their farmland, many families lost their primary ____.",
     "options": [
       "livelihood",
       "citizenship",
@@ -4615,7 +4615,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The intervention reduced average waiting times. ____ , its effect was negligible in remote districts.",
+    "prompt": "The intervention reduced average waiting times. ____, its effect was negligible in remote districts.",
     "options": [
       "However",
       "Consequently",
@@ -4647,7 +4647,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Unless the findings can be reproduced under comparable conditions, ____ .",
+    "prompt": "Unless the findings can be reproduced under comparable conditions, ____.",
     "options": [
       "the proposed explanation should be treated with caution",
       "their validity is established beyond doubt",
@@ -4663,7 +4663,7 @@ export const domainQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Although the categories are analytically useful, ____ .",
+    "prompt": "Although the categories are analytically useful, ____.",
     "options": [
       "their boundaries may be less distinct in practice",
       "they must be universally applicable by definition",
@@ -4759,7 +4759,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The experiment used a measured portion of the original solution rather than the entire sample. This portion is called an ____ .",
+    "prompt": "The experiment used a measured portion of the original solution rather than the entire sample. This portion is called an ____.",
     "options": [
       "aliquot",
       "eluent",
@@ -4791,7 +4791,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The vaccine must be stored at a controlled temperature; ____ , it may lose effectiveness.",
+    "prompt": "The vaccine must be stored at a controlled temperature; ____, it may lose effectiveness.",
     "options": [
       "otherwise",
       "likewise",

@@ -2860,7 +2860,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The preliminary survey excluded households without internet access. Therefore, ____ .",
+    "prompt": "The preliminary survey excluded households without internet access. Therefore, ____.",
     "options": [
       "its results should not be treated as representative of all households",
       "the sample necessarily represents all households",
@@ -2877,7 +2877,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The new equipment reduced electricity consumption but required more frequent maintenance. Consequently, ____ .",
+    "prompt": "The new equipment reduced electricity consumption but required more frequent maintenance. Consequently, ____.",
     "options": [
       "both energy savings and maintenance costs must be included in an economic comparison",
       "the reduction in electricity use guarantees lower overall costs",
@@ -2894,7 +2894,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The local bus service runs more frequently during the day than in the evening. As a result, ____ .",
+    "prompt": "The local bus service runs more frequently during the day than in the evening. As a result, ____.",
     "options": [
       "workers returning home late may still experience long waits",
       "daytime passengers necessarily wait longer than evening passengers",
@@ -2911,7 +2911,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The researchers used two different instruments to measure the same quantity. Since neither instrument had been independently calibrated, ____ .",
+    "prompt": "The researchers used two different instruments to measure the same quantity. Since neither instrument had been independently calibrated, ____.",
     "options": [
       "agreement between their readings could not establish absolute accuracy",
       "agreement would conclusively demonstrate accuracy",
@@ -2928,7 +2928,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The museum offered free entry during hours when many potential visitors were at work. To improve access, ____ .",
+    "prompt": "The museum offered free entry during hours when many potential visitors were at work. To improve access, ____.",
     "options": [
       "it introduced additional free admission periods outside typical working hours",
       "it restricted all free admission to the same working hours",
@@ -2945,7 +2945,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The new system classifies routine requests automatically. However, ____ .",
+    "prompt": "The new system classifies routine requests automatically. However, ____.",
     "options": [
       "cases that do not fit the predefined categories may still require manual review",
       "every exceptional request is automatically resolved with complete accuracy",
@@ -2962,7 +2962,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "A severe drought reduced the amount of water available for irrigation. Unless rainfall increases, ____ .",
+    "prompt": "A severe drought reduced the amount of water available for irrigation. Unless rainfall increases, ____.",
     "options": [
       "farmers may need to reduce their water consumption",
       "water availability will necessarily rise",
@@ -2979,7 +2979,7 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "The archive scanned handwritten letters but did not preserve their physical originals. As a result, ____ .",
+    "prompt": "The archive scanned handwritten letters but did not preserve their physical originals. As a result, ____.",
     "options": [
       "some information about paper and ink may no longer be recoverable",
       "every physical characteristic can necessarily be examined in the scans",
@@ -2996,7 +2996,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The study reported a statistically significant association after adjustment for several observed variables. Nevertheless, ____ .",
+    "prompt": "The study reported a statistically significant association after adjustment for several observed variables. Nevertheless, ____.",
     "options": [
       "unmeasured confounders could still account for part of the relationship",
       "the association must be entirely causal",
@@ -3013,7 +3013,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Because the two studies used different thresholds to define successful recovery, ____ .",
+    "prompt": "Because the two studies used different thresholds to define successful recovery, ____.",
     "options": [
       "their success rates may reflect measurement differences rather than treatment differences alone",
       "the reported rates can be directly compared without qualification",
@@ -3030,7 +3030,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The intervention improved the monitored outcome in the short term. Given the absence of follow-up data, ____ .",
+    "prompt": "The intervention improved the monitored outcome in the short term. Given the absence of follow-up data, ____.",
     "options": [
       "its longer-term benefits cannot yet be established",
       "the benefits must persist indefinitely",
@@ -3047,7 +3047,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The authors distinguished between the formal rules and the practices observed in the field. This distinction mattered because ____ .",
+    "prompt": "The authors distinguished between the formal rules and the practices observed in the field. This distinction mattered because ____.",
     "options": [
       "institutions following the same written rules could implement them differently",
       "formal rules necessarily determine identical behaviour",
@@ -3064,7 +3064,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The survey instrument performed well in the group for which it was originally designed. Before it is used with a different population, ____ .",
+    "prompt": "The survey instrument performed well in the group for which it was originally designed. Before it is used with a different population, ____.",
     "options": [
       "its validity in the new context should be independently assessed",
       "its original performance must be assumed to generalise",
@@ -3081,7 +3081,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The policy reduced energy consumption in one industrial sector while increasing it elsewhere. To assess its overall effect, ____ .",
+    "prompt": "The policy reduced energy consumption in one industrial sector while increasing it elsewhere. To assess its overall effect, ____.",
     "options": [
       "changes in consumption across the affected sectors must be considered together",
       "only the reduction in the targeted sector should be counted",
@@ -3098,7 +3098,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The revised estimate was based on a larger sample drawn using the same biased selection procedure. Thus, ____ .",
+    "prompt": "The revised estimate was based on a larger sample drawn using the same biased selection procedure. Thus, ____.",
     "options": [
       "its increased precision need not imply reduced selection bias",
       "larger sample size necessarily eliminates selection bias",
@@ -3115,7 +3115,7 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The authors presented several possible explanations for the unexpected result. Since the available observations were consistent with all of them, ____ .",
+    "prompt": "The authors presented several possible explanations for the unexpected result. Since the available observations were consistent with all of them, ____.",
     "options": [
       "additional evidence capable of distinguishing the explanations was required",
       "one explanation was uniquely established by the observations",
@@ -3132,7 +3132,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The estimate remained stable when the weights assigned to existing indicators were varied. Yet the analysis excluded an entire dimension of the intended construct. Consequently, ____ .",
+    "prompt": "The estimate remained stable when the weights assigned to existing indicators were varied. Yet the analysis excluded an entire dimension of the intended construct. Consequently, ____.",
     "options": [
       "robustness to weighting choices could not settle the question of conceptual adequacy",
       "the stable estimate established complete coverage of the construct",
@@ -3149,7 +3149,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Two models generated the same predicted pattern from fundamentally different mechanisms. If observations were restricted to that pattern, ____ .",
+    "prompt": "Two models generated the same predicted pattern from fundamentally different mechanisms. If observations were restricted to that pattern, ____.",
     "options": [
       "the data could not uniquely identify the mechanism responsible",
       "one mechanism would necessarily be established as correct",
@@ -3166,7 +3166,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The apparent effect of an intervention coincided with a change in the definition of the measured outcome. Before attributing the discontinuity to the intervention, ____ .",
+    "prompt": "The apparent effect of an intervention coincided with a change in the definition of the measured outcome. Before attributing the discontinuity to the intervention, ____.",
     "options": [
       "the analysts would need to establish comparability across the reporting change",
       "the change in outcome definition should be treated as irrelevant",
@@ -3183,7 +3183,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The proposed distinction remained theoretically intelligible but could not be applied consistently to independent cases. Unless the operational criteria were refined, ____ .",
+    "prompt": "The proposed distinction remained theoretically intelligible but could not be applied consistently to independent cases. Unless the operational criteria were refined, ____.",
     "options": [
       "its empirical explanatory value would remain difficult to assess",
       "its empirical usefulness would be conclusively established",
@@ -3200,7 +3200,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "A numerical target was intended to encourage institutional quality, but staff adapted their behaviour to maximise the score. To determine whether quality itself improved, ____ .",
+    "prompt": "A numerical target was intended to encourage institutional quality, but staff adapted their behaviour to maximise the score. To determine whether quality itself improved, ____.",
     "options": [
       "the evaluation would need evidence beyond changes in the rewarded indicator",
       "the indicator's increase would be sufficient by definition",
@@ -3217,7 +3217,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The conclusion followed deductively from the stated premises. However, the premises had not been independently substantiated. Hence, ____ .",
+    "prompt": "The conclusion followed deductively from the stated premises. However, the premises had not been independently substantiated. Hence, ____.",
     "options": [
       "the validity of the inference did not establish the empirical truth of its conclusion",
       "the conclusion had to be empirically true because the deduction was valid",
@@ -3234,7 +3234,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The aggregate effect was modest because positive and negative subgroup effects partly cancelled each other out. Therefore, ____ .",
+    "prompt": "The aggregate effect was modest because positive and negative subgroup effects partly cancelled each other out. Therefore, ____.",
     "options": [
       "the overall estimate alone could obscure consequential differences between subgroups",
       "the intervention necessarily had a modest effect in every subgroup",
@@ -3251,7 +3251,7 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The model's parameters were estimated from observations confined to a narrow range of conditions. Even if the model fitted those observations closely, ____ .",
+    "prompt": "The model's parameters were estimated from observations confined to a narrow range of conditions. Even if the model fitted those observations closely, ____.",
     "options": [
       "its behaviour outside that range would remain a matter requiring independent evaluation",
       "its extrapolations would necessarily be reliable under all conditions",

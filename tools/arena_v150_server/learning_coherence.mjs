@@ -463,7 +463,7 @@ export const coherenceQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a new teaching method found a modest improvement in test scores. The investigators noted, however, that the participating schools had volunteered. This may have introduced selection ____ . A subsequent study would need to control for differences between schools. Until such evidence is available, causal claims should remain provisional.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a new teaching method found a modest improvement in test scores. The investigators noted, however, that the participating schools had volunteered. This may have introduced selection ____. A subsequent study would need to control for differences between schools. Until such evidence is available, causal claims should remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "bias",
       "rigour",
@@ -480,7 +480,7 @@ export const coherenceQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a new teaching method found a modest improvement in test scores. The investigators noted, however, that the participating schools had volunteered. This may have introduced selection bias . A subsequent study would need to control ____ differences between schools. Until such evidence is available, causal claims should remain provisional.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a new teaching method found a modest improvement in test scores. The investigators noted, however, that the participating schools had volunteered. This may have introduced selection bias. A subsequent study would need to control ____ differences between schools. Until such evidence is available, causal claims should remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "for",
       "into",
@@ -497,7 +497,7 @@ export const coherenceQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An evaluation of a new teaching method found a modest improvement in test scores. The investigators noted, however, that the participating schools had volunteered. This may have introduced selection bias . A subsequent study would need to control for differences between schools. Until such evidence is available, causal claims should remain ____.\n\nChoose the best option for the blank.",
+    "prompt": "An evaluation of a new teaching method found a modest improvement in test scores. The investigators noted, however, that the participating schools had volunteered. This may have introduced selection bias. A subsequent study would need to control for differences between schools. Until such evidence is available, causal claims should remain ____.\n\nChoose the best option for the blank.",
     "options": [
       "provisional",
       "irrefutable",
@@ -616,7 +616,7 @@ export const coherenceQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A local park installed more benches along its walking paths. ____ . As a result, older visitors could rest during longer walks.",
+    "prompt": "A local park installed more benches along its walking paths. ____. As a result, older visitors could rest during longer walks.",
     "options": [
       "The benches were placed at regular intervals.",
       "The park removed all seating.",
@@ -680,7 +680,7 @@ export const coherenceQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "Urban trees provide shade and reduce the amount of heat absorbed by paved surfaces. ____ . Their benefits, however, depend on species selection and long-term maintenance.",
+    "prompt": "Urban trees provide shade and reduce the amount of heat absorbed by paved surfaces. ____. Their benefits, however, depend on species selection and long-term maintenance.",
     "options": [
       "They can therefore help moderate local temperatures during hot weather.",
       "Trees invariably increase surface temperatures.",
@@ -696,7 +696,7 @@ export const coherenceQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "The digital archive made rare manuscripts accessible to readers in distant locations. ____ . For this reason, the institution continued to preserve the originals under controlled conditions.",
+    "prompt": "The digital archive made rare manuscripts accessible to readers in distant locations. ____. For this reason, the institution continued to preserve the originals under controlled conditions.",
     "options": [
       "Digital copies cannot fully reproduce every physical feature of a manuscript.",
       "The manuscripts had never existed in physical form.",
@@ -792,7 +792,7 @@ export const coherenceQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study reported an association between urban green space and lower stress levels. ____ . Consequently, the authors recommended a design that would account for residential self-selection.",
+    "prompt": "A study reported an association between urban green space and lower stress levels. ____. Consequently, the authors recommended a design that would account for residential self-selection.",
     "options": [
       "People who prefer quieter surroundings may also be more likely to choose greener neighbourhoods.",
       "The study compared several methods of measuring stress but did not report their relative cost.",
@@ -808,7 +808,7 @@ export const coherenceQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A model calibrated using historical observations may accurately reproduce previous outcomes. ____ . Independent evaluation under different conditions is therefore essential before relying on its predictions.",
+    "prompt": "A model calibrated using historical observations may accurately reproduce previous outcomes. ____. Independent evaluation under different conditions is therefore essential before relying on its predictions.",
     "options": [
       "Such agreement does not guarantee that it will perform equally well in unfamiliar circumstances.",
       "Historical observations can be used to compare the costs of alternative model specifications.",
@@ -872,7 +872,7 @@ export const coherenceQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Two instruments may yield highly correlated scores without being interchangeable. ____ . Agreement between measurements must therefore be assessed separately from correlation.",
+    "prompt": "Two instruments may yield highly correlated scores without being interchangeable. ____. Agreement between measurements must therefore be assessed separately from correlation.",
     "options": [
       "A systematic difference between the instruments can persist even when their readings vary together.",
       "Both instruments may have been calibrated using samples of different sizes.",

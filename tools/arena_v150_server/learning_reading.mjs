@@ -1052,7 +1052,7 @@ export const readingQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "A person who delivers letters is a ____ .",
+    "prompt": "A person who delivers letters is a ____.",
     "options": [
       "postal worker",
       "dentist",
@@ -1068,7 +1068,7 @@ export const readingQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The shop is not open today. It is ____ .",
+    "prompt": "The shop is not open today. It is ____.",
     "options": [
       "closed",
       "crowded",

@@ -174,7 +174,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed ____ visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more accessible .\n\nChoose the best option for the blank.",
+    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed ____ visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more accessible.\n\nChoose the best option for the blank.",
     "options": [
       "for",
       "onto",
@@ -191,7 +191,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features ____ using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more accessible .\n\nChoose the best option for the blank.",
+    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features ____ using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more accessible.\n\nChoose the best option for the blank.",
     "options": [
       "without",
       "although",
@@ -208,7 +208,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones ____ the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more accessible .\n\nChoose the best option for the blank.",
+    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones ____ the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more accessible.\n\nChoose the best option for the blank.",
     "options": [
       "at",
       "onto",
@@ -225,7 +225,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings ____ feedback from visitors. The aim is to make the collection more accessible .\n\nChoose the best option for the blank.",
+    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings ____ feedback from visitors. The aim is to make the collection more accessible.\n\nChoose the best option for the blank.",
     "options": [
       "in response to",
       "instead of",
@@ -242,7 +242,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more ____ .\n\nChoose the best option for the blank.",
+    "prompt": "A museum has begun offering audio descriptions of artworks. The recordings are designed for visitors who cannot easily read labels. Each description explains the main features without using unnecessary technical language. Visitors can borrow headphones at the entrance. The museum plans to improve the recordings in response to feedback from visitors. The aim is to make the collection more ____.\n\nChoose the best option for the blank.",
     "options": [
       "accessible",
       "exclusive",
@@ -259,7 +259,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment ____ one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment safely . The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
+    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment ____ one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment safely. The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
     "options": [
       "for",
       "since",
@@ -276,7 +276,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid ____ expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment safely . The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
+    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid ____ expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment safely. The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
     "options": [
       "buying",
       "to buy",
@@ -293,7 +293,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool ____ before being lent to another member. Volunteers explain how to use unfamiliar equipment safely . The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
+    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool ____ before being lent to another member. Volunteers explain how to use unfamiliar equipment safely. The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
     "options": [
       "is checked",
       "checks",
@@ -310,7 +310,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment ____ . The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
+    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment ____. The project will continue provided that sufficient volunteers are available.\n\nChoose the best option for the blank.",
     "options": [
       "safely",
       "dangerously",
@@ -327,7 +327,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment safely . The project will continue ____ sufficient volunteers are available.\n\nChoose the best option for the blank.",
+    "prompt": "A neighbourhood group established a tool library after a survey showed that residents rarely used many of the tools they owned. Members can borrow equipment for one week. The scheme helps households avoid buying expensive items for occasional tasks. Each tool is checked before being lent to another member. Volunteers explain how to use unfamiliar equipment safely. The project will continue ____ sufficient volunteers are available.\n\nChoose the best option for the blank.",
     "options": [
       "provided that",
       "although",
@@ -854,7 +854,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed ____ the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative . Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed ____ the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative. Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "in",
       "onto",
@@ -871,7 +871,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might ____ meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative . Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might ____ meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative. Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "obscure",
       "clarify",
@@ -888,7 +888,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more ____ . Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more ____. Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "informative",
       "arbitrary",
@@ -905,7 +905,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative . Observational findings could not establish causality ____ alternative explanations were excluded. The conclusions remain provisional .\n\nChoose the best option for the blank.",
+    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative. Observational findings could not establish causality ____ alternative explanations were excluded. The conclusions remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "unless",
       "because",
@@ -922,7 +922,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative . Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain ____ .\n\nChoose the best option for the blank.",
+    "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative. Observational findings could not establish causality unless alternative explanations were excluded. The conclusions remain ____.\n\nChoose the best option for the blank.",
     "options": [
       "provisional",
       "irrevocable",
@@ -939,7 +939,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees ____ worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted .\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees ____ worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "who",
       "which",
@@ -956,7 +956,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted .\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "validate",
       "invalidate deliberately",
@@ -973,7 +973,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, ____ complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted .\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, ____ complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "thereby",
       "nevertheless",
@@ -990,7 +990,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be ____ merely because an instrument performed well in one setting. Further validation is therefore warranted .\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be ____ merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "assumed",
       "refuted",
@@ -1007,7 +1007,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore ____ .\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To validate the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore ____.\n\nChoose the best option for the blank.",
     "options": [
       "warranted",
       "superfluous",
@@ -1279,7 +1279,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A model matched historical observations closely ____ adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative .\n\nChoose the best option for the blank.",
+    "prompt": "A model matched historical observations closely ____ adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative.\n\nChoose the best option for the blank.",
     "options": [
       "by",
       "although",
@@ -1296,7 +1296,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have ____ underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative .\n\nChoose the best option for the blank.",
+    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have ____ underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative.\n\nChoose the best option for the blank.",
     "options": [
       "masked",
       "eliminated",
@@ -1313,7 +1313,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be ____ to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative .\n\nChoose the best option for the blank.",
+    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be ____ to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative.\n\nChoose the best option for the blank.",
     "options": [
       "restricted",
       "extended universally",
@@ -1330,7 +1330,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might ____ between competing parameter combinations. Until then, extrapolation remains tentative .\n\nChoose the best option for the blank.",
+    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might ____ between competing parameter combinations. Until then, extrapolation remains tentative.\n\nChoose the best option for the blank.",
     "options": [
       "discriminate",
       "conflate",
@@ -1347,7 +1347,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains ____ .\n\nChoose the best option for the blank.",
+    "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be restricted to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains ____.\n\nChoose the best option for the blank.",
     "options": [
       "tentative",
       "irrefutable",
@@ -1534,7 +1534,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, ____ only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently scrutinised . Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
+    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, ____ only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently scrutinised. Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
     "options": [
       "but",
       "therefore",
@@ -1551,7 +1551,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without ____ discretion entirely. Its success depended on whether reasons could be independently scrutinised . Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
+    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without ____ discretion entirely. Its success depended on whether reasons could be independently scrutinised. Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
     "options": [
       "eliminating",
       "preserving",
@@ -1568,7 +1568,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently ____ . Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
+    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently ____. Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
     "options": [
       "scrutinised",
       "concealed",
@@ -1585,7 +1585,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently scrutinised . Superficial oversight might turn exceptions into a means of ____ the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
+    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently scrutinised. Superficial oversight might turn exceptions into a means of ____ the rule. The balance remained contingent on implementation quality.\n\nChoose the best option for the blank.",
     "options": [
       "circumventing",
       "enforcing",
@@ -1602,7 +1602,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently scrutinised . Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained ____ on implementation quality.\n\nChoose the best option for the blank.",
+    "prompt": "An institution introduced uniform procedures, but critics argued that relevant differences between cases could be overlooked. Exceptions were permitted, but only when decision-makers documented their reasons. The arrangement preserved consistency without eliminating discretion entirely. Its success depended on whether reasons could be independently scrutinised. Superficial oversight might turn exceptions into a means of circumventing the rule. The balance remained ____ on implementation quality.\n\nChoose the best option for the blank.",
     "options": [
       "contingent",
       "independent",
@@ -2724,7 +2724,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Completion",
-    "prompt": "Although the new library is smaller than the old one, ____ .",
+    "prompt": "Although the new library is smaller than the old one, ____.",
     "options": [
       "its longer opening hours make it more accessible",
       "it occupies twice as much physical space",
@@ -2772,7 +2772,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A town began offering swimming lessons for adults. ____ . The programme therefore included separate classes for beginners and experienced swimmers.",
+    "prompt": "A town began offering swimming lessons for adults. ____. The programme therefore included separate classes for beginners and experienced swimmers.",
     "options": [
       "Participants had widely different skill levels.",
       "Every participant competed professionally.",
@@ -2820,7 +2820,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Completion",
-    "prompt": "If the weather forecast is correct, ____ .",
+    "prompt": "If the weather forecast is correct, ____.",
     "options": [
       "the organisers may postpone the outdoor concert because of heavy rain",
       "yesterday's weather will change",
@@ -2852,7 +2852,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "While the machine consumes less electricity during operation, ____ .",
+    "prompt": "While the machine consumes less electricity during operation, ____.",
     "options": [
       "its initial purchase cost remains considerably higher",
       "it cannot consume less electricity than the old model",
@@ -2868,7 +2868,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Unless the survey includes residents without internet access, ____ .",
+    "prompt": "Unless the survey includes residents without internet access, ____.",
     "options": [
       "its findings may not represent the entire population",
       "every resident will necessarily be included",
@@ -2884,7 +2884,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Since the studies used different definitions of recovery, ____ .",
+    "prompt": "Since the studies used different definitions of recovery, ____.",
     "options": [
       "their recovery rates cannot be compared without qualification",
       "both must have measured precisely the same outcome",
@@ -2900,7 +2900,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Although the digital system reduced average processing time, ____ .",
+    "prompt": "Although the digital system reduced average processing time, ____.",
     "options": [
       "some complex cases still required lengthy manual review",
       "no case could require manual processing",
@@ -2980,7 +2980,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "An agricultural extension service distributed advice through mobile messages. ____ . It therefore continued offering face-to-face sessions in areas with limited connectivity.",
+    "prompt": "An agricultural extension service distributed advice through mobile messages. ____. It therefore continued offering face-to-face sessions in areas with limited connectivity.",
     "options": [
       "The new channel did not reach farmers without reliable mobile access.",
       "All farmers had equally reliable mobile access.",
@@ -2996,7 +2996,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A new sensor detected changes in moisture quickly. ____ . Researchers tested a protective coating to address this limitation.",
+    "prompt": "A new sensor detected changes in moisture quickly. ____. Researchers tested a protective coating to address this limitation.",
     "options": [
       "Readings became less reliable when dust accumulated on its surface.",
       "It was unaffected by environmental conditions.",
@@ -3044,7 +3044,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Given that the intervention coincided with several other reforms, ____ .",
+    "prompt": "Given that the intervention coincided with several other reforms, ____.",
     "options": [
       "its independent contribution to observed changes remains uncertain",
       "all changes can be assigned exclusively to it",
@@ -3060,7 +3060,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Even if the sample is large enough to estimate the average accurately, ____ .",
+    "prompt": "Even if the sample is large enough to estimate the average accurately, ____.",
     "options": [
       "it may fail to represent important subgroups",
       "all selection biases necessarily disappear",
@@ -3076,7 +3076,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Insofar as the assumptions lack independent support, ____ .",
+    "prompt": "Insofar as the assumptions lack independent support, ____.",
     "options": [
       "the model's predictions should be interpreted with caution",
       "the model is universally valid",
@@ -3092,7 +3092,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "While the procedure may improve consistency across reviewers, ____ .",
+    "prompt": "While the procedure may improve consistency across reviewers, ____.",
     "options": [
       "it cannot guarantee that their common judgments are accurate",
       "it necessarily proves all judgments correct",
@@ -3172,7 +3172,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Patients receiving reminders were more likely to attend follow-up appointments. ____ . The authors therefore recommended a randomised evaluation to isolate the reminders' effect.",
+    "prompt": "Patients receiving reminders were more likely to attend follow-up appointments. ____. The authors therefore recommended a randomised evaluation to isolate the reminders' effect.",
     "options": [
       "Reminders had been offered preferentially to patients with reliable contact details.",
       "Every eligible patient was randomly assigned initially.",
@@ -3188,7 +3188,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A composite measure can simplify institutional comparisons. ____ . Interpretation of the ranking should therefore examine the individual components.",
+    "prompt": "A composite measure can simplify institutional comparisons. ____. Interpretation of the ranking should therefore examine the individual components.",
     "options": [
       "Similar total scores may conceal differences in underlying dimensions.",
       "Equal scores guarantee identical components.",
@@ -3236,7 +3236,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "The explanatory value of the distinction would be substantially reduced if ____ .",
+    "prompt": "The explanatory value of the distinction would be substantially reduced if ____.",
     "options": [
       "the categories could not be applied consistently to independent cases",
       "the categories allowed independent investigators to classify comparable cases consistently",
@@ -3252,7 +3252,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Although sensitivity analysis can establish stability under specified perturbations, ____ .",
+    "prompt": "Although sensitivity analysis can establish stability under specified perturbations, ____.",
     "options": [
       "it does not necessarily address misspecification outside the examined assumptions",
       "it establishes that the model is correctly specified even beyond the range of changes considered",
@@ -3268,7 +3268,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Were rival predictions indistinguishable under all feasible observations, ____ .",
+    "prompt": "Were rival predictions indistinguishable under all feasible observations, ____.",
     "options": [
       "the available empirical strategy could not discriminate between them",
       "every observation would establish one uniquely",
@@ -3332,7 +3332,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A measure may be operationally convenient while remaining a poor proxy for its intended concept. ____ . Validation must therefore address the indicator's relationship to that concept.",
+    "prompt": "A measure may be operationally convenient while remaining a poor proxy for its intended concept. ____. Validation must therefore address the indicator's relationship to that concept.",
     "options": [
       "Ease of measurement does not establish representational adequacy.",
       "Convenient measures always have high construct validity.",
@@ -3432,7 +3432,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A small library began lending tools as well as books. Members can borrow drills, gardening equipment and sewing machines for a week. Staff initially worried that equipment would be damaged, so they introduced short demonstrations before each first loan. After six months, most tools were returned in good condition. The library plans to extend the scheme to nearby villages, where buying rarely used equipment can be expensive.\n\nThe word 'scheme' is closest in meaning to ____ .",
+    "prompt": "A small library began lending tools as well as books. Members can borrow drills, gardening equipment and sewing machines for a week. Staff initially worried that equipment would be damaged, so they introduced short demonstrations before each first loan. After six months, most tools were returned in good condition. The library plans to extend the scheme to nearby villages, where buying rarely used equipment can be expensive.\n\nThe word 'scheme' is closest in meaning to ____.",
     "options": [
       "programme",
       "device",
@@ -3500,7 +3500,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A bakery used to prepare the same number of loaves every morning. On rainy days, however, fewer customers visited, and unsold bread was often thrown away. The owner began recording daily sales alongside weather conditions. The records helped staff estimate demand more accurately. Although some bread still remains at closing time, the bakery now donates it to a local shelter instead of discarding it.\n\n'Discarding' most nearly means ____ .",
+    "prompt": "A bakery used to prepare the same number of loaves every morning. On rainy days, however, fewer customers visited, and unsold bread was often thrown away. The owner began recording daily sales alongside weather conditions. The records helped staff estimate demand more accurately. Although some bread still remains at closing time, the bakery now donates it to a local shelter instead of discarding it.\n\n'Discarding' most nearly means ____.",
     "options": [
       "throwing away",
       "setting aside temporarily",
@@ -3568,7 +3568,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A coastal town installed artificial reefs to provide shelter for marine life. Divers recorded more fish near the structures within the first year. However, researchers noted that fish may simply have moved from surrounding areas rather than increased in number overall. To distinguish these possibilities, the monitoring programme was extended to include nearby natural reefs and sites without artificial structures.\n\n'Distinguish' most nearly means ____ .",
+    "prompt": "A coastal town installed artificial reefs to provide shelter for marine life. Divers recorded more fish near the structures within the first year. However, researchers noted that fish may simply have moved from surrounding areas rather than increased in number overall. To distinguish these possibilities, the monitoring programme was extended to include nearby natural reefs and sites without artificial structures.\n\n'Distinguish' most nearly means ____.",
     "options": [
       "tell apart",
       "bring together",
@@ -3636,7 +3636,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "An urban transport authority introduced a cheaper monthly pass. Passenger numbers increased, but surveys revealed that many new journeys had previously been made on foot rather than by car. Consequently, the reduction in traffic congestion was smaller than expected. Officials decided to investigate parking policies alongside fare reductions instead of assuming that cheaper public transport alone would significantly reduce car use.\n\n'Alongside' is closest in meaning to ____ .",
+    "prompt": "An urban transport authority introduced a cheaper monthly pass. Passenger numbers increased, but surveys revealed that many new journeys had previously been made on foot rather than by car. Consequently, the reduction in traffic congestion was smaller than expected. Officials decided to investigate parking policies alongside fare reductions instead of assuming that cheaper public transport alone would significantly reduce car use.\n\n'Alongside' is closest in meaning to ____.",
     "options": [
       "in combination with",
       "instead of",
@@ -3704,7 +3704,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A museum digitised thousands of handwritten documents. Optical recognition software produced searchable text, but unusual handwriting frequently led to errors. Rather than discarding the technology, curators invited volunteers to compare the generated text with scans. The corrected transcriptions made the collection easier to search while retaining links to the original images for researchers who needed to verify uncertain readings.\n\n'Retaining' most nearly means ____ .",
+    "prompt": "A museum digitised thousands of handwritten documents. Optical recognition software produced searchable text, but unusual handwriting frequently led to errors. Rather than discarding the technology, curators invited volunteers to compare the generated text with scans. The corrected transcriptions made the collection easier to search while retaining links to the original images for researchers who needed to verify uncertain readings.\n\n'Retaining' most nearly means ____.",
     "options": [
       "keeping",
       "removing",
@@ -3772,7 +3772,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A group of farmers experimented with planting strips of flowers between fields. The flowers attracted insects that could pollinate crops and feed on some agricultural pests. Crop yields did not rise uniformly: fields next to flower strips benefited more in some seasons than in others. Researchers therefore advised farmers to consider local conditions, including rainfall and the types of crops grown, before deciding how much land to allocate to the strips.\n\n'Allocate' most nearly means ____ .",
+    "prompt": "A group of farmers experimented with planting strips of flowers between fields. The flowers attracted insects that could pollinate crops and feed on some agricultural pests. Crop yields did not rise uniformly: fields next to flower strips benefited more in some seasons than in others. Researchers therefore advised farmers to consider local conditions, including rainfall and the types of crops grown, before deciding how much land to allocate to the strips.\n\n'Allocate' most nearly means ____.",
     "options": [
       "set aside for a purpose",
       "take away permanently",
@@ -3840,7 +3840,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A hospital introduced a digital alert intended to warn clinicians when a patient was at risk of deterioration. Early evaluation showed that the system detected many serious cases, but it also generated numerous alerts for patients who remained stable. Some staff began responding less promptly to notifications. The hospital subsequently adjusted the alert threshold and evaluated not only detection rates but also the frequency of unnecessary interruptions.\n\n'Deterioration' refers to ____ .",
+    "prompt": "A hospital introduced a digital alert intended to warn clinicians when a patient was at risk of deterioration. Early evaluation showed that the system detected many serious cases, but it also generated numerous alerts for patients who remained stable. Some staff began responding less promptly to notifications. The hospital subsequently adjusted the alert threshold and evaluated not only detection rates but also the frequency of unnecessary interruptions.\n\n'Deterioration' refers to ____.",
     "options": [
       "a worsening condition",
       "a complete recovery",
@@ -3908,7 +3908,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A university compared students who attended optional revision sessions with those who did not. Attendees achieved higher final marks, but they had also performed better on assignments completed before the sessions began. The researchers used the earlier marks to adjust their comparison. The difference became smaller, although it did not disappear. They cautioned that motivation and other unmeasured characteristics could still influence the results.\n\n'Cautioned' most nearly means ____ .",
+    "prompt": "A university compared students who attended optional revision sessions with those who did not. Attendees achieved higher final marks, but they had also performed better on assignments completed before the sessions began. The researchers used the earlier marks to adjust their comparison. The difference became smaller, although it did not disappear. They cautioned that motivation and other unmeasured characteristics could still influence the results.\n\n'Cautioned' most nearly means ____.",
     "options": [
       "warned",
       "demonstrated",
@@ -3976,7 +3976,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "In a region dependent on groundwater, authorities encouraged farmers to adopt more efficient irrigation equipment. Water use per hectare fell, yet total extraction declined little because some farmers expanded their cultivated area. Policymakers concluded that equipment subsidies would need to be accompanied by limits on total extraction if the aquifer was to recover. They also recognised that monitoring withdrawals would be essential to enforcing such limits.\n\n'Withdrawals' refers to ____ .",
+    "prompt": "In a region dependent on groundwater, authorities encouraged farmers to adopt more efficient irrigation equipment. Water use per hectare fell, yet total extraction declined little because some farmers expanded their cultivated area. Policymakers concluded that equipment subsidies would need to be accompanied by limits on total extraction if the aquifer was to recover. They also recognised that monitoring withdrawals would be essential to enforcing such limits.\n\n'Withdrawals' refers to ____.",
     "options": [
       "amounts of water removed",
       "farmers leaving the programme",
@@ -4044,7 +4044,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An archaeological team used residue analysis to investigate the former contents of ancient ceramic vessels. Certain chemical markers suggested that some vessels had held plant oils. The team noted, however, that similar compounds could also originate from substances absorbed during burial. By examining surrounding soil samples and comparing the results with modern reference materials, the researchers sought to reduce the risk of attributing contamination to original use.\n\n'Attributing' is closest in meaning to ____ .",
+    "prompt": "An archaeological team used residue analysis to investigate the former contents of ancient ceramic vessels. Certain chemical markers suggested that some vessels had held plant oils. The team noted, however, that similar compounds could also originate from substances absorbed during burial. By examining surrounding soil samples and comparing the results with modern reference materials, the researchers sought to reduce the risk of attributing contamination to original use.\n\n'Attributing' is closest in meaning to ____.",
     "options": [
       "assigning as the cause or source",
       "removing from consideration",
@@ -4112,7 +4112,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An environmental agency published a map of urban noise based on measurements from fixed sensors. Community groups welcomed the map but pointed out that several densely populated neighbourhoods contained few sensors. To improve coverage, the agency introduced temporary mobile measurements. It retained the original fixed network because short mobile visits could not capture long-term fluctuations as reliably as continuous monitoring.\n\n'Fluctuations' means ____ .",
+    "prompt": "An environmental agency published a map of urban noise based on measurements from fixed sensors. Community groups welcomed the map but pointed out that several densely populated neighbourhoods contained few sensors. To improve coverage, the agency introduced temporary mobile measurements. It retained the original fixed network because short mobile visits could not capture long-term fluctuations as reliably as continuous monitoring.\n\n'Fluctuations' means ____.",
     "options": [
       "variations over time",
       "measurement locations",
@@ -4180,7 +4180,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A language-learning platform found that students remembered vocabulary better when reviews were spread over several days rather than concentrated in one session. However, the benefit was weaker for learners who repeatedly missed their scheduled reviews. The designers began allowing users to reschedule missed sessions without abandoning the spacing principle. Their aim was to reconcile a useful learning strategy with the practical constraints of everyday life.\n\n'Reconcile' most nearly means ____ .",
+    "prompt": "A language-learning platform found that students remembered vocabulary better when reviews were spread over several days rather than concentrated in one session. However, the benefit was weaker for learners who repeatedly missed their scheduled reviews. The designers began allowing users to reschedule missed sessions without abandoning the spacing principle. Their aim was to reconcile a useful learning strategy with the practical constraints of everyday life.\n\n'Reconcile' most nearly means ____.",
     "options": [
       "make compatible",
       "keep permanently separate",
@@ -4248,7 +4248,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "Researchers evaluating a flood-warning service discovered that issuing more detailed technical forecasts did not necessarily improve residents' responses. Interviews suggested that many people were uncertain about what action to take at each warning level. The service was redesigned to include clear action instructions alongside forecasts. The next evaluation examined whether residents understood and acted on the messages, rather than assessing forecast accuracy alone.\n\n'Assessing' most nearly means ____ .",
+    "prompt": "Researchers evaluating a flood-warning service discovered that issuing more detailed technical forecasts did not necessarily improve residents' responses. Interviews suggested that many people were uncertain about what action to take at each warning level. The service was redesigned to include clear action instructions alongside forecasts. The next evaluation examined whether residents understood and acted on the messages, rather than assessing forecast accuracy alone.\n\n'Assessing' most nearly means ____.",
     "options": [
       "evaluating",
       "avoiding",
@@ -4316,7 +4316,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A study of historical wages relied on records preserved by large institutions. These archives provided detailed information about employees, but workers hired informally were rarely documented. The authors resisted the temptation to treat the surviving records as representative of the entire labour market. They supplemented the data with household accounts, acknowledging that the additional sources introduced their own selective biases.\n\n'Resisted the temptation' implies that the authors ____ .",
+    "prompt": "A study of historical wages relied on records preserved by large institutions. These archives provided detailed information about employees, but workers hired informally were rarely documented. The authors resisted the temptation to treat the surviving records as representative of the entire labour market. They supplemented the data with household accounts, acknowledging that the additional sources introduced their own selective biases.\n\n'Resisted the temptation' implies that the authors ____.",
     "options": [
       "avoided an appealing but potentially unjustified inference",
       "were unable to access alternative historical sources",
@@ -4384,7 +4384,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A team developed a model that predicted demand using data collected during a period of stable prices. Its forecasts were accurate on a withheld sample from the same period. When a new pricing policy changed consumer incentives, performance declined. The researchers distinguished the ability to predict under familiar conditions from the ability to retain accuracy when the mechanisms generating the data were altered.\n\n'Withheld' most nearly means ____ .",
+    "prompt": "A team developed a model that predicted demand using data collected during a period of stable prices. Its forecasts were accurate on a withheld sample from the same period. When a new pricing policy changed consumer incentives, performance declined. The researchers distinguished the ability to predict under familiar conditions from the ability to retain accuracy when the mechanisms generating the data were altered.\n\n'Withheld' most nearly means ____.",
     "options": [
       "kept separate from the training process",
       "collected after every forecast",
@@ -4452,7 +4452,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A legal historian examined a reform that formally granted local councils greater autonomy. Subsequent budgets showed that councils remained heavily dependent on central grants whose conditions constrained spending decisions. Rather than equating the new legal framework with actual decentralisation, the historian assessed the distribution of fiscal discretion. The analysis suggested that formal authority and practical capacity could diverge considerably.\n\n'Discretion' here is closest in meaning to ____ .",
+    "prompt": "A legal historian examined a reform that formally granted local councils greater autonomy. Subsequent budgets showed that councils remained heavily dependent on central grants whose conditions constrained spending decisions. Rather than equating the new legal framework with actual decentralisation, the historian assessed the distribution of fiscal discretion. The analysis suggested that formal authority and practical capacity could diverge considerably.\n\n'Discretion' here is closest in meaning to ____.",
     "options": [
       "freedom to decide",
       "obligation to disclose",
@@ -4520,7 +4520,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A philosophical account defined scientific progress in terms of increasing explanatory scope. Critics noted that some advances deliberately narrow the domain of a theory to avoid unwarranted claims, even while improving its accuracy within that domain. The author responded by distinguishing the range of phenomena a theory explains from the strength of its explanations. Progress, on the revised account, could occur through improvements in either dimension.\n\n'Unwarranted' means ____ .",
+    "prompt": "A philosophical account defined scientific progress in terms of increasing explanatory scope. Critics noted that some advances deliberately narrow the domain of a theory to avoid unwarranted claims, even while improving its accuracy within that domain. The author responded by distinguishing the range of phenomena a theory explains from the strength of its explanations. Progress, on the revised account, could occur through improvements in either dimension.\n\n'Unwarranted' means ____.",
     "options": [
       "insufficiently justified",
       "widely documented",
@@ -4588,7 +4588,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "An economic evaluation compared two interventions designed to reduce household energy consumption. One produced immediate savings that diminished over time; the other yielded modest initial savings that persisted. Rankings changed when the analysts extended the evaluation horizon and varied the discount rate. Rather than reporting a single unconditional ordering, they presented the assumptions under which each intervention was preferable.\n\n'Diminished' is closest in meaning to ____ .",
+    "prompt": "An economic evaluation compared two interventions designed to reduce household energy consumption. One produced immediate savings that diminished over time; the other yielded modest initial savings that persisted. Rankings changed when the analysts extended the evaluation horizon and varied the discount rate. Rather than reporting a single unconditional ordering, they presented the assumptions under which each intervention was preferable.\n\n'Diminished' is closest in meaning to ____.",
     "options": [
       "became smaller",
       "became more predictable",
@@ -4656,7 +4656,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A conservation project assessed success using the area of habitat brought under legal protection. Although the target was met, subsequent ecological surveys revealed continued degradation in some designated sites. The researchers argued that legal designation was an intermediate output rather than direct evidence of ecological recovery. They proposed adding measures of habitat quality and population trends to the evaluation framework.\n\n'Intermediate output' refers to ____ .",
+    "prompt": "A conservation project assessed success using the area of habitat brought under legal protection. Although the target was met, subsequent ecological surveys revealed continued degradation in some designated sites. The researchers argued that legal designation was an intermediate output rather than direct evidence of ecological recovery. They proposed adding measures of habitat quality and population trends to the evaluation framework.\n\n'Intermediate output' refers to ____.",
     "options": [
       "a step towards a goal rather than the final outcome",
       "a result that proves every desired effect",
@@ -4724,7 +4724,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A comparative study of translation systems found that both achieved similar scores on a general benchmark. Error analysis, however, revealed different weaknesses: one system frequently mishandled ambiguous pronouns, while the other struggled with specialised terminology. The researchers cautioned against using the aggregate score as the sole basis for selecting a system. They recommended assessing the importance of particular error categories for the intended application.\n\n'Aggregate' means ____ .",
+    "prompt": "A comparative study of translation systems found that both achieved similar scores on a general benchmark. Error analysis, however, revealed different weaknesses: one system frequently mishandled ambiguous pronouns, while the other struggled with specialised terminology. The researchers cautioned against using the aggregate score as the sole basis for selecting a system. They recommended assessing the importance of particular error categories for the intended application.\n\n'Aggregate' means ____.",
     "options": [
       "combined into an overall measure",
       "specific to a single error",
@@ -4772,7 +4772,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The path was too narrow for cars; ____ , visitors had to continue on foot.",
+    "prompt": "The path was too narrow for cars; ____, visitors had to continue on foot.",
     "options": [
       "therefore",
       "otherwise",
@@ -4884,7 +4884,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Completion",
-    "prompt": "Given that the initial sample was drawn exclusively from one district, ____ .",
+    "prompt": "Given that the initial sample was drawn exclusively from one district, ____.",
     "options": [
       "the findings may not apply to the entire city",
       "the researchers must have surveyed every district",
@@ -4948,7 +4948,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The two instruments were calibrated independently; ____ , their readings were remarkably similar.",
+    "prompt": "The two instruments were calibrated independently; ____, their readings were remarkably similar.",
     "options": [
       "nevertheless",
       "otherwise",
@@ -4980,7 +4980,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "Even if the new test is highly accurate in controlled settings, ____ .",
+    "prompt": "Even if the new test is highly accurate in controlled settings, ____.",
     "options": [
       "its performance in routine practice still needs to be assessed",
       "its practical effectiveness is already beyond question",
@@ -5044,7 +5044,7 @@ export const deepReadingQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Completion",
-    "prompt": "To the extent that the classification reflects administrative convenience rather than meaningful differences, ____ .",
+    "prompt": "To the extent that the classification reflects administrative convenience rather than meaningful differences, ____.",
     "options": [
       "its explanatory value should not be taken for granted",
       "its categories necessarily correspond to natural divisions",

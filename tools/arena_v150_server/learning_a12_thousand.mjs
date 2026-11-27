@@ -1671,7 +1671,7 @@ export const a12ThousandQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Put the box ____ , beside the door.",
+    "prompt": "Put the box ____, beside the door.",
     "options": [
       "this",
       "that",
