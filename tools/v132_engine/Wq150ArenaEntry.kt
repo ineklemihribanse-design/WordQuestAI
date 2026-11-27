@@ -28,6 +28,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
@@ -40,7 +43,7 @@ internal object Wq150ArenaFeature {
 }
 @Composable
 internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,
-    legacy:()->Unit,onMatch:(String,JSONObject)->Unit){
+    legacy:()->Unit,soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit,onMatch:(String,JSONObject)->Unit){
     val context=LocalContext.current
     val catalog=remember(context){Wq150Catalog.read(context)}
     val auth=session.accounts.socialAuth()
@@ -48,37 +51,30 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     val gateway=remember(endpoint,auth,uid){auth?.let{Wq150Gateway(endpoint,it)}}
     val controller=remember(gateway){gateway?.let{Wq150LobbyController(it)}}
     val ownAvatar by rememberWq2DSelection(session.profileKey)
+    var soloMode by rememberSaveable{mutableStateOf<String?>(null)}
+    var guestPanel by rememberSaveable{mutableStateOf("")}
     if(controller==null||gateway==null||uid.isBlank()){
         BackHandler(onBack=back)
         MaterialTheme(colorScheme=Wq122Scheme){
-            Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-                Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
-                Column(Modifier.align(Alignment.TopCenter).widthIn(max=700.dp).fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing).verticalScroll(rememberScrollState()).padding(12.dp),
-                    horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(10.dp)){
-                    TextButton(onClick=back,modifier=Modifier.align(Alignment.Start)){Text("‹ Geri",color=Wq122Gold)}
-                    Row(Modifier.fillMaxWidth().height(156.dp),verticalAlignment=Alignment.CenterVertically){
-                        Wq150ApprovedArt("crest",Modifier.weight(1f).fillMaxHeight())
-                        Wq2DPortrait(ownAvatar,Modifier.weight(1f).fillMaxHeight(),victory=false)
-                    }
-                    Text("Oyun Modları",color=Wq122Gold,style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Black)
-                    listOf("duel","coop","quiz","team").chunked(2).forEach{row->
-                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                            row.forEach{kind->Wq150PremiumModeCard(kind,false,true,Modifier.weight(1f),account)}
+            Wq150ArenaHome(session,ownAvatar,soloSelected,onTab,true,back,
+                onMode={if(soloSelected)soloMode=it else account()},
+                onPanel={if(it=="Hızlı Oda Katılımı"||it=="Arkadaşlarım")account() else guestPanel=it},
+                status=null,onRetry=null)
+            if(guestPanel.isNotBlank())AlertDialog(onDismissRequest={guestPanel=""},title={Text(guestPanel)},
+                text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState())){
+                    when(guestPanel){
+                        "Ayarlar"->Wq179ArenaAudioSettings()
+                        "Bilgi"->Text("Tek kişilik oyunlar internet gerektirmez. Arkadaşlarınla oynamak için giriş yap.")
+                        else->{
+                            Wq150Records(context,session.profileKey,guestPanel=="Sıralama")
+                            Wq121ArenaRecords(context,session.profileKey,guestPanel=="Sıralama")
                         }
                     }
-                    Wq150PremiumPanel{
-                        Text("Arkadaşlarınla çevrim içi oynamak için giriş yap.",color=Wq122Ink)
-                        Wq122Primary("Giriş yap",true,account)
-                        Wq122Choice("Tek Başına Oyna",false,Modifier.fillMaxWidth(),"solo",legacy)
-                    }
-                }
-            }
+                }},confirmButton={TextButton(onClick={guestPanel=""}){Text("Kapat")}})
+            soloMode?.let{Wq150SoloSettings(session,it,{soloMode=null},onSolo)}
         }
         return
     }
-    val config=LocalConfiguration.current
-    val landscape=config.screenWidthDp>=700 && config.screenWidthDp>config.screenHeightDp
     val state by controller.state.collectAsState()
     val scope=rememberCoroutineScope()
     var settings by remember {mutableStateOf(Wq150Settings())}
@@ -102,95 +98,23 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     }
     MaterialTheme(colorScheme=Wq122Scheme){
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-            Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
-            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1000.dp).fillMaxSize()
+            if(lobby||active)Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
+            if(!lobby&&!active){
+                val enabled=!state.busy&&!state.pending
+                Wq150ArenaHome(session,ownAvatar,soloSelected,onTab,enabled,back,
+                    onMode={kind->if(soloSelected)soloMode=kind else {settings=settings.changeKind(kind);edit=true}},
+                    onPanel={panel=it},
+                    status=state.error?:if(state.busy)"Oda işlemi sürüyor…" else null,
+                    onRetry=if(state.pending&&!state.busy)({scope.launch{controller.retry()};Unit})else null)
+            }else Column(Modifier.align(Alignment.TopCenter).widthIn(max=1000.dp).fillMaxSize()
                 .windowInsetsPadding(WindowInsets.safeDrawing).imePadding()
                 .verticalScroll(rememberScrollState()).padding(horizontal=12.dp,vertical=8.dp),
                 verticalArrangement=Arrangement.spacedBy(8.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
-                    TextButton(onClick={if(lobby||active)exit=true else back()}){Text("‹ Geri",color=Wq122Gold)}
-                    Spacer(Modifier.weight(1f));Text("WORDQUEST · ARENA",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                    TextButton(onClick={exit=true}){Text("‹ Geri",color=Wq122Gold)}
+                    Spacer(Modifier.weight(1f));Text("WordQuest AI · Arena",color=Wq122Gold,fontWeight=FontWeight.Bold)
                 }
-                if(!lobby&&!active){
-                    Row(Modifier.fillMaxWidth().height(132.dp),verticalAlignment=Alignment.CenterVertically,
-                        horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                        Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
-                            Wq150ApprovedArt("crest",Modifier.height(96.dp).fillMaxWidth())
-                            Text("Arkadaşınla Oyna",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=16.sp)
-                        }
-                        Wq2DPortrait(ownAvatar,Modifier.weight(1f).fillMaxHeight(),victory=false)
-                    }
-                    val enabled=!state.busy&&!state.pending
-                    Text("Oyun Modları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=17.sp)
-                    val modeGrid: @Composable ()->Unit = {
-                    BoxWithConstraints(Modifier.fillMaxWidth()){
-                        val wide=landscape||maxWidth>=600.dp
-                        val columns=if(maxWidth>=330.dp)2 else 1
-                        val kinds=listOf("duel","coop","quiz","team")
-                        Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
-                            kinds.chunked(columns).forEach{row->
-                                Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                                    row.forEach{kind->
-                                        Wq150PremiumModeCard(kind,wide,enabled,Modifier.weight(1f)){
-                                            settings=settings.changeKind(kind);edit=true
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    }
-                    val roomPanel: @Composable ()->Unit = {
-                    Wq150PremiumPanel {
-                        Text("Davet kodu",color=Wq122Gold,fontWeight=FontWeight.Bold)
-                        val valid=wq150ValidRoom(roomCode)
-                        OutlinedTextField(value=roomCode,onValueChange={roomCode=it.trim().take(64);codeTouched=true},
-                            singleLine=true,label={Text("Oda kodu")},modifier=Modifier.fillMaxWidth(),
-                            enabled=enabled,isError=codeTouched&&roomCode.isNotEmpty()&&!valid)
-                        if(codeTouched&&roomCode.isNotEmpty()&&!valid)
-                            Text("Geçerli bir oda kodu gir.",color=Color(0xFFFFB4B4),fontSize=12.sp)
-                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                            OutlinedButton(enabled=enabled,modifier=Modifier.weight(1f),onClick={
-                                val clipboard=context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-                                roomCode=clipboard.primaryClip?.getItemAt(0)?.coerceToText(context)?.toString()?.trim()?.take(64).orEmpty()
-                                codeTouched=true
-                            }){Text("Yapıştır")}
-                            Button(enabled=valid&&enabled,modifier=Modifier.weight(1f),onClick={
-                                scope.launch{controller.join(roomCode)}
-                            }){Text("Odaya katıl")}
-                        }
-                        if(state.busy)LinearProgressIndicator(Modifier.fillMaxWidth())
-                        if(auth!=null)Wq150Invites(session,auth,uid,null,false,enabled,null){id->
-                            controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
-                        }
-                    }
-                    }
-                    if(landscape){
-                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(12.dp),
-                            verticalAlignment=Alignment.Top){
-                            Column(Modifier.weight(1.55f)){modeGrid()}
-                            Column(Modifier.weight(1f)){roomPanel()}
-                        }
-                    }else{
-                        modeGrid()
-                        roomPanel()
-                    }
-                    Wq122Choice("Tek Başına Oyna",false,Modifier.fillMaxWidth(),"solo"){if(enabled)legacy()}
-                    val shortcuts=listOf("ranking" to "Sıralama","friends" to "Arkadaşlarım","history" to "Son Maçlarım","settings" to "Ayarlar","info" to "Bilgi")
-                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
-                        shortcuts.forEach{(icon,title)->
-                            Surface(onClick={panel=title},color=Color(0xD92C145B),
-                                shape=RoundedCornerShape(12.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),
-                                modifier=Modifier.weight(1f)){
-                                Column(Modifier.padding(horizontal=2.dp,vertical=6.dp),
-                                    horizontalAlignment=Alignment.CenterHorizontally){
-                                    Wq150ApprovedArt(icon,Modifier.size(if(landscape)32.dp else 25.dp))
-                                    Text(title,color=Wq122Ink,fontSize=if(landscape)12.sp else 10.sp,textAlign=TextAlign.Center)
-                                }
-                            }
-                        }
-                    }
-                }else if(lobby&&snapshot!=null&&room!=null){
+                if(lobby&&snapshot!=null&&room!=null){
                     val host=snapshot.optString("host")==uid
                     val members=snapshot.optJSONArray("members")
                     val count=members?.length()?:0
@@ -272,6 +196,34 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
         if(panel.isNotBlank())AlertDialog(onDismissRequest={panel=""},title={Text(panel,color=Wq122Gold)},
             text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
                 when(panel){
+                    "Hızlı Oda Katılımı"->{
+                        val enabled=!state.busy&&!state.pending
+                    Wq150PremiumPanel {
+                        Text("Davet kodu",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        val valid=wq150ValidRoom(roomCode)
+                        OutlinedTextField(value=roomCode,onValueChange={roomCode=it.trim().take(64);codeTouched=true},
+                            singleLine=true,label={Text("Oda kodu")},modifier=Modifier.fillMaxWidth(),
+                            enabled=enabled,isError=codeTouched&&roomCode.isNotEmpty()&&!valid)
+                        if(codeTouched&&roomCode.isNotEmpty()&&!valid)
+                            Text("Geçerli bir oda kodu gir.",color=Color(0xFFFFB4B4),fontSize=12.sp)
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                            OutlinedButton(enabled=enabled,modifier=Modifier.weight(1f),onClick={
+                                val clipboard=context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                                roomCode=clipboard.primaryClip?.getItemAt(0)?.coerceToText(context)?.toString()?.trim()?.take(64).orEmpty()
+                                codeTouched=true
+                            }){Text("Yapıştır")}
+                            Button(enabled=valid&&enabled,modifier=Modifier.weight(1f),onClick={
+                                scope.launch{controller.join(roomCode)}
+                            }){Text("Odaya katıl")}
+                        }
+                        if(state.busy)LinearProgressIndicator(Modifier.fillMaxWidth())
+                        if(auth!=null)Wq150Invites(session,auth,uid,null,false,enabled,null){id->
+                            controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
+                        }
+                    }
+
+                        state.error?.let{Text(it,color=Color(0xFFFFB4B4))}
+                    }
                     "Ayarlar"->Wq179ArenaAudioSettings()
                     "Bilgi"->Text("Bulmaca Düellosu: rakibinle yarış. Ortak Bulmaca: aynı tahtayı birlikte çöz. 5 Şıklı Düello: bilgini ve hızını göster. Takım Oyunu: 2'ye 2 mücadele et.",color=Wq122Ink)
                     "Arkadaşlarım"->{
@@ -290,6 +242,8 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                     }
                 }
             }},confirmButton={TextButton(onClick={panel=""}){Text("Kapat")}})
+        LaunchedEffect(lobby,active){if(lobby||active)panel=""}
+        soloMode?.let{Wq150SoloSettings(session,it,{soloMode=null},onSolo)}
         if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending,
             onDismiss={edit=false},onApply={next->
                 settings=next;edit=false
@@ -323,7 +277,7 @@ private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=Co
             art=cached
         }else{
             val decoded=withContext(Dispatchers.IO){
-                runCatching{context.assets.open("arena_v120/$name.webp").use{
+                runCatching{context.assets.open(if('/' in name)name else "arena_v120/$name.webp").use{
                     android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
                 }}.getOrNull()?.also{Wq150ArtCache.put(name,it)}
             }
@@ -333,39 +287,272 @@ private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=Co
     art?.let{Image(it,null,modifier,contentScale=scale)}
 }
 @Composable
-private fun Wq150PremiumModeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modifier,onClick:()->Unit){
-    val shape=RoundedCornerShape(16.dp)
-    val art=if(kind=="coop")"team" else if(kind=="team")"friends" else kind
-    val colors=when(kind){
-        "coop"->listOf(Color(0xFF254A8E),Color(0xFF102653))
-        "quiz"->listOf(Color(0xFF8B2948),Color(0xFF47152E))
-        "team"->listOf(Color(0xFF176B55),Color(0xFF0C352D))
-        else->listOf(Color(0xFF683C9E),Color(0xFF301450))
-    }
-    val description=when(kind){
-        "coop"->"Birlikte çöz, birlikte kazan."
-        "quiz"->"Bilgini ve hızını göster."
-        "team"->"Takımınla birlikte mücadele et."
-        else->"Rakibinle kelime yarışına gir."
-    }
-    Box(modifier.heightIn(min=if(wide)112.dp else 112.dp).clip(shape)
-        .background(Brush.verticalGradient(colors)).border(1.dp,Wq122Gold,shape)
-        .clickable(enabled=enabled,onClick=onClick)){
-        if(kind!="team")Wq150ApprovedArt((if(wide)"tablet" else "phone")+"_card_"+art,
-            Modifier.matchParentSize(),ContentScale.FillBounds)
-        Column(Modifier.fillMaxWidth().padding(horizontal=8.dp,vertical=8.dp),
-            horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(3.dp)){
-            Wq150ApprovedArt(art,Modifier.size(if(wide)58.dp else 44.dp))
-            Text(Wq150ModeCatalog.kinds.getValue(kind),color=Color.White,fontWeight=FontWeight.ExtraBold,
-                fontSize=if(wide)17.sp else 14.sp,textAlign=TextAlign.Center)
-            Text(description,color=Color(0xFFF6E9FF),fontSize=if(wide)13.sp else 11.sp,textAlign=TextAlign.Center)
-        }
-    }
-}
-@Composable
 private fun Wq150PremiumPanel(content:@Composable ColumnScope.()->Unit){
     Surface(color=Color(0xE6251347),shape=RoundedCornerShape(18.dp),
         border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),modifier=Modifier.fillMaxWidth()){
         Column(Modifier.padding(12.dp),verticalArrangement=Arrangement.spacedBy(8.dp),content=content)
     }
+}
+
+/** One shared visual hub. Only the selected tab's cards exist in composition. */
+internal object Wq150HomeModes {
+    val online=listOf("duel","coop","quiz","team")
+    val solo=listOf("classic","timed","test","obstacle")
+    fun visible(local:Boolean)=if(local)solo else online
+    fun localEngine(kind:String)=if(kind=="test")"quiz" else "duel"
+    fun localTimes(kind:String)=when(kind){"obstacle"->listOf(20);"timed"->listOf(20,30,45);"classic"->listOf(0);else->listOf(0,20,30,45)}
+    fun localHints(kind:String)=if(kind=="obstacle")listOf(0) else listOf(0,3,5,8,12,20)
+}
+private data class Wq150CardSpec(val title:String,val detail:String,val icon:String,val plate:String,val top:Long,val bottom:Long)
+private fun wq150Card(kind:String)=when(kind){
+    "duel"->Wq150CardSpec("Bulmaca Düellosu","Rakibinle kelime yarışına gir.","duel","duel",0xFF7921BC,0xFF38116C)
+    "coop"->Wq150CardSpec("Ortak Bulmaca","Birlikte çöz, birlikte kazan.","team","team",0xFF0078B9,0xFF064274)
+    "quiz"->Wq150CardSpec("5 Şıklı Düello","Bilgini ve hızını göster.","quiz","quiz",0xFFBD2A13,0xFF7B1B08)
+    "team"->Wq150CardSpec("Takım Oyunu","Takımınla birlikte mücadele et.","wq175_icons/arena_team.webp","",0xFF137D48,0xFF06402F)
+    "classic"->Wq150CardSpec("Klasik Bulmaca","Kendi hızında, keyifle oyna.","wq175_icons/puzzle.webp","duel",0xFF7921BC,0xFF38116C)
+    "timed"->Wq150CardSpec("Zamana Karşı","Süreli kelime yarışında puan topla.","wq175_icons/timer.webp","team",0xFF0078B9,0xFF064274)
+    "test"->Wq150CardSpec("5 Şıklı Test","Bilgini ölç, seviyeni gör.","quiz","quiz",0xFFBD2A13,0xFF7B1B08)
+    "obstacle"->Wq150CardSpec("Engelli Parkur","20 saniyede, ipucusuz çöz.","arena_v122/rules.webp","",0xFF137D48,0xFF06402F)
+    else->error("Unknown Arena card")
+}
+@Composable
+private fun Wq150HomeTab(label:String,local:Boolean,selected:Boolean,enabled:Boolean,modifier:Modifier,onClick:()->Unit){
+    val shape=RoundedCornerShape(17.dp)
+    Box(modifier.clip(shape).background(Brush.verticalGradient(if(local)
+        listOf(Color(0xFF0093DD),Color(0xFF084080)) else listOf(Color(0xFF9723CF),Color(0xFF3D126F))))
+        .border(if(selected)2.dp else 1.dp,if(selected)Wq122Gold else Color(0xFF9A70D7),shape)
+        .clickable(enabled=enabled,onClick=onClick),contentAlignment=Alignment.Center){
+        Row(Modifier.padding(horizontal=6.dp,vertical=3.dp),verticalAlignment=Alignment.CenterVertically,
+            horizontalArrangement=Arrangement.Center){
+            Wq150ApprovedArt(if(local)"arena_v122/solo.webp" else "friends",Modifier.size(28.dp))
+            Spacer(Modifier.width(4.dp))
+            Text(label,Modifier.weight(1f,fill=false),color=Color.White,fontWeight=FontWeight.Bold,fontSize=13.sp,
+                maxLines=2,textAlign=TextAlign.Center)
+            if(selected)Text(" ✓",color=Wq122Gold,fontWeight=FontWeight.Black)
+        }
+    }
+}
+@Composable
+private fun Wq150HomeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modifier,onClick:()->Unit){
+    val spec=wq150Card(kind);val shape=RoundedCornerShape(16.dp)
+    Box(modifier.clip(shape).background(Brush.verticalGradient(listOf(Color(spec.top),Color(spec.bottom))))
+        .border(1.5.dp,Wq122Gold,shape).clickable(enabled=enabled,onClick=onClick)){
+        if(spec.plate.isNotEmpty())Wq150ApprovedArt((if(wide)"tablet" else "phone")+"_card_"+spec.plate,
+            Modifier.matchParentSize(),ContentScale.FillBounds)
+        Row(Modifier.fillMaxSize().padding(horizontal=if(wide)6.dp else 9.dp,vertical=4.dp),
+            verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(5.dp)){
+            Wq150ApprovedArt(spec.icon,Modifier.fillMaxWidth(if(wide).31f else .23f).fillMaxHeight())
+            Column(Modifier.weight(1f)){
+                Text(spec.title,color=Color.White,fontWeight=FontWeight.ExtraBold,fontSize=if(wide)15.sp else 16.sp,
+                    maxLines=2,overflow=TextOverflow.Ellipsis,lineHeight=18.sp)
+                Text(spec.detail,color=Color(0xFFF6E9FF),fontSize=if(wide)11.sp else 11.sp,
+                    maxLines=3,overflow=TextOverflow.Ellipsis,lineHeight=13.sp)
+            }
+            Text("›",color=Wq122Gold,fontSize=20.sp,fontWeight=FontWeight.Bold)
+        }
+    }
+}
+@Composable
+private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:(Boolean)->Unit,enabled:Boolean,
+    back:()->Unit,onMode:(String)->Unit,onPanel:(String)->Unit,status:String?,onRetry:(()->Unit)?){
+    val context=LocalContext.current
+    var picker by rememberSaveable{mutableStateOf(false)}
+    var builtin by rememberSaveable{mutableStateOf(false)}
+    val config=LocalConfiguration.current
+    BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)){
+        val w=maxWidth
+        val wide=Wq121ArenaLayout.wide(w.value,maxHeight.value,config.smallestScreenWidthDp)
+        val h=maxHeight.coerceAtLeast(if(wide)460.dp else 640.dp)
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
+            Box(Modifier.fillMaxWidth().height(h)){
+                Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
+                // Coordinates refer to the actual user-supplied phone/tablet stadium assets.
+                val pos=Wq121ArenaLayout.project(w.value,h.value,wide,if(wide).50f else .655f,if(wide).485f else .34f)
+                val feet=pos.second.dp
+                val avatarW=w*(if(wide).26f else .40f)
+                val avatarH=(feet-h*.075f).coerceAtLeast(40.dp)
+                val crestW=w*(if(wide).26f else .48f)
+                val crestH=(h*(if(wide).32f else .21f))
+                val headerH=(h*.065f).coerceIn(40.dp,60.dp)
+                Row(Modifier.fillMaxWidth().height(headerH).padding(horizontal=8.dp),verticalAlignment=Alignment.CenterVertically){
+                    TextButton(onClick=back,contentPadding=PaddingValues(4.dp)){Wq150ApprovedArt("back",Modifier.size(22.dp));Text("Geri",color=Wq122Gold,fontSize=12.sp)}
+                    Row(Modifier.weight(1f),horizontalArrangement=Arrangement.Center,verticalAlignment=Alignment.CenterVertically){
+                        Wq150ApprovedArt("book",Modifier.size(if(wide)32.dp else 22.dp))
+                        Text("WordQuest AI",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=if(wide)24.sp else 15.sp,maxLines=1,overflow=TextOverflow.Ellipsis)
+                    }
+                    Surface(onClick={picker=true},color=Color(0xCC2D165C),shape=RoundedCornerShape(20.dp)){
+                        Row(Modifier.padding(5.dp),verticalAlignment=Alignment.CenterVertically){
+                            Wq2DPortrait(avatar,Modifier.size(27.dp))
+                            Text("Kişisel maskot",color=Color.White,fontSize=if(wide)12.sp else 10.sp)
+                        }
+                    }
+                }
+                Wq150ApprovedArt("crest",Modifier.offset(x=w*.035f,y=headerH).width(crestW).height(crestH))
+                Column(Modifier.offset(x=if(wide)w*.68f else w*.025f,y=if(wide)h*.16f else headerH+crestH)
+                    .width(if(wide)w*.28f else w*.46f),horizontalAlignment=Alignment.CenterHorizontally){
+                    Text("Arena’ya Hoş Geldin",color=Wq122Gold,fontWeight=FontWeight.Black,
+                        fontSize=if(wide)20.sp else 13.sp,textAlign=TextAlign.Center,maxLines=2)
+                    Text("Oyun modunu seç ve kelime arenasında mücadeleye başla!",color=Color.White,
+                        fontSize=if(wide)14.sp else 10.sp,lineHeight=if(wide)17.sp else 12.sp,textAlign=TextAlign.Center)
+                    if(wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")}){Text("Hızlı Oda Katılımı",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)}
+                }
+                Wq2DPortrait(avatar,Modifier.offset(x=pos.first.dp-avatarW/2,y=feet-avatarH)
+                    .width(avatarW).height(avatarH),victory=false)
+                val tabTop=h*(if(wide).58f else .425f)
+                val tabH=(h*.065f).coerceIn(40.dp,54.dp)
+                val footerH=(h*.075f).coerceIn(46.dp,66.dp)
+                val headingH=28.dp
+                val joinH=if(!wide&&!local)34.dp else 0.dp
+                val gap=if(wide)8.dp else 5.dp
+                val cardTop=tabTop+tabH+joinH+headingH+gap*3
+                val cardArea=(h-footerH-gap*2-cardTop).coerceAtLeast(48.dp)
+                val kinds=Wq150HomeModes.visible(local)
+                Column(Modifier.offset(y=tabTop).fillMaxWidth().padding(horizontal=if(wide)12.dp else 8.dp),
+                    horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(gap)){
+                    Row(Modifier.fillMaxWidth(if(wide).56f else 1f).height(tabH),horizontalArrangement=Arrangement.spacedBy(gap)){
+                        Wq150HomeTab("Arkadaşınla Oyna",false,!local,enabled,Modifier.weight(1f).fillMaxHeight()){onTab(false)}
+                        Wq150HomeTab("Tek Başına Oyna",true,local,enabled,Modifier.weight(1f).fillMaxHeight()){onTab(true)}
+                    }
+                    if(!wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")},
+                        modifier=Modifier.height(joinH),contentPadding=PaddingValues(horizontal=8.dp)){
+                        Text("Hızlı Oda Katılımı  ›",color=Wq122Gold,fontSize=12.sp,fontWeight=FontWeight.Bold)
+                    }
+                    Row(Modifier.height(headingH).clip(RoundedCornerShape(18.dp)).background(Color(0xD92C145B)).padding(horizontal=10.dp),
+                        verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(5.dp)){
+                        Wq150ApprovedArt("modes",Modifier.size(22.dp))
+                        Text(if(local)"Tek Kişilik Oyun Modları" else "Çevrim İçi Oyun Modları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=if(wide)16.sp else 13.sp)
+                    }
+                    if(wide)Row(Modifier.fillMaxWidth().height(cardArea),horizontalArrangement=Arrangement.spacedBy(gap)){
+                        kinds.forEach{kind->Wq150HomeCard(kind,true,enabled,Modifier.weight(1f).fillMaxHeight()){onMode(kind)}}
+                    }else{
+                        val cardH=((cardArea-gap*(kinds.size-1))/kinds.size).coerceAtLeast(42.dp)
+                        kinds.forEach{kind->Wq150HomeCard(kind,false,enabled,Modifier.fillMaxWidth().height(cardH)){onMode(kind)}}
+                    }
+                }
+                Row(Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal=8.dp,vertical=gap).height(footerH),
+                    horizontalArrangement=Arrangement.spacedBy(gap)){
+                    listOf("ranking" to "Sıralama","friends" to "Arkadaşlarım","history" to "Son Maçlarım","settings" to "Ayarlar","info" to "Bilgi").forEach{(icon,label)->
+                        Surface(onClick={onPanel(label)},modifier=Modifier.weight(1f).fillMaxHeight(),color=Color(0xE62C145B),
+                            shape=RoundedCornerShape(11.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold)){
+                            Column(Modifier.padding(3.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.Center){
+                                Wq150ApprovedArt(icon,Modifier.size(if(wide)27.dp else 22.dp))
+                                Text(label,color=Color.White,fontSize=if(wide)12.sp else 9.sp,textAlign=TextAlign.Center,maxLines=2)
+                            }
+                        }
+                    }
+                }
+                if(status!=null||onRetry!=null)Surface(Modifier.align(Alignment.TopCenter).padding(top=headerH),color=Color(0xF0251347),
+                    shape=RoundedCornerShape(12.dp)){
+                    Row(Modifier.padding(5.dp),verticalAlignment=Alignment.CenterVertically){
+                        Text(status.orEmpty(),color=Wq122Ink,fontSize=12.sp,modifier=Modifier.widthIn(max=w*.65f))
+                        if(onRetry!=null)TextButton(onClick=onRetry){Text("Tekrar dene")}
+                    }
+                }
+            }
+        }
+    }
+    if(picker)AlertDialog(onDismissRequest={picker=false},title={Text("Kişisel Maskot")},
+        text={Column(Modifier.verticalScroll(rememberScrollState())){
+            Wq2DPortrait(avatar,Modifier.fillMaxWidth().height(160.dp))
+            TextButton(onClick={picker=false;builtin=true}){Text("Hazır karakterler")}
+            Wq183MascotManager(session.profileKey,avatar,{Wq2DMascots.choose(context,session.profileKey,it)},session.accounts.uid.orEmpty().isNotBlank(),session.accounts.socialAuth())
+        }},confirmButton={TextButton(onClick={picker=false}){Text("Kapat")}})
+    if(builtin)Wq2DCharacterPicker(avatar,{Wq2DMascots.choose(context,session.profileKey,it)},{builtin=false})
+}
+@Composable
+private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,onStart:(WqArenaSoloLaunch)->Unit){
+    val context=LocalContext.current
+    val scope=rememberCoroutineScope()
+    val saved=remember(session.profileKey){Wq186ArenaPresetStore.read(context,session.profileKey,"A1")}
+    val engine=Wq150HomeModes.localEngine(kind)
+    var levels by remember(kind){mutableStateOf(saved.levels)}
+    var count by remember(kind){mutableIntStateOf(if(engine=="quiz")10 else 20)}
+    var seconds by remember(kind){mutableIntStateOf(Wq150HomeModes.localTimes(kind).first())}
+    var hints by remember(kind){mutableIntStateOf(saved.hints.takeIf{it in Wq150HomeModes.localHints(kind)}?:0)}
+    var topic by remember(kind){mutableStateOf(PremiumArenaRules.allTopics)}
+    var topics by remember(kind){mutableStateOf(listOf(PremiumArenaRules.allTopics))}
+    var busy by remember{mutableStateOf(false)}
+    var error by remember{mutableStateOf("")}
+    var expanded by remember{mutableStateOf(false)}
+    LaunchedEffect(levels,engine){
+        val result=withContext(Dispatchers.IO){
+            runCatching{if(engine=="quiz")listOf(PremiumArenaRules.allTopics)else{
+                val content=PremiumArenaContent(context.applicationContext)
+                (listOf(PremiumArenaRules.allTopics)+levels.flatMap{content.topics(it)}).distinct()
+            }}.getOrDefault(listOf(PremiumArenaRules.allTopics))
+        }
+        topics=result
+        if(topic !in topics)topic=PremiumArenaRules.allTopics
+    }
+    Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false)){
+        Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+            Wq122SettingsBackdrop(Modifier.matchParentSize())
+            Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(12.dp),
+                verticalArrangement=Arrangement.spacedBy(8.dp)){
+                Row(verticalAlignment=Alignment.CenterVertically){
+                    TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
+                    Wq122Art("settings",Modifier.size(32.dp))
+                    Text("Maç Ayarları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=21.sp)
+                }
+                Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
+                    Wq150PremiumPanel{
+                        Text(wq150Card(kind).title+" · Tek Başına",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                        Wq122Section("level","CEFR seviyeleri","Birden fazla seviye seçebilirsin.")
+                        Wq150ModeCatalog.cefr.chunked(3).forEach{row->Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)){
+                            row.forEach{level->Wq122Choice(level,level in levels,Modifier.weight(1f)){
+                                if(!busy)levels=if(level in levels){if(levels.size>1)levels-level else levels}else Wq150ModeCatalog.cefr.filter{it in levels+level}
+                            }}
+                        }}
+                        if(engine!="quiz"){
+                            Wq122Section("topic","Konu")
+                            Box{OutlinedButton(enabled=!busy,onClick={expanded=true},modifier=Modifier.fillMaxWidth()){Text(topic)}
+                                DropdownMenu(expanded=expanded,onDismissRequest={expanded=false}){
+                                    topics.forEach{value->DropdownMenuItem(text={Text(value)},onClick={topic=value;expanded=false})}
+                                }
+                            }
+                        }
+                    }
+                    Wq150PremiumPanel{
+                        Wq122Section("count",if(engine=="quiz")"Soru sayısı" else "Kelime sayısı")
+                        Wq150SoloNumbers(if(engine=="quiz")listOf(5,10,12,15,20)else PremiumArenaRules.allowedSizes,count,{it.toString()}){if(!busy)count=it}
+                        Wq122Section("time","Soru süresi")
+                        Wq150SoloNumbers(Wq150HomeModes.localTimes(kind),seconds,{if(it==0)"Süresiz" else "$it sn"}){if(!busy)seconds=it}
+                        Wq122Section("hint","İpucu hakkı")
+                        Wq150SoloNumbers(Wq150HomeModes.localHints(kind),hints,{it.toString()}){if(!busy)hints=it}
+                        if(kind=="obstacle")Text("Her kelime için 20 saniye; harf açma hakkı yok.",color=Wq122Ink)
+                    }
+                    if(error.isNotBlank())Text(error,color=Color(0xFFFFB4B4))
+                }
+                Wq150PremiumPanel{
+                    Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                    Text(levels.joinToString(" + ")+" · "+count+" "+(if(engine=="quiz")"soru" else "kelime")+" · "+(if(seconds==0)"Süresiz" else "$seconds sn")+" · $hints ipucu",color=Wq122Ink)
+                    if(busy)LinearProgressIndicator(Modifier.fillMaxWidth())
+                    Wq122Primary(if(busy)"Oyun hazırlanıyor…" else "Maçı Başlat",!busy&&count>=levels.size,{
+                        if(!busy){
+                            busy=true;error=""
+                            val id=java.util.UUID.randomUUID().toString()
+                            val preset=Wq186MatchPreset(levels,hints,0)
+                            val chosenCount=count;val chosenSeconds=seconds;val chosenTopic=topic
+                            scope.launch{
+                                try{
+                                    val round=Wq132WebEngine.generate(context,engine,preset.levels,chosenTopic,chosenCount,chosenSeconds,preset.hints,preset.retries,id.hashCode())
+                                    require(if(engine=="quiz")round.questions.isNotEmpty() else round.board!=null)
+                                    onStart(WqArenaSoloLaunch(id,engine,preset.levels.first(),chosenTopic,chosenCount,chosenSeconds,preset,round))
+                                }catch(e:kotlinx.coroutines.CancellationException){throw e}
+                                catch(e:Exception){error="Oyun hazırlanamadı. Seviye, konu veya sayıyı değiştir: "+(e.message?:"").take(150)}
+                                finally{busy=false}
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+}
+@Composable
+private fun Wq150SoloNumbers(values:List<Int>,selected:Int,label:(Int)->String,onPick:(Int)->Unit){
+    values.chunked(3).forEach{row->Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)){
+        row.forEach{v->Wq122Choice(label(v),selected==v,Modifier.weight(1f)){onPick(v)}}
+        repeat(3-row.size){Spacer(Modifier.weight(1f))}
+    }}
 }

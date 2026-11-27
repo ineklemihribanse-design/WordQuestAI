@@ -145,7 +145,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                     }
                     Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
                         verticalArrangement=Arrangement.spacedBy(8.dp)){
-                Wq150Choices("Oyun türü",Wq150ModeCatalog.kinds,s.kind){s=s.changeKind(it)}
+                Wq122Section("mode","Seçilen mod · "+Wq150ModeCatalog.kinds[s.kind].orEmpty())
                 Wq150Choices("Oyun biçimi",Wq150ModeCatalog.modes(s.kind),s.mode){s=s.changeMode(it)}
                 if(s.kind=="team")Wq150Choices("2'ye 2 · içerik",mapOf("crossword" to "Bulmaca","quiz" to "5 Şıklı"),s.format){s=s.changeFormat(it)}
                 if(s.mode=="limited")Wq150Choices("Seri sınırı",listOf(2,3,5).associate{it.toString() to "$it doğru"},s.limit.toString()){s=s.copy(limit=it.toInt())}
@@ -160,9 +160,9 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                             level in s.levels,Modifier.weight(1f)){s=s.toggleLevel(level)}}
                     }
                 }
-                Wq150Choices("Konu",mapOf("all" to "Tümü")+topics,s.topic?:"all"){s=s.copy(topic=it.takeUnless{x->x=="all"},wordType=null)}
+                Wq150Filter("Konu",mapOf("all" to "Tüm konular")+topics,s.topic?:"all"){s=s.copy(topic=it.takeUnless{x->x=="all"},wordType=null)}
                 if(wordTypes.isNotEmpty()||catalog==null)
-                    Wq150Choices("Kelime türü",mapOf("all" to "Tümü")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
+                    Wq150Filter("Kelime türü",mapOf("all" to "Tüm kelime türleri")+wordTypes,s.wordType?:"all"){s=s.copy(wordType=it.takeUnless{x->x=="all"},topic=null)}
                 else Text("Kelime türü etiketleri henüz aktarılmadı.",color=Color(0xFFFFD6A1))
                 Wq150Choices(if(s.format=="quiz")"Soru sayısı" else "Kelime sayısı",
                     Wq150ModeCatalog.sizes(s.format).associate{it.toString() to it.toString()},s.count.toString()){s=s.copy(count=it.toInt())}
@@ -177,7 +177,13 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                 if(catalog!=null&&!catalog.supports(s))Text("Seçilen seviyeler ve filtre için yeterli içerik yok. Soru sayısını azalt veya filtreyi değiştir.",color=Color(0xFFFFD6A1))
                 if(!available)Text("İşlem sürüyor veya yeniden denenmesi gerekiyor.",color=Color(0xFFFFD6A1))
                     }
-                    Wq122Primary("Ayarları uygula",available&&s.valid()&&(catalog?.supports(s)!=false),{onApply(s)})
+                    Surface(color=Color(0xEC251347),shape=MaterialTheme.shapes.large,modifier=Modifier.fillMaxWidth()){
+                        Column(Modifier.padding(8.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){
+                            Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                            Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+(if(s.seconds==0)"Süresiz" else "${s.seconds} sn")+" · ${s.hints} ipucu",color=Wq122Ink)
+                            Wq122Primary("Ayarları uygula",available&&s.valid()&&(catalog?.supports(s)!=false),{onApply(s)})
+                        }
+                    }
                 }
             }
         }
@@ -190,4 +196,29 @@ private fun Wq150Choices(title:String,values:Map<String,String>,selected:String,
         row.forEach{(key,label)->Wq122Choice(label,key==selected,Modifier.weight(1f)){onPick(key)}}
         if(row.size==1)Spacer(Modifier.weight(1f))
     }}
+}
+
+@Composable
+private fun Wq150Filter(title:String,values:Map<String,String>,selected:String,onPick:(String)->Unit){
+    var open by remember{mutableStateOf(false)}
+    var query by remember{mutableStateOf("")}
+    Wq122Section("topic",title)
+    Surface(onClick={open=true},color=Color(0xF0251347),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth()){
+        Row(Modifier.padding(12.dp),verticalAlignment=Alignment.CenterVertically){
+            Text(values[selected].orEmpty(),Modifier.weight(1f),color=Wq122Ink)
+            Text("⌄",color=Wq122Gold)
+        }
+    }
+    if(open)AlertDialog(onDismissRequest={open=false},title={Text(title)},text={
+        Column(Modifier.heightIn(max=420.dp)){
+            OutlinedTextField(query,{query=it},label={Text("Ara")},singleLine=true,modifier=Modifier.fillMaxWidth())
+            Column(Modifier.weight(1f,fill=false).verticalScroll(rememberScrollState())){
+                values.filterValues{it.contains(query,ignoreCase=true)}.forEach{(id,name)->
+                    TextButton(onClick={onPick(id);open=false;query=""},modifier=Modifier.fillMaxWidth()){
+                        Text(name+if(id==selected)" ✓" else "",color=Wq122Ink)
+                    }
+                }
+            }
+        }
+    },confirmButton={TextButton(onClick={open=false}){Text("Kapat")}})
 }

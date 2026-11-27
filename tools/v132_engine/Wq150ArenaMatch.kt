@@ -463,7 +463,8 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     }
 }
 @Composable
-internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,legacy:()->Unit){
+internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,legacy:()->Unit,
+    soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit){
     val auth=session.accounts.socialAuth()
     val uid=session.accounts.uid.orEmpty()
     val context=androidx.compose.ui.platform.LocalContext.current
@@ -500,7 +501,7 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
             else{Text(resumeError.orEmpty(),color=Wq122Ink);Button(onClick={retry++}){Text("Tekrar dene")}}
             TextButton(onClick=back){Text("Geri · maç kaydını koru",color=Wq122Gold)}
         }
-    }else Wq150ArenaEntry(session,endpoint,back,account,legacy){r,v->
+    }else Wq150ArenaEntry(session,endpoint,back,account,legacy,soloSelected,onTab,onSolo){r,v->
         if(uid.isNotBlank()&&wq150ValidRoom(r)){prefs.edit().putString(uid,r).apply();room=r;initial=v}
     }
 }
