@@ -1,0 +1,83 @@
+name: Recheck published WordQuest APK upgrade without rebuilding
+on:
+  push:
+    branches: [feature/v150-arena-nextgen]
+    paths: ['.github/workflows/qa-published-upgrade.yml']
+permissions:
+  contents: read
+concurrency:
+  group: wordquest-published-upgrade-benchmark
+  cancel-in-progress: false
+jobs:
+  replay:
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WQ_BASE_VERSION: '1.0.157'
+      WQ_VERSION: '1.0.158'
+      WQ_BASE_CODE: '171'
+      WQ_TARGET_CODE: '172'
+      WQ_BASE_SHA: 10606b522136b82a5798c94a0307c3ee1a269a0e546958cb7ad277322beda302
+      WQ_TARGET_SHA: 3ec9e3dd3f4fbe8adb791d123f87cd4c7f9f45f82903c29819e5df0ca6aaab64
+      WQ_DELTA_SHA: 9fc5f41bfa3eccbbc1f847cbc0e6610560c6eafb33ef94f75f649190551d3d41
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download exact already published APKs and delta
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wq-published-replay"
+          mkdir -p "$D"/{base,new,classes}
+          echo "WQ_RELEASE_DIR=$D" >> "$GITHUB_ENV"
+          gh release download "v$WQ_BASE_VERSION" -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$D/base"
+          gh release download "v$WQ_VERSION" -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -p "WordQuestAI-$WQ_BASE_CODE-to-$WQ_TARGET_CODE.wqd.gz" -D "$D/new"
+          mv "$D/base/WordQuestAI.apk" "$D/old.apk"
+          mv "$D/new/WordQuestAI.apk" "$D/target.apk"
+          mv "$D/new/WordQuestAI-$WQ_BASE_CODE-to-$WQ_TARGET_CODE.wqd.gz" "$D/patch.gz"
+          python3 tools/auto_release/prepare_published_replay.py
+          javac -d "$D/classes" tools/delta_android/WqDeltaApplier.java
+      - name: Prepare Android tools
+        id: sdk
+        run: |
+          set -euo pipefail
+          if [ ! -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" ]; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'build-tools;35.0.0'
+          fi
+          echo "image=$ANDROID_HOME/system-images/android-30/google_apis/x86_64" >> "$GITHUB_OUTPUT"
+          test -e /dev/kvm
+          sudo chmod 666 /dev/kvm
+          python3 -m pip install --disable-pip-version-check Pillow
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.sdk.outputs.image }}
+          key: wq-emulator-android30-googleapis-x86_64-v1
+      - name: Measure exact upgrade with optimized readiness and three viewports
+        run: |
+          set -euo pipefail
+          START=$(date +%s)
+          bash tools/auto_release/run_emulator.sh tools/v150_release/verify_upgrade.sh "$WQ_RELEASE_DIR/target.apk"
+          sha256sum -c "$RUNNER_TEMP/wq206-upgrade-passed.sha256"
+          echo "Published APK replay: $(($(date +%s)-START)) seconds; no build, signing or publication." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: WordQuestAI-published-upgrade-benchmark
+          path: |
+            ${{ runner.temp }}/wq-published-replay/arena-*.png
+            ${{ runner.temp }}/wq-published-replay/arena-*.xml
+            ${{ runner.temp }}/wq-published-replay/startup.png
+            ${{ runner.temp }}/wq206-upgrade-qa.log
+            ${{ runner.temp }}/wq206-emulator.log
+          if-no-files-found: ignore
+          retention-days: 7

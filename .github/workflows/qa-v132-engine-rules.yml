@@ -2,16 +2,6 @@ name: Test v150 shared round, reaction and finish protocol
 on:
   push:
     branches: [feature/v150-arena-nextgen]
-    paths:
-      - 'firebase/**'
-      - 'assets/user_uploads/**'
-      - 'tools/v132_engine/**'
-      - 'tools/arena_v150_server/**'
-      - 'tools/maintenance/**'
-      - 'tools/auto_release/**'
-      - 'tools/v150_release/**'
-      - '.github/workflows/qa-v132-engine-rules.yml'
-      - '.github/workflows/publish-v151-approved.yml'
 permissions:
   contents: read
 concurrency:
@@ -88,8 +78,9 @@ jobs:
           python3 - <<'PY'
           import json,sys
           sys.path.insert(0,'tools/v132_engine')
-          from prepare_friend_hd_rules import NODE
+          from prepare_friend_hd_rules import NODE,merge
           assert json.load(open('firebase/friendMascotHd.fragment.json')) == {'friendMascotHd':NODE}
+          assert json.load(open('firebase/database.rules.v158.json')) == merge(json.load(open('firebase/database.rules.v132.json')))
           PY
       - name: Test trusted connection state transitions
         run: node --test tools/v132_engine/connection.test.mjs tools/v132_engine/connection_store.test.mjs tools/v132_engine/duel.test.mjs tools/v132_engine/quiz.test.mjs tools/v132_engine/coop.test.mjs tools/v132_engine/team.test.mjs tools/v132_engine/match_service.test.mjs tools/v132_engine/arena_gateway.test.mjs tools/v132_engine/lobby.test.mjs tools/v132_engine/lobby_gateway.test.mjs tools/v132_engine/social.test.mjs tools/v132_engine/profiles.test.mjs tools/v132_engine/presence.test.mjs tools/v132_engine/room_storage.test.mjs tools/arena_v150_server/trusted_bank.test.mjs tools/arena_v150_server/vocabulary_bank.test.mjs tools/arena_v150_server/free_room_adapter.test.mjs
