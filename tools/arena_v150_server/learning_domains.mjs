@@ -5,7 +5,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "CALIBRATION",
-    "meaning": "kalibrasyon"
+    "meaning": "kalibrasyon; ölçüm aracının bir standarda göre kontrol edilmesi"
   },
   {
     "level": "B2",
@@ -133,7 +133,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "BUOYANCY",
-    "meaning": "kaldırma kuvveti"
+    "meaning": "akışkanın kaldırma etkisi; yüzebilme özelliği"
   },
   {
     "level": "B2",
@@ -613,7 +613,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "LESION",
-    "meaning": "doku hasarı"
+    "meaning": "doku lezyonu; anormal doku değişikliği"
   },
   {
     "level": "B2",
@@ -621,7 +621,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "DEHYDRATION",
-    "meaning": "sıvı kaybı"
+    "meaning": "vücudun gereğinden fazla su kaybetmesi"
   },
   {
     "level": "B2",
@@ -717,7 +717,7 @@ export const domainWords = [
     "category": "Sağlık ve Tıp",
     "wordType": "İsimler",
     "answer": "MORBIDITY",
-    "meaning": "hastalanma durumu"
+    "meaning": "hastalanma durumu; hastalık görülme sıklığı"
   },
   {
     "level": "C1",
@@ -1045,7 +1045,7 @@ export const domainWords = [
     "category": "Ekonomi ve Finans",
     "wordType": "İsimler",
     "answer": "EQUITY",
-    "meaning": "özsermaye"
+    "meaning": "öz kaynak; öz sermaye"
   },
   {
     "level": "B2",
@@ -1237,7 +1237,7 @@ export const domainWords = [
     "category": "Ekonomi ve Finans",
     "wordType": "İsimler",
     "answer": "DIVESTITURE",
-    "meaning": "varlık elden çıkarma"
+    "meaning": "varlık veya işletme payının elden çıkarılması"
   },
   {
     "level": "C1",
@@ -1341,7 +1341,7 @@ export const domainWords = [
     "category": "Ekonomi ve Finans",
     "wordType": "İsimler",
     "answer": "STAGFLATION",
-    "meaning": "durgunluk içinde enflasyon"
+    "meaning": "ekonomik durgunlukla birlikte yüksek enflasyon"
   },
   {
     "level": "C1",
