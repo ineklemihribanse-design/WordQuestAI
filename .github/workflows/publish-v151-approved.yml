@@ -1,4 +1,4 @@
-name: WordQuest AI 1.0.153 verified release package
+name: WordQuest AI 1.0.153 verified release package (compact viewport fix)
 on:
   pull_request:
     branches: [fix/v190-tablet-board-and-visible-icons]
@@ -16,7 +16,7 @@ env:
   WQ_BASE_CODE: '166'
   WQ_BASE_SHA: 3efae42a948ebd3dd77bacc88e01087aeb43ba593ec7030bbf87e04a65c952be
   WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
-  WQ_NOTES: 'Arena maç ayarlarında görünür işlem düğmeleri, yeni Arena içinde arkadaş profilleri ve girişte içerik yükleme iyileştirmeleri. Mevcut kullanıcı verileri ve imza korunur.'
+  WQ_NOTES: 'Arena kısa yatay tablet ekranında görünür alt menü, maç ayarlarında sabit işlem düğmeleri, yeni Arena içinde arkadaş profilleri ve girişte içerik yükleme iyileştirmeleri. Mevcut kullanıcı verileri ve imza korunur.'
 jobs:
   audit:
     if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository

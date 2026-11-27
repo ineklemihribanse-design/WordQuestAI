@@ -13,7 +13,7 @@ def label(n):return " ".join((n.get("text",""),n.get("content-desc",""))).strip(
 def bounds(n):
     m=re.fullmatch(r"\[(\d+),(\d+)\]\[(\d+),(\d+)\]",n.get("bounds",""))
     assert m,n.attrib
-    x,y,X,Y=map(int,m.groups());assert X>x and Y>y
+    x,y,X,Y=map(int,m.groups());assert X>x and Y>y,("Clipped accessibility node",n.attrib)
     return x,y,X,Y
 def get(token):
     for _ in range(6):
@@ -55,6 +55,7 @@ def viewport(name,w,h,density,wide):
     assert not any("kişisel maskot" in label(n) for n in nodes())
     cards=[bounds(get(t)) for t in ("Bulmaca Düellosu","Ortak Bulmaca","5 Şıklı Düello","Takım Oyunu")]
     footer=[bounds(get(t)) for t in ("Sıralama","Arkadaşlarım","Son Maçlarım","Ayarlar","Bilgi")]
+    print("Arena card and footer coordinates",name,cards,footer,flush=True)
     W,H=capture(name+"-online")
     assert (W>H)==wide
     assert all(0<=x<X<=W and 0<=y<Y<=H for x,y,X,Y in cards+footer)

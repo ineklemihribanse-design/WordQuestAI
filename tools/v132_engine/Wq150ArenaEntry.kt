@@ -347,11 +347,15 @@ internal object Wq150HomeLayout {
         var h=available.coerceAtLeast(if(wide)460f else 640f)
         repeat(100){
             val gap=if(wide)8f else 5f
-            val top=h*(if(wide).62f else .425f)
             val tab=(h*.065f).coerceIn(40f,54f)
             val heading=if(wide)30f else 42f
             val footer=(h*.075f).coerceIn(46f,66f)
-            val area=h-footer-3*gap-top-tab-heading-2*gap
+            val remaining=h-footer-3*gap-tab-heading-2*gap
+            // On short landscape tablets reserve the actual card and footer space
+            // first. Reduce the decorative hero instead of growing past the viewport.
+            // Keep the approved phone proportions and its existing scroll fallback.
+            val top=if(wide)minOf(h*.62f,(remaining-89f).coerceAtLeast(0f)) else h*.425f
+            val area=remaining-top
             val m=Metrics(h,top,tab,heading,footer,gap,area)
             if(m.cardHeight(wide)>=if(wide)88f else 56f)return m
             h+=8f
@@ -459,7 +463,10 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
                     Modifier.matchParentSize(),ContentScale.Crop)
                 val pos=Wq150Podium.anchor(fullW.value,fullH.value,wide,newArt)
                 Box(Modifier.fillMaxSize().padding(safe)){
-                val feet=pos.second.dp-top
+                val artFeet=pos.second.dp-top
+                // Only compact landscape layouts may move the decorative portrait;
+                // the tab and accessible controls always win over decorative overlap.
+                val feet=if(wide)minOf(artFeet,(metrics.tabTop-metrics.gap).dp) else artFeet
                 val avatarW=w*(if(wide).34f else .54f)
                 val avatarH=(feet-h*.075f).coerceAtLeast(40.dp)
                 val crestW=w*(if(wide).26f else if(newArt).34f else .48f)

@@ -19,6 +19,19 @@ class Wq150HomeModesTest{
         assertEquals(780f,Wq150HomeLayout.measure(780f,false).height,0.001f)
         assertEquals(800f,Wq150HomeLayout.measure(800f,true).height,0.001f)
     }
+    @Test fun shortLandscapeTabletsFitAllControlsWithoutScrolling(){
+        for(h in 460..900){
+            val m=Wq150HomeLayout.measure(h.toFloat(),true)
+            assertEquals("available safe height $h",h.toFloat(),m.height,.001f)
+            assertTrue("card touch area at $h",m.cardHeight(true)>=88f)
+            assertTrue("footer separation at $h",m.cardTop+m.cardArea<=m.footerTop)
+            assertTrue("footer inside safe viewport at $h",m.footerTop+m.footerHeight<=h)
+        }
+        // 1724 x 1018 at 240 dpi, after status/navigation bar insets.
+        for(h in listOf(600f,620f,630f,650f,678f)){
+            assertEquals(h,Wq150HomeLayout.measure(h,true).height,.001f)
+        }
+    }
     @Test fun podiumCoordinatesMatchEachAsset(){
         val phone=Wq150Podium.anchor(1080f,2340f,false,true)
         assertEquals(540f,phone.first,.01f)
