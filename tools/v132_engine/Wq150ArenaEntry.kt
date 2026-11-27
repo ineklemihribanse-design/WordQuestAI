@@ -45,8 +45,11 @@ internal object Wq150ArenaFeature {
 internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,
     legacy:()->Unit,soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit,onMatch:(String,JSONObject)->Unit){
     val context=LocalContext.current
-    val catalogState by produceState<Pair<Boolean,Wq150Catalog?>>(false to null,context.applicationContext){
-        value=true to withContext(Dispatchers.IO){Wq150Catalog.read(context.applicationContext)}
+    val appContext=context.applicationContext
+    var catalogState by remember(appContext){mutableStateOf<Pair<Boolean,Wq150Catalog?>>(false to null)}
+    LaunchedEffect(appContext){
+        val loadedCatalog=withContext(Dispatchers.IO){Wq150Catalog.read(appContext)}
+        catalogState=true to loadedCatalog
     }
     val catalog=catalogState.second
     val auth=session.accounts.socialAuth()
