@@ -101,7 +101,7 @@ C1	Genel İngilizce	Zarflar	DAMPLY	nemli bir şekilde
 C1	Genel İngilizce	Sıfatlar	GHOSTLY	hayaletimsi, ürkütücü
 C1	Genel İngilizce	İsimler	CARRIER	taşıyıcı, nakliyeci, taşıma şirketi
 C1	Genel İngilizce	İsimler	WASHTUB	çamaşır leğeni
-C1	Genel İngilizce	Sıfatlar	APT	uygun, yerinde; bir davranışa eğilimli
+C1	Genel İngilizce	Sıfatlar	APT	uygun, yerinde; bir davranışa eğilimli; öğrenmeye yatkın
 C1	Genel İngilizce	Fiiller	APT TO	-meye eğilimli, -mesi muhtemel
 C1	Genel İngilizce	Sıfatlar	PORTABLE	sıfat: taşınabilir, portatif; isim: taşınabilir cihaz
 C1	Genel İngilizce	Sıfatlar	ORNAMENTAL	dekoratif, süs amaçlı
@@ -207,7 +207,7 @@ C1	Genel İngilizce	İsimler	RARITY	nadirlik, ender bulunan şey
 C1	Genel İngilizce	Fiiller	EVOKE	çağrıştırmak, uyandırmak, akla getirmek
 C1	Genel İngilizce	Fiiller	REPEL	püskürtmek, uzak tutmak, tiksindirmek
 C1	Genel İngilizce	İsimler	REPELLANT	kovucu madde; sıfat: itici, tiksindirici (repellent yazımı da yaygındır)
-C1	Genel İngilizce	Sıfatlar	AQUA	açık mavi-yeşil renk, su yeşili
+C1	Genel İngilizce	Sıfatlar	AQUA	sıfat: su yeşili renginde, açık mavi-yeşil; isim: su yeşili rengi
 C1	Genel İngilizce	İsimler	AQUARIUM	akvaryum
 C1	Genel İngilizce	Zarflar	INSIGHTFULLY	derin bir kavrayışla, isabetli bir şekilde
 C1	Genel İngilizce	İsimler	FLASHBACK	geçmişe dönüş sahnesi, ani anı canlanması
@@ -251,7 +251,7 @@ C1	Genel İngilizce	Fiiller	DITHER	kararsız kalmak, tereddüt etmek, bocalamak
 C1	Genel İngilizce	İsimler	OVERALLS	tulum, iş tulumu
 C1	Genel İngilizce	İsimler	UNISON	birlik, uyum; in unison: aynı anda, hep bir ağızdan
 C1	Genel İngilizce	İsimler	SNAIL	salyangoz
-C1	Genel İngilizce	İsimler	BLISS	mutluluk, saadet, huzur
+C1	Genel İngilizce	İsimler	BLISS	büyük mutluluk, saadet, yoğun huzur
 C1	Genel İngilizce	Sıfatlar	INEXHAUSTIBLE	tükenmez, bitmez
 C1	Genel İngilizce	İsimler	ACRE	akre (yaklaşık 4.047 metrekare, 4,05 dönüm)
 C1	Genel İngilizce	İsimler	HEIFER	düve; henüz doğum yapmamış genç dişi sığır
@@ -319,8 +319,8 @@ C1	Genel İngilizce	İsimler	CONNOISSEUR	özellikle sanat, yemek veya şarap ala
 C1	Genel İngilizce	İsimler	ABSTRACTION	soyutlama, soyut kavram; zihnin dalgınlığı
 C1	Genel İngilizce	İsimler	TANTRUM	öfke nöbeti, huysuzluk krizi
 C1	Genel İngilizce	Fiiller	DISCARD	atmak, bir kenara atmak, elden çıkarmak
-C1	Genel İngilizce	İsimler	FATALITY	ölüm, can kaybı; ölümle sonuçlanan olay
-C1	Genel İngilizce	Fiiller	STIFFEN	sertleşmek, katılaşmak, gerilmek
+C1	Genel İngilizce	İsimler	FATALITY	özellikle kaza, afet veya benzeri olay sonucunda meydana gelen ölüm, can kaybı
+C1	Genel İngilizce	Fiiller	STIFFEN	sertleşmek, katılaşmak, gerilmek; sertleştirmek, katılaştırmak
 C1	Genel İngilizce	Sıfatlar	WOODED	ağaçlık, ormanlık
 C1	Genel İngilizce	Fiiller	FLATTER	aşırı veya çıkar amaçlı övmek, pohpohlamak; hoş göstermek
 C1	Genel İngilizce	İsimler	FLATTERY	dalkavukluk, yağcılık, pohpohlama
@@ -359,7 +359,7 @@ C1	Genel İngilizce	Sıfatlar	ADVISORY	danışma amaçlı, tavsiye niteliğinde
 C1	Genel İngilizce	Sıfatlar	TRYING	zor, yorucu, sinir bozucu
 C1	Genel İngilizce	İsimler	ADRENALINE	adrenalin
 C1	Genel İngilizce	Fiiller	TINKER	fiil: kurcalamak, üzerinde oynamak; isim: seyyar tamirci, kalaycı
-C1	Genel İngilizce	İsimler	LAVATORY	tuvalet, lavabo
+C1	Genel İngilizce	İsimler	LAVATORY	tuvalet; özellikle ABD kullanımında lavabo
 C1	Genel İngilizce	İsimler	PINNACLE	doruk, zirve
 C1	Genel İngilizce	Sıfatlar	INSECURE	kendine güvenmeyen, güvensiz, emniyetsiz
 C1	Genel İngilizce	Zarflar	INSECURELY	güvensizce, sağlam olmayan bir şekilde
@@ -372,7 +372,7 @@ C1	Genel İngilizce	İsimler	DRAWBACK	dezavantaj, sakınca
 C1	Genel İngilizce	Fiiller	OVERSEE	denetlemek, gözetmek, yönetmek
 C1	Genel İngilizce	İsimler	OVERSEER	gözetmen, denetçi, ustabaşı
 C1	Genel İngilizce	İsimler	ESTIMATION	tahmin, değerlendirme, görüş
-C1	Genel İngilizce	İsimler	LIAISON	irtibat, koordinasyon; gizli romantik ilişki
+C1	Genel İngilizce	İsimler	LIAISON	irtibat, koordinasyon; kişiler veya kurumlar arasında bağlantı; romantik ilişki (özellikle gizli olan)
 C1	Genel İngilizce	Zarflar	STRESSFULLY	stresli bir şekilde
 C1	Genel İngilizce	Fiiller	LOOM	belirmek, tehdit edici biçimde yaklaşmak; isim: dokuma tezgâhı
 C1	Genel İngilizce	Edatlar	NOTWITHSTANDING	-e rağmen, -e karşın
@@ -523,7 +523,7 @@ C1	Genel İngilizce	İsimler	SLACK	fiil: gevşemek, tembellik etmek; isim: gevş
 C1	Genel İngilizce	Zarflar	SLACKLY	gevşek bir şekilde, gevşekçe
 C1	Genel İngilizce	Sıfatlar	UNWAVERING	sarsılmaz, kararlı, değişmez
 C1	Genel İngilizce	Zarflar	UNWAVERINGLY	sarsılmadan, kararlılıkla
-C1	Genel İngilizce	Sıfatlar	REMOVED	uzak, bağlantısız, farklı
+C1	Genel İngilizce	Sıfatlar	REMOVED	uzak, bağlantısız; çıkarılmış, uzaklaştırılmış veya görevden alınmış
 C1	Genel İngilizce	İsimler	BUFFOON	soytarı, palyaço, şaklaban
 C1	Genel İngilizce	Sıfatlar	BEGUILING	çekici, büyüleyici; bazen aldatıcı biçimde cezbedici
 C1	Genel İngilizce	Zarflar	BEGUILINGLY	büyüleyici bir şekilde, çekici biçimde
@@ -598,7 +598,7 @@ C1	Genel İngilizce	Zarflar	VOLUNTARILY	gönüllü olarak, isteyerek
 C1	Genel İngilizce	Fiiller	REAP	hasat etmek, (faydasını) görmek, biçmek
 C1	Genel İngilizce	Sıfatlar	PATERNAL	babaya ilişkin, baba tarafından; babacan
 C1	Genel İngilizce	Sıfatlar	MATERNAL	anneye ilişkin, anne tarafından; anaç
-C1	Genel İngilizce	Sıfatlar	MATERNALISTIC	anaç, aşırı korumacı
+C1	Genel İngilizce	Sıfatlar	MATERNALISTIC	anne gibi koruyucu, başkalarının kararlarına aşırı müdahale eden (anaçlık gerekçesiyle)
 C1	Genel İngilizce	Sıfatlar	PATERNALISTIC	koruma gerekçesiyle başkalarının kararlarını kontrol eden, vesayetçi
 C1	Genel İngilizce	İsimler	PROVISIONS	erzak, (yasal) hükümler, tedarik
 C1	Genel İngilizce	İsimler	INJUSTICE	adaletsizlik, haksızlık
@@ -608,7 +608,7 @@ C1	Genel İngilizce	Zarflar	UNSUSTAINABLY	sürdürülemez bir şekilde
 C1	Genel İngilizce	Sıfatlar	SUSTAINABLE	sürdürülebilir
 C1	Genel İngilizce	Zarflar	SUSTAINABLY	sürdürülebilir bir şekilde
 C1	Genel İngilizce	Fiiller	BYPASS	atlamak, es geçmek, çevresinden dolaşmak
-C1	Genel İngilizce	İsimler	CYNIC	sinik, kuşkucu kimse
+C1	Genel İngilizce	İsimler	CYNIC	insanların esas olarak kendi çıkarlarıyla hareket ettiğini düşünen, insanlara güvensiz kimse; sinik
 C1	Genel İngilizce	Sıfatlar	CYNICAL	insanların genellikle kendi çıkarlarıyla hareket ettiğine inanan, kuşkucu
 C1	Genel İngilizce	Zarflar	CYNICALLY	sinik bir şekilde, kuşkuyla, alaycı bir şekilde
 C1	Genel İngilizce	İsimler	CYNICISM	insanların içtenliğine kuşku duyma; felsefede Kinizm
@@ -628,7 +628,7 @@ C1	Genel İngilizce	Fiiller	HIBERNATE	kış uykusuna yatmak
 C1	Genel İngilizce	İsimler	HIBERNATION	kış uykusu
 C1	Genel İngilizce	Fiiller	CONVICT	fiil: mahkûm etmek, suçlu bulmak; isim: mahkûm, hükümlü
 C1	Genel İngilizce	İsimler	CONVICTION	güçlü inanç, kanaat; ceza yargılamasında mahkûmiyet
-C1	Genel İngilizce	Fiiller	SNOOZE	kestirmek, şekerleme yapmak, (alarmı) ertelemek
+C1	Genel İngilizce	Fiiller	SNOOZE	fiil: kestirmek, şekerleme yapmak, (alarmı) ertelemek; isim: kısa uyku
 C1	Genel İngilizce	Sıfatlar	CLASSY	şık, klas, kaliteli
 C1	Genel İngilizce	Fiiller	WRENCH	fiil: zorla çekmek, burkmak; isim: (ABD) somun anahtarı; sarsıcı ayrılık
 C1	Genel İngilizce	Fiiller	REMINISCE	eski günleri anmak, anılardan söz etmek
@@ -694,7 +694,7 @@ C1	Genel İngilizce	İsimler	FIEND	şeytan, zalim kimse, tutkun
 C1	Genel İngilizce	Sıfatlar	FIENDISH	şeytani, acımasız, çok karmaşık
 C1	Genel İngilizce	Zarflar	FIENDISHLY	son derece, şeytanca
 C1	Genel İngilizce	Fiiller	TRANSFIX	donup kalmasına neden olmak, büyülemek, saplamak
-C1	Genel İngilizce	İsimler	GYPSY	Roman halkından kişi için tarihsel adlandırma (incitici olabilir; Roma/Romani tercih edilir)
+C1	Genel İngilizce	İsimler	GYPSY	Roman halkından bir kişi için kullanılan tarihsel İngilizce adlandırma (incitici olabilir; İngilizcede Roma veya Romani tercih edilir)
 C1	Genel İngilizce	İsimler	TEMPERAMENT	mizaç, huy, yaradılış
 C1	Genel İngilizce	Sıfatlar	TEMPERAMENTAL	değişken huylu, huysuz, mizaçla ilgili
 C1	Genel İngilizce	Zarflar	TEMPERAMENTALLY	mizaç olarak, yaradılış gereği
@@ -712,7 +712,7 @@ C1	Genel İngilizce	Sıfatlar	OCCUPATIONAL	meslekî, işle ilgili
 C1	Genel İngilizce	İsimler	VERDICT	mahkeme veya jürinin kararı; değerlendirme sonucu
 C1	Genel İngilizce	Fiiller	VENTILATE	havalandırmak, (fikir) dile getirmek
 C1	Genel İngilizce	İsimler	VENTILATION	havalandırma
-C1	Genel İngilizce	İsimler	OCCUPANT	oturan kişi, sakin, (araçta) yolcu
+C1	Genel İngilizce	İsimler	OCCUPANT	bir yeri kullanan veya orada oturan kişi; bir araçta bulunan sürücü ya da yolcu
 C1	Genel İngilizce	İsimler	RADIATOR	radyatör, kalorifer peteği
 C1	Genel İngilizce	Sıfatlar	HOMELY	(İng.) ev ortamı gibi rahat; (ABD) alımsız
 C1	Genel İngilizce	Sıfatlar	BUREAUCRATIC	bürokratik
@@ -769,7 +769,7 @@ C1	Genel İngilizce	Zarflar	MAGNETICALLY	manyetik olarak
 C1	Genel İngilizce	Sıfatlar	CREDIBLE	inandırıcı, güvenilir
 C1	Genel İngilizce	Zarflar	CREDIBLY	inandırıcı bir şekilde, güvenilir biçimde
 C1	Genel İngilizce	İsimler	CREDIBILITY	güvenilirlik, inandırıcılık
-C1	Genel İngilizce	İsimler	CREDENTIAL	yeterliliği veya kimliği kanıtlayan belge veya bilgi
+C1	Genel İngilizce	İsimler	CREDENTIAL	kimliği, yetkiyi veya yeterliliği kanıtlayan belge ya da bilgi; credentials: yeterlilik belgeleri veya kimlik bilgileri
 C1	Genel İngilizce	Zarflar	ACUTELY	son derece, derinden, keskin bir şekilde
 C1	Genel İngilizce	Zarflar	PROHIBITIVELY	bir şeyi ulaşılmaz kılacak ölçüde, engelleyici derecede
 C1	Genel İngilizce	İsimler	FISSURE	yarık, çatlak
@@ -781,13 +781,13 @@ C1	Genel İngilizce	Fiiller	SQUANDER	çarçur etmek, israf etmek, heba etmek
 C1	Genel İngilizce	Fiiller	MUNCH	çatır çutur yemek, çiğnemek, atıştırmak
 C1	Genel İngilizce	Fiiller	ADJOIN	bitişik olmak, yanında olmak
 C1	Genel İngilizce	Sıfatlar	ADJOINING	bitişik, yandaki
-C1	Genel İngilizce	Sıfatlar	WIZENED	buruşuk, pörsümüş, kırış kırış
-C1	Genel İngilizce	Fiiller	GRAFT	aşılamak, doku nakletmek; isim: aşı, nakledilen doku
+C1	Genel İngilizce	Sıfatlar	WIZENED	özellikle yaşlılık nedeniyle buruşmuş, kırışmış
+C1	Genel İngilizce	Fiiller	GRAFT	fiil: aşılamak, doku nakletmek; isim: aşı, nakledilen doku; (özellikle ABD) yolsuzluk yoluyla kazanç
 C1	Genel İngilizce	İsimler	ORCHARD	meyve bahçesi
 C1	Genel İngilizce	İsimler	SEEDLING	fide, fidan
 C1	Genel İngilizce	İsimler	TRACT	geniş arazi parçası; vücutta sistem veya yol; kısa risale
 C1	Genel İngilizce	İsimler	FOLKTALE	halk masalı, halk hikâyesi
-C1	Genel İngilizce	Fiiller	SPROUT	fiil: filizlenmek, çimlenmek, birden çıkmak; isim: filiz, sürgün, Brüksel lahanası
+C1	Genel İngilizce	Fiiller	SPROUT	fiil: filizlenmek, çimlenmek, birden çıkmak; isim: filiz, sürgün; sprouts: (özellikle İng.) Brüksel lahanası
 C1	Genel İngilizce	İsimler	HYPOCRISY	ikiyüzlülük, riyakârlık
 C1	Genel İngilizce	İsimler	HYPOCRITE	ikiyüzlü, riyakâr
 C1	Genel İngilizce	Sıfatlar	HYPOCRITICAL	ikiyüzlü, riyakâr
