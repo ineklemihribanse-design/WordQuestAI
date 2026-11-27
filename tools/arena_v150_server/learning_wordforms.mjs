@@ -445,7 +445,7 @@ export const wordFormWords = [
     "wordType": "İsimler",
     "category": "Akademik İngilizce",
     "answer": "DEMONSTRATION",
-    "meaning": "gösterim"
+    "meaning": "gösterme; kanıtlama"
   },
   {
     "level": "B2",
@@ -501,7 +501,7 @@ export const wordFormWords = [
     "wordType": "Zarflar",
     "category": "Akademik İngilizce",
     "answer": "IDENTIFIABLY",
-    "meaning": "tanınabilir biçimde"
+    "meaning": "ayırt edilebilir veya tanınabilir biçimde"
   },
   {
     "level": "B2",
@@ -701,7 +701,7 @@ export const wordFormWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "SPECULATE",
-    "meaning": "varsayım yürütmek"
+    "meaning": "kesin kanıt olmadan tahmin yürütmek"
   },
   {
     "level": "C1",
@@ -837,7 +837,7 @@ export const wordFormWords = [
     "wordType": "Sıfatlar",
     "category": "İleri Akademik İngilizce",
     "answer": "EXCLUSIVE",
-    "meaning": "münhasır"
+    "meaning": "yalnızca belirli kişi veya gruba ait; özel"
   },
   {
     "level": "C1",
@@ -853,7 +853,7 @@ export const wordFormWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "INCLUSION",
-    "meaning": "dahil etme"
+    "meaning": "dâhil etme"
   },
   {
     "level": "C1",
@@ -861,7 +861,7 @@ export const wordFormWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "INCLUDE",
-    "meaning": "dahil etmek"
+    "meaning": "dâhil etmek"
   },
   {
     "level": "C1",
