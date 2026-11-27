@@ -21,6 +21,19 @@ internal object Wq150SoundPacks{
     fun selected(context:Context)=normalize(prefs(context).getString("sound_pack","crystal"))
     fun select(context:Context,value:String){prefs(context).edit().putString("sound_pack",normalize(value)).apply()}
 }
+// Confirmed answers must not be interrupted by clock or ambient cues.
+internal fun wq150SoundPriority(event:String)=when(event){
+    "correct","wrong"->3
+    "tick","urgent"->2
+    "ambient"->1
+    else->0
+}
+internal fun wq150SoundVolume(event:String)=when(event){
+    "ambient"->.30f
+    "tick"->.42f
+    "urgent"->.62f
+    else->.85f
+}
 internal class Wq150SoundPlayer(context:Context):AutoCloseable{
     private val pool=runCatching{
         SoundPool.Builder().setMaxStreams(2).setAudioAttributes(AudioAttributes.Builder()
@@ -51,6 +64,8 @@ internal class Wq150SoundPlayer(context:Context):AutoCloseable{
     private val samples=mutableMapOf<String,Int>()
     private val loaded=mutableSetOf<Int>()
     private var stream=0
+    private var priority=0
+    private var protectedUntil=0L
     private var closed=false
     init{
         pool?.setOnLoadCompleteListener{_,id,status->if(!closed&&status==0)loaded.add(id)}
@@ -62,13 +77,25 @@ internal class Wq150SoundPlayer(context:Context):AutoCloseable{
             }
         }
     }
-    fun stop(){if(!closed&&stream!=0)runCatching{pool?.stop(stream)};stream=0}
+    fun stop(){
+        if(!closed&&stream!=0)runCatching{pool?.stop(stream)}
+        stream=0;priority=0;protectedUntil=0L
+    }
     fun play(pack:String,event:String){
-        if(closed||pack=="silent")return
+        if(closed)return
+        if(pack=="silent"){stop();return}
         val id=samples[pack+"_"+event]?:return
         if(id !in loaded)return
+        val now=android.os.SystemClock.elapsedRealtime()
+        val next=wq150SoundPriority(event)
+        if(next<priority&&now<protectedUntil)return
         stop()
-        stream=runCatching{pool?.play(id,.85f,.85f,1,0,1f)?:0}.getOrDefault(0)
+        val volume=wq150SoundVolume(event)
+        stream=runCatching{pool?.play(id,volume,volume,next,0,1f)?:0}.getOrDefault(0)
+        if(stream!=0){
+            priority=next
+            protectedUntil=now+when(next){3->1000L;2->300L;else->0L}
+        }
     }
     override fun close(){if(!closed){stop();closed=true;pool?.release();loaded.clear()}}
 }
@@ -95,9 +122,12 @@ internal fun Wq150SoundPackSettings(){
         Text("Ön dinleme",fontSize=12.sp,color=Color(0xFF3C3258))
         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
             listOf("correct" to "Doğru","wrong" to "Yanlış","tick" to "Saat").forEach{(event,label)->
-                TextButton(onClick={player.play(selected,event)},modifier=Modifier.weight(1f),contentPadding=PaddingValues(4.dp)){Text(label,fontSize=12.sp)}
+                TextButton(onClick={player.stop();player.play(selected,event)},modifier=Modifier.weight(1f),contentPadding=PaddingValues(4.dp)){Text(label,fontSize=12.sp)}
             }
         }
-        TextButton(onClick={player.play(selected,"urgent")}){Text("Son 3 saniye sesini dinle")}
+        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
+            TextButton(onClick={player.stop();player.play(selected,"urgent")},modifier=Modifier.weight(1f)){Text("Son 3 saniye")}
+            TextButton(onClick={player.stop();player.play(selected,"ambient")},modifier=Modifier.weight(1f)){Text("Ortam sesi")}
+        }
     }
 }
