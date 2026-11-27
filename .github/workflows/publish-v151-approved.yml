@@ -1,7 +1,9 @@
 name: WordQuest AI 1.0.158 verified release package (optional HD friend detail and scope audit)
 on:
-  pull_request:
-    branches: [fix/v190-tablet-board-and-visible-icons]
+  # Only an intentional release workflow edit on the trusted branch starts
+  # packaging. PR-wide path filters otherwise rebuild on unrelated commits.
+  push:
+    branches: [feature/v150-arena-nextgen]
     paths: ['.github/workflows/publish-v151-approved.yml']
 concurrency:
   group: wordquest-public-release
@@ -15,11 +17,11 @@ env:
   WQ_TARGET_CODE: '172'
   WQ_BASE_CODE: '171'
   WQ_BASE_SHA: 10606b522136b82a5798c94a0307c3ee1a269a0e546958cb7ad277322beda302
-  WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
+  WQ_SOURCE_SHA: ${{ github.sha }}
   WQ_NOTES: 'Arkadaş profilinde isteğe bağlı HD maskot desteği ve güvenli derleme kapsamı denetimi. HD için uyumlu Firebase kuralları gerekir; eski önizleme korunur.'
 jobs:
   release_gate:
-    if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'push' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
     runs-on: ubuntu-latest
     timeout-minutes: 3
     outputs:
@@ -43,13 +45,13 @@ jobs:
           fi
   audit:
     needs: release_gate
-    if: needs.release_gate.outputs.build == 'true' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    if: needs.release_gate.outputs.build == 'true' && github.event_name == 'push' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-java@v4
@@ -989,13 +991,13 @@ jobs:
           } | tee -a "$GITHUB_STEP_SUMMARY"
   verify:
     needs: audit
-    if: needs.audit.result == 'success' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    if: needs.audit.result == 'success' && github.event_name == 'push' && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.sha }}
           persist-credentials: false
       - uses: actions/setup-java@v4
         with:
