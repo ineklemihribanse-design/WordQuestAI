@@ -22,7 +22,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ at the airport before your flight.",
+    "prompt": "Choose the expression that best fits this context:\n\nPassengers must ____ at the airport to obtain their boarding passes before going through security.",
     "options": [
       "check in",
       "check out",
@@ -39,7 +39,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ online before reaching the airport.",
+    "prompt": "Choose the expression that best fits this context:\n\nYou can ____ online and download your boarding pass before reaching the airport.",
     "options": [
       "check in",
       "check out",
@@ -702,7 +702,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the train timetable online.",
+    "prompt": "Choose the expression that best fits this context:\n\n____ the departure time in the online train timetable if you do not know when the train leaves.",
     "options": [
       "look up",
       "fill in",
@@ -872,7 +872,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ swimming to improve your fitness.",
+    "prompt": "Choose the expression that best fits this context:\n\nIf you have never been a swimmer, you could ____ swimming as a new hobby to improve your fitness.",
     "options": [
       "take up",
       "give up",
@@ -2147,7 +2147,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the new payment system across the network.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe company will ____ the new payment system across the network, introducing it to customers for the first time.",
     "options": [
       "roll out",
       "scale up",
@@ -2997,7 +2997,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the launch date by two weeks.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe organisers want to ____ the launch date by two weeks, moving it from 20 June to 6 June.",
     "options": [
       "bring forward",
       "put back",
@@ -3082,7 +3082,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the start of the meeting by an hour.",
+    "prompt": "Choose the expression that best fits this context:\n\nWe need to ____ the start of the meeting by an hour, from nine to ten.",
     "options": [
       "put back",
       "bring forward",
@@ -3099,7 +3099,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the scheduled opening until repairs are complete.",
+    "prompt": "Choose the expression that best fits this context:\n\nWe must ____ the scheduled opening until repairs are complete, rather than cancel it altogether.",
     "options": [
       "put back",
       "bring forward",
@@ -3558,7 +3558,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ once the initial excitement has faded.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe noise from the crowd is likely to ____ once the initial excitement has faded.",
     "options": [
       "die down",
       "break out",
@@ -3575,7 +3575,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ as the applause gradually becomes quieter.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe applause began to ____ as fewer people continued clapping.",
     "options": [
       "die down",
       "break out",
@@ -3643,7 +3643,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ over time as pressure accumulates in the sealed chamber.",
+    "prompt": "Choose the expression that best fits this context:\n\nPressure may ____ over time in the sealed chamber if gas cannot escape.",
     "options": [
       "build up",
       "break out",
@@ -3660,7 +3660,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ on the surface as more dust settles.",
+    "prompt": "Choose the expression that best fits this context:\n\nDust can ____ on the surface if it is not cleaned regularly.",
     "options": [
       "build up",
       "break out",
@@ -4493,7 +4493,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the training intensity as the athlete recovers.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe athlete should ____ on intensive training until the injury has healed.",
     "options": [
       "ease off",
       "set out",
@@ -4510,7 +4510,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the restrictions when the emergency subsides.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe authorities can ____ on the restrictions gradually when the emergency subsides.",
     "options": [
       "ease off",
       "set out",
@@ -4663,7 +4663,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ minor disagreements over the implementation schedule.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe two teams will meet to ____ minor disagreements over the schedule and agree on a final version.",
     "options": [
       "iron out",
       "set out",
@@ -4748,7 +4748,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the misunderstanding by reassuring both parties.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe manager tried to ____ the misunderstanding by reassuring both parties, even though the underlying issue remained.",
     "options": [
       "smooth over",
       "set out",
@@ -4833,7 +4833,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the billing error with the customer service team.",
+    "prompt": "Choose the expression that best fits this context:\n\nPlease contact customer service to ____ the billing error and obtain the correct invoice.",
     "options": [
       "sort out",
       "set out",
