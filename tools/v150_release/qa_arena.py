@@ -101,6 +101,7 @@ def viewport(name,w,h,density,wide):
     tx,ty,TX,TY=bounds(title)
     assert 0<=x<=tx<TX<=X<=W and 0<=y<=ty<TY<=Y<=H,("Start button outside display",start.attrib,title.attrib)
     assert Y-y>=int(44*density/160),("Start touch target too small",start.attrib)
+    assert Y<=min(a[1] for a in levels),("Start must remain above scrollable level controls",start.attrib,levels)
     print("PASS: visible enabled start button and its text",name,start.attrib,flush=True)
     capture(name+"-settings")
     adb("shell","input","keyevent","KEYCODE_BACK");get("Klasik Bulmaca")
@@ -108,6 +109,7 @@ def viewport(name,w,h,density,wide):
 try:
     viewport("phone",1080,2340,420,False)
     viewport("tablet",2560,1600,320,True)
+    viewport("tablet-short",1724,1018,240,True)
 except Exception:
     capture("failure")
     raise

@@ -251,6 +251,22 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                         TextButton(onClick=onDismiss,contentPadding=PaddingValues(horizontal=6.dp)){Text("‹ Geri",color=Wq122Gold)}
                         Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=19.sp)
                     }
+                    Wq150SettingPanel("green"){
+                        BoxWithConstraints(Modifier.fillMaxWidth()){
+                            val details:@Composable ()->Unit={
+                                Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)
+                                Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Wq122Ink,fontSize=13.sp)
+                                if(!valid)Text(if(!available)"İçerik veya bağlantı hazırlanıyor…" else "Seçimleri kontrol et.",color=Color(0xFFFFD6A1),fontSize=12.sp)
+                            }
+                            if(maxWidth>=650.dp)Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)){
+                                Column(Modifier.weight(1f)){details()}
+                                Box(Modifier.widthIn(min=210.dp,max=280.dp)){Wq150StartButton("Ayarları Uygula",valid){onApply(s)}}
+                            }else Column(verticalArrangement=Arrangement.spacedBy(4.dp)){
+                                details()
+                                Wq150StartButton("Ayarları Uygula",valid){onApply(s)}
+                            }
+                        }
+                    }
                     Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
                     Wq150SettingPanel("purple"){Wq122Section("mode","Seçilen mod · "+Wq150ModeCatalog.kinds[s.kind].orEmpty())}
                     BoxWithConstraints(Modifier.fillMaxWidth()){
@@ -306,11 +322,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                         }
                     }
                     }
-                    Wq150SettingPanel("green"){
-                        Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)
-                        Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Wq122Ink,fontSize=13.sp)
-                        Wq150StartButton("Ayarları Uygula",valid){onApply(s)}
-                    }
+
                 }
             }
         }

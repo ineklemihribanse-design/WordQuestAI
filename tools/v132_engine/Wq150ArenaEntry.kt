@@ -34,6 +34,14 @@ import androidx.compose.ui.window.DialogProperties
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
+private object Wq150CatalogCache {
+    @Volatile var cached:Wq150Catalog?=null
+        private set
+    @Synchronized fun load(context:android.content.Context):Wq150Catalog?{
+        cached?.let{return it}
+        return Wq150Catalog.read(context).also{cached=it}
+    }
+}
 /** Build-provisioned HTTPS origin. Empty by default; no remote room can override it. */
 internal object Wq150ArenaFeature {
     fun endpoint(context:android.content.Context):Wq150Endpoint? {
@@ -46,9 +54,9 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     legacy:()->Unit,soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit,onMatch:(String,JSONObject)->Unit){
     val context=LocalContext.current
     val appContext=context.applicationContext
-    var catalogState by remember(appContext){mutableStateOf<Pair<Boolean,Wq150Catalog?>>(false to null)}
+    var catalogState by remember(appContext){mutableStateOf<Pair<Boolean,Wq150Catalog?>>((Wq150CatalogCache.cached!=null) to Wq150CatalogCache.cached)}
     LaunchedEffect(appContext){
-        val loadedCatalog=withContext(Dispatchers.IO){Wq150Catalog.read(appContext)}
+        val loadedCatalog=withContext(Dispatchers.IO){Wq150CatalogCache.load(appContext)}
         catalogState=true to loadedCatalog
     }
     val catalog=catalogState.second
@@ -108,7 +116,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
             if(!lobby&&!active){
                 val enabled=!state.busy&&!state.pending
                 Wq150ArenaHome(session,ownAvatar,soloSelected,onTab,enabled,back,
-                    onMode={kind->if(soloSelected)soloMode=kind else if(catalogState.first){settings=settings.changeKind(kind);edit=true}},
+                    onMode={kind->if(soloSelected)soloMode=kind else{settings=settings.changeKind(kind);edit=true}},
                     onPanel={panel=it},
                     status=state.error?:if(state.busy)"Oda işlemi sürüyor…" else if(!soloSelected&&!catalogState.first)"İçerik hazırlanıyor…" else null,
                     onRetry=if(state.pending&&!state.busy)({scope.launch{controller.retry()};Unit})else null)
@@ -199,7 +207,24 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
-        if(panel.isNotBlank())AlertDialog(onDismissRequest={panel=""},containerColor=Color(0xFF251347),title={Text(panel,color=Wq122Gold)},
+        if(panel=="Arkadaşlarım"){
+            Dialog(onDismissRequest={panel=""},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
+                Wq150ArenaBars()
+                Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+                    Column(Modifier.align(Alignment.TopCenter).widthIn(max=760.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(10.dp),
+                        verticalArrangement=Arrangement.spacedBy(8.dp)){
+                        Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
+                            TextButton(onClick={panel=""}){Text("‹ Geri",color=Wq122Gold)}
+                            Text("Arkadaşlarım",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=20.sp)
+                        }
+                        Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())){
+                            FriendsPanel(session.social)
+                        }
+                    }
+                }
+            }
+        }
+        if(panel.isNotBlank()&&panel!="Arkadaşlarım")AlertDialog(onDismissRequest={panel=""},containerColor=Color(0xFF251347),title={Text(panel,color=Wq122Gold)},
             text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
                 when(panel){
                     "Hızlı Oda Katılımı"->{
@@ -232,14 +257,6 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                     }
                     "Ayarlar"->Wq179ArenaAudioSettings()
                     "Bilgi"->Text("Bulmaca Düellosu: rakibinle yarış. Ortak Bulmaca: aynı tahtayı birlikte çöz. 5 Şıklı Düello: bilgini ve hızını göster. Takım Oyunu: 2'ye 2 mücadele et.",color=Wq122Ink)
-                    "Arkadaşlarım"->{
-                        if(session.social.friends.isEmpty())Text("Henüz arkadaş eklenmedi.",color=Wq122Ink)
-                        session.social.friends.forEach{friend->
-                            Text(friend.name,color=Wq122Ink,fontWeight=FontWeight.Bold)
-                            Text(Wq180FriendActivity.label(friend.lastActiveAt),color=Wq122Ink)
-                        }
-                        TextButton(onClick={panel="";legacy()}){Text("Arkadaş yönetimi",color=Wq122Gold)}
-                    }
                     else->{
                         Wq150Records(context,session.profileKey,panel=="Sıralama")
                         HorizontalDivider()
@@ -250,7 +267,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
             }},confirmButton={TextButton(onClick={panel=""}){Text("Kapat")}})
         LaunchedEffect(lobby,active){if(lobby||active)panel=""}
         soloMode?.let{Wq150SoloSettings(session,it,{soloMode=null},onSolo)}
-        if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending,
+        if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending&&catalogState.first,
             onDismiss={edit=false},onApply={next->
                 settings=next;edit=false
                 scope.launch{if(lobby)controller.action("settings",settings=next) else controller.create(next)}
@@ -566,6 +583,28 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
                     Text("Maç Ayarları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=21.sp)
                 }
+                Wq150SettingPanel("green"){
+                    Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)
+                    Text(levels.joinToString(" + ")+" · "+count+" "+(if(engine=="quiz")"soru" else "kelime")+" · "+(if(seconds==0)"Süresiz" else "$seconds sn")+" · $hints ipucu",color=Wq122Ink)
+                    if(busy)LinearProgressIndicator(Modifier.fillMaxWidth())
+                    Wq150StartButton(if(busy)"Oyun hazırlanıyor…" else "Oyunu Başlat",!busy&&count>=levels.size){
+                        if(!busy){
+                            busy=true;error=""
+                            val id=java.util.UUID.randomUUID().toString()
+                            val preset=Wq186MatchPreset(levels,hints,0)
+                            val chosenCount=count;val chosenSeconds=seconds;val chosenTopic=topic
+                            scope.launch{
+                                try{
+                                    val round=Wq132WebEngine.generate(context,engine,preset.levels,chosenTopic,chosenCount,chosenSeconds,preset.hints,preset.retries,id.hashCode())
+                                    require(if(engine=="quiz")round.questions.isNotEmpty() else round.board!=null)
+                                    onStart(WqArenaSoloLaunch(id,engine,preset.levels.first(),chosenTopic,chosenCount,chosenSeconds,preset,round))
+                                }catch(e:kotlinx.coroutines.CancellationException){throw e}
+                                catch(e:Exception){error="Oyun hazırlanamadı. Seviye, konu veya sayıyı değiştir: "+(e.message?:"").take(150)}
+                                finally{busy=false}
+                            }
+                        }
+                    }
+                }
                 Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
                 val basic:@Composable ()->Unit={
                     Wq150SettingPanel("blue"){
@@ -599,28 +638,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                 }
                 if(error.isNotBlank())Text(error,color=Color(0xFFFFB4B4),modifier=Modifier.fillMaxWidth().background(Color(0xFF251347)).padding(8.dp))
                 }
-                Wq150SettingPanel("green"){
-                    Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)
-                    Text(levels.joinToString(" + ")+" · "+count+" "+(if(engine=="quiz")"soru" else "kelime")+" · "+(if(seconds==0)"Süresiz" else "$seconds sn")+" · $hints ipucu",color=Wq122Ink)
-                    if(busy)LinearProgressIndicator(Modifier.fillMaxWidth())
-                    Wq150StartButton(if(busy)"Oyun hazırlanıyor…" else "Oyunu Başlat",!busy&&count>=levels.size){
-                        if(!busy){
-                            busy=true;error=""
-                            val id=java.util.UUID.randomUUID().toString()
-                            val preset=Wq186MatchPreset(levels,hints,0)
-                            val chosenCount=count;val chosenSeconds=seconds;val chosenTopic=topic
-                            scope.launch{
-                                try{
-                                    val round=Wq132WebEngine.generate(context,engine,preset.levels,chosenTopic,chosenCount,chosenSeconds,preset.hints,preset.retries,id.hashCode())
-                                    require(if(engine=="quiz")round.questions.isNotEmpty() else round.board!=null)
-                                    onStart(WqArenaSoloLaunch(id,engine,preset.levels.first(),chosenTopic,chosenCount,chosenSeconds,preset,round))
-                                }catch(e:kotlinx.coroutines.CancellationException){throw e}
-                                catch(e:Exception){error="Oyun hazırlanamadı. Seviye, konu veya sayıyı değiştir: "+(e.message?:"").take(150)}
-                                finally{busy=false}
-                            }
-                        }
-                    }
-                }
+
             }
         }
     }
