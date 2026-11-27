@@ -18315,14 +18315,14 @@ export const foundationQuestions = [
     "topic": "Vocabulary",
     "prompt": "The newspaper published a ____ that the figures were false, but gave no evidence.",
     "options": [
-      "complaint",
+      "apology",
       "claim",
       "request",
-      "suggestion",
-      "warning"
+      "invitation",
+      "instruction"
     ],
     "correct": 1,
-    "explanation": "claim: iddia. Diğer seçenekler: complaint: şikâyet; request: istek; suggestion: öneri; warning: uyarı."
+    "explanation": "Claim, doğruluğu henüz kanıtlanmamış bir iddiadır. Gazete rakamların yanlış olduğunu ileri sürmüş, ancak kanıt sunmamıştır."
   },
   {
     "id": "wq150_nov26_mixed13a_23_3",
@@ -18333,13 +18333,13 @@ export const foundationQuestions = [
     "prompt": "The employee made a written ____ for two days of annual leave.",
     "options": [
       "complaint",
-      "claim",
+      "reminder",
       "request",
       "suggestion",
       "warning"
     ],
     "correct": 2,
-    "explanation": "request: istek. Diğer seçenekler: complaint: şikâyet; claim: iddia; suggestion: öneri; warning: uyarı."
+    "explanation": "Make a written request for annual leave yıllık izin için yazılı talepte bulunmak demektir. Diğer seçenekler şikâyet, hatırlatma, öneri veya uyarı bildirir."
   },
   {
     "id": "wq150_nov26_mixed13a_23_4",
@@ -19265,16 +19265,16 @@ export const foundationQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Students must ____ the required proficiency level before graduation.",
+    "prompt": "Students below the required proficiency level must ____ it for the first time before graduation.",
     "options": [
       "constrain",
       "retain",
       "sustain",
       "attain",
-      "obtain"
+      "assess"
     ],
     "correct": 3,
-    "explanation": "attain: ulaşmak. Diğer seçenekler: constrain: kısıtlamak; retain: korumak; sustain: sürdürmek; obtain: elde etmek."
+    "explanation": "Attain a proficiency level bir yeterlilik düzeyine ulaşmak demektir. For the first time henüz o düzeye ulaşılmadığını belirtir; retain ve sustain mevcut düzeyi korumaktır."
   },
   {
     "id": "wq150_nov26_mixed13a_34_5",
