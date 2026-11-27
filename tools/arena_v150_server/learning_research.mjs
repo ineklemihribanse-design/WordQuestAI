@@ -704,13 +704,13 @@ export const researchQuestions = [
     "prompt": "The test requires technicians to ____ the entire specimen beneath the liquid surface.",
     "options": [
       "submerge",
-      "suspend",
+      "withdraw",
       "expose",
       "extract",
       "drain"
     ],
     "correct": 0,
-    "explanation": "Submerge bir şeyi sıvının yüzeyi altına tamamen batırmaktır.",
+    "explanation": "Submerge: bir nesneyi tamamen su veya başka bir sıvının yüzeyi altına batırmak.",
     "family": "researchverb_submerge"
   },
   {
@@ -1092,7 +1092,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Although their initial views were similar, their opinions gradually ____.",
+    "prompt": "Their initial views were similar, but now their opinions increasingly ____ as they adopt different positions.",
     "options": [
       "diverge",
       "converge",
@@ -1483,7 +1483,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The contract's explicit prohibition would ____ the unauthorised transfer of the records.",
+    "prompt": "Removing every external data connection would ____ electronic transmission of the records from the isolated device.",
     "options": [
       "preclude",
       "permit",
@@ -1492,7 +1492,7 @@ export const researchQuestions = [
       "promote"
     ],
     "correct": 0,
-    "explanation": "Preclude bir ihtimali veya eylemi olanaksız kılmaktır.",
+    "explanation": "Preclude: bir olasılığı ortadan kaldırmak, bir eylemi olanaksız kılmak.",
     "family": "researchverb_preclude"
   },
   {
@@ -1823,7 +1823,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The chair used the closing remarks to ____ the warning issued at the start of the meeting.",
+    "prompt": "The chair used the closing remarks to ____ the warning, repeating the same advice given at the start of the meeting.",
     "options": [
       "reiterate",
       "retract",
@@ -2214,7 +2214,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Researchers should not ____ a convenient conceptual label into a supposed physical entity.",
+    "prompt": "Researchers should not ____ a convenient abstract construct by treating it as an independently existing physical entity.",
     "options": [
       "reify",
       "abstract",
@@ -3047,7 +3047,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The philosopher chose to ____ a doctrine that had formerly shaped his work.",
+    "prompt": "Having concluded that the doctrine was fundamentally mistaken, the philosopher chose to ____ it publicly.",
     "options": [
       "repudiate",
       "endorse",
@@ -3965,7 +3965,7 @@ export const researchQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The survey covered ____ 500 households, although the final count has not yet been confirmed.",
+    "prompt": "The survey covered ____ 500 households, according to a rounded estimate rather than an exact count.",
     "options": [
       "approximately",
       "exactly",
@@ -4021,11 +4021,11 @@ export const researchQuestions = [
       "subsequently",
       "previously",
       "simultaneously",
-      "initially",
+      "concurrently",
       "formerly"
     ],
     "correct": 0,
-    "explanation": "Subsequently bir olaydan daha sonra gerçekleşen eylemi bildirir.",
+    "explanation": "Subsequently: önceki bir olayın ardından, daha sonra.",
     "family": "researchadv_subsequently"
   },
   {
@@ -4038,7 +4038,7 @@ export const researchQuestions = [
       "subsequently",
       "previously",
       "simultaneously",
-      "initially",
+      "concurrently",
       "formerly"
     ],
     "correct": 0,
@@ -4055,7 +4055,7 @@ export const researchQuestions = [
       "subsequently",
       "previously",
       "simultaneously",
-      "initially",
+      "concurrently",
       "formerly"
     ],
     "correct": 0,
@@ -4288,7 +4288,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A coding error ____ excluded several eligible participants from the analysis.",
+    "prompt": "While writing the analysis code, the researcher ____ excluded several eligible participants without realising the mistake.",
     "options": [
       "inadvertently",
       "deliberately",
@@ -4305,7 +4305,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The editor ____ changed the meaning of the sentence while correcting its grammar.",
+    "prompt": "While correcting the grammar, the editor ____ changed the meaning and did not notice until the author pointed it out.",
     "options": [
       "inadvertently",
       "deliberately",
@@ -4390,7 +4390,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The smallest suppliers were ____ burdened by fixed compliance expenses.",
+    "prompt": "The smallest suppliers were ____ burdened by fixed compliance expenses, which represented a much larger share of their revenue than of larger firms' revenue.",
     "options": [
       "disproportionately",
       "uniformly",
@@ -4509,7 +4509,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The author's comparison ____ equates the two categories without explaining the equivalence.",
+    "prompt": "The author's comparison ____ equates the two categories, although this equivalence is nowhere stated directly.",
     "options": [
       "implicitly",
       "explicitly",
@@ -4747,7 +4747,7 @@ export const researchQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The institution's financial and political relationships were ____ intertwined.",
+    "prompt": "The institution's financial and political relationships were ____ intertwined, making it impossible to separate them in practice.",
     "options": [
       "inextricably",
       "independently",
