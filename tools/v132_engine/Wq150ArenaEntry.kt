@@ -303,6 +303,31 @@ internal object Wq150HomeModes {
     fun localTimes(kind:String)=when(kind){"obstacle"->listOf(20);"timed"->listOf(20,30,45);"classic"->listOf(0);else->listOf(0,20,30,45)}
     fun localHints(kind:String)=if(kind=="obstacle")listOf(0) else listOf(0,3,5,8,12,20)
 }
+/** Measured in dp, independent of tab selection. If a short display cannot fit
+ * accessible cards, allow a bounded scroll instead of overlapping the footer. */
+internal object Wq150HomeLayout {
+    data class Metrics(val height:Float,val tabTop:Float,val tabHeight:Float,val headingHeight:Float,
+        val footerHeight:Float,val gap:Float,val cardArea:Float){
+        val cardTop get()=tabTop+tabHeight+headingHeight+2*gap
+        val footerTop get()=height-footerHeight-2*gap
+        fun cardHeight(wide:Boolean)=if(wide)cardArea else (cardArea-3*gap)/4
+    }
+    fun measure(available:Float,wide:Boolean):Metrics{
+        var h=available.coerceAtLeast(if(wide)460f else 640f)
+        repeat(100){
+            val gap=if(wide)8f else 5f
+            val top=h*(if(wide).58f else .425f)
+            val tab=(h*.065f).coerceIn(40f,54f)
+            val heading=if(wide)30f else 42f
+            val footer=(h*.075f).coerceIn(46f,66f)
+            val area=h-footer-3*gap-top-tab-heading-2*gap
+            val m=Metrics(h,top,tab,heading,footer,gap,area)
+            if(m.cardHeight(wide)>=if(wide)88f else 56f)return m
+            h+=8f
+        }
+        error("Arena viewport is invalid")
+    }
+}
 private data class Wq150CardSpec(val title:String,val detail:String,val icon:String,val plate:String,val top:Long,val bottom:Long)
 private fun wq150Card(kind:String)=when(kind){
     "duel"->Wq150CardSpec("Bulmaca Düellosu","Rakibinle kelime yarışına gir.","duel","duel",0xFF7921BC,0xFF38116C)
@@ -362,14 +387,15 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
     BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)){
         val w=maxWidth
         val wide=Wq121ArenaLayout.wide(w.value,maxHeight.value,config.smallestScreenWidthDp)
-        val h=maxHeight.coerceAtLeast(if(wide)460.dp else 640.dp)
+        val metrics=Wq150HomeLayout.measure(maxHeight.value,wide)
+        val h=metrics.height.dp
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
             Box(Modifier.fillMaxWidth().height(h)){
                 Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
                 // Coordinates refer to the actual user-supplied phone/tablet stadium assets.
                 val pos=Wq121ArenaLayout.project(w.value,h.value,wide,if(wide).50f else .655f,if(wide).485f else .34f)
                 val feet=pos.second.dp
-                val avatarW=w*(if(wide).26f else .40f)
+                val avatarW=w*(if(wide).34f else .54f)
                 val avatarH=(feet-h*.075f).coerceAtLeast(40.dp)
                 val crestW=w*(if(wide).26f else .48f)
                 val crestH=(h*(if(wide).32f else .21f))
@@ -397,15 +423,13 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
                     if(wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")}){Text("Hızlı Oda Katılımı",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)}
                 }
                 Wq2DPortrait(avatar,Modifier.offset(x=pos.first.dp-avatarW/2,y=feet-avatarH)
-                    .width(avatarW).height(avatarH),victory=false)
-                val tabTop=h*(if(wide).58f else .425f)
-                val tabH=(h*.065f).coerceIn(40.dp,54.dp)
-                val footerH=(h*.075f).coerceIn(46.dp,66.dp)
-                val headingH=28.dp
-                val joinH=if(!wide&&!local)34.dp else 0.dp
-                val gap=if(wide)8.dp else 5.dp
-                val cardTop=tabTop+tabH+joinH+headingH+gap*3
-                val cardArea=(h-footerH-gap*2-cardTop).coerceAtLeast(48.dp)
+                    .width(avatarW).height(avatarH),victory=false,imageAlignment=Alignment.BottomCenter)
+                val tabTop=metrics.tabTop.dp
+                val tabH=metrics.tabHeight.dp
+                val footerH=metrics.footerHeight.dp
+                val headingH=metrics.headingHeight.dp
+                val gap=metrics.gap.dp
+                val cardArea=metrics.cardArea.dp
                 val kinds=Wq150HomeModes.visible(local)
                 Column(Modifier.offset(y=tabTop).fillMaxWidth().padding(horizontal=if(wide)12.dp else 8.dp),
                     horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(gap)){
@@ -413,19 +437,23 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
                         Wq150HomeTab("Arkadaşınla Oyna",false,!local,enabled,Modifier.weight(1f).fillMaxHeight()){onTab(false)}
                         Wq150HomeTab("Tek Başına Oyna",true,local,enabled,Modifier.weight(1f).fillMaxHeight()){onTab(true)}
                     }
-                    if(!wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")},
-                        modifier=Modifier.height(joinH),contentPadding=PaddingValues(horizontal=8.dp)){
-                        Text("Hızlı Oda Katılımı  ›",color=Wq122Gold,fontSize=12.sp,fontWeight=FontWeight.Bold)
-                    }
-                    Row(Modifier.height(headingH).clip(RoundedCornerShape(18.dp)).background(Color(0xD92C145B)).padding(horizontal=10.dp),
-                        verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(5.dp)){
-                        Wq150ApprovedArt("modes",Modifier.size(22.dp))
-                        Text(if(local)"Tek Kişilik Oyun Modları" else "Çevrim İçi Oyun Modları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=if(wide)16.sp else 13.sp)
+                    Row(Modifier.height(headingH).fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,
+                        horizontalArrangement=Arrangement.Center){
+                        Row(Modifier.clip(RoundedCornerShape(18.dp)).background(Color(0xD92C145B)).padding(horizontal=8.dp,vertical=4.dp),
+                            verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(4.dp)){
+                            Wq150ApprovedArt("modes",Modifier.size(20.dp))
+                            Text(if(local)"Tek Kişilik Oyun Modları" else if(wide)"Çevrim İçi Oyun Modları" else "Çevrim İçi Modlar",
+                                color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=if(wide)16.sp else 12.sp,maxLines=1)
+                        }
+                        if(!wide&&!local)TextButton(enabled=enabled,onClick={onPanel("Hızlı Oda Katılımı")},
+                            modifier=Modifier.padding(start=4.dp),contentPadding=PaddingValues(horizontal=5.dp)){
+                            Text("Hızlı Oda Katılımı ›",color=Wq122Gold,fontSize=11.sp,fontWeight=FontWeight.Bold,maxLines=1)
+                        }
                     }
                     if(wide)Row(Modifier.fillMaxWidth().height(cardArea),horizontalArrangement=Arrangement.spacedBy(gap)){
                         kinds.forEach{kind->Wq150HomeCard(kind,true,enabled,Modifier.weight(1f).fillMaxHeight()){onMode(kind)}}
                     }else{
-                        val cardH=((cardArea-gap*(kinds.size-1))/kinds.size).coerceAtLeast(42.dp)
+                        val cardH=metrics.cardHeight(false).dp
                         kinds.forEach{kind->Wq150HomeCard(kind,false,enabled,Modifier.fillMaxWidth().height(cardH)){onMode(kind)}}
                     }
                 }
