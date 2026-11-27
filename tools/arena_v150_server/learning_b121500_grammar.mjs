@@ -114,7 +114,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Verbal",
-    "prompt": "The librarian decided ____ the returned books at the reading room.",
+    "prompt": "The librarian decided ____ the returned books in the reading room.",
     "options": [
       "check",
       "having checked",
@@ -150,7 +150,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The librarian said yesterday, \"I am working at the reading room now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The librarian said yesterday, \"I am working in the reading room now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "have been",
       "would have been",
@@ -168,7 +168,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "RelativeClause",
-    "prompt": "The person ____ works at the reading room is responsible for handling the returned books.",
+    "prompt": "The person ____ works in the reading room is responsible for handling the returned books.",
     "options": [
       "where",
       "when",
@@ -186,7 +186,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "We do not know ____ the work at the reading room will be completed: Monday or Tuesday.",
+    "prompt": "We do not know ____ the work in the reading room will be completed: Monday or Tuesday.",
     "options": [
       "when",
       "who",
@@ -222,7 +222,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The librarian asked for help ____ the instructions for dealing with the returned books were unclear.",
+    "prompt": "The librarian asked for help ____ the instructions for dealing with the returned books were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "although",
       "unless",
@@ -389,7 +389,7 @@ export const b121500Grammar = [
       "repairing",
       "to repair",
       "repair",
-      "having repaired",
+      "to have repaired",
       "repairs"
     ],
     "correct": 0,
@@ -404,7 +404,7 @@ export const b121500Grammar = [
     "kind": "Verbal",
     "prompt": "The mechanic avoided ____ the delivery van until the supervisor returned.",
     "options": [
-      "having repaired",
+      "to have repaired",
       "repairs",
       "repairing",
       "to repair",
@@ -492,7 +492,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The mechanic wrote a reminder ____ the assistant would not forget the work on the delivery van.",
+    "prompt": "The mechanic wrote a reminder in advance ____ the assistant would not forget the work on the delivery van; that was the purpose of the reminder.",
     "options": [
       "whereas",
       "so that",
@@ -762,7 +762,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the front desk was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the front desk was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "Unless",
       "So that",
@@ -924,7 +924,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Verbal",
-    "prompt": "The baker decided ____ the bread dough at the kitchen.",
+    "prompt": "The baker decided ____ the bread dough in the kitchen.",
     "options": [
       "preparing",
       "prepare",
@@ -960,7 +960,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "ReportedSpeech",
-    "prompt": "The baker said yesterday, \"I am working at the kitchen now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
+    "prompt": "The baker said yesterday, \"I am working in the kitchen now.\" Using standard tense backshift in reported speech: The speaker said they ____ working there at that time.",
     "options": [
       "will be",
       "have been",
@@ -978,7 +978,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "RelativeClause",
-    "prompt": "The person ____ works at the kitchen is responsible for handling the bread dough.",
+    "prompt": "The person ____ works in the kitchen is responsible for handling the bread dough.",
     "options": [
       "which",
       "where",
@@ -996,7 +996,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "We do not know ____ the work at the kitchen will be completed: Monday or Tuesday.",
+    "prompt": "We do not know ____ the work in the kitchen will be completed: Monday or Tuesday.",
     "options": [
       "where",
       "when",
@@ -1032,7 +1032,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The baker asked for help ____ the instructions for dealing with the bread dough were unclear.",
+    "prompt": "The baker asked for help ____ the instructions for dealing with the bread dough were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "because",
       "although",
@@ -1200,7 +1200,7 @@ export const b121500Grammar = [
       "watering",
       "to water",
       "water",
-      "having watered"
+      "to have watered"
     ],
     "correct": 1,
     "explanation": "Doğru seçenek: watering. Instead of sonrasında gerund gelir."
@@ -1215,7 +1215,7 @@ export const b121500Grammar = [
     "prompt": "The gardener avoided ____ the young plants until the supervisor returned.",
     "options": [
       "water",
-      "having watered",
+      "to have watered",
       "waters",
       "watering",
       "to water"
@@ -1302,7 +1302,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The gardener wrote a reminder ____ the assistant would not forget the work on the young plants.",
+    "prompt": "The gardener wrote a reminder in advance ____ the assistant would not forget the work on the young plants; that was the purpose of the reminder.",
     "options": [
       "unless",
       "whereas",
@@ -1572,7 +1572,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the studio was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the studio was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "Because",
       "Unless",
@@ -1842,7 +1842,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The tutor asked for help ____ the instructions for dealing with the practice essays were unclear.",
+    "prompt": "The tutor asked for help ____ the instructions for dealing with the practice essays were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "so that",
       "because",
@@ -2006,7 +2006,7 @@ export const b121500Grammar = [
     "kind": "Verbal",
     "prompt": "Instead of ____ the donated clothes immediately, the volunteer first read the instructions.",
     "options": [
-      "having sorted",
+      "to have sorted",
       "sorts",
       "sorting",
       "to sort",
@@ -2026,7 +2026,7 @@ export const b121500Grammar = [
     "options": [
       "to sort",
       "sort",
-      "having sorted",
+      "to have sorted",
       "sorts",
       "sorting"
     ],
@@ -2112,7 +2112,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The volunteer wrote a reminder ____ the assistant would not forget the work on the donated clothes.",
+    "prompt": "The volunteer wrote a reminder in advance ____ the assistant would not forget the work on the donated clothes; that was the purpose of the reminder.",
     "options": [
       "although",
       "unless",
@@ -2382,7 +2382,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the storeroom was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the storeroom was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "Although",
       "Because",
@@ -2652,7 +2652,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The cook asked for help ____ the instructions for dealing with the vegetables were unclear.",
+    "prompt": "The cook asked for help ____ the instructions for dealing with the vegetables were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "whereas",
       "so that",
@@ -2817,7 +2817,7 @@ export const b121500Grammar = [
     "prompt": "Instead of ____ the new sockets immediately, the electrician first read the instructions.",
     "options": [
       "test",
-      "having tested",
+      "to have tested",
       "tests",
       "testing",
       "to test"
@@ -2837,7 +2837,7 @@ export const b121500Grammar = [
       "testing",
       "to test",
       "test",
-      "having tested",
+      "to have tested",
       "tests"
     ],
     "correct": 0,
@@ -2922,7 +2922,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The electrician wrote a reminder ____ the assistant would not forget the work on the new sockets.",
+    "prompt": "The electrician wrote a reminder in advance ____ the assistant would not forget the work on the new sockets; that was the purpose of the reminder.",
     "options": [
       "because",
       "although",
@@ -3192,7 +3192,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the school entrance was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the school entrance was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "As soon as",
       "Although",
@@ -3462,7 +3462,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The cyclist asked for help ____ the instructions for dealing with the bicycle brakes were unclear.",
+    "prompt": "The cyclist asked for help ____ the instructions for dealing with the bicycle brakes were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "unless",
       "whereas",
@@ -3628,7 +3628,7 @@ export const b121500Grammar = [
     "options": [
       "to paint",
       "paint",
-      "having painted",
+      "to have painted",
       "paints",
       "painting"
     ],
@@ -3648,7 +3648,7 @@ export const b121500Grammar = [
       "painting",
       "to paint",
       "paint",
-      "having painted"
+      "to have painted"
     ],
     "correct": 1,
     "explanation": "Doğru seçenek: painting. Avoid + gerund."
@@ -3732,7 +3732,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The artist wrote a reminder ____ the assistant would not forget the work on the wooden panels.",
+    "prompt": "The artist wrote a reminder in advance ____ the assistant would not forget the work on the wooden panels; that was the purpose of the reminder.",
     "options": [
       "so that",
       "because",
@@ -4002,7 +4002,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the ticket office was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the ticket office was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "So that",
       "As soon as",
@@ -4272,7 +4272,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The driver asked for help ____ the instructions for dealing with the heavy suitcases were unclear.",
+    "prompt": "The driver asked for help ____ the instructions for dealing with the heavy suitcases were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "although",
       "unless",
@@ -4439,7 +4439,7 @@ export const b121500Grammar = [
       "organising",
       "to organise",
       "organise",
-      "having organised",
+      "to have organised",
       "organises"
     ],
     "correct": 0,
@@ -4454,7 +4454,7 @@ export const b121500Grammar = [
     "kind": "Verbal",
     "prompt": "The nurse avoided ____ the medical supplies until the supervisor returned.",
     "options": [
-      "having organised",
+      "to have organised",
       "organises",
       "organising",
       "to organise",
@@ -4542,7 +4542,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The nurse wrote a reminder ____ the assistant would not forget the work on the medical supplies.",
+    "prompt": "The nurse wrote a reminder in advance ____ the assistant would not forget the work on the medical supplies; that was the purpose of the reminder.",
     "options": [
       "whereas",
       "so that",
@@ -4812,7 +4812,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the study room was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the study room was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "Unless",
       "So that",
@@ -5082,7 +5082,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The trainer asked for help ____ the instructions for dealing with the exercise programme were unclear.",
+    "prompt": "The trainer asked for help ____ the instructions for dealing with the exercise programme were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "because",
       "although",
@@ -5250,7 +5250,7 @@ export const b121500Grammar = [
       "sending",
       "to send",
       "send",
-      "having sent"
+      "to have sent"
     ],
     "correct": 1,
     "explanation": "Doğru seçenek: sending. Instead of sonrasında gerund gelir."
@@ -5265,7 +5265,7 @@ export const b121500Grammar = [
     "prompt": "The assistant avoided ____ the invitation emails until the supervisor returned.",
     "options": [
       "send",
-      "having sent",
+      "to have sent",
       "sends",
       "sending",
       "to send"
@@ -5352,7 +5352,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The assistant wrote a reminder ____ the assistant would not forget the work on the invitation emails.",
+    "prompt": "The assistant wrote a reminder in advance ____ their colleague would not forget the work on the invitation emails; that was the purpose of the reminder.",
     "options": [
       "unless",
       "whereas",
@@ -5622,7 +5622,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the building site was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the building site was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "Because",
       "Unless",
@@ -5892,7 +5892,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The secretary asked for help ____ the instructions for dealing with the interview appointments were unclear.",
+    "prompt": "The secretary asked for help ____ the instructions for dealing with the interview appointments were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "so that",
       "because",
@@ -6056,7 +6056,7 @@ export const b121500Grammar = [
     "kind": "Verbal",
     "prompt": "Instead of ____ the replacement lamps immediately, the technician first read the instructions.",
     "options": [
-      "having installed",
+      "to have installed",
       "installs",
       "installing",
       "to install",
@@ -6076,7 +6076,7 @@ export const b121500Grammar = [
     "options": [
       "to install",
       "install",
-      "having installed",
+      "to have installed",
       "installs",
       "installing"
     ],
@@ -6162,7 +6162,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The technician wrote a reminder ____ the assistant would not forget the work on the replacement lamps.",
+    "prompt": "The technician wrote a reminder in advance ____ the assistant would not forget the work on the replacement lamps; that was the purpose of the reminder.",
     "options": [
       "although",
       "unless",
@@ -6432,7 +6432,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the farmyard was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the farmyard was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "Although",
       "Because",
@@ -6702,7 +6702,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The designer asked for help ____ the instructions for dealing with the poster outlines were unclear.",
+    "prompt": "The designer asked for help ____ the instructions for dealing with the poster outlines were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "whereas",
       "so that",
@@ -6867,7 +6867,7 @@ export const b121500Grammar = [
     "prompt": "Instead of ____ the training rules immediately, the coach first read the instructions.",
     "options": [
       "explain",
-      "having explained",
+      "to have explained",
       "explains",
       "explaining",
       "to explain"
@@ -6887,7 +6887,7 @@ export const b121500Grammar = [
       "explaining",
       "to explain",
       "explain",
-      "having explained",
+      "to have explained",
       "explains"
     ],
     "correct": 0,
@@ -6972,7 +6972,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The coach wrote a reminder ____ the assistant would not forget the work on the training rules.",
+    "prompt": "The coach wrote a reminder in advance ____ the assistant would not forget the work on the training rules; that was the purpose of the reminder.",
     "options": [
       "because",
       "although",
@@ -7242,7 +7242,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the loading bay was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the loading bay was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "As soon as",
       "Although",
@@ -7512,7 +7512,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The editor asked for help ____ the instructions for dealing with the spelling errors were unclear.",
+    "prompt": "The editor asked for help ____ the instructions for dealing with the spelling errors were unclear; this lack of clarity was the reason for the request.",
     "options": [
       "unless",
       "whereas",
@@ -7678,7 +7678,7 @@ export const b121500Grammar = [
     "options": [
       "to sew",
       "sew",
-      "having sewn",
+      "to have sewn",
       "sews",
       "sewing"
     ],
@@ -7698,7 +7698,7 @@ export const b121500Grammar = [
       "sewing",
       "to sew",
       "sew",
-      "having sewn"
+      "to have sewn"
     ],
     "correct": 1,
     "explanation": "Doğru seçenek: sewing. Avoid + gerund."
@@ -7782,7 +7782,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The tailor wrote a reminder ____ the assistant would not forget the work on the new curtains.",
+    "prompt": "The tailor wrote a reminder in advance ____ the assistant would not forget the work on the new curtains; that was the purpose of the reminder.",
     "options": [
       "so that",
       "because",
@@ -8052,7 +8052,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ the room at the visitor centre was rather small, there was enough space to finish the task.",
+    "prompt": "____ the workspace at the visitor centre was rather small, there was nevertheless enough space to finish the task.",
     "options": [
       "So that",
       "As soon as",
@@ -8628,7 +8628,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the pressure sensors; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the pressure sensors; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "neither",
       "much",
@@ -8862,7 +8862,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The auditor kept a second copy of the records at the public agency ____ the original documents were lost.",
+    "prompt": "The auditor made and kept a second copy as a precaution of the records at the public agency ____ the original documents were lost at some later point.",
     "options": [
       "whereas",
       "as if",
@@ -9438,7 +9438,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the nesting sites; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the nesting sites; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "none",
       "neither",
@@ -9672,7 +9672,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The coordinator kept a second copy of the records at the research institute ____ the original documents were lost.",
+    "prompt": "The coordinator made and kept a second copy as a precaution of the records at the research institute ____ the original documents were lost at some later point.",
     "options": [
       "even though",
       "whereas",
@@ -10248,7 +10248,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the security updates; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the security updates; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "a little",
       "none",
@@ -10482,7 +10482,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The consultant kept a second copy of the records at the consultancy ____ the original documents were lost.",
+    "prompt": "The consultant made and kept a second copy as a precaution of the records at the consultancy ____ the original documents were lost at some later point.",
     "options": [
       "in case",
       "even though",
@@ -11058,7 +11058,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the construction costs; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the construction costs; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "each one",
       "a little",
@@ -11292,7 +11292,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The supervisor kept a second copy of the records at the factory ____ the original documents were lost.",
+    "prompt": "The supervisor made and kept a second copy as a precaution of the records at the factory ____ the original documents were lost at some later point.",
     "options": [
       "unless",
       "in case",
@@ -11868,7 +11868,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the recorded speech samples; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the recorded speech samples; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "much",
       "each one",
@@ -12102,7 +12102,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The archivist kept a second copy of the records at the national library ____ the original documents were lost.",
+    "prompt": "The archivist made and kept a second copy as a precaution of the records at the national library ____ the original documents were lost at some later point.",
     "options": [
       "as if",
       "unless",
@@ -12678,7 +12678,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the response rates; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the response rates; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "neither",
       "much",
@@ -12912,7 +12912,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The surveyor kept a second copy of the records at the engineering firm ____ the original documents were lost.",
+    "prompt": "The surveyor made and kept a second copy as a precaution of the records at the engineering firm ____ the original documents were lost at some later point.",
     "options": [
       "whereas",
       "as if",
@@ -13488,7 +13488,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the prepared containers; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the prepared containers; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "none",
       "neither",
@@ -13722,7 +13722,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The administrator kept a second copy of the records at the association ____ the original documents were lost.",
+    "prompt": "The administrator made and kept a second copy as a precaution of the records at the association ____ the original documents were lost at some later point.",
     "options": [
       "even though",
       "whereas",
@@ -14298,7 +14298,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the supply agreements; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the supply agreements; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "a little",
       "none",
@@ -14532,7 +14532,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The curator kept a second copy of the records at the cultural institution ____ the original documents were lost.",
+    "prompt": "The curator made and kept a second copy as a precaution of the records at the cultural institution ____ the original documents were lost at some later point.",
     "options": [
       "in case",
       "even though",
@@ -15108,7 +15108,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the delayed consignments; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the delayed consignments; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "each one",
       "a little",
@@ -15342,7 +15342,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The accountant kept a second copy of the records at the cooperative ____ the original documents were lost.",
+    "prompt": "The accountant made and kept a second copy as a precaution of the records at the cooperative ____ the original documents were lost at some later point.",
     "options": [
       "unless",
       "in case",
@@ -15918,7 +15918,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Determiner",
-    "prompt": "Only the selected documents are relevant to the revised guidelines; ____ of the other files need to be reviewed.",
+    "prompt": "Only the selected documents are relevant to the revised guidelines; ____ of the dozens of other files need to be reviewed.",
     "options": [
       "much",
       "each one",
@@ -16152,7 +16152,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The project leader kept a second copy of the records at the development agency ____ the original documents were lost.",
+    "prompt": "The project leader made and kept a second copy as a precaution of the records at the development agency ____ the original documents were lost at some later point.",
     "options": [
       "as if",
       "unless",
