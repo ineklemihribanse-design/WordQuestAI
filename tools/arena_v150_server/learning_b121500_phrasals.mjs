@@ -15,7 +15,7 @@ export const b121500Phrasals = [
       "get over"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get over. Hayal kırıklığını atlatmak anlamındadır; get together bir araya gelmek demektir."
+    "explanation": "Doğru seçenek: get over. Bir hayal kırıklığını atlatmak, duygusal olarak toparlanmak."
   },
   {
     "id": "wq150_b121500_ph_b1_1_2",
@@ -28,12 +28,12 @@ export const b121500Phrasals = [
     "options": [
       "get on with",
       "get away",
-      "get through",
+      "get together",
       "get over",
       "get by"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get by. İyileşme, geçinme, işe devam etme, uzaklaşma ve tamamlama ayrılır."
+    "explanation": "Doğru seçenek: get by. Sınırlı gelirle geçinmek, temel ihtiyaçlarını karşılayabilmek."
   },
   {
     "id": "wq150_b121500_ph_b1_1_3",
@@ -42,16 +42,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Please ____ your work instead of chatting in the corridor.",
+    "prompt": "Please ____ your work instead of chatting in the corridor; you can finish it later.",
     "options": [
       "get away",
-      "get through",
+      "get together",
       "get over",
       "get by",
       "get on with"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get on with. İyileşme, geçinme, işe devam etme, uzaklaşma ve tamamlama ayrılır."
+    "explanation": "Doğru seçenek: get on with. Yapılmakta olan işe devam etmek; burada sohbeti bırakıp işe dönmek."
   },
   {
     "id": "wq150_b121500_ph_b1_1_4",
@@ -69,7 +69,7 @@ export const b121500Phrasals = [
       "get away"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get away. İyileşme, geçinme, işe devam etme, uzaklaşma ve tamamlama ayrılır."
+    "explanation": "Doğru seçenek: get away. Kısa süreliğine uzaklaşmak veya tatile gitmek."
   },
   {
     "id": "wq150_b121500_ph_b1_1_5",
@@ -87,7 +87,7 @@ export const b121500Phrasals = [
       "get through"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: get through. Get through burada bir dizi işi sonuna kadar tamamlamaktır."
+    "explanation": "Doğru seçenek: get through. Bir dizi işi tamamlamak; burada bütün mesajları yanıtlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_2_1",
@@ -105,7 +105,7 @@ export const b121500Phrasals = [
       "look into"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: look after. Look after bakımını üstlenmek demektir."
+    "explanation": "Doğru seçenek: look after. Birinin veya hayvanın bakımını üstlenmek."
   },
   {
     "id": "wq150_b121500_ph_b1_2_2",
@@ -123,7 +123,7 @@ export const b121500Phrasals = [
       "look out for"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: look into. Look öbeklerini bağlamdaki işlevinden ayır."
+    "explanation": "Doğru seçenek: look into. Bir şikâyeti veya sorunu araştırıp incelemek."
   },
   {
     "id": "wq150_b121500_ph_b1_2_3",
@@ -141,7 +141,7 @@ export const b121500Phrasals = [
       "look up"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: look out for. Look öbeklerini bağlamdaki işlevinden ayır."
+    "explanation": "Doğru seçenek: look out for. Bir tehlikeye ya da uyarıya karşı dikkatli olmak."
   },
   {
     "id": "wq150_b121500_ph_b1_2_4",
@@ -159,7 +159,7 @@ export const b121500Phrasals = [
       "look forward to"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: look up. Look öbeklerini bağlamdaki işlevinden ayır."
+    "explanation": "Doğru seçenek: look up. Bir sözcüğü sözlük gibi bir kaynaktan arayıp bulmak."
   },
   {
     "id": "wq150_b121500_ph_b1_2_5",
@@ -177,7 +177,7 @@ export const b121500Phrasals = [
       "look after"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: look forward to. Look öbeklerini bağlamdaki işlevinden ayır."
+    "explanation": "Doğru seçenek: look forward to. Gelecekteki bir olayı dört gözle beklemek; ardından isim veya -ing biçimi gelir."
   },
   {
     "id": "wq150_b121500_ph_b1_3_1",
@@ -195,7 +195,7 @@ export const b121500Phrasals = [
       "take up"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: take after. Take öbekleri benzemek, çıkarmak, başlamak, devralmak ve geri götürmek anlamlarına gelebilir."
+    "explanation": "Doğru seçenek: take after. Bir aile üyesine görünüş ya da karakter bakımından benzemek."
   },
   {
     "id": "wq150_b121500_ph_b1_3_2",
@@ -213,7 +213,7 @@ export const b121500Phrasals = [
       "take over"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: take off. Take öbekleri benzemek, çıkarmak, başlamak, devralmak ve geri götürmek anlamlarına gelebilir."
+    "explanation": "Doğru seçenek: take off. Giyilmiş bir giysiyi çıkarmak."
   },
   {
     "id": "wq150_b121500_ph_b1_3_3",
@@ -231,7 +231,7 @@ export const b121500Phrasals = [
       "take back"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: take up. Take öbekleri benzemek, çıkarmak, başlamak, devralmak ve geri götürmek anlamlarına gelebilir."
+    "explanation": "Doğru seçenek: take up. Bir hobiye veya yeni etkinliğe başlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_3_4",
@@ -249,7 +249,7 @@ export const b121500Phrasals = [
       "take after"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: take over. Take öbekleri benzemek, çıkarmak, başlamak, devralmak ve geri götürmek anlamlarına gelebilir."
+    "explanation": "Doğru seçenek: take over. Bir işin veya kuruluşun yönetimini devralmak."
   },
   {
     "id": "wq150_b121500_ph_b1_3_5",
@@ -267,7 +267,7 @@ export const b121500Phrasals = [
       "take off"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: take back. Take öbekleri benzemek, çıkarmak, başlamak, devralmak ve geri götürmek anlamlarına gelebilir."
+    "explanation": "Doğru seçenek: take back. Satın alınan bir ürünü iade etmek için geri götürmek."
   },
   {
     "id": "wq150_b121500_ph_b1_4_1",
@@ -285,7 +285,7 @@ export const b121500Phrasals = [
       "turn into"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: turn down. Ret, ortaya çıkma, kapatma, dönüşme ve çevirme işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: turn down. Bir daveti veya teklifi reddetmek."
   },
   {
     "id": "wq150_b121500_ph_b1_4_2",
@@ -303,7 +303,7 @@ export const b121500Phrasals = [
       "turn over"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: turn up. Ret, ortaya çıkma, kapatma, dönüşme ve çevirme işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: turn up. Bir yere gelmek veya ortaya çıkmak."
   },
   {
     "id": "wq150_b121500_ph_b1_4_3",
@@ -321,7 +321,7 @@ export const b121500Phrasals = [
       "turn around"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: turn off. Turn off cihazı tamamen kapatmak demektir."
+    "explanation": "Doğru seçenek: turn off. Bir cihazı kapatmak ve çalışmasını durdurmak."
   },
   {
     "id": "wq150_b121500_ph_b1_4_4",
@@ -330,7 +330,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The old railway station will ____ a small cultural centre.",
+    "prompt": "Once converted, the old railway station will ____ a small cultural centre rather than remain a transport facility.",
     "options": [
       "turn off",
       "turn into",
@@ -339,7 +339,7 @@ export const b121500Phrasals = [
       "turn up"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: turn into. Ret, ortaya çıkma, kapatma, dönüşme ve çevirme işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: turn into. Bir şeyin başka bir şeye dönüşmesi."
   },
   {
     "id": "wq150_b121500_ph_b1_4_5",
@@ -357,7 +357,7 @@ export const b121500Phrasals = [
       "turn off"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: turn over. Ret, ortaya çıkma, kapatma, dönüşme ve çevirme işlevlerini ayırt et."
+    "explanation": "Doğru seçenek: turn over. Sayfayı ters çevirmek; arka yüzünü görmek."
   },
   {
     "id": "wq150_b121500_ph_b1_5_1",
@@ -375,7 +375,7 @@ export const b121500Phrasals = [
       "put up with"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: put off. Erteleme, giyme, yerine kaldırma, söndürme ve tahammül ayrılır."
+    "explanation": "Doğru seçenek: put off. Bir etkinliği daha sonraki bir zamana ertelemek."
   },
   {
     "id": "wq150_b121500_ph_b1_5_2",
@@ -393,7 +393,7 @@ export const b121500Phrasals = [
       "put off"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: put on. Erteleme, giyme, yerine kaldırma, söndürme ve tahammül ayrılır."
+    "explanation": "Doğru seçenek: put on. Bir giysiyi üzerine giymek."
   },
   {
     "id": "wq150_b121500_ph_b1_5_3",
@@ -411,7 +411,7 @@ export const b121500Phrasals = [
       "put on"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: put away. Erteleme, giyme, yerine kaldırma, söndürme ve tahammül ayrılır."
+    "explanation": "Doğru seçenek: put away. Bir eşyayı ait olduğu yere kaldırmak."
   },
   {
     "id": "wq150_b121500_ph_b1_5_4",
@@ -429,7 +429,7 @@ export const b121500Phrasals = [
       "put away"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: put out. Erteleme, giyme, yerine kaldırma, söndürme ve tahammül ayrılır."
+    "explanation": "Doğru seçenek: put out. Bir yangını söndürmek."
   },
   {
     "id": "wq150_b121500_ph_b1_5_5",
@@ -447,7 +447,7 @@ export const b121500Phrasals = [
       "put out"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: put up with. Erteleme, giyme, yerine kaldırma, söndürme ve tahammül ayrılır."
+    "explanation": "Doğru seçenek: put up with. Rahatsız edici bir duruma katlanmak."
   },
   {
     "id": "wq150_b121500_ph_b1_6_1",
@@ -465,7 +465,7 @@ export const b121500Phrasals = [
       "break down"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break down. Break down araç veya makinenin arızalanıp çalışmayı durdurmasıdır."
+    "explanation": "Doğru seçenek: break down. Bir aracın arızalanarak çalışamaz duruma gelmesi."
   },
   {
     "id": "wq150_b121500_ph_b1_6_2",
@@ -483,7 +483,7 @@ export const b121500Phrasals = [
       "break into"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break into. Arıza, zorla giriş, patlak verme, dağılma ve kesme anlamları farklıdır."
+    "explanation": "Doğru seçenek: break into. Kilitli veya kapalı bir yere zorla ya da izinsiz girmek."
   },
   {
     "id": "wq150_b121500_ph_b1_6_3",
@@ -501,7 +501,7 @@ export const b121500Phrasals = [
       "break out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break out. Arıza, zorla giriş, patlak verme, dağılma ve kesme anlamları farklıdır."
+    "explanation": "Doğru seçenek: break out. Yangın gibi bir olayın aniden başlaması."
   },
   {
     "id": "wq150_b121500_ph_b1_6_4",
@@ -519,7 +519,7 @@ export const b121500Phrasals = [
       "break up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break up. Bir müzik grubunun dağılmasını ifade eder; break down arızalanmak, break out ise patlak vermek anlamındadır."
+    "explanation": "Doğru seçenek: break up. Bir grubun dağılması ve üyelerinin ayrılması."
   },
   {
     "id": "wq150_b121500_ph_b1_6_5",
@@ -537,7 +537,7 @@ export const b121500Phrasals = [
       "break off"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: break off. Arıza, zorla giriş, patlak verme, dağılma ve kesme anlamları farklıdır."
+    "explanation": "Doğru seçenek: break off. Bir görüşmeyi veya ilişkiyi kesmek, sona erdirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_7_1",
@@ -555,7 +555,7 @@ export const b121500Phrasals = [
       "bring back"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: bring up. Konu açmak, geri getirmek, yanında getirmek, yayımlamak ve azaltmak ayrılır."
+    "explanation": "Doğru seçenek: bring up. Bir konuyu konuşma sırasında gündeme getirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_7_2",
@@ -573,7 +573,7 @@ export const b121500Phrasals = [
       "bring in"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: bring back. Bring back ödünç alınan bir şeyi geri getirmek demektir."
+    "explanation": "Doğru seçenek: bring back. Ödünç alınan bir eşyayı geri getirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_7_3",
@@ -591,7 +591,7 @@ export const b121500Phrasals = [
       "bring out"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: bring along. Konu açmak, geri getirmek, yanında getirmek, yayımlamak ve azaltmak ayrılır."
+    "explanation": "Doğru seçenek: bring along. Bir kişiyi yanında getirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_7_4",
@@ -609,7 +609,7 @@ export const b121500Phrasals = [
       "bring down"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: bring out. Konu açmak, geri getirmek, yanında getirmek, yayımlamak ve azaltmak ayrılır."
+    "explanation": "Doğru seçenek: bring out. Bir kitabı veya yeni sürümü yayımlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_7_5",
@@ -627,7 +627,7 @@ export const b121500Phrasals = [
       "bring up"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: bring down. Konu açmak, geri getirmek, yanında getirmek, yayımlamak ve azaltmak ayrılır."
+    "explanation": "Doğru seçenek: bring down. Bir fiyatı veya miktarı düşürmek."
   },
   {
     "id": "wq150_b121500_ph_b1_8_1",
@@ -645,7 +645,7 @@ export const b121500Phrasals = [
       "give back"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: give up. Vazgeçme, bağışlama, geri verme, dağıtma ve boyun eğme farklıdır."
+    "explanation": "Doğru seçenek: give up. Bir alışkanlığı bırakmak."
   },
   {
     "id": "wq150_b121500_ph_b1_8_2",
@@ -663,7 +663,7 @@ export const b121500Phrasals = [
       "give out"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: give away. Vazgeçme, bağışlama, geri verme, dağıtma ve boyun eğme farklıdır."
+    "explanation": "Doğru seçenek: give away. Bir eşyayı karşılık beklemeden başkasına vermek veya bağışlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_8_3",
@@ -681,7 +681,7 @@ export const b121500Phrasals = [
       "give in"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: give back. Vazgeçme, bağışlama, geri verme, dağıtma ve boyun eğme farklıdır."
+    "explanation": "Doğru seçenek: give back. Ödünç alınan bir şeyi sahibine geri vermek."
   },
   {
     "id": "wq150_b121500_ph_b1_8_4",
@@ -699,7 +699,7 @@ export const b121500Phrasals = [
       "give up"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: give out. Give out bir grup insana materyal dağıtmak anlamındadır."
+    "explanation": "Doğru seçenek: give out. Bir şeyi bir gruptaki kişilere dağıtmak."
   },
   {
     "id": "wq150_b121500_ph_b1_8_5",
@@ -717,7 +717,7 @@ export const b121500Phrasals = [
       "give away"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: give in. Vazgeçme, bağışlama, geri verme, dağıtma ve boyun eğme farklıdır."
+    "explanation": "Doğru seçenek: give in. Tartışmada direnmekten vazgeçip karşı tarafın isteğini kabul etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_9_1",
@@ -735,7 +735,7 @@ export const b121500Phrasals = [
       "call on"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call back. Geri arama, iptal, gerektirme, söz verme ve uzman çağırma anlamları ayrılır."
+    "explanation": "Doğru seçenek: call back. Birini telefonla yeniden aramak veya aramasına karşılık vermek."
   },
   {
     "id": "wq150_b121500_ph_b1_9_2",
@@ -753,7 +753,7 @@ export const b121500Phrasals = [
       "call in"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call off. Geri arama, iptal, gerektirme, söz verme ve uzman çağırma anlamları ayrılır."
+    "explanation": "Doğru seçenek: call off. Planlanan etkinliği iptal etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_9_3",
@@ -771,7 +771,7 @@ export const b121500Phrasals = [
       "call back"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call for. Geri arama, iptal, gerektirme, söz verme ve uzman çağırma anlamları ayrılır."
+    "explanation": "Doğru seçenek: call for. Bir durumun belirli bir beceri veya nitelik gerektirmesi."
   },
   {
     "id": "wq150_b121500_ph_b1_9_4",
@@ -789,7 +789,7 @@ export const b121500Phrasals = [
       "call off"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call on. Geri arama, iptal, gerektirme, söz verme ve uzman çağırma anlamları ayrılır."
+    "explanation": "Doğru seçenek: call on. Birinden söz almasını veya soruyu yanıtlamasını istemek."
   },
   {
     "id": "wq150_b121500_ph_b1_9_5",
@@ -807,7 +807,7 @@ export const b121500Phrasals = [
       "call up"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call in. Call in bir uzmanı yardım için çağırmak; call at bir yere uğramak anlamındadır."
+    "explanation": "Doğru seçenek: call in. Bir uzmandan gelip yardım etmesini istemek."
   },
   {
     "id": "wq150_b121500_ph_b1_10_1",
@@ -825,7 +825,7 @@ export const b121500Phrasals = [
       "run away"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run out of. Tükenme, rastlama, üzerinden geçme, gözden geçirme ve kaçma farklıdır."
+    "explanation": "Doğru seçenek: run out of. Bir şeyin tükenmesi, elinde hiç kalmaması."
   },
   {
     "id": "wq150_b121500_ph_b1_10_2",
@@ -843,7 +843,7 @@ export const b121500Phrasals = [
       "run out of"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run into. Tükenme, rastlama, üzerinden geçme, gözden geçirme ve kaçma farklıdır."
+    "explanation": "Doğru seçenek: run into. Birine tesadüfen rastlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_10_3",
@@ -861,7 +861,7 @@ export const b121500Phrasals = [
       "run into"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run over. Run over araçla bir nesnenin üzerinden geçmek demektir."
+    "explanation": "Doğru seçenek: run over. Bir aracın tekerlekleriyle bir şeyin üzerinden geçmek."
   },
   {
     "id": "wq150_b121500_ph_b1_10_4",
@@ -879,7 +879,7 @@ export const b121500Phrasals = [
       "run after"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run through. Run through talimatları baştan sona gözden geçirmek demektir; run after peşinden koşmak anlamındadır."
+    "explanation": "Doğru seçenek: run through. Bir listeyi veya talimatları baştan sona gözden geçirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_10_5",
@@ -897,7 +897,7 @@ export const b121500Phrasals = [
       "run through"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run away. Tükenme, rastlama, üzerinden geçme, gözden geçirme ve kaçma farklıdır."
+    "explanation": "Doğru seçenek: run away. Bir yerden korku veya tehlike nedeniyle kaçmak."
   },
   {
     "id": "wq150_b121500_ph_b1_11_1",
@@ -915,7 +915,7 @@ export const b121500Phrasals = [
       "pick up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: pick up. Alma, seçme, belirtme, hesaplama ve öğrenme anlamları farklıdır."
+    "explanation": "Doğru seçenek: pick up. Bir şeyi bulunduğu yerden teslim almak."
   },
   {
     "id": "wq150_b121500_ph_b1_11_2",
@@ -933,7 +933,7 @@ export const b121500Phrasals = [
       "pick out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: pick out. Pick out birkaç seçenek arasından tercih ettiğini seçmek demektir; put on giymek anlamındadır."
+    "explanation": "Doğru seçenek: pick out. Bir grup içinden belirli bir şeyi seçmek."
   },
   {
     "id": "wq150_b121500_ph_b1_11_3",
@@ -951,7 +951,7 @@ export const b121500Phrasals = [
       "point out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: point out. Alma, seçme, belirtme, hesaplama ve öğrenme anlamları farklıdır."
+    "explanation": "Doğru seçenek: point out. Bir ayrıntıya, eksikliğe veya hataya dikkat çekmek."
   },
   {
     "id": "wq150_b121500_ph_b1_11_4",
@@ -969,7 +969,7 @@ export const b121500Phrasals = [
       "work out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: work out. Work out hesaplayarak bir sonuca ulaşmaktır."
+    "explanation": "Doğru seçenek: work out. Bir sonucu hesaplamak veya bir problemi çözmek."
   },
   {
     "id": "wq150_b121500_ph_b1_11_5",
@@ -987,7 +987,7 @@ export const b121500Phrasals = [
       "find out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: find out. Find out bir bilgiyi öğrenmek veya araştırıp bulmak demektir."
+    "explanation": "Doğru seçenek: find out. Bir bilgiyi araştırarak veya sorarak öğrenmek."
   },
   {
     "id": "wq150_b121500_ph_b1_12_1",
@@ -1005,7 +1005,7 @@ export const b121500Phrasals = [
       "come back"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: come across. Rastlama, geri dönme, içeri girme, yayımlanma ve uğrama ayrılır."
+    "explanation": "Doğru seçenek: come across. Bir şeye rastlantıyla rastlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_12_2",
@@ -1023,7 +1023,7 @@ export const b121500Phrasals = [
       "come in"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: come back. Rastlama, geri dönme, içeri girme, yayımlanma ve uğrama ayrılır."
+    "explanation": "Doğru seçenek: come back. Daha önce bulunulan yere geri dönmek."
   },
   {
     "id": "wq150_b121500_ph_b1_12_3",
@@ -1041,7 +1041,7 @@ export const b121500Phrasals = [
       "come out"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: come in. Rastlama, geri dönme, içeri girme, yayımlanma ve uğrama ayrılır."
+    "explanation": "Doğru seçenek: come in. İçeri girmek."
   },
   {
     "id": "wq150_b121500_ph_b1_12_4",
@@ -1059,7 +1059,7 @@ export const b121500Phrasals = [
       "come round"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: come out. Rastlama, geri dönme, içeri girme, yayımlanma ve uğrama ayrılır."
+    "explanation": "Doğru seçenek: come out. Bir kitabın yayımlanması veya piyasaya çıkması."
   },
   {
     "id": "wq150_b121500_ph_b1_12_5",
@@ -1077,7 +1077,7 @@ export const b121500Phrasals = [
       "come across"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: come round. Come round birinin evine ziyarete gelmek anlamındadır."
+    "explanation": "Doğru seçenek: come round. Birinin evine ziyarete gelmek; Britanya İngilizcesinde yaygın kullanımdır."
   },
   {
     "id": "wq150_b121500_ph_b1_13_1",
@@ -1086,7 +1086,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "We should ____ at the hotel before the evening meeting starts.",
+    "prompt": "When we first arrive at the hotel, we should ____ and collect our room keys before the evening meeting.",
     "options": [
       "check over",
       "check off",
@@ -1095,7 +1095,7 @@ export const b121500Phrasals = [
       "check up on"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: check in. Kayıt, çıkış, durum kontrolü, inceleme ve işaretleme işlevleri vardır."
+    "explanation": "Doğru seçenek: check in. Otele varınca giriş işlemlerini yapmak."
   },
   {
     "id": "wq150_b121500_ph_b1_13_2",
@@ -1113,7 +1113,7 @@ export const b121500Phrasals = [
       "check over"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: check out. Kayıt, çıkış, durum kontrolü, inceleme ve işaretleme işlevleri vardır."
+    "explanation": "Doğru seçenek: check out. Otelden ayrılmadan önce çıkış işlemlerini yapmak."
   },
   {
     "id": "wq150_b121500_ph_b1_13_3",
@@ -1131,7 +1131,7 @@ export const b121500Phrasals = [
       "check off"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: check up on. Kayıt, çıkış, durum kontrolü, inceleme ve işaretleme işlevleri vardır."
+    "explanation": "Doğru seçenek: check up on. Birinin iyi olup olmadığını kontrol etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_13_4",
@@ -1149,7 +1149,7 @@ export const b121500Phrasals = [
       "check in"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: check over. Check over bir şeyi hata olup olmadığını görmek için dikkatle incelemektir."
+    "explanation": "Doğru seçenek: check over. Bir belgeyi hata olup olmadığını görmek için incelemek."
   },
   {
     "id": "wq150_b121500_ph_b1_13_5",
@@ -1167,7 +1167,7 @@ export const b121500Phrasals = [
       "check out"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: check off. Kayıt, çıkış, durum kontrolü, inceleme ve işaretleme işlevleri vardır."
+    "explanation": "Doğru seçenek: check off. Bir listedeki tamamlanan maddeleri işaretlemek."
   },
   {
     "id": "wq150_b121500_ph_b1_14_1",
@@ -1185,7 +1185,7 @@ export const b121500Phrasals = [
       "sign up for"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: fill in. Form doldurma, teslim, dağıtım, kayıt ve ayrılma farklıdır."
+    "explanation": "Doğru seçenek: fill in. Bir formdaki boş alanları gerekli bilgilerle doldurmak."
   },
   {
     "id": "wq150_b121500_ph_b1_14_2",
@@ -1203,7 +1203,7 @@ export const b121500Phrasals = [
       "drop out of"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: hand in. Form doldurma, teslim, dağıtım, kayıt ve ayrılma farklıdır."
+    "explanation": "Doğru seçenek: hand in. Bir ödevi veya belgeyi yetkili kişiye teslim etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_14_3",
@@ -1221,7 +1221,7 @@ export const b121500Phrasals = [
       "fill in"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: hand out. Form doldurma, teslim, dağıtım, kayıt ve ayrılma farklıdır."
+    "explanation": "Doğru seçenek: hand out. Basılı malzemeleri kişilere dağıtmak."
   },
   {
     "id": "wq150_b121500_ph_b1_14_4",
@@ -1239,7 +1239,7 @@ export const b121500Phrasals = [
       "hand in"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: sign up for. Form doldurma, teslim, dağıtım, kayıt ve ayrılma farklıdır."
+    "explanation": "Doğru seçenek: sign up for. Bir kursa veya etkinliğe kaydolmak."
   },
   {
     "id": "wq150_b121500_ph_b1_14_5",
@@ -1257,7 +1257,7 @@ export const b121500Phrasals = [
       "hand out"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: drop out of. Form doldurma, teslim, dağıtım, kayıt ve ayrılma farklıdır."
+    "explanation": "Doğru seçenek: drop out of. Başlanmış bir etkinlikten veya yarışmadan çekilmek."
   },
   {
     "id": "wq150_b121500_ph_b1_15_1",
@@ -1275,7 +1275,7 @@ export const b121500Phrasals = [
       "hold up"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: carry on. Devam, geriden yetişme, tempoyu sürdürme, bekleme ve geciktirme ayrılır."
+    "explanation": "Doğru seçenek: carry on. Ara verilen bir işe devam etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_15_2",
@@ -1293,7 +1293,7 @@ export const b121500Phrasals = [
       "carry on"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: catch up with. Devam, geriden yetişme, tempoyu sürdürme, bekleme ve geciktirme ayrılır."
+    "explanation": "Doğru seçenek: catch up with. Geride kaldıktan sonra diğer kişilerin ulaştığı düzeye yetişmek."
   },
   {
     "id": "wq150_b121500_ph_b1_15_3",
@@ -1311,7 +1311,7 @@ export const b121500Phrasals = [
       "catch up with"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: keep up with. Devam, geriden yetişme, tempoyu sürdürme, bekleme ve geciktirme ayrılır."
+    "explanation": "Doğru seçenek: keep up with. Bir kişinin hızına veya ilerleme düzeyine ayak uydurmak."
   },
   {
     "id": "wq150_b121500_ph_b1_15_4",
@@ -1329,7 +1329,7 @@ export const b121500Phrasals = [
       "keep up with"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: hold on. Devam, geriden yetişme, tempoyu sürdürme, bekleme ve geciktirme ayrılır."
+    "explanation": "Doğru seçenek: hold on. Kısa süre beklemek."
   },
   {
     "id": "wq150_b121500_ph_b1_15_5",
@@ -1347,7 +1347,7 @@ export const b121500Phrasals = [
       "hold on"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: hold up. Devam, geriden yetişme, tempoyu sürdürme, bekleme ve geciktirme ayrılır."
+    "explanation": "Doğru seçenek: hold up. Birinin veya aracın ilerlemesini geciktirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_16_1",
@@ -1365,7 +1365,7 @@ export const b121500Phrasals = [
       "set off"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set off. Set off bir yolculuğa başlamak demektir. Set down bir şeyi yere koymak veya yazıya geçirmek anlamındadır."
+    "explanation": "Doğru seçenek: set off. Bir yolculuğa çıkmak, hareket etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_16_2",
@@ -1383,7 +1383,7 @@ export const b121500Phrasals = [
       "set up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set up. Set up katlanır masayı açıp kullanıma hazır hâle getirmek anlamındadır; set aside bir şeyi ayırmaktır."
+    "explanation": "Doğru seçenek: set up. Bir aracı veya eşyayı kullanım için kurmak."
   },
   {
     "id": "wq150_b121500_ph_b1_16_3",
@@ -1401,7 +1401,7 @@ export const b121500Phrasals = [
       "set aside"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set aside. Yola çıkma, kurma, ayırma, ortaya koyma ve geciktirme anlamları vardır."
+    "explanation": "Doğru seçenek: set aside. Parayı veya zamanı belirli bir amaç için ayırmak."
   },
   {
     "id": "wq150_b121500_ph_b1_16_4",
@@ -1419,7 +1419,7 @@ export const b121500Phrasals = [
       "set out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set out. Yola çıkma, kurma, ayırma, ortaya koyma ve geciktirme anlamları vardır."
+    "explanation": "Doğru seçenek: set out. Kuralları veya bilgileri açık ve düzenli biçimde ortaya koymak."
   },
   {
     "id": "wq150_b121500_ph_b1_16_5",
@@ -1437,7 +1437,7 @@ export const b121500Phrasals = [
       "set back"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set back. Yola çıkma, kurma, ayırma, ortaya koyma ve geciktirme anlamları vardır."
+    "explanation": "Doğru seçenek: set back. Bir işin ilerlemesini geciktirmek."
   },
   {
     "id": "wq150_b121500_ph_b1_17_1",
@@ -1455,7 +1455,7 @@ export const b121500Phrasals = [
       "go off"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: go ahead. İlerleme, alarm çalması, inceleme, zor dönem yaşama ve mahrum kalma ayrılır."
+    "explanation": "Doğru seçenek: go ahead. Planlanan bir etkinliğin gerçekleşmesi veya devam etmesi."
   },
   {
     "id": "wq150_b121500_ph_b1_17_2",
@@ -1473,7 +1473,7 @@ export const b121500Phrasals = [
       "go over"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: go off. İlerleme, alarm çalması, inceleme, zor dönem yaşama ve mahrum kalma ayrılır."
+    "explanation": "Doğru seçenek: go off. Alarmın çalmaya başlaması."
   },
   {
     "id": "wq150_b121500_ph_b1_17_3",
@@ -1491,7 +1491,7 @@ export const b121500Phrasals = [
       "go without"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: go over. İlerleme, alarm çalması, inceleme, zor dönem yaşama ve mahrum kalma ayrılır."
+    "explanation": "Doğru seçenek: go over. Ders notlarını tekrar incelemek."
   },
   {
     "id": "wq150_b121500_ph_b1_17_4",
@@ -1509,7 +1509,7 @@ export const b121500Phrasals = [
       "go without"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: go through. İlerleme, alarm çalması, inceleme, zor dönem yaşama ve mahrum kalma ayrılır."
+    "explanation": "Doğru seçenek: go through. Zor bir dönem veya deneyim yaşamak."
   },
   {
     "id": "wq150_b121500_ph_b1_17_5",
@@ -1527,7 +1527,7 @@ export const b121500Phrasals = [
       "go ahead"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: go without. İlerleme, alarm çalması, inceleme, zor dönem yaşama ve mahrum kalma ayrılır."
+    "explanation": "Doğru seçenek: go without. Bir şey olmadan idare etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_18_1",
@@ -1545,7 +1545,7 @@ export const b121500Phrasals = [
       "cut out"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: cut down on. Azaltma, kesinti, çıkarma ve parçalara ayırma anlamları vardır."
+    "explanation": "Doğru seçenek: cut down on. Bir tüketimi azaltmak; tamamen bırakmak değildir."
   },
   {
     "id": "wq150_b121500_ph_b1_18_2",
@@ -1563,7 +1563,7 @@ export const b121500Phrasals = [
       "cut up"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: cut off. Azaltma, kesinti, çıkarma ve parçalara ayırma anlamları vardır."
+    "explanation": "Doğru seçenek: cut off. Bir hizmetin veya kaynağın sağlanmasını kesmek."
   },
   {
     "id": "wq150_b121500_ph_b1_18_3",
@@ -1581,7 +1581,7 @@ export const b121500Phrasals = [
       "cut back"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: cut out. Azaltma, kesinti, çıkarma ve parçalara ayırma anlamları vardır."
+    "explanation": "Doğru seçenek: cut out. Bir metinden bir bölümü tamamen çıkarmak."
   },
   {
     "id": "wq150_b121500_ph_b1_18_4",
@@ -1599,7 +1599,7 @@ export const b121500Phrasals = [
       "cut down on"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: cut up. Azaltma, kesinti, çıkarma ve parçalara ayırma anlamları vardır."
+    "explanation": "Doğru seçenek: cut up. Bir şeyi küçük parçalara kesmek."
   },
   {
     "id": "wq150_b121500_ph_b1_18_5",
@@ -1608,16 +1608,16 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "Because of lower sales, the business may ____ its spending.",
+    "prompt": "Because of lower sales, the business may ____ its spending without stopping all purchases.",
     "options": [
       "cut out of",
       "cut up into",
       "cut back",
-      "cut down on",
+      "cut in",
       "cut off from"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: cut back. Azaltma, kesinti, çıkarma ve parçalara ayırma anlamları vardır."
+    "explanation": "Doğru seçenek: cut back. Harcamayı ya da tüketimi azaltmak; cut back on + isim yapısı da kullanılır."
   },
   {
     "id": "wq150_b121500_ph_b1_19_1",
@@ -1635,7 +1635,7 @@ export const b121500Phrasals = [
       "make up for"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: make up. Uydurma, seçebilme, yönelme, telafi ve idare etme ayrılır."
+    "explanation": "Doğru seçenek: make up. Gerçek olmayan bir mazeret veya hikâye uydurmak."
   },
   {
     "id": "wq150_b121500_ph_b1_19_2",
@@ -1653,7 +1653,7 @@ export const b121500Phrasals = [
       "make do with"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: make out. Uydurma, seçebilme, yönelme, telafi ve idare etme ayrılır."
+    "explanation": "Doğru seçenek: make out. Bir şeyi güçlükle seçebilmek, okuyabilmek veya ayırt edebilmek."
   },
   {
     "id": "wq150_b121500_ph_b1_19_3",
@@ -1671,7 +1671,7 @@ export const b121500Phrasals = [
       "make up"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: make for. Uydurma, seçebilme, yönelme, telafi ve idare etme ayrılır."
+    "explanation": "Doğru seçenek: make for. Belirli bir yöne veya yere doğru ilerlemek."
   },
   {
     "id": "wq150_b121500_ph_b1_19_4",
@@ -1680,7 +1680,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "The extra practice will help you ____ the lesson you missed.",
+    "prompt": "The extra practice will help you ____ the time you lost by missing the lesson.",
     "options": [
       "make for",
       "make up for",
@@ -1689,7 +1689,7 @@ export const b121500Phrasals = [
       "make out"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: make up for. Make up for bir eksikliği telafi etmek, make off with bir şeyi alıp kaçmak demektir."
+    "explanation": "Doğru seçenek: make up for. Bir kaybı ya da eksikliği telafi etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_19_5",
@@ -1707,7 +1707,7 @@ export const b121500Phrasals = [
       "make for"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: make do with. Uydurma, seçebilme, yönelme, telafi ve idare etme ayrılır."
+    "explanation": "Doğru seçenek: make do with. Eldeki sınırlı imkânlarla idare etmek."
   },
   {
     "id": "wq150_b121500_ph_b1_20_1",
@@ -1725,7 +1725,7 @@ export const b121500Phrasals = [
       "settle down"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: stay in. Evde kalma, geç yatma, taşınma ve yerleşme ayrılır."
+    "explanation": "Doğru seçenek: stay in. Dışarı çıkmayıp evde kalmak."
   },
   {
     "id": "wq150_b121500_ph_b1_20_2",
@@ -1743,7 +1743,7 @@ export const b121500Phrasals = [
       "stay in"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: stay up. Evde kalma, geç yatma, taşınma ve yerleşme ayrılır."
+    "explanation": "Doğru seçenek: stay up. Normalden geç saate kadar uyanık kalmak."
   },
   {
     "id": "wq150_b121500_ph_b1_20_3",
@@ -1761,7 +1761,7 @@ export const b121500Phrasals = [
       "stay up"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: move in. Evde kalma, geç yatma, taşınma ve yerleşme ayrılır."
+    "explanation": "Doğru seçenek: move in. Yeni bir eve taşınarak orada yaşamaya başlamak."
   },
   {
     "id": "wq150_b121500_ph_b1_20_4",
@@ -1779,7 +1779,7 @@ export const b121500Phrasals = [
       "move in"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: move out. Evde kalma, geç yatma, taşınma ve yerleşme ayrılır."
+    "explanation": "Doğru seçenek: move out. Oturulan evden taşınıp ayrılmak."
   },
   {
     "id": "wq150_b121500_ph_b1_20_5",
@@ -1788,7 +1788,7 @@ export const b121500Phrasals = [
     "yds": null,
     "topic": "Phrasals",
     "kind": "Phrasal",
-    "prompt": "After years of travelling, they decided to ____ in a small town.",
+    "prompt": "After years of travelling from place to place, they decided to ____ permanently in a small town and build a stable life there.",
     "options": [
       "settle down",
       "stay in",
@@ -1797,7 +1797,7 @@ export const b121500Phrasals = [
       "move out"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: settle down. Evde kalma, geç yatma, taşınma ve yerleşme ayrılır."
+    "explanation": "Doğru seçenek: settle down. Düzenli ve kalıcı bir yaşam kurmak."
   },
   {
     "id": "wq150_b121500_ph_b2_1_1",
