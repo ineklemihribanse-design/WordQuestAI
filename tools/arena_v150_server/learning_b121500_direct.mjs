@@ -4544,14 +4544,14 @@ export const b121500Direct = [
     "kind": "Vocabulary",
     "prompt": "The panel will ____ the overall effectiveness of the programme against its original objectives.",
     "options": [
-      "assess",
-      "monitor",
+      "compile",
+      "maintain",
       "evaluate",
-      "verify",
-      "estimate"
+      "administer",
+      "execute"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: evaluate. Ölçme ve inceleme fiillerinin belirli işlevlerini ayır."
+    "explanation": "Doğru seçenek: evaluate. Programın hedeflerine göre etkililiğini değerlendirmek evaluate fiiliyle anlatılır. Diğer seçenekler derlemek, sürdürmek, yönetmek veya yürütmek anlamındadır."
   },
   {
     "id": "wq150_b12_1500_direct_b2_11_4",
@@ -4888,12 +4888,12 @@ export const b121500Direct = [
     "options": [
       "impact",
       "scope",
-      "extent",
+      "duration",
       "outcome",
       "feedback"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: scope. Etki, kapsam, derece, sonuç ve geri bildirim kavramları farklıdır."
+    "explanation": "Doğru seçenek: scope. Projede hangi işlerin kapsama girdiğini ve hangilerinin dışarıda kaldığını scope belirler. Duration süreyi, outcome sonucu ifade eder."
   },
   {
     "id": "wq150_b12_1500_direct_b2_15_3",
@@ -4902,16 +4902,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The team has not yet established the full ____ of the damage.",
+    "prompt": "The inspection will establish the full ____ of the damage, including how much of the building must be repaired.",
     "options": [
-      "impact",
-      "scope",
+      "source",
+      "frequency",
       "extent",
       "outcome",
       "feedback"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: extent. Etki, kapsam, derece, sonuç ve geri bildirim kavramları farklıdır."
+    "explanation": "Doğru seçenek: extent. The extent of the damage hasarın boyutu veya derecesi demektir. Ne kadar bölümün onarılacağı ölçülüyor; hasarın nedeni ya da sonucu sorulmuyor."
   },
   {
     "id": "wq150_b12_1500_direct_b2_15_4",
