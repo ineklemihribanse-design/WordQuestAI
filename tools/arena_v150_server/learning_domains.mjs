@@ -3264,7 +3264,7 @@ export const domainQuestions = [
       "mutation"
     ],
     "correct": 0,
-    "explanation": "Calibration ölçüm aracının bilinen bir referansla ayarlanmasıdır."
+    "explanation": "Calibration (kalibrasyon), ölçüm aracının göstergeleri ile bilinen referans değerleri arasındaki ilişkinin belirlenmesidir. Ayar yapılması kalibrasyona eşlik edebilir ancak her kalibrasyon ayar gerektirmez."
   },
   {
     "id": "wq150_domain_2",
@@ -3280,7 +3280,7 @@ export const domainQuestions = [
       "catalyst"
     ],
     "correct": 0,
-    "explanation": "Solvent bir maddeyi çözen sıvıdır."
+    "explanation": "Solvent (çözücü), başka bir maddeyi çözerek çözelti oluşturan maddedir; bu örnekte sıvı hâlindedir."
   },
   {
     "id": "wq150_domain_3",
@@ -3392,7 +3392,7 @@ export const domainQuestions = [
       "placebo"
     ],
     "correct": 0,
-    "explanation": "Confounder hem maruziyet hem sonuçla ilişkili olarak nedensel yorumları çarpıtabilir."
+    "explanation": "Confounder (karıştırıcı değişken), maruziyet ve sonuç arasındaki nedensel ilişkiyi çarpıtabilecek ortak neden veya ilgili değişkendir; yalnızca istatistiksel ilişki bulunması tek başına karıştırıcılığı kanıtlamaz."
   },
   {
     "id": "wq150_domain_10",
@@ -3600,7 +3600,7 @@ export const domainQuestions = [
       "adherence"
     ],
     "correct": 0,
-    "explanation": "Incidence belirli sürede ortaya çıkan yeni vakaları ölçer."
+    "explanation": "Incidence (insidans), risk altındaki bir toplulukta belirli bir süre içinde ortaya çıkan yeni vakaları ölçer. Prevalence ise mevcut vakaların yaygınlığını gösterir."
   },
   {
     "id": "wq150_domain_23",
@@ -3616,7 +3616,7 @@ export const domainQuestions = [
       "prophylaxis"
     ],
     "correct": 0,
-    "explanation": "Prevalence belirli bir anda mevcut vakaların yaygınlığını ifade eder."
+    "explanation": "Prevalence (prevalans), belirli bir zamanda veya dönem içinde bir toplulukta mevcut vakaların oranıdır; burada nokta prevalansı sorulmaktadır."
   },
   {
     "id": "wq150_domain_24",
@@ -3648,7 +3648,7 @@ export const domainQuestions = [
       "mortality"
     ],
     "correct": 0,
-    "explanation": "Bioavailability ilacın sistemik dolaşıma ulaşan bölümünü ifade eder."
+    "explanation": "Bioavailability (biyoyararlanım), verilen dozun değişmeden sistemik dolaşıma ulaşan oranını ifade eder; biyoyararlanım değerlendirmesinde emilim hızı da önemlidir."
   },
   {
     "id": "wq150_domain_26",
@@ -3792,7 +3792,7 @@ export const domainQuestions = [
       "diversification"
     ],
     "correct": 0,
-    "explanation": "Depreciation varlığın maliyetinin yararlı ömrüne dağıtılmasıyla ilişkilidir."
+    "explanation": "Depreciation (amortisman), muhasebede maddi duran varlığın amortismana tabi tutarının yararlı ömrüne sistematik olarak dağıtılmasıdır; piyasa fiyatındaki düşüşle aynı kavram değildir."
   },
   {
     "id": "wq150_domain_35",
