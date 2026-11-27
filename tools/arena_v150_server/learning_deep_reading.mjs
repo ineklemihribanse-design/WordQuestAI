@@ -21,16 +21,16 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Paragraph",
-    "prompt": "A repair café opened in a former shop near the town centre. Residents bring broken household items and volunteers help them identify the faults. The service is free, ____ visitors are encouraged to make a small donation. The organisers hope to reduce waste by extending the useful life of appliances. They offer workshops for people who want to acquire basic repair skills. Attendance has increased since the café opened.\n\nChoose the best option for the blank.",
+    "prompt": "A repair café opened in a former shop near the town centre. Residents bring broken household items and volunteers help them identify the faults. No payment is required for the service, ____ visitors are encouraged to make a small, entirely optional donation. The organisers hope to reduce waste by extending the useful life of appliances. They offer workshops for people who want to acquire basic repair skills. Attendance has increased since the café opened.\n\nChoose the best option for the blank.",
     "options": [
       "although",
       "unless",
-      "because",
+      "provided that",
       "so that",
       "once"
     ],
     "correct": 0,
-    "explanation": "Although ücretsiz hizmet ile bağış önerisini karşılaştırır.",
+    "explanation": "Although, hizmetin ücretsiz oluşu ile bağış yapmanın önerilmesi arasındaki karşıtlığı kurar. Bağış zorunlu değildir.",
     "family": "cloze_deep_1"
   },
   {
@@ -378,7 +378,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "A study compared two irrigation systems under similar soil and weather conditions. The researchers used the same crop variety in all plots to minimise variation. Water consumption was recorded throughout the growing season. The new system used less water, ____ the difference in yield was small. Initial installation costs might offset the savings for some farmers. Further trials are necessary before the findings can be generalised to other regions.\n\nChoose the best option for the blank.",
+    "prompt": "A study compared two irrigation systems under similar soil and weather conditions. The researchers used the same crop variety in all plots to minimise variation. Water consumption was recorded throughout the growing season. The new system achieved a substantial reduction in water use, ____ the difference in crop yield was small. Initial installation costs might offset the savings for some farmers. Further trials are necessary before the findings can be generalised to other regions.\n\nChoose the best option for the blank.",
     "options": [
       "while",
       "because of",
@@ -387,7 +387,7 @@ export const deepReadingQuestions = [
       "instead of"
     ],
     "correct": 0,
-    "explanation": "While su tüketimi ile verim sonucunu karşılaştırır.",
+    "explanation": "While burada iki farklı sonucu karşılaştırır: su tüketimindeki belirgin düşüş ve ürün verimindeki küçük fark.",
     "family": "cloze_deep_5"
   },
   {
@@ -956,7 +956,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly by testing whether it captures the intended construct in different settings, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
+    "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly by assessing its construct validity rather than modifying its scale or scoring, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "validate",
       "standardise",
@@ -965,7 +965,7 @@ export const deepReadingQuestions = [
       "recalibrate"
     ],
     "correct": 0,
-    "explanation": "Validate bir ölçüm aracının amaçlanan yapıyı ölçüp ölçmediğini sınamak, geçerliliğini değerlendirmektir.",
+    "explanation": "Validate bir ölçüm aracının amaçlanan yapıyı gerçekten ölçüp ölçmediğini sınamaktır; standardise ve recalibrate ölçümü standartlaştırma veya yeniden ayarlama işlemleridir.",
     "family": "cloze_deep_12"
   },
   {
@@ -1152,7 +1152,7 @@ export const deepReadingQuestions = [
       "implemented"
     ],
     "correct": 0,
-    "explanation": "Kanıtlar her etkenin katkısının ne ölçüde olduğunu kesin olarak belirlemeye (establish) izin vermiyor.",
+    "explanation": "Established burada her etkenin katkısının kesin olarak belirlenmesini ifade eder. Replicated tekrarlanmış, standardised standartlaştırılmış, manipulated değiştirilmiş ve implemented uygulanmış anlamına gelir.",
     "family": "cloze_deep_14"
   },
   {
@@ -1386,11 +1386,11 @@ export const deepReadingQuestions = [
       "but rather",
       "as well as",
       "because of",
-      "instead of",
+      "in addition to",
       "despite"
     ],
     "correct": 0,
-    "explanation": "Not simply but rather karşılaştırmalı düzeltme yapısıdır.",
+    "explanation": "Not simply X, but rather Y yapısı ilk açıklamayı yetersiz bulup asıl açıklamayı öne çıkarır.",
     "family": "cloze_deep_17"
   },
   {
@@ -1823,7 +1823,7 @@ export const deepReadingQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Paragraph",
-    "prompt": "An agricultural cooperative introduced a shared forecasting service to help growers decide when to irrigate. Forecasts were updated daily and accompanied by uncertainty information. Some growers initially interpreted a high probability of rain as a guarantee. Training therefore focused on the difference between probability and certainty. Subsequent interviews suggested more flexible decisions, but the study did not measure crop yields. Economic outcomes will be evaluated in a later season.\n\nWhich outcome was not measured?",
+    "prompt": "An agricultural cooperative introduced a shared forecasting service to help growers decide when to irrigate. Forecasts were updated daily and accompanied by uncertainty information. Some growers initially interpreted a high probability of rain as a guarantee. Training therefore focused on the difference between probability and certainty. Subsequent interviews suggested more flexible decisions, but the study did not measure crop yields. Economic outcomes will be evaluated in a later season.\n\nWhich outcome does the passage explicitly state was not measured in the study?",
     "options": [
       "Crop yields.",
       "Growers' reported decisions.",
@@ -1832,7 +1832,7 @@ export const deepReadingQuestions = [
       "Forecast update frequency."
     ],
     "correct": 0,
-    "explanation": "Metin ürün veriminin ölçülmediğini belirtir.",
+    "explanation": "Metinde 'the study did not measure crop yields' denir; ekonomik sonuçlar ise gelecekteki değerlendirmeye bırakılmıştır.",
     "family": "reading_deep_3"
   },
   {
@@ -1993,7 +1993,7 @@ export const deepReadingQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A city assessed a congestion policy by comparing traffic on roads covered by the scheme before and after its introduction. Traffic fell there but increased on neighbouring roads. The original evaluation emphasised the reduction within the scheme. A later analysis argued that local reductions were relevant if the objective was to improve selected streets, whereas citywide congestion reduction required accounting for displacement.\n\nWhich claim is not established?",
+    "prompt": "A city assessed a congestion policy by comparing traffic on roads covered by the scheme before and after its introduction. Traffic fell there but increased on neighbouring roads. The original evaluation emphasised the reduction within the scheme. A later analysis argued that local reductions were relevant if the objective was to improve selected streets, whereas citywide congestion reduction required accounting for displacement.\n\nWhich claim about the effectiveness of the policy is not established by the reported traffic data?",
     "options": [
       "The scheme reduced congestion citywide.",
       "Traffic fell on monitored roads.",
@@ -2002,7 +2002,7 @@ export const deepReadingQuestions = [
       "Objectives matter in outcome selection."
     ],
     "correct": 0,
-    "explanation": "Şehir genelindeki azalmanın gerçekleştiği kanıtlanmamıştır.",
+    "explanation": "Ölçülen yollarda trafik azalırken komşu yollarda artmıştır. Bu nedenle yerel azalma, kent genelinde sıkışıklığın azaldığını kanıtlamaz.",
     "family": "reading_deep_6"
   },
   {
@@ -2820,7 +2820,7 @@ export const deepReadingQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Completion",
-    "prompt": "If the weather forecast is correct, ____.",
+    "prompt": "The forecast predicts heavy rain during tomorrow's outdoor concert. If the forecast is correct, ____.",
     "options": [
       "the organisers may postpone the outdoor concert because of heavy rain",
       "yesterday's weather will change",
@@ -2829,7 +2829,7 @@ export const deepReadingQuestions = [
       "all forecasts become correct automatically"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşebilir koşul gelecekteki olası sonucu bağlar."
+    "explanation": "First conditional yapısında if + present simple sonrasında may + yalın fiil olası bir sonucu gösterir. Şiddetli yağmur nedeniyle konser ertelenebilir."
   },
   {
     "id": "wq150_deepdiscourse_8",
@@ -3165,7 +3165,7 @@ export const deepReadingQuestions = [
       "The mechanism is impossible to investigate."
     ],
     "correct": 0,
-    "explanation": "Not incompatible, uyumsuz olmadığı yani mevcut kanıtla bağdaşabildiği anlamına gelir; mekanizmanın doğrulandığını göstermez."
+    "explanation": "Not incompatible, mevcut kanıtın mekanizmayla çelişmediğini gösterir. Bu, mekanizmanın kesinlikle doğru olduğunun veya alternatiflerin elendiğinin kanıtı değildir."
   },
   {
     "id": "wq150_deepdiscourse_29",
