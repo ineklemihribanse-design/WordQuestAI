@@ -38,16 +38,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Its installation required substantial initial investment ____ the new insulation lowered heating costs.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the new insulation lowered heating costs, its installation required substantial initial investment.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_1"
   },
   {
@@ -89,16 +89,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Some routes still operated infrequently ____ the public transport network reached more districts.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the public transport network reached more districts, some routes still operated infrequently.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_2"
   },
   {
@@ -140,16 +140,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Many exhibits remained unavailable during renovation ____ the museum extended its opening hours.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the museum extended its opening hours, many exhibits remained unavailable during renovation.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_3"
   },
   {
@@ -191,16 +191,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Its battery lasted for a shorter period ____ the new device was lighter than its predecessor.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the new device was lighter than its predecessor, its battery lasted for a shorter period.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_4"
   },
   {
@@ -242,16 +242,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The number of books borrowed per member fell ____ the number of library members increased.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the number of library members increased, the number of books borrowed per member fell.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_5"
   },
   {
@@ -293,16 +293,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "It required additional ventilation on sunny days ____ the greenhouse retained heat effectively.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the greenhouse retained heat effectively, it required additional ventilation on sunny days.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_6"
   },
   {
@@ -344,16 +344,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Some households could not afford connection fees ____ the village gained access to a new water supply.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the village gained access to a new water supply, some households could not afford connection fees.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_7"
   },
   {
@@ -395,16 +395,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Participants still needed reliable internet connections ____ the training programme was available online.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the training programme was available online, participants still needed reliable internet connections.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_8"
   },
   {
@@ -446,16 +446,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Total packaging waste rose as production expanded ____ the factory reduced the amount of packaging per item.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the factory reduced the amount of packaging per item, total packaging waste rose as production expanded.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_9"
   },
   {
@@ -497,16 +497,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Staff assistance remained necessary for unusual bookings ____ the hotel introduced an automated check-in service.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the hotel introduced an automated check-in service, staff assistance remained necessary for unusual bookings.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_10"
   },
   {
@@ -548,16 +548,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Waiting times remained long for certain specialists ____ the hospital increased its number of appointment slots.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the hospital increased its number of appointment slots, waiting times remained long for certain specialists.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_11"
   },
   {
@@ -599,16 +599,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Some dissolved substances remained in the water ____ the new filtration system removed most visible particles.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the new filtration system removed most visible particles, some dissolved substances remained in the water.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_12"
   },
   {
@@ -650,16 +650,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "It attracted more volunteers than the organisers had anticipated ____ the community garden produced fewer vegetables than expected.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the community garden produced fewer vegetables than expected, it attracted more volunteers than the organisers had anticipated.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_13"
   },
   {
@@ -701,16 +701,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The number of separate journeys increased ____ the company reduced delivery distances.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the company reduced delivery distances, the number of separate journeys increased.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_14"
   },
   {
@@ -752,16 +752,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Few responses came from remote villages ____ the survey received more responses than expected.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the survey received more responses than expected, few responses came from remote villages.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_15"
   },
   {
@@ -803,16 +803,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "An independent calibration revealed a systematic deviation ____ the revised instrument produced highly consistent readings.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the revised instrument produced highly consistent readings, an independent calibration revealed a systematic deviation.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_16"
   },
   {
@@ -854,16 +854,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The study design could not isolate its independent contribution ____ the intervention was followed by a decline in absenteeism.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the intervention was followed by a decline in absenteeism, the study design could not isolate its independent contribution.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_17"
   },
   {
@@ -905,16 +905,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its predictions deteriorated outside the calibration range ____ the model reproduced the historical trend accurately.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the model reproduced the historical trend accurately, its predictions deteriorated outside the calibration range.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_18"
   },
   {
@@ -956,16 +956,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Costs increased for a small but vulnerable subgroup ____ the policy reduced average expenditure.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the policy reduced average expenditure, costs increased for a small but vulnerable subgroup.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_19"
   },
   {
@@ -1007,16 +1007,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Records from several crucial years were missing ____ the archive contained extensive correspondence.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the archive contained extensive correspondence, records from several crucial years were missing.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_20"
   },
   {
@@ -1058,16 +1058,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its practical implications were modest ____ the observed difference was statistically significant.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the observed difference was statistically significant, its practical implications were modest.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_21"
   },
   {
@@ -1109,16 +1109,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Members disagreed on how it should be implemented ____ the committee reached agreement on the overall objective.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the committee reached agreement on the overall objective, members disagreed on how it should be implemented.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_22"
   },
   {
@@ -1160,16 +1160,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its coverage of the underlying concept remained disputed ____ the new index was robust to changes in weighting.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the new index was robust to changes in weighting, its coverage of the underlying concept remained disputed.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_23"
   },
   {
@@ -1211,16 +1211,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its impact on less experienced users was limited ____ the programme improved access for users already familiar with digital tools.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the programme improved access for users already familiar with digital tools, its impact on less experienced users was limited.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_24"
   },
   {
@@ -1262,16 +1262,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The absence of a suitable comparison group limited causal interpretation ____ the team collected observations over a prolonged period.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the team collected observations over a prolonged period, the absence of a suitable comparison group limited causal interpretation.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_25"
   },
   {
@@ -1313,16 +1313,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "They presented the proposed mechanism with unwarranted confidence ____ the authors acknowledged uncertainty in the numerical estimates.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the authors acknowledged uncertainty in the numerical estimates, they presented the proposed mechanism with unwarranted confidence.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_26"
   },
   {
@@ -1364,16 +1364,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Informal decision-making authority remained concentrated ____ the institution adopted a formal decentralisation policy.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the institution adopted a formal decentralisation policy, informal decision-making authority remained concentrated.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_27"
   },
   {
@@ -1415,16 +1415,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Some small populations were still underrepresented ____ the study used a large and diverse sample.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the study used a large and diverse sample, some small populations were still underrepresented.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_28"
   },
   {
@@ -1466,16 +1466,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "A competing theory generated the same prediction ____ the findings aligned with a prominent theoretical prediction.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the findings aligned with a prominent theoretical prediction, a competing theory generated the same prediction.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_29"
   },
   {
@@ -1517,16 +1517,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Exceptional cases required more extensive review ____ the proposed procedure accelerated routine decisions.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the proposed procedure accelerated routine decisions, exceptional cases required more extensive review.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_30"
   },
   {
@@ -1568,16 +1568,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Their theoretical commitments were not identical ____ the rival explanations were empirically equivalent within the tested range.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the rival explanations were empirically equivalent within the tested range, their theoretical commitments were not identical.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_31"
   },
   {
@@ -1619,16 +1619,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Assumptions outside the examined range were not assessed ____ the causal estimate remained stable under several plausible perturbations.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the causal estimate remained stable under several plausible perturbations, assumptions outside the examined range were not assessed.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_32"
   },
   {
@@ -1670,16 +1670,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its operational criteria yielded inconsistent classifications ____ the conceptual distinction was defensible in principle.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the conceptual distinction was defensible in principle, its operational criteria yielded inconsistent classifications.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_33"
   },
   {
@@ -1721,16 +1721,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Behavioural adaptation weakened that relationship after incentives were introduced ____ the numerical proxy correlated strongly with the intended construct initially.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the numerical proxy correlated strongly with the intended construct initially, behavioural adaptation weakened that relationship after incentives were introduced.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_34"
   },
   {
@@ -1772,16 +1772,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The underlying studies operationalised the outcome differently ____ the pooled estimate had a narrow confidence interval.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the pooled estimate had a narrow confidence interval, the underlying studies operationalised the outcome differently.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_35"
   },
   {
@@ -1823,16 +1823,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The applicability of those assumptions to the empirical setting remained uncertain ____ the formal proof established a result under idealised assumptions.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the formal proof established a result under idealised assumptions, the applicability of those assumptions to the empirical setting remained uncertain.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_36"
   },
   {
@@ -1874,16 +1874,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "They diverged in their treatment of borderline cases ____ the two classification systems agreed on most observed cases.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the two classification systems agreed on most observed cases, they diverged in their treatment of borderline cases.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_37"
   },
   {
@@ -1925,16 +1925,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The choice of model structure materially affected the result ____ the estimate was insensitive to small changes in parameter values.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the estimate was insensitive to small changes in parameter values, the choice of model structure materially affected the result.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_38"
   },
   {
@@ -1976,16 +1976,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "It did not distinguish between the hypothesised causal pathways ____ the evidence supported the existence of an association.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the evidence supported the existence of an association, it did not distinguish between the hypothesised causal pathways.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_39"
   },
   {
@@ -2027,16 +2027,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Real-world cases frequently exhibited overlapping features ____ the classification was mutually exclusive at the level of definitions.",
+    "prompt": "Choose the connector that presents the first fact as a concession, rather than a cause, condition or time reference.\n\n____ the classification was mutually exclusive at the level of definitions, real-world cases frequently exhibited overlapping features.",
     "options": [
       "although",
-      "because of",
-      "in addition to",
-      "in accordance with",
-      "in place of"
+      "because",
+      "provided that",
+      "unless",
+      "as soon as"
     ],
     "correct": 0,
-    "explanation": "Although iki olgu arasında ödünleme veya karşıtlık bildirir; ilk olgu ikinci olgunun gerçekleşmesini engellememiştir.",
+    "explanation": "Although, iki olgunun birlikte doğru olduğunu ancak ilk olgunun ikinci olguyu engellemediğini belirtir. Because neden, provided that olumlu koşul, unless olumsuz koşul, as soon as zaman bildirir.",
     "family": "discourse_contrast_40"
   },
   {
@@ -2061,16 +2061,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The repairs can be completed this week ____ the replacement parts arrive by Thursday.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the replacement parts arrive by Thursday, the repairs can be completed this week.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_1"
   },
   {
@@ -2095,16 +2095,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The field survey can proceed tomorrow ____ the weather remains suitable.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the weather remains suitable, the field survey can proceed tomorrow.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_2"
   },
   {
@@ -2129,16 +2129,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The applicant can receive the reduced fee ____ the application includes proof of eligibility.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the application includes proof of eligibility, the applicant can receive the reduced fee.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_3"
   },
   {
@@ -2163,16 +2163,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Its continued use can be authorised ____ the equipment is regularly inspected.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the equipment is regularly inspected, its continued use can be authorised.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_4"
   },
   {
@@ -2197,16 +2197,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The project can enter its second phase ____ the required funding is secured.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the required funding is secured, the project can enter its second phase.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_5"
   },
   {
@@ -2231,16 +2231,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The results can be independently checked ____ the original files are retained.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the original files are retained, the results can be independently checked.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_6"
   },
   {
@@ -2265,16 +2265,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The production schedule can remain unchanged ____ the supplier meets the agreed deadline.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the supplier meets the agreed deadline, the production schedule can remain unchanged.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_7"
   },
   {
@@ -2299,16 +2299,16 @@ export const logicQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The speech can be transcribed reliably ____ the recording quality is adequate.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the recording quality is adequate, the speech can be transcribed reliably.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_8"
   },
   {
@@ -2333,16 +2333,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The comparison may support a causal interpretation ____ baseline differences are adequately controlled.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ baseline differences are adequately controlled, the comparison may support a causal interpretation.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_9"
   },
   {
@@ -2367,16 +2367,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The composite score can serve as a useful summary ____ the indicators adequately represent the intended dimensions.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the indicators adequately represent the intended dimensions, the composite score can serve as a useful summary.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_10"
   },
   {
@@ -2401,16 +2401,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Confidence in the original result may increase ____ the independent replication produces compatible findings.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the independent replication produces compatible findings, confidence in the original result may increase.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_11"
   },
   {
@@ -2435,16 +2435,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Comparisons between institutions may become more meaningful ____ the diagnostic criteria are applied consistently.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the diagnostic criteria are applied consistently, comparisons between institutions may become more meaningful.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_12"
   },
   {
@@ -2469,16 +2469,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Readers can assess the limitations of the comparison ____ the uncertainty in the initial estimates is documented.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the uncertainty in the initial estimates is documented, readers can assess the limitations of the comparison.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_13"
   },
   {
@@ -2503,16 +2503,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The findings may be generalisable to that population ____ the independent sample represents the target population.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the independent sample represents the target population, the findings may be generalisable to that population.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_14"
   },
   {
@@ -2537,16 +2537,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The earlier and later records may become more comparable ____ the new reporting rules are applied retrospectively.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the new reporting rules are applied retrospectively, the earlier and later records may become more comparable.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_15"
   },
   {
@@ -2571,16 +2571,16 @@ export const logicQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its limitations can be evaluated more systematically ____ the assumptions behind the projection are made explicit.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the assumptions behind the projection are made explicit, its limitations can be evaluated more systematically.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_16"
   },
   {
@@ -2605,16 +2605,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "A targeted experiment may discriminate between them ____ the predictions of rival mechanisms diverge under feasible experimental conditions.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the predictions of rival mechanisms diverge under feasible experimental conditions, a targeted experiment may discriminate between them.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_17"
   },
   {
@@ -2639,16 +2639,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "A failed prediction may provide stronger grounds for revising the core theory ____ the auxiliary assumptions are independently substantiated.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the auxiliary assumptions are independently substantiated, a failed prediction may provide stronger grounds for revising the core theory.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_18"
   },
   {
@@ -2673,16 +2673,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Changes in the proxy may remain informative about the underlying objective ____ the proxy retains its relationship to the construct under altered incentives.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the proxy retains its relationship to the construct under altered incentives, changes in the proxy may remain informative about the underlying objective.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_19"
   },
   {
@@ -2707,16 +2707,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Independent observations may inform model selection ____ the competing models make distinguishable out-of-sample predictions.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the competing models make distinguishable out-of-sample predictions, independent observations may inform model selection.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_20"
   },
   {
@@ -2741,16 +2741,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Combining their estimates may be methodologically defensible ____ the measurement instruments capture comparable constructs.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the measurement instruments capture comparable constructs, combining their estimates may be methodologically defensible.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_21"
   },
   {
@@ -2775,16 +2775,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Its empirical usefulness can be assessed ____ the distinction is operationalised using independently applicable criteria.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the distinction is operationalised using independently applicable criteria, its empirical usefulness can be assessed.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_22"
   },
   {
@@ -2809,16 +2809,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The causal estimate may warrant greater confidence ____ the identification assumptions withstand independent scrutiny.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the identification assumptions withstand independent scrutiny, the causal estimate may warrant greater confidence.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_23"
   },
   {
@@ -2843,16 +2843,16 @@ export const logicQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "Sensitivity analysis may offer meaningful evidence of robustness ____ the range of perturbations includes the relevant sources of uncertainty.",
+    "prompt": "Choose the connector that makes the first clause a positive condition for the possible outcome.\n\n____ the range of perturbations includes the relevant sources of uncertainty, sensitivity analysis may offer meaningful evidence of robustness.",
     "options": [
       "provided that",
-      "because of",
-      "in spite of",
-      "in addition to",
-      "in place of"
+      "even though",
+      "unless",
+      "now that",
+      "as if"
     ],
     "correct": 0,
-    "explanation": "Provided that bir koşulu belirtir; koşul sağlandığında belirtilen sonuç mümkündür, kesin olarak gerçekleştiği söylenmez.",
+    "explanation": "Provided that, belirtilen koşulun sağlanması durumunda sonucun mümkün olduğunu ifade eder. Even though ödünleme, unless olumsuz koşul, now that gerçekleşmiş bir durumdan hareketle neden, as if benzetme bildirir.",
     "family": "discourse_condition_24"
   },
   {
