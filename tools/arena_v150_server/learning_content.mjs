@@ -37,7 +37,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "CEASE",
-    "meaning": "son vermek"
+    "meaning": "sona ermek; son vermek"
   },
   {
     "level": "B1",
@@ -45,7 +45,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "CONSERVE",
-    "meaning": "koruyup tasarruf etmek"
+    "meaning": "korumak; kaynakları tasarruflu kullanmak"
   },
   {
     "level": "B1",
@@ -61,7 +61,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "DECLINE",
-    "meaning": "azalmak"
+    "meaning": "azalmak; gerilemek; reddetmek"
   },
   {
     "level": "B1",
@@ -109,7 +109,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "EXPAND",
-    "meaning": "genişlemek"
+    "meaning": "genişlemek; genişletmek"
   },
   {
     "level": "B1",
@@ -205,7 +205,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "RECOVER",
-    "meaning": "iyileşmek"
+    "meaning": "iyileşmek; yeniden elde etmek"
   },
   {
     "level": "B1",
@@ -213,7 +213,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "RECUR",
-    "meaning": "yeniden ortaya çıkmak"
+    "meaning": "tekrarlanmak; yeniden meydana gelmek"
   },
   {
     "level": "B1",
@@ -741,7 +741,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "CONTRADICT",
-    "meaning": "çelişmek"
+    "meaning": "çelişmek; aksini söylemek"
   },
   {
     "level": "B2",
@@ -749,7 +749,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "DEPLETE",
-    "meaning": "tüketip azaltmak"
+    "meaning": "tüketerek azaltmak; tükenmesine yol açmak"
   },
   {
     "level": "B2",
@@ -765,7 +765,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "DIMINISH",
-    "meaning": "azalmak"
+    "meaning": "azalmak; azaltmak"
   },
   {
     "level": "B2",
@@ -853,7 +853,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "OVERWHELM",
-    "meaning": "etkisi altına almak"
+    "meaning": "bunaltmak; karşı koyamayacak kadar güçlü biçimde etkilemek"
   },
   {
     "level": "B2",
@@ -893,7 +893,7 @@ export const authoredWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "UNDERESTIMATE",
-    "meaning": "olduğundan az değerlendirmek"
+    "meaning": "olduğundan daha az veya daha önemsiz görmek"
   },
   {
     "level": "B2",
@@ -1189,7 +1189,7 @@ export const authoredWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "UNANIMOUS",
-    "meaning": "oy birliğiyle alınan"
+    "meaning": "oy birliği içinde olan; oy birliğiyle alınan"
   },
   {
     "level": "B2",
@@ -1533,7 +1533,7 @@ export const authoredWords = [
     "wordType": "İsimler",
     "category": "İleri Akademik İngilizce",
     "answer": "CONTINGENCY",
-    "meaning": "olasılığa bağlı durum"
+    "meaning": "gerçekleşmesi olası fakat kesin olmayan durum"
   },
   {
     "level": "C1",
@@ -1597,7 +1597,7 @@ export const authoredWords = [
     "wordType": "Zarflar",
     "category": "İleri Akademik İngilizce",
     "answer": "ARGUABLY",
-    "meaning": "tartışılabilir biçimde"
+    "meaning": "denebilir ki; makul biçimde ileri sürülebilecek şekilde"
   },
   {
     "level": "C1",
