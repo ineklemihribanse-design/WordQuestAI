@@ -11,6 +11,14 @@ const code=(...v)=>createHash('sha256').update(JSON.stringify(v)).digest('hex');
 // entries with spaces, punctuation, or unsupported board categories are quiz-only.
 export const crosswordEligible=w=>w.quizOnly!==true&&/^[A-Za-z]{2,24}$/.test(w.answer);
 const quizAnswerEligible=s=>s.length<=80&&/^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(s);
+// Single source of truth for admission and audit rejection accounting.
+export function vocabularyRejectionReason(w){
+ if(!w||!LEVELS.includes(w.level))return 'invalidLevel';
+ const answer=canonical(w.answer),meaning=canonical(w.meaning);
+ if(!answer||!meaning)return 'emptyAnswerOrMeaning';
+ if(w.quizOnly===true?!quizAnswerEligible(answer):!crosswordEligible({answer}))return 'unsupportedAnswer';
+ return null;
+}
 // Resolve CEFR/YDS overlap after applying mode and metadata filters, not by
 // deleting either sense from the dictionary. CEFR prefers its untagged entry.
 export function preferCefrRecords(rows){
@@ -28,10 +36,9 @@ const filterId=x=>!x?null:/^[A-Za-z0-9_-]{1,100}$/.test(x)&&!['all','constructor
 export function loadVocabulary(input){
  if(!Array.isArray(input)||!input.length)fail('Missing shipped vocabulary');
  const rows=input.flatMap(w=>{
-  if(!w||!LEVELS.includes(w.level)||!canonical(w.answer)||!canonical(w.meaning))return [];
+  if(vocabularyRejectionReason(w)!==null)return [];
   const answer=canonical(w.answer),meaning=canonical(w.meaning);
   const quizOnly=w.quizOnly===true;
-  if(quizOnly?!quizAnswerEligible(answer):!crosswordEligible({answer}))return [];
   const topicLabel=canonical(w.category??w.topic)||null,wordTypeLabel=canonical(w.wordType??w.kind)||null;
   const topic=filterId(topicLabel),wordType=filterId(wordTypeLabel);
   const yds=Object.hasOwn(ydsMap,w.yds)?w.yds:null;
