@@ -248,17 +248,25 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     var emojiMenu by remember(room){mutableStateOf(false)}
     LaunchedEffect(canSocial,imeVisible){if(!canSocial||imeVisible)emojiMenu=false}
     var lastEmoji by remember(room){mutableLongStateOf(0L)}
-    var reactionText by remember(room){mutableStateOf("")}
-    val seen=remember(room){mutableSetOf<String>()}
+    var activeReaction by remember(room){mutableStateOf<Pair<String,String>?>(null)}
+    val reactionText=activeReaction?.second.orEmpty()
+    // Track only the last event per player; the server keeps one event per player.
+    val seen=remember(room){mutableMapOf<String,String>()}
     val incoming=social.optJSONObject("reactions")
     val eventKey=incoming?.toString().orEmpty()
-    LaunchedEffect(eventKey){
+    LaunchedEffect(room,eventKey){
         val events=incoming?.keys()?.asSequence()?.mapNotNull{p->incoming.optJSONObject(p)?.let{p to it}}?.toList().orEmpty()
-        val latest=events.sortedByDescending{it.second.optLong("at")}.firstOrNull{(p,j)->p+":"+j.optString("id") !in seen}
-        events.forEach{(p,j)->seen.add(p+":"+j.optString("id"))}
+        val latest=events.sortedByDescending{it.second.optLong("at")}.firstOrNull{(p,j)->j.optString("id").isNotBlank()&&seen[p]!=j.optString("id")}
+        events.forEach{(p,j)->seen[p]=j.optString("id")}
         if(latest!=null){
-            reactionText=latest.second.optString("symbol")
-            delay(1200L);reactionText=""
+            activeReaction=(latest.first+":"+latest.second.optString("id")) to latest.second.optString("symbol")
+        }
+    }
+    // Expiring unrelated reactions must not cancel the currently visible reaction's timer.
+    LaunchedEffect(room,activeReaction){
+        if(activeReaction!=null){
+            delay(1200L)
+            activeReaction=null
         }
     }
     var noticeText by remember(room){mutableStateOf("")}
