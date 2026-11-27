@@ -4,16 +4,25 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 const base=new URL('../v175/content/',import.meta.url);
 const rank=s=>createHash('sha256').update(s).digest('hex');
+const types=new Set(['İsimler','Fiiller','Sıfatlar','Zarflar','Diğer','Belirteçler','Bağlaçlar','Zamirler','Edatlar']);
+const boardTypes=new Set(['İsimler','Fiiller','Sıfatlar','Zarflar']);
+export function parseLicensedLine(line,expectedLevel){
+ const [level,category,wordType,answer,meaning,...extra]=line.split('\t');
+ if(extra.length||level!==expectedLevel||!category?.trim()||!types.has(wordType)||
+    !meaning?.trim()||!answer||answer.length>80||!/^[A-Z]+(?:[ '-][A-Z]+)*$/.test(answer))return null;
+ const quizOnly=!/^[A-Z]{2,22}$/.test(answer)||!boardTypes.has(wordType);
+ return {level,category,wordType,answer,meaning,...(quizOnly?{quizOnly:true}:{})};
+}
 export async function expandLearning(input){
  const licensed=[];
  for(const level of ['A1','A2','B1','B2','C1']){
   const lines=(await readFile(new URL('wordquest_en_tr_'+level+'.tsv',base),'utf8')).trim().split('\n');
-  const existing=new Set(input.filter(w=>w.level===level).map(w=>String(w.answer).toUpperCase()));
-  const rows=lines.map(l=>l.split('\t')).filter(a=>a.length===5&&a[0]===level&&/^[A-Z]{2,22}$/.test(a[3])&&a[4].trim()&&!existing.has(a[3])&&['İsimler','Fiiller','Sıfatlar','Zarflar'].includes(a[2]));
-  rows.sort((a,b)=>rank(a[3]).localeCompare(rank(b[3])));
-  // Full compatible licensed list, deduplicated. CEFR attribution is preserved; do not
-  // silently assign YDS labels to words from general CEFR lists.
-  for(const [level,category,wordType,answer,meaning] of rows)licensed.push({level,category,wordType,answer,meaning});
+  // Only an existing CEFR record suppresses a CEFR addition. An explicitly
+  // tagged YDS sense is retained separately by appendLearningWords.
+  const existing=new Set(input.filter(w=>w.level===level&&!w.yds).map(w=>String(w.answer).toUpperCase()));
+  const rows=lines.map(l=>parseLicensedLine(l,level)).filter(w=>w&&!existing.has(w.answer));
+  rows.sort((a,b)=>rank(a.answer).localeCompare(rank(b.answer)));
+  licensed.push(...rows);
  }
  return appendLearningWords(input,licensed);
 }
