@@ -570,7 +570,7 @@ export const formExtension = [
     "options": [
       "equalise",
       "equality",
-      "equal",
+      "unequal",
       "equally",
       "equalises"
     ],
@@ -791,7 +791,7 @@ export const formExtension = [
     "options": [
       "deliberative",
       "deliberation",
-      "deliberate",
+      "deliberated",
       "deliberately",
       "deliberates"
     ],
