@@ -24,6 +24,7 @@ jobs:
       reuse: ${{ steps.plan.outputs.reuse }}
       run_id: ${{ steps.plan.outputs.run_id }}
       source_sha: ${{ steps.plan.outputs.source_sha }}
+      verified_run: ${{ steps.plan.outputs.verified_run }}
     steps:
       - name: Reuse the signed 1.0.152 build only for QA-only changes
         id: plan
@@ -34,7 +35,13 @@ jobs:
           set -euo pipefail
           PRIOR_RUN=46058409403
           PRIOR_SHA=5bc055f51c14ac5e2042c1f4f7157d7cfcdd1cb9
-          export PRIOR_RUN PRIOR_SHA
+          VERIFIED_RUN=46061210679
+          VERIFIED_SHA=8ac3555bdb6a2e865e8578407dfc76d69f3b6e1f
+          export PRIOR_RUN PRIOR_SHA VERIFIED_RUN VERIFIED_SHA
+          gh api "repos/$GITHUB_REPOSITORY/compare/$VERIFIED_SHA...$HEAD_SHA" > "$RUNNER_TEMP/wq-verified-compare.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN" > "$RUNNER_TEMP/wq-verified-run.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN/jobs" > "$RUNNER_TEMP/wq-verified-jobs.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN/artifacts" > "$RUNNER_TEMP/wq-verified-artifacts.json"
           gh api "repos/$GITHUB_REPOSITORY/compare/$PRIOR_SHA...$HEAD_SHA" > "$RUNNER_TEMP/wq-compare.json"
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$PRIOR_RUN" > "$RUNNER_TEMP/wq-prior.json"
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$PRIOR_RUN/jobs" > "$RUNNER_TEMP/wq-prior-jobs.json"
@@ -52,7 +59,17 @@ jobs:
                  all(f['status']=='modified' for f in c['files']) and
                  r['head_sha']==os.environ['PRIOR_SHA'] and r['status']=='completed' and
                  any(x['name']=='audit' and x['conclusion']=='success' for x in j['jobs']))
+          vc=json.loads((d/'wq-verified-compare.json').read_text())
+          vr=json.loads((d/'wq-verified-run.json').read_text())
+          vj=json.loads((d/'wq-verified-jobs.json').read_text())
+          va=json.loads((d/'wq-verified-artifacts.json').read_text())
+          verified=(reuse and vc['status'] in ('ahead','identical') and
+                    all(f['filename']=='.github/workflows/publish-v151-approved.yml' and f['status']=='modified' for f in vc['files']) and
+                    vr['head_sha']==os.environ['VERIFIED_SHA'] and vr['status']=='completed' and vr['conclusion']=='success' and
+                    any(x['name']=='verify' and x['conclusion']=='success' for x in vj['jobs']) and
+                    any(a['id']==15229760031 and a['name']=='WordQuestAI-v1.0.152-verified-release' and not a['expired'] for a in va['artifacts']))
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              print('verified_run='+ (os.environ['VERIFIED_RUN'] if verified else ''),file=f)
               print('reuse='+str(reuse).lower(),file=f)
               print('run_id='+ (os.environ['PRIOR_RUN'] if reuse else os.environ['GITHUB_RUN_ID']),file=f)
               print('source_sha='+ (os.environ['PRIOR_SHA'] if reuse else os.environ['HEAD_SHA']),file=f)
@@ -1000,7 +1017,7 @@ jobs:
           } | tee -a "$GITHUB_STEP_SUMMARY"
   verify:
     needs: [preflight, audit]
-    if: always() && needs.preflight.result == 'success' && (needs.audit.result == 'success' || (needs.audit.result == 'skipped' && needs.preflight.outputs.reuse == 'true')) && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    if: always() && needs.preflight.result == 'success' && needs.preflight.outputs.verified_run == '' && (needs.audit.result == 'success' || (needs.audit.result == 'skipped' && needs.preflight.outputs.reuse == 'true')) && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -1110,7 +1127,7 @@ jobs:
           if-no-files-found: ignore
   publish:
     needs: [preflight, verify]
-    if: needs.verify.result == 'success'
+    if: always() && !cancelled() && needs.preflight.result == 'success' && (needs.verify.result == 'success' || (needs.verify.result == 'skipped' && needs.preflight.outputs.verified_run != '')) && github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     env:
       WQ_SOURCE_SHA: ${{ needs.preflight.outputs.source_sha }}
     runs-on: ubuntu-latest
@@ -1122,6 +1139,8 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: WordQuestAI-v1.0.152-verified-release
+          run-id: ${{ needs.preflight.outputs.verified_run || github.run_id }}
+          github-token: ${{ github.token }}
           path: ${{ runner.temp }}/verified
       - name: Publish exactly verified APK and delta
         env:
