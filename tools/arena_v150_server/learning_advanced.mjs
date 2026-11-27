@@ -107,16 +107,16 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The audit established ____ money had been spent on maintenance.",
+    "prompt": "The audit established ____ money had been spent on maintenance, reporting the total in euros.",
     "options": [
       "how much",
       "how many",
       "how often",
-      "which",
-      "whose"
+      "how far",
+      "how long"
     ],
     "correct": 0,
-    "explanation": "How much sayılamayan isimlerin miktarını sorar."
+    "explanation": "Doğru seçenek: how much. How much sayılamayan money sözcüğüyle miktarı sorar."
   },
   {
     "id": "wq150_advanced_3_2",
@@ -124,16 +124,16 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The nutritionist measured ____ water each participant consumed.",
+    "prompt": "The nutritionist measured ____ water each participant consumed, recording the volume in millilitres.",
     "options": [
       "how much",
       "how many",
       "how often",
-      "which",
-      "whose"
+      "how far",
+      "how long"
     ],
     "correct": 0,
-    "explanation": "How much sayılamayan isimlerin miktarını sorar."
+    "explanation": "Doğru seçenek: how much. How much sayılamayan water sözcüğünün miktarını ifade eder."
   },
   {
     "id": "wq150_advanced_3_3",
@@ -141,16 +141,16 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The researchers estimated ____ energy the new process would require.",
+    "prompt": "The researchers estimated ____ energy the new process would require in kilowatt-hours.",
     "options": [
       "how much",
       "how many",
       "how often",
-      "which",
-      "whose"
+      "how far",
+      "how long"
     ],
     "correct": 0,
-    "explanation": "How much sayılamayan isimlerin miktarını sorar."
+    "explanation": "Doğru seçenek: how much. How much enerji miktarını sorar; kilowatt-hour miktar birimidir."
   },
   {
     "id": "wq150_advanced_4_1",
@@ -2249,7 +2249,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The study identified a substantial ____ in access between rich and poor districts.",
+    "prompt": "The study identified a substantial ____ in access between rich and poor districts: waiting times in poorer districts were twice as long.",
     "options": [
       "disparity",
       "similarity",
@@ -2258,7 +2258,7 @@ export const advancedQuestions = [
       "parity"
     ],
     "correct": 0,
-    "explanation": "Disparity iki grup veya ölçüm arasındaki eşitsizlik veya belirgin farktır."
+    "explanation": "Doğru seçenek: disparity. Disparity iki grup arasındaki belirgin eşitsizliği ifade eder."
   },
   {
     "id": "wq150_advanced_53_2",
@@ -2283,7 +2283,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The policy seeks to reduce the ____ in educational opportunities across regions.",
+    "prompt": "The policy seeks to reduce the ____ in educational opportunities across regions so that children have equal access to schooling.",
     "options": [
       "disparity",
       "similarity",
@@ -2292,7 +2292,7 @@ export const advancedQuestions = [
       "parity"
     ],
     "correct": 0,
-    "explanation": "Disparity iki grup veya ölçüm arasındaki eşitsizlik veya belirgin farktır."
+    "explanation": "Doğru seçenek: disparity. Disparity eşitsizlik demektir; amaç fırsatların eşitlenmesidir."
   },
   {
     "id": "wq150_advanced_54_1",
@@ -2402,7 +2402,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The young plants are particularly ____ to damage caused by frost.",
+    "prompt": "The young plants are particularly ____ to frost damage: even a brief period below freezing can kill them.",
     "options": [
       "susceptible",
       "immune",
@@ -2411,7 +2411,7 @@ export const advancedQuestions = [
       "insensitive"
     ],
     "correct": 0,
-    "explanation": "Susceptible bir etkene karşı kolayca etkilenebilir olmayı ifade eder."
+    "explanation": "Doğru seçenek: susceptible. Susceptible to zarar görmeye açık veya yatkın olmak demektir."
   },
   {
     "id": "wq150_advanced_56_2",
@@ -2419,7 +2419,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The material is ____ to corrosion when exposed to salt water.",
+    "prompt": "The material is highly ____ to corrosion: exposure to salt water causes deep pitting within days.",
     "options": [
       "susceptible",
       "immune",
@@ -2428,7 +2428,7 @@ export const advancedQuestions = [
       "insensitive"
     ],
     "correct": 0,
-    "explanation": "Susceptible bir etkene karşı kolayca etkilenebilir olmayı ifade eder."
+    "explanation": "Doğru seçenek: susceptible. Susceptible to corrosion korozyona karşı hassas olmayı anlatır."
   },
   {
     "id": "wq150_advanced_56_3",
@@ -2436,7 +2436,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Some individuals are more ____ to infection than others.",
+    "prompt": "Some individuals are more ____ to infection than others because their immune defences are weaker.",
     "options": [
       "susceptible",
       "immune",
@@ -2445,7 +2445,7 @@ export const advancedQuestions = [
       "insensitive"
     ],
     "correct": 0,
-    "explanation": "Susceptible bir etkene karşı kolayca etkilenebilir olmayı ifade eder."
+    "explanation": "Doğru seçenek: susceptible. Susceptible to infection enfeksiyona yakalanmaya yatkın olmayı ifade eder."
   },
   {
     "id": "wq150_advanced_57_1",
@@ -2521,7 +2521,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The report must clearly ____ the responsibilities of each institution.",
+    "prompt": "The report must clearly ____ the responsibilities of each institution, identifying where one institution's duties end and another's begin.",
     "options": [
       "delineate",
       "obscure",
@@ -2530,7 +2530,7 @@ export const advancedQuestions = [
       "conflate"
     ],
     "correct": 0,
-    "explanation": "Delineate bir alanın, kavramın veya görevin sınırlarını açıkça belirler."
+    "explanation": "Doğru seçenek: delineate. Delineate bir kavramın veya sorumluluğun sınırlarını açıkça belirlemektir."
   },
   {
     "id": "wq150_advanced_58_3",

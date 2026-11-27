@@ -225,13 +225,13 @@ export const ab1250Scenes = [
     "prompt": "Maya planned to attend a pottery class at the community centre on Tuesday evening. Her usual bus was cancelled. ____ She arrived before the class started.",
     "options": [
       "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher",
+      "She borrowed a spare guitar from the teacher",
       "She showed her booking email at the door",
-      "He changed into his spare trainers",
+      "She changed into her spare trainers",
       "She followed signs to the side entrance"
     ],
     "correct": 0,
-    "explanation": "Paragrafın sebep-sonuç bağlantısını \"She asked her neighbour for a lift\" cümlesi tamamlar."
+    "explanation": "Doğru seçenek: She asked her neighbour for a lift. Otobüs iptal edildiği için komşudan araçla bırakmasını istemek ulaşım sorununu çözer."
   },
   {
     "id": "wq150_ab1250_scene_0014",
@@ -765,13 +765,13 @@ export const ab1250Scenes = [
     "prompt": "Holly planned to attend a school play at the theatre hall on Friday evening. Her ticket was missing. ____ The staff found her name on their list.",
     "options": [
       "She showed her booking email at the door",
-      "He changed into his spare trainers",
+      "She changed into her spare trainers",
       "She followed signs to the side entrance",
       "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher"
+      "She borrowed a spare guitar from the teacher"
     ],
     "correct": 0,
-    "explanation": "Paragrafın sebep-sonuç bağlantısını \"She showed her booking email at the door\" cümlesi tamamlar."
+    "explanation": "Doğru seçenek: She showed her booking email at the door. Kayıp bilet yerine rezervasyon e-postasını göstermek görevlilerin adı listeden bulmasını açıklar."
   },
   {
     "id": "wq150_ab1250_scene_0044",
@@ -1306,12 +1306,12 @@ export const ab1250Scenes = [
     "options": [
       "She followed signs to the side entrance",
       "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher",
+      "She borrowed a spare guitar from the teacher",
       "She showed her booking email at the door",
-      "He changed into his spare trainers"
+      "She changed into her spare trainers"
     ],
     "correct": 0,
-    "explanation": "Paragrafın sebep-sonuç bağlantısını \"She followed signs to the side entrance\" cümlesi tamamlar."
+    "explanation": "Doğru seçenek: She followed signs to the side entrance. Ana giriş kapalı olduğundan yan girişe yönelmek binaya ulaşma sorununu çözer."
   },
   {
     "id": "wq150_ab1250_scene_0074",
@@ -2925,13 +2925,13 @@ export const ab1250Scenes = [
     "prompt": "Rosa planned to attend an eye test at the local clinic on Monday morning. She was unsure which room to visit. ____ She found the correct room immediately.",
     "options": [
       "She asked the receptionist for directions",
-      "He phoned the practice to check the booking",
+      "She phoned the practice to change her appointment date",
       "She bought a cap at the reception desk",
-      "He waited in the seating area",
-      "She opened the confirmation message on her phone"
+      "She waited in the seating area",
+      "She checked the clinic's opening hours on her phone"
     ],
     "correct": 0,
-    "explanation": "Paragrafın sebep-sonuç bağlantısını \"She asked the receptionist for directions\" cümlesi tamamlar."
+    "explanation": "Doğru seçenek: She asked the receptionist for directions. Resepsiyondan yön tarifi istemek doğru odayı hemen bulmayı açıklar."
   },
   {
     "id": "wq150_ab1250_scene_0164",

@@ -3524,16 +3524,16 @@ export const logicQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Where's the milk? B: ____ A: I'll put it back there after breakfast.",
+    "prompt": "A: Where's the milk? B: ____ A: Thanks. I'll put it back there to keep it cold after breakfast.",
     "options": [
       "It's in the fridge.",
-      "It's behind the door.",
+      "It's on the kitchen table.",
       "They're on the desk.",
       "They're under the bed.",
       "It's in my school bag."
     ],
     "correct": 0,
-    "explanation": "Süt buzdolabında saklanır."
+    "explanation": "Doğru seçenek: It's in the fridge.. Sütü soğuk tutma amacı, fridge cevabını diğer konumlardan ayırır."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_4_2",
@@ -3830,16 +3830,16 @@ export const logicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Completion",
-    "prompt": "A: Have you received the parcel? B: ____ A: I hope the courier comes soon.",
+    "prompt": "A: Have you received the parcel you ordered last week? B: ____ A: I hope the courier brings that first parcel soon.",
     "options": [
       "I've left it at home.",
       "I've already returned it.",
       "I haven't finished it yet.",
       "I'm waiting for it to arrive.",
-      "I've just ordered a replacement."
+      "I've collected it from the depot."
     ],
     "correct": 3,
-    "explanation": "Kargo henüz ulaşmamış."
+    "explanation": "Doğru seçenek: I'm waiting for it to arrive.. Henüz teslim edilmeyen ilk paketin gelmesi beklenmektedir."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_7_5",
@@ -4442,16 +4442,16 @@ export const logicQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Completion",
-    "prompt": "A: The printer will be out of service for a month. B: ____ A: I'll find out whether we can borrow one in the meantime.",
+    "prompt": "A: The printer will be out of service for a month, but we must keep printing daily. B: ____ A: I'll find out whether we can borrow one in the meantime.",
     "options": [
       "We should compare the total costs first.",
       "We should ask for a written confirmation.",
-      "We should examine the cause of the delay.",
+      "We should stop printing until next month.",
       "We should check whether the data are up to date.",
       "We should reserve a temporary replacement."
     ],
     "correct": 4,
-    "explanation": "Geçici ikame ihtiyacı var."
+    "explanation": "Doğru seçenek: We should reserve a temporary replacement.. Günlük baskıların sürmesi gerektiğinden geçici bir yazıcı ayarlamak bağlamla uyumludur."
   },
   {
     "id": "wq150_nov26_dialogue_logic14_15_1",

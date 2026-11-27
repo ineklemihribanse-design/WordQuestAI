@@ -58,13 +58,13 @@ export const clozeExpansion = [
     "prompt": "A community garden was established on an unused piece of land last spring. Residents who had never met before began working together. The organisers supplied tools so that everyone could take part without buying equipment. During the summer, volunteers ____ the vegetables among local households. The project continues to operate although the original grant has ended.\n\nChoose the best option for the blank.",
     "options": [
       "distributed",
-      "withheld",
-      "discarded",
+      "stored",
+      "preserved",
       "collected from",
       "purchased from"
     ],
     "correct": 0,
-    "explanation": "Ürünler haneler arasında dağıtıldı.",
+    "explanation": "Doğru seçenek: distributed. Distribute among bir şeyi birden fazla kişi veya hane arasında paylaştırmak anlamındadır.",
     "family": "cloze_expansion_1"
   },
   {
@@ -6842,13 +6842,13 @@ export const clozeExpansion = [
     "prompt": "A local food bank found that donations varied considerably from season to season. It received many items before holidays, but supplies often fell afterwards. The organisers therefore began encouraging regular donations instead of relying entirely on occasional campaigns. They contacted local businesses, some of ____ agreed to provide food each month. This made it easier to plan distributions in advance. The scheme is expected to reduce shortages during quieter periods.\n\nChoose the best option for the blank.",
     "options": [
       "which",
-      "who",
+      "whom",
       "whose",
       "where",
       "what"
     ],
     "correct": 0,
-    "explanation": "Businesses için of which kullanılır."
+    "explanation": "Doğru seçenek: which. Some of which burada businesses gibi insan dışı kuruluşlara gönderme yapar; some of whom kişiler için kullanılır."
   },
   {
     "id": "wq150_nov26_cloze14_16_4",

@@ -15,7 +15,8 @@
     "test": "node --test trusted_bank.test.mjs",
     "free:check": "wrangler deploy --dry-run --outdir /tmp/wq150-worker",
     "free:deploy": "wrangler deploy",
-    "free:prepare": "bash prepare_free_bank.sh"
+    "free:prepare": "bash prepare_free_bank.sh",
+    "audit:content": "node audit_learning_content.mjs"
   },
   "devDependencies": {
     "wrangler": "4.50.0"

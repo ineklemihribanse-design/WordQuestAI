@@ -7213,16 +7213,16 @@ export const prepositionBasicQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "We arrived ____ the airport an hour before departure.",
+    "prompt": "Our taxi dropped us off directly outside the terminal. We arrived ____ the airport an hour before departure.",
     "options": [
-      "by",
+      "from",
       "with",
       "on",
       "at",
       "to"
     ],
     "correct": 3,
-    "explanation": "Arrive at belirli noktaya varmayı ifade eder."
+    "explanation": "Doğru seçenek: at. Arrive at belirli bir varış noktasına ulaşmayı anlatır."
   },
   {
     "id": "wq150_nov26_prep12_10_1",
@@ -8131,16 +8131,16 @@ export const prepositionBasicQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "After discussing several dates, the committee settled the matter and agreed ____ a specific date for the meeting.",
+    "prompt": "After discussing several dates, the committee reached a joint decision and agreed ____ a specific date for the meeting.",
     "options": [
       "about",
       "on",
       "for",
       "from",
-      "with"
+      "into"
     ],
     "correct": 1,
-    "explanation": "Agree on üzerinde uzlaşılan konuyu belirtir."
+    "explanation": "Doğru seçenek: on. Agree on ortaklaşa bir konu veya tarih üzerinde anlaşmaktır."
   },
   {
     "id": "wq150_nov26_prep12_23_3",

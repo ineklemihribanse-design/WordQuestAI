@@ -4,16 +4,16 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The charity provides ____ housing for families with limited incomes.",
+    "prompt": "The charity provides ____ housing at rents that families with limited incomes can comfortably pay.",
     "options": [
       "affordable",
       "unaffordable",
       "portable",
-      "reliable",
+      "luxurious",
       "durable"
     ],
     "correct": 0,
-    "explanation": "'affordable' bu bağlamda 'uygun fiyatlı' anlamındadır.",
+    "explanation": "Doğru seçenek: affordable. Affordable fiyatı bütçeye uygun olan demektir.",
     "family": "speedlex_affordable"
   },
   {
@@ -21,16 +21,16 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The student sought an ____ laptop that would fit her modest budget.",
+    "prompt": "The student sought an ____ laptop, costing no more than her modest budget allowed.",
     "options": [
       "affordable",
       "unaffordable",
       "portable",
-      "reliable",
+      "expensive",
       "durable"
     ],
     "correct": 0,
-    "explanation": "'affordable' bu bağlamda 'uygun fiyatlı' anlamındadır.",
+    "explanation": "Doğru seçenek: affordable. Affordable satın almaya maddi gücün yettiği anlamındadır.",
     "family": "speedlex_affordable"
   },
   {
@@ -888,7 +888,7 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The new classroom was ____ enough for all desks and several activity areas.",
+    "prompt": "The new classroom was ____ enough to accommodate all desks and several activity areas without crowding.",
     "options": [
       "spacious",
       "cramped",
@@ -897,7 +897,7 @@ export const lexicalFastQuestions = [
       "bright"
     ],
     "correct": 0,
-    "explanation": "'spacious' bu bağlamda 'geniş ve ferah' anlamındadır.",
+    "explanation": "Doğru seçenek: spacious. Spacious geniş, bol yer sunan anlamına gelir.",
     "family": "speedlex_spacious"
   },
   {
@@ -905,7 +905,7 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The family chose a ____ apartment with plenty of room for visitors.",
+    "prompt": "The family chose a ____ apartment because its large rooms could comfortably accommodate several visitors.",
     "options": [
       "spacious",
       "cramped",
@@ -914,7 +914,7 @@ export const lexicalFastQuestions = [
       "bright"
     ],
     "correct": 0,
-    "explanation": "'spacious' bu bağlamda 'geniş ve ferah' anlamındadır.",
+    "explanation": "Doğru seçenek: spacious. Spacious geniş ve ferah alanı ifade eder.",
     "family": "speedlex_spacious"
   },
   {
@@ -2656,16 +2656,16 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The region experienced a ____ drought that caused widespread crop failure.",
+    "prompt": "The region experienced a ____ drought of exceptional intensity that caused widespread crop failure.",
     "options": [
       "severe",
       "mild",
-      "regional",
+      "minor",
       "visible",
-      "temporary"
+      "harmless"
     ],
     "correct": 0,
-    "explanation": "'severe' bu bağlamda 'şiddetli' anlamındadır.",
+    "explanation": "Doğru seçenek: severe. Severe şiddetli veya ağır demektir.",
     "family": "speedlex_severe"
   },
   {
@@ -2673,16 +2673,16 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The storm caused ____ damage requiring extensive reconstruction.",
+    "prompt": "The storm caused ____ damage: entire roofs and walls had to be rebuilt.",
     "options": [
       "severe",
       "mild",
-      "regional",
+      "minor",
       "visible",
-      "temporary"
+      "superficial"
     ],
     "correct": 0,
-    "explanation": "'severe' bu bağlamda 'şiddetli' anlamındadır.",
+    "explanation": "Doğru seçenek: severe. Severe damage ciddi ve ağır hasarı ifade eder.",
     "family": "speedlex_severe"
   },
   {
@@ -4424,16 +4424,16 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The emergency team prepared for an ____ storm expected to arrive within hours.",
+    "prompt": "The emergency team prepared for an ____ storm: forecasters expected it to strike within the next hour.",
     "options": [
       "imminent",
       "distant",
       "formal",
-      "regional",
+      "previous",
       "technical"
     ],
     "correct": 0,
-    "explanation": "'imminent' bu bağlamda 'eli kulağında olan' anlamındadır.",
+    "explanation": "Doğru seçenek: imminent. Imminent çok yakın zamanda gerçekleşmesi beklenen demektir.",
     "family": "speedlex_imminent"
   },
   {
@@ -4441,16 +4441,16 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The announcement was made in anticipation of an ____ decision due later that day.",
+    "prompt": "The announcement was made in anticipation of an ____ decision expected within minutes.",
     "options": [
       "imminent",
       "distant",
-      "formal",
+      "deferred",
       "regional",
-      "technical"
+      "retrospective"
     ],
     "correct": 0,
-    "explanation": "'imminent' bu bağlamda 'eli kulağında olan' anlamındadır.",
+    "explanation": "Doğru seçenek: imminent. Imminent gerçekleşmesi çok yakın olan demektir.",
     "family": "speedlex_imminent"
   },
   {
@@ -5308,16 +5308,16 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Small companies struggled to meet the ____ reporting requirements that consumed much of their time.",
+    "prompt": "Small companies struggled to meet the ____ reporting requirements, which demanded hours of unpaid work every day.",
     "options": [
       "onerous",
       "easy",
-      "formal",
-      "temporary",
+      "optional",
+      "effortless",
       "regional"
     ],
     "correct": 0,
-    "explanation": "'onerous' bu bağlamda 'külfetli' anlamındadır.",
+    "explanation": "Doğru seçenek: onerous. Onerous büyük yük oluşturan ve yerine getirilmesi güç demektir.",
     "family": "speedlex_onerous"
   },
   {
@@ -5325,16 +5325,16 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The contract placed ____ obligations on the supplier, requiring considerable unpaid work.",
+    "prompt": "The contract placed ____ obligations on the supplier, requiring considerable unpaid work and leaving it with little time for other duties.",
     "options": [
       "onerous",
       "easy",
-      "formal",
-      "temporary",
+      "optional",
+      "effortless",
       "regional"
     ],
     "correct": 0,
-    "explanation": "'onerous' bu bağlamda 'külfetli' anlamındadır.",
+    "explanation": "Doğru seçenek: onerous. Onerous yükümlülüklerin ağır ve zahmetli olduğunu belirtir.",
     "family": "speedlex_onerous"
   },
   {
