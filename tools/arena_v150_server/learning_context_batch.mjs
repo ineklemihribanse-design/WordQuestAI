@@ -6316,12 +6316,12 @@ export const contextQuestions = [
     "options": [
       "improve",
       "shorten",
-      "expand",
+      "record",
       "extend",
       "restore"
     ],
     "correct": 3,
-    "explanation": "extend: uzatmak. Diğer seçenekler: improve: iyileştirmek; shorten: kısaltmak; expand: genişletmek; restore: eski haline getirmek."
+    "explanation": "Extend opening hours çalışma saatlerini uzatmak demektir. Kapanışın altıdan sekize alınması iki saatlik uzamayı gösterir."
   },
   {
     "id": "wq150_nov26_lex15_33_5",
@@ -6349,13 +6349,13 @@ export const contextQuestions = [
     "prompt": "The owner offered a cash ____ to anyone who found the missing dog.",
     "options": [
       "reward",
-      "award",
-      "prize",
+      "fine",
+      "deposit",
       "salary",
-      "bonus"
+      "rent"
     ],
     "correct": 0,
-    "explanation": "reward: ödül. Diğer seçenekler: award: ödül/ödüllendirme; prize: yarışma ödülü; salary: maaş; bonus: ek ödeme."
+    "explanation": "Offer a cash reward kayıp köpeği bulan kişiye para ödülü teklif etmek anlamındadır. Fine para cezası, deposit depozito, salary maaş, rent kiradır."
   },
   {
     "id": "wq150_nov26_lex15_34_2",
@@ -6365,14 +6365,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "The film received an international ____ recognising its artistic achievement.",
     "options": [
-      "reward",
+      "invoice",
       "award",
       "fee",
       "salary",
-      "bonus"
+      "deposit"
     ],
     "correct": 1,
-    "explanation": "award: ödül/ödüllendirme. Diğer seçenekler: reward: ödül; fee: ücret; salary: maaş; bonus: ek ödeme."
+    "explanation": "An international award bir eserin başarısını tanıyan uluslararası ödüldür. Diğer seçenekler mali belge veya ödeme türleridir."
   },
   {
     "id": "wq150_nov26_lex15_34_3",
@@ -6382,14 +6382,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "The winner of the quiz took home the first ____ of £500.",
     "options": [
-      "reward",
+      "rent",
       "fee",
       "prize",
       "salary",
-      "bonus"
+      "deposit"
     ],
     "correct": 2,
-    "explanation": "prize: yarışma ödülü. Diğer seçenekler: reward: ödül; fee: ücret; salary: maaş; bonus: ek ödeme."
+    "explanation": "First prize bir yarışmadaki birincilik ödülüdür. Yarışmanın galibi £500 tutarındaki ödülü kazanmıştır."
   },
   {
     "id": "wq150_nov26_lex15_34_4",
@@ -6416,14 +6416,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "Employees received an extra performance ____ in addition to their normal pay.",
     "options": [
-      "reward",
-      "award",
-      "prize",
+      "invoice",
+      "debt",
+      "tax",
       "salary",
       "bonus"
     ],
     "correct": 4,
-    "explanation": "bonus: ek ödeme. Diğer seçenekler: reward: ödül; award: ödül/ödüllendirme; prize: yarışma ödülü; salary: maaş."
+    "explanation": "Performance bonus normal maaşa ek olarak performansa bağlı verilen primdir. Normal ücretin üzerine yapılan ödeme bonus olarak adlandırılır."
   },
   {
     "id": "wq150_nov26_lex15_35_1",
@@ -6774,13 +6774,13 @@ export const contextQuestions = [
     "prompt": "The finance director will ____ £10,000 specifically to equipment purchases.",
     "options": [
       "allocate",
-      "distribute",
-      "redistribute",
+      "calculate",
+      "refund",
       "retain",
       "withhold"
     ],
     "correct": 0,
-    "explanation": "allocate: tahsis etmek. Diğer seçenekler: distribute: dağıtmak; redistribute: yeniden dağıtmak; retain: elde tutmak; withhold: alıkoymak."
+    "explanation": "Allocate funds to equipment purchases belirli bir amaç için kaynak tahsis etmek demektir. Hesaplamak, iade etmek, elde tutmak veya alıkoymak kaynak tahsisi değildir."
   },
   {
     "id": "wq150_nov26_lex15_39_2",
@@ -7130,14 +7130,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "The replacement part must ____ to the precise dimensions specified in the technical drawing.",
     "options": [
-      "comply",
+      "object",
       "conform",
-      "adhere",
+      "respond",
       "deviate",
       "violate"
     ],
     "correct": 1,
-    "explanation": "conform: biçimsel uyum sağlamak. Diğer seçenekler: comply: uyum göstermek; adhere: sıkı bağlı kalmak; deviate: sapmak; violate: ihlal etmek."
+    "explanation": "Conform to the specified dimensions belirtilen ölçülere uymak demektir. Deviation ölçülerden sapmayı ifade eder; diğer fiiller fiziksel uyumu anlatmaz."
   },
   {
     "id": "wq150_nov26_lex15_43_3",
@@ -7284,13 +7284,13 @@ export const contextQuestions = [
     "prompt": "Participants must ____ the target score of 80 before progressing.",
     "options": [
       "attain",
-      "acquire",
-      "accumulate",
+      "compile",
+      "assign",
       "attest",
       "attribute"
     ],
     "correct": 0,
-    "explanation": "attain: ulaşmak. Diğer seçenekler: acquire: edinmek; accumulate: biriktirmek; attest: doğruluğuna tanıklık etmek; attribute: atfetmek."
+    "explanation": "Attain the target score hedef puana ulaşmak anlamına gelir. Compile derlemek, assign atamak, attest tanıklık etmek, attribute atfetmek demektir."
   },
   {
     "id": "wq150_nov26_lex15_45_2",
@@ -7300,14 +7300,14 @@ export const contextQuestions = [
     "topic": "Vocabulary",
     "prompt": "New employees need to ____ practical skills through supervised experience.",
     "options": [
-      "attain",
+      "discard",
       "acquire",
-      "accumulate",
+      "overlook",
       "attest",
       "attribute"
     ],
     "correct": 1,
-    "explanation": "acquire: edinmek. Diğer seçenekler: attain: ulaşmak; accumulate: biriktirmek; attest: doğruluğuna tanıklık etmek; attribute: atfetmek."
+    "explanation": "Acquire practical skills uygulamalı beceriler edinmek anlamındadır. Gözetimli deneyim yoluyla yeni becerilerin öğrenilmesi anlatılır."
   },
   {
     "id": "wq150_nov26_lex15_45_3",
