@@ -7825,7 +7825,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The result was expressed as a ____ using the symbol % .",
+    "prompt": "The result was expressed as a ____ using the symbol %.",
     "options": [
       "proportion of",
       "ratio to",
