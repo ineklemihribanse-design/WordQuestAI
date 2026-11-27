@@ -315,11 +315,19 @@ private object Wq150ArtCache{
 @Composable
 private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
     val context=LocalContext.current.applicationContext
-    val art by produceState<ImageBitmap?>(Wq150ArtCache.get(name),context,name){
-        value=Wq150ArtCache.get(name)?:withContext(Dispatchers.IO){
-            runCatching{context.assets.open("arena_v120/$name.webp").use{
-                android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
-            }}.getOrNull()?.also{Wq150ArtCache.put(name,it)}
+    // Key the state by asset name: a rotated screen must never show the previous plate.
+    var art by remember(context,name){mutableStateOf(Wq150ArtCache.get(name))}
+    LaunchedEffect(context,name){
+        val cached=Wq150ArtCache.get(name)
+        if(cached!=null){
+            art=cached
+        }else{
+            val decoded=withContext(Dispatchers.IO){
+                runCatching{context.assets.open("arena_v120/$name.webp").use{
+                    android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
+                }}.getOrNull()?.also{Wq150ArtCache.put(name,it)}
+            }
+            art=decoded
         }
     }
     art?.let{Image(it,null,modifier,contentScale=scale)}
