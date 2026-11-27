@@ -3023,7 +3023,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the report had been checked, the mistake ____ prevented.",
+    "prompt": "If the report had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3032,7 +3032,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_1",
@@ -3040,7 +3040,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the proposal had been checked, the mistake ____ prevented.",
+    "prompt": "If the proposal had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3049,7 +3049,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_2",
@@ -3057,7 +3057,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the manuscript had been checked, the mistake ____ prevented.",
+    "prompt": "If the manuscript had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3066,7 +3066,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_3",
@@ -3074,7 +3074,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the assignment had been checked, the mistake ____ prevented.",
+    "prompt": "If the assignment had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3083,7 +3083,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_4",
@@ -3091,7 +3091,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the document had been checked, the mistake ____ prevented.",
+    "prompt": "If the document had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3100,7 +3100,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_5",
@@ -3108,7 +3108,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the contract had been checked, the mistake ____ prevented.",
+    "prompt": "If the contract had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3117,7 +3117,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_6",
@@ -3125,7 +3125,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the assessment had been checked, the mistake ____ prevented.",
+    "prompt": "If the assessment had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3134,7 +3134,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_7",
@@ -3142,7 +3142,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the budget had been checked, the mistake ____ prevented.",
+    "prompt": "If the budget had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3151,7 +3151,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_8",
@@ -3159,7 +3159,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the schedule had been checked, the mistake ____ prevented.",
+    "prompt": "If the schedule had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3168,7 +3168,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_9",
@@ -3176,7 +3176,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the plan had been checked, the mistake ____ prevented.",
+    "prompt": "If the plan had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3185,7 +3185,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_10",
@@ -3193,7 +3193,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the statement had been checked, the mistake ____ prevented.",
+    "prompt": "If the statement had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3202,7 +3202,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_12_11",
@@ -3210,7 +3210,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "If the submission had been checked, the mistake ____ prevented.",
+    "prompt": "If the submission had been checked before yesterday's release, the mistake ____ prevented before publication.",
     "options": [
       "could have been",
       "could be",
@@ -3219,7 +3219,7 @@ export const grammarVariants = [
       "will have been"
     ],
     "correct": 0,
-    "explanation": "Geçmişe karşıt third conditional sonucunda could have been + V3 edilgen yapı gerekir."
+    "explanation": "Geçmişte gerçekleşmemiş koşul ve geçmişteki olası sonuç için third conditional kullanılır. Could have been + V3 edilgen geçmiş olasılığı ifade eder."
   },
   {
     "id": "wq150_pattern_13_0",
@@ -3227,7 +3227,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the researcher does not submit the report, the committee ____ it.",
+    "prompt": "If the researcher does not submit the report by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3236,7 +3236,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_1",
@@ -3244,7 +3244,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the analyst does not submit the proposal, the committee ____ it.",
+    "prompt": "If the analyst does not submit the proposal by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3253,7 +3253,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_2",
@@ -3261,7 +3261,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the editor does not submit the manuscript, the committee ____ it.",
+    "prompt": "If the editor does not submit the manuscript by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3270,7 +3270,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_3",
@@ -3278,7 +3278,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the instructor does not submit the assignment, the committee ____ it.",
+    "prompt": "If the instructor does not submit the assignment by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3287,7 +3287,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_4",
@@ -3295,7 +3295,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the scientist does not submit the document, the committee ____ it.",
+    "prompt": "If the scientist does not submit the document by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3304,7 +3304,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_5",
@@ -3312,7 +3312,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the supervisor does not submit the contract, the committee ____ it.",
+    "prompt": "If the supervisor does not submit the contract by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3321,7 +3321,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_6",
@@ -3329,7 +3329,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the consultant does not submit the assessment, the committee ____ it.",
+    "prompt": "If the consultant does not submit the assessment by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3338,7 +3338,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_7",
@@ -3346,7 +3346,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the director does not submit the budget, the committee ____ it.",
+    "prompt": "If the director does not submit the budget by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3355,7 +3355,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_8",
@@ -3363,7 +3363,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the scholar does not submit the schedule, the committee ____ it.",
+    "prompt": "If the scholar does not submit the schedule by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3372,7 +3372,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_9",
@@ -3380,7 +3380,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the investigator does not submit the plan, the committee ____ it.",
+    "prompt": "If the investigator does not submit the plan by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3389,7 +3389,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_10",
@@ -3397,7 +3397,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the technician does not submit the statement, the committee ____ it.",
+    "prompt": "If the technician does not submit the statement by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3406,7 +3406,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_13_11",
@@ -3414,7 +3414,7 @@ export const grammarVariants = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "If the engineer does not submit the submission, the committee ____ it.",
+    "prompt": "If the engineer does not send the submission by tomorrow's deadline, the committee ____ the associated application.",
     "options": [
       "will reject",
       "would reject",
@@ -3423,7 +3423,7 @@ export const grammarVariants = [
       "has rejected"
     ],
     "correct": 0,
-    "explanation": "Gerçekleşmesi mümkün gelecek koşulda if + present simple ve will + fiil kullanılır."
+    "explanation": "Gelecekte gerçekleşmesi mümkün bir koşul için if + present simple, sonuç için will + yalın fiil kullanılır."
   },
   {
     "id": "wq150_pattern_14_0",
@@ -4451,7 +4451,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The researcher ____ submitted the report yesterday, but no file was received.",
+    "prompt": "The researcher ____ submitted the report yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4460,7 +4460,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_1",
@@ -4468,7 +4468,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The analyst ____ submitted the proposal yesterday, but no file was received.",
+    "prompt": "The analyst ____ submitted the proposal yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4477,7 +4477,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_2",
@@ -4485,7 +4485,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The editor ____ submitted the manuscript yesterday, but no file was received.",
+    "prompt": "The editor ____ submitted the manuscript yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4494,7 +4494,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_3",
@@ -4502,7 +4502,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The instructor ____ submitted the assignment yesterday, but no file was received.",
+    "prompt": "The instructor ____ submitted the assignment yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4511,7 +4511,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_4",
@@ -4519,7 +4519,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The scientist ____ submitted the document yesterday, but no file was received.",
+    "prompt": "The scientist ____ submitted the document yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4528,7 +4528,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_5",
@@ -4536,7 +4536,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The supervisor ____ submitted the contract yesterday, but no file was received.",
+    "prompt": "The supervisor ____ submitted the contract yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4545,7 +4545,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_6",
@@ -4553,7 +4553,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The consultant ____ submitted the assessment yesterday, but no file was received.",
+    "prompt": "The consultant ____ submitted the assessment yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4562,7 +4562,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_7",
@@ -4570,7 +4570,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The director ____ submitted the budget yesterday, but no file was received.",
+    "prompt": "The director ____ submitted the budget yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4579,7 +4579,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_8",
@@ -4587,7 +4587,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The scholar ____ submitted the schedule yesterday, but no file was received.",
+    "prompt": "The scholar ____ submitted the schedule yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4596,7 +4596,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_9",
@@ -4604,7 +4604,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The investigator ____ submitted the plan yesterday, but no file was received.",
+    "prompt": "The investigator ____ submitted the plan yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4613,7 +4613,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_10",
@@ -4621,7 +4621,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The technician ____ submitted the statement yesterday, but no file was received.",
+    "prompt": "The technician ____ submitted the statement yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4630,7 +4630,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_21_11",
@@ -4638,7 +4638,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The engineer ____ submitted the submission yesterday, but no file was received.",
+    "prompt": "The engineer ____ sent the submission yesterday as required by the rules, but failed to do so.",
     "options": [
       "should have",
       "must",
@@ -4647,7 +4647,7 @@ export const grammarVariants = [
       "should be"
     ],
     "correct": 0,
-    "explanation": "Geçmişte yapılması gerekirken yapılmayan eylem should have + V3 ile anlatılır."
+    "explanation": "Should have + V3 geçmişte yapılması beklenen veya gereken ancak yapılmayan eylemi anlatır."
   },
   {
     "id": "wq150_pattern_25_0",
@@ -6500,7 +6500,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_1",
@@ -6517,7 +6517,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_2",
@@ -6534,7 +6534,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_3",
@@ -6551,7 +6551,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_4",
@@ -6568,7 +6568,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_5",
@@ -6585,7 +6585,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_6",
@@ -6602,7 +6602,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_7",
@@ -6619,7 +6619,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_8",
@@ -6636,7 +6636,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_9",
@@ -6653,7 +6653,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_10",
@@ -6670,7 +6670,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_35_11",
@@ -6687,7 +6687,7 @@ export const grammarVariants = [
       "whom"
     ],
     "correct": 0,
-    "explanation": "The only ile belirtilen cansız nesne için nesne konumunda that kullanılır."
+    "explanation": "That, cansız bir ismi niteleyen defining relative clause içinde nesne görevindedir. Bu bağlamda which veya ilgi zamirinin çıkarılması da mümkündür; ancak sunulan seçeneklerde that doğrudur."
   },
   {
     "id": "wq150_pattern_36_0",
@@ -7919,7 +7919,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed report been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed report been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -7928,7 +7928,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_1",
@@ -7936,7 +7936,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed proposal been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed proposal been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -7945,7 +7945,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_2",
@@ -7953,7 +7953,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed manuscript been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed manuscript been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -7962,7 +7962,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_3",
@@ -7970,7 +7970,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed assignment been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed assignment been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -7979,7 +7979,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_4",
@@ -7987,7 +7987,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed document been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed document been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -7996,7 +7996,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_5",
@@ -8004,7 +8004,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed contract been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed contract been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8013,7 +8013,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_6",
@@ -8021,7 +8021,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed assessment been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed assessment been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8030,7 +8030,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_7",
@@ -8038,7 +8038,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed budget been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed budget been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8047,7 +8047,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_8",
@@ -8055,7 +8055,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed schedule been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed schedule been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8064,7 +8064,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_9",
@@ -8072,7 +8072,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed plan been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed plan been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8081,7 +8081,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_10",
@@ -8089,7 +8089,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed statement been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed statement been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8098,7 +8098,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_42_11",
@@ -8106,7 +8106,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Seldom ____ such a detailed submission been submitted in the last decade.",
+    "prompt": "Seldom ____ such a detailed submission been submitted during the past ten years up to the present.",
     "options": [
       "has",
       "is",
@@ -8115,7 +8115,7 @@ export const grammarVariants = [
       "will"
     ],
     "correct": 0,
-    "explanation": "Seldom ile başlayan ve son on yılı kapsayan present perfect cümlede has başa gelir."
+    "explanation": "Seldom başa alındığında yardımcı fiil özneden önce gelir. Bugüne kadar uzanan dönem ve tekil edilgen özne için has + been + V3 kullanılır."
   },
   {
     "id": "wq150_pattern_43_0",
@@ -8939,7 +8939,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The researcher would have attended the seminar ____ the train had not been cancelled.",
+    "prompt": "The researcher's train was cancelled, preventing attendance. The researcher would have attended the seminar ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -8948,7 +8948,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_1",
@@ -8956,7 +8956,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The analyst would have attended the conference ____ the train had not been cancelled.",
+    "prompt": "The analyst's train was cancelled, preventing attendance. The analyst would have attended the conference ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -8965,7 +8965,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_2",
@@ -8973,7 +8973,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The editor would have attended the meeting ____ the train had not been cancelled.",
+    "prompt": "The editor's train was cancelled, preventing attendance. The editor would have attended the meeting ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -8982,7 +8982,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_3",
@@ -8990,7 +8990,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The instructor would have attended the workshop ____ the train had not been cancelled.",
+    "prompt": "The instructor's train was cancelled, preventing attendance. The instructor would have attended the workshop ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -8999,7 +8999,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_4",
@@ -9007,7 +9007,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The scientist would have attended the symposium ____ the train had not been cancelled.",
+    "prompt": "The scientist's train was cancelled, preventing attendance. The scientist would have attended the symposium ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9016,7 +9016,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_5",
@@ -9024,7 +9024,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The supervisor would have attended the lecture ____ the train had not been cancelled.",
+    "prompt": "The supervisor's train was cancelled, preventing attendance. The supervisor would have attended the lecture ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9033,7 +9033,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_6",
@@ -9041,7 +9041,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The consultant would have attended the briefing ____ the train had not been cancelled.",
+    "prompt": "The consultant's train was cancelled, preventing attendance. The consultant would have attended the briefing ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9050,7 +9050,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_7",
@@ -9058,7 +9058,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The director would have attended the panel ____ the train had not been cancelled.",
+    "prompt": "The director's train was cancelled, preventing attendance. The director would have attended the panel ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9067,7 +9067,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_8",
@@ -9075,7 +9075,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The scholar would have attended the training session ____ the train had not been cancelled.",
+    "prompt": "The scholar's train was cancelled, preventing attendance. The scholar would have attended the training session ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9084,7 +9084,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_9",
@@ -9092,7 +9092,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The investigator would have attended the review session ____ the train had not been cancelled.",
+    "prompt": "The investigator's train was cancelled, preventing attendance. The investigator would have attended the review session ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9101,7 +9101,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_10",
@@ -9109,7 +9109,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The technician would have attended the presentation ____ the train had not been cancelled.",
+    "prompt": "The technician's train was cancelled, preventing attendance. The technician would have attended the presentation ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9118,7 +9118,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_49_11",
@@ -9126,7 +9126,7 @@ export const grammarVariants = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The engineer would have attended the forum ____ the train had not been cancelled.",
+    "prompt": "The engineer's train was cancelled, preventing attendance. The engineer would have attended the forum ____ the train had not been cancelled.",
     "options": [
       "if",
       "unless",
@@ -9135,7 +9135,7 @@ export const grammarVariants = [
       "where"
     ],
     "correct": 0,
-    "explanation": "Geçmiş gerçek dışı sonuç olan would have attended ile if + past perfect koşul cümlesi eşleşir."
+    "explanation": "If + past perfect, gerçekleşmemiş geçmiş koşulu; would have + V3 ise onun varsayımsal geçmiş sonucunu anlatır. Unless koşulu tersine çevirir."
   },
   {
     "id": "wq150_pattern_50_0",
