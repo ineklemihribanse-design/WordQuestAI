@@ -38,4 +38,25 @@ class Wq150ViewportTest {
         assertEquals((800f-2*v.cell)/2f,v.x,.01f)
         assertEquals(v.minX,v.maxX,.01f)
     }
+    @Test fun audioFeedbackOutranksClockAndAmbient(){
+        for(event in listOf("correct","wrong")){
+            assertTrue(wq150SoundPriority(event)>wq150SoundPriority("urgent"))
+            assertTrue(wq150SoundPriority(event)>wq150SoundPriority("ambient"))
+        }
+        assertTrue(wq150SoundPriority("tick")>wq150SoundPriority("ambient"))
+        assertTrue(wq150SoundVolume("ambient")<wq150SoundVolume("tick"))
+        assertTrue(wq150SoundVolume("tick")<wq150SoundVolume("urgent"))
+        assertTrue(wq150SoundVolume("urgent")<wq150SoundVolume("correct"))
+    }
+    @Test fun compressedArenaBoardKeepsWholeGridInFitMode(){
+        for((w,h) in listOf(280f to 55f,360f to 110f,800f to 200f,1200f to 320f)){
+            for((r,c) in listOf(8 to 12,22 to 17,30 to 30)){
+                val v=wq150Viewport(w,h,r,c,0,r/2f,c/2f)
+                assertTrue(v.cell>0f)
+                assertTrue(v.x>=0f&&v.y>=0f)
+                assertTrue(v.x+v.cell*c<=w+.01f)
+                assertTrue(v.y+v.cell*r<=h+.01f)
+            }
+        }
+    }
 }
