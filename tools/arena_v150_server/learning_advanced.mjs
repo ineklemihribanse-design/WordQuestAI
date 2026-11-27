@@ -158,7 +158,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The survey established ____ households had no internet connection.",
+    "prompt": "The survey established ____ households had no internet connection, reporting a total of 240.",
     "options": [
       "how many",
       "how much",
@@ -175,7 +175,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The researchers recorded ____ species were found at each site.",
+    "prompt": "The researchers recorded ____ species were found at each site, listing the total number for each site.",
     "options": [
       "how many",
       "how much",
@@ -192,7 +192,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The report specifies ____ applications were rejected during the trial.",
+    "prompt": "The report specifies ____ applications were rejected during the trial, giving the total number of rejections.",
     "options": [
       "how many",
       "how much",
@@ -519,12 +519,12 @@ export const advancedQuestions = [
     "options": [
       "to be monitored",
       "to monitor",
-      "monitoring",
+      "having monitored",
       "to have monitoring",
       "monitored by"
     ],
     "correct": 0,
-    "explanation": "Edilgen infinitive to be + V3 izlenen nesneyi belirtir."
+    "explanation": "Need + to be + V3 edilgen gereklilik bildirir. Need monitoring de aynı anlamda kullanılabilir; bu nedenle seçeneklerden çıkarılmıştır."
   },
   {
     "id": "wq150_advanced_13_2",
@@ -1232,13 +1232,13 @@ export const advancedQuestions = [
     "prompt": "____ the current subsidy, the service would now be financially unsustainable.",
     "options": [
       "were it not for",
-      "had it not been for",
+      "had it not",
       "should it have been",
       "it would not be for",
       "it has not been for"
     ],
     "correct": 0,
-    "explanation": "Were it not for şimdiki bir etkenin yokluğunu varsayan devrik koşuldur."
+    "explanation": "Were it not for: mevcut bir koşulun yokluğunu varsayar. Had it not been for geçmiş koşulları ve karma koşul cümlelerini de kurabildiğinden bu soruda çeldirici olarak kullanılmaz."
   },
   {
     "id": "wq150_advanced_30_2",
@@ -1249,7 +1249,7 @@ export const advancedQuestions = [
     "prompt": "____ the existing legal restrictions, the institution could currently disclose the records.",
     "options": [
       "were it not for",
-      "had it not been for",
+      "had it not",
       "should it have been",
       "it would not be for",
       "it has not been for"
@@ -1266,7 +1266,7 @@ export const advancedQuestions = [
     "prompt": "____ the present shortage of evidence, the interpretation would now be more persuasive.",
     "options": [
       "were it not for",
-      "had it not been for",
+      "had it not",
       "should it have been",
       "it would not be for",
       "it has not been for"
@@ -1331,7 +1331,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "Access to the confidential archive is permitted ____ researchers sign the required agreement.",
+    "prompt": "Access to the confidential archive is permitted only ____ researchers sign the required agreement.",
     "options": [
       "provided that",
       "whereas",
@@ -1348,7 +1348,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The project may proceed ____ its safety plan receives approval.",
+    "prompt": "The project may proceed only ____ its safety plan receives approval.",
     "options": [
       "provided that",
       "whereas",
@@ -1365,7 +1365,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The equipment can be used overnight ____ a qualified supervisor remains present.",
+    "prompt": "The equipment can be used overnight only ____ a qualified supervisor remains present.",
     "options": [
       "provided that",
       "whereas",
@@ -1433,7 +1433,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The temporary permit will remain valid ____ the stated conditions are met.",
+    "prompt": "The temporary permit will remain valid only ____ the stated conditions are met.",
     "options": [
       "as long as",
       "whereas",
@@ -1450,7 +1450,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The system can operate safely ____ the pressure remains below the specified limit.",
+    "prompt": "The system can operate safely only ____ the pressure remains below the specified limit.",
     "options": [
       "as long as",
       "whereas",
@@ -1467,7 +1467,7 @@ export const advancedQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The agreement will remain in force ____ both parties comply with its terms.",
+    "prompt": "The agreement will remain in force only ____ both parties comply with its terms.",
     "options": [
       "as long as",
       "whereas",
@@ -1637,7 +1637,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The committee approved the proposal, ____ the objections raised by several members.",
+    "prompt": "The committee approved the proposal, ____ the strong objections raised by several members who opposed its approval.",
     "options": [
       "notwithstanding",
       "because of",
@@ -3014,7 +3014,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The apparently harmless practice had ____ long-term effects that were initially difficult to detect.",
+    "prompt": "The apparently harmless practice had ____ long-term effects, gradually causing serious damage that was initially difficult to detect.",
     "options": [
       "pernicious",
       "beneficial",
@@ -3116,16 +3116,16 @@ export const advancedQuestions = [
     "level": "C2",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The argument was ____, appearing convincing at first despite relying on a false premise.",
+    "prompt": "The argument was ____, appearing convincing at first despite concealing a serious flaw in its reasoning.",
     "options": [
       "specious",
       "sound",
       "cogent",
-      "valid",
+      "transparent",
       "well-founded"
     ],
     "correct": 0,
-    "explanation": "Specious görünüşte ikna edici fakat gerçekte yanıltıcı anlamındadır."
+    "explanation": "Specious: görünüşte ikna edici fakat gerçekte yanıltıcı. Mantıksal geçerlilik ile öncüllerin doğruluğu farklı kavramlardır."
   },
   {
     "id": "wq150_advanced_71_2",
@@ -3677,7 +3677,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Independent observations appear to ____ the predictions made by the original model.",
+    "prompt": "Independent observations appear to ____ the predictions made by the original model, matching them closely.",
     "options": [
       "bear out",
       "cast doubt on",
@@ -3728,7 +3728,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "The report was criticised for attempting to ____ the serious limitations of the method.",
+    "prompt": "The report was criticised for attempting to ____ the serious limitations of the method in a single vague sentence instead of discussing them thoroughly.",
     "options": [
       "gloss over",
       "delve into",
@@ -3762,7 +3762,7 @@ export const advancedQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "The authors must not ____ the methodological weaknesses in a brief footnote.",
+    "prompt": "The authors must not ____ the methodological weaknesses by mentioning them only briefly and avoiding a detailed discussion.",
     "options": [
       "gloss over",
       "delve into",
