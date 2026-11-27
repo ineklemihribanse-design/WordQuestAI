@@ -258,7 +258,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the library is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the library is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "as",
       "so",
@@ -474,7 +474,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The mechanic ____ bring personal equipment tomorrow; the garage will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The mechanic ____ bring personal equipment tomorrow; the garage will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "must",
       "has to",
@@ -642,7 +642,7 @@ export const b121500Grammar = [
       "will print",
       "would print",
       "had printed",
-      "has been printing"
+      "had been printing"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: prints. Unless + present simple gelecek koşulu belirtir."
@@ -1068,7 +1068,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the bakery is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the bakery is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "very",
       "as",
@@ -1284,7 +1284,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The gardener ____ bring personal equipment tomorrow; the garden centre will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The gardener ____ bring personal equipment tomorrow; the garden centre will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "needn't",
       "must",
@@ -1448,7 +1448,7 @@ export const b121500Grammar = [
     "kind": "Conditional",
     "prompt": "Unless the photographer ____ the wedding photographs today, the assistant will have to do the task tomorrow.",
     "options": [
-      "has been editing",
+      "had been editing",
       "edits",
       "will edit",
       "would edit",
@@ -1878,7 +1878,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the college is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the college is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "too",
       "very",
@@ -2094,7 +2094,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The volunteer ____ bring personal equipment tomorrow; the charity shop will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The volunteer ____ bring personal equipment tomorrow; the charity shop will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "mustn't",
       "needn't",
@@ -2259,7 +2259,7 @@ export const b121500Grammar = [
     "prompt": "Unless the shop assistant ____ the remaining items today, the assistant will have to do the task tomorrow.",
     "options": [
       "had counted",
-      "has been counting",
+      "had been counting",
       "counts",
       "will count",
       "would count"
@@ -2688,7 +2688,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the restaurant is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the restaurant is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "enough",
       "too",
@@ -2904,7 +2904,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The electrician ____ bring personal equipment tomorrow; the repair company will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The electrician ____ bring personal equipment tomorrow; the repair company will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "should",
       "mustn't",
@@ -3070,7 +3070,7 @@ export const b121500Grammar = [
     "options": [
       "would clean",
       "had cleaned",
-      "has been cleaning",
+      "had been cleaning",
       "cleans",
       "will clean"
     ],
@@ -3498,7 +3498,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the sports club is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the sports club is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "so",
       "enough",
@@ -3714,7 +3714,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The artist ____ bring personal equipment tomorrow; the youth centre will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The artist ____ bring personal equipment tomorrow; the youth centre will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "has to",
       "should",
@@ -3881,7 +3881,7 @@ export const b121500Grammar = [
       "will record",
       "would record",
       "had recorded",
-      "has been recording",
+      "had been recording",
       "records"
     ],
     "correct": 4,
@@ -4308,7 +4308,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the travel company is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the travel company is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "as",
       "so",
@@ -4524,7 +4524,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The nurse ____ bring personal equipment tomorrow; the clinic will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The nurse ____ bring personal equipment tomorrow; the clinic will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "must",
       "has to",
@@ -4692,7 +4692,7 @@ export const b121500Grammar = [
       "will write",
       "would write",
       "had written",
-      "has been writing"
+      "had been writing"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: writes. Unless + present simple gelecek koşulu belirtir."
@@ -5118,7 +5118,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the fitness centre is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the fitness centre is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "very",
       "as",
@@ -5334,7 +5334,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The assistant ____ bring personal equipment tomorrow; the community centre will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The assistant ____ bring personal equipment tomorrow; the community centre will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "needn't",
       "must",
@@ -5498,7 +5498,7 @@ export const b121500Grammar = [
     "kind": "Conditional",
     "prompt": "Unless the carpenter ____ the door frames today, the assistant will have to do the task tomorrow.",
     "options": [
-      "has been measuring",
+      "had been measuring",
       "measures",
       "will measure",
       "would measure",
@@ -5928,7 +5928,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the recruitment office is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the recruitment office is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "too",
       "very",
@@ -6144,7 +6144,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The technician ____ bring personal equipment tomorrow; the museum will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The technician ____ bring personal equipment tomorrow; the museum will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "mustn't",
       "needn't",
@@ -6309,7 +6309,7 @@ export const b121500Grammar = [
     "prompt": "Unless the farmer ____ the fresh eggs today, the assistant will have to do the task tomorrow.",
     "options": [
       "had collected",
-      "has been collecting",
+      "had been collecting",
       "collects",
       "will collect",
       "would collect"
@@ -6738,7 +6738,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the arts school is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the arts school is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "enough",
       "too",
@@ -6954,7 +6954,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The coach ____ bring personal equipment tomorrow; the football club will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The coach ____ bring personal equipment tomorrow; the football club will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "should",
       "mustn't",
@@ -7120,7 +7120,7 @@ export const b121500Grammar = [
     "options": [
       "would deliver",
       "had delivered",
-      "has been delivering",
+      "had been delivering",
       "delivers",
       "will deliver"
     ],
@@ -7548,7 +7548,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Comparison",
-    "prompt": "The new storage area at the magazine is large ____ to hold all the necessary materials.",
+    "prompt": "The new storage area at the magazine is large ____ to hold all the necessary materials. There is sufficient space for everything.",
     "options": [
       "so",
       "enough",
@@ -7764,7 +7764,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Modal",
-    "prompt": "The tailor ____ bring personal equipment tomorrow; the fabric shop will provide everything required. Bringing one's own equipment is optional.",
+    "prompt": "The tailor ____ bring personal equipment tomorrow; the fabric shop will provide everything required. Choose the modal that explicitly expresses a lack of obligation.",
     "options": [
       "has to",
       "should",
@@ -7931,7 +7931,7 @@ export const b121500Grammar = [
       "will translate",
       "would translate",
       "had translated",
-      "has been translating",
+      "had been translating",
       "translates"
     ],
     "correct": 4,
@@ -8556,7 +8556,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the pressure sensors if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the pressure sensors if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "where",
       "when",
@@ -8592,7 +8592,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the manufacturing plant was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the manufacturing plant was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "even if",
       "once",
@@ -8862,7 +8862,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The auditor made and kept a second copy as a precaution of the records at the public agency ____ the original documents were lost at some later point.",
+    "prompt": "The auditor made and kept a second copy of the records at the public agency as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "whereas",
       "as if",
@@ -9366,7 +9366,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the nesting sites if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the nesting sites if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "whose",
       "where",
@@ -9402,7 +9402,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the conservation organisation was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the conservation organisation was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "whereas",
       "even if",
@@ -9672,7 +9672,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The coordinator made and kept a second copy as a precaution of the records at the research institute ____ the original documents were lost at some later point.",
+    "prompt": "The coordinator made and kept a second copy of the records at the research institute as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "even though",
       "whereas",
@@ -10176,7 +10176,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the security updates if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the security updates if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "whether",
       "whose",
@@ -10212,7 +10212,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the software firm was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the software firm was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "lest",
       "whereas",
@@ -10482,7 +10482,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The consultant made and kept a second copy as a precaution of the records at the consultancy ____ the original documents were lost at some later point.",
+    "prompt": "The consultant made and kept a second copy of the records at the consultancy as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "in case",
       "even though",
@@ -10986,7 +10986,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the construction costs if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the construction costs if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "what",
       "whether",
@@ -11022,7 +11022,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the city council was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the city council was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "unless",
       "lest",
@@ -11292,7 +11292,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The supervisor made and kept a second copy as a precaution of the records at the factory ____ the original documents were lost at some later point.",
+    "prompt": "The supervisor made and kept a second copy of the records at the factory as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "unless",
       "in case",
@@ -11796,7 +11796,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the recorded speech samples if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the recorded speech samples if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "when",
       "what",
@@ -11832,7 +11832,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the language centre was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the language centre was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "once",
       "unless",
@@ -12102,7 +12102,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The archivist made and kept a second copy as a precaution of the records at the national library ____ the original documents were lost at some later point.",
+    "prompt": "The archivist made and kept a second copy of the records at the national library as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "as if",
       "unless",
@@ -12606,7 +12606,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the response rates if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the response rates if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "where",
       "when",
@@ -12642,7 +12642,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the survey company was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the survey company was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "even if",
       "once",
@@ -12912,7 +12912,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The surveyor made and kept a second copy as a precaution of the records at the engineering firm ____ the original documents were lost at some later point.",
+    "prompt": "The surveyor made and kept a second copy of the records at the engineering firm as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "whereas",
       "as if",
@@ -13416,7 +13416,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the prepared containers if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the prepared containers if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "whose",
       "where",
@@ -13452,7 +13452,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the hospital pharmacy was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the hospital pharmacy was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "whereas",
       "even if",
@@ -13722,7 +13722,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The administrator made and kept a second copy as a precaution of the records at the association ____ the original documents were lost at some later point.",
+    "prompt": "The administrator made and kept a second copy of the records at the association as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "even though",
       "whereas",
@@ -14226,7 +14226,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the supply agreements if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the supply agreements if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "whether",
       "whose",
@@ -14262,7 +14262,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the distribution company was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the distribution company was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "lest",
       "whereas",
@@ -14532,7 +14532,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The curator made and kept a second copy as a precaution of the records at the cultural institution ____ the original documents were lost at some later point.",
+    "prompt": "The curator made and kept a second copy of the records at the cultural institution as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "in case",
       "even though",
@@ -15036,7 +15036,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the delayed consignments if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the delayed consignments if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "what",
       "whether",
@@ -15072,7 +15072,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the transport operator was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the transport operator was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "unless",
       "lest",
@@ -15342,7 +15342,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The accountant made and kept a second copy as a precaution of the records at the cooperative ____ the original documents were lost at some later point.",
+    "prompt": "The accountant made and kept a second copy of the records at the cooperative as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "unless",
       "in case",
@@ -15846,7 +15846,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "NounClause",
-    "prompt": "The report specifies ____ should be done with the revised guidelines if the inspection is unsuccessful.",
+    "prompt": "The report specifies ____ should be done with the revised guidelines if the inspection is unsuccessful. It lists the required actions, rather than their timing or location.",
     "options": [
       "when",
       "what",
@@ -15882,7 +15882,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The revised procedure at the regional authority was approved ____ all the required safety checks had been completed.",
+    "prompt": "The revised procedure at the regional authority was approved ____ all the required safety checks had been completed. Approval was withheld until the checks were finished.",
     "options": [
       "once",
       "unless",
@@ -16152,7 +16152,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "The project leader made and kept a second copy as a precaution of the records at the development agency ____ the original documents were lost at some later point.",
+    "prompt": "The project leader made and kept a second copy of the records at the development agency as a precaution ____ the original documents were lost at some later point.",
     "options": [
       "as if",
       "unless",
