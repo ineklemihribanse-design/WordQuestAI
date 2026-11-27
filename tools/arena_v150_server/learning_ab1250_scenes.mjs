@@ -8450,14 +8450,14 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Megan planned to take part in a recycling campaign at the town market on Tuesday afternoon. People were putting glass into the paper containers. She added clear labels with pictures to the bins. More waste was sorted correctly.\n\nWhat was the outcome?",
     "options": [
-      "Staff began switching off unnecessary lights",
-      "The team collected data without entering the water",
+      "More glass was put into the paper containers",
+      "The market removed its recycling bins",
       "More waste was sorted correctly",
-      "The soil became suitable for planting",
-      "The birds returned to the feeding area"
+      "The new labels were taken off the bins",
+      "People stopped bringing paper to the market"
     ],
     "correct": 2,
-    "explanation": "Metne göre doğru bilgi \"More waste was sorted correctly\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
+    "explanation": "Metinde görselli etiketler eklendikten sonra daha fazla atığın doğru ayrıştırıldığı belirtiliyor. Diğer seçenekler metinde bildirilen sonucu anlatmıyor."
   },
   {
     "id": "wq150_ab1250_scene_0471",
