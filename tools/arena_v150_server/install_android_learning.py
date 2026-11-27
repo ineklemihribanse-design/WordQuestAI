@@ -133,4 +133,9 @@ original=bank.read_text('utf-8')
 anchor='private fun senses(level: String) = levelBanks[level] ?: ydsBanks[level].orEmpty()'
 assert original.count(anchor)==1, 'Unexpected VocabularyBank contract'
 bank.write_text(original.replace(anchor,'private fun senses(level: String) = levelBanks[level] ?: (ydsBanks[level].orEmpty() + Wq150AcademicWords.senses[level].orEmpty()).distinct()',1),'utf-8')
+# Record the complete set of authored YDS headwords, including senses skipped
+# by the CEFR addendum deduplication. The pronunciation generator consumes it.
+pronunciation_words=sorted({w['answer'].strip().lower() for w in words})
+assert all(re.fullmatch(r'[a-z]{2,24}',w) for w in pronunciation_words)
+(src/'assets/learning-pronunciation-words.json').write_text(json.dumps(pronunciation_words,ensure_ascii=False)+'\n','utf-8')
 print('Wq150 local YDS academic words:',len(words))

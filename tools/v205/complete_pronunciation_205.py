@@ -54,6 +54,14 @@ def bundled_words(assets, src):
         assert all(len(row) == 5 for row in rows), name
         record(name, [row[3] for row in rows])
     assert counts["vocabulary-addendum-v175.tsv"] >= 4000
+    learning_manifest = assets / "learning-pronunciation-words.json"
+    if (src / "Wq150AcademicWords.kt").exists():
+        assert learning_manifest.is_file(), "Authored YDS vocabulary pronunciation manifest missing"
+    if learning_manifest.exists():
+        learning_words = json.loads(learning_manifest.read_text("utf-8"))
+        assert isinstance(learning_words, list) and len(learning_words) == len(set(learning_words))
+        assert all(isinstance(w,str) and re.fullmatch(r"[a-z]{2,24}",w) for w in learning_words)
+        record(learning_manifest.name, learning_words)
     verb_rows = [line.split("\t") for line in (assets/"verb-forms.txt").read_text("utf-8").splitlines()
                  if line.strip() and not line.startswith("#")]
     assert all(len(row) == 7 for row in verb_rows)

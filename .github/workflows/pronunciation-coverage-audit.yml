@@ -1,0 +1,32 @@
+name: Pronunciation coverage audit
+on:
+  push:
+    branches: ['feature/v150-arena-nextgen']
+    paths:
+      - 'tools/arena_v150_server/audit_pronunciation.py'
+      - 'tools/arena_v150_server/install_android_learning.py'
+      - 'tools/v205/complete_pronunciation_205.py'
+      - '.github/workflows/pronunciation-coverage-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check audit and installer syntax
+        run: python3 -m py_compile tools/arena_v150_server/audit_pronunciation.py tools/arena_v150_server/install_android_learning.py tools/v205/complete_pronunciation_205.py
+      - name: Download and verify immutable published APK
+        run: |
+          curl --fail --location --retry 2 --max-time 240 --proto '=https' --proto-redir '=https' 'https://github.com/ineklemihribanse-design/WordQuestAI/releases/download/v1.0.148/WordQuestAI.apk' -o "$RUNNER_TEMP/published.apk"
+          echo "3d7fd2dfe1ed53064bd336edeb5aeaee48628ccb1af570b3421bf96dc2da4b56  $RUNNER_TEMP/published.apk" | sha256sum -c
+          unzip -p "$RUNNER_TEMP/published.apk" assets/arena-vocabulary-v1.json > "$RUNNER_TEMP/base.json"
+          node tools/arena_v150_server/expand_learning.mjs "$RUNNER_TEMP/base.json" "$RUNNER_TEMP/expanded.json"
+      - name: Inspect both accent assets and new word coverage
+        run: python3 tools/arena_v150_server/audit_pronunciation.py "$RUNNER_TEMP/published.apk" "$RUNNER_TEMP/expanded.json" --report "$RUNNER_TEMP/pronunciation-audit.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pronunciation-audit
+          path: ${{ runner.temp }}/pronunciation-audit.json
