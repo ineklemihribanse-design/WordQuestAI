@@ -33,3 +33,25 @@ test('optional victory uses the same bounded image validation and is removed on 
  const before=await readProfiles(db,'room',['a']);assert.equal(before.profiles.a.victory,preview);
  values['arenaV150Profiles/room'].a=validatePortrait({avatar:'piko'});const after=await readProfiles(db,'room',['a']);assert.equal(after.profiles.a.victory,null);assert.notEqual(before.version,after.version);
 });
+
+
+test('both consented portraits survive one nickname lookup failure; revocation removes both poses',async()=>{
+ const make=(avatar)=>{const b=Buffer.alloc(80);b.write('RIFF',0);b.writeUInt32LE(72,4);b.write('WEBP',8);return avatar+':'+b.toString('base64');};
+ const a='custom_aaaaaaaa',b='custom_bbbbbbbb';
+ const saved={a:validatePortrait({avatar:a,preview:make(a),victory:make(a)}),b:validatePortrait({avatar:b,preview:make(b),victory:make(b)})};
+ const db={ref:path=>({get:async()=>{
+  if(path==='users/a/nickname')throw Error('temporary nickname lookup failure');
+  return {val:()=>path==='arenaV150Profiles/room'?saved:'Bob'};
+ }})};
+ const first=await readProfiles(db,'room',['a','b']);
+ assert.equal(first.profiles.a.name,'Oyuncu');
+ assert.equal(first.profiles.a.preview,make(a));
+ assert.equal(first.profiles.b.name,'Bob');
+ assert.equal(first.profiles.b.victory,make(b));
+ saved.a=validatePortrait({avatar:'piko'});
+ const second=await readProfiles(db,'room',['a','b']);
+ assert.equal(second.profiles.a.preview,null);
+ assert.equal(second.profiles.a.victory,null);
+ assert.equal(second.profiles.b.preview,make(b));
+ assert.notEqual(first.version,second.version);
+});
