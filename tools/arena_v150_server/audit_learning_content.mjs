@@ -1,3 +1,5 @@
+import {readFileSync} from 'node:fs';
+import {parseLicensedLine} from './expand_learning.mjs';
 import { authoredWords } from './learning_content.mjs';
 import { academicWords } from './learning_academic.mjs';
 import { wordFormWords } from './learning_wordforms.mjs';
@@ -43,3 +45,47 @@ console.log(JSON.stringify({authoredVocabulary:{total:words.length,uniqueHeadwor
 assert.deepEqual(wordIssues,[],'Invalid authored vocabulary records');
 assert.deepEqual(wordKeyCollisions,[],'Duplicate authored vocabulary runtime keys');
 assert.equal(words.length,1231,'Unexpected authored vocabulary count');
+
+ 
+// Integrated source audit: validate the actual licensed TSVs, not merely the
+// authored extension. Report lexical alignment candidates separately from
+// structural failures: a curated context question need not be in the dictionary.
+const licensedLevels=['A1','A2','B1','B2','C1'];
+const licensedRows=[];
+const invalidLicensed=[];
+for(const level of licensedLevels){
+ const source=readFileSync(new URL('../v175/content/wordquest_en_tr_'+level+'.tsv',import.meta.url),'utf8');
+ const lines=source.trimEnd().split(/\r?\n/);
+ for(const [i,line] of lines.entries()){
+  const row=parseLicensedLine(line,level);
+  if(!row)invalidLicensed.push({level,line:i+1});
+  else licensedRows.push(row);
+ }
+}
+const licensedGroups=group(licensedRows,w=>w.level+'|'+norm(w.answer));
+const licensedDuplicateKeys=[...licensedGroups].filter(([,v])=>v.length>1).map(([k])=>k);
+assert.deepEqual(invalidLicensed,[],'Invalid licensed dictionary rows');
+assert.deepEqual(licensedDuplicateKeys,[],'Duplicate licensed dictionary keys');
+assert.equal(licensedRows.length,6861,'Unexpected licensed dictionary count');
+const dictionary=[...licensedRows,...words];
+const byHeadword=group(dictionary,w=>norm(w.answer));
+const lexicalQuestions=rows.filter(q=>q.topic==='Vocabulary'&&/^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(q.options[q.correct]));
+const alignment={sameLevel:0,differentLevelOnly:0,notInSourceDictionary:0};
+const reviewCandidates=[];
+for(const q of lexicalQuestions){
+ const answer=q.options[q.correct];
+ const matches=byHeadword.get(norm(answer))??[];
+ if(matches.some(w=>w.level===q.level))alignment.sameLevel++;
+ else{
+  const status=matches.length?'differentLevelOnly':'notInSourceDictionary';
+  alignment[status]++;
+  reviewCandidates.push({id:q.id,level:q.level,answer,sourceLevels:[...new Set(matches.map(w=>w.level))],status});
+ }
+}
+const sameGlossGroups=[...group(licensedRows,w=>w.level+'|'+norm(w.meaning))].filter(([,v])=>v.length>1);
+console.log('INTEGRATED_SOURCE_AUDIT',JSON.stringify({
+ licensed:{total:licensedRows.length,byLevel:counts(licensedRows,w=>w.level),uniqueHeadwords:new Set(licensedRows.map(w=>norm(w.answer))).size,invalid:invalidLicensed.length,duplicateKeys:licensedDuplicateKeys.length,quizOnly:licensedRows.filter(w=>w.quizOnly).length,sameGlossGroups:sameGlossGroups.length},
+ authoredVocabulary:words.length,questionCount:rows.length,lexicalQuestions:lexicalQuestions.length,alignment,reviewCandidates:reviewCandidates.slice(0,30),
+ ydsTagged:rows.filter(q=>q.yds).length,
+ limitation:'Level and headword mismatches are editorial candidates, not errors; the shipped base dictionary is not included in this source-only comparison. Android import parity is separately enforced by test_android_learning_import.py.'
+}));
