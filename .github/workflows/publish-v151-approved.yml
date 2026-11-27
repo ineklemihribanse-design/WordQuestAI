@@ -18,8 +18,32 @@ env:
   WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
   WQ_NOTES: 'Arkadaş profilinde isteğe bağlı HD maskot desteği ve güvenli derleme kapsamı denetimi. HD için uyumlu Firebase kuralları gerekir; eski önizleme korunur.'
 jobs:
-  audit:
+  release_gate:
     if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      build: ${{ steps.version.outputs.build }}
+    steps:
+      - name: Reject stale or already published targets before any expensive work
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          if [ "$latest" = "v$WQ_VERSION" ]; then
+            echo "Target $latest already public. No APK rebuild."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          elif [ "$latest" = "v$WQ_BASE_VERSION" ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Unexpected public base $latest; no build or publication"
+            exit 1
+          fi
+  audit:
+    needs: release_gate
+    if: needs.release_gate.outputs.build == 'true' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
