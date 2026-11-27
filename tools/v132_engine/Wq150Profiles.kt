@@ -12,6 +12,9 @@ import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
@@ -21,36 +24,50 @@ internal fun rememberWq150Profiles(room:String,session:AppSession,gateway:Wq150G
     val context=LocalContext.current
     val selected by rememberWq2DSelection(session.profileKey)
     val consent by rememberWq183ShareConsent(session.profileKey)
-    var profiles by remember(room){mutableStateOf(JSONObject())}
-    LaunchedEffect(room,selected,consent,session.profileKey){
+    var profiles by remember(room,session.profileKey,gateway){mutableStateOf(JSONObject())}
+    // Serialize sends across selection/consent changes so an older in-flight
+    // upload cannot overwrite the newest selection after a cancellation.
+    val publishLock=remember(room,session.profileKey,gateway){Mutex()}
+    LaunchedEffect(room,selected,consent,session.profileKey,session.profileName,gateway){
         val custom=Wq183MascotStore.isCustomId(selected)
-        val preview=if(custom&&consent)withContext(Dispatchers.Default){
-            Wq183MascotStore.pictureForProfile(context,session.profileKey,selected,false)?.let{image->
-                try{Wq128RoomHd.encode(selected,image)}finally{image.recycle()}
-            }
-        }else null
-        val victory=if(custom&&consent&&preview!=null)withContext(Dispatchers.Default){
-            Wq183MascotStore.pictureForProfile(context,session.profileKey,selected,true)?.let{image->
-                try{Wq128RoomHd.encode(selected,image)}finally{image.recycle()}
-            }
-        }else null
-        val avatar=if(custom&&preview==null)"piko" else selected
-        repeat(3){
-            try{gateway.publishPortrait(room,avatar,preview,victory);return@LaunchedEffect}
-            catch(e:CancellationException){throw e}
-            catch(e:Exception){delay(1500L)}
-        }
-    }
-    LaunchedEffect(room,gateway){
-        var version:String?=null
-        while(true){
+        var retryDelay=1500L
+        while(isActive){
             try{
-                val response=gateway.profiles(room,version)
-                response.optJSONObject("profiles")?.let{profiles=it}
-                version=response.optString("version").takeIf{it.matches(Regex("^[a-f0-9]{64}$"))}
+                val preview=if(custom&&consent)withContext(Dispatchers.Default){
+                    Wq183MascotStore.pictureForProfile(context,session.profileKey,selected,false)?.let{image->
+                        try{Wq128RoomHd.encode(selected,image)}finally{image.recycle()}
+                    }
+                }else null
+                val victory=if(custom&&consent&&preview!=null)withContext(Dispatchers.Default){
+                    Wq183MascotStore.pictureForProfile(context,session.profileKey,selected,true)?.let{image->
+                        try{Wq128RoomHd.encode(selected,image)}finally{image.recycle()}
+                    }
+                }else null
+                val avatar=if(custom&&preview==null)"piko" else selected
+                publishLock.withLock{gateway.publishPortrait(room,avatar,preview,victory)}
+                // A temporary read/encode failure must not permanently replace
+                // a consented custom portrait with the default avatar.
+                if(!custom||!consent||preview!=null)break
             }catch(e:CancellationException){throw e}
             catch(e:Exception){}
-            delay(8000L)
+            delay(retryDelay)
+            retryDelay=(retryDelay*2).coerceAtMost(15000L)
+        }
+    }
+    LaunchedEffect(room,gateway,session.profileKey){
+        var version:String?=null
+        var pollDelay=8000L
+        while(isActive){
+            try{
+                val response=gateway.profiles(room,version)
+                val nextVersion=response.optString("version").takeIf{it.matches(Regex("^[a-f0-9]{64}$"))}
+                val next=response.optJSONObject("profiles")
+                if(next!=null){profiles=next;version=nextVersion}
+                else if(nextVersion==null||nextVersion!=version)version=null
+                pollDelay=8000L
+            }catch(e:CancellationException){throw e}
+            catch(e:Exception){version=null;pollDelay=4000L}
+            delay(pollDelay)
         }
     }
     return profiles
