@@ -2935,10 +2935,10 @@ export const deepReadingQuestions = [
     "prompt": "Which option best restates: 'The findings are compatible with, but do not confirm, the proposed explanation'?",
     "options": [
       "The results do not contradict the explanation, yet fall short of establishing it.",
-      "The results prove the explanation beyond doubt.",
-      "The explanation conflicts with every finding.",
-      "The results rule out every alternative.",
-      "The findings are entirely irrelevant."
+      "The findings provide sufficient evidence to establish the explanation as the most credible one.",
+      "The findings are inconsistent with the explanation but do not rule it out completely.",
+      "The results establish the explanation even though some competing accounts remain possible.",
+      "The proposed explanation is compatible with the results only if the findings are revised."
     ],
     "correct": 0,
     "explanation": "Uyumlu olmak kesin doğrulama anlamına gelmez."
@@ -3239,10 +3239,10 @@ export const deepReadingQuestions = [
     "prompt": "The explanatory value of the distinction would be substantially reduced if ____ .",
     "options": [
       "the categories could not be applied consistently to independent cases",
-      "the categories enabled reliable discrimination",
-      "independent assessments supported the distinction",
-      "the distinction clarified unexplained observations",
-      "the criteria were independently validated"
+      "the categories allowed independent investigators to classify comparable cases consistently",
+      "the distinction helped explain observations left unresolved by earlier classifications",
+      "the criteria were supported by assessments conducted independently of the original analysis",
+      "the categories captured differences relevant to the phenomenon under investigation"
     ],
     "correct": 0,
     "explanation": "Tutarlı uygulanamayan sınıflama açıklayıcı değerini kaybedebilir."
@@ -3255,10 +3255,10 @@ export const deepReadingQuestions = [
     "prompt": "Although sensitivity analysis can establish stability under specified perturbations, ____ .",
     "options": [
       "it does not necessarily address misspecification outside the examined assumptions",
-      "it proves validity under every alternative",
-      "all uncertainty disappears",
-      "assumptions cease to influence estimates",
-      "stability identifies the true mechanism"
+      "it establishes that the model is correctly specified even beyond the range of changes considered",
+      "it ensures that estimates remain stable when entirely different assumptions are introduced",
+      "it demonstrates that the original assumptions have no effect on the resulting estimates",
+      "it identifies the true causal mechanism whenever the estimates remain relatively stable"
     ],
     "correct": 0,
     "explanation": "Sınanan değişimler dışındaki model yanlışlıkları incelenmemiş olabilir."

@@ -80,11 +80,11 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Maya planned to attend a pottery class at the community centre on Tuesday evening. Her usual bus was cancelled. She asked her neighbour for a lift. She arrived before the class started.\n\nWhat was the outcome?",
     "options": [
-      "She entered the building easily",
+      "She arrived after the class had finished",
       "She arrived before the class started",
-      "He was able to practise with the group",
-      "The staff found her name on their list",
-      "He could dance without pain"
+      "She had to cancel her place in the class",
+      "She attended the class on a different day",
+      "She reached the centre but missed the beginning"
     ],
     "correct": 1,
     "explanation": "Metne göre doğru bilgi \"She arrived before the class started\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -350,11 +350,11 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Owen planned to attend a guitar lesson at the music school on Thursday afternoon. He had left his guitar at home. He borrowed a spare guitar from the teacher. He was able to practise with the group.\n\nWhat was the outcome?",
     "options": [
-      "She entered the building easily",
-      "She arrived before the class started",
+      "He listened to the lesson without playing",
+      "He was asked to return for a later lesson",
       "He was able to practise with the group",
-      "The staff found her name on their list",
-      "He could dance without pain"
+      "He practised alone after the group had left",
+      "He could not join in because the spare guitar was broken"
     ],
     "correct": 2,
     "explanation": "Metne göre doğru bilgi \"He was able to practise with the group\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -890,10 +890,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Felix planned to attend a dance workshop at the youth club on Saturday morning. His shoes were too tight. He changed into his spare trainers. He could dance without pain.\n\nWhat was the outcome?",
     "options": [
-      "She entered the building easily",
-      "She arrived before the class started",
-      "He was able to practise with the group",
-      "The staff found her name on their list",
+      "He could only watch the other dancers",
+      "He had to leave halfway through the workshop",
+      "He continued dancing in the tight shoes",
+      "He postponed the workshop until the following week",
       "He could dance without pain"
     ],
     "correct": 4,
@@ -1161,10 +1161,10 @@ export const ab1250Scenes = [
     "prompt": "Nora planned to attend a painting exhibition at the town gallery on Sunday afternoon. The main entrance was closed. She followed signs to the side entrance. She entered the building easily.\n\nWhat was the outcome?",
     "options": [
       "She entered the building easily",
-      "She arrived before the class started",
-      "He was able to practise with the group",
-      "The staff found her name on their list",
-      "He could dance without pain"
+      "She had to wait until the main entrance reopened",
+      "She returned without seeing the exhibition",
+      "She entered through the main entrance after a long wait",
+      "She was told that the gallery was closed for the day"
     ],
     "correct": 0,
     "explanation": "Metne göre doğru bilgi \"She entered the building easily\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -2240,10 +2240,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Eva planned to buy a notebook at the stationery store on Friday morning. The blue notebooks were sold out. She chose a green notebook instead. She had a notebook for her afternoon lesson.\n\nWhat was the outcome?",
     "options": [
-      "He stayed within his budget",
-      "The second pair fitted him properly",
-      "The replacement lamp worked perfectly",
-      "No flour spilled into his shopping bag",
+      "She had to borrow a notebook for the lesson",
+      "She bought a blue notebook at another shop",
+      "She went to the lesson without a notebook",
+      "She reserved a notebook to collect the following week",
       "She had a notebook for her afternoon lesson"
     ],
     "correct": 4,
@@ -2511,10 +2511,10 @@ export const ab1250Scenes = [
     "prompt": "Adam planned to buy a birthday cake at the bakery on Saturday afternoon. The largest cake cost too much. He ordered a smaller cake. He stayed within his budget.\n\nWhat was the outcome?",
     "options": [
       "He stayed within his budget",
-      "The second pair fitted him properly",
-      "The replacement lamp worked perfectly",
-      "No flour spilled into his shopping bag",
-      "She had a notebook for her afternoon lesson"
+      "He spent more than he had planned",
+      "He left the bakery without ordering a cake",
+      "He ordered the largest cake at its original price",
+      "He had to borrow money to pay for the cake"
     ],
     "correct": 0,
     "explanation": "Metne göre doğru bilgi \"He stayed within his budget\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -4112,11 +4112,11 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Ben planned to complete a parcel collection at the post office on Monday afternoon. He had brought the wrong collection code. He found the correct code in his email. The clerk gave him the parcel.\n\nWhat difficulty occurred?",
     "options": [
-      "She had lost her paper receipt",
-      "The first copy did not fit the lock",
+      "He had forgotten to bring any identification",
+      "He had arrived after the post office closed",
       "He had brought the wrong collection code",
-      "The return desk was already closed",
-      "His front tyre had a small hole"
+      "He had received a collection code for the correct parcel but no email",
+      "He had gone to the wrong post office"
     ],
     "correct": 2,
     "explanation": "Metne göre doğru bilgi \"He had brought the wrong collection code\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -4923,10 +4923,10 @@ export const ab1250Scenes = [
     "prompt": "Nina planned to complete a shoe collection at the repair shop on Friday afternoon. She had lost her paper receipt. She gave the worker her name and phone number. The worker located her repaired shoes.\n\nWhat difficulty occurred?",
     "options": [
       "She had lost her paper receipt",
-      "The first copy did not fit the lock",
-      "He had brought the wrong collection code",
-      "The return desk was already closed",
-      "His front tyre had a small hole"
+      "She had forgotten the name of the repair shop",
+      "She had brought a receipt with an incorrect date",
+      "She had been told that her shoes were not ready",
+      "She had left her repaired shoes at a different shop"
     ],
     "correct": 0,
     "explanation": "Metne göre doğru bilgi \"She had lost her paper receipt\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -5750,11 +5750,11 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Louis planned to join a basketball session at the sports hall on Tuesday evening. His water bottle was empty. He filled it at the drinking fountain. He had enough water during the session.\n\nWhat was the outcome?",
     "options": [
-      "She collected litter without spilling it",
-      "Her feet stayed dry throughout the walk",
+      "He had to leave the session to buy a drink",
+      "He played without drinking any water",
       "He had enough water during the session",
-      "The group could eat in the shade",
-      "He could take photos for the whole walk"
+      "He borrowed an empty bottle from another player",
+      "He ran out of water before the session began"
     ],
     "correct": 2,
     "explanation": "Metne göre doğru bilgi \"He had enough water during the session\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."
@@ -6290,10 +6290,10 @@ export const ab1250Scenes = [
     "kind": "Reading",
     "prompt": "Hugo planned to join a photography walk at the old town square on Thursday morning. His camera battery was almost empty. He replaced it with a charged battery. He could take photos for the whole walk.\n\nWhat was the outcome?",
     "options": [
-      "She collected litter without spilling it",
-      "Her feet stayed dry throughout the walk",
-      "He had enough water during the session",
-      "The group could eat in the shade",
+      "He could take only a few photographs before the battery died",
+      "He had to leave the walk to recharge his camera",
+      "He borrowed a different camera for the walk",
+      "He completed the walk without taking photographs",
       "He could take photos for the whole walk"
     ],
     "correct": 4,
@@ -6561,10 +6561,10 @@ export const ab1250Scenes = [
     "prompt": "Ruby planned to join a beach clean-up at the coast car park on Saturday afternoon. Her bag for litter had torn. She collected a stronger bag from the organiser. She collected litter without spilling it.\n\nWhat was the outcome?",
     "options": [
       "She collected litter without spilling it",
-      "Her feet stayed dry throughout the walk",
-      "He had enough water during the session",
-      "The group could eat in the shade",
-      "He could take photos for the whole walk"
+      "She had to stop collecting litter when the bag tore again",
+      "She collected litter but spilled it on the beach",
+      "She returned home before the clean-up finished",
+      "She used the original torn bag throughout the event"
     ],
     "correct": 0,
     "explanation": "Metne göre doğru bilgi \"She collected litter without spilling it\" ifadesidir. Diğer seçenekler farklı bir durumu anlatır."

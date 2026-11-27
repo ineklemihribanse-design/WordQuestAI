@@ -775,10 +775,10 @@ export const extraQuestions = [
     "prompt": "Which option best restates 'The absence of evidence does not necessarily constitute evidence of absence'?",
     "options": [
       "A lack of supporting data does not by itself prove that something is absent.",
-      "Any lack of data proves the hypothesis false.",
-      "The evidence always proves something is missing.",
-      "Absence and evidence mean the same thing.",
-      "The claim has been definitively disproved."
+      "A lack of supporting data is sufficient to establish that the proposed phenomenon does not exist.",
+      "A phenomenon should be regarded as present whenever its absence has not been conclusively established.",
+      "Evidence supporting the absence of a phenomenon can never be obtained through empirical investigation.",
+      "An explanation lacking supporting data must be rejected even if the available evidence is inconclusive."
     ],
     "correct": 0,
     "explanation": "Destekleyici kanıtın yokluğu, olgunun yokluğunu tek başına kanıtlamaz."

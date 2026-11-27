@@ -143,10 +143,10 @@ export const readingQuestions = [
     "prompt": "Researchers compared two methods of drying fruit. The faster method consumed more electricity per kilogram, whereas the slower one produced fruit of similar quality. The researchers noted that the preferred method would depend on both energy prices and production deadlines.\n\nWhat is the main conclusion?",
     "options": [
       "The choice of drying method involves a trade-off between time and energy use.",
-      "The faster method always produces superior fruit.",
-      "The slower method uses no electricity.",
-      "Energy prices never affect industrial decisions.",
-      "Both methods produce substantially different fruit quality."
+      "The faster drying method gives better quality fruit despite its increased energy consumption.",
+      "The slower process reduces both drying time and electricity use per kilogram.",
+      "Energy prices determine the preferred method independently of production deadlines.",
+      "The methods differ chiefly in the quality of the dried fruit rather than their energy requirements."
     ],
     "correct": 0,
     "explanation": "Yöntem seçimi hız ve enerji maliyeti arasında denge gerektirir.",
@@ -636,10 +636,10 @@ export const readingQuestions = [
     "prompt": "A city assessed a flood-prevention scheme using historical rainfall records. Recent rainfall, however, showed patterns that differed markedly from those records. Engineers argued that an apparently conservative design might still be inadequate if the underlying distribution of extreme events had changed.\n\nWhy might a conservative design still be inadequate?",
     "options": [
       "Its safety margin may be based on a distribution that is no longer representative.",
-      "It necessarily uses no safety margin at all.",
-      "Historical records were never used.",
-      "Recent rainfall exactly replicated historical patterns.",
-      "Engineers rejected the idea of studying extremes."
+      "The safety margin depends mainly on the accuracy with which construction costs were estimated.",
+      "Historical records may have been too short to calculate the original margin precisely, regardless of recent changes.",
+      "The design may assume that extreme rainfall will become less frequent than historical observations suggest.",
+      "The margin was calculated for ordinary rainfall rather than for any extreme events."
     ],
     "correct": 0,
     "explanation": "Güvenlik payı artık temsil edici olmayan geçmiş dağılıma dayanabilir.",
@@ -653,10 +653,10 @@ export const readingQuestions = [
     "prompt": "An institution introduced a performance indicator intended to reward quality. Staff gradually adapted their work to maximise the indicator, sometimes at the expense of tasks that were harder to quantify. The reported performance rose, while independent assessments were less favourable.\n\nWhat is the central issue?",
     "options": [
       "Optimising a proxy measure can undermine the underlying goal it was meant to represent.",
-      "Indicators cannot influence staff behaviour.",
-      "All unquantified tasks became easier to measure.",
-      "Independent assessments were identical to the indicator.",
-      "The institution stopped collecting performance data."
+      "A performance indicator is most useful when it measures the tasks that staff already find easiest.",
+      "Independent assessments became less reliable because staff collected more performance data.",
+      "The change in staff behaviour improved quality but made the indicator less sensitive to that improvement.",
+      "The increase in reported performance established that difficult-to-measure tasks had become more effective."
     ],
     "correct": 0,
     "explanation": "Göstergeyi en yüksek düzeye çıkarma çabası göstergenin temsil ettiği asıl kalite hedefini zayıflatabilir.",
