@@ -186,19 +186,19 @@ B1	Genel İngilizce	İsimler	BLESSING	nimet, lütuf, kutsama
 B1	Genel İngilizce	Sıfatlar	BLIND	görme engelli, kör; mecazen farkında olmayan
 B1	Genel İngilizce	İsimler	BLOG	blog, ağ günlüğü
 B1	Genel İngilizce	İsimler	BLOGGER	blog yazarı
-B1	Genel İngilizce	İsimler	BLUSH	isim: yüz kızarması, allık; fiil: kızarmak, utanmak
-B1	Genel İngilizce	İsimler	BOAST	fiil: övünmek, böbürlenmek; isim: övünme
-B1	Genel İngilizce	İsimler	BOLD	sıfat: cesur, gözü pek, kalın (yazı); isim: kalın yazı tipi
+B1	Genel İngilizce	Fiiller	BLUSH	fiil: yüzü kızarmak; isim: yüz kızarması, allık
+B1	Genel İngilizce	Fiiller	BOAST	fiil: övünmek, böbürlenmek; isim: övünme
+B1	Genel İngilizce	Sıfatlar	BOLD	sıfat: cesur, gözü pek, kalın (yazı); isim: kalın yazı tipi
 B1	Genel İngilizce	Zarflar	BOLDLY	cesurca, cüretle
 B1	Genel İngilizce	İsimler	BOMB	isim: bomba; fiil: bombalamak
 B1	Genel İngilizce	İsimler	BOOKING	rezervasyon, yer ayırtma
-B1	Genel İngilizce	İsimler	BOOM	ani artış, patlama, gümbürtü
-B1	Genel İngilizce	İsimler	BOOT	çizme, bot, (araba) bagaj
+B1	Genel İngilizce	İsimler	BOOM	ani ve güçlü artış, ekonomik canlanma; gümbürtü
+B1	Genel İngilizce	İsimler	BOOT	bot, çizme; (İng.) otomobil bagajı
 B1	Genel İngilizce	İsimler	BORDER	sınır, kenar
 B1	Genel İngilizce	Fiiller	BORE	sıkmak, canını sıkmak, delmek
 B1	Genel İngilizce	İsimler	BOREDOM	can sıkıntısı
-B1	Genel İngilizce	İsimler	BOTHER	fiil: rahatsız etmek, canını sıkmak, zahmet etmek; isim: zahmet, sıkıntı
-B1	Genel İngilizce	Sıfatlar	BOUND	mecbur, kesin (olacak), -e gitmekte olan
+B1	Genel İngilizce	Fiiller	BOTHER	fiil: rahatsız etmek, canını sıkmak, zahmet etmek; isim: zahmet, sıkıntı
+B1	Genel İngilizce	Sıfatlar	BOUND	bağlı; bound to: yapması kesin veya çok olası; bound for: bir yere gitmekte olan
 B1	Genel İngilizce	İsimler	BOW	isim: reverans, yay, fiyonk; fiil: eğilmek, başıyla selam vermek
 B1	Genel İngilizce	İsimler	BOXING	boks
 B1	Genel İngilizce	İsimler	BRACELET	bilezik, bileklik
@@ -210,19 +210,19 @@ B1	Genel İngilizce	İsimler	BREAKTHROUGH	atılım, çığır açan buluş, büy
 B1	Genel İngilizce	İsimler	BREAST	göğüs, meme
 B1	Genel İngilizce	İsimler	BREATH	nefes, soluk
 B1	Genel İngilizce	Sıfatlar	BREATHLESS	nefes nefese, soluksuz
-B1	Genel İngilizce	İsimler	BREEDING	yetiştirme, üreme, terbiye
+B1	Genel İngilizce	İsimler	BREEDING	üreme; hayvan veya bitki yetiştirme; görgü
 B1	Genel İngilizce	İsimler	BRICK	tuğla
-B1	Genel İngilizce	Fiiller	BRIEF	sıfat: kısa, öz; fiil: bilgilendirmek, brifing vermek
+B1	Genel İngilizce	Sıfatlar	BRIEF	sıfat: kısa, öz; fiil: bilgilendirmek, brifing vermek
 B1	Genel İngilizce	Zarflar	BRIEFLY	kısaca, kısa süreliğine
 B1	Genel İngilizce	Zarflar	BRIGHTLY	parlak bir şekilde, canlı biçimde
 B1	Genel İngilizce	Sıfatlar	BROAD	geniş, kapsamlı, genel
-B1	Genel İngilizce	İsimler	BROADCAST	isim: yayın; fiil: yayınlamak
+B1	Genel İngilizce	İsimler	BROADCAST	isim: yayın; fiil: yayımlamak, radyo veya televizyonda yayın yapmak
 B1	Genel İngilizce	İsimler	BROCCOLI	brokoli
 B1	Genel İngilizce	İsimler	BRONZE	bronz, tunç
 B1	Genel İngilizce	İsimler	BROTHERHOOD	kardeşlik
 B1	Genel İngilizce	İsimler	BUBBLE	kabarcık, baloncuk, köpük
 B1	Genel İngilizce	İsimler	BUDDY	arkadaş, dost, kanka
-B1	Genel İngilizce	İsimler	BUILDER	inşaatçı, yapı ustası
+B1	Genel İngilizce	İsimler	BUILDER	inşaat yapan kişi veya şirket; yapı ustası
 B1	Genel İngilizce	İsimler	BULL	boğa
 B1	Genel İngilizce	İsimler	BULLET	mermi, kurşun, madde işareti
 B1	Genel İngilizce	İsimler	BULLETIN	bülten
@@ -230,9 +230,9 @@ B1	Genel İngilizce	Fiiller	BUMP	çarpmak, toslamak, çarpışmak
 B1	Genel İngilizce	İsimler	BUNCH	demet, salkım, grup
 B1	Genel İngilizce	İsimler	BURDEN	isim: yük, külfet; fiil: yük olmak, yüklemek
 B1	Genel İngilizce	İsimler	BUREAU	büro, daire, şifonyer
-B1	Genel İngilizce	İsimler	BURGLAR	hırsız
+B1	Genel İngilizce	İsimler	BURGLAR	hırsızlık amacıyla bir binaya izinsiz giren kişi
 B1	Genel İngilizce	Sıfatlar	BURNING	yanan, yakıcı, şiddetli
-B1	Genel İngilizce	İsimler	BURST	fiil: patlamak, patlatmak; isim: patlama, ani artış
+B1	Genel İngilizce	Fiiller	BURST	fiil: patlamak, patlatmak; isim: patlama, ani artış
 B1	Genel İngilizce	Fiiller	BUST	kırmak, bozmak, baskın yapmak
 B1	Genel İngilizce	İsimler	BUTCHER	isim: kasap; fiil: (hayvan) kesmek, katletmek
 B1	Genel İngilizce	İsimler	BUYER	alıcı, müşteri
@@ -253,10 +253,10 @@ B1	Genel İngilizce	İsimler	CANCER	kanser
 B1	Genel İngilizce	İsimler	CANDLE	mum
 B1	Genel İngilizce	Sıfatlar	CANNED	konserve
 B1	Genel İngilizce	İsimler	CANTEEN	kantin, yemekhane, matara
-B1	Genel İngilizce	Sıfatlar	CAPABLE	yetenekli, becerikli, kabiliyetli
-B1	Genel İngilizce	İsimler	CAPACITY	kapasite, yetenek, sıfat (görev)
+B1	Genel İngilizce	Sıfatlar	CAPABLE	yetenekli, becerikli; capable of: yapabilecek durumda olan
+B1	Genel İngilizce	İsimler	CAPACITY	kapasite, alabileceği miktar, yetenek; görev veya sıfat
 B1	Genel İngilizce	İsimler	CAPSULE	kapsül
-B1	Genel İngilizce	İsimler	CAPTURE	fiil: yakalamak, ele geçirmek; isim: yakalama, ele geçirme
+B1	Genel İngilizce	Fiiller	CAPTURE	fiil: yakalamak, ele geçirmek; isim: yakalama, ele geçirme
 B1	Genel İngilizce	Sıfatlar	CARELESS	dikkatsiz, özensiz, umursamaz
 B1	Genel İngilizce	Zarflar	CARELESSLY	dikkatsizce, özensizce
 B1	Genel İngilizce	İsimler	CARELESSNESS	dikkatsizlik, özensizlik
@@ -264,7 +264,7 @@ B1	Genel İngilizce	İsimler	CARPET	halı
 B1	Genel İngilizce	İsimler	CARRIAGE	vagon, at arabası, taşıma
 B1	Genel İngilizce	İsimler	CARTON	karton kutu, kutu
 B1	Genel İngilizce	İsimler	CASHPOINT	bankamatik, ATM
-B1	Genel İngilizce	Sıfatlar	CASUAL	gündelik, rahat, gelişigüzel
+B1	Genel İngilizce	Sıfatlar	CASUAL	gündelik, resmî olmayan; gelişigüzel; geçici
 B1	Genel İngilizce	Fiiller	CATEGORIZE	sınıflandırmak, kategorilere ayırmak
 B1	Genel İngilizce	İsimler	CATEGORY	kategori, sınıf
 B1	Genel İngilizce	İsimler	CATTLE	sığırlar, büyükbaş hayvan
@@ -273,7 +273,7 @@ B1	Genel İngilizce	Sıfatlar	CAUTIOUS	dikkatli, temkinli, ihtiyatlı
 B1	Genel İngilizce	İsimler	CAVE	mağara, in
 B1	Genel İngilizce	İsimler	CD-ROM	CD-ROM, salt okunur kompakt disk
 B1	Genel İngilizce	İsimler	CELEBRITY	ünlü, şöhret
-B1	Genel İngilizce	İsimler	CELL	hücre, cep telefonu
+B1	Genel İngilizce	İsimler	CELL	hücre; hapishane hücresi; (ABD, gündelik) cep telefonu
 B1	Genel İngilizce	Sıfatlar	CENTRAL	merkezî, orta, temel
 B1	Genel İngilizce	İsimler	CENTRAL HEATING	merkezî ısıtma, kalorifer
 B1	Genel İngilizce	İsimler	CERTAINTY	kesinlik, emin olma
@@ -285,7 +285,7 @@ B1	Genel İngilizce	İsimler	CHARGE	isim: ücret, suçlama, şarj; fiil: ücret 
 B1	Genel İngilizce	İsimler	CHARIOT	savaş arabası
 B1	Genel İngilizce	İsimler	CHARITY	hayır kurumu, yardım, hayırseverlik
 B1	Genel İngilizce	İsimler	CHARM	çekicilik, cazibe, tılsım
-B1	Genel İngilizce	İsimler	CHASE	fiil: kovalamak, peşinden koşmak; isim: kovalama, takip
+B1	Genel İngilizce	Fiiller	CHASE	fiil: kovalamak, peşinden koşmak; isim: kovalama, takip
 B1	Genel İngilizce	İsimler	CHAT	isim: sohbet; fiil: sohbet etmek, laflamak
 B1	Genel İngilizce	İsimler	CHAT SHOW	sohbet programı, talk şov
 B1	Genel İngilizce	İsimler	CHECK-IN COUNTER	check-in bankosu, kayıt masası
@@ -297,12 +297,12 @@ B1	Genel İngilizce	İsimler	CHEMISTRY	kimya
 B1	Genel İngilizce	Fiiller	CHERISH	çok değer vermek, sevgiyle korumak, (anı) saklamak
 B1	Genel İngilizce	İsimler	CHEST OF DRAWERS	çekmeceli dolap, şifonyer
 B1	Genel İngilizce	İsimler	CHEWING GUM	sakız, çiklet
-B1	Genel İngilizce	İsimler	CHIEF	sıfat: baş, ana, en önemli; isim: şef, başkan, reis
+B1	Genel İngilizce	Sıfatlar	CHIEF	sıfat: baş, ana, en önemli; isim: şef, başkan, reis
 B1	Genel İngilizce	İsimler	CHOIR	koro
 B1	Genel İngilizce	Fiiller	CHOKE	boğulmak, boğmak, tıkanmak
 B1	Genel İngilizce	Sıfatlar	CHRISTIAN	Hristiyan
 B1	Genel İngilizce	Sıfatlar	CHRONOLOGICAL	kronolojik, zaman sırasına göre
-B1	Genel İngilizce	İsimler	CHUCKLE	kıkırdama, kıs kıs gülme
+B1	Genel İngilizce	Fiiller	CHUCKLE	fiil: kıs kıs gülmek, kıkırdamak; isim: hafif gülüş
 B1	Genel İngilizce	Sıfatlar	CIRCULAR	dairesel, yuvarlak
 B1	Genel İngilizce	İsimler	CIRCUS	sirk
 B1	Genel İngilizce	İsimler	CITIZENSHIP	vatandaşlık, yurttaşlık
@@ -318,10 +318,10 @@ B1	Genel İngilizce	İsimler	CLINIC	klinik
 B1	Genel İngilizce	İsimler	CLIP	klips, ataş, klip
 B1	Genel İngilizce	Zarflar	CLOSELY	yakından, dikkatle
 B1	Genel İngilizce	İsimler	COAL	kömür
-B1	Genel İngilizce	Sıfatlar	COASTAL	kıyıya ait, sahil
+B1	Genel İngilizce	Sıfatlar	COASTAL	kıyıya ait, kıyı bölgesindeki
 B1	Genel İngilizce	İsimler	COD	morina balığı
 B1	Genel İngilizce	İsimler	COFFIN	tabut
-B1	Genel İngilizce	İsimler	COLLAPSE	fiil: çökmek, yıkılmak, yığılmak; isim: çöküş, yıkılma
+B1	Genel İngilizce	Fiiller	COLLAPSE	fiil: çökmek, yıkılmak, yığılmak; isim: çöküş, yıkılma
 B1	Genel İngilizce	İsimler	COLLAR	yaka, tasma
 B1	Genel İngilizce	İsimler	COLUMNIST	köşe yazarı
 B1	Genel İngilizce	İsimler	COMBINATION	birleşim, kombinasyon, bileşim
@@ -332,7 +332,7 @@ B1	Genel İngilizce	İsimler	COMET	kuyruklu yıldız
 B1	Genel İngilizce	İsimler	COMFORT	rahatlık, konfor, teselli
 B1	Genel İngilizce	İsimler	COMMA	virgül
 B1	Genel İngilizce	İsimler	COMMAND	emir, komut, buyruk
-B1	Genel İngilizce	İsimler	COMMERCIAL	sıfat: ticari; isim: reklam (filmi)
+B1	Genel İngilizce	Sıfatlar	COMMERCIAL	sıfat: ticari; isim: reklam (filmi)
 B1	Genel İngilizce	Fiiller	COMMIT	(suç) işlemek, kendini adamak, taahhüt etmek
 B1	Genel İngilizce	İsimler	COMMON SENSE	sağduyu
 B1	Genel İngilizce	Zarflar	COMMONLY	genellikle, yaygın olarak, sıkça
@@ -340,7 +340,7 @@ B1	Genel İngilizce	İsimler	COMPARISON	karşılaştırma, kıyaslama
 B1	Genel İngilizce	Fiiller	COMPETE	yarışmak, rekabet etmek
 B1	Genel İngilizce	Sıfatlar	COMPETITIVE	rekabetçi, rekabete dayalı
 B1	Genel İngilizce	İsimler	COMPETITOR	rakip, yarışmacı
-B1	Genel İngilizce	İsimler	COMPLEMENT	tamamlayıcı, tümleç
+B1	Genel İngilizce	İsimler	COMPLEMENT	tamamlayıcı unsur; dil bilgisinde tümleç; fiil: tamamlamak
 B1	Genel İngilizce	Zarflar	COMPLETELY	tamamen, büsbütün
 B1	Genel İngilizce	Sıfatlar	COMPLEX	karmaşık, kompleks
 B1	Genel İngilizce	Fiiller	COMPLICATE	karmaşıklaştırmak, zorlaştırmak
@@ -348,12 +348,12 @@ B1	Genel İngilizce	Sıfatlar	COMPLICATED	karmaşık, karışık, komplike
 B1	Genel İngilizce	İsimler	COMPLIMENT	iltifat, övgü
 B1	Genel İngilizce	Fiiller	COMPOSE	bestelemek, oluşturmak, yazmak
 B1	Genel İngilizce	İsimler	COMPOSITION	bileşim, kompozisyon, beste
-B1	Genel İngilizce	İsimler	COMPOUND	bileşik, karışım
+B1	Genel İngilizce	İsimler	COMPOUND	isim: bileşik; çevrili alan; sıfat: birleşik; fiil: birleştirmek veya artırmak
 B1	Genel İngilizce	İsimler	CONCENTRATION	konsantrasyon, dikkat toplama, yoğunlaşma
 B1	Genel İngilizce	İsimler	CONCEPT	kavram, konsept
 B1	Genel İngilizce	Sıfatlar	CONCERNED	endişeli, kaygılı, ilgili
 B1	Genel İngilizce	Fiiller	CONCLUDE	sonuçlandırmak, bitirmek, sonucuna varmak
-B1	Genel İngilizce	İsimler	CONDUCT	isim: davranış, yönetim; fiil: yürütmek, yönetmek, iletmek
+B1	Genel İngilizce	Fiiller	CONDUCT	isim: davranış, yönetim; fiil: yürütmek, yönetmek, iletmek
 B1	Genel İngilizce	İsimler	CONFIRMATION	onay, teyit, doğrulama
 B1	Genel İngilizce	Sıfatlar	CONFUSING	kafa karıştırıcı, karışık
 B1	Genel İngilizce	İsimler	CONFUSION	karışıklık, kafa karışıklığı
@@ -374,8 +374,8 @@ B1	Genel İngilizce	İsimler	CONSTRUCTION	inşaat, yapım, yapı
 B1	Genel İngilizce	İsimler	CONSUMER	tüketici
 B1	Genel İngilizce	İsimler	CONSUMPTION	tüketim
 B1	Genel İngilizce	Fiiller	CONTAIN	içermek, kapsamak, barındırmak
-B1	Genel İngilizce	Sıfatlar	CONTINUAL	sürekli, aralıksız, sık sık tekrarlanan
-B1	Genel İngilizce	Zarflar	CONTINUALLY	sürekli, durmadan
+B1	Genel İngilizce	Sıfatlar	CONTINUAL	sık sık tekrarlanan; sürekli devam eden
+B1	Genel İngilizce	Zarflar	CONTINUALLY	tekrar tekrar; sürekli biçimde
 B1	Genel İngilizce	Sıfatlar	CONTINUOUS	sürekli, kesintisiz
 B1	Genel İngilizce	Zarflar	CONTINUOUSLY	sürekli, durmadan, kesintisiz
 B1	Genel İngilizce	Sıfatlar	CONTRARY	aksi, karşıt, zıt
@@ -388,9 +388,9 @@ B1	Genel İngilizce	İsimler	CORRECTION	düzeltme
 B1	Genel İngilizce	İsimler	COTTON	pamuk
 B1	Genel İngilizce	İsimler	COUNCIL	konsey, meclis, belediye
 B1	Genel İngilizce	İsimler	COUNSELING	danışmanlık, rehberlik
-B1	Genel İngilizce	İsimler	COUNT	fiil: saymak, hesaba katmak, önemli olmak; isim: sayım, sayı
+B1	Genel İngilizce	Fiiller	COUNT	fiil: saymak, hesaba katmak, önemli olmak; isim: sayım, sayı
 B1	Genel İngilizce	Sıfatlar	COUNTLESS	sayısız, pek çok
-B1	Genel İngilizce	İsimler	COUNTY	idari bölge, kontluk
+B1	Genel İngilizce	İsimler	COUNTY	ülkeye göre değişen bir idari bölge; tarihsel olarak kontluk
 B1	Genel İngilizce	İsimler	COURAGE	cesaret, yüreklilik
 B1	Genel İngilizce	Sıfatlar	COURAGEOUS	cesur, yürekli
 B1	Genel İngilizce	İsimler	COURGETTE	kabak, sakız kabağı
@@ -404,34 +404,34 @@ B1	Genel İngilizce	İsimler	CROSSING	geçit, geçiş, karşıya geçme
 B1	Genel İngilizce	İsimler	CROSSROADS	kavşak, yol ayrımı, dönüm noktası
 B1	Genel İngilizce	İsimler	CROW	karga
 B1	Genel İngilizce	Sıfatlar	CRUEL	zalim, acımasız
-B1	Genel İngilizce	İsimler	CRUSH	izdiham, kalabalık, platonik aşk
+B1	Genel İngilizce	Fiiller	CRUSH	fiil: ezmek, sıkıştırmak; isim: izdiham; birine duyulan yoğun romantik ilgi
 B1	Genel İngilizce	İsimler	CUCUMBER	salatalık, hıyar
 B1	Genel İngilizce	Fiiller	CULTIVATE	yetiştirmek, ekip biçmek, geliştirmek
 B1	Genel İngilizce	Sıfatlar	CULTURAL	kültürel
-B1	Genel İngilizce	İsimler	CURE	isim: tedavi, çare, şifa; fiil: tedavi etmek, iyileştirmek
+B1	Genel İngilizce	İsimler	CURE	isim: iyileştiren tedavi, çare; fiil: hastalığı iyileştirmek
 B1	Genel İngilizce	İsimler	CURIOSITY	merak
 B1	Genel İngilizce	Sıfatlar	CURIOUS	meraklı, tuhaf
 B1	Genel İngilizce	Zarflar	CURIOUSLY	merakla, tuhaf bir şekilde
 B1	Genel İngilizce	Sıfatlar	CURLY	kıvırcık, kıvrık
 B1	Genel İngilizce	İsimler	CURRENCY	para birimi, döviz
-B1	Genel İngilizce	Sıfatlar	CURRENT	güncel, şimdiki, mevcut
+B1	Genel İngilizce	Sıfatlar	CURRENT	sıfat: güncel, mevcut; isim: akıntı, elektrik akımı
 B1	Genel İngilizce	Zarflar	CURRENTLY	şu anda, hâlen
 B1	Genel İngilizce	İsimler	CURRICULUM	müfredat, öğretim programı
 B1	Genel İngilizce	İsimler	CURTAIN	perde
 B1	Genel İngilizce	İsimler	CURVE	eğri, kavis, viraj
 B1	Genel İngilizce	İsimler	CUSHION	minder, yastık
 B1	Genel İngilizce	İsimler	CUSTOMS	gümrük
-B1	Genel İngilizce	İsimler	CUT	fiil: kesmek, azaltmak; isim: kesik, kesinti, indirim
+B1	Genel İngilizce	Fiiller	CUT	fiil: kesmek, azaltmak; isim: kesik, kesinti, indirim
 B1	Genel İngilizce	İsimler	CV	özgeçmiş, CV
-B1	Genel İngilizce	İsimler	DAISY	papatya
+B1	Genel İngilizce	İsimler	DAISY	papatya (özellikle Bellis perennis)
 B1	Genel İngilizce	Sıfatlar	DAMAGED	hasarlı, zarar görmüş
 B1	Genel İngilizce	Sıfatlar	DAMP	nemli, rutubetli
 B1	Genel İngilizce	Zarflar	DANGEROUSLY	tehlikeli bir şekilde
 B1	Genel İngilizce	Fiiller	DARE	cesaret etmek, cüret etmek, meydan okumak
 B1	Genel İngilizce	İsimler	DARKNESS	karanlık
-B1	Genel İngilizce	İsimler	DATING	flört etme, tarihlendirme
+B1	Genel İngilizce	İsimler	DATING	romantik buluşma, flört; bir şeyin tarihini belirleme
 B1	Genel İngilizce	İsimler	DAZE	sersemlik, şaşkınlık
-B1	Genel İngilizce	İsimler	DAZZLE	göz kamaştırma, parlaklık
+B1	Genel İngilizce	Fiiller	DAZZLE	gözünü kamaştırmak; hayran bırakmak
 B1	Genel İngilizce	Sıfatlar	DEADLY	ölümcül, öldürücü
 B1	Genel İngilizce	Sıfatlar	DEAF	sağır, işitme engelli
 B1	Genel İngilizce	İsimler	DEALER	satıcı, bayi, tüccar
@@ -439,10 +439,10 @@ B1	Genel İngilizce	İsimler	DEBRIS	enkaz, döküntü
 B1	Genel İngilizce	İsimler	DEBT	borç
 B1	Genel İngilizce	İsimler	DECLARATION	beyan, bildirge, beyanname
 B1	Genel İngilizce	Fiiller	DECLARE	ilan etmek, beyan etmek, açıklamak
-B1	Genel İngilizce	İsimler	DECLINE	isim: düşüş, azalma, gerileme; fiil: azalmak, düşmek, reddetmek
-B1	Genel İngilizce	İsimler	DECREASE	isim: azalma, düşüş; fiil: azalmak, azaltmak
+B1	Genel İngilizce	Fiiller	DECLINE	isim: düşüş, azalma, gerileme; fiil: azalmak, düşmek, reddetmek
+B1	Genel İngilizce	Fiiller	DECREASE	isim: azalma, düşüş; fiil: azalmak, azaltmak
 B1	Genel İngilizce	Fiiller	DEDICATE	adamak, ithaf etmek
-B1	Genel İngilizce	İsimler	DEED	iş, eylem, tapu
+B1	Genel İngilizce	İsimler	DEED	eylem, yapılan iş; mülkiyet veya hak devrini belgeleyen senet
 B1	Genel İngilizce	Fiiller	DEFEND	savunmak, korumak
 B1	Genel İngilizce	İsimler	DEFENDER	savunucu, defans oyuncusu
 B1	Genel İngilizce	İsimler	DEFENSE	savunma
@@ -459,21 +459,21 @@ B1	Genel İngilizce	Sıfatlar	DELIGHTFUL	çok hoş, keyifli, nefis
 B1	Genel İngilizce	İsimler	DELIVERY	teslimat, teslim, doğum
 B1	Genel İngilizce	İsimler	DEMOCRACY	demokrasi
 B1	Genel İngilizce	Sıfatlar	DEMOCRATIC	demokratik
-B1	Genel İngilizce	İsimler	DEMONSTRATION	gösteri, tanıtım, protesto gösterisi
+B1	Genel İngilizce	İsimler	DEMONSTRATION	gösterme, tanıtım, kanıtlama; protesto gösterisi
 B1	Genel İngilizce	Fiiller	DENY	inkâr etmek, reddetmek
 B1	Genel İngilizce	Fiiller	DEPART	ayrılmak, hareket etmek, kalkmak
 B1	Genel İngilizce	İsimler	DEPARTURE	kalkış, ayrılış, gidiş
 B1	Genel İngilizce	İsimler	DEPENDENT	sıfat: bağımlı, bağlı; isim: bakmakla yükümlü olunan kişi
-B1	Genel İngilizce	Sıfatlar	DEPRESSED	depresif, bunalımda, morali bozuk
+B1	Genel İngilizce	Sıfatlar	DEPRESSED	depresyonda olan; çökkün, morali bozuk
 B1	Genel İngilizce	Sıfatlar	DEPRESSING	iç karartıcı, moral bozucu
-B1	Genel İngilizce	İsimler	DEPRESSION	depresyon, bunalım, ekonomik kriz
+B1	Genel İngilizce	İsimler	DEPRESSION	depresyon; ekonomik durgunluk veya ağır bunalım; çöküntü
 B1	Genel İngilizce	Fiiller	DEPRIVE	yoksun bırakmak, mahrum etmek
 B1	Genel İngilizce	İsimler	DEPTH	derinlik
-B1	Genel İngilizce	Fiiller	DERIVE	elde etmek, türetmek, kaynaklanmak
+B1	Genel İngilizce	Fiiller	DERIVE	türetmek, elde etmek; derive from: -den kaynaklanmak
 B1	Genel İngilizce	Fiiller	DESERVE	hak etmek, layık olmak
 B1	Genel İngilizce	İsimler	DESIRE	isim: arzu, istek; fiil: arzulamak, istemek
 B1	Genel İngilizce	İsimler	DESPAIR	umutsuzluk, çaresizlik
-B1	Genel İngilizce	Sıfatlar	DESPERATE	çaresiz, umutsuz, can atan
+B1	Genel İngilizce	Sıfatlar	DESPERATE	çaresiz, umutsuz; bir şeyi çok isteyen
 B1	Genel İngilizce	Edatlar	DESPITE	-e rağmen, -e karşın
 B1	Genel İngilizce	İsimler	DESTINATION	varış yeri, gidilecek yer, hedef
 B1	Genel İngilizce	İsimler	DESTRUCTION	yıkım, tahribat, yok etme
@@ -485,29 +485,29 @@ B1	Genel İngilizce	Sıfatlar	DEVASTATING	yıkıcı, harap edici, çok üzücü
 B1	Genel İngilizce	İsimler	DEVELOPMENT	gelişme, gelişim, kalkınma
 B1	Genel İngilizce	İsimler	DEVOTION	bağlılık, özveri, adanmışlık
 B1	Genel İngilizce	İsimler	DIAGRAM	şema, diyagram
-B1	Genel İngilizce	İsimler	DIAL	isim: kadran; fiil: (numara) çevirmek, aramak
+B1	Genel İngilizce	Fiiller	DIAL	isim: kadran; fiil: (numara) çevirmek, aramak
 B1	Genel İngilizce	İsimler	DIALOG	diyalog, iletişim kutusu
 B1	Genel İngilizce	İsimler	DIAMETER	çap
 B1	Genel İngilizce	İsimler	DIAPER	bebek bezi
-B1	Genel İngilizce	Fiiller	DIFFER	farklı olmak, ayrılmak, katılmamak
+B1	Genel İngilizce	Fiiller	DIFFER	farklılık göstermek; aynı görüşte olmamak
 B1	Genel İngilizce	Sıfatlar	DIGITAL	dijital, sayısal
 B1	Genel İngilizce	İsimler	DILIGENCE	çalışkanlık, özen, gayret
 B1	Genel İngilizce	Sıfatlar	DILIGENT	çalışkan, gayretli, titiz
 B1	Genel İngilizce	İsimler	DIOXIDE	dioksit
 B1	Genel İngilizce	Zarflar	DIRECTLY	doğrudan, direkt, hemen
 B1	Genel İngilizce	İsimler	DIRT	kir, toprak, pislik
-B1	Genel İngilizce	İsimler	DISABILITY	engellilik, sakatlık
-B1	Genel İngilizce	Fiiller	DISABLE	devre dışı bırakmak, sakat bırakmak
+B1	Genel İngilizce	İsimler	DISABILITY	engellilik; işlev kısıtlılığı
+B1	Genel İngilizce	Fiiller	DISABLE	devre dışı bırakmak; bir işlevi yerine getiremez hâle getirmek
 B1	Genel İngilizce	Sıfatlar	DISABLED	engelli, devre dışı
 B1	Genel İngilizce	Fiiller	DISAPPOINT	hayal kırıklığına uğratmak
 B1	Genel İngilizce	İsimler	DISAPPOINTMENT	hayal kırıklığı
 B1	Genel İngilizce	İsimler	DISASTER	felaket, afet, facia
-B1	Genel İngilizce	Sıfatlar	DISASTROUS	feci, felaket, berbat
+B1	Genel İngilizce	Sıfatlar	DISASTROUS	felaketle sonuçlanan, yıkıcı, çok kötü
 B1	Genel İngilizce	İsimler	DISC JOCKEY	disk jokey, DJ
 B1	Genel İngilizce	İsimler	DISCOMFORT	rahatsızlık, huzursuzluk
 B1	Genel İngilizce	İsimler	DISCOUNT	indirim, iskonto
 B1	Genel İngilizce	Fiiller	DISCOURAGE	cesaretini kırmak, caydırmak, vazgeçirmek
-B1	Genel İngilizce	İsimler	DISCOVERY	keşif, buluş
+B1	Genel İngilizce	İsimler	DISCOVERY	keşif; ortaya çıkarılan şey
 B1	Genel İngilizce	İsimler	DISCRIMINATION	ayrımcılık, ayırt etme
 B1	Genel İngilizce	İsimler	DISEASE	hastalık
 B1	Genel İngilizce	Sıfatlar	DISGUSTING	iğrenç, tiksindirici
@@ -522,10 +522,10 @@ B1	Genel İngilizce	Fiiller	DISTRIBUTE	dağıtmak, paylaştırmak
 B1	Genel İngilizce	İsimler	DISTRIBUTION	dağıtım, dağılım
 B1	Genel İngilizce	İsimler	DISTRICT	bölge, semt, ilçe
 B1	Genel İngilizce	İsimler	DISTURBANCE	rahatsızlık, karışıklık, kargaşa
-B1	Genel İngilizce	İsimler	DIVE	fiil: dalmak, suya atlamak; isim: dalış
+B1	Genel İngilizce	Fiiller	DIVE	fiil: dalmak, suya atlamak; isim: dalış
 B1	Genel İngilizce	İsimler	DIVER	dalgıç
 B1	Genel İngilizce	Sıfatlar	DIVERSE	çeşitli, farklı
-B1	Genel İngilizce	İsimler	DIVIDE	fiil: bölmek, ayırmak, paylaştırmak; isim: ayrılık, uçurum (fark)
+B1	Genel İngilizce	Fiiller	DIVIDE	fiil: bölmek, ayırmak, paylaştırmak; isim: ayrılık, uçurum (fark)
 B1	Genel İngilizce	Sıfatlar	DIVINE	ilahi, kutsal
 B1	Genel İngilizce	İsimler	DIVING	dalış, dalgıçlık
 B1	Genel İngilizce	Sıfatlar	DIVORCED	boşanmış
@@ -534,9 +534,9 @@ B1	Genel İngilizce	İsimler	DOC	doktor (gündelik dil), belge
 B1	Genel İngilizce	İsimler	DOCUMENTARY	belgesel
 B1	Genel İngilizce	İsimler	DOLPHIN	yunus
 B1	Genel İngilizce	İsimler	DOT	nokta
-B1	Genel İngilizce	Sıfatlar	DOWNSTAIRS	zarf: aşağıda, alt katta; sıfat: alt kattaki
+B1	Genel İngilizce	Zarflar	DOWNSTAIRS	zarf: aşağıda, alt katta; sıfat: alt kattaki
 B1	Genel İngilizce	Sıfatlar	DOWNWARD	aşağı doğru, aşağıya yönelik
-B1	Genel İngilizce	İsimler	DOZE	şekerleme, kestirme
+B1	Genel İngilizce	Fiiller	DOZE	fiil: hafifçe uyumak, kestirmek; isim: kısa uyku
 B1	Genel İngilizce	İsimler	DOZEN	düzine
 B1	Genel İngilizce	Fiiller	DRAG	sürüklemek, çekmek
 B1	Genel İngilizce	Sıfatlar	DRAMATIC	dramatik, çarpıcı
@@ -555,12 +555,12 @@ B1	Genel İngilizce	İsimler	EAGERNESS	istek, heves, şevk
 B1	Genel İngilizce	İsimler	EARACHE	kulak ağrısı
 B1	Genel İngilizce	Sıfatlar	EARNEST	ciddi, samimi
 B1	Genel İngilizce	Sıfatlar	EASTERN	doğu, doğuya ait
-B1	Genel İngilizce	Sıfatlar	EASYGOING	rahat, uysal, kolay geçinen
+B1	Genel İngilizce	Sıfatlar	EASYGOING	rahat huylu, kolay geçinilebilen
 B1	Genel İngilizce	İsimler	ECO	çevre, ekoloji
 B1	Genel İngilizce	Sıfatlar	ECOLOGICAL	ekolojik
-B1	Genel İngilizce	İsimler	ECOLOGY	ekoloji, çevre bilimi
+B1	Genel İngilizce	İsimler	ECOLOGY	ekoloji; canlıların birbirleriyle ve çevreleriyle ilişkilerini inceleyen bilim
 B1	Genel İngilizce	Sıfatlar	ECONOMIC	ekonomik, iktisadi
-B1	Genel İngilizce	İsimler	ECONOMICS	ekonomi, iktisat
+B1	Genel İngilizce	İsimler	ECONOMICS	iktisat, ekonomi bilimi
 B1	Genel İngilizce	İsimler	ECONOMY	ekonomi, tasarruf
 B1	Genel İngilizce	İsimler	ECOSYSTEM	ekosistem
 B1	Genel İngilizce	İsimler	ECSTASY	kendinden geçme, coşku, esrime
@@ -568,8 +568,8 @@ B1	Genel İngilizce	İsimler	EDGE	kenar, uç, avantaj
 B1	Genel İngilizce	İsimler	EDITION	baskı, sayı (yayın)
 B1	Genel İngilizce	Fiiller	EDUCATE	eğitmek, öğretmek
 B1	Genel İngilizce	Sıfatlar	EFFECTIVE	etkili, etkin, yürürlükte
-B1	Genel İngilizce	İsimler	EFFICIENCY	verimlilik, etkinlik
-B1	Genel İngilizce	Sıfatlar	EFFICIENT	verimli, etkili
+B1	Genel İngilizce	İsimler	EFFICIENCY	verimlilik; kaynakları israf etmeden kullanma
+B1	Genel İngilizce	Sıfatlar	EFFICIENT	verimli; az kaynakla istenen sonucu sağlayan
 B1	Genel İngilizce	İsimler	ELBOW	dirsek
 B1	Genel İngilizce	İsimler	ELECTION	seçim
 B1	Genel İngilizce	Sıfatlar	ELECTRICAL	elektrikli, elektrikle ilgili
@@ -591,14 +591,14 @@ B1	Genel İngilizce	İsimler	EMPIRE	imparatorluk
 B1	Genel İngilizce	İsimler	EMPLOYMENT	istihdam, iş, çalıştırma
 B1	Genel İngilizce	Fiiller	ENABLE	olanak sağlamak, mümkün kılmak, etkinleştirmek
 B1	Genel İngilizce	Fiiller	ENCLOSE	ekte göndermek, iliştirmek, etrafını çevirmek
-B1	Genel İngilizce	İsimler	ENCOUNTER	fiil: karşılaşmak, rastlamak; isim: karşılaşma
+B1	Genel İngilizce	Fiiller	ENCOUNTER	fiil: karşılaşmak, rastlamak; isim: karşılaşma
 B1	Genel İngilizce	Sıfatlar	ENCOURAGING	cesaret verici, umut verici
 B1	Genel İngilizce	İsimler	ENCYCLOPEDIA	ansiklopedi
 B1	Genel İngilizce	Fiiller	ENDANGER	tehlikeye atmak
 B1	Genel İngilizce	Sıfatlar	ENDLESS	sonsuz, bitmeyen
 B1	Genel İngilizce	Fiiller	ENDURE	katlanmak, dayanmak, sürmek
 B1	Genel İngilizce	İsimler	ENEMY	düşman
-B1	Genel İngilizce	Fiiller	ENGAGE	ilgisini çekmek, katılmak, işe almak
+B1	Genel İngilizce	Fiiller	ENGAGE	ilgisini çekmek; işe almak; engage in: bir etkinliğe katılmak
 B1	Genel İngilizce	Sıfatlar	ENGAGED	nişanlı, meşgul
 B1	Genel İngilizce	İsimler	ENGINE	motor
 B1	Genel İngilizce	İsimler	ENGINEERING	mühendislik
@@ -606,7 +606,7 @@ B1	Genel İngilizce	İsimler	ENGLISHMAN	İngiliz (erkek)
 B1	Genel İngilizce	Sıfatlar	ENJOYABLE	zevkli, keyifli, eğlenceli
 B1	Genel İngilizce	İsimler	ENJOYMENT	zevk, keyif
 B1	Genel İngilizce	Fiiller	ENRICH	zenginleştirmek
-B1	Genel İngilizce	Fiiller	ENSURE	sağlamak, garanti etmek, emin olmak
+B1	Genel İngilizce	Fiiller	ENSURE	bir şeyin gerçekleşmesini sağlamak; güvenceye almak
 B1	Genel İngilizce	Fiiller	ENTERTAIN	eğlendirmek, ağırlamak
 B1	Genel İngilizce	İsimler	ENTERTAINER	eğlence sanatçısı, şovmen
 B1	Genel İngilizce	İsimler	ENTHUSIASM	heves, şevk, coşku
@@ -617,7 +617,7 @@ B1	Genel İngilizce	Zarflar	ENTIRELY	tamamen, büsbütün
 B1	Genel İngilizce	İsimler	ENTRY	giriş, kayıt
 B1	Genel İngilizce	Sıfatlar	ENVIRONMENTAL	çevresel
 B1	Genel İngilizce	İsimler	ENVIRONMENTALIST	çevreci
-B1	Genel İngilizce	İsimler	EQUAL	sıfat: eşit; isim: eş, denk; fiil: eşit olmak, denk olmak
+B1	Genel İngilizce	Sıfatlar	EQUAL	sıfat: eşit; isim: eş, denk; fiil: eşit olmak, denk olmak
 B1	Genel İngilizce	İsimler	EQUALITY	eşitlik
 B1	Genel İngilizce	Zarflar	EQUALLY	eşit olarak, aynı derecede
 B1	Genel İngilizce	İsimler	EQUIPMENT	ekipman, donanım, teçhizat
@@ -627,7 +627,7 @@ B1	Genel İngilizce	Sıfatlar	ESSENTIAL	temel, gerekli, zorunlu
 B1	Genel İngilizce	İsimler	ESTABLISHMENT	kurum, kuruluş, kurma
 B1	Genel İngilizce	Sıfatlar	ETERNAL	sonsuz, ebedî
 B1	Genel İngilizce	İsimler	ETERNITY	sonsuzluk, ebediyet
-B1	Genel İngilizce	Sıfatlar	EVEN	zarf: bile, hatta; sıfat: düz, eşit, çift (sayı)
+B1	Genel İngilizce	Zarflar	EVEN	zarf: bile, hatta; sıfat: düz, eşit, çift (sayı)
 B1	Genel İngilizce	Zarflar	EVENLY	eşit olarak, düzgün biçimde
 B1	Genel İngilizce	Zarflar	EVENTUALLY	sonunda, nihayet
 B1	Genel İngilizce	Sıfatlar	EVIDENT	açık, belli, bariz
@@ -639,14 +639,14 @@ B1	Genel İngilizce	İsimler	EXCESS	fazlalık, aşırılık
 B1	Genel İngilizce	İsimler	EXCHANGE RATE	döviz kuru
 B1	Genel İngilizce	Zarflar	EXCITEDLY	heyecanla
 B1	Genel İngilizce	İsimler	EXCITEMENT	heyecan
-B1	Genel İngilizce	Sıfatlar	EXCLUSIVE	özel, seçkin, ayrıcalıklı
+B1	Genel İngilizce	Sıfatlar	EXCLUSIVE	yalnızca belirli kişi veya gruba ait; özel, ayrıcalıklı
 B1	Genel İngilizce	Sıfatlar	EXHAUSTED	çok yorgun, bitkin, tükenmiş
 B1	Genel İngilizce	İsimler	EXISTENCE	varlık, varoluş
 B1	Genel İngilizce	İsimler	EXIT	isim: çıkış; fiil: çıkmak, ayrılmak
 B1	Genel İngilizce	Fiiller	EXPAND	genişletmek, genişlemek, büyümek
 B1	Genel İngilizce	İsimler	EXPENSE	masraf, gider
 B1	Genel İngilizce	Sıfatlar	EXPERIENCED	deneyimli, tecrübeli
-B1	Genel İngilizce	İsimler	EXPERIMENT	isim: deney; fiil: deney yapmak, denemek
+B1	Genel İngilizce	İsimler	EXPERIMENT	isim: deney; fiil: deney yapmak, yeni bir yöntem denemek
 B1	Genel İngilizce	İsimler	EXPLORATION	keşif, araştırma
 B1	Genel İngilizce	İsimler	EXPLOSION	patlama
 B1	Genel İngilizce	Fiiller	EXPOSE	açığa çıkarmak, maruz bırakmak, ifşa etmek
@@ -656,7 +656,7 @@ B1	Genel İngilizce	İsimler	EXTENT	kapsam, ölçü, derece
 B1	Genel İngilizce	Sıfatlar	EXTINCT	soyu tükenmiş, sönmüş
 B1	Genel İngilizce	İsimler	EXTINCTION	soyun tükenmesi, yok olma
 B1	Genel İngilizce	Sıfatlar	EXTRAORDINARY	olağanüstü, fevkalade
-B1	Genel İngilizce	Sıfatlar	EXTREME	aşırı, uç, son derece
+B1	Genel İngilizce	Sıfatlar	EXTREME	aşırı, uç noktada olan
 B1	Genel İngilizce	İsimler	EXTREME SPORTS	ekstrem sporlar
 B1	Genel İngilizce	İsimler	EYESIGHT	görme, görme yeteneği
 B1	Genel İngilizce	Zarflar	FACE TO FACE	yüz yüze
@@ -666,8 +666,8 @@ B1	Genel İngilizce	İsimler	FAILURE	başarısızlık, arıza, iflas
 B1	Genel İngilizce	Fiiller	FAINT	sıfat: belli belirsiz, zayıf, baygın; fiil: bayılmak
 B1	Genel İngilizce	Sıfatlar	FAITHFUL	sadık, vefalı
 B1	Genel İngilizce	Sıfatlar	FAKE	sahte, taklit, düzmece
-B1	Genel İngilizce	İsimler	FALL	fiil: düşmek, azalmak; isim: düşüş, sonbahar
-B1	Genel İngilizce	Sıfatlar	FALLEN	düşmüş, yıkılmış, şehit düşmüş
+B1	Genel İngilizce	Fiiller	FALL	fiil: düşmek, azalmak; isim: düşüş, sonbahar
+B1	Genel İngilizce	Sıfatlar	FALLEN	düşmüş, devrilmiş; savaşta hayatını kaybetmiş
 B1	Genel İngilizce	İsimler	FANTASY	hayal, fantezi
 B1	Genel İngilizce	Sıfatlar	FARAWAY	uzak, uzaktaki
 B1	Genel İngilizce	İsimler	FAREWELL	veda, elveda
@@ -684,8 +684,8 @@ B1	Genel İngilizce	İsimler	FEAST	ziyafet, şölen
 B1	Genel İngilizce	İsimler	FERRY	feribot, araba vapuru
 B1	Genel İngilizce	Sıfatlar	FESTIVE	şenlikli, bayram havasında, neşeli
 B1	Genel İngilizce	Fiiller	FETCH	gidip getirmek, almak
-B1	Genel İngilizce	Zarflar	FEVERISHLY	hararetle, telaşla
-B1	Genel İngilizce	İsimler	FIFTH	beşte bir, beşinci
+B1	Genel İngilizce	Zarflar	FEVERISHLY	ateşli biçimde; yoğun telaşla, hararetle
+B1	Genel İngilizce	İsimler	FIFTH	beşinci; isim: beşte bir
 B1	Genel İngilizce	İsimler	FILLING	dolgu, iç
 B1	Genel İngilizce	İsimler	FILM-MAKER	film yapımcısı, sinemacı
 B1	Genel İngilizce	İsimler	FILTER	filtre, süzgeç
@@ -697,7 +697,7 @@ B1	Genel İngilizce	İsimler	FIREFIGHTER	itfaiyeci
 B1	Genel İngilizce	İsimler	FIREWORK	havai fişek
 B1	Genel İngilizce	İsimler	FIRM	isim: firma, şirket; sıfat: sağlam, sıkı, kararlı; fiil: sıkılaştırmak
 B1	Genel İngilizce	Zarflar	FIRMLY	sıkıca, kararlılıkla
-B1	Genel İngilizce	İsimler	FIRST FLOOR	birinci kat (İngiltere), zemin kat (ABD)
+B1	Genel İngilizce	İsimler	FIRST FLOOR	(İng.) zemin katın bir üstündeki kat; (ABD) zemin kat
 B1	Genel İngilizce	İsimler	FIRST LADY	devlet başkanının eşi, first lady
 B1	Genel İngilizce	İsimler	FITNESS	zindelik, form, kondisyon
 B1	Genel İngilizce	İsimler	FLASH	isim: flaş, parıltı; fiil: parlamak, yanıp sönmek; sıfat: gösterişli, ani
@@ -710,12 +710,12 @@ B1	Genel İngilizce	Sıfatlar	FLUENT	akıcı
 B1	Genel İngilizce	Zarflar	FLUENTLY	akıcı bir şekilde
 B1	Genel İngilizce	Fiiller	FLUNK	(sınavdan) kalmak, çakmak
 B1	Genel İngilizce	İsimler	FLUTE	flüt
-B1	Genel İngilizce	İsimler	FOLD	fiil: katlamak; isim: kat, kıvrım
+B1	Genel İngilizce	Fiiller	FOLD	fiil: katlamak; isim: kat, kıvrım
 B1	Genel İngilizce	İsimler	FOLK	halk, insanlar
-B1	Genel İngilizce	Sıfatlar	FOND	düşkün, seven, sevgi dolu
+B1	Genel İngilizce	Sıfatlar	FOND	fond of: seven, düşkün; sevgi dolu
 B1	Genel İngilizce	İsimler	FONDNESS	düşkünlük, sevgi
 B1	Genel İngilizce	Sıfatlar	FOOLISH	aptalca, akılsız, saçma
-B1	Genel İngilizce	İsimler	FOOT	ayak, fit (ölçü birimi), dip
+B1	Genel İngilizce	İsimler	FOOT	ayak; fit (30,48 cm); bir şeyin alt kısmı
 B1	Genel İngilizce	Sıfatlar	FORBIDDEN	yasak, yasaklanmış
 B1	Genel İngilizce	İsimler	FOREHEAD	alın
 B1	Genel İngilizce	Sıfatlar	FORMAL	resmî, biçimsel
@@ -724,7 +724,7 @@ B1	Genel İngilizce	İsimler	FORMAT	isim: biçim, format; fiil: biçimlendirmek,
 B1	Genel İngilizce	Sıfatlar	FORMER	eski, önceki
 B1	Genel İngilizce	İsimler	FORMULA	formül, bebek maması
 B1	Genel İngilizce	Zarflar	FORTH	ileri, öne, dışarı
-B1	Genel İngilizce	İsimler	FORTNIGHT	iki hafta, on beş gün
+B1	Genel İngilizce	İsimler	FORTNIGHT	iki hafta, 14 gün
 B1	Genel İngilizce	Sıfatlar	FORTUNATE	şanslı, talihli
 B1	Genel İngilizce	İsimler	FOUNDATION	temel, kuruluş, vakıf
 B1	Genel İngilizce	İsimler	FOUNTAIN	çeşme, fıskiye, şadırvan
@@ -733,10 +733,10 @@ B1	Genel İngilizce	Zarflar	FREELY	özgürce, serbestçe
 B1	Genel İngilizce	İsimler	FREEZER	dondurucu, derin dondurucu, buzluk
 B1	Genel İngilizce	Sıfatlar	FREEZING	dondurucu, buz gibi
 B1	Genel İngilizce	İsimler	FREQUENCY	sıklık, frekans
-B1	Genel İngilizce	Sıfatlar	FREQUENT	sık, sık sık olan
+B1	Genel İngilizce	Sıfatlar	FREQUENT	sık, sık gerçekleşen
 B1	Genel İngilizce	Zarflar	FREQUENTLY	sık sık, sıkça
 B1	Genel İngilizce	İsimler	FRESHMAN	birinci sınıf öğrencisi, acemi
-B1	Genel İngilizce	İsimler	FRIENDLINESS	dostluk, samimiyet, cana yakınlık
+B1	Genel İngilizce	İsimler	FRIENDLINESS	cana yakınlık, dostça davranma
 B1	Genel İngilizce	İsimler	FRIGHT	korku, dehşet
 B1	Genel İngilizce	İsimler	FROST	isim: don, kırağı, ayaz; fiil: buzlanmak, kırağı tutmak
 B1	Genel İngilizce	Sıfatlar	FROZEN	donmuş, dondurulmuş
@@ -753,16 +753,16 @@ B1	Genel İngilizce	Zarflar	FURTHERMORE	ayrıca, üstelik, bundan başka
 B1	Genel İngilizce	Zarflar	FURTHEST	en uzağa, en uzak
 B1	Genel İngilizce	İsimler	FUSS	yaygara, telaş, gereksiz heyecan
 B1	Genel İngilizce	İsimler	FUTURE	isim: gelecek, istikbal; sıfat: gelecekteki, müstakbel
-B1	Genel İngilizce	İsimler	GAIN	isim: kazanç, artış; fiil: kazanmak, elde etmek
+B1	Genel İngilizce	Fiiller	GAIN	isim: kazanç, artış; fiil: kazanmak, elde etmek
 B1	Genel İngilizce	İsimler	GALL	küstahlık, yüzsüzlük, safra
-B1	Genel İngilizce	İsimler	GALLON	galon
+B1	Genel İngilizce	İsimler	GALLON	galon (ABD sıvı galonu yaklaşık 3,785 litre; İngiliz galonu yaklaşık 4,546 litre)
 B1	Genel İngilizce	İsimler	GAP	boşluk, ara, açık (fark)
 B1	Genel İngilizce	İsimler	GARDENING	bahçecilik, bahçe işleri
 B1	Genel İngilizce	İsimler	GARMENT	giysi, kıyafet
 B1	Genel İngilizce	Sıfatlar	GAY	eşcinsel, gey
 B1	Genel İngilizce	Diğer	GEE	vay, vay canına
 B1	Genel İngilizce	İsimler	GENE	gen
-B1	Genel İngilizce	İsimler	GENERAL	sıfat: genel; isim: general
+B1	Genel İngilizce	Sıfatlar	GENERAL	sıfat: genel; isim: general
 B1	Genel İngilizce	Zarflar	GENERALLY	genellikle, çoğunlukla
 B1	Genel İngilizce	Fiiller	GENERATE	üretmek, oluşturmak
 B1	Genel İngilizce	Sıfatlar	GENEROUS	cömert, eli açık
@@ -776,20 +776,20 @@ B1	Genel İngilizce	İsimler	GEOLOGY	jeoloji, yer bilimi
 B1	Genel İngilizce	İsimler	GESTURE	jest, el kol hareketi, işaret
 B1	Genel İngilizce	Sıfatlar	GIANT	dev, devasa
 B1	Genel İngilizce	Sıfatlar	GIFTED	yetenekli, üstün yetenekli
-B1	Genel İngilizce	İsimler	GIGGLE	kıkırdama
+B1	Genel İngilizce	Fiiller	GIGGLE	fiil: kıkırdamak; isim: kıkırdama
 B1	Genel İngilizce	İsimler	GINGER	zencefil, kızıl (saç)
 B1	Genel İngilizce	İsimler	GIRAFFE	zürafa
 B1	Genel İngilizce	İsimler	GLANCE	isim: göz atma, kısa bakış; fiil: göz atmak, bir göz atmak
-B1	Genel İngilizce	İsimler	GLIDE	süzülme, kayma
-B1	Genel İngilizce	İsimler	GLIMPSE	bir anlık bakış, göz ucuyla görme
+B1	Genel İngilizce	Fiiller	GLIDE	fiil: süzülmek, kayar gibi ilerlemek; isim: süzülme
+B1	Genel İngilizce	İsimler	GLIMPSE	isim: kısa bir görüş, anlık bakış; fiil: bir anlığına görmek
 B1	Genel İngilizce	İsimler	GLINT	parıltı, ışıltı
 B1	Genel İngilizce	Sıfatlar	GLORIOUS	şanlı, muhteşem, görkemli
 B1	Genel İngilizce	İsimler	GLORY	şan, şöhret, görkem
-B1	Genel İngilizce	İsimler	GO	fiil: gitmek, (bir hâle) gelmek; isim: sıra, deneme
+B1	Genel İngilizce	Fiiller	GO	fiil: gitmek, (bir hâle) gelmek; isim: sıra, deneme
 B1	Genel İngilizce	İsimler	GOALKEEPER	kaleci
 B1	Genel İngilizce	İsimler	GODDESS	tanrıça
 B1	Genel İngilizce	İsimler	GOLFER	golfçü
-B1	Genel İngilizce	Diğer	GOODNESS	(my goodness) Aman Tanrım, vay canına
+B1	Genel İngilizce	İsimler	GOODNESS	iyilik; my goodness!: aman Tanrım!, vay canına!
 B1	Genel İngilizce	İsimler	GOODS	mal, eşya, ürünler
 B1	Genel İngilizce	Sıfatlar	GORGEOUS	muhteşem, çok güzel, harika
 B1	Genel İngilizce	İsimler	GORILLA	goril
@@ -800,12 +800,12 @@ B1	Genel İngilizce	İsimler	GOWN	uzun elbise, cüppe, önlük
 B1	Genel İngilizce	Fiiller	GRAB	kapmak, yakalamak, tutmak
 B1	Genel İngilizce	Sıfatlar	GRACEFUL	zarif, ince
 B1	Genel İngilizce	İsimler	GRADUATION	mezuniyet, mezuniyet töreni
-B1	Genel İngilizce	İsimler	GRANT	isim: hibe, burs, ödenek; fiil: vermek, bahşetmek, kabul etmek
+B1	Genel İngilizce	İsimler	GRANT	isim: hibe, ödenek, burs; fiil: vermek, resmen izin vermek, kabul etmek
 B1	Genel İngilizce	İsimler	GRAPH	grafik
-B1	Genel İngilizce	Sıfatlar	GRAPHIC	grafik, çizgesel, açık seçik
+B1	Genel İngilizce	Sıfatlar	GRAPHIC	görsel veya grafikle ilgili; canlı ve açık ayrıntılar içeren
 B1	Genel İngilizce	İsimler	GRAPHICS	grafik, grafikler
 B1	Genel İngilizce	İsimler	GRATITUDE	minnettarlık, şükran
-B1	Genel İngilizce	İsimler	GRAVE	mezar, kabir
+B1	Genel İngilizce	İsimler	GRAVE	isim: mezar; sıfat: ciddi, vahim
 B1	Genel İngilizce	İsimler	GRAVY	et suyu sosu, sos
 B1	Genel İngilizce	İsimler	GREENHOUSE	sera
 B1	Genel İngilizce	İsimler	GREETING	selam, selamlama, tebrik
@@ -814,7 +814,7 @@ B1	Genel İngilizce	İsimler	GROUND FLOOR	zemin kat
 B1	Genel İngilizce	İsimler	GROUPING	gruplama, sınıflandırma
 B1	Genel İngilizce	İsimler	GROWTH	büyüme, artış, gelişme
 B1	Genel İngilizce	İsimler	GUARANTEE	isim: garanti, güvence; fiil: garanti etmek, güvence vermek
-B1	Genel İngilizce	İsimler	GUESS	fiil: tahmin etmek; isim: tahmin
+B1	Genel İngilizce	Fiiller	GUESS	fiil: tahmin etmek; isim: tahmin
 B1	Genel İngilizce	İsimler	GUIDANCE	rehberlik, yol gösterme, yönlendirme
 B1	Genel İngilizce	İsimler	GUIDE	isim: rehber, kılavuz; fiil: rehberlik etmek, yol göstermek
 B1	Genel İngilizce	İsimler	GUILT	suçluluk, suçluluk duygusu, suç
@@ -835,13 +835,13 @@ B1	Genel İngilizce	Sıfatlar	HANDY	kullanışlı, işe yarar, elverişli
 B1	Genel İngilizce	İsimler	HANGING	sıfat: asılı, sarkan; isim: asma (idam), duvar halısı
 B1	Genel İngilizce	İsimler	HARBOR	isim: liman; fiil: barındırmak, (duygu) beslemek
 B1	Genel İngilizce	İsimler	HARDSHIP	zorluk, sıkıntı, güçlük
-B1	Genel İngilizce	Sıfatlar	HARD-WORKING	çalışkan
+B1	Genel İngilizce	Sıfatlar	HARD-WORKING	çalışkan, gayretli
 B1	Genel İngilizce	İsimler	HARNESS	koşum takımı, emniyet kemeri
 B1	Genel İngilizce	Sıfatlar	HASTY	aceleci, alelacele yapılmış
 B1	Genel İngilizce	İsimler	HATCH	kapak, ambar ağzı
-B1	Genel İngilizce	İsimler	HATE	fiil: nefret etmek; isim: nefret
+B1	Genel İngilizce	Fiiller	HATE	fiil: nefret etmek; isim: nefret
 B1	Genel İngilizce	İsimler	HATRED	nefret, kin
-B1	Genel İngilizce	İsimler	HAUNT	fiil: (hayalet) dadanmak, aklından çıkmamak; isim: sık uğranan yer, mekân
+B1	Genel İngilizce	Fiiller	HAUNT	fiil: musallat olmak; sürekli aklını kurcalamak; isim: sık uğranan yer
 B1	Genel İngilizce	İsimler	HAVEN	sığınak, liman, güvenli yer
 B1	Genel İngilizce	İsimler	HAZARD	tehlike, risk
 B1	Genel İngilizce	İsimler	HEADLINE	manşet, başlık
@@ -849,8 +849,8 @@ B1	Genel İngilizce	Fiiller	HEAL	iyileşmek, iyileştirmek
 B1	Genel İngilizce	Sıfatlar	HEALING	iyileştirici, şifalı
 B1	Genel İngilizce	İsimler	HEARING	işitme, duruşma
 B1	Genel İngilizce	İsimler	HEART ATTACK	kalp krizi
-B1	Genel İngilizce	Sıfatlar	HEARTED	-yürekli (ör. iyi yürekli)
-B1	Genel İngilizce	Sıfatlar	HEARTY	içten, samimi, doyurucu
+B1	Genel İngilizce	Sıfatlar	HEARTED	birleşik sıfatlarda -yürekli, -kalpli (ör. kind-hearted)
+B1	Genel İngilizce	Sıfatlar	HEARTY	içten, samimi; (yemek) bol ve doyurucu
 B1	Genel İngilizce	İsimler	HEATER	ısıtıcı
 B1	Genel İngilizce	İsimler	HEAVEN	cennet, gökyüzü
 B1	Genel İngilizce	Sıfatlar	HEAVENLY	cennet gibi, göksel, harika
@@ -865,18 +865,18 @@ B1	Genel İngilizce	Zarflar	HIGHLY	son derece, çok, yüksek derecede
 B1	Genel İngilizce	İsimler	HIP	kalça
 B1	Genel İngilizce	Fiiller	HIRE	kiralamak, işe almak
 B1	Genel İngilizce	İsimler	HISTORIAN	tarihçi
-B1	Genel İngilizce	Sıfatlar	HISTORIC	tarihî, tarihî önemi olan
-B1	Genel İngilizce	Sıfatlar	HISTORICAL	tarihsel, tarihî
-B1	Genel İngilizce	İsimler	HIT	fiil: vurmak, çarpmak; isim: vuruş, darbe, hit (popüler eser)
-B1	Genel İngilizce	İsimler	HIV	HIV, AIDS virüsü
+B1	Genel İngilizce	Sıfatlar	HISTORIC	tarihsel öneme sahip, tarihe geçecek
+B1	Genel İngilizce	Sıfatlar	HISTORICAL	tarihle veya geçmiş olaylarla ilgili, tarihsel
+B1	Genel İngilizce	Fiiller	HIT	fiil: vurmak, çarpmak; isim: vuruş, darbe, hit (popüler eser)
+B1	Genel İngilizce	İsimler	HIV	insan bağışıklık yetmezliği virüsü (HIV)
 B1	Genel İngilizce	Sıfatlar	HOLY	kutsal, mukaddes
 B1	Genel İngilizce	Sıfatlar	HOMELESS	evsiz, evsiz barksız
 B1	Genel İngilizce	Zarflar	HONESTLY	dürüstçe, açıkçası
 B1	Genel İngilizce	İsimler	HONESTY	dürüstlük
 B1	Genel İngilizce	İsimler	HONEYMOON	balayı
-B1	Genel İngilizce	İsimler	HOP	sekme, zıplama, şerbetçiotu
+B1	Genel İngilizce	Fiiller	HOP	fiil: sekmek, zıplamak; isim: sıçrama; şerbetçiotu
 B1	Genel İngilizce	Sıfatlar	HOPEFUL	umutlu, umut verici
-B1	Genel İngilizce	Zarflar	HOPEFULLY	umarım, inşallah, umutla
+B1	Genel İngilizce	Zarflar	HOPEFULLY	umarım; umutla
 B1	Genel İngilizce	Sıfatlar	HOPELESS	umutsuz, ümitsiz, berbat
 B1	Genel İngilizce	İsimler	HORIZON	ufuk
 B1	Genel İngilizce	İsimler	HORN	boynuz, korna
@@ -890,7 +890,7 @@ B1	Genel İngilizce	Sıfatlar	HUMID	nemli, rutubetli
 B1	Genel İngilizce	İsimler	HUMOR	mizah, espri anlayışı
 B1	Genel İngilizce	Sıfatlar	HUMOROUS	komik, esprili, mizahi
 B1	Genel İngilizce	İsimler	HUNGER	açlık
-B1	Genel İngilizce	İsimler	HUNT	fiil: avlamak, aramak; isim: av, arama
+B1	Genel İngilizce	Fiiller	HUNT	fiil: avlamak, aramak; isim: av, arama
 B1	Genel İngilizce	Zarflar	HURRIEDLY	aceleyle, alelacele
 B1	Genel İngilizce	Fiiller	HURT	fiil: acıtmak, incitmek, yaralamak; sıfat: yaralı, kırgın
 B1	Genel İngilizce	İsimler	HUT	kulübe
@@ -906,10 +906,10 @@ B1	Genel İngilizce	İsimler	ILLNESS	hastalık
 B1	Genel İngilizce	Fiiller	ILLUMINATE	aydınlatmak, ışıklandırmak
 B1	Genel İngilizce	Sıfatlar	IMAGINARY	hayalî, gerçek olmayan
 B1	Genel İngilizce	Fiiller	IMITATE	taklit etmek, örnek almak
-B1	Genel İngilizce	Sıfatlar	IMMEDIATE	acil, ani, en yakın
+B1	Genel İngilizce	Sıfatlar	IMMEDIATE	hemen gerçekleşen, gecikmesiz; en yakın, doğrudan
 B1	Genel İngilizce	Zarflar	IMMEDIATELY	hemen, derhal
-B1	Genel İngilizce	Fiiller	IMMIGRATE	göç etmek
-B1	Genel İngilizce	İsimler	IMMIGRATION	göç, göçmenlik
+B1	Genel İngilizce	Fiiller	IMMIGRATE	yerleşmek amacıyla başka bir ülkeye göç etmek
+B1	Genel İngilizce	İsimler	IMMIGRATION	başka bir ülkeye yerleşmek amacıyla göç; göçmen kabulü
 B1	Genel İngilizce	Fiiller	IMPAIR	bozmak, zayıflatmak, zarar vermek
 B1	Genel İngilizce	İsimler	IMPRESSION	izlenim, etki
 B1	Genel İngilizce	Sıfatlar	IMPRESSIVE	etkileyici
@@ -919,7 +919,7 @@ B1	Genel İngilizce	İsimler	INCIDENT	olay, vaka
 B1	Genel İngilizce	Edatlar	INCLUDING	dâhil, dâhil olmak üzere
 B1	Genel İngilizce	Sıfatlar	INCONVENIENT	uygunsuz, elverişsiz, zahmetli
 B1	Genel İngilizce	Sıfatlar	INCORRECT	yanlış, hatalı
-B1	Genel İngilizce	İsimler	INCREASE	fiil: artmak, artırmak; isim: artış
+B1	Genel İngilizce	Fiiller	INCREASE	fiil: artmak, artırmak; isim: artış
 B1	Genel İngilizce	Zarflar	INCREASINGLY	giderek, gittikçe
 B1	Genel İngilizce	Sıfatlar	INCREDIBLE	inanılmaz, olağanüstü
 B1	Genel İngilizce	Zarflar	INCREDIBLY	inanılmaz derecede
@@ -936,11 +936,11 @@ B1	Genel İngilizce	İsimler	INFINITIVE	mastar
 B1	Genel İngilizce	Fiiller	INFORM	bilgilendirmek, bildirmek, haber vermek
 B1	Genel İngilizce	Sıfatlar	INFORMATIVE	bilgilendirici, öğretici
 B1	Genel İngilizce	İsimler	INGREDIENT	malzeme, bileşen, içerik
-B1	Genel İngilizce	İsimler	INHABITANT	sakin, oturan
-B1	Genel İngilizce	Fiiller	INHALE	nefes almak, içine çekmek, solumak
+B1	Genel İngilizce	İsimler	INHABITANT	bir yerde yaşayan kişi veya canlı; yerleşik
+B1	Genel İngilizce	Fiiller	INHALE	nefesi veya bir maddeyi içine çekmek, solumak
 B1	Genel İngilizce	Zarflar	INITIALLY	başlangıçta, ilk başta
 B1	Genel İngilizce	Fiiller	INJECT	enjekte etmek, iğne yapmak
-B1	Genel İngilizce	İsimler	INJURY	yaralanma, sakatlık, yara
+B1	Genel İngilizce	İsimler	INJURY	yaralanma; bedensel hasar
 B1	Genel İngilizce	İsimler	INK	mürekkep
 B1	Genel İngilizce	Sıfatlar	INNERMOST	en içteki, en derindeki
 B1	Genel İngilizce	Sıfatlar	INNOCENT	masum, suçsuz
@@ -949,7 +949,7 @@ B1	Genel İngilizce	İsimler	INQUIRY	soruşturma, bilgi talebi, sorgu
 B1	Genel İngilizce	Sıfatlar	INSANE	deli, çılgın
 B1	Genel İngilizce	Fiiller	INSCRIBE	yazmak, kazımak
 B1	Genel İngilizce	İsimler	INSCRIPTION	yazıt, kitabe, ithaf
-B1	Genel İngilizce	İsimler	INSIGHT	kavrayış, iç görü, anlayış
+B1	Genel İngilizce	İsimler	INSIGHT	içgörü, derin kavrayış
 B1	Genel İngilizce	Fiiller	INSIST	ısrar etmek, üstelemek
 B1	Genel İngilizce	İsimler	INSPECTION	denetim, teftiş, muayene
 B1	Genel İngilizce	Fiiller	INSPIRE	ilham vermek, esinlendirmek
@@ -961,14 +961,14 @@ B1	Genel İngilizce	İsimler	INSTRUCTOR	eğitmen, öğretmen
 B1	Genel İngilizce	İsimler	INSURANCE	sigorta
 B1	Genel İngilizce	Fiiller	INTEND	niyet etmek, amaçlamak, planlamak
 B1	Genel İngilizce	Sıfatlar	INTENSE	yoğun, şiddetli
-B1	Genel İngilizce	Sıfatlar	INTENSIVE	yoğun, yoğunlaştırılmış
+B1	Genel İngilizce	Sıfatlar	INTENSIVE	yoğunlaştırılmış; kısa sürede çok emek veya kaynak gerektiren
 B1	Genel İngilizce	İsimler	INTENTION	niyet, amaç, kasıt
 B1	Genel İngilizce	Zarflar	INTENTIONALLY	kasten, bilerek
 B1	Genel İngilizce	Fiiller	INTERACT	etkileşmek, etkileşime girmek, iletişim kurmak
 B1	Genel İngilizce	İsimler	INTERACTION	etkileşim
 B1	Genel İngilizce	Sıfatlar	INTERMEDIATE	orta, orta seviye, ara
 B1	Genel İngilizce	İsimler	INTERMISSION	ara, perde arası
-B1	Genel İngilizce	Sıfatlar	INTERNAL	iç, dahili
+B1	Genel İngilizce	Sıfatlar	INTERNAL	iç, dâhilî
 B1	Genel İngilizce	Zarflar	INTERNATIONALLY	uluslararası alanda
 B1	Genel İngilizce	Fiiller	INTERRUPT	sözünü kesmek, kesmek, araya girmek
 B1	Genel İngilizce	İsimler	INTERVAL	aralık, ara, mola
@@ -979,13 +979,13 @@ B1	Genel İngilizce	Fiiller	INVEST	yatırım yapmak
 B1	Genel İngilizce	İsimler	INVESTIGATION	soruşturma, araştırma, inceleme
 B1	Genel İngilizce	Zarflar	INVOLUNTARILY	istemeden, elinde olmadan
 B1	Genel İngilizce	Fiiller	INVOLVE	içermek, gerektirmek, dâhil etmek
-B1	Genel İngilizce	Sıfatlar	INVOLVED	ilgili, karışmış, dâhil
+B1	Genel İngilizce	Sıfatlar	INVOLVED	bir işe veya duruma katılmış, dâhil; karmaşık
 B1	Genel İngilizce	İsimler	IRON	isim: demir, ütü; fiil: ütülemek
 B1	Genel İngilizce	İsimler	IRONING	ütü yapma, ütülenecek çamaşır
 B1	Genel İngilizce	Sıfatlar	IRREGULAR	düzensiz, kuralsız
 B1	Genel İngilizce	Fiiller	IRRITATE	sinirlendirmek, kızdırmak, tahriş etmek
 B1	Genel İngilizce	İsimler	ISLE	ada
-B1	Genel İngilizce	İsimler	ISOLATION	yalnızlık, tecrit, izolasyon
+B1	Genel İngilizce	İsimler	ISOLATION	yalıtılma, tecrit, ayrı tutulma
 B1	Genel İngilizce	İsimler	IVORY	fildişi
 B1	Genel İngilizce	İsimler	JADE	yeşim
 B1	Genel İngilizce	İsimler	JAIL	hapishane, cezaevi, hapis
@@ -993,9 +993,9 @@ B1	Genel İngilizce	İsimler	JAR	kavanoz
 B1	Genel İngilizce	İsimler	JAZZ	caz
 B1	Genel İngilizce	Sıfatlar	JEALOUS	kıskanç
 B1	Genel İngilizce	İsimler	JEWEL	mücevher, değerli taş
-B1	Genel İngilizce	İsimler	JOGGING	yavaş koşu, jogging
+B1	Genel İngilizce	İsimler	JOGGING	hafif tempolu koşu
 B1	Genel İngilizce	İsimler	JOINT	isim: eklem, bağlantı yeri; sıfat: ortak, müşterek
-B1	Genel İngilizce	İsimler	JOURNAL	dergi, günlük
+B1	Genel İngilizce	İsimler	JOURNAL	günlük; süreli yayın, bilimsel dergi
 B1	Genel İngilizce	İsimler	JOURNALIST	gazeteci
 B1	Genel İngilizce	İsimler	JUDGE	isim: hâkim, yargıç, jüri üyesi; fiil: yargılamak, değerlendirmek
 B1	Genel İngilizce	İsimler	JUDGMENT	yargı, karar, muhakeme
@@ -1004,14 +1004,14 @@ B1	Genel İngilizce	Sıfatlar	JUICY	sulu
 B1	Genel İngilizce	İsimler	JUMPER	kazak, süveter
 B1	Genel İngilizce	İsimler	JUNGLE	tropik orman, balta girmemiş orman
 B1	Genel İngilizce	İsimler	JUSTICE	adalet
-B1	Genel İngilizce	İsimler	KETTLE	su ısıtıcısı, çaydanlık
+B1	Genel İngilizce	İsimler	KETTLE	su kaynatmaya yarayan kap, su ısıtıcısı
 B1	Genel İngilizce	İsimler	KILLING	öldürme, cinayet
 B1	Genel İngilizce	İsimler	KINDNESS	nezaket, iyilik, şefkat
 B1	Genel İngilizce	İsimler	KITTEN	yavru kedi, kedicik
 B1	Genel İngilizce	Fiiller	KNIT	örmek
 B1	Genel İngilizce	İsimler	LAB	laboratuvar
 B1	Genel İngilizce	İsimler	LABORATORY	laboratuvar
-B1	Genel İngilizce	İsimler	LADDER	merdiven, el merdiveni
+B1	Genel İngilizce	İsimler	LADDER	basamaklı, taşınabilir veya dik merdiven
 B1	Genel İngilizce	İsimler	LAMB	kuzu, kuzu eti
 B1	Genel İngilizce	İsimler	LAND	isim: kara, arazi, ülke; fiil: (uçak) inmek, indirmek
 B1	Genel İngilizce	İsimler	LANDLORD	ev sahibi, mülk sahibi
@@ -1020,13 +1020,13 @@ B1	Genel İngilizce	Fiiller	LAST	belirleyici: son, geçen; zarf: en son, son ola
 B1	Genel İngilizce	Sıfatlar	LASTING	kalıcı, sürekli
 B1	Genel İngilizce	İsimler	LATECOMER	geç gelen kişi, sonradan gelen
 B1	Genel İngilizce	Zarflar	LATELY	son zamanlarda, son günlerde
-B1	Genel İngilizce	İsimler	LAUGH	fiil: gülmek; isim: gülüş, kahkaha
+B1	Genel İngilizce	Fiiller	LAUGH	fiil: gülmek; isim: gülüş, kahkaha
 B1	Genel İngilizce	İsimler	LAUGHTER	kahkaha, gülüş
-B1	Genel İngilizce	İsimler	LAUNCH	fiil: başlatmak, piyasaya sürmek, fırlatmak; isim: başlatma, lansman, fırlatma
+B1	Genel İngilizce	Fiiller	LAUNCH	fiil: başlatmak, piyasaya sürmek, fırlatmak; isim: başlatma, lansman, fırlatma
 B1	Genel İngilizce	Sıfatlar	LAWFUL	yasal, meşru
-B1	Genel İngilizce	Fiiller	LAY	koymak, yatırmak, yumurtlamak
+B1	Genel İngilizce	Fiiller	LAY	koymak, yatırmak; yumurtlamak
 B1	Genel İngilizce	İsimler	LAYER	katman, tabaka
-B1	Genel İngilizce	İsimler	LEAD	fiil: yönetmek, öncülük etmek, götürmek; isim: önderlik, öncülük, kurşun; sıfat: baş, ana
+B1	Genel İngilizce	Fiiller	LEAD	fiil (liːd): öncülük etmek, yönetmek, yol göstermek; isim (liːd): önderlik, öncülük; isim (led): kurşun metali
 B1	Genel İngilizce	İsimler	LEADERSHIP	liderlik, önderlik
 B1	Genel İngilizce	Sıfatlar	LEADING	önde gelen, başlıca, lider
 B1	Genel İngilizce	İsimler	LEAGUE	lig
@@ -1041,29 +1041,29 @@ B1	Genel İngilizce	İsimler	LEVEL	isim: seviye, düzey, kat; sıfat: düz, ayn�
 B1	Genel İngilizce	İsimler	LIAR	yalancı
 B1	Genel İngilizce	Fiiller	LIBERATE	özgürleştirmek, serbest bırakmak, kurtarmak
 B1	Genel İngilizce	İsimler	LIBERATION	kurtuluş, özgürleşme
-B1	Genel İngilizce	İsimler	LIE	fiil: yalan söylemek, uzanmak, yatmak; isim: yalan
+B1	Genel İngilizce	Fiiller	LIE	fiil: yalan söylemek; uzanmak, yatmak (farklı fiiller); isim: yalan
 B1	Genel İngilizce	İsimler	LIFEGUARD	cankurtaran
 B1	Genel İngilizce	Sıfatlar	LIFELONG	ömür boyu süren, hayat boyu
-B1	Genel İngilizce	İsimler	LIFT	fiil: kaldırmak, yükseltmek; isim: asansör, arabayla götürme
+B1	Genel İngilizce	Fiiller	LIFT	fiil: kaldırmak, yükseltmek; isim: asansör, arabayla götürme
 B1	Genel İngilizce	İsimler	LIGHTER	çakmak
 B1	Genel İngilizce	Zarflar	LIGHTLY	hafifçe
-B1	Genel İngilizce	İsimler	LIGHTNING	şimşek, yıldırım
+B1	Genel İngilizce	İsimler	LIGHTNING	şimşek; yıldırım olayı
 B1	Genel İngilizce	Fiiller	LIKE	fiil: sevmek, hoşlanmak, beğenmek; edat: gibi; bağlaç: sanki, gibi
 B1	Genel İngilizce	İsimler	LIKENESS	benzerlik, benzeyiş
 B1	Genel İngilizce	İsimler	LIMIT	isim: sınır, limit; fiil: sınırlamak, kısıtlamak
-B1	Genel İngilizce	İsimler	LIMITATION	sınırlama, kısıtlama, eksiklik
+B1	Genel İngilizce	İsimler	LIMITATION	sınırlama, kısıt; bir yeteneğin veya sistemin sınırı
 B1	Genel İngilizce	Sıfatlar	LIMITED	sınırlı, kısıtlı
 B1	Genel İngilizce	Fiiller	LIMP	topallamak, aksamak
 B1	Genel İngilizce	İsimler	LIQUID	sıvı, likit
-B1	Genel İngilizce	Sıfatlar	LITERARY	edebi, yazınsal
+B1	Genel İngilizce	Sıfatlar	LITERARY	edebî, yazınsal
 B1	Genel İngilizce	İsimler	LITERATURE	edebiyat, literatür
-B1	Genel İngilizce	Fiiller	LIVE	fiil: yaşamak, oturmak; sıfat: canlı, diri
+B1	Genel İngilizce	Fiiller	LIVE	fiil (lɪv): yaşamak, oturmak; sıfat (laɪv): canlı, yayın anında olan
 B1	Genel İngilizce	İsimler	LIVER	karaciğer
 B1	Genel İngilizce	İsimler	LOAF	somun
-B1	Genel İngilizce	Fiiller	LOCATE	yerini bulmak, yerleştirmek
+B1	Genel İngilizce	Fiiller	LOCATE	yerini saptamak; bir yere yerleştirmek
 B1	Genel İngilizce	İsimler	LOCATION	konum, yer
-B1	Genel İngilizce	İsimler	LODGE	fiil: konaklamak, (şikâyet) sunmak; isim: kulübe, dağ evi
-B1	Genel İngilizce	İsimler	LOG	kütük, kayıt, günlük
+B1	Genel İngilizce	Fiiller	LODGE	fiil: konaklamak, (şikâyet) sunmak; isim: kulübe, dağ evi
+B1	Genel İngilizce	İsimler	LOG	isim: kütük, kayıt günlüğü; fiil: kayda geçirmek
 B1	Genel İngilizce	İsimler	LOGIC	mantık
 B1	Genel İngilizce	İsimler	LOGO	logo, amblem
 B1	Genel İngilizce	İsimler	LORRY	kamyon
@@ -1080,7 +1080,7 @@ B1	Genel İngilizce	İsimler	MAGICIAN	sihirbaz, büyücü
 B1	Genel İngilizce	Sıfatlar	MAGNIFICENT	muhteşem, görkemli
 B1	Genel İngilizce	İsimler	MAILBOX	posta kutusu
 B1	Genel İngilizce	Sıfatlar	MAIN	ana, başlıca, temel
-B1	Genel İngilizce	İsimler	MAINTENANCE	bakım
+B1	Genel İngilizce	İsimler	MAINTENANCE	bakım, sürdürme; geçim desteği
 B1	Genel İngilizce	İsimler	MAJORITY	çoğunluk
 B1	Genel İngilizce	İsimler	MALE	erkek
 B1	Genel İngilizce	İsimler	MANAGEMENT	yönetim, idare
@@ -1098,8 +1098,8 @@ B1	Genel İngilizce	İsimler	MAXIMUM	en fazla, en yüksek, maksimum
 B1	Genel İngilizce	İsimler	MAYOR	belediye başkanı
 B1	Genel İngilizce	Sıfatlar	MEANINGFUL	anlamlı
 B1	Genel İngilizce	Zarflar	MEANWHILE	bu arada, o sırada
-B1	Genel İngilizce	İsimler	MEASUREMENT	ölçüm, ölçü
-B1	Genel İngilizce	İsimler	MECHANIC	tamirci, oto tamircisi
+B1	Genel İngilizce	İsimler	MEASUREMENT	ölçme, ölçüm; ölçüm sonucu
+B1	Genel İngilizce	İsimler	MECHANIC	makine veya araç tamircisi
 B1	Genel İngilizce	Sıfatlar	MECHANICAL	mekanik
 B1	Genel İngilizce	Fiiller	MEDITATE	meditasyon yapmak, derin düşünmek
 B1	Genel İngilizce	İsimler	MEDITATION	meditasyon
@@ -1113,14 +1113,14 @@ B1	Genel İngilizce	Fiiller	MEND	onarmak, tamir etmek, yamamak
 B1	Genel İngilizce	Sıfatlar	MENTAL	zihinsel, ruhsal
 B1	Genel İngilizce	Zarflar	MENTALLY	zihinsel olarak, ruhsal olarak
 B1	Genel İngilizce	İsimler	MERCHANT	tüccar, tacir
-B1	Genel İngilizce	Sıfatlar	MERE	sadece, sırf, yalnızca
+B1	Genel İngilizce	Sıfatlar	MERE	yalnızca ... olan; salt, sırf
 B1	Genel İngilizce	Zarflar	MERELY	sadece, yalnızca, sırf
 B1	Genel İngilizce	İsimler	MESS	isim: dağınıklık, karışıklık; fiil: dağıtmak, berbat etmek
 B1	Genel İngilizce	İsimler	MESSAGE BOARD	mesaj panosu, duyuru panosu
 B1	Genel İngilizce	Sıfatlar	MESSY	dağınık, karmakarışık
 B1	Genel İngilizce	Sıfatlar	MIDDLE-AGED	orta yaşlı
 B1	Genel İngilizce	Sıfatlar	MILD	hafif, ılıman, yumuşak
-B1	Genel İngilizce	İsimler	MILE	mil
+B1	Genel İngilizce	İsimler	MILE	mil (kara mili: yaklaşık 1,609 km)
 B1	Genel İngilizce	İsimler	MINERAL	mineral, maden
 B1	Genel İngilizce	Fiiller	MINIMIZE	en aza indirmek, azaltmak, küçültmek
 B1	Genel İngilizce	İsimler	MINIMUM	en az, asgari, minimum
@@ -1150,8 +1150,8 @@ B1	Genel İngilizce	İsimler	MONUMENT	anıt, abide
 B1	Genel İngilizce	Zarflar	MORE	daha, daha fazla, daha çok
 B1	Genel İngilizce	Zarflar	MOREOVER	ayrıca, üstelik, dahası
 B1	Genel İngilizce	İsimler	MOSQUITO	sivrisinek
-B1	Genel İngilizce	İsimler	MOSS	yosun
-B1	Genel İngilizce	İsimler	MOTHERLAND	anavatan, anayurt
+B1	Genel İngilizce	İsimler	MOSS	kara yosunu
+B1	Genel İngilizce	İsimler	MOTHERLAND	ana vatan, anayurt
 B1	Genel İngilizce	Sıfatlar	MOTIONLESS	hareketsiz
 B1	Genel İngilizce	Fiiller	MOTIVATE	motive etmek, güdülemek, isteklendirmek
 B1	Genel İngilizce	İsimler	MOTIVATION	motivasyon, güdü, istek
@@ -1159,7 +1159,7 @@ B1	Genel İngilizce	İsimler	MOTIVE	güdü, sebep, neden
 B1	Genel İngilizce	İsimler	MOTOR	motor
 B1	Genel İngilizce	İsimler	MOTORCYCLE	motosiklet
 B1	Genel İngilizce	İsimler	MOTTO	slogan, düstur, motto
-B1	Genel İngilizce	İsimler	MOUNT	fiil: binmek, artmak, monte etmek; isim: dağ, binek
+B1	Genel İngilizce	Fiiller	MOUNT	fiil: binmek, artmak, monte etmek; isim: dağ, binek
 B1	Genel İngilizce	İsimler	MOUNTAINTOP	dağ zirvesi, doruk
 B1	Genel İngilizce	Fiiller	MOURN	yas tutmak
 B1	Genel İngilizce	İsimler	MOVEMENT	hareket, akım
@@ -1168,13 +1168,13 @@ B1	Genel İngilizce	İsimler	MULE	katır
 B1	Genel İngilizce	İsimler	MURDERER	katil
 B1	Genel İngilizce	İsimler	MUSCLE	kas
 B1	Genel İngilizce	İsimler	MUSTARD	hardal
-B1	Genel İngilizce	Sıfatlar	MUTUAL	karşılıklı, ortak
+B1	Genel İngilizce	Sıfatlar	MUTUAL	karşılıklı; ortak
 B1	Genel İngilizce	İsimler	MYTH	efsane, mit
 B1	Genel İngilizce	İsimler	NAIL	tırnak, çivi
 B1	Genel İngilizce	Sıfatlar	NAKED	çıplak
 B1	Genel İngilizce	İsimler	NAP	kısa uyku, şekerleme
 B1	Genel İngilizce	Fiiller	NARRATE	anlatmak, hikâye etmek
-B1	Genel İngilizce	Sıfatlar	NARRATIVE	sıfat: anlatısal, öyküsel; isim: anlatı
+B1	Genel İngilizce	Sıfatlar	NARRATIVE	sıfat: anlatıya ilişkin; isim: anlatı, olayların aktarımı
 B1	Genel İngilizce	Sıfatlar	NARROW	dar
 B1	Genel İngilizce	Sıfatlar	NASTY	kötü, iğrenç, berbat
 B1	Genel İngilizce	İsimler	NATIONALIST	milliyetçi
@@ -1183,7 +1183,7 @@ B1	Genel İngilizce	Sıfatlar	NAVY BLUE	lacivert
 B1	Genel İngilizce	Sıfatlar	NEAR	sıfat: yakın; zarf: yakına, yakında; edat: -in yakınında
 B1	Genel İngilizce	Sıfatlar	NEARBY	sıfat: yakındaki; zarf: yakınlarda, yakında
 B1	Genel İngilizce	İsimler	NECKLACE	kolye, gerdanlık
-B1	Genel İngilizce	İsimler	NECTAR	nektar, bal özü
+B1	Genel İngilizce	İsimler	NECTAR	nektar; çiçeklerin salgıladığı şekerli sıvı
 B1	Genel İngilizce	İsimler	NEEDLE	iğne
 B1	Genel İngilizce	Fiiller	NEGOTIATE	müzakere etmek, pazarlık etmek, görüşmek
 B1	Genel İngilizce	İsimler	NEGOTIATION	müzakere, görüşme, pazarlık
