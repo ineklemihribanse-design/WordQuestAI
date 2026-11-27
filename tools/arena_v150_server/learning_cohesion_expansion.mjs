@@ -1418,13 +1418,13 @@ export const cohesionExpansion = [
     "prompt": "The institute is committed ____ independent research.",
     "options": [
       "to conducting",
-      "to conduct",
+      "to have conducting",
       "conduct",
       "conducted",
       "conducts"
     ],
     "correct": 0,
-    "explanation": "Bu kalıplarda to edattır ve ardından gerund gelir.",
+    "explanation": "Be committed to + isim veya -ing yaygın bir bağlılık yapısıdır. To burada edattır.",
     "family": "cohesion_grammar_10"
   },
   {
@@ -1435,13 +1435,13 @@ export const cohesionExpansion = [
     "prompt": "The team devoted several months ____ interviews with residents.",
     "options": [
       "to conducting",
-      "to conduct",
+      "for conduct",
       "conduct",
       "conducted",
       "conducts"
     ],
     "correct": 0,
-    "explanation": "Bu kalıplarda to edattır ve ardından gerund gelir.",
+    "explanation": "Devote time to + -ing: zamanı bir işe ayırmak.",
     "family": "cohesion_grammar_10"
   },
   {
@@ -1687,16 +1687,16 @@ export const cohesionExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The researchers asked participants ____ they used public transport.",
+    "prompt": "The researchers asked participants ____ they used public transport, recording the frequency of their journeys.",
     "options": [
       "how often",
       "how many",
-      "how much",
+      "how many times of",
       "whose",
       "which of"
     ],
     "correct": 0,
-    "explanation": "How often bir olayın tekrar sıklığını sorgular.",
+    "explanation": "How often kullanım sıklığını sorar.",
     "family": "cohesion_grammar_15"
   },
   {
@@ -1704,7 +1704,7 @@ export const cohesionExpansion = [
     "level": "B2",
     "yds": "medium",
     "topic": "Grammar",
-    "prompt": "The survey measured ____ residents encountered interruptions to the service.",
+    "prompt": "The survey measured ____ residents encountered interruptions to the service, recording the frequency rather than the total duration.",
     "options": [
       "how often",
       "how many",
@@ -1713,7 +1713,7 @@ export const cohesionExpansion = [
       "which of"
     ],
     "correct": 0,
-    "explanation": "How often bir olayın tekrar sıklığını sorgular.",
+    "explanation": "How often, olayın ne sıklıkta gerçekleştiğini belirtir.",
     "family": "cohesion_grammar_15"
   },
   {
