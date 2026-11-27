@@ -800,14 +800,14 @@ export const b121500Phrasals = [
     "kind": "Phrasal",
     "prompt": "The owner will ____ a plumber from outside the company to repair the leaking pipe.",
     "options": [
-      "call out",
+      "call on",
       "call in",
       "call back",
       "call off",
       "call up"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: call in. Call in bir uzmanı yardım için çağırmak demektir."
+    "explanation": "Doğru seçenek: call in. call in bir uzmanı yardım amacıyla çağırmaktır; call back geri aramak, call off iptal etmek, call up telefon etmek anlamına gelir."
   },
   {
     "id": "wq150_b121500_ph_b1_10_1",
@@ -876,10 +876,10 @@ export const b121500Phrasals = [
       "run away",
       "run out of",
       "run into",
-      "run over"
+      "run after"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: run through. Tükenme, rastlama, üzerinden geçme, gözden geçirme ve kaçma farklıdır."
+    "explanation": "Doğru seçenek: run through. Run through talimatları baştan sona gözden geçirmek demektir; run after peşinden koşmak anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_10_5",
@@ -926,14 +926,14 @@ export const b121500Phrasals = [
     "kind": "Phrasal",
     "prompt": "Please ____ the jacket you like best from the five on display.",
     "options": [
-      "point out",
+      "put away",
       "work out",
       "find out",
       "pick up",
       "pick out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: pick out. Alma, seçme, belirtme, hesaplama ve öğrenme anlamları farklıdır."
+    "explanation": "Doğru seçenek: pick out. Pick out, seçenekler arasından seçmek demektir. Point to işaret etmek anlamına gelir."
   },
   {
     "id": "wq150_b121500_ph_b1_11_3",
@@ -983,11 +983,11 @@ export const b121500Phrasals = [
       "pick up",
       "pick out",
       "point out",
-      "work out",
+      "look after",
       "find out"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: find out. Alma, seçme, belirtme, hesaplama ve öğrenme anlamları farklıdır."
+    "explanation": "Doğru seçenek: find out. Find out bir bilgiyi öğrenmek veya araştırıp bulmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_12_1",
@@ -1360,12 +1360,12 @@ export const b121500Phrasals = [
     "options": [
       "set up",
       "set aside",
-      "set out",
+      "set down",
       "set back",
       "set off"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set off. Yola çıkma, kurma, ayırma, ortaya koyma ve geciktirme anlamları vardır."
+    "explanation": "Doğru seçenek: set off. Set off bir yolculuğa başlamak demektir. Set down bir şeyi yere koymak veya yazıya geçirmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b1_16_2",
@@ -1377,13 +1377,13 @@ export const b121500Phrasals = [
     "prompt": "The volunteers plan to ____ a table for visitors near the gate.",
     "options": [
       "set aside",
-      "set out",
+      "set about",
       "set back",
       "set off",
       "set up"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: set up. Yola çıkma, kurma, ayırma, ortaya koyma ve geciktirme anlamları vardır."
+    "explanation": "Doğru seçenek: set up. Set up burada ziyaretçilerin kullanacağı masayı hazırlayıp kurmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_16_3",
@@ -1685,11 +1685,11 @@ export const b121500Phrasals = [
       "make for",
       "make up for",
       "make do with",
-      "make up",
+      "make off with",
       "make out"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: make up for. Uydurma, seçebilme, yönelme, telafi ve idare etme ayrılır."
+    "explanation": "Doğru seçenek: make up for. Make up for bir eksikliği telafi etmek, make off with bir şeyi alıp kaçmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b1_19_5",
@@ -2206,12 +2206,12 @@ export const b121500Phrasals = [
     "options": [
       "come up against",
       "come up with",
-      "come to terms with",
+      "come across as",
       "come about",
       "come down to"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: come up against. Oluşma, dayanma, engelle karşılaşma, fikir üretme ve kabullenme farklıdır."
+    "explanation": "Doğru seçenek: come up against. Come up against, zorluk veya engelle karşılaşmak demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_5_4",
@@ -2656,12 +2656,12 @@ export const b121500Phrasals = [
     "options": [
       "give in to",
       "go against",
-      "go along with",
+      "go back on",
       "give rise to",
       "give way to"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: give in to. Yol açma, yerini bırakma, boyun eğme, karşı gelme ve kabul etme ayrılır."
+    "explanation": "Doğru seçenek: give in to. Give in to baskı veya taleplere boyun eğmek demektir; go back on bir sözden dönmek anlamındadır."
   },
   {
     "id": "wq150_b121500_ph_b2_10_4",
@@ -3106,12 +3106,12 @@ export const b121500Phrasals = [
     "options": [
       "make out",
       "make for",
-      "make sense of",
+      "make do with",
       "make allowance for",
       "make up for"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: make out. Hesaba katma, telafi, seçebilme, katkı ve anlamlandırma farklıdır."
+    "explanation": "Doğru seçenek: make out. Make out burada silik yazıyı seçebilmek, okuyabilmek demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_15_4",
@@ -3392,14 +3392,14 @@ export const b121500Phrasals = [
     "kind": "Phrasal",
     "prompt": "The project could ____ funding before the final stage if expenditure rises.",
     "options": [
-      "run through",
+      "run after",
       "run up against",
       "run out of",
       "run up",
       "rule out"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: run out of. Eleme, gözden geçirme, engel, tükenme ve borç biriktirme ayrılır."
+    "explanation": "Doğru seçenek: run out of. Run out of bir kaynağı tüketip kaynak kalmaması demektir."
   },
   {
     "id": "wq150_b121500_ph_b2_18_5",
