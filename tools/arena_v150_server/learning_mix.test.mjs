@@ -157,3 +157,49 @@ test('editorial screening reports near duplicates, answer cues and family concen
  assert.deepEqual(normalizedChoiceCollision.map(q=>q.id),[]);
  // Similarity, length and template reports are review candidates, not automatic deletion or CEFR verdicts.
 });
+
+
+// The licensed dictionary is complete even when an entry cannot fit a crossword.
+import {expandLearning,parseLicensedLine} from './expand_learning.mjs';
+import {loadVocabulary,vocabularyCatalog,crosswordEligible,preferCefrRecords} from './vocabulary_bank.mjs';
+import {quiz,quizSpellingKey,quizGlossKeys} from '../v132_engine/engine.mjs';
+test('quiz-only expansion keeps the board inventory and distinct CEFR/YDS senses',async()=>{
+ const baseline=[{level:'C2',answer:'XYLOPHONE',meaning:'ksilofon',category:'test',wordType:'İsimler'}];
+ const expanded=await expandLearning(baseline);
+ assert.equal(expanded.length,8093);
+ assert.equal((await expandLearning(expanded)).length,expanded.length);
+ assert.equal(expanded.filter(w=>w.quizOnly).length,355);
+ assert.ok(expanded.filter(w=>w.quizOnly).every(w=>!w.yds&&!crosswordEligible(w)));
+ const loaded=loadVocabulary(expanded);
+ assert.equal(loaded.length,expanded.length);
+ assert.equal(preferCefrRecords(loaded).length,7920);
+ assert.equal(preferCefrRecords(loaded.filter(crosswordEligible)).length,7565);
+ const byLevel={A1:117,A2:78,B1:84,B2:65,C1:11};
+ for(const [level,count] of Object.entries(byLevel))assert.equal(loaded.filter(w=>w.level===level&&w.quizOnly).length,count);
+ const catalog=vocabularyCatalog(loaded);
+ assert.equal(catalog.all.cefr.A1.crossword,479);
+ assert.ok(catalog.all.cefr.A1.quiz>catalog.all.cefr.A1.crossword);
+ const q=await createVocabularyBank(expanded)({kind:'quiz',mode:'classic',levels:['A1'],count:20},'licensed-a1-regression');
+ assert.equal(q.length,20);assert.ok(q.every(x=>x.options.length===5));
+ assert.equal(new Set(q.map(x=>x.prompt.trim().toLowerCase())).size,20);
+ const board=await createVocabularyBank(expanded)({kind:'duel',mode:'classic',levels:['A1'],count:10},'licensed-board-regression');
+ assert.equal(board.length,10);
+ assert.ok(board.every(x=>loaded.some(w=>w.id===x.id&&crosswordEligible(w))));
+ assert.equal(parseLicensedLine('A1\tGenel\tZamirler\tI\tben','A1').quizOnly,true);
+ assert.equal(parseLicensedLine('A1\tGenel\tFiiller\tLOOK AT\tbakmak','A1').quizOnly,true);
+ assert.equal(parseLicensedLine('A1\tGenel\tFiiller\tLOOK@\tbakmak','A1'),null);
+});
+test('quiz selection prevents repeated prompts and screens alternative senses outside the filter',()=>{
+ const pool=[{answer:'APPLE',meaning:'elma'},{answer:'PEAR',meaning:'armut'},{answer:'ORANGE',meaning:'portakal'},{answer:'LEMON',meaning:'limon'},{answer:'GRAPE',meaning:'üzüm'},{answer:'MELON',meaning:'kavun'},{answer:'PEACH',meaning:'şeftali'},{answer:'PLUM',meaning:'erik'},{answer:'FRUIT',meaning:'meyve'},{answer:'PRODUCE',meaning:'meyve'}].map(w=>({...w,level:'A1'}));
+ const all=[...pool,{level:'B1',answer:'PRODUCE',meaning:'elma'}];
+ const cfg={mode:'quiz',levels:['A1'],size:5,seconds:30,hints:0,retries:0,topic:'all'};
+ for(let seed=1;seed<=40;seed++){
+  const questions=quiz(pool,cfg,seed,true,all);
+  assert.equal(new Set(questions.map(q=>q.prompt.trim().toLowerCase())).size,5);
+  for(const q of questions){
+   assert.equal(new Set(q.options.map(quizSpellingKey)).size,5);
+   const target=new Set(quizGlossKeys(q.prompt));
+   for(const wrong of q.options.filter((_,i)=>i!==q.correct))assert.ok(!all.filter(w=>quizSpellingKey(w.answer)===quizSpellingKey(wrong)).flatMap(w=>quizGlossKeys(w.meaning)).some(g=>target.has(g)));
+  }
+ }
+});
