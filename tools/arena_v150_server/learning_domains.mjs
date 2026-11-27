@@ -3351,7 +3351,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The visible characteristics of an organism, resulting from genes and environment, constitute its ____.",
+    "prompt": "The observable characteristics of an organism, including physical and physiological traits shaped by genes and environment, constitute its ____.",
     "options": [
       "phenotype",
       "genotype",
@@ -3479,7 +3479,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The study could not be challenged by any conceivable observation, raising concerns about its scientific ____.",
+    "prompt": "The proposed hypothesis could not be contradicted by any conceivable observation, raising concerns about its scientific ____.",
     "options": [
       "falsifiability",
       "granularity",
@@ -3591,7 +3591,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The number of newly diagnosed cases during a specified period is used to calculate disease ____.",
+    "prompt": "The occurrence of new cases of a disease in an at-risk population during a specified period is measured by its ____.",
     "options": [
       "incidence",
       "prevalence",
@@ -4183,7 +4183,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The service returned the same effective result when an identical request was repeated, without repeating its side effect. This property is ____.",
+    "prompt": "Repeating an identical request has the same intended effect on the server's state as performing it once. This property is ____.",
     "options": [
       "idempotence",
       "concurrency",
@@ -4192,7 +4192,7 @@ export const domainQuestions = [
       "latency"
     ],
     "correct": 0,
-    "explanation": "Idempotence aynı işlemin yinelenmesinin ek etki oluşturmaması özelliğidir."
+    "explanation": "Idempotence (eşgüçlülük), aynı işlemin bir kez veya birden çok kez uygulanmasının amaçlanan etkisinin aynı olmasıdır; yanıt içeriğinin aynı olması gerekmez."
   },
   {
     "id": "wq150_domain_60",
@@ -4602,10 +4602,10 @@ export const domainQuestions = [
     "prompt": "Had the instrument been recalibrated before the trial, the researchers ____ the systematic error.",
     "options": [
       "might have avoided",
-      "might avoid yesterday",
+      "might avoid",
       "will have avoided",
       "had been avoiding",
-      "would avoid yesterday"
+      "would avoid"
     ],
     "correct": 0,
     "explanation": "Geçmişe aykırı koşulda had + V3 ve might have + V3 kullanılır."
@@ -4679,7 +4679,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Paragraph",
-    "prompt": "A city planted trees to reduce summer heat. Temperature readings improved in shaded streets, while nearby unshaded streets showed little change. What does the evidence most directly suggest?",
+    "prompt": "A city planted trees to reduce summer heat. Temperatures fell in shaded streets, while nearby unshaded streets showed little change. What does the evidence most directly suggest?",
     "options": [
       "The cooling effect was spatially uneven.",
       "Tree planting increased temperatures everywhere.",
@@ -4746,10 +4746,10 @@ export const domainQuestions = [
     "prompt": "By the time the new bridge opens, engineers ____ its safety systems for several months.",
     "options": [
       "will have been testing",
-      "have tested yesterday",
-      "had tested last year",
-      "were testing tomorrow",
-      "are tested"
+      "had been testing",
+      "have been testing",
+      "were testing",
+      "would have been testing"
     ],
     "correct": 0,
     "explanation": "Gelecekte bir noktaya kadar sürmüş eylem için future perfect continuous kullanılır."
