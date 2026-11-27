@@ -477,8 +477,8 @@ jobs:
         with:
           path: .wq-pronunciation-cache
           key: ${{ steps.audio_key.outputs.key }}
-      - name: Ensure pronunciation validation dependencies even on audio cache hit
-        if: steps.source_checkpoint.outputs.cache-hit != 'true'
+      # The late 1.0.150 learning audio integration runs even on a stable source cache hit.
+      - name: Ensure pronunciation dependencies on every assembly path
         run: |
           set -euo pipefail
           if ! command -v espeak >/dev/null || ! command -v ffmpeg >/dev/null; then
