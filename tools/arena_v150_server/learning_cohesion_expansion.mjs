@@ -3677,16 +3677,16 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_27",
     "id": "wq150_cohesion_fill_nov26_9_27",
-    "prompt": "A hospital evaluated a screening procedure using both sensitivity and specificity. ____ The latter measures its ability to correctly classify people who do not have it. Considering both measures helps assess the trade-off between missed cases and false alarms.\n\nChoose the sentence that best completes the paragraph.",
+    "prompt": "A hospital evaluated a screening procedure using both sensitivity and specificity. ____ The latter measures the proportion of people without the target condition who test negative. Considering both measures helps assess the trade-off between missed cases and false alarms.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
-      "The former describes how well the procedure identifies people who have the condition.",
-      "The former describes the proportion of positive results that are correct.",
-      "The former describes the cost of performing the procedure.",
-      "The former describes the proportion of negative results that are correct.",
-      "The former describes how common the condition is in the population."
+      "The former measures the proportion of people with the target condition who test positive.",
+      "The former measures the proportion of positive test results that are true positives.",
+      "The former measures the proportion of people without the condition who test positive.",
+      "The former measures the proportion of negative test results that are true negatives.",
+      "The former measures the proportion of all people tested who have the condition."
     ],
     "correct": 0,
-    "explanation": "Sensitivity hastalığı olanları doğru belirleme oranıdır; diğer seçenekler farklı ölçütlerdir."
+    "explanation": "Sensitivity (duyarlılık), hedef hastalığı olan kişiler arasında test sonucu pozitif çıkanların oranıdır. Specificity (özgüllük), hastalığı olmayanlar arasında test sonucu negatif çıkanların oranıdır. Diğer seçenekler sırasıyla pozitif öngörü değeri, yanlış pozitif oranı, negatif öngörü değeri ve hastalık sıklığıdır."
   },
   {
     "level": "B2",
@@ -3694,7 +3694,7 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_27",
     "id": "wq150_cohesion_odd_nov26_9_27",
-    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A hospital evaluated a screening procedure using both sensitivity and specificity. (II) The former describes how well the procedure identifies people who have the condition. (III) The latter measures its ability to correctly classify people who do not have it. (IV) The hospital's laboratory is situated on the second floor. (V) Considering both measures helps assess the trade-off between missed cases and false alarms.",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) A hospital evaluated a screening procedure using both sensitivity and specificity. (II) The former measures the proportion of people with the target condition who test positive. (III) The latter measures the proportion of people without the target condition who test negative. (IV) The hospital's laboratory is situated on the second floor. (V) Considering both measures helps assess the trade-off between missed cases and false alarms.",
     "options": [
       "I",
       "II",
