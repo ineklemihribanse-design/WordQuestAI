@@ -31,8 +31,24 @@ def capture(name):
     return im.size
 def enter(w,h):
     last=""
+    launcher_recovered=False
     for i in range(16):
         ns=nodes();ls=[label(n) for n in ns]
+        # The disposable emulator's own launcher may ANR after a display resize.
+        # Recover ONLY that external system dialog; an app ANR must still fail.
+        launcher_anr=any(n.get("package")=="android" and
+            "pixel launcher isn't responding" in n.get("text","").casefold() for n in ns)
+        if launcher_anr:
+            if launcher_recovered:
+                raise AssertionError("Pixel Launcher ANR persisted after recovery")
+            close=next((n for n in ns if n.get("resource-id")=="android:id/aerr_close"),None)
+            assert close is not None,"Pixel Launcher ANR has no close button"
+            print("Recovering external Pixel Launcher ANR, not WordQuest",flush=True)
+            tap(close)
+            adb("shell","am","start","-n",PKG+"/com.kelimebulmacasi.a1.MainActivity")
+            launcher_recovered=True
+            time.sleep(1)
+            continue
         if any("bulmaca düellosu" in l for l in ls) and any("tek başına oyna" in l for l in ls):return
         def pick(fn):
             a=[n for n in ns if fn(label(n))]
