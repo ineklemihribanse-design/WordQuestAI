@@ -226,7 +226,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The population is expected to ____ as more young residents leave the village.",
+    "prompt": "The village's population is expected to ____ from 2,000 to 1,500 as more young residents leave.",
     "options": [
       "decline",
       "emerge",
@@ -481,12 +481,12 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Although she disliked the proposal, she ____ agreed to it under pressure.",
+    "prompt": "Although she disliked the proposal, she ____ agreed to it under pressure, making her unwillingness clear.",
     "options": [
       "reluctantly",
       "eagerly",
       "enthusiastically",
-      "willingly",
+      "gladly",
       "cheerfully"
     ],
     "correct": 0,
@@ -498,12 +498,12 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The tenant ____ accepted the rent increase because no alternative housing was available.",
+    "prompt": "The tenant ____ accepted the rent increase, protesting that no alternative housing was available.",
     "options": [
       "reluctantly",
       "eagerly",
       "enthusiastically",
-      "willingly",
+      "gladly",
       "cheerfully"
     ],
     "correct": 0,
@@ -1229,7 +1229,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Measurements from the two devices were ____, despite the use of identical samples.",
+    "prompt": "Measurements from the two devices were ____, with one showing 20°C and the other 35°C for the same sample.",
     "options": [
       "inconsistent",
       "uniform",
@@ -1246,7 +1246,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The witness provided ____ accounts of the same event on different occasions.",
+    "prompt": "The witness provided ____ accounts of the same event, giving contradictory details on different occasions.",
     "options": [
       "inconsistent",
       "uniform",
@@ -1467,7 +1467,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Independent records appear to ____ the witness's account of the event.",
+    "prompt": "Independent records appear to ____ the witness's account, confirming each of the key details.",
     "options": [
       "corroborate",
       "refute",
@@ -1484,7 +1484,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A subsequent experiment was designed to ____ the initial finding using another method.",
+    "prompt": "A subsequent experiment produced the same results and helped ____ the initial finding using another method.",
     "options": [
       "corroborate",
       "refute",
@@ -1637,7 +1637,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The protective layer was designed to ____ the intensity of incoming radiation.",
+    "prompt": "The protective layer was designed to ____ the intensity of incoming radiation before it reaches the sensitive equipment.",
     "options": [
       "attenuate",
       "amplify",
@@ -2028,7 +2028,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "Each sample was ____ labelled to eliminate the possibility of confusion.",
+    "prompt": "Each sample was ____ labelled, with every identifier checked twice to eliminate confusion.",
     "options": [
       "meticulously",
       "carelessly",
@@ -2509,7 +2509,7 @@ export const contextQuestions = [
       "be revised",
       "revising",
       "revises",
-      "was revised",
+      "has been revising",
       "has revised"
     ],
     "correct": 0,
@@ -2524,7 +2524,7 @@ export const contextQuestions = [
     "prompt": "The researchers devoted considerable time ____ the effects of the intervention.",
     "options": [
       "to measuring",
-      "to measure",
+      "for measure",
       "measure",
       "measured",
       "measures"
@@ -2623,7 +2623,7 @@ export const contextQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Were the necessary funding available, the project ____ completed within a year in the future.",
+    "prompt": "Were the necessary funding available now, the project ____ completed within the next year.",
     "options": [
       "could be",
       "will be",
@@ -2691,7 +2691,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The children went outside, ____ the weather was rather cold.",
+    "prompt": "The children wanted to stay warm, but they went outside, ____ the weather was rather cold.",
     "options": [
       "although",
       "because",
@@ -2708,7 +2708,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The team continued the journey, ____ the road was difficult.",
+    "prompt": "Despite their preference for an easy route, the team continued the journey, ____ the road was difficult.",
     "options": [
       "although",
       "because",
@@ -2793,7 +2793,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The first method requires specialist equipment, ____ the second can be used with ordinary tools.",
+    "prompt": "Unlike the first method, which requires specialist equipment, the second can be used with ordinary tools. The first is costly, ____ the second is inexpensive.",
     "options": [
       "whereas",
       "because",
@@ -2929,7 +2929,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The researchers recorded every detail ____ the experiment could be replicated.",
+    "prompt": "With the explicit aim of enabling replication, the researchers recorded every detail ____ other teams could repeat the experiment.",
     "options": [
       "so that",
       "whereas",
@@ -2946,7 +2946,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The company simplified the instructions ____ new employees could follow them independently.",
+    "prompt": "To help new employees work independently, the company simplified the instructions ____ they could follow them without assistance.",
     "options": [
       "so that",
       "whereas",
@@ -3626,7 +3626,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I sleep on a ____ every night.",
+    "prompt": "I sleep on a ____ with a mattress and a pillow in my bedroom every night.",
     "options": [
       "bed",
       "sofa",
@@ -3643,7 +3643,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Three people can sit on this ____ and watch TV.",
+    "prompt": "Three people can sit on this ____ with armrests and watch TV in the living room.",
     "options": [
       "bed",
       "sofa",
@@ -3660,7 +3660,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Hang your dresses in the ____.",
+    "prompt": "Hang your dresses on the rail inside the ____ and close its doors.",
     "options": [
       "bed",
       "sofa",
@@ -3711,7 +3711,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "I have ____ at seven, before school starts.",
+    "prompt": "I have ____ at seven; it is my first meal of the day.",
     "options": [
       "breakfast",
       "lunch",
@@ -3728,7 +3728,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We stop work at noon to have ____.",
+    "prompt": "We stop work at noon to have our midday meal, ____.",
     "options": [
       "breakfast",
       "lunch",
@@ -3847,7 +3847,7 @@ export const contextQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The first day of the weekend in the UK is ____.",
+    "prompt": "The day between Friday and Sunday is ____.",
     "options": [
       "Monday",
       "Wednesday",
@@ -4323,7 +4323,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The train's ____ at the station is expected at 18:40.",
+    "prompt": "The train's ____ at the station, where it is due to reach the platform, is expected at 18:40.",
     "options": [
       "departure",
       "arrival",
@@ -4357,7 +4357,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We have only ten minutes to catch our ____ to the next train.",
+    "prompt": "We have only ten minutes to catch our ____ at the interchange station and continue to our destination.",
     "options": [
       "departure",
       "arrival",
@@ -4391,7 +4391,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Buy your ticket at the main ____ before entering the museum.",
+    "prompt": "Buy your ticket at the main ____; this is the doorway where visitors go into the museum.",
     "options": [
       "entrance",
       "exit",
@@ -4479,7 +4479,7 @@ export const contextQuestions = [
     "prompt": "Could you ____ why the answer is wrong and show the steps?",
     "options": [
       "explain",
-      "describe",
+      "announce",
       "introduce",
       "repeat",
       "translate"
@@ -4561,13 +4561,13 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "We leave tomorrow, so I need to ____ my clothes into the suitcase.",
+    "prompt": "We leave tomorrow, so I need to ____ my clothes into the suitcase, ready for the trip.",
     "options": [
       "pack",
       "unpack",
       "wrap",
       "unwrap",
-      "fold"
+      "hang"
     ],
     "correct": 0,
     "explanation": "pack: valize koymak. Diğer seçenekler: unpack: valizi boşaltmak; wrap: sarmak; unwrap: paketi açmak; fold: katlamak."
@@ -4663,7 +4663,7 @@ export const contextQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "A mechanic will ____ the bicycle's broken brakes.",
+    "prompt": "A mechanic will ____ the bicycle's broken brakes by adjusting the existing parts without replacing them.",
     "options": [
       "hire",
       "repair",
