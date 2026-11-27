@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from datetime import datetime, timezone, timedelta
 import json
+import re
 import os
 import sys
 import time
@@ -18,11 +19,14 @@ import urllib.request
 REPO = "ineklemihribanse-design/WordQuestAI"
 API = "https://api.github.com"
 MIN_BYTES = 1_000_000
-MAIN_AGE_HOURS = 48
-EXPERIMENT_AGE_HOURS = 24
+MAIN_AGE_HOURS = 168
+EXPERIMENT_AGE_HOURS = 168
 KEEP_MAIN_PER_NAME = 3
-KEEP_EXPERIMENT_PER_BRANCH_NAME = 1
-MAX_DELETE = 500
+KEEP_EXPERIMENT_PER_BRANCH_NAME = 3
+MAX_DELETE = 30
+# Allow only known disposable diagnostic output; never match APKs, source
+# snapshots, signed metadata, release proofs, audio/word banks or deltas.
+DISPOSABLE = re.compile(r"WordQuestAI-v1\.0\.\d+-release-diagnostics|visual-qa")
 
 def iso(s):
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
@@ -74,18 +78,19 @@ def choose(artifacts, now):
             size = int(a["size_in_bytes"])
             artifact_id = int(a["id"])
             name = str(a["name"])
+            run_id = int(a["workflow_run"]["id"])
         except (KeyError, TypeError, ValueError):
             continue
-        if not branch or not name or size < MIN_BYTES or not a.get("expired", False) and created > now:
+        if not branch or not DISPOSABLE.fullmatch(name) or size < MIN_BYTES or a.get("expired",False) or created > now:
             continue
-        valid.append((created, artifact_id, branch, name, size))
+        valid.append((created, artifact_id, branch, name, size, run_id))
     valid.sort(reverse=True)
     # Protect 3 most recent main artifacts of every artifact name.
     # Protect newest preview per experiment branch + artifact name.
     keep = Counter()
     delete = []
     threshold = {"main": timedelta(hours=MAIN_AGE_HOURS)}
-    for created, artifact_id, branch, name, size in valid:
+    for created, artifact_id, branch, name, size, run_id in valid:
         key = (branch, name)
         keep[key] += 1
         if branch == "main":
@@ -99,7 +104,7 @@ def choose(artifacts, now):
         if now - created < age:
             continue
         delete.append({"id": artifact_id, "branch": branch, "name": name,
-                       "size": size, "created_at": created.isoformat()})
+                       "size": size, "run_id": run_id, "created_at": created.isoformat()})
     # Largest duplicates first, no more than MAX_DELETE in a single job.
     return sorted(delete, key=lambda a: a["size"], reverse=True)[:MAX_DELETE]
 
@@ -120,12 +125,18 @@ def main():
           f"{eligible_bytes/1048576:.1f} MiB (large old duplicates only).",
           flush=True)
     print(f"Protected: latest {KEEP_MAIN_PER_NAME} copies per main APK/artifact name; "
-          f"newest copy of each experiment artifact and recent output. "
+          f"three newest copies per experiment branch and recent output. Only allowlisted diagnostics considered. "
           "Public WordQuestAI-Updates releases are NOT accessed.", flush=True)
     deleted_bytes = 0
     deleted_count = 0
     failed_count = 0
     for candidate in candidates:
+        # An artifact can be uploaded before its producing job finishes.
+        # Read the exact run state again before even reporting a deletion.
+        run=request(token,f"/repos/{REPO}/actions/runs/{candidate['run_id']}")
+        if run.get("status")!="completed":
+            print("PROTECTED running job:",candidate["id"],flush=True)
+            continue
         if dry_run:
             print("DRY RUN:", candidate)
             continue

@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/prune-actions-artifacts.yml'
       - 'tools/maintenance/prune_actions_artifacts.py'
+      - 'tools/maintenance/test_prune_actions_artifacts.py'
   workflow_dispatch:
   schedule:
     - cron: '45 2 * * *'

@@ -1,36 +1,28 @@
 #!/usr/bin/env python3
-"""No GitHub connection: pruning-policy regression tests."""
 import unittest
 from datetime import datetime, timezone, timedelta
-from prune_actions_artifacts import choose, MAIN_AGE_HOURS, EXPERIMENT_AGE_HOURS
-
-NOW = datetime(2026, 11, 18, 20, tzinfo=timezone.utc)
-
-def a(num, branch, name="visual-qa", mb=32, hours_ago=72):
-    return {"id":num,"created_at":(NOW-timedelta(hours=hours_ago)).isoformat(),
-            "workflow_run":{"head_branch":branch},"name":name,
-            "size_in_bytes":int(mb*1048576),"expired":False}
-
-class CleanupSafety(unittest.TestCase):
-    def test_protect_recent_three_main(self):
-        d=[a(i,"main","WordQuestAI-Unsigned-APK",120,30+i*20) for i in range(1,7)]
-        chosen=choose(d,NOW)
-        self.assertEqual({x["id"] for x in chosen},{4,5,6})
-    def test_protect_single_latest_per_experimental_branch(self):
-        d=[a(i,"feature/teacher","preview",34,4+i*26) for i in range(1,6)]
-        self.assertEqual({x["id"] for x in choose(d,NOW)},{2,3,4,5})
-    def test_do_not_touch_recent_or_tiny_files(self):
-        d=[a(1,"main",hours_ago=2), a(2,"feature/x",hours_ago=1),
-           a(3,"feature/x",hours_ago=96,mb=.1),a(4,None,hours_ago=400)]
-        self.assertEqual(choose(d,NOW),[])
-    def test_keep_different_experiment_branch_previews(self):
-        d=[a(1,"feature/a"),a(2,"feature/b"),a(3,"feature/c")]
-        self.assertEqual(choose(d,NOW),[])
-    def test_limit_newest_500_deletions(self):
-        d=[a(i,"feature/mass",hours_ago=96+i) for i in range(700)]
-        self.assertEqual(len(choose(d,NOW)),500)
-        self.assertNotIn(0,{x["id"] for x in choose(d,NOW)})
-    def test_empty_is_safe(self):
-        self.assertEqual(choose([],NOW),[])
-if __name__ == "__main__":
-    unittest.main()
+from prune_actions_artifacts import choose,MAX_DELETE
+NOW=datetime(2026,11,28,0,tzinfo=timezone.utc)
+def a(i,branch="feature/arena",name="WordQuestAI-v1.0.158-release-diagnostics",hours=240,mb=2,expired=False):
+    return {"id":i,"name":name,"created_at":(NOW-timedelta(hours=hours)).isoformat(),
+            "workflow_run":{"head_branch":branch,"id":1000+i},"size_in_bytes":mb*1048576,"expired":expired}
+class Safety(unittest.TestCase):
+    def test_keep_three_per_branch_and_name(self):
+        rows=[a(i,hours=240+i) for i in range(6)]
+        self.assertEqual({r["id"] for r in choose(rows,NOW)},{3,4,5})
+        self.assertEqual(choose([a(i,branch="branch"+str(i)) for i in range(10)],NOW),[])
+    def test_never_touch_critical_files(self):
+        for name in ["WordQuestAI-v1.0.158-verified-release","WordQuestAI-v1.0.158-device-test",
+                     "WordQuestAI-full-assembled-source-audit","WordQuestAI-v150-verified-arena-bank",
+                     "WordQuestAI.apk","update.json","WordQuestAI-171-to-172.wqd.gz","unknown"]:
+            self.assertEqual(choose([a(i,name=name,hours=400+i) for i in range(10)],NOW),[])
+    def test_recent_expired_tiny_missing(self):
+        self.assertEqual(choose([a(i,hours=24+i) for i in range(8)],NOW),[])
+        self.assertEqual(choose([a(i,expired=True) for i in range(8)],NOW),[])
+        self.assertEqual(choose([a(i,mb=0.01) for i in range(8)],NOW),[])
+        rows=[a(i) for i in range(8)]
+        for r in rows:r["workflow_run"].pop("id")
+        self.assertEqual(choose(rows,NOW),[])
+    def test_limit(self):
+        self.assertEqual(len(choose([a(i,hours=300+i) for i in range(80)],NOW)),MAX_DELETE)
+if __name__=="__main__":unittest.main()
