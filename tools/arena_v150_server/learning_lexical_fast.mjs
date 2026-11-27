@@ -3034,9 +3034,9 @@ export const lexicalFastQuestions = [
     "options": [
       "temperate",
       "indulgent",
-      "punctual",
-      "wealthy",
-      "creative"
+      "ascetic in appearance",
+      "ritualistic",
+      "reclusive"
     ],
     "correct": 0,
     "explanation": "'abstemious' bu bağlamda 'ölçülü ve nefsine hâkim' anlamındadır. 'temperate' bu kullanıma en yakın seçenektir.",
@@ -3051,9 +3051,9 @@ export const lexicalFastQuestions = [
     "options": [
       "indulgent",
       "temperate",
-      "punctual",
-      "wealthy",
-      "creative"
+      "ascetic in appearance",
+      "ritualistic",
+      "reclusive"
     ],
     "correct": 0,
     "explanation": "'abstemious' bu bağlamda 'ölçülü ve nefsine hâkim' anlamındadır. 'indulgent' bu anlamın karşıtıdır.",
@@ -3102,9 +3102,9 @@ export const lexicalFastQuestions = [
     "options": [
       "bitter",
       "amicable",
-      "formal",
-      "lengthy",
-      "technical"
+      "inconclusive",
+      "protracted",
+      "secretive"
     ],
     "correct": 0,
     "explanation": "'acrimonious' bu bağlamda 'sert ve kırıcı' anlamındadır. 'bitter' bu kullanıma en yakın seçenektir.",
@@ -3119,9 +3119,9 @@ export const lexicalFastQuestions = [
     "options": [
       "amicable",
       "bitter",
-      "formal",
-      "lengthy",
-      "technical"
+      "inconclusive",
+      "protracted",
+      "secretive"
     ],
     "correct": 0,
     "explanation": "'acrimonious' bu bağlamda 'sert ve kırıcı' anlamındadır. 'amicable' bu anlamın karşıtıdır.",
@@ -3238,9 +3238,9 @@ export const lexicalFastQuestions = [
     "options": [
       "cordial",
       "hostile",
-      "formal",
-      "lengthy",
-      "regional"
+      "provisional",
+      "legally binding",
+      "mutually beneficial"
     ],
     "correct": 0,
     "explanation": "'amicable' bu bağlamda 'dostane' anlamındadır. 'cordial' bu kullanıma en yakın seçenektir.",
@@ -3255,9 +3255,9 @@ export const lexicalFastQuestions = [
     "options": [
       "hostile",
       "cordial",
-      "formal",
-      "lengthy",
-      "regional"
+      "provisional",
+      "legally binding",
+      "mutually beneficial"
     ],
     "correct": 0,
     "explanation": "'amicable' bu bağlamda 'dostane' anlamındadır. 'hostile' bu anlamın karşıtıdır.",
@@ -3306,9 +3306,9 @@ export const lexicalFastQuestions = [
     "options": [
       "strenuous",
       "effortless",
-      "regional",
-      "formal",
-      "temporary"
+      "hazardous",
+      "time-consuming",
+      "unfamiliar"
     ],
     "correct": 0,
     "explanation": "'arduous' bu bağlamda 'zahmetli' anlamındadır. 'strenuous' bu kullanıma en yakın seçenektir.",
@@ -3323,9 +3323,9 @@ export const lexicalFastQuestions = [
     "options": [
       "effortless",
       "strenuous",
-      "regional",
-      "formal",
-      "temporary"
+      "hazardous",
+      "time-consuming",
+      "unfamiliar"
     ],
     "correct": 0,
     "explanation": "'arduous' bu bağlamda 'zahmetli' anlamındadır. 'effortless' bu anlamın karşıtıdır.",
@@ -3374,9 +3374,9 @@ export const lexicalFastQuestions = [
     "options": [
       "diligent",
       "negligent",
-      "wealthy",
-      "quiet",
-      "creative"
+      "methodical",
+      "discerning",
+      "resourceful"
     ],
     "correct": 0,
     "explanation": "'assiduous' bu bağlamda 'çalışkan ve özenli' anlamındadır. 'diligent' bu kullanıma en yakın seçenektir.",
@@ -3391,9 +3391,9 @@ export const lexicalFastQuestions = [
     "options": [
       "negligent",
       "diligent",
-      "wealthy",
-      "quiet",
-      "creative"
+      "methodical",
+      "discerning",
+      "resourceful"
     ],
     "correct": 0,
     "explanation": "'assiduous' bu bağlamda 'çalışkan ve özenli' anlamındadır. 'negligent' bu anlamın karşıtıdır.",
@@ -3442,9 +3442,9 @@ export const lexicalFastQuestions = [
     "options": [
       "unadorned",
       "ornate",
-      "temporary",
-      "regional",
-      "visible"
+      "spacious",
+      "symmetrical",
+      "dimly lit"
     ],
     "correct": 0,
     "explanation": "'austere' bu bağlamda 'sade ve süssüz' anlamındadır. 'unadorned' bu kullanıma en yakın seçenektir.",
@@ -3459,9 +3459,9 @@ export const lexicalFastQuestions = [
     "options": [
       "ornate",
       "unadorned",
-      "temporary",
-      "regional",
-      "visible"
+      "spacious",
+      "symmetrical",
+      "dimly lit"
     ],
     "correct": 0,
     "explanation": "'austere' bu bağlamda 'sade ve süssüz' anlamındadır. 'ornate' bu anlamın karşıtıdır.",
@@ -3578,9 +3578,9 @@ export const lexicalFastQuestions = [
     "options": [
       "self-satisfied",
       "vigilant",
-      "wealthy",
-      "quiet",
-      "creative"
+      "overextended",
+      "demoralised",
+      "indecisive"
     ],
     "correct": 0,
     "explanation": "'complacent' bu bağlamda 'kendinden aşırı memnun ve rehavete kapılmış' anlamındadır. 'self-satisfied' bu kullanıma en yakın seçenektir.",
@@ -3595,9 +3595,9 @@ export const lexicalFastQuestions = [
     "options": [
       "vigilant",
       "self-satisfied",
-      "wealthy",
-      "quiet",
-      "creative"
+      "overextended",
+      "demoralised",
+      "indecisive"
     ],
     "correct": 0,
     "explanation": "'complacent' bu bağlamda 'kendinden aşırı memnun ve rehavete kapılmış' anlamındadır. 'vigilant' bu anlamın karşıtıdır.",
@@ -3646,9 +3646,9 @@ export const lexicalFastQuestions = [
     "options": [
       "succinct",
       "verbose",
-      "formal",
-      "technical",
-      "recent"
+      "comprehensive",
+      "selective",
+      "illustrative"
     ],
     "correct": 0,
     "explanation": "'concise' bu bağlamda 'özlü' anlamındadır. 'succinct' bu kullanıma en yakın seçenektir.",
@@ -3663,9 +3663,9 @@ export const lexicalFastQuestions = [
     "options": [
       "verbose",
       "succinct",
-      "formal",
-      "technical",
-      "recent"
+      "comprehensive",
+      "selective",
+      "illustrative"
     ],
     "correct": 0,
     "explanation": "'concise' bu bağlamda 'özlü' anlamındadır. 'verbose' bu anlamın karşıtıdır.",
@@ -3850,9 +3850,9 @@ export const lexicalFastQuestions = [
     "options": [
       "unwieldy",
       "manageable",
-      "portable",
-      "temporary",
-      "regional"
+      "fragile",
+      "obsolete",
+      "hazardous"
     ],
     "correct": 0,
     "explanation": "'cumbersome' bu bağlamda 'hantal' anlamındadır. 'unwieldy' bu kullanıma en yakın seçenektir.",
@@ -3867,9 +3867,9 @@ export const lexicalFastQuestions = [
     "options": [
       "manageable",
       "unwieldy",
-      "portable",
-      "temporary",
-      "regional"
+      "fragile",
+      "obsolete",
+      "hazardous"
     ],
     "correct": 0,
     "explanation": "'cumbersome' bu bağlamda 'hantal' anlamındadır. 'manageable' bu anlamın karşıtıdır.",
@@ -4054,9 +4054,9 @@ export const lexicalFastQuestions = [
     "options": [
       "forceful",
       "hesitant",
-      "formal",
-      "temporary",
-      "regional"
+      "qualified",
+      "evasive",
+      "ambivalent"
     ],
     "correct": 0,
     "explanation": "'emphatic' bu bağlamda 'vurgulu ve kesin' anlamındadır. 'forceful' bu kullanıma en yakın seçenektir.",
@@ -4071,9 +4071,9 @@ export const lexicalFastQuestions = [
     "options": [
       "hesitant",
       "forceful",
-      "formal",
-      "temporary",
-      "regional"
+      "qualified",
+      "evasive",
+      "ambivalent"
     ],
     "correct": 0,
     "explanation": "'emphatic' bu bağlamda 'vurgulu ve kesin' anlamındadır. 'hesitant' bu anlamın karşıtıdır.",
@@ -4190,9 +4190,9 @@ export const lexicalFastQuestions = [
     "options": [
       "capable of error",
       "infallible",
-      "formal",
-      "technical",
-      "recent"
+      "susceptible to pressure",
+      "dependent on precedent",
+      "resistant to feedback"
     ],
     "correct": 0,
     "explanation": "'fallible' bu bağlamda 'yanılabilir' anlamındadır. 'capable of error' bu kullanıma en yakın seçenektir.",
@@ -4207,9 +4207,9 @@ export const lexicalFastQuestions = [
     "options": [
       "infallible",
       "capable of error",
-      "formal",
-      "technical",
-      "recent"
+      "susceptible to pressure",
+      "dependent on precedent",
+      "resistant to feedback"
     ],
     "correct": 0,
     "explanation": "'fallible' bu bağlamda 'yanılabilir' anlamındadır. 'infallible' bu anlamın karşıtıdır.",
@@ -4394,9 +4394,9 @@ export const lexicalFastQuestions = [
     "options": [
       "unwarranted",
       "justified",
-      "formal",
-      "lengthy",
-      "technical"
+      "misdirected",
+      "repetitive",
+      "unverified"
     ],
     "correct": 0,
     "explanation": "'gratuitous' bu bağlamda 'gereksiz ve gerekçesiz' anlamındadır. 'unwarranted' bu kullanıma en yakın seçenektir.",
@@ -4411,9 +4411,9 @@ export const lexicalFastQuestions = [
     "options": [
       "justified",
       "unwarranted",
-      "formal",
-      "lengthy",
-      "technical"
+      "misdirected",
+      "repetitive",
+      "unverified"
     ],
     "correct": 0,
     "explanation": "'gratuitous' bu bağlamda 'gereksiz ve gerekçesiz' anlamındadır. 'justified' bu anlamın karşıtıdır.",
@@ -4530,9 +4530,9 @@ export const lexicalFastQuestions = [
     "options": [
       "rash",
       "deliberate",
-      "wealthy",
-      "quiet",
-      "punctual"
+      "irreversible",
+      "controversial",
+      "unilateral"
     ],
     "correct": 0,
     "explanation": "'impetuous' bu bağlamda 'aceleci' anlamındadır. 'rash' bu kullanıma en yakın seçenektir.",
@@ -4547,9 +4547,9 @@ export const lexicalFastQuestions = [
     "options": [
       "deliberate",
       "rash",
-      "wealthy",
-      "quiet",
-      "punctual"
+      "irreversible",
+      "controversial",
+      "unilateral"
     ],
     "correct": 0,
     "explanation": "'impetuous' bu bağlamda 'aceleci' anlamındadır. 'deliberate' bu anlamın karşıtıdır.",
@@ -4734,9 +4734,9 @@ export const lexicalFastQuestions = [
     "options": [
       "prudent",
       "imprudent",
-      "wealthy",
-      "quiet",
-      "formal"
+      "impartial",
+      "generous",
+      "systematic"
     ],
     "correct": 0,
     "explanation": "'judicious' bu bağlamda 'isabetli ve sağduyulu' anlamındadır. 'prudent' bu kullanıma en yakın seçenektir.",
@@ -4751,9 +4751,9 @@ export const lexicalFastQuestions = [
     "options": [
       "imprudent",
       "prudent",
-      "wealthy",
-      "quiet",
-      "formal"
+      "impartial",
+      "generous",
+      "systematic"
     ],
     "correct": 0,
     "explanation": "'judicious' bu bağlamda 'isabetli ve sağduyulu' anlamındadır. 'imprudent' bu anlamın karşıtıdır.",
@@ -4802,9 +4802,9 @@ export const lexicalFastQuestions = [
     "options": [
       "terse",
       "wordy",
-      "formal",
-      "technical",
-      "recent"
+      "evasive",
+      "ambiguous",
+      "hesitant"
     ],
     "correct": 0,
     "explanation": "'laconic' bu bağlamda 'az sözlü' anlamındadır. 'terse' bu kullanıma en yakın seçenektir.",
@@ -4819,9 +4819,9 @@ export const lexicalFastQuestions = [
     "options": [
       "wordy",
       "terse",
-      "formal",
-      "technical",
-      "recent"
+      "evasive",
+      "ambiguous",
+      "hesitant"
     ],
     "correct": 0,
     "explanation": "'laconic' bu bağlamda 'az sözlü' anlamındadır. 'wordy' bu anlamın karşıtıdır.",
@@ -5006,9 +5006,9 @@ export const lexicalFastQuestions = [
     "options": [
       "clear",
       "obscure",
-      "formal",
-      "technical",
-      "recent"
+      "comprehensive",
+      "persuasive",
+      "illustrative"
     ],
     "correct": 0,
     "explanation": "'lucid' bu bağlamda 'açık ve anlaşılır' anlamındadır. 'clear' bu kullanıma en yakın seçenektir.",
@@ -5023,9 +5023,9 @@ export const lexicalFastQuestions = [
     "options": [
       "obscure",
       "clear",
-      "formal",
-      "technical",
-      "recent"
+      "comprehensive",
+      "persuasive",
+      "illustrative"
     ],
     "correct": 0,
     "explanation": "'lucid' bu bağlamda 'açık ve anlaşılır' anlamındadır. 'obscure' bu anlamın karşıtıdır.",
@@ -5210,9 +5210,9 @@ export const lexicalFastQuestions = [
     "options": [
       "wicked",
       "virtuous",
-      "formal",
-      "temporary",
-      "regional"
+      "clandestine",
+      "elaborate",
+      "improvised"
     ],
     "correct": 0,
     "explanation": "'nefarious' bu bağlamda 'kötücül' anlamındadır. 'wicked' bu kullanıma en yakın seçenektir.",
@@ -5227,9 +5227,9 @@ export const lexicalFastQuestions = [
     "options": [
       "virtuous",
       "wicked",
-      "formal",
-      "temporary",
-      "regional"
+      "clandestine",
+      "elaborate",
+      "improvised"
     ],
     "correct": 0,
     "explanation": "'nefarious' bu bağlamda 'kötücül' anlamındadır. 'virtuous' bu anlamın karşıtıdır.",
@@ -5414,9 +5414,9 @@ export const lexicalFastQuestions = [
     "options": [
       "showy",
       "understated",
-      "formal",
-      "technical",
-      "recent"
+      "eclectic",
+      "symmetrical",
+      "traditional"
     ],
     "correct": 0,
     "explanation": "'ostentatious' bu bağlamda 'gösterişli' anlamındadır. 'showy' bu kullanıma en yakın seçenektir.",
@@ -5431,9 +5431,9 @@ export const lexicalFastQuestions = [
     "options": [
       "understated",
       "showy",
-      "formal",
-      "technical",
-      "recent"
+      "eclectic",
+      "symmetrical",
+      "traditional"
     ],
     "correct": 0,
     "explanation": "'ostentatious' bu bağlamda 'gösterişli' anlamındadır. 'understated' bu anlamın karşıtıdır.",
@@ -5618,9 +5618,9 @@ export const lexicalFastQuestions = [
     "options": [
       "resentful",
       "amicable",
-      "formal",
-      "lengthy",
-      "technical"
+      "polarised",
+      "inconclusive",
+      "repetitive"
     ],
     "correct": 0,
     "explanation": "'rancorous' bu bağlamda 'kin dolu' anlamındadır. 'resentful' bu kullanıma en yakın seçenektir.",
@@ -5635,9 +5635,9 @@ export const lexicalFastQuestions = [
     "options": [
       "amicable",
       "resentful",
-      "formal",
-      "lengthy",
-      "technical"
+      "polarised",
+      "inconclusive",
+      "repetitive"
     ],
     "correct": 0,
     "explanation": "'rancorous' bu bağlamda 'kin dolu' anlamındadır. 'amicable' bu anlamın karşıtıdır.",
@@ -5686,9 +5686,9 @@ export const lexicalFastQuestions = [
     "options": [
       "reserved",
       "outspoken",
-      "wealthy",
-      "punctual",
-      "curious"
+      "defensive",
+      "inattentive",
+      "sceptical"
     ],
     "correct": 0,
     "explanation": "'reticent' bu bağlamda 'ketum' anlamındadır. 'reserved' bu kullanıma en yakın seçenektir.",
@@ -5703,9 +5703,9 @@ export const lexicalFastQuestions = [
     "options": [
       "outspoken",
       "reserved",
-      "wealthy",
-      "punctual",
-      "curious"
+      "defensive",
+      "inattentive",
+      "sceptical"
     ],
     "correct": 0,
     "explanation": "'reticent' bu bağlamda 'ketum' anlamındadır. 'outspoken' bu anlamın karşıtıdır.",
@@ -5822,9 +5822,9 @@ export const lexicalFastQuestions = [
     "options": [
       "optimistic",
       "pessimistic",
-      "wealthy",
-      "punctual",
-      "curious"
+      "resolute",
+      "complacent",
+      "apprehensive"
     ],
     "correct": 0,
     "explanation": "'sanguine' bu bağlamda 'iyimser' anlamındadır. 'optimistic' bu kullanıma en yakın seçenektir.",
@@ -5839,9 +5839,9 @@ export const lexicalFastQuestions = [
     "options": [
       "pessimistic",
       "optimistic",
-      "wealthy",
-      "punctual",
-      "curious"
+      "resolute",
+      "complacent",
+      "apprehensive"
     ],
     "correct": 0,
     "explanation": "'sanguine' bu bağlamda 'iyimser' anlamındadır. 'pessimistic' bu anlamın karşıtıdır.",
@@ -6026,9 +6026,9 @@ export const lexicalFastQuestions = [
     "options": [
       "monotonous",
       "engaging",
-      "formal",
-      "technical",
-      "recent"
+      "intricate",
+      "meticulous",
+      "inconclusive"
     ],
     "correct": 0,
     "explanation": "'tedious' bu bağlamda 'sıkıcı' anlamındadır. 'monotonous' bu kullanıma en yakın seçenektir.",
@@ -6043,9 +6043,9 @@ export const lexicalFastQuestions = [
     "options": [
       "engaging",
       "monotonous",
-      "formal",
-      "technical",
-      "recent"
+      "intricate",
+      "meticulous",
+      "inconclusive"
     ],
     "correct": 0,
     "explanation": "'tedious' bu bağlamda 'sıkıcı' anlamındadır. 'engaging' bu anlamın karşıtıdır.",
