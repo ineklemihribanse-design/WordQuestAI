@@ -5947,14 +5947,14 @@ export const deepReadingQuestions = [
     "topic": "Paragraph",
     "prompt": "A town introduced a collection point for unwanted electronic devices. At first, residents could leave any device there, but volunteers found that items containing personal information required special handling. The organisers added instructions on deleting data and created a separate area for devices awaiting secure processing.\n\nWhat was the initial concern?",
     "options": [
-      "Some devices contained personal information.",
+      "Some devices contained personal information and required special handling.",
       "Residents brought too few devices.",
       "The volunteers could not repair any devices.",
       "The town lacked space for ordinary household waste.",
       "All devices were too heavy to carry."
     ],
     "correct": 0,
-    "explanation": "Kişisel bilgi içeren cihazlar özel işlem gerektiriyordu."
+    "explanation": "Metinde kişisel bilgi içeren cihazların özel işlem gerektirdiği belirtiliyor."
   },
   {
     "id": "wq150_nov26_read12_14_2",
@@ -6015,14 +6015,14 @@ export const deepReadingQuestions = [
     "topic": "Paragraph",
     "prompt": "A restaurant noticed that many guests ordered the same dishes even though the menu contained several vegetarian options. The manager moved those options into the main menu instead of listing them separately at the back. The dishes and prices did not change, but vegetarian orders increased.\n\nWhat was observed before the change?",
     "options": [
-      "Guests tended to select familiar dishes.",
+      "Guests tended to order the same dishes.",
       "Vegetarian dishes were unavailable.",
       "Vegetarian meals cost more than all others.",
       "The restaurant had no main menu.",
       "Every guest requested a vegetarian meal."
     ],
     "correct": 0,
-    "explanation": "Müşteriler sıklıkla aynı yemekleri seçiyordu."
+    "explanation": "Metinde müşterilerin çeşitli vejetaryen seçeneklere rağmen çoğunlukla aynı yemekleri sipariş ettiği belirtiliyor; yemekleri ne kadar iyi tanıdıkları ayrıca ölçülmemiştir."
   },
   {
     "id": "wq150_nov26_read12_15_2",
@@ -6168,14 +6168,14 @@ export const deepReadingQuestions = [
     "topic": "Paragraph",
     "prompt": "A regional airline introduced online check-in to reduce queues. Passengers without checked luggage could go directly to security, but those with suitcases still needed to visit a bag-drop desk. The airline later added a separate queue for bag drop, allowing staff to serve those passengers more quickly.\n\nWho still needed to visit a desk?",
     "options": [
-      "Passengers with checked suitcases",
+      "Passengers with checked luggage",
       "Every passenger using online check-in",
       "Passengers without luggage",
       "Passengers travelling alone",
       "Passengers with only boarding passes"
     ],
     "correct": 0,
-    "explanation": "Teslim edilecek valizi olanlar bag-drop masasına uğramalıydı."
+    "explanation": "Bagaja verilecek eşyası olan yolcuların bagaj teslim noktasına uğraması gerekir."
   },
   {
     "id": "wq150_nov26_read12_17_3",
@@ -6474,14 +6474,14 @@ export const deepReadingQuestions = [
     "topic": "Paragraph",
     "prompt": "A company introduced a system that automatically sorted customer messages by urgency. The system performed well during testing, but after deployment customers began using words associated with urgent cases to obtain faster replies. This change in behaviour reduced the accuracy of the classifications. The company began monitoring how its system affected the data on which it relied.\n\nWhat broader limitation does the case highlight?",
     "options": [
-      "A predictive system can alter the behaviour it attempts to predict.",
+      "An automated classification system can alter the behaviour and data it relies on.",
       "A successful test establishes permanent accuracy.",
       "Automated classification cannot use language data.",
       "Customer behaviour is independent of service rules.",
       "Monitoring system effects is useful only before deployment."
     ],
     "correct": 0,
-    "explanation": "Tahmin sistemi tahmin etmeye çalıştığı davranışı değiştirebilir."
+    "explanation": "Sistem devreye girdikten sonra müşteriler daha hızlı yanıt almak için kullandıkları sözcükleri değiştirmiş; bu da sınıflandırma doğruluğunu azaltmıştır."
   },
   {
     "id": "wq150_nov26_read12_22_1",
