@@ -131,3 +131,11 @@ if s.count(old)!=1:
     raise SystemExit("Unexpected Arena entrance contract; no changes applied")
 p.write_text(s.replace(old,new,1))
 print("PASS: v150 route is enabled only by a provisioned HTTPS origin; existing solo/legacy route retained")
+
+# Preload Arena's local artwork while the root navigation composition is alive.
+# This runs after the v214 home transition patch; do not alter navigation or puzzle geometry.
+home=Path("source/app/src/main/java/com/kelimebulmacasi/a1/HomeScreen.kt")
+hs=home.read_text("utf-8")
+anchor="    val appContext = LocalContext.current\n    // Warm the immutable local vocabulary while the user is on the home page."
+assert hs.count(anchor)==1, "Unexpected root warmup anchor"
+home.write_text(hs.replace(anchor,"    val appContext = LocalContext.current\n    Wq150WarmArenaArt()\n    // Warm the immutable local vocabulary while the user is on the home page.",1),"utf-8")

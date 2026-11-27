@@ -211,6 +211,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
             Dialog(onDismissRequest={panel=""},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
                 Wq150ArenaBars()
                 Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+                    Wq150SettingsBackdrop(Modifier.matchParentSize())
                     Column(Modifier.align(Alignment.TopCenter).widthIn(max=760.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).padding(10.dp),
                         verticalArrangement=Arrangement.spacedBy(8.dp)){
                         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically){
@@ -281,12 +282,31 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
 
 /** The approved v120 icon/card assets are decoded off the UI thread.
  * Only the decorative empty plate is stretched; the 3D icon keeps its ratio. */
+/** Retain one complete viewport across navigation, independent of the per-image LRU. */
+internal class Wq150RetainedFrame<T>{
+    private data class Snapshot<T>(val keys:Set<String>,val images:Map<String,T?>)
+    @Volatile private var snapshot:Snapshot<T>?=null
+    fun frame(keys:Set<String>):Map<String,T?>?=snapshot?.takeIf{it.keys==keys}?.images
+    fun image(name:String):T?=snapshot?.images?.get(name)
+    fun publish(keys:Set<String>,images:Map<String,T?>):Map<String,T?>{
+        require(images.keys==keys)
+        val stable=images.toMap()
+        snapshot=Snapshot(keys.toSet(),stable)
+        return stable
+    }
+}
 private object Wq150ArtCache{
+    private val retained=Wq150RetainedFrame<ImageBitmap>()
+    fun frame(keys:Set<String>)=retained.frame(keys)
+    @Synchronized fun prepare(context:android.content.Context,keys:Set<String>):Map<String,ImageBitmap?>{
+        frame(keys)?.let{return it}
+        return retained.publish(keys,keys.associateWith{load(context,it)})
+    }
     private val cache=object:android.util.LruCache<String,ImageBitmap>((Runtime.getRuntime().maxMemory()/8L).coerceIn(24L*1024*1024,64L*1024*1024).toInt()){
         override fun sizeOf(key:String,value:ImageBitmap):Int=(value.width.toLong()*value.height*4L)
             .coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
     }
-    fun get(name:String)=cache.get(name)
+    fun get(name:String)=retained.image(name)?:cache.get(name)
     fun put(name:String,art:ImageBitmap){cache.put(name,art)}
     // Called only on Dispatchers.IO. Serialize misses to avoid decoding the same
     // WebP in parallel when several Arena cards use a common decorative plate.
@@ -472,6 +492,27 @@ internal object Wq150HomeArtPlan {
     }
 }
 
+/** Start the same bounded local preparation from the root home composition. */
+@Composable
+internal fun Wq150WarmArenaArt(){
+    val context=LocalContext.current.applicationContext
+    val config=LocalConfiguration.current
+    val newArt=rememberWq150NewArt()
+    val wide=Wq121ArenaLayout.wide(config.screenWidthDp.toFloat(),config.screenHeightDp.toFloat(),config.smallestScreenWidthDp)
+    val device=if(wide)"tablet" else "phone"
+    val background=if(newArt)"arena_v150_premium/$device.webp" else device
+    val settingsTablet=config.screenWidthDp>config.screenHeightDp&&config.screenWidthDp>=600
+    val settingsKey=if(settingsTablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp"
+    val keys=remember(background,settingsKey,wide,newArt){
+        Wq150HomeArtPlan.keys(background,settingsKey,wide,newArt)
+    }
+    LaunchedEffect(context,keys){
+        if(Wq150ArtCache.frame(keys)==null)withContext(Dispatchers.IO){
+            Wq150ArtCache.prepare(context,keys)
+        }
+    }
+}
+
 @Composable
 private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:(Boolean)->Unit,enabled:Boolean,
     back:()->Unit,onMode:(String)->Unit,onPanel:(String)->Unit,status:String?,onRetry:(()->Unit)?){
@@ -501,13 +542,12 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
             Wq150HomeArtPlan.keys(backgroundKey,settingsKey,wide,newArt)
         }
         var prepared by remember(context,keys){
-            val cached=keys.associateWith{Wq150ArtCache.get(it)}
-            mutableStateOf<Map<String,ImageBitmap?>?>(cached.takeIf{it.values.all{art->art!=null}})
+            mutableStateOf(Wq150ArtCache.frame(keys))
         }
         LaunchedEffect(context,keys){
             if(prepared==null){
                 val frame=withContext(Dispatchers.IO){
-                    keys.associateWith{Wq150ArtCache.load(context,it)}
+                    Wq150ArtCache.prepare(context,keys)
                 }
                 // Publish all decoded images in one snapshot, never one card at a time.
                 // Missing assets keep the existing fixed fallback instead of retrying per frame.

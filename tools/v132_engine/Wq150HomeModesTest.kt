@@ -2,6 +2,19 @@ package com.kelimebulmacasi.a1
 import org.junit.Assert.*
 import org.junit.Test
 class Wq150HomeModesTest{
+    @Test fun retainedViewportSurvivesReentryAndReplacesOnlyOnDifferentViewport(){
+        val cache=Wq150RetainedFrame<String>()
+        val phone=setOf("phone","crest")
+        val tablet=setOf("tablet","crest")
+        val first=cache.publish(phone,mapOf("phone" to "p","crest" to "c"))
+        assertSame(first,cache.frame(phone))
+        assertEquals("c",cache.image("crest"))
+        assertNull(cache.frame(tablet))
+        val next=cache.publish(tablet,mapOf("tablet" to "t","crest" to "c"))
+        assertSame(next,cache.frame(tablet))
+        assertNull(cache.frame(phone))
+        assertNull(cache.image("phone"))
+    }
     @Test fun preparedHomeIncludesBothTabsAndFooter(){
         for(wide in listOf(false,true))for(newArt in listOf(false,true)){
             val keys=Wq150HomeArtPlan.keys("background","settingsBackground",wide,newArt)
