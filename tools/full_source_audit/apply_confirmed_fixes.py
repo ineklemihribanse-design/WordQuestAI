@@ -4,7 +4,7 @@ No warning suppression, library version changes, signing changes or data migrati
 from pathlib import Path
 import hashlib
 p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
-names={"LenaAttachmentReader.kt","PuzzleScreen.kt","UpdateUi.kt","Wq128PremiumRoomLobby.kt","NewGameScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt","ArenaBoardV2.kt","Wq140SoloUi.kt"}
+names={"LenaAttachmentReader.kt","PuzzleScreen.kt","UpdateUi.kt","Wq128PremiumRoomLobby.kt","NewGameScreen.kt","PremiumArenaScreen.kt","ArenaCrosswordTyping.kt","ArenaBoardV2.kt","Wq140SoloUi.kt","WqDriveMascot.kt"}
 protected={f:hashlib.sha256(f.read_bytes()).digest() for f in p.rglob("*") if f.is_file() and f.name not in names}
 def edit(name,changes):
     f=p/name;s=f.read_text()
@@ -133,5 +133,89 @@ edit("ArenaBoardV2.kt",[
             fit.coerceAtLeast(1).toDp()
         }''')
 ])
+# Drive consent callbacks may arrive after an account switch or dialog disposal.
+# Bind a pending operation to its original account, profile and direction.
+drive=p/"WqDriveMascot.kt"
+ds=drive.read_text()
+assert ds.count("import kotlinx.coroutines.Dispatchers")==1
+ds=ds.replace("import kotlinx.coroutines.Dispatchers","import kotlinx.coroutines.Dispatchers\nimport kotlinx.coroutines.currentCoroutineContext\nimport kotlinx.coroutines.isActive",1)
+start=ds.index("    var busy by remember(profile,uid)")
+end=ds.index("    Column(Modifier.fillMaxWidth()",start)
+assert "client.authorize(request)" in ds[start:end] and "WqDriveMascot.sync(" in ds[start:end]
+ds=ds[:start]+'''    data class Attempt(val profile:String,val uid:String,val email:String,val restore:Boolean)
+    var pending by remember{mutableStateOf<Attempt?>(null)}
+    val busy=pending!=null
+    var message by remember(profile,uid){mutableStateOf("")}
+    val latestOwner by rememberUpdatedState(Triple(profile,uid,googleEmail))
+    val latestRestored by rememberUpdatedState(onRestored)
+    fun sameOwner(attempt:Attempt)=scope.coroutineContext.isActive &&
+        latestOwner==Triple(attempt.profile,attempt.uid,attempt.email) &&
+        auth?.currentUser?.uid==attempt.uid
+    fun finish(attempt:Attempt,text:String){
+        if(pending!==attempt)return
+        pending=null
+        if(sameOwner(attempt))message=text
+    }
+    fun useResult(result:AuthorizationResult,attempt:Attempt) {
+        if(pending!==attempt)return
+        if(!sameOwner(attempt)){finish(attempt,"Hesap değişti.");return}
+        val token=result.accessToken
+        if(token.isNullOrBlank()){finish(attempt,"Google Drive izni verilmedi.");return}
+        scope.launch {
+            try {
+                val count=withContext(Dispatchers.IO) {
+                    val operation=currentCoroutineContext()
+                    fun stillOwner()=operation.isActive && sameOwner(attempt)
+                    require(stillOwner()){"Hesap değişti."}
+                    WqDriveMascot.verifyAccount(token,attempt.email)
+                    WqDriveMascot.sync(context,attempt.profile,attempt.uid,token,attempt.restore,::stillOwner)
+                }
+                if(!sameOwner(attempt))return@launch
+                if(attempt.restore)latestRestored()
+                finish(attempt,if(attempt.restore)"Geri yüklenen maskot: "+count+". Cihazdaki maskotlar korundu."
+                    else "Google Drive'a yedeklenen maskot: "+count)
+            } catch(e:kotlinx.coroutines.CancellationException){throw e}
+              catch(e:Exception){
+                  if(attempt.restore&&sameOwner(attempt))latestRestored()
+                  finish(attempt,e.message ?: "Drive işlemi tamamlanamadı.")
+              }
+            finally { if(pending===attempt)pending=null }
+        }
+    }
+    val launcher=rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+        val attempt=pending
+        if(attempt!=null){
+            if(!sameOwner(attempt))finish(attempt,"Hesap değişti.")
+            else if(result.resultCode!=Activity.RESULT_OK)finish(attempt,"Google Drive izni iptal edildi.")
+            else runCatching { client.getAuthorizationResultFromIntent(result.data) }
+                .onSuccess { useResult(it,attempt) }.onFailure {finish(attempt,"Google Drive izni alınamadı.")}
+        }
+    }
+    fun start(wantRestore:Boolean) {
+        if(pending!=null||googleEmail.isBlank()||uid.isBlank())return
+        val attempt=Attempt(profile,uid,googleEmail,wantRestore)
+        pending=attempt;message="Google Drive izni kontrol ediliyor…"
+        runCatching {
+            val request=AuthorizationRequest.builder()
+                .setAccount(Account(attempt.email,"com.google"))
+                .setRequestedScopes(listOf(Scope(WqDriveMascot.APPDATA),Scope(WqDriveMascot.EMAIL)))
+                .build()
+            client.authorize(request).addOnSuccessListener { result ->
+                if(pending!==attempt)return@addOnSuccessListener
+                if(!sameOwner(attempt)){finish(attempt,"Hesap değişti.");return@addOnSuccessListener}
+                if(result.hasResolution()) {
+                    val resolution=result.pendingIntent
+                    if(resolution==null)finish(attempt,"İzin penceresi açılamadı.")
+                    else runCatching { launcher.launch(IntentSenderRequest.Builder(resolution.intentSender).build()) }
+                        .onFailure {finish(attempt,"İzin penceresi açılamadı.")}
+                } else useResult(result,attempt)
+            }.addOnFailureListener {finish(attempt,"Google Drive izni alınamadı. Google hesabını ve Drive API ayarını kontrol et.")}
+        }.onFailure {finish(attempt,"Google Drive izni başlatılamadı.")}
+    }
+'''+ds[end:]
+drive.write_text(ds)
+assert "operation.isActive && sameOwner(attempt)" in ds
+assert "WqDriveMascot.sync(context,attempt.profile,attempt.uid,token,attempt.restore,::stillOwner)" in ds
+print("PASS: Drive consent is bound to original profile and operation; cancellation checks before restore/import")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
 print("PASS: five audited lint errors corrected; measured safe-area landscape board; unrelated sources unchanged")
