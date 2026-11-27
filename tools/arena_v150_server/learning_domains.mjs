@@ -1405,7 +1405,7 @@ export const domainWords = [
     "category": "Ekonomi ve Finans",
     "wordType": "İsimler",
     "answer": "DEBASEMENT",
-    "meaning": "paranın değerinin düşürülmesi"
+    "meaning": "paranın değerinin veya kıymetli metal içeriğinin düşürülmesi"
   },
   {
     "level": "C1",
@@ -1525,7 +1525,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "VERDICT",
-    "meaning": "hüküm"
+    "meaning": "jürinin veya mahkemenin vardığı karar"
   },
   {
     "level": "B2",
@@ -1581,7 +1581,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "CUSTODY",
-    "meaning": "gözetim"
+    "meaning": "gözaltı; hukuki gözetim veya velayet"
   },
   {
     "level": "B2",
@@ -1677,7 +1677,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "SUBPOENA",
-    "meaning": "mahkemeye çağrı emri"
+    "meaning": "mahkemede ifade vermeyi veya belge sunmayı zorunlu kılan çağrı emri"
   },
   {
     "level": "C1",
@@ -1693,7 +1693,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "DEPOSITION",
-    "meaning": "yeminli ifade"
+    "meaning": "duruşma öncesinde alınan yeminli ifade"
   },
   {
     "level": "C1",
@@ -1701,7 +1701,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "JURISPRUDENCE",
-    "meaning": "hukuk bilimi"
+    "meaning": "hukuk felsefesi; hukuk kuramı"
   },
   {
     "level": "C1",
@@ -1781,7 +1781,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "EXTRADITION",
-    "meaning": "suçluların iadesi"
+    "meaning": "suçlanan veya hüküm giymiş kişinin başka bir ülkeye iadesi"
   },
   {
     "level": "C1",
@@ -1813,7 +1813,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "PROBATION",
-    "meaning": "denetimli serbestlik"
+    "meaning": "hapis yerine uygulanan koşullu denetim"
   },
   {
     "level": "C1",
@@ -1837,7 +1837,7 @@ export const domainWords = [
     "category": "Hukuk ve Toplum",
     "wordType": "İsimler",
     "answer": "FORFEITURE",
-    "meaning": "hakkın veya malın kaybı"
+    "meaning": "yasal yaptırım sonucu hakkın veya malın kaybı"
   },
   {
     "level": "C1",
@@ -1861,7 +1861,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "DATABASE",
-    "meaning": "veritabanı"
+    "meaning": "veri tabanı"
   },
   {
     "level": "B2",
@@ -1901,7 +1901,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "THROUGHPUT",
-    "meaning": "birim zamanda işlenen veri"
+    "meaning": "birim zamanda işlenen veya aktarılan veri miktarı"
   },
   {
     "level": "B2",
@@ -1941,7 +1941,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "FIRMWARE",
-    "meaning": "gömülü yazılım"
+    "meaning": "donanımın işleyişini yöneten yerleşik yazılım"
   },
   {
     "level": "B2",
@@ -2117,7 +2117,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "OBSERVABILITY",
-    "meaning": "gözlemlenebilirlik"
+    "meaning": "sistemin iç durumunun dış çıktılarından anlaşılabilmesi"
   },
   {
     "level": "C1",
@@ -2133,7 +2133,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "CONCURRENCY",
-    "meaning": "eşzamanlılık"
+    "meaning": "birden çok işin örtüşen zaman dilimlerinde ilerlemesi"
   },
   {
     "level": "C1",
@@ -2141,7 +2141,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "PARALLELISM",
-    "meaning": "paralel işleme"
+    "meaning": "birden çok işlemin aynı anda yürütülmesi"
   },
   {
     "level": "C1",
@@ -2181,7 +2181,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "ORCHESTRATION",
-    "meaning": "otomatik iş akışı düzenleme"
+    "meaning": "birden çok hizmet veya iş akışının otomatik eşgüdümü"
   },
   {
     "level": "C1",
@@ -2277,7 +2277,7 @@ export const domainWords = [
     "category": "Teknoloji ve İletişim",
     "wordType": "İsimler",
     "answer": "EXPLOIT",
-    "meaning": "açığı istismar eden yöntem"
+    "meaning": "güvenlik açığından yararlanmak için kullanılan kod veya yöntem"
   },
   {
     "level": "C1",
@@ -2349,7 +2349,7 @@ export const domainWords = [
     "category": "İleri Akademik İngilizce",
     "wordType": "İsimler",
     "answer": "TELEOLOGY",
-    "meaning": "ereksel açıklama"
+    "meaning": "olguları amaçları veya erekleri bakımından açıklayan yaklaşım"
   },
   {
     "level": "C2",
@@ -2405,7 +2405,7 @@ export const domainWords = [
     "category": "İleri Akademik İngilizce",
     "wordType": "İsimler",
     "answer": "SUPERVENIENCE",
-    "meaning": "üst düzey özelliğin alt düzeye bağımlılığı"
+    "meaning": "alt düzey özellikler değişmeden üst düzey özelliklerin değişememesi"
   },
   {
     "level": "C2",
@@ -2453,7 +2453,7 @@ export const domainWords = [
     "category": "İleri Akademik İngilizce",
     "wordType": "İsimler",
     "answer": "REIFICATION",
-    "meaning": "soyut kavramı somutlaştırma"
+    "meaning": "soyut kavramı somut bir varlık gibi ele alma"
   },
   {
     "level": "C2",
@@ -2549,7 +2549,7 @@ export const domainWords = [
     "category": "İleri Akademik İngilizce",
     "wordType": "İsimler",
     "answer": "HOMEOMORPHISM",
-    "meaning": "homeomorfizm"
+    "meaning": "sürekli ve tersi de sürekli bire bir örten fonksiyon"
   },
   {
     "level": "C2",
@@ -2589,7 +2589,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "PHOTOMETRY",
-    "meaning": "ışık ölçümü"
+    "meaning": "insan gözünün duyarlılığına göre ışığın ölçülmesi"
   },
   {
     "level": "C1",
@@ -2645,7 +2645,7 @@ export const domainWords = [
     "category": "Bilim ve Araştırma",
     "wordType": "İsimler",
     "answer": "ADSORBENT",
-    "meaning": "yüzeyde tutucu madde"
+    "meaning": "yüzeyinde başka maddeleri tutan madde"
   },
   {
     "level": "C1",
@@ -2749,7 +2749,7 @@ export const domainWords = [
     "category": "Çevre ve Ekoloji",
     "wordType": "İsimler",
     "answer": "WATERSPOUT",
-    "meaning": "su hortumu"
+    "meaning": "su yüzeyi üzerinde oluşan hortum"
   },
   {
     "level": "C1",
@@ -2757,7 +2757,7 @@ export const domainWords = [
     "category": "Çevre ve Ekoloji",
     "wordType": "İsimler",
     "answer": "PERMAFROST",
-    "meaning": "kalıcı donmuş zemin"
+    "meaning": "en az iki yıl boyunca donmuş kalan zemin"
   },
   {
     "level": "C1",
@@ -2797,7 +2797,7 @@ export const domainWords = [
     "category": "Çevre ve Ekoloji",
     "wordType": "İsimler",
     "answer": "AFFORESTATION",
-    "meaning": "ağaçlandırma"
+    "meaning": "yakın geçmişte orman olmayan alanı ormanlaştırma"
   },
   {
     "level": "C1",
@@ -2805,7 +2805,7 @@ export const domainWords = [
     "category": "Çevre ve Ekoloji",
     "wordType": "İsimler",
     "answer": "REFORESTATION",
-    "meaning": "yeniden ormanlaştırma"
+    "meaning": "orman örtüsünü kaybetmiş alanı yeniden ormanlaştırma"
   },
   {
     "level": "C1",
@@ -2869,7 +2869,7 @@ export const domainWords = [
     "category": "Ekonomi",
     "wordType": "İsimler",
     "answer": "AMORTIZATION",
-    "meaning": "borcun dönemsel ödenmesi"
+    "meaning": "borcun taksitlerle ödenmesi veya maddi olmayan varlığın maliyetinin dönemlere yayılması"
   },
   {
     "level": "C1",
@@ -2901,7 +2901,7 @@ export const domainWords = [
     "category": "Ekonomi",
     "wordType": "İsimler",
     "answer": "UNDERWRITING",
-    "meaning": "risk üstlenme ve değerlendirme"
+    "meaning": "finansal veya sigorta riskini değerlendirerek üstlenme"
   },
   {
     "level": "C1",
@@ -2925,7 +2925,7 @@ export const domainWords = [
     "category": "Ekonomi",
     "wordType": "İsimler",
     "answer": "SHORTFALL",
-    "meaning": "açık"
+    "meaning": "beklenen veya gereken miktarın altında kalma"
   },
   {
     "level": "C2",
@@ -3069,7 +3069,7 @@ export const domainWords = [
     "category": "Akademik İngilizce",
     "wordType": "Sıfatlar",
     "answer": "INEXORABLE",
-    "meaning": "önlenemez"
+    "meaning": "durdurulamaz; kaçınılmaz"
   },
   {
     "level": "C2",
@@ -3117,7 +3117,7 @@ export const domainWords = [
     "category": "Toplum ve Kültür",
     "wordType": "İsimler",
     "answer": "ASSIMILATION",
-    "meaning": "özümseme"
+    "meaning": "başka bir kültürün özelliklerini benimseyerek onunla bütünleşme"
   },
   {
     "level": "B2",
@@ -3125,7 +3125,7 @@ export const domainWords = [
     "category": "Toplum ve Kültür",
     "wordType": "İsimler",
     "answer": "ACCULTURATION",
-    "meaning": "kültürlenme"
+    "meaning": "başka bir kültürle etkileşim sonucu kültürel değişim"
   },
   {
     "level": "B2",
@@ -3141,7 +3141,7 @@ export const domainWords = [
     "category": "Toplum ve Kültür",
     "wordType": "İsimler",
     "answer": "DISENFRANCHISEMENT",
-    "meaning": "haklardan yoksun bırakma"
+    "meaning": "özellikle oy kullanma hakkından yoksun bırakma"
   },
   {
     "level": "B2",
@@ -3149,7 +3149,7 @@ export const domainWords = [
     "category": "Toplum ve Kültür",
     "wordType": "İsimler",
     "answer": "STIGMA",
-    "meaning": "toplumsal damgalanma"
+    "meaning": "kişiye veya gruba yönelik toplumsal olumsuz damga"
   },
   {
     "level": "B2",
