@@ -31,4 +31,5 @@ jobs:
           printf '{"database":{"rules":"firebase/database.rules.v132.json"},"emulators":{"database":{"host":"127.0.0.1","port":9000},"ui":{"enabled":false}}}\n' > firebase.json
           npm init -y
           npm install --no-save firebase-tools@latest @firebase/rules-unit-testing@6.0.0
-          npx firebase emulators:exec --project demo-wordquest --only database "node tools/v132_engine/test_rules.mjs"
+          python3 tools/v132_engine/prepare_friend_hd_rules.py --live firebase/database.rules.v132.json --output "$RUNNER_TEMP/friend-hd-candidate.json"
+          npx firebase emulators:exec --project demo-wordquest --only database "node tools/v132_engine/test_rules.mjs && WQ_HD_RULES=$RUNNER_TEMP/friend-hd-candidate.json node tools/v132_engine/test_friend_hd.mjs"
