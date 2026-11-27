@@ -2537,10 +2537,10 @@ export const cohesionExpansion = [
     "level": "C2",
     "yds": "hard",
     "topic": "Connectors",
-    "prompt": "The indicator remains informative only ____ it represents the intended construct.",
+    "prompt": "The indicator remains informative only ____ it adequately represents the intended construct.",
     "options": [
       "insofar as",
-      "as soon as",
+      "wherever",
       "whereas",
       "as though",
       "because of"
@@ -2557,7 +2557,7 @@ export const cohesionExpansion = [
     "prompt": "The analogy is defensible only ____ it preserves the relevant structural relations.",
     "options": [
       "insofar as",
-      "as soon as",
+      "as if it were",
       "whereas",
       "as though",
       "because of"
@@ -2574,7 +2574,7 @@ export const cohesionExpansion = [
     "prompt": "The conclusion can be generalised only ____ the evidence covers the intended population.",
     "options": [
       "insofar as",
-      "as soon as",
+      "even if",
       "whereas",
       "as though",
       "because of"
@@ -2645,7 +2645,7 @@ export const cohesionExpansion = [
       "in accordance with",
       "by virtue of",
       "in anticipation of",
-      "because of"
+      "in exchange for"
     ],
     "correct": 0,
     "explanation": "Notwithstanding isim öbeğiyle rağmen anlamında ödünleme bildirir.",
@@ -2662,7 +2662,7 @@ export const cohesionExpansion = [
       "in accordance with",
       "by virtue of",
       "in anticipation of",
-      "because of"
+      "in exchange for"
     ],
     "correct": 0,
     "explanation": "Notwithstanding isim öbeğiyle rağmen anlamında ödünleme bildirir.",
@@ -2679,7 +2679,7 @@ export const cohesionExpansion = [
       "in accordance with",
       "by virtue of",
       "in anticipation of",
-      "because of"
+      "in exchange for"
     ],
     "correct": 0,
     "explanation": "Notwithstanding isim öbeğiyle rağmen anlamında ödünleme bildirir.",
@@ -2793,7 +2793,7 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_1",
     "id": "wq150_cohesion_fill_nov26_9_1",
-    "prompt": "Emma is making breakfast. ____ When they are ready, she puts butter on them. Then she eats them with a cup of tea.\n\nChoose the sentence that best completes the paragraph.",
+    "prompt": "Emma is making breakfast. ____ When the toasted slices pop up, she puts butter on them. Then she eats them with a cup of tea.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "She puts two slices of bread in the toaster.",
       "She pours milk into a bowl.",
@@ -2827,7 +2827,7 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_2",
     "id": "wq150_cohesion_fill_nov26_9_2",
-    "prompt": "Ben is going to the park. ____ He takes it out when he meets his friends. They play a game together.\n\nChoose the sentence that best completes the paragraph.",
+    "prompt": "Ben is going to the park. ____ He takes it out when he meets his friends. They kick it to each other and play a game of football.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "He puts his football in his bag.",
       "He puts his lunch in his bag.",
@@ -2895,16 +2895,16 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_4",
     "id": "wq150_cohesion_fill_nov26_9_4",
-    "prompt": "Tom wants to call his friend. ____ He plugs it in and waits for it to charge. A few minutes later, he can make the call.\n\nChoose the sentence that best completes the paragraph.",
+    "prompt": "Tom wants to call his friend. ____ He plugs the phone in and waits for it to charge. A few minutes later, he can make the call.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
-      "His phone battery is empty.",
+      "His phone has run out of battery power.",
       "His phone is in his bag.",
       "His friend's number is on a piece of paper.",
       "His phone is new.",
       "His friend is at home."
     ],
     "correct": 0,
-    "explanation": "Charge için boş pil bilgisi gerekli neden bağlantısını kurar."
+    "explanation": "Telefonun şarjı bitmiştir; sonraki cümlede telefonun şarja takılması bu seçeneği destekler."
   },
   {
     "level": "A1",
@@ -2912,7 +2912,7 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_4",
     "id": "wq150_cohesion_odd_nov26_9_4",
-    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Tom wants to call his friend. (II) His friend has a blue bicycle. (III) His phone battery is empty. (IV) He plugs it in and waits for it to charge. (V) A few minutes later, he can make the call.",
+    "prompt": "Choose the sentence that does not belong in the paragraph:\n\n(I) Tom wants to call his friend. (II) His friend has a blue bicycle. (III) His phone has run out of battery power. (IV) He plugs the phone in and waits for it to charge. (V) A few minutes later, he can make the call.",
     "options": [
       "I",
       "II",
@@ -2997,7 +2997,7 @@ export const cohesionExpansion = [
     "topic": "Paragraph",
     "family": "cohesion_nov26_9_7",
     "id": "wq150_cohesion_fill_nov26_9_7",
-    "prompt": "A train station has introduced electronic tickets. ____ They show the screen to staff instead of carrying a printed ticket. This is useful for travellers who book at the last minute.\n\nChoose the sentence that best completes the paragraph.",
+    "prompt": "A train station has introduced electronic tickets. ____ They show the electronic ticket on the screen to staff instead of carrying a printed ticket. This is useful for travellers who book at the last minute.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "Passengers can keep their tickets on their phones.",
       "Passengers can choose a window seat online.",
