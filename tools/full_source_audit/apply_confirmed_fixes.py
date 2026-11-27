@@ -231,13 +231,11 @@ edit("PremiumOnlineRoom.kt",[
  ('import androidx.compose.runtime.mutableLongStateOf','import androidx.compose.runtime.mutableLongStateOf\nimport androidx.compose.runtime.mutableIntStateOf'),
  ('var usedToday by mutableStateOf(0)','var usedToday by mutableIntStateOf(0)')
 ])
-edit("ArenaCrosswordTyping.kt",[
- ('var onlineZoom by rememberSaveable(puzzle.hashCode()) { mutableStateOf(0) }','var onlineZoom by rememberSaveable(puzzle.hashCode()) { mutableIntStateOf(0) }')
-])
+# onlineZoom is created later by apply_live_refinement.py; leave that optional optimization out of this stage.
 edit("PuzzleScreen.kt",[
  ('var measuredBoardWidth by remember { mutableStateOf(0) }','var measuredBoardWidth by remember { mutableIntStateOf(0) }'),
  ('var measuredBoardHeight by remember { mutableStateOf(0) }','var measuredBoardHeight by remember { mutableIntStateOf(0) }')
 ])
-print("PASS: seven primitive Compose states avoid boxing; no board geometry, account data or persistence changes")
+print("PASS: six primitive Compose states avoid boxing; no board geometry, account data or persistence changes")
 assert all(hashlib.sha256(f.read_bytes()).digest()==v for f,v in protected.items())
 print("PASS: five audited lint errors corrected; measured safe-area landscape board; unrelated sources unchanged")
