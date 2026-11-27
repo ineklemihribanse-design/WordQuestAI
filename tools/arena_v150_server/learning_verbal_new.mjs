@@ -42,13 +42,13 @@ export const verbalNewQuestions = [
     "prompt": "She intends ____ a seat on the morning train.",
     "options": [
       "to reserve",
-      "reserving",
+      "reservation",
       "reserve",
       "reserved",
       "to reserving"
     ],
     "correct": 0,
-    "explanation": "Decide, hope ve intend sonrasında to + fiil kullanılabilir."
+    "explanation": "Intend + to + fiil bir niyeti ifade eder. Intend + -ing biçimi de mümkün olduğundan bu seçenek kullanılmamıştır."
   },
   {
     "id": "wq150_verbalnew_2_1",
@@ -1181,13 +1181,13 @@ export const verbalNewQuestions = [
     "prompt": "The panel is committed ____ every eligible application fairly.",
     "options": [
       "to reviewing",
-      "to review",
+      "to reviewed",
       "review",
       "reviewed",
       "reviews"
     ],
     "correct": 0,
-    "explanation": "Commit to, devote time to ve object to kalıplarında to edattır ve gerund alır."
+    "explanation": "Be committed to + isim veya -ing, bir işe bağlılığı ifade eder. Committed to review biçimi bazı bağlamlarda taahhüt bildirebildiğinden seçenekler ayrıştırılmıştır."
   },
   {
     "id": "wq150_verbalnew_24_2",
@@ -1232,13 +1232,13 @@ export const verbalNewQuestions = [
     "prompt": "The employees are accustomed ____ under strict safety regulations.",
     "options": [
       "to working",
-      "to work",
+      "to worked",
       "work",
       "worked",
       "works"
     ],
     "correct": 0,
-    "explanation": "Accustomed to, look forward to ve be used to sonrasında gerund gelir."
+    "explanation": "Be accustomed to + isim veya -ing, bir duruma alışmış olmayı belirtir. Accustomed + infinitive de özellikle eski veya resmî kullanımda görülebilir."
   },
   {
     "id": "wq150_verbalnew_25_2",
@@ -1844,13 +1844,13 @@ export const verbalNewQuestions = [
     "prompt": "The disputed estimate appears ____ from an incomplete dataset.",
     "options": [
       "to have been derived",
-      "to derive",
+      "to have deriving",
       "having derived",
       "have derived",
       "to being derived"
     ],
     "correct": 0,
-    "explanation": "Perfect passive infinitive geçmişte bir kaynaktan türetilmiş olmayı anlatır."
+    "explanation": "Perfect passive infinitive: to have been + V3, geçmişte bir kaynaktan türetilmiş olmayı anlatır. Derive from etkin biçimde de kullanılabildiğinden bu alternatif çıkarılmıştır."
   },
   {
     "id": "wq150_verbalnew_37_2",
@@ -1861,13 +1861,13 @@ export const verbalNewQuestions = [
     "prompt": "The formula is believed ____ from an earlier theoretical model.",
     "options": [
       "to have been derived",
-      "to derive",
+      "to have deriving",
       "having derived",
       "have derived",
       "to being derived"
     ],
     "correct": 0,
-    "explanation": "Perfect passive infinitive geçmişte bir kaynaktan türetilmiş olmayı anlatır."
+    "explanation": "Perfect passive infinitive: to have been + V3, geçmişte bir kaynaktan türetilmiş olmayı anlatır. Derive from etkin biçimde de kullanılabildiğinden bu alternatif çıkarılmıştır."
   },
   {
     "id": "wq150_verbalnew_37_3",
@@ -1878,13 +1878,13 @@ export const verbalNewQuestions = [
     "prompt": "The quoted figures are thought ____ from records that are no longer available.",
     "options": [
       "to have been derived",
-      "to derive",
+      "to have deriving",
       "having derived",
       "have derived",
       "to being derived"
     ],
     "correct": 0,
-    "explanation": "Perfect passive infinitive geçmişte bir kaynaktan türetilmiş olmayı anlatır."
+    "explanation": "Perfect passive infinitive: to have been + V3, geçmişte bir kaynaktan türetilmiş olmayı anlatır. Derive from etkin biçimde de kullanılabildiğinden bu alternatif çıkarılmıştır."
   },
   {
     "id": "wq150_verbalnew_38_1",
@@ -3006,7 +3006,7 @@ export const verbalNewQuestions = [
       "will go"
     ],
     "correct": 0,
-    "explanation": "went: geçmişte gitti. Diğer seçenekler: goes: geniş zaman tekil; is going: şu an gidiyor; has gone: gitmiş ve henüz dönmemiş; will go: gelecekte gidecek."
+    "explanation": "went: geçmişte gitti. Diğer seçenekler: goes: üçüncü tekil geniş zaman; is going: şu an gidiyor veya gelecekteki planı bildiriyor; has gone: gitmiş ve henüz dönmemiş; will go: gelecekte gidecek."
   },
   {
     "id": "wq150_nov26_mixed13b_1_2",
@@ -3023,7 +3023,7 @@ export const verbalNewQuestions = [
       "will go"
     ],
     "correct": 1,
-    "explanation": "goes: geniş zaman tekil. Diğer seçenekler: went: geçmişte gitti; is going: şu an gidiyor; has gone: gitmiş ve henüz dönmemiş; will go: gelecekte gidecek."
+    "explanation": "goes: üçüncü tekil geniş zaman. Diğer seçenekler: went: geçmişte gitti; is going: şu an gidiyor veya gelecekteki planı bildiriyor; has gone: gitmiş ve henüz dönmemiş; will go: gelecekte gidecek."
   },
   {
     "id": "wq150_nov26_mixed13b_1_3",
@@ -3040,7 +3040,7 @@ export const verbalNewQuestions = [
       "will go"
     ],
     "correct": 2,
-    "explanation": "is going: şu an gidiyor. Diğer seçenekler: went: geçmişte gitti; goes: geniş zaman tekil; has gone: gitmiş ve henüz dönmemiş; will go: gelecekte gidecek."
+    "explanation": "is going: şu an gidiyor veya gelecekteki planı bildiriyor. Diğer seçenekler: went: geçmişte gitti; goes: üçüncü tekil geniş zaman; has gone: gitmiş ve henüz dönmemiş; will go: gelecekte gidecek."
   },
   {
     "id": "wq150_nov26_mixed13b_1_4",
@@ -3057,7 +3057,7 @@ export const verbalNewQuestions = [
       "will go"
     ],
     "correct": 3,
-    "explanation": "has gone: gitmiş ve henüz dönmemiş. Diğer seçenekler: went: geçmişte gitti; goes: geniş zaman tekil; is going: şu an gidiyor; will go: gelecekte gidecek."
+    "explanation": "has gone: gitmiş ve henüz dönmemiş. Diğer seçenekler: went: geçmişte gitti; goes: üçüncü tekil geniş zaman; is going: şu an gidiyor veya gelecekteki planı bildiriyor; will go: gelecekte gidecek."
   },
   {
     "id": "wq150_nov26_mixed13b_1_5",
@@ -3065,16 +3065,16 @@ export const verbalNewQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Mia has an appointment next week; she ____ to the dentist then.",
+    "prompt": "Mia has not arranged a dental visit yet, but she promises that she ____ to the dentist next week.",
     "options": [
       "went",
       "goes",
-      "is going",
+      "was going",
       "has gone",
       "will go"
     ],
     "correct": 4,
-    "explanation": "will go: gelecekte gidecek. Diğer seçenekler: went: geçmişte gitti; goes: geniş zaman tekil; is going: şu an gidiyor; has gone: gitmiş ve henüz dönmemiş."
+    "explanation": "Will go burada konuşma anında verilen sözü bildirir. Present continuous da önceden düzenlenmiş gelecek planlarında kullanılabilir; bu cümlede söz verme vurgulanır."
   },
   {
     "id": "wq150_nov26_mixed13b_2_1",
@@ -3091,7 +3091,7 @@ export const verbalNewQuestions = [
       "are"
     ],
     "correct": 0,
-    "explanation": "did: geçmiş zaman soru. Diğer seçenekler: does: tekil geniş zaman soru; do: çoğul geniş zaman soru; is: tekil şimdiki zaman soru; are: çoğul şimdiki zaman soru."
+    "explanation": "did: geçmiş zaman soru. Diğer seçenekler: does: he, she, it ile geniş zaman soru; do: I, you, we, they ile geniş zaman soru; is: he, she, it ile şimdiki zaman soru; are: you, we, they ile şimdiki zaman soru."
   },
   {
     "id": "wq150_nov26_mixed13b_2_2",
@@ -3108,7 +3108,7 @@ export const verbalNewQuestions = [
       "are"
     ],
     "correct": 1,
-    "explanation": "does: tekil geniş zaman soru. Diğer seçenekler: did: geçmiş zaman soru; do: çoğul geniş zaman soru; is: tekil şimdiki zaman soru; are: çoğul şimdiki zaman soru."
+    "explanation": "does: he, she, it ile geniş zaman soru. Diğer seçenekler: did: geçmiş zaman soru; do: I, you, we, they ile geniş zaman soru; is: he, she, it ile şimdiki zaman soru; are: you, we, they ile şimdiki zaman soru."
   },
   {
     "id": "wq150_nov26_mixed13b_2_3",
@@ -3125,7 +3125,7 @@ export const verbalNewQuestions = [
       "are"
     ],
     "correct": 2,
-    "explanation": "do: çoğul geniş zaman soru. Diğer seçenekler: did: geçmiş zaman soru; does: tekil geniş zaman soru; is: tekil şimdiki zaman soru; are: çoğul şimdiki zaman soru."
+    "explanation": "do: I, you, we, they ile geniş zaman soru. Diğer seçenekler: did: geçmiş zaman soru; does: he, she, it ile geniş zaman soru; is: he, she, it ile şimdiki zaman soru; are: you, we, they ile şimdiki zaman soru."
   },
   {
     "id": "wq150_nov26_mixed13b_2_4",
@@ -3142,7 +3142,7 @@ export const verbalNewQuestions = [
       "are"
     ],
     "correct": 3,
-    "explanation": "is: tekil şimdiki zaman soru. Diğer seçenekler: did: geçmiş zaman soru; does: tekil geniş zaman soru; do: çoğul geniş zaman soru; are: çoğul şimdiki zaman soru."
+    "explanation": "is: he, she, it ile şimdiki zaman soru. Diğer seçenekler: did: geçmiş zaman soru; does: he, she, it ile geniş zaman soru; do: I, you, we, they ile geniş zaman soru; are: you, we, they ile şimdiki zaman soru."
   },
   {
     "id": "wq150_nov26_mixed13b_2_5",
@@ -3159,7 +3159,7 @@ export const verbalNewQuestions = [
       "are"
     ],
     "correct": 4,
-    "explanation": "are: çoğul şimdiki zaman soru. Diğer seçenekler: did: geçmiş zaman soru; does: tekil geniş zaman soru; do: çoğul geniş zaman soru; is: tekil şimdiki zaman soru."
+    "explanation": "are: you, we, they ile şimdiki zaman soru. Diğer seçenekler: did: geçmiş zaman soru; does: he, she, it ile geniş zaman soru; do: I, you, we, they ile geniş zaman soru; is: he, she, it ile şimdiki zaman soru."
   },
   {
     "id": "wq150_nov26_mixed13b_3_1",
@@ -3371,16 +3371,16 @@ export const verbalNewQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Connectors",
-    "prompt": "You cannot enter the building ____ you have a valid ticket.",
+    "prompt": "A valid ticket is required for entry. You cannot enter the building ____ you have one.",
     "options": [
       "because",
       "although",
       "unless",
-      "before",
+      "even though",
       "after"
     ],
     "correct": 2,
-    "explanation": "unless: olumsuz koşul. Diğer seçenekler: because: neden; although: karşıtlık; before: öncelik; after: sonralık."
+    "explanation": "Unless, if not anlamında gerekli koşulu bildirir: geçerli biletin yoksa giremezsin."
   },
   {
     "id": "wq150_nov26_mixed13b_5_4",
@@ -3405,16 +3405,16 @@ export const verbalNewQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Connectors",
-    "prompt": "We went home ____ the concert ended, not while it was still on.",
+    "prompt": "We stayed until the final song and went home ____ the concert ended, not before or during it.",
     "options": [
-      "because",
+      "whereas",
       "although",
       "unless",
       "before",
       "after"
     ],
     "correct": 4,
-    "explanation": "after: sonralık. Diğer seçenekler: because: neden; although: karşıtlık; unless: olumsuz koşul; before: öncelik."
+    "explanation": "After, bir olayın başka bir olayın ardından gerçekleştiğini belirtir."
   },
   {
     "id": "wq150_nov26_mixed13b_6_1",
@@ -3439,7 +3439,7 @@ export const verbalNewQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Of the five coats, the £150 one is ____.",
+    "prompt": "Of the five coats priced at £40, £60, £80, £100 and £150, the £150 one is ____.",
     "options": [
       "more expensive",
       "the most expensive",
@@ -3448,7 +3448,7 @@ export const verbalNewQuestions = [
       "too expensive"
     ],
     "correct": 1,
-    "explanation": "the most expensive: en pahalı. Diğer seçenekler: more expensive: daha pahalı; as expensive: kadar pahalı; less expensive: daha az pahalı; too expensive: alınamayacak kadar pahalı."
+    "explanation": "The most expensive, grubun en pahalı üyesini gösteren üstünlük derecesidir."
   },
   {
     "id": "wq150_nov26_mixed13b_6_3",
@@ -3528,12 +3528,12 @@ export const verbalNewQuestions = [
     "options": [
       "had left",
       "was leaving",
-      "left",
+      "leaves",
       "has left",
       "will leave"
     ],
     "correct": 1,
-    "explanation": "was leaving: ayrılmakta idi. Diğer seçenekler: had left: daha önce ayrılmıştı; left: ayrıldı; has left: ayrıldı ve yok; will leave: ayrılacak."
+    "explanation": "Was leaving, konuşmacının gördüğü anda devam eden ayrılma eylemini gösterir. Simple past bazı anlatımlarda mümkün olduğundan seçenekten çıkarılmıştır."
   },
   {
     "id": "wq150_nov26_mixed13b_7_3",
@@ -3696,14 +3696,14 @@ export const verbalNewQuestions = [
     "topic": "Grammar",
     "prompt": "I'm not sure where I put my wallet. I ____ left it in the car.",
     "options": [
-      "must have definitely",
+      "mustn't have",
       "might have",
       "can't have",
       "should have",
       "needn't have"
     ],
     "correct": 1,
-    "explanation": "Might have geçmişteki belirsiz olasılığı bildirir."
+    "explanation": "Might have + V3 geçmişe ilişkin kesin olmayan bir olasılığı bildirir."
   },
   {
     "id": "wq150_nov26_mixed13b_9_3",
@@ -3830,7 +3830,7 @@ export const verbalNewQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "I ____ a paper diary last year, before switching to an app.",
+    "prompt": "I ____ a paper diary to record every appointment last year, before switching to an app.",
     "options": [
       "used to",
       "am used to",
@@ -3839,7 +3839,7 @@ export const verbalNewQuestions = [
       "used"
     ],
     "correct": 4,
-    "explanation": "used: geçmiş kullandı. Diğer seçenekler: used to: geçmiş alışkanlık; am used to: alışkınım; am getting used to: alışıyorum; use: yalın kullanmak."
+    "explanation": "Used burada use (kullanmak) fiilinin geçmiş zamanıdır; used to + yalın fiil geçmiş alışkanlık bildirir."
   },
   {
     "id": "wq150_nov26_mixed13b_11_1",
