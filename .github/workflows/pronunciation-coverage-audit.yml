@@ -4,6 +4,7 @@ on:
     branches: ['feature/v150-arena-nextgen']
     paths:
       - 'tools/arena_v150_server/audit_pronunciation.py'
+      - 'tools/arena_v150_server/generate_pronunciation_supplement.py'
       - 'tools/arena_v150_server/install_android_learning.py'
       - 'tools/v205/complete_pronunciation_205.py'
       - '.github/workflows/pronunciation-coverage-audit.yml'
@@ -13,7 +14,7 @@ permissions:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Check audit and installer syntax
@@ -30,3 +31,17 @@ jobs:
         with:
           name: pronunciation-audit
           path: ${{ runner.temp }}/pronunciation-audit.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare offline speech generator
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y espeak libsndfile1
+          python -m pip install numpy==2.2.6 soundfile==0.13.1
+      - name: Generate and verify missing recordings only
+        run: python tools/arena_v150_server/generate_pronunciation_supplement.py "$RUNNER_TEMP/published.apk" "$RUNNER_TEMP/expanded.json" "$RUNNER_TEMP/pronunciation-supplement"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pronunciation-supplement
+          path: ${{ runner.temp }}/pronunciation-supplement/
