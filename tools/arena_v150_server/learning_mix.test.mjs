@@ -203,3 +203,41 @@ test('quiz selection prevents repeated prompts and screens alternative senses ou
   }
  }
 });
+
+
+// Release gate: all individual CEFR and YDS tiers must preserve selected
+// difficulty, question identity and answer text after seeded option shuffling.
+// Exercise the curated selector independently of the board or base dictionary.
+test('release gate: CEFR and YDS curated answer parity across all tiers',()=>{
+ const source=new Map(allLearningQuestions.map(q=>[q.id,q]));
+ const tiers=[['cefr',LEVELS],['yds',['easy','medium','hard']]];
+ for(const [scale,levels] of tiers){
+  for(const selected of [...levels.map(l=>[l]),levels]){
+   for(const seed of ['release-a','release-b','release-c']){
+    const items=Array.from({length:20},(_,i)=>({
+     id:'fixture_'+i,level:scale==='cefr'?selected[i%selected.length]:'B1',
+     yds:scale==='yds'?selected[i%selected.length]:null
+    }));
+    const cfg={scale,levels:selected,topic:null,wordType:null};
+    const result=diversifyQuiz(items,cfg,seed);
+    assert.equal(result.length,items.length);
+    assert.deepEqual(result,diversifyQuiz(items,cfg,seed),'Seeded output must be deterministic');
+    const curated=result.filter(q=>source.has(q.id));
+    assert.equal(curated.length,13,'Curated share must remain at 65%');
+    const families=curated.map(q=>source.get(q.id).family).filter(Boolean);
+    assert.equal(new Set(families).size,families.length,'Curated family reused');
+    assert.equal(new Set(result.map(q=>q.id)).size,result.length);
+    for(const [i,q] of result.entries()){
+     const field=scale==='cefr'?'level':'yds';
+     assert.equal(q[field],items[i][field],'Question difficulty changed');
+     if(!source.has(q.id))continue;
+     const original=source.get(q.id);
+     assert.equal(q.prompt,original.prompt);
+     assert.equal(q.options.length,5);
+     assert.deepEqual([...q.options].sort(),[...original.options].sort());
+     assert.equal(q.options[q.correct],original.options[original.correct],'Correct answer lost during shuffle');
+    }
+   }
+  }
+ }
+});
