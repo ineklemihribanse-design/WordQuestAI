@@ -5,7 +5,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ at the hotel before going to your room.",
+    "prompt": "Choose the expression that best fits this context:\n\nGuests must ____ at reception to register their arrival before going to their rooms.",
     "options": [
       "check in",
       "check out",
@@ -430,7 +430,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the application form with your personal details.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore submitting it, please ____ the blank application form with your personal details.",
     "options": [
       "fill in",
       "hand in",
@@ -1025,7 +1025,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the faster runners during training.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe runners started together, and I tried to ____ the faster runners without falling behind.",
     "options": [
       "keep up with",
       "take up",
@@ -1042,7 +1042,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the growing workload at the office.",
+    "prompt": "Choose the expression that best fits this context:\n\nShe works steadily every day to ____ the growing workload without accumulating unfinished tasks.",
     "options": [
       "keep up with",
       "take up",
@@ -1059,7 +1059,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the rest of the class as the lessons become harder.",
+    "prompt": "Choose the expression that best fits this context:\n\nHe attends every lesson and works regularly to ____ the rest of the class without falling behind.",
     "options": [
       "keep up with",
       "take up",
@@ -1110,7 +1110,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the group that left ten minutes earlier.",
+    "prompt": "Choose the expression that best fits this context:\n\nWe left ten minutes late and hurried to ____ the group ahead of us.",
     "options": [
       "catch up with",
       "take up",
@@ -1280,7 +1280,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ unexpectedly during a long drive.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe car may ____ unexpectedly during a long drive if the engine fails.",
     "options": [
       "break down",
       "wear out",
@@ -1297,7 +1297,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ if the engine is not maintained.",
+    "prompt": "Choose the expression that best fits this context:\n\nAn unreliable engine may ____ suddenly, leaving the car unable to move.",
     "options": [
       "break down",
       "wear out",
@@ -1314,7 +1314,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ when its worn motor finally fails.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe machine could ____ suddenly when its motor fails.",
     "options": [
       "break down",
       "wear out",
@@ -1365,7 +1365,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ after years of constant use.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe fabric will gradually ____ after years of constant use.",
     "options": [
       "wear out",
       "break down",
@@ -1382,7 +1382,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ when the soles become too thin.",
+    "prompt": "Choose the expression that best fits this context:\n\nWalking shoes eventually ____ as their soles become thinner through repeated use.",
     "options": [
       "wear out",
       "break down",
@@ -1399,7 +1399,7 @@ export const bulkPhraseQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ if the bearings are not replaced regularly.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe bearings may gradually ____ through repeated friction until they need replacing.",
     "options": [
       "wear out",
       "break down",
@@ -2555,10 +2555,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the reported irregularities before reaching a conclusion.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe auditor will ____ the newly reported irregularities to establish what actually happened.",
     "options": [
       "look into",
-      "follow up on",
+      "put off",
       "draw up",
       "sign off on",
       "go over"
@@ -2572,10 +2572,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the cause of the unexpected discrepancy.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe team must ____ the unexplained discrepancy and investigate its cause.",
     "options": [
       "look into",
-      "follow up on",
+      "put off",
       "draw up",
       "sign off on",
       "go over"
@@ -2589,10 +2589,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the customer's complaint to establish what happened.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe manager will ____ the complaint by investigating the circumstances behind it.",
     "options": [
       "look into",
-      "follow up on",
+      "put off",
       "draw up",
       "sign off on",
       "go over"
@@ -2640,10 +2640,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the unresolved complaint after the initial response.",
+    "prompt": "Choose the expression that best fits this context:\n\nWe need to ____ the complaint by contacting the customer again after our initial response.",
     "options": [
       "follow up on",
-      "look into",
+      "turn down",
       "draw up",
       "sign off on",
       "go over"
@@ -2657,10 +2657,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the questions raised during the previous meeting.",
+    "prompt": "Choose the expression that best fits this context:\n\nAt the next meeting, we will ____ the earlier questions by reporting what action has been taken.",
     "options": [
       "follow up on",
-      "look into",
+      "turn down",
       "draw up",
       "sign off on",
       "go over"
@@ -2674,10 +2674,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the preliminary findings with a second investigation.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe team will ____ the preliminary findings with further tests after the initial investigation.",
     "options": [
       "follow up on",
-      "look into",
+      "turn down",
       "draw up",
       "sign off on",
       "go over"
@@ -2725,13 +2725,13 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a written contract specifying each party's duties.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe lawyer was asked to ____ a new written contract from scratch.",
     "options": [
       "draw up",
       "look into",
       "follow up on",
       "sign off on",
-      "go over"
+      "put off"
     ],
     "correct": 0,
     "explanation": "'draw up' burada 'hazırlamak' anlamındadır. İngilizce açıklaması: prepare a formal written document."
@@ -2742,13 +2742,13 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a detailed agreement for the partnership.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe partners hired a lawyer to ____ their first formal written agreement.",
     "options": [
       "draw up",
       "look into",
       "follow up on",
       "sign off on",
-      "go over"
+      "put off"
     ],
     "correct": 0,
     "explanation": "'draw up' burada 'hazırlamak' anlamındadır. İngilizce açıklaması: prepare a formal written document."
@@ -2759,13 +2759,13 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a formal budget proposal for the board.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe finance team must ____ a new budget proposal before anyone can review it.",
     "options": [
       "draw up",
       "look into",
       "follow up on",
       "sign off on",
-      "go over"
+      "put off"
     ],
     "correct": 0,
     "explanation": "'draw up' burada 'hazırlamak' anlamındadır. İngilizce açıklaması: prepare a formal written document."
@@ -2810,13 +2810,13 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the final design before production starts.",
+    "prompt": "Choose the expression that best fits this context:\n\nOnly the chief engineer may ____ the completed design and formally authorise production.",
     "options": [
       "sign off on",
       "look into",
       "follow up on",
       "draw up",
-      "go over"
+      "turn down"
     ],
     "correct": 0,
     "explanation": "'sign off on' burada 'resmen onaylamak' anlamındadır. İngilizce açıklaması: give formal approval to something."
@@ -2827,13 +2827,13 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the completed report after reviewing it.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe director must ____ the completed report to give it formal approval.",
     "options": [
       "sign off on",
       "look into",
       "follow up on",
       "draw up",
-      "go over"
+      "turn down"
     ],
     "correct": 0,
     "explanation": "'sign off on' burada 'resmen onaylamak' anlamındadır. İngilizce açıklaması: give formal approval to something."
@@ -2844,13 +2844,13 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the expenditure proposal as the authorised manager.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe authorised manager must ____ the expenditure proposal before payment is permitted.",
     "options": [
       "sign off on",
       "look into",
       "follow up on",
       "draw up",
-      "go over"
+      "turn down"
     ],
     "correct": 0,
     "explanation": "'sign off on' burada 'resmen onaylamak' anlamındadır. İngilizce açıklaması: give formal approval to something."
@@ -2895,12 +2895,12 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the instructions with the team before the exercise.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore the exercise, the instructor will ____ each instruction with the team step by step.",
     "options": [
       "go over",
       "look into",
       "follow up on",
-      "draw up",
+      "put off",
       "sign off on"
     ],
     "correct": 0,
@@ -2912,12 +2912,12 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the calculation line by line to check for mistakes.",
+    "prompt": "Choose the expression that best fits this context:\n\nWe need to ____ the calculation line by line to check the existing arithmetic.",
     "options": [
       "go over",
       "look into",
       "follow up on",
-      "draw up",
+      "put off",
       "sign off on"
     ],
     "correct": 0,
@@ -2929,12 +2929,12 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the agenda together before the meeting begins.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore the meeting, let's ____ the existing agenda together to familiarise ourselves with each item.",
     "options": [
       "go over",
       "look into",
       "follow up on",
-      "draw up",
+      "put off",
       "sign off on"
     ],
     "correct": 0,
@@ -3541,7 +3541,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ after the strongest gusts have passed.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe wind is expected to ____ after the strongest gusts have passed.",
     "options": [
       "die down",
       "break out",
@@ -3626,7 +3626,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ inside the pipes if deposits are not removed.",
+    "prompt": "Choose the expression that best fits this context:\n\nMineral deposits can ____ inside pipes if they are not removed.",
     "options": [
       "build up",
       "break out",
@@ -3796,10 +3796,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the principal assumptions in the introduction.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe authors will ____ their principal assumptions in an organised list in the introduction.",
     "options": [
       "set out",
-      "spell out",
+      "rule out",
       "touch on",
       "leave out",
       "sum up"
@@ -3813,10 +3813,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the procedures in a clearly organised document.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe manual will ____ the procedures in the order in which they must be performed.",
     "options": [
       "set out",
-      "spell out",
+      "rule out",
       "touch on",
       "leave out",
       "sum up"
@@ -3830,10 +3830,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the reasons for the decision in writing.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe committee will ____ its reasons systematically in a written statement.",
     "options": [
       "set out",
-      "spell out",
+      "rule out",
       "touch on",
       "leave out",
       "sum up"
@@ -3881,10 +3881,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ exactly what each participant is required to do.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe supervisor must ____ precisely what each participant is required to do, leaving nothing implicit.",
     "options": [
       "spell out",
-      "set out",
+      "rule out",
       "touch on",
       "leave out",
       "sum up"
@@ -3898,10 +3898,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the implications of the revised rule in plain language.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe adviser will ____ the implications of the revised rule in plain language for confused readers.",
     "options": [
       "spell out",
-      "set out",
+      "rule out",
       "touch on",
       "leave out",
       "sum up"
@@ -3915,10 +3915,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the meaning of the ambiguous provision without leaving it implicit.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe lawyer must ____ the meaning of the ambiguous provision explicitly.",
     "options": [
       "spell out",
-      "set out",
+      "rule out",
       "touch on",
       "leave out",
       "sum up"
@@ -3966,13 +3966,13 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the secondary issue without discussing it at length.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe speaker will ____ the secondary issue briefly without explaining its details.",
     "options": [
       "touch on",
       "set out",
       "spell out",
       "leave out",
-      "sum up"
+      "rule out"
     ],
     "correct": 0,
     "explanation": "'touch on' burada 'kısaca değinmek' anlamındadır. İngilizce açıklaması: mention a topic briefly."
@@ -3983,13 +3983,13 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the historical background in just one sentence.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe author will ____ the historical background in passing before discussing the main subject.",
     "options": [
       "touch on",
       "set out",
       "spell out",
       "leave out",
-      "sum up"
+      "rule out"
     ],
     "correct": 0,
     "explanation": "'touch on' burada 'kısaca değinmek' anlamındadır. İngilizce açıklaması: mention a topic briefly."
@@ -4000,13 +4000,13 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the implications briefly before returning to the main argument.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe speaker will ____ the implications in passing, then return to the main argument.",
     "options": [
       "touch on",
       "set out",
       "spell out",
       "leave out",
-      "sum up"
+      "rule out"
     ],
     "correct": 0,
     "explanation": "'touch on' burada 'kısaca değinmek' anlamındadır. İngilizce açıklaması: mention a topic briefly."
@@ -4136,10 +4136,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the key findings in a short concluding paragraph.",
+    "prompt": "Choose the expression that best fits this context:\n\nAt the end of the report, the authors will ____ the main findings in a concise recap.",
     "options": [
       "sum up",
-      "set out",
+      "rule out",
       "spell out",
       "touch on",
       "leave out"
@@ -4153,10 +4153,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the discussion in three brief sentences.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore closing the meeting, the chair will ____ the discussion in three sentences.",
     "options": [
       "sum up",
-      "set out",
+      "rule out",
       "spell out",
       "touch on",
       "leave out"
@@ -4170,10 +4170,10 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the main argument at the end of the presentation.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe lecturer will ____ the main argument in a brief recap at the end of the presentation.",
     "options": [
       "sum up",
-      "set out",
+      "rule out",
       "spell out",
       "touch on",
       "leave out"
@@ -5496,7 +5496,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a single unresolved question about funding.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe complex dispute seems to ____ a single unresolved question about funding.",
     "options": [
       "boil down to",
       "set out",
@@ -5513,7 +5513,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the choice between two incompatible objectives.",
+    "prompt": "Choose the expression that best fits this context:\n\nIn essence, the debate may ____ a choice between two incompatible objectives.",
     "options": [
       "boil down to",
       "set out",
@@ -5564,7 +5564,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a substantial sum when all the individual charges are combined.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe individual charges may ____ a substantial sum when combined.",
     "options": [
       "add up to",
       "set out",
@@ -5581,7 +5581,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the annual expenditure shown in the statement.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe monthly payments should ____ the annual expenditure shown in the statement.",
     "options": [
       "add up to",
       "set out",
@@ -5598,7 +5598,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the total number of hours worked.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe daily figures must ____ the total number of hours worked.",
     "options": [
       "add up to",
       "set out",
@@ -5649,7 +5649,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ an admission of responsibility under the stated rule.",
+    "prompt": "Choose the expression that best fits this context:\n\nUnder the stated rule, signing this statement may ____ an admission of responsibility.",
     "options": [
       "amount to",
       "set out",
@@ -5666,7 +5666,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a rejection of the original principle in practical terms.",
+    "prompt": "Choose the expression that best fits this context:\n\nIn practical terms, the proposed reversal would ____ a rejection of the original principle.",
     "options": [
       "amount to",
       "set out",
@@ -5683,7 +5683,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a substantial change in policy despite the minor wording.",
+    "prompt": "Choose the expression that best fits this context:\n\nDespite the minor wording, these revisions would ____ a substantial change in policy.",
     "options": [
       "amount to",
       "set out",
@@ -5751,7 +5751,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ half of the total expenditure.",
+    "prompt": "Choose the expression that best fits this context:\n\nStaff salaries ____ half of the total expenditure.",
     "options": [
       "make up",
       "set out",
@@ -5768,7 +5768,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ the largest share of the surveyed population.",
+    "prompt": "Choose the expression that best fits this context:\n\nAdults aged 25 to 40 ____ the largest share of the surveyed population.",
     "options": [
       "make up",
       "set out",
@@ -5785,7 +5785,7 @@ export const bulkPhraseQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Phrasals",
-    "prompt": "Choose the expression that best fits this context:\n\n____ a substantial proportion of the material.",
+    "prompt": "Choose the expression that best fits this context:\n\nRecycled fibres ____ a substantial proportion of the material.",
     "options": [
       "make up",
       "set out",
@@ -5836,7 +5836,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ on the long-term effects of the intervention.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe university plans to ____ on the intervention's long-term effects through a multi-stage investigation.",
     "options": [
       "conduct research",
       "draw a conclusion",
@@ -5870,7 +5870,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ to determine why the device fails.",
+    "prompt": "Choose the expression that best fits this context:\n\nEngineers will ____ by developing a hypothesis, performing tests and analysing results to determine why the device fails.",
     "options": [
       "conduct research",
       "draw a conclusion",
@@ -6006,7 +6006,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ before designing the experiment.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore collecting evidence, researchers need to ____ that can be tested by the proposed experiment.",
     "options": [
       "formulate a hypothesis",
       "conduct research",
@@ -6040,7 +6040,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ to explain the unexpected pattern.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe scientists must ____ as a provisional explanation for the unexpected pattern, then test its prediction.",
     "options": [
       "formulate a hypothesis",
       "conduct research",
@@ -6091,10 +6091,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ from each participating household during the survey.",
+    "prompt": "Choose the expression that best fits this context:\n\nDuring the survey, interviewers will ____ by recording each household's responses.",
     "options": [
       "collect data",
-      "conduct research",
+      "discard evidence",
       "draw a conclusion",
       "formulate a hypothesis",
       "replicate a finding"
@@ -6108,10 +6108,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ using calibrated instruments at every site.",
+    "prompt": "Choose the expression that best fits this context:\n\nTechnicians will ____ by recording numerical measurements at each site.",
     "options": [
       "collect data",
-      "conduct research",
+      "discard evidence",
       "draw a conclusion",
       "formulate a hypothesis",
       "replicate a finding"
@@ -6125,10 +6125,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ through structured interviews before analysis.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore analysis, the team will ____ by recording participants' answers in structured interviews.",
     "options": [
       "collect data",
-      "conduct research",
+      "discard evidence",
       "draw a conclusion",
       "formulate a hypothesis",
       "replicate a finding"
@@ -6176,7 +6176,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ using an independent sample and the same procedure.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe team will attempt to ____ by repeating the earlier experiment with an independent sample.",
     "options": [
       "replicate a finding",
       "conduct research",
@@ -6193,7 +6193,7 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ in a second laboratory before accepting the claim.",
+    "prompt": "Choose the expression that best fits this context:\n\nBefore accepting the claim, scientists want to ____ by obtaining the same previously reported result in a second laboratory.",
     "options": [
       "replicate a finding",
       "conduct research",
@@ -6941,11 +6941,11 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ by installing a guard over the moving parts.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe guard is intended to ____ by stopping workers from coming into contact with moving parts.",
     "options": [
       "prevent an accident",
       "assess a risk",
-      "take a precaution",
+      "ignore a warning",
       "pose a threat",
       "investigate an incident"
     ],
@@ -6958,11 +6958,11 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ through regular inspection of the braking system.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe mechanic hopes to ____ by finding and fixing a fault in the braking system before anyone is injured.",
     "options": [
       "prevent an accident",
       "assess a risk",
-      "take a precaution",
+      "ignore a warning",
       "pose a threat",
       "investigate an incident"
     ],
@@ -6975,11 +6975,11 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ by removing the obstacle from the busy walkway.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe staff removed the obstacle to ____ before a pedestrian could trip over it.",
     "options": [
       "prevent an accident",
       "assess a risk",
-      "take a precaution",
+      "ignore a warning",
       "pose a threat",
       "investigate an incident"
     ],
@@ -7553,10 +7553,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ within the threatened ecosystem.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe conservation programme aims to ____ by maintaining the variety of species within the threatened ecosystem.",
     "options": [
       "preserve biodiversity",
-      "restore a habitat",
+      "drain a wetland",
       "conserve energy",
       "monitor emissions",
       "dispose of waste"
@@ -7570,10 +7570,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ through the restoration of native plant communities.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe aim of the restoration programme is to ____ by preventing the loss of native species.",
     "options": [
       "preserve biodiversity",
-      "restore a habitat",
+      "drain a wetland",
       "conserve energy",
       "monitor emissions",
       "dispose of waste"
@@ -7621,10 +7621,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ by replanting native vegetation in the degraded wetland.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe project aims to ____ by returning a degraded wetland to its former ecological condition.",
     "options": [
       "restore a habitat",
-      "preserve biodiversity",
+      "destroy biodiversity",
       "conserve energy",
       "monitor emissions",
       "dispose of waste"
@@ -7655,10 +7655,10 @@ export const bulkPhraseQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Choose the expression that best fits this context:\n\n____ so that the displaced species can return.",
+    "prompt": "Choose the expression that best fits this context:\n\nThe team plans to ____ by recreating the environmental conditions needed for displaced species to return.",
     "options": [
       "restore a habitat",
-      "preserve biodiversity",
+      "destroy biodiversity",
       "conserve energy",
       "monitor emissions",
       "dispose of waste"
