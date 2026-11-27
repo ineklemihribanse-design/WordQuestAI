@@ -4686,16 +4686,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The committee will ____ funds to each department according to its needs.",
+    "prompt": "The committee must ____ a specific share of the annual budget to each department, distributing the money according to need.",
     "options": [
       "allocate",
       "withdraw",
       "retain",
-      "transfer",
+      "withhold",
       "restrict"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: allocate. Kaynak dağıtımı, geri çekme, elde tutma, aktarma ve sınırlandırma farklıdır."
+    "explanation": "Doğru seçenek: allocate. Allocate a share of the budget bir bütçe payını belirli bir birime tahsis etmek anlamındadır."
   },
   {
     "id": "wq150_b12_1500_direct_b2_13_2",
@@ -4776,7 +4776,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The results are ____ across all five trials, with no major differences.",
+    "prompt": "The results are ____ with one another across all five trials, with no major differences between them.",
     "options": [
       "consistent",
       "credible",
@@ -4785,7 +4785,7 @@ export const b121500Direct = [
       "precise"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: consistent. Tutarlılık, inandırıcılık, ilgililik, yeterlilik ve kesinlik ayrılır."
+    "explanation": "Doğru seçenek: consistent. Consistent with one another sonuçların birbirleriyle tutarlı olduğunu anlatır."
   },
   {
     "id": "wq150_b12_1500_direct_b2_14_2",
@@ -4794,7 +4794,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The claim is ____ because it is supported by several independent sources.",
+    "prompt": "Although the claim cannot yet be proved, several independent sources make it ____ enough to believe.",
     "options": [
       "consistent",
       "credible",
@@ -4803,7 +4803,7 @@ export const b121500Direct = [
       "precise"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: credible. Tutarlılık, inandırıcılık, ilgililik, yeterlilik ve kesinlik ayrılır."
+    "explanation": "Doğru seçenek: credible. Credible inanılabilir veya güvenilir demektir; bağlam iddianın inanılabilirliğini ölçer."
   },
   {
     "id": "wq150_b12_1500_direct_b2_14_3",
@@ -4830,7 +4830,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The available evidence is ____ to justify a further investigation.",
+    "prompt": "The regulations require at least three independent reports to open an investigation. We have exactly three valid reports, so the available evidence is ____ to meet that numerical requirement.",
     "options": [
       "consistent",
       "credible",
@@ -4839,7 +4839,7 @@ export const b121500Direct = [
       "precise"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: sufficient. Tutarlılık, inandırıcılık, ilgililik, yeterlilik ve kesinlik ayrılır."
+    "explanation": "Doğru seçenek: sufficient. Belirlenen asgari sayı karşılandığı için kanıt yeterlidir; diğer sıfatlar miktarın yeterli olduğunu belirtmez."
   },
   {
     "id": "wq150_b12_1500_direct_b2_14_5",
@@ -4866,16 +4866,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The study examines the ____ of traffic noise on residents' sleep.",
+    "prompt": "The study measures the negative ____ of traffic noise on residents' sleep, including the increase in nighttime awakenings.",
     "options": [
       "impact",
       "scope",
       "extent",
-      "outcome",
+      "procedure",
       "feedback"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: impact. Impact of X on Y, X'in Y üzerindeki etkisini anlatır. Araştırma trafik gürültüsünün uykuyu nasıl etkilediğini inceliyor."
+    "explanation": "Doğru seçenek: impact. Impact of X on Y, X'in Y üzerindeki etkisini anlatır; uykudaki değişiklik bu etkiye örnektir."
   },
   {
     "id": "wq150_b12_1500_direct_b2_15_2",
@@ -4920,16 +4920,16 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The expected ____ of the training is a reduction in processing time.",
+    "prompt": "The expected ____ of the training, measured after the final session, is a reduction in processing time.",
     "options": [
-      "impact",
       "scope",
-      "extent",
+      "agenda",
+      "duration",
       "outcome",
       "feedback"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: outcome. Etki, kapsam, derece, sonuç ve geri bildirim kavramları farklıdır."
+    "explanation": "Doğru seçenek: outcome. Outcome bir sürecin sonunda elde edilen sonuçtur; diğer seçenekler sonucu değil kapsam, plan, süre veya geri bildirimi anlatır."
   },
   {
     "id": "wq150_b12_1500_direct_b2_15_5",
@@ -4956,7 +4956,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "The additional lighting will ____ the visibility of the entrance.",
+    "prompt": "The entrance is already visible, but the new lighting will ____ its visibility even further.",
     "options": [
       "enhance",
       "undermine",
@@ -4965,7 +4965,7 @@ export const b121500Direct = [
       "replace"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: enhance. Güçlendirmek, zayıflatmak, geri getirmek, korumak ve değiştirmek farklı eylemlerdir."
+    "explanation": "Doğru seçenek: enhance. Even further mevcut görünürlüğün daha da artırılmasını belirtir; restore eski duruma döndürmek, maintain korumaktır."
   },
   {
     "id": "wq150_b12_1500_direct_b2_16_2",
@@ -4974,7 +4974,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Repeated false claims can ____ public trust in an organisation.",
+    "prompt": "Repeated false claims can gradually ____ public trust in an organisation, making people less willing to believe it.",
     "options": [
       "enhance",
       "undermine",
@@ -4983,7 +4983,7 @@ export const b121500Direct = [
       "replace"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: undermine. Güçlendirmek, zayıflatmak, geri getirmek, korumak ve değiştirmek farklı eylemlerdir."
+    "explanation": "Doğru seçenek: undermine. İnsanların daha az güvenmesi, güvenin zamanla zayıflatıldığını gösterir."
   },
   {
     "id": "wq150_b12_1500_direct_b2_16_3",
@@ -5010,7 +5010,7 @@ export const b121500Direct = [
     "yds": null,
     "topic": "Vocabulary",
     "kind": "Vocabulary",
-    "prompt": "Regular checks help ____ the required safety standard over time.",
+    "prompt": "The required safety standard has already been achieved. Regular checks help ____ it at the same level over time.",
     "options": [
       "enhance",
       "undermine",
@@ -5019,7 +5019,7 @@ export const b121500Direct = [
       "replace"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: maintain. Güçlendirmek, zayıflatmak, geri getirmek, korumak ve değiştirmek farklı eylemlerdir."
+    "explanation": "Doğru seçenek: maintain. At the same level, mevcut standardın değiştirilmeden sürdürülmesini belirtir."
   },
   {
     "id": "wq150_b12_1500_direct_b2_16_5",

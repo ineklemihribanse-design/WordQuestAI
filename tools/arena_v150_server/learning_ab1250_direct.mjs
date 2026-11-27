@@ -2976,16 +2976,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "We sell newspapers here. We ____ sell magazines.",
+    "prompt": "We sell newspapers here. In addition, we ____ sell magazines.",
     "options": [
       "also",
       "instead",
-      "then",
+      "rarely",
       "finally",
       "otherwise"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: also. Cümleler arası ekleme, alternatif, sıra ve sonuç ilişkilerine dikkat et."
+    "explanation": "Doğru seçenek: also. In addition ek bilgi verildiğini gösterir; also da aynı ekleme ilişkisini kurar."
   },
   {
     "id": "wq150_ab1250_direct_a2_34_2",
@@ -3012,16 +3012,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "Wash the vegetables; ____ cut them into small pieces.",
+    "prompt": "First wash the vegetables; ____ cut them into small pieces. After that, put them in a bowl.",
     "options": [
-      "also",
       "instead",
+      "otherwise",
       "then",
-      "finally",
-      "otherwise"
+      "although",
+      "because"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: then. Cümleler arası ekleme, alternatif, sıra ve sonuç ilişkilerine dikkat et."
+    "explanation": "Doğru seçenek: then. First ve after that arasındaki ara adımı then sıralar; diğer seçenekler bu sırayı ifade etmez."
   },
   {
     "id": "wq150_ab1250_direct_a2_34_4",
@@ -3066,16 +3066,16 @@ export const ab1250Direct = [
     "yds": null,
     "topic": "Connectors",
     "kind": "Connector",
-    "prompt": "____ Tom and Leo can come with us.",
+    "prompt": "____ Tom and Leo can come with us; the two of them are free.",
     "options": [
       "both",
       "either",
       "neither",
-      "not only",
+      "only one of",
       "each"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: both. İki öğeyi birleştirme veya seçenekler arasında ayrım yapma yapılarıdır."
+    "explanation": "Doğru seçenek: both. Both A and B iki kişinin de gelebileceğini belirtir; diğer seçenekler bu yapıya uymaz."
   },
   {
     "id": "wq150_ab1250_direct_a2_35_2",
