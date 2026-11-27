@@ -45,7 +45,10 @@ internal object Wq150ArenaFeature {
 internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,
     legacy:()->Unit,soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit,onMatch:(String,JSONObject)->Unit){
     val context=LocalContext.current
-    val catalog=remember(context){Wq150Catalog.read(context)}
+    val catalogState by produceState<Pair<Boolean,Wq150Catalog?>>(false to null,context.applicationContext){
+        value=true to withContext(Dispatchers.IO){Wq150Catalog.read(context.applicationContext)}
+    }
+    val catalog=catalogState.second
     val auth=session.accounts.socialAuth()
     val uid=session.accounts.uid.orEmpty()
     val gateway=remember(endpoint,auth,uid){auth?.let{Wq150Gateway(endpoint,it)}}
@@ -102,9 +105,9 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
             if(!lobby&&!active){
                 val enabled=!state.busy&&!state.pending
                 Wq150ArenaHome(session,ownAvatar,soloSelected,onTab,enabled,back,
-                    onMode={kind->if(soloSelected)soloMode=kind else {settings=settings.changeKind(kind);edit=true}},
+                    onMode={kind->if(soloSelected)soloMode=kind else if(catalogState.first){settings=settings.changeKind(kind);edit=true}},
                     onPanel={panel=it},
-                    status=state.error?:if(state.busy)"Oda işlemi sürüyor…" else null,
+                    status=state.error?:if(state.busy)"Oda işlemi sürüyor…" else if(!soloSelected&&!catalogState.first)"İçerik hazırlanıyor…" else null,
                     onRetry=if(state.pending&&!state.busy)({scope.launch{controller.retry()};Unit})else null)
             }else Column(Modifier.align(Alignment.TopCenter).widthIn(max=1000.dp).fillMaxSize()
                 .windowInsetsPadding(WindowInsets.safeDrawing).imePadding()
@@ -259,7 +262,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
 /** The approved v120 icon/card assets are decoded off the UI thread.
  * Only the decorative empty plate is stretched; the 3D icon keeps its ratio. */
 private object Wq150ArtCache{
-    private val cache=object:android.util.LruCache<String,ImageBitmap>(24*1024*1024){
+    private val cache=object:android.util.LruCache<String,ImageBitmap>((Runtime.getRuntime().maxMemory()/8L).coerceIn(24L*1024*1024,64L*1024*1024).toInt()){
         override fun sizeOf(key:String,value:ImageBitmap):Int=(value.width.toLong()*value.height*4L)
             .coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
     }
@@ -277,9 +280,17 @@ private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=Co
             art=cached
         }else{
             val decoded=withContext(Dispatchers.IO){
-                runCatching{context.assets.open(if('/' in name)name else "arena_v120/$name.webp").use{
-                    android.graphics.BitmapFactory.decodeStream(it)?.asImageBitmap()
-                }}.getOrNull()?.also{Wq150ArtCache.put(name,it)}
+                runCatching{
+                    val asset=if('/' in name)name else "arena_v120/$name.webp"
+                    val background=name.substringAfterLast('/').substringBeforeLast('.') in listOf("phone","tablet")
+                    val limit=if(background)maxOf(context.resources.displayMetrics.widthPixels,context.resources.displayMetrics.heightPixels,1600) else if(name.contains("plate")||name.contains("_card_"))1024 else 512
+                    val bounds=android.graphics.BitmapFactory.Options().apply{inJustDecodeBounds=true}
+                    context.assets.open(asset).use{android.graphics.BitmapFactory.decodeStream(it,null,bounds)}
+                    var sample=1
+                    while(maxOf(bounds.outWidth,bounds.outHeight)/sample>=limit*2)sample*=2
+                    val options=android.graphics.BitmapFactory.Options().apply{inSampleSize=sample}
+                    context.assets.open(asset).use{android.graphics.BitmapFactory.decodeStream(it,null,options)?.asImageBitmap()}
+                }.getOrNull()?.also{Wq150ArtCache.put(name,it)}
             }
             art=decoded
         }
@@ -546,14 +557,15 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
         Wq150ArenaBars()
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
             Wq122SettingsBackdrop(Modifier.matchParentSize())
-            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().verticalScroll(rememberScrollState()).padding(8.dp),
+            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=6.dp),
                 verticalArrangement=Arrangement.spacedBy(6.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
                     Text("Maç Ayarları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=21.sp)
                 }
+                Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
                 val basic:@Composable ()->Unit={
-                    Wq150PremiumPanel{
+                    Wq150SettingPanel("blue"){
                         Text(wq150Card(kind).title+" · Tek Başına",color=Wq122Gold,fontWeight=FontWeight.Bold)
                         Wq122Section("level","CEFR seviyeleri","Birden fazla seviye seçebilirsin.")
                         Wq150LevelRow(Wq150ModeCatalog.cefr,levels){level->
@@ -566,7 +578,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                     }
                 }
                 val rules:@Composable ()->Unit={
-                    Wq150PremiumPanel{
+                    Wq150SettingPanel("amber"){
                         Wq122Section("count",if(engine=="quiz")"Soru sayısı" else "Kelime sayısı")
                         Wq150SoloNumbers(if(engine=="quiz")listOf(5,10,12,15,20)else PremiumArenaRules.allowedSizes,count,{it.toString()}){if(!busy)count=it}
                         Wq122Section("time","Soru süresi")
@@ -583,11 +595,12 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                     }else Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(6.dp)){basic();rules()}
                 }
                 if(error.isNotBlank())Text(error,color=Color(0xFFFFB4B4),modifier=Modifier.fillMaxWidth().background(Color(0xFF251347)).padding(8.dp))
-                Wq150PremiumPanel{
-                    Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold)
+                }
+                Wq150SettingPanel("green"){
+                    Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=13.sp)
                     Text(levels.joinToString(" + ")+" · "+count+" "+(if(engine=="quiz")"soru" else "kelime")+" · "+(if(seconds==0)"Süresiz" else "$seconds sn")+" · $hints ipucu",color=Wq122Ink)
                     if(busy)LinearProgressIndicator(Modifier.fillMaxWidth())
-                    Wq122Primary(if(busy)"Oyun hazırlanıyor…" else "Maçı Başlat",!busy&&count>=levels.size,{
+                    Wq150StartButton(if(busy)"Oyun hazırlanıyor…" else "Oyunu Başlat",!busy&&count>=levels.size){
                         if(!busy){
                             busy=true;error=""
                             val id=java.util.UUID.randomUUID().toString()
@@ -603,7 +616,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                                 finally{busy=false}
                             }
                         }
-                    })
+                    }
                 }
             }
         }
