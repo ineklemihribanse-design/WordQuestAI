@@ -1,13 +1,70 @@
 name: Test v150 shared round, reaction and finish protocol
 on:
-  pull_request:
-    branches: [fix/v190-tablet-board-and-visible-icons]
-    paths: ['firebase/database.rules.v132.json','tools/v132_engine/**','tools/arena_v150_server/**','.github/workflows/qa-v132-engine-rules.yml']
+  push:
+    branches: [feature/v150-arena-nextgen]
+    paths:
+      - 'firebase/**'
+      - 'assets/user_uploads/**'
+      - 'tools/v132_engine/**'
+      - 'tools/arena_v150_server/**'
+      - 'tools/maintenance/**'
+      - 'tools/auto_release/**'
+      - 'tools/v150_release/**'
+      - '.github/workflows/qa-v132-engine-rules.yml'
+      - '.github/workflows/publish-v151-approved.yml'
 permissions:
   contents: read
+concurrency:
+  group: wq-development-scope-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
+  scope:
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/feature/v150-arena-nextgen'
+    runs-on: ubuntu-latest
+    outputs:
+      level: ${{ steps.scope.outputs.level }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Classify exact pushed commit range
+        id: scope
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tools/maintenance -p test_classify_release_impact.py -v
+          python3 tools/maintenance/classify_release_impact.py --base "$BEFORE" --head "$GITHUB_SHA" | tee "$RUNNER_TEMP/scope.json"
+          level=$(jq -r .level "$RUNNER_TEMP/scope.json")
+          case "$level" in fast|standard|full) ;; *) exit 1;; esac
+          echo "level=$level" >> "$GITHUB_OUTPUT"
+          echo "Development validation: $level (not APK publication)" >> "$GITHUB_STEP_SUMMARY"
+  visual:
+    needs: scope
+    if: needs.scope.outputs.level == 'fast'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install --disable-pip-version-check Pillow
+      - run: python3 tools/maintenance/verify_arena_art.py
+  standard:
+    needs: scope
+    if: needs.scope.outputs.level == 'standard'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check Arena shared gameplay protocols and readiness
+        run: |
+          python3 -m unittest discover -s tools/auto_release -p test_wait_app_ready.py -v
+          node --test tools/v132_engine/engine.test.mjs tools/v132_engine/connection.test.mjs tools/v132_engine/connection_store.test.mjs tools/v132_engine/duel.test.mjs tools/v132_engine/quiz.test.mjs tools/v132_engine/coop.test.mjs tools/v132_engine/team.test.mjs tools/v132_engine/lobby.test.mjs tools/v132_engine/lobby_gateway.test.mjs tools/v132_engine/social.test.mjs tools/v132_engine/profiles.test.mjs
+      - run: echo "Kotlin compile, Lint, exact APK upgrade and viewport tests remain mandatory in the release workflow." >> "$GITHUB_STEP_SUMMARY"
   test:
-    if: github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: scope
+    if: needs.scope.outputs.level == 'full'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

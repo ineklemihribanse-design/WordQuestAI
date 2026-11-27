@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Fail-closed release impact classifier. Advisory until fast gates are proven.
 Classify the ENTIRE diff against the last published source, not just HEAD^.
-Unknown, deleted, renamed, binary or mixed infrastructure files require full QA.
+Only the four explicit Arena WebP paths are fast candidates; all other unknown, deleted, renamed or infrastructure changes require full QA.
 """
 import argparse
 import json
 import re
 import subprocess
 
-FAST = re.compile(r"(?:source/app/src/main/res/(?:drawable(?:-[a-z0-9-]+)?|mipmap(?:-[a-z0-9-]+)?)/[a-z0-9_]+\.xml|assets/user_uploads/[a-zA-Z0-9_-]+\.(?:webp|png))")
+FAST = re.compile(r"assets/user_uploads/arena_v184/arena_(?:tablet_13_16x10|telefon_9x19_5)(?:_koyu)?\.webp")
 STANDARD = re.compile(r"tools/v132_engine/(?:Wq150ArenaEntry|Wq150MatchSettings|Wq150HomeModesTest|Wq150ViewportTest)\.kt|tools/v150_release/qa_arena\.py")
 LEVELS = {"fast": 0, "standard": 1, "full": 2}
 
