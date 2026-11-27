@@ -619,10 +619,10 @@ export const coherenceQuestions = [
     "prompt": "A local park installed more benches along its walking paths. ____. As a result, older visitors could rest during longer walks.",
     "options": [
       "The benches were placed at regular intervals.",
-      "The park removed all seating.",
-      "Visitors were forbidden to sit.",
-      "The paths were closed permanently.",
-      "The benches were stored in a distant building."
+      "The park also introduced a map of its longest walking routes.",
+      "The new benches were concentrated near the main entrance.",
+      "The paths were widened to accommodate more cyclists.",
+      "The park extended its opening hours during the summer."
     ],
     "correct": 0,
     "explanation": "Boşluk oturma yerleri ile dinlenme olanağı arasında bağ kurmalıdır."
@@ -683,10 +683,10 @@ export const coherenceQuestions = [
     "prompt": "Urban trees provide shade and reduce the amount of heat absorbed by paved surfaces. ____. Their benefits, however, depend on species selection and long-term maintenance.",
     "options": [
       "They can therefore help moderate local temperatures during hot weather.",
-      "Trees invariably increase surface temperatures.",
-      "Paved surfaces are unaffected by direct sunlight.",
-      "All urban trees require exactly the same care.",
-      "Shade is unrelated to the amount of solar energy received."
+      "The choice of tree species can also affect the appearance of a street.",
+      "Urban planting programmes often require coordination between departments.",
+      "Some cities collect information about pedestrian traffic before redesigning streets.",
+      "The costs of planting trees may vary between neighbourhoods."
     ],
     "correct": 0,
     "explanation": "Boşluk önceki ısı etkisini sonuç olarak bağlar, sonraki sınırlamaya geçiş sağlar."
@@ -699,10 +699,10 @@ export const coherenceQuestions = [
     "prompt": "The digital archive made rare manuscripts accessible to readers in distant locations. ____. For this reason, the institution continued to preserve the originals under controlled conditions.",
     "options": [
       "Digital copies cannot fully reproduce every physical feature of a manuscript.",
-      "The manuscripts had never existed in physical form.",
-      "The archive destroyed every original immediately.",
-      "Digital access eliminated all preservation concerns.",
-      "Readers were prohibited from viewing digital copies."
+      "The online archive was regularly updated to include new descriptions.",
+      "The institution introduced a search tool for locating particular documents.",
+      "The project attracted researchers interested in comparing manuscript contents.",
+      "Visitors could download selected images for their own research."
     ],
     "correct": 0,
     "explanation": "Orijinal eserleri koruma gereğini fiziksel özelliklerin tam aktarılamaması açıklar."
