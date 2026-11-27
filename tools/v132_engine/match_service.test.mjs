@@ -120,3 +120,47 @@ test('feedback counts are per authenticated player, not predicted from submissio
  const j=s.game.active;s=matchCommand(s,other,{id:'feedback-wrong',revision:s.revision,type:'submit',word:j,answer:'ZZZZZ'},1002);
  assert.deepEqual(matchView(s,other).feedback,{correct:0,wrong:1});
 });
+
+
+test('delayed team sweep resumes at grace boundary without granting extra time',()=>{
+ let s=base(cfg('team','classic',{format:'crossword'}));
+ s=matchTransport(s,{type:'lost',id:'a',epoch:1},2000);
+ assert.equal(s.connection.phase,'paused');
+ s=matchTick(s,70000);
+ assert.equal(s.connection.phase,'playing');
+ assert.equal(s.connection.players.find(p=>p.id==='a').removed,true);
+ assert.equal(s.game.deadline,91000);
+ assert.equal(s.pauseAt,null);
+ assert.equal(matchTick(s,80000),s);
+ const previous=s.game.revision;
+ s=matchTick(s,91000);
+ assert.ok(s.game.revision>previous,'Question expiry must occur at the original resumed deadline');
+});
+
+test('expired team grace and another loss in one transport event preserve both pause intervals',()=>{
+ let s=base(cfg('team','classic',{format:'crossword'}));
+ s=matchTransport(s,{type:'lost',id:'a',epoch:1},2000);
+ s=matchTransport(s,{type:'lost',id:'c',epoch:1},70000);
+ assert.equal(s.game.deadline,91000);
+ assert.equal(s.connection.phase,'paused');
+ assert.equal(s.pauseAt,70000);
+ s=matchTransport(s,{type:'restored',id:'c',epoch:2},75000);
+ assert.equal(s.game.deadline,96000);
+ assert.equal(s.connection.phase,'playing');
+});
+
+test('departed voter invalidates pending team finish offer without ending match',()=>{
+ let s=base(cfg('team','classic',{format:'crossword',seconds:0}));
+ s=matchCommand(s,'a',{id:'offer-before-leave',type:'finish-offer',revision:s.revision},1001);
+ s=matchCommand(s,'b',{id:'vote-before-leave',type:'finish-accept',offerId:s.social.offer.id,revision:s.revision},1002);
+ s=matchTransport(s,{type:'leave',id:'c',epoch:1},1003);
+ assert.equal(s.social.offer.status,'expired');
+ assert.equal(matchView(s,'d').social.notice.kind,'expired');
+ assert.equal(matchView(s,'d').phase,'playing');
+ assert.throws(()=>matchCommand(s,'d',{id:'stale-vote',type:'finish-accept',offerId:s.social.offer.id,revision:s.revision},1004));
+ s=matchCommand(s,'a',{id:'new-offer',type:'finish-offer',revision:s.revision},61001);
+ assert.deepEqual(s.social.offer.required,['a','b','d']);
+ s=matchCommand(s,'b',{id:'new-vote-b',type:'finish-accept',offerId:s.social.offer.id,revision:s.revision},61002);
+ s=matchCommand(s,'d',{id:'new-vote-d',type:'finish-accept',offerId:s.social.offer.id,revision:s.revision},61003);
+ assert.equal(s.result.kind,'mutual-finish');
+});
