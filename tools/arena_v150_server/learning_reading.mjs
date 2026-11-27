@@ -7,10 +7,10 @@ export const readingQuestions = [
     "prompt": "A small library began lending tools as well as books. Residents could borrow a drill or a sewing machine for one week. The organisers hoped that sharing equipment would reduce household expenses.\n\nWhat was the main purpose of the new service?",
     "options": [
       "To help residents avoid buying equipment they rarely use.",
-      "To replace all books with machines.",
-      "To sell expensive equipment to residents.",
-      "To extend the lending period to a year.",
-      "To offer paid repair services."
+      "To teach residents how to repair their own equipment.",
+      "To give residents a place to store their household tools.",
+      "To raise funds by renting equipment to local businesses.",
+      "To encourage residents to donate their unused machines."
     ],
     "correct": 0,
     "explanation": "Kütüphane ortak kullanım yoluyla hane giderlerini azaltmayı amaçlıyor.",
@@ -24,10 +24,10 @@ export const readingQuestions = [
     "prompt": "A small library began lending tools as well as books. Residents could borrow a drill or a sewing machine for one week. The organisers hoped that sharing equipment would reduce household expenses.\n\nWhich of the following is stated in the passage?",
     "options": [
       "Tools could be borrowed for seven days.",
-      "Only sewing machines were available.",
-      "Residents had to pay the full price of each tool.",
-      "The library had stopped lending books.",
-      "The service was available exclusively to librarians."
+      "The borrowing period depended on the type of tool.",
+      "Residents could renew every loan for a second week.",
+      "Equipment was available only to registered volunteers.",
+      "Borrowers received a free lesson with each tool."
     ],
     "correct": 0,
     "explanation": "Bir haftalık ödünç alma süresi açıkça belirtilmiştir.",
@@ -41,10 +41,10 @@ export const readingQuestions = [
     "prompt": "A school garden was created on a previously unused plot. Students measured plant growth and recorded rainfall. Teachers used these observations in mathematics and science lessons.\n\nWhat is the passage mainly about?",
     "options": [
       "Using a school garden as a learning resource.",
-      "Replacing mathematics lessons with gardening.",
-      "A shortage of vegetables at school.",
-      "The cost of building a new classroom.",
-      "A competition between gardening businesses."
+      "Teaching students to manage a commercial garden.",
+      "Using rainfall records to plan a new school building.",
+      "Preparing pupils for a competition in plant cultivation.",
+      "Developing a scheme to provide vegetables for school meals."
     ],
     "correct": 0,
     "explanation": "Bahçenin fen ve matematik eğitiminde kullanılması ana düşüncedir.",
@@ -58,10 +58,10 @@ export const readingQuestions = [
     "prompt": "A school garden was created on a previously unused plot. Students measured plant growth and recorded rainfall. Teachers used these observations in mathematics and science lessons.\n\nWhat can be inferred from the passage?",
     "options": [
       "The garden provided opportunities for practical learning.",
-      "Rainfall was never measured.",
-      "The students sold all the plants.",
-      "The garden was used only by teachers.",
-      "The school stopped teaching science."
+      "The school introduced a separate gardening qualification.",
+      "The students compared the garden with a nearby farm.",
+      "Teachers selected plants according to their market value.",
+      "The project was primarily designed to reduce school spending."
     ],
     "correct": 0,
     "explanation": "Öğrenciler gerçek gözlemler yaparak uygulamalı öğreniyor.",
