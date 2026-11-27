@@ -3255,7 +3255,7 @@ export const domainQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The researchers adjusted the instrument against a known reference before taking measurements. This process is called ____.",
+    "prompt": "Before taking measurements, the researchers compared the instrument's readings with values from a known reference standard to establish their relationship. This process is called ____.",
     "options": [
       "calibration",
       "diffusion",
@@ -3383,7 +3383,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The association between coffee intake and the outcome disappeared after adjustment for smoking, a potential ____.",
+    "prompt": "Smoking was associated with both coffee intake and the outcome, but was not a consequence of coffee intake. Adjustment for smoking removed the observed association, suggesting that smoking was a potential ____.",
     "options": [
       "confounder",
       "endpoint",
@@ -3607,7 +3607,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A survey counted all existing cases in a population on a particular date to estimate ____.",
+    "prompt": "A survey counted all existing cases and the total number of people in a population on a particular date to estimate ____.",
     "options": [
       "prevalence",
       "incidence",
@@ -3655,7 +3655,7 @@ export const domainQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The researchers studied how the body absorbed, distributed and eliminated the drug, focusing on ____.",
+    "prompt": "The researchers studied how the body absorbed, distributed, metabolised and eliminated the drug, focusing on ____.",
     "options": [
       "pharmacokinetics",
       "histology",
