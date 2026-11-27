@@ -8178,7 +8178,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the analyst ____ the survey responses; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the analyst ____ the survey responses; by the afternoon meeting, the task ____ completed.",
     "options": [
       "had been evaluating / was",
       "has been evaluating / has been",
@@ -8187,7 +8187,7 @@ export const b121500Grammar = [
       "will be evaluating / will have been"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: will be evaluating / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be evaluating / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0456",
@@ -8988,7 +8988,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the architect ____ the accessibility plans; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the architect ____ the accessibility plans; by the afternoon meeting, the task ____ completed.",
     "options": [
       "will be revising / will have been",
       "had been revising / was",
@@ -8997,7 +8997,7 @@ export const b121500Grammar = [
       "revises / would have been"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: will be revising / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be revising / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0501",
@@ -9798,7 +9798,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the investigator ____ the disputed documents; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the investigator ____ the disputed documents; by the afternoon meeting, the task ____ completed.",
     "options": [
       "examines / would have been",
       "will be examining / will have been",
@@ -9807,7 +9807,7 @@ export const b121500Grammar = [
       "was examining / had been"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: will be examining / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be examining / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0546",
@@ -10608,7 +10608,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the researcher ____ the collected samples; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the researcher ____ the collected samples; by the afternoon meeting, the task ____ completed.",
     "options": [
       "was analysing / had been",
       "analyses / would have been",
@@ -10617,7 +10617,7 @@ export const b121500Grammar = [
       "has been analysing / has been"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: will be analysing / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be analysing / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0591",
@@ -11418,7 +11418,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the economist ____ the regional price indices; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the economist ____ the regional price indices; by the afternoon meeting, the task ____ completed.",
     "options": [
       "has been comparing / has been",
       "was comparing / had been",
@@ -11427,7 +11427,7 @@ export const b121500Grammar = [
       "had been comparing / was"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: will be comparing / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be comparing / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0636",
@@ -12228,7 +12228,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the biologist ____ the plant specimens; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the biologist ____ the plant specimens; by the afternoon meeting, the task ____ completed.",
     "options": [
       "had been identifying / was",
       "has been identifying / has been",
@@ -12237,7 +12237,7 @@ export const b121500Grammar = [
       "will be identifying / will have been"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: will be identifying / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be identifying / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0681",
@@ -13038,7 +13038,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the editor ____ the factual claims; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the editor ____ the factual claims; by the afternoon meeting, the task ____ completed.",
     "options": [
       "will be checking / will have been",
       "had been checking / was",
@@ -13047,7 +13047,7 @@ export const b121500Grammar = [
       "checks / would have been"
     ],
     "correct": 0,
-    "explanation": "Doğru seçenek: will be checking / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be checking / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0726",
@@ -13848,7 +13848,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the geologist ____ the rock formations; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the geologist ____ the rock formations; by the afternoon meeting, the task ____ completed.",
     "options": [
       "describes / would have been",
       "will be describing / will have been",
@@ -13857,7 +13857,7 @@ export const b121500Grammar = [
       "was describing / had been"
     ],
     "correct": 1,
-    "explanation": "Doğru seçenek: will be describing / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be describing / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0771",
@@ -14658,7 +14658,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the instructor ____ the assessment materials; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the instructor ____ the assessment materials; by the afternoon meeting, the task ____ completed.",
     "options": [
       "was developing / had been",
       "develops / would have been",
@@ -14667,7 +14667,7 @@ export const b121500Grammar = [
       "has been developing / has been"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: will be developing / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be developing / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0816",
@@ -15468,7 +15468,7 @@ export const b121500Grammar = [
     "yds": null,
     "topic": "Grammar",
     "kind": "Tense",
-    "prompt": "At this time tomorrow, the quality officer ____ the inspection results; by the afternoon meeting, the task ____ completed.",
+    "prompt": "At nine tomorrow morning, the quality officer ____ the inspection results; by the afternoon meeting, the task ____ completed.",
     "options": [
       "has been validating / has been",
       "was validating / had been",
@@ -15477,7 +15477,7 @@ export const b121500Grammar = [
       "had been validating / was"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: will be validating / will have been. Gelecekte süren eylem future continuous, gelecek son tarihine kadar biten edilgen eylem future perfect passive ile anlatılır."
+    "explanation": "Doğru seçenek: will be validating / will have been. Yarın saat dokuzda sürmekte olacak iş future continuous, öğleden sonraki toplantıya kadar tamamlanmış olacak iş ise future perfect passive ile anlatılır."
   },
   {
     "id": "wq150_b121500_grammar_0861",
