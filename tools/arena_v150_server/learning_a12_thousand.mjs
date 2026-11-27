@@ -7368,14 +7368,14 @@ export const a12ThousandQuestions = [
     "topic": "Vocabulary",
     "prompt": "A written ____ on the door tells visitors the opening hours.",
     "options": [
-      "message",
+      "receipt",
       "reply",
       "invitation",
       "notice",
-      "announcement"
+      "question"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: notice. İletişim türü, gönderilme amacı ve muhatabına göre seçilir."
+    "explanation": "Doğru seçenek: notice. Kapıya asılarak ziyaretçilere çalışma saatlerini bildiren kısa yazılı duyuru notice olarak adlandırılır."
   },
   {
     "id": "wq150_a12_1000_0435",
@@ -7453,14 +7453,14 @@ export const a12ThousandQuestions = [
     "topic": "Vocabulary",
     "prompt": "Read the safety ____ fixed to the wall by the lift.",
     "options": [
-      "message",
+      "receipt",
       "reply",
       "invitation",
       "notice",
-      "announcement"
+      "question"
     ],
     "correct": 3,
-    "explanation": "Doğru seçenek: notice. İletişim türü, gönderilme amacı ve muhatabına göre seçilir."
+    "explanation": "Doğru seçenek: notice. Duvara asılan ve güvenlik bilgisi veren yazı safety notice kalıbıyla ifade edilir."
   },
   {
     "id": "wq150_a12_1000_0440",
@@ -7604,7 +7604,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Writing the wrong address was my ____.",
+    "prompt": "I made a ____ when I wrote the wrong address on the envelope.",
     "options": [
       "damage",
       "fault",
@@ -7613,7 +7613,7 @@ export const a12ThousandQuestions = [
       "repair"
     ],
     "correct": 2,
-    "explanation": "Doğru seçenek: mistake. Hasar, arıza, hata, kaza ve onarım birbirinden ayrılır."
+    "explanation": "Doğru seçenek: mistake. Make a mistake hata yapmak demektir. Fault sorumluluk veya teknik arıza için kullanılır; bu cümlede make a mistake kalıbı gerekir."
   },
   {
     "id": "wq150_a12_1000_0449",
