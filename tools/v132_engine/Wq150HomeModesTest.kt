@@ -2,6 +2,20 @@ package com.kelimebulmacasi.a1
 import org.junit.Assert.*
 import org.junit.Test
 class Wq150HomeModesTest{
+    @Test fun preparedHomeIncludesBothTabsAndFooter(){
+        for(wide in listOf(false,true))for(newArt in listOf(false,true)){
+            val keys=Wq150HomeArtPlan.keys("background","settingsBackground",wide,newArt)
+            assertTrue(keys.containsAll(listOf("background","settingsBackground","crest","book","back",
+                "phone_card_team","phone_card_duel","arena_v122/solo.webp","friends","modes","ranking","history","settings","info")))
+            (Wq150HomeModes.online+Wq150HomeModes.solo).forEach{kind->
+                assertTrue(keys.contains(Wq150HomeArtPlan.icon(kind,newArt)))
+                Wq150HomeArtPlan.plate(kind,wide,newArt)?.let{assertTrue(keys.contains(it))}
+            }
+            if(newArt)assertTrue(keys.containsAll(listOf("arena_v150_premium/team_crest.webp",
+                "arena_v150_premium/duel_plate.webp","arena_v150_premium/coop_plate.webp",
+                "arena_v150_premium/quiz_plate.webp","arena_v150_premium/team_plate.webp")))
+        }
+    }
     @Test fun exclusiveLists(){
         assertEquals(listOf("duel","coop","quiz","team"),Wq150HomeModes.visible(false))
         assertEquals(listOf("classic","timed","test","obstacle"),Wq150HomeModes.visible(true))

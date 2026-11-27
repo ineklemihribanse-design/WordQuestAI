@@ -305,8 +305,16 @@ private object Wq150ArtCache{
         }.getOrNull()?.also{put(name,it)}
     }
 }
+// A prepared home frame owns strong references even if the shared LRU evicts an entry.
+private val LocalWq150HomeArt=staticCompositionLocalOf<Map<String,ImageBitmap?>?>{null}
+
 @Composable
 private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
+    val prepared=LocalWq150HomeArt.current
+    if(prepared!=null&&prepared.containsKey(name)){
+        prepared[name]?.let{Image(it,null,modifier,contentScale=scale)}
+        return
+    }
     val context=LocalContext.current.applicationContext
     // Key the state by asset name: a rotated screen must never show the previous plate.
     var art by remember(context,name){mutableStateOf(Wq150ArtCache.get(name))}
@@ -426,13 +434,11 @@ private fun Wq150HomeTab(label:String,local:Boolean,selected:Boolean,enabled:Boo
 private fun Wq150HomeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modifier,onClick:()->Unit){
     val spec=wq150Card(kind);val shape=RoundedCornerShape(16.dp)
     val newArt=rememberWq150NewArt()
-    val plate=when(kind){"classic"->"duel";"timed"->"coop";"test"->"quiz";"obstacle"->"team";else->kind}
-    val icon=if(newArt&&kind=="team")"arena_v150_premium/team_crest.webp" else spec.icon
+    val plate=Wq150HomeArtPlan.plate(kind,wide,newArt)
+    val icon=Wq150HomeArtPlan.icon(kind,newArt)
     Box(modifier.clip(shape).background(Brush.verticalGradient(listOf(Color(spec.top),Color(spec.bottom))))
         .border(1.5.dp,Wq122Gold,shape).clickable(enabled=enabled,onClick=onClick)){
-        if(newArt)Wq150ApprovedArt("arena_v150_premium/${plate}_plate.webp",Modifier.matchParentSize(),ContentScale.FillBounds)
-        else if(spec.plate.isNotEmpty())Wq150ApprovedArt((if(wide)"tablet" else "phone")+"_card_"+spec.plate,
-            Modifier.matchParentSize(),ContentScale.FillBounds)
+        if(plate!=null)Wq150ApprovedArt(plate,Modifier.matchParentSize(),ContentScale.FillBounds)
         Row(Modifier.fillMaxSize().padding(horizontal=if(wide)6.dp else 9.dp,vertical=4.dp),
             verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(5.dp)){
             Wq150ApprovedArt(icon,Modifier.fillMaxWidth(if(wide).34f else .27f).fillMaxHeight())
@@ -446,6 +452,26 @@ private fun Wq150HomeCard(kind:String,wide:Boolean,enabled:Boolean,modifier:Modi
         }
     }
 }
+/** The exact same manifest drives rendering and preloading for both tabs. */
+internal object Wq150HomeArtPlan {
+    fun icon(kind:String,newArt:Boolean)=if(newArt&&kind=="team")"arena_v150_premium/team_crest.webp" else wq150Card(kind).icon
+    fun plate(kind:String,wide:Boolean,newArt:Boolean):String?{
+        val spec=wq150Card(kind)
+        val plate=when(kind){"classic"->"duel";"timed"->"coop";"test"->"quiz";"obstacle"->"team";else->kind}
+        return if(newArt)"arena_v150_premium/${plate}_plate.webp"
+        else if(spec.plate.isNotEmpty())(if(wide)"tablet" else "phone")+"_card_"+spec.plate else null
+    }
+    fun keys(background:String,settingsBackground:String,wide:Boolean,newArt:Boolean):Set<String> = buildSet{
+        addAll(listOf(background,"crest","book","back","phone_card_team","phone_card_duel",
+            "arena_v122/solo.webp","friends","modes","ranking","history","settings","info"))
+        (Wq150HomeModes.online+Wq150HomeModes.solo).forEach{kind->
+            add(icon(kind,newArt))
+            plate(kind,wide,newArt)?.let{add(it)}
+        }
+        add(settingsBackground)
+    }
+}
+
 @Composable
 private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:(Boolean)->Unit,enabled:Boolean,
     back:()->Unit,onMode:(String)->Unit,onPanel:(String)->Unit,status:String?,onRetry:(()->Unit)?){
@@ -469,29 +495,32 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
         val context=LocalContext.current.applicationContext
         val background=if(wide)"tablet" else "phone"
         val backgroundKey=if(newArt)"arena_v150_premium/$background.webp" else background
-        // Do not compose the decorative hero piecemeal. The background and
-        // crest are prepared together and retained as long as this viewport lives.
-        var heroReady by remember(context,backgroundKey){
-            mutableStateOf(Wq150ArtCache.get(backgroundKey)!=null&&Wq150ArtCache.get("crest")!=null)
+        val settingsTablet=config.screenWidthDp>config.screenHeightDp&&config.screenWidthDp>=600
+        val settingsKey=if(settingsTablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp"
+        val keys=remember(backgroundKey,settingsKey,wide,newArt){
+            Wq150HomeArtPlan.keys(backgroundKey,settingsKey,wide,newArt)
         }
-        LaunchedEffect(context,backgroundKey){
-            withContext(Dispatchers.IO){
-                Wq150ArtCache.load(context,backgroundKey)
-                Wq150ArtCache.load(context,"crest")
-                Wq150ArtCache.load(context,"book")
-                Wq150ArtCache.load(context,"back")
-            }
-            heroReady=true
-            withContext(Dispatchers.IO){
-                val tablet=config.screenWidthDp>config.screenHeightDp&&config.screenWidthDp>=600
-                Wq150ArtCache.load(context,if(tablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp")
+        var prepared by remember(context,keys){
+            val cached=keys.associateWith{Wq150ArtCache.get(it)}
+            mutableStateOf<Map<String,ImageBitmap?>?>(cached.takeIf{it.values.all{art->art!=null}})
+        }
+        LaunchedEffect(context,keys){
+            if(prepared==null){
+                val frame=withContext(Dispatchers.IO){
+                    keys.associateWith{Wq150ArtCache.load(context,it)}
+                }
+                // Publish all decoded images in one snapshot, never one card at a time.
+                // Missing assets keep the existing fixed fallback instead of retrying per frame.
+                prepared=frame
             }
         }
-        if(!heroReady){
+        val frame=prepared
+        if(frame==null){
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E)),contentAlignment=Alignment.Center){
                 CircularProgressIndicator(color=Wq122Gold)
             }
-        }else Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
+        }else CompositionLocalProvider(LocalWq150HomeArt provides frame){
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())){
             Box(Modifier.fillMaxWidth().height(fullH)){
                 // Never use the v183 floating-trophy lobby art here: its podium is at another height.
                 // The old approved v120 art is an exact-coordinate fallback until the new ZIP is staged.
@@ -589,6 +618,7 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
                 }
             }
         }
+    }
     }
     }
 }
