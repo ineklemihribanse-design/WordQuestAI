@@ -49,7 +49,7 @@ def enter(w,h):
             launcher_recovered=True
             time.sleep(1)
             continue
-        if any("bulmaca düellosu" in l for l in ls) and any("tek başına oyna" in l for l in ls):return
+        if any("bulmaca düellosu" in l for l in ls) and any("tek başına oyna" in l for l in ls):return ns
         def pick(fn):
             a=[n for n in ns if fn(label(n))]
             return next((n for n in a if n.get("clickable")=="true"),a[-1] if a else None)
@@ -66,11 +66,12 @@ def viewport(name,w,h,density,wide):
     adb("shell","wm","size",f"{w}x{h}");adb("shell","wm","density",str(density))
     adb("shell","settings","put","system","accelerometer_rotation","0")
     adb("shell","settings","put","system","user_rotation","0")
-    adb("shell","am","force-stop",PKG);adb("shell","am","start","-n",PKG+"/com.kelimebulmacasi.a1.MainActivity");time.sleep(8)
-    enter(w,h)
-    assert not any("kişisel maskot" in label(n) for n in nodes())
-    # One stable accessibility snapshot instead of nine expensive UIAutomator dumps.
-    initial=nodes()
+    adb("shell","am","force-stop",PKG)
+    adb("shell","am","start","-W","-n",PKG+"/com.kelimebulmacasi.a1.MainActivity")
+    # The accessibility-based entrance loop remains the actual readiness gate.
+    initial=enter(w,h)
+    assert not any("kişisel maskot" in label(n) for n in initial)
+    # Reuse the same validated snapshot for bounds and labels.
     def initial_bounds(token):
         matches=[n for n in initial if token.casefold() in label(n)]
         if not matches:return bounds(get(token))

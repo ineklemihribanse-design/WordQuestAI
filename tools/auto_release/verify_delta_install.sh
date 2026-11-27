@@ -16,9 +16,8 @@ done
 grep -Fq "versionCode='$WQ_BASE_CODE'" "$D/old.apk.badging"
 grep -Fq "versionCode='$WQ_TARGET_CODE'" "$D/target.apk.badging"
 adb install -r "$BASE"
-adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
-sleep 8
-adb shell pidof -s "$PKG"
+adb shell am start -W -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
+python3 tools/auto_release/wait_app_ready.py "$PKG"
 if grep -Fq 'android.permission.CAMERA' <("$AAPT" dump permissions "$BASE"); then
   adb shell pm grant "$PKG" android.permission.CAMERA
 fi
@@ -59,9 +58,8 @@ if a['camera_permission']=='true': assert b['camera_permission']=='true'
 print('PASS: Android package UID, installation time, data path and camera permission continuity')
 PY
 adb logcat -c
-adb shell am start -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
-sleep 12
-adb shell pidof -s "$PKG"
+adb shell am start -W -n "$PKG/com.kelimebulmacasi.a1.MainActivity"
+python3 tools/auto_release/wait_app_ready.py "$PKG"
 adb exec-out screencap -p > "$D/startup.png"
 python3 - "$D/startup.png" <<'PY'
 from pathlib import Path

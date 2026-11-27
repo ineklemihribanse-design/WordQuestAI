@@ -25,6 +25,15 @@ jobs:
           npm install --no-audit --no-fund
           npm run free:prepare
           npm run free:check
+      - name: Verify startup readiness gate and exact HD rule fragment
+        run: |
+          python3 -m unittest discover -s tools/auto_release -p test_wait_app_ready.py -v
+          python3 - <<'PY'
+          import json,sys
+          sys.path.insert(0,'tools/v132_engine')
+          from prepare_friend_hd_rules import NODE
+          assert json.load(open('firebase/friendMascotHd.fragment.json')) == {'friendMascotHd':NODE}
+          PY
       - name: Test trusted connection state transitions
         run: node --test tools/v132_engine/connection.test.mjs tools/v132_engine/connection_store.test.mjs tools/v132_engine/duel.test.mjs tools/v132_engine/quiz.test.mjs tools/v132_engine/coop.test.mjs tools/v132_engine/team.test.mjs tools/v132_engine/match_service.test.mjs tools/v132_engine/arena_gateway.test.mjs tools/v132_engine/lobby.test.mjs tools/v132_engine/lobby_gateway.test.mjs tools/v132_engine/social.test.mjs tools/v132_engine/profiles.test.mjs tools/v132_engine/presence.test.mjs tools/v132_engine/room_storage.test.mjs tools/arena_v150_server/trusted_bank.test.mjs tools/arena_v150_server/vocabulary_bank.test.mjs tools/arena_v150_server/free_room_adapter.test.mjs
       - run: |
