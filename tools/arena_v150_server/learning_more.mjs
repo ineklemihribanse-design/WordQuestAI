@@ -8123,7 +8123,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the report was approved ____ the researcher proceed.",
+    "prompt": "Yesterday, only after the report was approved ____ the researcher proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8140,7 +8140,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the proposal was approved ____ the analyst proceed.",
+    "prompt": "Yesterday, only after the proposal was approved ____ the analyst proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8157,7 +8157,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the manuscript was approved ____ the editor proceed.",
+    "prompt": "Yesterday, only after the manuscript was approved ____ the editor proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8174,7 +8174,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the assignment was approved ____ the instructor proceed.",
+    "prompt": "Yesterday, only after the assignment was approved ____ the instructor proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8191,7 +8191,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the document was approved ____ the scientist proceed.",
+    "prompt": "Yesterday, only after the document was approved ____ the scientist proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8208,7 +8208,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the contract was approved ____ the supervisor proceed.",
+    "prompt": "Yesterday, only after the contract was approved ____ the supervisor proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8225,7 +8225,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the assessment was approved ____ the consultant proceed.",
+    "prompt": "Yesterday, only after the assessment was approved ____ the consultant proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8242,7 +8242,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the budget was approved ____ the director proceed.",
+    "prompt": "Yesterday, only after the budget was approved ____ the director proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8259,7 +8259,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the schedule was approved ____ the scholar proceed.",
+    "prompt": "Yesterday, only after the schedule was approved ____ the scholar proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8276,7 +8276,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the plan was approved ____ the investigator proceed.",
+    "prompt": "Yesterday, only after the plan was approved ____ the investigator proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8293,7 +8293,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the statement was approved ____ the technician proceed.",
+    "prompt": "Yesterday, only after the statement was approved ____ the technician proceed with the next step.",
     "options": [
       "did",
       "had",
@@ -8310,7 +8310,7 @@ export const grammarVariants = [
     "level": "C1",
     "yds": "hard",
     "topic": "Grammar",
-    "prompt": "Only after the submission was approved ____ the engineer proceed.",
+    "prompt": "Yesterday, only after the submission was approved ____ the engineer proceed with the next step.",
     "options": [
       "did",
       "had",
