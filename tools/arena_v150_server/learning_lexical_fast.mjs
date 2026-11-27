@@ -208,7 +208,7 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The child remained ____ despite the sudden noise.",
+    "prompt": "The child remained ____ despite the sudden noise, showing no sign of panic.",
     "options": [
       "calm",
       "agitated",
@@ -684,12 +684,12 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The receptionist remained ____ even when the visitor became impatient.",
+    "prompt": "The receptionist remained ____ and answered courteously even when the visitor became impatient.",
     "options": [
       "polite",
       "rude",
       "wealthy",
-      "silent",
+      "impolite",
       "punctual"
     ],
     "correct": 0,
@@ -756,7 +756,7 @@ export const lexicalFastQuestions = [
     "options": [
       "rural",
       "urban",
-      "coastal",
+      "metropolitan",
       "temporary",
       "industrial"
     ],
@@ -773,7 +773,7 @@ export const lexicalFastQuestions = [
     "options": [
       "rural",
       "urban",
-      "coastal",
+      "metropolitan",
       "temporary",
       "industrial"
     ],
@@ -973,7 +973,7 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The vessel maintained a ____ speed throughout the calm section of the journey.",
+    "prompt": "The vessel maintained a ____ speed without increasing or decreasing it throughout the journey.",
     "options": [
       "steady",
       "unsteady",
@@ -1041,7 +1041,7 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The collector insured her most ____ possessions against loss.",
+    "prompt": "The collector insured her most ____ possessions against loss because they were worth a considerable amount of money.",
     "options": [
       "valuable",
       "worthless",
@@ -1840,7 +1840,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The accident caused a ____ injury from which the victim could not recover.",
+    "prompt": "The accident caused a ____ injury that resulted in the victim's death.",
     "options": [
       "fatal",
       "nonfatal",
@@ -1874,7 +1874,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Synonym",
-    "prompt": "In the following sentence, which option is closest in meaning to 'fatal'?\n\nThe accident caused a fatal injury from which the victim could not recover.",
+    "prompt": "In the following sentence, which option is closest in meaning to 'fatal'?\n\nThe accident caused a fatal injury that resulted in the victim's death.",
     "options": [
       "deadly",
       "nonfatal",
@@ -1914,7 +1914,7 @@ export const lexicalFastQuestions = [
       "infinite",
       "numerical",
       "visible",
-      "variable"
+      "unlimited"
     ],
     "correct": 0,
     "explanation": "'finite' bu bağlamda 'sonlu' anlamındadır.",
@@ -1931,7 +1931,7 @@ export const lexicalFastQuestions = [
       "infinite",
       "numerical",
       "visible",
-      "variable"
+      "endless"
     ],
     "correct": 0,
     "explanation": "'finite' bu bağlamda 'sonlu' anlamındadır.",
@@ -2116,7 +2116,7 @@ export const lexicalFastQuestions = [
     "options": [
       "legitimate",
       "illegitimate",
-      "formal",
+      "forged",
       "recent",
       "temporary"
     ],
@@ -2133,7 +2133,7 @@ export const lexicalFastQuestions = [
     "options": [
       "legitimate",
       "illegitimate",
-      "formal",
+      "imaginary",
       "recent",
       "temporary"
     ],
@@ -2180,7 +2180,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Attendance at the safety briefing is ____ under the new regulation.",
+    "prompt": "Attendance at the safety briefing is ____ under the new regulation; everyone is required to attend.",
     "options": [
       "mandatory",
       "voluntary",
@@ -2741,7 +2741,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The researchers collected additional data during a ____ phase of the investigation.",
+    "prompt": "The researchers collected additional data during a ____ phase of the investigation, after the initial analysis was completed.",
     "options": [
       "subsequent",
       "preceding",
@@ -2809,7 +2809,7 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The inspector conducted only a ____ examination of the visible components.",
+    "prompt": "The inspector conducted only a ____ examination of the visible components, without checking the underlying mechanism.",
     "options": [
       "superficial",
       "in-depth",
@@ -3132,7 +3132,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The trial was suspended after several participants experienced ____ reactions.",
+    "prompt": "The trial was suspended after several participants experienced ____ reactions that endangered their health.",
     "options": [
       "adverse",
       "favourable",
@@ -3149,7 +3149,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The crop performed poorly under ____ weather conditions.",
+    "prompt": "The crop performed poorly under ____ weather conditions, including severe frost and prolonged drought.",
     "options": [
       "adverse",
       "favourable",
@@ -3812,7 +3812,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The ____ equipment was difficult to move through the narrow entrance.",
+    "prompt": "The ____ equipment was so bulky and awkward that it was difficult to move through the narrow entrance.",
     "options": [
       "cumbersome",
       "manageable",
@@ -4001,14 +4001,14 @@ export const lexicalFastQuestions = [
     "topic": "Synonym",
     "prompt": "In the following sentence, which option is most nearly opposite in meaning to 'elusive'?\n\nThe animal proved elusive, repeatedly disappearing before observers could photograph it.",
     "options": [
-      "readily obtainable",
+      "easy to find",
       "hard to find",
       "temporary",
       "regional",
       "formal"
     ],
     "correct": 0,
-    "explanation": "'elusive' bu bağlamda 'bulunması güç' anlamındadır. 'readily obtainable' bu anlamın karşıtıdır.",
+    "explanation": "Elusive, bulunması veya yakalanması zor demektir. Easy to find bu bağlamda karşıt anlamlıdır.",
     "family": "speedlex_elusive"
   },
   {
@@ -4356,7 +4356,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The review contained ____ personal criticism unrelated to the quality of the research.",
+    "prompt": "The review contained ____ personal criticism that was unnecessary and unrelated to the quality of the research.",
     "options": [
       "gratuitous",
       "justified",
@@ -4492,7 +4492,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The manager's ____ decision was made without considering the available evidence.",
+    "prompt": "The manager's ____ decision was made in a sudden rush without considering the available evidence.",
     "options": [
       "impetuous",
       "deliberate",
@@ -4781,7 +4781,7 @@ export const lexicalFastQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The director's ____ announcement conveyed the decision without elaboration.",
+    "prompt": "The director's ____ announcement conveyed the decision in just three words, without elaboration.",
     "options": [
       "laconic",
       "wordy",
@@ -4868,14 +4868,14 @@ export const lexicalFastQuestions = [
     "topic": "Synonym",
     "prompt": "In the following sentence, which option is closest in meaning to 'lenient'?\n\nThe judge adopted a lenient approach and imposed a relatively light penalty.",
     "options": [
-      "forgiving",
+      "not severe",
       "strict",
       "formal",
       "temporary",
       "regional"
     ],
     "correct": 0,
-    "explanation": "'lenient' bu bağlamda 'hoşgörülü' anlamındadır. 'forgiving' bu kullanıma en yakın seçenektir.",
+    "explanation": "Lenient: kuralları veya cezaları uygularken fazla katı olmayan, hoşgörülü.",
     "family": "speedlex_lenient"
   },
   {
@@ -5448,7 +5448,7 @@ export const lexicalFastQuestions = [
     "options": [
       "placid",
       "turbulent",
-      "shallow",
+      "stormy",
       "wide",
       "visible"
     ],
@@ -5888,14 +5888,14 @@ export const lexicalFastQuestions = [
     "topic": "Synonym",
     "prompt": "In the following sentence, which option is closest in meaning to 'sedentary'?\n\nThe study compared employees with sedentary jobs involving prolonged sitting against those who worked on their feet.",
     "options": [
-      "inactive",
+      "involving prolonged sitting",
       "physically active",
       "wealthy",
       "quiet",
       "punctual"
     ],
     "correct": 0,
-    "explanation": "'sedentary' bu bağlamda 'hareketsiz' anlamındadır. 'inactive' bu kullanıma en yakın seçenektir.",
+    "explanation": "Sedentary, özellikle uzun süre oturmayı ve az fiziksel hareketi gerektiren yaşam biçimi veya iş için kullanılır.",
     "family": "speedlex_sedentary"
   },
   {
