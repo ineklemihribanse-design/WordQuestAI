@@ -908,13 +908,13 @@ export const deepReadingQuestions = [
     "prompt": "A review examined mentoring programmes intended to improve employee retention. Studies differed in the duration and intensity of mentoring. Pooling results without accounting for this variation might obscure meaningful differences. The reviewers classified studies by design before calculating separate estimates, making interpretation more informative. Observational findings could not establish causality ____ alternative explanations were excluded. The conclusions remain provisional.\n\nChoose the best option for the blank.",
     "options": [
       "unless",
-      "because",
-      "whereas",
-      "even though",
-      "so that"
+      "in case",
+      "as soon as",
+      "so that",
+      "now that"
     ],
     "correct": 0,
-    "explanation": "Unless nedensellik için gereken koşulu belirtir.",
+    "explanation": "Unless, nedensellik iddiası için alternatif açıklamaların dışlanmasının gerekli bir koşul olduğunu belirtir; tek başına yeterli olduğunu söylemez.",
     "family": "cloze_deep_11"
   },
   {
@@ -959,13 +959,13 @@ export const deepReadingQuestions = [
     "prompt": "A research group assessed a measure of workplace autonomy. The instrument was initially tested among employees who worked in similar roles. To ____ the measure more broadly, researchers collected samples from other sectors. Some questions were interpreted differently across groups, thereby complicating comparisons. Measurement equivalence cannot be assumed merely because an instrument performed well in one setting. Further validation is therefore warranted.\n\nChoose the best option for the blank.",
     "options": [
       "validate",
-      "invalidate deliberately",
-      "discard",
-      "conceal",
-      "misrepresent"
+      "standardise",
+      "shorten",
+      "replace",
+      "recalibrate"
     ],
     "correct": 0,
-    "explanation": "Validate ölçme aracının geçerliliğini sınamaktır.",
+    "explanation": "Farklı sektörlerden örneklem alınması ölçme aracının daha geniş bir bağlamda geçerliliğini sınamaya yöneliktir (validate); metin aracın yeniden ayarlandığını ya da değiştirildiğini söylemez.",
     "family": "cloze_deep_12"
   },
   {
@@ -1027,13 +1027,13 @@ export const deepReadingQuestions = [
     "prompt": "A programme was evaluated using administrative records before and after implementation. The recording method changed during the same period, which may have ____ an artificial discontinuity. Analysts attempted to adjust for the revised reporting rules. Their estimates remained sensitive to the reconstruction assumptions. The report distinguished observed changes from changes attributable to the programme. This distinction is essential if causal interpretations are to be defensible.\n\nChoose the best option for the blank.",
     "options": [
       "introduced",
-      "removed",
+      "corrected",
       "eliminated",
-      "concealed",
-      "prevented"
+      "prevented",
+      "smoothed out"
     ],
     "correct": 0,
-    "explanation": "Yeni kayıt yöntemi yapay süreksizlik yaratmış olabilir.",
+    "explanation": "Kayıt yönteminin değişmesi ölçümlerde gerçekte var olmayan bir kırılma yaratmış olabilir (introduce); sonraki düzeltme girişimi de bu soruna işaret eder.",
     "family": "cloze_deep_13"
   },
   {
@@ -1146,13 +1146,13 @@ export const deepReadingQuestions = [
     "prompt": "A historical study examined the disappearance of a traditional craft. Earlier accounts attributed the change almost exclusively to machinery. New correspondence suggests that trade relationships also mattered. Rather than rejecting the technological explanation entirely, the historian proposed a more complex account. The evidence does not allow the contribution of each factor to be ____ precisely. Nevertheless, the material undermines the single-cause interpretation. Further research may help resolve uncertainty.\n\nChoose the best option for the blank.",
     "options": [
       "established",
-      "concealed",
-      "abolished",
-      "prevented",
-      "discarded"
+      "replicated",
+      "standardised",
+      "manipulated",
+      "implemented"
     ],
     "correct": 0,
-    "explanation": "Established burada belirlenmiş anlamındadır.",
+    "explanation": "Kanıtlar her etkenin katkısının ne ölçüde olduğunu kesin olarak belirlemeye (establish) izin vermiyor.",
     "family": "cloze_deep_14"
   },
   {
@@ -1316,13 +1316,13 @@ export const deepReadingQuestions = [
     "prompt": "A model matched historical observations closely by adjusting several weakly constrained parameters. Different parameter combinations produced nearly identical results. Apparent precision may therefore have masked underlying uncertainty. Predictive claims should be ____ to conditions with independent validation. Targeted measurements might discriminate between competing parameter combinations. Until then, extrapolation remains tentative.\n\nChoose the best option for the blank.",
     "options": [
       "restricted",
-      "extended universally",
-      "generalised unconditionally",
-      "detached",
-      "unrelated"
+      "attributed",
+      "subordinated",
+      "compared",
+      "transferred"
     ],
     "correct": 0,
-    "explanation": "İddialar doğrulanmış koşullarla sınırlandırılır.",
+    "explanation": "Restrict claims to, iddiaların kapsamını belirli koşullarla sınırlamak anlamındadır; bağımsız doğrulama, tahminlerin genellenmesi için gereklidir.",
     "family": "cloze_deep_16"
   },
   {
