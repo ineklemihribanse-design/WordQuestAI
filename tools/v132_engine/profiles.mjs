@@ -33,8 +33,10 @@ export function profileVersion(profiles){
 export async function readProfiles(db,room,members){
  const snap=await db.ref('arenaV150Profiles/'+room).get(),saved=snap.val()??{};
  const profiles=Object.fromEntries(await Promise.all(members.map(async uid=>{
-  const nickname=await db.ref('users/'+uid+'/nickname').get();
-  return [uid,{name:safeNickname(nickname.val()),avatar:saved[uid]?.avatar??'piko',preview:saved[uid]?.preview??null,victory:saved[uid]?.victory??null}];
+  // One unavailable nickname must not hide the other player's portrait.
+  let name='Oyuncu';
+  try{const nickname=await db.ref('users/'+uid+'/nickname').get();name=safeNickname(nickname.val());}catch{}
+  return [uid,{name,avatar:saved[uid]?.avatar??'piko',preview:saved[uid]?.preview??null,victory:saved[uid]?.victory??null}];
  })));
  return {profiles,version:profileVersion(profiles)};
 }
