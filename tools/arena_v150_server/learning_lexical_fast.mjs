@@ -276,16 +276,16 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "The station's central location is ____ for commuters who work nearby.",
+    "prompt": "The station's central location is ____ for commuters who work nearby, saving them a long walk.",
     "options": [
       "convenient",
       "inconvenient",
-      "expensive",
-      "unusual",
-      "durable"
+      "costly",
+      "complicated",
+      "unreliable"
     ],
     "correct": 0,
-    "explanation": "'convenient' bu bağlamda 'elverişli' anlamındadır.",
+    "explanation": "Doğru seçenek: convenient. Convenient, zaman veya çaba tasarrufu sağlayan, kullanımı elverişli demektir.",
     "family": "speedlex_convenient"
   },
   {
@@ -293,16 +293,16 @@ export const lexicalFastQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Vocabulary",
-    "prompt": "Online booking is ____ for people who cannot visit the office during working hours.",
+    "prompt": "Online booking is ____ for people who cannot visit the office during working hours, because they can book from home.",
     "options": [
       "convenient",
       "inconvenient",
-      "expensive",
-      "unusual",
-      "durable"
+      "costly",
+      "complicated",
+      "unreliable"
     ],
     "correct": 0,
-    "explanation": "'convenient' bu bağlamda 'elverişli' anlamındadır.",
+    "explanation": "Doğru seçenek: convenient. Convenient, zaman veya çaba tasarrufu sağlayan, kullanımı elverişli demektir.",
     "family": "speedlex_convenient"
   },
   {
@@ -416,12 +416,12 @@ export const lexicalFastQuestions = [
     "options": [
       "harmful",
       "harmless",
-      "visible",
-      "expensive",
-      "temporary"
+      "beneficial",
+      "preventable",
+      "reversible"
     ],
     "correct": 0,
-    "explanation": "'harmful' bu bağlamda 'zararlı' anlamındadır.",
+    "explanation": "Doğru seçenek: harmful. Harmful, sağlığa veya bir varlığa zarar veren demektir; reversible yalnızca etkinin geri döndürülebilmesini belirtir.",
     "family": "speedlex_harmful"
   },
   {
@@ -433,12 +433,12 @@ export const lexicalFastQuestions = [
     "options": [
       "harmful",
       "harmless",
-      "visible",
-      "expensive",
-      "temporary"
+      "beneficial",
+      "preventable",
+      "reversible"
     ],
     "correct": 0,
-    "explanation": "'harmful' bu bağlamda 'zararlı' anlamındadır.",
+    "explanation": "Doğru seçenek: harmful. Harmful, sağlığa veya bir varlığa zarar veren demektir; reversible yalnızca etkinin geri döndürülebilmesini belirtir.",
     "family": "speedlex_harmful"
   },
   {
@@ -484,12 +484,12 @@ export const lexicalFastQuestions = [
     "options": [
       "loyal",
       "disloyal",
-      "wealthy",
-      "curious",
-      "punctual"
+      "indifferent",
+      "sceptical",
+      "occasional"
     ],
     "correct": 0,
-    "explanation": "'loyal' bu bağlamda 'sadık' anlamındadır.",
+    "explanation": "Doğru seçenek: loyal. Loyal, uzun süre bağlılığını ve desteğini sürdüren demektir.",
     "family": "speedlex_loyal"
   },
   {
@@ -501,12 +501,12 @@ export const lexicalFastQuestions = [
     "options": [
       "loyal",
       "disloyal",
-      "wealthy",
-      "curious",
-      "punctual"
+      "indifferent",
+      "sceptical",
+      "occasional"
     ],
     "correct": 0,
-    "explanation": "'loyal' bu bağlamda 'sadık' anlamındadır.",
+    "explanation": "Doğru seçenek: loyal. Loyal, uzun süre bağlılığını ve desteğini sürdüren demektir.",
     "family": "speedlex_loyal"
   },
   {
@@ -1028,12 +1028,12 @@ export const lexicalFastQuestions = [
     "options": [
       "valuable",
       "worthless",
-      "heavy",
-      "temporary",
-      "modern"
+      "ordinary",
+      "replaceable",
+      "common"
     ],
     "correct": 0,
-    "explanation": "'valuable' bu bağlamda 'değerli' anlamındadır.",
+    "explanation": "Doğru seçenek: valuable. Valuable, maddi veya tarihî açıdan yüksek değer taşıyan demektir.",
     "family": "speedlex_valuable"
   },
   {
@@ -1045,12 +1045,12 @@ export const lexicalFastQuestions = [
     "options": [
       "valuable",
       "worthless",
-      "heavy",
-      "temporary",
-      "modern"
+      "ordinary",
+      "replaceable",
+      "common"
     ],
     "correct": 0,
-    "explanation": "'valuable' bu bağlamda 'değerli' anlamındadır.",
+    "explanation": "Doğru seçenek: valuable. Valuable, maddi veya tarihî açıdan yüksek değer taşıyan demektir.",
     "family": "speedlex_valuable"
   },
   {
@@ -1160,16 +1160,16 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The shelter must provide ____ protection against the expected winter temperatures.",
+    "prompt": "The shelter must provide ____ protection against the expected winter temperatures, meeting the minimum safety requirements without unnecessary insulation.",
     "options": [
       "adequate",
       "inadequate",
-      "portable",
-      "recent",
-      "visible"
+      "unnecessary",
+      "excessive",
+      "insufficient"
     ],
     "correct": 0,
-    "explanation": "'adequate' bu bağlamda 'yeterli' anlamındadır.",
+    "explanation": "Doğru seçenek: adequate. Adequate, belirli bir ihtiyacı karşılayacak ölçüde yeterli demektir; excessive gereğinden fazla, inadequate ve insufficient ise yetersiz demektir.",
     "family": "speedlex_adequate"
   },
   {
@@ -1177,16 +1177,16 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "The researchers collected ____ evidence to answer the limited question posed by the study.",
+    "prompt": "The researchers collected ____ evidence to answer the limited question posed by the study, meeting but not exceeding its evidential requirements.",
     "options": [
       "adequate",
       "inadequate",
-      "portable",
-      "recent",
-      "visible"
+      "unnecessary",
+      "excessive",
+      "insufficient"
     ],
     "correct": 0,
-    "explanation": "'adequate' bu bağlamda 'yeterli' anlamındadır.",
+    "explanation": "Doğru seçenek: adequate. Adequate, belirli bir ihtiyacı karşılayacak ölçüde yeterli demektir; excessive gereğinden fazla, inadequate ve insufficient ise yetersiz demektir.",
     "family": "speedlex_adequate"
   },
   {
@@ -1436,12 +1436,12 @@ export const lexicalFastQuestions = [
     "options": [
       "deliberate",
       "accidental",
-      "formal",
-      "gradual",
-      "technical"
+      "unplanned",
+      "spontaneous",
+      "involuntary"
     ],
     "correct": 0,
-    "explanation": "'deliberate' bu bağlamda 'kasıtlı' anlamındadır.",
+    "explanation": "Doğru seçenek: deliberate. Deliberate, tesadüfen değil bilinçli bir karar veya niyetle yapılmış demektir.",
     "family": "speedlex_deliberate"
   },
   {
@@ -1453,12 +1453,12 @@ export const lexicalFastQuestions = [
     "options": [
       "deliberate",
       "accidental",
-      "formal",
-      "gradual",
-      "technical"
+      "unplanned",
+      "spontaneous",
+      "involuntary"
     ],
     "correct": 0,
-    "explanation": "'deliberate' bu bağlamda 'kasıtlı' anlamındadır.",
+    "explanation": "Doğru seçenek: deliberate. Deliberate, tesadüfen değil bilinçli bir karar veya niyetle yapılmış demektir.",
     "family": "speedlex_deliberate"
   },
   {
@@ -1640,12 +1640,12 @@ export const lexicalFastQuestions = [
     "options": [
       "enormous",
       "tiny",
-      "recent",
-      "visible",
-      "complex"
+      "modest",
+      "negligible",
+      "limited"
     ],
     "correct": 0,
-    "explanation": "'enormous' bu bağlamda 'çok büyük' anlamındadır.",
+    "explanation": "Doğru seçenek: enormous. Enormous, olağan ölçülerin çok üzerinde büyük demektir.",
     "family": "speedlex_enormous"
   },
   {
@@ -1657,12 +1657,12 @@ export const lexicalFastQuestions = [
     "options": [
       "enormous",
       "tiny",
-      "recent",
-      "visible",
-      "complex"
+      "modest",
+      "negligible",
+      "limited"
     ],
     "correct": 0,
-    "explanation": "'enormous' bu bağlamda 'çok büyük' anlamındadır.",
+    "explanation": "Doğru seçenek: enormous. Enormous, olağan ölçülerin çok üzerinde büyük demektir.",
     "family": "speedlex_enormous"
   },
   {
@@ -2044,16 +2044,16 @@ export const lexicalFastQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Vocabulary",
-    "prompt": "Despite the flood, the sealed collection remained ____.",
+    "prompt": "Despite the flood, the sealed collection remained ____, with every item undamaged.",
     "options": [
       "intact",
       "damaged",
-      "portable",
-      "modern",
-      "heavy"
+      "fragmented",
+      "incomplete",
+      "deteriorated"
     ],
     "correct": 0,
-    "explanation": "'intact' bu bağlamda 'hasarsız ve bütün' anlamındadır.",
+    "explanation": "Doğru seçenek: intact. Intact, zarar görmemiş veya bütünlüğünü korumuş demektir.",
     "family": "speedlex_intact"
   },
   {
@@ -2065,12 +2065,12 @@ export const lexicalFastQuestions = [
     "options": [
       "intact",
       "damaged",
-      "portable",
-      "modern",
-      "heavy"
+      "fragmented",
+      "incomplete",
+      "deteriorated"
     ],
     "correct": 0,
-    "explanation": "'intact' bu bağlamda 'hasarsız ve bütün' anlamındadır.",
+    "explanation": "Doğru seçenek: intact. Intact, zarar görmemiş veya bütünlüğünü korumuş demektir.",
     "family": "speedlex_intact"
   },
   {
@@ -2117,11 +2117,11 @@ export const lexicalFastQuestions = [
       "legitimate",
       "illegitimate",
       "forged",
-      "recent",
-      "temporary"
+      "unauthorised",
+      "fraudulent"
     ],
     "correct": 0,
-    "explanation": "'legitimate' bu bağlamda 'meşru' anlamındadır.",
+    "explanation": "Doğru seçenek: legitimate. Legitimate, hukuk veya geçerli kurallar açısından meşru ve geçerli demektir.",
     "family": "speedlex_legitimate"
   },
   {
@@ -2133,12 +2133,12 @@ export const lexicalFastQuestions = [
     "options": [
       "legitimate",
       "illegitimate",
-      "imaginary",
-      "recent",
-      "temporary"
+      "forged",
+      "unauthorised",
+      "fraudulent"
     ],
     "correct": 0,
-    "explanation": "'legitimate' bu bağlamda 'meşru' anlamındadır.",
+    "explanation": "Doğru seçenek: legitimate. Legitimate, hukuk veya geçerli kurallar açısından meşru ve geçerli demektir.",
     "family": "speedlex_legitimate"
   },
   {
@@ -2252,12 +2252,12 @@ export const lexicalFastQuestions = [
     "options": [
       "mutual",
       "one-sided",
-      "formal",
-      "temporary",
-      "regional"
+      "conditional",
+      "occasional",
+      "compulsory"
     ],
     "correct": 0,
-    "explanation": "'mutual' bu bağlamda 'karşılıklı' anlamındadır.",
+    "explanation": "Doğru seçenek: mutual. Mutual, iki tarafın da karşılıklı olarak gösterdiği veya paylaştığı demektir.",
     "family": "speedlex_mutual"
   },
   {
@@ -2269,12 +2269,12 @@ export const lexicalFastQuestions = [
     "options": [
       "mutual",
       "one-sided",
-      "formal",
-      "temporary",
-      "regional"
+      "conditional",
+      "occasional",
+      "compulsory"
     ],
     "correct": 0,
-    "explanation": "'mutual' bu bağlamda 'karşılıklı' anlamındadır.",
+    "explanation": "Doğru seçenek: mutual. Mutual, iki tarafın da karşılıklı olarak gösterdiği veya paylaştığı demektir.",
     "family": "speedlex_mutual"
   },
   {
@@ -2456,12 +2456,12 @@ export const lexicalFastQuestions = [
     "options": [
       "productive",
       "unproductive",
-      "temporary",
-      "formal",
-      "regional"
+      "fruitless",
+      "inconclusive",
+      "disruptive"
     ],
     "correct": 0,
-    "explanation": "'productive' bu bağlamda 'verimli' anlamındadır.",
+    "explanation": "Doğru seçenek: productive. Productive, somut ve yararlı sonuçlar üreten demektir.",
     "family": "speedlex_productive"
   },
   {
@@ -2473,12 +2473,12 @@ export const lexicalFastQuestions = [
     "options": [
       "productive",
       "unproductive",
-      "temporary",
-      "formal",
-      "regional"
+      "fruitless",
+      "inconclusive",
+      "disruptive"
     ],
     "correct": 0,
-    "explanation": "'productive' bu bağlamda 'verimli' anlamındadır.",
+    "explanation": "Doğru seçenek: productive. Productive, somut ve yararlı sonuçlar üreten demektir.",
     "family": "speedlex_productive"
   },
   {
@@ -2796,12 +2796,12 @@ export const lexicalFastQuestions = [
     "options": [
       "superficial",
       "in-depth",
-      "technical",
-      "regional",
-      "formal"
+      "exhaustive",
+      "thorough",
+      "comprehensive"
     ],
     "correct": 0,
-    "explanation": "'superficial' bu bağlamda 'yüzeysel' anlamındadır.",
+    "explanation": "Doğru seçenek: superficial. Superficial, ayrıntılara ve temel nedenlere inmeden yüzeyde kalan demektir.",
     "family": "speedlex_superficial"
   },
   {
@@ -2813,12 +2813,12 @@ export const lexicalFastQuestions = [
     "options": [
       "superficial",
       "in-depth",
-      "technical",
-      "regional",
-      "formal"
+      "exhaustive",
+      "thorough",
+      "comprehensive"
     ],
     "correct": 0,
-    "explanation": "'superficial' bu bağlamda 'yüzeysel' anlamındadır.",
+    "explanation": "Doğru seçenek: superficial. Superficial, ayrıntılara ve temel nedenlere inmeden yüzeyde kalan demektir.",
     "family": "speedlex_superficial"
   },
   {
@@ -3000,12 +3000,12 @@ export const lexicalFastQuestions = [
     "options": [
       "abstemious",
       "indulgent",
-      "punctual",
-      "wealthy",
-      "creative"
+      "gluttonous",
+      "extravagant",
+      "immoderate"
     ],
     "correct": 0,
-    "explanation": "'abstemious' bu bağlamda 'ölçülü ve nefsine hâkim' anlamındadır.",
+    "explanation": "Doğru seçenek: abstemious. Abstemious, özellikle yeme ve içmede ölçülü davranan demektir.",
     "family": "speedlex_abstemious"
   },
   {
@@ -3017,12 +3017,12 @@ export const lexicalFastQuestions = [
     "options": [
       "abstemious",
       "indulgent",
-      "punctual",
-      "wealthy",
-      "creative"
+      "gluttonous",
+      "extravagant",
+      "immoderate"
     ],
     "correct": 0,
-    "explanation": "'abstemious' bu bağlamda 'ölçülü ve nefsine hâkim' anlamındadır.",
+    "explanation": "Doğru seçenek: abstemious. Abstemious, özellikle yeme ve içmede ölçülü davranan demektir.",
     "family": "speedlex_abstemious"
   },
   {
@@ -3340,12 +3340,12 @@ export const lexicalFastQuestions = [
     "options": [
       "assiduous",
       "negligent",
-      "wealthy",
-      "quiet",
-      "creative"
+      "perfunctory",
+      "sporadic",
+      "inattentive"
     ],
     "correct": 0,
-    "explanation": "'assiduous' bu bağlamda 'çalışkan ve özenli' anlamındadır.",
+    "explanation": "Doğru seçenek: assiduous. Assiduous, bir işe sürekli ve özenli çaba gösteren demektir.",
     "family": "speedlex_assiduous"
   },
   {
@@ -3357,12 +3357,12 @@ export const lexicalFastQuestions = [
     "options": [
       "assiduous",
       "negligent",
-      "wealthy",
-      "quiet",
-      "creative"
+      "perfunctory",
+      "sporadic",
+      "inattentive"
     ],
     "correct": 0,
-    "explanation": "'assiduous' bu bağlamda 'çalışkan ve özenli' anlamındadır.",
+    "explanation": "Doğru seçenek: assiduous. Assiduous, bir işe sürekli ve özenli çaba gösteren demektir.",
     "family": "speedlex_assiduous"
   },
   {
@@ -3748,12 +3748,12 @@ export const lexicalFastQuestions = [
     "options": [
       "copious",
       "scant",
-      "formal",
-      "technical",
-      "recent"
+      "sparse",
+      "limited",
+      "fragmentary"
     ],
     "correct": 0,
-    "explanation": "'copious' bu bağlamda 'bol miktarda' anlamındadır.",
+    "explanation": "Doğru seçenek: copious. Copious, çok miktarda veya bol demektir.",
     "family": "speedlex_copious"
   },
   {
@@ -3765,12 +3765,12 @@ export const lexicalFastQuestions = [
     "options": [
       "copious",
       "scant",
-      "formal",
-      "technical",
-      "recent"
+      "sparse",
+      "limited",
+      "fragmentary"
     ],
     "correct": 0,
-    "explanation": "'copious' bu bağlamda 'bol miktarda' anlamındadır.",
+    "explanation": "Doğru seçenek: copious. Copious, çok miktarda veya bol demektir.",
     "family": "speedlex_copious"
   },
   {
@@ -3884,12 +3884,12 @@ export const lexicalFastQuestions = [
     "options": [
       "dormant",
       "active",
-      "temporary",
-      "regional",
-      "visible"
+      "thriving",
+      "developing",
+      "expanding"
     ],
     "correct": 0,
-    "explanation": "'dormant' bu bağlamda 'etkin olmayan' anlamındadır.",
+    "explanation": "Doğru seçenek: dormant. Dormant, geçici olarak etkin olmayan ancak yeniden etkinleşebilen demektir.",
     "family": "speedlex_dormant"
   },
   {
@@ -3901,12 +3901,12 @@ export const lexicalFastQuestions = [
     "options": [
       "dormant",
       "active",
-      "temporary",
-      "regional",
-      "visible"
+      "thriving",
+      "developing",
+      "expanding"
     ],
     "correct": 0,
-    "explanation": "'dormant' bu bağlamda 'etkin olmayan' anlamındadır.",
+    "explanation": "Doğru seçenek: dormant. Dormant, geçici olarak etkin olmayan ancak yeniden etkinleşebilen demektir.",
     "family": "speedlex_dormant"
   },
   {
@@ -4020,12 +4020,12 @@ export const lexicalFastQuestions = [
     "options": [
       "emphatic",
       "hesitant",
-      "formal",
-      "temporary",
-      "regional"
+      "ambiguous",
+      "tentative",
+      "qualified"
     ],
     "correct": 0,
-    "explanation": "'emphatic' bu bağlamda 'vurgulu ve kesin' anlamındadır.",
+    "explanation": "Doğru seçenek: emphatic. Emphatic, güçlü vurguyla ve tereddüde yer vermeden ifade edilen demektir.",
     "family": "speedlex_emphatic"
   },
   {
@@ -4037,12 +4037,12 @@ export const lexicalFastQuestions = [
     "options": [
       "emphatic",
       "hesitant",
-      "formal",
-      "temporary",
-      "regional"
+      "ambiguous",
+      "tentative",
+      "qualified"
     ],
     "correct": 0,
-    "explanation": "'emphatic' bu bağlamda 'vurgulu ve kesin' anlamındadır.",
+    "explanation": "Doğru seçenek: emphatic. Emphatic, güçlü vurguyla ve tereddüde yer vermeden ifade edilen demektir.",
     "family": "speedlex_emphatic"
   },
   {
@@ -4088,12 +4088,12 @@ export const lexicalFastQuestions = [
     "options": [
       "exhaustive",
       "partial",
-      "formal",
-      "numerical",
-      "recent"
+      "selective",
+      "preliminary",
+      "cursory"
     ],
     "correct": 0,
-    "explanation": "'exhaustive' bu bağlamda 'kapsamlı ve eksiksiz' anlamındadır.",
+    "explanation": "Doğru seçenek: exhaustive. Exhaustive, ilgili bütün olasılıkları kapsayan, eksiksiz inceleme anlamındadır.",
     "family": "speedlex_exhaustive"
   },
   {
@@ -4105,12 +4105,12 @@ export const lexicalFastQuestions = [
     "options": [
       "exhaustive",
       "partial",
-      "formal",
-      "numerical",
-      "recent"
+      "selective",
+      "preliminary",
+      "cursory"
     ],
     "correct": 0,
-    "explanation": "'exhaustive' bu bağlamda 'kapsamlı ve eksiksiz' anlamındadır.",
+    "explanation": "Doğru seçenek: exhaustive. Exhaustive, ilgili bütün olasılıkları kapsayan, eksiksiz inceleme anlamındadır.",
     "family": "speedlex_exhaustive"
   },
   {
@@ -4292,12 +4292,12 @@ export const lexicalFastQuestions = [
     "options": [
       "futile",
       "effective",
-      "formal",
-      "lengthy",
-      "technical"
+      "successful",
+      "promising",
+      "worthwhile"
     ],
     "correct": 0,
-    "explanation": "'futile' bu bağlamda 'sonuçsuz' anlamındadır.",
+    "explanation": "Doğru seçenek: futile. Futile, istenen sonucu sağlamayan ve boşuna yapılan demektir.",
     "family": "speedlex_futile"
   },
   {
@@ -4309,12 +4309,12 @@ export const lexicalFastQuestions = [
     "options": [
       "futile",
       "effective",
-      "formal",
-      "lengthy",
-      "technical"
+      "successful",
+      "promising",
+      "worthwhile"
     ],
     "correct": 0,
-    "explanation": "'futile' bu bağlamda 'sonuçsuz' anlamındadır.",
+    "explanation": "Doğru seçenek: futile. Futile, istenen sonucu sağlamayan ve boşuna yapılan demektir.",
     "family": "speedlex_futile"
   },
   {
@@ -4360,12 +4360,12 @@ export const lexicalFastQuestions = [
     "options": [
       "gratuitous",
       "justified",
-      "formal",
-      "lengthy",
-      "technical"
+      "constructive",
+      "relevant",
+      "warranted"
     ],
     "correct": 0,
-    "explanation": "'gratuitous' bu bağlamda 'gereksiz ve gerekçesiz' anlamındadır.",
+    "explanation": "Doğru seçenek: gratuitous. Gratuitous, gereksiz veya haklı bir gerekçesi bulunmayan, özellikle incitici söz ve davranışlar için kullanılır.",
     "family": "speedlex_gratuitous"
   },
   {
@@ -4377,12 +4377,12 @@ export const lexicalFastQuestions = [
     "options": [
       "gratuitous",
       "justified",
-      "formal",
-      "lengthy",
-      "technical"
+      "constructive",
+      "relevant",
+      "warranted"
     ],
     "correct": 0,
-    "explanation": "'gratuitous' bu bağlamda 'gereksiz ve gerekçesiz' anlamındadır.",
+    "explanation": "Doğru seçenek: gratuitous. Gratuitous, gereksiz veya haklı bir gerekçesi bulunmayan, özellikle incitici söz ve davranışlar için kullanılır.",
     "family": "speedlex_gratuitous"
   },
   {
