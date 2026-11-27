@@ -4773,10 +4773,10 @@ export const foundationQuestions = [
     "prompt": "A: Why are you taking an evening course? B: ____",
     "options": [
       "I'd like to improve my skills without leaving my job.",
-      "I finished work at five yesterday.",
-      "The classroom has twelve desks.",
-      "I prefer summer to winter.",
-      "My colleague travels by train."
+      "I took a similar course last year, but I have forgotten the teacher's name.",
+      "I wanted to enrol, but I decided not to take any classes.",
+      "The evening course takes place in the room where I work during the day.",
+      "I haven't decided whether to attend a course this year."
     ],
     "correct": 0,
     "explanation": "Kursun amacı açıklanıyor."
@@ -6101,10 +6101,10 @@ export const foundationQuestions = [
     "prompt": "If the data had been backed up regularly, ____.",
     "options": [
       "the team could have recovered more of its work after the failure",
-      "the failure will happen tomorrow",
-      "the team must lose all future records",
-      "the data would never have existed",
-      "the backup system cannot be evaluated"
+      "the team will recover all of its lost work before the next meeting",
+      "the team must have lost the same amount of work in every subsequent failure",
+      "the team would never have created any data in the first place",
+      "the team would have been unable to recover any of its work from the backup"
     ],
     "correct": 0,
     "explanation": "Üçüncü koşul geçmişte gerçekleşmemiş bir olasılığı anlatır."
@@ -7136,10 +7136,10 @@ export const foundationQuestions = [
     "prompt": "A regional bus operator introduced an app that displayed the estimated arrival time of each bus. Passengers appreciated knowing when to leave home, but the app occasionally showed incorrect times in areas with poor mobile reception. The company kept printed timetables available while working to improve the tracking system.\n\nWhen did incorrect times sometimes appear?",
     "options": [
       "In areas with poor mobile reception",
-      "Whenever buses were full",
-      "Only during summer",
-      "When passengers bought paper tickets",
-      "Only at the main station"
+      "In areas where passengers used the printed timetables",
+      "When passengers checked the app after buying a bus ticket",
+      "At stations where the buses waited longer than expected",
+      "When the operator added new stops to the bus routes"
     ],
     "correct": 0,
     "explanation": "Zayıf mobil bağlantı olan bölgelerde sorun yaşandı."
@@ -7561,10 +7561,10 @@ export const foundationQuestions = [
     "prompt": "A public health campaign used posters to encourage people to attend free screening appointments. Awareness of the service increased, but appointment attendance remained low. Interviews revealed that many people could not attend during working hours. The organisers added evening sessions and assessed whether the revised schedule improved participation.\n\nWhich distinction is important in this passage?",
     "options": [
       "Knowing about a service is different from being able to use it.",
-      "Information campaigns always remove practical barriers.",
-      "Free services cannot have scheduling problems.",
-      "Attendance measures awareness alone.",
-      "Convenient hours are unrelated to participation."
+      "People who know about a free service necessarily have enough time to attend.",
+      "Awareness of a service is best measured solely by counting those who attend.",
+      "The cost of an appointment matters more than whether it fits people's schedules.",
+      "Changing appointment times cannot affect participation once public awareness has increased."
     ],
     "correct": 0,
     "explanation": "Hizmetten haberdar olmak ile hizmeti kullanabilmek farklıdır."
@@ -9180,10 +9180,10 @@ export const foundationQuestions = [
     "prompt": "The findings are 'preliminary'. Which expression best explains this?",
     "options": [
       "Obtained at an early stage and subject to further review.",
-      "Confirmed by every possible test.",
-      "Unrelated to the research question.",
-      "Made available only after the final report.",
-      "Guaranteed to be permanent."
+      "Repeated under different conditions and confirmed as the final results.",
+      "Published after all stages of the investigation have been completed.",
+      "Based on a conclusion that has already been accepted without reservation.",
+      "Collected for a different study and unrelated to the present research question."
     ],
     "correct": 0,
     "explanation": "Preliminary ön bulgu niteliğinde ve kesinleşmemiş demektir."

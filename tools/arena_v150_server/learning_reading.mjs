@@ -177,10 +177,10 @@ export const readingQuestions = [
     "prompt": "A hospital introduced electronic reminders for outpatient appointments. Missed appointments decreased among patients who regularly used mobile phones. However, the decline was much smaller among patients who rarely used digital devices.\n\nWhich conclusion is most consistent with the passage?",
     "options": [
       "The benefit of electronic reminders may vary with patients' patterns of digital device use.",
-      "All patients benefited equally from the reminders.",
-      "The hospital abolished outpatient appointments.",
-      "Mobile phones increased missed appointments in every group.",
-      "The reminders were delivered only on paper."
+      "The reminders were equally effective regardless of how often patients used digital devices.",
+      "The fall in missed appointments was greater among patients who rarely used digital devices.",
+      "The reminders reduced the total number of outpatient appointments offered to patients.",
+      "The hospital found that mobile-phone use was the sole cause of missed appointments."
     ],
     "correct": 0,
     "explanation": "Dijital cihaz kullanımındaki farklılık hatırlatma sisteminin yararını etkiliyor.",

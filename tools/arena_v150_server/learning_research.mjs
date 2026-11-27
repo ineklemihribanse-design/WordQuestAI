@@ -3356,10 +3356,10 @@ export const researchQuestions = [
     "prompt": "Researchers investigated whether a newly developed reading intervention improved comprehension. Schools implementing the programme had also received additional teaching materials, whereas comparison schools had not. Test scores increased more in the participating schools, but the researchers recognised that the effects of the materials and the intervention could not be separated under the original design. They proposed a subsequent trial in which the materials and intervention would be varied independently.\n\nWhat is the principal limitation?",
     "options": [
       "The intervention's effect cannot be isolated from that of additional materials.",
-      "Participating schools never received the intervention.",
-      "Comparison schools received identical materials.",
-      "No comprehension outcome was measured.",
-      "The test scores fell in all schools."
+      "The intervention was introduced in schools that had not received any teaching materials.",
+      "The same teaching materials were supplied to both groups before the intervention began.",
+      "The comparison relied on teachers' opinions rather than measurements of reading comprehension.",
+      "The schools were assessed before the intervention but not after its introduction."
     ],
     "correct": 0,
     "explanation": "Ek materyallerin etkisi müdahalenin etkisinden ayrılamamaktadır.",

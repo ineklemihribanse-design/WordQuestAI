@@ -347,10 +347,10 @@ export const cohesionExpansion = [
     "prompt": "Researchers compared bird migration dates at two observation sites. ____ The earliest recorded arrival might therefore not represent the same event at both sites. The comparison was adjusted to account for observation frequency.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "One site used continuous monitoring, while the other relied on occasional visits.",
-      "Both sites used identical continuous monitoring.",
-      "Birds were observed only in captivity.",
-      "Every record was collected at precisely the same time.",
-      "Monitoring schedules were identical."
+      "Both sites used the same observation schedule but recorded different numbers of bird species.",
+      "The observers at both sites agreed on a common method for identifying each bird species.",
+      "The sites were chosen because they lay along the same migration route.",
+      "The analysis used the same calendar dates to mark the beginning of spring at both sites."
     ],
     "correct": 0,
     "explanation": "Farklı gözlem sıklığı ilk kaydedilen varışların karşılaştırılmasını etkiler.",
@@ -551,10 +551,10 @@ export const cohesionExpansion = [
     "prompt": "A study investigated withdrawal from a rehabilitation programme. ____ The accounts might therefore underrepresent experiences relevant to withdrawal. Alternative ways of reaching former participants were proposed.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "Researchers interviewed people who completed it but had difficulty contacting those who left.",
-      "All former participants were interviewed successfully.",
-      "Only people who withdrew were interviewed.",
-      "The interviews guaranteed complete representation.",
-      "The researchers were uninterested in withdrawal."
+      "The researchers interviewed all those who withdrew as well as those who completed the programme.",
+      "Participants were asked to recall the initial reasons for joining rather than their subsequent progress.",
+      "The research team divided participants according to the length of their rehabilitation sessions.",
+      "Interviewers used the same questions for every participant who was contacted during the study."
     ],
     "correct": 0,
     "explanation": "Ayrılan kişilere erişilememesi ayrılma nedenlerinin eksik temsil edilmesine yol açar.",
@@ -755,10 +755,10 @@ export const cohesionExpansion = [
     "prompt": "A theoretical model combined a core principle with auxiliary assumptions. ____ The discrepancy could therefore challenge more than one component of the explanation. Follow-up tests sought to isolate the assumptions responsible.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "An experiment failed to reproduce the prediction without separately testing those assumptions.",
-      "All auxiliary assumptions were verified independently.",
-      "Failure uniquely identified the false assumption.",
-      "The model contained no auxiliary assumptions.",
-      "Further experiments were logically impossible."
+      "The experiment independently confirmed each auxiliary assumption before examining the main prediction.",
+      "The researchers tested only a consequence that did not depend on any auxiliary assumption.",
+      "The model generated several predictions, all of which were reproduced by the initial experiment.",
+      "The core principle had already been rejected on independent grounds before the experiment began."
     ],
     "correct": 0,
     "explanation": "Başarısız öngörü tek başına hangi varsayımın yanlış olduğunu belirlemeyebilir.",
@@ -789,10 +789,10 @@ export const cohesionExpansion = [
     "prompt": "A composite measure assigned equal scores to two organisations. ____ The equal totals concealed differences relevant to users with different priorities. The evaluators published component scores alongside the aggregate.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "One performed strongly on accessibility and weakly on reliability, while the other showed the reverse pattern.",
-      "Both organisations had identical component scores.",
-      "The total uniquely determined each component.",
-      "Users had no preferences about reliability.",
-      "The measure used only one component."
+      "The two organisations achieved identical results on accessibility and reliability as well as all the remaining components of the measure.",
+      "Both organisations performed strongly on every component that the evaluators had selected for the composite measure.",
+      "The evaluators assigned the same score to each individual component for both of the organisations.",
+      "The two organisations were assessed using different criteria, so no common set of component scores was available."
     ],
     "correct": 0,
     "explanation": "Aynı toplam farklı bileşen profillerini gizleyebilir.",
@@ -857,10 +857,10 @@ export const cohesionExpansion = [
     "prompt": "A historian described the decline of a craft as inevitable after mechanisation. ____ The outcome could thus be understood as contingent on specific decisions. The account was revised to acknowledge paths available but not taken.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "New records revealed several occasions when alternative arrangements had been seriously considered.",
-      "No alternative arrangement had ever been considered.",
-      "Mechanisation was absent throughout the period.",
-      "All historical outcomes were predetermined.",
-      "The records concerned only spelling."
+      "The newly discovered records confirmed that no feasible alternatives had been discussed during the period.",
+      "The historian found that every craft producer had adopted the same strategy regardless of local circumstances.",
+      "The additional evidence showed that the decline followed an identical course wherever mechanisation was introduced.",
+      "The archive contained further details of the machinery but no evidence of decisions made by the producers."
     ],
     "correct": 0,
     "explanation": "Gerçekleşmemiş alternatifler tarihsel sonucun zorunlu olmadığını gösterir.",
@@ -891,10 +891,10 @@ export const cohesionExpansion = [
     "prompt": "A study proposed an indicator of argumentative complexity. ____ Yet short sentences could express complex reasoning and long sentences could repeat simple claims. The authors sought further measures of argumentative rather than linguistic complexity.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "The indicator increased with sentence length and the number of embedded clauses.",
-      "Sentence length uniquely determined reasoning complexity.",
-      "Short sentences could never express reasoning.",
-      "The indicator captured every inferential relationship.",
-      "Every lengthy sentence was logically valid."
+      "The indicator assigned scores solely according to the number of distinct logical relationships identified in an argument.",
+      "The researchers deliberately excluded all sentence-level features from their measure of argumentative complexity.",
+      "The proposed measure was based on the validity of inferences rather than on the form of the sentences.",
+      "The indicator compared conclusions with their supporting evidence without considering their linguistic structure."
     ],
     "correct": 0,
     "explanation": "Dilsel yapı karmaşıklığı ile akıl yürütme karmaşıklığı aynı değildir.",
@@ -925,10 +925,10 @@ export const cohesionExpansion = [
     "prompt": "An evaluation classified outcomes as successful or unsuccessful using a threshold. ____ The success rate was therefore sensitive to measurement uncertainty. The analysts also reported the distribution of continuous outcomes.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "Many observations lay close to that threshold and small errors could change their classification.",
-      "Every observation was far from the threshold.",
-      "Measurement errors could never change classification.",
-      "The threshold was removed before calculating success.",
-      "All participants had identical continuous outcomes."
+      "Most observations were far enough from the threshold that small measurement errors would leave their classification unchanged.",
+      "The analysts calculated success from independently verified categories rather than from the measured continuous outcomes.",
+      "The threshold was chosen so that the classification was unaffected by the estimated measurement errors.",
+      "Each observation was classified identically under every plausible threshold considered during the evaluation."
     ],
     "correct": 0,
     "explanation": "Eşiğe yakın ölçümler küçük hatalarla kategori değiştirebilir.",
@@ -3272,10 +3272,10 @@ export const cohesionExpansion = [
     "prompt": "A student has difficulty remembering new words. ____ She tests herself by looking at only one side at a time. She repeats the difficult cards more often.\n\nChoose the sentence that best completes the paragraph.",
     "options": [
       "She writes each word on one side of a card and its meaning on the other.",
-      "She writes all the words in alphabetical order in a notebook.",
-      "She listens to a recorded story every evening.",
-      "She copies the definitions into a single list.",
-      "She underlines new words in her textbook."
+      "She writes the words and their meanings together in a notebook in alphabetical order.",
+      "She records the new words in a single list and reads it aloud every evening.",
+      "She copies each definition into her textbook next to the sentence where she found it.",
+      "She keeps a list of difficult words and asks her teacher to explain them in class."
     ],
     "correct": 0,
     "explanation": "One side ve difficult cards iki yüzlü kelime kartlarına gönderme yapar."

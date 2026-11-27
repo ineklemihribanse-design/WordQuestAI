@@ -12825,10 +12825,10 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Clara has sent a message about the book club meeting. It was planned for Monday, but the meeting room is being painted. It will now take place on Wednesday. There is no need to register again. Everyone should bring the novel they are reading.\n\nWhat should participants do before attending?",
     "options": [
-      "meet outside the museum",
-      "complete the online exercise",
-      "bring a pair of gloves",
-      "bring their swimming caps",
+      "register again for the book club meeting",
+      "bring a different novel to exchange",
+      "finish reading the novel before Wednesday",
+      "collect a book from the meeting room",
       "bring the novel they are reading"
     ],
     "correct": 4,
@@ -12911,10 +12911,10 @@ export const a12ThousandQuestions = [
     "prompt": "Owen has sent a message about the football practice. It was planned for Tuesday, but the pitch is too wet. It will now take place on Thursday. There is no need to register again. Everyone should wear their usual sports kit.\n\nWhat should participants do before attending?",
     "options": [
       "wear their usual sports kit",
-      "complete the online exercise",
-      "bring a pair of gloves",
-      "bring their swimming caps",
-      "watch the film at home first"
+      "buy a new football kit",
+      "register again for Thursday practice",
+      "wear a different team's sports kit",
+      "bring a football for the practice"
     ],
     "correct": 0,
     "explanation": "Metinde bu sorunun cevabı açıkça \"wear their usual sports kit\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -13080,11 +13080,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Miles has sent a message about the photography walk. It was planned for Thursday, but strong winds are expected. It will now take place on Saturday. There is no need to register again. Everyone should charge their cameras in advance.\n\nWhat should participants do before attending?",
     "options": [
-      "bring their swimming caps",
-      "watch the film at home first",
+      "register again for Saturday's walk",
+      "bring printed photos from the last walk",
       "charge their cameras in advance",
-      "bring the novel they are reading",
-      "wear their usual sports kit"
+      "buy a new camera before the walk",
+      "charge their cameras after the walk"
     ],
     "correct": 2,
     "explanation": "Metinde bu sorunun cevabı açıkça \"charge their cameras in advance\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -13165,11 +13165,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Eva has sent a message about the concert rehearsal. It was planned for Friday, but the main hall is needed for another event. It will now take place on Sunday. There is no need to register again. Everyone should learn the first two songs.\n\nWhat should participants do before attending?",
     "options": [
-      "watch the film at home first",
-      "bring the novel they are reading",
-      "wear their usual sports kit",
+      "register again for the concert rehearsal",
+      "learn only the final song",
+      "bring the full concert programme",
       "learn the first two songs",
-      "bring an apron from home"
+      "practise the songs after the rehearsal"
     ],
     "correct": 3,
     "explanation": "Metinde bu sorunun cevabı açıkça \"learn the first two songs\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -13420,11 +13420,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "George has sent a message about the gardening workshop. It was planned for Monday, but the tools have not arrived. It will now take place on Friday. There is no need to register again. Everyone should bring a pair of gloves.\n\nWhat should participants do before attending?",
     "options": [
-      "bring an apron from home",
+      "collect the gardening tools before Friday",
       "bring a pair of gloves",
-      "charge their cameras in advance",
-      "learn the first two songs",
-      "meet outside the museum"
+      "register again for the gardening workshop",
+      "bring their own plants to the workshop",
+      "leave their gloves at home on Friday"
     ],
     "correct": 1,
     "explanation": "Metinde bu sorunun cevabı açıkça \"bring a pair of gloves\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -14406,11 +14406,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Lucas was travelling to Portsmouth with a friend when a problem occurred: the underground service was suspended. Instead of giving up, they arranged a city bus and train. They agreed to meet at the shopping centre entrance. If the new plan fails, they will contact the transport information desk.\n\nWhat did they arrange instead?",
     "options": [
-      "an afternoon flight",
+      "an underground train and a taxi",
       "a city bus and train",
-      "a later bus",
-      "a taxi",
-      "a hired minibus"
+      "a city bus without a train journey",
+      "a direct train without a bus journey",
+      "a taxi to the shopping centre"
     ],
     "correct": 1,
     "explanation": "Metinde bu sorunun cevabı açıkça \"a city bus and train\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -14508,11 +14508,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Julia has volunteered for a neighbourhood clean-up. Volunteers must meet at the community garden at 9:30 a.m., before the public arrives. Julia's main job is to collect litter near the paths. The organiser has also asked volunteers to wear strong gloves. No previous experience is needed.\n\nWhat is the volunteer's main responsibility?",
     "options": [
-      "water the newly planted trees",
-      "set out plates and cups",
-      "help visitors find the right rooms",
+      "collect strong gloves for other volunteers",
+      "water the plants near the garden paths",
+      "show members of the public around the garden",
       "collect litter near the paths",
-      "write down the items people bring"
+      "record the amount of litter collected by others"
     ],
     "correct": 3,
     "explanation": "Metinde bu sorunun cevabı açıkça \"collect litter near the paths\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -14933,11 +14933,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Victor has volunteered for a community lunch. Volunteers must meet at the church hall at 12:20 p.m., before the public arrives. Victor's main job is to set out plates and cups. The organiser has also asked volunteers to wear clean clothes. No previous experience is needed.\n\nWhat is the volunteer's main responsibility?",
     "options": [
-      "check that the donated coats are clean",
-      "collect litter near the paths",
-      "sort donated tins and packets",
+      "prepare the food for the community lunch",
+      "wash the plates and cups after the meal",
+      "show visitors to their seats in the church hall",
       "set out plates and cups",
-      "put price labels on the books"
+      "collect the clean clothes from volunteers"
     ],
     "correct": 3,
     "explanation": "Metinde bu sorunun cevabı açıkça \"set out plates and cups\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -15104,10 +15104,10 @@ export const a12ThousandQuestions = [
     "prompt": "Katie has volunteered for a repair café. Volunteers must meet at the town workshop at 3:10 p.m., before the public arrives. Katie's main job is to write down the items people bring. The organiser has also asked volunteers to bring a small notebook. No previous experience is needed.\n\nWhat is the volunteer's main responsibility?",
     "options": [
       "write down the items people bring",
-      "sort donated tins and packets",
-      "put price labels on the books",
-      "check riders in at the start",
-      "water the newly planted trees"
+      "repair the items people bring to the café",
+      "give visitors a notebook when they arrive",
+      "check which tools are available in the workshop",
+      "show people how to repair their own items"
     ],
     "correct": 0,
     "explanation": "Metinde bu sorunun cevabı açıkça \"write down the items people bring\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -15188,11 +15188,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Helen has volunteered for a park art festival. Volunteers must meet at the bandstand at 4:00 p.m., before the public arrives. Helen's main job is to show visitors to the art displays. The organiser has also asked volunteers to wear comfortable shoes. No previous experience is needed.\n\nWhat is the volunteer's main responsibility?",
     "options": [
-      "put price labels on the books",
+      "set up the art displays before visitors arrive",
       "show visitors to the art displays",
-      "check riders in at the start",
-      "water the newly planted trees",
-      "set out plates and cups"
+      "collect the artwork at the end of the festival",
+      "sell tickets to people entering the park",
+      "check the names of artists at the bandstand"
     ],
     "correct": 1,
     "explanation": "Metinde bu sorunun cevabı açıkça \"show visitors to the art displays\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -15273,11 +15273,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Chris has volunteered for a winter coat collection. Volunteers must meet at the youth centre at 5:25 p.m., before the public arrives. Chris's main job is to check that the donated coats are clean. The organiser has also asked volunteers to bring an extra coat if possible. No previous experience is needed.\n\nWhat is the volunteer's main responsibility?",
     "options": [
-      "check riders in at the start",
-      "water the newly planted trees",
+      "give donated coats to visitors at the youth centre",
+      "sort the coats according to their size",
       "check that the donated coats are clean",
-      "set out plates and cups",
-      "help visitors find the right rooms"
+      "count the total number of donated coats",
+      "collect money to buy new winter coats"
     ],
     "correct": 2,
     "explanation": "Metinde bu sorunun cevabı açıkça \"check that the donated coats are clean\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -15290,11 +15290,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Chris has volunteered for a winter coat collection. Volunteers must meet at the youth centre at 5:25 p.m., before the public arrives. Chris's main job is to check that the donated coats are clean. The organiser has also asked volunteers to bring an extra coat if possible. No previous experience is needed.\n\nWhat extra instruction has the organiser given?",
     "options": [
-      "bring waterproof shoes",
-      "wear clean clothes",
-      "keep dogs on leads",
+      "wash every coat before donating it",
+      "bring an extra notebook if possible",
+      "arrive at the youth centre one hour early",
       "bring an extra coat if possible",
-      "bring a small notebook"
+      "wear a new coat to the collection"
     ],
     "correct": 3,
     "explanation": "Metinde bu sorunun cevabı açıkça \"bring an extra coat if possible\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -15375,10 +15375,10 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Sienna has joined a course in basic photography. It lasts six weeks. The main aim is to take clearer photographs outdoors. Students are expected to bring a digital camera. To complete the course, each student must submit a set of five photographs; there is no final multiple-choice exam.\n\nHow will students complete the course?",
     "options": [
-      "answer a short written quiz",
-      "read a short story aloud",
-      "repair a flat tyre",
-      "make a sample budget",
+      "complete a final multiple-choice photography exam",
+      "give a short talk about digital cameras",
+      "send one outdoor photograph to the teacher",
+      "write a report on the five course lessons",
       "submit a set of five photographs"
     ],
     "correct": 4,
@@ -15511,10 +15511,10 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Millie has joined a course in practical computing. It lasts four weeks. The main aim is to send emails and organise files. Students are expected to bring a USB drive. To complete the course, each student must complete a computer task; there is no final multiple-choice exam.\n\nWhat is the main learning goal?",
     "options": [
-      "recognise common emergencies",
-      "write more interesting stories",
-      "fix simple bicycle problems",
-      "manage weekly spending better",
+      "learn to repair a damaged USB drive",
+      "write and print a computer manual",
+      "create a new email service for the school",
+      "learn to take and edit digital photographs",
       "send emails and organise files"
     ],
     "correct": 4,
@@ -15597,10 +15597,10 @@ export const a12ThousandQuestions = [
     "prompt": "James has joined a course in everyday French. It lasts ten weeks. The main aim is to ask for directions in French. Students are expected to bring a bilingual dictionary. To complete the course, each student must have a short conversation; there is no final multiple-choice exam.\n\nWhat is the main learning goal?",
     "options": [
       "ask for directions in French",
-      "write more interesting stories",
-      "fix simple bicycle problems",
-      "manage weekly spending better",
-      "feel more confident giving talks"
+      "learn to write formal letters in French",
+      "translate a short French story into English",
+      "learn to order food in French restaurants",
+      "learn to describe a journey in French"
     ],
     "correct": 0,
     "explanation": "Metinde bu sorunun cevabı açıkça \"ask for directions in French\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -16311,10 +16311,10 @@ export const a12ThousandQuestions = [
     "prompt": "Harris's shift on Tuesday was due to begin at 9:15 a.m. However, a delivery is arriving later than expected, so the manager has asked Harris to start at 11:15 a.m. instead. The shift is still the same length. On arrival, Harris should first count the boxes in the storeroom.\n\nWhat should the employee do first on arrival?",
     "options": [
       "count the boxes in the storeroom",
-      "label the fresh bread",
-      "prepare the training materials",
-      "review the customer's order",
-      "check the new booking system"
+      "wait for the delivery at the entrance",
+      "put the new boxes on the shelves",
+      "check the time of the next delivery",
+      "prepare a list of the items to order"
     ],
     "correct": 0,
     "explanation": "Metinde bu sorunun cevabı açıkça \"count the boxes in the storeroom\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."
@@ -16990,11 +16990,11 @@ export const a12ThousandQuestions = [
     "topic": "Paragraph",
     "prompt": "Sebastian's shift on Wednesday was due to begin at 1:50 p.m. However, the computer system is being updated, so the manager has asked Sebastian to start at 3:50 p.m. instead. The shift is still the same length. On arrival, Sebastian should first check the new booking system.\n\nWhat should the employee do first on arrival?",
     "options": [
-      "check the food supplies",
-      "prepare the reception desk",
-      "label the fresh bread",
+      "update the computer system himself",
+      "contact customers about the new bookings",
+      "prepare a list of all cancelled appointments",
       "check the new booking system",
-      "prepare the training materials"
+      "check the manager's work schedule"
     ],
     "correct": 3,
     "explanation": "Metinde bu sorunun cevabı açıkça \"check the new booking system\" olarak belirtilmiştir. Diğer seçenekler bu metindeki bilgiyle eşleşmez."

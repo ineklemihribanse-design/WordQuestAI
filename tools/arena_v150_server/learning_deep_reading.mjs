@@ -6407,10 +6407,10 @@ export const deepReadingQuestions = [
     "prompt": "A research team examined whether remote consultations reduced patients' travel expenses. Average savings were substantial, but the team noticed that some patients needed additional in-person examinations after their remote appointments. For those patients, total travel costs sometimes exceeded the costs of a conventional consultation. The authors recommended considering the entire sequence of care.\n\nWhich conclusion is supported?",
     "options": [
       "Savings at one stage do not guarantee savings across the whole process.",
-      "Remote consultations inevitably increase costs.",
-      "Conventional consultations always require fewer journeys.",
-      "Average travel savings were absent.",
-      "Follow-up examinations are unnecessary after remote care."
+      "Remote consultations generally increase the total travel expenses incurred by all patients.",
+      "A conventional consultation always involves more travel than a remote appointment and its follow-up.",
+      "Average savings were negligible even when only the first consultation was considered.",
+      "The number of follow-up examinations has no bearing on total patient travel expenses."
     ],
     "correct": 0,
     "explanation": "Tek aşamadaki tasarruf tüm süreçte tasarrufu garanti etmez."
