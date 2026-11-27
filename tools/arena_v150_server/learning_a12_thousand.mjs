@@ -7383,7 +7383,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The head teacher made an ____ over the school loudspeaker.",
+    "prompt": "The head teacher made an ____ over the school loudspeaker to tell everyone that classes would finish early.",
     "options": [
       "message",
       "reply",
@@ -7392,7 +7392,7 @@ export const a12ThousandQuestions = [
       "announcement"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: announcement. İletişim türü, gönderilme amacı ve muhatabına göre seçilir."
+    "explanation": "Doğru seçenek: announcement. Okulun hoparlöründen herkese derslerin erken biteceğini bildiren sözlü duyuru announcement olarak adlandırılır."
   },
   {
     "id": "wq150_a12_1000_0436",
@@ -7468,7 +7468,7 @@ export const a12ThousandQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The captain made a public ____ to all passengers before landing.",
+    "prompt": "Before landing, the captain made a public ____ to inform all passengers of the arrival time.",
     "options": [
       "message",
       "reply",
@@ -7477,7 +7477,7 @@ export const a12ThousandQuestions = [
       "announcement"
     ],
     "correct": 4,
-    "explanation": "Doğru seçenek: announcement. İletişim türü, gönderilme amacı ve muhatabına göre seçilir."
+    "explanation": "Doğru seçenek: announcement. Yolculara varış saatini topluca bildiren sözlü duyuru announcement olarak adlandırılır."
   },
   {
     "id": "wq150_a12_1000_0441",
