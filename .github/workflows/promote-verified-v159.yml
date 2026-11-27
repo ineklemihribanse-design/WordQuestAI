@@ -16,13 +16,13 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == 'e87f22d1bac6495aa1b0cc3bdc5c23ed71027d1e'))
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == '2d7306b451595ddc1041991cc2c3bf781034b120'))
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
       GH_TOKEN: ${{ github.token }}
-      VERIFIED_RUN: '46083782096'
-      VERIFIED_SHA: e87f22d1bac6495aa1b0cc3bdc5c23ed71027d1e
+      VERIFIED_RUN: '46083869001'
+      VERIFIED_SHA: 2d7306b451595ddc1041991cc2c3bf781034b120
       BASE_SHA: 3ec9e3dd3f4fbe8adb791d123f87cd4c7f9f45f82903c29819e5df0ca6aaab64
     steps:
       - name: Await only the pinned build outcome
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: WordQuestAI-v1.0.159-verified-release
-          run-id: 46083782096
+          run-id: 46083869001
           github-token: ${{ github.token }}
           path: ${{ runner.temp }}/verified
       - name: Verify bytes and publish approved package without rebuilding
