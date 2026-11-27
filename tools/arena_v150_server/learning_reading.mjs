@@ -176,7 +176,7 @@ export const readingQuestions = [
     "topic": "Paragraph",
     "prompt": "A hospital introduced electronic reminders for outpatient appointments. Missed appointments decreased among patients who regularly used mobile phones. However, the decline was much smaller among patients who rarely used digital devices.\n\nWhich conclusion is most consistent with the passage?",
     "options": [
-      "The benefit of electronic reminders may depend on patients' access to digital tools.",
+      "The benefit of electronic reminders may vary with patients' patterns of digital device use.",
       "All patients benefited equally from the reminders.",
       "The hospital abolished outpatient appointments.",
       "Mobile phones increased missed appointments in every group.",
@@ -364,10 +364,10 @@ export const readingQuestions = [
     "prompt": "A study assessed the impact of a mentoring programme by comparing volunteers with non-volunteers. Participants improved more than the comparison group, but volunteers had reported stronger motivation before the programme began. The researchers cautioned against attributing the entire difference to mentoring.\n\nWhich further investigation would most directly address this concern?",
     "options": [
       "Assigning eligible participants to groups at random before the intervention.",
-      "Match volunteers and non-volunteers by age alone.",
-      "Compare the outcomes of volunteers attending different numbers of sessions.",
-      "Increase the sample size without changing how participants enter each group.",
-      "Measure participants' satisfaction with their mentors after the programme."
+      "Matching volunteers and non-volunteers by age alone.",
+      "Comparing the outcomes of volunteers attending different numbers of sessions.",
+      "Increasing the sample size without changing how participants enter each group.",
+      "Measuring participants' satisfaction with their mentors after the programme."
     ],
     "correct": 0,
     "explanation": "Rastgele atama başlangıçtaki sistematik grup farklarını azaltır.",
@@ -551,10 +551,10 @@ export const readingQuestions = [
     "prompt": "A policy reduced demand for a scarce resource in one sector. Over time, the lower demand reduced its market price, making the resource more attractive to other sectors. Aggregate consumption fell by less than the initial sector-specific reduction suggested.\n\nWhat explains the difference between sectoral and aggregate outcomes?",
     "options": [
       "Price-induced demand elsewhere offset part of the initial reduction.",
-      "The policy caused no reduction in the targeted sector.",
-      "All sectors were prohibited from buying the resource.",
-      "The resource price rose without affecting demand.",
-      "Aggregate consumption was identical to sectoral consumption."
+      "The targeted sector resumed its previous consumption as the resource became cheaper.",
+      "A decrease in supply offset the fall in demand by raising the market price.",
+      "The policy shifted consumption between firms within the targeted sector without affecting other sectors.",
+      "The lower resource price led other sectors to reduce consumption further."
     ],
     "correct": 0,
     "explanation": "Fiyat düşüşünün başka sektörlerde talebi artırması başlangıçtaki kazancın bir bölümünü dengeler.",
@@ -568,10 +568,10 @@ export const readingQuestions = [
     "prompt": "A policy reduced demand for a scarce resource in one sector. Over time, the lower demand reduced its market price, making the resource more attractive to other sectors. Aggregate consumption fell by less than the initial sector-specific reduction suggested.\n\nWhat caution is implied for policy evaluation?",
     "options": [
       "System-wide behavioural responses should be considered, not merely direct local effects.",
-      "Direct effects are always identical to total effects.",
-      "Market prices are irrelevant to resource use.",
-      "Only the first day's data should be considered.",
-      "Other sectors must be assumed to have no demand."
+      "Changes within the targeted sector should be treated as a reliable estimate of aggregate savings.",
+      "Market responses should be assessed primarily as changes in revenue rather than resource use.",
+      "Indirect effects should be counted only when they occur in the sector subject to the policy.",
+      "Changes in resource prices should be treated as evidence of lower consumption across all sectors."
     ],
     "correct": 0,
     "explanation": "Toplam sonuç değerlendirilirken dolaylı sistem etkileri de hesaba katılmalıdır.",
@@ -585,10 +585,10 @@ export const readingQuestions = [
     "prompt": "A review combined studies that used the same diagnostic label but operationalised it through different measurement instruments. The pooled estimate appeared precise, yet the reviewers questioned whether the individual studies were measuring sufficiently comparable constructs.\n\nWhat concern does the review raise?",
     "options": [
       "Numerical precision does not resolve differences in what studies actually measure.",
-      "Identical diagnostic labels guarantee identical measurement constructs.",
-      "Pooling data automatically eliminates conceptual differences.",
-      "Precision is impossible whenever studies have different sample sizes.",
-      "The studies never employed measurement instruments."
+      "Measurement differences are problematic primarily because they make pooled estimates less precise.",
+      "A shared diagnostic label makes conceptual differences less important than sampling uncertainty.",
+      "The principal obstacle to pooling is variation in sample sizes rather than the choice of instruments.",
+      "A precise pooled result establishes comparability even when individual instruments differ."
     ],
     "correct": 0,
     "explanation": "Dar belirsizlik aralığı ölçülen yapıların eşdeğerliğini garanti etmez.",
@@ -602,10 +602,10 @@ export const readingQuestions = [
     "prompt": "A review combined studies that used the same diagnostic label but operationalised it through different measurement instruments. The pooled estimate appeared precise, yet the reviewers questioned whether the individual studies were measuring sufficiently comparable constructs.\n\nWhich action best addresses the concern before interpreting the pooled result?",
     "options": [
       "Examine the conceptual and measurement equivalence of the instruments.",
-      "Increase the number of decimal places in the estimate.",
-      "Remove all documentation of the measurement instruments.",
-      "Assume that identical labels establish comparability.",
-      "Combine additional incompatible constructs without scrutiny."
+      "Weight studies according to sample size without examining what their instruments measure.",
+      "Restrict the analysis to studies with narrow confidence intervals regardless of the instruments used.",
+      "Assess whether the diagnostic labels are identical without comparing their operational definitions.",
+      "Standardise the numerical scales while assuming that their underlying constructs are equivalent."
     ],
     "correct": 0,
     "explanation": "Ölçme araçlarının kavramsal ve ölçümsel eşdeğerliği incelenmelidir.",
@@ -619,10 +619,10 @@ export const readingQuestions = [
     "prompt": "A city assessed a flood-prevention scheme using historical rainfall records. Recent rainfall, however, showed patterns that differed markedly from those records. Engineers argued that an apparently conservative design might still be inadequate if the underlying distribution of extreme events had changed.\n\nWhat assumption is being challenged?",
     "options": [
       "That historical event distributions adequately represent future risks.",
-      "That flood-prevention schemes require engineering expertise.",
-      "That rainfall can be recorded historically.",
-      "That conservative designs use any data.",
-      "That extreme weather never occurred in the past."
+      "That recent rainfall observations are necessarily more precise than historical measurements.",
+      "That a conservative design must use the most recent records to estimate construction costs.",
+      "That engineering uncertainty arises mainly from the length of the historical record.",
+      "That the adequacy of a flood-prevention scheme depends primarily on average annual rainfall."
     ],
     "correct": 0,
     "explanation": "Geçmiş olay dağılımının gelecekteki riski temsil ettiği varsayımı sorgulanıyor.",
@@ -670,10 +670,10 @@ export const readingQuestions = [
     "prompt": "An institution introduced a performance indicator intended to reward quality. Staff gradually adapted their work to maximise the indicator, sometimes at the expense of tasks that were harder to quantify. The reported performance rose, while independent assessments were less favourable.\n\nWhat does the contrast between the two assessments suggest?",
     "options": [
       "The indicator alone may give an incomplete picture of actual quality.",
-      "The independent assessments confirmed every reported gain.",
-      "Actual quality necessarily improved to the same extent as the indicator.",
-      "Staff had no opportunity to adapt their work.",
-      "The performance indicator had never been introduced."
+      "The independent assessments suggest that reported gains underestimated improvements in actual quality.",
+      "The indicator captures quality accurately but responds too slowly to changes in staff behaviour.",
+      "The discrepancy is best explained by a change in the scale used for independent assessments.",
+      "The rise in reported performance establishes that neglected tasks became less important to the institution."
     ],
     "correct": 0,
     "explanation": "Bağımsız değerlendirmelerin daha olumsuz olması tek göstergenin kaliteyi tam yansıtmayabileceğini gösterir.",
