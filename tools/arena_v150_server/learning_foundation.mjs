@@ -5,7 +5,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "I ____ from Turkey.",
+    "prompt": "I ____ from Türkiye.",
     "options": [
       "am",
       "is",
@@ -22,7 +22,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "I ____ ready for class.",
+    "prompt": "I ____ ready for class now.",
     "options": [
       "am",
       "is",
@@ -39,7 +39,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The cat ____ under the table.",
+    "prompt": "Look! The cat ____ under the table.",
     "options": [
       "is",
       "am",
@@ -107,7 +107,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "My sister ____ two pencils.",
+    "prompt": "My sister ____ two pencils in her bag right now.",
     "options": [
       "has",
       "have",
@@ -124,7 +124,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The house ____ a small garden.",
+    "prompt": "The house ____ a small garden at present.",
     "options": [
       "has",
       "have",
@@ -345,7 +345,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The children are playing with ____ toys.",
+    "prompt": "The toys belong to the children. They are playing with ____ toys.",
     "options": [
       "their",
       "my",
@@ -354,7 +354,7 @@ export const foundationQuestions = [
       "its"
     ],
     "correct": 0,
-    "explanation": "Çoğul üçüncü kişi iyelik sıfatı their olur."
+    "explanation": "Oyuncaklar çocuklara ait olduğundan çoğul iyelik sıfatı their kullanılır."
   },
   {
     "id": "wq150_foundation_11_2",
@@ -362,7 +362,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The twins share ____ room.",
+    "prompt": "The twins have one room of their own. They share ____ room.",
     "options": [
       "their",
       "my",
@@ -371,7 +371,7 @@ export const foundationQuestions = [
       "its"
     ],
     "correct": 0,
-    "explanation": "Çoğul üçüncü kişi iyelik sıfatı their olur."
+    "explanation": "Oda ikizlere aittir; their çoğul iyelik sıfatıdır."
   },
   {
     "id": "wq150_foundation_12_1",
@@ -379,7 +379,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Anna is wearing ____ new coat.",
+    "prompt": "The new coat belongs to Anna. She is wearing ____ coat.",
     "options": [
       "her",
       "his",
@@ -388,7 +388,7 @@ export const foundationQuestions = [
       "my"
     ],
     "correct": 0,
-    "explanation": "Kadın veya kız üçüncü kişi iyelik sıfatı her olur."
+    "explanation": "Mont Anna'ya ait olduğundan her kullanılır."
   },
   {
     "id": "wq150_foundation_12_2",
@@ -396,7 +396,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The girl is looking for ____ bag.",
+    "prompt": "The bag belongs to the girl. She is looking for ____ bag.",
     "options": [
       "her",
       "his",
@@ -405,7 +405,7 @@ export const foundationQuestions = [
       "my"
     ],
     "correct": 0,
-    "explanation": "Kadın veya kız üçüncü kişi iyelik sıfatı her olur."
+    "explanation": "Çanta kıza ait olduğundan her kullanılır."
   },
   {
     "id": "wq150_foundation_13_1",
@@ -413,7 +413,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "Tom is washing ____ car.",
+    "prompt": "The car belongs to Tom. He is washing ____ car.",
     "options": [
       "his",
       "her",
@@ -422,7 +422,7 @@ export const foundationQuestions = [
       "my"
     ],
     "correct": 0,
-    "explanation": "Erkek üçüncü kişi iyelik sıfatı his olur."
+    "explanation": "Araba Tom'a ait olduğundan his kullanılır."
   },
   {
     "id": "wq150_foundation_13_2",
@@ -430,7 +430,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The boy is reading ____ book.",
+    "prompt": "The book belongs to the boy. He is reading ____ book.",
     "options": [
       "his",
       "her",
@@ -439,7 +439,7 @@ export const foundationQuestions = [
       "my"
     ],
     "correct": 0,
-    "explanation": "Erkek üçüncü kişi iyelik sıfatı his olur."
+    "explanation": "Kitap erkek çocuğa ait olduğundan his kullanılır."
   },
   {
     "id": "wq150_foundation_14_1",
@@ -515,7 +515,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "The lesson starts ____ nine o'clock.",
+    "prompt": "The lesson begins ____ nine o'clock sharp.",
     "options": [
       "at",
       "on",
@@ -532,7 +532,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "We eat dinner ____ six thirty.",
+    "prompt": "We eat dinner ____ exactly six thirty.",
     "options": [
       "at",
       "on",
@@ -974,7 +974,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "After running without drinking, I feel ____.",
+    "prompt": "After running without drinking, I really want some water. I feel ____.",
     "options": [
       "thirsty",
       "hungry",
@@ -1042,7 +1042,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The glass contains no water. It is ____.",
+    "prompt": "There is nothing at all in the glass. It is ____.",
     "options": [
       "empty",
       "full",
@@ -1059,7 +1059,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Ice is very ____.",
+    "prompt": "Ice feels ____ to the touch, not warm.",
     "options": [
       "cold",
       "hot",
@@ -1573,7 +1573,7 @@ export const foundationQuestions = [
     "options": [
       "to visit",
       "visiting to",
-      "visit yesterday",
+      "visit",
       "visits",
       "visited"
     ],
@@ -1590,7 +1590,7 @@ export const foundationQuestions = [
     "options": [
       "to visit",
       "visiting to",
-      "visit yesterday",
+      "visit",
       "visits",
       "visited"
     ],
@@ -1705,7 +1705,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Connectors",
-    "prompt": "I stayed home ____ I was ill.",
+    "prompt": "My illness was the reason I stayed home. I stayed home ____ I was ill.",
     "options": [
       "because",
       "although",
@@ -1722,7 +1722,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Connectors",
-    "prompt": "She wore a coat ____ it was cold.",
+    "prompt": "The cold weather was the reason she wore a coat. She wore it ____ it was cold.",
     "options": [
       "because",
       "although",
@@ -1943,7 +1943,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Phrasals",
-    "prompt": "Please ____ your wet shoes at the door.",
+    "prompt": "Please ____ your wet shoes before walking on the carpet in your socks.",
     "options": [
       "take off",
       "put on",
@@ -2011,7 +2011,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "The cashier gave me a ____ as proof of payment.",
+    "prompt": "The cashier gave me a printed ____ showing the price and confirming that I had paid.",
     "options": [
       "receipt",
       "recipe",
@@ -2198,7 +2198,7 @@ export const foundationQuestions = [
     "level": "A2",
     "yds": null,
     "topic": "Vocabulary",
-    "prompt": "Can you ____ this broken chair?",
+    "prompt": "Can you ____ this broken chair so we can sit on it again?",
     "options": [
       "repair",
       "destroy",
@@ -2793,7 +2793,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "____ the journey was long, everyone enjoyed it.",
+    "prompt": "Everyone expected the long journey to be unpleasant. ____ it was long, everyone enjoyed it.",
     "options": [
       "although",
       "because",
@@ -2810,7 +2810,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "____ the room was small, it was comfortable.",
+    "prompt": "We expected the small room to be uncomfortable. ____ the room was small, it was comfortable.",
     "options": [
       "although",
       "because",
@@ -3906,7 +3906,7 @@ export const foundationQuestions = [
     "level": "A1",
     "yds": null,
     "topic": "Grammar",
-    "prompt": "This is Anna. ____ bag is green.",
+    "prompt": "This green bag belongs to Anna. ____ bag is green.",
     "options": [
       "Her",
       "His",
@@ -3915,7 +3915,7 @@ export const foundationQuestions = [
       "Its"
     ],
     "correct": 0,
-    "explanation": "Anna'nın çantası için her iyelik sıfatı kullanılır."
+    "explanation": "Çanta Anna'ya aittir; cümle başında Her kullanılır."
   },
   {
     "id": "wq150_nov26_foundation4_27",
@@ -4182,9 +4182,9 @@ export const foundationQuestions = [
     "options": [
       "since",
       "for",
-      "during of",
-      "until of",
-      "by of"
+      "during",
+      "until",
+      "by"
     ],
     "correct": 0,
     "explanation": "Başlangıç yılı için since kullanılır."
@@ -4325,13 +4325,13 @@ export const foundationQuestions = [
     "prompt": "You ____ bring your own towel; the hotel provides one.",
     "options": [
       "don't have to",
-      "must",
-      "should always",
-      "need to",
+      "mustn't",
+      "cannot",
+      "aren't allowed to",
       "have to"
     ],
     "correct": 0,
-    "explanation": "Zorunluluk olmadığını don't have to anlatır."
+    "explanation": "Don't have to zorunluluğun olmadığını ifade eder. Havlu getirmek yasak değildir; otel zaten havlu sağlar."
   },
   {
     "id": "wq150_nov26_foundation4_53",
@@ -4978,7 +4978,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The computer needs ____ before we can use it again.",
+    "prompt": "The computer needs ____ by a technician before we can use it again.",
     "options": [
       "repairing",
       "repair",
@@ -5170,16 +5170,16 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "____ being tired, she finished the report before leaving.",
+    "prompt": "____ being tired, she finished the report before leaving, contrary to everyone's expectations.",
     "options": [
       "Despite",
-      "Because",
+      "Instead of",
       "Although",
       "Unless",
       "So that"
     ],
     "correct": 0,
-    "explanation": "Despite ardından -ing veya isim gelir ve karşıtlık bildirir."
+    "explanation": "Despite + isim veya -ing yapısı beklenmedik bir karşıtlığı ifade eder: yorgun olmasına rağmen."
   },
   {
     "id": "wq150_nov26_foundation4_106",
@@ -5250,7 +5250,7 @@ export const foundationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "____ the course was challenging, most students completed it successfully.",
+    "prompt": "____ the course was challenging, most students completed it successfully, contrary to expectations.",
     "options": [
       "Although",
       "Because of",
@@ -5669,13 +5669,13 @@ export const foundationQuestions = [
     "prompt": "The trial was conducted under controlled conditions; ____, its findings may not apply to everyday settings.",
     "options": [
       "therefore",
-      "however much",
+      "nevertheless",
       "otherwise",
       "for instance",
       "similarly"
     ],
     "correct": 0,
-    "explanation": "Kontrollü koşullar genellenebilirliğin sınırlı olmasının nedenidir."
+    "explanation": "Therefore sonuç bildirir: kontrollü deney koşulları, bulguların gündelik koşullara genellenmesini sınırlayabilir."
   },
   {
     "id": "wq150_nov26_foundation4_137",
