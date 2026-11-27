@@ -13,7 +13,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "PLENTIFUL",
-    "meaning": "bol miktarda"
+    "meaning": "bol miktarda bulunan"
   },
   {
     "level": "B1",
@@ -381,7 +381,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "LOGICAL",
-    "meaning": "mantıksal bütünlüğe sahip"
+    "meaning": "mantıklı; mantığa uygun"
   },
   {
     "level": "B2",
@@ -397,7 +397,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "CONSISTENT",
-    "meaning": "uyumlu"
+    "meaning": "tutarlı"
   },
   {
     "level": "B2",
@@ -621,7 +621,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "Akademik İngilizce",
     "answer": "LENIENT",
-    "meaning": "hoşgörülü ve gevşek"
+    "meaning": "ceza veya kuralları uygulamada yumuşak davranan"
   },
   {
     "level": "B2",
@@ -685,7 +685,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "WORSEN",
-    "meaning": "kötüye gitmek"
+    "meaning": "kötüleşmek; kötüleştirmek"
   },
   {
     "level": "B2",
@@ -693,7 +693,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "IMPROVE",
-    "meaning": "iyileşmek"
+    "meaning": "iyileşmek; iyileştirmek"
   },
   {
     "level": "B2",
@@ -701,7 +701,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "Akademik İngilizce",
     "answer": "ASSIST",
-    "meaning": "kolaylaşmasına yardımcı olmak"
+    "meaning": "yardım etmek; destek olmak"
   },
   {
     "level": "B2",
@@ -909,7 +909,7 @@ export const lexicalRelationWords = [
     "wordType": "Sıfatlar",
     "category": "İleri Akademik İngilizce",
     "answer": "SCRUPULOUS",
-    "meaning": "son derece dikkatli"
+    "meaning": "son derece titiz ve ilkelerine bağlı"
   },
   {
     "level": "C1",
@@ -997,7 +997,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "IMPROVE",
-    "meaning": "iyileştirmek"
+    "meaning": "iyileşmek; iyileştirmek"
   },
   {
     "level": "C1",
@@ -1013,7 +1013,7 @@ export const lexicalRelationWords = [
     "wordType": "Fiiller",
     "category": "İleri Akademik İngilizce",
     "answer": "CLARIFY",
-    "meaning": "açıklamak"
+    "meaning": "açıklığa kavuşturmak"
   },
   {
     "level": "C1",
