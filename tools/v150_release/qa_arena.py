@@ -64,8 +64,26 @@ def viewport(name,w,h,density,wide):
     tap(get("Tek Başına Oyna"));get("Klasik Bulmaca");get("Engelli Parkur");capture(name+"-solo")
     assert not any("takım oyunu" in label(n) for n in nodes())
     tap(get("Klasik Bulmaca"));get("Maç Ayarları")
-    levels=[bounds(get(t)) for t in ("A1","A2","B1","B2","C1","C2")]
+    # Match actual labels, not the same text in the sticky match summary.
+    level_names=("A1","A2","B1","B2","C1","C2")
+    def exact_levels():
+        ns=nodes()
+        result=[]
+        for token in level_names:
+            matches=[n for n in ns if n.get("text","").strip()==token]
+            assert len(matches)==1,(token,len(matches))
+            result.append(matches[0])
+        return result
+    buttons=exact_levels()
+    levels=[bounds(n) for n in buttons]
     assert max(a[1] for a in levels)-min(a[1] for a in levels)<=8,levels
+    assert all(a[0]<b[0] for a,b in zip(levels,levels[1:])),levels
+    tap(buttons[1])
+    time.sleep(0.6)
+    assert any("a1 + a2" in label(n) for n in nodes()),"A2 selection missing from match summary"
+    tap(exact_levels()[1])
+    time.sleep(0.6)
+    assert not any("a1 + a2" in label(n) for n in nodes()),"A2 deselection missing from match summary"
     get("Maçı Başlat");capture(name+"-settings")
     adb("shell","input","keyevent","KEYCODE_BACK");get("Klasik Bulmaca")
     print("PASS: Arena mode tabs, footer, single-row levels and solo settings",name,flush=True)
