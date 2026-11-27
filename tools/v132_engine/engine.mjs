@@ -69,13 +69,23 @@ export function quizGlossKeys(meaning){
  const clean=String(meaning).replace(/\([^)]*\)/g," ");
  return [...new Set([glossKey(clean),...clean.split(/[,;/]/).map(x=>glossKey(x.replace(/^\s*(isim|fiil|sıfat|zarf|edat|bağlaç)\s*:\s*/i,"")))].filter(Boolean))];
 }
-export function quiz(records,input,seed,trustedServer=false) {
+export function quiz(records,input,seed,trustedServer=false,senseRecords=records) {
   const s=normalizeSettings(input,trustedServer);if(s.mode!=="quiz")throw new Error("Quiz modu gerekli");
-  const targets=mixedPool(records,s,seed,trustedServer),rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
+  // selectBank rejects duplicate prompts. Retry only quiz target selection
+  // deterministically; crossword placement and existing seed behavior are untouched.
+  let targets;
+  for(let attempt=0;attempt<32;attempt++){
+    const candidate=mixedPool(records,s,attempt===0?seed:(Number(seed)+attempt*7919)>>>0,trustedServer);
+    const prompts=new Set(candidate.map(w=>w.meaning.trim().toLowerCase()));
+    const answers=new Set(candidate.map(w=>quizSpellingKey(w.answer)));
+    if(prompts.size===candidate.length&&answers.size===candidate.length){targets=candidate;break;}
+  }
+  if(!targets)throw new Error("Seçilen havuzda yeterli farklı soru ve cevap yok");
+  const rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
   const candidates=records.filter(w=>w&&s.levels.includes(w.level)&&typeof w.answer==="string"&&w.answer.trim()&&typeof w.meaning==="string").sort((a,b)=>{const x=JSON.stringify([a.answer,a.meaning]),y=JSON.stringify([b.answer,b.meaning]);return x<y?-1:x>y?1:0});
   const glossesByAnswer=new Map();
   // Use every available sense, even if a word's other sense lies outside the selected level.
-  for(const w of records){
+  for(const w of [...records,...(senseRecords===records?[]:senseRecords)]){
     if(!w||typeof w.answer!=="string"||typeof w.meaning!=="string")continue;
     const k=quizSpellingKey(w.answer);if(!glossesByAnswer.has(k))glossesByAnswer.set(k,new Set());
     for(const g of quizGlossKeys(w.meaning))glossesByAnswer.get(k).add(g);
