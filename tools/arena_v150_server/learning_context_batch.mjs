@@ -6300,11 +6300,11 @@ export const contextQuestions = [
       "improve",
       "increase",
       "expand",
-      "extend",
+      "withdraw",
       "restore"
     ],
     "correct": 2,
-    "explanation": "expand: genişletmek. Diğer seçenekler: improve: iyileştirmek; increase: artırmak; extend: uzatmak; restore: eski haline getirmek."
+    "explanation": "Expand into new markets yeni pazarlara girerek faaliyet alanını genişletmek demektir. Withdraw geri çekilmek, improve iyileştirmek, increase artırmak ve restore eski hâline getirmektir."
   },
   {
     "id": "wq150_nov26_lex15_33_4",
