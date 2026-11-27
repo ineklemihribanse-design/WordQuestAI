@@ -2062,7 +2062,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "When I reached the office yesterday evening, everyone ____.",
+    "prompt": "When I reached the office yesterday evening, everyone ____; the building was already empty.",
     "options": [
       "had left",
       "leaves",
@@ -2071,7 +2071,7 @@ export const contextQuestions = [
       "has left"
     ],
     "correct": 0,
-    "explanation": "By the time veya when ile belirtilen geçmiş olaydan önce tamamlanan eylem past perfect ile verilir."
+    "explanation": "Had left geçmişteki varış anından önce tamamlanan ayrılma eylemini bildirir."
   },
   {
     "id": "wq150_context_62_1",
@@ -2249,7 +2249,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The laboratory has been closed ____ last Friday.",
+    "prompt": "The laboratory has been closed ____ last Friday and remains closed today.",
     "options": [
       "since",
       "for",
@@ -2258,7 +2258,7 @@ export const contextQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Since bir eylemin başladığı geçmiş zaman noktasını gösterir."
+    "explanation": "Since, geçmişteki başlangıç noktasından bugüne devam eden durumu bildirir."
   },
   {
     "id": "wq150_context_67_2",
@@ -2266,7 +2266,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Grammar",
-    "prompt": "The two teams have worked together ____ 2019.",
+    "prompt": "The two teams have worked together ____ 2019 and continue to collaborate today.",
     "options": [
       "since",
       "for",
@@ -2275,7 +2275,7 @@ export const contextQuestions = [
       "by"
     ],
     "correct": 0,
-    "explanation": "Since bir eylemin başladığı geçmiş zaman noktasını gösterir."
+    "explanation": "Since + yıl, geçmişte başlayan ve bugüne uzanan süreci ifade eder."
   },
   {
     "id": "wq150_context_68_1",
@@ -2541,13 +2541,13 @@ export const contextQuestions = [
     "prompt": "The team is committed ____ the long-term performance of the system.",
     "options": [
       "to measuring",
-      "to measure",
+      "to measured",
       "measure",
       "measured",
       "measures"
     ],
     "correct": 0,
-    "explanation": "Devote time to ve be committed to kalıplarında to edattır ve ardından gerund gelir."
+    "explanation": "Be committed to + -ing bağlılık ve kararlılık ifade eder. Committed to measure da bazı taahhüt bağlamlarında mümkün olduğundan seçenekten çıkarılmıştır."
   },
   {
     "id": "wq150_context_76_1",
@@ -2666,7 +2666,7 @@ export const contextQuestions = [
       "was making the announcement"
     ],
     "correct": 0,
-    "explanation": "No sooner...than ve hardly...when başta olduğunda past perfect devrikliği kullanılır."
+    "explanation": "No sooner başa geldiğinde yardımcı fiil özneden önce gelir. Had + özne + been + V3, burada ilk edilgen geçmiş olayı belirtir; than ikinci olayı bağlar."
   },
   {
     "id": "wq150_context_79_2",
@@ -2683,7 +2683,7 @@ export const contextQuestions = [
       "was making the announcement"
     ],
     "correct": 0,
-    "explanation": "No sooner...than ve hardly...when başta olduğunda past perfect devrikliği kullanılır."
+    "explanation": "Hardly başa geldiğinde yardımcı fiil özneden önce gelir. Had + özne + been + V3 ilk edilgen geçmiş olayı, when ikinci olayı bağlar."
   },
   {
     "id": "wq150_context_80_1",
@@ -2725,7 +2725,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "You will not receive a certificate ____ you complete the course.",
+    "prompt": "A completed course is required for certification. You will not receive a certificate ____ you complete the course.",
     "options": [
       "unless",
       "because",
@@ -2734,7 +2734,7 @@ export const contextQuestions = [
       "whereas"
     ],
     "correct": 0,
-    "explanation": "Unless gerçekleşmesi gereken olumsuz koşulu bildirir."
+    "explanation": "Unless, if not anlamındadır: kurs tamamlanmazsa sertifika verilmez."
   },
   {
     "id": "wq150_context_81_2",
@@ -2742,7 +2742,7 @@ export const contextQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Connectors",
-    "prompt": "The plants will not survive ____ they receive enough water.",
+    "prompt": "These plants cannot survive without adequate water. They will not survive ____ they receive enough water.",
     "options": [
       "unless",
       "because",
@@ -2751,7 +2751,7 @@ export const contextQuestions = [
       "whereas"
     ],
     "correct": 0,
-    "explanation": "Unless gerçekleşmesi gereken olumsuz koşulu bildirir."
+    "explanation": "Unless olumsuz koşul bildirir; yeterli su almazlarsa bitkiler yaşayamaz."
   },
   {
     "id": "wq150_context_82_1",
@@ -2827,7 +2827,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The equipment may be borrowed ____ it is returned before Friday.",
+    "prompt": "The equipment may be borrowed ____ the borrower agrees to return it before Friday; otherwise the loan will be refused.",
     "options": [
       "provided that",
       "even though",
@@ -2836,7 +2836,7 @@ export const contextQuestions = [
       "rather than"
     ],
     "correct": 0,
-    "explanation": "Provided that bir eylemin gerçekleşmesi için gereken koşulu bildirir."
+    "explanation": "Provided that, ödünç alma izninin bağlı olduğu koşulu bildirir."
   },
   {
     "id": "wq150_context_84_2",
@@ -2844,7 +2844,7 @@ export const contextQuestions = [
     "level": "B2",
     "yds": "medium",
     "topic": "Connectors",
-    "prompt": "The project can proceed ____ sufficient funding is secured.",
+    "prompt": "The project can proceed ____ sufficient funding is secured; without funding, work cannot begin.",
     "options": [
       "provided that",
       "even though",
@@ -2853,7 +2853,7 @@ export const contextQuestions = [
       "rather than"
     ],
     "correct": 0,
-    "explanation": "Provided that bir eylemin gerçekleşmesi için gereken koşulu bildirir."
+    "explanation": "Provided that, bir sonucun gerçekleşebilmesi için belirtilen şartı ifade eder."
   },
   {
     "id": "wq150_context_85_1",
