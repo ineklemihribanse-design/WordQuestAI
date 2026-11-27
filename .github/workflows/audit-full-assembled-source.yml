@@ -831,6 +831,9 @@ jobs:
           set -e
           echo "$code" > "$RUNNER_TEMP/wq-full-audit/lint-exit-code.txt"
           find app/build/reports -maxdepth 2 -type f -name 'lint-results*' -exec cp '{}' "$RUNNER_TEMP/wq-full-audit/" ';' || true
+          if [ "$code" -ne 0 ]; then
+            grep -nE -A 4 '^e:|Error:|^\* What went wrong:|^> Task .*FAILED' "$RUNNER_TEMP/wq-full-audit/android-lint.log" | head -n 120 || true
+          fi
           tail -n 50 "$RUNNER_TEMP/wq-full-audit/android-lint.log"
           exit "$code"
       - name: Run Arena v150 revealed-letter and draft regression tests

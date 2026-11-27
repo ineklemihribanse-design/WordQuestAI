@@ -68,10 +68,11 @@ ps=ps.replace(old_signature,new_signature,1).replace(old_image,new_image,1)
 # other portrait, selected custom ID, saved data and the underlying bitmap.
 needle='    val scale by animateFloatAsState('
 assert ps.count(needle)==1
-ps=ps.replace(needle,'''    val displayBitmap by produceState<android.graphics.Bitmap?>(bitmap,bitmap,imageAlignment) {
-        value=bitmap
+ps=ps.replace(needle,'''    val displayState=remember(bitmap,imageAlignment){mutableStateOf(bitmap)}
+    val displayBitmap by displayState
+    LaunchedEffect(bitmap,imageAlignment) {
         if(bitmap!=null && imageAlignment==Alignment.BottomCenter && bitmap.hasAlpha()){
-            value=kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Default){
+            displayState.value=kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Default){
                 runCatching{
                     val row=IntArray(bitmap.width)
                     var left=bitmap.width;var right=-1;var top=bitmap.height;var bottom=-1
