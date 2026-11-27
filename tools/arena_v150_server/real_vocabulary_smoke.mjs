@@ -1,6 +1,6 @@
 import {readFile,writeFile,stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog} from './vocabulary_bank.mjs';
+import {createVocabularyBank,loadVocabulary,vocabularyReport,vocabularyCatalog,vocabularyRejectionReason,crosswordEligible} from './vocabulary_bank.mjs';
 import assert from 'node:assert/strict';
 import {expandLearning} from './expand_learning.mjs';
 const input=process.argv[2],out=process.argv[3];
@@ -22,20 +22,17 @@ await writeFile(out+'/arena-learning-expanded.json',JSON.stringify(expanded));
 const distinct=rows=>new Set(rows.map(w=>String(w.answer).trim().toUpperCase())).size;
 // Explain every record omitted by the existing loader, without changing eligibility.
 const rejectionReasons={invalidLevel:0,emptyAnswerOrMeaning:0,unsupportedAnswer:0,duplicateCanonicalRecord:0};
-const canonical=x=>typeof x==='string'?x.trim().normalize('NFC'):'';
 let eligible=0;
 for(const w of expanded){
- if(!w||!['A1','A2','B1','B2','C1','C2'].includes(w.level)){rejectionReasons.invalidLevel++;continue;}
- const answer=canonical(w.answer),meaning=canonical(w.meaning);
- if(!answer||!meaning){rejectionReasons.emptyAnswerOrMeaning++;continue;}
- if(!/^[A-Za-z]{2,24}$/.test(answer)){rejectionReasons.unsupportedAnswer++;continue;}
+ const reason=vocabularyRejectionReason(w);
+ if(reason!==null){rejectionReasons[reason]++;continue;}
  eligible++;
 }
 rejectionReasons.duplicateCanonicalRecord=eligible-rows.length;
 assert.ok(rejectionReasons.duplicateCanonicalRecord>=0);
 assert.equal(Object.values(rejectionReasons).reduce((a,b)=>a+b,0),expanded.length-rows.length);
 console.log('VOCABULARY_REJECTION_AUDIT',JSON.stringify(rejectionReasons));
-const expansion={base:raw.length,expanded:expanded.length,net:expanded.length-raw.length,validatedRecords:rows.length,uniqueEnglishHeadwords:distinct(rows),uniqueOriginalHeadwords:distinct(loadVocabulary(raw)),byLevel:report.levels,yds:report.yds,rejectionReasons};
+const expansion={base:raw.length,expanded:expanded.length,net:expanded.length-raw.length,validatedRecords:rows.length,uniqueEnglishHeadwords:distinct(rows),quizOnlyRecords:rows.filter(w=>w.quizOnly===true).length,crosswordEligibleRecords:rows.filter(crosswordEligible).length,uniqueOriginalHeadwords:distinct(loadVocabulary(raw)),byLevel:report.levels,yds:report.yds,rejectionReasons};
 await writeFile(out+'/expanded-report.json',JSON.stringify(expansion,null,2)+'\n');
 console.log('LEARNING EXPANSION',JSON.stringify(expansion));
 console.log('PASS real shipped vocabulary',JSON.stringify(report));
