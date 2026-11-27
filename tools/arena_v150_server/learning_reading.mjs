@@ -347,10 +347,10 @@ export const readingQuestions = [
     "prompt": "A study assessed the impact of a mentoring programme by comparing volunteers with non-volunteers. Participants improved more than the comparison group, but volunteers had reported stronger motivation before the programme began. The researchers cautioned against attributing the entire difference to mentoring.\n\nWhat is the central methodological concern?",
     "options": [
       "Pre-existing differences may partly account for the observed improvement.",
-      "The programme participants received no mentoring.",
-      "The comparison group was more motivated initially.",
-      "The study proved that motivation was irrelevant.",
-      "The two groups had identical starting characteristics."
+      "Differences in the mentors' professional experience were not measured.",
+      "The effects of different programme durations were combined.",
+      "Participants were assessed using different outcome measures.",
+      "Changes in motivation during the programme were the only explanation considered."
     ],
     "correct": 0,
     "explanation": "Başlangıçtaki motivasyon farkı sonuca katkı sağlayan karıştırıcı etken olabilir.",
@@ -364,10 +364,10 @@ export const readingQuestions = [
     "prompt": "A study assessed the impact of a mentoring programme by comparing volunteers with non-volunteers. Participants improved more than the comparison group, but volunteers had reported stronger motivation before the programme began. The researchers cautioned against attributing the entire difference to mentoring.\n\nWhich further investigation would most directly address this concern?",
     "options": [
       "Assigning eligible participants to groups at random before the intervention.",
-      "Surveying only the volunteers after the programme.",
-      "Removing all baseline motivation measurements.",
-      "Reporting only the highest individual score.",
-      "Repeating the study without a comparison group."
+      "Match volunteers and non-volunteers by age alone.",
+      "Compare the outcomes of volunteers attending different numbers of sessions.",
+      "Increase the sample size without changing how participants enter each group.",
+      "Measure participants' satisfaction with their mentors after the programme."
     ],
     "correct": 0,
     "explanation": "Rastgele atama başlangıçtaki sistematik grup farklarını azaltır.",
@@ -381,10 +381,10 @@ export const readingQuestions = [
     "prompt": "A museum examined whether reducing gallery lighting would conserve delicate textiles. Lower lighting slowed measurable colour loss, but visitors reported difficulty distinguishing subtle details. Curators proposed alternating display periods with periods of dark storage.\n\nWhat tension does the passage highlight?",
     "options": [
       "Preserving fragile objects while maintaining the quality of public viewing.",
-      "Choosing between paintings and sculptures.",
-      "Reducing the number of museum staff.",
-      "Replacing all textiles with modern reproductions.",
-      "Measuring colour without any lighting."
+      "Balancing the accuracy of colour measurements against the time needed to collect them.",
+      "Maintaining consistent storage conditions across different types of textile.",
+      "Choosing between reducing light intensity and reducing the number of exhibits.",
+      "Allocating conservation resources between textiles already damaged and those still intact."
     ],
     "correct": 0,
     "explanation": "Eserlerin korunmasıyla ziyaretçi deneyimi arasında denge kurulmalıdır.",
@@ -398,10 +398,10 @@ export const readingQuestions = [
     "prompt": "A museum examined whether reducing gallery lighting would conserve delicate textiles. Lower lighting slowed measurable colour loss, but visitors reported difficulty distinguishing subtle details. Curators proposed alternating display periods with periods of dark storage.\n\nWhy did curators suggest alternating display and storage?",
     "options": [
       "To limit cumulative light exposure while still allowing public access.",
-      "To expose textiles to stronger light indefinitely.",
-      "To prevent visitors from ever seeing the objects.",
-      "To eliminate the need to measure deterioration.",
-      "To increase the weight of the textiles."
+      "To determine whether visitors prefer textiles that have already faded.",
+      "To ensure that all textiles are displayed at the same light intensity throughout the year.",
+      "To compare the appearance of textiles stored at different temperatures.",
+      "To assess whether the duration of each individual visit affects satisfaction."
     ],
     "correct": 0,
     "explanation": "Dönüşümlü sergileme toplam ışık maruziyetini sınırlandırırken erişimi sürdürür.",
@@ -415,10 +415,10 @@ export const readingQuestions = [
     "prompt": "An evaluation found that a new transport subsidy increased journeys on existing bus routes. However, it produced little change in remote districts where routes were infrequent. The authors argued that financial assistance should be considered alongside service availability.\n\nWhat is the main implication?",
     "options": [
       "Lower fares may have limited impact where transport services remain inadequate.",
-      "Remote districts already have the most frequent services.",
-      "The subsidy was equally effective in all locations.",
-      "Bus availability is unrelated to travel behaviour.",
-      "The subsidy caused existing bus routes to disappear."
+      "Fare subsidies primarily benefit areas where transport alternatives are absent.",
+      "The principal constraint on travel in remote districts is the price of the existing service.",
+      "A subsidy can be evaluated adequately by measuring overall bus journeys alone.",
+      "Service frequency is likely to matter only after fare subsidies are withdrawn."
     ],
     "correct": 0,
     "explanation": "Hizmet yetersizse mali destek tek başına sınırlı etki yaratabilir.",
@@ -432,10 +432,10 @@ export const readingQuestions = [
     "prompt": "An evaluation found that a new transport subsidy increased journeys on existing bus routes. However, it produced little change in remote districts where routes were infrequent. The authors argued that financial assistance should be considered alongside service availability.\n\nWhat policy approach is consistent with the authors' argument?",
     "options": [
       "Addressing both affordability and the frequency of services.",
-      "Reducing all existing bus services.",
-      "Assuming fare reductions alone will solve every access problem.",
-      "Removing buses from remote districts.",
-      "Restricting subsidies to people who never travel."
+      "Concentrating fare reductions on districts where services are already most frequent.",
+      "Expanding service frequency while ignoring the cost of travel for users.",
+      "Assessing access solely by the total number of journeys across the whole network.",
+      "Introducing a uniform fare reduction without examining local route availability."
     ],
     "correct": 0,
     "explanation": "Yazarlar mali erişilebilirliğin hizmet sunumuyla birlikte ele alınmasını savunuyor.",
@@ -449,10 +449,10 @@ export const readingQuestions = [
     "prompt": "A team developed a model to predict the movement of an invasive plant. It performed well on data from the region in which it was trained, but less accurately in areas with different rainfall patterns. The authors recommended testing it across a wider environmental range before relying on it for policy decisions.\n\nWhat limitation of the model is highlighted?",
     "options": [
       "Its predictive performance may not generalise to different environments.",
-      "It cannot reproduce any training-region data.",
-      "Rainfall was deliberately excluded from every observation.",
-      "The plant is absent from the training region.",
-      "The model was never evaluated at all."
+      "Its training observations are too few to reproduce patterns within the original region.",
+      "Its predictions are necessarily unreliable even in the region where it was developed.",
+      "It cannot be tested without introducing the plant into new environments.",
+      "Its main limitation is a lack of information about the model's computational cost."
     ],
     "correct": 0,
     "explanation": "Farklı çevresel koşullara genelleme yeteneği sınırlı olabilir.",
@@ -466,10 +466,10 @@ export const readingQuestions = [
     "prompt": "A team developed a model to predict the movement of an invasive plant. It performed well on data from the region in which it was trained, but less accurately in areas with different rainfall patterns. The authors recommended testing it across a wider environmental range before relying on it for policy decisions.\n\nWhich next step follows from the recommendation?",
     "options": [
       "Evaluate the model using independent data from varied climates.",
-      "Use the training data alone to justify national policy.",
-      "Disregard the poor results from wetter areas.",
-      "Stop collecting environmental data.",
-      "Assume all regions share identical rainfall patterns."
+      "Retest the model on a larger sample drawn only from the original region.",
+      "Compare the cost of running the model with the cost of existing control measures.",
+      "Choose a single new region with rainfall closely matching the training region.",
+      "Use the existing predictions to decide which observations to exclude from validation."
     ],
     "correct": 0,
     "explanation": "Değişik iklimlerden bağımsız veri ile modelin dış geçerliliği sınanabilir.",
@@ -483,10 +483,10 @@ export const readingQuestions = [
     "prompt": "An employer offered flexible working hours and reported a reduction in staff turnover. During the same period, it also increased wages and improved childcare support. The evaluation did not estimate the separate contribution of each change.\n\nWhy should the result be interpreted cautiously?",
     "options": [
       "Several concurrent changes prevent the effect of flexible hours from being isolated.",
-      "Staff turnover rose during the evaluation.",
-      "No employee was offered flexible hours.",
-      "Wages and childcare support were unchanged.",
-      "The employer measured only its electricity consumption."
+      "The effect of wage increases was measured using a different definition of turnover.",
+      "The decline in turnover may be attributable exclusively to childcare support.",
+      "The evaluation established that flexible hours were introduced after turnover had declined.",
+      "The employer's findings concern staff satisfaction rather than staff retention."
     ],
     "correct": 0,
     "explanation": "Eşzamanlı müdahaleler esnek saatlerin bağımsız etkisini ayırmayı zorlaştırır.",
@@ -500,10 +500,10 @@ export const readingQuestions = [
     "prompt": "An employer offered flexible working hours and reported a reduction in staff turnover. During the same period, it also increased wages and improved childcare support. The evaluation did not estimate the separate contribution of each change.\n\nWhich claim would go beyond the evidence?",
     "options": [
       "Flexible hours alone caused the entire reduction in turnover.",
-      "The employer introduced flexible working hours.",
-      "Wages increased during the same period.",
-      "Staff turnover decreased.",
-      "The evaluation did not isolate individual effects."
+      "Flexible working hours formed part of a wider set of workplace changes.",
+      "The employer expanded childcare support during the evaluation period.",
+      "The evaluation recorded a fall in staff departures.",
+      "The evidence leaves the relative contributions of the measures unresolved."
     ],
     "correct": 0,
     "explanation": "Tek başına esnek saatlerin tüm düşüşe neden olduğu gösterilmemiştir.",
@@ -517,10 +517,10 @@ export const readingQuestions = [
     "prompt": "A computational model reproduces a pattern observed in nature using a simplified mechanism. A second model generates the same pattern through a fundamentally different mechanism. Both fit the available observations, which are limited to the final state of the system.\n\nWhat epistemic problem is illustrated?",
     "options": [
       "Different mechanisms can be compatible with the same limited evidence.",
-      "A model that fits observations must be the only valid explanation.",
-      "Simplification necessarily makes prediction impossible.",
-      "Final-state observations always identify a unique mechanism.",
-      "The two models must use identical assumptions."
+      "Simplified mechanisms must generate less accurate predictions than complex ones.",
+      "A model's internal complexity determines its empirical validity.",
+      "Different models can be distinguished merely by comparing how well they fit the same final state.",
+      "Observational agreement establishes that all assumptions of a model are correct."
     ],
     "correct": 0,
     "explanation": "Sınırlı gözlemler farklı mekanizmalar arasında kesin seçim yaptırmayabilir.",
@@ -534,10 +534,10 @@ export const readingQuestions = [
     "prompt": "A computational model reproduces a pattern observed in nature using a simplified mechanism. A second model generates the same pattern through a fundamentally different mechanism. Both fit the available observations, which are limited to the final state of the system.\n\nWhat evidence would best help distinguish the mechanisms?",
     "options": [
       "Measurements of intermediate changes predicted differently by the models.",
-      "More repetitions of the same final-state image alone.",
-      "A preference survey among the model authors.",
-      "A comparison of the models' names.",
-      "The removal of every observation that fits both models."
+      "Increasing the precision of final-state measurements where both predictions remain identical.",
+      "Comparing the complexity of the two mechanisms without collecting new observations.",
+      "Testing a third model against the same final-state pattern.",
+      "Selecting the mechanism with fewer assumptions without investigating its distinctive predictions."
     ],
     "correct": 0,
     "explanation": "Ara aşamalardaki farklı öngörülerin sınanması mekanizmaları ayırabilir.",

@@ -186,13 +186,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Maya deal with the problem at the community centre?\nB: Her usual bus was cancelled. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Maya deal with the problem at the community centre?\nB: Her usual bus was cancelled. ____\nA: She arrived before the class started.",
     "options": [
-      "He changed into his spare trainers",
-      "She followed signs to the side entrance",
+      "She checked the timetable for the following day",
+      "She offered a neighbour a lift home",
       "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door"
+      "She asked the teacher to postpone the class",
+      "She walked to the bus stop to check the notice"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She asked her neighbour for a lift\" seçeneğidir."
@@ -206,11 +206,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe asked her neighbour for a lift.",
     "options": [
-      "She used the signs to find another way in.",
+      "She checked the timetable for the following day.",
       "She requested a ride from someone living nearby.",
-      "He used an extra instrument that belonged to his teacher.",
-      "She used the message confirming her reservation.",
-      "He put on another pair of sports shoes."
+      "She offered a neighbour a lift home.",
+      "She asked the teacher to postpone the class.",
+      "She walked to the bus stop to check the notice."
     ],
     "correct": 1,
     "explanation": "\"She requested a ride from someone living nearby.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -222,13 +222,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Maya planned to attend a pottery class at the community centre on Tuesday evening. Her usual bus was cancelled. ____ She arrived before the class started.",
+    "prompt": "Maya planned to attend a pottery class at the community centre on Tuesday evening. Her usual bus was cancelled. ____. She arrived before the class started.",
     "options": [
       "She asked her neighbour for a lift",
-      "She borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door",
-      "She changed into her spare trainers",
-      "She followed signs to the side entrance"
+      "She checked the timetable for the following day",
+      "She offered a neighbour a lift home",
+      "She asked the teacher to postpone the class",
+      "She walked to the bus stop to check the notice"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: She asked her neighbour for a lift. Otobüs iptal edildiği için komşudan araçla bırakmasını istemek ulaşım sorununu çözer."
@@ -456,13 +456,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Owen deal with the problem at the music school?\nB: He had left his guitar at home. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Owen deal with the problem at the music school?\nB: He had left his guitar at home. ____\nA: He was able to practise with the group.",
     "options": [
-      "She followed signs to the side entrance",
-      "She asked her neighbour for a lift",
+      "He asked the teacher to explain guitar chords",
+      "He bought a new set of guitar strings",
       "He borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door",
-      "He changed into his spare trainers"
+      "He listened while the other students played",
+      "He left the lesson to collect the guitar"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He borrowed a spare guitar from the teacher\" seçeneğidir."
@@ -476,11 +476,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe borrowed a spare guitar from the teacher.",
     "options": [
-      "She requested a ride from someone living nearby.",
+      "He asked the teacher to explain guitar chords.",
       "He used an extra instrument that belonged to his teacher.",
-      "She used the message confirming her reservation.",
-      "He put on another pair of sports shoes.",
-      "She used the signs to find another way in."
+      "He bought a new set of guitar strings.",
+      "He listened while the other students played.",
+      "He left the lesson to collect the guitar."
     ],
     "correct": 1,
     "explanation": "\"He used an extra instrument that belonged to his teacher.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -492,13 +492,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Owen planned to attend a guitar lesson at the music school on Thursday afternoon. He had left his guitar at home. ____ He was able to practise with the group.",
+    "prompt": "Owen planned to attend a guitar lesson at the music school on Thursday afternoon. He had left his guitar at home. ____. He was able to practise with the group.",
     "options": [
       "He borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door",
-      "He changed into his spare trainers",
-      "She followed signs to the side entrance",
-      "She asked her neighbour for a lift"
+      "He asked the teacher to explain guitar chords",
+      "He bought a new set of guitar strings",
+      "He listened while the other students played",
+      "He left the lesson to collect the guitar"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He borrowed a spare guitar from the teacher\" cümlesi tamamlar."
@@ -726,13 +726,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Holly deal with the problem at the theatre hall?\nB: Her ticket was missing. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Holly deal with the problem at the theatre hall?\nB: Her ticket was missing. ____\nA: The staff found her name on their list.",
     "options": [
-      "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher",
+      "She asked for a refund at the box office",
+      "She showed a ticket for a different performance",
       "She showed her booking email at the door",
-      "He changed into his spare trainers",
-      "She followed signs to the side entrance"
+      "She looked for an empty seat inside",
+      "She asked when the next play would begin"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She showed her booking email at the door\" seçeneğidir."
@@ -746,11 +746,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe showed her booking email at the door.",
     "options": [
-      "He used an extra instrument that belonged to his teacher.",
+      "She asked for a refund at the box office.",
       "She used the message confirming her reservation.",
-      "He put on another pair of sports shoes.",
-      "She used the signs to find another way in.",
-      "She requested a ride from someone living nearby."
+      "She showed a ticket for a different performance.",
+      "She looked for an empty seat inside.",
+      "She asked when the next play would begin."
     ],
     "correct": 1,
     "explanation": "\"She used the message confirming her reservation.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -762,13 +762,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Holly planned to attend a school play at the theatre hall on Friday evening. Her ticket was missing. ____ The staff found her name on their list.",
+    "prompt": "Holly planned to attend a school play at the theatre hall on Friday evening. Her ticket was missing. ____. The staff found her name on their list.",
     "options": [
       "She showed her booking email at the door",
-      "She changed into her spare trainers",
-      "She followed signs to the side entrance",
-      "She asked her neighbour for a lift",
-      "She borrowed a spare guitar from the teacher"
+      "She asked for a refund at the box office",
+      "She showed a ticket for a different performance",
+      "She looked for an empty seat inside",
+      "She asked when the next play would begin"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: She showed her booking email at the door. Kayıp bilet yerine rezervasyon e-postasını göstermek görevlilerin adı listeden bulmasını açıklar."
@@ -996,13 +996,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Felix deal with the problem at the youth club?\nB: His shoes were too tight. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Felix deal with the problem at the youth club?\nB: His shoes were too tight. ____\nA: He could dance without pain.",
     "options": [
-      "He borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door",
+      "He asked for a shorter dance routine",
+      "He tightened the laces on the same shoes",
       "He changed into his spare trainers",
-      "She followed signs to the side entrance",
-      "She asked her neighbour for a lift"
+      "He watched the first dance from a chair",
+      "He bought a ticket for a later workshop"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He changed into his spare trainers\" seçeneğidir."
@@ -1016,11 +1016,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe changed into his spare trainers.",
     "options": [
-      "She used the message confirming her reservation.",
+      "He asked for a shorter dance routine.",
       "He put on another pair of sports shoes.",
-      "She used the signs to find another way in.",
-      "She requested a ride from someone living nearby.",
-      "He used an extra instrument that belonged to his teacher."
+      "He tightened the laces on the same shoes.",
+      "He watched the first dance from a chair.",
+      "He bought a ticket for a later workshop."
     ],
     "correct": 1,
     "explanation": "\"He put on another pair of sports shoes.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -1032,13 +1032,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Felix planned to attend a dance workshop at the youth club on Saturday morning. His shoes were too tight. ____ He could dance without pain.",
+    "prompt": "Felix planned to attend a dance workshop at the youth club on Saturday morning. His shoes were too tight. ____. He could dance without pain.",
     "options": [
       "He changed into his spare trainers",
-      "She followed signs to the side entrance",
-      "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door"
+      "He asked for a shorter dance routine",
+      "He tightened the laces on the same shoes",
+      "He watched the first dance from a chair",
+      "He bought a ticket for a later workshop"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He changed into his spare trainers\" cümlesi tamamlar."
@@ -1266,13 +1266,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Nora deal with the problem at the town gallery?\nB: The main entrance was closed. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Nora deal with the problem at the town gallery?\nB: The main entrance was closed. ____\nA: She entered the building easily.",
     "options": [
-      "She showed her booking email at the door",
-      "He changed into his spare trainers",
+      "She waited outside the closed entrance",
+      "She asked when the gallery would reopen",
       "She followed signs to the side entrance",
-      "She asked her neighbour for a lift",
-      "He borrowed a spare guitar from the teacher"
+      "She read the exhibition notice outside",
+      "She returned to the town centre without entering"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She followed signs to the side entrance\" seçeneğidir."
@@ -1286,11 +1286,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe followed signs to the side entrance.",
     "options": [
-      "He put on another pair of sports shoes.",
+      "She waited outside the closed entrance.",
       "She used the signs to find another way in.",
-      "She requested a ride from someone living nearby.",
-      "He used an extra instrument that belonged to his teacher.",
-      "She used the message confirming her reservation."
+      "She asked when the gallery would reopen.",
+      "She read the exhibition notice outside.",
+      "She returned to the town centre without entering."
     ],
     "correct": 1,
     "explanation": "\"She used the signs to find another way in.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -1302,13 +1302,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Nora planned to attend a painting exhibition at the town gallery on Sunday afternoon. The main entrance was closed. ____ She entered the building easily.",
+    "prompt": "Nora planned to attend a painting exhibition at the town gallery on Sunday afternoon. The main entrance was closed. ____. She entered the building easily.",
     "options": [
       "She followed signs to the side entrance",
-      "She asked her neighbour for a lift",
-      "She borrowed a spare guitar from the teacher",
-      "She showed her booking email at the door",
-      "She changed into her spare trainers"
+      "She waited outside the closed entrance",
+      "She asked when the gallery would reopen",
+      "She read the exhibition notice outside",
+      "She returned to the town centre without entering"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: She followed signs to the side entrance. Ana giriş kapalı olduğundan yan girişe yönelmek binaya ulaşma sorununu çözer."
@@ -1536,13 +1536,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Leo deal with the problem at the clothing shop?\nB: The first pair was too long. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Leo deal with the problem at the clothing shop?\nB: The first pair was too long. ____\nA: The second pair fitted him properly.",
     "options": [
-      "She chose a green notebook instead",
-      "He ordered a smaller cake",
+      "He asked for a longer pair in the same size",
+      "He chose a different colour in the same length",
       "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf"
+      "He asked about the price of the first pair",
+      "He bought the trousers without trying another pair"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He asked for a shorter pair in the same size\" seçeneğidir."
@@ -1556,11 +1556,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe asked for a shorter pair in the same size.",
     "options": [
-      "He chose a cake of a smaller size.",
+      "He asked for a longer pair in the same size.",
       "He requested trousers of the same size but a shorter length.",
-      "She requested a check of a different lamp.",
-      "He selected a sealed packet instead.",
-      "She bought a notebook in a different colour."
+      "He chose a different colour in the same length.",
+      "He asked about the price of the first pair.",
+      "He bought the trousers without trying another pair."
     ],
     "correct": 1,
     "explanation": "\"He requested trousers of the same size but a shorter length.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -1572,13 +1572,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Leo planned to buy a pair of school trousers at the clothing shop on Monday afternoon. The first pair was too long. ____ The second pair fitted him properly.",
+    "prompt": "Leo planned to buy a pair of school trousers at the clothing shop on Monday afternoon. The first pair was too long. ____. The second pair fitted him properly.",
     "options": [
       "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf",
-      "She chose a green notebook instead",
-      "He ordered a smaller cake"
+      "He asked for a longer pair in the same size",
+      "He chose a different colour in the same length",
+      "He asked about the price of the first pair",
+      "He bought the trousers without trying another pair"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He asked for a shorter pair in the same size\" cümlesi tamamlar."
@@ -1806,13 +1806,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Isla deal with the problem at the electrical shop?\nB: The display lamp did not work. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Isla deal with the problem at the electrical shop?\nB: The display lamp did not work. ____\nA: The replacement lamp worked perfectly.",
     "options": [
-      "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size",
+      "She asked for the price of a replacement bulb",
+      "She looked at the display lamp's colour",
       "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf",
-      "She chose a green notebook instead"
+      "She requested a discount on the faulty lamp",
+      "She asked the assistant to reserve the faulty lamp"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She asked the assistant to test another lamp\" seçeneğidir."
@@ -1826,11 +1826,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe asked the assistant to test another lamp.",
     "options": [
-      "He requested trousers of the same size but a shorter length.",
+      "She asked for the price of a replacement bulb.",
       "She requested a check of a different lamp.",
-      "He selected a sealed packet instead.",
-      "She bought a notebook in a different colour.",
-      "He chose a cake of a smaller size."
+      "She looked at the display lamp's colour.",
+      "She requested a discount on the faulty lamp.",
+      "She asked the assistant to reserve the faulty lamp."
     ],
     "correct": 1,
     "explanation": "\"She requested a check of a different lamp.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -1842,13 +1842,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Isla planned to buy a desk lamp at the electrical shop on Tuesday morning. The display lamp did not work. ____ The replacement lamp worked perfectly.",
+    "prompt": "Isla planned to buy a desk lamp at the electrical shop on Tuesday morning. The display lamp did not work. ____. The replacement lamp worked perfectly.",
     "options": [
       "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf",
-      "She chose a green notebook instead",
-      "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size"
+      "She asked for the price of a replacement bulb",
+      "She looked at the display lamp's colour",
+      "She requested a discount on the faulty lamp",
+      "She asked the assistant to reserve the faulty lamp"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She asked the assistant to test another lamp\" cümlesi tamamlar."
@@ -2076,13 +2076,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Jack deal with the problem at the supermarket?\nB: The bag had a hole in it. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Jack deal with the problem at the supermarket?\nB: The bag had a hole in it. ____\nA: No flour spilled into his shopping bag.",
     "options": [
-      "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp",
+      "He asked the assistant to weigh the damaged bag",
+      "He put the damaged bag in the basket",
       "He took an unopened bag from the shelf",
-      "She chose a green notebook instead",
-      "He ordered a smaller cake"
+      "He read the cooking instructions on the bag",
+      "He asked whether the flour was on sale"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He took an unopened bag from the shelf\" seçeneğidir."
@@ -2096,11 +2096,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe took an unopened bag from the shelf.",
     "options": [
-      "She requested a check of a different lamp.",
+      "He asked the assistant to weigh the damaged bag.",
       "He selected a sealed packet instead.",
-      "She bought a notebook in a different colour.",
-      "He chose a cake of a smaller size.",
-      "He requested trousers of the same size but a shorter length."
+      "He put the damaged bag in the basket.",
+      "He read the cooking instructions on the bag.",
+      "He asked whether the flour was on sale."
     ],
     "correct": 1,
     "explanation": "\"He selected a sealed packet instead.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -2112,13 +2112,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Jack planned to buy a bag of flour at the supermarket on Wednesday evening. The bag had a hole in it. ____ No flour spilled into his shopping bag.",
+    "prompt": "Jack planned to buy a bag of flour at the supermarket on Wednesday evening. The bag had a hole in it. ____. No flour spilled into his shopping bag.",
     "options": [
       "He took an unopened bag from the shelf",
-      "She chose a green notebook instead",
-      "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp"
+      "He asked the assistant to weigh the damaged bag",
+      "He put the damaged bag in the basket",
+      "He read the cooking instructions on the bag",
+      "He asked whether the flour was on sale"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He took an unopened bag from the shelf\" cümlesi tamamlar."
@@ -2346,13 +2346,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Eva deal with the problem at the stationery store?\nB: The blue notebooks were sold out. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Eva deal with the problem at the stationery store?\nB: The blue notebooks were sold out. ____\nA: She had a notebook for her afternoon lesson.",
     "options": [
-      "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf",
+      "She asked when the blue notebooks would return",
+      "She bought a green pen instead of a notebook",
       "She chose a green notebook instead",
-      "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size"
+      "She reserved a blue notebook for next week",
+      "She looked at the covers without buying anything"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She chose a green notebook instead\" seçeneğidir."
@@ -2366,11 +2366,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe chose a green notebook instead.",
     "options": [
-      "He selected a sealed packet instead.",
+      "She asked when the blue notebooks would return.",
       "She bought a notebook in a different colour.",
-      "He chose a cake of a smaller size.",
-      "He requested trousers of the same size but a shorter length.",
-      "She requested a check of a different lamp."
+      "She bought a green pen instead of a notebook.",
+      "She reserved a blue notebook for next week.",
+      "She looked at the covers without buying anything."
     ],
     "correct": 1,
     "explanation": "\"She bought a notebook in a different colour.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -2382,13 +2382,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Eva planned to buy a notebook at the stationery store on Friday morning. The blue notebooks were sold out. ____ She had a notebook for her afternoon lesson.",
+    "prompt": "Eva planned to buy a notebook at the stationery store on Friday morning. The blue notebooks were sold out. ____. She had a notebook for her afternoon lesson.",
     "options": [
       "She chose a green notebook instead",
-      "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf"
+      "She asked when the blue notebooks would return",
+      "She bought a green pen instead of a notebook",
+      "She reserved a blue notebook for next week",
+      "She looked at the covers without buying anything"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She chose a green notebook instead\" cümlesi tamamlar."
@@ -2616,13 +2616,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Adam deal with the problem at the bakery?\nB: The largest cake cost too much. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Adam deal with the problem at the bakery?\nB: The largest cake cost too much. ____\nA: He stayed within his budget.",
     "options": [
-      "He took an unopened bag from the shelf",
-      "She chose a green notebook instead",
+      "He asked how many candles the large cake held",
+      "He ordered an extra cake at full price",
       "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp"
+      "He looked at larger cakes in the window",
+      "He asked about the opening hours of the bakery"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He ordered a smaller cake\" seçeneğidir."
@@ -2636,11 +2636,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe ordered a smaller cake.",
     "options": [
-      "She bought a notebook in a different colour.",
+      "He asked how many candles the large cake held.",
       "He chose a cake of a smaller size.",
-      "He requested trousers of the same size but a shorter length.",
-      "She requested a check of a different lamp.",
-      "He selected a sealed packet instead."
+      "He ordered an extra cake at full price.",
+      "He looked at larger cakes in the window.",
+      "He asked about the opening hours of the bakery."
     ],
     "correct": 1,
     "explanation": "\"He chose a cake of a smaller size.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -2652,13 +2652,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Adam planned to buy a birthday cake at the bakery on Saturday afternoon. The largest cake cost too much. ____ He stayed within his budget.",
+    "prompt": "Adam planned to buy a birthday cake at the bakery on Saturday afternoon. The largest cake cost too much. ____. He stayed within his budget.",
     "options": [
       "He ordered a smaller cake",
-      "He asked for a shorter pair in the same size",
-      "She asked the assistant to test another lamp",
-      "He took an unopened bag from the shelf",
-      "She chose a green notebook instead"
+      "He asked how many candles the large cake held",
+      "He ordered an extra cake at full price",
+      "He looked at larger cakes in the window",
+      "He asked about the opening hours of the bakery"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He ordered a smaller cake\" cümlesi tamamlar."
@@ -2886,13 +2886,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Rosa deal with the problem at the local clinic?\nB: She was unsure which room to visit. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Rosa deal with the problem at the local clinic?\nB: She was unsure which room to visit. ____\nA: She found the correct room immediately.",
     "options": [
-      "He waited in the seating area",
-      "She opened the confirmation message on her phone",
+      "She asked the receptionist how much the test cost",
+      "She read an eye-care leaflet in the waiting area",
       "She asked the receptionist for directions",
-      "He phoned the practice to check the booking",
-      "She bought a cap at the reception desk"
+      "She checked the clinic's opening hours",
+      "She asked for a new appointment next week"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She asked the receptionist for directions\" seçeneğidir."
@@ -2906,11 +2906,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe asked the receptionist for directions.",
     "options": [
-      "She displayed the electronic appointment confirmation.",
+      "She asked the receptionist how much the test cost.",
       "She asked the person at reception to tell her where to go.",
-      "He called the clinic to verify his reservation.",
-      "She purchased the required cap at reception.",
-      "He stayed in the waiting area until the instructor came."
+      "She read an eye-care leaflet in the waiting area.",
+      "She checked the clinic's opening hours.",
+      "She asked for a new appointment next week."
     ],
     "correct": 1,
     "explanation": "\"She asked the person at reception to tell her where to go.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -2922,13 +2922,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Rosa planned to attend an eye test at the local clinic on Monday morning. She was unsure which room to visit. ____ She found the correct room immediately.",
+    "prompt": "Rosa planned to attend an eye test at the local clinic on Monday morning. She was unsure which room to visit. ____. She found the correct room immediately.",
     "options": [
       "She asked the receptionist for directions",
-      "She phoned the practice to change her appointment date",
-      "She bought a cap at the reception desk",
-      "She waited in the seating area",
-      "She checked the clinic's opening hours on her phone"
+      "She asked the receptionist how much the test cost",
+      "She read an eye-care leaflet in the waiting area",
+      "She checked the clinic's opening hours",
+      "She asked for a new appointment next week"
     ],
     "correct": 0,
     "explanation": "Doğru seçenek: She asked the receptionist for directions. Resepsiyondan yön tarifi istemek doğru odayı hemen bulmayı açıklar."
@@ -3156,13 +3156,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Theo deal with the problem at the dental practice?\nB: His appointment card showed the wrong date. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Theo deal with the problem at the dental practice?\nB: His appointment card showed the wrong date. ____\nA: The assistant confirmed the correct date.",
     "options": [
-      "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions",
+      "He asked about the cost of dental treatment",
+      "He changed the appointment card without checking",
       "He phoned the practice to check the booking",
-      "She bought a cap at the reception desk",
-      "He waited in the seating area"
+      "He visited the practice on the incorrect date",
+      "He asked how long a check-up usually took"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He phoned the practice to check the booking\" seçeneğidir."
@@ -3176,11 +3176,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe phoned the practice to check the booking.",
     "options": [
-      "She asked the person at reception to tell her where to go.",
+      "He asked about the cost of dental treatment.",
       "He called the clinic to verify his reservation.",
-      "She purchased the required cap at reception.",
-      "He stayed in the waiting area until the instructor came.",
-      "She displayed the electronic appointment confirmation."
+      "He changed the appointment card without checking.",
+      "He visited the practice on the incorrect date.",
+      "He asked how long a check-up usually took."
     ],
     "correct": 1,
     "explanation": "\"He called the clinic to verify his reservation.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -3192,13 +3192,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Theo planned to attend a dental check-up at the dental practice on Tuesday afternoon. His appointment card showed the wrong date. ____ The assistant confirmed the correct date.",
+    "prompt": "Theo planned to attend a dental check-up at the dental practice on Tuesday afternoon. His appointment card showed the wrong date. ____. The assistant confirmed the correct date.",
     "options": [
       "He phoned the practice to check the booking",
-      "She bought a cap at the reception desk",
-      "He waited in the seating area",
-      "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions"
+      "He asked about the cost of dental treatment",
+      "He changed the appointment card without checking",
+      "He visited the practice on the incorrect date",
+      "He asked how long a check-up usually took"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He phoned the practice to check the booking\" cümlesi tamamlar."
@@ -3426,13 +3426,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Lily deal with the problem at the indoor pool?\nB: She had forgotten her swimming cap. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Lily deal with the problem at the indoor pool?\nB: She had forgotten her swimming cap. ____\nA: She was allowed to enter the pool.",
     "options": [
-      "She asked the receptionist for directions",
-      "He phoned the practice to check the booking",
+      "She bought swimming goggles instead of a cap",
+      "She asked when the next session would begin",
       "She bought a cap at the reception desk",
-      "He waited in the seating area",
-      "She opened the confirmation message on her phone"
+      "She watched other swimmers from the poolside",
+      "She left the pool to look for a different swimsuit"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She bought a cap at the reception desk\" seçeneğidir."
@@ -3446,11 +3446,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe bought a cap at the reception desk.",
     "options": [
-      "He called the clinic to verify his reservation.",
+      "She bought swimming goggles instead of a cap.",
       "She purchased the required cap at reception.",
-      "He stayed in the waiting area until the instructor came.",
-      "She displayed the electronic appointment confirmation.",
-      "She asked the person at reception to tell her where to go."
+      "She asked when the next session would begin.",
+      "She watched other swimmers from the poolside.",
+      "She left the pool to look for a different swimsuit."
     ],
     "correct": 1,
     "explanation": "\"She purchased the required cap at reception.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -3462,13 +3462,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Lily planned to attend a swimming assessment at the indoor pool on Wednesday morning. She had forgotten her swimming cap. ____ She was allowed to enter the pool.",
+    "prompt": "Lily planned to attend a swimming assessment at the indoor pool on Wednesday morning. She had forgotten her swimming cap. ____. She was allowed to enter the pool.",
     "options": [
       "She bought a cap at the reception desk",
-      "He waited in the seating area",
-      "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions",
-      "He phoned the practice to check the booking"
+      "She bought swimming goggles instead of a cap",
+      "She asked when the next session would begin",
+      "She watched other swimmers from the poolside",
+      "She left the pool to look for a different swimsuit"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She bought a cap at the reception desk\" cümlesi tamamlar."
@@ -3696,13 +3696,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Amir deal with the problem at the training centre?\nB: His instructor was running late. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Amir deal with the problem at the training centre?\nB: His instructor was running late. ____\nA: The instructor arrived fifteen minutes later.",
     "options": [
-      "He phoned the practice to check the booking",
-      "She bought a cap at the reception desk",
+      "He asked for a refund and went home",
+      "He left before the instructor arrived",
       "He waited in the seating area",
-      "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions"
+      "He checked the price of another lesson",
+      "He asked to cancel the driving lesson"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He waited in the seating area\" seçeneğidir."
@@ -3716,11 +3716,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe waited in the seating area.",
     "options": [
-      "She purchased the required cap at reception.",
+      "He asked for a refund and went home.",
       "He stayed in the waiting area until the instructor came.",
-      "She displayed the electronic appointment confirmation.",
-      "She asked the person at reception to tell her where to go.",
-      "He called the clinic to verify his reservation."
+      "He left before the instructor arrived.",
+      "He checked the price of another lesson.",
+      "He asked to cancel the driving lesson."
     ],
     "correct": 1,
     "explanation": "\"He stayed in the waiting area until the instructor came.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -3732,13 +3732,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Amir planned to attend a driving lesson at the training centre on Thursday afternoon. His instructor was running late. ____ The instructor arrived fifteen minutes later.",
+    "prompt": "Amir planned to attend a driving lesson at the training centre on Thursday afternoon. His instructor was running late. ____. The instructor arrived fifteen minutes later.",
     "options": [
       "He waited in the seating area",
-      "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions",
-      "He phoned the practice to check the booking",
-      "She bought a cap at the reception desk"
+      "He asked for a refund and went home",
+      "He left before the instructor arrived",
+      "He checked the price of another lesson",
+      "He asked to cancel the driving lesson"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He waited in the seating area\" cümlesi tamamlar."
@@ -3966,13 +3966,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Grace deal with the problem at the medical centre?\nB: She could not find her appointment letter. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Grace deal with the problem at the medical centre?\nB: She could not find her appointment letter. ____\nA: The nurse checked her booking details.",
     "options": [
-      "She bought a cap at the reception desk",
-      "He waited in the seating area",
+      "She looked at an old message from another clinic",
+      "She asked for general hearing-care advice",
       "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions",
-      "He phoned the practice to check the booking"
+      "She changed the appointment without checking the booking",
+      "She showed a receipt from a previous visit"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She opened the confirmation message on her phone\" seçeneğidir."
@@ -3986,11 +3986,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe opened the confirmation message on her phone.",
     "options": [
-      "He stayed in the waiting area until the instructor came.",
+      "She looked at an old message from another clinic.",
       "She displayed the electronic appointment confirmation.",
-      "She asked the person at reception to tell her where to go.",
-      "He called the clinic to verify his reservation.",
-      "She purchased the required cap at reception."
+      "She asked for general hearing-care advice.",
+      "She changed the appointment without checking the booking.",
+      "She showed a receipt from a previous visit."
     ],
     "correct": 1,
     "explanation": "\"She displayed the electronic appointment confirmation.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -4002,13 +4002,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Grace planned to attend a hearing test at the medical centre on Friday morning. She could not find her appointment letter. ____ The nurse checked her booking details.",
+    "prompt": "Grace planned to attend a hearing test at the medical centre on Friday morning. She could not find her appointment letter. ____. The nurse checked her booking details.",
     "options": [
       "She opened the confirmation message on her phone",
-      "She asked the receptionist for directions",
-      "He phoned the practice to check the booking",
-      "She bought a cap at the reception desk",
-      "He waited in the seating area"
+      "She looked at an old message from another clinic",
+      "She asked for general hearing-care advice",
+      "She changed the appointment without checking the booking",
+      "She showed a receipt from a previous visit"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She opened the confirmation message on her phone\" cümlesi tamamlar."
@@ -4236,13 +4236,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ben deal with the problem at the post office?\nB: He had brought the wrong collection code. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Ben deal with the problem at the post office?\nB: He had brought the wrong collection code. ____\nA: The clerk gave him the parcel.",
     "options": [
-      "She gave the worker her name and phone number",
-      "He returned with the original key",
+      "He read the delivery company's advertising leaflet",
+      "He gave the clerk the incorrect code again",
       "He found the correct code in his email",
-      "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre"
+      "He asked about postage rates for a different parcel",
+      "He left the post office without collecting anything"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He found the correct code in his email\" seçeneğidir."
@@ -4256,11 +4256,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe found the correct code in his email.",
     "options": [
-      "He took the source key back to the shop.",
+      "He read the delivery company's advertising leaflet.",
       "He searched his inbox for the right collection number.",
-      "She used the return container outside the building.",
-      "He requested a repair to his damaged tyre.",
-      "She provided her personal details instead of the receipt."
+      "He gave the clerk the incorrect code again.",
+      "He asked about postage rates for a different parcel.",
+      "He left the post office without collecting anything."
     ],
     "correct": 1,
     "explanation": "\"He searched his inbox for the right collection number.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -4272,13 +4272,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Ben planned to complete a parcel collection at the post office on Monday afternoon. He had brought the wrong collection code. ____ The clerk gave him the parcel.",
+    "prompt": "Ben planned to complete a parcel collection at the post office on Monday afternoon. He had brought the wrong collection code. ____. The clerk gave him the parcel.",
     "options": [
       "He found the correct code in his email",
-      "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number",
-      "He returned with the original key"
+      "He read the delivery company's advertising leaflet",
+      "He gave the clerk the incorrect code again",
+      "He asked about postage rates for a different parcel",
+      "He left the post office without collecting anything"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He found the correct code in his email\" cümlesi tamamlar."
@@ -4506,13 +4506,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Zoe deal with the problem at the library?\nB: The return desk was already closed. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Zoe deal with the problem at the library?\nB: The return desk was already closed. ____\nA: The book was returned before its due date.",
     "options": [
-      "He returned with the original key",
-      "He found the correct code in his email",
+      "She looked at the library's opening hours",
+      "She took the book home until next week",
       "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number"
+      "She reserved a different book online",
+      "She asked about a new library card"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She put the book in the outdoor return box\" seçeneğidir."
@@ -4526,11 +4526,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe put the book in the outdoor return box.",
     "options": [
-      "He searched his inbox for the right collection number.",
+      "She looked at the library's opening hours.",
       "She used the return container outside the building.",
-      "He requested a repair to his damaged tyre.",
-      "She provided her personal details instead of the receipt.",
-      "He took the source key back to the shop."
+      "She took the book home until next week.",
+      "She reserved a different book online.",
+      "She asked about a new library card."
     ],
     "correct": 1,
     "explanation": "\"She used the return container outside the building.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -4542,13 +4542,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Zoe planned to complete a book return at the library on Tuesday evening. The return desk was already closed. ____ The book was returned before its due date.",
+    "prompt": "Zoe planned to complete a book return at the library on Tuesday evening. The return desk was already closed. ____. The book was returned before its due date.",
     "options": [
       "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number",
-      "He returned with the original key",
-      "He found the correct code in his email"
+      "She looked at the library's opening hours",
+      "She took the book home until next week",
+      "She reserved a different book online",
+      "She asked about a new library card"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She put the book in the outdoor return box\" cümlesi tamamlar."
@@ -4776,13 +4776,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Miles deal with the problem at the cycle shop?\nB: His front tyre had a small hole. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Miles deal with the problem at the cycle shop?\nB: His front tyre had a small hole. ____\nA: He could cycle home safely.",
     "options": [
-      "He found the correct code in his email",
-      "She put the book in the outdoor return box",
+      "He asked about the price of a new saddle",
+      "He cleaned the bicycle frame",
       "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number",
-      "He returned with the original key"
+      "He bought a new bell for the handlebars",
+      "He asked when the shop would close"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He asked the mechanic to fix the tyre\" seçeneğidir."
@@ -4796,11 +4796,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe asked the mechanic to fix the tyre.",
     "options": [
-      "She used the return container outside the building.",
+      "He asked about the price of a new saddle.",
       "He requested a repair to his damaged tyre.",
-      "She provided her personal details instead of the receipt.",
-      "He took the source key back to the shop.",
-      "He searched his inbox for the right collection number."
+      "He cleaned the bicycle frame.",
+      "He bought a new bell for the handlebars.",
+      "He asked when the shop would close."
     ],
     "correct": 1,
     "explanation": "\"He requested a repair to his damaged tyre.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -4812,13 +4812,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Miles planned to complete a bicycle repair at the cycle shop on Wednesday morning. His front tyre had a small hole. ____ He could cycle home safely.",
+    "prompt": "Miles planned to complete a bicycle repair at the cycle shop on Wednesday morning. His front tyre had a small hole. ____. He could cycle home safely.",
     "options": [
       "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number",
-      "He returned with the original key",
-      "He found the correct code in his email",
-      "She put the book in the outdoor return box"
+      "He asked about the price of a new saddle",
+      "He cleaned the bicycle frame",
+      "He bought a new bell for the handlebars",
+      "He asked when the shop would close"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He asked the mechanic to fix the tyre\" cümlesi tamamlar."
@@ -5046,13 +5046,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Nina deal with the problem at the repair shop?\nB: She had lost her paper receipt. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Nina deal with the problem at the repair shop?\nB: She had lost her paper receipt. ____\nA: The worker located her repaired shoes.",
     "options": [
-      "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre",
+      "She asked how much a future repair would cost",
+      "She showed a receipt for a different purchase",
       "She gave the worker her name and phone number",
-      "He returned with the original key",
-      "He found the correct code in his email"
+      "She looked at new shoes in the window",
+      "She gave the worker an unrelated order number"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She gave the worker her name and phone number\" seçeneğidir."
@@ -5066,11 +5066,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe gave the worker her name and phone number.",
     "options": [
-      "He requested a repair to his damaged tyre.",
+      "She asked how much a future repair would cost.",
       "She provided her personal details instead of the receipt.",
-      "He took the source key back to the shop.",
-      "He searched his inbox for the right collection number.",
-      "She used the return container outside the building."
+      "She showed a receipt for a different purchase.",
+      "She looked at new shoes in the window.",
+      "She gave the worker an unrelated order number."
     ],
     "correct": 1,
     "explanation": "\"She provided her personal details instead of the receipt.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -5082,13 +5082,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Nina planned to complete a shoe collection at the repair shop on Friday afternoon. She had lost her paper receipt. ____ The worker located her repaired shoes.",
+    "prompt": "Nina planned to complete a shoe collection at the repair shop on Friday afternoon. She had lost her paper receipt. ____. The worker located her repaired shoes.",
     "options": [
       "She gave the worker her name and phone number",
-      "He returned with the original key",
-      "He found the correct code in his email",
-      "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre"
+      "She asked how much a future repair would cost",
+      "She showed a receipt for a different purchase",
+      "She looked at new shoes in the window",
+      "She gave the worker an unrelated order number"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She gave the worker her name and phone number\" cümlesi tamamlar."
@@ -5316,13 +5316,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Oscar deal with the problem at the hardware store?\nB: The first copy did not fit the lock. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Oscar deal with the problem at the hardware store?\nB: The first copy did not fit the lock. ____\nA: The worker made a copy that opened the lock.",
     "options": [
-      "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number",
+      "He asked for a larger key ring",
+      "He ordered another copy from the faulty copy",
       "He returned with the original key",
-      "He found the correct code in his email",
-      "She put the book in the outdoor return box"
+      "He asked how much locks cost",
+      "He returned without bringing either key"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He returned with the original key\" seçeneğidir."
@@ -5336,11 +5336,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe returned with the original key.",
     "options": [
-      "She provided her personal details instead of the receipt.",
+      "He asked for a larger key ring.",
       "He took the source key back to the shop.",
-      "He searched his inbox for the right collection number.",
-      "She used the return container outside the building.",
-      "He requested a repair to his damaged tyre."
+      "He ordered another copy from the faulty copy.",
+      "He asked how much locks cost.",
+      "He returned without bringing either key."
     ],
     "correct": 1,
     "explanation": "\"He took the source key back to the shop.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -5352,13 +5352,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Oscar planned to complete a key copy order at the hardware store on Saturday morning. The first copy did not fit the lock. ____ The worker made a copy that opened the lock.",
+    "prompt": "Oscar planned to complete a key copy order at the hardware store on Saturday morning. The first copy did not fit the lock. ____. The worker made a copy that opened the lock.",
     "options": [
       "He returned with the original key",
-      "He found the correct code in his email",
-      "She put the book in the outdoor return box",
-      "He asked the mechanic to fix the tyre",
-      "She gave the worker her name and phone number"
+      "He asked for a larger key ring",
+      "He ordered another copy from the faulty copy",
+      "He asked how much locks cost",
+      "He returned without bringing either key"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He returned with the original key\" cümlesi tamamlar."
@@ -5586,13 +5586,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Freya deal with the problem at the woodland gate?\nB: The path was muddy after the rain. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Freya deal with the problem at the woodland gate?\nB: The path was muddy after the rain. ____\nA: Her feet stayed dry throughout the walk.",
     "options": [
-      "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser",
+      "She put on a thicker jumper",
+      "She checked the weather forecast again",
       "She put on her waterproof boots",
-      "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree"
+      "She chose ordinary shoes with no waterproof lining",
+      "She asked the guide about the length of the walk"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She put on her waterproof boots\" seçeneğidir."
@@ -5606,11 +5606,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe put on her waterproof boots.",
     "options": [
-      "She obtained a tougher rubbish bag from the event leader.",
+      "She put on a thicker jumper.",
       "She changed into boots that did not let water in.",
-      "He refilled his bottle with drinking water.",
-      "She found a shady place for the blanket.",
-      "He inserted a fully charged spare battery."
+      "She checked the weather forecast again.",
+      "She chose ordinary shoes with no waterproof lining.",
+      "She asked the guide about the length of the walk."
     ],
     "correct": 1,
     "explanation": "\"She changed into boots that did not let water in.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -5622,13 +5622,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Freya planned to join a nature walk at the woodland gate on Monday morning. The path was muddy after the rain. ____ Her feet stayed dry throughout the walk.",
+    "prompt": "Freya planned to join a nature walk at the woodland gate on Monday morning. The path was muddy after the rain. ____. Her feet stayed dry throughout the walk.",
     "options": [
       "She put on her waterproof boots",
-      "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser"
+      "She put on a thicker jumper",
+      "She checked the weather forecast again",
+      "She chose ordinary shoes with no waterproof lining",
+      "She asked the guide about the length of the walk"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She put on her waterproof boots\" cümlesi tamamlar."
@@ -5856,13 +5856,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Louis deal with the problem at the sports hall?\nB: His water bottle was empty. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Louis deal with the problem at the sports hall?\nB: His water bottle was empty. ____\nA: He had enough water during the session.",
     "options": [
-      "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots",
+      "He bought a new basketball",
+      "He left the empty bottle in the changing room",
       "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery"
+      "He asked about the next training session",
+      "He drank all the water before the session began"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He filled it at the drinking fountain\" seçeneğidir."
@@ -5876,11 +5876,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe filled it at the drinking fountain.",
     "options": [
-      "She changed into boots that did not let water in.",
+      "He bought a new basketball.",
       "He refilled his bottle with drinking water.",
-      "She found a shady place for the blanket.",
-      "He inserted a fully charged spare battery.",
-      "She obtained a tougher rubbish bag from the event leader."
+      "He left the empty bottle in the changing room.",
+      "He asked about the next training session.",
+      "He drank all the water before the session began."
     ],
     "correct": 1,
     "explanation": "\"He refilled his bottle with drinking water.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -5892,13 +5892,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Louis planned to join a basketball session at the sports hall on Tuesday evening. His water bottle was empty. ____ He had enough water during the session.",
+    "prompt": "Louis planned to join a basketball session at the sports hall on Tuesday evening. His water bottle was empty. ____. He had enough water during the session.",
     "options": [
       "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots"
+      "He bought a new basketball",
+      "He left the empty bottle in the changing room",
+      "He asked about the next training session",
+      "He drank all the water before the session began"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He filled it at the drinking fountain\" cümlesi tamamlar."
@@ -6126,13 +6126,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Emily deal with the problem at the riverside garden?\nB: The sun was too strong near the river. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Emily deal with the problem at the riverside garden?\nB: The sun was too strong near the river. ____\nA: The group could eat in the shade.",
     "options": [
-      "She put on her waterproof boots",
-      "He filled it at the drinking fountain",
+      "She opened the picnic basket in the full sun",
+      "She moved the blanket to a sunnier spot",
       "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser"
+      "She asked the group to eat later without moving",
+      "She looked for a different picnic basket"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She moved the picnic blanket under a tree\" seçeneğidir."
@@ -6146,11 +6146,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe moved the picnic blanket under a tree.",
     "options": [
-      "He refilled his bottle with drinking water.",
+      "She opened the picnic basket in the full sun.",
       "She found a shady place for the blanket.",
-      "He inserted a fully charged spare battery.",
-      "She obtained a tougher rubbish bag from the event leader.",
-      "She changed into boots that did not let water in."
+      "She moved the blanket to a sunnier spot.",
+      "She asked the group to eat later without moving.",
+      "She looked for a different picnic basket."
     ],
     "correct": 1,
     "explanation": "\"She found a shady place for the blanket.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -6162,13 +6162,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Emily planned to join a picnic at the riverside garden on Wednesday afternoon. The sun was too strong near the river. ____ The group could eat in the shade.",
+    "prompt": "Emily planned to join a picnic at the riverside garden on Wednesday afternoon. The sun was too strong near the river. ____. The group could eat in the shade.",
     "options": [
       "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots",
-      "He filled it at the drinking fountain"
+      "She opened the picnic basket in the full sun",
+      "She moved the blanket to a sunnier spot",
+      "She asked the group to eat later without moving",
+      "She looked for a different picnic basket"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She moved the picnic blanket under a tree\" cümlesi tamamlar."
@@ -6396,13 +6396,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Hugo deal with the problem at the old town square?\nB: His camera battery was almost empty. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Hugo deal with the problem at the old town square?\nB: His camera battery was almost empty. ____\nA: He could take photos for the whole walk.",
     "options": [
-      "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree",
+      "He adjusted the camera strap",
+      "He deleted a few old photographs",
       "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots"
+      "He checked the price of a new lens",
+      "He kept using the nearly empty battery"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He replaced it with a charged battery\" seçeneğidir."
@@ -6416,11 +6416,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe replaced it with a charged battery.",
     "options": [
-      "She found a shady place for the blanket.",
+      "He adjusted the camera strap.",
       "He inserted a fully charged spare battery.",
-      "She obtained a tougher rubbish bag from the event leader.",
-      "She changed into boots that did not let water in.",
-      "He refilled his bottle with drinking water."
+      "He deleted a few old photographs.",
+      "He checked the price of a new lens.",
+      "He kept using the nearly empty battery."
     ],
     "correct": 1,
     "explanation": "\"He inserted a fully charged spare battery.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -6432,13 +6432,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Hugo planned to join a photography walk at the old town square on Thursday morning. His camera battery was almost empty. ____ He could take photos for the whole walk.",
+    "prompt": "Hugo planned to join a photography walk at the old town square on Thursday morning. His camera battery was almost empty. ____. He could take photos for the whole walk.",
     "options": [
       "He replaced it with a charged battery",
-      "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots",
-      "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree"
+      "He adjusted the camera strap",
+      "He deleted a few old photographs",
+      "He checked the price of a new lens",
+      "He kept using the nearly empty battery"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He replaced it with a charged battery\" cümlesi tamamlar."
@@ -6666,13 +6666,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ruby deal with the problem at the coast car park?\nB: Her bag for litter had torn. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Ruby deal with the problem at the coast car park?\nB: Her bag for litter had torn. ____\nA: She collected litter without spilling it.",
     "options": [
-      "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery",
+      "She tied the torn bag to the fence",
+      "She left the damaged bag on the sand",
       "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots",
-      "He filled it at the drinking fountain"
+      "She asked how long the clean-up would last",
+      "She collected litter in the torn bag again"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She collected a stronger bag from the organiser\" seçeneğidir."
@@ -6686,11 +6686,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe collected a stronger bag from the organiser.",
     "options": [
-      "He inserted a fully charged spare battery.",
+      "She tied the torn bag to the fence.",
       "She obtained a tougher rubbish bag from the event leader.",
-      "She changed into boots that did not let water in.",
-      "He refilled his bottle with drinking water.",
-      "She found a shady place for the blanket."
+      "She left the damaged bag on the sand.",
+      "She asked how long the clean-up would last.",
+      "She collected litter in the torn bag again."
     ],
     "correct": 1,
     "explanation": "\"She obtained a tougher rubbish bag from the event leader.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -6702,13 +6702,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Ruby planned to join a beach clean-up at the coast car park on Saturday afternoon. Her bag for litter had torn. ____ She collected litter without spilling it.",
+    "prompt": "Ruby planned to join a beach clean-up at the coast car park on Saturday afternoon. Her bag for litter had torn. ____. She collected litter without spilling it.",
     "options": [
       "She collected a stronger bag from the organiser",
-      "She put on her waterproof boots",
-      "He filled it at the drinking fountain",
-      "She moved the picnic blanket under a tree",
-      "He replaced it with a charged battery"
+      "She tied the torn bag to the fence",
+      "She left the damaged bag on the sand",
+      "She asked how long the clean-up would last",
+      "She collected litter in the torn bag again"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She collected a stronger bag from the organiser\" cümlesi tamamlar."
@@ -6936,13 +6936,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Clara deal with the problem at the conference room?\nB: The projector could not display her slides. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Clara deal with the problem at the conference room?\nB: The projector could not display her slides. ____\nA: The audience could see the figures clearly.",
     "options": [
-      "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon",
+      "She changed the order of the slides",
+      "She printed a copy of the opening title",
       "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records",
-      "She distributed the latest digital guide"
+      "She checked the projector's brand",
+      "She continued speaking without displaying the figures"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She connected her laptop to a spare screen\" seçeneğidir."
@@ -6956,11 +6956,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe connected her laptop to a spare screen.",
     "options": [
-      "She organised an online interview later that day.",
+      "She changed the order of the slides.",
       "She used a different display for the presentation.",
-      "He checked the package labels against the shipment documents.",
-      "She shared the updated electronic instructions.",
-      "He worked out the figure again from the source documents."
+      "She printed a copy of the opening title.",
+      "She checked the projector's brand.",
+      "She continued speaking without displaying the figures."
     ],
     "correct": 1,
     "explanation": "\"She used a different display for the presentation.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -6972,13 +6972,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Clara planned to complete a customer presentation at the conference room on Monday morning. The projector could not display her slides. ____ The audience could see the figures clearly.",
+    "prompt": "Clara planned to complete a customer presentation at the conference room on Monday morning. The projector could not display her slides. ____. The audience could see the figures clearly.",
     "options": [
       "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records",
-      "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon"
+      "She changed the order of the slides",
+      "She printed a copy of the opening title",
+      "She checked the projector's brand",
+      "She continued speaking without displaying the figures"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She connected her laptop to a spare screen\" cümlesi tamamlar."
@@ -7206,13 +7206,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Henry deal with the problem at the storage warehouse?\nB: Several boxes had incorrect labels. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Henry deal with the problem at the storage warehouse?\nB: Several boxes had incorrect labels. ____\nA: The inventory figures were corrected.",
     "options": [
-      "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen",
+      "He counted only the boxes with correct labels",
+      "He ordered additional empty boxes",
       "He compared the labels with the delivery records",
-      "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts"
+      "He changed the position of the shelves",
+      "He copied the incorrect labels into the report"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He compared the labels with the delivery records\" seçeneğidir."
@@ -7226,11 +7226,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe compared the labels with the delivery records.",
     "options": [
-      "She used a different display for the presentation.",
+      "He counted only the boxes with correct labels.",
       "He checked the package labels against the shipment documents.",
-      "She shared the updated electronic instructions.",
-      "He worked out the figure again from the source documents.",
-      "She organised an online interview later that day."
+      "He ordered additional empty boxes.",
+      "He changed the position of the shelves.",
+      "He copied the incorrect labels into the report."
     ],
     "correct": 1,
     "explanation": "\"He checked the package labels against the shipment documents.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -7242,13 +7242,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Henry planned to complete a stock check at the storage warehouse on Tuesday afternoon. Several boxes had incorrect labels. ____ The inventory figures were corrected.",
+    "prompt": "Henry planned to complete a stock check at the storage warehouse on Tuesday afternoon. Several boxes had incorrect labels. ____. The inventory figures were corrected.",
     "options": [
       "He compared the labels with the delivery records",
-      "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen"
+      "He counted only the boxes with correct labels",
+      "He ordered additional empty boxes",
+      "He changed the position of the shelves",
+      "He copied the incorrect labels into the report"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He compared the labels with the delivery records\" cümlesi tamamlar."
@@ -7476,13 +7476,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Amelia deal with the problem at the meeting room?\nB: The printed instructions were out of date. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Amelia deal with the problem at the meeting room?\nB: The printed instructions were out of date. ____\nA: All the trainees followed the current procedure.",
     "options": [
-      "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records",
+      "She printed more copies of the outdated instructions",
+      "She asked trainees to ignore all written instructions",
       "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon"
+      "She changed the time of the training session",
+      "She distributed an earlier version of the guide"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She distributed the latest digital guide\" seçeneğidir."
@@ -7496,11 +7496,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe distributed the latest digital guide.",
     "options": [
-      "He checked the package labels against the shipment documents.",
+      "She printed more copies of the outdated instructions.",
       "She shared the updated electronic instructions.",
-      "He worked out the figure again from the source documents.",
-      "She organised an online interview later that day.",
-      "She used a different display for the presentation."
+      "She asked trainees to ignore all written instructions.",
+      "She changed the time of the training session.",
+      "She distributed an earlier version of the guide."
     ],
     "correct": 1,
     "explanation": "\"She shared the updated electronic instructions.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -7512,13 +7512,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Amelia planned to complete a staff training session at the meeting room on Wednesday morning. The printed instructions were out of date. ____ All the trainees followed the current procedure.",
+    "prompt": "Amelia planned to complete a staff training session at the meeting room on Wednesday morning. The printed instructions were out of date. ____. All the trainees followed the current procedure.",
     "options": [
       "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records"
+      "She printed more copies of the outdated instructions",
+      "She asked trainees to ignore all written instructions",
+      "She changed the time of the training session",
+      "She distributed an earlier version of the guide"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She distributed the latest digital guide\" cümlesi tamamlar."
@@ -7746,13 +7746,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ryan deal with the problem at the finance office?\nB: One calculation appeared to be inaccurate. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Ryan deal with the problem at the finance office?\nB: One calculation appeared to be inaccurate. ____\nA: The final report contained the correct total.",
     "options": [
-      "He compared the labels with the delivery records",
-      "She distributed the latest digital guide",
+      "He changed the report's title",
+      "He rounded the incorrect total without checking",
       "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen"
+      "He replaced the receipt numbers with estimates",
+      "He checked the spelling of the report"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He recalculated the total using the original receipts\" seçeneğidir."
@@ -7766,11 +7766,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe recalculated the total using the original receipts.",
     "options": [
-      "She shared the updated electronic instructions.",
+      "He changed the report's title.",
       "He worked out the figure again from the source documents.",
-      "She organised an online interview later that day.",
-      "She used a different display for the presentation.",
-      "He checked the package labels against the shipment documents."
+      "He rounded the incorrect total without checking.",
+      "He replaced the receipt numbers with estimates.",
+      "He checked the spelling of the report."
     ],
     "correct": 1,
     "explanation": "\"He worked out the figure again from the source documents.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -7782,13 +7782,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Ryan planned to complete a monthly report at the finance office on Thursday afternoon. One calculation appeared to be inaccurate. ____ The final report contained the correct total.",
+    "prompt": "Ryan planned to complete a monthly report at the finance office on Thursday afternoon. One calculation appeared to be inaccurate. ____. The final report contained the correct total.",
     "options": [
       "He recalculated the total using the original receipts",
-      "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records",
-      "She distributed the latest digital guide"
+      "He changed the report's title",
+      "He rounded the incorrect total without checking",
+      "He replaced the receipt numbers with estimates",
+      "He checked the spelling of the report"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He recalculated the total using the original receipts\" cümlesi tamamlar."
@@ -8016,13 +8016,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Sofia deal with the problem at the company reception?\nB: The candidate could not reach the building on time. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Sofia deal with the problem at the company reception?\nB: The candidate could not reach the building on time. ____\nA: The candidate was interviewed without travelling.",
     "options": [
-      "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts",
+      "She cancelled the interview without offering another time",
+      "She asked the candidate to travel the same route again",
       "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records"
+      "She sent the candidate the office address",
+      "She postponed the interview until the candidate could travel"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She arranged a video interview for the same afternoon\" seçeneğidir."
@@ -8036,11 +8036,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe arranged a video interview for the same afternoon.",
     "options": [
-      "He worked out the figure again from the source documents.",
+      "She cancelled the interview without offering another time.",
       "She organised an online interview later that day.",
-      "She used a different display for the presentation.",
-      "He checked the package labels against the shipment documents.",
-      "She shared the updated electronic instructions."
+      "She asked the candidate to travel the same route again.",
+      "She sent the candidate the office address.",
+      "She postponed the interview until the candidate could travel."
     ],
     "correct": 1,
     "explanation": "\"She organised an online interview later that day.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -8052,13 +8052,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Sofia planned to complete a recruitment interview at the company reception on Friday morning. The candidate could not reach the building on time. ____ The candidate was interviewed without travelling.",
+    "prompt": "Sofia planned to complete a recruitment interview at the company reception on Friday morning. The candidate could not reach the building on time. ____. The candidate was interviewed without travelling.",
     "options": [
       "She arranged a video interview for the same afternoon",
-      "She connected her laptop to a spare screen",
-      "He compared the labels with the delivery records",
-      "She distributed the latest digital guide",
-      "He recalculated the total using the original receipts"
+      "She cancelled the interview without offering another time",
+      "She asked the candidate to travel the same route again",
+      "She sent the candidate the office address",
+      "She postponed the interview until the candidate could travel"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She arranged a video interview for the same afternoon\" cümlesi tamamlar."
@@ -8286,13 +8286,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Dylan deal with the problem at the bridge entrance?\nB: The water level was too high for the usual route. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Dylan deal with the problem at the bridge entrance?\nB: The water level was too high for the usual route. ____\nA: The team collected data without entering the water.",
     "options": [
-      "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches",
+      "He asked the team to enter the deeper water",
+      "He postponed collecting any data",
       "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting"
+      "He recorded only the planned route on a map",
+      "He asked for photographs from last year's survey"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He suggested measuring from a safe viewing point\" seçeneğidir."
@@ -8306,11 +8306,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe suggested measuring from a safe viewing point.",
     "options": [
-      "He posted reminders where people control the lights.",
+      "He asked the team to enter the deeper water.",
       "He proposed taking measurements from a safer location.",
-      "She made the sorting instructions clearer using illustrations.",
-      "He arranged for the ground to receive more water.",
-      "She requested that observers keep farther away and stay quiet."
+      "He postponed collecting any data.",
+      "He recorded only the planned route on a map.",
+      "He asked for photographs from last year's survey."
     ],
     "correct": 1,
     "explanation": "\"He proposed taking measurements from a safer location.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -8322,13 +8322,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Dylan planned to take part in a river survey at the bridge entrance on Monday morning. The water level was too high for the usual route. ____ The team collected data without entering the water.",
+    "prompt": "Dylan planned to take part in a river survey at the bridge entrance on Monday morning. The water level was too high for the usual route. ____. The team collected data without entering the water.",
     "options": [
       "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches"
+      "He asked the team to enter the deeper water",
+      "He postponed collecting any data",
+      "He recorded only the planned route on a map",
+      "He asked for photographs from last year's survey"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He suggested measuring from a safe viewing point\" cümlesi tamamlar."
@@ -8556,13 +8556,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Megan deal with the problem at the town market?\nB: People were putting glass into the paper containers. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Megan deal with the problem at the town market?\nB: People were putting glass into the paper containers. ____\nA: More waste was sorted correctly.",
     "options": [
-      "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point",
+      "She put more glass into the paper containers",
+      "She removed every label from the bins",
       "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance"
+      "She asked the team to collect only paper",
+      "She moved the bins without identifying their purpose"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She added clear labels with pictures to the bins\" seçeneğidir."
@@ -8576,11 +8576,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe added clear labels with pictures to the bins.",
     "options": [
-      "He proposed taking measurements from a safer location.",
+      "She put more glass into the paper containers.",
       "She made the sorting instructions clearer using illustrations.",
-      "He arranged for the ground to receive more water.",
-      "She requested that observers keep farther away and stay quiet.",
-      "He posted reminders where people control the lights."
+      "She removed every label from the bins.",
+      "She asked the team to collect only paper.",
+      "She moved the bins without identifying their purpose."
     ],
     "correct": 1,
     "explanation": "\"She made the sorting instructions clearer using illustrations.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -8592,13 +8592,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Megan planned to take part in a recycling campaign at the town market on Tuesday afternoon. People were putting glass into the paper containers. ____ More waste was sorted correctly.",
+    "prompt": "Megan planned to take part in a recycling campaign at the town market on Tuesday afternoon. People were putting glass into the paper containers. ____. More waste was sorted correctly.",
     "options": [
       "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point"
+      "She put more glass into the paper containers",
+      "She removed every label from the bins",
+      "She asked the team to collect only paper",
+      "She moved the bins without identifying their purpose"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She added clear labels with pictures to the bins\" cümlesi tamamlar."
@@ -8826,13 +8826,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Arthur deal with the problem at the school grounds?\nB: The soil was too dry for the young trees. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Arthur deal with the problem at the school grounds?\nB: The soil was too dry for the young trees. ____\nA: The soil became suitable for planting.",
     "options": [
-      "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins",
+      "He ordered more trees without preparing the soil",
+      "He added labels to the planting area",
       "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches"
+      "He measured the height of each tree",
+      "He postponed all watering until after the project"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He organised extra watering before planting\" seçeneğidir."
@@ -8846,11 +8846,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe organised extra watering before planting.",
     "options": [
-      "She made the sorting instructions clearer using illustrations.",
+      "He ordered more trees without preparing the soil.",
       "He arranged for the ground to receive more water.",
-      "She requested that observers keep farther away and stay quiet.",
-      "He posted reminders where people control the lights.",
-      "He proposed taking measurements from a safer location."
+      "He added labels to the planting area.",
+      "He measured the height of each tree.",
+      "He postponed all watering until after the project."
     ],
     "correct": 1,
     "explanation": "\"He arranged for the ground to receive more water.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -8862,13 +8862,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Arthur planned to take part in a tree planting project at the school grounds on Wednesday morning. The soil was too dry for the young trees. ____ The soil became suitable for planting.",
+    "prompt": "Arthur planned to take part in a tree planting project at the school grounds on Wednesday morning. The soil was too dry for the young trees. ____. The soil became suitable for planting.",
     "options": [
       "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins"
+      "He ordered more trees without preparing the soil",
+      "He added labels to the planting area",
+      "He measured the height of each tree",
+      "He postponed all watering until after the project"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He organised extra watering before planting\" cümlesi tamamlar."
@@ -9096,13 +9096,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Leah deal with the problem at the nature reserve?\nB: Loud visitors were frightening the birds away. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Leah deal with the problem at the nature reserve?\nB: Loud visitors were frightening the birds away. ____\nA: The birds returned to the feeding area.",
     "options": [
-      "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting",
+      "She asked visitors to move closer to the birds",
+      "She placed signs advertising the reserve",
       "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point"
+      "She recorded the noise rather than the birds",
+      "She asked the group to speak more loudly"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She asked the group to observe from a quiet distance\" seçeneğidir."
@@ -9116,11 +9116,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe asked the group to observe from a quiet distance.",
     "options": [
-      "He arranged for the ground to receive more water.",
+      "She asked visitors to move closer to the birds.",
       "She requested that observers keep farther away and stay quiet.",
-      "He posted reminders where people control the lights.",
-      "He proposed taking measurements from a safer location.",
-      "She made the sorting instructions clearer using illustrations."
+      "She placed signs advertising the reserve.",
+      "She recorded the noise rather than the birds.",
+      "She asked the group to speak more loudly."
     ],
     "correct": 1,
     "explanation": "\"She requested that observers keep farther away and stay quiet.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -9132,13 +9132,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Leah planned to take part in a wildlife count at the nature reserve on Thursday afternoon. Loud visitors were frightening the birds away. ____ The birds returned to the feeding area.",
+    "prompt": "Leah planned to take part in a wildlife count at the nature reserve on Thursday afternoon. Loud visitors were frightening the birds away. ____. The birds returned to the feeding area.",
     "options": [
       "She asked the group to observe from a quiet distance",
-      "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting"
+      "She asked visitors to move closer to the birds",
+      "She placed signs advertising the reserve",
+      "She recorded the noise rather than the birds",
+      "She asked the group to speak more loudly"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She asked the group to observe from a quiet distance\" cümlesi tamamlar."
@@ -9366,13 +9366,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Victor deal with the problem at the public library?\nB: Several lights were left on in unused rooms. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Victor deal with the problem at the public library?\nB: Several lights were left on in unused rooms. ____\nA: Staff began switching off unnecessary lights.",
     "options": [
-      "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance",
+      "He ordered brighter bulbs for unused rooms",
+      "He asked staff to leave every light switched on",
       "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins"
+      "He replaced signs at the library entrance",
+      "He recorded the opening hours of the library"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He placed reminder notices next to the switches\" seçeneğidir."
@@ -9386,11 +9386,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe placed reminder notices next to the switches.",
     "options": [
-      "She requested that observers keep farther away and stay quiet.",
+      "He ordered brighter bulbs for unused rooms.",
       "He posted reminders where people control the lights.",
-      "He proposed taking measurements from a safer location.",
-      "She made the sorting instructions clearer using illustrations.",
-      "He arranged for the ground to receive more water."
+      "He asked staff to leave every light switched on.",
+      "He replaced signs at the library entrance.",
+      "He recorded the opening hours of the library."
     ],
     "correct": 1,
     "explanation": "\"He posted reminders where people control the lights.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -9402,13 +9402,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Victor planned to take part in an energy-saving project at the public library on Friday morning. Several lights were left on in unused rooms. ____ Staff began switching off unnecessary lights.",
+    "prompt": "Victor planned to take part in an energy-saving project at the public library on Friday morning. Several lights were left on in unused rooms. ____. Staff began switching off unnecessary lights.",
     "options": [
       "He placed reminder notices next to the switches",
-      "He suggested measuring from a safe viewing point",
-      "She added clear labels with pictures to the bins",
-      "He organised extra watering before planting",
-      "She asked the group to observe from a quiet distance"
+      "He ordered brighter bulbs for unused rooms",
+      "He asked staff to leave every light switched on",
+      "He replaced signs at the library entrance",
+      "He recorded the opening hours of the library"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He placed reminder notices next to the switches\" cümlesi tamamlar."
@@ -9636,13 +9636,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Ivy deal with the problem at the housing office?\nB: The maintenance team had not received the original message. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Ivy deal with the problem at the housing office?\nB: The maintenance team had not received the original message. ____\nA: The repair was scheduled for the following day.",
     "options": [
-      "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date",
+      "She sent an unrelated message about rent",
+      "She deleted the original repair request",
       "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill"
+      "She asked the maintenance team to cancel the request",
+      "She waited without contacting the team again"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She forwarded the message with photographs of the damage\" seçeneğidir."
@@ -9656,11 +9656,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe forwarded the message with photographs of the damage.",
     "options": [
-      "She requested a correction to the date of travel.",
+      "She sent an unrelated message about rent.",
       "She resent the request and included photographic evidence.",
-      "He gave more specific identifying details of the missing bag.",
-      "She supplied a recent bill to confirm where she lived.",
-      "He provided an image showing the actual delivery entrance."
+      "She deleted the original repair request.",
+      "She asked the maintenance team to cancel the request.",
+      "She waited without contacting the team again."
     ],
     "correct": 1,
     "explanation": "\"She resent the request and included photographic evidence.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -9672,13 +9672,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Ivy planned to handle a repair request at the housing office on Monday afternoon. The maintenance team had not received the original message. ____ The repair was scheduled for the following day.",
+    "prompt": "Ivy planned to handle a repair request at the housing office on Monday afternoon. The maintenance team had not received the original message. ____. The repair was scheduled for the following day.",
     "options": [
       "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date"
+      "She sent an unrelated message about rent",
+      "She deleted the original repair request",
+      "She asked the maintenance team to cancel the request",
+      "She waited without contacting the team again"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She forwarded the message with photographs of the damage\" cümlesi tamamlar."
@@ -9906,13 +9906,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Liam deal with the problem at the station office?\nB: The bag description was too general. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Liam deal with the problem at the station office?\nB: The bag description was too general. ____\nA: The employee matched the report to a found bag.",
     "options": [
-      "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage",
+      "He described the bag only as an ordinary bag",
+      "He asked when the station would close",
       "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance"
+      "He provided details of a different lost item",
+      "He withdrew the report before the search"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He provided the exact colour and brand of the bag\" seçeneğidir."
@@ -9926,11 +9926,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe provided the exact colour and brand of the bag.",
     "options": [
-      "She resent the request and included photographic evidence.",
+      "He described the bag only as an ordinary bag.",
       "He gave more specific identifying details of the missing bag.",
-      "She supplied a recent bill to confirm where she lived.",
-      "He provided an image showing the actual delivery entrance.",
-      "She requested a correction to the date of travel."
+      "He asked when the station would close.",
+      "He provided details of a different lost item.",
+      "He withdrew the report before the search."
     ],
     "correct": 1,
     "explanation": "\"He gave more specific identifying details of the missing bag.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -9942,13 +9942,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Liam planned to handle a lost property report at the station office on Tuesday morning. The bag description was too general. ____ The employee matched the report to a found bag.",
+    "prompt": "Liam planned to handle a lost property report at the station office on Tuesday morning. The bag description was too general. ____. The employee matched the report to a found bag.",
     "options": [
       "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage"
+      "He described the bag only as an ordinary bag",
+      "He asked when the station would close",
+      "He provided details of a different lost item",
+      "He withdrew the report before the search"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He provided the exact colour and brand of the bag\" cümlesi tamamlar."
@@ -10176,13 +10176,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Nora deal with the problem at the sports association?\nB: The form lacked proof of address. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Nora deal with the problem at the sports association?\nB: The form lacked proof of address. ____\nA: The application was accepted as complete.",
     "options": [
-      "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag",
+      "She submitted a blank form again",
+      "She uploaded a photograph of the sports hall",
       "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date"
+      "She asked for a list of membership fees",
+      "She removed the address section from the form"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She uploaded a recent utility bill\" seçeneğidir."
@@ -10196,11 +10196,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe uploaded a recent utility bill.",
     "options": [
-      "He gave more specific identifying details of the missing bag.",
+      "She submitted a blank form again.",
       "She supplied a recent bill to confirm where she lived.",
-      "He provided an image showing the actual delivery entrance.",
-      "She requested a correction to the date of travel.",
-      "She resent the request and included photographic evidence."
+      "She uploaded a photograph of the sports hall.",
+      "She asked for a list of membership fees.",
+      "She removed the address section from the form."
     ],
     "correct": 1,
     "explanation": "\"She supplied a recent bill to confirm where she lived.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -10212,13 +10212,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Nora planned to handle a membership application at the sports association on Wednesday afternoon. The form lacked proof of address. ____ The application was accepted as complete.",
+    "prompt": "Nora planned to handle a membership application at the sports association on Wednesday afternoon. The form lacked proof of address. ____. The application was accepted as complete.",
     "options": [
       "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag"
+      "She submitted a blank form again",
+      "She uploaded a photograph of the sports hall",
+      "She asked for a list of membership fees",
+      "She removed the address section from the form"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She uploaded a recent utility bill\" cümlesi tamamlar."
@@ -10446,13 +10446,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Oliver deal with the problem at the courier office?\nB: The parcel had been left at the wrong building. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Oliver deal with the problem at the courier office?\nB: The parcel had been left at the wrong building. ____\nA: The courier delivered the parcel to the right address.",
     "options": [
-      "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill",
+      "He confirmed the address of the wrong building",
+      "He asked for a tracking number without correcting the address",
       "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage"
+      "He complained about the packaging alone",
+      "He asked the courier to leave the parcel where it was"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He sent a photograph of the correct entrance\" seçeneğidir."
@@ -10466,11 +10466,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe sent a photograph of the correct entrance.",
     "options": [
-      "She supplied a recent bill to confirm where she lived.",
+      "He confirmed the address of the wrong building.",
       "He provided an image showing the actual delivery entrance.",
-      "She requested a correction to the date of travel.",
-      "She resent the request and included photographic evidence.",
-      "He gave more specific identifying details of the missing bag."
+      "He asked for a tracking number without correcting the address.",
+      "He complained about the packaging alone.",
+      "He asked the courier to leave the parcel where it was."
     ],
     "correct": 1,
     "explanation": "\"He provided an image showing the actual delivery entrance.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -10482,13 +10482,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Oliver planned to handle a delivery complaint at the courier office on Thursday morning. The parcel had been left at the wrong building. ____ The courier delivered the parcel to the right address.",
+    "prompt": "Oliver planned to handle a delivery complaint at the courier office on Thursday morning. The parcel had been left at the wrong building. ____. The courier delivered the parcel to the right address.",
     "options": [
       "He sent a photograph of the correct entrance",
-      "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill"
+      "He confirmed the address of the wrong building",
+      "He asked for a tracking number without correcting the address",
+      "He complained about the packaging alone",
+      "He asked the courier to leave the parcel where it was"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He sent a photograph of the correct entrance\" cümlesi tamamlar."
@@ -10716,13 +10716,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Hannah deal with the problem at the travel agency?\nB: Her booking included an incorrect departure date. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Hannah deal with the problem at the travel agency?\nB: Her booking included an incorrect departure date. ____\nA: The updated ticket showed the correct day.",
     "options": [
-      "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance",
+      "She requested a different seat on the same incorrect date",
+      "She checked the price of a hotel",
       "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag"
+      "She asked the agent to cancel the reservation",
+      "She confirmed the incorrect departure date"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She asked the agent to move it to the agreed date\" seçeneğidir."
@@ -10736,11 +10736,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe asked the agent to move it to the agreed date.",
     "options": [
-      "He provided an image showing the actual delivery entrance.",
+      "She requested a different seat on the same incorrect date.",
       "She requested a correction to the date of travel.",
-      "She resent the request and included photographic evidence.",
-      "He gave more specific identifying details of the missing bag.",
-      "She supplied a recent bill to confirm where she lived."
+      "She checked the price of a hotel.",
+      "She asked the agent to cancel the reservation.",
+      "She confirmed the incorrect departure date."
     ],
     "correct": 1,
     "explanation": "\"She requested a correction to the date of travel.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -10752,13 +10752,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Hannah planned to handle a reservation change at the travel agency on Friday afternoon. Her booking included an incorrect departure date. ____ The updated ticket showed the correct day.",
+    "prompt": "Hannah planned to handle a reservation change at the travel agency on Friday afternoon. Her booking included an incorrect departure date. ____. The updated ticket showed the correct day.",
     "options": [
       "She asked the agent to move it to the agreed date",
-      "She forwarded the message with photographs of the damage",
-      "He provided the exact colour and brand of the bag",
-      "She uploaded a recent utility bill",
-      "He sent a photograph of the correct entrance"
+      "She requested a different seat on the same incorrect date",
+      "She checked the price of a hotel",
+      "She asked the agent to cancel the reservation",
+      "She confirmed the incorrect departure date"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She asked the agent to move it to the agreed date\" cümlesi tamamlar."
@@ -10986,13 +10986,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did James deal with the problem at the college laboratory?\nB: Two measurements were inconsistent. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did James deal with the problem at the college laboratory?\nB: Two measurements were inconsistent. ____\nA: The new measurements were consistent.",
     "options": [
-      "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks",
+      "He averaged the two values without taking another measurement",
+      "He changed the experiment and used unrelated results",
       "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room"
+      "He copied only the larger measurement",
+      "He checked the spelling of the assignment"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He repeated the experiment under the same conditions\" seçeneğidir."
@@ -11006,11 +11006,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe repeated the experiment under the same conditions.",
     "options": [
-      "He sent a brief account of the work allocation.",
+      "He averaged the two values without taking another measurement.",
       "He conducted the test again without changing the conditions.",
-      "She cross-checked the historical date using printed references.",
-      "He made a fresh recording in a less noisy location.",
-      "She increased the size of the map key symbols."
+      "He changed the experiment and used unrelated results.",
+      "He copied only the larger measurement.",
+      "He checked the spelling of the assignment."
     ],
     "correct": 1,
     "explanation": "\"He conducted the test again without changing the conditions.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -11022,13 +11022,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "James planned to complete a science assignment at the college laboratory on Monday morning. Two measurements were inconsistent. ____ The new measurements were consistent.",
+    "prompt": "James planned to complete a science assignment at the college laboratory on Monday morning. Two measurements were inconsistent. ____. The new measurements were consistent.",
     "options": [
       "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks"
+      "He averaged the two values without taking another measurement",
+      "He changed the experiment and used unrelated results",
+      "He copied only the larger measurement",
+      "He checked the spelling of the assignment"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He repeated the experiment under the same conditions\" cümlesi tamamlar."
@@ -11256,13 +11256,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Poppy deal with the problem at the college library?\nB: One online source gave an uncertain date. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Poppy deal with the problem at the college library?\nB: One online source gave an uncertain date. ____\nA: The presentation included a verified date.",
     "options": [
-      "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions",
+      "She chose a date without consulting any sources",
+      "She changed the presentation's title",
       "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones"
+      "She checked the pictures instead of the date",
+      "She removed the reference list without verifying the date"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She checked the date against two reference books\" seçeneğidir."
@@ -11276,11 +11276,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe checked the date against two reference books.",
     "options": [
-      "He conducted the test again without changing the conditions.",
+      "She chose a date without consulting any sources.",
       "She cross-checked the historical date using printed references.",
-      "He made a fresh recording in a less noisy location.",
-      "She increased the size of the map key symbols.",
-      "He sent a brief account of the work allocation."
+      "She changed the presentation's title.",
+      "She checked the pictures instead of the date.",
+      "She removed the reference list without verifying the date."
     ],
     "correct": 1,
     "explanation": "\"She cross-checked the historical date using printed references.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -11292,13 +11292,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Poppy planned to complete a history presentation at the college library on Tuesday afternoon. One online source gave an uncertain date. ____ The presentation included a verified date.",
+    "prompt": "Poppy planned to complete a history presentation at the college library on Tuesday afternoon. One online source gave an uncertain date. ____. The presentation included a verified date.",
     "options": [
       "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions"
+      "She chose a date without consulting any sources",
+      "She changed the presentation's title",
+      "She checked the pictures instead of the date",
+      "She removed the reference list without verifying the date"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She checked the date against two reference books\" cümlesi tamamlar."
@@ -11526,13 +11526,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Alfie deal with the problem at the media room?\nB: The recording contained loud background noise. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Alfie deal with the problem at the media room?\nB: The recording contained loud background noise. ____\nA: The teacher could understand every word.",
     "options": [
-      "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books",
+      "He increased the volume of the noisy recording",
+      "He changed the name of the audio file",
       "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks"
+      "He asked the teacher to listen to the same recording",
+      "He added background music over the original speech"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He recorded his speech again in a quieter room\" seçeneğidir."
@@ -11546,11 +11546,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe recorded his speech again in a quieter room.",
     "options": [
-      "She cross-checked the historical date using printed references.",
+      "He increased the volume of the noisy recording.",
       "He made a fresh recording in a less noisy location.",
-      "She increased the size of the map key symbols.",
-      "He sent a brief account of the work allocation.",
-      "He conducted the test again without changing the conditions."
+      "He changed the name of the audio file.",
+      "He asked the teacher to listen to the same recording.",
+      "He added background music over the original speech."
     ],
     "correct": 1,
     "explanation": "\"He made a fresh recording in a less noisy location.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -11562,13 +11562,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Alfie planned to complete a language recording at the media room on Wednesday morning. The recording contained loud background noise. ____ The teacher could understand every word.",
+    "prompt": "Alfie planned to complete a language recording at the media room on Wednesday morning. The recording contained loud background noise. ____. The teacher could understand every word.",
     "options": [
       "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books"
+      "He increased the volume of the noisy recording",
+      "He changed the name of the audio file",
+      "He asked the teacher to listen to the same recording",
+      "He added background music over the original speech"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He recorded his speech again in a quieter room\" cümlesi tamamlar."
@@ -11796,13 +11796,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Alice deal with the problem at the study centre?\nB: The map legend was difficult to read. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Alice deal with the problem at the study centre?\nB: The map legend was difficult to read. ____\nA: Visitors could identify the map features easily.",
     "options": [
-      "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room",
+      "She made the map symbols even smaller",
+      "She changed the poster's title font",
       "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions"
+      "She removed the map legend completely",
+      "She added a border without changing the symbols"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She replaced the tiny symbols with larger ones\" seçeneğidir."
@@ -11816,11 +11816,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe replaced the tiny symbols with larger ones.",
     "options": [
-      "He made a fresh recording in a less noisy location.",
+      "She made the map symbols even smaller.",
       "She increased the size of the map key symbols.",
-      "He sent a brief account of the work allocation.",
-      "He conducted the test again without changing the conditions.",
-      "She cross-checked the historical date using printed references."
+      "She changed the poster's title font.",
+      "She removed the map legend completely.",
+      "She added a border without changing the symbols."
     ],
     "correct": 1,
     "explanation": "\"She increased the size of the map key symbols.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -11832,13 +11832,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Alice planned to complete a geography poster at the study centre on Thursday afternoon. The map legend was difficult to read. ____ Visitors could identify the map features easily.",
+    "prompt": "Alice planned to complete a geography poster at the study centre on Thursday afternoon. The map legend was difficult to read. ____. Visitors could identify the map features easily.",
     "options": [
       "She replaced the tiny symbols with larger ones",
-      "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room"
+      "She made the map symbols even smaller",
+      "She changed the poster's title font",
+      "She removed the map legend completely",
+      "She added a border without changing the symbols"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She replaced the tiny symbols with larger ones\" cümlesi tamamlar."
@@ -12066,13 +12066,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Charlie deal with the problem at the seminar room?\nB: One team member had missed the planning meeting. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Charlie deal with the problem at the seminar room?\nB: One team member had missed the planning meeting. ____\nA: Everyone knew their responsibilities.",
     "options": [
-      "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones",
+      "He shared an invitation to a meeting that had already finished",
+      "He asked the absent member to guess the tasks",
       "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books"
+      "He sent only the names of the team members",
+      "He changed the project's title without sharing the plan"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He shared a summary of the agreed tasks\" seçeneğidir."
@@ -12086,11 +12086,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe shared a summary of the agreed tasks.",
     "options": [
-      "She increased the size of the map key symbols.",
+      "He shared an invitation to a meeting that had already finished.",
       "He sent a brief account of the work allocation.",
-      "He conducted the test again without changing the conditions.",
-      "She cross-checked the historical date using printed references.",
-      "He made a fresh recording in a less noisy location."
+      "He asked the absent member to guess the tasks.",
+      "He sent only the names of the team members.",
+      "He changed the project's title without sharing the plan."
     ],
     "correct": 1,
     "explanation": "\"He sent a brief account of the work allocation.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -12102,13 +12102,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Charlie planned to complete a group project at the seminar room on Friday morning. One team member had missed the planning meeting. ____ Everyone knew their responsibilities.",
+    "prompt": "Charlie planned to complete a group project at the seminar room on Friday morning. One team member had missed the planning meeting. ____. Everyone knew their responsibilities.",
     "options": [
       "He shared a summary of the agreed tasks",
-      "He repeated the experiment under the same conditions",
-      "She checked the date against two reference books",
-      "He recorded his speech again in a quieter room",
-      "She replaced the tiny symbols with larger ones"
+      "He shared an invitation to a meeting that had already finished",
+      "He asked the absent member to guess the tasks",
+      "He sent only the names of the team members",
+      "He changed the project's title without sharing the plan"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He shared a summary of the agreed tasks\" cümlesi tamamlar."
@@ -12336,13 +12336,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Florence deal with the problem at the village hall?\nB: The prices were not visible on many books. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Florence deal with the problem at the village hall?\nB: The prices were not visible on many books. ____\nA: Buyers could check prices without asking.",
     "options": [
-      "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights",
+      "She placed a sign with the opening hours at the door",
+      "She arranged the books by colour alone",
       "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed"
+      "She removed all existing price labels",
+      "She asked buyers to check prices with the organiser"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She attached clear price stickers to each book\" seçeneğidir."
@@ -12356,11 +12356,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe attached clear price stickers to each book.",
     "options": [
-      "She used weights to stop the display panels moving.",
+      "She placed a sign with the opening hours at the door.",
       "She labelled every book with its selling price.",
-      "He provided directions in the form of a route map.",
-      "She organised the installation of sound equipment.",
-      "He replaced the small boxes with bigger storage containers."
+      "She arranged the books by colour alone.",
+      "She removed all existing price labels.",
+      "She asked buyers to check prices with the organiser."
     ],
     "correct": 1,
     "explanation": "\"She labelled every book with its selling price.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -12372,13 +12372,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Florence planned to organise a charity book sale at the village hall on Monday afternoon. The prices were not visible on many books. ____ Buyers could check prices without asking.",
+    "prompt": "Florence planned to organise a charity book sale at the village hall on Monday afternoon. The prices were not visible on many books. ____. Buyers could check prices without asking.",
     "options": [
       "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights"
+      "She placed a sign with the opening hours at the door",
+      "She arranged the books by colour alone",
+      "She removed all existing price labels",
+      "She asked buyers to check prices with the organiser"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She attached clear price stickers to each book\" cümlesi tamamlar."
@@ -12606,13 +12606,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Sebastian deal with the problem at the park entrance?\nB: Several riders were unfamiliar with the route. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Sebastian deal with the problem at the park entrance?\nB: Several riders were unfamiliar with the route. ____\nA: The riders followed the intended course.",
     "options": [
-      "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book",
+      "He distributed a list of riders' names",
+      "He announced the starting time again",
       "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom"
+      "He changed the colour of the event badges",
+      "He asked riders to choose their own routes"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He distributed a map showing all the turns\" seçeneğidir."
@@ -12626,11 +12626,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe distributed a map showing all the turns.",
     "options": [
-      "She labelled every book with its selling price.",
+      "He distributed a list of riders' names.",
       "He provided directions in the form of a route map.",
-      "She organised the installation of sound equipment.",
-      "He replaced the small boxes with bigger storage containers.",
-      "She used weights to stop the display panels moving."
+      "He announced the starting time again.",
+      "He changed the colour of the event badges.",
+      "He asked riders to choose their own routes."
     ],
     "correct": 1,
     "explanation": "\"He provided directions in the form of a route map.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -12642,13 +12642,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Sebastian planned to organise a local cycling event at the park entrance on Tuesday morning. Several riders were unfamiliar with the route. ____ The riders followed the intended course.",
+    "prompt": "Sebastian planned to organise a local cycling event at the park entrance on Tuesday morning. Several riders were unfamiliar with the route. ____. The riders followed the intended course.",
     "options": [
       "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book"
+      "He distributed a list of riders' names",
+      "He announced the starting time again",
+      "He changed the colour of the event badges",
+      "He asked riders to choose their own routes"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He distributed a map showing all the turns\" cümlesi tamamlar."
@@ -12876,13 +12876,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Laura deal with the problem at the community hall?\nB: Some residents could not hear the speaker. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Laura deal with the problem at the community hall?\nB: Some residents could not hear the speaker. ____\nA: Everyone could follow the discussion.",
     "options": [
-      "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns",
+      "She moved the meeting notice to the entrance",
+      "She asked the speaker to talk more quietly",
       "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights"
+      "She printed the attendance list",
+      "She shortened the meeting without improving the sound"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She arranged for a microphone to be installed\" seçeneğidir."
@@ -12896,11 +12896,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe arranged for a microphone to be installed.",
     "options": [
-      "He provided directions in the form of a route map.",
+      "She moved the meeting notice to the entrance.",
       "She organised the installation of sound equipment.",
-      "He replaced the small boxes with bigger storage containers.",
-      "She used weights to stop the display panels moving.",
-      "She labelled every book with its selling price."
+      "She asked the speaker to talk more quietly.",
+      "She printed the attendance list.",
+      "She shortened the meeting without improving the sound."
     ],
     "correct": 1,
     "explanation": "\"She organised the installation of sound equipment.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -12912,13 +12912,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Laura planned to organise a neighbourhood meeting at the community hall on Wednesday evening. Some residents could not hear the speaker. ____ Everyone could follow the discussion.",
+    "prompt": "Laura planned to organise a neighbourhood meeting at the community hall on Wednesday evening. Some residents could not hear the speaker. ____. Everyone could follow the discussion.",
     "options": [
       "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns"
+      "She moved the meeting notice to the entrance",
+      "She asked the speaker to talk more quietly",
+      "She printed the attendance list",
+      "She shortened the meeting without improving the sound"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She arranged for a microphone to be installed\" cümlesi tamamlar."
@@ -13146,13 +13146,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did George deal with the problem at the youth centre?\nB: The collection boxes were too small for the donations. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did George deal with the problem at the youth centre?\nB: The collection boxes were too small for the donations. ____\nA: There was enough space for all the donated food.",
     "options": [
-      "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed",
+      "He removed some empty boxes without replacing them",
+      "He printed labels for the same small boxes",
       "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book"
+      "He asked donors to take the food home",
+      "He moved the small boxes to a different table"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"He brought larger containers from the storeroom\" seçeneğidir."
@@ -13166,11 +13166,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nHe brought larger containers from the storeroom.",
     "options": [
-      "She organised the installation of sound equipment.",
+      "He removed some empty boxes without replacing them.",
       "He replaced the small boxes with bigger storage containers.",
-      "She used weights to stop the display panels moving.",
-      "She labelled every book with its selling price.",
-      "He provided directions in the form of a route map."
+      "He printed labels for the same small boxes.",
+      "He asked donors to take the food home.",
+      "He moved the small boxes to a different table."
     ],
     "correct": 1,
     "explanation": "\"He replaced the small boxes with bigger storage containers.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -13182,13 +13182,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "George planned to organise a food donation drive at the youth centre on Thursday afternoon. The collection boxes were too small for the donations. ____ There was enough space for all the donated food.",
+    "prompt": "George planned to organise a food donation drive at the youth centre on Thursday afternoon. The collection boxes were too small for the donations. ____. There was enough space for all the donated food.",
     "options": [
       "He brought larger containers from the storeroom",
-      "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed"
+      "He removed some empty boxes without replacing them",
+      "He printed labels for the same small boxes",
+      "He asked donors to take the food home",
+      "He moved the small boxes to a different table"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"He brought larger containers from the storeroom\" cümlesi tamamlar."
@@ -13416,13 +13416,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Completion",
     "kind": "Dialogue",
-    "prompt": "A: How did Daisy deal with the problem at the town square?\nB: Strong wind was moving the exhibition boards. ____\nA: That explains the successful outcome.",
+    "prompt": "A: How did Daisy deal with the problem at the town square?\nB: Strong wind was moving the exhibition boards. ____\nA: The display remained stable throughout the event.",
     "options": [
-      "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom",
+      "She attached paper labels to the moving boards",
+      "She moved the display into a windier area",
       "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns"
+      "She removed the boards' existing supports",
+      "She asked visitors to hold the boards during the event"
     ],
     "correct": 2,
     "explanation": "Diyalogda sorunu doğrudan çözen ve sonucu açıklayan eylem \"She secured the boards with suitable weights\" seçeneğidir."
@@ -13436,11 +13436,11 @@ export const ab1250Scenes = [
     "kind": "Restatement",
     "prompt": "Choose the sentence closest in meaning to the following.\n\nShe secured the boards with suitable weights.",
     "options": [
-      "He replaced the small boxes with bigger storage containers.",
+      "She attached paper labels to the moving boards.",
       "She used weights to stop the display panels moving.",
-      "She labelled every book with its selling price.",
-      "He provided directions in the form of a route map.",
-      "She organised the installation of sound equipment."
+      "She moved the display into a windier area.",
+      "She removed the boards' existing supports.",
+      "She asked visitors to hold the boards during the event."
     ],
     "correct": 1,
     "explanation": "\"She used weights to stop the display panels moving.\" ifadesi aynı eylemi farklı kelimelerle anlatır."
@@ -13452,13 +13452,13 @@ export const ab1250Scenes = [
     "yds": null,
     "topic": "Paragraph",
     "kind": "ParagraphCompletion",
-    "prompt": "Daisy planned to organise a public art display at the town square on Saturday morning. Strong wind was moving the exhibition boards. ____ The display remained stable throughout the event.",
+    "prompt": "Daisy planned to organise a public art display at the town square on Saturday morning. Strong wind was moving the exhibition boards. ____. The display remained stable throughout the event.",
     "options": [
       "She secured the boards with suitable weights",
-      "She attached clear price stickers to each book",
-      "He distributed a map showing all the turns",
-      "She arranged for a microphone to be installed",
-      "He brought larger containers from the storeroom"
+      "She attached paper labels to the moving boards",
+      "She moved the display into a windier area",
+      "She removed the boards' existing supports",
+      "She asked visitors to hold the boards during the event"
     ],
     "correct": 0,
     "explanation": "Paragrafın sebep-sonuç bağlantısını \"She secured the boards with suitable weights\" cümlesi tamamlar."

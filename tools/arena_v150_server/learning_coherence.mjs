@@ -795,10 +795,10 @@ export const coherenceQuestions = [
     "prompt": "A study reported an association between urban green space and lower stress levels. ____ . Consequently, the authors recommended a design that would account for residential self-selection.",
     "options": [
       "People who prefer quieter surroundings may also be more likely to choose greener neighbourhoods.",
-      "Residential choices cannot differ between individuals.",
-      "The association alone proves a direct causal effect.",
-      "Green space was never measured in the study.",
-      "The researchers had already eliminated every possible source of bias."
+      "The study compared several methods of measuring stress but did not report their relative cost.",
+      "The observed association was stronger in neighbourhoods containing large public parks.",
+      "The researchers recommended collecting data on seasonal changes in vegetation.",
+      "Residents who participated in the study were asked to complete a standardised questionnaire."
     ],
     "correct": 0,
     "explanation": "Yerleşim seçimine bağlı olası yanlılık sonraki araştırma önerisini açıklar."
@@ -811,10 +811,10 @@ export const coherenceQuestions = [
     "prompt": "A model calibrated using historical observations may accurately reproduce previous outcomes. ____ . Independent evaluation under different conditions is therefore essential before relying on its predictions.",
     "options": [
       "Such agreement does not guarantee that it will perform equally well in unfamiliar circumstances.",
-      "Historical agreement necessarily establishes universal predictive validity.",
-      "A calibrated model cannot reproduce any previous outcome.",
-      "Independent observations are always identical to training observations.",
-      "Every model is immune to changes in its underlying assumptions."
+      "Historical observations can be used to compare the costs of alternative model specifications.",
+      "A model's computational efficiency may depend on the size of the calibration dataset.",
+      "The researchers can report uncertainty estimates for the observations used in calibration.",
+      "A well-documented calibration procedure allows other analysts to replicate the original calculations."
     ],
     "correct": 0,
     "explanation": "Geçmişe uyum ile yeni koşullara genelleme başarısı ayrılır."
@@ -843,10 +843,10 @@ export const coherenceQuestions = [
     "prompt": "Which option best restates: 'The observed improvement cannot be attributed exclusively to the intervention'?",
     "options": [
       "Factors other than the intervention may have contributed to the improvement.",
-      "The intervention made no contribution to the improvement.",
-      "The improvement was caused solely by the intervention.",
-      "No improvement was observed after the intervention.",
-      "The intervention necessarily made the outcome worse."
+      "The intervention accounted for most of the improvement, and other factors had negligible effects.",
+      "The improvement would have occurred to the same extent without the intervention.",
+      "The intervention was necessary for the improvement but was not sufficient on its own.",
+      "Other factors definitely contributed more to the improvement than the intervention did."
     ],
     "correct": 0,
     "explanation": "Exclusively yalnızca demektir; diğer etkenlerin rolü dışlanamaz."
@@ -859,10 +859,10 @@ export const coherenceQuestions = [
     "prompt": "Which option best restates: 'The proposal is unlikely to gain traction unless its costs are substantially reduced'?",
     "options": [
       "The proposal is unlikely to attract support if its costs remain high.",
-      "The proposal will certainly gain support regardless of cost.",
-      "Reducing costs will inevitably eliminate all support.",
-      "The proposal has already received unanimous approval.",
-      "The proposal is unlikely to gain support only if it becomes cheaper."
+      "The proposal is unlikely to gain support even if its costs are substantially reduced.",
+      "Reducing costs substantially is sufficient to guarantee that the proposal will gain support.",
+      "The proposal is likely to gain support unless it becomes considerably more expensive.",
+      "The proposal is unlikely to gain support only when its costs have been substantially reduced."
     ],
     "correct": 0,
     "explanation": "Unless gerekli koşulu belirtir; maliyet yüksek kalırsa destek olasılığı düşüktür."
@@ -875,10 +875,10 @@ export const coherenceQuestions = [
     "prompt": "Two instruments may yield highly correlated scores without being interchangeable. ____ . Agreement between measurements must therefore be assessed separately from correlation.",
     "options": [
       "A systematic difference between the instruments can persist even when their readings vary together.",
-      "High correlation necessarily excludes every systematic measurement difference.",
-      "Correlated readings must always have identical numerical values.",
-      "Interchangeability makes it impossible to calculate correlation.",
-      "The instruments cannot respond to the same underlying variable."
+      "Both instruments may have been calibrated using samples of different sizes.",
+      "Repeated measurements can be used to estimate the precision of each instrument.",
+      "A comparison of measurements requires observations on a common set of subjects.",
+      "Measurement procedures can differ in the time required to produce a reading."
     ],
     "correct": 0,
     "explanation": "Korelasyon birlikte değişimi gösterir; sistematik farkı veya ölçüm uyumunu tek başına belirlemez."
@@ -891,10 +891,10 @@ export const coherenceQuestions = [
     "prompt": "Which statement best restates: 'The apparent absence of disagreement may reflect the exclusion of dissenting voices'?",
     "options": [
       "The lack of visible conflict may be due to opposing views having been left out.",
-      "All participants necessarily held identical views.",
-      "Opposing voices were clearly the dominant feature of the discussion.",
-      "Excluding dissenting voices invariably increases visible disagreement.",
-      "The absence of disagreement proves that no dissent exists."
+      "The absence of visible disagreement demonstrates that opposing views were reconciled.",
+      "Opposing views may have been excluded because no disagreement was apparent.",
+      "Excluding dissenting views is sufficient to ensure genuine agreement among all affected people.",
+      "The apparent consensus shows that dissenting views were present but ultimately persuaded."
     ],
     "correct": 0,
     "explanation": "Görünürdeki uzlaşmanın muhalif görüşlerin dışlanmasından kaynaklanabileceği belirtilir."
@@ -907,10 +907,10 @@ export const coherenceQuestions = [
     "prompt": "A: The pooled estimate has a very narrow confidence interval. B: ____ A: Agreed; we should examine whether the studies measure comparable outcomes.",
     "options": [
       "Precision alone cannot establish conceptual comparability between the studies.",
-      "Then the studies must all have used identical instruments.",
-      "The narrow interval proves that every source of bias is absent.",
-      "We need not inspect the outcomes at all.",
-      "Conceptual comparability can be determined solely from the number of decimal places."
+      "The narrower interval suggests that the pooled estimate is numerically more precise than individual estimates.",
+      "We should compare the sample sizes used to calculate the individual estimates.",
+      "A wider confidence interval would indicate greater uncertainty in the estimated effect.",
+      "The confidence interval should be reported alongside the pooled point estimate."
     ],
     "correct": 0,
     "explanation": "Son replik ölçülen yapıların karşılaştırılabilirliğini sorgulayan yanıtı gerektirir."

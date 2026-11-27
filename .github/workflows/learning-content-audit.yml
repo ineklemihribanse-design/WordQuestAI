@@ -5,6 +5,7 @@ on:
     paths:
       - 'tools/arena_v150_server/learning_*.mjs'
       - 'tools/arena_v150_server/audit_learning_content.mjs'
+      - 'tools/arena_v150_server/audit_editorial_quality.mjs'
       - 'tools/arena_v150_server/*learning*.py'
       - 'tools/v132_engine/engine*.mjs'
       - 'tools/v175/content/*.tsv'
@@ -40,3 +41,9 @@ jobs:
           cat "$RUNNER_TEMP/wq-vocabulary-audit/expanded-report.json"
       - name: Verify Android content generation and preserve existing IDs
         run: python3 tools/arena_v150_server/test_android_learning_import.py
+      - name: Screen all question records for editorial review candidates
+        run: node tools/arena_v150_server/audit_editorial_quality.mjs "$RUNNER_TEMP/editorial-review.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: editorial-review
+          path: ${{ runner.temp }}/editorial-review.json

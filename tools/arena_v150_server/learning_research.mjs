@@ -1109,11 +1109,11 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The shield was installed specifically to ____ the intensity of incoming radiation by absorption.",
+    "prompt": "The shield was installed specifically to ____ the intensity of incoming radiation, reducing it by absorption.",
     "options": [
       "attenuate",
-      "modulate",
-      "detect",
+      "amplify",
+      "measure",
       "encode",
       "transmit"
     ],
@@ -1126,10 +1126,10 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The foam panels help ____ unwanted sound before it reaches the recording area.",
+    "prompt": "The foam panels help ____ unwanted sound, reducing its intensity before it reaches the recording area.",
     "options": [
       "attenuate",
-      "modulate",
+      "amplify",
       "detect",
       "encode",
       "transmit"
@@ -1143,10 +1143,10 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The filter is intended to ____ high-frequency interference while preserving the useful signal.",
+    "prompt": "The filter is intended to ____ high-frequency interference, reducing its amplitude while preserving the useful signal.",
     "options": [
       "attenuate",
-      "modulate",
+      "amplify",
       "detect",
       "encode",
       "transmit"
@@ -1160,13 +1160,13 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The interviewer used open-ended questions to ____ detailed accounts from participants.",
+    "prompt": "The interviewer used open-ended questions to ____ detailed accounts from participants rather than providing those accounts herself.",
     "options": [
       "elicit",
       "administer",
       "disclose",
       "stipulate",
-      "compile"
+      "summarise"
     ],
     "correct": 0,
     "explanation": "Elicit bir yanıtı, bilgiyi veya tepkiyi ortaya çıkarmaktır.",
@@ -1177,11 +1177,11 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The stimulus was designed to ____ a measurable response from the sensory system.",
+    "prompt": "The stimulus was designed to ____ a measurable response from the sensory system, not merely to record a response that had already occurred.",
     "options": [
       "elicit",
       "administer",
-      "disclose",
+      "document",
       "stipulate",
       "compile"
     ],
@@ -1194,13 +1194,13 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The teacher posed a challenging question to ____ explanations rather than memorised answers.",
+    "prompt": "The teacher posed a challenging question to ____ original explanations from the pupils rather than memorised answers.",
     "options": [
       "elicit",
       "administer",
       "disclose",
       "stipulate",
-      "compile"
+      "summarise"
     ],
     "correct": 0,
     "explanation": "Elicit bir yanıtı, bilgiyi veya tepkiyi ortaya çıkarmaktır.",
@@ -1211,7 +1211,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The stimulus was strong enough to ____ a change in the cells' activity.",
+    "prompt": "The stimulus was strong enough to ____ a change in the cells' activity that would not otherwise have occurred.",
     "options": [
       "induce",
       "suppress",
@@ -1228,7 +1228,7 @@ export const researchQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "The researchers used a controlled intervention to ____ a temporary physiological response.",
+    "prompt": "The researchers used a controlled intervention to ____ a temporary physiological response that was absent before the intervention.",
     "options": [
       "induce",
       "suppress",

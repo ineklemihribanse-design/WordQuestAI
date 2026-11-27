@@ -2115,10 +2115,10 @@ export const deepReadingQuestions = [
     "prompt": "A comparative study examined institutions adopting the same governance framework. Although the formal label was identical, implementation differed considerably. In some settings, decisions were genuinely delegated; elsewhere, formal procedures changed while informal authority remained concentrated. The researchers warned that comparisons based on adoption alone might group different arrangements together. They proposed measuring actual decision-making authority before attributing outcomes to the framework.\n\nWhat is the principal criticism?",
     "options": [
       "Formal adoption may conceal implementation differences.",
-      "Every institution implemented the framework identically.",
-      "Informal authority cannot influence outcomes.",
-      "Labels are unrelated to procedures.",
-      "Authority was uniformly delegated."
+      "Differences in publication dates may distort comparisons of institutional outcomes.",
+      "The framework's formal requirements prevented meaningful delegation in every setting.",
+      "The researchers measured actual authority but omitted the framework's formal title.",
+      "Institutional outcomes were assessed before the framework was introduced."
     ],
     "correct": 0,
     "explanation": "Aynı resmî etiket farklı fiilî uygulamaları gizleyebilir.",
@@ -2132,10 +2132,10 @@ export const deepReadingQuestions = [
     "prompt": "A comparative study examined institutions adopting the same governance framework. Although the formal label was identical, implementation differed considerably. In some settings, decisions were genuinely delegated; elsewhere, formal procedures changed while informal authority remained concentrated. The researchers warned that comparisons based on adoption alone might group different arrangements together. They proposed measuring actual decision-making authority before attributing outcomes to the framework.\n\nWhat additional measure is proposed?",
     "options": [
       "Distribution of actual decision-making authority.",
-      "Length of the framework's title.",
-      "Identical annual budgets.",
-      "Publication chronology.",
-      "Number of documents alone."
+      "The number of formally delegated responsibilities recorded in official documents.",
+      "The proportion of institutions adopting the framework within a given year.",
+      "The length of the consultation process preceding formal adoption.",
+      "The total administrative expenditure associated with implementation."
     ],
     "correct": 0,
     "explanation": "Fiilî karar yetkisinin dağılımının ölçülmesi önerilir.",
@@ -2149,10 +2149,10 @@ export const deepReadingQuestions = [
     "prompt": "A comparative study examined institutions adopting the same governance framework. Although the formal label was identical, implementation differed considerably. In some settings, decisions were genuinely delegated; elsewhere, formal procedures changed while informal authority remained concentrated. The researchers warned that comparisons based on adoption alone might group different arrangements together. They proposed measuring actual decision-making authority before attributing outcomes to the framework.\n\nWhich inference follows?",
     "options": [
       "A nominally shared intervention need not be equivalent across cases.",
-      "Formal labels guarantee comparable arrangements.",
-      "Informal power is always more important.",
-      "Outcomes cannot be studied empirically.",
-      "All differences result from the framework."
+      "An identical institutional label is sufficient evidence of equivalent decision processes.",
+      "Variation in institutional outcomes establishes that formal rules have no effect.",
+      "Concentrated informal power necessarily produces poorer outcomes than delegation.",
+      "Comparisons are valid only when institutions have identical outcomes."
     ],
     "correct": 0,
     "explanation": "Aynı adlı müdahale her vakada eşdeğer olmayabilir.",
@@ -2166,10 +2166,10 @@ export const deepReadingQuestions = [
     "prompt": "Researchers constructed a deprivation index using several indicators. Regional rankings remained stable under different plausible weights. Yet stability did not establish that the indicators captured every relevant dimension of deprivation. Robustness to weighting addressed one source of uncertainty but not conceptual adequacy. The researchers recommended involving affected communities in identifying omitted dimensions alongside quantitative sensitivity analysis.\n\nWhat distinction is central?",
     "options": [
       "Ranking robustness does not establish conceptual coverage.",
-      "Sensitivity analysis proves every dimension is included.",
-      "Composite indicators require identical weights.",
-      "Community input makes quantitative work unnecessary.",
-      "Rankings cannot be stable."
+      "Ranking stability depends entirely on assigning equal weights to all indicators.",
+      "Indicator selection is conceptually adequate whenever quantitative uncertainty is small.",
+      "Community consultation is an alternative to rather than a complement to sensitivity analysis.",
+      "Stable rankings establish that the index is suitable for every policy purpose."
     ],
     "correct": 0,
     "explanation": "Ağırlıklara dayanıklılık kavramsal kapsamın yeterliliğini kanıtlamaz.",
@@ -2183,10 +2183,10 @@ export const deepReadingQuestions = [
     "prompt": "Researchers constructed a deprivation index using several indicators. Regional rankings remained stable under different plausible weights. Yet stability did not establish that the indicators captured every relevant dimension of deprivation. Robustness to weighting addressed one source of uncertainty but not conceptual adequacy. The researchers recommended involving affected communities in identifying omitted dimensions alongside quantitative sensitivity analysis.\n\nWhy involve communities?",
     "options": [
       "They may identify omitted dimensions.",
-      "They guarantee universal numerical weights.",
-      "They make comparisons impossible.",
-      "They replace inspection of indicators.",
-      "They confirm that nothing is missing."
+      "To decide which plausible numerical weights reproduce the original ranking.",
+      "To obtain a larger sample for estimating correlations between existing indicators.",
+      "To standardise the regional rankings before the statistical analysis.",
+      "To determine whether quantitative sensitivity analysis has been calculated correctly."
     ],
     "correct": 0,
     "explanation": "Topluluk deneyimleri ölçüm dışında kalan boyutları ortaya çıkarabilir.",
@@ -2200,10 +2200,10 @@ export const deepReadingQuestions = [
     "prompt": "Researchers constructed a deprivation index using several indicators. Regional rankings remained stable under different plausible weights. Yet stability did not establish that the indicators captured every relevant dimension of deprivation. Robustness to weighting addressed one source of uncertainty but not conceptual adequacy. The researchers recommended involving affected communities in identifying omitted dimensions alongside quantitative sensitivity analysis.\n\nWhat conclusion is unjustified?",
     "options": [
       "The index is conceptually complete because rankings are stable.",
-      "Rankings were stable under alternative weights.",
-      "Weights are one uncertainty source.",
-      "Further sensitivity analysis was recommended.",
-      "Indicator selection needs conceptual evaluation."
+      "The index was tested against plausible changes in indicator weights.",
+      "Stable rankings do not rule out omitted dimensions of deprivation.",
+      "Affected communities may help identify dimensions absent from the index.",
+      "Sensitivity analysis and conceptual assessment address distinct limitations."
     ],
     "correct": 0,
     "explanation": "Sıralama kararlılığı kavramsal tamlığı tek başına göstermez.",
@@ -2217,10 +2217,10 @@ export const deepReadingQuestions = [
     "prompt": "A theoretical model predicted a sequence of events under idealised assumptions. When observations deviated, some researchers interpreted the discrepancy as evidence against the core theory. Others argued that violations of auxiliary assumptions concerning measurement or background conditions might explain it. Independent tests of those assumptions followed. A failed prediction may challenge a network of assumptions rather than uniquely identify the element requiring revision.\n\nWhat problem is illustrated?",
     "options": [
       "Failed predictions may not identify the responsible assumption uniquely.",
-      "Core theories are immune to criticism.",
-      "Observations never challenge idealised models.",
-      "Auxiliary assumptions are irrelevant.",
-      "Every discrepancy is measurement error."
+      "A discrepancy establishes that the observational procedure was incorrectly specified.",
+      "Empirical testing requires every auxiliary assumption to be replaced simultaneously.",
+      "Idealisation is incompatible with meaningful predictions about real events.",
+      "The core theory must be retained whenever an auxiliary assumption is uncertain."
     ],
     "correct": 0,
     "explanation": "Başarısız öngörü hatalı varsayımı tek başına belirleyemeyebilir.",
@@ -2234,10 +2234,10 @@ export const deepReadingQuestions = [
     "prompt": "A theoretical model predicted a sequence of events under idealised assumptions. When observations deviated, some researchers interpreted the discrepancy as evidence against the core theory. Others argued that violations of auxiliary assumptions concerning measurement or background conditions might explain it. Independent tests of those assumptions followed. A failed prediction may challenge a network of assumptions rather than uniquely identify the element requiring revision.\n\nWhy test auxiliary assumptions independently?",
     "options": [
       "To distinguish possible explanations for the discrepancy.",
-      "To guarantee retention of the original theory.",
-      "To prevent future observations.",
-      "To show predictions require no assumptions.",
-      "To prove the discrepancy fabricated."
+      "To make the observations conform to the original predictions.",
+      "To determine whether the core theory can be retained without testing its consequences.",
+      "To improve the accuracy of predictions without identifying any source of error.",
+      "To remove the need to investigate discrepancies in subsequent experiments."
     ],
     "correct": 0,
     "explanation": "Bağımsız testler uyuşmazlığın olası nedenlerini ayırır.",
@@ -2251,10 +2251,10 @@ export const deepReadingQuestions = [
     "prompt": "A theoretical model predicted a sequence of events under idealised assumptions. When observations deviated, some researchers interpreted the discrepancy as evidence against the core theory. Others argued that violations of auxiliary assumptions concerning measurement or background conditions might explain it. Independent tests of those assumptions followed. A failed prediction may challenge a network of assumptions rather than uniquely identify the element requiring revision.\n\nWhich interpretation goes beyond the passage?",
     "options": [
       "Every failed prediction stems solely from an auxiliary assumption.",
-      "Researchers disagreed about the discrepancy.",
-      "The model used idealised assumptions.",
-      "Independent tests followed.",
-      "Measurement conditions may contribute to discrepancies."
+      "The discrepancy was interpreted differently by different researchers.",
+      "Testing a prediction involves assumptions beyond the core principle.",
+      "Background conditions were among the possible explanations for the deviation.",
+      "The researchers sought further evidence about the auxiliary assumptions."
     ],
     "correct": 0,
     "explanation": "Her başarısızlığı yalnızca yardımcı varsayıma bağlamak desteklenmez.",
@@ -2472,10 +2472,10 @@ export const deepReadingQuestions = [
     "prompt": "A study evaluated a policy using regional averages. The aggregate indicator improved considerably, yet subgroup analysis revealed that improvements were concentrated among already advantaged residents. For disadvantaged groups, the measured outcome changed little. The researchers cautioned that aggregate gains were real but could not establish that distributional objectives had been achieved. They recommended reporting both overall effects and their distribution.\n\nWhat does the subgroup analysis reveal?",
     "options": [
       "Gains were unevenly distributed.",
-      "Every group improved equally.",
-      "Aggregate improvements were fabricated.",
-      "Disadvantaged groups gained most.",
-      "No overall improvement occurred."
+      "The aggregate improvement was driven mainly by gains in disadvantaged groups.",
+      "The overall indicator declined despite modest improvements among advantaged residents.",
+      "Subgroup outcomes improved at broadly comparable rates.",
+      "The main changes occurred in how the subgroups were defined."
     ],
     "correct": 0,
     "explanation": "Kazanımlar gruplar arasında eşit dağılmamıştır.",
@@ -2489,10 +2489,10 @@ export const deepReadingQuestions = [
     "prompt": "A study evaluated a policy using regional averages. The aggregate indicator improved considerably, yet subgroup analysis revealed that improvements were concentrated among already advantaged residents. For disadvantaged groups, the measured outcome changed little. The researchers cautioned that aggregate gains were real but could not establish that distributional objectives had been achieved. They recommended reporting both overall effects and their distribution.\n\nWhy were aggregate gains insufficient?",
     "options": [
       "They did not establish achievement of distributional goals.",
-      "They necessarily misrepresented every observation.",
-      "They proved that all groups worsened.",
-      "Averages are never scientifically meaningful.",
-      "The policy had no stated objective."
+      "They were derived from a measure that could not detect any change at all.",
+      "They demonstrated an improvement in distributional equality without an overall gain.",
+      "They showed that the policy reduced outcomes in every subgroup.",
+      "They provided more information about the least advantaged groups than subgroup analysis did."
     ],
     "correct": 0,
     "explanation": "Ortalama artış dağılımsal hedeflerin gerçekleştiğini göstermez.",
@@ -2506,10 +2506,10 @@ export const deepReadingQuestions = [
     "prompt": "A study evaluated a policy using regional averages. The aggregate indicator improved considerably, yet subgroup analysis revealed that improvements were concentrated among already advantaged residents. For disadvantaged groups, the measured outcome changed little. The researchers cautioned that aggregate gains were real but could not establish that distributional objectives had been achieved. They recommended reporting both overall effects and their distribution.\n\nWhat reporting approach follows?",
     "options": [
       "Present overall effects and their distribution.",
-      "Report only the highest-performing group.",
-      "Discard every aggregate measure.",
-      "Report averages without subgroup details.",
-      "Assume improvement is homogeneous."
+      "Report overall effects and exclude subgroup differences that do not alter the average.",
+      "Replace the aggregate estimate with the result for the most disadvantaged group alone.",
+      "Report only the variation in outcomes without showing the overall change.",
+      "Combine all outcomes into a single index without distinguishing groups."
     ],
     "correct": 0,
     "explanation": "Hem toplam etki hem gruplara dağılımı raporlanmalıdır.",
