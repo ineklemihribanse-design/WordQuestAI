@@ -68,7 +68,7 @@ jobs:
           python3 -m unittest discover -s tools/maintenance -p test_classify_release_impact.py -v
           python3 -m unittest discover -s tools/v132_engine -p test_friend_hd_rules.py -v
           python3 tools/maintenance/classify_release_impact.py --base 7aae0c1d71fe0cf50dfd602439fcdfd3d7498753 --head "$WQ_SOURCE_SHA" | tee "$RUNNER_TEMP/wq-scope.json"
-          echo 'Full safety checks remain enabled for this network and build change.'
+          echo 'Scope is advisory for publication; all release safety checks remain mandatory.'
       - name: Fingerprint stable pre-Arena assembly inputs
         id: source_checkpoint_key
         run: |
@@ -846,6 +846,10 @@ jobs:
             "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
           fi
       - uses: gradle/actions/setup-gradle@v4
+        with:
+          # Only this trusted push-only release job may populate its branch cache.
+          cache-read-only: false
+          add-job-summary: always
       - name: Inventory and scan every assembled source and resource file
         run: |
           set -euo pipefail
