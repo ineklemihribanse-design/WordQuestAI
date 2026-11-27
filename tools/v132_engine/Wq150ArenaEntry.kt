@@ -532,7 +532,6 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
     var topics by remember(kind){mutableStateOf(listOf(PremiumArenaRules.allTopics))}
     var busy by remember{mutableStateOf(false)}
     var error by remember{mutableStateOf("")}
-    var expanded by remember{mutableStateOf(false)}
     LaunchedEffect(levels,engine){
         val result=withContext(Dispatchers.IO){
             runCatching{if(engine=="quiz")listOf(PremiumArenaRules.allTopics)else{
@@ -547,14 +546,13 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
         Wq150ArenaBars()
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
             Wq122SettingsBackdrop(Modifier.matchParentSize())
-            Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(8.dp),
+            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().verticalScroll(rememberScrollState()).padding(8.dp),
                 verticalArrangement=Arrangement.spacedBy(6.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
-                    Wq122Art("settings",Modifier.size(32.dp))
                     Text("Maç Ayarları",color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=21.sp)
                 }
-                Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
+                val basic:@Composable ()->Unit={
                     Wq150PremiumPanel{
                         Text(wq150Card(kind).title+" · Tek Başına",color=Wq122Gold,fontWeight=FontWeight.Bold)
                         Wq122Section("level","CEFR seviyeleri","Birden fazla seviye seçebilirsin.")
@@ -562,14 +560,12 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                             if(!busy)levels=if(level in levels){if(levels.size>1)levels-level else levels}else Wq150ModeCatalog.cefr.filter{it in levels+level}
                         }
                         if(engine!="quiz"){
-                            Wq122Section("topic","Konu")
-                            Box{OutlinedButton(enabled=!busy,onClick={expanded=true},modifier=Modifier.fillMaxWidth()){Text(topic)}
-                                DropdownMenu(expanded=expanded,onDismissRequest={expanded=false}){
-                                    topics.forEach{value->DropdownMenuItem(text={Text(value)},onClick={topic=value;expanded=false})}
-                                }
-                            }
+                            if(!busy)Wq150Filter("Konu",topics.associateWith{it},topic){topic=it}
+                            else Text("Konu: $topic",color=Color.White)
                         }
                     }
+                }
+                val rules:@Composable ()->Unit={
                     Wq150PremiumPanel{
                         Wq122Section("count",if(engine=="quiz")"Soru sayısı" else "Kelime sayısı")
                         Wq150SoloNumbers(if(engine=="quiz")listOf(5,10,12,15,20)else PremiumArenaRules.allowedSizes,count,{it.toString()}){if(!busy)count=it}
@@ -579,8 +575,14 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                         Wq150SoloNumbers(Wq150HomeModes.localHints(kind),hints,{it.toString()}){if(!busy)hints=it}
                         if(kind=="obstacle")Text("Her kelime için 20 saniye; harf açma hakkı yok.",color=Wq122Ink)
                     }
-                    if(error.isNotBlank())Text(error,color=Color(0xFFFFB4B4))
                 }
+                BoxWithConstraints(Modifier.fillMaxWidth()){
+                    if(maxWidth>=650.dp)Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+                        Column(Modifier.weight(1f)){basic()}
+                        Column(Modifier.weight(1f)){rules()}
+                    }else Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(6.dp)){basic();rules()}
+                }
+                if(error.isNotBlank())Text(error,color=Color(0xFFFFB4B4),modifier=Modifier.fillMaxWidth().background(Color(0xFF251347)).padding(8.dp))
                 Wq150PremiumPanel{
                     Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold)
                     Text(levels.joinToString(" + ")+" · "+count+" "+(if(engine=="quiz")"soru" else "kelime")+" · "+(if(seconds==0)"Süresiz" else "$seconds sn")+" · $hints ipucu",color=Wq122Ink)
