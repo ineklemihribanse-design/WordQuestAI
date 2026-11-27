@@ -3142,7 +3142,7 @@ export const collocationQuestions = [
     "level": "B1",
     "yds": "easy",
     "topic": "Phrasals",
-    "prompt": "The price of electricity has ____ sharply since January.",
+    "prompt": "The price of electricity has ____ sharply since January, from 20 to 35 cents per unit.",
     "options": [
       "gone up",
       "turned up",
@@ -3151,7 +3151,7 @@ export const collocationQuestions = [
       "given away"
     ],
     "correct": 0,
-    "explanation": "Go up fiyatın yükselmesi anlamında kullanılır."
+    "explanation": "Go up fiyatın veya miktarın artmasıdır; burada fiyat 20 sentten 35 sente yükselmiştir."
   },
   {
     "id": "wq150_colloc_015",
@@ -3417,13 +3417,13 @@ export const collocationQuestions = [
     "prompt": "There is growing concern ____ the long-term effects of the chemical.",
     "options": [
       "about",
-      "at",
+      "under",
       "into",
       "onto",
       "by"
     ],
     "correct": 0,
-    "explanation": "Concern about bir konuya ilişkin kaygıyı bildirir."
+    "explanation": "Concern about, bir konuya ilişkin endişe anlamında kullanılır. Concern at da bazı bağlamlarda geçerli olduğundan seçenekler arasından çıkarıldı."
   },
   {
     "id": "wq150_colloc_032",
@@ -3721,13 +3721,13 @@ export const collocationQuestions = [
     "prompt": "The committee expressed reservations ____ the validity of the preliminary results.",
     "options": [
       "about",
-      "at",
+      "under",
       "into",
       "onto",
       "by"
     ],
     "correct": 0,
-    "explanation": "Reservations about bir konu hakkındaki çekinceleri ifade eder."
+    "explanation": "Express reservations about, bir konunun doğruluğu veya uygunluğu hakkında çekince belirtmek demektir."
   },
   {
     "id": "wq150_colloc_051",
@@ -3878,7 +3878,7 @@ export const collocationQuestions = [
     "level": "C1",
     "yds": "hard",
     "topic": "Vocabulary",
-    "prompt": "A more ____ analysis would distinguish between correlation and causation.",
+    "prompt": "A more ____ analysis, based on explicit criteria and careful examination of the evidence, would distinguish between correlation and causation.",
     "options": [
       "rigorous",
       "arbitrary",
@@ -3887,7 +3887,7 @@ export const collocationQuestions = [
       "perfunctory"
     ],
     "correct": 0,
-    "explanation": "Rigorous yöntemsel açıdan titiz olanı ifade eder."
+    "explanation": "Rigorous, yöntemsel açıdan titiz ve sıkı ölçütlere bağlı demektir."
   },
   {
     "id": "wq150_colloc_061",
