@@ -104,7 +104,14 @@ assert 'Wq150Records(context,session.profileKey' in entry
 match=(pack/"Wq150ArenaMatch.kt").read_text(encoding="utf-8")
 assert 'if(finished)Wq150History.record' in match
 settings=(pack/"Wq150MatchSettings.kt").read_text(encoding="utf-8")
-assert 'DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)' in settings
+# v162 uses a platform-fitted full-screen dialog, not an edge-to-edge overlay.
+assert 'DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)' in settings
+assert 'DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)' in entry
+assert 'WindowCompat.setDecorFitsSystemWindows(it,true)' in settings
+assert 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' in settings
+assert 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' in entry
+assert 'customRange:IntRange?=null' in settings
+assert 'if(customRange!=null)DropdownMenuItem' in settings
 assert 'Wq150LevelRow(levels,s.levels)' in settings
 assert 'Wq150SettingValue("İpucu hakkı"' in settings
 assert 'Wq150SettingValue("Kelimeyi geçme hakkı"' in settings
