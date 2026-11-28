@@ -63,3 +63,14 @@ test('invalid inputs rejected and state immutable',()=>{
   assert.throws(()=>e(s,'lost','a',1,0));
   e(s,'lost','a',1,2000);assert.equal(s.players[0].drops,0);assert.equal(s.phase,'playing');
 });
+
+test('connected player can end a genuinely paused match without forfeit',()=>{
+ const initial=base();assert.throws(()=>e(initial,'cancel-disconnected','b',1,2000));
+ const paused=e(initial,'lost','a',1,2000);
+ assert.throws(()=>e(paused,'cancel-disconnected','a',1,3000));
+ assert.throws(()=>e(paused,'cancel-disconnected','b',2,3000));
+ const ended=e(paused,'cancel-disconnected','b',1,3000);
+ assert.equal(ended.phase,'finished');assert.deepEqual(ended.result,{kind:'no-contest',reason:'disconnect-cancelled'});
+ assert.equal(ended.result.winner,undefined);
+ assert.deepEqual(e(paused,'leave','b',1,3000).result,{kind:'forfeit',winner:'a'});
+});

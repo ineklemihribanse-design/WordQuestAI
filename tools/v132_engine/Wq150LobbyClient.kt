@@ -47,7 +47,7 @@ internal fun wq150LobbyFinalError(status:Int,code:String):Boolean =
     code in setOf("room-quota","lobby-not-ready","lobby-expired","invalid-settings","invalid-command","invalid-ready","not-found","match-already-started","lobby-unavailable","not-configured")
 
 internal fun wq150LobbyErrorText(status:Int,code:String):String = when(code){
-    "room-quota"->"Günlük 20 yeni oda sınırına ulaşıldı. Arkadaşının odasına katılabilirsin."
+    "room-quota"->"Günlük yeni oda sınırına ulaşıldı. Arkadaşının odasına katılabilirsin."
     "lobby-not-ready"->"Tüm oyuncular hazır olmalı."
     "lobby-unavailable","not-configured"->"Arena sunucusu şu anda kullanılamıyor."
     "not-found","lobby-expired"->"Oda bulunamadı veya süresi doldu."

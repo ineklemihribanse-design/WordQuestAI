@@ -270,6 +270,15 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
         currentCells.joinToString(""){known[it]?:typed[it].orEmpty()}
     }else draft
     val answerComplete=totalLength>0&&draft.length==inputLength&&answerText.length==totalLength
+    fun changeInputMode(next:Boolean){
+        if(next==missingOnly)return
+        if(currentCells.isNotEmpty()){
+            val typed=(if(missingOnly)missing else currentCells).zip(draft.map{it.toString()}).toMap()
+            draft=if(next)missing.mapNotNull{typed[it]}.joinToString("")
+                else currentCells.map{known[it]?:typed[it]}.takeWhile{it!=null}.joinToString(""){it.orEmpty()}
+        }
+        missingOnly=next
+    }
     var exit by remember(room){mutableStateOf(false)}
     var disconnectExit by remember(room){mutableStateOf(false)}
     var now by remember{mutableLongStateOf(view.optLong("serverNow",System.currentTimeMillis()))}
@@ -349,7 +358,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     }
     BackHandler{if(imeVisible)focusManager.clearFocus() else {disconnectExit=paused;exit=true}}
     MaterialTheme(colorScheme=Wq122Scheme){
-        Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+        Box(Modifier.fillMaxSize().clipToBounds().background(Color(0xFF150B3E))){
         Wq183ArenaBackdrop(Modifier.matchParentSize(),active=true)
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
             .imePadding().padding(horizontal=if(tablet)10.dp else 8.dp,vertical=4.dp),verticalArrangement=Arrangement.spacedBy(3.dp)){
@@ -397,7 +406,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                                 Row(Modifier.weight(1.15f),horizontalArrangement=Arrangement.spacedBy(2.dp)){
                                     members.forEach{player->
                                         Wq150Portrait(profiles.optJSONObject(player),ownAvatar.takeIf{player==uid},
-                                            Modifier.weight(1f).height(if(tablet)122.dp else 74.dp))
+                                            Modifier.weight(1f).height(if(tablet)122.dp else 82.dp))
                                     }
                                 }
                                 Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
@@ -450,8 +459,8 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                             val direction=if(currentCells.size>=2&&currentCells[0].row==currentCells[1].row)"Yatay" else "Dikey"
                             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(4.dp)){
                                 Text((index+1).toString()+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=11.sp,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
-                                TextButton(onClick={if(missingOnly){missingOnly=false;draft=""}},contentPadding=PaddingValues(4.dp),modifier=Modifier.height(32.dp)){Text("Tam kelime",color=if(!missingOnly)Wq122Gold else Wq122Ink,fontSize=11.sp,maxLines=1)}
-                                TextButton(onClick={if(!missingOnly){missingOnly=true;draft=""}},contentPadding=PaddingValues(4.dp),modifier=Modifier.height(32.dp)){Text("Eksik harf",color=if(missingOnly)Wq122Gold else Wq122Ink,fontSize=11.sp,maxLines=1)}
+                                TextButton(onClick={changeInputMode(false)},contentPadding=PaddingValues(4.dp),modifier=Modifier.height(32.dp)){Text("Tam kelime",color=if(!missingOnly)Wq122Gold else Wq122Ink,fontSize=11.sp,maxLines=1)}
+                                TextButton(onClick={changeInputMode(true)},contentPadding=PaddingValues(4.dp),modifier=Modifier.height(32.dp)){Text("Eksik harf",color=if(missingOnly)Wq122Gold else Wq122Ink,fontSize=11.sp,maxLines=1)}
                             }
                             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
                                 OutlinedTextField(draft,{if(typingAllowed)draft=wq150FullWordDraft(it,inputLength)},

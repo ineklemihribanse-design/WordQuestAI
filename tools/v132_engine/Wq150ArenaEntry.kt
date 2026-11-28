@@ -268,7 +268,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
-        if(auth!=null&&!lobby&&!active&&room==null&&panel!="Hızlı Oda Katılımı"){
+        if(auth!=null&&!lobby&&!active&&(room==null||state.left)&&panel!="Hızlı Oda Katılımı"){
             Wq150Invites(session,auth,uid,null,false,!state.busy&&!state.pending,null,popupOnly=true){id->
                 controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
             }

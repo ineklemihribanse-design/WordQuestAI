@@ -9,6 +9,7 @@ import {authenticate} from './free_auth.mjs';
 import bank from './arena-learning-expanded.json';
 const bankBuilder=createVocabularyBank(bank,{curated:true});
 const json=(status,body)=>new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store'}});
+const DAILY_ROOM_LIMIT=20;
 const roomId=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{6,64}$/.test(x)&&!['constructor','prototype','__proto__'].includes(x);
 const requestId=x=>typeof x==='string'&&/^[A-Za-z0-9_-]{1,100}$/.test(x)&&!['constructor','prototype','__proto__'].includes(x);
 async function smallBody(req,max){
@@ -25,7 +26,7 @@ export default {async fetch(req,env){
   typeof env.FIREBASE_PROJECT_ID==='string'&&env.FIREBASE_PROJECT_ID.length>0&&
   typeof env.FIREBASE_WEB_API_KEY==='string'&&env.FIREBASE_WEB_API_KEY.length>0&&
   typeof env.FIREBASE_DATABASE_URL==='string'&&env.FIREBASE_DATABASE_URL.startsWith('https://')&&!!env.ROOMS;
- if(path==='/healthz'&&req.method==='GET')return json(configured?200:503,{ok:configured,schema:150,hosting:'workers-free'});
+ if(path==='/healthz'&&req.method==='GET')return json(configured?200:503,{ok:configured,schema:150,hosting:'workers-free',dailyRoomLimit:DAILY_ROOM_LIMIT,neutralDisconnectExit:true});
  if(!configured)return json(503,{ok:false,code:'not-configured'});
  const match=/^\/v150\/(?:matches|lobbies|profiles|presence)\/([A-Za-z0-9_-]+)(?:\/commands)?$/.exec(path);
  const create=path==='/v150/lobbies'&&req.method==='POST';
@@ -74,7 +75,7 @@ export class ArenaRoom extends DurableObject{
    const day=new Date().toISOString().slice(0,10);
    const allowed=await this.ctx.storage.transaction(async tx=>{
     const old=await tx.get('quota'),ids=old?.day===day?old.ids:[];
-    if(ids.includes(id))return true;if(ids.length>=20)return false;
+    if(ids.includes(id))return true;if(ids.length>=DAILY_ROOM_LIMIT)return false;
     await tx.put('quota',{day,ids:[...ids,id]});return true;
    });
    return json(allowed?200:429,{ok:allowed});

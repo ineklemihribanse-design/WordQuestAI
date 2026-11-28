@@ -36,3 +36,14 @@ test('another session cannot replace connected player',()=>{
  const s=pulse(base(),'a',1001);
  assert.throws(()=>pulse(s,'a',1002,'another-session-123456'));
 });
+
+test('neutral disconnect exit requires current authenticated session and real pause',()=>{
+ let s=pulse(base(),'a',1001);s=pulse(s,'b',12000);
+ assert.throws(()=>presenceEvent(s,'b',{type:'cancel-disconnected',session:'b'.repeat(20)},12001));
+ s=sweepPresence(s,13001);
+ assert.equal(matchView(s,'b').phase,'paused');
+ assert.throws(()=>presenceEvent(s,'b',{type:'cancel-disconnected',session:'wrong-session-123456'},13002));
+ s=presenceEvent(s,'b',{type:'cancel-disconnected',session:'b'.repeat(20)},13002);
+ assert.equal(matchView(s,'a').phase,'finished');assert.equal(matchView(s,'b').result.kind,'no-contest');
+ assert.equal(matchView(s,'b').result.winner,undefined);
+});
