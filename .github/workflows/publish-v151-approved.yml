@@ -1,4 +1,4 @@
-name: WordQuest AI 1.0.171 verified release package (approved 3D result podium)
+name: WordQuest AI 1.0.172 verified release package (14 original human mascots)
 on:
   # Verified historical source checkpoint is scoped to the existing PR cache.
   pull_request:
@@ -11,13 +11,13 @@ permissions:
   contents: read
   actions: read
 env:
-  WQ_VERSION: '1.0.171'
-  WQ_BASE_VERSION: '1.0.170'
-  WQ_TARGET_CODE: '185'
-  WQ_BASE_CODE: '184'
-  WQ_BASE_SHA: d7bc6714e2e7f95454660d54779f6bccfb8119401a7ac265a18693965fcfa11c
+  WQ_VERSION: '1.0.172'
+  WQ_BASE_VERSION: '1.0.171'
+  WQ_TARGET_CODE: '186'
+  WQ_BASE_CODE: '185'
+  WQ_BASE_SHA: 0919f92dcdc5a5ba1709af7fc38549ed0aef847d07c6a999db98960edfde98f4
   WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
-  WQ_NOTES: 'Arena: özgün 3D zafer platformu, daha büyük maskotlar, ayrı ayak hizaları ve dinamik isim/maç bilgisi. Bulmaca tahtası değişmedi.'
+  WQ_NOTES: '14 yeni insan maskotu ve 28 yüksek çözünürlüklü normal/kupa pozu. Eski hazır maskotlar yenilendi; kişisel maskotlar ve bulmaca tahtası korundu.'
 jobs:
   release_gate:
     if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
@@ -90,7 +90,7 @@ jobs:
               if name.startswith(('.github/workflows/','.github/archived-workflows/')+late): continue
               h.update(row+b'\0')
           key='wq-stable123-v1-'+h.hexdigest()
-          # Reuse the exact checkpoint proven by the published 1.0.170 audit only
+          # Reuse the exact checkpoint proven by the published 1.0.171 audit only
           # if every intervening change is outside the historical assembly stage.
           base='d8fb5d0af0dda57295788599abdef4b13db76ec2'
           subprocess.run(['git','merge-base','--is-ancestor',base,'HEAD'],check=True)
@@ -864,7 +864,7 @@ jobs:
           p=Path("source/app/build.gradle.kts")
           s=p.read_text()
           assert s.count("versionCode = 149")==1 and s.count('versionName = "1.0.123"')==1
-          p.write_text(s.replace("versionCode = 149","versionCode = 185").replace('versionName = "1.0.123"','versionName = "1.0.171"'))
+          p.write_text(s.replace("versionCode = 149","versionCode = 186").replace('versionName = "1.0.123"','versionName = "1.0.172"'))
           PY
       - name: Verify Android SDK and Gradle
         run: |
@@ -952,7 +952,7 @@ jobs:
           trap 'rm -f "$KEY"' EXIT
           printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
           OUT=source/app/build/outputs/apk/offline
-          APK="$OUT/WordQuestAI-v1.0.171-device-test.apk"
+          APK="$OUT/WordQuestAI-v1.0.172-device-test.apk"
           SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
           java -jar "$SIGNER" sign --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS" --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true --out "$APK" "$OUT/app-offline-unsigned.apk"
           java -jar "$SIGNER" verify --verbose --print-certs "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
@@ -961,10 +961,21 @@ jobs:
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-full-audit/candidate-signature.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" > "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
-          grep -Fq "versionCode='185'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
-          grep -Fq "versionName='1.0.171'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "versionCode='186'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
+          grep -Fq "versionName='1.0.172'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"; then exit 1; fi
           unzip -tq "$APK"
+          python3 - "$APK" <<'PY'
+          import sys,zipfile,json,hashlib
+          with zipfile.ZipFile("assets/user_uploads/arena_mascots_14.zip") as approved, zipfile.ZipFile(sys.argv[1]) as apk:
+              manifest=json.loads(approved.read("manifest.json"))
+              expected={"assets/avatars/wordquest_human/"+c["id"]+"_"+pose+".webp":digest for c in manifest["characters"] for pose,digest in c["poses"].items()}
+              actual={name for name in apk.namelist() if name.startswith("assets/avatars/wordquest_human/") and name.endswith(".webp")}
+              assert len(expected)==28 and actual==set(expected)
+              assert all(hashlib.sha256(apk.read(name)).hexdigest()==digest for name,digest in expected.items())
+              assert not any("assets/avatars/wordquest_2d/wordquest_"+pose+"_atlas.webp" in apk.namelist() for pose in ("idle","victory"))
+              print("PASS: 14 new human mascots, all 28 byte-verified poses, no obsolete built-in atlases")
+          PY
           unzip -p "$APK" assets/arena_result_podium.webp > "$RUNNER_TEMP/wq-podium-check.webp"
           echo "279bc61077f94e8ab4fcef6679f9b0ef793943d58e4df99c37b01a895ba7bd37  $RUNNER_TEMP/wq-podium-check.webp" | sha256sum -c -
           test "$(unzip -p "$APK" assets/wq150_arena_origin.txt)" = 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev'
@@ -991,8 +1002,8 @@ jobs:
       - name: Upload signed device-test APK only (not a GitHub release)
         uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.171-device-test
-          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.171-device-test.apk
+          name: WordQuestAI-v1.0.172-device-test
+          path: source/app/build/outputs/apk/offline/WordQuestAI-v1.0.172-device-test.apk
           compression-level: 0
           if-no-files-found: error
           retention-days: 7
@@ -1045,7 +1056,7 @@ jobs:
           python-version: '3.11'
       - uses: actions/download-artifact@v4
         with:
-          name: WordQuestAI-v1.0.171-device-test
+          name: WordQuestAI-v1.0.172-device-test
           path: ${{ runner.temp }}/wq154-release/signed
       - uses: actions/download-artifact@v4
         with:
@@ -1059,18 +1070,18 @@ jobs:
           D="$RUNNER_TEMP/wq154-release"
           echo "WQ_RELEASE_DIR=$D" >> "$GITHUB_ENV"
           mkdir -p "$D"/{base,delta,classes}
-          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.170
-          gh release download v1.0.170 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$D/base"
-          mv "$D/signed/WordQuestAI-v1.0.171-device-test.apk" "$D/signed/WordQuestAI-v1.0.171-signed-qa.apk"
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.171
+          gh release download v1.0.171 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$D/base"
+          mv "$D/signed/WordQuestAI-v1.0.172-device-test.apk" "$D/signed/WordQuestAI-v1.0.172-signed-qa.apk"
           proof="$(find "$D/audit" -name candidate.sha256 -type f)"
           test -s "$proof"
-          test "$(cut -d' ' -f1 "$proof")" = "$(sha256sum "$D/signed/WordQuestAI-v1.0.171-signed-qa.apk" | cut -d' ' -f1)"
+          test "$(cut -d' ' -f1 "$proof")" = "$(sha256sum "$D/signed/WordQuestAI-v1.0.172-signed-qa.apk" | cut -d' ' -f1)"
           echo "$WQ_BASE_SHA  $D/base/WordQuestAI.apk" | sha256sum -c -
       - name: Generate update metadata and lossless delta without rebuilding
         run: |
           set -euo pipefail
           D="$WQ_RELEASE_DIR"
-          APK="$D/signed/WordQuestAI-v1.0.171-signed-qa.apk"
+          APK="$D/signed/WordQuestAI-v1.0.172-signed-qa.apk"
           if [ ! -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" ]; then
             SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
             "$SDKM" --install 'build-tools;35.0.0'
@@ -1081,19 +1092,19 @@ jobs:
           grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$D/signature.txt"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" > "$D/badging.txt"
           grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$D/badging.txt"
-          grep -Fq "versionCode='185'" "$D/badging.txt"
-          grep -Fq "versionName='1.0.171'" "$D/badging.txt"
+          grep -Fq "versionCode='186'" "$D/badging.txt"
+          grep -Fq "versionName='1.0.172'" "$D/badging.txt"
           if grep -Fq 'application-debuggable' "$D/badging.txt"; then exit 1; fi
           python3 - <<'PY'
           import hashlib,json,os
           from pathlib import Path
           d=Path(os.environ['WQ_RELEASE_DIR'])
           old=json.loads((d/'base/update.json').read_text())
-          assert old['versionCode']==184 and old['versionName']=='1.0.170'
+          assert old['versionCode']==185 and old['versionName']=='1.0.171'
           assert old['sha256']==os.environ['WQ_BASE_SHA']
-          p=d/'signed/WordQuestAI-v1.0.171-signed-qa.apk'
+          p=d/'signed/WordQuestAI-v1.0.172-signed-qa.apk'
           with p.open('rb') as f: digest=hashlib.file_digest(f,'sha256').hexdigest()
-          m=dict(schemaVersion=1,tag='v1.0.171',versionCode=185,versionName='1.0.171',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=digest,notes=os.environ['WQ_NOTES'])
+          m=dict(schemaVersion=1,tag='v1.0.172',versionCode=186,versionName='1.0.172',packageName='com.kelimebulmacasi.a1.practice.fresh',apkFile='WordQuestAI.apk',sizeBytes=p.stat().st_size,sha256=digest,notes=os.environ['WQ_NOTES'])
           (d/'signed/update.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
           PY
           python3 tools/delta_v1/make_delta.py "$D/base/WordQuestAI.apk" "$APK" "$D/base/update.json" "$D/signed/update.json" "$D/delta"
@@ -1119,7 +1130,7 @@ jobs:
           cp "$RUNNER_TEMP/wq206-upgrade-passed.sha256" "$WQ_RELEASE_DIR/upgrade-proof.sha256"
       - uses: actions/upload-artifact@v4
         with:
-          name: WordQuestAI-v1.0.171-verified-release
+          name: WordQuestAI-v1.0.172-verified-release
           path: |
             ${{ runner.temp }}/wq154-release/dist
             ${{ runner.temp }}/wq154-release/upgrade-proof.sha256
@@ -1128,7 +1139,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: WordQuestAI-v1.0.171-release-diagnostics
+          name: WordQuestAI-v1.0.172-release-diagnostics
           path: |
             ${{ runner.temp }}/wq154-release/arena-*.png
             ${{ runner.temp }}/wq154-release/arena-*.xml

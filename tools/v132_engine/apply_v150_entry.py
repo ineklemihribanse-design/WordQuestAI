@@ -367,4 +367,4 @@ if human_pack.is_file():
         picker.write_text(t,"utf-8")
     print("PASS: 14 human mascots, 28 exact WebP poses, personal mascot store preserved")
 else:
-    print("INFO: human mascot integration prepared; approved ZIP not present, current release unchanged")
+    raise SystemExit("Missing approved 14-human mascot pack")
