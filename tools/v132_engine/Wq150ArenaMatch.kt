@@ -96,7 +96,7 @@ internal data class Wq150Viewport(val cell:Float,val x:Float,val y:Float,val min
 internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,focusRow:Float,focusCol:Float,fitHeight:Float=height,widthFraction:Float=0f):Wq150Viewport{
     require(width>0&&height>0&&rows>0&&cols>0&&zoom in 0..2)
     val fullFit=minOf(width/cols,fitHeight.coerceAtLeast(height)/rows,56f)
-    val fit=if(widthFraction>0f)maxOf(fullFit,width*widthFraction.coerceIn(0f,1f)/cols).coerceAtMost(72f) else fullFit
+    val fit=if(widthFraction>0f)(width*widthFraction.coerceIn(0f,1f)/cols).coerceAtMost(72f) else fullFit
     val scale=when(zoom){1->1.55f;2->2.35f;else->1f}
     val cell=fit*scale
     val boardW=cols*cell;val boardH=rows*cell
@@ -171,7 +171,7 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
 
 internal fun wq150SkipRemaining(limit:Int,used:Int,round:Int):Int=if(round==1)(limit-used).coerceAtLeast(0) else 0
 
-internal fun wq150ArenaPlayerName(vararg choices:String?):String=choices.firstOrNull{!it.isNullOrBlank()&&!it.equals("Oyuncu",true)}?.trim()?:"Rakip"
+internal fun wq150ArenaPlayerName(vararg choices:String?):String=choices.firstOrNull{!it.isNullOrBlank()&&!it.trim().equals("Oyuncu",true)}?.trim()?:"Rakip"
 
 internal fun wq150FullWordDraft(input:String,length:Int):String =
     input.filter{it.isLetter()}.uppercase(java.util.Locale.ROOT).take(length.coerceAtLeast(0))
@@ -224,7 +224,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val ownAvatar by rememberWq2DSelection(session.profileKey)
     val config=androidx.compose.ui.platform.LocalConfiguration.current
     val tablet=config.smallestScreenWidthDp>=600
-    val split=tablet&&config.screenWidthDp>config.screenHeightDp
+    val split=tablet&&config.orientation==android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val context=androidx.compose.ui.platform.LocalContext.current
     val sessionId=remember(room,uid){
         val prefs=context.getSharedPreferences("wq150_match_session",android.content.Context.MODE_PRIVATE)
@@ -390,8 +390,10 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
         }
     }
     val playerIds=connection.objects("players").map{it.optString("id")}
+    val directoryNames=rememberWq150ArenaNames(session,playerIds)
     fun playerName(id:String):String=wq150ArenaPlayerName(
         if(id==uid)session.social.nickname.ifBlank{session.profileName} else null,
+        directoryNames[id],
         profiles.optJSONObject(id)?.optString("name"),
         session.social.friends.firstOrNull{it.uid==id}?.name,
         if(id==uid)"Sen" else "Rakip "+(playerIds.indexOf(id)+1).coerceAtLeast(1))
@@ -434,7 +436,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                     val value=scores?.optJSONObject(id)?.optInt("score")?:scores?.optInt(id)?:0
                     val currentTurn=game.optString("turn")==id||mode in listOf("speed","simultaneous")
                     val members=if(kind=="team")game.objects("teams").firstOrNull{it.optString("id")==id}.strings("members") else listOf(id)
-                    val name=if(kind=="team")"Takım "+(i+1) else playerName(id)
+                    val name=if(kind=="team")members.joinToString(" / "){playerName(it)} else playerName(id)
                     val myCard=uid in members
                     Surface(color=if(currentTurn&&phase=="playing")Color(0xE65A368C)else Color(0xD93D2569),
                         shape=RoundedCornerShape(16.dp),modifier=Modifier.weight(1f).clickable{inspected=members},
@@ -442,7 +444,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                             if(currentTurn&&phase=="playing")Color(0xFFFFD56B)else Color(0xFF9D84D6))){
                         if(compact){
                             Row(Modifier.fillMaxWidth().padding(horizontal=4.dp,vertical=2.dp),verticalAlignment=Alignment.CenterVertically){
-                                if(split)Wq150Portrait(profiles.optJSONObject(members.firstOrNull().orEmpty()),ownAvatar.takeIf{myCard},Modifier.size(36.dp))
+                                if(split)Wq150Portrait(profiles.optJSONObject(members.firstOrNull().orEmpty()),ownAvatar.takeIf{members.firstOrNull()==uid},Modifier.size(36.dp))
                                 Text("$name · $value",Modifier.weight(1f),color=if(currentTurn)Wq122Gold else Color.White,
                                     fontWeight=FontWeight.Bold,fontSize=12.sp,textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
                                 if(myCard)emojiButton()
@@ -540,7 +542,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             if(quiz||finished)answerContent(Modifier.weight(1f).fillMaxWidth())
             else if(split){
                 Row(Modifier.weight(1f).fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp),verticalAlignment=Alignment.CenterVertically){
-                    boardContent(Modifier.weight(1.65f).fillMaxHeight())
+                    boardContent(Modifier.weight(1.9f).fillMaxHeight())
                     Surface(Modifier.weight(1f).fillMaxHeight(),color=Color(0xBC251747),shape=RoundedCornerShape(14.dp)){
                         answerContent(Modifier.fillMaxSize().padding(8.dp))
                     }

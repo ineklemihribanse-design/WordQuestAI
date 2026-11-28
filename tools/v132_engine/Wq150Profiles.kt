@@ -1,6 +1,10 @@
 package com.kelimebulmacasi.a1
 
 import android.graphics.Bitmap
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
@@ -17,6 +21,33 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+
+/** Read only the existing signed-in public nickname directory for this match's roster. */
+@Composable
+internal fun rememberWq150ArenaNames(session:AppSession,ids:List<String>):Map<String,String>{
+    val auth=session.accounts.socialAuth()
+    val uid=session.accounts.uid.orEmpty()
+    var names by remember(uid,ids){mutableStateOf<Map<String,String>>(emptyMap())}
+    DisposableEffect(auth,uid,ids){
+        val root=if(auth==null||uid.isBlank())null else runCatching{
+            FirebaseDatabase.getInstance(auth.app,"https://wordquest-ai-default-rtdb.firebaseio.com").reference.child("directory")
+        }.getOrNull()
+        val refs=if(root==null)emptyList() else ids.distinct().filter{it.matches(Regex("^[A-Za-z0-9_-]{1,100}$"))&&it!=uid}.map{id->
+            val ref=root.child(id).child("nickname")
+            val listener=object:ValueEventListener{
+                override fun onDataChange(snapshot:DataSnapshot){
+                    val name=snapshot.getValue(String::class.java)?.trim().orEmpty()
+                    if(ArenaNickname.isValid(name))names=names+(id to name)
+                }
+                override fun onCancelled(error:DatabaseError){}
+            }
+            ref.addValueEventListener(listener)
+            ref to listener
+        }
+        onDispose{refs.forEach{(ref,listener)->ref.removeEventListener(listener)}}
+    }
+    return names
+}
 
 /** Existing arena consent and selected art, separate bounded profile channel. */
 @Composable

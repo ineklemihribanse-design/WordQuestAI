@@ -226,7 +226,23 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
         catch(e:Wq150GatewayError){
             // An explicit command rejection is final; transport ambiguity retains the ID.
             val rejected=e.code=="command-rejected"||e.status in listOf(400,401,403,404,405,413)
-            mutable.value=mutable.value.copy(pending=if(rejected)null else command,error=if(rejected)"İşlem kabul edilmedi. Oyun durumu yenileniyor." else "İşlem doğrulanamadı. Durumu yenile.")
+            mutable.value=mutable.value.copy(pending=if(rejected)null else command,error=if(rejected)"Oyun durumu yenileniyor." else "İşlem doğrulanamadı. Durumu yenile.")
+            if(e.status==409){
+                // A conflict should not keep the controls waiting for the next polling tick.
+                try{
+                    accept(gateway.presence(room,sessionId))
+                    if(!rejected){
+                        // A committed response may have been lost. Retry the exact same receipt.
+                        try{accept(gateway.send(room,command));mutable.value=mutable.value.copy(pending=null)}
+                        catch(retry:Wq150GatewayError){
+                            if(retry.code=="command-rejected"||retry.status in listOf(400,401,403,404,405,413))
+                                mutable.value=mutable.value.copy(pending=null,error=null)
+                            else mutable.value=mutable.value.copy(error="İşlem doğrulanamadı. Yeniden deneyebilirsin.")
+                        }
+                    }
+                }catch(cancel:CancellationException){throw cancel}
+                catch(other:Exception){mutable.value=mutable.value.copy(error="Oyun durumu doğrulanamadı.")}
+            }
         }catch(e:Exception){
             mutable.value=mutable.value.copy(error="Bağlantı kesildi. Aynı işlem tekrar denenebilir.")
         }finally{mutable.value=mutable.value.copy(busy=false)}
@@ -251,7 +267,7 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
         while(coroutineContext.isActive){
             refresh()
             if(departed||state.value.snapshot?.optString("phase")=="finished")break
-            delay(if(state.value.error==null)1500L else 4000L)
+            delay(if(state.value.error!=null)4000L else if(state.value.snapshot?.optString("phase")=="playing")1100L else 1500L)
         }
     }
 }

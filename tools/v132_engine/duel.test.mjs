@@ -74,3 +74,12 @@ test('personal hint claims are unique, preserve crossings and hide from rival',(
  assert.throws(()=>cmd(s,'hint','a'));
  s=correct(s,'a');assert.equal(publicDuel(s,'b').myHints[1][0],'C');
 });
+
+test('pass consumes the current turn; both passes advance one word and preserve score',()=>{
+ for(const mode of ['classic','streak','limited']){
+  let s=base(mode,{skipLimit:0});s=cmd(s,'pass','a');
+  assert.equal(s.active,0);assert.equal(s.turn,'b');assert.throws(()=>cmd(s,'pass','a'));
+  s=cmd(s,'pass','b');assert.equal(s.active,1);assert.equal(s.turn,'a');
+  assert.equal(s.stats.a.pass,1);assert.equal(s.stats.b.pass,1);assert.equal(s.stats.a.score,0);assert.equal(s.stats.b.score,0);
+ }
+});

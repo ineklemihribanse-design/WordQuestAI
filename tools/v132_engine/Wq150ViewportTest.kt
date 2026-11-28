@@ -101,4 +101,24 @@ class Wq150ViewportTest {
         assertEquals("ABC",wq150AutomaticAnswer(listOf(null,null,null),"ABC",3))
         assertNull(wq150AutomaticAnswer(listOf(null,null,null),"AB",3))
     }
+    @Test fun wideBoardDoesNotShrinkWhenKeyboardResizesViewport(){
+        for((w,h,imeH) in listOf(Triple(340f,420f,125f),Triple(700f,500f,180f))){
+            val normal=wq150Viewport(w,h,18,15,0,9f,7.5f,widthFraction=.92f)
+            val typing=wq150Viewport(w,imeH,18,15,0,9f,7.5f,widthFraction=.92f)
+            assertEquals(normal.cell,typing.cell,.01f)
+            assertEquals(w*.92f,typing.cell*15,.01f)
+            assertTrue(typing.minY<typing.maxY)
+            assertTrue(typing.y in typing.minY..typing.maxY)
+        }
+    }
+    @Test fun skipButtonDisappearsWhenRightsAreExhausted(){
+        assertEquals(2,wq150SkipRemaining(3,1,1))
+        assertEquals(0,wq150SkipRemaining(3,3,1))
+        assertEquals(0,wq150SkipRemaining(3,0,2))
+        assertEquals(0,wq150SkipRemaining(0,0,1))
+    }
+    @Test fun actualNameBeatsGenericProfileName(){
+        assertEquals("Ada",wq150ArenaPlayerName(null,"Oyuncu","Ada","Rakip"))
+        assertEquals("Deniz",wq150ArenaPlayerName("Deniz","Oyuncu","Rakip"))
+    }
 }
