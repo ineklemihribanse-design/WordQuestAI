@@ -110,11 +110,11 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     val snapshot=state.view
     val room=state.room
     val routedInvite=Wq150InviteRoute.pending
-    LaunchedEffect(uid,routedInvite,state.busy,state.pending){
-        if(routedInvite!=null&&!state.busy&&!state.pending&&(state.room==null||state.left)){
-            val id=Wq150InviteRoute.take(uid)?:return@LaunchedEffect
+    LaunchedEffect(uid,routedInvite){
+        if(routedInvite!=null&&routedInvite.first==uid){
             onTab(false)
-            controller.join(id)
+            controller.join(routedInvite.second)
+            if(Wq150InviteRoute.pending==routedInvite)Wq150InviteRoute.take(uid)
         }
     }
     val lobby=snapshot?.optString("phase")=="lobby"&&!state.left
