@@ -1,0 +1,789 @@
+name: WordQuest AI v1.0.122 premium Arena settings QA
+on:
+  pull_request:
+    branches: [fix/v190-tablet-board-and-visible-icons]
+    paths:
+      - 'tools/v122_arena/**'
+      - '.github/workflows/qa-v122-arena.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  android:
+    if: github.head_ref == 'qa/v122-arena-settings' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Use immutable cached full source from validated 1.0.91 build
+        run: |
+          echo "WQ190_FULL_KEY=wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8" >> "$GITHUB_ENV"
+      - name: Restore complete Android 1.0.90 source without replaying historical packages
+        id: complete_source
+        uses: actions/cache/restore@v4
+        with:
+          path: source
+          key: ${{ env.WQ190_FULL_KEY }}
+      - name: Verify complete source and update prerequisites
+        env:
+          CACHE_HIT: ${{ steps.complete_source.outputs.cache-hit }}
+        run: |
+          set -euo pipefail
+          if [ "$CACHE_HIT" != true ]; then
+            echo '::error::No verified assembled source cache. Refusing an incomplete APK; run the verified v190 assembler first.'
+            exit 1
+          fi
+          test -s source/gradlew
+          test -s source/app/build.gradle.kts
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          grep -Fq 'versionCode = 116' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.90"' source/app/build.gradle.kts
+          grep -Fq 'state.enter(completeAnswer)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'fun phoneHeightDp(' source/app/src/main/java/com/kelimebulmacasi/a1/Wq190BoardPolicy.kt
+          (cd source && python3 tools/verify_audio_ipa.py)
+          echo 'PASS: exact complete 1.0.90 source and US/UK audio retained.'
+      - name: Apply approved v196 source plus compact New Game cards, filters, mode and count
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v191/apply_mobile_crossword_191.py tools/v192/apply_overview_focus_192.py tools/v193/apply_editable_entry_193.py tools/v194/apply_cell_text_alignment_194.py tools/v195/apply_a1_level_badge_195.py tools/v196/apply_exclusive_game_filter_196.py tools/v196/apply_universal_level_badge_196.py tools/v197/apply_compact_new_game_197.py
+          python3 tools/v191/apply_mobile_crossword_191.py
+          python3 tools/v192/apply_overview_focus_192.py
+          python3 tools/v193/apply_editable_entry_193.py
+          python3 tools/v194/apply_cell_text_alignment_194.py
+          python3 tools/v195/apply_a1_level_badge_195.py
+          python3 tools/v196/apply_exclusive_game_filter_196.py
+          python3 tools/v196/apply_universal_level_badge_196.py
+          python3 tools/v197/apply_compact_new_game_197.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq197CompactNewGameUi.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq197LayoutPolicy.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq197LayoutPolicyTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq192Viewport.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq192ViewportTest.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq193EditableDraft.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq193EditableDraftTest.kt
+          test -s tools/v194/apply_cell_text_alignment_194.py
+          test -s tools/v195/apply_a1_level_badge_195.py
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq196FilterPolicy.kt
+          test -s source/app/src/main/java/com/kelimebulmacasi/a1/Wq196LevelBadge.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq196FilterPolicyTest.kt
+          test -s source/app/src/main/assets/wq196_level_badge.webp
+          echo "8abe9cae51a083a2450902302c71b5a9f2d5ccf0a16b14a8d51026353a87babf  source/app/src/main/assets/wq196_level_badge.webp" | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path
+          g=Path("source/app/build.gradle.kts")
+          s=g.read_text("utf-8")
+          assert s.count("versionCode = 116")==1 and s.count('versionName = "1.0.90"')==1
+          g.write_text(s.replace("versionCode = 116","versionCode = 145",1)
+                        .replace('versionName = "1.0.90"','versionName = "1.0.119"',1),"utf-8")
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt").read_text("utf-8")
+          for code in ("Wq192Viewport.overviewTileDp(", "horizontal.animateScrollTo(targetX)",
+                       "keyboardWasShown = false", "Modifier.weight(1f).heightIn(min=56.dp)",
+                       "Wq190CrosswordHintInput.completedWord(", "state.enter(completeAnswer)"):
+              assert code in p,code
+          assert "maxOf(regularTile, 28.dp)" not in p
+          assert p.count("inlineEditor()")==2
+          assert "Wq193EditableDraft.protectedPositions(" in p
+          assert 'Text("Sil",color=Forest,fontSize=12.sp)' in p
+          assert "if (cell !in view.locked) {" in p
+          assert "Modifier.weight(1f).heightIn(min=56.dp)" in p
+          assert "runCatching { entryFocus.requestFocus() }" in p
+          cell = p[p.index("private fun LetterCell("):]
+          assert 'Text(number.toString(), Modifier.align(Alignment.TopStart)' in cell
+          assert 'Text(letter.toString(), Modifier.align(Alignment.Center)' in cell
+          assert 'padding(top = if (number == null) 0.dp else 3.dp)' not in cell
+          header=p[p.index("private fun GameHeading("):p.index("private fun BoardFrame(")]
+          assert 'fontWeight = FontWeight.Bold, fontSize = 15.sp)' in header
+          assert 'Modifier.size(30.dp)' in header
+          assert 'Wq196LevelBadge(Modifier.size(30.dp))' in header
+          assert 'Text("★"' not in header
+          assert 'padding(horizontal=11.dp,vertical=7.dp)' in header
+          assert 'Wq189UploadedArtwork("solo_puzzle"' not in header
+          newgame=Path("source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt").read_text("utf-8")
+          assert 'NewGameSection("Kelime Havuzu"' in newgame
+          assert 'NewGameSection("Oyun Ayarları"' in newgame
+          assert 'Wq197CompactHero(levels.first(),session.profileKey,available)' in newgame
+          assert 'Wq197LevelSelector(levels, !loading, ::toggleLevel)' in newgame
+          assert 'Wq197FilterDialog(' in newgame
+          assert 'filterMode = next' in newgame
+          assert 'check(topics.isEmpty() || kinds.isEmpty())' in newgame
+          assert 'Wq197OptionGrid(timeSizes.map { "$it dk" } + "Özel"' in newgame
+          assert 'gameSizes.map(Int::toString) + "Özel"' in newgame
+          assert 'session.newGameFiltered(levels, topics, kinds, count!!)' in newgame
+          assert 'MAX_NEW_GAME_WORDS = 70' in newgame
+          assert 'PuzzleClockStore(context, session.profileKey).save(' in newgame
+          print("PASS v197: 3D level icon, responsive 6/3-col levels, compact category chooser")
+          print("PASS v197: combined game mode and word count, 70-word/custom, save and clock retained")
+          PY
+      - name: Install approved art and responsive New Game page only
+        run: |
+          set -euo pipefail
+          sha256sum source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt > /tmp/wq198-board.sha
+          python3 -m py_compile tools/v198/apply_approved_new_game_198.py
+          python3 tools/v198/apply_approved_new_game_198.py
+          sha256sum --check /tmp/wq198-board.sha
+          test "$(find source/app/src/main/assets/new_game_198 -name '*.webp' | wc -l)" -eq 6
+          grep -Fq 'Wq198NewGamePage(back,' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          grep -Fq 'Wq198FilterTabs(' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+          grep -Fq 'session.newGameFiltered(levels, topics, kinds, count!!)' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Apply only tablet focus zoom and verify New Game remains untouched
+        run: |
+          set -euo pipefail
+          sha256sum source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt > /tmp/wq206-newgame.sha
+          python3 -m py_compile tools/v199/apply_tablet_focus_199.py
+          python3 tools/v199/apply_tablet_focus_199.py
+          sha256sum --check /tmp/wq206-newgame.sha
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq199TabletFocusTest.kt
+          grep -Fq 'else if (enlarged) maxOf(regularTile, 30.dp) else regularTile' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+      - name: Verify Start validation is declared in sticky footer scope
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt").read_text("utf-8")
+          start=s.index("Wq198NewGamePage(back,")
+          footer=s.index("footer = {",start)
+          valid=s.index("val valid =",footer)
+          action=s.index("PrimaryAction(",footer)
+          assert footer < valid < action
+          assert s.count("val valid =")==1
+          assert "val valid = !loading && bank != null && count != null" in s
+          print("PASS: original Start validation is visible to both callback and enabled state.")
+          PY
+      - name: Refine safe New Game layout and pin tablet-only typing viewport
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v200/apply_new_game_tablet_viewport_200.py
+          python3 tools/v200/apply_new_game_tablet_viewport_200.py
+          grep -Fq 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' source/app/src/main/java/com/kelimebulmacasi/a1/Wq198NewGameUi.kt
+          grep -Fq 'if (tabletTyping) Modifier.fillMaxHeight() else Modifier.verticalScroll(pageScroll)' source/app/src/main/java/com/kelimebulmacasi/a1/PuzzleScreen.kt
+          grep -Fq 'session.newGameFiltered(levels, topics, kinds, count!!)' source/app/src/main/java/com/kelimebulmacasi/a1/NewGameScreen.kt
+      - name: Add Harf ac beside next clue only while phone keyboard is open
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v200/apply_phone_hint_while_typing_200.py
+          python3 tools/v200/apply_phone_hint_while_typing_200.py
+      - name: Reconstruct exact published 1.0.101 hint state and premium art
+        run: |
+          set -euo pipefail
+          P=source/app/src/main/java/com/kelimebulmacasi/a1
+          cp "$P/PuzzleScreen.kt" "$RUNNER_TEMP/wq206-before-puzzle.kt"
+          cp "$P/NewGameScreen.kt" "$RUNNER_TEMP/wq206-before-newgame.kt"
+          sha256sum "$P/Wq192Viewport.kt" "$P/Wq199TabletFocus.kt" "$P/Wq190BoardPolicy.kt" > "$RUNNER_TEMP/wq206-board-policy.sha"
+          find source/app/src/main/assets/new_game_198 -name '*.webp' -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq206-art.sha"
+          python3 -m py_compile tools/v201/apply_hint_and_premium_new_game_201.py
+          python3 tools/v201/apply_hint_and_premium_new_game_201.py
+          grep -Fq 'val landscapeArtwork = wide && maxWidth > maxHeight' "$P/Wq198NewGameUi.kt"
+          grep -Fq 'Wq198Artwork(if (landscapeArtwork) "tablet" else "phone",' "$P/Wq198NewGameUi.kt"
+          sha256sum -c "$RUNNER_TEMP/wq206-board-policy.sha"
+          sha256sum -c "$RUNNER_TEMP/wq206-art.sha"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,hashlib
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          old=(Path(os.environ["RUNNER_TEMP"])/"wq206-before-puzzle.kt").read_text()
+          new=(p/"PuzzleScreen.kt").read_text()
+          for marker in ("private fun GameHeading(", "private fun BoardFrame(", "private fun LetterCell("):
+              assert old[old.index(marker):]==new[new.index(marker):],marker
+          print("PASS: identical BoardFrame SHA-256:",hashlib.sha256(new[new.index("private fun BoardFrame("):].encode()).hexdigest())
+          oldform=(Path(os.environ["RUNNER_TEMP"])/"wq206-before-newgame.kt").read_text()
+          newform=(p/"NewGameScreen.kt").read_text()
+          assert oldform==newform.replace("Wq201StartAction","PrimaryAction")
+          assert new.count("wq201TypingActions()")==2
+          assert "Wq201HintDraft.authoritative(" in new
+          assert "state.enter(completeAnswer)" in new
+          assert "if (tabletTyping) wq201TypingActions()" in new
+          assert "if (keyboardVisible) { wq201TypingActions() }" in new
+          print("PASS: exact existing game creation callback and 1.0.100 settings layout")
+          print("PASS: tablet and phone typing actions use the same tested hint controller")
+          PY
+      - name: Apply final New Game style and fix tablet typing actions without touching board
+        run: |
+          set -euo pipefail
+          P=source/app/src/main/java/com/kelimebulmacasi/a1
+          cp "$P/PuzzleScreen.kt" "$RUNNER_TEMP/wq206-published-puzzle.kt"
+          sha256sum "$P/NewGameScreen.kt" "$P/Wq192Viewport.kt" "$P/Wq199TabletFocus.kt" "$P/Wq190BoardPolicy.kt" > "$RUNNER_TEMP/wq206-protected.sha"
+          python3 - <<'PY'
+          import base64,hashlib,json
+          from pathlib import Path
+          d=json.loads(Path("tools/v202/backgrounds.b64.json").read_text())
+          expected={"tablet_202":"7e0057a98bb6b3c621ad7d929022360077745ceb95e644495589f3f2f9b4e644",
+                    "phone_202":"3ce47be36435c0e9de941d08ba59a0aa87f8838ad35b1146fb2ac606c453bb9f"}
+          assert set(d)==set(expected)
+          out=Path("source/app/src/main/assets/new_game_198")
+          for key,value in d.items():
+              data=base64.b64decode(value,validate=True)
+              assert hashlib.sha256(data).hexdigest()==expected[key],key
+              assert data[:4]==b"RIFF" and data[8:12]==b"WEBP"
+              (out/(key+".webp")).write_bytes(data)
+          print("PASS: supplied phone and tablet background assets verified")
+          PY
+          python3 -m py_compile tools/v202/apply_final_newgame_and_tablet_actions_202.py
+          python3 tools/v202/apply_final_newgame_and_tablet_actions_202.py
+          sha256sum -c "$RUNNER_TEMP/wq206-protected.sha"
+          python3 - <<'PY'
+          import os,hashlib
+          from pathlib import Path
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          old=(Path(os.environ["RUNNER_TEMP"])/"wq206-published-puzzle.kt").read_text()
+          new=(p/"PuzzleScreen.kt").read_text()
+          for marker in ("private fun BoardFrame(", "private fun LetterCell(", "                } else {\n                    // Phone editor"):
+              assert old[old.index(marker):]==new[new.index(marker):],marker
+          print("PASS: unchanged 1.0.101 BoardFrame SHA-256:",hashlib.sha256(new[new.index("private fun BoardFrame("):].encode()).hexdigest())
+          assert "Fixed above the independently scrolling clues" in new
+          assert new.count("wq201TypingActions()")==2
+          ui=(p/"Wq198NewGameUi.kt").read_text()
+          assert 'Wq198Artwork(if (landscapeArtwork) "tablet_202" else "phone_202"' in ui
+          assert 'alignment = Alignment.TopCenter' in ui
+          assert 'horizontalAlignment = Alignment.CenterHorizontally' in ui
+          assert 'border = null,' in (p/"Wq197CompactNewGameUi.kt").read_text()
+          print("PASS: source guards for fixed tablet actions and centered full-page New Game artwork")
+          PY
+      - name: Apply resolution-independent New Game background and larger badge only
+        run: |
+          set -euo pipefail
+          P=source/app/src/main/java/com/kelimebulmacasi/a1
+          sha256sum "$P/PuzzleScreen.kt" "$P/Wq192Viewport.kt" "$P/Wq199TabletFocus.kt" "$P/Wq190BoardPolicy.kt" "$P/NewGameScreen.kt" "$P/Wq197CompactNewGameUi.kt" > "$RUNNER_TEMP/wq206-unchanged.sha"
+          python3 -m py_compile tools/v203/apply_highres_newgame_203.py
+          python3 tools/v203/apply_highres_newgame_203.py
+          sha256sum -c "$RUNNER_TEMP/wq206-unchanged.sha"
+          grep -Fq 'Wq203NewGameBackground(landscapeArtwork, Modifier.matchParentSize())' "$P/Wq198NewGameUi.kt"
+          grep -Fq 'scaleX = 1.18f' "$P/Wq198NewGameUi.kt"
+      - name: Regenerate short English words in both independent offline voices
+        run: |
+          set -euo pipefail
+          if ! command -v espeak >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y espeak ffmpeg
+          fi
+          espeak --version
+          ffmpeg -version | head -n 1
+          find source/app/src/main/java -type f -name '*.kt' -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq206-kotlin.sha"
+          python3 -m py_compile tools/v204/fix_short_word_audio_204.py
+          python3 tools/v204/fix_short_word_audio_204.py
+          python3 - <<'PY'
+          import json, hashlib
+          from pathlib import Path
+          base=Path("source/app/src/main/assets/pronunciation")
+          words=json.loads((base/"manifest.json").read_text())["words"]
+          entries=json.loads((base/"ipa.json").read_text())["entries"]
+          for word in ("do", "hi"):
+              assert words[word]==hashlib.sha1(word.encode()).hexdigest()[:16]
+              for region, key in (("en-us","us"),("en-gb","uk")):
+                  assert (base/region/(words[word]+".ogg")).stat().st_size>1000
+                  assert entries[word][key].replace("ˈ","").replace("ˌ","").strip()=={"do":"duː","hi":"haɪ"}[word]
+          print("PASS: do and hi resolve to verified whole-word US/UK assets and IPA")
+          PY
+          sha256sum -c "$RUNNER_TEMP/wq206-kotlin.sha" >/dev/null
+          (cd source && python3 tools/verify_audio_ipa.py)
+          test -s "$RUNNER_TEMP/wq204-pronunciation-report.json"
+          echo 'PASS: all existing Kotlin sources unchanged; corrected offline short-word audio only'
+      - name: Preserve short-word phoneme and generated clip verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v206-short-word-audio-report
+          path: ${{ runner.temp }}/wq204-pronunciation-report.json
+          if-no-files-found: error
+      - name: Complete US and UK offline pronunciation for the actual bundled word bank
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'soundfile>=0.12,<1'
+          find source/app/src/main/java -type f -name '*.kt' -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq206-source-unchanged.sha"
+          python3 -m py_compile tools/v205/complete_pronunciation_205.py
+          python3 tools/v205/complete_pronunciation_205.py
+          sha256sum -c "$RUNNER_TEMP/wq206-source-unchanged.sha" >/dev/null
+          (cd source && python3 tools/verify_audio_ipa.py)
+          python3 - <<'PY'
+          import json,runpy
+          p=runpy.run_path("tools/v205/complete_pronunciation_205.py")
+          base=p["BASE"]
+          required,_=p["bundled_words"](p["ASSETS"],p["SRC"])
+          words=json.loads((base/"manifest.json").read_text())["words"]
+          data=json.loads((base/"ipa.json").read_text())
+          assert not data["unresolved"]
+          assert required <= set(words) == set(data["entries"])
+          for word in required:
+              for region in ("en-us","en-gb"):
+                  assert (base/region/(words[word]+".ogg")).stat().st_size > 1000,word
+          print("PASS all bundled word-bank entries have two audio files and two IPA values:",len(required))
+          PY
+      - name: Preserve full audio and IPA coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v206-full-pronunciation-coverage
+          path: ${{ runner.temp }}/wq205-pronunciation-coverage.json
+          if-no-files-found: error
+      - name: Correct actual short-word voice routing and verify OGG phoneme waveforms
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v206/apply_lexical_speech_206.py
+          python3 tools/v206/apply_lexical_speech_206.py
+          grep -Fq 'Wq206LexicalSpeech.useVerifiedRecording(words, bundled::contains)' source/app/src/main/java/com/kelimebulmacasi/a1/WordPronunciation.kt
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq206LexicalSpeechTest.kt
+      - name: Apply Lena-only connection deadline and cancellation with game source integrity
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name AiProviders.kt ! -name Conversation.kt ! -name ConversationScreen.kt ! -name LiveTeacherScreen.kt ! -name LenaIsolatedVoiceTeacherActivity.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq207-other-sources.sha"
+          python3 -m py_compile tools/v207/apply_lena_connection_207.py
+          python3 tools/v207/apply_lena_connection_207.py
+          sha256sum -c "$RUNNER_TEMP/wq207-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq207LenaRequestTest.kt
+      - name: Apply Lena provider error classification and bounded backoff
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name AiProviders.kt ! -name Wq207LenaRequest.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq208-other-sources.sha"
+          python3 -m py_compile tools/v208/apply_lena_provider_recovery_208.py
+          python3 tools/v208/apply_lena_provider_recovery_208.py
+          sha256sum -c "$RUNNER_TEMP/wq208-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq208ProviderFailureTest.kt
+      - name: Apply Lena Gemini model fallback while preserving game and other provider sources
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name Conversation.kt ! -name Wq208ProviderFailure.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq209-other-sources.sha"
+          python3 -m py_compile tools/v209/apply_lena_model_recovery_209.py
+          python3 tools/v209/apply_lena_model_recovery_209.py
+          sha256sum -c "$RUNNER_TEMP/wq209-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq209LenaModelRouteTest.kt
+      - name: Apply optional Lena Groq Gemini OpenRouter routing and verify unchanged game sources
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name AiProviders.kt ! -name AiSession.kt ! -name AiProviderSettings.kt ! -name TeacherCredentialBridgeProvider.kt ! -name ConversationScreen.kt ! -name LenaIsolatedVoiceTeacherActivity.kt ! -name LiveTeacherScreen.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq210-other-sources.sha"
+          python3 -m py_compile tools/v210/apply_lena_smart_providers_210.py
+          python3 tools/v210/apply_lena_smart_providers_210.py
+          sha256sum -c "$RUNNER_TEMP/wq210-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq210LenaRouterTest.kt
+      - name: Repair actual navigation history and nested Android Back routes without game changes
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name HomeScreen.kt ! -name Wq175PremiumHome.kt ! -name ArenaApprovedHome.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq211-other-sources.sha"
+          python3 -m py_compile tools/v211/apply_navigation_back_211.py tools/v211/qa_navigation_back_211.py
+          python3 tools/v211/apply_navigation_back_211.py
+          sha256sum -c "$RUNNER_TEMP/wq211-other-sources.sha" >/dev/null
+      - name: Prefer numbered clue starts without changing any board UI or other source
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name Crossword.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq212-other-sources.sha"
+          python3 -m py_compile tools/v212/apply_numbered_cell_selection_212.py
+          python3 tools/v212/apply_numbered_cell_selection_212.py
+          sha256sum -c "$RUNNER_TEMP/wq212-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq212NumberedCellSelectionTest.kt
+      - name: Preserve crossword keyboard session and verify unchanged rendering and other sources
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name PuzzleScreen.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq213-other-sources.sha"
+          python3 -m py_compile tools/v213/apply_keyboard_continuity_213.py
+          python3 tools/v213/apply_keyboard_continuity_213.py
+          sha256sum -c "$RUNNER_TEMP/wq213-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq213TypingContinuityTest.kt
+      - name: Remove IME dismissal wait and prewarm New Game without changing rendering
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name PuzzleScreen.kt ! -name HomeScreen.kt ! -name NewGameScreen.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq214-other-sources.sha"
+          python3 -m py_compile tools/v214/apply_smooth_transitions_214.py
+          python3 tools/v214/apply_smooth_transitions_214.py
+          sha256sum -c "$RUNNER_TEMP/wq214-other-sources.sha" >/dev/null
+      - name: Synchronize IME closing with overview and preserve all other sources
+        run: |
+          set -euo pipefail
+          find source/app/src/main/java -type f -name '*.kt' ! -name PuzzleScreen.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq215-other-sources.sha"
+          python3 -m py_compile tools/v215/apply_ime_exit_215.py
+          python3 tools/v215/apply_ime_exit_215.py
+          sha256sum -c "$RUNNER_TEMP/wq215-other-sources.sha" >/dev/null
+          test -s source/app/src/test/java/com/kelimebulmacasi/a1/Wq215ImeExitTest.kt
+      - name: Verify exact previously tested 38 motion model
+        run: |
+          set -euo pipefail
+          echo "2c9c29ac63b24d7c336dcf67e2020e02cc1c8a02eb8572db73f98c22c00dac48  Lena_Mixamo_38_Stabil_Android_QA.zip" | sha256sum -c -
+          python3 - <<'PY'
+          import zipfile,json,struct,hashlib
+          with zipfile.ZipFile('Lena_Mixamo_38_Stabil_Android_QA.zip') as z:
+              assert set(z.namelist())=={'Lena_Mixamo_38_Stable.glb','apply_lena_native.py'}
+              b=z.read('Lena_Mixamo_38_Stable.glb')
+              assert hashlib.sha256(b).hexdigest()=='cb033dc3503f01e3fa64971c2bbe40b1260e7d9a96f7860796a32400328ad26f'
+              d=json.loads(b[20:20+struct.unpack_from('<I',b,12)[0]])
+              assert len(d['skins'][0]['joints'])==65 and len(d['animations'])==38 and len(d['materials'])==9
+              assert all(a['name'].startswith('Mixamo_') for a in d['animations'])
+              assert all(c['target']['path']!='weights' for a in d['animations'] for c in a['channels'])
+          PY
+      - name: Install native Mixamo single-layer QA player
+        run: |
+          set -euo pipefail
+          unzip -q Lena_Mixamo_38_Stabil_Android_QA.zip -d "$RUNNER_TEMP/lena-native"
+          python3 - <<'PY'
+          import pathlib,hashlib,json,os
+          root=pathlib.Path('source/app/src/main')
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'lena-native-before.json'
+          p.write_text(json.dumps({str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.rglob('*') if f.is_file()}))
+          PY
+          python3 "$RUNNER_TEMP/lena-native/apply_lena_native.py" source
+          python3 - <<'PY'
+          import pathlib,hashlib,json,os
+          old=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'lena-native-before.json').read_text())
+          changed=[f for f,h in old.items() if not pathlib.Path(f).exists() or hashlib.sha256(pathlib.Path(f).read_bytes()).hexdigest()!=h]
+          assert changed==['source/app/src/main/java/com/kelimebulmacasi/a1/LenaLive3DStage.kt'],changed
+          print('PASS: original assets and all other source files unchanged')
+          PY
+      - name: Apply only updater integration and verify other files unchanged
+        run: |
+          set -euo pipefail
+          P=source/app/src/main
+          find "$P" -type f ! -name AppUpdater.kt ! -name UpdateProtocol.kt ! -name UpdateUi.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wqd-protected.sha"
+          python3 tools/delta_android/apply_delta.py
+          sha256sum -c "$RUNNER_TEMP/wqd-protected.sha" >/dev/null
+          grep -Fq 'verifyPackage(apk, offer)' "$P/java/com/kelimebulmacasi/a1/AppUpdater.kt"
+          grep -Fq 'WqDeltaApplier.apply' "$P/java/com/kelimebulmacasi/a1/AppUpdater.kt"
+      - name: Connect actual spoken reply to semantic native motion without changing model
+        run: |
+          set -euo pipefail
+          P=source/app/src/main
+          find "$P" -type f ! -name LenaLive3DStage.kt ! -name LiveTeacherScreen.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq117-protected.sha"
+          python3 tools/v117_smart/apply_smart_lena.py
+          sha256sum -c "$RUNNER_TEMP/wq117-protected.sha" >/dev/null
+      - name: Smooth native transitions without changing any existing asset or other screen
+        run: |
+          set -euo pipefail
+          P=source/app/src/main
+          find "$P" -type f ! -name LenaLive3DStage.kt -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq118-protected.sha"
+          python3 tools/v118_smooth/apply_smooth_lena.py
+          sha256sum -c "$RUNNER_TEMP/wq118-protected.sha" >/dev/null
+      - name: Add independent facial shapes without altering body geometry or native motions
+        run: |
+          set -euo pipefail
+          P=source/app/src/main
+          find "$P" -type f ! -name LenaLive3DStage.kt ! -name Lena_Mixamo_38_Stable.glb -print0 | sort -z | xargs -0 sha256sum > "$RUNNER_TEMP/wq119-protected.sha"
+          python3 tools/v119_face/apply_face.py
+          sha256sum -c "$RUNNER_TEMP/wq119-protected.sha" >/dev/null
+      - name: Install hash-verified approved phone and tablet Arena graphics
+        run: |
+          set -euo pipefail
+          cat tools/v120_arena/asset-parts/part-*.bin > "$RUNNER_TEMP/arena120-assets.zip"
+          echo "c72675e61c842e64a075df5cc613762e2df61d4c600b323b1c3cd55992ed3912  $RUNNER_TEMP/arena120-assets.zip" | sha256sum -c -
+          unzip -tq "$RUNNER_TEMP/arena120-assets.zip"
+          unzip -oq "$RUNNER_TEMP/arena120-assets.zip" -d tools/v120_arena
+          python3 -m py_compile tools/v120_arena/apply_arena.py
+          python3 tools/v120_arena/apply_arena.py
+          grep -Fq 'versionCode = 146' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.120"' source/app/build.gradle.kts
+          test "$(find source/app/src/main/assets/arena_v120 -name '*.webp' | wc -l)" -eq 21
+      - name: Remove outer Arena width limit and apply responsive full-screen lobby
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/v121_arena/apply_fullscreen.py
+          if ! python3 tools/v121_arena/apply_fullscreen.py; then
+            echo "::group::Current Arena source layout anchors"
+            P=source/app/src/main/java/com/kelimebulmacasi/a1
+            grep -nE 'ArenaBackdrop|ArenaHeroStage|ArenaStageBackground|Column\(|ArenaApprovedHome\(|val guestName|fun arenaScore|matchSettingsPage|avatarPicker|ArenaNight|OnlineNight' "$P/PremiumOnlineScreen.kt" "$P/PremiumArenaScreen.kt" "$P/ArenaApprovedHome.kt" | head -n 180 || true
+            echo "::endgroup::"
+            exit 1
+          fi
+          grep -Fq 'versionCode = 147' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.121"' source/app/build.gradle.kts
+      - name: Install verified premium match settings graphics and native controls
+        run: |
+          set -euo pipefail
+          cat tools/v122_arena/asset-parts/part-*.bin > "$RUNNER_TEMP/arena122-assets.zip"
+          echo "981214c0dc41086550a9311cf251b11334ee60e1b78ee90f6ab8c4ee559c6532  $RUNNER_TEMP/arena122-assets.zip" | sha256sum -c -
+          unzip -tq "$RUNNER_TEMP/arena122-assets.zip"
+          mkdir -p tools/v122_arena/assets
+          unzip -oq "$RUNNER_TEMP/arena122-assets.zip" -d tools/v122_arena/assets
+          python3 -m py_compile tools/v122_arena/apply_settings.py
+          python3 tools/v122_arena/apply_settings.py
+          grep -Fq 'versionCode = 148' source/app/build.gradle.kts
+          grep -Fq 'versionName = "1.0.122"' source/app/build.gradle.kts
+      - name: Verify Android SDK and Gradle
+        run: |
+          set -euo pipefail
+          if ! test -s "$ANDROID_HOME/platforms/android-35/android.jar" ||
+             ! test -s "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"; then
+            SDKM=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -1)
+            "$SDKM" --install 'platforms;android-35' 'build-tools;35.0.0'
+          fi
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Restore verified Robolectric runtime SDK cache
+        id: robolectric_sdk_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/wq-robolectric-i7
+          key: wq-robolectric-sdk-i7-android14-15-v1
+      - name: Prefetch and validate both required Robolectric SDKs
+        timeout-minutes: 18
+        run: |
+          set -euo pipefail
+          bash -n tools/v206/prefetch_robolectric_206.sh
+          bash tools/v206/prefetch_robolectric_206.sh "$RUNNER_TEMP/wq-robolectric-i7"
+      - name: Save verified Robolectric SDK cache
+        if: steps.robolectric_sdk_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/wq-robolectric-i7
+          key: wq-robolectric-sdk-i7-android14-15-v1
+      - name: Run complete offline tests and build experimental unsigned APK in one Gradle invocation
+        timeout-minutes: 28
+        working-directory: source
+        env:
+          WQ_ROBOLECTRIC_DIR: ${{ runner.temp }}/wq-robolectric-i7
+        run: |
+          set -euo pipefail
+          chmod +x gradlew
+          # Robolectric runtime downloads are independent of Gradle dependency caching.
+          # Use only the verified local SDK files; keep every unit test enabled.
+          INIT="$RUNNER_TEMP/wq206-robolectric.init.gradle"
+          cat > "$INIT" <<'GRADLE'
+          allprojects {
+              tasks.withType(org.gradle.api.tasks.testing.Test).configureEach {
+                  systemProperty 'robolectric.offline', 'true'
+                  systemProperty 'robolectric.dependency.dir', System.getenv('WQ_ROBOLECTRIC_DIR')
+              }
+          }
+          GRADLE
+          LOG="$RUNNER_TEMP/wq-v206-gradle.log"
+          # First use already verified cached dependencies; don't hit Central unnecessarily.
+          # Only retry a demonstrably network/cache-related failure, never a compilation or test failure.
+          run_build() {
+            local label="$1"; shift
+            if ./gradlew --no-daemon --build-cache -I "$INIT" "$@" :app:testOfflineUnitTest :app:assembleOffline --stacktrace > "$LOG" 2>&1; then
+              tail -n 70 "$LOG"
+              return 0
+            fi
+            cp "$LOG" "$RUNNER_TEMP/wq-delta-${label}.log"
+            echo "::group::${label} diagnostics"
+            grep -nE '(^e:|^w:|Could not (GET|resolve|find)|No cached version|429|503|502|timed out|FAILURE)' "$LOG" | head -n 100 || true
+            tail -n 70 "$LOG"
+            echo "::endgroup::"
+            return 1
+          }
+          if run_build cached --offline; then
+            echo 'PASS: cached offline build'
+          else
+            if ! grep -Eiq 'No cached version|not available for offline mode|not available in offline mode|no cached resource|offline mode' "$LOG"; then
+              echo "::error::Offline build failed for a non-cache reason; not retrying."
+              exit 1
+            fi
+            if run_build central; then
+              echo 'PASS: normal Maven Central build'
+            else
+              if ! grep -Eiq 'status code (429|502|503|504)|Too Many Requests|Read timed out|Connection reset' "$LOG"; then
+                echo "::error::Non-transient Gradle failure; not retrying."
+                exit 1
+              fi
+              echo "::warning::Maven Central request failed; switch to its alternate HTTPS endpoint."
+              run_build central-alternate -I "$GITHUB_WORKSPACE/tools/delta_android/maven_central_alternate.init.gradle"
+            fi
+          fi
+          test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
+          test -s app/build/outputs/apk/offline/output-metadata.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("app/build/outputs/apk/offline/output-metadata.json").read_text("utf-8"))
+          assert d["applicationId"]=="com.kelimebulmacasi.a1.practice.fresh"
+          assert (d["elements"][0]["versionCode"],d["elements"][0]["versionName"])==(148,"1.0.122")
+          reports=list(Path("app/build/test-results/testOfflineUnitTest").glob("TEST-*.xml"))
+          assert reports
+          from xml.etree import ElementTree as ET
+          delta=[p for p in reports if p.name.endswith(".WqDeltaMetadataTest.xml")]
+          assert len(delta)==1, "New updater tests must actually run"
+          report=ET.parse(delta[0]).getroot()
+          assert int(report.get("tests","0"))>0 and int(report.get("failures","0"))==0 and int(report.get("errors","0"))==0 and int(report.get("skipped","0"))==0
+          smart=[p for p in reports if p.name.endswith(".Wq117LenaMotionTest.xml")]
+          assert len(smart)==1, "Smart Lena tests must run"
+          sr=ET.parse(smart[0]).getroot()
+          assert int(sr.get("tests","0"))>=2 and int(sr.get("failures","0"))==0 and int(sr.get("errors","0"))==0 and int(sr.get("skipped","0"))==0
+          smooth=[p for p in reports if p.name.endswith(".Wq118LenaBlendTest.xml")]
+          assert len(smooth)==1, "Native transition tests must run"
+          br=ET.parse(smooth[0]).getroot()
+          assert int(br.get("tests","0"))>=4 and int(br.get("failures","0"))==0 and int(br.get("errors","0"))==0 and int(br.get("skipped","0"))==0
+          face=[p for p in reports if p.name.endswith(".Wq119LenaFaceTest.xml")]
+          assert len(face)==1, "Face controller tests must run"
+          fr=ET.parse(face[0]).getroot()
+          assert int(fr.get("tests","0"))>=3 and int(fr.get("failures","0"))==0 and int(fr.get("errors","0"))==0 and int(fr.get("skipped","0"))==0
+          print("PASS: all offline unit tests, semantic Lena, native crossfade and independent face controller.")
+          PY
+      - name: Preserve complete Gradle log on failed compilation
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v206-full-Gradle-error-log
+          path: |
+            ${{ runner.temp }}/wq-v206-gradle.log
+            ${{ runner.temp }}/wq-delta-*.log
+          if-no-files-found: ignore
+      - name: Print exact failing JVM tests, if any
+        if: failure()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+          base=Path("source/app/build/test-results/testOfflineUnitTest")
+          found=False
+          for path in sorted(base.glob("TEST-*.xml")):
+              try:
+                  root=ElementTree.parse(path).getroot()
+              except Exception as exc:
+                  print("Cannot read",path,exc)
+                  continue
+              for case in root.iter("testcase"):
+                  for bad in ("failure","error"):
+                      for node in case.findall(bad):
+                          found=True
+                          print("FAILED TEST:",path.name,case.get("classname"),case.get("name"))
+                          print("WHY:",node.get("message",""))
+                          print((node.text or "")[:2500])
+          print("Failed test found:",found)
+          PY
+      - name: Preserve verified unsigned candidate before signing
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.122-unsigned-QA
+          path: source/app/build/outputs/apk/offline/app-offline-unsigned.apk
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 3
+      - name: Sign v1.0.122 with current installed-app production certificate
+        env:
+          WQ_RELEASE_KEYSTORE_B64: ${{ secrets.WQ_RELEASE_KEYSTORE_B64 }}
+          WQ_STORE_PASS: ${{ secrets.WQ_UPGRADE_STORE_PASSWORD }}
+          WQ_KEY_ALIAS: ${{ secrets.WQ_UPGRADE_KEY_ALIAS }}
+          WQ_KEY_PASS: ${{ secrets.WQ_UPGRADE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$WQ_RELEASE_KEYSTORE_B64" && test -n "$WQ_STORE_PASS"
+          test -n "$WQ_KEY_ALIAS" && test -n "$WQ_KEY_PASS"
+          umask 077
+          KEY="$RUNNER_TEMP/wq-v206-signing.p12"
+          trap 'rm -f "$RUNNER_TEMP/wq-v206-signing.p12"' EXIT
+          printf %s "$WQ_RELEASE_KEYSTORE_B64" | base64 -d > "$KEY"
+          OUT=source/app/build/outputs/apk/offline
+          SIGNER="$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar"
+          java -jar "$SIGNER" sign             --ks "$KEY" --ks-type PKCS12 --ks-key-alias "$WQ_KEY_ALIAS"             --ks-pass env:WQ_STORE_PASS --key-pass env:WQ_KEY_PASS             --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true             --out "$OUT/WordQuestAI-v1.0.122-signed-qa.apk" "$OUT/app-offline-unsigned.apk"
+          java -jar "$SIGNER" verify --verbose --print-certs "$OUT/WordQuestAI-v1.0.122-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-signature.txt"
+          grep -Fiq 'Signer #1 certificate SHA-256 digest: 29f9449cef86e511bb8256ca1db58580ff88dd1badd034ff79b81c6df662bce6' "$RUNNER_TEMP/wq-v206-signature.txt"
+          grep -Fq 'Verified using v2 scheme (APK Signature Scheme v2): true' "$RUNNER_TEMP/wq-v206-signature.txt"
+          grep -Fq 'Verified using v3 scheme (APK Signature Scheme v3): true' "$RUNNER_TEMP/wq-v206-signature.txt"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$OUT/WordQuestAI-v1.0.122-signed-qa.apk" > "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -m1 "^package:" "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -Fq "name='com.kelimebulmacasi.a1.practice.fresh'" "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -Fq "versionCode='148'" "$RUNNER_TEMP/wq-v206-badging.txt"
+          grep -Fq "versionName='1.0.122'" "$RUNNER_TEMP/wq-v206-badging.txt"
+          if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-v206-badging.txt"; then exit 1; fi
+          unzip -tq "$OUT/WordQuestAI-v1.0.122-signed-qa.apk"
+          python3 - "$OUT/WordQuestAI-v1.0.122-signed-qa.apk" <<'PY'
+          import json,sys,zipfile
+          from pathlib import Path
+          base=Path("source/app/src/main/assets/pronunciation")
+          with zipfile.ZipFile(sys.argv[1]) as apk:
+              prefix="assets/pronunciation/"
+              for name in ("manifest.json","ipa.json"):
+                  assert apk.read(prefix+name)==(base/name).read_bytes()
+              words=json.loads(apk.read(prefix+"manifest.json"))["words"]
+              names=set(apk.namelist())
+              assert all(prefix+r+"/"+f+".ogg" in names for f in words.values() for r in ("en-us","en-gb"))
+              arena=Path("source/app/src/main/assets/arena_v120")
+              for art in arena.glob("*.webp"):
+                  assert apk.read("assets/arena_v120/"+art.name)==art.read_bytes(),art.name
+              assert len(list(arena.glob("*.webp")))==21
+              print("PASS signed APK includes all 21 exact Arena graphics")
+              settings=Path("source/app/src/main/assets/arena_v122")
+              for art in settings.glob("*.webp"):
+                  assert apk.read("assets/arena_v122/"+art.name)==art.read_bytes(),art.name
+              assert len(list(settings.glob("*.webp")))==20
+              print("PASS signed APK includes all 20 exact match settings graphics")
+              print("PASS signed APK includes both recordings and IPA index for",len(words),"words")
+          PY
+          echo 'PASS: verified installed-app identity and same v2/v3 production signer.'
+      - name: Preserve signing diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.122-signature-diagnostics
+          path: |
+            ${{ runner.temp }}/wq-v206-signature.txt
+            ${{ runner.temp }}/wq-v206-badging.txt
+          if-no-files-found: ignore
+          retention-days: 3
+      - name: Validate model bytes and calculate signed transition delta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/wqd-v122"
+          mkdir -p "$D/old" "$D/new" "$D/classes"
+          gh release download v1.0.121 -R "$GITHUB_REPOSITORY" -p WordQuestAI.apk -p update.json -D "$D/old"
+          echo "c3fa48bd21c080114c4aebcf5ea1a62fd8662910cb1f92ce09f12ba0ad0bc20b  $D/old/WordQuestAI.apk" | sha256sum -c -
+          echo "1fe8b1775f78c846cedbc94d95b659a0386c8222213cef47f56464abc69507b6  $D/old/update.json" | sha256sum -c -
+          cp source/app/build/outputs/apk/offline/WordQuestAI-v1.0.122-signed-qa.apk "$D/new/WordQuestAI.apk"
+          python3 - "$D/new" <<'PY'
+          import sys,zipfile,json,hashlib,struct
+          from pathlib import Path
+          root=Path(sys.argv[1]); p=root/'WordQuestAI.apk'
+          with zipfile.ZipFile(p) as z:
+              matches=[n for n in z.namelist() if n.startswith('assets/avatars/lena/') and n.endswith('.glb') and hashlib.sha256(z.read(n)).hexdigest()=='7cb8bd4fd09fd34b0a28a67363881c43e8af5420ce23412e139b14c957159bc5']
+              assert len(matches)==1,matches
+              b=z.read(matches[0]); d=json.loads(b[20:20+struct.unpack_from('<I',b,12)[0]])
+              assert len(d['skins'][0]['joints'])==65 and len(d['animations'])==38 and len(d['materials'])==9
+              assert d['meshes'][0]['extras']['targetNames']==['Viseme_AA','Viseme_EE','Viseme_OO','Viseme_UU','Smile','Blink']
+              assert all(len(p['targets'])==6 for p in d['meshes'][0]['primitives'])
+          m={'schemaVersion':1,'tag':'v1.0.122','versionCode':148,'versionName':'1.0.122','packageName':'com.kelimebulmacasi.a1.practice.fresh','apkFile':'WordQuestAI.apk','sizeBytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'notes':'Responsive Arena lobby, original gameplay and Lena preserved'}
+          (root/'update.json').write_text(json.dumps(m,indent=2))
+          print('APK size:',m['sizeBytes'],'Old updater 250 MiB compatible:',m['sizeBytes']<=250*1024*1024)
+          PY
+          python3 tools/delta_v1/make_delta.py "$D/old/WordQuestAI.apk" "$D/new/WordQuestAI.apk" "$D/old/update.json" "$D/new/update.json" "$D/patch"
+          javac -d "$D/classes" tools/delta_android/WqDeltaApplier.java
+          python3 tools/delta_v1/test_delta.py "$D/classes" "$D"
+          if [ -f "$D/reconstructed.apk" ]; then
+            cmp "$D/reconstructed.apk" "$D/new/WordQuestAI.apk"
+            java -jar "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify "$D/reconstructed.apk"
+          fi
+          python3 - "$D" <<'PY'
+          import sys,json
+          from pathlib import Path
+          d=Path(sys.argv[1]); m=d/'new/update.json'; info=json.loads(m.read_text())
+          r=json.loads((d/'patch/delta-report.json').read_text())
+          if r['eligible']:
+              info['deltas']=[r['delta']]
+          m.write_text(json.dumps(info,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.122-delta-QA
+          path: |
+            ${{ runner.temp }}/wqd-v122/patch/*.wqd.gz
+            ${{ runner.temp }}/wqd-v122/new/update.json
+            ${{ runner.temp }}/wqd-v122/patch/delta-report.json
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.122-signed-QA
+          path: |
+            source/app/build/outputs/apk/offline/WordQuestAI-v1.0.122-signed-qa.apk
+            ${{ runner.temp }}/wqd-v122/new/update.json
+            ${{ runner.temp }}/wqd-v122/patch/delta-report.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 7
+  automatic_release:
+    needs: android
+    if: needs.android.result == 'success'
+    permissions:
+      contents: write
+      actions: read
+    uses: ./.github/workflows/auto-release-verified.yml
+    with:
+      version: '1.0.122'
+      base_version: '1.0.121'
+      version_code: 148
+      base_code: 147
+      base_sha: 'c3fa48bd21c080114c4aebcf5ea1a62fd8662910cb1f92ce09f12ba0ad0bc20b'
+      source_sha: ${{ github.event.pull_request.head.sha }}
+      notes: 'Arena Maç Ayarları: ayrı telefon ve tablet arka planları, premium 3D ikon ve kartlar, 0–20 özel ipucu seçimi. Mevcut Arena lobisi, oyun tahtası, Lena ve kullanıcı verileri korunur.'

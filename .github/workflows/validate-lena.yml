@@ -2,6 +2,7 @@ name: Validate Lena 3D asset
 on:
   workflow_dispatch:
   push:
+    branches: ['**']
     paths:
       - 'assets/avatars/lena/**'
       - 'tools/verify_lena_glb.py'

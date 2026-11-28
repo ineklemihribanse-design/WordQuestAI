@@ -1,0 +1,24 @@
+{
+  "name": "wordquest-arena-v150",
+  "version": "1.0.150",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "firebase-admin": "13.4.0",
+    "jose": "6.1.3"
+  },
+  "scripts": {
+    "start": "node arena_runtime.mjs",
+    "test": "node --test trusted_bank.test.mjs",
+    "free:check": "node --test ../v132_engine/connection.test.mjs ../v132_engine/presence.test.mjs && wrangler deploy --dry-run --outdir /tmp/wq150-worker",
+    "free:deploy": "wrangler deploy",
+    "free:prepare": "bash prepare_free_bank.sh",
+    "audit:content": "node audit_learning_content.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.50.0"
+  }
+}

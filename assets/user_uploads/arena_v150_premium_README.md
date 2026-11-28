@@ -1,0 +1,2 @@
+# Approved Arena art pack (v150)
+Upload the binary archive `arena_v150_premium.zip` to this directory on feature/v150-arena-nextgen. The assembly script verifies every file digest and stages the complete pack atomically. No composite screenshots are used as clickable controls. Until the archive is present, the original aligned v120 stadium is used. The v150 engine and signed-test-only publication gate are unchanged.

@@ -6,7 +6,7 @@ A1	Genel İngilizce	Fiiller	ADD	eklemek, toplamak
 A1	Genel İngilizce	İsimler	ADDRESS	isim: adres, konuşma (hitabe); fiil: hitap etmek, ele almak (sorunu)
 A1	Genel İngilizce	İsimler	AFTERNOON	öğleden sonra
 A1	Genel İngilizce	Zarflar	AGO	önce (iki gün önce gibi)
-A1	Genel İngilizce	Fiiller	AGREE	katılmak (fikrine), kabul etmek, anlaşmak
+A1	Genel İngilizce	Fiiller	AGREE	aynı fikirde olmak; kabul etmek; anlaşmak
 A1	Genel İngilizce	İsimler	AIRPLANE	uçak
 A1	Genel İngilizce	İsimler	AIRPORT	havalimanı, havaalanı
 A1	Genel İngilizce	İsimler	ALBUM	albüm
@@ -56,7 +56,7 @@ A1	Genel İngilizce	Sıfatlar	BORING	sıkıcı
 A1	Genel İngilizce	Fiiller	BORROW	ödünç almak, borç almak
 A1	Genel İngilizce	Zarflar	BOTH	her ikisi (de), iki … de, hem … hem de
 A1	Genel İngilizce	İsimler	BOTTOM	alt, dip
-A1	Genel İngilizce	İsimler	BOYFRIEND	erkek arkadaş, sevgili
+A1	Genel İngilizce	İsimler	BOYFRIEND	erkek sevgili
 A1	Genel İngilizce	Fiiller	BREATHE	nefes almak, solumak
 A1	Genel İngilizce	İsimler	BRIDGE	köprü
 A1	Genel İngilizce	Sıfatlar	BRIGHT	parlak, aydınlık, zeki
@@ -81,7 +81,7 @@ A1	Genel İngilizce	Sıfatlar	CAREFUL	dikkatli
 A1	Genel İngilizce	Fiiller	CARRY	taşımak, götürmek
 A1	Genel İngilizce	İsimler	CARTOON	çizgi film, karikatür
 A1	Genel İngilizce	İsimler	CASE	durum, dava, kılıf (kutu)
-A1	Genel İngilizce	İsimler	CATCH	fiil: yakalamak, (otobüse vb.) yetişmek; isim: yakalama, av
+A1	Genel İngilizce	Fiiller	CATCH	fiil: yakalamak, (otobüse vb.) yetişmek; isim: yakalama, av
 A1	Genel İngilizce	İsimler	CD	CD, kompakt disk
 A1	Genel İngilizce	İsimler	CD PLAYER	CD çalar
 A1	Genel İngilizce	İsimler	CELEBRATION	kutlama
@@ -102,10 +102,10 @@ A1	Genel İngilizce	İsimler	CODE	kod, şifre, kurallar
 A1	Genel İngilizce	İsimler	COKE	kola
 A1	Genel İngilizce	Fiiller	COLLECT	toplamak, biriktirmek, (birini) gidip almak
 A1	Genel İngilizce	İsimler	COLLECTION	koleksiyon, toplama
-A1	Genel İngilizce	İsimler	COLLEGE	üniversite, yüksekokul, kolej
+A1	Genel İngilizce	İsimler	COLLEGE	yüksekokul, üniversiteye bağlı kolej; ülkeye göre farklı eğitim kurumları
 A1	Genel İngilizce	İsimler	COLOR	isim: renk; fiil: boyamak, renklendirmek
 A1	Genel İngilizce	İsimler	CONCERT	konser
-A1	Genel İngilizce	İsimler	CONTEST	isim: yarışma, mücadele; fiil: itiraz etmek, için yarışmak
+A1	Genel İngilizce	İsimler	CONTEST	isim: yarışma, mücadele; fiil: itiraz etmek, elde etmek için yarışmak
 A1	Genel İngilizce	İsimler	CONVERSATION	sohbet, konuşma
 A1	Genel İngilizce	İsimler	COP	polis (gündelik dil)
 A1	Genel İngilizce	İsimler	COPY	isim: kopya, nüsha; fiil: kopyalamak, çoğaltmak
@@ -115,7 +115,7 @@ A1	Genel İngilizce	Diğer	COULD	-ebildi, -ebilirdi (can'in geçmişi), -ebilir 
 A1	Genel İngilizce	İsimler	COURSE	kurs, ders, rota (yön)
 A1	Genel İngilizce	İsimler	COVER	isim: kapak, örtü; fiil: örtmek, kaplamak, (konuyu) ele almak
 A1	Genel İngilizce	İsimler	CREDIT CARD	kredi kartı
-A1	Genel İngilizce	İsimler	CRY	fiil: ağlamak, bağırmak; isim: ağlama, çığlık
+A1	Genel İngilizce	Fiiller	CRY	fiil: ağlamak, bağırmak; isim: ağlama, çığlık
 A1	Genel İngilizce	İsimler	CULTURE	kültür
 A1	Genel İngilizce	Sıfatlar	CUTE	sevimli, şirin, tatlı
 A1	Genel İngilizce	İsimler	DADDY	babacığım, baba
@@ -123,7 +123,7 @@ A1	Genel İngilizce	İsimler	DANCE	isim: dans; fiil: dans etmek
 A1	Genel İngilizce	İsimler	DANCING	dans, dans etme
 A1	Genel İngilizce	İsimler	DATE	isim: tarih, randevu (buluşma), hurma; fiil: tarih atmak, (biriyle) çıkmak
 A1	Genel İngilizce	İsimler	DAY	gün, gündüz
-A1	Genel İngilizce	İsimler	DEAR	sıfat: sevgili, değerli, sayın (mektupta); isim: canım, tatlım
+A1	Genel İngilizce	Sıfatlar	DEAR	sıfat: sevgili, değerli, sayın; hitap: canım
 A1	Genel İngilizce	İsimler	DECEMBER	aralık
 A1	Genel İngilizce	Sıfatlar	DELICIOUS	lezzetli, nefis
 A1	Genel İngilizce	Fiiller	DESCRIBE	tarif etmek, tanımlamak, betimlemek
@@ -142,7 +142,7 @@ A1	Genel İngilizce	İsimler	DOLLAR	dolar
 A1	Genel İngilizce	İsimler	DRAMA	drama, dram, tiyatro
 A1	Genel İngilizce	İsimler	DREAM	isim: rüya, hayal; fiil: rüya görmek, hayal etmek
 A1	Genel İngilizce	İsimler	DRESS	isim: elbise; fiil: giyinmek, giydirmek
-A1	Genel İngilizce	İsimler	DRIVE	fiil: (araba) sürmek, kullanmak, arabayla götürmek; isim: araba yolculuğu, sürüş
+A1	Genel İngilizce	Fiiller	DRIVE	fiil: (araba) sürmek, kullanmak, arabayla götürmek; isim: araba yolculuğu, sürüş
 A1	Genel İngilizce	İsimler	DRIVER	sürücü, şoför
 A1	Genel İngilizce	İsimler	DRUM	davul, varil
 A1	Genel İngilizce	Sıfatlar	DUE	beklenen, vadesi gelmiş, (due to) -den dolayı
@@ -157,7 +157,7 @@ A1	Genel İngilizce	Sıfatlar	ELEMENTARY	temel, basit, başlangıç (seviyesi)
 A1	Genel İngilizce	Diğer	ELEVEN	on bir
 A1	Genel İngilizce	Zarflar	ELSE	başka, (or else) yoksa
 A1	Genel İngilizce	İsimler	END	isim: son, uç; fiil: bitmek, bitirmek, sona ermek
-A1	Genel İngilizce	İsimler	ENGINEER	isim: mühendis, teknisyen; fiil: tasarlayıp yapmak, ayarlamak
+A1	Genel İngilizce	İsimler	ENGINEER	isim: mühendis; fiil: tasarlamak, planlayıp gerçekleştirmek
 A1	Genel İngilizce	Fiiller	ENJOY	keyif almak, zevk almak, hoşlanmak
 A1	Genel İngilizce	İsimler	EVENING	akşam
 A1	Genel İngilizce	İsimler	EVENT	olay, etkinlik
@@ -187,8 +187,8 @@ A1	Genel İngilizce	Diğer	FIFTEEN	on beş
 A1	Genel İngilizce	Diğer	FIFTY	elli
 A1	Genel İngilizce	İsimler	FIGHT	fiil: kavga etmek, savaşmak, mücadele etmek; isim: kavga, mücadele
 A1	Genel İngilizce	İsimler	FILE	isim: dosya, klasör; fiil: dosyalamak, (başvuru, dava) yapmak
-A1	Genel İngilizce	Fiiller	FILL	doldurmak, dolmak
-A1	Genel İngilizce	İsimler	FINE	sıfat: iyi, güzel, ince; zarf: iyi, güzel; isim: para cezası; fiil: para cezası vermek
+A1	Genel İngilizce	Fiiller	FILL	doldurmak; dolmak
+A1	Genel İngilizce	Sıfatlar	FINE	sıfat: iyi, güzel, ince; zarf: iyi, güzel; isim: para cezası; fiil: para cezası vermek
 A1	Genel İngilizce	İsimler	FIRE	isim: ateş, yangın; fiil: işten çıkarmak, ateş etmek
 A1	Genel İngilizce	İsimler	FISHING	balıkçılık, balık tutma
 A1	Genel İngilizce	Diğer	FIVE	beş
@@ -203,7 +203,7 @@ A1	Genel İngilizce	İsimler	FORM	isim: form, biçim, şekil; fiil: oluşturmak,
 A1	Genel İngilizce	Diğer	FORTY	kırk
 A1	Genel İngilizce	Diğer	FOUR	dört
 A1	Genel İngilizce	Diğer	FOURTEEN	on dört
-A1	Genel İngilizce	Fiiller	FREE	sıfat: özgür, ücretsiz, boş; zarf: bedava, ücretsiz; fiil: serbest bırakmak, kurtarmak
+A1	Genel İngilizce	Sıfatlar	FREE	sıfat: özgür, ücretsiz, boş; zarf: bedava, ücretsiz; fiil: serbest bırakmak, kurtarmak
 A1	Genel İngilizce	İsimler	FRIDAY	cuma
 A1	Genel İngilizce	Edatlar	FROM	-den/-dan, -li/-lı (nereli)
 A1	Genel İngilizce	İsimler	FRONT	ön, ön taraf, cephe
@@ -213,7 +213,7 @@ A1	Genel İngilizce	İsimler	GAME	oyun, maç
 A1	Genel İngilizce	İsimler	GARBAGE	çöp
 A1	Genel İngilizce	Fiiller	GET	almak, olmak (… hâle gelmek), varmak
 A1	Genel İngilizce	İsimler	GHOST	hayalet
-A1	Genel İngilizce	İsimler	GIRLFRIEND	kız arkadaş, sevgili
+A1	Genel İngilizce	İsimler	GIRLFRIEND	kız arkadaş; kadın sevgili
 A1	Genel İngilizce	Sıfatlar	GLAD	memnun, sevinçli
 A1	Genel İngilizce	İsimler	GOAL	hedef, amaç, gol
 A1	Genel İngilizce	İsimler	GOLD	altın, altın rengi
@@ -253,7 +253,7 @@ A1	Genel İngilizce	Zamirler	HIS	belirleyici: onun (erkek için); zamir: onunki 
 A1	Genel İngilizce	İsimler	HOBBY	hobi, uğraş
 A1	Genel İngilizce	İsimler	HOLE	delik, çukur
 A1	Genel İngilizce	İsimler	HOLIDAY	tatil, bayram
-A1	Genel İngilizce	İsimler	HOMETOWN	memleket, doğduğu şehir
+A1	Genel İngilizce	İsimler	HOMETOWN	kişinin memleketi; büyüdüğü veya geldiği şehir
 A1	Genel İngilizce	İsimler	HOPE	isim: umut, ümit; fiil: umut etmek, ummak
 A1	Genel İngilizce	İsimler	HOTEL	otel
 A1	Genel İngilizce	İsimler	HOUR	saat (60 dakika)
@@ -274,7 +274,7 @@ A1	Genel İngilizce	Fiiller	INTRODUCE	tanıştırmak, tanıtmak, uygulamaya koym
 A1	Genel İngilizce	Diğer	IS	-dir/-dır (olmak; he/she/it ile)
 A1	Genel İngilizce	Zamirler	IT	o, onu, ona (cansız varlık ya da hayvan için; "it is…" gibi yapılarda Türkçede çoğu zaman karşılığı yok)
 A1	Genel İngilizce	İsimler	ITEM	madde, öge, ürün
-A1	Genel İngilizce	Zamirler	ITS	onun, onunki (cansız ya da hayvan için)
+A1	Genel İngilizce	Zamirler	ITS	iyelik belirleyicisi: onun (hayvan, nesne veya cansız varlık için)
 A1	Genel İngilizce	İsimler	JACKET	ceket, mont
 A1	Genel İngilizce	İsimler	JANUARY	ocak
 A1	Genel İngilizce	İsimler	JEANS	kot pantolon, kot
@@ -307,7 +307,7 @@ A1	Genel İngilizce	İsimler	LIST	isim: liste; fiil: listelemek, sıralamak
 A1	Genel İngilizce	Sıfatlar	LITTLE	sıfat: küçük, ufak; belirleyici: az, biraz (a little); zamir: az şey, biraz; zarf: az, pek az
 A1	Genel İngilizce	İsimler	LIVING	sıfat: canlı, yaşayan; isim: geçim (make a living), yaşam
 A1	Genel İngilizce	Sıfatlar	LONELY	yalnız, kimsesiz
-A1	Genel İngilizce	İsimler	LOT	zamir: çok, pek çok (a lot); zarf: çok (a lot); isim: arsa, parti (mal)
+A1	Genel İngilizce	İsimler	LOT	isim: arsa, mal partisi; a lot: çok, pek çok
 A1	Genel İngilizce	Sıfatlar	LOVELY	güzel, hoş, sevimli
 A1	Genel İngilizce	İsimler	LUCK	şans, talih
 A1	Genel İngilizce	İsimler	MACHINE	makine
@@ -326,7 +326,7 @@ A1	Genel İngilizce	İsimler	MESSAGE	mesaj, ileti
 A1	Genel İngilizce	İsimler	MIDDLE	orta, ortadaki
 A1	Genel İngilizce	İsimler	MIND	isim: akıl, zihin; fiil: aldırmak, sakıncası olmak (Do you mind?), dikkat etmek
 A1	Genel İngilizce	İsimler	MINUTE	dakika
-A1	Genel İngilizce	İsimler	MISS	isim: bayan (evlenmemiş kadın için unvan); fiil: özlemek, kaçırmak, ıskalamak
+A1	Genel İngilizce	Fiiller	MISS	fiil: özlemek, kaçırmak, ıskalamak; Miss: kadınlara yönelik geleneksel hitap unvanı
 A1	Genel İngilizce	İsimler	MOBILE PHONE	cep telefonu
 A1	Genel İngilizce	İsimler	MOM	anne
 A1	Genel İngilizce	İsimler	MOMENT	an
@@ -384,7 +384,7 @@ A1	Genel İngilizce	Sıfatlar	PERSONAL	kişisel, özel, şahsi
 A1	Genel İngilizce	İsimler	PIANO	piyano
 A1	Genel İngilizce	İsimler	PICNIC	piknik
 A1	Genel İngilizce	İsimler	PIECE	parça, tane
-A1	Genel İngilizce	İsimler	PINK	pembe
+A1	Genel İngilizce	Sıfatlar	PINK	sıfat ve isim: pembe
 A1	Genel İngilizce	İsimler	PLACE	isim: yer, mekân; fiil: koymak, yerleştirmek, (sipariş) vermek
 A1	Genel İngilizce	İsimler	PLAN	isim: plan; fiil: planlamak
 A1	Genel İngilizce	İsimler	PLANE	uçak, düzlem
@@ -413,10 +413,10 @@ A1	Genel İngilizce	Sıfatlar	REAL	sıfat: gerçek, hakiki; zarf: gerçekten, ç
 A1	Genel İngilizce	İsimler	REASON	neden, sebep
 A1	Genel İngilizce	Fiiller	REMEMBER	hatırlamak, anımsamak
 A1	Genel İngilizce	İsimler	REPORTER	muhabir
-A1	Genel İngilizce	İsimler	RESULT	isim: sonuç; fiil: sonuçlanmak, -den kaynaklanmak
+A1	Genel İngilizce	İsimler	RESULT	isim: sonuç; fiil: result in: ile sonuçlanmak; result from: -den kaynaklanmak
 A1	Genel İngilizce	İsimler	REVIEW	isim: inceleme, değerlendirme, eleştiri; fiil: gözden geçirmek, incelemek
 A1	Genel İngilizce	İsimler	RIBBON	kurdele, şerit
-A1	Genel İngilizce	Sıfatlar	RICH	zengin, varlıklı, (yemek) ağır
+A1	Genel İngilizce	Sıfatlar	RICH	zengin, varlıklı; (yemek) yoğun ve ağır
 A1	Genel İngilizce	İsimler	ROLE	rol, görev
 A1	Genel İngilizce	İsimler	ROSE	gül
 A1	Genel İngilizce	İsimler	ROW	isim: sıra, dizi, satır; fiil: kürek çekmek
@@ -476,7 +476,7 @@ A1	Genel İngilizce	İsimler	SPY	casus, ajan
 A1	Genel İngilizce	İsimler	STAGE	isim: sahne, aşama, evre; fiil: sahnelemek, düzenlemek
 A1	Genel İngilizce	İsimler	STAR	isim: yıldız, ünlü; fiil: başrol oynamak
 A1	Genel İngilizce	İsimler	STATION	istasyon, gar, durak
-A1	Genel İngilizce	Sıfatlar	STILL	zarf: hâlâ, yine de; sıfat: hareketsiz, durgun, gazsız (su)
+A1	Genel İngilizce	Zarflar	STILL	zarf: hâlâ, yine de; sıfat: hareketsiz, durgun, gazsız (su)
 A1	Genel İngilizce	İsimler	STONE	taş, (meyve) çekirdeği
 A1	Genel İngilizce	İsimler	STORE	isim: mağaza, dükkân, depo; fiil: saklamak, depolamak
 A1	Genel İngilizce	Sıfatlar	STRANGE	garip, tuhaf, yabancı
@@ -521,13 +521,13 @@ A1	Genel İngilizce	Diğer	THIRTY	otuz
 A1	Genel İngilizce	Zamirler	THIS	belirleyici: bu; zamir: bu, bunu
 A1	Genel İngilizce	Zamirler	THOSE	belirleyici: şu, o (çoğul); zamir: şunlar, onlar
 A1	Genel İngilizce	Diğer	THREE	üç
-A1	Genel İngilizce	İsimler	THROW	fiil: atmak, fırlatmak; isim: atış, fırlatma
+A1	Genel İngilizce	Fiiller	THROW	fiil: atmak, fırlatmak; isim: atış, fırlatma
 A1	Genel İngilizce	İsimler	THURSDAY	perşembe
 A1	Genel İngilizce	İsimler	TICKET	bilet, (trafik) cezası
 A1	Genel İngilizce	Sıfatlar	TIGHT	sıfat: sıkı, dar, gergin; zarf: sıkıca, sıkı sıkı
 A1	Genel İngilizce	Edatlar	TO	edat: -e/-a (yönelme), -e kadar; mastar: -mek/-mak (to go: gitmek)
 A1	Genel İngilizce	İsimler	TOILET	tuvalet, klozet
-A1	Genel İngilizce	İsimler	TONIGHT	bu gece, bu akşam
+A1	Genel İngilizce	Zarflar	TONIGHT	bu gece, bu akşam
 A1	Genel İngilizce	İsimler	TOOL	alet, araç
 A1	Genel İngilizce	İsimler	TOPIC	konu
 A1	Genel İngilizce	İsimler	TOWER	kule
@@ -549,7 +549,7 @@ A1	Genel İngilizce	Diğer	TWO	iki
 A1	Genel İngilizce	İsimler	TYPE	isim: tür, tip, çeşit; fiil: (klavyeyle) yazmak
 A1	Genel İngilizce	Sıfatlar	UGLY	çirkin
 A1	Genel İngilizce	İsimler	UMBRELLA	şemsiye
-A1	Genel İngilizce	İsimler	UNDERLINE	fiil: altını çizmek, vurgulamak; isim: alt çizgi
+A1	Genel İngilizce	Fiiller	UNDERLINE	fiil: altını çizmek, vurgulamak; isim: alt çizgi
 A1	Genel İngilizce	Zamirler	US	bizi, bize
 A1	Genel İngilizce	İsimler	VACATION	tatil
 A1	Genel İngilizce	İsimler	VASE	vazo
@@ -559,7 +559,7 @@ A1	Genel İngilizce	İsimler	VOLLEYBALL	voleybol
 A1	Genel İngilizce	İsimler	VOTE	isim: oy, oylama; fiil: oy vermek, oylamak
 A1	Genel İngilizce	İsimler	WAITER	garson
 A1	Genel İngilizce	İsimler	WAITRESS	garson (kadın)
-A1	Genel İngilizce	İsimler	WAKE	fiil: uyanmak, uyandırmak; isim: (geminin) dümen suyu, iz (in the wake of: -in ardından)
+A1	Genel İngilizce	Fiiller	WAKE	fiil: uyanmak, uyandırmak; isim: (geminin) dümen suyu, iz (in the wake of: -in ardından)
 A1	Genel İngilizce	İsimler	WAR	savaş
 A1	Genel İngilizce	Diğer	WAS	idi, -di (be'nin geçmiş hâli; I/he/she/it ile)
 A1	Genel İngilizce	İsimler	WAY	yol, yöntem, şekil (tarz)
@@ -583,14 +583,14 @@ A1	Genel İngilizce	İsimler	WISH	isim: dilek, istek; fiil: dilemek, istemek, ke
 A1	Genel İngilizce	Sıfatlar	WONDERFUL	harika, muhteşem
 A1	Genel İngilizce	İsimler	WORKER	işçi, çalışan
 A1	Genel İngilizce	İsimler	WORLD	dünya
-A1	Genel İngilizce	İsimler	WORRY	fiil: endişelenmek, kaygılanmak, endişelendirmek; isim: endişe, kaygı
+A1	Genel İngilizce	Fiiller	WORRY	fiil: endişelenmek, kaygılanmak, endişelendirmek; isim: endişe, kaygı
 A1	Genel İngilizce	Diğer	WOULD	-erdi/-ardı (koşul), -ir misiniz? (rica), (would like) istemek
 A1	Genel İngilizce	İsimler	WRITER	yazar
-A1	Genel İngilizce	İsimler	YARD	avlu, bahçe, yarda (91 cm)
+A1	Genel İngilizce	İsimler	YARD	avlu, bahçe; yarda (0,9144 metre)
 A1	Genel İngilizce	İsimler	YEAR	yıl, sene, yaş (… years old)
 A1	Genel İngilizce	Zarflar	YES	evet
 A1	Genel İngilizce	İsimler	YOGURT	yoğurt
-A1	Genel İngilizce	Zamirler	YOU	sen, siz, seni/sizi
+A1	Genel İngilizce	Zamirler	YOU	sen, siz; seni, sizi; sana, size
 A1	Genel İngilizce	Belirteçler	YOUR	senin, sizin
 A1	Genel İngilizce	Zamirler	YOURS	seninki, sizinki
 A1	Genel İngilizce	Zamirler	YOURSELF	kendin, kendiniz

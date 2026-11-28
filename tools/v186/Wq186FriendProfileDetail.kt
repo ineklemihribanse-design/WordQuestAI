@@ -40,9 +40,14 @@ internal fun Wq186FriendProfileDetail(entry: FriendEntry, onDismiss: () -> Unit)
     val tablet = LocalConfiguration.current.screenWidthDp >= 600
     val avatarWidth = if (tablet) 220.dp else 174.dp
     val avatarHeight = if (tablet) 260.dp else 208.dp
-    val preview = remember(entry.avatarPreview) {
-        Wq185FriendMascot.decode(entry.avatarPreview)
+    var preview by remember(entry.avatarPreview) { mutableStateOf<android.graphics.Bitmap?>(null) }
+    LaunchedEffect(entry.avatarPreview) {
+        val decoded=kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+            Wq185FriendMascot.decode(entry.avatarPreview)
+        }
+        preview=decoded
     }
+    val portraitPreview=preview
     val builtin = entry.avatarId?.takeIf {
         Wq2DMascots.valid(it) && !Wq183MascotStore.isCustomId(it)
     }
@@ -90,8 +95,8 @@ internal fun Wq186FriendProfileDetail(entry: FriendEntry, onDismiss: () -> Unit)
                             .background(Color(0xFFE8DDF7))
                             .border(2.dp,Color.White,RoundedCornerShape(24.dp)),
                             contentAlignment=Alignment.BottomCenter) {
-                            if(preview != null) {
-                                Image(preview.asImageBitmap(),
+                            if(portraitPreview != null) {
+                                Image(portraitPreview.asImageBitmap(),
                                     contentDescription="Arkadaşının paylaştığı maskot",
                                     modifier=Modifier.fillMaxSize(),
                                     contentScale=ContentScale.Fit)

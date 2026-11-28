@@ -1,0 +1,71 @@
+@Composable
+internal fun Wq186ArenaPresetControls(
+    profile:String, selectedLevel:String, onLevel:(String)->Unit, solo:Boolean=false
+) {
+    val context=LocalContext.current
+    var rules by remember(profile) { mutableStateOf(Wq186ArenaPresetStore.read(context,profile,selectedLevel)) }
+    fun change(next:Wq186MatchPreset) {
+        rules=next.sanitized(selectedLevel)
+        Wq186ArenaPresetStore.write(context,profile,rules)
+    }
+    val standard=listOf(0,3,5,8,12,20)
+    var custom by remember { mutableStateOf(false) }
+    var draft by remember { mutableStateOf("") }
+    var syncInfo by remember { mutableStateOf(false) }
+    Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(5.dp)) {
+        Wq122Section("level","Maç seviyesi","Bir veya daha fazla A1–C2 seviyesi seçebilirsin.")
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val columns=if(maxWidth>=650.dp)6 else 3
+            Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
+                Wq186ArenaPresetStore.LEVELS.chunked(columns).forEach { row ->
+                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                        row.forEach { value ->
+                            val checked=value in rules.levels
+                            Wq122Choice(value,checked,Modifier.weight(1f)) {
+                                if(!checked) {change(rules.copy(levels=rules.levels+value));onLevel(value)}
+                                else if(rules.levels.size>1) {
+                                    change(rules.copy(levels=rules.levels-value))
+                                    if(selectedLevel==value)onLevel((rules.levels-value).first())
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Wq122Section("hint","İpucu hakkı","Toplam ipucu hakkı 0–20 arasında seçilebilir. Çevrimiçi maçta tüm haklar aynı kelimede kullanılabilir.")
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val columns=if(maxWidth>=650.dp)7 else 4
+            val values=standard.map{it.toString()}+"Özel"
+            Column(verticalArrangement=Arrangement.spacedBy(5.dp)) {
+                values.chunked(columns).forEach { row ->
+                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                        row.forEach { value ->
+                            val special=value=="Özel"
+                            Wq122Choice(if(special && rules.hints !in standard)"Özel: ${rules.hints}" else value,
+                                if(special)rules.hints !in standard else rules.hints==value.toInt(),Modifier.weight(1f)) {
+                                if(special) {draft=rules.hints.toString();custom=true}
+                                else change(rules.copy(hints=value.toInt()))
+                            }
+                        }
+                        repeat(columns-row.size){Spacer(Modifier.weight(1f))}
+                    }
+                }
+            }
+        }
+        Wq122Section("retry","Sonda tekrar deneme hakkı","Mevcut maç kurallarına göre 0–3 tekrar hakkı.")
+        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+            listOf(0,1,2,3).forEach { n -> Wq122Choice(n.toString(),rules.retries==n,Modifier.weight(1f)){change(rules.copy(retries=n))} }
+        }
+        TextButton(onClick={syncInfo=true}) { Wq122Art("info",Modifier.size(21.dp));Spacer(Modifier.width(5.dp));Text("Ayarlar nasıl uygulanır?",color=Wq122Gold,fontSize=12.sp) }
+    }
+    if(syncInfo)AlertDialog(onDismissRequest={syncInfo=false},title={Text("Maç ayarları")},text={Text(if(solo)"Seçilen seviyeler ve ipucu sınırı tek kişilik oyunda kullanılır." else "Seçilen ayarlar mevcut Firebase oda sistemiyle iki oyuncuya iletilir.")},confirmButton={TextButton(onClick={syncInfo=false}){Text("Kapat")}})
+    if(custom) {
+        val n=draft.toIntOrNull()
+        val valid=n!=null && n in 0..20
+        AlertDialog(onDismissRequest={custom=false},title={Text("Özel ipucu hakkı")},
+            text={Column {Text("0 ile 20 arasında bir sayı gir.");OutlinedTextField(value=draft,onValueChange={draft=it.filter(Char::isDigit).take(2)},singleLine=true,label={Text("İpucu sayısı")},isError=draft.isNotBlank()&&!valid,keyboardOptions=androidx.compose.foundation.text.KeyboardOptions(keyboardType=androidx.compose.ui.text.input.KeyboardType.Number))}},
+            confirmButton={TextButton(enabled=valid,onClick={n?.let{change(rules.copy(hints=it))};custom=false}){Text("Uygula")}},
+            dismissButton={TextButton(onClick={custom=false}){Text("Vazgeç")}})
+    }
+}

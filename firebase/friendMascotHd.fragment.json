@@ -1,0 +1,18 @@
+{
+  "friendMascotHd": {
+    "$uid": {
+      ".read": "auth != null && (auth.uid === $uid || (root.child('friends').child(auth.uid).child($uid).val() === true && root.child('friends').child($uid).child(auth.uid).val() === true && root.child('friendProfiles').child($uid).child('avatarPreview').isString() && data.child('preview').val() === root.child('friendProfiles').child($uid).child('avatarPreview').val()))",
+      ".write": "auth != null && auth.uid === $uid",
+      ".validate": "newData.hasChildren(['preview','hd'])",
+      "preview": {
+        ".validate": "newData.isString() && newData.val().length >= 140 && newData.val().length <= 18050 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+\\/=]+$/)"
+      },
+      "hd": {
+        ".validate": "newData.isString() && newData.val().length >= 140 && newData.val().length <= 160100 && newData.val().matches(/^custom_[a-f0-9]{32}:[A-Za-z0-9+\\/=]+$/)"
+      },
+      "$other": {
+        ".validate": false
+      }
+    }
+  }
+}

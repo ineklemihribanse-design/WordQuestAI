@@ -1,0 +1,171 @@
+// Deterministic, portable web engine. No Android, network, DOM, or account access.
+export const LEVELS=Object.freeze(["A1","A2","B1","B2","C1","C2"]);
+export function normalizeSettings(input, trustedServer=false) {
+  if(!input||!Array.isArray(input.levels)||input.levels.length<1||input.levels.length>6||
+      input.levels.some(x=>!LEVELS.includes(x)))throw new Error("Seviye seçimi geçersiz");
+  const levels=LEVELS.filter(x=>input.levels.includes(x));
+  const mode=input.mode;
+  if(!["duel","team","quiz"].includes(mode))throw new Error("Oyun türü geçersiz");
+  const sizes=mode==="quiz"?[5,10,12,15,20]:[20,30,40,50];
+  if(trustedServer?(!Number.isInteger(input.size)||input.size<(mode==="quiz"?5:10)||input.size>70):!sizes.includes(input.size))throw new Error("Sayı geçersiz");
+  if(!Number.isInteger(input.seconds)||(trustedServer?input.seconds<0||input.seconds>3600:![0,20,30,45].includes(input.seconds)))throw new Error("Süre geçersiz");
+  if(!Number.isInteger(input.hints)||input.hints<0||input.hints>20||!Number.isInteger(input.retries)||input.retries<0||input.retries>3)throw new Error("Hak geçersiz");
+  if(typeof input.topic!=="string"||input.topic.length>75)throw new Error("Konu geçersiz");
+  return Object.freeze({mode,levels:Object.freeze(levels),size:input.size,seconds:input.seconds,hints:input.hints,retries:input.retries,topic:input.topic});
+}
+export function seeded(seed) {
+  let x=Number(seed)>>>0;if(!x)x=0x9e3779b9;
+  return ()=>{x^=x<<13;x^=x>>>17;x^=x<<5;return (x>>>0)/4294967296};
+}
+function shuffle(xs,rng){const a=[...xs];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const key=x=>String(x).trim().toLowerCase();
+export function mixedPool(records,input,seed,trustedServer=false) {
+  const s=normalizeSettings(input,trustedServer), rng=seeded(seed);
+  if(s.size<s.levels.length)throw new Error("Soru sayısı seçilen seviye sayısından az olamaz");
+  const groups=new Map(s.levels.map(l=>[l,[]]));
+  const seen=new Set();
+  const sorted=[...records].filter(w=>w&&typeof w.answer==="string"&&typeof w.meaning==="string"&&w.answer.trim()&&w.meaning.trim()&&groups.has(w.level)&&((s.topic==="all"||s.topic==="Tüm konular")||(w.category??w.topic)===s.topic)).sort((a,b)=>{
+    const x=JSON.stringify([a.level,key(a.answer),a.meaning,a.category??a.topic]),y=JSON.stringify([b.level,key(b.answer),b.meaning,b.category??b.topic]);return x<y?-1:x>y?1:0;
+  });
+  for(const w of sorted){const k=key(w.answer);if(!seen.has(k)){seen.add(k);groups.get(w.level).push({...w,answer:w.answer.trim()})}}
+  for(const level of s.levels){if(!groups.get(level).length)throw new Error("Seçilen seviyede uygun kelime yok: "+level);groups.set(level,shuffle(groups.get(level),rng))}
+  const result=[], order=shuffle(s.levels,rng);
+  while(result.length<s.size){
+    let advanced=false;
+    for(const l of order){if(result.length===s.size)break;const w=groups.get(l).pop();if(w){result.push(w);advanced=true}}
+    if(!advanced)throw new Error("Seçilen havuzda yeterli farklı kelime yok");
+  }
+  return result;
+}
+// Conservative, explicit spelling equivalents: never offer them as wrong answers.
+// Do not infer equivalents from arbitrary suffix replacements.
+const spellingPairs=[
+ ["color","colour"],["colors","colours"],["colored","coloured"],["colorful","colourful"],
+ ["favor","favour"],["favorite","favourite"],["favorites","favourites"],["favorable","favourable"],
+ ["honor","honour"],["humor","humour"],["labor","labour"],["neighbor","neighbour"],["neighborhood","neighbourhood"],
+ ["behavior","behaviour"],["harbor","harbour"],["odor","odour"],["vapor","vapour"],
+ ["center","centre"],["theater","theatre"],["meter","metre"],["liter","litre"],
+ ["traveling","travelling"],["traveled","travelled"],["traveler","traveller"],
+ ["canceled","cancelled"],["canceling","cancelling"],["labeled","labelled"],["labeling","labelling"],
+ ["analyze","analyse"],["analyzed","analysed"],["analyzing","analysing"],
+ ["organize","organise"],["organized","organised"],["organization","organisation"],
+ ["recognize","recognise"],["realize","realise"],["specialize","specialise"],
+ ["standardize","standardise"],["normalize","normalise"],["randomize","randomise"],["randomization","randomisation"],
+ ["serialization","serialisation"],["deserialization","deserialisation"],["amortization","amortisation"],
+ ["salinization","salinisation"],["authorization","authorisation"],["polarization","polarisation"],
+ ["digitize","digitise"],["apologize","apologise"],["catalog","catalogue"],["dialog","dialogue"],
+ ["defense","defence"],["offense","offence"],["license","licence"],["practice","practise"],
+ ["jewelry","jewellery"],["gray","grey"],["tire","tyre"],["pajamas","pyjamas"],
+ ["airplane","aeroplane"],["aluminum","aluminium"],["esthetic","aesthetic"],["anemia","anaemia"],
+ ["edema","oedema"],["ischemia","ischaemia"],["etiology","aetiology"],["fetus","foetus"],
+ ["check","cheque"]
+];
+const spellingGroup=new Map(spellingPairs.flatMap(([a,b])=>[[a,a],[b,a]]));
+export const quizSpellingKey=answer=>spellingGroup.get(key(answer))??key(answer);
+const glossKey=s=>String(s).normalize("NFC").toLocaleLowerCase("tr").replace(/[’‘]/g,"'").replace(/\s+/g," ").trim().replace(/[.!?]+$/,"");
+// Individual comma/semicolon-delimited glosses are compared, not just the first.
+// Parenthesized domain qualifiers are ignored conservatively for distractor filtering.
+export function quizGlossKeys(meaning){
+ const clean=String(meaning).replace(/\([^)]*\)/g," ");
+ return [...new Set([glossKey(clean),...clean.split(/[,;/]/).map(x=>glossKey(x.replace(/^\s*(isim|fiil|sıfat|zarf|edat|bağlaç)\s*:\s*/i,"")))].filter(Boolean))];
+}
+export function quiz(records,input,seed,trustedServer=false,senseRecords=records) {
+  const s=normalizeSettings(input,trustedServer);if(s.mode!=="quiz")throw new Error("Quiz modu gerekli");
+  // selectBank rejects duplicate prompts. Retry only quiz target selection
+  // deterministically; crossword placement and existing seed behavior are untouched.
+  let targets;
+  for(let attempt=0;attempt<32;attempt++){
+    const candidate=mixedPool(records,s,attempt===0?seed:(Number(seed)+attempt*7919)>>>0,trustedServer);
+    const prompts=new Set(candidate.map(w=>w.meaning.trim().toLowerCase()));
+    const answers=new Set(candidate.map(w=>quizSpellingKey(w.answer)));
+    if(prompts.size===candidate.length&&answers.size===candidate.length){targets=candidate;break;}
+  }
+  if(!targets)throw new Error("Seçilen havuzda yeterli farklı soru ve cevap yok");
+  const rng=seeded((Number(seed)^0x4d3c2b1a)>>>0);
+  const candidates=records.filter(w=>w&&s.levels.includes(w.level)&&typeof w.answer==="string"&&w.answer.trim()&&typeof w.meaning==="string").sort((a,b)=>{const x=JSON.stringify([a.answer,a.meaning]),y=JSON.stringify([b.answer,b.meaning]);return x<y?-1:x>y?1:0});
+  const glossesByAnswer=new Map();
+  // Use every available sense, even if a word's other sense lies outside the selected level.
+  for(const w of [...records,...(senseRecords===records?[]:senseRecords)]){
+    if(!w||typeof w.answer!=="string"||typeof w.meaning!=="string")continue;
+    const k=quizSpellingKey(w.answer);if(!glossesByAnswer.has(k))glossesByAnswer.set(k,new Set());
+    for(const g of quizGlossKeys(w.meaning))glossesByAnswer.get(k).add(g);
+  }
+  return targets.map(t=>{
+    const targetKey=quizSpellingKey(t.answer),targetGlosses=new Set(quizGlossKeys(t.meaning));
+    const eligible=candidates.filter(a=>{
+      const k=quizSpellingKey(a.answer);
+      return k!==targetKey&&![...(glossesByAnswer.get(k)??[])].some(g=>targetGlosses.has(g));
+    });
+    const seen=new Set();
+    const distractors=shuffle(eligible.map(a=>a.answer.trim()),rng).filter(a=>{
+      const k=quizSpellingKey(a);if(seen.has(k))return false;seen.add(k);return true;
+    }).slice(0,4);
+    if(distractors.length!==4)throw new Error("Beş seçenek için yeterli farklı kelime yok");
+    const options=shuffle([t.answer,...distractors],rng);
+    return {prompt:t.meaning,options,correct:options.indexOf(t.answer),answer:t.answer,level:t.level};
+  });
+}
+
+// Connected crossword with strict crossings and no touching parallel words.
+// Each attempt uses the selected levels, never substitutes an unselected level.
+export function crossword(records,input,seed,trustedServer=false) {
+  const s=normalizeSettings(input,trustedServer);if(s.mode==="quiz")throw new Error("Bulmaca modu gerekli");
+  const source=records.filter(w=>w&&typeof w.answer==="string"&&/^[A-Za-z]{2,24}$/.test(w.answer.trim()));
+  const coord=(r,c)=>r+","+c;
+  for(let attempt=0;attempt<48;attempt++){
+    const pool=mixedPool(source,s,(Number(seed)+attempt*7919)>>>0,trustedServer);
+    const pending=pool.map(w=>({...w,answer:w.answer.toUpperCase()}));
+    const grid=new Map(), placed=[];
+    function put(w,r,c,d){
+      const dr=d==="D"?1:0,dc=1-dr;
+      for(let i=0;i<w.answer.length;i++){
+        const k=coord(r+i*dr,c+i*dc),old=grid.get(k);
+        grid.set(k,{letter:w.answer[i],dirs:(old?.dirs??"")+d});
+      }
+      placed.push({...w,r,c,d});
+    }
+    function valid(w,r,c,d){
+      const dr=d==="D"?1:0,dc=1-dr;
+      if(grid.has(coord(r-dr,c-dc))||grid.has(coord(r+w.answer.length*dr,c+w.answer.length*dc)))return false;
+      let crosses=0;
+      for(let i=0;i<w.answer.length;i++){
+        const y=r+i*dr,x=c+i*dc,old=grid.get(coord(y,x));
+        if(old){if(old.letter!==w.answer[i]||old.dirs.includes(d))return false;crosses++}
+        else if(grid.has(coord(y-dc,x-dr))||grid.has(coord(y+dc,x+dr)))return false;
+      }
+      return crosses>0;
+    }
+    pending.sort((a,b)=>b.answer.length-a.answer.length);
+    put(pending.shift(),0,0,"A");
+    while(pending.length){
+      let best=null;
+      const cells=[...grid.entries()].map(([k,v])=>({p:k.split(",").map(Number),...v}));
+      const minR=Math.min(...cells.map(x=>x.p[0])),maxR=Math.max(...cells.map(x=>x.p[0]));
+      const minC=Math.min(...cells.map(x=>x.p[1])),maxC=Math.max(...cells.map(x=>x.p[1]));
+      for(let wi=0;wi<pending.length;wi++){
+        const w=pending[wi];
+        for(const cell of cells){
+          if(cell.dirs.length!==1)continue;
+          const d=cell.dirs==="A"?"D":"A",dr=d==="D"?1:0,dc=1-dr;
+          for(let i=0;i<w.answer.length;i++){
+            if(w.answer[i]!==cell.letter)continue;
+            const r=cell.p[0]-i*dr,c=cell.p[1]-i*dc;
+            if(!valid(w,r,c,d))continue;
+            const er=r+(w.answer.length-1)*dr,ec=c+(w.answer.length-1)*dc;
+            const h=Math.max(maxR,er)-Math.min(minR,r)+1,ww=Math.max(maxC,ec)-Math.min(minC,c)+1;
+            if(h>80||ww>80)continue;
+            const cost=h*ww+Math.abs(h-ww)*3;
+            if(best===null||cost<best.cost)best={wi,r,c,d,cost};
+          }
+        }
+      }
+      if(!best)break;
+      put(pending.splice(best.wi,1)[0],best.r,best.c,best.d);
+    }
+    if(pending.length===0){
+      const minR=Math.min(...placed.map(w=>w.r)),minC=Math.min(...placed.map(w=>w.c));
+      return {levels:s.levels,words:placed.map(w=>[w.answer,w.meaning,w.level,w.r-minR,w.c-minC,w.d])};
+    }
+  }
+  throw new Error("Seçilen havuzdan tam ve bağlı bulmaca üretilemedi; hiçbir seviye otomatik çıkarılmadı.");
+}

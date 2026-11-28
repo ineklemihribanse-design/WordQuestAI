@@ -1,0 +1,2 @@
+# Verbal and paired grammar expansion
+176 question records, 72 families. Original contextual infinitive, gerund, participle, passive and paired-blank items. Remzi Hoca Question Types Set 1 p.70 Verbal introduction consulted for the paired-blank format only; new examples independently authored. Exact comparison with 1804 literal stems in seven modules; full-bank comparison in CI. No publication or language review claimed. Arena five options; Academy four under existing contract.

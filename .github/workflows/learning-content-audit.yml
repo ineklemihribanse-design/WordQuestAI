@@ -1,0 +1,52 @@
+name: Learning content audit
+on:
+  push:
+    branches: ['feature/v150-arena-nextgen']
+    paths:
+      - 'tools/arena_v150_server/learning_*.mjs'
+      - 'tools/arena_v150_server/audit_learning_content.mjs'
+      - 'tools/arena_v150_server/audit_editorial_quality.mjs'
+      - 'tools/arena_v150_server/*learning*.py'
+      - 'tools/v132_engine/engine*.mjs'
+      - 'tools/v175/content/*.tsv'
+      - 'tools/arena_v150_server/*vocabulary*.mjs'
+      - 'tools/arena_v150_server/expand_learning.mjs'
+      - 'tools/arena_v150_server/real_vocabulary_smoke.mjs'
+      - 'tools/arena_v150_server/prepare_free_bank.sh'
+      - '.github/workflows/learning-content-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate all authored questions
+        run: node tools/arena_v150_server/audit_learning_content.mjs
+      - name: Test quiz distractor safety and deterministic generation
+        run: node --test tools/v132_engine/engine.test.mjs tools/arena_v150_server/vocabulary_bank.test.mjs
+      - name: Verify Android content generation and preserve existing IDs
+        run: python3 tools/arena_v150_server/test_android_learning_import.py
+      - name: Run complete content and tier regression tests before external downloads
+        run: node --test tools/arena_v150_server/learning_mix.test.mjs
+      - name: Verify the combined vocabulary from pinned shipped source
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd tools/arena_v150_server
+          curl --fail --location --retry 2 --max-time 45 --proto '=https' 'https://raw.githubusercontent.com/ineklemihribanse-design/WordQuestAI/61a80a0107d4646777ab2341616436fe903929cd/android-current/app/src/main/assets/arena-vocabulary-v1.json' -o arena-vocabulary-v1.json || rm -f arena-vocabulary-v1.json
+          bash prepare_free_bank.sh
+          mkdir -p "$RUNNER_TEMP/wq-vocabulary-audit"
+          node real_vocabulary_smoke.mjs arena-vocabulary-v1.json "$RUNNER_TEMP/wq-vocabulary-audit"
+          cat "$RUNNER_TEMP/wq-vocabulary-audit/expanded-report.json"
+      - name: Screen all question records for editorial review candidates
+        run: node tools/arena_v150_server/audit_editorial_quality.mjs "$RUNNER_TEMP/editorial-review.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: editorial-review
+          path: ${{ runner.temp }}/editorial-review.json

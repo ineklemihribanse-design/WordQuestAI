@@ -1,0 +1,2 @@
+# Academic extension
+366 editorially authored academic word records and 68 independently written contextual questions, with 5 choices for Arena and 4 for the existing Academy contract. The source syllabus (60 Günde YDS Kelimeleri, days 55–59) motivates preposition, phrasal verb, collocation, synonym coverage. No publisher questions or example sentences copied. Difficulty labels are estimates. Local YDS pools now append explicit academic senses; old game data untouched. The full bank still needs device tests and linguistic review.

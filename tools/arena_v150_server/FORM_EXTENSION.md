@@ -1,0 +1,1 @@
+56 original contextual form questions in 14 word families. Compared 1142 literal stems in five related modules. Full-bank deduplication assertion in CI. Vocabulary source page 55 consulted for question format; original examples independently authored. Language review pending. No publication.

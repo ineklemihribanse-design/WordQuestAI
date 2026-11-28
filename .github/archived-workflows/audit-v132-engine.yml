@@ -1,0 +1,79 @@
+name: Inspect assembled Arena engine contracts for hybrid migration
+on:
+  pull_request:
+    branches: [fix/v190-tablet-board-and-visible-icons]
+    paths: ['tools/v132_engine/**','.github/workflows/audit-v132-engine.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    if: github.head_ref == 'feature/v132-hybrid-engine' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        id: full
+        with:
+          path: source
+          key: wq190-source-v1-64e0b1145aff4e175abd8a1d28e47abdd24a3492d8ff0ad8e86494d6a19292e8
+      - name: Inspect only room settings, vocabulary and crossword generation contracts
+        run: |
+          set -euo pipefail
+          test "${{ steps.full.outputs.cache-hit }}" = true
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("source/app/src/main/java/com/kelimebulmacasi/a1")
+          for name,terms in {
+            "PremiumArenaContent.kt": ("fun ","data class ","vocabulary","Crossword"),
+            "PremiumOnlineRoom.kt": ("fun create(","fun updateLobbySettings(","package6Rules","actualBoardId","configRevision"),
+            "ArenaV3Lobby.kt": ("fun ArenaLobbyEditDialogV3(",),
+            "PremiumArenaScreen.kt": ("fun begin()","val chosenLevels","nextPuzzle(","questionsForSeed("),
+          }.items():
+              f=p/name
+              print("FILE",name)
+              lines=f.read_text().splitlines()
+              ids=set()
+              for i,l in enumerate(lines):
+                  if any(t in l for t in terms):ids.update(range(max(0,i-4),min(len(lines),i+(110 if name=="ArenaV3Lobby.kt" else 45))))
+              for i in sorted(ids):print(f"{i+1}: {lines[i]}")
+          for f in p.glob("*.kt"):
+              s=f.read_text()
+              if any(t in s for t in ("class CrosswordGenerator","object CrosswordGenerator","fun generateCrossword(")):
+                  print("GENERATOR",f.name);print(s[:25000])
+          PY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tools/v132_engine/engine.test.mjs
+      - name: Verify mixed crossword generator on real offline vocabulary
+        run: node tools/v132_engine/real_pool.mjs source/app/src/main/assets/arena-vocabulary-v1.json
+
+      - name: Test actual packaged engine HTML
+        run: |
+          node tools/v132_engine/build_engine.mjs /tmp/arena_engine.html
+          node tools/v132_engine/smoke_bundle.mjs /tmp/arena_engine.html source/app/src/main/assets/arena-vocabulary-v1.json
+
+      - name: Exact online entry points for shared round integration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/app/src/main/java/com/kelimebulmacasi/a1')
+          for name,terms in {'PremiumOnlineScreen.kt':('onCreate','client.create(','puzzleById(','questionsForSeed(','val board','val questions','fun PremiumOnline','phase == "finished"'), 'PremiumOnlineRoom.kt':('fun leave(','fun join(','fun close(','fun create(','fun start(','fun toggleReady(','fun updateLobbySettings(','fun observe(')}.items():
+              lines=(p/name).read_text().splitlines();chosen=set()
+              for i,l in enumerate(lines):
+                  if any(t in l for t in terms):chosen.update(range(max(0,i-4),min(len(lines),i+30)))
+              print('ONLINE EXACT',name)
+              for i in sorted(chosen):print(f'{i+1}: {lines[i]}')
+          PY
+
+      - name: Inspect exact solo Arena gameplay and responsive layout
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('source/app/src/main/java/com/kelimebulmacasi/a1')
+          for name in ('PremiumArenaScreen.kt','ArenaApprovedHome.kt','ArenaCrosswordTyping.kt','ArenaBoardV2.kt'):
+              print('BEGIN_LAYOUT_FILE',name)
+              print((p/name).read_text())
+              print('END_LAYOUT_FILE',name)
+          PY

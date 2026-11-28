@@ -1,0 +1,16 @@
+name = "wordquest-arena-v150-free"
+main = "free_worker.mjs"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+keep_vars = true
+
+[[durable_objects.bindings]]
+name = "ROOMS"
+class_name = "ArenaRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ArenaRoom"]
+
+# Configure Firebase connection settings and the room secret in the Worker dashboard.

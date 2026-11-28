@@ -1,0 +1,2 @@
+# Cloze expansion
+125 one-blank records from 25 original passages, grouped to avoid repetition in Arena. Each passage has five separately assessed blanks. Remzi Hoca Question Types Set 1 page 99 consulted for cloze structure only, no exercises reproduced. Original illustrative scenarios rather than reports of actual studies. 791 prior literal stems in five related modules compared; global comparison in test. Existing four-choice Academy interface retained; five options in Arena. Editorial language and difficulty review pending.

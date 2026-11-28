@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+const dir=new URL('.',import.meta.url);
+const source=fs.readFileSync(new URL('engine.mjs',dir),'utf8').replace(/^export /gm,'');
+if(/<\/script/i.test(source))throw new Error('invalid embedded source');
+const html="<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'none'; img-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'\"></head><body><script>\n"+source+"\nwindow.wqGenerate=function(raw){try{const r=JSON.parse(raw);return JSON.stringify({ok:true,data:r.settings.mode===\"quiz\"?quiz(r.words,r.settings,r.seed):crossword(r.words,r.settings,r.seed)})}catch(e){return JSON.stringify({ok:false,error:String(e.message).slice(0,200)})}};\n</script></body></html>";
+const script=html.slice(html.indexOf('<script>')+8,html.lastIndexOf('</script>'));
+const sandbox={window:{}};
+vm.runInNewContext(script,sandbox,{timeout:1000});
+if(typeof sandbox.window.wqGenerate!=='function')throw new Error('Missing callable engine');
+const invalid=JSON.parse(sandbox.window.wqGenerate('{}'));
+if(invalid.ok!==false)throw new Error('Invalid input was accepted');
+fs.writeFileSync(process.argv[2],html);
+console.log('PASS: packaged HTML script parses and exposes bounded engine entry point');

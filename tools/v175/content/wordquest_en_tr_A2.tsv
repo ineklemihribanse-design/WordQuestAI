@@ -1,10 +1,10 @@
 A2	Genel İngilizce	İsimler	ABILITY	yetenek, beceri
 A2	Genel İngilizce	Zarflar	ABROAD	yurt dışında, yurt dışına
 A2	Genel İngilizce	Sıfatlar	ACCEPTABLE	kabul edilebilir, uygun
-A2	Genel İngilizce	İsimler	ACCIDENT	kaza, tesadüf
+A2	Genel İngilizce	İsimler	ACCIDENT	kaza; by accident: kazara, istemeden
 A2	Genel İngilizce	İsimler	ACCOUNT	isim: hesap, açıklama; fiil: (for ile) açıklamak, hesabını vermek
 A2	Genel İngilizce	Fiiller	ACHIEVE	başarmak, elde etmek, ulaşmak
-A2	Genel İngilizce	Zarflar	ACROSS	zarf: karşıya, öbür tarafa; edat: karşısında, boyunca
+A2	Genel İngilizce	Zarflar	ACROSS	zarf: karşıya, öbür tarafa; edat: bir yerin bir tarafından diğerine, karşısında
 A2	Genel İngilizce	İsimler	ACT	isim: eylem, hareket, yasa; fiil: davranmak, harekete geçmek, rol yapmak
 A2	Genel İngilizce	Zarflar	ACTUALLY	aslında, gerçekte
 A2	Genel İngilizce	İsimler	ADDITION	ekleme, ilave, toplama
@@ -21,10 +21,10 @@ A2	Genel İngilizce	İsimler	ADVERTISEMENT	reklam, ilan
 A2	Genel İngilizce	İsimler	ADVERTISING	reklamcılık, reklam
 A2	Genel İngilizce	İsimler	AFFAIR	mesele, iş, ilişki
 A2	Genel İngilizce	Zarflar	AFTER	edat: -den sonra, arkasından; bağlaç: -dikten sonra; zarf: sonra, daha sonra
-A2	Genel İngilizce	Edatlar	AGAINST	karşı, aleyhine, -e dayalı
-A2	Genel İngilizce	Sıfatlar	AGED	yaşında, yaşlı
+A2	Genel İngilizce	Edatlar	AGAINST	karşı, aleyhine; -e dayanmış, -e temas eden
+A2	Genel İngilizce	Sıfatlar	AGED	belirli bir yaşta olan; yaşlı
 A2	Genel İngilizce	İsimler	AGENCY	ajans, acente, kurum
-A2	Genel İngilizce	İsimler	AGENT	temsilci, acente, ajan
+A2	Genel İngilizce	İsimler	AGENT	temsilci, aracı, ajan
 A2	Genel İngilizce	Zarflar	AHEAD	ileride, ileri, önde
 A2	Genel İngilizce	İsimler	AIR	hava
 A2	Genel İngilizce	İsimler	ALARM	isim: alarm, endişe; fiil: telaşlandırmak, korkutmak
@@ -46,7 +46,7 @@ A2	Genel İngilizce	Sıfatlar	ANNOYING	sinir bozucu, can sıkıcı
 A2	Genel İngilizce	Sıfatlar	ANXIOUS	endişeli, kaygılı, istekli
 A2	Genel İngilizce	Zarflar	ANYMORE	artık (olumsuz cümlelerde)
 A2	Genel İngilizce	Zarflar	ANYWAY	neyse, yine de, zaten
-A2	Genel İngilizce	Zarflar	ANYWHERE	herhangi bir yerde, her yerde, hiçbir yerde (olumsuzda)
+A2	Genel İngilizce	Zarflar	ANYWHERE	herhangi bir yerde veya yere; olumsuzda hiçbir yerde
 A2	Genel İngilizce	Zarflar	APART	ayrı, uzakta, aralıklı
 A2	Genel İngilizce	İsimler	APARTMENT	daire, apartman dairesi
 A2	Genel İngilizce	Fiiller	APOLOGIZE	özür dilemek
@@ -54,7 +54,7 @@ A2	Genel İngilizce	Zarflar	APPARENTLY	görünüşe göre, anlaşılan
 A2	Genel İngilizce	Fiiller	APPEAR	görünmek, ortaya çıkmak, belirmek
 A2	Genel İngilizce	İsimler	APPEARANCE	görünüş, ortaya çıkma
 A2	Genel İngilizce	Fiiller	APPLY	başvurmak, uygulamak, geçerli olmak
-A2	Genel İngilizce	Fiiller	APPRECIATE	takdir etmek, minnettar olmak, değerini bilmek
+A2	Genel İngilizce	Fiiller	APPRECIATE	takdir etmek, değerini bilmek; minnettar olmak
 A2	Genel İngilizce	Sıfatlar	APPROPRIATE	uygun, yerinde
 A2	Genel İngilizce	İsimler	ARCHITECTURE	mimari, mimarlık
 A2	Genel İngilizce	İsimler	AREA	alan, bölge
@@ -78,7 +78,7 @@ A2	Genel İngilizce	İsimler	ATTITUDE	tutum, tavır
 A2	Genel İngilizce	Sıfatlar	ATTRACTIVE	çekici, cazip
 A2	Genel İngilizce	Sıfatlar	AUDIO	sesle ilgili, işitsel
 A2	Genel İngilizce	İsimler	AUTHOR	yazar
-A2	Genel İngilizce	Fiiller	AUTOMATIC	otomatik
+A2	Genel İngilizce	Sıfatlar	AUTOMATIC	otomatik; kendiliğinden işleyen
 A2	Genel İngilizce	Zarflar	AUTOMATICALLY	otomatik olarak
 A2	Genel İngilizce	İsimler	AVERAGE	sıfat: ortalama, sıradan; isim: ortalama
 A2	Genel İngilizce	İsimler	AWARD	isim: ödül; fiil: ödül vermek, ödüllendirmek
@@ -94,7 +94,7 @@ A2	Genel İngilizce	İsimler	BARGAIN	isim: kelepir, pazarlık; fiil: pazarlık e
 A2	Genel İngilizce	İsimler	BASE	isim: taban, temel, üs; fiil: dayandırmak, temel almak
 A2	Genel İngilizce	Sıfatlar	BASIC	temel, basit
 A2	Genel İngilizce	Zarflar	BASICALLY	temelde, esasen, aslında
-A2	Genel İngilizce	İsimler	BATCH	parti (bir seferlik miktar), grup
+A2	Genel İngilizce	İsimler	BATCH	parti; bir kerede üretilen veya işlenen grup
 A2	Genel İngilizce	İsimler	BATTERY	pil, akü, batarya
 A2	Genel İngilizce	İsimler	BAY	koy, körfez
 A2	Genel İngilizce	İsimler	BEAUTY	güzellik
@@ -107,11 +107,11 @@ A2	Genel İngilizce	İsimler	BEHAVIOR	davranış, tutum
 A2	Genel İngilizce	İsimler	BEING	varlık, canlı
 A2	Genel İngilizce	İsimler	BELLY	karın, göbek
 A2	Genel İngilizce	Fiiller	BELONG	ait olmak
-A2	Genel İngilizce	İsimler	BENCH	bank, sıra
+A2	Genel İngilizce	İsimler	BENCH	uzun oturma sırası, bank; çalışma tezgâhı
 A2	Genel İngilizce	Zarflar	BESIDES	zarf: ayrıca, üstelik; edat: -den başka, dışında
 A2	Genel İngilizce	Edatlar	BEYOND	ötesinde, ötesine
 A2	Genel İngilizce	İsimler	BILL	isim: fatura, hesap, kanun tasarısı; fiil: fatura etmek
-A2	Genel İngilizce	İsimler	BIT	parça, biraz (a bit), bit
+A2	Genel İngilizce	İsimler	BIT	küçük parça; a bit: biraz; bilişimde bit
 A2	Genel İngilizce	İsimler	BITE	isim: ısırık, lokma; fiil: ısırmak, sokmak
 A2	Genel İngilizce	İsimler	BLACKBOARD	kara tahta, yazı tahtası
 A2	Genel İngilizce	İsimler	BLANKET	battaniye, örtü
@@ -124,7 +124,7 @@ A2	Genel İngilizce	İsimler	BOOKCASE	kitaplık
 A2	Genel İngilizce	İsimler	BOOKSHELF	kitap rafı, kitaplık
 A2	Genel İngilizce	İsimler	BOSS	patron, amir, şef
 A2	Genel İngilizce	İsimler	BRA	sütyen
-A2	Genel İngilizce	İsimler	BRAINSTORM	beyin fırtınası
+A2	Genel İngilizce	Fiiller	BRAINSTORM	fiil: beyin fırtınası yapmak; isim: ani fikir veya fikir üretme oturumu
 A2	Genel İngilizce	İsimler	BRAKE	isim: fren; fiil: fren yapmak
 A2	Genel İngilizce	İsimler	BRANCH	isim: dal, şube; fiil: dallanmak, kollara ayrılmak
 A2	Genel İngilizce	Sıfatlar	BRAVE	cesur, yürekli
@@ -134,13 +134,13 @@ A2	Genel İngilizce	İsimler	BRIDE	gelin
 A2	Genel İngilizce	Sıfatlar	BRILLIANT	harika, parlak, çok zeki
 A2	Genel İngilizce	İsimler	BUG	böcek, (yazılımda) hata, mikrop
 A2	Genel İngilizce	İsimler	BULB	ampul, (çiçek) soğan
-A2	Genel İngilizce	İsimler	BURN	isim: yanık; fiil: yakmak, yanmak
+A2	Genel İngilizce	Fiiller	BURN	isim: yanık; fiil: yakmak, yanmak
 A2	Genel İngilizce	Fiiller	BURY	gömmek, defnetmek
 A2	Genel İngilizce	İsimler	BUS STATION	otogar, otobüs terminali
 A2	Genel İngilizce	İsimler	BUSH	çalı
-A2	Genel İngilizce	İsimler	BUSINESSMAN	iş adamı
-A2	Genel İngilizce	İsimler	BUSINESSWOMAN	iş kadını
-A2	Genel İngilizce	İsimler	CAB	taksi, (kamyon) kabin
+A2	Genel İngilizce	İsimler	BUSINESSMAN	iş insanı (erkek)
+A2	Genel İngilizce	İsimler	BUSINESSWOMAN	iş insanı (kadın)
+A2	Genel İngilizce	İsimler	CAB	taksi; kamyonun sürücü kabini
 A2	Genel İngilizce	İsimler	CAFETERIA	kafeterya, yemekhane
 A2	Genel İngilizce	İsimler	CALENDAR	takvim
 A2	Genel İngilizce	İsimler	CAMPING	kamp yapma, kampçılık
@@ -164,17 +164,17 @@ A2	Genel İngilizce	İsimler	CHAPTER	bölüm
 A2	Genel İngilizce	İsimler	CHART	isim: grafik, çizelge, tablo; fiil: grafiğini çıkarmak, haritasını çıkarmak
 A2	Genel İngilizce	İsimler	CHEEK	yanak
 A2	Genel İngilizce	Fiiller	CHEER	tezahürat yapmak, alkışlamak, neşelendirmek
-A2	Genel İngilizce	İsimler	CHEF	şef, aşçı
+A2	Genel İngilizce	İsimler	CHEF	profesyonel aşçı, mutfak şefi
 A2	Genel İngilizce	İsimler	CHEMICAL	sıfat: kimyasal; isim: kimyasal madde
 A2	Genel İngilizce	İsimler	CHEQUE	çek
 A2	Genel İngilizce	İsimler	CHILDHOOD	çocukluk
 A2	Genel İngilizce	İsimler	CHILI	acı biber
 A2	Genel İngilizce	İsimler	CHIMPANZEE	şempanze
-A2	Genel İngilizce	İsimler	CHIRP	cıvıltı, cıvıldama
+A2	Genel İngilizce	Fiiller	CHIRP	fiil: cıvıldamak; isim: kısa, ince cıvıltı
 A2	Genel İngilizce	İsimler	CHOICE	seçim, seçenek, tercih
 A2	Genel İngilizce	İsimler	CIGARETTE	sigara
 A2	Genel İngilizce	İsimler	CITIZEN	vatandaş, yurttaş
-A2	Genel İngilizce	İsimler	CLASSIC	sıfat: klasik; isim: klasik eser
+A2	Genel İngilizce	Sıfatlar	CLASSIC	sıfat: klasik; isim: klasik eser
 A2	Genel İngilizce	İsimler	CLASSICAL MUSIC	klasik müzik
 A2	Genel İngilizce	İsimler	CLEANER	temizlikçi, temizleyici
 A2	Genel İngilizce	Zarflar	CLEARLY	açıkça, net bir şekilde
@@ -192,18 +192,18 @@ A2	Genel İngilizce	İsimler	COMMITTEE	komite, kurul
 A2	Genel İngilizce	Sıfatlar	COMMON	yaygın, ortak, sıradan
 A2	Genel İngilizce	Fiiller	COMMUNICATE	iletişim kurmak, iletmek
 A2	Genel İngilizce	İsimler	COMMUNICATION	iletişim, haberleşme
-A2	Genel İngilizce	İsimler	COMPANY	şirket, firma, arkadaşlık
-A2	Genel İngilizce	İsimler	COMPARATIVE	karşılaştırma derecesi (dil bilgisi)
+A2	Genel İngilizce	İsimler	COMPANY	şirket, firma; birinin yanında bulunma, arkadaşlık
+A2	Genel İngilizce	İsimler	COMPARATIVE	dil bilgisinde karşılaştırma derecesi (ör. bigger); sıfat: karşılaştırmalı
 A2	Genel İngilizce	İsimler	COMPETITION	yarışma, rekabet
 A2	Genel İngilizce	İsimler	COMPLAINT	şikâyet
 A2	Genel İngilizce	İsimler	COMPOSER	besteci
-A2	Genel İngilizce	Fiiller	CONCENTRATE	konsantre olmak, odaklanmak, yoğunlaşmak
+A2	Genel İngilizce	Fiiller	CONCENTRATE	odaklanmak, yoğunlaşmak; yoğunlaştırmak
 A2	Genel İngilizce	İsimler	CONCERN	isim: endişe, kaygı, mesele; fiil: ilgilendirmek, endişelendirmek
 A2	Genel İngilizce	İsimler	CONDITION	isim: durum, koşul, şart; fiil: koşullandırmak, alıştırmak
 A2	Genel İngilizce	Fiiller	CONFUSE	kafasını karıştırmak, karıştırmak, şaşırtmak
 A2	Genel İngilizce	Sıfatlar	CONFUSED	kafası karışık, şaşkın
 A2	Genel İngilizce	İsimler	CONSEQUENCE	sonuç, netice
-A2	Genel İngilizce	Fiiller	CONSIST	oluşmak (of ile)
+A2	Genel İngilizce	Fiiller	CONSIST	consist of: -den oluşmak
 A2	Genel İngilizce	İsimler	CONTAINER	kap, konteyner
 A2	Genel İngilizce	İsimler	CONTEXT	bağlam
 A2	Genel İngilizce	İsimler	CONTINENT	kıta
@@ -224,13 +224,13 @@ A2	Genel İngilizce	İsimler	CREATURE	yaratık, canlı
 A2	Genel İngilizce	İsimler	CREDIT	kredi, itibar
 A2	Genel İngilizce	İsimler	CRICKET	kriket, cırcır böceği
 A2	Genel İngilizce	İsimler	CRIME	suç
-A2	Genel İngilizce	İsimler	CRISP	cips (patates cipsi)
+A2	Genel İngilizce	İsimler	CRISP	isim (İng.): patates cipsi; sıfat: gevrek, çıtır
 A2	Genel İngilizce	Fiiller	CRITICIZE	eleştirmek
 A2	Genel İngilizce	İsimler	CROWD	kalabalık
 A2	Genel İngilizce	İsimler	CROWN	taç
 A2	Genel İngilizce	İsimler	CURRY	köri
 A2	Genel İngilizce	İsimler	CURSE	lanet, beddua, küfür
-A2	Genel İngilizce	İsimler	CUSTOM	gelenek, âdet, örf
+A2	Genel İngilizce	İsimler	CUSTOM	isim: gelenek, âdet, örf; sıfat: özel siparişe göre yapılan
 A2	Genel İngilizce	Sıfatlar	DAILY	sıfat: günlük; zarf: her gün
 A2	Genel İngilizce	İsimler	DAM	baraj
 A2	Genel İngilizce	İsimler	DANCER	dansçı
@@ -241,8 +241,8 @@ A2	Genel İngilizce	İsimler	DEATH	ölüm
 A2	Genel İngilizce	İsimler	DEBATE	tartışma, münazara
 A2	Genel İngilizce	Zarflar	DEEPLY	derinden, derinlemesine
 A2	Genel İngilizce	İsimler	DEGREE	derece, (üniversite) diploması
-A2	Genel İngilizce	İsimler	DEPARTMENT STORE	büyük mağaza
-A2	Genel İngilizce	İsimler	DESCRIPTION	tanım, tarif, betimleme
+A2	Genel İngilizce	İsimler	DEPARTMENT STORE	farklı ürün bölümleri bulunan büyük mağaza
+A2	Genel İngilizce	İsimler	DESCRIPTION	betimleme, tarif, açıklama
 A2	Genel İngilizce	İsimler	DESERT	isim: çöl; fiil: terk etmek, bırakıp gitmek
 A2	Genel İngilizce	Fiiller	DESTROY	yok etmek, mahvetmek
 A2	Genel İngilizce	İsimler	DETAIL	ayrıntı, detay
@@ -265,7 +265,7 @@ A2	Genel İngilizce	İsimler	DISCO	disko
 A2	Genel İngilizce	Fiiller	DISCOVER	keşfetmek, fark etmek
 A2	Genel İngilizce	İsimler	DISCUSSION	tartışma, görüşme
 A2	Genel İngilizce	Sıfatlar	DISHONEST	dürüst olmayan, sahtekâr
-A2	Genel İngilizce	İsimler	DISLIKE	isim: hoşlanmama; fiil: sevmemek, hoşlanmamak
+A2	Genel İngilizce	Fiiller	DISLIKE	isim: hoşlanmama; fiil: sevmemek, hoşlanmamak
 A2	Genel İngilizce	İsimler	DISPLAY	isim: sergi, gösteri, ekran; fiil: göstermek, sergilemek
 A2	Genel İngilizce	Fiiller	DISTURB	rahatsız etmek
 A2	Genel İngilizce	Diğer	DONE	yapılmış, bitmiş (do fiilinin 3. hâli)
@@ -277,9 +277,9 @@ A2	Genel İngilizce	İsimler	DRAWING	çizim, resim
 A2	Genel İngilizce	Sıfatlar	DRESSED	giyinik, giyinmiş
 A2	Genel İngilizce	İsimler	DRILL	isim: matkap, alıştırma, tatbikat; fiil: delmek
 A2	Genel İngilizce	İsimler	DRIVER'S LICENSE	ehliyet, sürücü belgesi
-A2	Genel İngilizce	İsimler	DROP	isim: damla, düşüş; fiil: düşürmek, düşmek, bırakmak
+A2	Genel İngilizce	Fiiller	DROP	isim: damla, düşüş; fiil: düşürmek, düşmek, bırakmak
 A2	Genel İngilizce	İsimler	DRUG	ilaç, uyuşturucu
-A2	Genel İngilizce	İsimler	DRUGSTORE	eczane
+A2	Genel İngilizce	İsimler	DRUGSTORE	ABD'de ilaç ve günlük ihtiyaç ürünleri satan mağaza; eczane
 A2	Genel İngilizce	İsimler	DUCK	ördek
 A2	Genel İngilizce	Edatlar	DURING	sırasında, süresince
 A2	Genel İngilizce	İsimler	DUST	toz
@@ -311,7 +311,7 @@ A2	Genel İngilizce	İsimler	ENVY	isim: kıskançlık, gıpta; fiil: kıskanmak,
 A2	Genel İngilizce	İsimler	EPISODE	bölüm, olay
 A2	Genel İngilizce	İsimler	ERROR	hata
 A2	Genel İngilizce	İsimler	ESCALATOR	yürüyen merdiven
-A2	Genel İngilizce	İsimler	ESCAPE	isim: kaçış, firar; fiil: kaçmak, kurtulmak
+A2	Genel İngilizce	Fiiller	ESCAPE	isim: kaçış, firar; fiil: kaçmak, kurtulmak
 A2	Genel İngilizce	Zarflar	ESPECIALLY	özellikle
 A2	Genel İngilizce	İsimler	ESSAY	kompozisyon, deneme, makale
 A2	Genel İngilizce	Fiiller	ESTABLISH	kurmak, saptamak, belirlemek
@@ -326,9 +326,9 @@ A2	Genel İngilizce	Fiiller	EXIST	var olmak, mevcut olmak
 A2	Genel İngilizce	İsimler	EXPERIENCE	isim: deneyim, tecrübe; fiil: yaşamak, deneyimlemek
 A2	Genel İngilizce	İsimler	EXPLANATION	açıklama
 A2	Genel İngilizce	Fiiller	EXPLORE	keşfetmek, araştırmak, incelemek
-A2	Genel İngilizce	İsimler	EXPRESS	isim: ekspres (tren, posta); fiil: ifade etmek
+A2	Genel İngilizce	Fiiller	EXPRESS	fiil: ifade etmek; sıfat: ekspres, hızlı; isim: ekspres tren veya hizmet
 A2	Genel İngilizce	İsimler	EXPRESSION	ifade, deyim
-A2	Genel İngilizce	İsimler	EXTRA	ek, ekstra, fazladan
+A2	Genel İngilizce	Sıfatlar	EXTRA	ek, ekstra, fazladan
 A2	Genel İngilizce	Zarflar	EXTREMELY	son derece, aşırı derecede
 A2	Genel İngilizce	İsimler	FACT	gerçek, olgu
 A2	Genel İngilizce	Zarflar	FAIRLY	oldukça, adil bir şekilde
@@ -349,23 +349,23 @@ A2	Genel İngilizce	Zamirler	FEW	az, birkaç (a few)
 A2	Genel İngilizce	İsimler	FICTION	kurgu, kurmaca edebiyat
 A2	Genel İngilizce	İsimler	FIGHTER	savaşçı, dövüşçü, savaş uçağı
 A2	Genel İngilizce	İsimler	FIGURE	isim: rakam, şekil, figür; fiil: anlamak (figure out), düşünmek
-A2	Genel İngilizce	İsimler	FINAL	sıfat: son, nihai; isim: final
+A2	Genel İngilizce	Sıfatlar	FINAL	sıfat: son, nihai; isim: final
 A2	Genel İngilizce	Zarflar	FINALLY	sonunda, nihayet
 A2	Genel İngilizce	İsimler	FIRST NAME	ad, ön ad
 A2	Genel İngilizce	İsimler	FISHERMAN	balıkçı
-A2	Genel İngilizce	İsimler	FIX	fiil: tamir etmek, düzeltmek, ayarlamak; isim: çözüm, çare
+A2	Genel İngilizce	Fiiller	FIX	fiil: tamir etmek, düzeltmek, ayarlamak; isim: çözüm, çare
 A2	Genel İngilizce	İsimler	FLEA	pire
-A2	Genel İngilizce	İsimler	FLOAT	isim: şamandıra; fiil: (su üstünde) yüzmek, süzülmek
+A2	Genel İngilizce	Fiiller	FLOAT	isim: şamandıra; fiil: (su üstünde) yüzmek, süzülmek
 A2	Genel İngilizce	İsimler	FLOOD	isim: sel, taşkın; fiil: su basmak, taşmak
 A2	Genel İngilizce	İsimler	FOG	sis
-A2	Genel İngilizce	İsimler	FOLDER	dosya, klasör
-A2	Genel İngilizce	İsimler	FOOL	isim: aptal, budala; fiil: kandırmak
+A2	Genel İngilizce	İsimler	FOLDER	klasör; belge dosyası
+A2	Genel İngilizce	İsimler	FOOL	isim: budala, aptal kişi; fiil: kandırmak, aldatmak
 A2	Genel İngilizce	İsimler	FOOTBALLER	futbolcu
 A2	Genel İngilizce	Edatlar	FOR	edat: için, -dır (süre); bağlaç: çünkü
 A2	Genel İngilizce	Fiiller	FORBID	yasaklamak
 A2	Genel İngilizce	İsimler	FORCE	isim: güç, kuvvet; fiil: zorlamak
 A2	Genel İngilizce	Zarflar	FOREVER	sonsuza kadar, daima
-A2	Genel İngilizce	Zarflar	FORTUNATELY	neyse ki, çok şükür
+A2	Genel İngilizce	Zarflar	FORTUNATELY	neyse ki, şans eseri
 A2	Genel İngilizce	İsimler	FORTUNE	servet, şans, talih
 A2	Genel İngilizce	Zarflar	FORWARD	ileri, ileriye
 A2	Genel İngilizce	İsimler	FRAME	isim: çerçeve, iskelet; fiil: çerçevelemek
@@ -404,22 +404,22 @@ A2	Genel İngilizce	İsimler	GRANNY	nine, büyükanne
 A2	Genel İngilizce	Sıfatlar	GRATEFUL	minnettar, müteşekkir
 A2	Genel İngilizce	Zarflar	GREATLY	büyük ölçüde, çok
 A2	Genel İngilizce	Sıfatlar	GREEDY	açgözlü
-A2	Genel İngilizce	Sıfatlar	GRILLED	ızgara, ızgarada pişmiş
+A2	Genel İngilizce	Sıfatlar	GRILLED	ızgarada pişirilmiş
 A2	Genel İngilizce	İsimler	GROCERY STORE	bakkal, market
 A2	Genel İngilizce	İsimler	GUARD	isim: bekçi, muhafız, nöbetçi; fiil: korumak, nöbet tutmak
 A2	Genel İngilizce	İsimler	GUIDEBOOK	rehber kitap, gezi rehberi
 A2	Genel İngilizce	İsimler	GUN	silah, tabanca, tüfek
 A2	Genel İngilizce	Sıfatlar	HALF-PRICE	yarı fiyatına, yarı fiyat
 A2	Genel İngilizce	İsimler	HAM	jambon
-A2	Genel İngilizce	Sıfatlar	HANDICAPPED	engelli
+A2	Genel İngilizce	Sıfatlar	HANDICAPPED	engelli (eski kullanım; günümüzde disabled tercih edilir)
 A2	Genel İngilizce	İsimler	HANDLE	isim: sap, kulp, kol; fiil: ilgilenmek, halletmek, idare etmek
-A2	Genel İngilizce	Zarflar	HAPPILY	mutlu bir şekilde, mutlulukla, neyse ki
+A2	Genel İngilizce	Zarflar	HAPPILY	mutlu biçimde, seve seve; neyse ki
 A2	Genel İngilizce	İsimler	HAPPINESS	mutluluk
 A2	Genel İngilizce	Zarflar	HARDLY	neredeyse hiç, zar zor, güçlükle
 A2	Genel İngilizce	Sıfatlar	HARMFUL	zararlı
 A2	Genel İngilizce	İsimler	HARMONY	uyum, ahenk, armoni
 A2	Genel İngilizce	İsimler	HARVEST	isim: hasat, ürün; fiil: hasat etmek
-A2	Genel İngilizce	İsimler	HEADPHONE	kulaklık
+A2	Genel İngilizce	İsimler	HEADPHONE	kulaklık (çoğunlukla headphones biçiminde)
 A2	Genel İngilizce	İsimler	HEADTEACHER	okul müdürü
 A2	Genel İngilizce	İsimler	HEATING	ısıtma
 A2	Genel İngilizce	Zarflar	HEAVILY	yoğun bir şekilde, aşırı, şiddetle
@@ -427,7 +427,7 @@ A2	Genel İngilizce	İsimler	HERO	kahraman
 A2	Genel İngilizce	Zamirler	HERSELF	kendisi, kendini (kadın için)
 A2	Genel İngilizce	Diğer	HEY	hey, baksana
 A2	Genel İngilizce	İsimler	HIGH SCHOOL	lise
-A2	Genel İngilizce	İsimler	HIGHWAY	otoyol, karayolu
+A2	Genel İngilizce	İsimler	HIGHWAY	ana kara yolu; otoyol
 A2	Genel İngilizce	İsimler	HIKING	doğa yürüyüşü, yürüyüş
 A2	Genel İngilizce	Zamirler	HIMSELF	kendisi, kendini (erkek için)
 A2	Genel İngilizce	İsimler	HIP HOP	hip hop
@@ -437,7 +437,7 @@ A2	Genel İngilizce	İsimler	HONOR	isim: onur, şeref, saygı; fiil: onurlandır
 A2	Genel İngilizce	İsimler	HORROR	korku, dehşet
 A2	Genel İngilizce	İsimler	HOST	ev sahibi, sunucu
 A2	Genel İngilizce	Zarflar	HOWEVER	ancak, bununla birlikte, yine de
-A2	Genel İngilizce	İsimler	HUMAN	isim: insan; sıfat: insani, insana ait
+A2	Genel İngilizce	İsimler	HUMAN	isim: insan; sıfat: insana ait, insanla ilgili
 A2	Genel İngilizce	Diğer	HUNDRED	yüz
 A2	Genel İngilizce	İsimler	HUNTER	avcı
 A2	Genel İngilizce	İsimler	ID	kimlik
@@ -448,11 +448,11 @@ A2	Genel İngilizce	İsimler	IMAGINATION	hayal gücü
 A2	Genel İngilizce	İsimler	IMPACT	etki
 A2	Genel İngilizce	Sıfatlar	IMPATIENT	sabırsız
 A2	Genel İngilizce	İsimler	IMPORTANCE	önem
-A2	Genel İngilizce	Zarflar	IMPORTANTLY	önemli olarak, (more importantly) daha da önemlisi
+A2	Genel İngilizce	Zarflar	IMPORTANTLY	önemli bir nokta olarak; more importantly: daha da önemlisi
 A2	Genel İngilizce	Sıfatlar	IMPOSSIBLE	imkânsız, olanaksız
 A2	Genel İngilizce	Fiiller	IMPRESS	etkilemek, hayran bırakmak
 A2	Genel İngilizce	Zarflar	IN	edat: içinde, -de; zarf: içeri, içeride
-A2	Genel İngilizce	İsimler	INCH	isim: inç; fiil: yavaş yavaş ilerlemek
+A2	Genel İngilizce	İsimler	INCH	isim: inç (2,54 cm); fiil: yavaş yavaş ilerlemek
 A2	Genel İngilizce	Zarflar	INDEED	gerçekten, hakikaten
 A2	Genel İngilizce	İsimler	INDEPENDENCE	bağımsızlık
 A2	Genel İngilizce	Fiiller	INDICATE	göstermek, belirtmek, işaret etmek
@@ -463,7 +463,7 @@ A2	Genel İngilizce	Fiiller	INJURE	yaralamak
 A2	Genel İngilizce	Sıfatlar	INNER	iç
 A2	Genel İngilizce	İsimler	INSECT	böcek
 A2	Genel İngilizce	İsimler	INSPIRATION	ilham, esin
-A2	Genel İngilizce	Sıfatlar	INSTANT	anlık, hazır (instant coffee)
+A2	Genel İngilizce	Sıfatlar	INSTANT	sıfat: anlık, hemen olan, hazır; isim: an
 A2	Genel İngilizce	Zarflar	INSTEAD	onun yerine, bunun yerine
 A2	Genel İngilizce	İsimler	INSTRUMENT	alet, çalgı, enstrüman
 A2	Genel İngilizce	İsimler	INTELLIGENCE	zekâ, istihbarat
@@ -483,10 +483,10 @@ A2	Genel İngilizce	İsimler	KILLER	katil
 A2	Genel İngilizce	İsimler	KILO	kilo
 A2	Genel İngilizce	İsimler	KILOGRAM	kilogram
 A2	Genel İngilizce	İsimler	KILOMETER	kilometre
-A2	Genel İngilizce	Sıfatlar	KINDLY	zarf: nazikçe, lütfen; sıfat: iyi kalpli, sevecen
+A2	Genel İngilizce	Zarflar	KINDLY	zarf: nazikçe, lütfen; sıfat: iyi kalpli, sevecen
 A2	Genel İngilizce	İsimler	KINGDOM	krallık
 A2	Genel İngilizce	İsimler	KIT	takım, set, malzeme seti
-A2	Genel İngilizce	İsimler	KNOCK	isim: vuruş, kapı çalma; fiil: (kapı) çalmak, vurmak
+A2	Genel İngilizce	Fiiller	KNOCK	isim: vuruş, kapı çalma; fiil: (kapı) çalmak, vurmak
 A2	Genel İngilizce	İsimler	KNOWLEDGE	bilgi
 A2	Genel İngilizce	İsimler	LABOR	emek, iş gücü
 A2	Genel İngilizce	İsimler	LACK	isim: eksiklik, yokluk; fiil: -den yoksun olmak, eksik olmak
@@ -517,28 +517,28 @@ A2	Genel İngilizce	İsimler	LOVER	sevgili, âşık, meraklı (music lover)
 A2	Genel İngilizce	Sıfatlar	LOW	düşük, alçak
 A2	Genel İngilizce	Zarflar	LUCKILY	neyse ki, şans eseri
 A2	Genel İngilizce	İsimler	LUNCHTIME	öğle arası, öğle yemeği vakti
-A2	Genel İngilizce	Sıfatlar	LYRIC	lirik
+A2	Genel İngilizce	Sıfatlar	LYRIC	sıfat: lirik; isim: şarkı sözü (genellikle lyrics)
 A2	Genel İngilizce	Sıfatlar	MAD	deli, çılgın, çok kızgın
 A2	Genel İngilizce	İsimler	MAGIC	isim: sihir, büyü; sıfat: sihirli, büyülü
 A2	Genel İngilizce	İsimler	MAIN COURSE	ana yemek
 A2	Genel İngilizce	Zarflar	MAINLY	çoğunlukla, esas olarak, başlıca
-A2	Genel İngilizce	İsimler	MAJOR	sıfat: büyük, önemli, başlıca; isim: binbaşı, (üniversitede) ana dal
+A2	Genel İngilizce	Sıfatlar	MAJOR	sıfat: büyük, önemli, başlıca; isim: binbaşı, (üniversitede) ana dal
 A2	Genel İngilizce	İsimler	MAKER	yapımcı, üretici
 A2	Genel İngilizce	İsimler	MAKE-UP	makyaj
 A2	Genel İngilizce	İsimler	MALL	alışveriş merkezi, AVM
 A2	Genel İngilizce	İsimler	MANNER	tarz, tavır, görgü (manners)
 A2	Genel İngilizce	İsimler	MARK	isim: not, işaret, iz; fiil: işaretlemek, not vermek
 A2	Genel İngilizce	Sıfatlar	MARRIED	evli
-A2	Genel İngilizce	Fiiller	MARRY	evlenmek
+A2	Genel İngilizce	Fiiller	MARRY	evlenmek, biriyle evlenmek; evlendirmek
 A2	Genel İngilizce	Sıfatlar	MARVELOUS	harika, olağanüstü
 A2	Genel İngilizce	İsimler	MATERIAL	malzeme, madde, materyal
 A2	Genel İngilizce	İsimler	MAX	maksimum, en fazla
-A2	Genel İngilizce	İsimler	MEAN	fiil: anlamına gelmek, kastetmek; sıfat: cimri, kaba, acımasız; isim: ortalama
+A2	Genel İngilizce	Fiiller	MEAN	fiil: anlamına gelmek, kastetmek; sıfat: cimri, kaba, acımasız; isim: ortalama
 A2	Genel İngilizce	İsimler	MEANING	anlam
 A2	Genel İngilizce	İsimler	MEDAL	madalya
 A2	Genel İngilizce	Sıfatlar	MEDICAL	tıbbi
 A2	Genel İngilizce	İsimler	MEMBER	üye
-A2	Genel İngilizce	İsimler	MENTION	fiil: bahsetmek, söz etmek; isim: söz etme, anma
+A2	Genel İngilizce	Fiiller	MENTION	fiil: bahsetmek, söz etmek; isim: söz etme, anma
 A2	Genel İngilizce	İsimler	METAL	metal
 A2	Genel İngilizce	İsimler	METER	metre, sayaç
 A2	Genel İngilizce	İsimler	METHOD	yöntem, metot
@@ -549,7 +549,7 @@ A2	Genel İngilizce	Sıfatlar	MILITARY	askerî
 A2	Genel İngilizce	Diğer	MILLION	milyon
 A2	Genel İngilizce	İsimler	MINERAL WATER	maden suyu, mineralli su
 A2	Genel İngilizce	İsimler	MISTAKE	hata, yanlış
-A2	Genel İngilizce	İsimler	MOBILE	sıfat: taşınabilir, mobil, seyyar; isim: cep telefonu
+A2	Genel İngilizce	Sıfatlar	MOBILE	sıfat: taşınabilir, mobil, seyyar; isim: cep telefonu
 A2	Genel İngilizce	İsimler	MOOD	ruh hâli, keyif
 A2	Genel İngilizce	İsimler	MOSQUE	cami
 A2	Genel İngilizce	Zarflar	MOST	en, çoğu, en çok
@@ -568,14 +568,14 @@ A2	Genel İngilizce	İsimler	NATURE	doğa, tabiat, yapı
 A2	Genel İngilizce	Zarflar	NEARLY	neredeyse, hemen hemen
 A2	Genel İngilizce	Sıfatlar	NEGATIVE	olumsuz, negatif
 A2	Genel İngilizce	İsimler	NET	isim: ağ, file; sıfat: net
-A2	Genel İngilizce	Zarflar	NEXT	sonraki, bir sonraki, gelecek
+A2	Genel İngilizce	Zarflar	NEXT	sıfat: sonraki, bir sonraki; zarf: sonra, ardından
 A2	Genel İngilizce	Edatlar	NEXT TO	yanında, bitişiğinde
 A2	Genel İngilizce	Zamirler	NO ONE	hiç kimse
 A2	Genel İngilizce	Zamirler	NOBODY	hiç kimse
 A2	Genel İngilizce	İsimler	NOON	öğle, öğle vakti
 A2	Genel İngilizce	Sıfatlar	NORMAL	normal, olağan
 A2	Genel İngilizce	İsimler	NORTH	kuzey, kuzeye, kuzeyde
-A2	Genel İngilizce	İsimler	NOTICE	fiil: fark etmek; isim: duyuru, uyarı, ihbar
+A2	Genel İngilizce	Fiiller	NOTICE	fiil: fark etmek; isim: duyuru, uyarı, ihbar
 A2	Genel İngilizce	İsimler	NOUN	isim, ad
 A2	Genel İngilizce	İsimler	NOVEL	roman
 A2	Genel İngilizce	Zarflar	NOWADAYS	günümüzde, bugünlerde
@@ -586,12 +586,12 @@ A2	Genel İngilizce	İsimler	OLIVE OIL	zeytinyağı
 A2	Genel İngilizce	Sıfatlar	OLYMPIC	olimpik, olimpiyat
 A2	Genel İngilizce	İsimler	OMELET	omlet
 A2	Genel İngilizce	Zarflar	ON	edat: üstünde, -de (gün/tarih), hakkında; zarf: açık (çalışır durumda), devam ederek
-A2	Genel İngilizce	Fiiller	OPERATE	çalıştırmak, işletmek, ameliyat etmek
+A2	Genel İngilizce	Fiiller	OPERATE	çalışmak, çalıştırmak, işletmek; operate on: ameliyat etmek
 A2	Genel İngilizce	İsimler	OPINION	görüş, fikir
 A2	Genel İngilizce	İsimler	OPPORTUNITY	fırsat
 A2	Genel İngilizce	Fiiller	OPPOSE	karşı çıkmak, karşı olmak
 A2	Genel İngilizce	Sıfatlar	ORGANIZED	düzenli, organize
-A2	Genel İngilizce	İsimler	ORIGINAL	sıfat: orijinal, özgün, ilk; isim: asıl, orijinal
+A2	Genel İngilizce	Sıfatlar	ORIGINAL	sıfat: orijinal, özgün, ilk; isim: asıl, orijinal
 A2	Genel İngilizce	İsimler	ORPHAN	isim: yetim, öksüz; fiil: yetim bırakmak
 A2	Genel İngilizce	Zamirler	OURSELVES	kendimiz, kendimizi
 A2	Genel İngilizce	Edatlar	OUT OF	-den dışarı, dışında, (bir şeyi) kalmamış (out of milk)
@@ -603,13 +603,13 @@ A2	Genel İngilizce	İsimler	PAL	arkadaş, dost
 A2	Genel İngilizce	İsimler	PANIC	isim: panik, telaş; fiil: paniğe kapılmak
 A2	Genel İngilizce	İsimler	PART	isim: parça, kısım, rol; fiil: ayrılmak
 A2	Genel İngilizce	Zarflar	PARTLY	kısmen
-A2	Genel İngilizce	İsimler	PASS	fiil: geçmek, (sınavı) geçmek, uzatmak; isim: geçiş izni, paso, pas
+A2	Genel İngilizce	Fiiller	PASS	fiil: geçmek, (sınavı) geçmek, uzatmak; isim: geçiş izni, paso, pas
 A2	Genel İngilizce	İsimler	PASSAGE	geçit, koridor, (metinde) parça
 A2	Genel İngilizce	İsimler	PC	kişisel bilgisayar, PC
 A2	Genel İngilizce	İsimler	PEA	bezelye
 A2	Genel İngilizce	İsimler	PENCE	peni (çoğul)
 A2	Genel İngilizce	İsimler	PENFRIEND	mektup arkadaşı
-A2	Genel İngilizce	Fiiller	PERFECT	sıfat: mükemmel, kusursuz; fiil: mükemmelleştirmek
+A2	Genel İngilizce	Sıfatlar	PERFECT	sıfat: mükemmel, kusursuz; fiil: mükemmelleştirmek
 A2	Genel İngilizce	Zarflar	PERFECTLY	mükemmel bir şekilde, tamamen
 A2	Genel İngilizce	Fiiller	PERFORM	gerçekleştirmek, sahne almak, performans göstermek
 A2	Genel İngilizce	İsimler	PERFORMANCE	performans, gösteri, başarım
@@ -630,7 +630,7 @@ A2	Genel İngilizce	İsimler	PLANET	gezegen
 A2	Genel İngilizce	İsimler	PLANT	isim: bitki, fabrika; fiil: dikmek, ekmek
 A2	Genel İngilizce	İsimler	PLASTIC	plastik
 A2	Genel İngilizce	İsimler	PLATE	tabak, plaka
-A2	Genel İngilizce	Sıfatlar	PLAYFUL	oyuncu, şakacı
+A2	Genel İngilizce	Sıfatlar	PLAYFUL	oyun oynamayı seven, şakacı
 A2	Genel İngilizce	İsimler	PLAYGROUND	oyun alanı, oyun parkı
 A2	Genel İngilizce	Sıfatlar	PLEASED	memnun, hoşnut
 A2	Genel İngilizce	Sıfatlar	PLEASING	hoş, memnun edici
@@ -650,7 +650,7 @@ A2	Genel İngilizce	Zarflar	POSSIBLY	belki, muhtemelen
 A2	Genel İngilizce	İsimler	POST OFFICE	postane
 A2	Genel İngilizce	İsimler	POWER	güç, enerji, iktidar
 A2	Genel İngilizce	Sıfatlar	POWERFUL	güçlü
-A2	Genel İngilizce	Sıfatlar	PRECISE	kesin, tam, net
+A2	Genel İngilizce	Sıfatlar	PRECISE	kesin, ayrıntıları tam olarak belirtilmiş
 A2	Genel İngilizce	Fiiller	PREDICT	tahmin etmek, öngörmek
 A2	Genel İngilizce	İsimler	PREDICTION	tahmin, öngörü
 A2	Genel İngilizce	Fiiller	PREFER	tercih etmek
@@ -671,10 +671,10 @@ A2	Genel İngilizce	İsimler	PRONUNCIATION	telaffuz, söyleniş
 A2	Genel İngilizce	Sıfatlar	PROPER	uygun, doğru dürüst, düzgün
 A2	Genel İngilizce	Fiiller	PROVIDE	sağlamak, temin etmek
 A2	Genel İngilizce	İsimler	PSYCHOLOGIST	psikolog
-A2	Genel İngilizce	Fiiller	PUBLISH	yayımlamak, yayınlamak
+A2	Genel İngilizce	Fiiller	PUBLISH	yayımlamak; basıp kamuya sunmak
 A2	Genel İngilizce	Fiiller	PULL	çekmek
 A2	Genel İngilizce	İsimler	PUNCTUATION	noktalama
-A2	Genel İngilizce	İsimler	PURPLE	mor
+A2	Genel İngilizce	Sıfatlar	PURPLE	mor (sıfat ve isim)
 A2	Genel İngilizce	İsimler	PURPOSE	amaç, maksat
 A2	Genel İngilizce	Fiiller	PURSUE	peşinden koşmak, sürdürmek, kovalamak
 A2	Genel İngilizce	İsimler	QUEEN	kraliçe
@@ -695,12 +695,12 @@ A2	Genel İngilizce	Sıfatlar	RECENT	son, yakın zamandaki
 A2	Genel İngilizce	Zarflar	RECENTLY	son zamanlarda, yakın zamanda
 A2	Genel İngilizce	İsimler	RECEPTIONIST	resepsiyon görevlisi, resepsiyonist
 A2	Genel İngilizce	Fiiller	RECYCLE	geri dönüştürmek
-A2	Genel İngilizce	Fiiller	REFER	bahsetmek, atıfta bulunmak, yönlendirmek
-A2	Genel İngilizce	Fiiller	REFLECT	yansıtmak, yansımak, düşünmek
+A2	Genel İngilizce	Fiiller	REFER	atıfta bulunmak, değinmek; birine veya bir yere yönlendirmek
+A2	Genel İngilizce	Fiiller	REFLECT	yansıtmak, yansımak; reflect on: üzerinde düşünmek
 A2	Genel İngilizce	İsimler	REFRIGERATOR	buzdolabı
 A2	Genel İngilizce	Zarflar	REGULARLY	düzenli olarak
 A2	Genel İngilizce	Sıfatlar	RELAXED	rahat, rahatlamış
-A2	Genel İngilizce	İsimler	RELEASE	isim: serbest bırakma, yayın; fiil: serbest bırakmak, yayımlamak, piyasaya sürmek
+A2	Genel İngilizce	İsimler	RELEASE	isim: serbest bırakma, yayımlanma; fiil: serbest bırakmak, yayımlamak, piyasaya sürmek
 A2	Genel İngilizce	Fiiller	REMAIN	kalmak, olduğu gibi kalmak
 A2	Genel İngilizce	Sıfatlar	REMOTE	uzak, ücra
 A2	Genel İngilizce	İsimler	RENT	isim: kira; fiil: kiralamak, kiraya vermek
@@ -727,7 +727,7 @@ A2	Genel İngilizce	İsimler	ROOF	çatı, dam
 A2	Genel İngilizce	İsimler	ROOT	kök
 A2	Genel İngilizce	İsimler	ROPE	ip, halat
 A2	Genel İngilizce	Zarflar	ROUGHLY	yaklaşık olarak, kabaca
-A2	Genel İngilizce	Sıfatlar	ROYAL	kraliyet, kraliyete ait
+A2	Genel İngilizce	Sıfatlar	ROYAL	kraliyete ait, kraliyetle ilgili
 A2	Genel İngilizce	İsimler	RUGBY	ragbi
 A2	Genel İngilizce	İsimler	RUMOR	söylenti, dedikodu
 A2	Genel İngilizce	İsimler	RUNNER	koşucu
@@ -740,7 +740,7 @@ A2	Genel İngilizce	İsimler	SAMPLE	örnek, numune
 A2	Genel İngilizce	Sıfatlar	SANDY	kumlu
 A2	Genel İngilizce	Fiiller	SATISFY	tatmin etmek, memnun etmek, karşılamak
 A2	Genel İngilizce	İsimler	SCALE	ölçek, ölçü, terazi (scales)
-A2	Genel İngilizce	İsimler	SCENERY	manzara, dekor
+A2	Genel İngilizce	İsimler	SCENERY	doğal manzara; tiyatro dekoru
 A2	Genel İngilizce	İsimler	SCHEDULE	isim: program, takvim, tarife; fiil: planlamak, programlamak
 A2	Genel İngilizce	İsimler	SCHOOLCHILD	okul çocuğu, öğrenci
 A2	Genel İngilizce	İsimler	SCHOOLWORK	okul ödevleri, ders çalışması
@@ -753,7 +753,7 @@ A2	Genel İngilizce	İsimler	SEASIDE	deniz kenarı, sahil
 A2	Genel İngilizce	İsimler	SECRETARY	sekreter
 A2	Genel İngilizce	İsimler	SEED	tohum
 A2	Genel İngilizce	Fiiller	SEEK	aramak, peşinde olmak
-A2	Genel İngilizce	Fiiller	SEEM	görünmek, gibi görünmek
+A2	Genel İngilizce	Fiiller	SEEM	gibi görünmek, izlenimi vermek
 A2	Genel İngilizce	İsimler	SEMESTER	dönem, yarıyıl
 A2	Genel İngilizce	Fiiller	SEND	göndermek, yollamak
 A2	Genel İngilizce	İsimler	SENIOR	sıfat: kıdemli, üst düzey; isim: yaşlı kişi, son sınıf öğrencisi
@@ -780,11 +780,11 @@ A2	Genel İngilizce	İsimler	SHOW	isim: gösteri, program, şov; fiil: gösterme
 A2	Genel İngilizce	Sıfatlar	SIGNIFICANT	önemli, kayda değer, anlamlı
 A2	Genel İngilizce	İsimler	SILENCE	sessizlik
 A2	Genel İngilizce	Zarflar	SILENTLY	sessizce
-A2	Genel İngilizce	Sıfatlar	SILLY	aptalca, saçma, aptal
+A2	Genel İngilizce	Sıfatlar	SILLY	akılsız, saçma, düşüncesiz
 A2	Genel İngilizce	İsimler	SILVER	gümüş, gümüş rengi
 A2	Genel İngilizce	Zarflar	SIMPLY	sadece, basitçe, tamamen
 A2	Genel İngilizce	İsimler	SINGING	şarkı söyleme
-A2	Genel İngilizce	İsimler	SINGLE	sıfat: tek, bekâr, tek kişilik; isim: tek yön bilet, single (şarkı)
+A2	Genel İngilizce	Sıfatlar	SINGLE	sıfat: tek, bekâr, tek kişilik; isim: tek yön bilet, single (şarkı)
 A2	Genel İngilizce	İsimler	SINGULAR	tekil
 A2	Genel İngilizce	İsimler	SINK	isim: lavabo, eviye; fiil: batmak, batırmak
 A2	Genel İngilizce	İsimler	SITTING ROOM	oturma odası, salon
@@ -807,7 +807,7 @@ A2	Genel İngilizce	Zarflar	SO	zarf: o kadar, öyle, çok; bağlaç: bu yüzden,
 A2	Genel İngilizce	İsimler	SOCIETY	toplum, dernek
 A2	Genel İngilizce	İsimler	SODA	gazlı içecek, soda
 A2	Genel İngilizce	İsimler	SOFT DRINK	alkolsüz içecek, meşrubat
-A2	Genel İngilizce	Zarflar	SOFTLY	yavaşça, yumuşak bir şekilde, alçak sesle
+A2	Genel İngilizce	Zarflar	SOFTLY	yumuşakça, hafifçe, alçak sesle
 A2	Genel İngilizce	İsimler	SOFTWARE	yazılım
 A2	Genel İngilizce	İsimler	SOLDIER	asker
 A2	Genel İngilizce	İsimler	SOLUTION	çözüm, çözelti
@@ -823,7 +823,7 @@ A2	Genel İngilizce	İsimler	SPEAKER	konuşmacı, hoparlör
 A2	Genel İngilizce	Sıfatlar	SPECIFIC	belirli, özel, spesifik
 A2	Genel İngilizce	İsimler	SPEED	isim: hız; fiil: hız yapmak, hızla gitmek
 A2	Genel İngilizce	Fiiller	SPILL	dökmek, dökülmek
-A2	Genel İngilizce	İsimler	SPLIT	fiil: bölmek, ayırmak, paylaşmak; isim: bölünme, ayrılık; sıfat: bölünmüş
+A2	Genel İngilizce	Fiiller	SPLIT	fiil: bölmek, ayırmak, paylaşmak; isim: bölünme, ayrılık; sıfat: bölünmüş
 A2	Genel İngilizce	İsimler	SPORTS CENTER	spor merkezi
 A2	Genel İngilizce	İsimler	SQUARE	isim: kare, meydan; sıfat: kare, kare biçiminde
 A2	Genel İngilizce	İsimler	STADIUM	stadyum, stat
@@ -843,7 +843,7 @@ A2	Genel İngilizce	İsimler	STRIKE	isim: grev, saldırı; fiil: vurmak, çarpma
 A2	Genel İngilizce	İsimler	STRING	ip, sicim, tel
 A2	Genel İngilizce	Zarflar	STRONGLY	şiddetle, kuvvetle, güçlü bir şekilde
 A2	Genel İngilizce	İsimler	STRUCTURE	yapı
-A2	Genel İngilizce	İsimler	STUDY	fiil: ders çalışmak, okumak, incelemek; isim: çalışma, araştırma, çalışma odası
+A2	Genel İngilizce	Fiiller	STUDY	fiil: ders çalışmak, okumak, incelemek; isim: çalışma, araştırma, çalışma odası
 A2	Genel İngilizce	İsimler	STUFF	isim: şey, eşya, malzeme; fiil: doldurmak, tıkıştırmak
 A2	Genel İngilizce	İsimler	STYLE	tarz, stil, üslup
 A2	Genel İngilizce	İsimler	SUCCESS	başarı
@@ -855,7 +855,7 @@ A2	Genel İngilizce	İsimler	SUMMARY	özet
 A2	Genel İngilizce	İsimler	SUNFLOWER	ayçiçeği
 A2	Genel İngilizce	İsimler	SUNGLASSES	güneş gözlüğü
 A2	Genel İngilizce	İsimler	SUNLIGHT	güneş ışığı
-A2	Genel İngilizce	İsimler	SUPERLATIVE	en üstünlük derecesi (dil bilgisi)
+A2	Genel İngilizce	İsimler	SUPERLATIVE	dil bilgisinde üstünlük derecesi (ör. biggest); sıfat: üstün, olağanüstü
 A2	Genel İngilizce	İsimler	SUPERSTAR	süperstar
 A2	Genel İngilizce	İsimler	SUPPER	akşam yemeği
 A2	Genel İngilizce	İsimler	SUPPORT	isim: destek; fiil: desteklemek, (takım) tutmak
@@ -895,7 +895,7 @@ A2	Genel İngilizce	Diğer	THOUSAND	bin
 A2	Genel İngilizce	İsimler	THUNDERSTORM	gök gürültülü fırtına
 A2	Genel İngilizce	Fiiller	TIDY	sıfat: düzenli, derli toplu; fiil: toplamak, düzenlemek
 A2	Genel İngilizce	İsimler	TIE	isim: kravat, bağ; fiil: bağlamak
-A2	Genel İngilizce	İsimler	TIGHTS	külotlu çorap, tayt
+A2	Genel İngilizce	İsimler	TIGHTS	külotlu çorap; vücuda oturan esnek spor giysisi
 A2	Genel İngilizce	İsimler	TIP	isim: bahşiş, ipucu, uç; fiil: bahşiş vermek
 A2	Genel İngilizce	İsimler	TITLE	başlık, unvan, ad
 A2	Genel İngilizce	İsimler	TONE	isim: ton, ses tonu; fiil: (kasları) sıkılaştırmak
@@ -906,7 +906,7 @@ A2	Genel İngilizce	İsimler	TRADE	isim: ticaret, alım satım; fiil: ticaret ya
 A2	Genel İngilizce	İsimler	TRADITION	gelenek
 A2	Genel İngilizce	İsimler	TRAINING	eğitim, antrenman
 A2	Genel İngilizce	İsimler	TRAP	tuzak, kapan
-A2	Genel İngilizce	İsimler	TRAVEL	isim: seyahat, yolculuk; fiil: seyahat etmek, yolculuk yapmak
+A2	Genel İngilizce	Fiiller	TRAVEL	isim: seyahat, yolculuk; fiil: seyahat etmek, yolculuk yapmak
 A2	Genel İngilizce	İsimler	TRAVELER	yolcu, gezgin
 A2	Genel İngilizce	İsimler	TREASURE	hazine, define
 A2	Genel İngilizce	İsimler	TRICK	isim: hile, numara, oyun; fiil: kandırmak
@@ -917,7 +917,7 @@ A2	Genel İngilizce	İsimler	TUNE	isim: melodi, ezgi; fiil: akort etmek, ayarlam
 A2	Genel İngilizce	Zarflar	TWICE	iki kez, iki kat
 A2	Genel İngilizce	Sıfatlar	UNCERTAIN	belirsiz, emin olmayan
 A2	Genel İngilizce	Sıfatlar	UNCOMFORTABLE	rahatsız, rahatsız edici
-A2	Genel İngilizce	Sıfatlar	UNDERWATER	su altı, su altında
+A2	Genel İngilizce	Sıfatlar	UNDERWATER	sıfat: su altındaki; zarf: su altında
 A2	Genel İngilizce	Sıfatlar	UNEASY	huzursuz, tedirgin, endişeli
 A2	Genel İngilizce	Sıfatlar	UNFAIR	haksız, adaletsiz
 A2	Genel İngilizce	Sıfatlar	UNFORGETTABLE	unutulmaz
@@ -928,14 +928,14 @@ A2	Genel İngilizce	Sıfatlar	UNIMPORTANT	önemsiz
 A2	Genel İngilizce	İsimler	UNIT	birim, ünite
 A2	Genel İngilizce	İsimler	UNIVERSITY	üniversite
 A2	Genel İngilizce	Sıfatlar	UNKNOWN	bilinmeyen, meçhul
-A2	Genel İngilizce	Sıfatlar	UNLIKE	edat: -den farklı olarak, aksine; sıfat: benzemeyen, farklı
+A2	Genel İngilizce	Edatlar	UNLIKE	edat: -den farklı olarak, aksine; sıfat: benzemeyen, farklı
 A2	Genel İngilizce	Sıfatlar	UNNECESSARY	gereksiz
 A2	Genel İngilizce	Sıfatlar	UNPLEASANT	hoş olmayan, nahoş, tatsız
 A2	Genel İngilizce	Zarflar	UP	zarf: yukarı, yukarıda; edat: yukarısına, boyunca (up the street)
 A2	Genel İngilizce	Edatlar	UPON	üzerine, üzerinde, -ince (upon arrival)
 A2	Genel İngilizce	Fiiller	UPSET	sıfat: üzgün, keyifsiz; fiil: üzmek, bozmak
-A2	Genel İngilizce	İsimler	USE	isim: kullanım, fayda; fiil: kullanmak
-A2	Genel İngilizce	Sıfatlar	USED	kullanılmış, ikinci el, alışkın (used to)
+A2	Genel İngilizce	Fiiller	USE	isim: kullanım, fayda; fiil: kullanmak
+A2	Genel İngilizce	Sıfatlar	USED	kullanılmış, ikinci el; be used to: alışkın olmak; used to do: eskiden yapmak
 A2	Genel İngilizce	Sıfatlar	USUAL	olağan, her zamanki, alışılmış
 A2	Genel İngilizce	İsimler	VALLEY	vadi
 A2	Genel İngilizce	İsimler	VALUE	isim: değer; fiil: değer vermek, değer biçmek
@@ -948,7 +948,7 @@ A2	Genel İngilizce	İsimler	VOCABULARY	kelime bilgisi, söz varlığı
 A2	Genel İngilizce	İsimler	WALKING	yürüme, yürüyüş
 A2	Genel İngilizce	Fiiller	WANDER	dolaşmak, gezinmek, avare dolaşmak
 A2	Genel İngilizce	İsimler	WASHING MACHINE	çamaşır makinesi
-A2	Genel İngilizce	İsimler	WASHING-UP	bulaşık yıkama, bulaşık
+A2	Genel İngilizce	İsimler	WASHING-UP	bulaşık yıkama; yıkanacak bulaşıklar
 A2	Genel İngilizce	İsimler	WAVE	isim: dalga, el sallama; fiil: el sallamak, dalgalanmak
 A2	Genel İngilizce	İsimler	WEALTH	servet, zenginlik
 A2	Genel İngilizce	İsimler	WEB	ağ, örümcek ağı, web (internet)
@@ -964,8 +964,8 @@ A2	Genel İngilizce	Sıfatlar	WELL-KNOWN	tanınmış, ünlü, iyi bilinen
 A2	Genel İngilizce	İsimler	WEST	batı, batıya, batıda
 A2	Genel İngilizce	Zamirler	WHATEVER	her ne, ne olursa olsun, neyse
 A2	Genel İngilizce	İsimler	WHEELCHAIR	tekerlekli sandalye
-A2	Genel İngilizce	İsimler	WHILE	bağlaç: -ken, iken, -e rağmen; isim: süre (a while: bir süre)
-A2	Genel İngilizce	İsimler	WHOLE	sıfat: bütün, tüm; isim: bütün, tamamı
+A2	Genel İngilizce	Bağlaçlar	WHILE	bağlaç: -ken, iken, -e rağmen; isim: süre (a while: bir süre)
+A2	Genel İngilizce	Sıfatlar	WHOLE	sıfat: bütün, tüm; isim: bütün, tamamı
 A2	Genel İngilizce	Zamirler	WHOM	kimi, kime
 A2	Genel İngilizce	Sıfatlar	WIDE	geniş, enli
 A2	Genel İngilizce	Zarflar	WIDELY	yaygın olarak, geniş ölçüde
@@ -975,13 +975,13 @@ A2	Genel İngilizce	İsimler	WINE	şarap
 A2	Genel İngilizce	İsimler	WINNER	kazanan, galip
 A2	Genel İngilizce	İsimler	WISDOM	bilgelik, akıl
 A2	Genel İngilizce	Sıfatlar	WISE	bilge, akıllı, akıllıca
-A2	Genel İngilizce	Edatlar	WITHIN	içinde, dahilinde
+A2	Genel İngilizce	Edatlar	WITHIN	içinde, dâhilinde; belirli süre dolmadan
 A2	Genel İngilizce	Edatlar	WITHOUT	-sız, -meden, olmadan
 A2	Genel İngilizce	İsimler	WOOD	tahta, odun, ahşap
 A2	Genel İngilizce	Sıfatlar	WOODEN	tahta, ahşap
 A2	Genel İngilizce	İsimler	WOOL	yün
-A2	Genel İngilizce	İsimler	WORST	en kötü, en kötüsü
+A2	Genel İngilizce	Sıfatlar	WORST	sıfat: en kötü; isim: en kötüsü
 A2	Genel İngilizce	İsimler	WRITING	yazı, yazma
 A2	Genel İngilizce	Zarflar	YEAH	evet (konuşma dili)
-A2	Genel İngilizce	İsimler	YOUTH	gençlik, genç
+A2	Genel İngilizce	İsimler	YOUTH	gençlik; genç kişi
 A2	Genel İngilizce	İsimler	ZONE	bölge, alan, kuşak
