@@ -59,4 +59,20 @@ class Wq150ViewportTest {
             }
         }
     }
+    @Test fun keyboardKeepsBoardCellScaleAndCentersActiveWord(){
+        for((w,h,imeH) in listOf(Triple(360f,520f,220f),Triple(1100f,480f,180f))){
+            val normal=wq150Viewport(w,h,22,17,0,11f,8.5f)
+            val typing=wq150Viewport(w,imeH,22,17,0,11f,8.5f,fitHeight=h)
+            assertEquals(normal.cell,typing.cell,.01f)
+            assertTrue(typing.y in typing.minY..typing.maxY)
+            assertEquals(imeH/2f,typing.y+11f*typing.cell,.01f)
+            assertTrue(typing.minY<typing.maxY)
+        }
+    }
+    @Test fun fullWordInputIncludesHintAndIntersectionPositions(){
+        assertEquals("APPLICATION",wq150FullWordDraft("application",11))
+        assertEquals("COMPUTER",wq150FullWordDraft("computer extra",8))
+        assertEquals("COMP",wq150FullWordDraft("co-mp",8))
+        assertEquals("",wq150FullWordDraft("abc",0))
+    }
 }
