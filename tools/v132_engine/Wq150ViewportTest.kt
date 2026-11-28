@@ -121,4 +121,13 @@ class Wq150ViewportTest {
         assertEquals("Ada",wq150ArenaPlayerName(null,"Oyuncu","Ada","Rakip"))
         assertEquals("Deniz",wq150ArenaPlayerName("Deniz","Oyuncu","Rakip"))
     }
+    @Test fun resultPodiumHasSeparateFootAnchorsAndFrontLabels(){
+        val winner=wq150PodiumPoint(0);val other=wq150PodiumPoint(1)
+        assertTrue(winner.x<other.x)
+        assertTrue(winner.footY<other.footY)
+        assertTrue(winner.nameY>winner.footY&&other.nameY>other.footY)
+        for(p in listOf(winner,other)){
+            assertTrue(p.x in 0f..1f&&p.footY in 0f..1f&&p.nameY in 0f..1f)
+        }
+    }
 }

@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
@@ -722,6 +723,18 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
     val wide=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
     Column(Modifier.fillMaxWidth(),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)){
         Text(title,color=Wq122Gold,style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Black,textAlign=TextAlign.Center)
+        val stageContext=androidx.compose.ui.platform.LocalContext.current
+        val stageArt=remember(stageContext.applicationContext){
+            runCatching{stageContext.assets.open("arena_result_podium.webp").use{android.graphics.BitmapFactory.decodeStream(it)}}.getOrNull()
+        }
+        val stageDone=summary?.optInt("solved",-1)?:-1
+        val stageTotal=summary?.optInt("total",0)?:0
+        val hasStageArt=stageArt!=null&&ids.size==2
+        if(hasStageArt&&stageArt!=null){
+            Wq150ImageResultPodium(stageArt,ids.sortedBy{if(it in winners)0 else 1},winners,uid,profiles,ownAvatar,name,
+                if(stageDone>=0&&stageTotal>0)(if(kind=="quiz")"Tamamlanan soru: " else "Çözülen kelime: ")+stageDone+"/"+stageTotal else "",
+                wide)
+        }else{
         val stageIds=ids.sortedBy{if(it in winners)0 else 1}
         val cheer=remember{Animatable(0f)}
         LaunchedEffect(winner){
@@ -764,9 +777,10 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
                 }
             }
         }
+        }
         val done=summary?.optInt("solved",-1)?:-1
         val total=summary?.optInt("total",0)?:0
-        if(done>=0&&total>0)Text((if(kind=="quiz")"Tamamlanan soru: " else "Çözülen kelime: ")+done+"/"+total,color=Wq122Ink)
+        if(!hasStageArt&&done>=0&&total>0)Text((if(kind=="quiz")"Tamamlanan soru: " else "Çözülen kelime: ")+done+"/"+total,color=Wq122Ink)
     }
     ids.forEach{id->
         var expanded by remember(id){mutableStateOf(false)}
@@ -826,6 +840,68 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
         Button(onClick=onBack,modifier=Modifier.weight(1f),contentPadding=PaddingValues(horizontal=6.dp,vertical=8.dp)){Text("Arena'ya dön",maxLines=1)}
     }
 }
+/** Coordinates measured against the isolated 2132 × 456 artwork.
+ * Each foot point lies on its own illuminated top rim; the front labels
+ * and bottom plaque remain data-driven and are not baked into the image. */
+internal data class Wq150PodiumPoint(val x:Float,val footY:Float,val nameY:Float)
+internal fun wq150PodiumPoint(index:Int):Wq150PodiumPoint=
+    if(index==0)Wq150PodiumPoint(.340f,.065f,.235f) else Wq150PodiumPoint(.650f,.133f,.270f)
+
+@Composable
+private fun Wq150ImageResultPodium(art:android.graphics.Bitmap,ids:List<String>,winners:List<String>,uid:String,
+    profiles:JSONObject,ownAvatar:String,name:(String)->String,matchLabel:String,wide:Boolean){
+    val motion=remember{Animatable(0f)}
+    LaunchedEffect(winners){
+        if(winners.isNotEmpty())repeat(3){motion.animateTo(1f,tween(250));motion.animateTo(0f,tween(360))}
+    }
+    val stageImage=remember(art){art.asImageBitmap()}
+    BoxWithConstraints(Modifier.widthIn(max=920.dp).fillMaxWidth()){
+        val w=maxWidth
+        val artHeight=w*(art.height.toFloat()/art.width.toFloat())
+        val stageTop=if(wide)264.dp else 198.dp
+        val totalHeight=stageTop+artHeight
+        Box(Modifier.fillMaxWidth().height(totalHeight)){
+            // Keep the actual generated raster artwork, not a drawn approximation.
+            androidx.compose.foundation.Image(stageImage,contentDescription="Arena zafer platformu",
+                modifier=Modifier.fillMaxWidth().height(artHeight).offset(y=stageTop),
+                contentScale=androidx.compose.ui.layout.ContentScale.FillBounds,
+                filterQuality=androidx.compose.ui.graphics.FilterQuality.High)
+            ids.forEachIndexed{i,id->
+                val anchor=wq150PodiumPoint(i)
+                val victory=id in winners
+                val portraitWidth=w*.38f
+                val portraitHeight=if(wide){if(victory)264.dp else 244.dp}else{if(victory)198.dp else 182.dp}
+                val foot=stageTop+artHeight*anchor.footY
+                // Only a bottom-pivot scale animation: the feet never lift off the podium.
+                Wq150StagePortrait(profiles.optJSONObject(id),ownAvatar.takeIf{id==uid},
+                    Modifier.offset(x=w*anchor.x-portraitWidth/2,y=foot-portraitHeight)
+                        .width(portraitWidth).height(portraitHeight).graphicsLayer{
+                            transformOrigin=TransformOrigin(.5f,1f)
+                            scaleX=if(victory)1f+motion.value*.035f else 1f
+                            scaleY=if(victory)1f+motion.value*.035f else 1f
+                        },victory=victory)
+                val nameWidth=w*.255f
+                val nameHeight=artHeight*.205f
+                Box(Modifier.offset(x=w*anchor.x-nameWidth/2,y=stageTop+artHeight*anchor.nameY-nameHeight/2)
+                    .width(nameWidth).height(nameHeight),contentAlignment=Alignment.Center){
+                    Text(name(id),color=if(victory)Wq122Gold else Color.White,
+                        fontSize=if(wide)17.sp else 11.sp,fontWeight=FontWeight.Black,
+                        maxLines=1,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
+                }
+            }
+            if(matchLabel.isNotBlank()){
+                val plaqueWidth=w*.42f
+                val plaqueHeight=artHeight*.21f
+                Box(Modifier.offset(x=(w-plaqueWidth)/2,y=stageTop+artHeight*.84f-plaqueHeight/2)
+                    .width(plaqueWidth).height(plaqueHeight),contentAlignment=Alignment.Center){
+                    Text(matchLabel,color=Color.White,fontSize=if(wide)16.sp else 10.sp,
+                        fontWeight=FontWeight.Bold,maxLines=1,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
+                }
+            }
+        }
+    }
+}
+
 internal fun wq150CombinedStudyPrompt(wrong:List<JSONObject>,blank:List<JSONObject>):String{
     fun section(rows:List<JSONObject>):String=if(rows.isEmpty())"Yok" else rows.joinToString("\n"){row->
         val answer=row.optString("answer").takeUnless{it=="null"}.orEmpty()

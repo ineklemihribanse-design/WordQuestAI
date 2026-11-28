@@ -119,3 +119,50 @@ internal fun Wq150Portrait(profile:JSONObject?,ownAvatar:String?,modifier:Modifi
         contentScale=ContentScale.Fit,filterQuality=FilterQuality.High)
     else Wq2DPortrait(if(id in Wq2DMascots.ids)id else "piko",modifier,victory)
 }
+
+
+/** Result-only portrait: trim the transparent margins, then fit to the foot baseline.
+ * The original local and shared mascot pictures are never modified. */
+private fun wq150TrimStageBitmap(bitmap:Bitmap):Bitmap{
+    if(!bitmap.hasAlpha())return bitmap
+    return runCatching{
+        val row=IntArray(bitmap.width)
+        var left=bitmap.width;var right=-1;var top=bitmap.height;var bottom=-1
+        for(y in 0 until bitmap.height){
+            bitmap.getPixels(row,0,bitmap.width,0,y,bitmap.width,1)
+            for(x in row.indices)if((row[x] ushr 24)>24){
+                left=minOf(left,x);right=maxOf(right,x);top=minOf(top,y);bottom=maxOf(bottom,y)
+            }
+        }
+        if(right>=left&&bottom>=top)Bitmap.createBitmap(bitmap,left,top,right-left+1,bottom-top+1) else bitmap
+    }.getOrDefault(bitmap)
+}
+
+@Composable
+internal fun Wq150StagePortrait(profile:JSONObject?,ownAvatar:String?,modifier:Modifier=Modifier,victory:Boolean=false){
+    val context=LocalContext.current
+    val id=ownAvatar?:profile?.optString("avatar","piko")?:"piko"
+    val idle=profile?.optString("preview")?.takeIf{it.isNotBlank()&&it!="null"}
+    val win=profile?.optString("victory")?.takeIf{it.isNotBlank()&&it!="null"}
+    var image by remember(id,idle,win,ownAvatar,victory){mutableStateOf<Bitmap?>(null)}
+    LaunchedEffect(id,idle,win,ownAvatar,victory){
+        image=withContext(Dispatchers.Default){
+            val original=if(ownAvatar!=null){
+                Wq183MascotStore.picture(context,id,victory)?:Wq2DMascots.picture(context,id,victory)
+            }else{
+                Wq128RoomHd.decode(id,if(victory)win?:idle else idle)
+                    ?:if(victory)Wq128RoomHd.decode(id,idle) else null
+            }
+            val fallback=original?:Wq2DMascots.picture(context,if(id in Wq2DMascots.ids)id else "piko",victory)
+                ?:Wq2DMascots.picture(context,"piko",false)
+            fallback?.let{wq150TrimStageBitmap(it)}
+        }
+    }
+    Box(modifier,contentAlignment=androidx.compose.ui.Alignment.BottomCenter){
+        image?.let{bitmap->
+            Image(bitmap.asImageBitmap(),contentDescription="Oyuncu maskotu",
+                modifier=Modifier.fillMaxSize(),contentScale=ContentScale.Fit,
+                alignment=androidx.compose.ui.Alignment.BottomCenter,filterQuality=FilterQuality.High)
+        }
+    }
+}

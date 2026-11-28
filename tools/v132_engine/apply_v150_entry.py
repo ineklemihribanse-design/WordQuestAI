@@ -35,6 +35,18 @@ assert not missing, "Missing approved Arena art: "+str(missing)
 # Optional exact binary pack: supplied separately because connector writes text
 # only. Never substitute a composite mock-up or a floating trophy backdrop.
 import hashlib,json,zipfile
+# User-approved transparent 3D result artwork. Keep the current stable build
+# usable until the exact binary has been uploaded; never fabricate a substitute.
+result_podium=Path("assets/user_uploads/arena_result_podium.webp")
+if result_podium.is_file():
+    data=result_podium.read_bytes()
+    assert hashlib.sha256(data).hexdigest()=="279bc61077f94e8ab4fcef6679f9b0ef793943d58e4df99c37b01a895ba7bd37", "Result podium asset mismatch"
+    assert data[:4]==b"RIFF" and data[8:12]==b"WEBP"
+    (assets/"arena_result_podium.webp").write_bytes(data)
+    print("PASS: exact user-approved transparent result podium staged")
+else:
+    print("WARNING: result podium artwork not uploaded; previous result display retained")
+
 premium=Path("assets/user_uploads/arena_v150_premium.zip")
 expected={
     "coop_plate.webp":"0829ddb4904e6ca1ee452b69fdefb6752c0bf2e957d8086c61fa6dfa40068436",
