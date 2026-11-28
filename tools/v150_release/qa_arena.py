@@ -99,6 +99,9 @@ def viewport(name,w,h,density,wide):
             result.append(matches[0])
         return result
     buttons=exact_levels()
+    if int(os.environ.get("WQ_TARGET_CODE","173"))>=175:
+        heading=bounds(get("Maç Ayarları"))
+        assert heading[1]>=int(18*density/160),("Settings title overlaps status area",heading)
     levels=[bounds(n) for n in buttons]
     assert max(a[1] for a in levels)-min(a[1] for a in levels)<=8,levels
     assert all(a[0]<b[0] for a,b in zip(levels,levels[1:])),levels

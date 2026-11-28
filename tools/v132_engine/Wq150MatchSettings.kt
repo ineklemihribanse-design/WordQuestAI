@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import org.json.JSONArray
 import org.json.JSONObject
@@ -175,7 +176,9 @@ internal fun Wq150ArenaBars(){
             window?.setWindowAnimations(0)
             window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(0xFF150B3E.toInt()))
         }
-        window?.statusBarColor=android.graphics.Color.TRANSPARENT
+        // The full-screen settings dialog owns its status strip; never show
+        // the underlying Arena activity through a transparent system bar.
+        window?.statusBarColor=if(view.parent is DialogWindowProvider)0xFF1B1535.toInt() else android.graphics.Color.TRANSPARENT
         window?.navigationBarColor=android.graphics.Color.TRANSPARENT
         if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced=false
         ctrl?.isAppearanceLightStatusBars=false
@@ -266,10 +269,10 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                     Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xB8241B41)),
                         verticalAlignment=Alignment.CenterVertically){
                         TextButton(onClick=onDismiss,contentPadding=PaddingValues(horizontal=6.dp)){Text("‹ Geri",color=Wq122Gold)}
-                        Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontWeight=FontWeight.Black,fontSize=19.sp)
+                        Text("Maç Ayarları",Modifier.weight(1f),color=Wq122Gold,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=19.sp)
                     }
                     Wq150SettingPanel{
-                        Text("Maç Özeti",color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=12.sp)
+                        Text("Maç Özeti",color=Wq122Gold,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Bold,fontSize=12.sp)
                         Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Color(0xFFFFF4E3),fontSize=13.sp)
                         if(!valid)Text(if(!available)"İçerik veya bağlantı hazırlanıyor…" else "Seçimleri kontrol et.",color=Color(0xFFFFD6A1),fontSize=12.sp)
                     }
@@ -347,7 +350,11 @@ internal fun Wq160SettingsInsets():WindowInsets{
     val root=ViewCompat.getRootWindowInsets(view)
     val navigation=root?.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.navigationBars())
     val bottom=maxOf(navigation?.bottom?:0,fallback,with(density){24.dp.roundToPx()})
-    return WindowInsets.safeDrawing.union(WindowInsets(left=navigation?.left?:0,top=0,right=navigation?.right?:0,bottom=bottom))
+    val status=root?.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.statusBars())
+    val statusId=resources.getIdentifier("status_bar_height","dimen","android")
+    val statusFallback=if(statusId!=0)resources.getDimensionPixelSize(statusId) else with(density){24.dp.roundToPx()}
+    val top=maxOf(status?.top?:0,statusFallback)
+    return WindowInsets.safeDrawing.union(WindowInsets(left=navigation?.left?:0,top=top,right=navigation?.right?:0,bottom=bottom))
 }
 @Composable
 internal fun Wq159SettingsFooter(label:String,enabled:Boolean,onClick:()->Unit){
@@ -363,7 +370,7 @@ internal fun Wq159SettingsFooter(label:String,enabled:Boolean,onClick:()->Unit){
                     containerColor=Color.Transparent,contentColor=Color(0xFF241536),
                     disabledContainerColor=Color.Transparent,disabledContentColor=Color(0xFFD1C6DC)),
                 contentPadding=PaddingValues(horizontal=14.dp,vertical=10.dp)){
-                Text(label,fontWeight=FontWeight.Black,fontSize=16.sp,textAlign=TextAlign.Center)
+                Text(label,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=16.sp,textAlign=TextAlign.Center)
             }
         }
     }
