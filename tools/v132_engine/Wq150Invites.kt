@@ -22,7 +22,7 @@ internal fun wq150FreshInvite(sentAt:Long,now:Long)=sentAt in (now-600_000)..(no
 
 @Composable
 internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:String?,canInvite:Boolean,
-    enabled:Boolean,joinedRoom:String?,externalOpen:Boolean?=null,onClose:()->Unit={},onJoin:suspend (String)->Boolean){
+    enabled:Boolean,joinedRoom:String?,externalOpen:Boolean?=null,onClose:()->Unit={},popupOnly:Boolean=false,onJoin:suspend (String)->Boolean){
     val scope=rememberCoroutineScope()
     val db=remember(auth,uid){runCatching{FirebaseDatabase.getInstance(auth.app,"https://wordquest-ai-default-rtdb.firebaseio.com").reference.child("arenaV150Invites")}.getOrNull()}
     var invites by remember(uid){mutableStateOf(emptyList<Wq150Invite>())}
@@ -62,7 +62,26 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
     LaunchedEffect(joinedRoom,visible){
         if(joinedRoom!=null)visible.filter{it.room==joinedRoom}.forEach{db?.child(uid)?.child(it.sender)?.removeValue()}
     }
-    if(room==null&&visible.isNotEmpty()){
+    if(room==null&&visible.isNotEmpty()&&popupOnly){
+        val invite=visible.first()
+        AlertDialog(onDismissRequest={},containerColor=Color(0xFF251347),
+            title={Text("Arena maç daveti",color=Wq122Gold,fontWeight=FontWeight.Bold)},
+            text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+                Text((friends.firstOrNull{it.uid==invite.sender}?.name?:"Arkadaşın")+" seni Arena maçına davet ediyor.",color=Wq122Ink)
+                if(writing)LinearProgressIndicator(Modifier.fillMaxWidth())
+                if(message.isNotBlank())Text(message,color=Wq122Ink)
+            }},
+            confirmButton={Button(enabled=enabled&&!writing,onClick={
+                scope.launch{writing=true;try{
+                    if(onJoin(invite.room)){db?.child(uid)?.child(invite.sender)?.removeValue();message=""}
+                    else message="Odaya katılınamadı. Yeniden deneyebilirsin."
+                }finally{writing=false}}
+            }){Text("Kabul et")}},
+            dismissButton={TextButton(enabled=!writing,onClick={
+                db?.child(uid)?.child(invite.sender)?.removeValue()?.addOnFailureListener{message="Davet silinemedi."}
+            }){Text("Reddet",color=Wq122Gold)}})
+    }
+    if(room==null&&visible.isNotEmpty()&&!popupOnly){
         Text("Gelen Arena davetleri",color=Wq122Gold,fontWeight=FontWeight.Bold)
         visible.forEach{invite->
             Surface(color=Color(0xDD251347),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth()){
