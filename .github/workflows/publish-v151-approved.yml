@@ -99,7 +99,7 @@ jobs:
               '.github/workflows/publish-v151-approved.yml',
               '.github/workflows/qa-published-upgrade.yml',
               '.github/workflows/qa-v132-engine-rules.yml',
-              'firebase/database.rules.v158.json','firebase/friendMascotHd.fragment.json',
+              'firebase/database.rules.v132.json','firebase/database.rules.v158.json','firebase/friendMascotHd.fragment.json',
               'tools/auto_release/prepare_published_replay.py','tools/auto_release/test_wait_app_ready.py',
               'tools/auto_release/verify_delta_install.sh','tools/auto_release/wait_app_ready.py',
               'tools/maintenance/classify_release_impact.py','tools/maintenance/test_classify_release_impact.py',
