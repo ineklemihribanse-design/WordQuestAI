@@ -182,10 +182,10 @@ internal fun Wq150ArenaBars(settingsPage:Boolean=false){
             window?.let{WindowCompat.setDecorFitsSystemWindows(it,true)}
             window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(0xFF150B3E.toInt()))
         }
-        // The full-screen settings dialog owns its status strip; never show
-        // the underlying Arena activity through a transparent system bar.
-        window?.statusBarColor=if(settingsPage||view.parent is DialogWindowProvider)0xFF1B1535.toInt() else android.graphics.Color.TRANSPARENT
-        window?.navigationBarColor=if(settingsPage)0xFF17102F.toInt() else android.graphics.Color.TRANSPARENT
+        // Settings now replaces the Arena route; its own artwork can safely
+        // extend behind system bars without revealing the previous screen.
+        window?.statusBarColor=if(view.parent is DialogWindowProvider)0xFF1B1535.toInt() else android.graphics.Color.TRANSPARENT
+        window?.navigationBarColor=android.graphics.Color.TRANSPARENT
         if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced=false
         ctrl?.isAppearanceLightStatusBars=false
         ctrl?.isAppearanceLightNavigationBars=false
@@ -368,7 +368,7 @@ internal fun Wq163SettingsPage(onBack:()->Unit,header:@Composable ColumnScope.()
             Scaffold(modifier=Modifier.fillMaxSize(),containerColor=Color.Transparent,
                 contentWindowInsets=WindowInsets(0,0,0,0),
                 topBar={
-                    Box(Modifier.fillMaxWidth().background(Color(0xFF1B1535))
+                    Box(Modifier.fillMaxWidth()
                         .windowInsetsPadding(safe.only(WindowInsetsSides.Top+WindowInsetsSides.Horizontal)),
                         contentAlignment=Alignment.Center){
                         Column(Modifier.widthIn(max=1200.dp).fillMaxWidth().padding(horizontal=10.dp,vertical=6.dp),
@@ -376,7 +376,7 @@ internal fun Wq163SettingsPage(onBack:()->Unit,header:@Composable ColumnScope.()
                     }
                 },
                 bottomBar={
-                    Box(Modifier.fillMaxWidth().background(Brush.verticalGradient(listOf(Color(0xA617102F),Color(0xFF17102F))))
+                    Box(Modifier.fillMaxWidth()
                         .windowInsetsPadding(safe.only(WindowInsetsSides.Bottom+WindowInsetsSides.Horizontal))
                         .imePadding().padding(horizontal=10.dp,vertical=8.dp),contentAlignment=Alignment.Center){
                         footer()

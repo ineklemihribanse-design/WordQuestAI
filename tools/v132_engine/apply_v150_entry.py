@@ -117,7 +117,14 @@ assert 'if(customRange!=null)DropdownMenuItem' in settings
 assert 'Wq150LevelRow(levels,s.levels)' in settings
 assert 'Wq150SettingValue("İpucu hakkı"' in settings
 assert 'Wq150SettingValue("Kelimeyi geçme hakkı"' in settings
-assert 'window?.navigationBarColor=if(settingsPage)' in settings
+assert 'window?.navigationBarColor=android.graphics.Color.TRANSPARENT' in settings
+page=settings.split('internal fun Wq163SettingsPage',1)[1].split('internal fun Wq160SettingsInsets',1)[0]
+assert 'Box(Modifier.fillMaxSize().background(Color(0xFF150B3E)))' in page
+assert 'Wq150SettingsBackdrop(Modifier.matchParentSize())' in page
+assert page.count('.background(')==1, "Only the underlying full-screen canvas may have a background; top and bottom carriers must stay transparent"
+assert 'WindowInsetsSides.Top+WindowInsetsSides.Horizontal' in page
+assert 'WindowInsetsSides.Bottom+WindowInsetsSides.Horizontal' in page
+assert '.imePadding().padding(horizontal=10.dp,vertical=8.dp)' in page
 # Audio settings are shared with legacy light surfaces: honor the active theme.
 audio=Path("source/app/src/main/java/com/kelimebulmacasi/a1/Wq179ArenaExtras.kt")
 audio_text=audio.read_text()

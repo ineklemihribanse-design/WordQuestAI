@@ -146,9 +146,18 @@ def viewport(name,w,h,density,wide):
         # Confirm full button height and text on the captured display, and
         # check the settings route owns its top strip (not the Arena image).
         im=Image.open(OUT/f"arena-{name}-settings.png").convert("RGB")
-        strip_y=max(1,int(8*density/160))
-        samples=[im.getpixel((int(W*f),strip_y)) for f in (.12,.25,.38,.62,.75,.88)]
-        assert sum(1 for r,g,b in samples if max(r,g,b)<=90 and b>=r)>=4,("Top strip is not the settings surface",samples)
+        if int(os.environ.get("WQ_TARGET_CODE","173"))==177:
+            strip_y=max(1,int(8*density/160))
+            samples=[im.getpixel((int(W*f),strip_y)) for f in (.12,.25,.38,.62,.75,.88)]
+            assert sum(1 for r,g,b in samples if max(r,g,b)<=90 and b>=r)>=4,("Top strip is not the settings surface",samples)
+        else:
+            # In v164 the user's requested continuous artwork replaces solid bars.
+            # Inspect the margins alongside the header, not the card or system icons.
+            header_y=max(1,min(H-1,(heading[1]+heading[3])//2))
+            margin=max(1,int(3*density/160))
+            samples=[im.getpixel((x,yy)) for x in (margin,W-1-margin)
+                for yy in (header_y,max(1,header_y-int(4*density/160)),min(H-1,header_y+int(4*density/160)))]
+            assert any(max(abs(r-27),abs(g-21),abs(b-53))>5 for r,g,b in samples),("Old opaque header band remains",samples)
         assert Y-y>=int(52*density/160),("Footer cut off",start.attrib)
         assert H-Y>=int(24*density/160),("Footer in system area",start.attrib,H)
         # Scroll in both directions while footer remains fixed.
