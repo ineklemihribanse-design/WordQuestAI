@@ -1,0 +1,107 @@
+name: Promote verified WordQuest AI 1.0.165
+on:
+  workflow_run:
+    workflows: ['WordQuest AI 1.0.165 verified release package (center timer and stable full-word crossword)']
+    types: [completed]
+    branches: ['feature/v150-arena-nextgen']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: wordquest-promote-v165
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_sha == '57bce57e25ad0a5751bad896cc70807672182397'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VERIFIED_RUN: '46137235899'
+      VERIFIED_SHA: 57bce57e25ad0a5751bad896cc70807672182397
+      BASE_SHA: 5da50166b368fecbda506dae3148f28c9797d8cec9bb1a436280851615a39c6c
+    steps:
+      - name: Await only the pinned build outcome
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 80); do
+            result=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN")
+            test "$(jq -r .head_sha <<< "$result")" = "$VERIFIED_SHA"
+            if [ "$(jq -r .status <<< "$result")" = completed ]; then
+              test "$(jq -r .conclusion <<< "$result")" = success
+              exit 0
+            fi
+            sleep 25
+          done
+          echo "::error::Verified build did not complete within the bounded gate"
+          exit 1
+      - name: Require exact successful audited release run
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN" > "$RUNNER_TEMP/run.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN/jobs" > "$RUNNER_TEMP/jobs.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$VERIFIED_RUN/artifacts" > "$RUNNER_TEMP/artifacts.json"
+          python3 - <<'PY'
+          import os,json
+          from pathlib import Path
+          d=Path(os.environ['RUNNER_TEMP'])
+          r=json.loads((d/'run.json').read_text())
+          j=json.loads((d/'jobs.json').read_text())
+          a=json.loads((d/'artifacts.json').read_text())
+          assert r['head_sha']==os.environ['VERIFIED_SHA'] and r['conclusion']=='success'
+          assert {'audit','verify'}<={x['name'] for x in j['jobs'] if x['conclusion']=='success'}
+          assert sum(x['name']=='WordQuestAI-v1.0.165-verified-release' and not x['expired'] for x in a['artifacts'])==1
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          name: WordQuestAI-v1.0.165-verified-release
+          run-id: 46137235899
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/verified
+      - name: Verify bytes and publish approved package without rebuilding
+        run: |
+          set -euo pipefail
+          export D="$RUNNER_TEMP/verified"
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          d=Path(os.environ['D']); out=d/'dist'
+          m=json.loads((out/'update.json').read_text()); p=m['deltas'][0]
+          def sha(f):
+              with f.open('rb') as s:return hashlib.file_digest(s,'sha256').hexdigest()
+          assert m['versionName']=='1.0.165' and m['versionCode']==179 and m['tag']=='v1.0.165'
+          assert m['packageName']=='com.kelimebulmacasi.a1.practice.fresh' and m['apkFile']=='WordQuestAI.apk'
+          assert p['fromVersionCode']==178 and p['toVersionCode']==179 and p['baseSha256']==os.environ['BASE_SHA']
+          assert p['file']=='WordQuestAI-178-to-179.wqd.gz'
+          assert sha(out/'WordQuestAI.apk')==m['sha256']==p['targetSha256']==(d/'upgrade-proof.sha256').read_text().split()[0]
+          assert (out/'WordQuestAI.apk').stat().st_size==m['sizeBytes']
+          assert sha(out/p['file'])==p['sha256'] and (out/p['file']).stat().st_size==p['sizeBytes']
+          assert {f.name for f in out.iterdir()}=={'WordQuestAI.apk','update.json',p['file']}
+          PY
+          TAG=v1.0.165
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)"
+          test "$latest" = v1.0.164 || test "$latest" = "$TAG"
+          if ! gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            test "$latest" = v1.0.164
+            gh release create "$TAG" "$D/dist/"* -R "$GITHUB_REPOSITORY" --target "$VERIFIED_SHA" --draft --title "WordQuest AI 1.0.165 — Arena düzeltmeleri" --notes "Arena: merkezde süre ve son 10 saniye vurgusu, büyük maskotlar, yarı şeffaf tahta, klavyede sabit kare ölçeği ve tam kelime girişi."
+          fi
+          ID="$(gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json databaseId --jq .databaseId)"
+          gh api "repos/$GITHUB_REPOSITORY/releases/$ID" > "$D/uploaded.json"
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          d=Path(os.environ['D']);r=json.loads((d/'uploaded.json').read_text())
+          assert r['tag_name']=='v1.0.165' and not r['prerelease'] and r['target_commitish']==os.environ['VERIFIED_SHA']
+          files={f.name:f for f in (d/'dist').iterdir()}
+          assert len(r['assets'])==3 and set(files)=={a['name'] for a in r['assets']}
+          for a in r['assets']:
+              f=files[a['name']]
+              with f.open('rb') as s: digest=hashlib.file_digest(s,'sha256').hexdigest()
+              assert a['state']=='uploaded' and a['size']==f.stat().st_size and a['digest']=='sha256:'+digest
+          PY
+          if [ "$(gh api "repos/$GITHUB_REPOSITORY/releases/$ID" --jq .draft)" = true ]; then
+            test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = v1.0.164
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/releases/$ID" -F draft=false -f make_latest=true --jq '{tag:.tag_name,draft:.draft}'
+          fi
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$TAG"
