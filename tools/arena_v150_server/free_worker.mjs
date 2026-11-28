@@ -41,7 +41,7 @@ export default {async fetch(req,env){
    const data=JSON.parse(new TextDecoder().decode(body));
    if(!requestId(data.id))return json(400,{ok:false,code:'invalid-command'});
    id=createHmac('sha256',env.ARENA_ROOM_SECRET).update(JSON.stringify([identity.uid,data.id])).digest('hex').slice(0,20);
-   // Explicit cap: ten new rooms per UTC day per authenticated UID.
+   // Explicit cap: twenty new rooms per UTC day per authenticated UID.
    const quota=env.ROOMS.get(env.ROOMS.idFromName('quota:'+identity.uid));
    const q=await quota.fetch('https://internal/quota',{method:'POST',body:id});
    if(!q.ok)return json(429,{ok:false,code:'room-quota'});
@@ -74,7 +74,7 @@ export class ArenaRoom extends DurableObject{
    const day=new Date().toISOString().slice(0,10);
    const allowed=await this.ctx.storage.transaction(async tx=>{
     const old=await tx.get('quota'),ids=old?.day===day?old.ids:[];
-    if(ids.includes(id))return true;if(ids.length>=10)return false;
+    if(ids.includes(id))return true;if(ids.length>=20)return false;
     await tx.put('quota',{day,ids:[...ids,id]});return true;
    });
    return json(allowed?200:429,{ok:allowed});
