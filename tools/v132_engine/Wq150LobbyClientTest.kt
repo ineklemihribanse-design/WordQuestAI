@@ -38,4 +38,13 @@ class Wq150LobbyClientTest {
         assertFalse(Wq150LobbyCommand("settings",2,settings=Wq150Settings(count=71)).valid())
         assertFalse(Wq150LobbyCommand("start",2,settings=Wq150Settings()).valid())
     }
+    @Test fun quotaAndExplicitRejectionsDoNotLockLobby(){
+        assertTrue(wq150LobbyFinalError(429,"room-quota"))
+        assertTrue(wq150LobbyFinalError(400,"invalid-settings"))
+        assertTrue(wq150LobbyFinalError(409,"lobby-not-ready"))
+        assertTrue(wq150LobbyFinalError(503,"not-configured"))
+        assertFalse(wq150LobbyFinalError(409,"refresh-required"))
+        assertFalse(wq150LobbyFinalError(502,"refresh-required"))
+        assertTrue(wq150LobbyErrorText(429,"room-quota").contains("10"))
+    }
 }
