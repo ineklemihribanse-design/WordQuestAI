@@ -1,6 +1,7 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.layout.*
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -156,7 +157,7 @@ internal data class Wq150Catalog(val data:JSONObject){
  * MainActivity already enables edge-to-edge. Fullscreen dialogs opt in separately. */
 @Suppress("DEPRECATION")
 @Composable
-internal fun Wq150ArenaBars(){
+internal fun Wq150ArenaBars(settingsPage:Boolean=false){
     val view=LocalView.current
     val context=view.context
     val window=remember(view){
@@ -166,7 +167,7 @@ internal fun Wq150ArenaBars(){
             (c as? android.app.Activity)?.window
         }
     }
-    DisposableEffect(window){
+    DisposableEffect(window,settingsPage){
         val ctrl=window?.let{WindowCompat.getInsetsController(it,it.decorView)}
         val status=window?.statusBarColor
         val nav=window?.navigationBarColor
@@ -183,8 +184,8 @@ internal fun Wq150ArenaBars(){
         }
         // The full-screen settings dialog owns its status strip; never show
         // the underlying Arena activity through a transparent system bar.
-        window?.statusBarColor=if(view.parent is DialogWindowProvider)0xFF1B1535.toInt() else android.graphics.Color.TRANSPARENT
-        window?.navigationBarColor=android.graphics.Color.TRANSPARENT
+        window?.statusBarColor=if(settingsPage||view.parent is DialogWindowProvider)0xFF1B1535.toInt() else android.graphics.Color.TRANSPARENT
+        window?.navigationBarColor=if(settingsPage)0xFF17102F.toInt() else android.graphics.Color.TRANSPARENT
         if(android.os.Build.VERSION.SDK_INT>=29)window?.isNavigationBarContrastEnforced=false
         ctrl?.isAppearanceLightStatusBars=false
         ctrl?.isAppearanceLightNavigationBars=false
@@ -281,14 +282,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
     val scales=if(catalog==null||catalog.hasYds())mapOf("cefr" to "CEFR","yds" to "YDS")else mapOf("cefr" to "CEFR")
     val valid=available&&s.valid()&&(catalog?.supports(s)!=false)
     val timeLabel:(Int)->String={if(it==0)"Süresiz" else if(timed&&it%60==0)"${it/60} dk" else "$it sn"}
-    MaterialTheme(colorScheme=Wq122Scheme) {
-        Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)){
-            Wq150ArenaBars()
-            Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-                Wq150SettingsBackdrop(Modifier.matchParentSize())
-                Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=10.dp),
-                    verticalArrangement=Arrangement.spacedBy(8.dp)){
+    Wq163SettingsPage(onBack=onDismiss,header={
                     Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xB8241B41)),
                         verticalAlignment=Alignment.CenterVertically){
                         TextButton(onClick=onDismiss,contentPadding=PaddingValues(horizontal=6.dp)){Text("‹ Geri",color=Wq122Gold)}
@@ -299,7 +293,9 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                         Text(Wq150ModeCatalog.kinds[s.kind].orEmpty()+" · "+s.levels.joinToString(" + ")+" · "+s.count+" "+(if(s.format=="quiz")"soru" else "kelime")+" · "+timeLabel(s.seconds)+" · ${s.hints} ipucu",color=Color(0xFFFFF4E3),fontSize=13.sp)
                         if(!valid)Text(if(!available)"İçerik veya bağlantı hazırlanıyor…" else "Seçimleri kontrol et.",color=Color(0xFFFFD6A1),fontSize=12.sp)
                     }
-                    Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(9.dp)){
+
+    },footer={Wq159SettingsFooter("Ayarları Uygula",valid){onApply(s)}}){
+                    Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(9.dp)){
                     BoxWithConstraints(Modifier.fillMaxWidth()){
                         val wide=maxWidth>=650.dp
                         val basic:@Composable ()->Unit={
@@ -353,8 +349,44 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                         }
                     }
                     }
-                    // Footer lives outside the scrolling content and inside safeDrawing insets.
-                    Wq159SettingsFooter("Ayarları Uygula",valid){onApply(s)}
+
+    }
+}
+
+/** Settings is an Activity content route, never a second fullscreen window.
+ * Scaffold measures header/footer before giving remaining space to the scroll.
+ * The backdrop is owned by this route and opaque from its first frame. */
+@Composable
+internal fun Wq163SettingsPage(onBack:()->Unit,header:@Composable ColumnScope.()->Unit,
+    footer:@Composable ()->Unit,content:@Composable ColumnScope.()->Unit){
+    BackHandler(onBack=onBack)
+    Wq150ArenaBars(settingsPage=true)
+    val safe=Wq160SettingsInsets()
+    MaterialTheme(colorScheme=Wq122Scheme){
+        Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
+            Wq150SettingsBackdrop(Modifier.matchParentSize())
+            Scaffold(modifier=Modifier.fillMaxSize(),containerColor=Color.Transparent,
+                contentWindowInsets=WindowInsets(0,0,0,0),
+                topBar={
+                    Box(Modifier.fillMaxWidth().background(Color(0xFF1B1535))
+                        .windowInsetsPadding(safe.only(WindowInsetsSides.Top+WindowInsetsSides.Horizontal)),
+                        contentAlignment=Alignment.Center){
+                        Column(Modifier.widthIn(max=1200.dp).fillMaxWidth().padding(horizontal=10.dp,vertical=6.dp),
+                            verticalArrangement=Arrangement.spacedBy(6.dp),content=header)
+                    }
+                },
+                bottomBar={
+                    Box(Modifier.fillMaxWidth().background(Brush.verticalGradient(listOf(Color(0xA617102F),Color(0xFF17102F))))
+                        .windowInsetsPadding(safe.only(WindowInsetsSides.Bottom+WindowInsetsSides.Horizontal))
+                        .imePadding().padding(horizontal=10.dp,vertical=8.dp),contentAlignment=Alignment.Center){
+                        footer()
+                    }
+                }
+            ){padding->
+                Box(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding)
+                    .windowInsetsPadding(safe.only(WindowInsetsSides.Horizontal)),contentAlignment=Alignment.TopCenter){
+                    Column(Modifier.widthIn(max=1200.dp).fillMaxSize().verticalScroll(rememberScrollState())
+                        .padding(horizontal=10.dp,vertical=8.dp),verticalArrangement=Arrangement.spacedBy(9.dp),content=content)
                 }
             }
         }
@@ -387,13 +419,13 @@ internal fun Wq159SettingsFooter(label:String,enabled:Boolean,onClick:()->Unit){
             val shape=RoundedCornerShape(17.dp)
             val fill=if(enabled)listOf(Color(0xFFFFEDB9),Color(0xFFF1C16F),Color(0xFFB77B32)) else listOf(Color(0xE03B3451),Color(0xD52C2544))
             Button(onClick=onClick,enabled=enabled,modifier=Modifier.widthIn(max=440.dp).fillMaxWidth()
-                .heightIn(min=52.dp).shadow(if(enabled)5.dp else 0.dp,shape).clip(shape).background(Brush.verticalGradient(fill))
+                .height(56.dp).shadow(if(enabled)5.dp else 0.dp,shape).clip(shape).background(Brush.verticalGradient(fill))
                 .border(1.dp,Color(0xBFFFE0A6),shape),
                 shape=shape,colors=ButtonDefaults.buttonColors(
                     containerColor=Color.Transparent,contentColor=Color(0xFF241536),
                     disabledContainerColor=Color.Transparent,disabledContentColor=Color(0xFFD1C6DC)),
                 contentPadding=PaddingValues(horizontal=14.dp,vertical=10.dp)){
-                Text(label,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=17.sp,textAlign=TextAlign.Center)
+                Text(label,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=17.sp,textAlign=TextAlign.Center,maxLines=1,softWrap=false)
             }
         }
     }

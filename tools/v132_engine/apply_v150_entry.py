@@ -104,18 +104,20 @@ assert 'Wq150Records(context,session.profileKey' in entry
 match=(pack/"Wq150ArenaMatch.kt").read_text(encoding="utf-8")
 assert 'if(finished)Wq150History.record' in match
 settings=(pack/"Wq150MatchSettings.kt").read_text(encoding="utf-8")
-# v162 uses a platform-fitted full-screen dialog, not an edge-to-edge overlay.
-assert 'DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)' in settings
-assert 'DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)' in entry
-assert 'WindowCompat.setDecorFitsSystemWindows(it,true)' in settings
-assert 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' in settings
-assert 'windowInsetsPadding(WindowInsets.safeDrawing).imePadding()' in entry
+# v163 settings lives in the Activity route, not in a full-screen Dialog.
+assert 'Wq163SettingsPage(onBack=onDismiss' in settings
+assert 'Wq163SettingsPage(onBack={if(!busy)onDismiss()}' in entry
+assert 'Scaffold(modifier=Modifier.fillMaxSize()' in settings
+assert 'topBar={' in settings and 'bottomBar={' in settings
+assert '.padding(padding).consumeWindowInsets(padding)' in settings
+assert 'Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false' not in settings
+assert 'Dialog(onDismissRequest={if(!busy)onDismiss()}' not in entry
 assert 'customRange:IntRange?=null' in settings
 assert 'if(customRange!=null)DropdownMenuItem' in settings
 assert 'Wq150LevelRow(levels,s.levels)' in settings
 assert 'Wq150SettingValue("İpucu hakkı"' in settings
 assert 'Wq150SettingValue("Kelimeyi geçme hakkı"' in settings
-assert 'window?.navigationBarColor=android.graphics.Color.TRANSPARENT' in settings
+assert 'window?.navigationBarColor=if(settingsPage)' in settings
 # Audio settings are shared with legacy light surfaces: honor the active theme.
 audio=Path("source/app/src/main/java/com/kelimebulmacasi/a1/Wq179ArenaExtras.kt")
 audio_text=audio.read_text()

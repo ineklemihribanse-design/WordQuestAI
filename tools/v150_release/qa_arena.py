@@ -142,6 +142,19 @@ def viewport(name,w,h,density,wide):
         assert Y<=min(a[1] for a in levels),("Historical Start position changed",start.attrib,levels)
     print("PASS: visible enabled start button and its text",name,start.attrib,flush=True)
     capture(name+"-settings")
+    if int(os.environ.get("WQ_TARGET_CODE","173"))>=177:
+        # Confirm full button height and text on the captured display, and
+        # check the settings route owns its top strip (not the Arena image).
+        im=Image.open(OUT/f"arena-{name}-settings.png").convert("RGB")
+        strip_y=max(1,int(8*density/160))
+        samples=[im.getpixel((int(W*f),strip_y)) for f in (.12,.25,.38,.62,.75,.88)]
+        assert sum(1 for r,g,b in samples if max(r,g,b)<=90 and b>=r)>=4,("Top strip is not the settings surface",samples)
+        assert Y-y>=int(52*density/160),("Footer cut off",start.attrib)
+        assert H-Y>=int(24*density/160),("Footer in system area",start.attrib,H)
+        # Scroll in both directions while footer remains fixed.
+        adb("shell","input","swipe",str(W//2),str(int(H*.33)),str(W//2),str(int(H*.65)),"300")
+        restored=bounds(get("Oyunu Başlat"))
+        assert abs(restored[1]-ty)<=int(8*density/160) or abs(restored[1]-y)<=int(8*density/160),("Footer moved after reverse scroll",restored)
     adb("shell","input","keyevent","KEYCODE_BACK");get("Klasik Bulmaca")
     print("PASS: Arena mode tabs, footer, single-row levels and solo settings",name,flush=True)
 try:

@@ -75,6 +75,11 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     var guestPanel by rememberSaveable{mutableStateOf("")}
     if(controller==null||gateway==null||uid.isBlank()){
         BackHandler(onBack=back)
+        val localMode=soloMode
+        if(localMode!=null){
+            Wq150SoloSettings(session,localMode,{soloMode=null},onSolo)
+            return
+        }
         MaterialTheme(colorScheme=Wq122Scheme){
             Wq150ArenaHome(session,ownAvatar,soloSelected,onTab,true,back,
                 onMode={if(soloSelected)soloMode=it else account()},
@@ -91,7 +96,6 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                         }
                     }
                 }},confirmButton={TextButton(onClick={guestPanel=""}){Text("Kapat")}})
-            soloMode?.let{Wq150SoloSettings(session,it,{soloMode=null},onSolo)}
         }
         return
     }
@@ -115,6 +119,21 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     }
     BackHandler {
         if(lobby||active)exit=true else back()
+    }
+    // Keep controller/polling state above the route switch. Settings replaces,
+    // rather than covers, the previous Arena content.
+    val localMode=soloMode
+    if(localMode!=null){
+        Wq150SoloSettings(session,localMode,{soloMode=null},onSolo)
+        return
+    }
+    if(edit){
+        Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending&&catalogState.first,
+            onDismiss={edit=false},onApply={next->
+                settings=next;edit=false
+                scope.launch{if(lobby)controller.action("settings",settings=next) else controller.create(next)}
+            },catalog=catalog)
+        return
     }
     MaterialTheme(colorScheme=Wq122Scheme){
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
@@ -292,12 +311,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 }
             }},confirmButton={TextButton(onClick={panel=""}){Text("Kapat")}})
         LaunchedEffect(lobby,active){if(lobby||active)panel=""}
-        soloMode?.let{Wq150SoloSettings(session,it,{soloMode=null},onSolo)}
-        if(edit)Wq150MatchSettingsDialog(settings,catalog?.options("topics").orEmpty(),catalog?.options("wordTypes").orEmpty(),!state.busy&&!state.pending&&catalogState.first,
-            onDismiss={edit=false},onApply={next->
-                settings=next;edit=false
-                scope.launch{if(lobby)controller.action("settings",settings=next) else controller.create(next)}
-            },catalog=catalog)
+
         if(exit)AlertDialog(onDismissRequest={exit=false},title={Text("Arena'dan ayrıl?")},
             text={Text(if(active)"Aktif maçın durumu korunur. Bu ekrandan ayrılmak maçtan hükmen çıkış değildir." else "Odadan ayrılmak istediğine emin misin?")},
             confirmButton={TextButton(onClick={exit=false;if(lobby)scope.launch{controller.action("leave")} else back()}){Text("Ayrıl")}},
@@ -724,12 +738,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
         topics=result
         if(topic !in topics)topic=PremiumArenaRules.allTopics
     }
-    Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)){
-        Wq150ArenaBars()
-        Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-            Wq150SettingsBackdrop(Modifier.matchParentSize())
-            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=10.dp),
-                verticalArrangement=Arrangement.spacedBy(8.dp)){
+    Wq163SettingsPage(onBack={if(!busy)onDismiss()},header={
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
                     Text("Maç Ayarları",color=Wq122Gold,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=21.sp)
@@ -739,7 +748,27 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                     Text(levels.joinToString(" + ")+" · "+count+" "+(if(engine=="quiz")"soru" else "kelime")+" · "+(if(seconds==0)"Süresiz" else "$seconds sn")+" · $hints ipucu",color=Wq122Ink)
                     if(busy)LinearProgressIndicator(Modifier.fillMaxWidth())
                 }
-                Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(9.dp)){
+
+    },footer={
+                    Wq159SettingsFooter(if(busy)"Oyun hazırlanıyor…" else "Oyunu Başlat",!busy&&count>=levels.size){
+                        if(!busy){
+                            busy=true;error=""
+                            val id=java.util.UUID.randomUUID().toString()
+                            val preset=Wq186MatchPreset(levels,hints,0)
+                            val chosenCount=count;val chosenSeconds=seconds;val chosenTopic=topic
+                            scope.launch{
+                                try{
+                                    val round=Wq132WebEngine.generate(context,engine,preset.levels,chosenTopic,chosenCount,chosenSeconds,preset.hints,preset.retries,id.hashCode())
+                                    require(if(engine=="quiz")round.questions.isNotEmpty() else round.board!=null)
+                                    onStart(WqArenaSoloLaunch(id,engine,preset.levels.first(),chosenTopic,chosenCount,chosenSeconds,preset,round))
+                                }catch(e:kotlinx.coroutines.CancellationException){throw e}
+                                catch(e:Exception){error="Oyun hazırlanamadı. Seviye, konu veya sayıyı değiştir: "+(e.message?:"").take(150)}
+                                finally{busy=false}
+                            }
+                        }
+                    }
+    }){
+                Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(9.dp)){
                 val basic:@Composable ()->Unit={
                     Wq150SettingPanel("blue"){
                         Text(wq150Card(kind).title+" · Tek Başına",color=Wq122Gold,fontWeight=FontWeight.Bold)
@@ -772,27 +801,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
                 }
                 if(error.isNotBlank())Text(error,color=Color(0xFFFFB4B4),modifier=Modifier.fillMaxWidth().background(Color(0xFF251347)).padding(8.dp))
                 }
-                    Wq159SettingsFooter(if(busy)"Oyun hazırlanıyor…" else "Oyunu Başlat",!busy&&count>=levels.size){
-                        if(!busy){
-                            busy=true;error=""
-                            val id=java.util.UUID.randomUUID().toString()
-                            val preset=Wq186MatchPreset(levels,hints,0)
-                            val chosenCount=count;val chosenSeconds=seconds;val chosenTopic=topic
-                            scope.launch{
-                                try{
-                                    val round=Wq132WebEngine.generate(context,engine,preset.levels,chosenTopic,chosenCount,chosenSeconds,preset.hints,preset.retries,id.hashCode())
-                                    require(if(engine=="quiz")round.questions.isNotEmpty() else round.board!=null)
-                                    onStart(WqArenaSoloLaunch(id,engine,preset.levels.first(),chosenTopic,chosenCount,chosenSeconds,preset,round))
-                                }catch(e:kotlinx.coroutines.CancellationException){throw e}
-                                catch(e:Exception){error="Oyun hazırlanamadı. Seviye, konu veya sayıyı değiştir: "+(e.message?:"").take(150)}
-                                finally{busy=false}
-                            }
-                        }
-                    }
 
-
-            }
-        }
     }
 }
 @Composable
