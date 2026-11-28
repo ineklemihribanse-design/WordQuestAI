@@ -381,7 +381,7 @@ private object Wq150ArtCache{
 private val LocalWq150HomeArt=staticCompositionLocalOf<Map<String,ImageBitmap?>?>{null}
 
 @Composable
-private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
+internal fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=ContentScale.Fit){
     val prepared=LocalWq150HomeArt.current
     if(prepared!=null&&prepared.containsKey(name)){
         prepared[name]?.let{Image(it,null,modifier,contentScale=scale)}

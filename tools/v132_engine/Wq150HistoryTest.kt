@@ -20,4 +20,12 @@ class Wq150HistoryTest {
         val view=JSONObject("""{"phase":"finished","kind":"duel","result":{"kind":"no-contest"},"connection":{"players":[{"id":"a"},{"id":"b"}]},"summary":{"players":{"a":{"score":9},"b":{"score":4}}}}""")
         assertNull(Wq150History.entry("room",view,JSONObject(),"a","Me"))
     }
+    @Test fun combinedTeacherActionIncludesBothSectionsWithoutInventingAnswers(){
+        val wrong=JSONObject().put("clue","elma").put("answer","APPLE")
+        val blank=JSONObject().put("clue","ev")
+        val prompt=wq150CombinedStudyPrompt(listOf(wrong),listOf(blank))
+        assertTrue(prompt.contains("Yanlış kelimeler:\nelma — doğru cevap: APPLE"))
+        assertTrue(prompt.contains("Boş kelimeler:\nev — doğru cevap maç kaydında yok"))
+        assertTrue(wq150CombinedStudyPrompt(emptyList(),listOf(blank)).contains("Yanlış kelimeler:\nYok"))
+    }
 }
