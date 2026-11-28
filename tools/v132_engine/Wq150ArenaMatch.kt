@@ -745,7 +745,7 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
                 androidx.compose.animation.AnimatedVisibility(expanded){
                     Column{
                         if(blankCounts?.has(id)==true)Text("Boş kelime: "+blankCounts.optInt(id),color=Wq122Ink)
-                        Wq150StatCard(name(id),player,id in winners)
+                        Wq150StatCard(name(id),player,id in winners,showHeader=false)
                     }
                 }
             }
@@ -779,11 +779,11 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
     Button(onClick=onBack,modifier=Modifier.fillMaxWidth()){Text("Arena'ya dön")}
 }
 @Composable
-private fun Wq150StatCard(name:String,stats:JSONObject?,winner:Boolean){
+private fun Wq150StatCard(name:String,stats:JSONObject?,winner:Boolean,showHeader:Boolean=true){
     Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth(),
         border=if(winner)androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold)else null){
         Column(Modifier.padding(12.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){
-            Row(verticalAlignment=Alignment.CenterVertically){
+            if(showHeader)Row(verticalAlignment=Alignment.CenterVertically){
                 Text(name,color=Wq122Ink,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f))
                 if(stats?.has("score")==true)Text(stats.optInt("score").toString()+" puan",color=Wq122Gold,fontWeight=FontWeight.Black)
             }

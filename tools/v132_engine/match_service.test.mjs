@@ -164,3 +164,17 @@ test('departed voter invalidates pending team finish offer without ending match'
  s=matchCommand(s,'d',{id:'new-vote-d',type:'finish-accept',offerId:s.social.offer.id,revision:s.revision},61003);
  assert.equal(s.result.kind,'mutual-finish');
 });
+
+test('personal review is terminal, distinct, and contains only own attempted items',()=>{
+ let s=base(),a=s.game.turn,b=s.game.players.find(p=>p!==a);
+ s=matchCommand(s,a,{id:'review-wrong',revision:s.revision,type:'submit',word:0,answer:'WRONG'},1001);
+ s=matchCommand(s,b,{id:'review-blank',revision:s.revision,type:'pass',word:0},1002);
+ assert.equal(matchView(s,a).summary,undefined);
+ s=matchTransport(s,{type:'leave',id:a,epoch:1},1003);
+ const va=matchView(s,a),vb=matchView(s,b);
+ assert.equal(va.summary.review.length,1);assert.equal(va.summary.review[0].kind,'wrong');
+ assert.equal(vb.summary.review.length,1);assert.equal(vb.summary.review[0].kind,'blank');
+ assert.equal(va.summary.review[0].answer,s.game.words[0].answer);
+ assert.equal(va.summary.blankCounts[b],1);assert.equal(va.summary.blankCounts[a],0);
+ assert.equal(va.summary.review.some(x=>x.index===1),false);
+});
