@@ -16,4 +16,8 @@ class Wq150HistoryTest {
         view.put("phase","playing")
         assertNull(Wq150History.entry("room",view,JSONObject(),"a","Me"))
     }
+    @Test fun noContestDoesNotAffectRankingHistory(){
+        val view=JSONObject("""{"phase":"finished","kind":"duel","result":{"kind":"no-contest"},"connection":{"players":[{"id":"a"},{"id":"b"}]},"summary":{"players":{"a":{"score":9},"b":{"score":4}}}}""")
+        assertNull(Wq150History.entry("room",view,JSONObject(),"a","Me"))
+    }
 }

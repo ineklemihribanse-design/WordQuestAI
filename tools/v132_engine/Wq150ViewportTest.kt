@@ -75,4 +75,17 @@ class Wq150ViewportTest {
         assertEquals("COMP",wq150FullWordDraft("co-mp",8))
         assertEquals("",wq150FullWordDraft("abc",0))
     }
+    @Test fun twoAnswerModesYieldSameWord(){
+        val fixed=listOf(null,"P","P",null,null,null,"A",null,"I",null,"N")
+        assertEquals("APPLICATION",wq150CompleteAnswer(fixed,"ALICTO",true))
+        assertEquals("APPLICATION",wq150CompleteAnswer(fixed,"APPLICATION",false))
+        assertEquals("WRONG",wq150CompleteAnswer(fixed,"WRONG",false))
+        assertEquals("ABC",wq150CompleteAnswer(emptyList(),"ABC",true))
+    }
+    @Test fun largerBoardUsesAvailableTabletWidthWithoutOverflow(){
+        val v=wq150Viewport(1100f,680f,10,12,0,5f,6f)
+        assertEquals(56f,v.cell,.01f)
+        assertTrue(v.x>=0f&&v.y>=0f)
+        assertTrue(v.x+12*v.cell<=1100.01f&&v.y+10*v.cell<=680.01f)
+    }
 }

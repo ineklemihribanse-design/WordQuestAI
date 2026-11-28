@@ -170,6 +170,12 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
 internal fun wq150FullWordDraft(input:String,length:Int):String =
     input.filter{it.isLetter()}.uppercase(java.util.Locale.ROOT).take(length.coerceAtLeast(0))
 
+internal fun wq150CompleteAnswer(known:List<String?>,draft:String,missingOnly:Boolean):String{
+    if(!missingOnly||known.isEmpty())return draft
+    var at=0
+    return known.joinToString(""){it?:draft.getOrNull(at++)?.toString().orEmpty()}
+}
+
 @Composable
 private fun Wq150CenterClock(remaining:Long?,phase:String,tablet:Boolean,compact:Boolean){
     val urgent=phase=="playing"&&remaining!=null&&remaining in 0L..10L
@@ -265,10 +271,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
         }
         previousMissing=missing
     }
-    val answerText=if(missingOnly&&currentCells.isNotEmpty()){
-        val typed=missing.zip(draft.map{it.toString()}).toMap()
-        currentCells.joinToString(""){known[it]?:typed[it].orEmpty()}
-    }else draft
+    val answerText=wq150CompleteAnswer(currentCells.map{known[it]},draft,missingOnly)
     val answerComplete=totalLength>0&&draft.length==inputLength&&answerText.length==totalLength
     fun changeInputMode(next:Boolean){
         if(next==missingOnly)return
