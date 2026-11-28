@@ -715,7 +715,7 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
                 drawOval(Color(0xFFFFD572),topLeft=Offset(0f,0f),size=Size(size.width,size.height*.68f))
                 drawOval(Color(0xFF6D38AD),topLeft=Offset(size.width*.035f,size.height*.055f),size=Size(size.width*.93f,size.height*.55f))
             }
-            Row(Modifier.fillMaxSize().padding(bottom=12.dp,horizontal=if(wide)64.dp else 12.dp),horizontalArrangement=Arrangement.spacedBy(4.dp),verticalAlignment=Alignment.Bottom){
+            Row(Modifier.fillMaxSize().padding(horizontal=if(wide)64.dp else 12.dp).padding(bottom=12.dp),horizontalArrangement=Arrangement.spacedBy(4.dp),verticalAlignment=Alignment.Bottom){
                 ids.forEach{id->
                     val victory=id in winners
                     Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
