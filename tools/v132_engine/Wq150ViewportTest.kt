@@ -88,4 +88,17 @@ class Wq150ViewportTest {
         assertTrue(v.x>=0f&&v.y>=0f)
         assertTrue(v.x+12*v.cell<=1100.01f&&v.y+10*v.cell<=680.01f)
     }
+    @Test fun singleInputAcceptsBothLengthsWithoutModeSwitch(){
+        val fixed=listOf(null,"P","P",null,null,null,"A",null,"I",null,"N")
+        assertEquals("APPLICATION",wq150AutomaticAnswer(fixed,"ALICTO",11))
+        assertEquals("APPLICATION",wq150AutomaticAnswer(fixed,"APPLICATION",11))
+        assertEquals("XXXXXXXXXXX",wq150AutomaticAnswer(fixed,"XXXXXXXXXXX",11))
+        assertNull(wq150AutomaticAnswer(fixed,"APPL",11))
+        assertNull(wq150AutomaticAnswer(fixed,"APPLICA",11))
+        assertTrue(wq150PreviewMissing(fixed,"ALICTO",11))
+        assertFalse(wq150PreviewMissing(fixed,"APPLICATION",11))
+        assertFalse(wq150PreviewMissing(fixed,"APP",11))
+        assertEquals("ABC",wq150AutomaticAnswer(listOf(null,null,null),"ABC",3))
+        assertNull(wq150AutomaticAnswer(listOf(null,null,null),"AB",3))
+    }
 }

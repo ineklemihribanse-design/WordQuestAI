@@ -17,7 +17,7 @@ env:
   WQ_BASE_CODE: '180'
   WQ_BASE_SHA: c36b213bbf5c3140a53e4e104b60b7311d9974b8a90db6bfde2442d7b213e455
   WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
-  WQ_NOTES: 'Arena: daha büyük tahta, telefon yerleşimi, iki cevap giriş biçimi, emoji geçişi, canlı davet ve bağlantı kopmasında sonuçsuz ayrılma desteği.'
+  WQ_NOTES: 'Arena: daha büyük tahta, telefon yerleşimi, tek cevap alanında otomatik tam kelime veya eksik harf, emoji geçişi, canlı davet ve bağlantı kopmasında sonuçsuz ayrılma desteği.'
 jobs:
   release_gate:
     if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
@@ -932,7 +932,9 @@ jobs:
         working-directory: source
         run: |
           set -euo pipefail
-          ./gradlew --daemon --build-cache :app:assembleOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/candidate-build.log" 2>&1 || { tail -n 100 "$RUNNER_TEMP/wq-full-audit/candidate-build.log"; exit 1; }
+          ./gradlew --stop
+          free -h
+          ./gradlew --no-daemon --max-workers=2 '-Dorg.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=768m -Dfile.encoding=UTF-8' --build-cache :app:assembleOffline --stacktrace > "$RUNNER_TEMP/wq-full-audit/candidate-build.log" 2>&1 || { tail -n 100 "$RUNNER_TEMP/wq-full-audit/candidate-build.log"; exit 1; }
           test -s app/build/outputs/apk/offline/app-offline-unsigned.apk
       - name: Sign and verify device-test candidate with existing certificate
         env:

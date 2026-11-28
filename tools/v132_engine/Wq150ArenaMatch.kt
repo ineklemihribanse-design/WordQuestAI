@@ -170,6 +170,24 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
 internal fun wq150FullWordDraft(input:String,length:Int):String =
     input.filter{it.isLetter()}.uppercase(java.util.Locale.ROOT).take(length.coerceAtLeast(0))
 
+internal fun wq150AutomaticAnswer(known:List<String?>,draft:String,total:Int):String?{
+    if(total<=0)return null
+    if(draft.length==total)return draft
+    if(known.size!=total)return null
+    val missing=known.count{it==null}
+    if(missing>=total||draft.length!=missing)return null
+    return wq150CompleteAnswer(known,draft,true)
+}
+
+internal fun wq150PreviewMissing(known:List<String?>,draft:String,total:Int):Boolean{
+    if(known.size!=total||draft.length>=total)return false
+    val missing=known.count{it==null}
+    if(missing>=total||draft.length>missing)return false
+    if(draft.length==missing)return true
+    val fixedPrefix=known.take(draft.length).mapIndexedNotNull{i,c->c?.let{i to it}}
+    return fixedPrefix.isEmpty()||fixedPrefix.any{(i,c)->draft[i].toString()!=c}
+}
+
 internal fun wq150CompleteAnswer(known:List<String?>,draft:String,missingOnly:Boolean):String{
     if(!missingOnly||known.isEmpty())return draft
     var at=0
@@ -259,29 +277,13 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
         else -> game.optInt("hintsLeft")
     }
     var draft by remember(room,index){mutableStateOf("")}
-    // Input always represents the entire word, including intersections and revealed hints.
-    var missingOnly by rememberSaveable(room){mutableStateOf(false)}
+    // One field accepts a complete word or only its unknown letters.
     val missing=currentCells.filterNot{it in known}
-    val inputLength=if(missingOnly&&currentCells.isNotEmpty())missing.size else totalLength
-    var previousMissing by remember(room,index){mutableStateOf(missing)}
-    LaunchedEffect(missing,missingOnly){
-        if(missingOnly&&previousMissing!=missing){
-            val typed=previousMissing.zip(draft.toList()).toMap()
-            draft=missing.mapNotNull{typed[it]}.joinToString("")
-        }
-        previousMissing=missing
-    }
-    val answerText=wq150CompleteAnswer(currentCells.map{known[it]},draft,missingOnly)
-    val answerComplete=totalLength>0&&draft.length==inputLength&&answerText.length==totalLength
-    fun changeInputMode(next:Boolean){
-        if(next==missingOnly)return
-        if(currentCells.isNotEmpty()){
-            val typed=(if(missingOnly)missing else currentCells).zip(draft.map{it.toString()}).toMap()
-            draft=if(next)missing.mapNotNull{typed[it]}.joinToString("")
-                else currentCells.map{known[it]?:typed[it]}.takeWhile{it!=null}.joinToString(""){it.orEmpty()}
-        }
-        missingOnly=next
-    }
+    val missingCount=missing.size
+    val knownLetters=currentCells.map{known[it]}
+    val answerText=wq150AutomaticAnswer(knownLetters,draft,totalLength)
+    val answerComplete=answerText!=null
+    val previewCells=if(wq150PreviewMissing(knownLetters,draft,totalLength))missing else currentCells
     var exit by remember(room){mutableStateOf(false)}
     var disconnectExit by remember(room){mutableStateOf(false)}
     var now by remember{mutableLongStateOf(view.optLong("serverNow",System.currentTimeMillis()))}
@@ -430,7 +432,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                         Text(when(zoom){1->"Yakınlaştır +";2->"Tüm tahta";else->"Yakınlaştır"},color=Wq122Gold)
                     }
                 }
-                val typed=(if(missingOnly&&currentCells.isNotEmpty())missing else currentCells).zip(draft.map{it.toString()}).toMap()
+                val typed=previewCells.zip(draft.map{it.toString()}).toMap()
                 Wq150Board(words,index,typed+known,enabled&&(choose||free),{selected=it},zoom,imeVisible,Modifier.weight(1f))
             }
             Column(Modifier.fillMaxWidth().then(if(quiz||finished)Modifier.weight(1f)else Modifier.heightIn(max=320.dp))
@@ -460,18 +462,14 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                         }else{
                             val length=entry?.optInt("length",entry.optInt("letterCount"))?:0
                             val direction=if(currentCells.size>=2&&currentCells[0].row==currentCells[1].row)"Yatay" else "Dikey"
-                            Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(4.dp)){
-                                Text((index+1).toString()+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=11.sp,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
-                                TextButton(onClick={changeInputMode(false)},contentPadding=PaddingValues(4.dp),modifier=Modifier.height(32.dp)){Text("Tam kelime",color=if(!missingOnly)Wq122Gold else Wq122Ink,fontSize=11.sp,maxLines=1)}
-                                TextButton(onClick={changeInputMode(true)},contentPadding=PaddingValues(4.dp),modifier=Modifier.height(32.dp)){Text("Eksik harf",color=if(missingOnly)Wq122Gold else Wq122Ink,fontSize=11.sp,maxLines=1)}
-                            }
+                            Text("Kelime "+(index+1)+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=12.sp,maxLines=1)
                             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
-                                OutlinedTextField(draft,{if(typingAllowed)draft=wq150FullWordDraft(it,inputLength)},
+                                OutlinedTextField(draft,{if(typingAllowed)draft=wq150FullWordDraft(it,totalLength)},
                                     enabled=typingAllowed,readOnly=!enabled,singleLine=true,
                                     keyboardOptions=KeyboardOptions(capitalization=KeyboardCapitalization.Characters,imeAction=ImeAction.Send),
-                                    keyboardActions=KeyboardActions(onSend={if(enabled&&answerComplete&&answerText.isNotBlank())send("submit",answer=answerText)}),
-                                    label={Text(if(missingOnly)"Eksik $inputLength harf" else "Kelimeyi yaz · $length harf",maxLines=1,fontSize=12.sp)},colors=OutlinedTextFieldDefaults.colors(focusedContainerColor=Color(0xDD24183E),unfocusedContainerColor=Color(0xDD24183E),focusedTextColor=Color.White,unfocusedTextColor=Color.White),modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
-                                Button(enabled=enabled&&answerComplete&&answerText.isNotBlank(),onClick={send("submit",answer=answerText)},contentPadding=PaddingValues(horizontal=10.dp,vertical=8.dp)){Text("Gönder")}
+                                    keyboardActions=KeyboardActions(onSend={if(enabled&&answerComplete&&!answerText.isNullOrBlank())send("submit",answer=answerText)}),
+                                    label={Text("Kelimeyi yaz",maxLines=1,fontSize=12.sp)},colors=OutlinedTextFieldDefaults.colors(focusedContainerColor=Color(0xDD24183E),unfocusedContainerColor=Color(0xDD24183E),focusedTextColor=Color.White,unfocusedTextColor=Color.White),modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
+                                Button(enabled=enabled&&answerComplete&&!answerText.isNullOrBlank(),onClick={send("submit",answer=answerText)},contentPadding=PaddingValues(horizontal=10.dp,vertical=8.dp)){Text("Gönder")}
                             }
                         }
                         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
