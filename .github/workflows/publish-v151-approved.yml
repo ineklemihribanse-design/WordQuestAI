@@ -17,7 +17,7 @@ env:
   WQ_BASE_CODE: '182'
   WQ_BASE_SHA: 45c945646575e3da6315eb1f283db347277ac42b3c5737ac9a77ed6a6e2e85bc
   WQ_SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
-  WQ_NOTES: 'Arena: yan yana maskotlar, kazanan kupa pozu, açılır oyuncu kartları, yanlış/boş kelime özeti ve kişisel öğretmen bağlantısı.'
+  WQ_NOTES: 'Arena: yan yana maskotlar, kazanan kupa pozu, açılır oyuncu kartları, yanlış/boş kelime özeti ve tek Öğretmenimle çalış butonu; mevcut 3D Arena görselleri korunur.'
 jobs:
   release_gate:
     if: github.repository == 'ineklemihribanse-design/WordQuestAI' && github.head_ref == 'feature/v150-arena-nextgen' && github.event.pull_request.head.repo.full_name == github.repository
