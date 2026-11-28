@@ -766,18 +766,32 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
             }
         }
     }
-    Text("Öğretmeninle çalış",color=Wq122Gold,fontSize=19.sp,fontWeight=FontWeight.Bold)
-    fun study(rows:List<JSONObject>,label:String){
-        val content=rows.joinToString("\n"){row->
-            val answer=row.optString("answer").takeUnless{it=="null"}.orEmpty()
-            row.optString("clue")+if(answer.isNotBlank())" — doğru cevap: "+answer else " — doğru cevap maç kaydında yok"
+    Surface(color=Color(0xE83B245E),shape=RoundedCornerShape(16.dp),modifier=Modifier.fillMaxWidth(),
+        border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold)){
+        Column(Modifier.padding(12.dp),verticalArrangement=Arrangement.spacedBy(6.dp)){
+            Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)){
+                Wq150ApprovedArt("book",Modifier.size(48.dp))
+                Column(Modifier.weight(1f)){
+                    Text("Öğretmeninle çalış",color=Wq122Gold,fontSize=19.sp,fontWeight=FontWeight.Black)
+                    Text("Yanlış ve boş kelimelerini birlikte tekrar et.",color=Wq122Ink,fontSize=12.sp)
+                    Text("${wrong.size} yanlış · ${blank.size} boş",color=Wq122Gold,fontSize=12.sp)
+                }
+            }
+            Button(enabled=wrong.isNotEmpty()||blank.isNotEmpty(),onClick={onTeacher(wq150CombinedStudyPrompt(wrong,blank))},modifier=Modifier.fillMaxWidth()){
+                Text("Öğretmenimle çalış",fontWeight=FontWeight.Bold)
+            }
         }
-        onTeacher("Arena maçımda "+label+" üzerinde çalışmak istiyorum. Türkçe açıklama, İngilizce örnek cümle ve kısa alıştırmalarla öğret. Cevabı kayıtta olmayan maddelerde kesin cevap uydurma.\n"+content)
     }
-    Button(enabled=wrong.isNotEmpty(),onClick={study(wrong,"yanlış yaptığım kelimeler")},modifier=Modifier.fillMaxWidth()){Text("Yanlışları öğretmenimle çalış")}
-    OutlinedButton(enabled=blank.isNotEmpty(),onClick={study(blank,"boş bıraktığım kelimeler")},modifier=Modifier.fillMaxWidth()){Text("Boşları öğretmenimle çalış",color=Wq122Gold)}
     Button(onClick=onBack,modifier=Modifier.fillMaxWidth()){Text("Arena'ya dön")}
 }
+internal fun wq150CombinedStudyPrompt(wrong:List<JSONObject>,blank:List<JSONObject>):String{
+    fun section(rows:List<JSONObject>):String=if(rows.isEmpty())"Yok" else rows.joinToString("\n"){row->
+        val answer=row.optString("answer").takeUnless{it=="null"}.orEmpty()
+        row.optString("clue")+if(answer.isNotBlank())" — doğru cevap: "+answer else " — doğru cevap maç kaydında yok"
+    }
+    return "Arena maçımda yanlış yaptığım ve boş bıraktığım kelimeleri birlikte çalışmak istiyorum. Türkçe açıklama, İngilizce örnek cümle ve kısa alıştırmalarla öğret. Cevabı kayıtta olmayan maddelerde kesin cevap uydurma.\n\nYanlış kelimeler:\n"+section(wrong)+"\n\nBoş kelimeler:\n"+section(blank)
+}
+
 @Composable
 private fun Wq150StatCard(name:String,stats:JSONObject?,winner:Boolean,showHeader:Boolean=true){
     Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.fillMaxWidth(),
