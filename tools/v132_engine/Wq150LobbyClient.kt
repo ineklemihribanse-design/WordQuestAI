@@ -44,7 +44,7 @@ internal data class Wq150LobbyCommand(
 // Explicit rejections must not leave a request permanently blocking the lobby.
 internal fun wq150LobbyFinalError(status:Int,code:String):Boolean =
     status in listOf(400,401,403,404,405,413,429) ||
-    code in setOf("room-quota","lobby-not-ready","lobby-expired","invalid-settings","invalid-command","not-found","match-already-started")
+    code in setOf("room-quota","lobby-not-ready","lobby-expired","invalid-settings","invalid-command","invalid-ready","not-found","match-already-started","lobby-unavailable","not-configured")
 
 internal fun wq150LobbyErrorText(status:Int,code:String):String = when(code){
     "room-quota"->"Günlük 10 yeni oda sınırına ulaşıldı. Arkadaşının odasına katılabilirsin."
@@ -105,16 +105,17 @@ internal class Wq150LobbyController(private val gateway:Wq150Gateway){
                 // A concurrent join/ready may advance the room revision. Fetch authoritative
                 // state, then reissue only the same readiness intent and unchanged settings.
                 try{
-                    val latest=gateway.lobby(action!!.room)
+                    val failedAction=requireNotNull(action)
+                    val latest=gateway.lobby(failedAction.room)
                     accept(latest)
                     val view=latest.view
-                    val command=action.command
-                    val sameConfig=view?.optString("phase")=="lobby"&&
+                    val command=failedAction.command
+                    val sameConfig=view!=null&&view.optString("phase")=="lobby"&&
                         view.optLong("configRevision",-1)==command.configRevision
                     if(allowReadyRecovery&&command.type=="ready"&&sameConfig){
                         val nextRevision=view!!.optLong("revision",-1)
                         if(nextRevision>=0&&nextRevision!=command.revision){
-                            execute(Wq150LobbyRequest.Action(action.room,command.copy(revision=nextRevision,id=UUID.randomUUID().toString())),false)
+                            execute(Wq150LobbyRequest.Action(failedAction.room,command.copy(revision=nextRevision,id=UUID.randomUUID().toString())),false)
                             return
                         }
                     }
@@ -152,7 +153,6 @@ internal class Wq150LobbyController(private val gateway:Wq150Gateway){
         execute(Wq150LobbyRequest.Action(room,command))
     }
     suspend fun retry()=lock.withLock{pending?.let{execute(it)}}
-    suspend fun clearError()=lock.withLock{if(pending==null)mutable.value=mutable.value.copy(error=null)}
     suspend fun refresh()=lock.withLock{
         val current=mutable.value
         val room=current.room?:return@withLock
