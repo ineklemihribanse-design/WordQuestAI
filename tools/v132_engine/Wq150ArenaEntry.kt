@@ -268,6 +268,11 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                 if(state.error!=null&&room!=null&&!state.busy)TextButton(onClick={scope.launch{controller.refresh()}}){Text("Odayı yenile",color=Wq122Gold)}
             }
         }
+        if(auth!=null&&!lobby&&!active&&room==null&&panel!="Hızlı Oda Katılımı"){
+            Wq150Invites(session,auth,uid,null,false,!state.busy&&!state.pending,null,popupOnly=true){id->
+                controller.join(id);controller.state.value.room==id&&controller.state.value.view!=null&&!controller.state.value.left
+            }
+        }
         if(panel=="Arkadaşlarım")Wq157ArenaFriends(session.social){panel=""}
         if(panel.isNotBlank()&&panel!="Arkadaşlarım")AlertDialog(onDismissRequest={panel=""},containerColor=Color(0xFF251347),title={Text(panel,color=Wq122Gold)},
             text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
