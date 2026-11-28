@@ -965,7 +965,8 @@ jobs:
           grep -Fq "versionName='1.0.171'" "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"
           if grep -Fq 'application-debuggable' "$RUNNER_TEMP/wq-full-audit/candidate-badging.txt"; then exit 1; fi
           unzip -tq "$APK"
-          test "$(unzip -p "$APK" assets/arena_result_podium.webp | sha256sum | cut -d\x27 \x27 -f1)" = 279bc61077f94e8ab4fcef6679f9b0ef793943d58e4df99c37b01a895ba7bd37
+          unzip -p "$APK" assets/arena_result_podium.webp > "$RUNNER_TEMP/wq-podium-check.webp"
+          echo "279bc61077f94e8ab4fcef6679f9b0ef793943d58e4df99c37b01a895ba7bd37  $RUNNER_TEMP/wq-podium-check.webp" | sha256sum -c -
           test "$(unzip -p "$APK" assets/wq150_arena_origin.txt)" = 'https://wordquest-arena-v150-free.mihriban-se5.workers.dev'
           python3 - "$APK" <<'PY'
           import sys,zipfile,hashlib
