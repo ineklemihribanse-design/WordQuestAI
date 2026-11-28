@@ -109,6 +109,14 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     var panel by rememberSaveable {mutableStateOf("")}
     val snapshot=state.view
     val room=state.room
+    val routedInvite=Wq150InviteRoute.pending
+    LaunchedEffect(uid,routedInvite,state.busy,state.pending){
+        if(routedInvite!=null&&!state.busy&&!state.pending&&(state.room==null||state.left)){
+            val id=Wq150InviteRoute.take(uid)?:return@LaunchedEffect
+            onTab(false)
+            controller.join(id)
+        }
+    }
     val lobby=snapshot?.optString("phase")=="lobby"&&!state.left
     val active= snapshot?.optString("phase") in listOf("playing","paused","finished")
     LaunchedEffect(room,state.left){

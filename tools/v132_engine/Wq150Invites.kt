@@ -18,11 +18,39 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
 internal data class Wq150Invite(val sender:String,val room:String,val sentAt:Long)
+
+// App-wide dialog hands off the room ID; only successful room admission consumes
+// the inbox entry. A different signed-in account cannot consume this request.
+internal object Wq150InviteRoute {
+    var pending by mutableStateOf<Pair<String,String>?>(null)
+        private set
+    fun offer(uid:String,room:String){if(uid.isNotBlank()&&wq150ValidRoom(room))pending=uid to room}
+    fun take(uid:String):String? {
+        val request=pending?:return null
+        if(request.first!=uid){pending=null;return null}
+        pending=null;return request.second
+    }
+}
+
+@Composable
+internal fun Wq150GlobalInvite(session:AppSession,onArena:()->Unit){
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val auth=session.accounts.socialAuth()?:return
+    val uid=session.accounts.uid.orEmpty()
+    if(uid.isBlank()||Wq150ArenaFeature.endpoint(context)==null)return
+    val activeRoom=context.getSharedPreferences("wq150_active_room",android.content.Context.MODE_PRIVATE).getString(uid,null)
+    if(!activeRoom.isNullOrBlank())return
+    MaterialTheme(colorScheme=Wq122Scheme){
+        Wq150Invites(session,auth,uid,null,false,true,null,popupOnly=true,routeOnly=true){id->
+            Wq150InviteRoute.offer(uid,id);onArena();true
+        }
+    }
+}
 internal fun wq150FreshInvite(sentAt:Long,now:Long)=sentAt in (now-600_000)..(now+10_000)
 
 @Composable
 internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:String?,canInvite:Boolean,
-    enabled:Boolean,joinedRoom:String?,externalOpen:Boolean?=null,onClose:()->Unit={},popupOnly:Boolean=false,onJoin:suspend (String)->Boolean){
+    enabled:Boolean,joinedRoom:String?,externalOpen:Boolean?=null,onClose:()->Unit={},popupOnly:Boolean=false,routeOnly:Boolean=false,onJoin:suspend (String)->Boolean){
     val scope=rememberCoroutineScope()
     val db=remember(auth,uid){runCatching{FirebaseDatabase.getInstance(auth.app,"https://wordquest-ai-default-rtdb.firebaseio.com").reference.child("arenaV150Invites")}.getOrNull()}
     var invites by remember(uid){mutableStateOf(emptyList<Wq150Invite>())}
@@ -73,7 +101,7 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
             }},
             confirmButton={Button(enabled=enabled&&!writing,onClick={
                 scope.launch{writing=true;try{
-                    if(onJoin(invite.room)){db?.child(uid)?.child(invite.sender)?.removeValue();message=""}
+                    if(onJoin(invite.room)){if(!routeOnly)db?.child(uid)?.child(invite.sender)?.removeValue();message=""}
                     else message="Odaya katılınamadı. Yeniden deneyebilirsin."
                 }finally{writing=false}}
             }){Text("Kabul et")}},
@@ -129,5 +157,5 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
             },confirmButton={TextButton(onClick=onClose){Text("Kapat",color=Wq122Gold)}})
         else if(externalOpen==null&&open)content()
     }
-    if(message.isNotBlank()&&externalOpen!=true)Text(message,color=Wq122Ink)
+    if(message.isNotBlank()&&externalOpen!=true&&!popupOnly)Text(message,color=Wq122Ink)
 }
