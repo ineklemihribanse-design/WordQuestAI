@@ -93,9 +93,10 @@ private fun letters(game:JSONObject,kind:String,words:List<JSONObject>):Map<Wq15
 }
 /** Compute a measured viewport. All coordinates are in dp, not screen fractions. */
 internal data class Wq150Viewport(val cell:Float,val x:Float,val y:Float,val minX:Float,val maxX:Float,val minY:Float,val maxY:Float)
-internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,focusRow:Float,focusCol:Float,fitHeight:Float=height):Wq150Viewport{
+internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,focusRow:Float,focusCol:Float,fitHeight:Float=height,widthFraction:Float=0f):Wq150Viewport{
     require(width>0&&height>0&&rows>0&&cols>0&&zoom in 0..2)
-    val fit=minOf(width/cols,fitHeight.coerceAtLeast(height)/rows,56f)
+    val fullFit=minOf(width/cols,fitHeight.coerceAtLeast(height)/rows,56f)
+    val fit=if(widthFraction>0f)maxOf(fullFit,width*widthFraction.coerceIn(0f,1f)/cols).coerceAtMost(72f) else fullFit
     val scale=when(zoom){1->1.55f;2->2.35f;else->1f}
     val cell=fit*scale
     val boardW=cols*cell;val boardH=rows*cell
@@ -107,7 +108,7 @@ internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,f
 }
 @Composable
 private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,String>,
-    selectable:Boolean,onSelect:(Int)->Unit,zoom:Int,imeVisible:Boolean,modifier:Modifier=Modifier){
+    selectable:Boolean,onSelect:(Int)->Unit,zoom:Int,imeVisible:Boolean,wideDefault:Boolean,modifier:Modifier=Modifier){
     val positions=remember(words){words.map(::wordCells)}
     val cells=remember(positions){positions.flatten().distinct()}
     if(cells.isEmpty())return
@@ -125,9 +126,10 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
         // Preserve the measured non-IME scale; the smaller visible area becomes a pannable viewport.
         var fullHeight by remember(width){mutableFloatStateOf(height)}
         SideEffect{if(!imeVisible&&fullHeight!=height)fullHeight=height}
-        val viewport=wq150Viewport(width,height,rows,cols,zoom,focusRow,focusCol,if(imeVisible)fullHeight else height)
-        var x by remember(zoom,selected,width,height,rows,cols){mutableFloatStateOf(viewport.x)}
-        var y by remember(zoom,selected,width,height,rows,cols){mutableFloatStateOf(viewport.y)}
+        val viewport=wq150Viewport(width,height,rows,cols,if(wideDefault&&zoom==1)0 else zoom,focusRow,focusCol,
+            if(imeVisible)fullHeight else height,widthFraction=if(wideDefault&&zoom!=1).92f else 0f)
+        var x by remember(zoom,selected,width,height,rows,cols,viewport.cell){mutableFloatStateOf(viewport.x)}
+        var y by remember(zoom,selected,width,height,rows,cols,viewport.cell){mutableFloatStateOf(viewport.y)}
         val size=viewport.cell.dp
         val drag=if(viewport.minX==viewport.maxX&&viewport.minY==viewport.maxY)Modifier else Modifier.pointerInput(zoom,selected,width,height,rows,cols,viewport.cell){
             detectDragGestures{change,amount->
@@ -166,6 +168,10 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
         }
     }
 }
+
+internal fun wq150SkipRemaining(limit:Int,used:Int,round:Int):Int=if(round==1)(limit-used).coerceAtLeast(0) else 0
+
+internal fun wq150ArenaPlayerName(vararg choices:String?):String=choices.firstOrNull{!it.isNullOrBlank()&&!it.equals("Oyuncu",true)}?.trim()?:"Rakip"
 
 internal fun wq150FullWordDraft(input:String,length:Int):String =
     input.filter{it.isLetter()}.uppercase(java.util.Locale.ROOT).take(length.coerceAtLeast(0))
@@ -216,7 +222,9 @@ private fun Wq150CenterClock(remaining:Long?,phase:String,tablet:Boolean,compact
 internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:Wq150Gateway,session:AppSession,onBack:()->Unit){
     val profiles=rememberWq150Profiles(room,session,gateway)
     val ownAvatar by rememberWq2DSelection(session.profileKey)
-    val tablet=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
+    val config=androidx.compose.ui.platform.LocalConfiguration.current
+    val tablet=config.smallestScreenWidthDp>=600
+    val split=tablet&&config.screenWidthDp>config.screenHeightDp
     val context=androidx.compose.ui.platform.LocalContext.current
     val sessionId=remember(room,uid){
         val prefs=context.getSharedPreferences("wq150_match_session",android.content.Context.MODE_PRIVATE)
@@ -271,6 +279,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val known=remember(game,kind,words){letters(game,kind,words)}
     val currentCells=entry?.let(::wordCells).orEmpty()
     val totalLength=entry?.optInt("length",entry.optInt("letterCount"))?.takeIf{it>0}?:currentCells.size
+    val skipLeft=wq150SkipRemaining(settings.optInt("skipLimit",0),game.optJSONObject("stats")?.optJSONObject(uid)?.optInt("skip",0)?:0,game.optInt("round",1))
     val hintBudget=when(kind){
         "quiz" -> mine?.optInt("hintsLeft")?:0
         "coop" -> (game.optInt("hints")-game.optInt("spent")).coerceAtLeast(0)
@@ -284,6 +293,8 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val answerText=wq150AutomaticAnswer(knownLetters,draft,totalLength)
     val answerComplete=answerText!=null
     val previewCells=if(wq150PreviewMissing(knownLetters,draft,totalLength))missing else currentCells
+    var inspected by remember(room){mutableStateOf<List<String>>(emptyList())}
+    var actionFeedback by remember(room){mutableStateOf("")}
     var exit by remember(room){mutableStateOf(false)}
     var disconnectExit by remember(room){mutableStateOf(false)}
     var now by remember{mutableLongStateOf(view.optLong("serverNow",System.currentTimeMillis()))}
@@ -310,7 +321,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val mustVote=offerPending&&!offeredByMe&&uid in offer.strings("required")&&uid !in offer.strings("accepted")
     val canSocial=phase=="playing"&&!remote.busy&&remote.pending==null&&remote.error==null
     var emojiMenu by remember(room){mutableStateOf(false)}
-    LaunchedEffect(canSocial,imeVisible){if(!canSocial||imeVisible)emojiMenu=false}
+    LaunchedEffect(canSocial){if(!canSocial)emojiMenu=false}
     var lastEmoji by remember(room){mutableLongStateOf(0L)}
     var activeReaction by remember(room){mutableStateOf<Pair<String,String>?>(null)}
     val reactionText=activeReaction?.second.orEmpty()
@@ -353,13 +364,48 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
         val command=Wq150Command(view.optLong("revision"),type,symbol=symbol,offerId=id)
         if(command.valid())scope.launch{controller.submit(command)}
     }
+    val feedback=view.optJSONObject("feedback")
+    var previousWrong by remember(room){mutableIntStateOf(feedback?.optInt("wrong")?:0)}
+    LaunchedEffect(feedback?.optInt("wrong")){
+        val wrong=feedback?.optInt("wrong")?:0
+        if(wrong>previousWrong){draft="";actionFeedback="Yanlış cevap"}
+        previousWrong=wrong
+    }
+    LaunchedEffect(actionFeedback){if(actionFeedback.isNotBlank()){delay(1100);actionFeedback=""}}
     fun send(type:String,answer:String?=null,choice:Int?=null){
         if(!enabled)return
         val command=Wq150Command(view.optLong("revision"),type,
             word=if(kind in listOf("duel","coop"))index else null,
             index=if(kind=="quiz")index else null,item=if(kind=="team")index else null,
             answer=answer,choice=choice)
-        if(command.valid())scope.launch{controller.submit(command)}
+        if(command.valid())scope.launch{
+            controller.submit(command)
+            val confirmed=controller.state.value
+            if(confirmed.pending==null&&confirmed.error==null&&
+                (confirmed.snapshot?.optLong("revision")?:-1L)>command.revision){
+                if(type in listOf("submit","pass","skip"))draft=""
+                if(type=="pass")actionFeedback="Pas geçildi"
+                if(type=="skip")actionFeedback="Sonraki kelime"
+            }
+        }
+    }
+    val playerIds=connection.objects("players").map{it.optString("id")}
+    fun playerName(id:String):String=wq150ArenaPlayerName(
+        if(id==uid)session.social.nickname.ifBlank{session.profileName} else null,
+        profiles.optJSONObject(id)?.optString("name"),
+        session.social.friends.firstOrNull{it.uid==id}?.name,
+        if(id==uid)"Sen" else "Rakip "+(playerIds.indexOf(id)+1).coerceAtLeast(1))
+    val emojiButton:@Composable ()->Unit={
+        Box{
+                    TextButton(enabled=canSocial&&now-lastEmoji>=1500L,onClick={emojiMenu=true},modifier=Modifier.size(if(imeVisible)32.dp else 36.dp),contentPadding=PaddingValues(0.dp)){Text("☺",color=Wq122Gold,fontSize=if(imeVisible)18.sp else 22.sp)}
+                    DropdownMenu(expanded=emojiMenu&&canSocial,onDismissRequest={emojiMenu=false}){
+                        listOf("👏","👍","😊","😄","😮","🔥","🎉","💪","🤔","😢","❤️","🏆").chunked(if(tablet)4 else 3).forEach{row->
+                            Row(Modifier.padding(horizontal=6.dp)){
+                                row.forEach{symbol->TextButton(enabled=canSocial,onClick={emojiMenu=false;lastEmoji=now;sendSocial("reaction",symbol=symbol)},modifier=Modifier.size(48.dp),contentPadding=PaddingValues(0.dp)){Text(symbol,fontSize=22.sp)}}
+                            }
+                        }
+                    }
+                }
     }
     BackHandler{if(imeVisible)focusManager.clearFocus() else {disconnectExit=paused;exit=true}}
     MaterialTheme(colorScheme=Wq122Scheme){
@@ -370,20 +416,10 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             Row(Modifier.fillMaxWidth().heightIn(max=44.dp),verticalAlignment=Alignment.CenterVertically){
                 TextButton(onClick={disconnectExit=paused;exit=true}){Text("‹ Geri",color=Wq122Gold)}
                 Text(Wq150ModeCatalog.kinds[kind].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
-                Box{
-                    TextButton(enabled=canSocial&&!imeVisible&&now-lastEmoji>=1500L,onClick={emojiMenu=true},contentPadding=PaddingValues(horizontal=6.dp)){Text("☺",color=Wq122Gold,fontSize=22.sp)}
-                    DropdownMenu(expanded=emojiMenu&&canSocial&&!imeVisible,onDismissRequest={emojiMenu=false}){
-                        listOf("👏","👍","😊","😄","😮","🔥","🎉","💪","🤔","😢","❤️","🏆").chunked(if(tablet)4 else 3).forEach{row->
-                            Row(Modifier.padding(horizontal=6.dp)){
-                                row.forEach{symbol->TextButton(enabled=canSocial,onClick={emojiMenu=false;lastEmoji=now;sendSocial("reaction",symbol=symbol)},modifier=Modifier.size(48.dp),contentPadding=PaddingValues(0.dp)){Text(symbol,fontSize=22.sp)}}
-                            }
-                        }
-                    }
-                }
                 TextButton(enabled=canSocial&&!offerPending&&now>=(social.number("cooldownUntil")?:0),onClick={sendSocial("finish-offer")}){Text("Bitir",color=Wq122Gold)}
             }
             val scores=game.optJSONObject("scores")?:game.optJSONObject("stats")
-            val ids=connection.objects("players").map{it.optString("id")}
+            val ids=playerIds
             val groups=(if(kind=="team")game.objects("teams").map{it.optString("id")}else ids)
                 .sortedBy{if(it==(if(kind=="team")team else uid))0 else 1}
             val compact=imeVisible&&!quiz&&!finished
@@ -398,26 +434,32 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                     val value=scores?.optJSONObject(id)?.optInt("score")?:scores?.optInt(id)?:0
                     val currentTurn=game.optString("turn")==id||mode in listOf("speed","simultaneous")
                     val members=if(kind=="team")game.objects("teams").firstOrNull{it.optString("id")==id}.strings("members") else listOf(id)
-                    val name=if(kind=="team")"Takım "+(i+1) else profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}?:if(id==uid)session.profileName else "Rakip"
+                    val name=if(kind=="team")"Takım "+(i+1) else playerName(id)
+                    val myCard=uid in members
                     Surface(color=if(currentTurn&&phase=="playing")Color(0xE65A368C)else Color(0xD93D2569),
-                        shape=RoundedCornerShape(16.dp),modifier=Modifier.weight(1f),
+                        shape=RoundedCornerShape(16.dp),modifier=Modifier.weight(1f).clickable{inspected=members},
                         border=androidx.compose.foundation.BorderStroke(if(currentTurn&&phase=="playing")2.dp else 1.dp,
                             if(currentTurn&&phase=="playing")Color(0xFFFFD56B)else Color(0xFF9D84D6))){
                         if(compact){
-                            Text("$name · $value",Modifier.padding(horizontal=5.dp,vertical=8.dp),color=if(currentTurn)Wq122Gold else Color.White,
-                                fontWeight=FontWeight.Bold,fontSize=12.sp,textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
+                            Row(Modifier.fillMaxWidth().padding(horizontal=4.dp,vertical=2.dp),verticalAlignment=Alignment.CenterVertically){
+                                if(split)Wq150Portrait(profiles.optJSONObject(members.firstOrNull().orEmpty()),ownAvatar.takeIf{myCard},Modifier.size(36.dp))
+                                Text("$name · $value",Modifier.weight(1f),color=if(currentTurn)Wq122Gold else Color.White,
+                                    fontWeight=FontWeight.Bold,fontSize=12.sp,textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
+                                if(myCard)emojiButton()
+                            }
                         }else{
                             Row(Modifier.fillMaxWidth().padding(if(tablet)8.dp else 4.dp),verticalAlignment=Alignment.CenterVertically){
                                 Row(Modifier.weight(1.15f),horizontalArrangement=Arrangement.spacedBy(2.dp)){
                                     members.forEach{player->
                                         Wq150Portrait(profiles.optJSONObject(player),ownAvatar.takeIf{player==uid},
-                                            Modifier.weight(1f).height(if(tablet)122.dp else 82.dp))
+                                            Modifier.weight(1f).height(if(split)76.dp else if(tablet)100.dp else 76.dp))
                                     }
                                 }
                                 Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
                                     Text(name,color=Color.White,fontSize=if(tablet)17.sp else 12.sp,fontWeight=FontWeight.SemiBold,
                                         textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
-                                    Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontSize=if(tablet)28.sp else 20.sp,fontWeight=FontWeight.Black)
+                                    Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontSize=if(tablet)24.sp else 20.sp,fontWeight=FontWeight.Black)
+                                    if(myCard)emojiButton()
                                 }
                             }
                         }
@@ -425,17 +467,20 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                     if(groups.size==1)Wq150CenterClock(remaining,phase,tablet,compact)
                 }
             }
-            if(!quiz&&!finished){
-                if(!imeVisible)Row(Modifier.fillMaxWidth().height(32.dp),verticalAlignment=Alignment.CenterVertically){
-                    Text(when(zoom){1->"Orta yakınlık";2->"Aktif kelime";else->"Tüm tahta"},color=Wq122Ink,modifier=Modifier.weight(1f),fontSize=12.sp)
+            val boardContent:@Composable (Modifier)->Unit={area->
+              Column(area.clipToBounds(),verticalArrangement=Arrangement.spacedBy(2.dp)){
+                if(!imeVisible||split)Row(Modifier.fillMaxWidth().height(32.dp),verticalAlignment=Alignment.CenterVertically){
+                    Text(when(zoom){1->"Tüm tahta";2->"Aktif kelime";else->"Geniş tahta"},color=Wq122Ink,modifier=Modifier.weight(1f),fontSize=12.sp)
                     TextButton(onClick={zoom=(zoom+1)%3},contentPadding=PaddingValues(horizontal=8.dp,vertical=0.dp)){
-                        Text(when(zoom){1->"Yakınlaştır +";2->"Tüm tahta";else->"Yakınlaştır"},color=Wq122Gold)
+                        Text(when(zoom){1->"Yakınlaştır";2->"Geniş tahta";else->"Tüm tahta"},color=Wq122Gold)
                     }
                 }
                 val typed=previewCells.zip(draft.map{it.toString()}).toMap()
-                Wq150Board(words,index,typed+known,enabled&&(choose||free),{selected=it},zoom,imeVisible,Modifier.weight(1f))
+                Wq150Board(words,index,typed+known,enabled&&(choose||free),{selected=it},zoom,imeVisible,true,Modifier.weight(1f))
+              }
             }
-            Column(Modifier.fillMaxWidth().then(if(quiz||finished)Modifier.weight(1f)else Modifier.heightIn(max=320.dp))
+            val answerContent:@Composable (Modifier)->Unit={area->
+              Column(area
                 .verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(if(imeVisible&&!quiz)2.dp else 6.dp)){
                 if(finished){
                     Wq150ResultPanel(view,uid,team,profiles,ownAvatar,session.profileName,onBack)
@@ -464,8 +509,8 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                             val direction=if(currentCells.size>=2&&currentCells[0].row==currentCells[1].row)"Yatay" else "Dikey"
                             Text("Kelime "+(index+1)+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=12.sp,maxLines=1)
                             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
-                                OutlinedTextField(draft,{if(typingAllowed)draft=wq150FullWordDraft(it,totalLength)},
-                                    enabled=typingAllowed,readOnly=!enabled,singleLine=true,
+                                OutlinedTextField(draft,{if(typingAllowed&&!remote.busy)draft=wq150FullWordDraft(it,totalLength)},
+                                    enabled=typingAllowed,readOnly=!typingAllowed,singleLine=true,
                                     keyboardOptions=KeyboardOptions(capitalization=KeyboardCapitalization.Characters,imeAction=ImeAction.Send),
                                     keyboardActions=KeyboardActions(onSend={if(enabled&&answerComplete&&!answerText.isNullOrBlank())send("submit",answer=answerText)}),
                                     label={Text("Kelimeyi yaz",maxLines=1,fontSize=12.sp)},colors=OutlinedTextFieldDefaults.colors(focusedContainerColor=Color(0xDD24183E),unfocusedContainerColor=Color(0xDD24183E),focusedTextColor=Color.White,unfocusedTextColor=Color.White),modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
@@ -474,11 +519,11 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                         }
                         Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
                             val padding=PaddingValues(horizontal=4.dp,vertical=4.dp)
-                            OutlinedButton(enabled=enabled,onClick={send("pass")},modifier=Modifier.weight(1f),contentPadding=padding){Text("Pas",fontSize=12.sp)}
+                            OutlinedButton(enabled=enabled,onClick={send("pass")},modifier=Modifier.weight(1f),contentPadding=padding){Text("Pas geç",fontSize=12.sp,maxLines=1)}
                             OutlinedButton(enabled=enabled&&hintBudget>0,onClick={send(if(kind=="quiz")"eliminate" else "hint")},modifier=Modifier.weight(1f),contentPadding=padding){
                                 Text((if(quiz)"Şık ele" else "Harf aç")+" ($hintBudget)",fontSize=12.sp)
                             }
-                            if(kind=="duel")OutlinedButton(enabled=enabled,onClick={send("skip")},modifier=Modifier.weight(1f),contentPadding=padding){Text("Kelimeyi geç",fontSize=12.sp)}
+                            if(kind=="duel"&&skipLeft>0)OutlinedButton(enabled=enabled,onClick={send("skip")},modifier=Modifier.weight(1f),contentPadding=padding){Text("Kelimeyi geç ($skipLeft)",fontSize=11.sp,maxLines=1,overflow=TextOverflow.Ellipsis)}
                         }
                         if(kind=="quiz")Row(horizontalArrangement=Arrangement.spacedBy(6.dp)){
                             OutlinedButton(enabled=enabled&&hintBudget>0&&"half" !in mine.strings("used"),onClick={send("half")}){Text("50:50")}
@@ -488,9 +533,21 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                     if(!eligible&&!paused)Text("Rakibin sırası",color=Wq122Ink,fontSize=12.sp,maxLines=1)
                 }
                 if(offerPending&&offeredByMe)TextButton(enabled=canSocial,onClick={sendSocial("finish-withdraw",id=offerId)}){Text("Bitirme teklifini geri çek",color=Wq122Gold)}
-                if(remote.busy)LinearProgressIndicator(Modifier.fillMaxWidth())
                 remote.error?.let{Text(it,color=Color(0xFFFFB4B4))}
                 if(remote.pending!=null&&!remote.busy)TextButton(onClick={scope.launch{controller.retryPending()}}){Text("İşlemi tekrar dene")}
+            }
+            }
+            if(quiz||finished)answerContent(Modifier.weight(1f).fillMaxWidth())
+            else if(split){
+                Row(Modifier.weight(1f).fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp),verticalAlignment=Alignment.CenterVertically){
+                    boardContent(Modifier.weight(1.65f).fillMaxHeight())
+                    Surface(Modifier.weight(1f).fillMaxHeight(),color=Color(0xBC251747),shape=RoundedCornerShape(14.dp)){
+                        answerContent(Modifier.fillMaxSize().padding(8.dp))
+                    }
+                }
+            }else{
+                boardContent(Modifier.weight(1f).fillMaxWidth())
+                answerContent(Modifier.fillMaxWidth().heightIn(max=if(imeVisible)164.dp else 240.dp))
             }
         }
         if(reactionText.isNotEmpty()){
@@ -502,10 +559,24 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 Text(reactionText,Modifier.offset(x=x,y=(-18f*kotlin.math.sin(reactionTravel.value*Math.PI).toFloat()).dp).size(48.dp),fontSize=32.sp,textAlign=TextAlign.Center)
             }
         }
+        if(remote.busy)LinearProgressIndicator(Modifier.align(Alignment.TopCenter).fillMaxWidth().height(2.dp))
+        if(actionFeedback.isNotBlank())Surface(Modifier.align(Alignment.TopCenter).padding(top=48.dp),color=Color(0xEE251347),shape=RoundedCornerShape(12.dp)){
+            Text(actionFeedback,Modifier.padding(horizontal=12.dp,vertical=6.dp),color=Wq122Gold,fontSize=13.sp)
+        }
         if(noticeText.isNotBlank())Surface(modifier=Modifier.align(Alignment.TopCenter).padding(top=100.dp),color=Color(0xEE251347),shape=MaterialTheme.shapes.medium){
             Text(noticeText,Modifier.padding(12.dp),color=Wq122Ink)
         }
         }
+        if(inspected.isNotEmpty())AlertDialog(onDismissRequest={inspected=emptyList()},containerColor=Color(0xFF251747),
+            title={Text("Oyuncu profili",color=Wq122Gold)},
+            text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(8.dp)){
+                inspected.forEach{id->
+                    Wq150Portrait(profiles.optJSONObject(id),ownAvatar.takeIf{id==uid},Modifier.fillMaxWidth().height(160.dp))
+                    Text(playerName(id),color=Wq122Gold,fontWeight=FontWeight.Bold,fontSize=18.sp)
+                    val stats=if(kind=="team")game.optJSONObject("stats")?.optJSONObject("players")?.optJSONObject(id) else game.optJSONObject("stats")?.optJSONObject(id)
+                    Wq150StatCard(playerName(id),stats,false)
+                }
+            }},confirmButton={TextButton(onClick={inspected=emptyList()}){Text("Kapat",color=Wq122Gold)}})
         if(mustVote&&!paused&&!finished)AlertDialog(onDismissRequest={},title={Text("Maç bitirme teklifi")},
             text={Text("Rakibin maçı karşılıklı anlaşmayla bitirmek istiyor. Kalan süre: "+(((offer.number("expiresAt")?:now)-now+999L)/1000L).coerceAtLeast(0L)+" sn")},
             confirmButton={TextButton(enabled=canSocial,onClick={sendSocial("finish-accept",id=offerId)}){Text("Kabul et")}},
