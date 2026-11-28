@@ -51,7 +51,7 @@ function expire(s,at){
 }
 export function connectionTransition(state,event,at){
   if(!validTime(at)||at<state.now)throw new Error("Non-monotonic server time");
-  if(!event||!["lost","restored","leave","tick"].includes(event.type))throw new Error("Invalid event");
+  if(!event||!["lost","restored","leave","cancel-disconnected","tick"].includes(event.type))throw new Error("Invalid event");
   if(state.phase==="finished")return state;
   const s=copy(state);
   // Process scheduled expirations in chronological order, not at the next client's arrival.
@@ -62,7 +62,11 @@ export function connectionTransition(state,event,at){
     const p=player(s,event.id);
     if(!p||!Number.isSafeInteger(event.epoch)||event.epoch<1)throw new Error("Invalid identity");
     if(!p.removed){
-      if(event.type==="lost"&&event.epoch===p.epoch&&p.connected){
+      if(event.type==="cancel-disconnected"){
+        if(event.epoch!==p.epoch||!p.connected||s.phase!=="paused"||!s.players.some(q=>q.id!==p.id&&!q.connected&&!q.removed))throw new Error("No active disconnect to cancel");
+        s.phase="finished";s.result={kind:"no-contest",reason:"disconnect-cancelled"};
+        s.deadlines={match:null,question:null};s.frozen=null;
+      }else if(event.type==="lost"&&event.epoch===p.epoch&&p.connected){
         p.connected=false;p.drops++;
         if(p.drops>=3)remove(p,"third-disconnect");
         else p.until=at+GRACE_MS[p.drops-1];
