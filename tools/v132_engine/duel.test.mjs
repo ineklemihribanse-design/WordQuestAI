@@ -46,7 +46,8 @@ test('both pass then second round reveals answer without points',()=>{
 test('skip differs from pass, bounded and deferred',()=>{
  let s=base('classic',{skipLimit:1});s=cmd(s,'skip','a');assert.equal(s.active,1);
  assert.deepEqual(s.deferred,[0]);assert.equal(s.stats.a.skip,1);assert.equal(s.stats.a.pass,0);
- s=correct(s,'b');assert.throws(()=>cmd(s,'skip','a'));
+ assert.equal(s.turn,'a');assert.throws(()=>cmd(s,'skip','b'));assert.throws(()=>cmd(s,'skip','a'));
+ s=correct(s,'a');assert.equal(s.turn,'b');
 });
 test('timeout at boundary wins; incomplete answer does not score',()=>{
  let s=base('classic');assert.throws(()=>cmd(s,'submit','a',{answer:''}));
@@ -81,5 +82,15 @@ test('pass consumes the current turn; both passes advance one word and preserve 
   assert.equal(s.active,0);assert.equal(s.turn,'b');assert.throws(()=>cmd(s,'pass','a'));
   s=cmd(s,'pass','b');assert.equal(s.active,1);assert.equal(s.turn,'a');
   assert.equal(s.stats.a.pass,1);assert.equal(s.stats.b.pass,1);assert.equal(s.stats.a.score,0);assert.equal(s.stats.b.score,0);
+ }
+});
+
+test('skip preserves turn and streak in all turn-based modes',()=>{
+ for(const mode of ['classic','limited','streak','strategy']){
+  let s=base(mode,{skipLimit:2});if(mode==='strategy')s=cmd(s,'choose','a',{word:0});
+  if(mode==='limited'||mode==='streak')s=correct(s,'a');
+  const streak=s.streak,old=s.active,score=s.stats.a.score;
+  s=cmd(s,'skip','a');assert.equal(s.turn,'a');assert.equal(s.streak,streak);
+  assert.equal(s.stats.a.score,score);assert.ok(s.deferred.includes(old));assert.equal(s.stats.a.skip,1);
  }
 });

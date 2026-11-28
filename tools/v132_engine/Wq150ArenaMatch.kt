@@ -39,6 +39,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -120,6 +123,8 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
     }}
     BoxWithConstraints(modifier.fillMaxWidth().clipToBounds()){
         val density=LocalDensity.current.density
+        val fontScale=LocalDensity.current.fontScale
+        val phone=androidx.compose.ui.platform.LocalConfiguration.current.smallestScreenWidthDp<600
         val width=maxWidth.value.coerceAtLeast(1f);val height=maxHeight.value.coerceAtLeast(1f)
         val focusRow=if(active.isEmpty())rows/2f else (active.map{it.row-r0}.average().toFloat()+.5f)
         val focusCol=if(active.isEmpty())cols/2f else (active.map{it.col-c0}.average().toFloat()+.5f)
@@ -159,7 +164,13 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
                         .clickable(enabled=selectable&&i>=0){
                             onSelect(candidates.firstOrNull{it!=selected}?:i)
                         },contentAlignment=Alignment.Center){
-                        if(label.isNotBlank())Text(label,color=Color(0xFF241638),fontSize=(size.value*.55f).coerceIn(4f,22f).sp,fontWeight=FontWeight.Bold)
+                        if(label.isNotBlank()){
+                            val letterSize=if(phone)(size.value*.73f/fontScale).coerceAtLeast(3f).sp else (size.value*.55f).coerceIn(4f,22f).sp
+                            Text(label,color=if(phone)Color(0xFF190B31)else Color(0xFF241638),fontSize=letterSize,
+                                lineHeight=if(phone)letterSize else androidx.compose.ui.unit.TextUnit.Unspecified,
+                                fontWeight=if(phone)FontWeight.Black else FontWeight.Bold,maxLines=1,softWrap=false,
+                                style=if(phone)TextStyle(platformStyle=androidx.compose.ui.text.PlatformTextStyle(includeFontPadding=false))else LocalTextStyle.current)
+                        }
                         else if(size.value>=14f&&positions.getOrNull(i)?.firstOrNull()==p)
                             Text((i+1).toString(),Modifier.align(Alignment.TopStart).padding(1.dp),color=Color(0xFF645580),fontSize=(size.value*.28f).coerceIn(6f,10f).sp)
                     }
@@ -438,7 +449,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             Row(Modifier.fillMaxWidth().heightIn(max=44.dp),verticalAlignment=Alignment.CenterVertically){
                 TextButton(onClick={disconnectExit=paused;exit=true}){Text("‹ Geri",color=Wq122Gold)}
                 Text(Wq150ModeCatalog.kinds[kind].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
-                TextButton(enabled=canSocial&&!offerPending&&now>=(social.number("cooldownUntil")?:0),onClick={sendSocial("finish-offer")}){Text("Bitir",color=Wq122Gold)}
+                if(!finished)TextButton(enabled=canSocial&&!offerPending&&now>=(social.number("cooldownUntil")?:0),onClick={sendSocial("finish-offer")}){Text("Bitir",color=Wq122Gold)}
             }
             if(!finished){
             val scores=game.optJSONObject("scores")?:game.optJSONObject("stats")
@@ -468,7 +479,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                                 if(split)Wq150Portrait(profiles.optJSONObject(members.firstOrNull().orEmpty()),ownAvatar.takeIf{members.firstOrNull()==uid},Modifier.size(36.dp))
                                 Text("$name · $value",Modifier.weight(1f),color=if(currentTurn)Wq122Gold else Color.White,
                                     fontWeight=FontWeight.Bold,fontSize=12.sp,textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
-                                if(myCard)emojiButton()
+                                if(!myCard)emojiButton()
                             }
                         }else{
                             Row(Modifier.fillMaxWidth().padding(if(tablet)8.dp else 4.dp),verticalAlignment=Alignment.CenterVertically){
@@ -482,7 +493,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                                     Text(name,color=Color.White,fontSize=if(tablet)17.sp else 12.sp,fontWeight=FontWeight.SemiBold,
                                         textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
                                     Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontSize=if(tablet)24.sp else 20.sp,fontWeight=FontWeight.Black)
-                                    if(myCard)emojiButton()
+                                    if(!myCard)emojiButton()
                                 }
                             }
                         }
@@ -535,6 +546,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
                                 OutlinedTextField(draft,{if(typingAllowed&&!remote.busy)draft=wq150FullWordDraft(it,totalLength)},
                                     enabled=typingAllowed,readOnly=!typingAllowed,singleLine=true,
+                                    textStyle=if(tablet)LocalTextStyle.current else TextStyle(color=Color.White,fontSize=20.sp,lineHeight=24.sp,fontWeight=FontWeight.Bold,platformStyle=androidx.compose.ui.text.PlatformTextStyle(includeFontPadding=false)),
                                     keyboardOptions=KeyboardOptions(capitalization=KeyboardCapitalization.Characters,imeAction=ImeAction.Send),
                                     keyboardActions=KeyboardActions(onSend={if(enabled&&answerComplete&&!answerText.isNullOrBlank())send("submit",answer=answerText)}),
                                     label={Text("Kelimeyi yaz",maxLines=1,fontSize=12.sp)},colors=OutlinedTextFieldDefaults.colors(focusedContainerColor=Color(0xDD24183E),unfocusedContainerColor=Color(0xDD24183E),focusedTextColor=Color.White,unfocusedTextColor=Color.White),modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
@@ -621,7 +633,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 remote.error?.let{Text(it,color=MaterialTheme.colorScheme.error)}
             }},
             confirmButton={TextButton(enabled=!remote.busy,onClick={
-                scope.launch{if(controller.leave(neutral=disconnectExit)){exit=false;onBack()}}
+                scope.launch{if(finished||controller.leave(neutral=disconnectExit)){exit=false;onBack()}}
             }){Text(if(remote.busy)"Doğrulanıyor…" else "Ayrıl")}},
             dismissButton={TextButton(enabled=!remote.busy,onClick={exit=false}){Text("Devam et")}})
     }
@@ -655,7 +667,7 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
         }catch(e:Exception){resumeError="Bağlantı kurulamadı. Maç kaydı korunuyor."}
     }
     if(id!=null&&snapshot!=null&&gateway!=null&&uid.isNotBlank())
-        Wq150ArenaMatch(id,snapshot,uid,gateway,session,{clearRoom();back()},{prompt->clearRoom();onTeacher(prompt)})
+        Wq150ArenaMatch(id,snapshot,uid,gateway,session,{clearRoom();onTab(false)},{prompt->clearRoom();onTeacher(prompt)})
     else if(id!=null&&gateway!=null){
         BackHandler{back()}
         Column(Modifier.fillMaxSize().background(Color(0xFF150B3E)).windowInsetsPadding(WindowInsets.safeDrawing).padding(20.dp),
@@ -709,19 +721,44 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
     val wide=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp>=600
     Column(Modifier.fillMaxWidth(),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)){
         Text(title,color=Wq122Gold,style=MaterialTheme.typography.headlineSmall,fontWeight=FontWeight.Black,textAlign=TextAlign.Center)
-        Box(Modifier.fillMaxWidth().height(if(wide)210.dp else 185.dp)){
-            Canvas(Modifier.fillMaxWidth(.86f).height(35.dp).align(Alignment.BottomCenter)){
-                drawOval(Color(0xFF7A4A17))
-                drawOval(Color(0xFFFFD572),topLeft=Offset(0f,0f),size=Size(size.width,size.height*.68f))
-                drawOval(Color(0xFF6D38AD),topLeft=Offset(size.width*.035f,size.height*.055f),size=Size(size.width*.93f,size.height*.55f))
+        val stageIds=ids.sortedBy{if(it in winners)0 else 1}
+        val cheer=remember{Animatable(0f)}
+        LaunchedEffect(winner){
+            if(winners.isNotEmpty())repeat(3){cheer.animateTo(1f,tween(240));cheer.animateTo(0f,tween(360))}
+        }
+        Box(Modifier.widthIn(max=840.dp).fillMaxWidth().height(if(wide)260.dp else 220.dp)){
+            Canvas(Modifier.fillMaxWidth(.96f).height(46.dp).align(Alignment.BottomCenter)){
+                drawOval(Brush.verticalGradient(listOf(Color(0xFF3F176D),Color(0xFFBD7B30),Color(0xFF30124F))))
+                drawOval(Brush.horizontalGradient(listOf(Color(0xFF9B5915),Color(0xFFFFE7A1),Color(0xFFBC721C))),size=Size(size.width,size.height*.72f))
+                drawOval(Brush.verticalGradient(listOf(Color(0xFF9D52D8),Color(0xFF3A176D))),topLeft=Offset(size.width*.025f,size.height*.055f),size=Size(size.width*.95f,size.height*.56f))
             }
-            Row(Modifier.fillMaxSize().padding(horizontal=if(wide)64.dp else 12.dp).padding(bottom=12.dp),horizontalArrangement=Arrangement.spacedBy(4.dp),verticalAlignment=Alignment.Bottom){
-                ids.forEach{id->
+            Row(Modifier.fillMaxSize().padding(horizontal=if(wide)40.dp else 8.dp).padding(bottom=14.dp),horizontalArrangement=Arrangement.spacedBy(4.dp),verticalAlignment=Alignment.Bottom){
+                stageIds.forEach{id->
                     val victory=id in winners
-                    Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
-                        Wq150Portrait(profiles.optJSONObject(id),ownAvatar.takeIf{id==uid},
-                            Modifier.fillMaxWidth().weight(1f).graphicsLayer{scaleX=if(victory)scale else .86f;scaleY=if(victory)scale else .86f},victory=victory)
-                        Text(name(id),color=if(victory)Wq122Gold else Wq122Ink,fontWeight=FontWeight.Bold,maxLines=1,overflow=TextOverflow.Ellipsis)
+                    Column(Modifier.weight(1f).fillMaxHeight().padding(top=if(victory)0.dp else 20.dp),horizontalAlignment=Alignment.CenterHorizontally){
+                        Box(Modifier.fillMaxWidth().weight(1f)){
+                            if(victory)Canvas(Modifier.matchParentSize()){
+                                val center=Offset(size.width/2,size.height*.58f)
+                                val radius=size.minDimension*.60f
+                                if(radius>0f)drawCircle(Brush.radialGradient(listOf(Color(0x77FFCE58),Color.Transparent),center=center,radius=radius),radius=radius,center=center)
+                            }
+                            Wq150Portrait(profiles.optJSONObject(id),ownAvatar.takeIf{id==uid},
+                                Modifier.fillMaxSize().graphicsLayer{
+                                    transformOrigin=TransformOrigin(.5f,1f)
+                                    scaleX=if(victory)scale else 1f;scaleY=if(victory)scale else 1f
+                                    translationY=if(victory)-cheer.value*8.dp.toPx() else 0f
+                                },victory=victory)
+                        }
+                        Box(Modifier.fillMaxWidth().height(if(victory)46.dp else 34.dp)){
+                            Canvas(Modifier.matchParentSize()){
+                                drawRoundRect(Brush.verticalGradient(listOf(Color(0xFF7951AC),Color(0xFF35105F),Color(0xFF7442A1))),topLeft=Offset(size.width*.035f,size.height*.15f),size=Size(size.width*.93f,size.height*.83f),cornerRadius=androidx.compose.ui.geometry.CornerRadius(10.dp.toPx()))
+                                drawOval(Brush.horizontalGradient(listOf(Color(0xFFB16E1C),Color(0xFFFFE9A3),Color(0xFF9E5812))),size=Size(size.width,size.height*.37f))
+                                drawOval(Color(0xFF7340B2),topLeft=Offset(size.width*.045f,size.height*.045f),size=Size(size.width*.91f,size.height*.23f))
+                            }
+                            Surface(color=Color(0xFF40206E),shape=RoundedCornerShape(50),border=androidx.compose.foundation.BorderStroke(1.dp,Wq122Gold),modifier=Modifier.align(Alignment.BottomCenter).padding(bottom=3.dp).fillMaxWidth(.84f)){
+                                Text(name(id),Modifier.padding(horizontal=4.dp,vertical=3.dp),color=if(victory)Wq122Gold else Wq122Ink,fontWeight=FontWeight.Bold,maxLines=1,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
+                            }
+                        }
                     }
                 }
             }

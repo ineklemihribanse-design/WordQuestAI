@@ -138,7 +138,8 @@ export function applyDuel(state,cmd,now){
    else if(cmd.type==='skip'){
      if(s.stats[actor].skip>=s.skipLimit||s.round!==1)fail('Skip unavailable');
      s.stats[actor].skip++;const i=s.active;removeActive(s);s.deferred.push(i);
-     if(s.mode!=='speed')switchTurn(s,actor);next(s,now);
+     // A skip retains the current player's turn and streak.
+     next(s,now);
    }else fail('Invalid command type');
  }
  s.last={kind:cmd.type,actor,word:cmd.word,at:now};
