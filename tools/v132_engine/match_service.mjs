@@ -69,7 +69,7 @@ export function createMatch({settings,bank,players,teams,epochs,seed,now}){
  if(kind==='team')game=createTeam({...common,kind:cfg.format,items:cfg.format==='quiz'?questions.map(q=>({...q,clue:q.prompt})):words});
  const connPlayers=ids.map(id=>({id,epoch:epochs[id],team:kind==='team'?teams.find(t=>t.members.includes(id)).id:undefined}));
  const connection=createConnectionState({kind,players:connPlayers,now});
- return {schema:150,kind,settings:cfg,game,connection,revision:0,now,receipts:{},pauseAt:null,result:null,social:emptySocial(),
+ return {schema:150,kind,settings:cfg,game,connection,revision:0,now,receipts:{},review:{},pauseAt:null,result:null,social:emptySocial(),
   presence:Object.fromEntries(ids.map(id=>[id,{session:null,until:now+12000}]))};
 }
 function result(s){return s.connection.phase==='finished'?s.connection.result:s.game.phase==='finished'?s.game.result:s.social?.result??null;}
@@ -83,6 +83,36 @@ function engineCommand(s,cmd){
  const c={...cmd,revision:s.game.revision};
  if(s.kind==='quiz')c.index=cmd.index;
  return c;
+}
+// Private, per-player outcome journal. No answer keys are projected during play.
+function reviewStats(s,p){return s.kind==='team'?s.game.playerStats[p]:s.game.stats[p];}
+function recordReview(before,after,cmd,actor){
+ if(!before.review)return; // older rooms cannot claim a complete journal
+ const i=before.kind==='quiz'?before.game.index:(before.kind==='team'?cmd?.item:cmd?.word)??before.game.active;
+ if(!Number.isInteger(i)||i<0)return;
+ for(const p of roster(before.game)){
+  if(actor&&p!==actor)continue;
+  const a=reviewStats(before,p),b=reviewStats(after,p);
+  if(!a||!b)continue;
+  const wrong=b.wrong>a.wrong,correct=b.correct>a.correct;
+  const blank=['pass','skip','timeout'].some(k=>(b[k]??0)>(a[k]??0));
+  if(!wrong&&!correct&&!blank)continue;
+  const rows=after.review[p]??(after.review[p]={});
+  const row=rows[i]??(rows[i]={wrong:false,correct:false,blank:false});
+  if(wrong){row.wrong=true;row.blank=false;}
+  if(correct){row.correct=true;row.blank=false;}
+  if(blank&&!row.wrong&&!row.correct)row.blank=true;
+ }
+}
+function personalReview(s,p){
+ if(!s.review)return undefined;
+ const items=s.kind==='quiz'?s.game.questions:s.kind==='team'?s.game.items:s.game.words;
+ const rows=s.review[p]??{};
+ return Object.entries(rows).flatMap(([key,row])=>{
+  const i=Number(key),q=items[i];if(!q||(!row.wrong&&!row.blank))return [];
+  const answer=q.answer??q.options?.[q.correct];
+  return [{index:i,kind:row.wrong?'wrong':'blank',clue:q.clue??q.prompt,answer,corrected:row.correct}];
+ });
 }
 export function matchCommand(state,uid,cmd,now){
  if(!roster(state.game).includes(uid)||!cmd||!safe(cmd.id)||cmd.actor!==undefined&&cmd.actor!==uid||
@@ -104,6 +134,7 @@ export function matchCommand(state,uid,cmd,now){
  const c=engineCommand(s,{...cmd,actor:uid,id:hash(receipt)});
  s.game=reducers[s.kind](s.game,c,now);
  if(s.game===state.game)return state;
+ recordReview(state,s,cmd,uid);
  s.receipts[receipt]=s.revision+1;
  return advance(s,now);
 }
@@ -147,7 +178,7 @@ export function matchTick(state,now){
  const s=clone(after),cmd={id:hash('tick',s.revision,now),type:'tick',revision:s.game.revision,index:s.game.index};
  const next=reducers[s.kind](s.game,cmd,now);
  if(next===s.game)return after;
- s.game=next;return advance(s,now);
+ s.game=next;recordReview(after,s,null,null);return advance(s,now);
 }
 export function matchView(s,uid,at=s.now){
  if(!roster(s.game).includes(uid))fail('Not a participant');
@@ -161,7 +192,7 @@ export function matchView(s,uid,at=s.now){
  const summary=final?{players:s.kind==='team'?s.game.playerStats:s.game.stats,
   teams:s.kind==='team'?s.game.teamStats:undefined,
   solved:s.kind==='coop'?Object.keys(s.game.solved).length:s.kind==='quiz'?s.game.history.length:Object.keys(s.game.resolved).filter(i=>s.game.resolved[i].kind==='solved').length,
-  total:s.settings.count}:undefined;
+  total:s.settings.count,review:personalReview(s,uid),blankCounts:s.review?Object.fromEntries(roster(s.game).map(p=>[p,personalReview(s,p).filter(x=>x.kind==='blank').length])):undefined}:undefined;
  // Never leak transport epochs, private bank, seed or other players' hint claims.
  return clone({schema:150,kind:s.kind,settings:s.settings,revision:s.revision,phase:phase(s),result:s.result,summary,feedback,
   connection:{phase:s.connection.phase,pausedAt:s.pauseAt,players:s.connection.players.map(({id,connected,drops,until,removed,reason})=>({id,connected,drops,until,removed,reason}))},

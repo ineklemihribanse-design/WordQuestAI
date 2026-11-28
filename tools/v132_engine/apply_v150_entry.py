@@ -144,7 +144,7 @@ new='''    var soloLaunch by remember { mutableStateOf<WqArenaSoloLaunch?>(null)
     var soloTab by rememberSaveable{mutableStateOf(false)}
     val launch=soloLaunch
     if(launch==null&&nextEndpoint!=null&&!useLegacy){
-        Wq150ArenaFlow(session,nextEndpoint,back,account,{useLegacy=true},soloTab,{soloTab=it},{soloLaunch=it})
+        Wq150ArenaFlow(session,nextEndpoint,back,account,{useLegacy=true},soloTab,{soloTab=it},{soloLaunch=it},openTeacher)
     } else if (launch!=null) key(launch.id) {'''
 if s.count(old)!=1:
     raise SystemExit("Unexpected Arena entrance contract; no changes applied")
