@@ -45,7 +45,7 @@ if result_podium.is_file():
     (assets/"arena_result_podium.webp").write_bytes(data)
     print("PASS: exact user-approved transparent result podium staged")
 else:
-    print("WARNING: result podium artwork not uploaded; previous result display retained")
+    raise SystemExit("Missing approved Arena result podium artwork")
 
 premium=Path("assets/user_uploads/arena_v150_premium.zip")
 expected={

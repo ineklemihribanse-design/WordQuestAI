@@ -885,8 +885,9 @@ private fun Wq150ImageResultPodium(art:android.graphics.Bitmap,ids:List<String>,
                 Box(Modifier.offset(x=w*anchor.x-nameWidth/2,y=stageTop+artHeight*anchor.nameY-nameHeight/2)
                     .width(nameWidth).height(nameHeight),contentAlignment=Alignment.Center){
                     Text(name(id),color=if(victory)Wq122Gold else Color.White,
-                        fontSize=if(wide)17.sp else 11.sp,fontWeight=FontWeight.Black,
-                        maxLines=1,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
+                        fontSize=if(wide)17.sp else 11.sp,lineHeight=if(wide)17.sp else 11.sp,fontWeight=FontWeight.Black,
+                        style=TextStyle(platformStyle=androidx.compose.ui.text.PlatformTextStyle(includeFontPadding=false)),
+                        maxLines=1,softWrap=false,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
                 }
             }
             if(matchLabel.isNotBlank()){
@@ -894,8 +895,9 @@ private fun Wq150ImageResultPodium(art:android.graphics.Bitmap,ids:List<String>,
                 val plaqueHeight=artHeight*.21f
                 Box(Modifier.offset(x=(w-plaqueWidth)/2,y=stageTop+artHeight*.84f-plaqueHeight/2)
                     .width(plaqueWidth).height(plaqueHeight),contentAlignment=Alignment.Center){
-                    Text(matchLabel,color=Color.White,fontSize=if(wide)16.sp else 10.sp,
-                        fontWeight=FontWeight.Bold,maxLines=1,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
+                    Text(matchLabel,color=Color.White,fontSize=if(wide)16.sp else 10.sp,lineHeight=if(wide)16.sp else 10.sp,
+                        style=TextStyle(platformStyle=androidx.compose.ui.text.PlatformTextStyle(includeFontPadding=false)),
+                        fontWeight=FontWeight.Bold,maxLines=1,softWrap=false,overflow=TextOverflow.Ellipsis,textAlign=TextAlign.Center)
                 }
             }
         }
