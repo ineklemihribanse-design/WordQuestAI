@@ -110,7 +110,7 @@ jobs:
               'tools/v132_engine/connection.mjs','tools/v132_engine/presence.mjs','tools/v132_engine/arena_gateway.mjs',
               'tools/v132_engine/connection.test.mjs','tools/v132_engine/presence.test.mjs',
               'tools/arena_v150_server/free_worker.mjs','tools/arena_v150_server/SPARK_FREE.md','tools/arena_v150_server/package.json',
-              'tools/v132_engine/apply_v150_entry.py','assets/user_uploads/arena_result_podium.webp',
+              'tools/v132_engine/apply_v150_entry.py','assets/user_uploads/arena_result_podium.webp','assets/user_uploads/arena_mascots_14.zip',
               'tools/v132_engine/Wq150Invites.kt','tools/v132_engine/Wq150LobbyClientTest.kt',
               'tools/v132_engine/test_friend_hd.mjs','tools/v150_release/qa_arena.py'
           }

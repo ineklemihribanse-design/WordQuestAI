@@ -289,3 +289,82 @@ for device,source_name,size in (
             assert check.size==size and check.format=="WEBP"
         print("PASS: distinct local route art",route,device,size,target.stat().st_size)
 assert all((assets/"arena_v160"/r/(d+".webp")).is_file() for r in ("settings","lobby") for d in ("phone","tablet"))
+
+
+# 14 original human Arena mascots, staged only when the exact approved pack
+# is present. Existing personal ZIP mascots and saved profile IDs are retained.
+human_pack=Path("assets/user_uploads/arena_mascots_14.zip")
+if human_pack.is_file():
+    from io import BytesIO
+    assert hashlib.sha256(human_pack.read_bytes()).hexdigest()=="87a4d989e911ca33ac256fe7a9d2fe1abba9c589410678a1c65549891751ea4e", "Approved human mascot pack mismatch"
+    human_ids=["astra","piko","nobi","tera","lopi","tomba","foksi","moka","pera","gigi","diego","finn","iris","arjun"]
+    human_labels=["Atlas","Lina","Leon","Bella","Maya","Kai","Zara","Nora","Leo","Mei","Diego","Finn","Iris","Arjun"]
+    expected={id+"_"+pose+".webp" for id in human_ids for pose in ("idle","victory")}
+    target=assets/"avatars"/"wordquest_human"
+    target.mkdir(parents=True,exist_ok=True)
+    with zipfile.ZipFile(human_pack) as z:
+        assert len(z.namelist())==29 and set(z.namelist())==expected|{"manifest.json"}
+        manifest=json.loads(z.read("manifest.json"))
+        assert [(x["id"],x["name"]) for x in manifest["characters"]]==list(zip(human_ids,human_labels))
+        for item in manifest["characters"]:
+            for pose,digest in item["poses"].items():
+                name=item["id"]+"_"+pose+".webp"
+                raw=z.read(name)
+                assert 1000<len(raw)<1_000_000 and hashlib.sha256(raw).hexdigest()==digest
+                with Image.open(BytesIO(raw)) as im:
+                    assert im.format=="WEBP" and im.mode=="RGBA" and im.size==(768,1024)
+                    assert im.getchannel("A").getextrema()==(0,255)
+                (target/name).write_bytes(raw)
+    assert {p.name for p in target.glob("*.webp")}==expected
+    # Do not package the obsolete robot/animal atlases.
+    for pose in ("idle","victory"):
+        (assets/"avatars"/"wordquest_2d"/("wordquest_"+pose+"_atlas.webp")).unlink(missing_ok=True)
+    source=portrait.read_text("utf-8")
+    import re
+    def once(pattern,replacement):
+        global source
+        source,n=re.subn(pattern,lambda _:replacement,source,count=1,flags=re.S)
+        assert n==1,pattern
+    def kotlin_list(items):
+        return "listOf("+",".join(json.dumps(x) for x in items)+")"
+    once(r'val ids=listOf\(.*?\)\s*\n\s*val labels=listOf\(.*?\)',"val ids="+kotlin_list(human_ids)+"\n    val labels="+kotlin_list(human_labels))
+    once(r'val colors=listOf\(.*?\)\s*\n\s*fun valid', 'val colors=listOf(Color(0xFF5177BE),Color(0xFFB78AE3),Color(0xFFB67C55),Color(0xFFB94463),Color(0xFFF4BF45),Color(0xFF5D65A0),Color(0xFFEA9146),Color(0xFF9F9567),Color(0xFF7399D3),Color(0xFFC64670),Color(0xFFBD895E),Color(0xFF7E9B60),Color(0xFF429574),Color(0xFF7764B2))\n    fun valid')
+    source=source.replace('{"Piko"}','{"Lina"}')
+    once(r'    // Two complete original-art WebP atlases.*?(?=    /\*\* Validate and privately install)', '''    // Each built-in human has two high-resolution transparent poses.
+    private val humanCache=object:android.util.LruCache<String,Bitmap>(16*1024*1024){
+        override fun sizeOf(key:String,value:Bitmap):Int=value.allocationByteCount
+    }
+    fun available(context:Context):Boolean=ids.all{id->
+        listOf("idle","victory").all{pose->
+            runCatching{context.assets.open("avatars/wordquest_human/"+id+"_"+pose+".webp").use{true}}.getOrDefault(false)
+        }
+    }
+    fun picture(context:Context,id:String,victory:Boolean):Bitmap? {
+        if(Wq183MascotStore.isCustomId(id)) {
+            return Wq183MascotStore.picture(context,id,victory)?:picture(context,"piko",victory)
+        }
+        val safe=if(id in ids)id else "piko"
+        val pose=if(victory)"victory" else "idle"
+        val key=safe+"_"+pose
+        humanCache.get(key)?.let{return it}
+        val image=runCatching{
+            context.assets.open("avatars/wordquest_human/"+key+".webp").use{BitmapFactory.decodeStream(it)}
+        }.getOrNull()
+        if(image!=null)humanCache.put(key,image)
+        return image
+    }
+''')
+    # Keep importArt's public signature for historical callers, but use the
+    # packaged art exclusively. Individual custom mascots use Wq183MascotStore.
+    once(r'    /\*\* Validate and privately install.*?\n    }\n}', '''    /** Built-in art ships with the APK; personal ZIP imports use Wq183MascotStore. */
+    fun importArt(context:Context,uri:Uri):Int =
+        error("Hazır maskotlar uygulamayla gelir. Kendi Maskotumu Ekle bölümünü kullan.")
+}''')
+    portrait.write_text(source,"utf-8")
+    picker=pkg/"WordQuest2DPicker.kt"
+    if picker.is_file():
+        t=picker.read_text("utf-8").replace("20 özgün karakter görseli yüklendi.","28 özgün karakter pozu yüklendi.").replace("Özgün 2D Görselleri Yükle","Maskot Görsellerini Yükle")
+        picker.write_text(t,"utf-8")
+    print("PASS: 14 human mascots, 28 exact WebP poses, personal mascot store preserved")
+else:
+    print("INFO: human mascot integration prepared; approved ZIP not present, current release unchanged")
