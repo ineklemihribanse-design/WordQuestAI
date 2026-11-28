@@ -1,6 +1,8 @@
 package com.kelimebulmacasi.a1
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,7 +22,7 @@ internal fun wq150FreshInvite(sentAt:Long,now:Long)=sentAt in (now-600_000)..(no
 
 @Composable
 internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:String?,canInvite:Boolean,
-    enabled:Boolean,joinedRoom:String?,onJoin:suspend (String)->Boolean){
+    enabled:Boolean,joinedRoom:String?,externalOpen:Boolean?=null,onClose:()->Unit={},onJoin:suspend (String)->Boolean){
     val scope=rememberCoroutineScope()
     val db=remember(auth,uid){runCatching{FirebaseDatabase.getInstance(auth.app,"https://wordquest-ai-default-rtdb.firebaseio.com").reference.child("arenaV150Invites")}.getOrNull()}
     var invites by remember(uid){mutableStateOf(emptyList<Wq150Invite>())}
@@ -78,8 +80,8 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
         }
     }
     if(canInvite&&room!=null&&Regex("^[a-f0-9]{20}$").matches(room)){
-        OutlinedButton(onClick={open=!open},enabled=enabled,modifier=Modifier.fillMaxWidth()){Text(if(open)"Arkadaş listesini kapat" else "Arkadaşını davet et")}
-        if(open){
+        if(externalOpen==null)OutlinedButton(onClick={open=!open},enabled=enabled,modifier=Modifier.fillMaxWidth()){Text(if(open)"Arkadaş listesini kapat" else "Arkadaşını davet et")}
+        val content:@Composable ()->Unit={
             OutlinedTextField(lookup,{lookup=it.take(24)},label={Text("Kullanıcı adıyla ara")},singleLine=true,modifier=Modifier.fillMaxWidth())
             if(friends.isEmpty())Text("Önce mevcut arkadaşlar ekranından arkadaş ekle.",color=Wq122Ink)
             friends.filter{it.name.contains(lookup,ignoreCase=true)}.forEach{friend->
@@ -99,6 +101,14 @@ internal fun Wq150Invites(session:AppSession,auth:FirebaseAuth,uid:String,room:S
                 }
             }
         }
+        if(externalOpen==true)AlertDialog(onDismissRequest=onClose,containerColor=Color(0xFF251347),
+            title={Text("Arkadaşını davet et",color=Wq122Gold)},text={
+                Column(Modifier.heightIn(max=420.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(6.dp)){
+                    content()
+                    if(message.isNotBlank())Text(message,color=Wq122Ink)
+                }
+            },confirmButton={TextButton(onClick=onClose){Text("Kapat",color=Wq122Gold)}})
+        else if(externalOpen==null&&open)content()
     }
-    if(message.isNotBlank())Text(message,color=Wq122Ink)
+    if(message.isNotBlank()&&externalOpen!=true)Text(message,color=Wq122Ink)
 }

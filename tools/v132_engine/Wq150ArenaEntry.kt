@@ -145,6 +145,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                     val wide=config.screenWidthDp>=650
                     val cardHeight=(config.screenHeightDp*(if(wide).52f else .48f)).coerceIn(if(wide)210f else 280f,if(wide)430f else 460f).dp
                     var info by remember(room){mutableStateOf(false)}
+                    var inviteOpen by remember(room){mutableStateOf(false)}
                     val consent by rememberWq183ShareConsent(session.profileKey)
                     Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
                         TextButton(onClick={exit=true},contentPadding=PaddingValues(horizontal=4.dp)){Text("‹",color=Wq122Gold,fontSize=25.sp)}
@@ -213,7 +214,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                                     else profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}
                                         ?:session.social.friends.firstOrNull{it.uid==id}?.name?:"Oyuncu "+(i+1)
                                 Wq161LobbyPlayer(name,profiles.optJSONObject(id),ownAvatar.takeIf{mine},owner,player!=null,mine,ready,enabled,
-                                    cardHeight,Modifier.weight(1f)){
+                                    cardHeight,Modifier.weight(1f),canInvite=host&&count<capacity&&enabled,onInvite={inviteOpen=true}){
                                     scope.launch{controller.action("ready",ready=!ready)}
                                 }
                             }
@@ -228,7 +229,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                             Switch(checked=consent,onCheckedChange={Wq183ArenaShare.setConsent(context,session.profileKey,it)})
                         }
                     }
-                    if(auth!=null)Wq150Invites(session,auth,uid,room,host&&count<capacity,enabled,room){false}
+                    if(auth!=null)Wq150Invites(session,auth,uid,room,host&&count<capacity,enabled,room,inviteOpen,{inviteOpen=false}){false}
                     if(host)Wq159SettingsFooter("Maçı başlat",snapshot.optBoolean("canStart")&&enabled){
                         scope.launch{controller.action("start")}
                     }
@@ -723,11 +724,11 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
         topics=result
         if(topic !in topics)topic=PremiumArenaRules.allTopics
     }
-    Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
+    Dialog(onDismissRequest={if(!busy)onDismiss()},properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)){
         Wq150ArenaBars()
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
             Wq150SettingsBackdrop(Modifier.matchParentSize())
-            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(Wq160SettingsInsets()).imePadding().padding(horizontal=8.dp,vertical=8.dp),
+            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=10.dp),
                 verticalArrangement=Arrangement.spacedBy(8.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}
@@ -974,7 +975,7 @@ private fun Wq161LobbyAction(label:String,onClick:()->Unit,modifier:Modifier=Mod
 }
 @Composable
 private fun Wq161LobbyPlayer(name:String,profile:JSONObject?,ownAvatar:String?,host:Boolean,present:Boolean,mine:Boolean,ready:Boolean,enabled:Boolean,
-    height:Dp,modifier:Modifier,onReady:()->Unit){
+    height:Dp,modifier:Modifier,canInvite:Boolean,onInvite:()->Unit,onReady:()->Unit){
     val shape=RoundedCornerShape(21.dp)
     Column(modifier.height(height).clip(shape)
         .background(Brush.verticalGradient(listOf(Color(0xE25C328B),Color(0xF0251644))))
@@ -987,14 +988,18 @@ private fun Wq161LobbyPlayer(name:String,profile:JSONObject?,ownAvatar:String?,h
             }
             if(present)Wq150Portrait(profile,ownAvatar,Modifier.fillMaxSize().padding(top=12.dp,bottom=8.dp))
             else Column(horizontalAlignment=Alignment.CenterHorizontally){
-                Wq150ApprovedArt("friends",Modifier.size(58.dp))
-                Text("Oyuncu bekleniyor",color=Color(0xFFE7D9FF),fontSize=12.sp,textAlign=TextAlign.Center)
+                if(canInvite)Box(Modifier.size(76.dp).clip(RoundedCornerShape(24.dp))
+                    .background(Color(0xB3492777)).border(1.dp,Wq122Gold,RoundedCornerShape(24.dp))
+                    .clickable(onClick=onInvite),contentAlignment=Alignment.Center){
+                    Text("+",color=Wq122Gold,fontSize=44.sp,fontWeight=FontWeight.Light)
+                }else Wq150ApprovedArt("friends",Modifier.size(58.dp))
+                Text(if(canInvite)"Arkadaş davet et" else "Oyuncu bekleniyor",color=Color(0xFFE7D9FF),fontSize=12.sp,textAlign=TextAlign.Center)
             }
             if(host)Text("Oda sahibi",Modifier.align(Alignment.TopStart).clip(RoundedCornerShape(9.dp)).background(Color(0xE52A154B)).padding(5.dp),
                 color=Wq122Gold,fontSize=11.sp,fontWeight=FontWeight.Bold)
         }
         Text(name,color=Color.White,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Bold,fontSize=17.sp,maxLines=1,overflow=TextOverflow.Ellipsis)
-        Wq161LobbyAction(if(!present)"Bekleniyor" else if(ready)"✓ Hazır" else if(mine)"Hazırım" else "Hazır değil",onReady,
-            Modifier.fillMaxWidth(),enabled=present&&mine&&enabled,ready=ready)
+        Wq161LobbyAction(if(!present&&canInvite)"Davet et +" else if(!present)"Bekleniyor" else if(ready)"✓ Hazır" else if(mine)"Hazırım" else "Hazır değil",if(!present)onInvite else onReady,
+            Modifier.fillMaxWidth(),enabled=if(present)mine&&enabled else canInvite,ready=ready)
     }
 }

@@ -21,6 +21,18 @@ class Wq150LobbyClientTest {
         assertFalse(c.copy(ready=null).valid())
         assertFalse(c.copy(revision=-1).valid())
     }
+    @Test fun customValuesKeepExistingServerBounds(){
+        val s=Wq150Settings(count=27,seconds=37,hints=7,retries=2,skipLimit=4)
+        assertTrue(s.valid())
+        assertTrue(Wq150LobbyCommand("settings",2,settings=s).valid())
+        assertEquals(27,s.changeKind("quiz").count)
+        assertFalse(s.copy(count=71).valid())
+        assertFalse(s.copy(seconds=601).valid())
+        assertFalse(s.copy(hints=21).valid())
+        assertFalse(s.copy(retries=4).valid())
+        assertFalse(s.copy(skipLimit=6).valid())
+        assertTrue(s.copy(kind="coop",mode="timed",seconds=181,maxMistakes=9).valid())
+    }
     @Test fun onlyValidSettingsMayBeSent(){
         assertTrue(Wq150LobbyCommand("settings",2,settings=Wq150Settings()).valid())
         assertFalse(Wq150LobbyCommand("settings",2,settings=Wq150Settings(count=71)).valid())

@@ -29,6 +29,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import org.json.JSONArray
 import org.json.JSONObject
@@ -75,7 +78,7 @@ internal data class Wq150Settings(
         require(value in Wq150ModeCatalog.kinds)
         val nextFormat=if(value=="quiz")"quiz" else "crossword"
         return copy(kind=value,mode=Wq150ModeCatalog.modes(value).keys.first(),format=nextFormat,
-            count=if(count in Wq150ModeCatalog.sizes(nextFormat))count else 20)
+            count=if(count in (if(nextFormat=="quiz")5..70 else 10..70))count else 20)
     }
     fun changeScale(value:String):Wq150Settings {
         require(value=="cefr"||value=="yds")
@@ -94,7 +97,7 @@ internal data class Wq150Settings(
     }
     fun changeFormat(value:String):Wq150Settings {
         require(kind=="team"&&value in listOf("quiz","crossword"))
-        return copy(format=value,count=if(count in Wq150ModeCatalog.sizes(value))count else 20)
+        return copy(format=value,count=if(count in (if(value=="quiz")5..70 else 10..70))count else 20)
     }
     fun toggleLevel(value:String):Wq150Settings {
         require(value in Wq150ModeCatalog.levels(scale))
@@ -174,6 +177,8 @@ internal fun Wq150ArenaBars(){
         // over the previous Arena screen while their first frame is rendered.
         if(view.parent is DialogWindowProvider){
             window?.setWindowAnimations(0)
+            window?.setLayout(android.view.ViewGroup.LayoutParams.MATCH_PARENT,android.view.ViewGroup.LayoutParams.MATCH_PARENT)
+            window?.let{WindowCompat.setDecorFitsSystemWindows(it,true)}
             window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(0xFF150B3E.toInt()))
         }
         // The full-screen settings dialog owns its status strip; never show
@@ -233,20 +238,38 @@ internal fun Wq150LevelRow(values:List<String>,selected:List<String>,onPick:(Str
     }
 }
 @Composable
-internal fun Wq150CompactPicker(values:Map<String,String>,selected:String,onPick:(String)->Unit){
+internal fun Wq150CompactPicker(values:Map<String,String>,selected:String,customRange:IntRange?=null,customTitle:String="Özel değer",customLabel:(Int)->String={it.toString()},onPick:(String)->Unit){
     var open by remember{mutableStateOf(false)}
-    Box(Modifier.fillMaxWidth()){
+    var custom by remember{mutableStateOf(false)}
+    var input by remember{mutableStateOf("")}
+    BoxWithConstraints(Modifier.fillMaxWidth()){
+        val pickerWidth=maxWidth
         OutlinedButton(onClick={open=true},modifier=Modifier.fillMaxWidth().heightIn(min=44.dp),
             border=androidx.compose.foundation.BorderStroke(1.dp,Color(0x728F80AC)),
             colors=ButtonDefaults.outlinedButtonColors(containerColor=Color(0x95231C3D)),
             contentPadding=PaddingValues(horizontal=10.dp,vertical=4.dp)){
-            Text(values[selected]?:selected,Modifier.weight(1f),color=Wq122Ink,fontWeight=FontWeight.Bold,fontSize=13.sp)
+            Text(values[selected]?:selected.toIntOrNull()?.let{customLabel(it)}?:selected,Modifier.weight(1f),color=Wq122Ink,fontWeight=FontWeight.Bold,fontSize=13.sp)
             Text("⌄",color=Wq122Gold)
         }
-        DropdownMenu(expanded=open,onDismissRequest={open=false},modifier=Modifier.heightIn(max=320.dp).background(Color(0xFF251347))){
-            values.forEach{(id,label)->DropdownMenuItem(text={Text(label+if(id==selected)" ✓" else "",color=Color.White,fontSize=16.sp,fontWeight=if(id==selected)FontWeight.Bold else FontWeight.Normal)},
+        DropdownMenu(expanded=open,onDismissRequest={open=false},modifier=Modifier.width(pickerWidth).heightIn(max=320.dp).background(Color(0xFF251347))){
+            values.forEach{(id,label)->DropdownMenuItem(text={Text(label+if(id==selected)" ✓" else "",color=Color.White,fontSize=15.sp,fontWeight=if(id==selected)FontWeight.Bold else FontWeight.Normal)},
                 onClick={onPick(id);open=false})}
+            if(customRange!=null)DropdownMenuItem(text={Text("Özel…",color=Wq122Gold,fontWeight=FontWeight.Bold)},onClick={open=false;input=selected;custom=true})
         }
+    }
+    if(custom&&customRange!=null){
+        val number=input.toIntOrNull()
+        val valid=number!=null&&number in customRange
+        AlertDialog(onDismissRequest={custom=false},containerColor=Color(0xFF251347),
+            title={Text(customTitle,color=Wq122Gold,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Bold)},
+            text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
+                Text("İzin verilen aralık: ${customRange.first}–${customRange.last}",color=Color(0xFFE7D9FF))
+                OutlinedTextField(input,{input=it.filter(Char::isDigit).take(4)},singleLine=true,modifier=Modifier.fillMaxWidth(),
+                    keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Number),label={Text("Özel değer")},
+                    isError=input.isNotEmpty()&&!valid)
+            }},
+            confirmButton={TextButton(enabled=valid,onClick={number?.let{onPick(it.toString())};custom=false}){Text("Uygula",color=Wq122Gold)}},
+            dismissButton={TextButton(onClick={custom=false}){Text("Vazgeç",color=Color.White)}})
     }
 }
 @Composable
@@ -257,14 +280,14 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
     val levels=Wq150ModeCatalog.levels(s.scale)
     val scales=if(catalog==null||catalog.hasYds())mapOf("cefr" to "CEFR","yds" to "YDS")else mapOf("cefr" to "CEFR")
     val valid=available&&s.valid()&&(catalog?.supports(s)!=false)
-    val timeLabel:(Int)->String={if(it==0)"Süresiz" else if(timed)"${it/60} dk" else "$it sn"}
+    val timeLabel:(Int)->String={if(it==0)"Süresiz" else if(timed&&it%60==0)"${it/60} dk" else "$it sn"}
     MaterialTheme(colorScheme=Wq122Scheme) {
-        Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=false)){
+        Dialog(onDismissRequest=onDismiss,properties=DialogProperties(usePlatformDefaultWidth=false,decorFitsSystemWindows=true)){
             Wq150ArenaBars()
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
                 Wq150SettingsBackdrop(Modifier.matchParentSize())
                 Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
-                    .windowInsetsPadding(Wq160SettingsInsets()).imePadding().padding(horizontal=8.dp,vertical=8.dp),
+                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=10.dp),
                     verticalArrangement=Arrangement.spacedBy(8.dp)){
                     Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xB8241B41)),
                         verticalAlignment=Alignment.CenterVertically){
@@ -308,16 +331,16 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
                         val rules:@Composable ()->Unit={
                             Wq150SettingPanel("amber"){
                                 Wq122Section("count","Maç kuralları")
-                                Wq150SettingValue(if(s.format=="quiz")"Soru sayısı" else "Kelime sayısı",Wq150ModeCatalog.sizes(s.format).associate{it.toString() to it.toString()},s.count.toString()){s=s.copy(count=it.toInt())}
+                                Wq150SettingValue(if(s.format=="quiz")"Soru sayısı" else "Kelime sayısı",Wq150ModeCatalog.sizes(s.format).associate{it.toString() to it.toString()},s.count.toString(),maxOf(if(s.format=="quiz")5 else 10,s.levels.size)..70){s=s.copy(count=it.toInt())}
                                 Wq150SettingValue(if(timed)"Ortak maç süresi" else "Soru süresi",
-                                    (if(timed)listOf(180,300,600,900)else listOf(0,20,30,45,60)).associate{it.toString() to timeLabel(it)},s.seconds.toString()){s=s.copy(seconds=it.toInt())}
-                                Wq150SettingValue("İpucu hakkı",listOf(0,3,5,8,12,20).associate{it.toString() to it.toString()},s.hints.toString()){s=s.copy(hints=it.toInt())}
+                                    (if(timed)listOf(180,300,600,900)else listOf(0,20,30,45,60)).associate{it.toString() to timeLabel(it)},s.seconds.toString(),if(timed)1..3600 else 0..600,timeLabel){s=s.copy(seconds=it.toInt())}
+                                Wq150SettingValue("İpucu hakkı",listOf(0,3,5,8,12,20).associate{it.toString() to it.toString()},s.hints.toString(),0..20){s=s.copy(hints=it.toInt())}
                                 if(s.kind=="duel"){
-                                    Wq150SettingValue("Tekrar hakkı",(0..3).associate{it.toString() to it.toString()},s.retries.toString()){s=s.copy(retries=it.toInt())}
-                                    Wq150SettingValue("Kelimeyi geçme hakkı",(0..5).associate{it.toString() to it.toString()},s.skipLimit.toString()){s=s.copy(skipLimit=it.toInt())}
+                                    Wq150SettingValue("Tekrar hakkı",(0..3).associate{it.toString() to it.toString()},s.retries.toString(),0..3){s=s.copy(retries=it.toInt())}
+                                    Wq150SettingValue("Kelimeyi geçme hakkı",(0..5).associate{it.toString() to it.toString()},s.skipLimit.toString(),0..5){s=s.copy(skipLimit=it.toInt())}
                                 }
                                 if(s.mode=="limited")Wq150SettingValue("Seri sınırı",listOf(2,3,5).associate{it.toString() to "$it doğru"},s.limit.toString()){s=s.copy(limit=it.toInt())}
-                                if(s.kind=="coop"&&s.mode=="perfect")Wq150SettingValue("Ortak yanlış hakkı",listOf(1,2,3,5).associate{it.toString() to it.toString()},s.maxMistakes.toString()){s=s.copy(maxMistakes=it.toInt())}
+                                if(s.kind=="coop"&&s.mode=="perfect")Wq150SettingValue("Ortak yanlış hakkı",listOf(1,2,3,5).associate{it.toString() to it.toString()},s.maxMistakes.toString(),1..20){s=s.copy(maxMistakes=it.toInt())}
                             }
                         }
                         Column(Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(6.dp)){
@@ -362,15 +385,15 @@ internal fun Wq159SettingsFooter(label:String,enabled:Boolean,onClick:()->Unit){
     Surface(Modifier.fillMaxWidth(),color=Color.Transparent,shadowElevation=0.dp){
         Box(Modifier.fillMaxWidth().padding(horizontal=4.dp,vertical=4.dp),contentAlignment=Alignment.Center){
             val shape=RoundedCornerShape(17.dp)
-            val fill=if(enabled)listOf(Color(0xF3E6BE79),Color(0xE9C99A53)) else listOf(Color(0xE03B3451),Color(0xD52C2544))
+            val fill=if(enabled)listOf(Color(0xFFFFEDB9),Color(0xFFF1C16F),Color(0xFFB77B32)) else listOf(Color(0xE03B3451),Color(0xD52C2544))
             Button(onClick=onClick,enabled=enabled,modifier=Modifier.widthIn(max=440.dp).fillMaxWidth()
-                .heightIn(min=52.dp).clip(shape).background(Brush.verticalGradient(fill))
+                .heightIn(min=52.dp).shadow(if(enabled)5.dp else 0.dp,shape).clip(shape).background(Brush.verticalGradient(fill))
                 .border(1.dp,Color(0xBFFFE0A6),shape),
                 shape=shape,colors=ButtonDefaults.buttonColors(
                     containerColor=Color.Transparent,contentColor=Color(0xFF241536),
                     disabledContainerColor=Color.Transparent,disabledContentColor=Color(0xFFD1C6DC)),
                 contentPadding=PaddingValues(horizontal=14.dp,vertical=10.dp)){
-                Text(label,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=16.sp,textAlign=TextAlign.Center)
+                Text(label,fontFamily=FontFamily.Serif,fontWeight=FontWeight.Black,fontSize=17.sp,textAlign=TextAlign.Center)
             }
         }
     }
@@ -384,10 +407,10 @@ internal fun Wq150StartButton(label:String,enabled:Boolean,onClick:()->Unit){
     }
 }
 @Composable
-private fun Wq150SettingValue(title:String,values:Map<String,String>,selected:String,onPick:(String)->Unit){
+private fun Wq150SettingValue(title:String,values:Map<String,String>,selected:String,customRange:IntRange?=null,customLabel:(Int)->String={it.toString()},onPick:(String)->Unit){
     Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
         Text(title,Modifier.weight(1f),color=Wq122Ink,fontSize=13.sp,fontWeight=FontWeight.Bold)
-        Box(Modifier.weight(1f)){Wq150CompactPicker(values,selected,onPick)}
+        Box(Modifier.weight(1f)){Wq150CompactPicker(values,selected,customRange,title,customLabel,onPick)}
     }
 }
 

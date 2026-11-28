@@ -14,6 +14,7 @@ assert 'Wq132WebEngine.generate(context,engine' in entry
 assert 'Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)' in entry
 assert 'if(lobby&&!active)Wq160LobbyBackdrop(Modifier.matchParentSize())' in entry
 assert 'Wq160SettingsInsets()' in entry
+assert 'canInvite=host&&count<capacity&&enabled' in entry
 assert 'Wq150ModeCatalog.kinds.forEach' not in entry, "Legacy yellow mode buttons reintroduced"
 assert 'Wq150PremiumPanel {' in entry
 assert 'Wq150ApprovedArt("crest"' in entry
