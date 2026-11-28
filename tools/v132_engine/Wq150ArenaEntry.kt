@@ -40,6 +40,14 @@ import androidx.compose.ui.window.DialogProperties
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
+private suspend fun wq150SendRematchInvite(ref:com.google.firebase.database.DatabaseReference,room:String):Boolean=
+    kotlinx.coroutines.withTimeoutOrNull(10000L){
+        kotlinx.coroutines.suspendCancellableCoroutine<Boolean>{continuation->
+            ref.setValue(mapOf("room" to room,"sentAt" to com.google.firebase.database.ServerValue.TIMESTAMP))
+                .addOnCompleteListener{task->if(continuation.isActive)continuation.resumeWith(Result.success(task.isSuccessful))}
+        }
+    }?:false
+
 private object Wq150CatalogCache {
     @Volatile var cached:Wq150Catalog?=null
         private set
@@ -55,9 +63,11 @@ internal object Wq150ArenaFeature {
         return configured?.takeIf{it.isNotBlank()}?.let{runCatching{Wq150Endpoint(it)}.getOrNull()}
     }
 }
+internal data class Wq150Rematch(val settings:Wq150Settings,val opponents:List<String>)
+
 @Composable
 internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->Unit,account:()->Unit,
-    legacy:()->Unit,soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit,onMatch:(String,JSONObject)->Unit){
+    legacy:()->Unit,soloSelected:Boolean,onTab:(Boolean)->Unit,onSolo:(WqArenaSoloLaunch)->Unit,rematch:Wq150Rematch?=null,onRematchConsumed:()->Unit={},onMatch:(String,JSONObject)->Unit){
     val context=LocalContext.current
     val appContext=context.applicationContext
     var catalogState by remember(appContext){mutableStateOf<Pair<Boolean,Wq150Catalog?>>((Wq150CatalogCache.cached!=null) to Wq150CatalogCache.cached)}
@@ -107,8 +117,29 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     var exit by rememberSaveable {mutableStateOf(false)}
     var codeTouched by rememberSaveable {mutableStateOf(false)}
     var panel by rememberSaveable {mutableStateOf("")}
+    var rematchNotice by remember{mutableStateOf("")}
+    var rematchOpponents by remember{mutableStateOf<List<String>>(emptyList())}
+    LaunchedEffect(rematch){
+        val request=rematch?:return@LaunchedEffect
+        settings=request.settings;rematchOpponents=request.opponents
+        onTab(false)
+        controller.create(request.settings)
+        onRematchConsumed()
+    }
     val snapshot=state.view
     val room=state.room
+    LaunchedEffect(room,snapshot?.optString("phase"),rematchOpponents){
+        if(room==null||snapshot?.optString("phase")!="lobby"||rematchOpponents.isEmpty())return@LaunchedEffect
+        val recipients=rematchOpponents
+        val friends=session.social.friends.map{it.uid}.toSet()
+        val database=runCatching{com.google.firebase.database.FirebaseDatabase.getInstance(requireNotNull(auth).app,"https://wordquest-ai-default-rtdb.firebaseio.com").reference.child("arenaV150Invites")}.getOrNull()
+        var sent=0
+        for(id in recipients.filter{it in friends}){
+            if(database!=null&&wq150SendRematchInvite(database.child(id).child(uid),room))sent++
+        }
+        rematchNotice=if(sent==recipients.size)"Rövanş daveti gönderildi." else "Rövanş odası hazır. Davet iletilemeyen oyuncularla oda kodunu paylaş."
+        rematchOpponents=emptyList()
+    }
     val routedInvite=Wq150InviteRoute.pending
     LaunchedEffect(uid,routedInvite){
         if(routedInvite!=null&&routedInvite.first==uid){
@@ -184,6 +215,7 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
                         Wq161LobbyAction("Arkadaşlar",{panel="Arkadaşlarım"},Modifier.widthIn(min=78.dp))
                         Wq161LobbyAction("i",{info=true},Modifier.width(44.dp))
                     }
+                    if(rematchNotice.isNotBlank())Text(rematchNotice,color=Wq122Gold,fontWeight=FontWeight.Bold)
                     Wq161LobbyPlate{
                         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
                             Column(Modifier.weight(1f)){

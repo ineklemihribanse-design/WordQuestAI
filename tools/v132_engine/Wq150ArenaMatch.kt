@@ -230,7 +230,7 @@ private fun Wq150CenterClock(remaining:Long?,phase:String,tablet:Boolean,compact
 
 /** All actions use the current authenticated server snapshot; no local scoring. */
 @Composable
-internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:Wq150Gateway,session:AppSession,onBack:()->Unit,onTeacher:(String)->Unit){
+internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:Wq150Gateway,session:AppSession,onBack:()->Unit,onTeacher:(String)->Unit,onRematch:(Wq150Rematch)->Unit){
     val profiles=rememberWq150Profiles(room,session,gateway)
     val ownAvatar by rememberWq2DSelection(session.profileKey)
     val config=androidx.compose.ui.platform.LocalConfiguration.current
@@ -518,7 +518,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
               Column(area
                 .verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(if(imeVisible&&!quiz)2.dp else 6.dp)){
                 if(finished){
-                    Wq150ResultPanel(view,uid,team,profiles,ownAvatar,::playerName,localReview,onBack,onTeacher)
+                    Wq150ResultPanel(view,uid,team,profiles,ownAvatar,::playerName,localReview,onBack,onTeacher,onRematch)
                 }else{
                     Text(if(choose)"Çözeceğin kelimeyi seç" else prompt,modifier=Modifier.fillMaxWidth(),color=Wq122Ink,fontWeight=FontWeight.Bold,fontSize=if(quiz||tablet)16.sp else 14.sp,maxLines=if(quiz)Int.MAX_VALUE else 3,overflow=TextOverflow.Ellipsis)
                     if(choose||free){
@@ -654,6 +654,7 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
         if(uid.isNotBlank())prefs.edit().remove(uid).apply()
         room=null;initial=null;resumeError=null
     }
+    var rematch by remember(uid){mutableStateOf<Wq150Rematch?>(null)}
     val id=room;val snapshot=initial
     LaunchedEffect(uid,id,retry,gateway){
         if(id==null||initial!=null||gateway==null)return@LaunchedEffect
@@ -667,7 +668,7 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
         }catch(e:Exception){resumeError="Bağlantı kurulamadı. Maç kaydı korunuyor."}
     }
     if(id!=null&&snapshot!=null&&gateway!=null&&uid.isNotBlank())
-        Wq150ArenaMatch(id,snapshot,uid,gateway,session,{clearRoom();onTab(false)},{prompt->clearRoom();onTeacher(prompt)})
+        Wq150ArenaMatch(id,snapshot,uid,gateway,session,{clearRoom();onTab(false)},{prompt->clearRoom();onTeacher(prompt)},{request->rematch=request;clearRoom();onTab(false)})
     else if(id!=null&&gateway!=null){
         BackHandler{back()}
         Column(Modifier.fillMaxSize().background(Color(0xFF150B3E)).windowInsetsPadding(WindowInsets.safeDrawing).padding(20.dp),
@@ -677,14 +678,14 @@ internal fun Wq150ArenaFlow(session:AppSession,endpoint:Wq150Endpoint,back:()->U
             else{Text(resumeError.orEmpty(),color=Wq122Ink);Button(onClick={retry++}){Text("Tekrar dene")}}
             TextButton(onClick=back){Text("Geri · maç kaydını koru",color=Wq122Gold)}
         }
-    }else Wq150ArenaEntry(session,endpoint,back,account,legacy,soloSelected,onTab,onSolo){r,v->
+    }else Wq150ArenaEntry(session,endpoint,back,account,legacy,soloSelected,onTab,onSolo,rematch=rematch,onRematchConsumed={rematch=null}){r,v->
         if(uid.isNotBlank()&&wq150ValidRoom(r)){prefs.edit().putString(uid,r).apply();room=r;initial=v}
     }
 }
 
 @Composable
 private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSONObject,ownAvatar:String,name:(String)->String,
-    localReview:JSONObject,onBack:()->Unit,onTeacher:(String)->Unit){
+    localReview:JSONObject,onBack:()->Unit,onTeacher:(String)->Unit,onRematch:(Wq150Rematch)->Unit){
     val kind=view.optString("kind")
     val result=view.optJSONObject("result")
     val game=view.optJSONObject("game")?:JSONObject()
@@ -819,7 +820,11 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
             }
         }
     }
-    Button(onClick=onBack,modifier=Modifier.fillMaxWidth()){Text("Arena'ya dön")}
+    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+        val cfg=runCatching{Wq150Settings.fromJson(view.optJSONObject("settings")?:JSONObject())}.getOrNull()
+        OutlinedButton(enabled=cfg!=null&&ids.any{it!=uid},onClick={cfg?.let{onRematch(Wq150Rematch(it,ids.filter{p->p!=uid}))}},modifier=Modifier.weight(1f),contentPadding=PaddingValues(horizontal=6.dp,vertical=8.dp)){Text("Rövanş iste",color=Wq122Gold,maxLines=1)}
+        Button(onClick=onBack,modifier=Modifier.weight(1f),contentPadding=PaddingValues(horizontal=6.dp,vertical=8.dp)){Text("Arena'ya dön",maxLines=1)}
+    }
 }
 internal fun wq150CombinedStudyPrompt(wrong:List<JSONObject>,blank:List<JSONObject>):String{
     fun section(rows:List<JSONObject>):String=if(rows.isEmpty())"Yok" else rows.joinToString("\n"){row->
