@@ -26,15 +26,15 @@ export function sweepPresence(state,now){
  return matchTick(s,now);
 }
 export function presenceEvent(state,uid,request,now){
- if(!request||!['heartbeat','leave'].includes(request.type)||!safe(request.session)||
+ if(!request||!['heartbeat','leave','cancel-disconnected'].includes(request.type)||!safe(request.session)||
   !state.connection.players.some(p=>p.id===uid))fail('Invalid presence request');
  let s=sweepPresence(state,now);
  const p=s.connection.players.find(p=>p.id===uid);
  if(finished(s)||p.removed)return s;
  const lease=s.presence?.[uid]??{session:null,until:null};
- if(request.type==='leave'){
+ if(request.type==='leave'||request.type==='cancel-disconnected'){
   if(lease.session!==request.session)fail('Session not current');
-  return matchTransport(s,{type:'leave',id:uid,epoch:p.epoch},now);
+  return matchTransport(s,{type:request.type,id:uid,epoch:p.epoch},now);
  }
  if(p.connected&&lease.session!==null&&lease.session!==request.session)fail('Another session is active');
  // A stale session cannot override a current connected session. After a
