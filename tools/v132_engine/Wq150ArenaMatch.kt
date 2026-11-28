@@ -271,6 +271,7 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     }else draft
     val answerComplete=totalLength>0&&draft.length==inputLength&&answerText.length==totalLength
     var exit by remember(room){mutableStateOf(false)}
+    var disconnectExit by remember(room){mutableStateOf(false)}
     var now by remember{mutableLongStateOf(view.optLong("serverNow",System.currentTimeMillis()))}
     LaunchedEffect(room){controller.poll()}
     LaunchedEffect(view,phase){
@@ -346,14 +347,14 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             answer=answer,choice=choice)
         if(command.valid())scope.launch{controller.submit(command)}
     }
-    BackHandler{if(imeVisible)focusManager.clearFocus() else exit=true}
+    BackHandler{if(imeVisible)focusManager.clearFocus() else {disconnectExit=paused;exit=true}}
     MaterialTheme(colorScheme=Wq122Scheme){
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
         Wq183ArenaBackdrop(Modifier.matchParentSize(),active=true)
         Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
             .imePadding().padding(horizontal=if(tablet)10.dp else 8.dp,vertical=4.dp),verticalArrangement=Arrangement.spacedBy(3.dp)){
             Row(Modifier.fillMaxWidth().heightIn(max=44.dp),verticalAlignment=Alignment.CenterVertically){
-                TextButton(onClick={exit=true}){Text("‹ Geri",color=Wq122Gold)}
+                TextButton(onClick={disconnectExit=paused;exit=true}){Text("‹ Geri",color=Wq122Gold)}
                 Text(Wq150ModeCatalog.kinds[kind].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f),maxLines=1,overflow=TextOverflow.Ellipsis)
                 Box{
                     TextButton(enabled=canSocial&&!imeVisible&&now-lastEmoji>=1500L,onClick={emojiMenu=true},contentPadding=PaddingValues(horizontal=6.dp)){Text("☺",color=Wq122Gold,fontSize=22.sp)}
@@ -507,15 +508,15 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
                     Text("Maç duraklatıldı. Tahta, puanlar ve süre korunuyor.")
                     seconds?.let{Text("Geri dönüş süresi: $it sn",fontWeight=FontWeight.Bold)}
-                }},confirmButton={TextButton(onClick={exit=true}){Text("Maçtan ayrıl")}})
+                }},confirmButton={TextButton(onClick={disconnectExit=true;exit=true}){Text("Maçtan ayrıl")}})
         }
         if(exit)AlertDialog(onDismissRequest={if(!remote.busy)exit=false},title={Text("Arena'dan ayrıl?")},
             text={Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
-                Text(if(finished)"Arena'ya dönülsün mü?" else "Bilerek ayrılmak geri dönüş hakkını sonlandırır. Rakip hükmen kazanabilir.")
+                Text(if(finished)"Arena'ya dönülsün mü?" else if(disconnectExit)"Bağlantı kesintisi nedeniyle maçı sonuçsuz bitirmek ister misin? Hükmen ayrılma isteği gönderilmeyecek." else "Bilerek ayrılmak geri dönüş hakkını sonlandırır. Rakip hükmen kazanabilir.")
                 remote.error?.let{Text(it,color=MaterialTheme.colorScheme.error)}
             }},
             confirmButton={TextButton(enabled=!remote.busy,onClick={
-                scope.launch{if(controller.leave()){exit=false;onBack()}}
+                scope.launch{if(controller.leave(neutral=disconnectExit)){exit=false;onBack()}}
             }){Text(if(remote.busy)"Doğrulanıyor…" else "Ayrıl")}},
             dismissButton={TextButton(enabled=!remote.busy,onClick={exit=false}){Text("Devam et")}})
     }
@@ -575,7 +576,7 @@ private fun Wq150ResultPanel(view:JSONObject,uid:String,team:String,profiles:JSO
     val complete=kind=="coop"&&result?.optBoolean("completed")==true
     val title=when{
         reason=="mutual-finish"->"Karşılıklı anlaşmayla bitti"
-        reason=="no-contest"->"Maç sonuçlanamadı"
+        reason=="no-contest"->"Maç sonuçsuz bitti"
         reason=="incomplete"->"Ortak bulmaca tamamlanmadı"
         complete->"Birlikte başardınız!"
         reason=="forfeit"->if(won)"Hükmen kazandın!" else "Hükmen sonuçlandı"
@@ -695,7 +696,7 @@ internal object Wq150History{
         return (0 until a.length()).mapNotNull{a.optJSONObject(it)}
     }
     fun entry(room:String,view:JSONObject,profiles:JSONObject,uid:String,ownName:String):JSONObject?{
-        if(room.isBlank()||view.optString("phase")!="finished")return null
+        if(room.isBlank()||view.optString("phase")!="finished"||view.optJSONObject("result")?.optString("kind")=="no-contest")return null
         val summary=view.optJSONObject("summary")?:return null
         val stats=summary.optJSONObject("players")?:return null
         val ids=view.optJSONObject("connection").objects("players").map{it.optString("id")}.filter{it.isNotBlank()}.distinct()
