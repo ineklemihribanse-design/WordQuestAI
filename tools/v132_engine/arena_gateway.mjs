@@ -81,7 +81,7 @@ export function createArenaHandler({auth,database,clock=Date.now,log=()=>{},bank
     const state=(await ref.get()).val();
     try{matchView(state,uid);}catch{return problem(res,404,'not-found');}
     const data=await readBody(req);
-    if(Object.keys(data).some(k=>!['type','session'].includes(k))||!['heartbeat','leave'].includes(data.type)||
+    if(Object.keys(data).some(k=>!['type','session'].includes(k))||!['heartbeat','leave','cancel-disconnected'].includes(data.type)||
      typeof data.session!=='string'||! /^[A-Za-z0-9_-]{16,100}$/.test(data.session))return problem(res,400,'invalid-presence');
     return reply(res,200,{ok:true,view:await transactPresence(ref,uid,data,clock)});
    }catch(e){log('arena-presence-request-failed',String(e?.name??'Error'));return problem(res,409,'refresh-required');}
