@@ -112,7 +112,8 @@ internal fun Wq150ArenaEntry(session:AppSession,endpoint:Wq150Endpoint,back:()->
     }
     MaterialTheme(colorScheme=Wq122Scheme){
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
-            if(lobby||active)Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
+            if(lobby&&!active)Wq160LobbyBackdrop(Modifier.matchParentSize())
+            else if(active)Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)
             if(!lobby&&!active){
                 val enabled=!state.busy&&!state.pending
                 Wq150ArenaHome(session,ownAvatar,soloSelected,onTab,enabled,back,
@@ -337,8 +338,15 @@ private fun Wq150ApprovedArt(name:String,modifier:Modifier,scale:ContentScale=Co
 internal fun Wq150SettingsBackdrop(modifier:Modifier){
     val c=LocalConfiguration.current
     val tablet=c.screenWidthDp>c.screenHeightDp&&c.screenWidthDp>=600
-    Wq150ApprovedArt(if(tablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp",
-        modifier,ContentScale.Crop)
+    Wq150ApprovedArt(if(tablet)"arena_v160/settings/tablet.webp" else "arena_v160/settings/phone.webp",
+        modifier,ContentScale.Fit)
+}
+@Composable
+private fun Wq160LobbyBackdrop(modifier:Modifier){
+    val c=LocalConfiguration.current
+    val tablet=c.screenWidthDp>c.screenHeightDp&&c.screenWidthDp>=600
+    Wq150ApprovedArt(if(tablet)"arena_v160/lobby/tablet.webp" else "arena_v160/lobby/phone.webp",
+        modifier,ContentScale.Fit)
 }
 @Composable
 private fun Wq150PremiumPanel(content:@Composable ColumnScope.()->Unit){
@@ -472,6 +480,7 @@ internal object Wq150HomeArtPlan {
             plate(kind,wide,newArt)?.let{add(it)}
         }
         add(settingsBackground)
+        if(settingsBackground.startsWith("arena_v160/settings/"))add(settingsBackground.replace("/settings/","/lobby/"))
     }
 }
 
@@ -485,7 +494,7 @@ internal fun Wq150WarmArenaArt(session:AppSession){
     val device=if(wide)"tablet" else "phone"
     val background=if(newArt)"arena_v150_premium/$device.webp" else device
     val settingsTablet=config.screenWidthDp>config.screenHeightDp&&config.screenWidthDp>=600
-    val settingsKey=if(settingsTablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp"
+    val settingsKey=if(settingsTablet)"arena_v160/settings/tablet.webp" else "arena_v160/settings/phone.webp"
     val keys=remember(background,settingsKey,wide,newArt){
         Wq150HomeArtPlan.keys(background,settingsKey,wide,newArt)
     }
@@ -523,7 +532,7 @@ private fun Wq150ArenaHome(session:AppSession,avatar:String,local:Boolean,onTab:
         val background=if(wide)"tablet" else "phone"
         val backgroundKey=if(newArt)"arena_v150_premium/$background.webp" else background
         val settingsTablet=config.screenWidthDp>config.screenHeightDp&&config.screenWidthDp>=600
-        val settingsKey=if(settingsTablet)"arena_v122/tablet.webp" else "arena_v122/phone.webp"
+        val settingsKey=if(settingsTablet)"arena_v160/settings/tablet.webp" else "arena_v160/settings/phone.webp"
         val keys=remember(backgroundKey,settingsKey,wide,newArt){
             Wq150HomeArtPlan.keys(backgroundKey,settingsKey,wide,newArt)
         }
@@ -678,7 +687,7 @@ private fun Wq150SoloSettings(session:AppSession,kind:String,onDismiss:()->Unit,
         Wq150ArenaBars()
         Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
             Wq150SettingsBackdrop(Modifier.matchParentSize())
-            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=6.dp),
+            Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize().windowInsetsPadding(Wq160SettingsInsets()).imePadding().padding(horizontal=8.dp,vertical=8.dp),
                 verticalArrangement=Arrangement.spacedBy(8.dp)){
                 Row(verticalAlignment=Alignment.CenterVertically){
                     TextButton(enabled=!busy,onClick=onDismiss){Text("‹ Geri",color=Wq122Gold)}

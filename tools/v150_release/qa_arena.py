@@ -127,7 +127,14 @@ def viewport(name,w,h,density,wide):
     assert Y-y>=int(44*density/160),("Start touch target too small",start.attrib)
     if int(os.environ.get("WQ_TARGET_CODE","173"))>=173:
         assert y>=max(a[3] for a in levels),("Start must remain below scrollable level controls",start.attrib,levels)
-        assert H-Y<=int(100*density/160),("Start too far from safe bottom edge",start.attrib,H)
+        assert H-Y<=int(120*density/160),("Start too far from safe bottom edge",start.attrib,H)
+        if int(os.environ.get("WQ_TARGET_CODE","173"))>=174:
+            assert H-Y>=int(24*density/160),("Footer overlaps reserved navigation area",start.attrib,H)
+            # Scroll the content; the bottom action must remain visible in the same place.
+            adb("shell","input","swipe",str(W//2),str(int(H*.65)),str(W//2),str(int(H*.33)),"300")
+            after=bounds(get("Oyunu Başlat"))
+            assert abs(after[1]-ty)<=int(8*density/160) or abs(after[1]-y)<=int(8*density/160),("Footer moved with content",after,start.attrib)
+            get("Oyunu Başlat")
     else:
         assert Y<=min(a[1] for a in levels),("Historical Start position changed",start.attrib,levels)
     print("PASS: visible enabled start button and its text",name,start.attrib,flush=True)

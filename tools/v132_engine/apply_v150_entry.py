@@ -12,6 +12,8 @@ assert 'Wq150LevelRow(Wq150ModeCatalog.cefr,levels)' in entry
 assert 'arena_v150_premium/$background.webp' in entry
 assert 'Wq132WebEngine.generate(context,engine' in entry
 assert 'Wq183ArenaBackdrop(Modifier.matchParentSize(),active=false)' in entry
+assert 'if(lobby&&!active)Wq160LobbyBackdrop(Modifier.matchParentSize())' in entry
+assert 'Wq160SettingsInsets()' in entry
 assert 'Wq150ModeCatalog.kinds.forEach' not in entry, "Legacy yellow mode buttons reintroduced"
 assert 'Wq150PremiumPanel {' in entry
 assert 'Wq150ApprovedArt("crest"' in entry
@@ -199,3 +201,54 @@ ps=ps[:start]+'''        // Encode once per selected immutable custom pack / con
 ps=ps.replace("Yalnızca karşılıklı arkadaşların küçük bir önizleme görür. ","Yalnızca karşılıklı arkadaşların maskot önizlemeni görür. ")
 publisher.write_text(ps,"utf-8")
 print("PASS: optional bounded HD friend detail; existing consent and low preview retained")
+
+# v160: separate, device-specific route backgrounds. Use exact full-size existing
+# stadium source, not a stretched/cropped image or a composite screenshot.
+# Local rendering only; no external paid service or runtime download.
+from PIL import Image, ImageEnhance, ImageDraw, ImageFilter, ImageOps
+import math
+for device,source_name,size in (
+    ("tablet","arena_tablet_13_16x10.webp",(2560,1600)),
+    ("phone","arena_telefon_9x19_5.webp",(1080,2340)),
+):
+    source=assets/"arena_v183"/source_name
+    with Image.open(source) as f:
+        original=f.convert("RGB")
+    # Fit the entire original into the exact viewport, retaining all architecture.
+    if original.size!=size:
+        fitted=ImageOps.contain(original,size,Image.Resampling.LANCZOS)
+        background=Image.new("RGB",size,(23,12,51))
+        background.paste(fitted,((size[0]-fitted.width)//2,(size[1]-fitted.height)//2))
+        original=background
+    width,height=size
+    for route in ("settings","lobby"):
+        target=assets/"arena_v160"/route/(device+".webp")
+        target.parent.mkdir(parents=True,exist_ok=True)
+        if route=="settings":
+            base=ImageEnhance.Color(original).enhance(.72)
+            base=ImageEnhance.Brightness(base).enhance(.78)
+            # Quiet centre, original gold rails still visible at edges.
+            layer=Image.new("RGBA",size)
+            d=ImageDraw.Draw(layer)
+            d.ellipse((-width*.12,height*.07,width*1.12,height*.86),fill=(17,19,57,98))
+            layer=layer.filter(ImageFilter.GaussianBlur(max(20,width//12)))
+            rendered=Image.alpha_composite(base.convert("RGBA"),layer).convert("RGB")
+        else:
+            base=ImageEnhance.Color(original).enhance(1.15)
+            base=ImageEnhance.Contrast(base).enhance(1.06)
+            light=Image.new("RGBA",size)
+            d=ImageDraw.Draw(light)
+            # Energetic but unobtrusive peripheral gold and violet lighting.
+            for side in (.11,.89):
+                x=width*side
+                d.polygon([(x-width*.035,height*.12),(x+width*.035,height*.12),
+                    (width*.5+width*.18*(1 if side>.5 else -1),height*.65)],fill=(155,78,255,42))
+                d.ellipse((x-width*.045,height*.25-width*.045,x+width*.045,height*.25+width*.045),
+                    fill=(255,190,100,50))
+            light=light.filter(ImageFilter.GaussianBlur(max(12,width//45)))
+            rendered=Image.alpha_composite(base.convert("RGBA"),light).convert("RGB")
+        rendered.save(target,"WEBP",quality=90,method=5)
+        with Image.open(target) as check:
+            assert check.size==size and check.format=="WEBP"
+        print("PASS: distinct local route art",route,device,size,target.stat().st_size)
+assert all((assets/"arena_v160"/r/(d+".webp")).is_file() for r in ("settings","lobby") for d in ("phone","tablet"))

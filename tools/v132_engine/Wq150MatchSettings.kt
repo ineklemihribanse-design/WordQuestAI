@@ -9,6 +9,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.compose.ui.window.DialogWindowProvider
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.style.TextAlign
@@ -257,7 +261,7 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
             Box(Modifier.fillMaxSize().background(Color(0xFF150B3E))){
                 Wq150SettingsBackdrop(Modifier.matchParentSize())
                 Column(Modifier.align(Alignment.TopCenter).widthIn(max=1200.dp).fillMaxSize()
-                    .windowInsetsPadding(WindowInsets.safeDrawing).imePadding().padding(horizontal=8.dp,vertical=6.dp),
+                    .windowInsetsPadding(Wq160SettingsInsets()).imePadding().padding(horizontal=8.dp,vertical=8.dp),
                     verticalArrangement=Arrangement.spacedBy(8.dp)){
                     Row(Modifier.fillMaxWidth().heightIn(min=44.dp).clip(RoundedCornerShape(15.dp)).background(Color(0xB8241B41)),
                         verticalAlignment=Alignment.CenterVertically){
@@ -330,15 +334,35 @@ internal fun Wq150MatchSettingsDialog(initial:Wq150Settings,topics:Map<String,St
         }
     }
 }
+/** Dialog windows may report a zero Compose navigation inset on some Samsung builds.
+ * Keep the platform navigation area reserved even when the dialog reports zero. */
+@Composable
+internal fun Wq160SettingsInsets():WindowInsets{
+    val view=LocalView.current
+    val context=LocalContext.current
+    val density=LocalDensity.current
+    val resources=context.resources
+    val id=resources.getIdentifier("navigation_bar_height","dimen","android")
+    val fallback=if(id!=0)resources.getDimensionPixelSize(id) else with(density){48.dp.roundToPx()}
+    val root=ViewCompat.getRootWindowInsets(view)
+    val navigation=root?.getInsetsIgnoringVisibility(WindowInsetsCompat.Type.navigationBars())
+    val bottom=maxOf(navigation?.bottom?:0,fallback,with(density){24.dp.roundToPx()})
+    return WindowInsets.safeDrawing.union(WindowInsets(left=navigation?.left?:0,top=0,right=navigation?.right?:0,bottom=bottom))
+}
 @Composable
 internal fun Wq159SettingsFooter(label:String,enabled:Boolean,onClick:()->Unit){
-    Box(Modifier.fillMaxWidth(),contentAlignment=Alignment.Center){
-        Box(Modifier.widthIn(max=420.dp).fillMaxWidth()){
-            Button(onClick=onClick,enabled=enabled,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp),
-                shape=RoundedCornerShape(15.dp),colors=ButtonDefaults.buttonColors(
-                    containerColor=Color(0xFFFFD68A),contentColor=Color(0xFF2A1842),
-                    disabledContainerColor=Color(0xE03B3451),disabledContentColor=Color(0xFFD1C6DC)),
-                contentPadding=PaddingValues(horizontal=14.dp,vertical=9.dp)){
+    // Same transparent footer carrier as New Game, independent of the scroll.
+    Surface(Modifier.fillMaxWidth(),color=Color.Transparent,shadowElevation=0.dp){
+        Box(Modifier.fillMaxWidth().padding(horizontal=4.dp,vertical=4.dp),contentAlignment=Alignment.Center){
+            val shape=RoundedCornerShape(17.dp)
+            val fill=if(enabled)listOf(Color(0xF3E6BE79),Color(0xE9C99A53)) else listOf(Color(0xE03B3451),Color(0xD52C2544))
+            Button(onClick=onClick,enabled=enabled,modifier=Modifier.widthIn(max=440.dp).fillMaxWidth()
+                .heightIn(min=52.dp).clip(shape).background(Brush.verticalGradient(fill))
+                .border(1.dp,Color(0xBFFFE0A6),shape),
+                shape=shape,colors=ButtonDefaults.buttonColors(
+                    containerColor=Color.Transparent,contentColor=Color(0xFF241536),
+                    disabledContainerColor=Color.Transparent,disabledContentColor=Color(0xFFD1C6DC)),
+                contentPadding=PaddingValues(horizontal=14.dp,vertical=10.dp)){
                 Text(label,fontWeight=FontWeight.Black,fontSize=16.sp,textAlign=TextAlign.Center)
             }
         }
