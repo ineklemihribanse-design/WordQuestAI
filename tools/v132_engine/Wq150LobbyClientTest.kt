@@ -45,6 +45,6 @@ class Wq150LobbyClientTest {
         assertTrue(wq150LobbyFinalError(503,"not-configured"))
         assertFalse(wq150LobbyFinalError(409,"refresh-required"))
         assertFalse(wq150LobbyFinalError(502,"refresh-required"))
-        assertTrue(wq150LobbyErrorText(429,"room-quota").contains("10"))
+        assertTrue(wq150LobbyErrorText(429,"room-quota").contains("20"))
     }
 }
