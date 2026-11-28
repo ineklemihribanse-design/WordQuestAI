@@ -111,10 +111,10 @@ internal class Wq150Gateway(private val endpoint:Wq150Endpoint,private val auth:
         request(endpoint.profileUrl(room),body)
     }
     suspend fun view(room:String):JSONObject=matchView(request(endpoint.matchUrl(room),null))
-    suspend fun presence(room:String,session:String,leave:Boolean=false):JSONObject {
+    suspend fun presence(room:String,session:String,leave:Boolean=false,neutral:Boolean=false):JSONObject {
         require(Regex("^[A-Za-z0-9_-]{16,100}$").matches(session))
         return matchView(request(endpoint.presenceUrl(room),JSONObject()
-            .put("type",if(leave)"leave" else "heartbeat").put("session",session)))
+            .put("type",if(neutral)"cancel-disconnected" else if(leave)"leave" else "heartbeat").put("session",session)))
     }
     suspend fun send(room:String,command:Wq150Command):JSONObject=
         matchView(request(endpoint.matchUrl(room,true),command.json()))
@@ -232,18 +232,18 @@ internal class Wq150RemoteMatch(private val room:String,private val gateway:Wq15
         }finally{mutable.value=mutable.value.copy(busy=false)}
     }
     suspend fun retryPending(){state.value.pending?.let{submit(it)}}
-    suspend fun leave():Boolean=lock.withLock{
+    suspend fun leave(neutral:Boolean=false):Boolean=lock.withLock{
         if(departed||mutable.value.snapshot?.optString("phase")=="finished")return@withLock true
         mutable.value=mutable.value.copy(busy=true,error=null)
         try{
-            val view=gateway.presence(room,sessionId,leave=true)
+            val view=gateway.presence(room,sessionId,leave=true,neutral=neutral)
             accept(view)
             departed=true
             mutable.value=mutable.value.copy(pending=null)
             true
         }catch(e:CancellationException){throw e}
         catch(e:Exception){
-            mutable.value=mutable.value.copy(error="Ayrılma doğrulanamadı. Bağlantıyı kontrol edip tekrar dene.")
+            mutable.value=mutable.value.copy(error=if(neutral)"Sonuçsuz ayrılma doğrulanamadı. Hükmen ayrılma gönderilmedi." else "Ayrılma doğrulanamadı. Bağlantıyı kontrol edip tekrar dene.")
             false
         }finally{mutable.value=mutable.value.copy(busy=false)}
     }
