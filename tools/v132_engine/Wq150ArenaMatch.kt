@@ -2,6 +2,13 @@ package com.kelimebulmacasi.a1
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.ui.graphics.graphicsLayer
@@ -82,9 +89,9 @@ private fun letters(game:JSONObject,kind:String,words:List<JSONObject>):Map<Wq15
 }
 /** Compute a measured viewport. All coordinates are in dp, not screen fractions. */
 internal data class Wq150Viewport(val cell:Float,val x:Float,val y:Float,val minX:Float,val maxX:Float,val minY:Float,val maxY:Float)
-internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,focusRow:Float,focusCol:Float):Wq150Viewport{
+internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,focusRow:Float,focusCol:Float,fitHeight:Float=height):Wq150Viewport{
     require(width>0&&height>0&&rows>0&&cols>0&&zoom in 0..2)
-    val fit=minOf(width/cols,height/rows,40f)
+    val fit=minOf(width/cols,fitHeight.coerceAtLeast(height)/rows,40f)
     val scale=when(zoom){1->1.55f;2->2.35f;else->1f}
     val cell=fit*scale
     val boardW=cols*cell;val boardH=rows*cell
@@ -96,7 +103,7 @@ internal fun wq150Viewport(width:Float,height:Float,rows:Int,cols:Int,zoom:Int,f
 }
 @Composable
 private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,String>,
-    selectable:Boolean,onSelect:(Int)->Unit,zoom:Int,modifier:Modifier=Modifier){
+    selectable:Boolean,onSelect:(Int)->Unit,zoom:Int,imeVisible:Boolean,modifier:Modifier=Modifier){
     val positions=remember(words){words.map(::wordCells)}
     val cells=remember(positions){positions.flatten().distinct()}
     if(cells.isEmpty())return
@@ -111,11 +118,14 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
         val width=maxWidth.value.coerceAtLeast(1f);val height=maxHeight.value.coerceAtLeast(1f)
         val focusRow=if(active.isEmpty())rows/2f else (active.map{it.row-r0}.average().toFloat()+.5f)
         val focusCol=if(active.isEmpty())cols/2f else (active.map{it.col-c0}.average().toFloat()+.5f)
-        val viewport=wq150Viewport(width,height,rows,cols,zoom,focusRow,focusCol)
+        // Preserve the measured non-IME scale; the smaller visible area becomes a pannable viewport.
+        var fullHeight by remember(width){mutableFloatStateOf(height)}
+        SideEffect{if(!imeVisible&&fullHeight!=height)fullHeight=height}
+        val viewport=wq150Viewport(width,height,rows,cols,zoom,focusRow,focusCol,if(imeVisible)fullHeight else height)
         var x by remember(zoom,selected,width,height,rows,cols){mutableFloatStateOf(viewport.x)}
         var y by remember(zoom,selected,width,height,rows,cols){mutableFloatStateOf(viewport.y)}
         val size=viewport.cell.dp
-        val drag=if(zoom==0)Modifier else Modifier.pointerInput(zoom,selected,width,height,rows,cols){
+        val drag=if(viewport.minX==viewport.maxX&&viewport.minY==viewport.maxY)Modifier else Modifier.pointerInput(zoom,selected,width,height,rows,cols,viewport.cell){
             detectDragGestures{change,amount->
                 change.consume()
                 x=(x+amount.x/density).coerceIn(viewport.minX,viewport.maxX)
@@ -123,6 +133,14 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
             }
         }
         Box(Modifier.fillMaxSize().then(drag)){
+            Canvas(Modifier.matchParentSize()){
+                val step=viewport.cell*density
+                val left=x*density;val top=y*density
+                val w=cols*step;val h=rows*step
+                drawRect(Color(0xBFE5DCEF),topLeft=Offset(left,top),size=Size(w,h))
+                for(c in 0..cols)drawLine(Color.White.copy(alpha=.30f),Offset(left+c*step,top),Offset(left+c*step,top+h),strokeWidth=1f)
+                for(r in 0..rows)drawLine(Color.White.copy(alpha=.30f),Offset(left,top+r*step),Offset(left+w,top+r*step),strokeWidth=1f)
+            }
             cells.forEach{p->
                 val candidates=owners[p].orEmpty()
                 val i=candidates.firstOrNull{it==selected}?:candidates.firstOrNull()?:-1
@@ -130,8 +148,8 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
                 val px=x+(p.col-c0)*viewport.cell;val py=y+(p.row-r0)*viewport.cell
                 if(px+viewport.cell>0&&px<width&&py+viewport.cell>0&&py<height){
                     Box(Modifier.offset(px.dp,py.dp).requiredSize(size)
-                        .background(if(p in active)Color(0xFFF4D58D)else Color(0xFFFAF3DE))
-                        .border(0.7.dp,Color(0xFF645580))
+                        .background(if(p in active)Color(0xFFE0D2FF)else Color(0xF5FFFDF6),RoundedCornerShape(3.dp))
+                        .border(if(p in active)1.5.dp else 0.65.dp,if(p in active)Color(0xFF7851C2)else Color(0xFF9B8DAE),RoundedCornerShape(3.dp))
                         .clickable(enabled=selectable&&i>=0){
                             onSelect(candidates.firstOrNull{it!=selected}?:i)
                         },contentAlignment=Alignment.Center){
@@ -141,6 +159,26 @@ private fun Wq150Board(words:List<JSONObject>,selected:Int,fixed:Map<Wq150Cell,S
                     }
                 }
             }
+        }
+    }
+}
+
+internal fun wq150FullWordDraft(input:String,length:Int):String =
+    input.filter{it.isLetter()}.uppercase(java.util.Locale.ROOT).take(length.coerceAtLeast(0))
+
+@Composable
+private fun Wq150CenterClock(remaining:Long?,phase:String,tablet:Boolean,compact:Boolean){
+    val urgent=phase=="playing"&&remaining!=null&&remaining in 0L..10L
+    val accent=if(urgent)Color(0xFFFF907D)else Color(0xFF52DDEB)
+    val diameter=if(compact)46.dp else if(tablet)112.dp else 76.dp
+    Surface(modifier=Modifier.size(diameter),shape=CircleShape,color=Color(0xF2222C68),
+        border=androidx.compose.foundation.BorderStroke(if(urgent)3.dp else 2.dp,accent)){
+        Column(Modifier.fillMaxSize(),verticalArrangement=Arrangement.Center,horizontalAlignment=Alignment.CenterHorizontally){
+            val display=remaining?.let{if(it>=60L)"%d:%02d".format(java.util.Locale.ROOT,it/60L,it%60L)else it.toString()}?:"∞"
+            Text(display,color=if(urgent)accent else Color.White,
+                fontSize=if(compact){if(urgent)20.sp else 15.sp}else if(tablet){if(urgent)40.sp else 30.sp}else{if(urgent)27.sp else 20.sp},
+                fontWeight=FontWeight.Black,maxLines=1)
+            if(!compact)Text(if(remaining==null)"Süresiz" else if(remaining<60L)"saniye" else "Süre",color=accent,fontSize=if(tablet)12.sp else 10.sp,maxLines=1)
         }
     }
 }
@@ -204,28 +242,16 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
     val prompt=question?.optString(if(kind=="quiz")"prompt" else "clue").orEmpty()
     val known=remember(game,kind,words){letters(game,kind,words)}
     val currentCells=entry?.let(::wordCells).orEmpty()
-    val missing=currentCells.filterNot{it in known}
-    val totalLength=entry?.optInt("length",entry.optInt("letterCount"))?:0
+    val totalLength=entry?.optInt("length",entry.optInt("letterCount"))?.takeIf{it>0}?:currentCells.size
     val hintBudget=when(kind){
         "quiz" -> mine?.optInt("hintsLeft")?:0
         "coop" -> (game.optInt("hints")-game.optInt("spent")).coerceAtLeast(0)
         else -> game.optInt("hintsLeft")
     }
     var draft by remember(room,index){mutableStateOf("")}
-    // Retain entered letters for cells that remain unfilled as hints arrive.
-    var previousMissing by remember(room,index){mutableStateOf(missing)}
-    LaunchedEffect(missing){
-        if(previousMissing!=missing){
-            val typed=previousMissing.zip(draft.map{it.toString()}).toMap()
-            draft=missing.mapNotNull{typed[it]}.joinToString("")
-            previousMissing=missing
-        }
-    }
-    val answerText=if(currentCells.isEmpty())draft else {
-        var at=0
-        currentCells.joinToString(""){c->known[c]?:draft.getOrNull(at++)?.toString().orEmpty()}
-    }
-    val answerComplete=if(currentCells.isEmpty())draft.length==totalLength else draft.length==missing.size
+    // Input always represents the entire word, including intersections and revealed hints.
+    val answerText=draft
+    val answerComplete=totalLength>0&&draft.length==totalLength
     var exit by remember(room){mutableStateOf(false)}
     var now by remember{mutableLongStateOf(view.optLong("serverNow",System.currentTimeMillis()))}
     LaunchedEffect(room){controller.poll()}
@@ -308,11 +334,6 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
             Row(verticalAlignment=Alignment.CenterVertically){
                 TextButton(onClick={exit=true}){Text("‹ Geri",color=Wq122Gold)}
                 Text(Wq150ModeCatalog.kinds[kind].orEmpty(),color=Wq122Gold,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f))
-                remaining?.let{
-                    val urgent=phase=="playing"&&it in 0L..10L
-                    Text("$it sn",color=if(urgent)Color(0xFFFFB4A8)else Wq122Gold,
-                        fontSize=if(urgent)24.sp else 15.sp,fontWeight=FontWeight.Black)
-                }
                 Box{
                     TextButton(enabled=canSocial&&!imeVisible&&now-lastEmoji>=1500L,onClick={emojiMenu=true},contentPadding=PaddingValues(horizontal=6.dp)){Text("☺",color=Wq122Gold,fontSize=22.sp)}
                     DropdownMenu(expanded=emojiMenu&&canSocial&&!imeVisible,onDismissRequest={emojiMenu=false}){
@@ -326,40 +347,46 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                 TextButton(enabled=canSocial&&!offerPending&&now>=(social.number("cooldownUntil")?:0),onClick={sendSocial("finish-offer")}){Text("Bitir",color=Wq122Gold)}
             }
             val scores=game.optJSONObject("scores")?:game.optJSONObject("stats")
-            if(imeVisible&&!quiz&&!finished){
-                val ids=connection.objects("players").map{it.optString("id")}
-                val groups=if(kind=="team")game.objects("teams").map{it.optString("id")}else ids
-                Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)){
-                    groups.forEachIndexed{i,id->
-                        val score=scores?.optJSONObject(id)?.optInt("score")?:scores?.optInt(id)?:0
-                        val turn=game.optString("turn")==id
-                        val name=if(kind=="team")"Takım "+(i+1) else if(id==uid)"Sen" else profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}?:"Rakip"
-                        Text(name+" · "+score,color=if(turn)Wq122Gold else Wq122Ink,fontSize=12.sp,fontWeight=if(turn)FontWeight.Bold else FontWeight.Normal,modifier=Modifier.weight(1f),maxLines=1,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-                    }
+            val ids=connection.objects("players").map{it.optString("id")}
+            val groups=(if(kind=="team")game.objects("teams").map{it.optString("id")}else ids)
+                .sortedBy{if(it==(if(kind=="team")team else uid))0 else 1}
+            val compact=imeVisible&&!quiz&&!finished
+            Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(if(compact)4.dp else 8.dp)){
+                if(groups.isEmpty()){
+                    Spacer(Modifier.weight(1f))
+                    Wq150CenterClock(remaining,phase,tablet,compact)
+                    Spacer(Modifier.weight(1f))
                 }
-            }else Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)){
-                val ids=connection.objects("players").map{it.optString("id")}
-                val groups=if(kind=="team")game.objects("teams").map{it.optString("id")}else ids
                 groups.forEachIndexed{i,id->
+                    if(i==1)Wq150CenterClock(remaining,phase,tablet,compact)
                     val value=scores?.optJSONObject(id)?.optInt("score")?:scores?.optInt(id)?:0
                     val currentTurn=game.optString("turn")==id||mode in listOf("speed","simultaneous")
-                    Surface(color=Color(0xFF39245D),shape=MaterialTheme.shapes.medium,modifier=Modifier.weight(1f),
-                        border=if(currentTurn&&phase=="playing")androidx.compose.foundation.BorderStroke(2.dp,Color(0xFFFFD56B))else null){
-                        Column(Modifier.padding(8.dp),horizontalAlignment=Alignment.CenterHorizontally){
-                            val members=if(kind=="team")game.objects("teams").firstOrNull{it.optString("id")==id}.strings("members") else listOf(id)
-                            Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(4.dp)){
-                                members.forEach{player->
-                                    Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
+                    val members=if(kind=="team")game.objects("teams").firstOrNull{it.optString("id")==id}.strings("members") else listOf(id)
+                    val name=if(kind=="team")"Takım "+(i+1) else profiles.optJSONObject(id)?.optString("name")?.takeIf{it.isNotBlank()}?:if(id==uid)session.profileName else "Rakip"
+                    Surface(color=if(currentTurn&&phase=="playing")Color(0xE65A368C)else Color(0xD93D2569),
+                        shape=RoundedCornerShape(16.dp),modifier=Modifier.weight(1f),
+                        border=androidx.compose.foundation.BorderStroke(if(currentTurn&&phase=="playing")2.dp else 1.dp,
+                            if(currentTurn&&phase=="playing")Color(0xFFFFD56B)else Color(0xFF9D84D6))){
+                        if(compact){
+                            Text("$name · $value",Modifier.padding(horizontal=5.dp,vertical=8.dp),color=if(currentTurn)Wq122Gold else Color.White,
+                                fontWeight=FontWeight.Bold,fontSize=12.sp,textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
+                        }else{
+                            Row(Modifier.fillMaxWidth().padding(if(tablet)8.dp else 4.dp),verticalAlignment=Alignment.CenterVertically){
+                                Row(Modifier.weight(1.15f),horizontalArrangement=Arrangement.spacedBy(2.dp)){
+                                    members.forEach{player->
                                         Wq150Portrait(profiles.optJSONObject(player),ownAvatar.takeIf{player==uid},
-                                            Modifier.fillMaxWidth().height(if(imeVisible)24.dp else if(tablet)110.dp else 64.dp))
-                                        Text(profiles.optJSONObject(player)?.optString("name")?.takeIf{it.isNotBlank()}?:if(player==uid)session.profileName else "Oyuncu",
-                                            color=Wq122Ink,fontSize=if(tablet)15.sp else 12.sp,textAlign=androidx.compose.ui.text.style.TextAlign.Center,maxLines=1,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                                            Modifier.weight(1f).height(if(tablet)132.dp else 94.dp))
                                     }
                                 }
+                                Column(Modifier.weight(1f),horizontalAlignment=Alignment.CenterHorizontally){
+                                    Text(name,color=Color.White,fontSize=if(tablet)17.sp else 12.sp,fontWeight=FontWeight.SemiBold,
+                                        textAlign=TextAlign.Center,maxLines=1,overflow=TextOverflow.Ellipsis)
+                                    Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontSize=if(tablet)28.sp else 20.sp,fontWeight=FontWeight.Black)
+                                }
                             }
-                            Text(if(kind=="coop")"Ortak" else value.toString(),color=Wq122Gold,fontWeight=FontWeight.Black)
                         }
                     }
+                    if(groups.size==1)Wq150CenterClock(remaining,phase,tablet,compact)
                 }
             }
             if(!quiz&&!finished){
@@ -369,8 +396,8 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                         Text(when(zoom){1->"Yakınlaştır +";2->"Tüm tahta";else->"Yakınlaştır"},color=Wq122Gold)
                     }
                 }
-                val typed=missing.zip(draft.map{it.toString()}).toMap()
-                Wq150Board(words,index,typed+known,enabled&&(choose||free),{selected=it},zoom,Modifier.weight(1f))
+                val typed=currentCells.zip(draft.map{it.toString()}).toMap()
+                Wq150Board(words,index,typed+known,enabled&&(choose||free),{selected=it},zoom,imeVisible,Modifier.weight(1f))
             }
             Column(Modifier.fillMaxWidth().then(if(quiz||finished)Modifier.weight(1f)else Modifier.heightIn(max=320.dp))
                 .verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(if(imeVisible&&!quiz)2.dp else 6.dp)){
@@ -399,13 +426,13 @@ internal fun Wq150ArenaMatch(room:String,initial:JSONObject,uid:String,gateway:W
                         }else{
                             val length=entry?.optInt("length",entry.optInt("letterCount"))?:0
                             val direction=if(currentCells.size>=2&&currentCells[0].row==currentCells[1].row)"Yatay" else "Dikey"
-                            if(!imeVisible)Text("Kelime "+(index+1)+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=12.sp)
+                            Text("Kelime "+(index+1)+" · "+direction+" · "+length+" harf",color=Wq122Gold,fontSize=12.sp)
                             Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(6.dp)){
-                                OutlinedTextField(draft,{if(typingAllowed)draft=it.filter{c->c.isLetter()}.uppercase(java.util.Locale.ROOT).take(if(currentCells.isEmpty())totalLength else missing.size)},
+                                OutlinedTextField(draft,{if(typingAllowed)draft=wq150FullWordDraft(it,totalLength)},
                                     enabled=typingAllowed,readOnly=!enabled,singleLine=true,
                                     keyboardOptions=KeyboardOptions(capitalization=KeyboardCapitalization.Characters,imeAction=ImeAction.Send),
                                     keyboardActions=KeyboardActions(onSend={if(enabled&&answerComplete&&answerText.isNotBlank())send("submit",answer=answerText)}),
-                                    label={Text(if(imeVisible)"$length harf" else "Eksik harfler")},modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
+                                    label={Text("Kelimeyi yaz · $length harf")},colors=OutlinedTextFieldDefaults.colors(focusedContainerColor=Color(0xDD24183E),unfocusedContainerColor=Color(0xDD24183E),focusedTextColor=Color.White,unfocusedTextColor=Color.White),modifier=Modifier.weight(1f).focusRequester(focusRequester).onFocusChanged{if(it.isFocused)hadFocus=true})
                                 Button(enabled=enabled&&answerComplete&&answerText.isNotBlank(),onClick={send("submit",answer=answerText)},contentPadding=PaddingValues(horizontal=10.dp,vertical=8.dp)){Text("Gönder")}
                             }
                         }
